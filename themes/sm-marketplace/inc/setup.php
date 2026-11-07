@@ -56,10 +56,16 @@ add_filter( 'language_attributes', 'sm_theme_language_attributes' );
 
 /** hreflang alternates for each supported language. */
 function sm_theme_hreflang() {
+	$url = static function ( $code ) {
+		if ( class_exists( 'SM\\Core\\I18n\\Language' ) ) {
+			return SM\Core\I18n\Language::url_for( SM\Core\I18n\Language::current_unprefixed_url(), $code );
+		}
+		return sm_theme_language_url( $code );
+	};
 	foreach ( sm_theme_languages() as $code => $language ) {
-		printf( '<link rel="alternate" hreflang="%s" href="%s">' . "\n", esc_attr( $code ), esc_url( sm_theme_language_url( $code ) ) );
+		printf( '<link rel="alternate" hreflang="%s" href="%s">' . "\n", esc_attr( $code ), esc_url( $url( $code ) ) );
 	}
-	printf( '<link rel="alternate" hreflang="x-default" href="%s">' . "\n", esc_url( sm_theme_language_url( sm_theme_default_language() ) ) );
+	printf( '<link rel="alternate" hreflang="x-default" href="%s">' . "\n", esc_url( $url( sm_theme_default_language() ) ) );
 }
 add_action( 'wp_head', 'sm_theme_hreflang', 2 );
 

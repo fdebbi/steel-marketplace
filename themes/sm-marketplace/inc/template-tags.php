@@ -197,7 +197,7 @@ function sm_activity_labels() {
 function sm_verification_label( $level ) {
 	$labels = array(
 		0 => __( 'Not verified', 'sm-marketplace' ),
-		1 => __( 'Phone verified', 'sm-marketplace' ),
+		1 => __( 'Contact verified', 'sm-marketplace' ),
 		2 => __( 'Verified business', 'sm-marketplace' ),
 		3 => __( 'Verified engineer', 'sm-marketplace' ),
 	);

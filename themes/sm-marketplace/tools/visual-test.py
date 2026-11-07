@@ -10,6 +10,9 @@ For every page x language (fr, ar) x width (360…1440 px) it:
 Writes report.json and prints a summary. Exit code 1 if any check fails.
 
 Usage: python3 tools/visual-test.py [base_url] [out_dir]
+Dashboard pages need accounts: set SM_VT_COM="email:password" (business account)
+and SM_VT_ENG="email:password" (engineering account); without them those pages
+show the sign-in page and are still checked.
 Requires: pip install playwright && playwright install chromium
 """
 import json, os, sys
@@ -18,6 +21,7 @@ from playwright.sync_api import sync_playwright
 BASE = sys.argv[1] if len(sys.argv) > 1 else 'http://localhost:8080'
 OUT = sys.argv[2] if len(sys.argv) > 2 else 'visual-test-output'
 WIDTHS = [360, 390, 430, 768, 1024, 1280, 1440]
+# name: (path, account) — account None = visitor, 'com' = business, 'eng' = engineering.
 PAGES = {
     'home': '/',
     'products': '/produits/',
@@ -30,12 +34,28 @@ PAGES = {
     'company': '/entreprise/?c=acier-hodna',
     'engineer-profile': '/entreprise/?c=bet-structures-acier',
     'register': '/inscription/',
-    'dashboard': '/compte/',
-    'dashboard-listings': '/compte/?view=listings',
-    'dashboard-publish': '/compte/?view=publish',
-    'dashboard-engineer': '/compte/?account=engineer',
+    'login': '/connexion/',
     'rfq': '/demandes-de-devis/',
+    'dashboard': ('/compte/', 'com'),
+    'dashboard-company': ('/compte/?view=company', 'com'),
+    'dashboard-verification': ('/compte/?view=verification', 'com'),
+    'dashboard-messages': ('/compte/?view=messages', 'com'),
+    'dashboard-publish': ('/compte/?view=publish', 'com'),
+    'dashboard-engineer': ('/compte/', 'eng'),
+    'dashboard-engineer-requests': ('/compte/?view=requests', 'eng'),
 }
+ACCOUNTS = {k: os.environ.get(v) for k, v in (('com', 'SM_VT_COM'), ('eng', 'SM_VT_ENG'))}
+
+def login(page, who):
+    cred = ACCOUNTS.get(who)
+    if not cred:
+        return
+    email, password = cred.split(':', 1)
+    page.goto(BASE + '/connexion/?lang=fr')
+    page.fill('#l-user', email)
+    page.fill('#l-pass', password)
+    page.click('form:has(#l-user) button[type="submit"]')
+    page.wait_for_load_state()
 OVERFLOW_JS = """() => {
   const vw = document.documentElement.clientWidth;
   const sw = document.documentElement.scrollWidth;
@@ -62,9 +82,15 @@ def main():
         browser = p.chromium.launch()
         for lang in ('fr', 'ar'):
             for width in WIDTHS:
-                ctx = browser.new_context(viewport={'width': width, 'height': 900}, device_scale_factor=1)
-                page = ctx.new_page()
-                for name, path in PAGES.items():
+                pages_by_account = {}
+                for name, spec in PAGES.items():
+                    path, who = spec if isinstance(spec, tuple) else (spec, None)
+                    pages_by_account.setdefault(who, []).append((name, path))
+                for who, entries in pages_by_account.items():
+                  ctx = browser.new_context(viewport={'width': width, 'height': 900}, device_scale_factor=1)
+                  page = ctx.new_page()
+                  login(page, who)
+                  for name, path in entries:
                     url = BASE + path + ('&' if '?' in path else '?') + 'lang=' + lang
                     page.goto(url, wait_until='networkidle')
                     page.evaluate('document.fonts.ready')
@@ -75,7 +101,7 @@ def main():
                     shot = os.path.join(OUT, f'{name}-{lang}-{width}.png')
                     page.screenshot(path=shot, full_page=True)
                     results.append({**info, 'page': name, 'lang': lang, 'width': width, 'ok': ok, 'screenshot': shot})
-                ctx.close()
+                  ctx.close()
         browser.close()
     with open(os.path.join(OUT, 'report.json'), 'w') as f:
         json.dump(results, f, indent=1, ensure_ascii=False)

@@ -6,7 +6,9 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-$sm_nav = sm_theme_nav_items();
+$sm_nav     = sm_theme_nav_items();
+$sm_account = is_user_logged_in() ? sm_theme_account() : null;
+$sm_unread  = $sm_account ? (int) ( $sm_account['unread'] ?? 0 ) : 0;
 ?><!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -55,8 +57,26 @@ $sm_nav = sm_theme_nav_items();
 			<div class="sm-header__actions">
 				<a class="sm-icon-btn sm-header__search-mobile" href="<?php echo esc_url( sm_page_url( 'search' ) ); ?>"><?php sm_icon( 'search' ); ?><span class="screen-reader-text"><?php esc_html_e( 'Search', 'sm-marketplace' ); ?></span></a>
 				<a class="sm-icon-btn sm-hide-mobile" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'saved' ) ) ); ?>"><?php sm_icon( 'heart' ); ?><span class="screen-reader-text"><?php esc_html_e( 'Saved listings', 'sm-marketplace' ); ?></span></a>
-				<a class="sm-header__account sm-hide-mobile" href="<?php echo esc_url( sm_page_url( 'login' ) ); ?>"><?php sm_icon( 'user' ); ?><span><?php esc_html_e( 'Sign in', 'sm-marketplace' ); ?></span></a>
-				<a class="sm-btn sm-btn--accent sm-header__publish" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'publish' ) ) ); ?>"><?php sm_icon( 'plus' ); ?><span><?php esc_html_e( 'Publish', 'sm-marketplace' ); ?></span></a>
+				<?php if ( $sm_account ) : ?>
+					<a class="sm-icon-btn sm-header__bell sm-hide-mobile" href="<?php echo esc_url( sm_page_url( 'account' ) ); ?>#sm-notifications">
+						<?php sm_icon( 'bell' ); ?>
+						<?php if ( $sm_unread ) : ?><span class="sm-dot"><?php echo esc_html( min( 99, $sm_unread ) ); ?></span><?php endif; ?>
+						<span class="screen-reader-text"><?php esc_html_e( 'Notifications', 'sm-marketplace' ); ?></span>
+					</a>
+					<a class="sm-header__account sm-hide-mobile" href="<?php echo esc_url( sm_page_url( 'account' ) ); ?>">
+						<span class="sm-avatar sm-avatar--xs sm-avatar--<?php echo esc_attr( $sm_account['class'] ); ?>" aria-hidden="true"><?php echo esc_html( $sm_account['company']['initials'] ); ?></span>
+						<span><?php esc_html_e( 'My account', 'sm-marketplace' ); ?></span>
+					</a>
+				<?php elseif ( is_user_logged_in() ) : ?>
+					<a class="sm-header__account sm-hide-mobile" href="<?php echo esc_url( admin_url() ); ?>"><?php sm_icon( 'user' ); ?><span><?php esc_html_e( 'Administration', 'sm-marketplace' ); ?></span></a>
+				<?php else : ?>
+					<a class="sm-header__account sm-hide-mobile" href="<?php echo esc_url( sm_page_url( 'login' ) ); ?>"><?php sm_icon( 'user' ); ?><span><?php esc_html_e( 'Sign in', 'sm-marketplace' ); ?></span></a>
+				<?php endif; ?>
+				<?php if ( ! $sm_account || 'engineering' !== $sm_account['class'] ) : ?>
+					<a class="sm-btn sm-btn--accent sm-header__publish" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'publish' ) ) ); ?>"><?php sm_icon( 'plus' ); ?><span><?php esc_html_e( 'Publish', 'sm-marketplace' ); ?></span></a>
+				<?php else : ?>
+					<a class="sm-btn sm-btn--accent sm-header__publish" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'services' ) ) ); ?>"><?php sm_icon( 'plus' ); ?><span><?php esc_html_e( 'My services', 'sm-marketplace' ); ?></span></a>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
@@ -112,7 +132,13 @@ $sm_nav = sm_theme_nav_items();
 		</nav>
 		<div class="sm-drawer__foot">
 			<a class="sm-btn sm-btn--accent sm-btn--block" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'publish' ) ) ); ?>"><?php sm_icon( 'plus' ); ?><?php esc_html_e( 'Publish a listing', 'sm-marketplace' ); ?></a>
-			<a class="sm-btn sm-btn--ghost sm-btn--block" href="<?php echo esc_url( sm_page_url( 'login' ) ); ?>"><?php sm_icon( 'user' ); ?><?php esc_html_e( 'Sign in', 'sm-marketplace' ); ?></a>
+			<?php if ( is_user_logged_in() ) : ?>
+				<a class="sm-btn sm-btn--ghost sm-btn--block" href="<?php echo esc_url( sm_page_url( 'account' ) ); ?>"><?php sm_icon( 'user' ); ?><?php esc_html_e( 'My account', 'sm-marketplace' ); ?></a>
+				<a class="sm-btn sm-btn--ghost sm-btn--block" href="<?php echo esc_url( wp_logout_url() ); ?>"><?php sm_icon( 'logout' ); ?><?php esc_html_e( 'Sign out', 'sm-marketplace' ); ?></a>
+			<?php else : ?>
+				<a class="sm-btn sm-btn--ghost sm-btn--block" href="<?php echo esc_url( sm_page_url( 'login' ) ); ?>"><?php sm_icon( 'user' ); ?><?php esc_html_e( 'Sign in', 'sm-marketplace' ); ?></a>
+				<a class="sm-btn sm-btn--ghost sm-btn--block" href="<?php echo esc_url( sm_page_url( 'register' ) ); ?>"><?php esc_html_e( 'Create an account', 'sm-marketplace' ); ?></a>
+			<?php endif; ?>
 		</div>
 	</div>
 </div>

@@ -30,6 +30,9 @@ function sm_theme_languages() {
 
 /** Default language (decision 1 of Phase 0: French). */
 function sm_theme_default_language() {
+	if ( function_exists( 'sm_default_language' ) ) {
+		return sm_default_language();
+	}
 	return apply_filters( 'sm_default_language', 'fr' );
 }
 

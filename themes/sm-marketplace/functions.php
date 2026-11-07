@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_THEME_VERSION', '0.1.1' );
+define( 'SM_THEME_VERSION', '0.2.0' );
 define( 'SM_THEME_DIR', get_template_directory() );
 define( 'SM_THEME_URI', get_template_directory_uri() );
 
@@ -22,6 +22,7 @@ $sm_theme_includes = array(
 	'inc/assets.php',            // Styles, scripts, fonts, RTL handling.
 	'inc/template-tags.php',     // Presentation helpers (icons, components, formatting).
 	'inc/data-contract.php',     // Read-only data access contract used by templates.
+	'inc/forms.php',             // Form, notice and route helpers (processing is in sm-core).
 	'inc/menus.php',             // Header mega menu and mobile navigation.
 	'inc/demo/demo-data.php',    // Demo content provider (visual testing only).
 	'inc/demo/installer.php',    // Creates the demo pages and assigns templates.

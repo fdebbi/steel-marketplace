@@ -1,0 +1,85 @@
+<?php
+/**
+ * Official list of Algerian wilayas (code => [French name, Arabic name]).
+ *
+ * 01-58: loi n° 84-09 as amended (wilayas 49-58 created in 2019).
+ * 59-69: loi n° 26-06 of 4 April 2026 and décret présidentiel n° 26-206 of
+ * 25 May 2026 (JO n° 40), effective 1 January 2027. Spellings of 59-69 as
+ * reported from the decree; the list is editable in Steel Marketplace -> Wilayas.
+ *
+ * @package SM\Core
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+return array(
+	'01' => array( 'Adrar', 'أدرار' ),
+	'02' => array( 'Chlef', 'الشلف' ),
+	'03' => array( 'Laghouat', 'الأغواط' ),
+	'04' => array( 'Oum El Bouaghi', 'أم البواقي' ),
+	'05' => array( 'Batna', 'باتنة' ),
+	'06' => array( 'Béjaïa', 'بجاية' ),
+	'07' => array( 'Biskra', 'بسكرة' ),
+	'08' => array( 'Béchar', 'بشار' ),
+	'09' => array( 'Blida', 'البليدة' ),
+	'10' => array( 'Bouira', 'البويرة' ),
+	'11' => array( 'Tamanrasset', 'تمنراست' ),
+	'12' => array( 'Tébessa', 'تبسة' ),
+	'13' => array( 'Tlemcen', 'تلمسان' ),
+	'14' => array( 'Tiaret', 'تيارت' ),
+	'15' => array( 'Tizi Ouzou', 'تيزي وزو' ),
+	'16' => array( 'Alger', 'الجزائر' ),
+	'17' => array( 'Djelfa', 'الجلفة' ),
+	'18' => array( 'Jijel', 'جيجل' ),
+	'19' => array( 'Sétif', 'سطيف' ),
+	'20' => array( 'Saïda', 'سعيدة' ),
+	'21' => array( 'Skikda', 'سكيكدة' ),
+	'22' => array( 'Sidi Bel Abbès', 'سيدي بلعباس' ),
+	'23' => array( 'Annaba', 'عنابة' ),
+	'24' => array( 'Guelma', 'قالمة' ),
+	'25' => array( 'Constantine', 'قسنطينة' ),
+	'26' => array( 'Médéa', 'المدية' ),
+	'27' => array( 'Mostaganem', 'مستغانم' ),
+	'28' => array( "M'Sila", 'المسيلة' ),
+	'29' => array( 'Mascara', 'معسكر' ),
+	'30' => array( 'Ouargla', 'ورقلة' ),
+	'31' => array( 'Oran', 'وهران' ),
+	'32' => array( 'El Bayadh', 'البيض' ),
+	'33' => array( 'Illizi', 'إليزي' ),
+	'34' => array( 'Bordj Bou Arréridj', 'برج بوعريريج' ),
+	'35' => array( 'Boumerdès', 'بومرداس' ),
+	'36' => array( 'El Tarf', 'الطارف' ),
+	'37' => array( 'Tindouf', 'تندوف' ),
+	'38' => array( 'Tissemsilt', 'تيسمسيلت' ),
+	'39' => array( 'El Oued', 'الوادي' ),
+	'40' => array( 'Khenchela', 'خنشلة' ),
+	'41' => array( 'Souk Ahras', 'سوق أهراس' ),
+	'42' => array( 'Tipaza', 'تيبازة' ),
+	'43' => array( 'Mila', 'ميلة' ),
+	'44' => array( 'Aïn Defla', 'عين الدفلى' ),
+	'45' => array( 'Naâma', 'النعامة' ),
+	'46' => array( 'Aïn Témouchent', 'عين تموشنت' ),
+	'47' => array( 'Ghardaïa', 'غرداية' ),
+	'48' => array( 'Relizane', 'غليزان' ),
+	'49' => array( 'Timimoun', 'تيميمون' ),
+	'50' => array( 'Bordj Badji Mokhtar', 'برج باجي مختار' ),
+	'51' => array( 'Ouled Djellal', 'أولاد جلال' ),
+	'52' => array( 'Béni Abbès', 'بني عباس' ),
+	'53' => array( 'In Salah', 'عين صالح' ),
+	'54' => array( 'In Guezzam', 'عين قزام' ),
+	'55' => array( 'Touggourt', 'تقرت' ),
+	'56' => array( 'Djanet', 'جانت' ),
+	'57' => array( "El M'Ghair", 'المغير' ),
+	'58' => array( 'El Meniaa', 'المنيعة' ),
+	'59' => array( 'Aflou', 'أفلو' ),
+	'60' => array( 'Barika', 'بريكة' ),
+	'61' => array( 'El Kantara', 'القنطرة' ),
+	'62' => array( 'Bir El Ater', 'بئر العاتر' ),
+	'63' => array( 'El Aricha', 'العريشة' ),
+	'64' => array( 'Ksar Chellala', 'قصر الشلالة' ),
+	'65' => array( 'Aïn Ouessara', 'عين وسارة' ),
+	'66' => array( 'Messaad', 'مسعد' ),
+	'67' => array( 'Ksar El Boukhari', 'قصر البخاري' ),
+	'68' => array( 'Bou Saâda', 'بوسعادة' ),
+	'69' => array( 'El Abiodh Sidi Cheikh', 'الأبيض سيدي الشيخ' ),
+);

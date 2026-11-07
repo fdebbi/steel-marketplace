@@ -1,9 +1,10 @@
-# SM Marketplace — thème WordPress (Phase 1)
+# SM Marketplace — thème WordPress
 
 Thème de présentation sur mesure de la plateforme **Steel Marketplace**, bilingue arabe (RTL) / français (LTR), responsive mobile → desktop.
 Le thème ne contient **aucune logique métier** : pas de SQL, pas de calcul de poids ni de prix. Les données viennent des extensions `sm-*` via un contrat de données documenté ; tant qu'elles n'existent pas, un fournisseur de démonstration affiche des annonces réalistes.
 
-- Version : 0.1.0 — WordPress 6.4+ (testé 7.1.4), PHP 8.1+ (testé 8.3)
+- Version : 0.2.0 — WordPress 6.4+ (testé 7.1.4), PHP 8.1+ (testé 8.3)
+- Fonctionne avec l'extension **sm-core** (comptes, formulaires, langues `/ar/`) ; sans elle, mode démonstration
 - Domaine de traduction : `sm-marketplace` — langues livrées : `fr_FR`, `ar`
 - Aucune dépendance externe en production (polices et icônes auto-hébergées, pas de jQuery, pas de constructeur de pages)
 
@@ -20,7 +21,7 @@ Le thème ne contient **aucune logique métier** : pas de SQL, pas de calcul de 
 ## Langues
 
 - Français par défaut (décision Phase 0). Sélecteur dans l'en-tête, le menu mobile et le pied de page.
-- Phase 1 : choix via `?lang=ar` mémorisé 1 an dans un cookie. En Phase 2, `sm-core` reprend la main (préfixes `/ar/` `/fr/`, préférence du compte) sans modifier les gabarits : le thème détecte `sm_current_language()`.
+- Avec sm-core : l'arabe est servi sous `/ar/` (ex. `/ar/produits/`), le français sans préfixe ; le choix est mémorisé (cookie et compte). Sans sm-core : `?lang=ar` + cookie.
 - Les désignations techniques (IPE 200, HEA, S275JR), unités (mm, m, kg, m²) et chiffres (0-9) restent identiques dans les deux langues et sont isolées (`<bdi>`) pour un affichage correct dans les phrases arabes.
 
 ## Développement

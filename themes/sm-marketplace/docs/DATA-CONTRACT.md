@@ -42,6 +42,17 @@ Un seul enregistrement par annonce, toutes langues comprises : les champs textue
 | includes | dismantling, transport, reinstall, foundations | booléens |
 | wilaya, company, featured, date, image | 28, acier-hodna… | image = ID de pièce jointe ou URL |
 
+## Ressources de compte (sm-core, Phase 2)
+
+| Ressource | Retour |
+| --- | --- |
+| `account` | `real`, `class`, `company` (forme entreprise), `edit` (champs modifiables, numéros légaux pour le titulaire), `user`, `user_email`, `user_phone`, `role`, `can_manage`, `language`, `caps` (carte des droits), `unread`, `kpis` |
+| `enquiries` (`box` = received \| sent) | `id, kind, name, phone, email, quantity, subject, message, status, date` |
+| `notifications` | `id, title, text, link, read, date` |
+| `verification` | `level, target_level, channel, code_pending, sent_message, documents, request{status,note,date,files}, legal` |
+
+Formulaires : `sm_theme_form_open( $form )` imprime `<form>` avec `apply_filters( 'sm_form_action', '#', $form )` et `do_action( 'sm_form_fields', $form )`. Messages : `sm_theme_notices()`, `sm_theme_error( $champ )`, `sm_theme_old( $champ )`. Routes : `sm_theme_route( 'id' | 'c' | 'view' )`. Droits : `sm_theme_can( $cap )`.
+
 ## Autres points d'intégration
 
 - `sm_page_url( $clé )` / filtre `sm_page_url` : les extensions fournissent leurs vraies routes.

@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$company = sm_theme_company( sm_theme_query_arg( 'c', 'acier-hodna' ) );
+$company = sm_theme_company( sm_theme_route( 'c', sm_theme_core_active() ? '' : 'acier-hodna' ) );
 get_header();
 
 if ( ! $company ) {
@@ -64,7 +64,9 @@ $tabs['about'] = array( __( 'About', 'sm-marketplace' ), 0 );
 			</div>
 			<div class="sm-company-head__actions">
 				<a class="sm-btn sm-btn--accent" href="#sm-contact"><?php sm_icon( 'message' ); ?><?php echo esc_html( $is_eng ? __( 'Request a service', 'sm-marketplace' ) : __( 'Contact', 'sm-marketplace' ) ); ?></a>
+<?php if ( ! empty( $company['phone'] ) ) : ?>
 				<a class="sm-btn sm-btn--ghost-light" href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $company['phone'] ) ); ?>"><?php sm_icon( 'phone' ); ?><bdi dir="ltr"><?php echo esc_html( $company['phone'] ); ?></bdi></a>
+				<?php endif; ?>
 			</div>
 		</div>
 		<nav class="sm-tabs" aria-label="<?php esc_attr_e( 'Company sections', 'sm-marketplace' ); ?>">
@@ -101,14 +103,18 @@ $tabs['about'] = array( __( 'About', 'sm-marketplace' ), 0 );
 	<section id="tab-about" class="sm-section sm-about">
 		<div class="sm-panel">
 			<h2 class="sm-panel__title"><?php esc_html_e( 'About', 'sm-marketplace' ); ?></h2>
-			<p><?php sm_e( $company['about'] ); ?></p>
+			<?php if ( sm_t( $company['about'] ) ) : ?>
+				<p><?php sm_e( $company['about'] ); ?></p>
+			<?php else : ?>
+				<p class="sm-muted"><?php esc_html_e( 'This company has not written its presentation yet.', 'sm-marketplace' ); ?></p>
+			<?php endif; ?>
 		</div>
 		<?php if ( $is_eng ) : ?>
 			<div class="sm-panel">
 				<h2 class="sm-panel__title"><?php esc_html_e( 'Qualifications', 'sm-marketplace' ); ?></h2>
-				<ul class="sm-checklist"><?php foreach ( $company['qualifications'] as $q ) : ?><li><?php sm_icon( 'verified' ); ?><?php sm_e( $q ); ?></li><?php endforeach; ?></ul>
+				<ul class="sm-checklist"><?php foreach ( (array) ( $company['qualifications'] ?? array() ) as $q ) : ?><li><?php sm_icon( 'verified' ); ?><?php sm_e( $q ); ?></li><?php endforeach; ?></ul>
 				<h3 class="sm-panel__subtitle"><?php esc_html_e( 'Specialisations', 'sm-marketplace' ); ?></h3>
-				<ul class="sm-tags"><?php foreach ( $company['specialities'] as $s ) : ?><li><?php sm_e( $s ); ?></li><?php endforeach; ?></ul>
+				<ul class="sm-tags"><?php foreach ( (array) ( $company['specialities'] ?? array() ) as $s ) : ?><li><?php sm_e( $s ); ?></li><?php endforeach; ?></ul>
 			</div>
 		<?php else : ?>
 			<div class="sm-panel">
@@ -121,7 +127,19 @@ $tabs['about'] = array( __( 'About', 'sm-marketplace' ), 0 );
 			</div>
 		<?php endif; ?>
 	</section>
-	<span id="sm-contact"></span>
+	<?php
+	sm_component(
+		'enquiry-form',
+		array(
+			'kind'    => $is_eng ? 'service' : 'listing',
+			'module'  => 'company',
+			'company' => $company['slug'],
+			'subject' => $is_eng ? __( 'Service request', 'sm-marketplace' ) : __( 'Contact from the company page', 'sm-marketplace' ),
+			'title'   => $is_eng ? __( 'Request a service', 'sm-marketplace' ) : __( 'Contact this company', 'sm-marketplace' ),
+			'id'      => 'sm-contact',
+		)
+	);
+	?>
 </div>
 <?php
 get_footer();

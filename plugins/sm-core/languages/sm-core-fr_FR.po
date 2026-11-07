@@ -1,0 +1,812 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Core 0.1.0\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: sm-core\n"
+
+#. Plugin Name of the plugin
+#: sm-core.php
+msgid "SM Core"
+msgstr "SM Core"
+
+#. Plugin URI of the plugin
+#: sm-core.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-core.php
+msgid ""
+"Central foundation of Steel Marketplace: accounts and companies, business "
+"activities, permissions, verification, languages (/ar/), notifications, "
+"enquiries, audit log and the sm/v1 REST API. Every other sm-* plugin depends"
+" on it."
+msgstr ""
+"Socle de Steel Marketplace : comptes et entreprises, activités, permissions,"
+" vérification, langues (/ar/), notifications, demandes, journal d’audit et "
+"API REST sm/v1. Toutes les autres extensions sm-* en dépendent."
+
+#. Author of the plugin
+#: sm-core.php
+msgid "Steel Marketplace"
+msgstr "Steel Marketplace"
+
+#: src/Accounts/Auth.php:61
+msgid "Too many attempts. Wait 15 minutes, or reset your password."
+msgstr ""
+"Trop de tentatives. Attendez 15 minutes ou réinitialisez votre mot de passe."
+
+#: src/Accounts/Auth.php:80
+msgid "Incorrect e-mail, phone or password."
+msgstr "E-mail, téléphone ou mot de passe incorrect."
+
+#: src/Accounts/Auth.php:107
+msgid ""
+"If an account matches, a reset link has been sent to its e-mail address."
+msgstr ""
+"Si un compte correspond, un lien de réinitialisation a été envoyé à son "
+"adresse e-mail."
+
+#: src/Accounts/Companies.php:38
+msgid "Manufacturer"
+msgstr "Fabricant"
+
+#: src/Accounts/Companies.php:39
+msgid "Supplier / distributor"
+msgstr "Fournisseur / distributeur"
+
+#: src/Accounts/Companies.php:40
+msgid "Installation company"
+msgstr "Entreprise de montage"
+
+#: src/Accounts/Companies.php:41
+msgid "Project owner"
+msgstr "Maître d’ouvrage"
+
+#: src/Accounts/Companies.php:42
+msgid "Second-hand dealer / recycler"
+msgstr "Revendeur d’occasion / recycleur"
+
+#: src/Accounts/Companies.php:43
+msgid "Fabrication services"
+msgstr "Services de fabrication"
+
+#: src/Accounts/Companies.php:44
+msgid "Engineer / engineering office"
+msgstr "Ingénieur / bureau d’études"
+
+#: src/Accounts/Companies.php:83 src/Accounts/CompanyForms.php:52
+#: src/Accounts/Registration.php:103
+msgid "Choose at least one business activity."
+msgstr "Choisissez au moins une activité."
+
+#: src/Accounts/Companies.php:105
+msgid "The account could not be saved. Please try again."
+msgstr "Le compte n’a pas pu être enregistré. Veuillez réessayer."
+
+#: src/Accounts/CompanyForms.php:28
+msgid "Only the account owner or a manager can edit the company."
+msgstr ""
+"Seul le titulaire du compte ou un gestionnaire peut modifier l’entreprise."
+
+#: src/Accounts/CompanyForms.php:34 src/Accounts/Registration.php:108
+msgid "Enter the company or office name (2 to 120 characters)."
+msgstr "Saisissez le nom de l’entreprise ou du bureau (2 à 120 caractères)."
+
+#: src/Accounts/CompanyForms.php:38 src/Enquiries/Enquiries.php:57
+msgid "Enter a valid phone number."
+msgstr "Saisissez un numéro de téléphone valide."
+
+#: src/Accounts/CompanyForms.php:41 src/Accounts/Registration.php:118
+#: src/Rest/Api.php:194
+msgid "Choose your wilaya."
+msgstr "Choisissez votre wilaya."
+
+#: src/Accounts/CompanyForms.php:45 src/Accounts/Registration.php:130
+msgid "Enter a valid e-mail address."
+msgstr "Saisissez une adresse e-mail valide."
+
+#: src/Accounts/CompanyForms.php:87
+msgid "Company profile saved."
+msgstr "Fiche entreprise enregistrée."
+
+#: src/Accounts/CompanyForms.php:98 src/Accounts/Registration.php:113
+msgid "Enter your full name."
+msgstr "Saisissez votre nom complet."
+
+#: src/Accounts/CompanyForms.php:111
+msgid "Your current password is not correct."
+msgstr "Votre mot de passe actuel est incorrect."
+
+#: src/Accounts/CompanyForms.php:113 src/Accounts/Registration.php:138
+msgid "The password must have at least 10 characters."
+msgstr "Le mot de passe doit comporter au moins 10 caractères."
+
+#: src/Accounts/CompanyForms.php:131
+msgid "Settings saved."
+msgstr "Paramètres enregistrés."
+
+#: src/Accounts/PhoneVerification.php:56
+msgid "Wait one minute before asking for a new code."
+msgstr "Attendez une minute avant de demander un nouveau code."
+
+#. translators: %s: 6-digit code.
+#: src/Accounts/PhoneVerification.php:77
+msgid ""
+"Steel Marketplace: your verification code is %s. It expires in 10 minutes."
+msgstr ""
+"Steel Marketplace : votre code de vérification est %s. Il expire dans 10 "
+"minutes."
+
+#: src/Accounts/PhoneVerification.php:86
+msgid "Your verification code"
+msgstr "Votre code de vérification"
+
+#. translators: %s: 6-digit code.
+#: src/Accounts/PhoneVerification.php:89
+msgid ""
+"Your Steel Marketplace verification code is %s. It expires in 10 minutes. If"
+" you did not create an account, ignore this message."
+msgstr ""
+"Votre code de vérification Steel Marketplace est %s. Il expire dans 10 "
+"minutes. Si vous n’avez pas créé de compte, ignorez ce message."
+
+#. translators: %s: masked phone number.
+#: src/Accounts/PhoneVerification.php:109
+msgid "A 6-digit code was sent by SMS to %s."
+msgstr "Un code à 6 chiffres a été envoyé par SMS au %s."
+
+#. translators: %s: masked e-mail address.
+#: src/Accounts/PhoneVerification.php:114
+msgid "A 6-digit code was sent to %s."
+msgstr "Un code à 6 chiffres a été envoyé à %s."
+
+#: src/Accounts/PhoneVerification.php:121
+msgid "Ask for a new code."
+msgstr "Demandez un nouveau code."
+
+#: src/Accounts/PhoneVerification.php:124
+msgid "This code has expired. Ask for a new one."
+msgstr "Ce code a expiré. Demandez-en un nouveau."
+
+#: src/Accounts/PhoneVerification.php:127
+msgid "Too many wrong codes. Ask for a new one."
+msgstr "Trop de codes erronés. Demandez-en un nouveau."
+
+#: src/Accounts/PhoneVerification.php:133
+msgid "Wrong code. Check it and try again."
+msgstr "Code incorrect. Vérifiez-le et réessayez."
+
+#: src/Accounts/PhoneVerification.php:157
+msgid "Your account is verified. You can now publish your services."
+msgstr ""
+"Votre compte est vérifié. Vous pouvez maintenant publier vos services."
+
+#: src/Accounts/PhoneVerification.php:158
+msgid "Your account is verified. You can now publish."
+msgstr "Votre compte est vérifié. Vous pouvez maintenant publier."
+
+#: src/Accounts/PhoneVerification.php:165
+msgid "Too many codes requested. Try again in an hour."
+msgstr "Trop de codes demandés. Réessayez dans une heure."
+
+#: src/Accounts/Registration.php:31
+msgid "Too many sign-ups from this connection. Try again in an hour."
+msgstr "Trop d’inscriptions depuis cette connexion. Réessayez dans une heure."
+
+#: src/Accounts/Registration.php:83
+msgid "Welcome! Your account is created."
+msgstr "Bienvenue ! Votre compte est créé."
+
+#: src/Accounts/Registration.php:123
+msgid ""
+"Enter a valid Algerian mobile number (05, 06 or 07 followed by 8 digits)."
+msgstr ""
+"Saisissez un numéro de mobile algérien valide (05, 06 ou 07 suivi de 8 "
+"chiffres)."
+
+#: src/Accounts/Registration.php:125
+msgid "This phone number is already used by another account."
+msgstr "Ce numéro est déjà utilisé par un autre compte."
+
+#: src/Accounts/Registration.php:132
+msgid ""
+"An account already exists with this e-mail. Sign in or reset your password."
+msgstr ""
+"Un compte existe déjà avec cet e-mail. Connectez-vous ou réinitialisez votre"
+" mot de passe."
+
+#: src/Accounts/Registration.php:142
+msgid "Accept the terms of use to continue."
+msgstr "Acceptez les conditions d’utilisation pour continuer."
+
+#: src/Admin/Admin.php:44
+msgid "Overview"
+msgstr "Vue d’ensemble"
+
+#: src/Admin/Admin.php:45 src/Admin/Admin.php:127
+msgid "Companies"
+msgstr "Entreprises"
+
+#: src/Admin/Admin.php:46
+msgid "Verifications"
+msgstr "Vérifications"
+
+#: src/Admin/Admin.php:47
+msgid "Rights"
+msgstr "Droits"
+
+#: src/Admin/Admin.php:48 src/Admin/Admin.php:300
+msgid "Wilayas"
+msgstr "Wilayas"
+
+#: src/Admin/Admin.php:49 src/Admin/Admin.php:319
+msgid "Settings"
+msgstr "Réglages"
+
+#: src/Admin/Admin.php:50 src/Admin/Admin.php:347
+msgid "Audit log"
+msgstr "Journal d’audit"
+
+#: src/Admin/Admin.php:64
+msgid "Saved."
+msgstr "Enregistré."
+
+#: src/Admin/Admin.php:80
+msgid "0 — E-mail only"
+msgstr "0 — E-mail seulement"
+
+#: src/Admin/Admin.php:81
+msgid "1 — Contact verified"
+msgstr "1 — Coordonnées vérifiées"
+
+#: src/Admin/Admin.php:82
+msgid "2 — Verified business"
+msgstr "2 — Entreprise vérifiée"
+
+#: src/Admin/Admin.php:83
+msgid "3 — Verified engineer"
+msgstr "3 — Ingénieur vérifié"
+
+#: src/Admin/Admin.php:88 src/Admin/Admin.php:130
+msgid "Engineering"
+msgstr "Ingénierie"
+
+#: src/Admin/Admin.php:88 src/Admin/Admin.php:130
+msgid "Business"
+msgstr "Professionnel"
+
+#: src/Admin/Admin.php:97
+msgid "Business accounts"
+msgstr "Comptes professionnels"
+
+#: src/Admin/Admin.php:98
+msgid "Engineering accounts"
+msgstr "Comptes ingénierie"
+
+#: src/Admin/Admin.php:99
+msgid "Verified (level 2+)"
+msgstr "Vérifiés (niveau 2+)"
+
+#: src/Admin/Admin.php:100 src/Admin/Admin.php:247
+msgid "Verifications to review"
+msgstr "Vérifications à examiner"
+
+#: src/Admin/Admin.php:101
+msgid "Enquiries (30 days)"
+msgstr "Demandes (30 jours)"
+
+#: src/Admin/Admin.php:104
+msgid ""
+"No SMS gateway is configured: verification codes are sent by e-mail. Make "
+"sure the site can send e-mails (Hostinger: create the mailbox and set up "
+"SMTP)."
+msgstr ""
+"Aucune passerelle SMS n’est configurée : les codes de vérification sont "
+"envoyés par e-mail. Vérifiez que le site peut envoyer des e-mails (Hostinger"
+" : créez la boîte e-mail et configurez SMTP)."
+
+#: src/Admin/Admin.php:106
+msgid "Modules"
+msgstr "Modules"
+
+#: src/Admin/Admin.php:130
+msgid "All types"
+msgstr "Tous les types"
+
+#: src/Admin/Admin.php:131
+msgid "All statuses"
+msgstr "Tous les statuts"
+
+#: src/Admin/Admin.php:131 src/Admin/Admin.php:148 src/Admin/Admin.php:204
+#: src/Admin/Admin.php:305
+msgid "Active"
+msgstr "Actif"
+
+#: src/Admin/Admin.php:131 src/Admin/Admin.php:148 src/Admin/Admin.php:204
+msgid "Suspended"
+msgstr "Suspendu"
+
+#: src/Admin/Admin.php:132 src/Admin/Admin.php:348
+msgid "Filter"
+msgstr "Filtrer"
+
+#: src/Admin/Admin.php:133
+msgid "Company"
+msgstr "Entreprise"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:173
+msgid "Type"
+msgstr "Type"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:205
+msgid "Activities"
+msgstr "Activités"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:174
+msgid "Wilaya"
+msgstr "Wilaya"
+
+#: src/Admin/Admin.php:133
+msgid "Verification"
+msgstr "Vérification"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:204
+msgid "Status"
+msgstr "Statut"
+
+#: src/Admin/Admin.php:133
+msgid "Created"
+msgstr "Créé"
+
+#: src/Admin/Admin.php:135
+msgid "No company yet."
+msgstr "Aucune entreprise pour l’instant."
+
+#: src/Admin/Admin.php:163 src/Rest/Api.php:158
+msgid "Company not found."
+msgstr "Entreprise introuvable."
+
+#: src/Admin/Admin.php:169
+msgid "View public page"
+msgstr "Voir la page publique"
+
+#: src/Admin/Admin.php:173
+msgid "fixed at registration"
+msgstr "fixé à l’inscription"
+
+#: src/Admin/Admin.php:175
+msgid "Phone"
+msgstr "Téléphone"
+
+#: src/Admin/Admin.php:176
+msgid "E-mail"
+msgstr "E-mail"
+
+#: src/Admin/Admin.php:184
+msgid "Members"
+msgstr "Membres"
+
+#: src/Admin/Admin.php:193
+msgid "Moderation"
+msgstr "Modération"
+
+#: src/Admin/Admin.php:196
+msgid "Verification level"
+msgstr "Niveau de vérification"
+
+#: src/Admin/Admin.php:210
+msgid "Save"
+msgstr "Enregistrer"
+
+#: src/Admin/Admin.php:214
+msgid "Latest verification request"
+msgstr "Dernière demande de vérification"
+
+#: src/Admin/Admin.php:217
+msgid "Recent activity"
+msgstr "Activité récente"
+
+#. translators: 1: date, 2: status.
+#: src/Admin/Admin.php:226
+msgid "Submitted %1$s — status: %2$s"
+msgstr "Envoyée le %1$s — statut : %2$s"
+
+#: src/Admin/Admin.php:238
+msgid "Reason (sent to the company if rejected)"
+msgstr "Motif (envoyé à l’entreprise en cas de refus)"
+
+#: src/Admin/Admin.php:239
+msgid "Approve"
+msgstr "Approuver"
+
+#: src/Admin/Admin.php:239
+msgid "Reject"
+msgstr "Refuser"
+
+#: src/Admin/Admin.php:251
+msgid "Nothing to review."
+msgstr "Rien à examiner."
+
+#: src/Admin/Admin.php:270
+msgid "Rights by activity"
+msgstr "Droits par activité"
+
+#: src/Admin/Admin.php:272
+msgid ""
+"A company gets a right when at least one of its activities has it, its "
+"verification level is high enough, and its plan allows it."
+msgstr ""
+"Une entreprise obtient un droit si au moins une de ses activités le possède,"
+" si son niveau de vérification est suffisant et si son abonnement le permet."
+
+#: src/Admin/Admin.php:273
+msgid ""
+"Engineering accounts can never receive trading rights (buy, listings, "
+"quotations, fabrication). This rule is enforced in code and cannot be "
+"changed here."
+msgstr ""
+"Les comptes ingénierie ne peuvent jamais recevoir de droits commerciaux "
+"(achat, annonces, devis, fabrication). Cette règle est imposée par le code "
+"et ne se modifie pas ici."
+
+#: src/Admin/Admin.php:276
+msgid "Right"
+msgstr "Droit"
+
+#: src/Admin/Admin.php:281
+msgid "Minimum level"
+msgstr "Niveau minimum"
+
+#: src/Admin/Admin.php:286
+msgid "Locked"
+msgstr "Verrouillé"
+
+#: src/Admin/Admin.php:295
+msgid "Save rights"
+msgstr "Enregistrer les droits"
+
+#: src/Admin/Admin.php:296
+msgid "Restore the default rights"
+msgstr "Rétablir les droits par défaut"
+
+#: src/Admin/Admin.php:302
+msgid ""
+"Official list (69 wilayas: loi n° 26-06 of 4 April 2026 and décret "
+"présidentiel n° 26-206 of 25 May 2026, effective 1 January 2027). Correct a "
+"spelling or hide a wilaya here."
+msgstr ""
+"Liste officielle (69 wilayas : loi n° 26-06 du 4 avril 2026 et décret "
+"présidentiel n° 26-206 du 25 mai 2026, effectifs au 1er janvier 2027). "
+"Corrigez une orthographe ou masquez une wilaya ici."
+
+#: src/Admin/Admin.php:305
+msgid "Code"
+msgstr "Code"
+
+#: src/Admin/Admin.php:305
+msgid "French"
+msgstr "Français"
+
+#: src/Admin/Admin.php:305
+msgid "Arabic"
+msgstr "Arabe"
+
+#: src/Admin/Admin.php:324
+msgid "Default language"
+msgstr "Langue par défaut"
+
+#: src/Admin/Admin.php:328
+msgid ""
+"Pages in the default language have no prefix; the other language uses /ar/ "
+"(or its code)."
+msgstr ""
+"Les pages dans la langue par défaut n’ont pas de préfixe ; l’autre langue "
+"utilise /ar/ (ou son code)."
+
+#: src/Admin/Admin.php:329
+msgid "Verification code channel"
+msgstr "Canal du code de vérification"
+
+#: src/Admin/Admin.php:329
+msgid "SMS"
+msgstr "SMS"
+
+#: src/Admin/Admin.php:329
+msgid "E-mail (no SMS gateway configured)"
+msgstr "E-mail (aucune passerelle SMS configurée)"
+
+#: src/Admin/Admin.php:329
+msgid ""
+"An SMS gateway is added by a connector plugin through the sm_sms_provider "
+"filter."
+msgstr ""
+"Une passerelle SMS s’ajoute avec une extension de connexion via le filtre "
+"sm_sms_provider."
+
+#: src/Admin/Admin.php:331
+msgid "Failed sign-ins before a 15-minute lock"
+msgstr "Échecs de connexion avant un blocage de 15 minutes"
+
+#: src/Admin/Admin.php:332
+msgid "Sign-ups per hour from one connection"
+msgstr "Inscriptions par heure depuis une connexion"
+
+#: src/Admin/Admin.php:333
+msgid "Enquiries per hour per account"
+msgstr "Demandes par heure et par compte"
+
+#: src/Admin/Admin.php:338
+msgid "Uninstall"
+msgstr "Désinstallation"
+
+#: src/Admin/Admin.php:338
+msgid ""
+"Delete all platform data (companies, enquiries, logs) when the plugin is "
+"deleted"
+msgstr ""
+"Supprimer toutes les données de la plateforme (entreprises, demandes, "
+"journaux) lors de la suppression de l’extension"
+
+#: src/Admin/Admin.php:354
+msgid "Date"
+msgstr "Date"
+
+#: src/Admin/Admin.php:354
+msgid "Action"
+msgstr "Action"
+
+#: src/Admin/Admin.php:354
+msgid "User"
+msgstr "Utilisateur"
+
+#: src/Admin/Admin.php:354
+msgid "Object"
+msgstr "Objet"
+
+#: src/Admin/Admin.php:354
+msgid "Details"
+msgstr "Détails"
+
+#: src/Enquiries/Enquiries.php:34
+msgid "Sign in or create an account to contact the seller."
+msgstr "Connectez-vous ou créez un compte pour contacter le vendeur."
+
+#: src/Enquiries/Enquiries.php:47
+msgid "You sent many enquiries in a short time. Try again later."
+msgstr ""
+"Vous avez envoyé beaucoup de demandes en peu de temps. Réessayez plus tard."
+
+#: src/Enquiries/Enquiries.php:53
+msgid "Write a message of at least 10 characters."
+msgstr "Écrivez un message d’au moins 10 caractères."
+
+#: src/Enquiries/Enquiries.php:82
+msgid "You cannot send an enquiry to your own company."
+msgstr "Vous ne pouvez pas envoyer une demande à votre propre entreprise."
+
+#: src/Enquiries/Enquiries.php:117
+msgid ""
+"Your enquiry was sent. The company will contact you by phone or e-mail."
+msgstr ""
+"Votre demande a été envoyée. L’entreprise vous contactera par téléphone ou "
+"par e-mail."
+
+#: src/Enquiries/Enquiries.php:158
+msgid "Enquiry not found."
+msgstr "Demande introuvable."
+
+#: src/Notifications/Notifications.php:31
+msgid "New enquiry on Steel Marketplace"
+msgstr "Nouvelle demande sur Steel Marketplace"
+
+#. translators: 1: sender name, 2: subject of the enquiry.
+#: src/Notifications/Notifications.php:34
+msgid "%1$s sent you an enquiry: %2$s"
+msgstr "%1$s vous a envoyé une demande : %2$s"
+
+#: src/Notifications/Notifications.php:42
+msgid "New verification request to review"
+msgstr "Nouvelle demande de vérification à examiner"
+
+#. translators: %s: company name.
+#: src/Notifications/Notifications.php:45
+msgid "%s submitted documents for verification."
+msgstr "%s a envoyé des documents pour vérification."
+
+#: src/Notifications/Notifications.php:52
+msgid "Your account is verified"
+msgstr "Votre compte est vérifié"
+
+#: src/Notifications/Notifications.php:53
+msgid ""
+"Good news: the platform team verified your documents. The verified badge now"
+" appears on your company page and listings."
+msgstr ""
+"Bonne nouvelle : l’équipe de la plateforme a vérifié vos documents. Le badge"
+" vérifié apparaît désormais sur votre page et vos annonces."
+
+#: src/Notifications/Notifications.php:58
+msgid "Your verification request needs changes"
+msgstr "Votre demande de vérification doit être complétée"
+
+#: src/Notifications/Notifications.php:59
+msgid "The platform team could not validate your documents."
+msgstr "L’équipe de la plateforme n’a pas pu valider vos documents."
+
+#: src/Notifications/Notifications.php:99
+msgid "Open"
+msgstr "Ouvrir"
+
+#. translators: %s: user display name.
+#: src/Notifications/Notifications.php:139
+msgid "Hello %s,"
+msgstr "Bonjour %s,"
+
+#: src/Notifications/Notifications.php:141
+msgid "You receive this e-mail because you have an account on the platform."
+msgstr "Vous recevez cet e-mail car vous avez un compte sur la plateforme."
+
+#: src/Permissions/Permissions.php:30
+msgid "Buy, save listings and contact sellers"
+msgstr "Acheter, enregistrer des annonces et contacter les vendeurs"
+
+#: src/Permissions/Permissions.php:31
+msgid "Publish new steel products"
+msgstr "Publier des produits sidérurgiques neufs"
+
+#: src/Permissions/Permissions.php:32
+msgid "Publish reuse lots, offcuts and scrap"
+msgstr "Publier des lots de réemploi, chutes et ferraille"
+
+#: src/Permissions/Permissions.php:33
+msgid "Publish buildings and warehouses"
+msgstr "Publier des bâtiments et entrepôts"
+
+#: src/Permissions/Permissions.php:34
+msgid "Create requests for quotation"
+msgstr "Créer des demandes de devis"
+
+#: src/Permissions/Permissions.php:35
+msgid "Answer requests for quotation"
+msgstr "Répondre aux demandes de devis"
+
+#: src/Permissions/Permissions.php:36
+msgid "Offer fabrication, installation and dismantling"
+msgstr "Proposer fabrication, montage et démontage"
+
+#: src/Permissions/Permissions.php:37
+msgid "Publish engineering services"
+msgstr "Publier des services d’ingénierie"
+
+#: src/Permissions/Permissions.php:38
+msgid "Request an engineering or fabrication service"
+msgstr "Demander une prestation d’ingénierie ou de fabrication"
+
+#: src/Permissions/Permissions.php:102
+msgid "Sign in with a business or engineering account to do this."
+msgstr ""
+"Connectez-vous avec un compte professionnel ou ingénierie pour faire cela."
+
+#: src/Permissions/Permissions.php:105
+msgid "This account is suspended. Contact the platform team."
+msgstr "Ce compte est suspendu. Contactez l’équipe de la plateforme."
+
+#: src/Permissions/Permissions.php:110
+msgid ""
+"Engineering accounts offer services only. To trade steel, open a separate "
+"business account."
+msgstr ""
+"Les comptes ingénierie proposent uniquement des services. Pour commercer de "
+"l’acier, ouvrez un compte professionnel séparé."
+
+#: src/Permissions/Permissions.php:122
+msgid ""
+"None of your business activities allows this action. Add the activity in "
+"your company settings."
+msgstr ""
+"Aucune de vos activités ne permet cette action. Ajoutez l’activité dans la "
+"fiche entreprise."
+
+#: src/Permissions/Permissions.php:127
+msgid "Verify your account to do this."
+msgstr "Vérifiez votre compte pour faire cela."
+
+#: src/Permissions/Permissions.php:140
+msgid "Your plan does not include this action."
+msgstr "Votre abonnement n’inclut pas cette action."
+
+#: src/Permissions/Permissions.php:145
+msgid "Engineering accounts offer services only."
+msgstr "Les comptes ingénierie proposent uniquement des services."
+
+#: src/Support/Forms.php:57
+msgid "The form expired. Please try again."
+msgstr "Le formulaire a expiré. Veuillez réessayer."
+
+#: src/Support/Forms.php:61
+msgid "Thank you."
+msgstr "Merci."
+
+#: src/Verification/Verifications.php:38
+msgid "Engineering diploma"
+msgstr "Diplôme d’ingénieur"
+
+#: src/Verification/Verifications.php:39
+msgid "Approval or registration of the engineering office (if any)"
+msgstr "Agrément ou enregistrement du bureau d’études (le cas échéant)"
+
+#: src/Verification/Verifications.php:40
+msgid "Identity document of the engineer"
+msgstr "Pièce d’identité de l’ingénieur"
+
+#: src/Verification/Verifications.php:44
+msgid "Commercial register (RC)"
+msgstr "Registre du commerce (RC)"
+
+#: src/Verification/Verifications.php:45
+msgid "Tax identification number (NIF)"
+msgstr "Numéro d’identification fiscale (NIF)"
+
+#: src/Verification/Verifications.php:46
+msgid "Statistical identification number (NIS)"
+msgstr "Numéro d’identification statistique (NIS)"
+
+#: src/Verification/Verifications.php:121
+msgid "Only the account owner or a manager can request verification."
+msgstr ""
+"Seul le titulaire du compte ou un gestionnaire peut demander la "
+"vérification."
+
+#: src/Verification/Verifications.php:124
+msgid "Verify your contact details first."
+msgstr "Vérifiez d’abord vos coordonnées."
+
+#: src/Verification/Verifications.php:128
+msgid "A verification request is already being reviewed."
+msgstr "Une demande de vérification est déjà en cours d’examen."
+
+#. translators: %s: document name.
+#: src/Verification/Verifications.php:145
+#: src/Verification/Verifications.php:151
+msgid "%s: the file must be a PDF, JPG or PNG under 5 MB."
+msgstr "%s : le fichier doit être un PDF, JPG ou PNG de moins de 5 Mo."
+
+#: src/Verification/Verifications.php:159
+msgid "The file could not be saved. Try again."
+msgstr "Le fichier n’a pas pu être enregistré. Réessayez."
+
+#. translators: %s: document name.
+#: src/Verification/Verifications.php:173
+msgid "%s is required."
+msgstr "%s est obligatoire."
+
+#: src/Verification/Verifications.php:210
+msgid ""
+"Documents received. The platform team will review them, usually within 2 "
+"working days."
+msgstr ""
+"Documents reçus. L’équipe de la plateforme les examinera, en général sous 2 "
+"jours ouvrés."
+
+#: src/Verification/Verifications.php:225
+msgid "This request was already reviewed."
+msgstr "Cette demande a déjà été examinée."
+
+#: src/Verification/Verifications.php:259
+msgid "Link expired."
+msgstr "Lien expiré."
+
+#: src/Verification/Verifications.php:263
+#: src/Verification/Verifications.php:272
+msgid "Document not found."
+msgstr "Document introuvable."
+
+#: src/Verification/Verifications.php:266
+msgid "You are not allowed to view this document."
+msgstr "Vous n’êtes pas autorisé à consulter ce document."

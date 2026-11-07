@@ -1,0 +1,786 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Core 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-core\n"
+
+#. Plugin Name of the plugin
+#: sm-core.php
+msgid "SM Core"
+msgstr "SM Core"
+
+#. Plugin URI of the plugin
+#: sm-core.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-core.php
+msgid ""
+"Central foundation of Steel Marketplace: accounts and companies, business "
+"activities, permissions, verification, languages (/ar/), notifications, "
+"enquiries, audit log and the sm/v1 REST API. Every other sm-* plugin depends"
+" on it."
+msgstr ""
+"الأساس المركزي لـ Steel Marketplace: الحسابات والمؤسسات، الأنشطة، الصلاحيات،"
+" التوثيق، اللغات (/ar/)، الإشعارات، الاستفسارات، سجل المراجعة وواجهة REST "
+"sm/v1. تعتمد عليه كل إضافات sm-* الأخرى."
+
+#. Author of the plugin
+#: sm-core.php
+msgid "Steel Marketplace"
+msgstr "Steel Marketplace"
+
+#: src/Accounts/Auth.php:61
+msgid "Too many attempts. Wait 15 minutes, or reset your password."
+msgstr "محاولات كثيرة جدا. انتظر 15 دقيقة أو أعد تعيين كلمة المرور."
+
+#: src/Accounts/Auth.php:80
+msgid "Incorrect e-mail, phone or password."
+msgstr "البريد الإلكتروني أو الهاتف أو كلمة المرور غير صحيحة."
+
+#: src/Accounts/Auth.php:107
+msgid ""
+"If an account matches, a reset link has been sent to its e-mail address."
+msgstr ""
+"إذا وُجد حساب مطابق، فقد أُرسل رابط إعادة التعيين إلى بريده الإلكتروني."
+
+#: src/Accounts/Companies.php:38
+msgid "Manufacturer"
+msgstr "مصنّع"
+
+#: src/Accounts/Companies.php:39
+msgid "Supplier / distributor"
+msgstr "مورد / موزع"
+
+#: src/Accounts/Companies.php:40
+msgid "Installation company"
+msgstr "مؤسسة تركيب"
+
+#: src/Accounts/Companies.php:41
+msgid "Project owner"
+msgstr "صاحب المشروع"
+
+#: src/Accounts/Companies.php:42
+msgid "Second-hand dealer / recycler"
+msgstr "تاجر مستعمل / مسترجع"
+
+#: src/Accounts/Companies.php:43
+msgid "Fabrication services"
+msgstr "خدمات التصنيع"
+
+#: src/Accounts/Companies.php:44
+msgid "Engineer / engineering office"
+msgstr "مهندس / مكتب دراسات"
+
+#: src/Accounts/Companies.php:83 src/Accounts/CompanyForms.php:52
+#: src/Accounts/Registration.php:103
+msgid "Choose at least one business activity."
+msgstr "اختر نشاطا واحدا على الأقل."
+
+#: src/Accounts/Companies.php:105
+msgid "The account could not be saved. Please try again."
+msgstr "تعذر حفظ الحساب. يرجى إعادة المحاولة."
+
+#: src/Accounts/CompanyForms.php:28
+msgid "Only the account owner or a manager can edit the company."
+msgstr "يمكن لصاحب الحساب أو المسيّر فقط تعديل المؤسسة."
+
+#: src/Accounts/CompanyForms.php:34 src/Accounts/Registration.php:108
+msgid "Enter the company or office name (2 to 120 characters)."
+msgstr "أدخل اسم المؤسسة أو المكتب (من 2 إلى 120 حرفا)."
+
+#: src/Accounts/CompanyForms.php:38 src/Enquiries/Enquiries.php:57
+msgid "Enter a valid phone number."
+msgstr "أدخل رقم هاتف صحيحا."
+
+#: src/Accounts/CompanyForms.php:41 src/Accounts/Registration.php:118
+#: src/Rest/Api.php:194
+msgid "Choose your wilaya."
+msgstr "اختر ولايتك."
+
+#: src/Accounts/CompanyForms.php:45 src/Accounts/Registration.php:130
+msgid "Enter a valid e-mail address."
+msgstr "أدخل بريدا إلكترونيا صحيحا."
+
+#: src/Accounts/CompanyForms.php:87
+msgid "Company profile saved."
+msgstr "تم حفظ ملف المؤسسة."
+
+#: src/Accounts/CompanyForms.php:98 src/Accounts/Registration.php:113
+msgid "Enter your full name."
+msgstr "أدخل اسمك الكامل."
+
+#: src/Accounts/CompanyForms.php:111
+msgid "Your current password is not correct."
+msgstr "كلمة المرور الحالية غير صحيحة."
+
+#: src/Accounts/CompanyForms.php:113 src/Accounts/Registration.php:138
+msgid "The password must have at least 10 characters."
+msgstr "يجب أن تتكون كلمة المرور من 10 أحرف على الأقل."
+
+#: src/Accounts/CompanyForms.php:131
+msgid "Settings saved."
+msgstr "تم حفظ الإعدادات."
+
+#: src/Accounts/PhoneVerification.php:56
+msgid "Wait one minute before asking for a new code."
+msgstr "انتظر دقيقة قبل طلب رمز جديد."
+
+#. translators: %s: 6-digit code.
+#: src/Accounts/PhoneVerification.php:77
+msgid ""
+"Steel Marketplace: your verification code is %s. It expires in 10 minutes."
+msgstr ""
+"Steel Marketplace: رمز التحقق الخاص بك هو %s. تنتهي صلاحيته بعد 10 دقائق."
+
+#: src/Accounts/PhoneVerification.php:86
+msgid "Your verification code"
+msgstr "رمز التحقق الخاص بك"
+
+#. translators: %s: 6-digit code.
+#: src/Accounts/PhoneVerification.php:89
+msgid ""
+"Your Steel Marketplace verification code is %s. It expires in 10 minutes. If"
+" you did not create an account, ignore this message."
+msgstr ""
+"رمز التحقق الخاص بك في Steel Marketplace هو %s. تنتهي صلاحيته بعد 10 دقائق. "
+"إذا لم تنشئ حسابا فتجاهل هذه الرسالة."
+
+#. translators: %s: masked phone number.
+#: src/Accounts/PhoneVerification.php:109
+msgid "A 6-digit code was sent by SMS to %s."
+msgstr "أُرسل رمز من 6 أرقام عبر رسالة قصيرة إلى %s."
+
+#. translators: %s: masked e-mail address.
+#: src/Accounts/PhoneVerification.php:114
+msgid "A 6-digit code was sent to %s."
+msgstr "أُرسل رمز من 6 أرقام إلى %s."
+
+#: src/Accounts/PhoneVerification.php:121
+msgid "Ask for a new code."
+msgstr "اطلب رمزا جديدا."
+
+#: src/Accounts/PhoneVerification.php:124
+msgid "This code has expired. Ask for a new one."
+msgstr "انتهت صلاحية هذا الرمز. اطلب رمزا جديدا."
+
+#: src/Accounts/PhoneVerification.php:127
+msgid "Too many wrong codes. Ask for a new one."
+msgstr "رموز خاطئة كثيرة. اطلب رمزا جديدا."
+
+#: src/Accounts/PhoneVerification.php:133
+msgid "Wrong code. Check it and try again."
+msgstr "رمز خاطئ. تحقق منه وأعد المحاولة."
+
+#: src/Accounts/PhoneVerification.php:157
+msgid "Your account is verified. You can now publish your services."
+msgstr "تم توثيق حسابك. يمكنك الآن نشر خدماتك."
+
+#: src/Accounts/PhoneVerification.php:158
+msgid "Your account is verified. You can now publish."
+msgstr "تم توثيق حسابك. يمكنك الآن النشر."
+
+#: src/Accounts/PhoneVerification.php:165
+msgid "Too many codes requested. Try again in an hour."
+msgstr "طلبت رموزا كثيرة. أعد المحاولة بعد ساعة."
+
+#: src/Accounts/Registration.php:31
+msgid "Too many sign-ups from this connection. Try again in an hour."
+msgstr "تسجيلات كثيرة من هذا الاتصال. أعد المحاولة بعد ساعة."
+
+#: src/Accounts/Registration.php:83
+msgid "Welcome! Your account is created."
+msgstr "مرحبا! تم إنشاء حسابك."
+
+#: src/Accounts/Registration.php:123
+msgid ""
+"Enter a valid Algerian mobile number (05, 06 or 07 followed by 8 digits)."
+msgstr "أدخل رقم هاتف نقال جزائري صحيحا (05 أو 06 أو 07 متبوعا بـ 8 أرقام)."
+
+#: src/Accounts/Registration.php:125
+msgid "This phone number is already used by another account."
+msgstr "هذا الرقم مستعمل في حساب آخر."
+
+#: src/Accounts/Registration.php:132
+msgid ""
+"An account already exists with this e-mail. Sign in or reset your password."
+msgstr ""
+"يوجد حساب بهذا البريد الإلكتروني. سجّل الدخول أو أعد تعيين كلمة المرور."
+
+#: src/Accounts/Registration.php:142
+msgid "Accept the terms of use to continue."
+msgstr "وافق على شروط الاستعمال للمتابعة."
+
+#: src/Admin/Admin.php:44
+msgid "Overview"
+msgstr "نظرة عامة"
+
+#: src/Admin/Admin.php:45 src/Admin/Admin.php:127
+msgid "Companies"
+msgstr "المؤسسات"
+
+#: src/Admin/Admin.php:46
+msgid "Verifications"
+msgstr "التوثيقات"
+
+#: src/Admin/Admin.php:47
+msgid "Rights"
+msgstr "الصلاحيات"
+
+#: src/Admin/Admin.php:48 src/Admin/Admin.php:300
+msgid "Wilayas"
+msgstr "الولايات"
+
+#: src/Admin/Admin.php:49 src/Admin/Admin.php:319
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: src/Admin/Admin.php:50 src/Admin/Admin.php:347
+msgid "Audit log"
+msgstr "سجل المراجعة"
+
+#: src/Admin/Admin.php:64
+msgid "Saved."
+msgstr "تم الحفظ."
+
+#: src/Admin/Admin.php:80
+msgid "0 — E-mail only"
+msgstr "0 — البريد الإلكتروني فقط"
+
+#: src/Admin/Admin.php:81
+msgid "1 — Contact verified"
+msgstr "1 — معلومات الاتصال موثقة"
+
+#: src/Admin/Admin.php:82
+msgid "2 — Verified business"
+msgstr "2 — مؤسسة موثقة"
+
+#: src/Admin/Admin.php:83
+msgid "3 — Verified engineer"
+msgstr "3 — مهندس موثق"
+
+#: src/Admin/Admin.php:88 src/Admin/Admin.php:130
+msgid "Engineering"
+msgstr "هندسي"
+
+#: src/Admin/Admin.php:88 src/Admin/Admin.php:130
+msgid "Business"
+msgstr "مهني"
+
+#: src/Admin/Admin.php:97
+msgid "Business accounts"
+msgstr "الحسابات المهنية"
+
+#: src/Admin/Admin.php:98
+msgid "Engineering accounts"
+msgstr "الحسابات الهندسية"
+
+#: src/Admin/Admin.php:99
+msgid "Verified (level 2+)"
+msgstr "موثقة (المستوى 2+)"
+
+#: src/Admin/Admin.php:100 src/Admin/Admin.php:247
+msgid "Verifications to review"
+msgstr "توثيقات للمراجعة"
+
+#: src/Admin/Admin.php:101
+msgid "Enquiries (30 days)"
+msgstr "الاستفسارات (30 يوما)"
+
+#: src/Admin/Admin.php:104
+msgid ""
+"No SMS gateway is configured: verification codes are sent by e-mail. Make "
+"sure the site can send e-mails (Hostinger: create the mailbox and set up "
+"SMTP)."
+msgstr ""
+"لا توجد بوابة رسائل قصيرة: تُرسل رموز التحقق بالبريد الإلكتروني. تأكد أن "
+"الموقع يرسل البريد (Hostinger: أنشئ صندوق البريد واضبط SMTP)."
+
+#: src/Admin/Admin.php:106
+msgid "Modules"
+msgstr "الوحدات"
+
+#: src/Admin/Admin.php:130
+msgid "All types"
+msgstr "كل الأنواع"
+
+#: src/Admin/Admin.php:131
+msgid "All statuses"
+msgstr "كل الحالات"
+
+#: src/Admin/Admin.php:131 src/Admin/Admin.php:148 src/Admin/Admin.php:204
+#: src/Admin/Admin.php:305
+msgid "Active"
+msgstr "نشط"
+
+#: src/Admin/Admin.php:131 src/Admin/Admin.php:148 src/Admin/Admin.php:204
+msgid "Suspended"
+msgstr "موقوف"
+
+#: src/Admin/Admin.php:132 src/Admin/Admin.php:348
+msgid "Filter"
+msgstr "تصفية"
+
+#: src/Admin/Admin.php:133
+msgid "Company"
+msgstr "المؤسسة"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:173
+msgid "Type"
+msgstr "النوع"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:205
+msgid "Activities"
+msgstr "الأنشطة"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:174
+msgid "Wilaya"
+msgstr "الولاية"
+
+#: src/Admin/Admin.php:133
+msgid "Verification"
+msgstr "التوثيق"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:204
+msgid "Status"
+msgstr "الحالة"
+
+#: src/Admin/Admin.php:133
+msgid "Created"
+msgstr "تاريخ الإنشاء"
+
+#: src/Admin/Admin.php:135
+msgid "No company yet."
+msgstr "لا توجد مؤسسة بعد."
+
+#: src/Admin/Admin.php:163 src/Rest/Api.php:158
+msgid "Company not found."
+msgstr "المؤسسة غير موجودة."
+
+#: src/Admin/Admin.php:169
+msgid "View public page"
+msgstr "عرض الصفحة العمومية"
+
+#: src/Admin/Admin.php:173
+msgid "fixed at registration"
+msgstr "يحدد عند التسجيل"
+
+#: src/Admin/Admin.php:175
+msgid "Phone"
+msgstr "الهاتف"
+
+#: src/Admin/Admin.php:176
+msgid "E-mail"
+msgstr "البريد الإلكتروني"
+
+#: src/Admin/Admin.php:184
+msgid "Members"
+msgstr "الأعضاء"
+
+#: src/Admin/Admin.php:193
+msgid "Moderation"
+msgstr "الإشراف"
+
+#: src/Admin/Admin.php:196
+msgid "Verification level"
+msgstr "مستوى التوثيق"
+
+#: src/Admin/Admin.php:210
+msgid "Save"
+msgstr "حفظ"
+
+#: src/Admin/Admin.php:214
+msgid "Latest verification request"
+msgstr "آخر طلب توثيق"
+
+#: src/Admin/Admin.php:217
+msgid "Recent activity"
+msgstr "النشاط الأخير"
+
+#. translators: 1: date, 2: status.
+#: src/Admin/Admin.php:226
+msgid "Submitted %1$s — status: %2$s"
+msgstr "أُرسل في %1$s — الحالة: %2$s"
+
+#: src/Admin/Admin.php:238
+msgid "Reason (sent to the company if rejected)"
+msgstr "السبب (يُرسل إلى المؤسسة في حال الرفض)"
+
+#: src/Admin/Admin.php:239
+msgid "Approve"
+msgstr "قبول"
+
+#: src/Admin/Admin.php:239
+msgid "Reject"
+msgstr "رفض"
+
+#: src/Admin/Admin.php:251
+msgid "Nothing to review."
+msgstr "لا شيء للمراجعة."
+
+#: src/Admin/Admin.php:270
+msgid "Rights by activity"
+msgstr "الصلاحيات حسب النشاط"
+
+#: src/Admin/Admin.php:272
+msgid ""
+"A company gets a right when at least one of its activities has it, its "
+"verification level is high enough, and its plan allows it."
+msgstr ""
+"تحصل المؤسسة على صلاحية إذا كان أحد أنشطتها يمنحها، وكان مستوى توثيقها "
+"كافيا، وسمح بها اشتراكها."
+
+#: src/Admin/Admin.php:273
+msgid ""
+"Engineering accounts can never receive trading rights (buy, listings, "
+"quotations, fabrication). This rule is enforced in code and cannot be "
+"changed here."
+msgstr ""
+"لا يمكن أبدا منح الحسابات الهندسية صلاحيات تجارية (الشراء، الإعلانات، "
+"العروض، التصنيع). هذه القاعدة مفروضة في البرمجة ولا تُعدّل هنا."
+
+#: src/Admin/Admin.php:276
+msgid "Right"
+msgstr "الصلاحية"
+
+#: src/Admin/Admin.php:281
+msgid "Minimum level"
+msgstr "المستوى الأدنى"
+
+#: src/Admin/Admin.php:286
+msgid "Locked"
+msgstr "مقفل"
+
+#: src/Admin/Admin.php:295
+msgid "Save rights"
+msgstr "حفظ الصلاحيات"
+
+#: src/Admin/Admin.php:296
+msgid "Restore the default rights"
+msgstr "استعادة الصلاحيات الافتراضية"
+
+#: src/Admin/Admin.php:302
+msgid ""
+"Official list (69 wilayas: loi n° 26-06 of 4 April 2026 and décret "
+"présidentiel n° 26-206 of 25 May 2026, effective 1 January 2027). Correct a "
+"spelling or hide a wilaya here."
+msgstr ""
+"القائمة الرسمية (69 ولاية: القانون رقم 26-06 المؤرخ في 4 أفريل 2026 والمرسوم"
+" الرئاسي رقم 26-206 المؤرخ في 25 ماي 2026، سارية من 1 جانفي 2027). صحّح "
+"كتابة اسم أو أخفِ ولاية من هنا."
+
+#: src/Admin/Admin.php:305
+msgid "Code"
+msgstr "الرمز"
+
+#: src/Admin/Admin.php:305
+msgid "French"
+msgstr "الفرنسية"
+
+#: src/Admin/Admin.php:305
+msgid "Arabic"
+msgstr "العربية"
+
+#: src/Admin/Admin.php:324
+msgid "Default language"
+msgstr "اللغة الافتراضية"
+
+#: src/Admin/Admin.php:328
+msgid ""
+"Pages in the default language have no prefix; the other language uses /ar/ "
+"(or its code)."
+msgstr ""
+"صفحات اللغة الافتراضية بلا بادئة؛ وتستعمل اللغة الأخرى /ar/ (أو رمزها)."
+
+#: src/Admin/Admin.php:329
+msgid "Verification code channel"
+msgstr "قناة رمز التحقق"
+
+#: src/Admin/Admin.php:329
+msgid "SMS"
+msgstr "رسالة قصيرة"
+
+#: src/Admin/Admin.php:329
+msgid "E-mail (no SMS gateway configured)"
+msgstr "البريد الإلكتروني (لا توجد بوابة رسائل قصيرة)"
+
+#: src/Admin/Admin.php:329
+msgid ""
+"An SMS gateway is added by a connector plugin through the sm_sms_provider "
+"filter."
+msgstr "تُضاف بوابة الرسائل القصيرة بإضافة ربط عبر المرشح sm_sms_provider."
+
+#: src/Admin/Admin.php:331
+msgid "Failed sign-ins before a 15-minute lock"
+msgstr "محاولات الدخول الفاشلة قبل حظر لمدة 15 دقيقة"
+
+#: src/Admin/Admin.php:332
+msgid "Sign-ups per hour from one connection"
+msgstr "التسجيلات في الساعة من اتصال واحد"
+
+#: src/Admin/Admin.php:333
+msgid "Enquiries per hour per account"
+msgstr "الاستفسارات في الساعة لكل حساب"
+
+#: src/Admin/Admin.php:338
+msgid "Uninstall"
+msgstr "إلغاء التثبيت"
+
+#: src/Admin/Admin.php:338
+msgid ""
+"Delete all platform data (companies, enquiries, logs) when the plugin is "
+"deleted"
+msgstr "حذف كل بيانات المنصة (المؤسسات، الاستفسارات، السجلات) عند حذف الإضافة"
+
+#: src/Admin/Admin.php:354
+msgid "Date"
+msgstr "التاريخ"
+
+#: src/Admin/Admin.php:354
+msgid "Action"
+msgstr "الإجراء"
+
+#: src/Admin/Admin.php:354
+msgid "User"
+msgstr "المستخدم"
+
+#: src/Admin/Admin.php:354
+msgid "Object"
+msgstr "العنصر"
+
+#: src/Admin/Admin.php:354
+msgid "Details"
+msgstr "التفاصيل"
+
+#: src/Enquiries/Enquiries.php:34
+msgid "Sign in or create an account to contact the seller."
+msgstr "سجّل الدخول أو أنشئ حسابا للتواصل مع البائع."
+
+#: src/Enquiries/Enquiries.php:47
+msgid "You sent many enquiries in a short time. Try again later."
+msgstr "أرسلت استفسارات كثيرة في وقت قصير. أعد المحاولة لاحقا."
+
+#: src/Enquiries/Enquiries.php:53
+msgid "Write a message of at least 10 characters."
+msgstr "اكتب رسالة من 10 أحرف على الأقل."
+
+#: src/Enquiries/Enquiries.php:82
+msgid "You cannot send an enquiry to your own company."
+msgstr "لا يمكنك إرسال استفسار إلى مؤسستك."
+
+#: src/Enquiries/Enquiries.php:117
+msgid ""
+"Your enquiry was sent. The company will contact you by phone or e-mail."
+msgstr "تم إرسال استفسارك. ستتواصل معك المؤسسة بالهاتف أو بالبريد الإلكتروني."
+
+#: src/Enquiries/Enquiries.php:158
+msgid "Enquiry not found."
+msgstr "الاستفسار غير موجود."
+
+#: src/Notifications/Notifications.php:31
+msgid "New enquiry on Steel Marketplace"
+msgstr "استفسار جديد على Steel Marketplace"
+
+#. translators: 1: sender name, 2: subject of the enquiry.
+#: src/Notifications/Notifications.php:34
+msgid "%1$s sent you an enquiry: %2$s"
+msgstr "أرسل لك %1$s استفسارا: %2$s"
+
+#: src/Notifications/Notifications.php:42
+msgid "New verification request to review"
+msgstr "طلب توثيق جديد للمراجعة"
+
+#. translators: %s: company name.
+#: src/Notifications/Notifications.php:45
+msgid "%s submitted documents for verification."
+msgstr "أرسلت %s وثائق للتوثيق."
+
+#: src/Notifications/Notifications.php:52
+msgid "Your account is verified"
+msgstr "تم توثيق حسابك"
+
+#: src/Notifications/Notifications.php:53
+msgid ""
+"Good news: the platform team verified your documents. The verified badge now"
+" appears on your company page and listings."
+msgstr ""
+"خبر سار: تحقق فريق المنصة من وثائقك. تظهر شارة التوثيق الآن في صفحة مؤسستك "
+"وإعلاناتك."
+
+#: src/Notifications/Notifications.php:58
+msgid "Your verification request needs changes"
+msgstr "طلب التوثيق يحتاج إلى تعديلات"
+
+#: src/Notifications/Notifications.php:59
+msgid "The platform team could not validate your documents."
+msgstr "لم يتمكن فريق المنصة من قبول وثائقك."
+
+#: src/Notifications/Notifications.php:99
+msgid "Open"
+msgstr "فتح"
+
+#. translators: %s: user display name.
+#: src/Notifications/Notifications.php:139
+msgid "Hello %s,"
+msgstr "مرحبا %s،"
+
+#: src/Notifications/Notifications.php:141
+msgid "You receive this e-mail because you have an account on the platform."
+msgstr "تصلك هذه الرسالة لأن لديك حسابا على المنصة."
+
+#: src/Permissions/Permissions.php:30
+msgid "Buy, save listings and contact sellers"
+msgstr "الشراء وحفظ الإعلانات والتواصل مع البائعين"
+
+#: src/Permissions/Permissions.php:31
+msgid "Publish new steel products"
+msgstr "نشر منتجات فولاذية جديدة"
+
+#: src/Permissions/Permissions.php:32
+msgid "Publish reuse lots, offcuts and scrap"
+msgstr "نشر مجموعات إعادة الاستعمال والبقايا والخردة"
+
+#: src/Permissions/Permissions.php:33
+msgid "Publish buildings and warehouses"
+msgstr "نشر المباني والمستودعات"
+
+#: src/Permissions/Permissions.php:34
+msgid "Create requests for quotation"
+msgstr "إنشاء طلبات عروض الأسعار"
+
+#: src/Permissions/Permissions.php:35
+msgid "Answer requests for quotation"
+msgstr "الرد على طلبات عروض الأسعار"
+
+#: src/Permissions/Permissions.php:36
+msgid "Offer fabrication, installation and dismantling"
+msgstr "عرض التصنيع والتركيب والتفكيك"
+
+#: src/Permissions/Permissions.php:37
+msgid "Publish engineering services"
+msgstr "نشر الخدمات الهندسية"
+
+#: src/Permissions/Permissions.php:38
+msgid "Request an engineering or fabrication service"
+msgstr "طلب خدمة هندسية أو تصنيع"
+
+#: src/Permissions/Permissions.php:102
+msgid "Sign in with a business or engineering account to do this."
+msgstr "سجّل الدخول بحساب مهني أو هندسي للقيام بذلك."
+
+#: src/Permissions/Permissions.php:105
+msgid "This account is suspended. Contact the platform team."
+msgstr "هذا الحساب موقوف. تواصل مع فريق المنصة."
+
+#: src/Permissions/Permissions.php:110
+msgid ""
+"Engineering accounts offer services only. To trade steel, open a separate "
+"business account."
+msgstr ""
+"حسابات الهندسة تعرض الخدمات فقط. لتجارة الفولاذ، افتح حسابا مهنيا منفصلا."
+
+#: src/Permissions/Permissions.php:122
+msgid ""
+"None of your business activities allows this action. Add the activity in "
+"your company settings."
+msgstr "لا يسمح أي من أنشطتك بهذا الإجراء. أضف النشاط في ملف المؤسسة."
+
+#: src/Permissions/Permissions.php:127
+msgid "Verify your account to do this."
+msgstr "وثّق حسابك للقيام بذلك."
+
+#: src/Permissions/Permissions.php:140
+msgid "Your plan does not include this action."
+msgstr "اشتراكك لا يشمل هذا الإجراء."
+
+#: src/Permissions/Permissions.php:145
+msgid "Engineering accounts offer services only."
+msgstr "حسابات الهندسة تعرض الخدمات فقط."
+
+#: src/Support/Forms.php:57
+msgid "The form expired. Please try again."
+msgstr "انتهت صلاحية النموذج. يرجى إعادة المحاولة."
+
+#: src/Support/Forms.php:61
+msgid "Thank you."
+msgstr "شكرا."
+
+#: src/Verification/Verifications.php:38
+msgid "Engineering diploma"
+msgstr "شهادة مهندس"
+
+#: src/Verification/Verifications.php:39
+msgid "Approval or registration of the engineering office (if any)"
+msgstr "اعتماد أو تسجيل مكتب الدراسات (إن وجد)"
+
+#: src/Verification/Verifications.php:40
+msgid "Identity document of the engineer"
+msgstr "وثيقة هوية المهندس"
+
+#: src/Verification/Verifications.php:44
+msgid "Commercial register (RC)"
+msgstr "السجل التجاري (RC)"
+
+#: src/Verification/Verifications.php:45
+msgid "Tax identification number (NIF)"
+msgstr "رقم التعريف الجبائي (NIF)"
+
+#: src/Verification/Verifications.php:46
+msgid "Statistical identification number (NIS)"
+msgstr "رقم التعريف الإحصائي (NIS)"
+
+#: src/Verification/Verifications.php:121
+msgid "Only the account owner or a manager can request verification."
+msgstr "يمكن لصاحب الحساب أو المسيّر فقط طلب التوثيق."
+
+#: src/Verification/Verifications.php:124
+msgid "Verify your contact details first."
+msgstr "تحقق من معلومات الاتصال أولا."
+
+#: src/Verification/Verifications.php:128
+msgid "A verification request is already being reviewed."
+msgstr "يوجد طلب توثيق قيد المراجعة بالفعل."
+
+#. translators: %s: document name.
+#: src/Verification/Verifications.php:145
+#: src/Verification/Verifications.php:151
+msgid "%s: the file must be a PDF, JPG or PNG under 5 MB."
+msgstr "%s: يجب أن يكون الملف PDF أو JPG أو PNG بحجم أقل من 5 ميغابايت."
+
+#: src/Verification/Verifications.php:159
+msgid "The file could not be saved. Try again."
+msgstr "تعذر حفظ الملف. أعد المحاولة."
+
+#. translators: %s: document name.
+#: src/Verification/Verifications.php:173
+msgid "%s is required."
+msgstr "%s إلزامي."
+
+#: src/Verification/Verifications.php:210
+msgid ""
+"Documents received. The platform team will review them, usually within 2 "
+"working days."
+msgstr "تم استلام الوثائق. سيراجعها فريق المنصة، عادة خلال يومي عمل."
+
+#: src/Verification/Verifications.php:225
+msgid "This request was already reviewed."
+msgstr "تمت مراجعة هذا الطلب بالفعل."
+
+#: src/Verification/Verifications.php:259
+msgid "Link expired."
+msgstr "انتهت صلاحية الرابط."
+
+#: src/Verification/Verifications.php:263
+#: src/Verification/Verifications.php:272
+msgid "Document not found."
+msgstr "الوثيقة غير موجودة."
+
+#: src/Verification/Verifications.php:266
+msgid "You are not allowed to view this document."
+msgstr "غير مسموح لك بالاطلاع على هذه الوثيقة."

@@ -16,6 +16,15 @@ $market = sm_theme_query_arg( 'market', 'products' );
 if ( ! in_array( $market, array( 'products', 'reuse', 'buildings' ), true ) ) {
 	$market = 'products';
 }
+$account = $args['account'];
+if ( 'engineering' === $account['class'] ) {
+	echo '<div class="sm-notice sm-notice--warn">' . sm_get_icon( 'lock' ) . '<p>' . esc_html__( 'Engineering accounts offer services only. To trade steel, open a separate business account.', 'sm-marketplace' ) . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput
+	return;
+}
+$cap_reason = sm_theme_cannot_reason( 'listing.' . $market );
+if ( $cap_reason ) {
+	echo '<div class="sm-notice sm-notice--warn">' . sm_get_icon( 'shield' ) . '<p>' . esc_html( $cap_reason ) . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput
+}
 $steps = array(
 	__( 'Market', 'sm-marketplace' ),
 	__( 'Technical details', 'sm-marketplace' ),

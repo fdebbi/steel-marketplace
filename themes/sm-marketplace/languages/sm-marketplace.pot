@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.1.0\n"
+"Project-Id-Version: SM Marketplace 0.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-05T19:32:03+00:00\n"
+"POT-Creation-Date: 2026-11-07T11:32:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -43,7 +43,7 @@ msgid "The page you are looking for has moved or no longer exists."
 msgstr ""
 
 #: 404.php:19
-#: header.php:44
+#: header.php:46
 msgid "Search the marketplace"
 msgstr ""
 
@@ -52,8 +52,8 @@ msgid "Buy and sell steel by the kilogram, trade used structures and find fabric
 msgstr ""
 
 #: footer.php:20
-#: header.php:64
-#: header.php:93
+#: header.php:84
+#: header.php:113
 msgid "Marketplaces"
 msgstr ""
 
@@ -92,7 +92,7 @@ msgstr ""
 #: footer.php:29
 #: inc/menus.php:40
 #: templates/company-profile.php:39
-#: templates/company-profile.php:94
+#: templates/company-profile.php:96
 msgid "Services"
 msgstr ""
 
@@ -107,8 +107,8 @@ msgid "Fabrication & installation"
 msgstr ""
 
 #: footer.php:32
-#: header.php:79
-#: header.php:109
+#: header.php:99
+#: header.php:129
 #: inc/menus.php:63
 #: inc/template-tags.php:179
 #: template-parts/components/card-service.php:22
@@ -119,7 +119,7 @@ msgid "Engineering"
 msgstr ""
 
 #: footer.php:33
-#: header.php:110
+#: header.php:130
 #: inc/menus.php:64
 #: templates/companies.php:13
 #: templates/companies.php:14
@@ -130,8 +130,8 @@ msgid "Company directory"
 msgstr ""
 
 #: footer.php:34
-#: header.php:27
-#: header.php:111
+#: header.php:29
+#: header.php:131
 #: templates/price-index.php:16
 msgid "Price index"
 msgstr ""
@@ -141,21 +141,24 @@ msgid "Platform"
 msgstr ""
 
 #: footer.php:40
-#: header.php:28
+#: header.php:30
 #: templates/pricing.php:25
 #: templates/pricing.php:26
 msgid "Plans"
 msgstr ""
 
 #: footer.php:41
-#: templates/auth-login.php:38
+#: header.php:140
+#: template-parts/components/enquiry-form.php:27
+#: templates/auth-login.php:40
+#: templates/dashboard.php:25
 msgid "Create an account"
 msgstr ""
 
 #: footer.php:42
-#: header.php:29
+#: header.php:31
 #: templates/company-profile.php:66
-#: templates/single-listing.php:238
+#: templates/single-listing.php:237
 msgid "Contact"
 msgstr ""
 
@@ -173,21 +176,20 @@ msgid "Home"
 msgstr ""
 
 #: footer.php:55
-#: header.php:52
-#: header.php:56
+#: header.php:54
+#: header.php:58
 #: templates/front-page-template.php:48
 msgid "Search"
 msgstr ""
 
 #: footer.php:56
-#: header.php:59
-#: template-parts/dashboard/publish.php:196
+#: header.php:76
+#: template-parts/dashboard/publish.php:205
 #: templates/styleguide.php:34
 msgid "Publish"
 msgstr ""
 
 #: footer.php:57
-#: template-parts/dashboard/overview.php:19
 msgid "Enquiries"
 msgstr ""
 
@@ -195,79 +197,106 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
-#: header.php:20
+#: header.php:22
 msgid "Skip to content"
 msgstr ""
 
-#: header.php:25
+#: header.php:27
 msgid "The industrial marketplace for steel in Algeria"
 msgstr ""
 
-#: header.php:26
+#: header.php:28
 msgid "Utility"
 msgstr ""
 
-#: header.php:38
+#: header.php:40
 #: inc/assets.php:32
 msgid "Open menu"
 msgstr ""
 
-#: header.php:45
+#: header.php:47
 #: template-parts/components/filter-panel.php:32
 #: template-parts/dashboard/listings.php:27
 #: template-parts/dashboard/listings.php:41
-#: template-parts/dashboard/publish.php:20
-#: template-parts/dashboard/publish.php:36
+#: template-parts/dashboard/publish.php:29
+#: template-parts/dashboard/publish.php:45
 #: templates/front-page-template.php:31
 msgid "Market"
 msgstr ""
 
-#: header.php:46
+#: header.php:48
 #: template-parts/components/filter-panel.php:36
 #: templates/front-page-template.php:33
 msgid "All markets"
 msgstr ""
 
-#: header.php:51
+#: header.php:53
 msgid "IPE 200, HEA, tube 100×50, hangar…"
 msgstr ""
 
-#: header.php:57
-#: templates/dashboard.php:44
+#: header.php:59
+#: templates/dashboard.php:59
 msgid "Saved listings"
 msgstr ""
 
-#: header.php:58
-#: header.php:115
+#: header.php:64
+#: template-parts/dashboard/notifications.php:18
+msgid "Notifications"
+msgstr ""
+
+#: header.php:68
+#: header.php:136
+msgid "My account"
+msgstr ""
+
+#: header.php:71
+msgid "Administration"
+msgstr ""
+
+#: header.php:73
+#: header.php:139
+#: template-parts/components/enquiry-form.php:26
 #: templates/auth-login.php:17
-#: templates/auth-login.php:37
-#: templates/auth-register.php:84
+#: templates/auth-login.php:39
+#: templates/auth-register.php:91
 msgid "Sign in"
 msgstr ""
 
-#: header.php:87
+#: header.php:78
+#: template-parts/dashboard/engineer-overview.php:53
+#: templates/dashboard.php:42
+msgid "My services"
+msgstr ""
+
+#: header.php:107
 msgid "Menu"
 msgstr ""
 
-#: header.php:90
+#: header.php:110
 #: inc/assets.php:33
 msgid "Close menu"
 msgstr ""
 
-#: header.php:99
+#: header.php:119
 #: inc/menus.php:75
 msgid "View all listings"
 msgstr ""
 
-#: header.php:114
+#: header.php:134
 #: template-parts/dashboard/listings.php:20
-#: templates/dashboard.php:37
+#: templates/dashboard.php:52
 msgid "Publish a listing"
 msgstr ""
 
+#: header.php:137
+#: templates/dashboard.php:106
+#: templates/dashboard.php:120
+msgid "Sign out"
+msgstr ""
+
 #: inc/assets.php:34
-#: templates/auth-login.php:30
-#: templates/auth-register.php:77
+#: templates/auth-login.php:32
+#: templates/auth-register.php:82
 msgid "Show"
 msgstr ""
 
@@ -443,7 +472,7 @@ msgid "Fabrication services"
 msgstr ""
 
 #: inc/template-tags.php:192
-#: templates/auth-register.php:40
+#: templates/auth-register.php:42
 msgid "Engineer / engineering office"
 msgstr ""
 
@@ -452,14 +481,17 @@ msgid "Not verified"
 msgstr ""
 
 #: inc/template-tags.php:200
-msgid "Phone verified"
+#: template-parts/components/verification-steps.php:15
+msgid "Contact verified"
 msgstr ""
 
 #: inc/template-tags.php:201
+#: template-parts/components/verification-steps.php:16
 msgid "Verified business"
 msgstr ""
 
 #: inc/template-tags.php:202
+#: template-parts/components/verification-steps.php:16
 msgid "Verified engineer"
 msgstr ""
 
@@ -515,7 +547,7 @@ msgstr ""
 
 #: template-parts/components/card-listing.php:34
 #: template-parts/components/filter-panel.php:68
-#: template-parts/dashboard/publish.php:97
+#: template-parts/dashboard/publish.php:106
 #: templates/single-listing.php:36
 #: templates/single-listing.php:92
 msgid "Assembled"
@@ -523,7 +555,7 @@ msgstr ""
 
 #: template-parts/components/card-listing.php:34
 #: template-parts/components/filter-panel.php:69
-#: template-parts/dashboard/publish.php:98
+#: template-parts/dashboard/publish.php:107
 #: templates/single-listing.php:36
 #: templates/single-listing.php:92
 msgid "Dismantled"
@@ -543,6 +575,51 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
+#: template-parts/components/enquiry-form.php:14
+msgid "Send an enquiry"
+msgstr ""
+
+#: template-parts/components/enquiry-form.php:24
+msgid "Sign in or create a free account to contact companies on the platform."
+msgstr ""
+
+#: template-parts/components/enquiry-form.php:31
+#: templates/dashboard.php:25
+msgid "This user has no company account"
+msgstr ""
+
+#: template-parts/components/enquiry-form.php:41
+#: template-parts/dashboard/settings.php:22
+#: templates/auth-register.php:64
+msgid "Full name"
+msgstr ""
+
+#: template-parts/components/enquiry-form.php:42
+#: templates/company-profile.php:125
+msgid "Phone"
+msgstr ""
+
+#: template-parts/components/enquiry-form.php:45
+#: template-parts/dashboard/messages.php:43
+msgid "Quantity needed"
+msgstr ""
+
+#: template-parts/components/enquiry-form.php:47
+msgid "Message"
+msgstr ""
+
+#: template-parts/components/enquiry-form.php:48
+msgid "Send the request"
+msgstr ""
+
+#: template-parts/components/enquiry-form.php:48
+msgid "Send enquiry"
+msgstr ""
+
+#: template-parts/components/enquiry-form.php:49
+msgid "The company receives your name, phone and e-mail to answer you."
+msgstr ""
+
 #: template-parts/components/filter-panel.php:16
 #: template-parts/components/filter-panel.php:20
 #: template-parts/marketplace-archive.php:73
@@ -558,7 +635,7 @@ msgid "Profile designation or keyword"
 msgstr ""
 
 #: template-parts/components/filter-panel.php:42
-#: template-parts/dashboard/publish.php:52
+#: template-parts/dashboard/publish.php:61
 msgid "Category"
 msgstr ""
 
@@ -567,7 +644,7 @@ msgid "All categories"
 msgstr ""
 
 #: template-parts/components/filter-panel.php:52
-#: template-parts/dashboard/publish.php:78
+#: template-parts/dashboard/publish.php:87
 msgid "Condition"
 msgstr ""
 
@@ -604,9 +681,10 @@ msgid "Min. height (m)"
 msgstr ""
 
 #: template-parts/components/filter-panel.php:78
-#: template-parts/dashboard/publish.php:169
-#: templates/auth-register.php:62
-#: templates/company-profile.php:117
+#: template-parts/dashboard/company.php:72
+#: template-parts/dashboard/publish.php:178
+#: templates/auth-register.php:66
+#: templates/company-profile.php:123
 #: templates/front-page-template.php:40
 msgid "Wilaya"
 msgstr ""
@@ -665,14 +743,14 @@ msgid "Price per kilogram"
 msgstr ""
 
 #: template-parts/components/price-block.php:28
-#: template-parts/dashboard/publish.php:184
+#: template-parts/dashboard/publish.php:193
 msgid "Total weight"
 msgstr ""
 
 #: template-parts/components/price-block.php:29
 #: template-parts/dashboard/listings.php:30
 #: template-parts/dashboard/listings.php:44
-#: template-parts/dashboard/publish.php:185
+#: template-parts/dashboard/publish.php:194
 msgid "Total price"
 msgstr ""
 
@@ -688,51 +766,190 @@ msgstr ""
 msgid "Demo listing: values are illustrative and will be computed by the weight engine."
 msgstr ""
 
-#: template-parts/dashboard/engineer-overview.php:20
+#: template-parts/components/verification-steps.php:15
+msgid "6-digit code"
+msgstr ""
+
+#: template-parts/components/verification-steps.php:16
+msgid "Diploma and approval checked"
+msgstr ""
+
+#: template-parts/components/verification-steps.php:16
+msgid "RC, NIF and NIS checked"
+msgstr ""
+
+#: template-parts/components/verification-steps.php:29
+msgid "Do it"
+msgstr ""
+
+#: template-parts/dashboard/company.php:20
+msgid "Sign in with a real account to edit the company profile."
+msgstr ""
+
+#: template-parts/dashboard/company.php:24
+msgid "Only the account owner or a manager can edit the company."
+msgstr ""
+
+#: template-parts/dashboard/company.php:30
+msgid "Identity"
+msgstr ""
+
+#: template-parts/dashboard/company.php:30
+#: templates/dashboard.php:63
+msgid "Company"
+msgstr ""
+
+#: template-parts/dashboard/company.php:32
+#: templates/auth-register.php:59
+msgid "Name or office name"
+msgstr ""
+
+#: template-parts/dashboard/company.php:32
+#: templates/auth-register.php:59
+msgid "Company or trade name"
+msgstr ""
+
+#: template-parts/dashboard/company.php:33
+msgid "Name in Arabic (optional)"
+msgstr ""
+
+#: template-parts/dashboard/company.php:37
+msgid "Professional title in French"
+msgstr ""
+
+#: template-parts/dashboard/company.php:38
+msgid "Professional title in Arabic"
+msgstr ""
+
+#: template-parts/dashboard/company.php:42
+#: templates/auth-register.php:49
+msgid "Business activities"
+msgstr ""
+
+#: template-parts/dashboard/company.php:49
+msgid "Your activities decide what you can publish. The account type (business or engineering) cannot be changed."
+msgstr ""
+
+#: template-parts/dashboard/company.php:53
+msgid "Presentation in French"
+msgstr ""
+
+#: template-parts/dashboard/company.php:57
+msgid "Presentation in Arabic"
+msgstr ""
+
+#: template-parts/dashboard/company.php:62
+msgid "Qualifications (one per line)"
+msgstr ""
+
+#: template-parts/dashboard/company.php:63
+msgid "Specialisations (one per line)"
+msgstr ""
+
+#: template-parts/dashboard/company.php:69
+msgid "Contact and location"
+msgstr ""
+
+#: template-parts/dashboard/company.php:78
+msgid "Commune"
+msgstr ""
+
+#: template-parts/dashboard/company.php:80
+msgid "Address"
+msgstr ""
+
+#: template-parts/dashboard/company.php:82
+msgid "Public phone"
+msgstr ""
+
+#: template-parts/dashboard/company.php:83
+msgid "Public e-mail"
+msgstr ""
+
+#: template-parts/dashboard/company.php:84
+msgid "Website"
+msgstr ""
+
+#: template-parts/dashboard/company.php:90
+msgid "Registration numbers"
+msgstr ""
+
+#: template-parts/dashboard/company.php:91
+msgid "Stored encrypted and never shown publicly. Only the platform team sees them during verification."
+msgstr ""
+
+#: template-parts/dashboard/company.php:93
+#: template-parts/dashboard/verification.php:41
+msgid "RC number"
+msgstr ""
+
+#: template-parts/dashboard/company.php:101
+msgid "View public page"
+msgstr ""
+
+#: template-parts/dashboard/company.php:102
+#: template-parts/dashboard/settings.php:43
+#: templates/single-listing.php:107
+msgid "Save"
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:17
+#: template-parts/dashboard/messages.php:14
 #: templates/styleguide.php:49
 msgid "New"
 msgstr ""
 
-#: template-parts/dashboard/engineer-overview.php:21
-#: templates/styleguide.php:48
-msgid "Quote sent"
+#: template-parts/dashboard/engineer-overview.php:18
+#: template-parts/dashboard/messages.php:15
+msgid "Read"
 msgstr ""
 
-#: template-parts/dashboard/engineer-overview.php:22
-msgid "Accepted"
+#: template-parts/dashboard/engineer-overview.php:19
+#: template-parts/dashboard/messages.php:16
+msgid "Archived"
 msgstr ""
 
-#: template-parts/dashboard/engineer-overview.php:27
+#: template-parts/dashboard/engineer-overview.php:23
 msgid "New requests"
 msgstr ""
 
-#: template-parts/dashboard/engineer-overview.php:28
+#: template-parts/dashboard/engineer-overview.php:24
 msgid "Profile views (30 days)"
 msgstr ""
 
-#: template-parts/dashboard/engineer-overview.php:29
+#: template-parts/dashboard/engineer-overview.php:25
 msgid "Quotes sent"
 msgstr ""
 
-#: template-parts/dashboard/engineer-overview.php:30
+#: template-parts/dashboard/engineer-overview.php:26
+#: templates/dashboard.php:65
 msgid "Verification"
 msgstr ""
 
-#: template-parts/dashboard/engineer-overview.php:35
-#: templates/dashboard.php:28
+#: template-parts/dashboard/engineer-overview.php:32
+#: templates/dashboard.php:43
 msgid "Client requests"
 msgstr ""
 
-#: template-parts/dashboard/engineer-overview.php:47
-#: templates/dashboard.php:27
-msgid "My services"
+#: template-parts/dashboard/engineer-overview.php:33
+#: templates/front-page-template.php:90
+msgid "See all"
 msgstr ""
 
-#: template-parts/dashboard/engineer-overview.php:53
-msgid "Add a service"
+#: template-parts/dashboard/engineer-overview.php:46
+msgid "Requests sent from your profile page appear here. You are also notified by e-mail."
 msgstr ""
 
-#: template-parts/dashboard/engineer-overview.php:56
+#: template-parts/dashboard/engineer-overview.php:50
+#: template-parts/dashboard/overview.php:46
+msgid "Account status"
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:60
+msgid "Complete my professional profile"
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:64
 msgid "Engineering accounts publish services only. To trade steel, open a separate business account with its own verification."
 msgstr ""
 
@@ -751,7 +968,7 @@ msgid "Sold"
 msgstr ""
 
 #: template-parts/dashboard/listings.php:22
-#: templates/dashboard.php:38
+#: templates/dashboard.php:53
 msgid "My listings"
 msgstr ""
 
@@ -762,7 +979,7 @@ msgstr ""
 
 #: template-parts/dashboard/listings.php:28
 #: template-parts/dashboard/listings.php:42
-#: template-parts/dashboard/publish.php:83
+#: template-parts/dashboard/publish.php:92
 msgid "Weight"
 msgstr ""
 
@@ -792,276 +1009,411 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: template-parts/dashboard/overview.php:17
-msgid "Active listings"
+#: template-parts/dashboard/messages.php:24
+msgid "No enquiry yet"
+msgstr ""
+
+#: template-parts/dashboard/messages.php:25
+msgid "Buyers and clients who contact you from your listings or your company page appear here. You are also notified by e-mail."
+msgstr ""
+
+#: template-parts/dashboard/messages.php:47
+msgid "Reply by e-mail"
+msgstr ""
+
+#: template-parts/dashboard/messages.php:51
+msgid "Mark as read"
+msgstr ""
+
+#: template-parts/dashboard/notifications.php:21
+msgid "Mark all as read"
+msgstr ""
+
+#: template-parts/dashboard/notifications.php:38
+msgid "No notification yet."
 msgstr ""
 
 #: template-parts/dashboard/overview.php:18
+msgid "Active listings"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:19
 msgid "Views (30 days)"
 msgstr ""
 
 #: template-parts/dashboard/overview.php:20
+msgid "New enquiries"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:21
 msgid "Open quotations"
 msgstr ""
 
-#: template-parts/dashboard/overview.php:26
+#: template-parts/dashboard/overview.php:27
 msgid "Recent listings"
 msgstr ""
 
-#: template-parts/dashboard/overview.php:27
+#: template-parts/dashboard/overview.php:28
 msgid "Manage"
 msgstr ""
 
 #: template-parts/dashboard/overview.php:41
-msgid "Plan usage"
+msgid "You have no listing yet. Publishing opens with the marketplace modules (products, reuse, buildings)."
 msgstr ""
 
-#: template-parts/dashboard/overview.php:44
+#: template-parts/dashboard/overview.php:50
 msgid "Listings"
 msgstr ""
 
-#: template-parts/dashboard/overview.php:45
+#: template-parts/dashboard/overview.php:51
 msgid "Featured slots"
 msgstr ""
 
-#: template-parts/dashboard/overview.php:46
+#: template-parts/dashboard/overview.php:52
 msgid "AI credits used"
 msgstr ""
 
-#: template-parts/dashboard/overview.php:59
+#: template-parts/dashboard/overview.php:66
 msgid "Change plan"
 msgstr ""
 
-#: template-parts/dashboard/overview.php:63
-msgid "RC, NIF and NIS checked by the platform."
-msgstr ""
-
-#: template-parts/dashboard/overview.php:69
+#: template-parts/dashboard/overview.php:74
 msgid "Quick actions"
 msgstr ""
 
-#: template-parts/dashboard/overview.php:71
+#: template-parts/dashboard/overview.php:76
 msgid "Sell new steel"
 msgstr ""
 
-#: template-parts/dashboard/overview.php:72
+#: template-parts/dashboard/overview.php:77
 msgid "Sell offcuts or surplus"
 msgstr ""
 
-#: template-parts/dashboard/overview.php:73
+#: template-parts/dashboard/overview.php:78
 msgid "Sell a building"
 msgstr ""
 
-#: template-parts/dashboard/overview.php:74
-#: template-parts/marketplace-archive.php:113
-#: templates/front-page-template.php:122
-#: templates/single-listing.php:105
-#: templates/styleguide.php:36
-msgid "Request a quotation"
+#: template-parts/dashboard/overview.php:79
+msgid "Complete the company profile"
 msgstr ""
 
 #: template-parts/dashboard/publish.php:21
-#: template-parts/dashboard/publish.php:62
+msgid "Engineering accounts offer services only. To trade steel, open a separate business account."
+msgstr ""
+
+#: template-parts/dashboard/publish.php:30
+#: template-parts/dashboard/publish.php:71
 msgid "Technical details"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:22
+#: template-parts/dashboard/publish.php:31
 msgid "Photos"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:23
-#: template-parts/dashboard/publish.php:162
+#: template-parts/dashboard/publish.php:32
+#: template-parts/dashboard/publish.php:171
 msgid "Price & location"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:27
+#: template-parts/dashboard/publish.php:36
 msgid "Steps"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:34
+#: template-parts/dashboard/publish.php:43
 msgid "What are you selling?"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:39
+#: template-parts/dashboard/publish.php:48
 msgid "New steel"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:39
+#: template-parts/dashboard/publish.php:48
 msgid "Profiles, tubes, plates, accessories"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:40
+#: template-parts/dashboard/publish.php:49
 msgid "Reuse lot"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:40
+#: template-parts/dashboard/publish.php:49
 msgid "Offcuts, surplus, used, scrap"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:41
+#: template-parts/dashboard/publish.php:50
 msgid "Building"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:41
+#: template-parts/dashboard/publish.php:50
 msgid "Warehouse, hangar, kit"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:67
+#: template-parts/dashboard/publish.php:76
 #: templates/rfq-board.php:60
 #: templates/single-listing.php:45
 msgid "Profile designation"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:70
+#: template-parts/dashboard/publish.php:79
 msgid "Choose from the standard profile list; unit weights come from the platform tables."
 msgstr ""
 
-#: template-parts/dashboard/publish.php:72
+#: template-parts/dashboard/publish.php:81
 #: templates/single-listing.php:46
 msgid "Steel grade"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:75
-#: template-parts/dashboard/publish.php:101
-#: template-parts/dashboard/publish.php:113
-#: template-parts/dashboard/publish.php:119
+#: template-parts/dashboard/publish.php:84
+#: template-parts/dashboard/publish.php:110
+#: template-parts/dashboard/publish.php:122
+#: template-parts/dashboard/publish.php:128
 #: templates/single-listing.php:171
 #: templates/single-listing.php:182
 msgid "Length (m)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:76
+#: template-parts/dashboard/publish.php:85
 #: templates/single-listing.php:53
 msgid "Number of pieces"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:85
+#: template-parts/dashboard/publish.php:94
 msgid "Theoretical (calculated)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:86
+#: template-parts/dashboard/publish.php:95
 msgid "Actual (weighed)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:89
+#: template-parts/dashboard/publish.php:98
 msgid "Measured weight (kg)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:102
+#: template-parts/dashboard/publish.php:111
 msgid "Width (m)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:103
+#: template-parts/dashboard/publish.php:112
 msgid "Height (m)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:106
+#: template-parts/dashboard/publish.php:115
 #: templates/single-listing.php:39
 msgid "Number of portals"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:107
+#: template-parts/dashboard/publish.php:116
 #: templates/single-listing.php:42
 msgid "Roof covering"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:110
+#: template-parts/dashboard/publish.php:119
 msgid "Element inventory"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:113
-#: template-parts/dashboard/publish.php:116
+#: template-parts/dashboard/publish.php:122
+#: template-parts/dashboard/publish.php:125
 #: templates/single-listing.php:168
 #: templates/single-listing.php:179
 msgid "Element"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:113
-#: template-parts/dashboard/publish.php:117
+#: template-parts/dashboard/publish.php:122
+#: template-parts/dashboard/publish.php:126
+#: template-parts/dashboard/settings.php:20
 #: templates/single-listing.php:169
 #: templates/single-listing.php:180
 msgid "Profile"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:113
-#: template-parts/dashboard/publish.php:118
+#: template-parts/dashboard/publish.php:122
+#: template-parts/dashboard/publish.php:127
 #: templates/rfq-board.php:61
 #: templates/single-listing.php:170
 #: templates/single-listing.php:181
 msgid "Quantity"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:120
+#: template-parts/dashboard/publish.php:129
 msgid "Remove row"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:125
+#: template-parts/dashboard/publish.php:134
 msgid "Add an element"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:130
+#: template-parts/dashboard/publish.php:139
 msgid "Title in French"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:134
+#: template-parts/dashboard/publish.php:143
 msgid "Title in Arabic (optional)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:138
+#: template-parts/dashboard/publish.php:147
 msgid "Description and technical notes"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:144
+#: template-parts/dashboard/publish.php:153
 msgid "Photos and documents"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:148
+#: template-parts/dashboard/publish.php:157
 msgid "Take or add photos"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:149
+#: template-parts/dashboard/publish.php:158
 msgid "Up to 10 photos. Show the section, the length marks and the condition."
 msgstr ""
 
-#: template-parts/dashboard/publish.php:155
+#: template-parts/dashboard/publish.php:164
 msgid "Add technical documents (optional)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:156
+#: template-parts/dashboard/publish.php:165
 msgid "Material certificates, drawings, inventory lists (PDF, DWG)."
 msgstr ""
 
-#: template-parts/dashboard/publish.php:158
+#: template-parts/dashboard/publish.php:167
 msgid "Soon: the AI assistant will suggest the category and description from your photos. You always confirm the technical data."
 msgstr ""
 
-#: template-parts/dashboard/publish.php:165
+#: template-parts/dashboard/publish.php:174
 msgid "Price per kg (DA)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:165
+#: template-parts/dashboard/publish.php:174
 msgid "Asking price (DA)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:174
+#: template-parts/dashboard/publish.php:183
 msgid "Summary shown to buyers"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:187
+#: template-parts/dashboard/publish.php:196
 msgid "Weight and total price are calculated by the weight engine (Phase 3)."
 msgstr ""
 
-#: template-parts/dashboard/publish.php:193
+#: template-parts/dashboard/publish.php:202
 msgid "Back"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:194
+#: template-parts/dashboard/publish.php:203
 msgid "Save draft"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:195
+#: template-parts/dashboard/publish.php:204
 #: templates/styleguide.php:35
 msgid "Continue"
+msgstr ""
+
+#: template-parts/dashboard/settings.php:13
+msgid "Sign in with a real account to change your settings."
+msgstr ""
+
+#: template-parts/dashboard/settings.php:23
+#: templates/auth-register.php:76
+msgid "Email"
+msgstr ""
+
+#: template-parts/dashboard/settings.php:26
+msgid "Language of the site and of your e-mails"
+msgstr ""
+
+#: template-parts/dashboard/settings.php:35
+msgid "Change password"
+msgstr ""
+
+#: template-parts/dashboard/settings.php:37
+msgid "Current password"
+msgstr ""
+
+#: template-parts/dashboard/settings.php:38
+msgid "New password"
+msgstr ""
+
+#: template-parts/dashboard/settings.php:40
+msgid "Leave empty to keep your current password. At least 10 characters."
+msgstr ""
+
+#: template-parts/dashboard/verification.php:17
+msgid "Verification steps"
+msgstr ""
+
+#: template-parts/dashboard/verification.php:19
+msgid "Verified accounts get the badge on their company page and listings, and can answer requests for quotation."
+msgstr ""
+
+#: template-parts/dashboard/verification.php:28
+msgid "Your engineering credentials are verified."
+msgstr ""
+
+#: template-parts/dashboard/verification.php:28
+msgid "Your business is verified."
+msgstr ""
+
+#: template-parts/dashboard/verification.php:30
+msgid "Your documents are being reviewed by the platform team, usually within 2 working days."
+msgstr ""
+
+#: template-parts/dashboard/verification.php:32
+msgid "Verify your contact details first."
+msgstr ""
+
+#: template-parts/dashboard/verification.php:32
+#: templates/dashboard.php:129
+msgid "Enter the code"
+msgstr ""
+
+#: template-parts/dashboard/verification.php:35
+msgid "Your previous request was not validated."
+msgstr ""
+
+#: template-parts/dashboard/verification.php:38
+msgid "Send your engineering credentials"
+msgstr ""
+
+#: template-parts/dashboard/verification.php:38
+msgid "Send your company documents"
+msgstr ""
+
+#: template-parts/dashboard/verification.php:53
+msgid "PDF, JPG or PNG, 5 MB maximum"
+msgstr ""
+
+#: template-parts/dashboard/verification.php:59
+msgid "Note for the platform team (optional)"
+msgstr ""
+
+#: template-parts/dashboard/verification.php:60
+msgid "Documents are stored privately and are only seen by the platform team."
+msgstr ""
+
+#: template-parts/dashboard/verification.php:61
+msgid "Send for verification"
+msgstr ""
+
+#: template-parts/dashboard/verify-phone.php:13
+msgid "Your contact details are verified."
+msgstr ""
+
+#: template-parts/dashboard/verify-phone.php:19
+msgid "Enter your verification code"
+msgstr ""
+
+#: template-parts/dashboard/verify-phone.php:22
+msgid "Verification code"
+msgstr ""
+
+#: template-parts/dashboard/verify-phone.php:25
+msgid "Verify"
+msgstr ""
+
+#: template-parts/dashboard/verify-phone.php:28
+msgid "No code received?"
+msgstr ""
+
+#: template-parts/dashboard/verify-phone.php:28
+msgid "Send a new code"
 msgstr ""
 
 #: template-parts/marketplace-archive.php:47
@@ -1119,6 +1471,13 @@ msgstr ""
 msgid "Widen your search, or publish a request for quotation so suppliers come to you."
 msgstr ""
 
+#: template-parts/marketplace-archive.php:113
+#: templates/front-page-template.php:122
+#: templates/single-listing.php:105
+#: templates/styleguide.php:36
+msgid "Request a quotation"
+msgstr ""
+
 #. Template Name of the theme
 msgid "SM — Sign in"
 msgstr ""
@@ -1127,25 +1486,25 @@ msgstr ""
 msgid "Welcome back. Sign in with your email or phone number."
 msgstr ""
 
-#: templates/auth-login.php:23
-#: templates/auth-lost.php:19
+#: templates/auth-login.php:24
+#: templates/auth-lost.php:20
 msgid "Email or phone"
 msgstr ""
 
-#: templates/auth-login.php:27
-#: templates/auth-register.php:74
+#: templates/auth-login.php:29
+#: templates/auth-register.php:79
 msgid "Password"
 msgstr ""
 
-#: templates/auth-login.php:34
+#: templates/auth-login.php:36
 msgid "Remember me"
 msgstr ""
 
-#: templates/auth-login.php:35
+#: templates/auth-login.php:37
 msgid "Forgot password?"
 msgstr ""
 
-#: templates/auth-login.php:38
+#: templates/auth-login.php:40
 msgid "New on the platform?"
 msgstr ""
 
@@ -1161,11 +1520,11 @@ msgstr ""
 msgid "Enter your email or phone. We will send you a reset link or code."
 msgstr ""
 
-#: templates/auth-lost.php:20
+#: templates/auth-lost.php:21
 msgid "Send reset link"
 msgstr ""
 
-#: templates/auth-lost.php:21
+#: templates/auth-lost.php:22
 msgid "Back to sign in"
 msgstr ""
 
@@ -1181,69 +1540,48 @@ msgstr ""
 msgid "Choose the type of account. You can enable several business activities later."
 msgstr ""
 
-#: templates/auth-register.php:27
+#: templates/auth-register.php:29
 msgid "Account type"
 msgstr ""
 
-#: templates/auth-register.php:32
-#: templates/dashboard.php:72
+#: templates/auth-register.php:34
+#: templates/dashboard.php:90
 msgid "Business account"
 msgstr ""
 
-#: templates/auth-register.php:33
+#: templates/auth-register.php:35
 msgid "Buy and sell steel, reuse lots and buildings, answer quotations, offer fabrication."
 msgstr ""
 
-#: templates/auth-register.php:41
+#: templates/auth-register.php:43
 msgid "Publish engineering services and receive client requests. No product trading."
 msgstr ""
 
-#: templates/auth-register.php:47
-msgid "Business activities"
-msgstr ""
-
-#: templates/auth-register.php:56
-msgid "Company or trade name"
-msgstr ""
-
-#: templates/auth-register.php:56
-msgid "Name or office name"
-msgstr ""
-
-#: templates/auth-register.php:60
-#: templates/single-listing.php:214
-msgid "Full name"
-msgstr ""
-
-#: templates/auth-register.php:64
+#: templates/auth-register.php:68
 msgid "Select"
 msgstr ""
 
-#: templates/auth-register.php:70
+#: templates/auth-register.php:75
 msgid "Mobile phone"
 msgstr ""
 
-#: templates/auth-register.php:71
-msgid "Email"
-msgstr ""
-
-#: templates/auth-register.php:79
+#: templates/auth-register.php:84
 msgid "At least 10 characters."
 msgstr ""
 
-#: templates/auth-register.php:81
+#: templates/auth-register.php:87
 msgid "I accept the terms of use and the listing rules."
 msgstr ""
 
-#: templates/auth-register.php:82
+#: templates/auth-register.php:89
 msgid "Create my account"
 msgstr ""
 
-#: templates/auth-register.php:83
-msgid "Your phone will be verified by SMS. Business verification (RC, NIF, NIS) unlocks the verified badge."
+#: templates/auth-register.php:90
+msgid "You will receive a 6-digit code to verify your account. Business verification (RC, NIF, NIS) unlocks the verified badge."
 msgstr ""
 
-#: templates/auth-register.php:84
+#: templates/auth-register.php:91
 msgid "Already registered?"
 msgstr ""
 
@@ -1264,7 +1602,7 @@ msgid "Company not found"
 msgstr ""
 
 #: templates/company-profile.php:41
-#: templates/company-profile.php:103
+#: templates/company-profile.php:105
 msgid "About"
 msgstr ""
 
@@ -1275,40 +1613,52 @@ msgid "Active since %s"
 msgstr ""
 
 #: templates/company-profile.php:66
+#: templates/company-profile.php:138
 msgid "Request a service"
 msgstr ""
 
-#: templates/company-profile.php:70
+#: templates/company-profile.php:72
 msgid "Company sections"
 msgstr ""
 
-#: templates/company-profile.php:108
+#: templates/company-profile.php:109
+msgid "This company has not written its presentation yet."
+msgstr ""
+
+#: templates/company-profile.php:114
 msgid "Qualifications"
 msgstr ""
 
-#: templates/company-profile.php:110
+#: templates/company-profile.php:116
 msgid "Specialisations"
 msgstr ""
 
-#: templates/company-profile.php:115
+#: templates/company-profile.php:121
 msgid "Company details"
 msgstr ""
 
-#: templates/company-profile.php:118
+#: templates/company-profile.php:124
 msgid "Commercial register"
 msgstr ""
 
-#: templates/company-profile.php:118
+#: templates/company-profile.php:124
 msgid "Checked by the platform"
 msgstr ""
 
-#: templates/company-profile.php:118
+#: templates/company-profile.php:124
 msgid "Not yet checked"
 msgstr ""
 
-#: templates/company-profile.php:119
-#: templates/single-listing.php:215
-msgid "Phone"
+#: templates/company-profile.php:137
+msgid "Service request"
+msgstr ""
+
+#: templates/company-profile.php:137
+msgid "Contact from the company page"
+msgstr ""
+
+#: templates/company-profile.php:138
+msgid "Contact this company"
 msgstr ""
 
 #. Template Name of the theme
@@ -1316,100 +1666,105 @@ msgid "SM — Dashboard"
 msgstr ""
 
 #: templates/dashboard.php:25
-#: templates/dashboard.php:35
-msgid "Overview"
-msgstr ""
-
-#: templates/dashboard.php:26
-msgid "Professional profile"
-msgstr ""
-
-#: templates/dashboard.php:29
-msgid "Portfolio"
-msgstr ""
-
-#: templates/dashboard.php:30
-msgid "Qualifications & verification"
-msgstr ""
-
-#: templates/dashboard.php:36
-msgid "Selling"
-msgstr ""
-
-#: templates/dashboard.php:39
-msgid "Quotations sent"
+msgid "Create a business or engineering account to use the dashboard."
 msgstr ""
 
 #: templates/dashboard.php:40
-msgid "Enquiries received"
+#: templates/dashboard.php:50
+msgid "Overview"
 msgstr ""
 
 #: templates/dashboard.php:41
+msgid "Professional profile"
+msgstr ""
+
+#: templates/dashboard.php:44
+msgid "Portfolio"
+msgstr ""
+
+#: templates/dashboard.php:45
+msgid "Qualifications & verification"
+msgstr ""
+
+#: templates/dashboard.php:51
+msgid "Selling"
+msgstr ""
+
+#: templates/dashboard.php:54
+msgid "Quotations sent"
+msgstr ""
+
+#: templates/dashboard.php:55
+msgid "Enquiries received"
+msgstr ""
+
+#: templates/dashboard.php:56
 #: templates/pricing.php:18
 msgid "Listing statistics"
 msgstr ""
 
-#: templates/dashboard.php:43
+#: templates/dashboard.php:58
 msgid "Buying"
 msgstr ""
 
-#: templates/dashboard.php:45
+#: templates/dashboard.php:60
 msgid "My requests for quotation"
 msgstr ""
 
-#: templates/dashboard.php:46
+#: templates/dashboard.php:61
 msgid "Purchase history"
 msgstr ""
 
-#: templates/dashboard.php:48
-msgid "Company"
-msgstr ""
-
-#: templates/dashboard.php:49
+#: templates/dashboard.php:64
 msgid "Company profile"
 msgstr ""
 
-#: templates/dashboard.php:50
+#: templates/dashboard.php:66
 msgid "Plan & AI credits"
 msgstr ""
 
-#: templates/dashboard.php:72
-msgid "Engineering account"
-msgstr ""
-
-#: templates/dashboard.php:75
-msgid "Dashboard"
-msgstr ""
-
-#: templates/dashboard.php:85
+#: templates/dashboard.php:76
+#: templates/dashboard.php:105
 msgid "Settings"
 msgstr ""
 
-#: templates/dashboard.php:86
-msgid "Sign out"
+#: templates/dashboard.php:77
+msgid "Verify your account"
 msgstr ""
 
-#: templates/dashboard.php:102
+#: templates/dashboard.php:90
+msgid "Engineering account"
+msgstr ""
+
+#: templates/dashboard.php:93
+msgid "Dashboard"
+msgstr ""
+
+#: templates/dashboard.php:125
 msgid "Demo engineering account."
 msgstr ""
 
-#: templates/dashboard.php:102
+#: templates/dashboard.php:125
 msgid "Demo business account."
 msgstr ""
 
-#: templates/dashboard.php:102
+#: templates/dashboard.php:125
 msgid "Switch to the business dashboard"
 msgstr ""
 
-#: templates/dashboard.php:102
+#: templates/dashboard.php:125
 msgid "Switch to the engineer dashboard"
 msgstr ""
 
-#: templates/dashboard.php:116
+#: templates/dashboard.php:129
+msgid "Verify your account with the 6-digit code to publish and answer requests."
+msgstr ""
+
+#: templates/dashboard.php:160
 msgid "This section arrives with its plugin"
 msgstr ""
 
-#: templates/dashboard.php:117
+#: templates/dashboard.php:161
 msgid "The layout is ready; the content will be provided by the corresponding marketplace plugin."
 msgstr ""
 
@@ -1463,10 +1818,6 @@ msgstr ""
 
 #: templates/front-page-template.php:89
 msgid "Featured listings"
-msgstr ""
-
-#: templates/front-page-template.php:90
-msgid "See all"
 msgstr ""
 
 #: templates/front-page-template.php:103
@@ -1858,10 +2209,6 @@ msgstr ""
 msgid "Contact the seller"
 msgstr ""
 
-#: templates/single-listing.php:107
-msgid "Save"
-msgstr ""
-
 #: templates/single-listing.php:108
 msgid "Share"
 msgstr ""
@@ -1934,27 +2281,7 @@ msgstr ""
 msgid "Find an engineer"
 msgstr ""
 
-#: templates/single-listing.php:211
-msgid "Send an enquiry"
-msgstr ""
-
-#: templates/single-listing.php:217
-msgid "Quantity needed"
-msgstr ""
-
-#: templates/single-listing.php:218
-msgid "Message"
-msgstr ""
-
-#: templates/single-listing.php:219
-msgid "Send enquiry"
-msgstr ""
-
-#: templates/single-listing.php:220
-msgid "Enquiries will be delivered by the core plugin (Phase 2)."
-msgstr ""
-
-#: templates/single-listing.php:227
+#: templates/single-listing.php:226
 msgid "Similar listings"
 msgstr ""
 
@@ -1988,6 +2315,10 @@ msgstr ""
 
 #: templates/styleguide.php:45
 msgid "Status and chips"
+msgstr ""
+
+#: templates/styleguide.php:48
+msgid "Quote sent"
 msgstr ""
 
 #: templates/styleguide.php:56

@@ -18,10 +18,12 @@ get_template_part(
 		'lead'    => __( 'Welcome back. Sign in with your email or phone number.', 'sm-marketplace' ),
 		'content' => static function () {
 			?>
-			<form class="sm-form" method="post" action="<?php echo esc_url( apply_filters( 'sm_login_action', wp_login_url( sm_page_url( 'account' ) ) ) ); ?>">
+			<?php sm_theme_notices( true ); ?>
+			<?php sm_theme_form_open( 'login' ); ?>
 				<div class="sm-field">
 					<label for="l-user"><?php esc_html_e( 'Email or phone', 'sm-marketplace' ); ?></label>
-					<input id="l-user" name="log" autocomplete="username" dir="ltr" required>
+					<input id="l-user" name="log" autocomplete="username" dir="ltr" required value="<?php echo esc_attr( sm_theme_old( 'log' ) ); ?>"<?php sm_theme_aria( 'log' ); ?>>
+					<?php sm_theme_error( 'log' ); ?>
 				</div>
 				<div class="sm-field">
 					<label for="l-pass"><?php esc_html_e( 'Password', 'sm-marketplace' ); ?></label>

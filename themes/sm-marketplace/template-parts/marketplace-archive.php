@@ -26,7 +26,7 @@ if ( 'search' === $market && '' === $query['market'] ) {
 	$query['market'] = array( 'products', 'reuse', 'buildings' );
 }
 $result   = sm_theme_listings( $query );
-$layout   = 'list' === sm_theme_query_arg( 'view' ) ? 'list' : 'grid';
+$layout   = 'list' === sm_theme_query_arg( 'display' ) ? 'list' : 'grid';
 $category = sm_theme_query_arg( 'category' );
 $cats     = 'search' === $market ? array() : sm_theme_categories( $market );
 
@@ -72,7 +72,7 @@ if ( $category && isset( $cats[ $category ] ) ) {
 			<div class="sm-toolbar__controls">
 				<button class="sm-btn sm-btn--ghost sm-toolbar__filters" type="button" aria-controls="sm-filters" aria-expanded="false" data-sm-filters-open><?php sm_icon( 'filter' ); ?><?php esc_html_e( 'Filters', 'sm-marketplace' ); ?></button>
 				<form method="get" class="sm-sort">
-					<?php foreach ( array( 'category', 'condition', 'mode', 'wilaya', 'q', 'view', 'lang', 'market' ) as $keep ) : ?>
+					<?php foreach ( array( 'category', 'condition', 'mode', 'wilaya', 'q', 'display', 'market' ) as $keep ) : ?>
 						<?php if ( '' !== sm_theme_query_arg( $keep ) ) : ?><input type="hidden" name="<?php echo esc_attr( $keep ); ?>" value="<?php echo esc_attr( sm_theme_query_arg( $keep ) ); ?>"><?php endif; ?>
 					<?php endforeach; ?>
 					<label class="screen-reader-text" for="sm-sort"><?php esc_html_e( 'Sort by', 'sm-marketplace' ); ?></label>
@@ -84,8 +84,8 @@ if ( $category && isset( $cats[ $category ] ) ) {
 					</select>
 				</form>
 				<div class="sm-viewtoggle" role="group" aria-label="<?php esc_attr_e( 'Display', 'sm-marketplace' ); ?>">
-					<a href="<?php echo esc_url( remove_query_arg( 'view' ) ); ?>" <?php echo 'grid' === $layout ? 'aria-current="true"' : ''; ?>><?php sm_icon( 'grid', '', __( 'Grid', 'sm-marketplace' ) ); ?></a>
-					<a href="<?php echo esc_url( add_query_arg( 'view', 'list' ) ); ?>" <?php echo 'list' === $layout ? 'aria-current="true"' : ''; ?>><?php sm_icon( 'list', '', __( 'List', 'sm-marketplace' ) ); ?></a>
+					<a href="<?php echo esc_url( remove_query_arg( 'display' ) ); ?>" <?php echo 'grid' === $layout ? 'aria-current="true"' : ''; ?>><?php sm_icon( 'grid', '', __( 'Grid', 'sm-marketplace' ) ); ?></a>
+					<a href="<?php echo esc_url( add_query_arg( 'display', 'list' ) ); ?>" <?php echo 'list' === $layout ? 'aria-current="true"' : ''; ?>><?php sm_icon( 'list', '', __( 'List', 'sm-marketplace' ) ); ?></a>
 				</div>
 			</div>
 		</div>

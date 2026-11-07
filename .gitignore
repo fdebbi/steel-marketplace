@@ -1,5 +1,6 @@
-node_modules/
+node_modules
 *.log
 .DS_Store
 visual-test-output/
 *.zip
+__pycache__/

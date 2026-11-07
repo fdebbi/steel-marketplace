@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$item = sm_theme_listing( sm_theme_query_arg( 'id' ) );
+$item = sm_theme_listing( sm_theme_route( 'id' ) );
 if ( ! $item ) {
 	status_header( 404 );
 }
@@ -207,19 +207,18 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 			<?php endif; ?>
 		</section>
 
-		<section class="sm-panel" id="sm-enquiry">
-			<h2 class="sm-panel__title"><?php esc_html_e( 'Send an enquiry', 'sm-marketplace' ); ?></h2>
-			<form class="sm-form" method="post" action="#" data-sm-demo-form>
-				<div class="sm-field sm-field--row">
-					<div><label for="e-name"><?php esc_html_e( 'Full name', 'sm-marketplace' ); ?></label><input id="e-name" name="name" autocomplete="name" required></div>
-					<div><label for="e-phone"><?php esc_html_e( 'Phone', 'sm-marketplace' ); ?></label><input id="e-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" required></div>
-				</div>
-				<div class="sm-field"><label for="e-qty"><?php esc_html_e( 'Quantity needed', 'sm-marketplace' ); ?></label><input id="e-qty" name="qty" inputmode="numeric"></div>
-				<div class="sm-field"><label for="e-msg"><?php esc_html_e( 'Message', 'sm-marketplace' ); ?></label><textarea id="e-msg" name="message" rows="4" dir="auto"></textarea></div>
-				<button class="sm-btn sm-btn--accent" type="submit"><?php sm_icon( 'mail' ); ?><?php esc_html_e( 'Send enquiry', 'sm-marketplace' ); ?></button>
-				<p class="sm-muted"><?php esc_html_e( 'Enquiries will be delivered by the core plugin (Phase 2).', 'sm-marketplace' ); ?></p>
-			</form>
-		</section>
+		<?php
+		sm_component(
+			'enquiry-form',
+			array(
+				'kind'      => 'listing',
+				'module'    => $market,
+				'entity_id' => $item['id'],
+				'company'   => $item['company'],
+				'subject'   => sm_t( $item['title'] ),
+			)
+		);
+		?>
 	</div>
 
 	<?php if ( $similar ) : ?>

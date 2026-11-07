@@ -1,5 +1,15 @@
 # Changelog — sm-marketplace
 
+## 0.2.0 — 2026-11-07 (Phase 2, avec sm-core)
+
+- Branché sur sm-core : vrais comptes, entreprises, annuaire, wilayas (69), notifications.
+- Formulaires réels : inscription, connexion, mot de passe oublié, code de vérification, fiche entreprise / profil ingénieur, paramètres (langue, mot de passe), documents de vérification, demandes (annonce et page entreprise). Erreurs affichées sous chaque champ, saisie conservée.
+- Tableau de bord : nouvelles vues Entreprise, Vérification, Paramètres, Demandes reçues / Demandes clients, Vérifier le compte ; étapes de vérification ; notifications ; publication bloquée pour l'ingénierie et expliquée avant vérification.
+- En-tête connecté : « Mon compte », pastille de notifications ; liens de publication adaptés au type de compte.
+- Adresses propres via sm-core (`/annonce/302/`, `/entreprise/slug/`, `/compte/annonces/`, `/ar/...`), hreflang sur les adresses propres.
+- Le paramètre d'affichage liste/grille devient `?display=list`.
+- Sans sm-core, le thème garde son mode démonstration.
+
 ## 0.1.1 — 2026-11-07
 
 - Cache de page (Hostinger LiteSpeed / CDN) : les pages qui dépendent d'un paramètre d'URL (`?lang=`, `?id=`, `?view=`, filtres) et les pages de compte ne sont plus mises en cache. Corrige des filtres sans effet, une langue erronée ou la mauvaise annonce affichée.
