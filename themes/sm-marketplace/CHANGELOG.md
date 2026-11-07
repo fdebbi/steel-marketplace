@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.3.0 — 2026-11-07 (carte de l'entreprise, avec sm-core 0.2.0)
+
+- Fiche entreprise / profil : carte de positionnement. Le choix de la wilaya ouvre la carte dessus ; on fait glisser le repère (ou on clique sur la carte) jusqu'à l'adresse exacte ; bouton « Utiliser ma position actuelle » (géolocalisation du navigateur, précision affichée) ; bouton « Supprimer la position » ; case « Afficher la carte sur ma page publique ».
+- Repère déplaçable au clavier (flèches, Maj + flèches), messages d'état lus par les lecteurs d'écran, explication en cas de refus de localisation.
+- Page publique de l'entreprise : carte de l'emplacement, liens « Itinéraire » (Google Maps) et « Ouvrir la carte » (OpenStreetMap).
+- Bibliothèque Leaflet 1.9.4 hébergée dans le thème (`assets/vendor/leaflet`, licence BSD-2), chargée seulement sur les pages avec une carte ; fond OpenStreetMap.
+- Icônes `locate` et `navigation`. 24 nouvelles chaînes traduites (fr, ar).
+
 ## 0.2.0 — 2026-11-07 (Phase 2, avec sm-core)
 
 - Branché sur sm-core : vrais comptes, entreprises, annuaire, wilayas (69), notifications.

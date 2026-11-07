@@ -1,5 +1,15 @@
 # Changelog — sm-core
 
+## 0.2.0 — 2026-11-07 (complément Phase 2 : carte)
+
+- Emplacement de l'entreprise sur la carte : colonnes `lat`, `lng`, `map_public` (base v2, migration automatique à la mise à jour).
+- Centre approximatif des 69 wilayas (`data/wilaya-centres.php`, colonnes `lat`/`lng` de `sm_wilayas`) pour ouvrir la carte sur la bonne wilaya ; jamais écrasé s'il est modifié.
+- Validation côté serveur : position numérique, complète et dans les limites de l'Algérie ; refus avec message traduit.
+- Position publique seulement si l'entreprise l'autorise (`location` dans la passerelle thème et l'API ; `null` sinon).
+- API : `PATCH /me/company` accepte `lat`, `lng` (vides = suppression) et `map_public` ; `/reference/wilayas` renvoie `centre`.
+- Passerelle thème : ressources `map` (serveur de tuiles, filtre `sm_map_tiles`) et `wilaya_centres`.
+- 103 tests PHP (+16).
+
 ## 0.1.0 — 2026-11-07 (Phase 2)
 
 - Comptes : entreprises (classe commerciale ou ingénierie fixée à l'inscription), membres, activités multiples, slugs uniques.

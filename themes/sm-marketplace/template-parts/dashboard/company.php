@@ -78,6 +78,18 @@ if ( empty( $account['can_manage'] ) ) {
 			<div><label for="c-commune"><?php esc_html_e( 'Commune', 'sm-marketplace' ); ?></label><input id="c-commune" name="commune" value="<?php echo esc_attr( $old( 'commune' ) ); ?>" dir="auto"></div>
 		</div>
 		<div class="sm-field"><label for="c-address"><?php esc_html_e( 'Address', 'sm-marketplace' ); ?></label><input id="c-address" name="address" value="<?php echo esc_attr( $old( 'address' ) ); ?>" dir="auto"></div>
+		<?php
+		sm_component(
+			'location-map',
+			array(
+				'mode'          => 'picker',
+				'lat'           => $old( 'lat' ),
+				'lng'           => $old( 'lng' ),
+				'map_public'    => sm_theme_old( 'map_public', $e['map_public'] ?? 1 ),
+				'wilaya_select' => '#c-wilaya',
+			)
+		);
+		?>
 		<div class="sm-field sm-field--row sm-field--row3">
 			<div><label for="c-phone"><?php esc_html_e( 'Public phone', 'sm-marketplace' ); ?></label><input id="c-phone" name="phone" type="tel" value="<?php echo esc_attr( $old( 'phone' ) ); ?>" dir="ltr"<?php sm_theme_aria( 'phone' ); ?>><?php sm_theme_error( 'phone' ); ?></div>
 			<div><label for="c-email"><?php esc_html_e( 'Public e-mail', 'sm-marketplace' ); ?></label><input id="c-email" name="email" type="email" value="<?php echo esc_attr( $old( 'email' ) ); ?>" dir="ltr"<?php sm_theme_aria( 'email' ); ?>><?php sm_theme_error( 'email' ); ?></div>

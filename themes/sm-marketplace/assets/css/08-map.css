@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Location map (Leaflet). The canvas is always dir="ltr" so Leaflet's own
+   positioning works; the surrounding controls follow the page direction.
+   ========================================================================== */
+.sm-btn--sm { min-block-size: 40px; padding: 8px 14px; font-size: var(--sm-fs-sm); }
+.sm-map { display: grid; gap: var(--sm-s2); min-inline-size: 0; }
+.sm-map__tools, .sm-map__actions { display: flex; flex-wrap: wrap; gap: var(--sm-s2); }
+.sm-map__canvas {
+	position: relative; z-index: 0;
+	inline-size: 100%; block-size: 320px;
+	border: 1px solid var(--sm-line-strong); border-radius: var(--sm-radius);
+	background: var(--sm-primary-soft); overflow: hidden;
+}
+.sm-map--view .sm-map__canvas { block-size: 260px; }
+@media (min-width: 900px) { .sm-map--picker .sm-map__canvas { block-size: 400px; } }
+.sm-map__canvas:focus-visible { outline: 3px solid var(--sm-accent); outline-offset: 2px; }
+.sm-map__canvas .leaflet-container, .sm-map__canvas.leaflet-container { font: inherit; font-size: var(--sm-fs-xs); }
+.sm-map__canvas .leaflet-control-attribution { font-size: 11px; }
+.sm-map__canvas .leaflet-marker-icon:focus-visible { outline: 3px solid var(--sm-accent); outline-offset: 2px; border-radius: 50%; }
+.sm-map__status { margin: 0; font-size: var(--sm-fs-sm); color: var(--sm-muted); }
+.sm-map__status.is-set { color: var(--sm-accent-ink); font-weight: 600; }
+.sm-map__status.is-error { color: var(--sm-danger); font-weight: 600; }
+.sm-map__status bdi { font-variant-numeric: tabular-nums; }
+.sm-map [data-sm-map-locate][aria-busy="true"] { opacity: .7; cursor: progress; }

@@ -126,6 +126,22 @@ $tabs['about'] = array( __( 'About', 'sm-marketplace' ), 0 );
 				</dl>
 			</div>
 		<?php endif; ?>
+		<?php if ( ! empty( $company['location'] ) ) : ?>
+			<div class="sm-panel">
+				<h2 class="sm-panel__title"><?php esc_html_e( 'Location', 'sm-marketplace' ); ?></h2>
+				<?php
+				sm_component(
+					'location-map',
+					array(
+						'mode'  => 'view',
+						'lat'   => $company['location']['lat'],
+						'lng'   => $company['location']['lng'],
+						'label' => sm_t( $company['name'] ),
+					)
+				);
+				?>
+			</div>
+		<?php endif; ?>
 	</section>
 	<?php
 	sm_component(

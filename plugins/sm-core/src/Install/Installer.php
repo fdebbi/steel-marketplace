@@ -53,6 +53,9 @@ final class Installer {
 				wilaya char(2) NOT NULL DEFAULT '',
 				commune varchar(120) NOT NULL DEFAULT '',
 				address varchar(255) NOT NULL DEFAULT '',
+				lat decimal(10,7) DEFAULT NULL,
+				lng decimal(10,7) DEFAULT NULL,
+				map_public tinyint(1) NOT NULL DEFAULT 1,
 				phone varchar(32) NOT NULL DEFAULT '',
 				email varchar(190) NOT NULL DEFAULT '',
 				website varchar(190) NOT NULL DEFAULT '',
@@ -111,6 +114,8 @@ final class Installer {
 				code char(2) NOT NULL,
 				name_fr varchar(120) NOT NULL,
 				name_ar varchar(120) NOT NULL,
+				lat decimal(10,7) DEFAULT NULL,
+				lng decimal(10,7) DEFAULT NULL,
 				active tinyint(1) NOT NULL DEFAULT 1,
 				PRIMARY KEY  (code)
 			) $charset;",
@@ -216,18 +221,27 @@ final class Installer {
 		update_option( 'sm_core_db_version', SM_CORE_DB_VERSION, false );
 	}
 
-	/** Insert the official wilaya list when missing (never overwrites admin edits). */
+	/**
+	 * Insert the official wilaya list when missing, and fill map centres that are
+	 * still empty (never overwrites admin edits).
+	 */
 	public static function seed_wilayas() {
 		global $wpdb;
-		$table = $wpdb->prefix . 'sm_wilayas';
-		$rows  = require SM_CORE_DIR . '/data/wilayas.php';
+		$table   = $wpdb->prefix . 'sm_wilayas';
+		$rows    = require SM_CORE_DIR . '/data/wilayas.php';
+		$centres = require SM_CORE_DIR . '/data/wilaya-centres.php';
 		foreach ( $rows as $code => list( $fr, $ar ) ) {
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$exists = $wpdb->get_var( $wpdb->prepare( "SELECT code FROM {$table} WHERE code = %s", $code ) );
-			if ( ! $exists ) {
+			$row = $wpdb->get_row( $wpdb->prepare( "SELECT code, lat FROM {$table} WHERE code = %s", $code ) );
+			if ( ! $row ) {
 				$wpdb->insert( $table, array( 'code' => $code, 'name_fr' => $fr, 'name_ar' => $ar, 'active' => 1 ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			}
+			if ( isset( $centres[ $code ] ) && ( ! $row || null === $row->lat ) ) {
+				// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+				$wpdb->update( $table, array( 'lat' => $centres[ $code ][0], 'lng' => $centres[ $code ][1] ), array( 'code' => $code ) );
+			}
 		}
+		wp_cache_delete( 'sm_wilayas', 'sm' );
 	}
 
 	public static function roles() {

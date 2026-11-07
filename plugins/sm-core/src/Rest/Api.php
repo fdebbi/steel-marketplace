@@ -99,8 +99,9 @@ final class Api {
 
 	public static function wilayas() {
 		$out = array();
+		$centres = Wilayas::centres();
 		foreach ( Wilayas::all() as $code => $names ) {
-			$out[] = array( 'code' => (string) $code, 'name' => $names[ Language::current() ] ?? $names['fr'], 'names' => $names );
+			$out[] = array( 'code' => (string) $code, 'name' => $names[ Language::current() ] ?? $names['fr'], 'names' => $names, 'centre' => $centres[ $code ] ?? null );
 		}
 		return $out;
 	}
@@ -131,6 +132,7 @@ final class Api {
 			'verification'  => (int) $c->verification_level,
 			'since'         => substr( $c->created_at, 0, 4 ),
 			'profile'       => $c->profile,
+			'location'      => Companies::public_location( $c ),
 			'url'           => sm_url( 'company', array( 'c' => $c->slug ) ),
 		);
 	}
@@ -193,7 +195,17 @@ final class Api {
 		if ( isset( $allowed['wilaya'] ) && ! Wilayas::exists( $allowed['wilaya'] ) ) {
 			return new \WP_Error( 'sm_invalid_wilaya', __( 'Choose your wilaya.', 'sm-core' ), array( 'status' => 400 ) );
 		}
-		Companies::update_profile( $company->id, $allowed );
+		if ( array_key_exists( 'lat', (array) $params ) || array_key_exists( 'lng', (array) $params ) ) {
+			$allowed['location'] = array( 'lat' => $params['lat'] ?? '', 'lng' => $params['lng'] ?? '' );
+		}
+		if ( isset( $params['map_public'] ) ) {
+			$allowed['map_public'] = (bool) $params['map_public'];
+		}
+		$saved = Companies::update_profile( $company->id, $allowed );
+		if ( is_wp_error( $saved ) ) {
+			$saved->add_data( array( 'status' => 400 ) );
+			return $saved;
+		}
 		if ( isset( $params['activities'] ) && 'commercial' === $company->account_class ) {
 			Companies::set_activities( $company->id, (array) $params['activities'] );
 		}

@@ -22,6 +22,8 @@ add_filter( 'sm_theme_data_listings', function ( $result, $args ) {
 | `services` | kind (fabrication, engineering), company | tableau |
 | `categories` | market | `slug => [fr, ar]` |
 | `wilayas` | — | `code => [fr, ar]` |
+| `wilaya_centres` | — | `code => [lat, lng]` (ouverture de la carte) |
+| `map` | — | `tiles`, `attribution`, `max_zoom`, `bounds` (lat_min, lat_max, lng_min, lng_max), `country` [lat, lng, zoom] |
 | `account` | — | compte connecté : class, company, plan, usage, kpis |
 | `stats`, `plans` | — | chiffres d'accueil, abonnements (prix fournis par sm-subscriptions) |
 
@@ -46,7 +48,7 @@ Un seul enregistrement par annonce, toutes langues comprises : les champs textue
 
 | Ressource | Retour |
 | --- | --- |
-| `account` | `real`, `class`, `company` (forme entreprise), `edit` (champs modifiables, numéros légaux pour le titulaire), `user`, `user_email`, `user_phone`, `role`, `can_manage`, `language`, `caps` (carte des droits), `unread`, `kpis` |
+| `account` | `real`, `class`, `company` (forme entreprise, avec `location` {lat, lng} ou `null`), `edit` (champs modifiables dont `lat`, `lng`, `map_public`, numéros légaux pour le titulaire), `user`, `user_email`, `user_phone`, `role`, `can_manage`, `language`, `caps` (carte des droits), `unread`, `kpis` |
 | `enquiries` (`box` = received \| sent) | `id, kind, name, phone, email, quantity, subject, message, status, date` |
 | `notifications` | `id, title, text, link, read, date` |
 | `verification` | `level, target_level, channel, code_pending, sent_message, documents, request{status,note,date,files}, legal` |

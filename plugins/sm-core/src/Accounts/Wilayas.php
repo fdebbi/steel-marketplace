@@ -21,7 +21,7 @@ final class Wilayas {
 			$rows = wp_cache_get( 'sm_wilayas', 'sm' );
 			if ( false === $rows ) {
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery
-				$rows = $wpdb->get_results( 'SELECT code, name_fr, name_ar, active FROM ' . sm_table( 'wilayas' ) . ' ORDER BY code' );
+				$rows = $wpdb->get_results( 'SELECT code, name_fr, name_ar, lat, lng, active FROM ' . sm_table( 'wilayas' ) . ' ORDER BY code' );
 				wp_cache_set( 'sm_wilayas', $rows, 'sm', HOUR_IN_SECONDS );
 			}
 			self::$all = (array) $rows;
@@ -30,6 +30,21 @@ final class Wilayas {
 		foreach ( self::$all as $r ) {
 			if ( $include_inactive || (int) $r->active ) {
 				$out[ $r->code ] = array( 'fr' => $r->name_fr, 'ar' => $r->name_ar );
+			}
+		}
+		return $out;
+	}
+
+	/**
+	 * Map centre of each wilaya: code => [lat, lng] (floats). Approximate; used
+	 * only to open the location map on the right area.
+	 */
+	public static function centres() {
+		self::all( true );
+		$out = array();
+		foreach ( self::$all as $r ) {
+			if ( null !== $r->lat && null !== $r->lng && '' !== $r->lat ) {
+				$out[ $r->code ] = array( round( (float) $r->lat, 4 ), round( (float) $r->lng, 4 ) );
 			}
 		}
 		return $out;

@@ -26,6 +26,17 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Documents de vérification | Stockés au-dessus du dossier public quand c'est possible | Inaccessibles par URL quel que soit le serveur |
 | Contact | Compte obligatoire pour contacter un vendeur ou demander une prestation (conforme Phase 0) ; demandes sur annonces de démonstration envoyées aux modérateurs | |
 
+## 7 novembre 2026 — carte de l'entreprise (remarque n° 2)
+
+| Sujet | Décision | Raison |
+| --- | --- | --- |
+| Fournisseur de carte | OpenStreetMap avec la bibliothèque Leaflet hébergée dans le thème | Gratuit, sans clé ni compte de facturation (Google Maps exige une carte bancaire et facture au-delà d'un quota). Changeable plus tard par le filtre `sm_map_tiles` |
+| Itinéraire | Lien « Itinéraire » vers Google Maps (ouvre l'application sur téléphone) | Pas d'API, pas de clé ; usage le plus courant en Algérie |
+| Ouverture de la carte | Centre approximatif du chef-lieu de chaque wilaya, stocké en base et modifiable | Sert uniquement à ouvrir la carte au bon endroit ; la position exacte est placée par l'entreprise |
+| Contrôle | Position refusée hors des limites de l'Algérie ; changement de wilaya = repère à replacer | Évite les positions erronées ou falsifiées |
+| Confidentialité | Case « Afficher la carte sur ma page publique » (cochée par défaut) | Certaines entreprises (domicile, dépôt) peuvent préférer ne pas publier l'adresse exacte |
+| Géolocalisation | « Utiliser ma position actuelle » ne fonctionne qu'en https (cas de Hostinger) ; la précision est affichée et le repère reste ajustable | Le GPS d'un ordinateur de bureau peut être approximatif |
+
 ## 7 novembre 2026 — cache
 
 - Le cache de page Hostinger ignore les paramètres d'URL : le thème 0.1.1 marque comme non cachables les pages dépendant d'un paramètre et les pages de compte. Solution définitive en Phase 2 : adresses sans paramètres (`/ar/...`, `/annonce/302/`).

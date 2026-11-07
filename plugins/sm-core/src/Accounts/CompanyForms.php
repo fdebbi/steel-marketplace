@@ -45,6 +45,11 @@ final class CompanyForms {
 			$errors['email'] = __( 'Enter a valid e-mail address.', 'sm-core' );
 		}
 
+		$location = Companies::parse_location( Forms::post( 'lat' ), Forms::post( 'lng' ) );
+		if ( is_wp_error( $location ) ) {
+			$errors['location'] = $location->get_error_message();
+		}
+
 		$activities = array();
 		if ( 'commercial' === $company->account_class ) {
 			$activities = array_values( array_intersect( (array) Forms::post( 'activities', array() ), Companies::activities( 'commercial' ) ) );
@@ -62,6 +67,8 @@ final class CompanyForms {
 			'wilaya'   => Forms::post( 'wilaya' ),
 			'commune'  => Forms::post( 'commune' ),
 			'address'  => Forms::post( 'address' ),
+			'location' => $location,
+			'map_public' => '1' === Forms::post( 'map_public' ),
 			'phone'    => $phone,
 			'email'    => $email,
 			'website'  => Forms::post( 'website' ),

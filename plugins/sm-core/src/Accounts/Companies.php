@@ -220,6 +220,40 @@ final class Companies {
 		return user_can( $user_id, 'sm_moderate' ) || in_array( self::member_role( $company_id, $user_id ), array( 'owner', 'manager' ), true );
 	}
 
+	/** Bounding box of Algeria (with a small margin), for map positions. */
+	const BOUNDS = array( 'lat_min' => 18.9, 'lat_max' => 37.2, 'lng_min' => -8.7, 'lng_max' => 12.0 );
+
+	/**
+	 * Normalise a map position.
+	 *
+	 * @return array{lat: float, lng: float}|null|\WP_Error  null when both are empty (no position).
+	 */
+	public static function parse_location( $lat, $lng ) {
+		$lat = trim( (string) $lat );
+		$lng = trim( (string) $lng );
+		if ( '' === $lat && '' === $lng ) {
+			return null;
+		}
+		if ( ! is_numeric( $lat ) || ! is_numeric( $lng ) ) {
+			return new \WP_Error( 'sm_location', __( 'The map position is not valid. Place the marker again.', 'sm-core' ) );
+		}
+		$lat = round( (float) $lat, 6 );
+		$lng = round( (float) $lng, 6 );
+		$b   = self::BOUNDS;
+		if ( $lat < $b['lat_min'] || $lat > $b['lat_max'] || $lng < $b['lng_min'] || $lng > $b['lng_max'] ) {
+			return new \WP_Error( 'sm_location', __( 'The map position must be in Algeria.', 'sm-core' ) );
+		}
+		return array( 'lat' => $lat, 'lng' => $lng );
+	}
+
+	/** Public map position of a company, or null (none, or hidden by the company). */
+	public static function public_location( $company ) {
+		if ( ! $company || null === $company->lat || null === $company->lng || '' === (string) $company->lat || ! (int) $company->map_public ) {
+			return null;
+		}
+		return array( 'lat' => round( (float) $company->lat, 6 ), 'lng' => round( (float) $company->lng, 6 ) );
+	}
+
 	/** Fields a company may edit itself (class, slug, level and status are not among them). */
 	public static function update_profile( $company_id, array $data ) {
 		global $wpdb;
@@ -239,6 +273,17 @@ final class Companies {
 			if ( isset( $data[ $f ] ) ) {
 				$fields[ $f ] = sanitize_textarea_field( $data[ $f ] );
 			}
+		}
+		if ( array_key_exists( 'location', $data ) ) {
+			$loc = is_array( $data['location'] ) ? self::parse_location( $data['location']['lat'] ?? '', $data['location']['lng'] ?? '' ) : null;
+			if ( is_wp_error( $loc ) ) {
+				return $loc;
+			}
+			$fields['lat'] = $loc ? $loc['lat'] : null;
+			$fields['lng'] = $loc ? $loc['lng'] : null;
+		}
+		if ( isset( $data['map_public'] ) ) {
+			$fields['map_public'] = $data['map_public'] ? 1 : 0;
 		}
 		if ( isset( $data['logo_id'] ) ) {
 			$fields['logo_id'] = absint( $data['logo_id'] );

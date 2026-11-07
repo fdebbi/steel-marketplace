@@ -48,6 +48,55 @@ function sm_theme_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'sm_theme_enqueue_assets', 20 );
 
 /**
+ * Location map: self-hosted Leaflet + map.js, loaded only on pages that show a
+ * map (called by the location-map component). Map data (wilaya centres, tile
+ * server, bounds) comes from sm-core through the data contract.
+ */
+function sm_theme_enqueue_map() {
+	static $done = false;
+	if ( $done ) {
+		return;
+	}
+	$done = true;
+	$base = SM_THEME_URI . '/assets/vendor/leaflet';
+	wp_enqueue_style( 'leaflet', $base . '/leaflet.css', array(), '1.9.4' );
+	wp_enqueue_script( 'leaflet', $base . '/leaflet.js', array(), '1.9.4', array( 'in_footer' => true ) );
+	wp_enqueue_script( 'sm-map', SM_THEME_URI . '/assets/js/map.js', array( 'leaflet' ), sm_theme_asset_version( 'assets/js/map.js' ), array( 'in_footer' => true ) );
+
+	$map = (array) sm_theme_data( 'map' );
+	wp_localize_script(
+		'sm-map',
+		'smMap',
+		array(
+			'imagePath'   => $base . '/images/',
+			'tiles'       => $map['tiles'] ?? 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+			'attribution' => $map['attribution'] ?? '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+			'maxZoom'     => (int) ( $map['max_zoom'] ?? 19 ),
+			'bounds'      => $map['bounds'] ?? null,
+			'country'     => $map['country'] ?? null,
+			'centres'     => (object) sm_theme_data( 'wilaya_centres' ),
+			'i18n'        => array(
+				'marker'        => __( 'Company position. Drag it, or use the arrow keys.', 'sm-marketplace' ),
+				'none'          => __( 'No position yet.', 'sm-marketplace' ),
+				'drag'          => __( 'Drag the marker to your exact address, or click the map.', 'sm-marketplace' ),
+				'set'           => __( 'Position placed:', 'sm-marketplace' ),
+				'located'       => __( 'Current location found:', 'sm-marketplace' ),
+				/* translators: %d: accuracy in metres. */
+				'approx'        => __( 'Approximate (about %d m): drag the marker to correct it.', 'sm-marketplace' ),
+				'locating'      => __( 'Looking for your location…', 'sm-marketplace' ),
+				'denied'        => __( 'Location access was refused. Allow it in your browser, or place the marker by hand.', 'sm-marketplace' ),
+				'unavailable'   => __( 'Your location could not be found. Place the marker by hand.', 'sm-marketplace' ),
+				'timeout'       => __( 'Finding your location took too long. Try again or place the marker by hand.', 'sm-marketplace' ),
+				'insecure'      => __( 'Your browser only shares your location on a secure (https) site. Place the marker by hand.', 'sm-marketplace' ),
+				'outside'       => __( 'This position is outside Algeria. Place the marker on your address.', 'sm-marketplace' ),
+				'wilayaChanged' => __( 'Wilaya changed: place the marker again on your address.', 'sm-marketplace' ),
+				'removed'       => __( 'Position removed. It will be deleted when you save.', 'sm-marketplace' ),
+			),
+		)
+	);
+}
+
+/**
  * WordPress normally builds the RTL file name as main-rtl.css: make sure that file is used.
  */
 function sm_theme_rtl_style_src( $src, $handle ) {

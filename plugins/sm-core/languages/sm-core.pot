@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Core 0.1.0\n"
+"Project-Id-Version: SM Core 0.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-core\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-07T11:41:18+00:00\n"
+"POT-Creation-Date: 2026-11-07T12:35:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-core\n"
@@ -75,13 +75,21 @@ msgid "Engineer / engineering office"
 msgstr ""
 
 #: src/Accounts/Companies.php:83
-#: src/Accounts/CompanyForms.php:52
+#: src/Accounts/CompanyForms.php:57
 #: src/Accounts/Registration.php:103
 msgid "Choose at least one business activity."
 msgstr ""
 
 #: src/Accounts/Companies.php:105
 msgid "The account could not be saved. Please try again."
+msgstr ""
+
+#: src/Accounts/Companies.php:238
+msgid "The map position is not valid. Place the marker again."
+msgstr ""
+
+#: src/Accounts/Companies.php:244
+msgid "The map position must be in Algeria."
 msgstr ""
 
 #: src/Accounts/CompanyForms.php:28
@@ -100,7 +108,7 @@ msgstr ""
 
 #: src/Accounts/CompanyForms.php:41
 #: src/Accounts/Registration.php:118
-#: src/Rest/Api.php:194
+#: src/Rest/Api.php:196
 msgid "Choose your wilaya."
 msgstr ""
 
@@ -109,25 +117,25 @@ msgstr ""
 msgid "Enter a valid e-mail address."
 msgstr ""
 
-#: src/Accounts/CompanyForms.php:87
+#: src/Accounts/CompanyForms.php:94
 msgid "Company profile saved."
 msgstr ""
 
-#: src/Accounts/CompanyForms.php:98
+#: src/Accounts/CompanyForms.php:105
 #: src/Accounts/Registration.php:113
 msgid "Enter your full name."
 msgstr ""
 
-#: src/Accounts/CompanyForms.php:111
+#: src/Accounts/CompanyForms.php:118
 msgid "Your current password is not correct."
 msgstr ""
 
-#: src/Accounts/CompanyForms.php:113
+#: src/Accounts/CompanyForms.php:120
 #: src/Accounts/Registration.php:138
 msgid "The password must have at least 10 characters."
 msgstr ""
 
-#: src/Accounts/CompanyForms.php:131
+#: src/Accounts/CompanyForms.php:138
 msgid "Settings saved."
 msgstr ""
 
@@ -365,7 +373,7 @@ msgid "No company yet."
 msgstr ""
 
 #: src/Admin/Admin.php:163
-#: src/Rest/Api.php:158
+#: src/Rest/Api.php:160
 msgid "Company not found."
 msgstr ""
 

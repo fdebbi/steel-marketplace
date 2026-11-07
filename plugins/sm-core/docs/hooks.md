@@ -26,8 +26,9 @@
 | `sm_listing_owner( 0, $module, $entity_id )` | Extensions d'annonces : ID de l'entreprise propriétaire (destinataire des demandes) |
 | `sm_notification_types` | Ajouter un type : `subject`, `body`, `link` (callables), `email` (bool) |
 | `sm_sms_provider` | Objet avec `send( $phone, $text )` → `true \| WP_Error` ; active le canal SMS |
+| `sm_map_tiles( [tiles, attribution, max_zoom, bounds, country] )` | Changer de serveur de tuiles (ex. fournisseur payant si le trafic augmente) |
 | `sm_languages`, `sm_dashboard_view_slugs`, `sm_private_dir` | Langues, slugs de vues, dossier privé |
-| Passerelle thème : `sm_theme_data_{company,companies,wilayas,account,enquiries,notifications,verification}`, `sm_theme_notices`, `sm_form_old`, `sm_form_action`, action `sm_form_fields` | Thème sm-marketplace |
+| Passerelle thème : `sm_theme_data_{company,companies,wilayas,wilaya_centres,map,account,enquiries,notifications,verification}`, `sm_theme_notices`, `sm_form_old`, `sm_form_action`, action `sm_form_fields` | Thème sm-marketplace |
 
 ## Actions
 

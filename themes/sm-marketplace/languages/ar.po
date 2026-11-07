@@ -256,6 +256,68 @@ msgstr "تم الحفظ"
 msgid "Removed from saved listings"
 msgstr "أزيل من الإعلانات المحفوظة"
 
+#: inc/assets.php:79
+msgid "Company position. Drag it, or use the arrow keys."
+msgstr "موقع المؤسسة. اسحبه أو استعمل أسهم لوحة المفاتيح."
+
+#: inc/assets.php:80 template-parts/components/location-map.php:59
+msgid "No position yet."
+msgstr "لم يُحدَّد أي موقع بعد."
+
+#: inc/assets.php:81
+msgid "Drag the marker to your exact address, or click the map."
+msgstr "اسحب العلامة إلى عنوانك بالضبط، أو انقر على الخريطة."
+
+#: inc/assets.php:82
+msgid "Position placed:"
+msgstr "تم تحديد الموقع:"
+
+#: inc/assets.php:83
+msgid "Current location found:"
+msgstr "تم العثور على موقعك الحالي:"
+
+#. translators: %d: accuracy in metres.
+#: inc/assets.php:85
+msgid "Approximate (about %d m): drag the marker to correct it."
+msgstr "تقريبي (حوالي %d م): اسحب العلامة لتصحيحه."
+
+#: inc/assets.php:86
+msgid "Looking for your location…"
+msgstr "جارٍ البحث عن موقعك…"
+
+#: inc/assets.php:87
+msgid ""
+"Location access was refused. Allow it in your browser, or place the marker "
+"by hand."
+msgstr "تم رفض الوصول إلى الموقع. اسمح به في متصفحك، أو ضع العلامة يدويا."
+
+#: inc/assets.php:88
+msgid "Your location could not be found. Place the marker by hand."
+msgstr "تعذّر العثور على موقعك. ضع العلامة يدويا."
+
+#: inc/assets.php:89
+msgid ""
+"Finding your location took too long. Try again or place the marker by hand."
+msgstr "استغرق البحث عن موقعك وقتا طويلا. أعد المحاولة أو ضع العلامة يدويا."
+
+#: inc/assets.php:90
+msgid ""
+"Your browser only shares your location on a secure (https) site. Place the "
+"marker by hand."
+msgstr "لا يشارك متصفحك الموقع إلا على موقع آمن (https). ضع العلامة يدويا."
+
+#: inc/assets.php:91
+msgid "This position is outside Algeria. Place the marker on your address."
+msgstr "هذا الموقع خارج الجزائر. ضع العلامة على عنوانك."
+
+#: inc/assets.php:92
+msgid "Wilaya changed: place the marker again on your address."
+msgstr "تم تغيير الولاية: ضع العلامة من جديد على عنوانك."
+
+#: inc/assets.php:93
+msgid "Position removed. It will be deleted when you save."
+msgstr "تمت إزالة الموقع. سيُحذف عند الحفظ."
+
 #: inc/customizer.php:22
 msgid "Primary colour"
 msgstr "اللون الأساسي"
@@ -667,6 +729,50 @@ msgstr[3] "عرض %s نتائج"
 msgstr[4] "عرض %s نتيجة"
 msgstr[5] "عرض %s نتيجة"
 
+#: template-parts/components/location-map.php:38
+msgid "Map of the company location"
+msgstr "خريطة موقع المؤسسة"
+
+#: template-parts/components/location-map.php:40
+msgid "Directions"
+msgstr "الاتجاهات"
+
+#: template-parts/components/location-map.php:41
+msgid "Open the map"
+msgstr "فتح الخريطة"
+
+#: template-parts/components/location-map.php:51
+msgid "Position on the map"
+msgstr "الموقع على الخريطة"
+
+#: template-parts/components/location-map.php:52
+msgid ""
+"Choose the wilaya: the map opens on it. Then drag the marker (or click the "
+"map) to your exact address, or use your current location if you are on site."
+msgstr ""
+"اختر الولاية: تُفتح الخريطة عليها. ثم اسحب العلامة (أو انقر على الخريطة) إلى"
+" عنوانك بالضبط، أو استعمل موقعك الحالي إن كنت في عين المكان."
+
+#: template-parts/components/location-map.php:54
+msgid "Use my current location"
+msgstr "استعمال موقعي الحالي"
+
+#: template-parts/components/location-map.php:55
+msgid "Remove the position"
+msgstr "حذف الموقع"
+
+#: template-parts/components/location-map.php:58
+msgid "Enable JavaScript to place your company on the map."
+msgstr "فعّل JavaScript لتحديد موقع مؤسستك على الخريطة."
+
+#: template-parts/components/location-map.php:59
+msgid "Position saved. Drag the marker to correct it."
+msgstr "الموقع محفوظ. اسحب العلامة لتصحيحه."
+
+#: template-parts/components/location-map.php:63
+msgid "Show the map on my public page"
+msgstr "عرض الخريطة في صفحتي العامة"
+
 #: template-parts/components/price-block.php:15
 msgid "Price"
 msgstr "السعر"
@@ -807,23 +913,23 @@ msgstr "البلدية"
 msgid "Address"
 msgstr "العنوان"
 
-#: template-parts/dashboard/company.php:82
+#: template-parts/dashboard/company.php:94
 msgid "Public phone"
 msgstr "الهاتف العمومي"
 
-#: template-parts/dashboard/company.php:83
+#: template-parts/dashboard/company.php:95
 msgid "Public e-mail"
 msgstr "البريد الإلكتروني العمومي"
 
-#: template-parts/dashboard/company.php:84
+#: template-parts/dashboard/company.php:96
 msgid "Website"
 msgstr "الموقع الإلكتروني"
 
-#: template-parts/dashboard/company.php:90
+#: template-parts/dashboard/company.php:102
 msgid "Registration numbers"
 msgstr "أرقام التسجيل"
 
-#: template-parts/dashboard/company.php:91
+#: template-parts/dashboard/company.php:103
 msgid ""
 "Stored encrypted and never shown publicly. Only the platform team sees them "
 "during verification."
@@ -831,16 +937,16 @@ msgstr ""
 "تُخزَّن مشفرة ولا تُعرض للعموم أبدا. لا يطلع عليها إلا فريق المنصة عند "
 "التوثيق."
 
-#: template-parts/dashboard/company.php:93
+#: template-parts/dashboard/company.php:105
 #: template-parts/dashboard/verification.php:41
 msgid "RC number"
 msgstr "رقم السجل التجاري"
 
-#: template-parts/dashboard/company.php:101
+#: template-parts/dashboard/company.php:113
 msgid "View public page"
 msgstr "عرض الصفحة العمومية"
 
-#: template-parts/dashboard/company.php:102
+#: template-parts/dashboard/company.php:114
 #: template-parts/dashboard/settings.php:43 templates/single-listing.php:107
 msgid "Save"
 msgstr "حفظ"
@@ -1594,7 +1700,7 @@ msgstr "نبذة"
 msgid "Active since %s"
 msgstr "نشطة منذ %s"
 
-#: templates/company-profile.php:66 templates/company-profile.php:138
+#: templates/company-profile.php:66 templates/company-profile.php:154
 msgid "Request a service"
 msgstr "طلب خدمة"
 
@@ -1630,15 +1736,19 @@ msgstr "مراقب من طرف المنصة"
 msgid "Not yet checked"
 msgstr "لم يراقب بعد"
 
-#: templates/company-profile.php:137
+#: templates/company-profile.php:131 templates/single-listing.php:59
+msgid "Location"
+msgstr "الموقع"
+
+#: templates/company-profile.php:153
 msgid "Service request"
 msgstr "طلب خدمة"
 
-#: templates/company-profile.php:137
+#: templates/company-profile.php:153
 msgid "Contact from the company page"
 msgstr "تواصل من صفحة المؤسسة"
 
-#: templates/company-profile.php:138
+#: templates/company-profile.php:154
 msgid "Contact this company"
 msgstr "التواصل مع هذه المؤسسة"
 
@@ -2232,10 +2342,6 @@ msgstr "التشطيب"
 #: templates/single-listing.php:58
 msgid "Weight source"
 msgstr "مصدر الوزن"
-
-#: templates/single-listing.php:59
-msgid "Location"
-msgstr "الموقع"
 
 #. translators: %d: photo number.
 #: templates/single-listing.php:79

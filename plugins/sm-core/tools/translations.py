@@ -178,5 +178,7 @@ T = {
 "Link expired.": ("Lien expiré.", "انتهت صلاحية الرابط."),
 "Document not found.": ("Document introuvable.", "الوثيقة غير موجودة."),
 "You are not allowed to view this document.": ("Vous n’êtes pas autorisé à consulter ce document.", "غير مسموح لك بالاطلاع على هذه الوثيقة."),
+"The map position is not valid. Place the marker again.": ("La position sur la carte n’est pas valide. Replacez le repère.", "الموقع على الخريطة غير صالح. ضع العلامة من جديد."),
+"The map position must be in Algeria.": ("La position sur la carte doit se trouver en Algérie.", "يجب أن يكون الموقع على الخريطة داخل الجزائر."),
 }
 P = {}

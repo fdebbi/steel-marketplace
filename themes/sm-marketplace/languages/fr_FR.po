@@ -259,6 +259,80 @@ msgstr "Enregistrée"
 msgid "Removed from saved listings"
 msgstr "Retirée des annonces enregistrées"
 
+#: inc/assets.php:79
+msgid "Company position. Drag it, or use the arrow keys."
+msgstr ""
+"Position de l’entreprise. Faites-la glisser ou utilisez les flèches du "
+"clavier."
+
+#: inc/assets.php:80 template-parts/components/location-map.php:59
+msgid "No position yet."
+msgstr "Aucune position pour le moment."
+
+#: inc/assets.php:81
+msgid "Drag the marker to your exact address, or click the map."
+msgstr ""
+"Faites glisser le repère jusqu’à votre adresse exacte, ou cliquez sur la "
+"carte."
+
+#: inc/assets.php:82
+msgid "Position placed:"
+msgstr "Position placée :"
+
+#: inc/assets.php:83
+msgid "Current location found:"
+msgstr "Position actuelle trouvée :"
+
+#. translators: %d: accuracy in metres.
+#: inc/assets.php:85
+msgid "Approximate (about %d m): drag the marker to correct it."
+msgstr ""
+"Approximative (environ %d m) : faites glisser le repère pour la corriger."
+
+#: inc/assets.php:86
+msgid "Looking for your location…"
+msgstr "Recherche de votre position…"
+
+#: inc/assets.php:87
+msgid ""
+"Location access was refused. Allow it in your browser, or place the marker "
+"by hand."
+msgstr ""
+"L’accès à la position a été refusé. Autorisez-le dans votre navigateur, ou "
+"placez le repère à la main."
+
+#: inc/assets.php:88
+msgid "Your location could not be found. Place the marker by hand."
+msgstr "Votre position est introuvable. Placez le repère à la main."
+
+#: inc/assets.php:89
+msgid ""
+"Finding your location took too long. Try again or place the marker by hand."
+msgstr ""
+"La recherche de votre position a pris trop de temps. Réessayez ou placez le "
+"repère à la main."
+
+#: inc/assets.php:90
+msgid ""
+"Your browser only shares your location on a secure (https) site. Place the "
+"marker by hand."
+msgstr ""
+"Votre navigateur ne partage la position que sur un site sécurisé (https). "
+"Placez le repère à la main."
+
+#: inc/assets.php:91
+msgid "This position is outside Algeria. Place the marker on your address."
+msgstr ""
+"Cette position est hors d’Algérie. Placez le repère sur votre adresse."
+
+#: inc/assets.php:92
+msgid "Wilaya changed: place the marker again on your address."
+msgstr "Wilaya modifiée : replacez le repère sur votre adresse."
+
+#: inc/assets.php:93
+msgid "Position removed. It will be deleted when you save."
+msgstr "Position retirée. Elle sera supprimée à l’enregistrement."
+
 #: inc/customizer.php:22
 msgid "Primary colour"
 msgstr "Couleur principale"
@@ -668,6 +742,51 @@ msgid_plural "Show %s results"
 msgstr[0] "Afficher %s résultat"
 msgstr[1] "Afficher %s résultats"
 
+#: template-parts/components/location-map.php:38
+msgid "Map of the company location"
+msgstr "Carte de l’emplacement de l’entreprise"
+
+#: template-parts/components/location-map.php:40
+msgid "Directions"
+msgstr "Itinéraire"
+
+#: template-parts/components/location-map.php:41
+msgid "Open the map"
+msgstr "Ouvrir la carte"
+
+#: template-parts/components/location-map.php:51
+msgid "Position on the map"
+msgstr "Position sur la carte"
+
+#: template-parts/components/location-map.php:52
+msgid ""
+"Choose the wilaya: the map opens on it. Then drag the marker (or click the "
+"map) to your exact address, or use your current location if you are on site."
+msgstr ""
+"Choisissez la wilaya : la carte s’ouvre dessus. Faites ensuite glisser le "
+"repère (ou cliquez sur la carte) jusqu’à votre adresse exacte, ou utilisez "
+"votre position actuelle si vous êtes sur place."
+
+#: template-parts/components/location-map.php:54
+msgid "Use my current location"
+msgstr "Utiliser ma position actuelle"
+
+#: template-parts/components/location-map.php:55
+msgid "Remove the position"
+msgstr "Supprimer la position"
+
+#: template-parts/components/location-map.php:58
+msgid "Enable JavaScript to place your company on the map."
+msgstr "Activez JavaScript pour placer votre entreprise sur la carte."
+
+#: template-parts/components/location-map.php:59
+msgid "Position saved. Drag the marker to correct it."
+msgstr "Position enregistrée. Faites glisser le repère pour la corriger."
+
+#: template-parts/components/location-map.php:63
+msgid "Show the map on my public page"
+msgstr "Afficher la carte sur ma page publique"
+
 #: template-parts/components/price-block.php:15
 msgid "Price"
 msgstr "Prix"
@@ -813,23 +932,23 @@ msgstr "Commune"
 msgid "Address"
 msgstr "Adresse"
 
-#: template-parts/dashboard/company.php:82
+#: template-parts/dashboard/company.php:94
 msgid "Public phone"
 msgstr "Téléphone public"
 
-#: template-parts/dashboard/company.php:83
+#: template-parts/dashboard/company.php:95
 msgid "Public e-mail"
 msgstr "E-mail public"
 
-#: template-parts/dashboard/company.php:84
+#: template-parts/dashboard/company.php:96
 msgid "Website"
 msgstr "Site web"
 
-#: template-parts/dashboard/company.php:90
+#: template-parts/dashboard/company.php:102
 msgid "Registration numbers"
 msgstr "Numéros d’immatriculation"
 
-#: template-parts/dashboard/company.php:91
+#: template-parts/dashboard/company.php:103
 msgid ""
 "Stored encrypted and never shown publicly. Only the platform team sees them "
 "during verification."
@@ -837,16 +956,16 @@ msgstr ""
 "Stockés chiffrés et jamais affichés publiquement. Seule l’équipe de la "
 "plateforme les voit lors de la vérification."
 
-#: template-parts/dashboard/company.php:93
+#: template-parts/dashboard/company.php:105
 #: template-parts/dashboard/verification.php:41
 msgid "RC number"
 msgstr "Numéro RC"
 
-#: template-parts/dashboard/company.php:101
+#: template-parts/dashboard/company.php:113
 msgid "View public page"
 msgstr "Voir la page publique"
 
-#: template-parts/dashboard/company.php:102
+#: template-parts/dashboard/company.php:114
 #: template-parts/dashboard/settings.php:43 templates/single-listing.php:107
 msgid "Save"
 msgstr "Enregistrer"
@@ -1616,7 +1735,7 @@ msgstr "Présentation"
 msgid "Active since %s"
 msgstr "Active depuis %s"
 
-#: templates/company-profile.php:66 templates/company-profile.php:138
+#: templates/company-profile.php:66 templates/company-profile.php:154
 msgid "Request a service"
 msgstr "Demander une prestation"
 
@@ -1652,15 +1771,19 @@ msgstr "Contrôlé par la plateforme"
 msgid "Not yet checked"
 msgstr "Pas encore contrôlé"
 
-#: templates/company-profile.php:137
+#: templates/company-profile.php:131 templates/single-listing.php:59
+msgid "Location"
+msgstr "Localisation"
+
+#: templates/company-profile.php:153
 msgid "Service request"
 msgstr "Demande de prestation"
 
-#: templates/company-profile.php:137
+#: templates/company-profile.php:153
 msgid "Contact from the company page"
 msgstr "Contact depuis la page entreprise"
 
-#: templates/company-profile.php:138
+#: templates/company-profile.php:154
 msgid "Contact this company"
 msgstr "Contacter cette entreprise"
 
@@ -2265,10 +2388,6 @@ msgstr "Finition"
 #: templates/single-listing.php:58
 msgid "Weight source"
 msgstr "Origine du poids"
-
-#: templates/single-listing.php:59
-msgid "Location"
-msgstr "Localisation"
 
 #. translators: %d: photo number.
 #: templates/single-listing.php:79

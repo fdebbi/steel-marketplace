@@ -80,7 +80,7 @@ msgstr "Services de fabrication"
 msgid "Engineer / engineering office"
 msgstr "Ingénieur / bureau d’études"
 
-#: src/Accounts/Companies.php:83 src/Accounts/CompanyForms.php:52
+#: src/Accounts/Companies.php:83 src/Accounts/CompanyForms.php:57
 #: src/Accounts/Registration.php:103
 msgid "Choose at least one business activity."
 msgstr "Choisissez au moins une activité."
@@ -88,6 +88,14 @@ msgstr "Choisissez au moins une activité."
 #: src/Accounts/Companies.php:105
 msgid "The account could not be saved. Please try again."
 msgstr "Le compte n’a pas pu être enregistré. Veuillez réessayer."
+
+#: src/Accounts/Companies.php:238
+msgid "The map position is not valid. Place the marker again."
+msgstr "La position sur la carte n’est pas valide. Replacez le repère."
+
+#: src/Accounts/Companies.php:244
+msgid "The map position must be in Algeria."
+msgstr "La position sur la carte doit se trouver en Algérie."
 
 #: src/Accounts/CompanyForms.php:28
 msgid "Only the account owner or a manager can edit the company."
@@ -103,7 +111,7 @@ msgid "Enter a valid phone number."
 msgstr "Saisissez un numéro de téléphone valide."
 
 #: src/Accounts/CompanyForms.php:41 src/Accounts/Registration.php:118
-#: src/Rest/Api.php:194
+#: src/Rest/Api.php:196
 msgid "Choose your wilaya."
 msgstr "Choisissez votre wilaya."
 
@@ -111,23 +119,23 @@ msgstr "Choisissez votre wilaya."
 msgid "Enter a valid e-mail address."
 msgstr "Saisissez une adresse e-mail valide."
 
-#: src/Accounts/CompanyForms.php:87
+#: src/Accounts/CompanyForms.php:94
 msgid "Company profile saved."
 msgstr "Fiche entreprise enregistrée."
 
-#: src/Accounts/CompanyForms.php:98 src/Accounts/Registration.php:113
+#: src/Accounts/CompanyForms.php:105 src/Accounts/Registration.php:113
 msgid "Enter your full name."
 msgstr "Saisissez votre nom complet."
 
-#: src/Accounts/CompanyForms.php:111
+#: src/Accounts/CompanyForms.php:118
 msgid "Your current password is not correct."
 msgstr "Votre mot de passe actuel est incorrect."
 
-#: src/Accounts/CompanyForms.php:113 src/Accounts/Registration.php:138
+#: src/Accounts/CompanyForms.php:120 src/Accounts/Registration.php:138
 msgid "The password must have at least 10 characters."
 msgstr "Le mot de passe doit comporter au moins 10 caractères."
 
-#: src/Accounts/CompanyForms.php:131
+#: src/Accounts/CompanyForms.php:138
 msgid "Settings saved."
 msgstr "Paramètres enregistrés."
 
@@ -368,7 +376,7 @@ msgstr "Créé"
 msgid "No company yet."
 msgstr "Aucune entreprise pour l’instant."
 
-#: src/Admin/Admin.php:163 src/Rest/Api.php:158
+#: src/Admin/Admin.php:163 src/Rest/Api.php:160
 msgid "Company not found."
 msgstr "Entreprise introuvable."
 

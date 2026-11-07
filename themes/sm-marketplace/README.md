@@ -3,10 +3,10 @@
 Thème de présentation sur mesure de la plateforme **Steel Marketplace**, bilingue arabe (RTL) / français (LTR), responsive mobile → desktop.
 Le thème ne contient **aucune logique métier** : pas de SQL, pas de calcul de poids ni de prix. Les données viennent des extensions `sm-*` via un contrat de données documenté ; tant qu'elles n'existent pas, un fournisseur de démonstration affiche des annonces réalistes.
 
-- Version : 0.2.0 — WordPress 6.4+ (testé 7.1.4), PHP 8.1+ (testé 8.3)
+- Version : 0.3.0 — WordPress 6.4+ (testé 7.1.4), PHP 8.1+ (testé 8.3)
 - Fonctionne avec l'extension **sm-core** (comptes, formulaires, langues `/ar/`) ; sans elle, mode démonstration
 - Domaine de traduction : `sm-marketplace` — langues livrées : `fr_FR`, `ar`
-- Aucune dépendance externe en production (polices et icônes auto-hébergées, pas de jQuery, pas de constructeur de pages)
+- Aucune dépendance externe en production (polices, icônes et bibliothèque de carte Leaflet auto-hébergées, pas de jQuery, pas de constructeur de pages). Seules les images de fond de carte viennent d'OpenStreetMap, sur les pages qui affichent une carte.
 
 ## Installation (Hostinger ou tout hébergement WordPress)
 

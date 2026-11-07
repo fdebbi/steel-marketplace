@@ -27,6 +27,8 @@ final class Bridge {
 		add_filter( 'sm_theme_data_company', array( __CLASS__, 'company' ), 10, 2 );
 		add_filter( 'sm_theme_data_companies', array( __CLASS__, 'companies' ), 10, 2 );
 		add_filter( 'sm_theme_data_wilayas', array( __CLASS__, 'wilayas' ) );
+		add_filter( 'sm_theme_data_wilaya_centres', static fn( $r ) => null !== $r ? $r : Wilayas::centres() );
+		add_filter( 'sm_theme_data_map', array( __CLASS__, 'map' ) );
 		add_filter( 'sm_theme_data_account', array( __CLASS__, 'account' ) );
 		add_filter( 'sm_theme_data_enquiries', array( __CLASS__, 'enquiries' ), 10, 2 );
 		add_filter( 'sm_theme_data_notifications', array( __CLASS__, 'notifications' ) );
@@ -67,6 +69,7 @@ final class Bridge {
 			'qualifications' => array_map( static fn( $q ) => array( 'fr' => $q, 'ar' => $q ), $c->profile['qualifications'] ?? array() ),
 			'specialities'   => array_map( static fn( $s ) => array( 'fr' => $s, 'ar' => $s ), $c->profile['specialities'] ?? array() ),
 			'status'         => $c->status,
+			'location'       => Companies::public_location( $c ),
 		);
 	}
 
@@ -93,6 +96,26 @@ final class Bridge {
 	public static function wilayas() {
 		$all = Wilayas::all();
 		return $all ? $all : null;
+	}
+
+	/**
+	 * Map settings for the theme: tile server, attribution and Algeria bounds.
+	 * Filter sm_map_tiles to use another provider (e.g. a paid one on high traffic).
+	 */
+	public static function map( $result ) {
+		if ( null !== $result ) {
+			return $result;
+		}
+		return apply_filters(
+			'sm_map_tiles',
+			array(
+				'tiles'       => 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+				'attribution' => '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+				'max_zoom'    => 19,
+				'bounds'      => Companies::BOUNDS,
+				'country'     => array( 28.0, 2.6, 5 ),
+			)
+		);
 	}
 
 	public static function stats( $result ) {
@@ -125,6 +148,9 @@ final class Bridge {
 				'wilaya'         => $company->wilaya,
 				'commune'        => $company->commune,
 				'address'        => $company->address,
+				'lat'            => null === $company->lat ? '' : (string) round( (float) $company->lat, 6 ),
+				'lng'            => null === $company->lng ? '' : (string) round( (float) $company->lng, 6 ),
+				'map_public'     => (int) $company->map_public,
 				'phone'          => $company->phone,
 				'email'          => $company->email,
 				'website'        => $company->website,

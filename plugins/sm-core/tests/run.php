@@ -287,6 +287,47 @@ sm_assert( (bool) preg_match( '#/annonce/302/$#', $url ), 'listing URL is /annon
 sm_assert( (bool) preg_match( '#/entreprise/smtest-engineer/$#', sm_url( 'company', array( 'c' => 'smtest-engineer' ) ) ), 'company URL is /entreprise/{slug}/' );
 sm_assert( (bool) preg_match( '#/compte/annonces/$#', sm_url( 'account', array( 'view' => 'listings' ) ) ), 'dashboard view URL is /compte/annonces/' );
 
+/* ------------------------------------------------------------------ */
+sm_section( '12. Company location (map)' );
+sm_assert( 2 <= (int) get_option( 'sm_core_db_version' ), 'database migrated to version 2' );
+$centres = SM\Core\Accounts\Wilayas::centres();
+sm_assert( 69 === count( $centres ) && abs( $centres['16'][0] - 36.754 ) < 0.001 && abs( $centres['16'][1] - 3.059 ) < 0.001, '69 wilaya map centres seeded (Alger 36.754, 3.059)' );
+$out_of_box = 0;
+foreach ( $centres as $xy ) {
+	$out_of_box += is_wp_error( Companies::parse_location( $xy[0], $xy[1] ) ) ? 1 : 0;
+}
+sm_assert( 0 === $out_of_box, 'every wilaya centre lies inside the Algeria bounds' );
+sm_assert( null === Companies::parse_location( '', '' ), 'empty position = no position' );
+sm_assert( is_wp_error( Companies::parse_location( '36.7', '' ) ), 'half a position is refused' );
+sm_assert( is_wp_error( Companies::parse_location( '48.8566', '2.3522' ) ), 'a position outside Algeria (Paris) is refused' );
+sm_assert( is_wp_error( Companies::parse_location( '36.7; DROP', '3.0' ) ), 'non-numeric position is refused' );
+$ok = Companies::parse_location( ' 36.19123456 ', '5.41371234' );
+sm_assert( is_array( $ok ) && 36.191235 === $ok['lat'] && 5.413712 === $ok['lng'], 'valid position kept with 6 decimals' );
+
+Companies::update_profile( $c_sup, array( 'location' => array( 'lat' => '35.7060', 'lng' => '4.5420' ), 'map_public' => true ) );
+$cs = Companies::get( $c_sup );
+sm_assert( array( 'lat' => 35.706, 'lng' => 4.542 ) === Companies::public_location( $cs ), 'position saved and public' );
+$bad = Companies::update_profile( $c_sup, array( 'location' => array( 'lat' => '10', 'lng' => '4' ) ) );
+sm_assert( is_wp_error( $bad ) && abs( Companies::get( $c_sup )->lat - 35.706 ) < 0.0001, 'update with a bad position fails and keeps the old one' );
+Companies::update_profile( $c_sup, array( 'map_public' => false ) );
+sm_assert( null === Companies::public_location( Companies::get( $c_sup ) ) && null !== Companies::get( $c_sup )->lat, 'hidden map: position kept, not public' );
+$res = rest_do_request( new WP_REST_Request( 'GET', '/sm/v1/companies/' . Companies::get( $c_sup )->slug ) );
+$data = $res->get_data();
+sm_assert( array_key_exists( 'location', $data ) && null === $data['location'], 'REST hides a non-public position' );
+Companies::update_profile( $c_sup, array( 'map_public' => true ) );
+$res = rest_do_request( new WP_REST_Request( 'GET', '/sm/v1/companies/' . Companies::get( $c_sup )->slug ) );
+sm_assert( 35.706 === ( $res->get_data()['location']['lat'] ?? null ), 'REST shows a public position' );
+wp_set_current_user( $u_sup );
+$req = new WP_REST_Request( 'PATCH', '/sm/v1/me/company' );
+$req->set_header( 'content-type', 'application/json' );
+$req->set_body( wp_json_encode( array( 'lat' => 48.85, 'lng' => 2.35 ) ) );
+sm_assert( 400 === rest_do_request( $req )->get_status(), 'PATCH /me/company refuses a position outside Algeria (400)' );
+$req->set_body( wp_json_encode( array( 'lat' => '', 'lng' => '' ) ) );
+rest_do_request( $req );
+sm_assert( null === Companies::get( $c_sup )->lat, 'PATCH /me/company with empty lat/lng removes the position' );
+wp_set_current_user( 0 );
+sm_assert( isset( apply_filters( 'sm_theme_data_map', null )['tiles'] ) && 69 === count( apply_filters( 'sm_theme_data_wilaya_centres', null ) ), 'theme receives map settings and wilaya centres' );
+
 sm_test_cleanup();
 
 $t = $GLOBALS['sm_t'];

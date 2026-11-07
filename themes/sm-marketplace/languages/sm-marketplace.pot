@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.2.0\n"
+"Project-Id-Version: SM Marketplace 0.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-07T11:32:01+00:00\n"
+"POT-Creation-Date: 2026-11-07T12:35:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -310,6 +310,64 @@ msgstr ""
 
 #: inc/assets.php:37
 msgid "Removed from saved listings"
+msgstr ""
+
+#: inc/assets.php:79
+msgid "Company position. Drag it, or use the arrow keys."
+msgstr ""
+
+#: inc/assets.php:80
+#: template-parts/components/location-map.php:59
+msgid "No position yet."
+msgstr ""
+
+#: inc/assets.php:81
+msgid "Drag the marker to your exact address, or click the map."
+msgstr ""
+
+#: inc/assets.php:82
+msgid "Position placed:"
+msgstr ""
+
+#: inc/assets.php:83
+msgid "Current location found:"
+msgstr ""
+
+#. translators: %d: accuracy in metres.
+#: inc/assets.php:85
+msgid "Approximate (about %d m): drag the marker to correct it."
+msgstr ""
+
+#: inc/assets.php:86
+msgid "Looking for your location…"
+msgstr ""
+
+#: inc/assets.php:87
+msgid "Location access was refused. Allow it in your browser, or place the marker by hand."
+msgstr ""
+
+#: inc/assets.php:88
+msgid "Your location could not be found. Place the marker by hand."
+msgstr ""
+
+#: inc/assets.php:89
+msgid "Finding your location took too long. Try again or place the marker by hand."
+msgstr ""
+
+#: inc/assets.php:90
+msgid "Your browser only shares your location on a secure (https) site. Place the marker by hand."
+msgstr ""
+
+#: inc/assets.php:91
+msgid "This position is outside Algeria. Place the marker on your address."
+msgstr ""
+
+#: inc/assets.php:92
+msgid "Wilaya changed: place the marker again on your address."
+msgstr ""
+
+#: inc/assets.php:93
+msgid "Position removed. It will be deleted when you save."
 msgstr ""
 
 #: inc/customizer.php:22
@@ -718,6 +776,46 @@ msgid_plural "Show %s results"
 msgstr[0] ""
 msgstr[1] ""
 
+#: template-parts/components/location-map.php:38
+msgid "Map of the company location"
+msgstr ""
+
+#: template-parts/components/location-map.php:40
+msgid "Directions"
+msgstr ""
+
+#: template-parts/components/location-map.php:41
+msgid "Open the map"
+msgstr ""
+
+#: template-parts/components/location-map.php:51
+msgid "Position on the map"
+msgstr ""
+
+#: template-parts/components/location-map.php:52
+msgid "Choose the wilaya: the map opens on it. Then drag the marker (or click the map) to your exact address, or use your current location if you are on site."
+msgstr ""
+
+#: template-parts/components/location-map.php:54
+msgid "Use my current location"
+msgstr ""
+
+#: template-parts/components/location-map.php:55
+msgid "Remove the position"
+msgstr ""
+
+#: template-parts/components/location-map.php:58
+msgid "Enable JavaScript to place your company on the map."
+msgstr ""
+
+#: template-parts/components/location-map.php:59
+msgid "Position saved. Drag the marker to correct it."
+msgstr ""
+
+#: template-parts/components/location-map.php:63
+msgid "Show the map on my public page"
+msgstr ""
+
 #: template-parts/components/price-block.php:15
 msgid "Price"
 msgstr ""
@@ -858,36 +956,36 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: template-parts/dashboard/company.php:82
+#: template-parts/dashboard/company.php:94
 msgid "Public phone"
 msgstr ""
 
-#: template-parts/dashboard/company.php:83
+#: template-parts/dashboard/company.php:95
 msgid "Public e-mail"
 msgstr ""
 
-#: template-parts/dashboard/company.php:84
+#: template-parts/dashboard/company.php:96
 msgid "Website"
 msgstr ""
 
-#: template-parts/dashboard/company.php:90
+#: template-parts/dashboard/company.php:102
 msgid "Registration numbers"
 msgstr ""
 
-#: template-parts/dashboard/company.php:91
+#: template-parts/dashboard/company.php:103
 msgid "Stored encrypted and never shown publicly. Only the platform team sees them during verification."
 msgstr ""
 
-#: template-parts/dashboard/company.php:93
+#: template-parts/dashboard/company.php:105
 #: template-parts/dashboard/verification.php:41
 msgid "RC number"
 msgstr ""
 
-#: template-parts/dashboard/company.php:101
+#: template-parts/dashboard/company.php:113
 msgid "View public page"
 msgstr ""
 
-#: template-parts/dashboard/company.php:102
+#: template-parts/dashboard/company.php:114
 #: template-parts/dashboard/settings.php:43
 #: templates/single-listing.php:107
 msgid "Save"
@@ -1613,7 +1711,7 @@ msgid "Active since %s"
 msgstr ""
 
 #: templates/company-profile.php:66
-#: templates/company-profile.php:138
+#: templates/company-profile.php:154
 msgid "Request a service"
 msgstr ""
 
@@ -1649,15 +1747,20 @@ msgstr ""
 msgid "Not yet checked"
 msgstr ""
 
-#: templates/company-profile.php:137
+#: templates/company-profile.php:131
+#: templates/single-listing.php:59
+msgid "Location"
+msgstr ""
+
+#: templates/company-profile.php:153
 msgid "Service request"
 msgstr ""
 
-#: templates/company-profile.php:137
+#: templates/company-profile.php:153
 msgid "Contact from the company page"
 msgstr ""
 
-#: templates/company-profile.php:138
+#: templates/company-profile.php:154
 msgid "Contact this company"
 msgstr ""
 
@@ -2194,10 +2297,6 @@ msgstr ""
 
 #: templates/single-listing.php:58
 msgid "Weight source"
-msgstr ""
-
-#: templates/single-listing.php:59
-msgid "Location"
 msgstr ""
 
 #. translators: %d: photo number.
