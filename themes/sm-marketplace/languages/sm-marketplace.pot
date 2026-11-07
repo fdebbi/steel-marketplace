@@ -1,0 +1,1995 @@
+# Copyright (C) 2026 Steel Marketplace
+# This file is distributed under the Proprietary.
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Marketplace 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-05T19:32:03+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: sm-marketplace\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "SM Marketplace"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://example.dz/steel-marketplace"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Custom bilingual (Arabic RTL / French LTR) presentation theme for the Steel Marketplace industrial platform. Presentation layer only: all business data and logic live in the sm-* plugins."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Steel Marketplace"
+msgstr ""
+
+#: 404.php:17
+msgid "Page not found"
+msgstr ""
+
+#: 404.php:18
+msgid "The page you are looking for has moved or no longer exists."
+msgstr ""
+
+#: 404.php:19
+#: header.php:44
+msgid "Search the marketplace"
+msgstr ""
+
+#: footer.php:16
+msgid "Buy and sell steel by the kilogram, trade used structures and find fabricators and engineers across Algeria."
+msgstr ""
+
+#: footer.php:20
+#: header.php:64
+#: header.php:93
+msgid "Marketplaces"
+msgstr ""
+
+#: footer.php:22
+#: inc/menus.php:16
+#: inc/template-tags.php:175
+#: templates/front-page-template.php:67
+#: templates/marketplace-products.php:15
+msgid "Steel products"
+msgstr ""
+
+#: footer.php:23
+#: inc/menus.php:24
+#: inc/template-tags.php:176
+#: templates/front-page-template.php:68
+#: templates/marketplace-reuse.php:15
+msgid "Steel reuse"
+msgstr ""
+
+#: footer.php:24
+#: inc/menus.php:32
+#: inc/template-tags.php:177
+#: templates/front-page-template.php:69
+#: templates/marketplace-buildings.php:15
+msgid "Steel buildings"
+msgstr ""
+
+#: footer.php:25
+#: inc/menus.php:47
+#: templates/pricing.php:17
+#: templates/rfq-board.php:21
+#: templates/rfq-board.php:24
+msgid "Requests for quotation"
+msgstr ""
+
+#: footer.php:29
+#: inc/menus.php:40
+#: templates/company-profile.php:39
+#: templates/company-profile.php:94
+msgid "Services"
+msgstr ""
+
+#: footer.php:31
+#: inc/menus.php:62
+#: inc/template-tags.php:178
+#: template-parts/components/card-service.php:22
+#: templates/front-page-template.php:70
+#: templates/marketplace-services.php:20
+#: templates/marketplace-services.php:23
+msgid "Fabrication & installation"
+msgstr ""
+
+#: footer.php:32
+#: header.php:79
+#: header.php:109
+#: inc/menus.php:63
+#: inc/template-tags.php:179
+#: template-parts/components/card-service.php:22
+#: templates/company-profile.php:45
+#: templates/front-page-template.php:71
+#: templates/marketplace-engineers.php:21
+msgid "Engineering"
+msgstr ""
+
+#: footer.php:33
+#: header.php:110
+#: inc/menus.php:64
+#: templates/companies.php:13
+#: templates/companies.php:14
+#: templates/company-profile.php:18
+#: templates/company-profile.php:45
+#: templates/front-page-template.php:148
+msgid "Company directory"
+msgstr ""
+
+#: footer.php:34
+#: header.php:27
+#: header.php:111
+#: templates/price-index.php:16
+msgid "Price index"
+msgstr ""
+
+#: footer.php:38
+msgid "Platform"
+msgstr ""
+
+#: footer.php:40
+#: header.php:28
+#: templates/pricing.php:25
+#: templates/pricing.php:26
+msgid "Plans"
+msgstr ""
+
+#: footer.php:41
+#: templates/auth-login.php:38
+msgid "Create an account"
+msgstr ""
+
+#: footer.php:42
+#: header.php:29
+#: templates/company-profile.php:66
+#: templates/single-listing.php:238
+msgid "Contact"
+msgstr ""
+
+#: footer.php:48
+msgid "Advertised prices are set by sellers and are not official market prices."
+msgstr ""
+
+#: footer.php:53
+msgid "Quick navigation"
+msgstr ""
+
+#: footer.php:54
+#: inc/template-tags.php:239
+msgid "Home"
+msgstr ""
+
+#: footer.php:55
+#: header.php:52
+#: header.php:56
+#: templates/front-page-template.php:48
+msgid "Search"
+msgstr ""
+
+#: footer.php:56
+#: header.php:59
+#: template-parts/dashboard/publish.php:196
+#: templates/styleguide.php:34
+msgid "Publish"
+msgstr ""
+
+#: footer.php:57
+#: template-parts/dashboard/overview.php:19
+msgid "Enquiries"
+msgstr ""
+
+#: footer.php:58
+msgid "Account"
+msgstr ""
+
+#: header.php:20
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:25
+msgid "The industrial marketplace for steel in Algeria"
+msgstr ""
+
+#: header.php:26
+msgid "Utility"
+msgstr ""
+
+#: header.php:38
+#: inc/assets.php:32
+msgid "Open menu"
+msgstr ""
+
+#: header.php:45
+#: template-parts/components/filter-panel.php:32
+#: template-parts/dashboard/listings.php:27
+#: template-parts/dashboard/listings.php:41
+#: template-parts/dashboard/publish.php:20
+#: template-parts/dashboard/publish.php:36
+#: templates/front-page-template.php:31
+msgid "Market"
+msgstr ""
+
+#: header.php:46
+#: template-parts/components/filter-panel.php:36
+#: templates/front-page-template.php:33
+msgid "All markets"
+msgstr ""
+
+#: header.php:51
+msgid "IPE 200, HEA, tube 100×50, hangar…"
+msgstr ""
+
+#: header.php:57
+#: templates/dashboard.php:44
+msgid "Saved listings"
+msgstr ""
+
+#: header.php:58
+#: header.php:115
+#: templates/auth-login.php:17
+#: templates/auth-login.php:37
+#: templates/auth-register.php:84
+msgid "Sign in"
+msgstr ""
+
+#: header.php:87
+msgid "Menu"
+msgstr ""
+
+#: header.php:90
+#: inc/assets.php:33
+msgid "Close menu"
+msgstr ""
+
+#: header.php:99
+#: inc/menus.php:75
+msgid "View all listings"
+msgstr ""
+
+#: header.php:114
+#: template-parts/dashboard/listings.php:20
+#: templates/dashboard.php:37
+msgid "Publish a listing"
+msgstr ""
+
+#: inc/assets.php:34
+#: templates/auth-login.php:30
+#: templates/auth-register.php:77
+msgid "Show"
+msgstr ""
+
+#: inc/assets.php:35
+msgid "Hide"
+msgstr ""
+
+#: inc/assets.php:36
+msgid "Saved"
+msgstr ""
+
+#: inc/assets.php:37
+msgid "Removed from saved listings"
+msgstr ""
+
+#: inc/customizer.php:22
+msgid "Primary colour"
+msgstr ""
+
+#: inc/customizer.php:23
+msgid "Header, headings, dark surfaces."
+msgstr ""
+
+#: inc/customizer.php:28
+msgid "Accent colour"
+msgstr ""
+
+#: inc/customizer.php:29
+msgid "Main buttons, price per kg, verified badges."
+msgstr ""
+
+#: inc/customizer.php:34
+msgid "Secondary colour"
+msgstr ""
+
+#: inc/customizer.php:35
+msgid "Secondary text, icons and borders."
+msgstr ""
+
+#: inc/customizer.php:40
+msgid "Page background"
+msgstr ""
+
+#: inc/customizer.php:41
+msgid "Light background behind cards."
+msgstr ""
+
+#: inc/customizer.php:60
+msgid "SM Brand"
+msgstr ""
+
+#: inc/customizer.php:61
+msgid "Brand colours of the platform. Every component follows these four colours, so they can be matched to the final logo without code changes."
+msgstr ""
+
+#: inc/customizer.php:99
+msgid "Brand name (shown when no logo is set)"
+msgstr ""
+
+#: inc/customizer.php:115
+msgid "Show demo listings when no marketplace plugin provides data"
+msgstr ""
+
+#: inc/demo/installer.php:79
+#: inc/demo/installer.php:80
+#: inc/demo/installer.php:94
+msgid "SM Pages"
+msgstr ""
+
+#: inc/demo/installer.php:91
+msgid "Missing pages were created."
+msgstr ""
+
+#: inc/demo/installer.php:95
+msgid "Pages used by the theme templates. Existing pages are never overwritten."
+msgstr ""
+
+#: inc/demo/installer.php:103
+msgid "Create missing pages"
+msgstr ""
+
+#: inc/menus.php:19
+msgid "New profiles, tubes, plates and accessories, priced per kg."
+msgstr ""
+
+#: inc/menus.php:27
+msgid "Offcuts, surplus, used profiles and scrap."
+msgstr ""
+
+#: inc/menus.php:35
+msgid "New and used warehouses, assembled or dismantled."
+msgstr ""
+
+#: inc/menus.php:62
+#: templates/front-page-template.php:70
+msgid "Cutting, welding, assembly, installation and dismantling."
+msgstr ""
+
+#: inc/menus.php:63
+msgid "Structural design, calculations and inspection of used structures."
+msgstr ""
+
+#: inc/menus.php:64
+msgid "Manufacturers, suppliers, installers and recyclers."
+msgstr ""
+
+#: inc/menus.php:89
+msgid "Language"
+msgstr ""
+
+#: inc/setup.php:29
+msgid "Primary menu (mega menu)"
+msgstr ""
+
+#: inc/setup.php:30
+msgid "Footer menu"
+msgstr ""
+
+#: inc/setup.php:31
+msgid "Top utility menu"
+msgstr ""
+
+#: inc/template-tags.php:152
+msgid "New unused surplus"
+msgstr ""
+
+#: inc/template-tags.php:153
+msgid "Excellent used condition"
+msgstr ""
+
+#: inc/template-tags.php:154
+msgid "Good used condition"
+msgstr ""
+
+#: inc/template-tags.php:155
+msgid "Requires inspection or treatment"
+msgstr ""
+
+#: inc/template-tags.php:156
+msgid "Scrap / recycling only"
+msgstr ""
+
+#: inc/template-tags.php:169
+msgid "Actual weight"
+msgstr ""
+
+#: inc/template-tags.php:169
+msgid "Theoretical weight"
+msgstr ""
+
+#: inc/template-tags.php:186
+msgid "Manufacturer"
+msgstr ""
+
+#: inc/template-tags.php:187
+msgid "Supplier / distributor"
+msgstr ""
+
+#: inc/template-tags.php:188
+msgid "Installation company"
+msgstr ""
+
+#: inc/template-tags.php:189
+msgid "Project owner"
+msgstr ""
+
+#: inc/template-tags.php:190
+msgid "Second-hand dealer / recycler"
+msgstr ""
+
+#: inc/template-tags.php:191
+msgid "Fabrication services"
+msgstr ""
+
+#: inc/template-tags.php:192
+#: templates/auth-register.php:40
+msgid "Engineer / engineering office"
+msgstr ""
+
+#: inc/template-tags.php:199
+msgid "Not verified"
+msgstr ""
+
+#: inc/template-tags.php:200
+msgid "Phone verified"
+msgstr ""
+
+#: inc/template-tags.php:201
+msgid "Verified business"
+msgstr ""
+
+#: inc/template-tags.php:202
+msgid "Verified engineer"
+msgstr ""
+
+#: inc/template-tags.php:211
+msgid "just now"
+msgstr ""
+
+#. translators: %s: number of hours.
+#: inc/template-tags.php:216
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: number of days.
+#: inc/template-tags.php:220
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:238
+msgid "Breadcrumb"
+msgstr ""
+
+#: index.php:21
+msgid "Nothing here yet"
+msgstr ""
+
+#: template-parts/auth-shell.php:14
+msgid "One business account to buy and sell steel, structures and services."
+msgstr ""
+
+#: template-parts/auth-shell.php:16
+msgid "Prices per kg with automatic totals"
+msgstr ""
+
+#: template-parts/auth-shell.php:17
+msgid "Verified companies and engineers"
+msgstr ""
+
+#: template-parts/auth-shell.php:18
+msgid "Requests for quotation compared side by side"
+msgstr ""
+
+#: template-parts/components/card-listing.php:24
+msgid "Featured"
+msgstr ""
+
+#: template-parts/components/card-listing.php:28
+msgid "Save listing"
+msgstr ""
+
+#: template-parts/components/card-listing.php:34
+#: template-parts/components/filter-panel.php:68
+#: template-parts/dashboard/publish.php:97
+#: templates/single-listing.php:36
+#: templates/single-listing.php:92
+msgid "Assembled"
+msgstr ""
+
+#: template-parts/components/card-listing.php:34
+#: template-parts/components/filter-panel.php:69
+#: template-parts/dashboard/publish.php:98
+#: templates/single-listing.php:36
+#: templates/single-listing.php:92
+msgid "Dismantled"
+msgstr ""
+
+#: template-parts/components/card-listing.php:54
+#: templates/styleguide.php:51
+msgid "actual"
+msgstr ""
+
+#: template-parts/components/card-listing.php:54
+#: templates/styleguide.php:52
+msgid "theoretical"
+msgstr ""
+
+#: template-parts/components/card-listing.php:63
+msgid "Total"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:16
+#: template-parts/components/filter-panel.php:20
+#: template-parts/marketplace-archive.php:73
+msgid "Filters"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:21
+msgid "Close filters"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:26
+msgid "Profile designation or keyword"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:42
+#: template-parts/dashboard/publish.php:52
+msgid "Category"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:43
+msgid "All categories"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:52
+#: template-parts/dashboard/publish.php:78
+msgid "Condition"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:53
+msgid "Any condition"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:59
+msgid "Min. length (m)"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:60
+msgid "Min. pieces"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:66
+#: templates/single-listing.php:36
+msgid "State"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:67
+#: template-parts/dashboard/listings.php:15
+#: template-parts/marketplace-archive.php:52
+#: templates/companies.php:17
+msgid "All"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:72
+msgid "Min. area (m²)"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:73
+msgid "Min. height (m)"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:78
+#: template-parts/dashboard/publish.php:169
+#: templates/auth-register.php:62
+#: templates/company-profile.php:117
+#: templates/front-page-template.php:40
+msgid "Wilaya"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:80
+#: templates/front-page-template.php:42
+msgid "All wilayas"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:89
+msgid "Min. DA/kg"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:90
+msgid "Max. DA/kg"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:92
+msgid "Verified sellers only"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:97
+#: templates/styleguide.php:37
+msgid "Reset"
+msgstr ""
+
+#. translators: %s: number of results.
+#: template-parts/components/filter-panel.php:101
+msgid "Show %s result"
+msgid_plural "Show %s results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/components/price-block.php:15
+msgid "Price"
+msgstr ""
+
+#: template-parts/components/price-block.php:17
+msgid "Asking price"
+msgstr ""
+
+#: template-parts/components/price-block.php:20
+msgid "Equivalent price per kg"
+msgstr ""
+
+#: template-parts/components/price-block.php:21
+msgid "Price per m²"
+msgstr ""
+
+#: template-parts/components/price-block.php:22
+msgid "Estimated steel weight"
+msgstr ""
+
+#: template-parts/components/price-block.php:25
+msgid "Price per kilogram"
+msgstr ""
+
+#: template-parts/components/price-block.php:28
+#: template-parts/dashboard/publish.php:184
+msgid "Total weight"
+msgstr ""
+
+#: template-parts/components/price-block.php:29
+#: template-parts/dashboard/listings.php:30
+#: template-parts/dashboard/listings.php:44
+#: template-parts/dashboard/publish.php:185
+msgid "Total price"
+msgstr ""
+
+#: template-parts/components/price-block.php:37
+msgid "Weighed by the seller."
+msgstr ""
+
+#: template-parts/components/price-block.php:37
+msgid "Calculated from standard section tables."
+msgstr ""
+
+#: template-parts/components/price-block.php:41
+msgid "Demo listing: values are illustrative and will be computed by the weight engine."
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:20
+#: templates/styleguide.php:49
+msgid "New"
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:21
+#: templates/styleguide.php:48
+msgid "Quote sent"
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:22
+msgid "Accepted"
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:27
+msgid "New requests"
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:28
+msgid "Profile views (30 days)"
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:29
+msgid "Quotes sent"
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:30
+msgid "Verification"
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:35
+#: templates/dashboard.php:28
+msgid "Client requests"
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:47
+#: templates/dashboard.php:27
+msgid "My services"
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:53
+msgid "Add a service"
+msgstr ""
+
+#: template-parts/dashboard/engineer-overview.php:56
+msgid "Engineering accounts publish services only. To trade steel, open a separate business account with its own verification."
+msgstr ""
+
+#: template-parts/dashboard/listings.php:16
+#: template-parts/dashboard/listings.php:45
+#: templates/styleguide.php:47
+msgid "Published"
+msgstr ""
+
+#: template-parts/dashboard/listings.php:17
+msgid "Drafts"
+msgstr ""
+
+#: template-parts/dashboard/listings.php:18
+msgid "Sold"
+msgstr ""
+
+#: template-parts/dashboard/listings.php:22
+#: templates/dashboard.php:38
+msgid "My listings"
+msgstr ""
+
+#: template-parts/dashboard/listings.php:26
+#: template-parts/dashboard/listings.php:38
+msgid "Listing"
+msgstr ""
+
+#: template-parts/dashboard/listings.php:28
+#: template-parts/dashboard/listings.php:42
+#: template-parts/dashboard/publish.php:83
+msgid "Weight"
+msgstr ""
+
+#: template-parts/dashboard/listings.php:29
+#: template-parts/dashboard/listings.php:43
+msgid "DA/kg"
+msgstr ""
+
+#: template-parts/dashboard/listings.php:31
+#: template-parts/dashboard/listings.php:45
+msgid "Status"
+msgstr ""
+
+#: template-parts/dashboard/listings.php:32
+msgid "Actions"
+msgstr ""
+
+#: template-parts/dashboard/listings.php:47
+msgid "Edit"
+msgstr ""
+
+#: template-parts/dashboard/listings.php:48
+msgid "Feature"
+msgstr ""
+
+#: template-parts/dashboard/listings.php:49
+msgid "Delete"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:17
+msgid "Active listings"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:18
+msgid "Views (30 days)"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:20
+msgid "Open quotations"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:26
+msgid "Recent listings"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:27
+msgid "Manage"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:41
+msgid "Plan usage"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:44
+msgid "Listings"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:45
+msgid "Featured slots"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:46
+msgid "AI credits used"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:59
+msgid "Change plan"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:63
+msgid "RC, NIF and NIS checked by the platform."
+msgstr ""
+
+#: template-parts/dashboard/overview.php:69
+msgid "Quick actions"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:71
+msgid "Sell new steel"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:72
+msgid "Sell offcuts or surplus"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:73
+msgid "Sell a building"
+msgstr ""
+
+#: template-parts/dashboard/overview.php:74
+#: template-parts/marketplace-archive.php:113
+#: templates/front-page-template.php:122
+#: templates/single-listing.php:105
+#: templates/styleguide.php:36
+msgid "Request a quotation"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:21
+#: template-parts/dashboard/publish.php:62
+msgid "Technical details"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:22
+msgid "Photos"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:23
+#: template-parts/dashboard/publish.php:162
+msgid "Price & location"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:27
+msgid "Steps"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:34
+msgid "What are you selling?"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:39
+msgid "New steel"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:39
+msgid "Profiles, tubes, plates, accessories"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:40
+msgid "Reuse lot"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:40
+msgid "Offcuts, surplus, used, scrap"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:41
+msgid "Building"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:41
+msgid "Warehouse, hangar, kit"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:67
+#: templates/rfq-board.php:60
+#: templates/single-listing.php:45
+msgid "Profile designation"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:70
+msgid "Choose from the standard profile list; unit weights come from the platform tables."
+msgstr ""
+
+#: template-parts/dashboard/publish.php:72
+#: templates/single-listing.php:46
+msgid "Steel grade"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:75
+#: template-parts/dashboard/publish.php:101
+#: template-parts/dashboard/publish.php:113
+#: template-parts/dashboard/publish.php:119
+#: templates/single-listing.php:171
+#: templates/single-listing.php:182
+msgid "Length (m)"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:76
+#: templates/single-listing.php:53
+msgid "Number of pieces"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:85
+msgid "Theoretical (calculated)"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:86
+msgid "Actual (weighed)"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:89
+msgid "Measured weight (kg)"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:102
+msgid "Width (m)"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:103
+msgid "Height (m)"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:106
+#: templates/single-listing.php:39
+msgid "Number of portals"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:107
+#: templates/single-listing.php:42
+msgid "Roof covering"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:110
+msgid "Element inventory"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:113
+#: template-parts/dashboard/publish.php:116
+#: templates/single-listing.php:168
+#: templates/single-listing.php:179
+msgid "Element"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:113
+#: template-parts/dashboard/publish.php:117
+#: templates/single-listing.php:169
+#: templates/single-listing.php:180
+msgid "Profile"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:113
+#: template-parts/dashboard/publish.php:118
+#: templates/rfq-board.php:61
+#: templates/single-listing.php:170
+#: templates/single-listing.php:181
+msgid "Quantity"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:120
+msgid "Remove row"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:125
+msgid "Add an element"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:130
+msgid "Title in French"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:134
+msgid "Title in Arabic (optional)"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:138
+msgid "Description and technical notes"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:144
+msgid "Photos and documents"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:148
+msgid "Take or add photos"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:149
+msgid "Up to 10 photos. Show the section, the length marks and the condition."
+msgstr ""
+
+#: template-parts/dashboard/publish.php:155
+msgid "Add technical documents (optional)"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:156
+msgid "Material certificates, drawings, inventory lists (PDF, DWG)."
+msgstr ""
+
+#: template-parts/dashboard/publish.php:158
+msgid "Soon: the AI assistant will suggest the category and description from your photos. You always confirm the technical data."
+msgstr ""
+
+#: template-parts/dashboard/publish.php:165
+msgid "Price per kg (DA)"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:165
+msgid "Asking price (DA)"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:174
+msgid "Summary shown to buyers"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:187
+msgid "Weight and total price are calculated by the weight engine (Phase 3)."
+msgstr ""
+
+#: template-parts/dashboard/publish.php:193
+msgid "Back"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:194
+msgid "Save draft"
+msgstr ""
+
+#: template-parts/dashboard/publish.php:195
+#: templates/styleguide.php:35
+msgid "Continue"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:47
+msgid "Publish here"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:51
+msgid "Categories"
+msgstr ""
+
+#. translators: %s: number of listings.
+#: template-parts/marketplace-archive.php:69
+msgid "<strong>%s</strong> listing"
+msgid_plural "<strong>%s</strong> listings"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/marketplace-archive.php:78
+msgid "Sort by"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:81
+msgid "Most recent"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:82
+msgid "Price per kg: low to high"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:83
+msgid "Price per kg: high to low"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:86
+msgid "Display"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:87
+msgid "Grid"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:88
+msgid "List"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:100
+msgid "Pagination"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:111
+msgid "No listing matches these filters"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:112
+msgid "Widen your search, or publish a request for quotation so suppliers come to you."
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Sign in"
+msgstr ""
+
+#: templates/auth-login.php:18
+msgid "Welcome back. Sign in with your email or phone number."
+msgstr ""
+
+#: templates/auth-login.php:23
+#: templates/auth-lost.php:19
+msgid "Email or phone"
+msgstr ""
+
+#: templates/auth-login.php:27
+#: templates/auth-register.php:74
+msgid "Password"
+msgstr ""
+
+#: templates/auth-login.php:34
+msgid "Remember me"
+msgstr ""
+
+#: templates/auth-login.php:35
+msgid "Forgot password?"
+msgstr ""
+
+#: templates/auth-login.php:38
+msgid "New on the platform?"
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Lost password"
+msgstr ""
+
+#: templates/auth-lost.php:14
+msgid "Reset your password"
+msgstr ""
+
+#: templates/auth-lost.php:15
+msgid "Enter your email or phone. We will send you a reset link or code."
+msgstr ""
+
+#: templates/auth-lost.php:20
+msgid "Send reset link"
+msgstr ""
+
+#: templates/auth-lost.php:21
+msgid "Back to sign in"
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Register"
+msgstr ""
+
+#: templates/auth-register.php:18
+msgid "Create your account"
+msgstr ""
+
+#: templates/auth-register.php:19
+msgid "Choose the type of account. You can enable several business activities later."
+msgstr ""
+
+#: templates/auth-register.php:27
+msgid "Account type"
+msgstr ""
+
+#: templates/auth-register.php:32
+#: templates/dashboard.php:72
+msgid "Business account"
+msgstr ""
+
+#: templates/auth-register.php:33
+msgid "Buy and sell steel, reuse lots and buildings, answer quotations, offer fabrication."
+msgstr ""
+
+#: templates/auth-register.php:41
+msgid "Publish engineering services and receive client requests. No product trading."
+msgstr ""
+
+#: templates/auth-register.php:47
+msgid "Business activities"
+msgstr ""
+
+#: templates/auth-register.php:56
+msgid "Company or trade name"
+msgstr ""
+
+#: templates/auth-register.php:56
+msgid "Name or office name"
+msgstr ""
+
+#: templates/auth-register.php:60
+#: templates/single-listing.php:214
+msgid "Full name"
+msgstr ""
+
+#: templates/auth-register.php:64
+msgid "Select"
+msgstr ""
+
+#: templates/auth-register.php:70
+msgid "Mobile phone"
+msgstr ""
+
+#: templates/auth-register.php:71
+msgid "Email"
+msgstr ""
+
+#: templates/auth-register.php:79
+msgid "At least 10 characters."
+msgstr ""
+
+#: templates/auth-register.php:81
+msgid "I accept the terms of use and the listing rules."
+msgstr ""
+
+#: templates/auth-register.php:82
+msgid "Create my account"
+msgstr ""
+
+#: templates/auth-register.php:83
+msgid "Your phone will be verified by SMS. Business verification (RC, NIF, NIS) unlocks the verified badge."
+msgstr ""
+
+#: templates/auth-register.php:84
+msgid "Already registered?"
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Company directory"
+msgstr ""
+
+#: templates/companies.php:15
+msgid "Manufacturers, distributors, installers, recyclers, project owners and engineering offices."
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Company profile"
+msgstr ""
+
+#: templates/company-profile.php:18
+msgid "Company not found"
+msgstr ""
+
+#: templates/company-profile.php:41
+#: templates/company-profile.php:103
+msgid "About"
+msgstr ""
+
+#. translators: %s: year.
+#: templates/company-profile.php:57
+#: templates/single-listing.php:122
+msgid "Active since %s"
+msgstr ""
+
+#: templates/company-profile.php:66
+msgid "Request a service"
+msgstr ""
+
+#: templates/company-profile.php:70
+msgid "Company sections"
+msgstr ""
+
+#: templates/company-profile.php:108
+msgid "Qualifications"
+msgstr ""
+
+#: templates/company-profile.php:110
+msgid "Specialisations"
+msgstr ""
+
+#: templates/company-profile.php:115
+msgid "Company details"
+msgstr ""
+
+#: templates/company-profile.php:118
+msgid "Commercial register"
+msgstr ""
+
+#: templates/company-profile.php:118
+msgid "Checked by the platform"
+msgstr ""
+
+#: templates/company-profile.php:118
+msgid "Not yet checked"
+msgstr ""
+
+#: templates/company-profile.php:119
+#: templates/single-listing.php:215
+msgid "Phone"
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Dashboard"
+msgstr ""
+
+#: templates/dashboard.php:25
+#: templates/dashboard.php:35
+msgid "Overview"
+msgstr ""
+
+#: templates/dashboard.php:26
+msgid "Professional profile"
+msgstr ""
+
+#: templates/dashboard.php:29
+msgid "Portfolio"
+msgstr ""
+
+#: templates/dashboard.php:30
+msgid "Qualifications & verification"
+msgstr ""
+
+#: templates/dashboard.php:36
+msgid "Selling"
+msgstr ""
+
+#: templates/dashboard.php:39
+msgid "Quotations sent"
+msgstr ""
+
+#: templates/dashboard.php:40
+msgid "Enquiries received"
+msgstr ""
+
+#: templates/dashboard.php:41
+#: templates/pricing.php:18
+msgid "Listing statistics"
+msgstr ""
+
+#: templates/dashboard.php:43
+msgid "Buying"
+msgstr ""
+
+#: templates/dashboard.php:45
+msgid "My requests for quotation"
+msgstr ""
+
+#: templates/dashboard.php:46
+msgid "Purchase history"
+msgstr ""
+
+#: templates/dashboard.php:48
+msgid "Company"
+msgstr ""
+
+#: templates/dashboard.php:49
+msgid "Company profile"
+msgstr ""
+
+#: templates/dashboard.php:50
+msgid "Plan & AI credits"
+msgstr ""
+
+#: templates/dashboard.php:72
+msgid "Engineering account"
+msgstr ""
+
+#: templates/dashboard.php:75
+msgid "Dashboard"
+msgstr ""
+
+#: templates/dashboard.php:85
+msgid "Settings"
+msgstr ""
+
+#: templates/dashboard.php:86
+msgid "Sign out"
+msgstr ""
+
+#: templates/dashboard.php:102
+msgid "Demo engineering account."
+msgstr ""
+
+#: templates/dashboard.php:102
+msgid "Demo business account."
+msgstr ""
+
+#: templates/dashboard.php:102
+msgid "Switch to the business dashboard"
+msgstr ""
+
+#: templates/dashboard.php:102
+msgid "Switch to the engineer dashboard"
+msgstr ""
+
+#: templates/dashboard.php:116
+msgid "This section arrives with its plugin"
+msgstr ""
+
+#: templates/dashboard.php:117
+msgid "The layout is ready; the content will be provided by the corresponding marketplace plugin."
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Home"
+msgstr ""
+
+#: templates/front-page-template.php:20
+msgid "Steel · Reuse · Buildings · Services"
+msgstr ""
+
+#: templates/front-page-template.php:21
+msgid "Buy and sell steel by the kilogram, from beams to complete warehouses"
+msgstr ""
+
+#: templates/front-page-template.php:22
+msgid "Compare prices per kg, find offcuts and used structures near you, and work with verified suppliers, fabricators and engineers."
+msgstr ""
+
+#: templates/front-page-template.php:27
+msgid "Profile or product"
+msgstr ""
+
+#: templates/front-page-template.php:52
+msgid "active listings"
+msgstr ""
+
+#: templates/front-page-template.php:53
+msgid "companies"
+msgstr ""
+
+#: templates/front-page-template.php:54
+msgid "of steel offered for reuse"
+msgstr ""
+
+#: templates/front-page-template.php:67
+msgid "Beams, channels, tubes, plates and bolts, new and certified."
+msgstr ""
+
+#: templates/front-page-template.php:68
+msgid "Offcuts and surplus at a lower price per kg, graded on 5 levels."
+msgstr ""
+
+#: templates/front-page-template.php:69
+msgid "Warehouses and hangars, assembled or dismantled with inventory."
+msgstr ""
+
+#: templates/front-page-template.php:71
+msgid "Design, calculation notes and inspection by verified engineers."
+msgstr ""
+
+#: templates/front-page-template.php:89
+msgid "Featured listings"
+msgstr ""
+
+#: templates/front-page-template.php:90
+msgid "See all"
+msgstr ""
+
+#: templates/front-page-template.php:103
+msgid "Latest reuse lots"
+msgstr ""
+
+#: templates/front-page-template.php:104
+msgid "Every lot shows its condition, its weight source and an automatic total price."
+msgstr ""
+
+#: templates/front-page-template.php:106
+msgid "Browse reuse"
+msgstr ""
+
+#: templates/front-page-template.php:120
+msgid "Publish one request, receive several offers"
+msgstr ""
+
+#: templates/front-page-template.php:121
+msgid "Describe profiles, quantities and delivery wilaya. Suppliers answer with a price per kg and a delivery time you can compare side by side."
+msgstr ""
+
+#: templates/front-page-template.php:126
+#: templates/price-index.php:17
+msgid "Steel price index"
+msgstr ""
+
+#: templates/front-page-template.php:127
+msgid "Average advertised prices per kg by profile, condition and wilaya, updated from live listings. Asking prices, not official market prices."
+msgstr ""
+
+#: templates/front-page-template.php:128
+msgid "Open the index"
+msgstr ""
+
+#: templates/front-page-template.php:135
+msgid "Fabricators and engineers"
+msgstr ""
+
+#: templates/front-page-template.php:136
+msgid "All services"
+msgstr ""
+
+#: templates/front-page-template.php:147
+msgid "Verified companies"
+msgstr ""
+
+#: templates/front-page-template.php:160
+msgid "Sell your stock, surplus or used building"
+msgstr ""
+
+#: templates/front-page-template.php:161
+msgid "One business account to buy and sell. Engineers get a dedicated services account."
+msgstr ""
+
+#: templates/front-page-template.php:164
+msgid "Create a free account"
+msgstr ""
+
+#: templates/front-page-template.php:165
+msgid "See the plans"
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Steel buildings"
+msgstr ""
+
+#: templates/marketplace-buildings.php:16
+msgid "New warehouse kits and used buildings, sold assembled or dismantled with their full element inventory."
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Engineering"
+msgstr ""
+
+#: templates/marketplace-engineers.php:15
+msgid "Structural steel design"
+msgstr ""
+
+#: templates/marketplace-engineers.php:15
+msgid "Structural calculations"
+msgstr ""
+
+#: templates/marketplace-engineers.php:15
+msgid "Connection design"
+msgstr ""
+
+#: templates/marketplace-engineers.php:16
+msgid "Shop drawings"
+msgstr ""
+
+#: templates/marketplace-engineers.php:16
+msgid "Technical inspection"
+msgstr ""
+
+#: templates/marketplace-engineers.php:16
+msgid "Used structure assessment"
+msgstr ""
+
+#: templates/marketplace-engineers.php:24
+msgid "Engineering services"
+msgstr ""
+
+#: templates/marketplace-engineers.php:25
+msgid "Verified engineers and engineering offices for steel design, calculation notes, drawings and inspection of structures before reuse."
+msgstr ""
+
+#: templates/marketplace-engineers.php:27
+msgid "Join as an engineer"
+msgstr ""
+
+#: templates/marketplace-engineers.php:40
+msgid "Engineering offices"
+msgstr ""
+
+#: templates/marketplace-engineers.php:46
+msgid "AI tools on this platform never replace a structural calculation or an engineer’s signature."
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Steel products"
+msgstr ""
+
+#: templates/marketplace-products.php:16
+msgid "New beams, channels, tubes, plates and accessories from manufacturers and distributors, priced per kilogram."
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Steel reuse"
+msgstr ""
+
+#: templates/marketplace-reuse.php:16
+msgid "Offcuts, site surplus, used profiles and scrap: search by profile, length, quantity and condition."
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Search"
+msgstr ""
+
+#: templates/marketplace-search.php:15
+msgid "Search results"
+msgstr ""
+
+#: templates/marketplace-search.php:16
+msgid "Results across steel products, reuse and buildings."
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Services"
+msgstr ""
+
+#: templates/marketplace-services.php:13
+msgid "Cutting"
+msgstr ""
+
+#: templates/marketplace-services.php:13
+msgid "Drilling"
+msgstr ""
+
+#: templates/marketplace-services.php:13
+msgid "Welding"
+msgstr ""
+
+#: templates/marketplace-services.php:13
+msgid "Structural fabrication"
+msgstr ""
+
+#: templates/marketplace-services.php:14
+msgid "Sandblasting"
+msgstr ""
+
+#: templates/marketplace-services.php:14
+msgid "Painting"
+msgstr ""
+
+#: templates/marketplace-services.php:14
+msgid "Galvanizing"
+msgstr ""
+
+#: templates/marketplace-services.php:14
+msgid "Installation"
+msgstr ""
+
+#: templates/marketplace-services.php:15
+#: templates/single-listing.php:147
+msgid "Dismantling"
+msgstr ""
+
+#: templates/marketplace-services.php:15
+msgid "Transport coordination"
+msgstr ""
+
+#: templates/marketplace-services.php:24
+msgid "Workshops and site teams for cutting, welding, assembly, installation and dismantling of steel structures."
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Price index"
+msgstr ""
+
+#: templates/price-index.php:18
+msgid "Average advertised prices per kg by profile, condition, wilaya and period."
+msgstr ""
+
+#: templates/price-index.php:22
+msgid "These are asking prices published by sellers on the platform, not official market prices and not completed transaction prices."
+msgstr ""
+
+#: templates/price-index.php:34
+msgid "The index will appear once enough listings are published"
+msgstr ""
+
+#: templates/price-index.php:35
+msgid "Charts by profile, condition and wilaya are provided by the analytics module."
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Plans"
+msgstr ""
+
+#: templates/pricing.php:17
+msgid "Free"
+msgstr ""
+
+#: templates/pricing.php:17
+msgid "Buy and contact sellers"
+msgstr ""
+
+#: templates/pricing.php:17
+msgid "Limited number of listings"
+msgstr ""
+
+#: templates/pricing.php:18
+msgid "Business"
+msgstr ""
+
+#: templates/pricing.php:18
+msgid "More listings and featured slots"
+msgstr ""
+
+#: templates/pricing.php:18
+msgid "Company page with verified badge"
+msgstr ""
+
+#: templates/pricing.php:18
+msgid "Monthly AI credits"
+msgstr ""
+
+#: templates/pricing.php:19
+msgid "Pro"
+msgstr ""
+
+#: templates/pricing.php:19
+msgid "Highest limits"
+msgstr ""
+
+#: templates/pricing.php:19
+msgid "Premium visibility"
+msgstr ""
+
+#: templates/pricing.php:19
+msgid "Priority on quotation requests"
+msgstr ""
+
+#: templates/pricing.php:19
+msgid "Extended AI credits"
+msgstr ""
+
+#: templates/pricing.php:27
+msgid "Start free. Upgrade when you need more listings, visibility and AI credits. Payment by bank transfer, CCP or BaridiMob, activated by our team."
+msgstr ""
+
+#: templates/pricing.php:35
+msgid "Price set by the administrator"
+msgstr ""
+
+#: templates/pricing.php:37
+msgid "Choose"
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Requests for quotation"
+msgstr ""
+
+#: templates/rfq-board.php:25
+msgid "Buyers describe what they need; suppliers answer with a price per kg and a delivery time."
+msgstr ""
+
+#: templates/rfq-board.php:27
+msgid "New request"
+msgstr ""
+
+#: templates/rfq-board.php:45
+msgid "offer"
+msgid_plural "offers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/rfq-board.php:46
+msgid "Make an offer"
+msgstr ""
+
+#: templates/rfq-board.php:53
+msgid "New request for quotation"
+msgstr ""
+
+#: templates/rfq-board.php:56
+msgid "What do you need?"
+msgstr ""
+
+#: templates/rfq-board.php:65
+msgid "Delivery wilaya"
+msgstr ""
+
+#: templates/rfq-board.php:66
+msgid "Needed by"
+msgstr ""
+
+#: templates/rfq-board.php:68
+msgid "Technical description"
+msgstr ""
+
+#: templates/rfq-board.php:69
+msgid "Attach drawings or a bill of materials"
+msgstr ""
+
+#: templates/rfq-board.php:70
+msgid "Publish my request"
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Listing detail"
+msgstr ""
+
+#: templates/single-listing.php:20
+msgid "This listing is no longer available"
+msgstr ""
+
+#: templates/single-listing.php:20
+msgid "Back to the marketplace"
+msgstr ""
+
+#: templates/single-listing.php:37
+msgid "Length × width × height"
+msgstr ""
+
+#: templates/single-listing.php:38
+msgid "Total area"
+msgstr ""
+
+#: templates/single-listing.php:40
+msgid "Structural system"
+msgstr ""
+
+#: templates/single-listing.php:41
+msgid "Roof design"
+msgstr ""
+
+#: templates/single-listing.php:43
+msgid "Side cladding"
+msgstr ""
+
+#: templates/single-listing.php:48
+msgid "Standard"
+msgstr ""
+
+#: templates/single-listing.php:51
+msgid "Length"
+msgstr ""
+
+#: templates/single-listing.php:55
+msgid "Finish"
+msgstr ""
+
+#: templates/single-listing.php:58
+msgid "Weight source"
+msgstr ""
+
+#: templates/single-listing.php:59
+msgid "Location"
+msgstr ""
+
+#. translators: %d: photo number.
+#: templates/single-listing.php:79
+msgid "Photo %d"
+msgstr ""
+
+#: templates/single-listing.php:104
+msgid "Contact the seller"
+msgstr ""
+
+#: templates/single-listing.php:107
+msgid "Save"
+msgstr ""
+
+#: templates/single-listing.php:108
+msgid "Share"
+msgstr ""
+
+#: templates/single-listing.php:133
+msgid "Technical specifications"
+msgstr ""
+
+#: templates/single-listing.php:143
+msgid "What the price includes"
+msgstr ""
+
+#: templates/single-listing.php:148
+msgid "Transport"
+msgstr ""
+
+#: templates/single-listing.php:149
+msgid "Reinstallation"
+msgstr ""
+
+#: templates/single-listing.php:150
+msgid "Foundations and accessories"
+msgstr ""
+
+#: templates/single-listing.php:155
+msgid "included"
+msgstr ""
+
+#: templates/single-listing.php:155
+msgid "not included"
+msgstr ""
+
+#: templates/single-listing.php:163
+#: templates/single-listing.php:164
+msgid "Structural element inventory"
+msgstr ""
+
+#: templates/single-listing.php:172
+#: templates/single-listing.php:183
+msgid "Unit weight (kg/m)"
+msgstr ""
+
+#: templates/single-listing.php:173
+#: templates/single-listing.php:184
+msgid "Total weight (kg)"
+msgstr ""
+
+#: templates/single-listing.php:190
+#: templates/single-listing.php:191
+msgid "Total steel weight"
+msgstr ""
+
+#: templates/single-listing.php:196
+msgid "Unit weights come from the platform’s standard section tables. The theoretical weight excludes bolts, plates and welds."
+msgstr ""
+
+#: templates/single-listing.php:201
+msgid "Description"
+msgstr ""
+
+#: templates/single-listing.php:204
+msgid "Shown in the language the seller wrote it in."
+msgstr ""
+
+#: templates/single-listing.php:206
+msgid "Planning a structural reuse? Have the elements checked by a verified engineer before installation."
+msgstr ""
+
+#: templates/single-listing.php:206
+msgid "Find an engineer"
+msgstr ""
+
+#: templates/single-listing.php:211
+msgid "Send an enquiry"
+msgstr ""
+
+#: templates/single-listing.php:217
+msgid "Quantity needed"
+msgstr ""
+
+#: templates/single-listing.php:218
+msgid "Message"
+msgstr ""
+
+#: templates/single-listing.php:219
+msgid "Send enquiry"
+msgstr ""
+
+#: templates/single-listing.php:220
+msgid "Enquiries will be delivered by the core plugin (Phase 2)."
+msgstr ""
+
+#: templates/single-listing.php:227
+msgid "Similar listings"
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Styleguide"
+msgstr ""
+
+#: templates/styleguide.php:20
+msgid "Styleguide"
+msgstr ""
+
+#: templates/styleguide.php:20
+msgid "Every component in the current language. Switch language in the header to review RTL and LTR."
+msgstr ""
+
+#: templates/styleguide.php:23
+msgid "Brand colours"
+msgstr ""
+
+#: templates/styleguide.php:29
+msgid "Editable in Appearance → Customize → SM Brand."
+msgstr ""
+
+#: templates/styleguide.php:32
+msgid "Buttons"
+msgstr ""
+
+#: templates/styleguide.php:41
+msgid "Condition scale"
+msgstr ""
+
+#: templates/styleguide.php:45
+msgid "Status and chips"
+msgstr ""
+
+#: templates/styleguide.php:56
+msgid "Listing cards"
+msgstr ""

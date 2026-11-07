@@ -1,0 +1,2020 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Marketplace 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-marketplace\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "SM Marketplace"
+msgstr "SM Marketplace"
+
+#. Description of the theme
+#: style.css
+msgid ""
+"Custom bilingual (Arabic RTL / French LTR) presentation theme for the Steel "
+"Marketplace industrial platform. Presentation layer only: all business data "
+"and logic live in the sm-* plugins."
+msgstr ""
+"قالب عرض ثنائي اللغة (العربية من اليمين إلى اليسار / الفرنسية) لمنصة Steel "
+"Marketplace الصناعية. طبقة عرض فقط: البيانات والمنطق التجاري في إضافات sm-*."
+
+#. Author of the theme
+#: style.css
+msgid "Steel Marketplace"
+msgstr "Steel Marketplace"
+
+#: 404.php:17
+msgid "Page not found"
+msgstr "الصفحة غير موجودة"
+
+#: 404.php:18
+msgid "The page you are looking for has moved or no longer exists."
+msgstr "الصفحة التي تبحث عنها نُقلت أو لم تعد موجودة."
+
+#: 404.php:19 header.php:44
+msgid "Search the marketplace"
+msgstr "ابحث في المنصة"
+
+#: footer.php:16
+msgid ""
+"Buy and sell steel by the kilogram, trade used structures and find "
+"fabricators and engineers across Algeria."
+msgstr ""
+"اشترِ وبِع الفولاذ بالكيلوغرام، وتبادل الهياكل المستعملة، وجد المصنّعين "
+"والمهندسين في كامل أنحاء الجزائر."
+
+#: footer.php:20 header.php:64 header.php:93
+msgid "Marketplaces"
+msgstr "الأسواق"
+
+#: footer.php:22 inc/menus.php:16 inc/template-tags.php:175
+#: templates/front-page-template.php:67 templates/marketplace-products.php:15
+msgid "Steel products"
+msgstr "المنتجات الفولاذية"
+
+#: footer.php:23 inc/menus.php:24 inc/template-tags.php:176
+#: templates/front-page-template.php:68 templates/marketplace-reuse.php:15
+msgid "Steel reuse"
+msgstr "إعادة استعمال الفولاذ"
+
+#: footer.php:24 inc/menus.php:32 inc/template-tags.php:177
+#: templates/front-page-template.php:69 templates/marketplace-buildings.php:15
+msgid "Steel buildings"
+msgstr "المباني الفولاذية"
+
+#: footer.php:25 inc/menus.php:47 templates/pricing.php:17
+#: templates/rfq-board.php:21 templates/rfq-board.php:24
+msgid "Requests for quotation"
+msgstr "طلبات عروض الأسعار"
+
+#: footer.php:29 inc/menus.php:40 templates/company-profile.php:39
+#: templates/company-profile.php:94
+msgid "Services"
+msgstr "الخدمات"
+
+#: footer.php:31 inc/menus.php:62 inc/template-tags.php:178
+#: template-parts/components/card-service.php:22
+#: templates/front-page-template.php:70 templates/marketplace-services.php:20
+#: templates/marketplace-services.php:23
+msgid "Fabrication & installation"
+msgstr "التصنيع والتركيب"
+
+#: footer.php:32 header.php:79 header.php:109 inc/menus.php:63
+#: inc/template-tags.php:179 template-parts/components/card-service.php:22
+#: templates/company-profile.php:45 templates/front-page-template.php:71
+#: templates/marketplace-engineers.php:21
+msgid "Engineering"
+msgstr "الهندسة"
+
+#: footer.php:33 header.php:110 inc/menus.php:64 templates/companies.php:13
+#: templates/companies.php:14 templates/company-profile.php:18
+#: templates/company-profile.php:45 templates/front-page-template.php:148
+msgid "Company directory"
+msgstr "دليل المؤسسات"
+
+#: footer.php:34 header.php:27 header.php:111 templates/price-index.php:16
+msgid "Price index"
+msgstr "مؤشر الأسعار"
+
+#: footer.php:38
+msgid "Platform"
+msgstr "المنصة"
+
+#: footer.php:40 header.php:28 templates/pricing.php:25
+#: templates/pricing.php:26
+msgid "Plans"
+msgstr "الاشتراكات"
+
+#: footer.php:41 templates/auth-login.php:38
+msgid "Create an account"
+msgstr "إنشاء حساب"
+
+#: footer.php:42 header.php:29 templates/company-profile.php:66
+#: templates/single-listing.php:238
+msgid "Contact"
+msgstr "اتصل بنا"
+
+#: footer.php:48
+msgid ""
+"Advertised prices are set by sellers and are not official market prices."
+msgstr "الأسعار المعروضة يحددها البائعون وليست أسعار سوق رسمية."
+
+#: footer.php:53
+msgid "Quick navigation"
+msgstr "تنقل سريع"
+
+#: footer.php:54 inc/template-tags.php:239
+msgid "Home"
+msgstr "الرئيسية"
+
+#: footer.php:55 header.php:52 header.php:56
+#: templates/front-page-template.php:48
+msgid "Search"
+msgstr "بحث"
+
+#: footer.php:56 header.php:59 template-parts/dashboard/publish.php:196
+#: templates/styleguide.php:34
+msgid "Publish"
+msgstr "نشر"
+
+#: footer.php:57 template-parts/dashboard/overview.php:19
+msgid "Enquiries"
+msgstr "الاستفسارات"
+
+#: footer.php:58
+msgid "Account"
+msgstr "الحساب"
+
+#: header.php:20
+msgid "Skip to content"
+msgstr "انتقل إلى المحتوى"
+
+#: header.php:25
+msgid "The industrial marketplace for steel in Algeria"
+msgstr "السوق الصناعية للفولاذ في الجزائر"
+
+#: header.php:26
+msgid "Utility"
+msgstr "روابط مفيدة"
+
+#: header.php:38 inc/assets.php:32
+msgid "Open menu"
+msgstr "فتح القائمة"
+
+#: header.php:45 template-parts/components/filter-panel.php:32
+#: template-parts/dashboard/listings.php:27
+#: template-parts/dashboard/listings.php:41
+#: template-parts/dashboard/publish.php:20
+#: template-parts/dashboard/publish.php:36
+#: templates/front-page-template.php:31
+msgid "Market"
+msgstr "السوق"
+
+#: header.php:46 template-parts/components/filter-panel.php:36
+#: templates/front-page-template.php:33
+msgid "All markets"
+msgstr "كل الأسواق"
+
+#: header.php:51
+msgid "IPE 200, HEA, tube 100×50, hangar…"
+msgstr "IPE 200، HEA، أنبوب 100×50، هنغار…"
+
+#: header.php:57 templates/dashboard.php:44
+msgid "Saved listings"
+msgstr "الإعلانات المحفوظة"
+
+#: header.php:58 header.php:115 templates/auth-login.php:17
+#: templates/auth-login.php:37 templates/auth-register.php:84
+msgid "Sign in"
+msgstr "تسجيل الدخول"
+
+#: header.php:87
+msgid "Menu"
+msgstr "القائمة"
+
+#: header.php:90 inc/assets.php:33
+msgid "Close menu"
+msgstr "إغلاق القائمة"
+
+#: header.php:99 inc/menus.php:75
+msgid "View all listings"
+msgstr "عرض كل الإعلانات"
+
+#: header.php:114 template-parts/dashboard/listings.php:20
+#: templates/dashboard.php:37
+msgid "Publish a listing"
+msgstr "نشر إعلان"
+
+#: inc/assets.php:34 templates/auth-login.php:30
+#: templates/auth-register.php:77
+msgid "Show"
+msgstr "إظهار"
+
+#: inc/assets.php:35
+msgid "Hide"
+msgstr "إخفاء"
+
+#: inc/assets.php:36
+msgid "Saved"
+msgstr "تم الحفظ"
+
+#: inc/assets.php:37
+msgid "Removed from saved listings"
+msgstr "أزيل من الإعلانات المحفوظة"
+
+#: inc/customizer.php:22
+msgid "Primary colour"
+msgstr "اللون الأساسي"
+
+#: inc/customizer.php:23
+msgid "Header, headings, dark surfaces."
+msgstr "الترويسة والعناوين والمساحات الداكنة."
+
+#: inc/customizer.php:28
+msgid "Accent colour"
+msgstr "لون التمييز"
+
+#: inc/customizer.php:29
+msgid "Main buttons, price per kg, verified badges."
+msgstr "الأزرار الرئيسية، السعر للكيلوغرام، شارات التوثيق."
+
+#: inc/customizer.php:34
+msgid "Secondary colour"
+msgstr "اللون الثانوي"
+
+#: inc/customizer.php:35
+msgid "Secondary text, icons and borders."
+msgstr "النصوص الثانوية والأيقونات والحدود."
+
+#: inc/customizer.php:40
+msgid "Page background"
+msgstr "خلفية الصفحة"
+
+#: inc/customizer.php:41
+msgid "Light background behind cards."
+msgstr "خلفية فاتحة خلف البطاقات."
+
+#: inc/customizer.php:60
+msgid "SM Brand"
+msgstr "هوية SM"
+
+#: inc/customizer.php:61
+msgid ""
+"Brand colours of the platform. Every component follows these four colours, "
+"so they can be matched to the final logo without code changes."
+msgstr ""
+"ألوان هوية المنصة. كل المكونات تتبع هذه الألوان الأربعة، لذا يمكن مطابقتها "
+"مع الشعار النهائي دون تعديل البرمجة."
+
+#: inc/customizer.php:99
+msgid "Brand name (shown when no logo is set)"
+msgstr "اسم العلامة (يظهر عند غياب الشعار)"
+
+#: inc/customizer.php:115
+msgid "Show demo listings when no marketplace plugin provides data"
+msgstr "عرض إعلانات تجريبية ما دامت إضافات السوق لا توفر بيانات"
+
+#: inc/demo/installer.php:79 inc/demo/installer.php:80
+#: inc/demo/installer.php:94
+msgid "SM Pages"
+msgstr "صفحات SM"
+
+#: inc/demo/installer.php:91
+msgid "Missing pages were created."
+msgstr "تم إنشاء الصفحات الناقصة."
+
+#: inc/demo/installer.php:95
+msgid ""
+"Pages used by the theme templates. Existing pages are never overwritten."
+msgstr ""
+"الصفحات التي تستعملها قوالب القالب. لا يتم استبدال الصفحات الموجودة أبدا."
+
+#: inc/demo/installer.php:103
+msgid "Create missing pages"
+msgstr "إنشاء الصفحات الناقصة"
+
+#: inc/menus.php:19
+msgid "New profiles, tubes, plates and accessories, priced per kg."
+msgstr "مقاطع وأنابيب وصفائح وملحقات جديدة، بالسعر للكيلوغرام."
+
+#: inc/menus.php:27
+msgid "Offcuts, surplus, used profiles and scrap."
+msgstr "بقايا وفائض ومقاطع مستعملة وخردة."
+
+#: inc/menus.php:35
+msgid "New and used warehouses, assembled or dismantled."
+msgstr "هناجر جديدة ومستعملة، مركبة أو مفككة."
+
+#: inc/menus.php:62 templates/front-page-template.php:70
+msgid "Cutting, welding, assembly, installation and dismantling."
+msgstr "القص واللحام والتجميع والتركيب والتفكيك."
+
+#: inc/menus.php:63
+msgid "Structural design, calculations and inspection of used structures."
+msgstr "التصميم الإنشائي والحسابات وفحص الهياكل المستعملة."
+
+#: inc/menus.php:64
+msgid "Manufacturers, suppliers, installers and recyclers."
+msgstr "مصنّعون وموردون ومركّبون ومسترجعون."
+
+#: inc/menus.php:89
+msgid "Language"
+msgstr "اللغة"
+
+#: inc/setup.php:29
+msgid "Primary menu (mega menu)"
+msgstr "القائمة الرئيسية (القائمة الموسعة)"
+
+#: inc/setup.php:30
+msgid "Footer menu"
+msgstr "قائمة التذييل"
+
+#: inc/setup.php:31
+msgid "Top utility menu"
+msgstr "القائمة العلوية"
+
+#: inc/template-tags.php:152
+msgid "New unused surplus"
+msgstr "فائض جديد غير مستعمل"
+
+#: inc/template-tags.php:153
+msgid "Excellent used condition"
+msgstr "مستعمل، حالة ممتازة"
+
+#: inc/template-tags.php:154
+msgid "Good used condition"
+msgstr "مستعمل، حالة جيدة"
+
+#: inc/template-tags.php:155
+msgid "Requires inspection or treatment"
+msgstr "يحتاج فحصا أو معالجة"
+
+#: inc/template-tags.php:156
+msgid "Scrap / recycling only"
+msgstr "خردة / للرسكلة فقط"
+
+#: inc/template-tags.php:169
+msgid "Actual weight"
+msgstr "الوزن الفعلي"
+
+#: inc/template-tags.php:169
+msgid "Theoretical weight"
+msgstr "الوزن النظري"
+
+#: inc/template-tags.php:186
+msgid "Manufacturer"
+msgstr "مصنّع"
+
+#: inc/template-tags.php:187
+msgid "Supplier / distributor"
+msgstr "مورد / موزع"
+
+#: inc/template-tags.php:188
+msgid "Installation company"
+msgstr "مؤسسة تركيب"
+
+#: inc/template-tags.php:189
+msgid "Project owner"
+msgstr "صاحب المشروع"
+
+#: inc/template-tags.php:190
+msgid "Second-hand dealer / recycler"
+msgstr "تاجر مستعمل / مسترجع"
+
+#: inc/template-tags.php:191
+msgid "Fabrication services"
+msgstr "خدمات التصنيع"
+
+#: inc/template-tags.php:192 templates/auth-register.php:40
+msgid "Engineer / engineering office"
+msgstr "مهندس / مكتب دراسات"
+
+#: inc/template-tags.php:199
+msgid "Not verified"
+msgstr "غير موثق"
+
+#: inc/template-tags.php:200
+msgid "Phone verified"
+msgstr "الهاتف موثق"
+
+#: inc/template-tags.php:201
+msgid "Verified business"
+msgstr "مؤسسة موثقة"
+
+#: inc/template-tags.php:202
+msgid "Verified engineer"
+msgstr "مهندس موثق"
+
+#: inc/template-tags.php:211
+msgid "just now"
+msgstr "الآن"
+
+#. translators: %s: number of hours.
+#: inc/template-tags.php:216
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] "منذ أقل من ساعة"
+msgstr[1] "منذ ساعة"
+msgstr[2] "منذ ساعتين"
+msgstr[3] "منذ %s ساعات"
+msgstr[4] "منذ %s ساعة"
+msgstr[5] "منذ %s ساعة"
+
+#. translators: %s: number of days.
+#: inc/template-tags.php:220
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] "اليوم"
+msgstr[1] "منذ يوم"
+msgstr[2] "منذ يومين"
+msgstr[3] "منذ %s أيام"
+msgstr[4] "منذ %s يوما"
+msgstr[5] "منذ %s يوم"
+
+#: inc/template-tags.php:238
+msgid "Breadcrumb"
+msgstr "مسار التنقل"
+
+#: index.php:21
+msgid "Nothing here yet"
+msgstr "لا يوجد شيء بعد"
+
+#: template-parts/auth-shell.php:14
+msgid "One business account to buy and sell steel, structures and services."
+msgstr "حساب مهني واحد لشراء وبيع الفولاذ والهياكل والخدمات."
+
+#: template-parts/auth-shell.php:16
+msgid "Prices per kg with automatic totals"
+msgstr "أسعار بالكيلوغرام مع مجاميع تلقائية"
+
+#: template-parts/auth-shell.php:17
+msgid "Verified companies and engineers"
+msgstr "مؤسسات ومهندسون موثقون"
+
+#: template-parts/auth-shell.php:18
+msgid "Requests for quotation compared side by side"
+msgstr "عروض أسعار تُقارن جنبا إلى جنب"
+
+#: template-parts/components/card-listing.php:24
+msgid "Featured"
+msgstr "مميز"
+
+#: template-parts/components/card-listing.php:28
+msgid "Save listing"
+msgstr "حفظ الإعلان"
+
+#: template-parts/components/card-listing.php:34
+#: template-parts/components/filter-panel.php:68
+#: template-parts/dashboard/publish.php:97 templates/single-listing.php:36
+#: templates/single-listing.php:92
+msgid "Assembled"
+msgstr "مركّب"
+
+#: template-parts/components/card-listing.php:34
+#: template-parts/components/filter-panel.php:69
+#: template-parts/dashboard/publish.php:98 templates/single-listing.php:36
+#: templates/single-listing.php:92
+msgid "Dismantled"
+msgstr "مفكك"
+
+#: template-parts/components/card-listing.php:54 templates/styleguide.php:51
+msgid "actual"
+msgstr "فعلي"
+
+#: template-parts/components/card-listing.php:54 templates/styleguide.php:52
+msgid "theoretical"
+msgstr "نظري"
+
+#: template-parts/components/card-listing.php:63
+msgid "Total"
+msgstr "المجموع"
+
+#: template-parts/components/filter-panel.php:16
+#: template-parts/components/filter-panel.php:20
+#: template-parts/marketplace-archive.php:73
+msgid "Filters"
+msgstr "التصفية"
+
+#: template-parts/components/filter-panel.php:21
+msgid "Close filters"
+msgstr "إغلاق التصفية"
+
+#: template-parts/components/filter-panel.php:26
+msgid "Profile designation or keyword"
+msgstr "تسمية المقطع أو كلمة مفتاحية"
+
+#: template-parts/components/filter-panel.php:42
+#: template-parts/dashboard/publish.php:52
+msgid "Category"
+msgstr "الفئة"
+
+#: template-parts/components/filter-panel.php:43
+msgid "All categories"
+msgstr "كل الفئات"
+
+#: template-parts/components/filter-panel.php:52
+#: template-parts/dashboard/publish.php:78
+msgid "Condition"
+msgstr "الحالة"
+
+#: template-parts/components/filter-panel.php:53
+msgid "Any condition"
+msgstr "كل الحالات"
+
+#: template-parts/components/filter-panel.php:59
+msgid "Min. length (m)"
+msgstr "الطول الأدنى (m)"
+
+#: template-parts/components/filter-panel.php:60
+msgid "Min. pieces"
+msgstr "أدنى عدد قطع"
+
+#: template-parts/components/filter-panel.php:66
+#: templates/single-listing.php:36
+msgid "State"
+msgstr "حالة المبنى"
+
+#: template-parts/components/filter-panel.php:67
+#: template-parts/dashboard/listings.php:15
+#: template-parts/marketplace-archive.php:52 templates/companies.php:17
+msgid "All"
+msgstr "الكل"
+
+#: template-parts/components/filter-panel.php:72
+msgid "Min. area (m²)"
+msgstr "المساحة الدنيا (m²)"
+
+#: template-parts/components/filter-panel.php:73
+msgid "Min. height (m)"
+msgstr "الارتفاع الأدنى (m)"
+
+#: template-parts/components/filter-panel.php:78
+#: template-parts/dashboard/publish.php:169 templates/auth-register.php:62
+#: templates/company-profile.php:117 templates/front-page-template.php:40
+msgid "Wilaya"
+msgstr "الولاية"
+
+#: template-parts/components/filter-panel.php:80
+#: templates/front-page-template.php:42
+msgid "All wilayas"
+msgstr "كل الولايات"
+
+#: template-parts/components/filter-panel.php:89
+msgid "Min. DA/kg"
+msgstr "الأدنى دج/kg"
+
+#: template-parts/components/filter-panel.php:90
+msgid "Max. DA/kg"
+msgstr "الأقصى دج/kg"
+
+#: template-parts/components/filter-panel.php:92
+msgid "Verified sellers only"
+msgstr "البائعون الموثقون فقط"
+
+#: template-parts/components/filter-panel.php:97 templates/styleguide.php:37
+msgid "Reset"
+msgstr "إعادة الضبط"
+
+#. translators: %s: number of results.
+#: template-parts/components/filter-panel.php:101
+msgid "Show %s result"
+msgid_plural "Show %s results"
+msgstr[0] "عرض %s نتيجة"
+msgstr[1] "عرض نتيجة واحدة"
+msgstr[2] "عرض نتيجتين"
+msgstr[3] "عرض %s نتائج"
+msgstr[4] "عرض %s نتيجة"
+msgstr[5] "عرض %s نتيجة"
+
+#: template-parts/components/price-block.php:15
+msgid "Price"
+msgstr "السعر"
+
+#: template-parts/components/price-block.php:17
+msgid "Asking price"
+msgstr "السعر المطلوب"
+
+#: template-parts/components/price-block.php:20
+msgid "Equivalent price per kg"
+msgstr "السعر المكافئ للكيلوغرام"
+
+#: template-parts/components/price-block.php:21
+msgid "Price per m²"
+msgstr "السعر للمتر المربع"
+
+#: template-parts/components/price-block.php:22
+msgid "Estimated steel weight"
+msgstr "الوزن التقديري للفولاذ"
+
+#: template-parts/components/price-block.php:25
+msgid "Price per kilogram"
+msgstr "السعر للكيلوغرام"
+
+#: template-parts/components/price-block.php:28
+#: template-parts/dashboard/publish.php:184
+msgid "Total weight"
+msgstr "الوزن الإجمالي"
+
+#: template-parts/components/price-block.php:29
+#: template-parts/dashboard/listings.php:30
+#: template-parts/dashboard/listings.php:44
+#: template-parts/dashboard/publish.php:185
+msgid "Total price"
+msgstr "السعر الإجمالي"
+
+#: template-parts/components/price-block.php:37
+msgid "Weighed by the seller."
+msgstr "وزنه البائع."
+
+#: template-parts/components/price-block.php:37
+msgid "Calculated from standard section tables."
+msgstr "محسوب من جداول المقاطع القياسية."
+
+#: template-parts/components/price-block.php:41
+msgid ""
+"Demo listing: values are illustrative and will be computed by the weight "
+"engine."
+msgstr "إعلان تجريبي: القيم توضيحية وسيحسبها محرك الأوزان."
+
+#: template-parts/dashboard/engineer-overview.php:20
+#: templates/styleguide.php:49
+msgid "New"
+msgstr "جديد"
+
+#: template-parts/dashboard/engineer-overview.php:21
+#: templates/styleguide.php:48
+msgid "Quote sent"
+msgstr "أُرسل العرض"
+
+#: template-parts/dashboard/engineer-overview.php:22
+msgid "Accepted"
+msgstr "مقبول"
+
+#: template-parts/dashboard/engineer-overview.php:27
+msgid "New requests"
+msgstr "طلبات جديدة"
+
+#: template-parts/dashboard/engineer-overview.php:28
+msgid "Profile views (30 days)"
+msgstr "مشاهدات الملف (30 يوما)"
+
+#: template-parts/dashboard/engineer-overview.php:29
+msgid "Quotes sent"
+msgstr "العروض المرسلة"
+
+#: template-parts/dashboard/engineer-overview.php:30
+msgid "Verification"
+msgstr "التوثيق"
+
+#: template-parts/dashboard/engineer-overview.php:35
+#: templates/dashboard.php:28
+msgid "Client requests"
+msgstr "طلبات الزبائن"
+
+#: template-parts/dashboard/engineer-overview.php:47
+#: templates/dashboard.php:27
+msgid "My services"
+msgstr "خدماتي"
+
+#: template-parts/dashboard/engineer-overview.php:53
+msgid "Add a service"
+msgstr "إضافة خدمة"
+
+#: template-parts/dashboard/engineer-overview.php:56
+msgid ""
+"Engineering accounts publish services only. To trade steel, open a separate "
+"business account with its own verification."
+msgstr ""
+"حسابات الهندسة تنشر الخدمات فقط. لتجارة الفولاذ، افتح حسابا مهنيا منفصلا "
+"بتوثيق خاص به."
+
+#: template-parts/dashboard/listings.php:16
+#: template-parts/dashboard/listings.php:45 templates/styleguide.php:47
+msgid "Published"
+msgstr "منشور"
+
+#: template-parts/dashboard/listings.php:17
+msgid "Drafts"
+msgstr "المسودات"
+
+#: template-parts/dashboard/listings.php:18
+msgid "Sold"
+msgstr "مباع"
+
+#: template-parts/dashboard/listings.php:22 templates/dashboard.php:38
+msgid "My listings"
+msgstr "إعلاناتي"
+
+#: template-parts/dashboard/listings.php:26
+#: template-parts/dashboard/listings.php:38
+msgid "Listing"
+msgstr "الإعلان"
+
+#: template-parts/dashboard/listings.php:28
+#: template-parts/dashboard/listings.php:42
+#: template-parts/dashboard/publish.php:83
+msgid "Weight"
+msgstr "الوزن"
+
+#: template-parts/dashboard/listings.php:29
+#: template-parts/dashboard/listings.php:43
+msgid "DA/kg"
+msgstr "دج/kg"
+
+#: template-parts/dashboard/listings.php:31
+#: template-parts/dashboard/listings.php:45
+msgid "Status"
+msgstr "الحالة"
+
+#: template-parts/dashboard/listings.php:32
+msgid "Actions"
+msgstr "إجراءات"
+
+#: template-parts/dashboard/listings.php:47
+msgid "Edit"
+msgstr "تعديل"
+
+#: template-parts/dashboard/listings.php:48
+msgid "Feature"
+msgstr "تمييز"
+
+#: template-parts/dashboard/listings.php:49
+msgid "Delete"
+msgstr "حذف"
+
+#: template-parts/dashboard/overview.php:17
+msgid "Active listings"
+msgstr "الإعلانات النشطة"
+
+#: template-parts/dashboard/overview.php:18
+msgid "Views (30 days)"
+msgstr "المشاهدات (30 يوما)"
+
+#: template-parts/dashboard/overview.php:20
+msgid "Open quotations"
+msgstr "العروض الجارية"
+
+#: template-parts/dashboard/overview.php:26
+msgid "Recent listings"
+msgstr "أحدث الإعلانات"
+
+#: template-parts/dashboard/overview.php:27
+msgid "Manage"
+msgstr "إدارة"
+
+#: template-parts/dashboard/overview.php:41
+msgid "Plan usage"
+msgstr "استهلاك الاشتراك"
+
+#: template-parts/dashboard/overview.php:44
+msgid "Listings"
+msgstr "الإعلانات"
+
+#: template-parts/dashboard/overview.php:45
+msgid "Featured slots"
+msgstr "خانات التمييز"
+
+#: template-parts/dashboard/overview.php:46
+msgid "AI credits used"
+msgstr "أرصدة الذكاء الاصطناعي المستعملة"
+
+#: template-parts/dashboard/overview.php:59
+msgid "Change plan"
+msgstr "تغيير الاشتراك"
+
+#: template-parts/dashboard/overview.php:63
+msgid "RC, NIF and NIS checked by the platform."
+msgstr "السجل التجاري وNIF وNIS مراقبة من طرف المنصة."
+
+#: template-parts/dashboard/overview.php:69
+msgid "Quick actions"
+msgstr "إجراءات سريعة"
+
+#: template-parts/dashboard/overview.php:71
+msgid "Sell new steel"
+msgstr "بيع فولاذ جديد"
+
+#: template-parts/dashboard/overview.php:72
+msgid "Sell offcuts or surplus"
+msgstr "بيع البقايا أو الفائض"
+
+#: template-parts/dashboard/overview.php:73
+msgid "Sell a building"
+msgstr "بيع مبنى"
+
+#: template-parts/dashboard/overview.php:74
+#: template-parts/marketplace-archive.php:113
+#: templates/front-page-template.php:122 templates/single-listing.php:105
+#: templates/styleguide.php:36
+msgid "Request a quotation"
+msgstr "طلب عرض سعر"
+
+#: template-parts/dashboard/publish.php:21
+#: template-parts/dashboard/publish.php:62
+msgid "Technical details"
+msgstr "التفاصيل التقنية"
+
+#: template-parts/dashboard/publish.php:22
+msgid "Photos"
+msgstr "الصور"
+
+#: template-parts/dashboard/publish.php:23
+#: template-parts/dashboard/publish.php:162
+msgid "Price & location"
+msgstr "السعر والموقع"
+
+#: template-parts/dashboard/publish.php:27
+msgid "Steps"
+msgstr "المراحل"
+
+#: template-parts/dashboard/publish.php:34
+msgid "What are you selling?"
+msgstr "ماذا تبيع؟"
+
+#: template-parts/dashboard/publish.php:39
+msgid "New steel"
+msgstr "فولاذ جديد"
+
+#: template-parts/dashboard/publish.php:39
+msgid "Profiles, tubes, plates, accessories"
+msgstr "مقاطع، أنابيب، صفائح، ملحقات"
+
+#: template-parts/dashboard/publish.php:40
+msgid "Reuse lot"
+msgstr "مجموعة لإعادة الاستعمال"
+
+#: template-parts/dashboard/publish.php:40
+msgid "Offcuts, surplus, used, scrap"
+msgstr "بقايا، فائض، مستعمل، خردة"
+
+#: template-parts/dashboard/publish.php:41
+msgid "Building"
+msgstr "مبنى"
+
+#: template-parts/dashboard/publish.php:41
+msgid "Warehouse, hangar, kit"
+msgstr "مستودع، هنغار، هيكل جاهز"
+
+#: template-parts/dashboard/publish.php:67 templates/rfq-board.php:60
+#: templates/single-listing.php:45
+msgid "Profile designation"
+msgstr "تسمية المقطع"
+
+#: template-parts/dashboard/publish.php:70
+msgid ""
+"Choose from the standard profile list; unit weights come from the platform "
+"tables."
+msgstr ""
+"اختر من قائمة المقاطع القياسية؛ الأوزان الوحدوية مأخوذة من جداول المنصة."
+
+#: template-parts/dashboard/publish.php:72 templates/single-listing.php:46
+msgid "Steel grade"
+msgstr "رتبة الفولاذ"
+
+#: template-parts/dashboard/publish.php:75
+#: template-parts/dashboard/publish.php:101
+#: template-parts/dashboard/publish.php:113
+#: template-parts/dashboard/publish.php:119 templates/single-listing.php:171
+#: templates/single-listing.php:182
+msgid "Length (m)"
+msgstr "الطول (m)"
+
+#: template-parts/dashboard/publish.php:76 templates/single-listing.php:53
+msgid "Number of pieces"
+msgstr "عدد القطع"
+
+#: template-parts/dashboard/publish.php:85
+msgid "Theoretical (calculated)"
+msgstr "نظري (محسوب)"
+
+#: template-parts/dashboard/publish.php:86
+msgid "Actual (weighed)"
+msgstr "فعلي (موزون)"
+
+#: template-parts/dashboard/publish.php:89
+msgid "Measured weight (kg)"
+msgstr "الوزن المقاس (kg)"
+
+#: template-parts/dashboard/publish.php:102
+msgid "Width (m)"
+msgstr "العرض (m)"
+
+#: template-parts/dashboard/publish.php:103
+msgid "Height (m)"
+msgstr "الارتفاع (m)"
+
+#: template-parts/dashboard/publish.php:106 templates/single-listing.php:39
+msgid "Number of portals"
+msgstr "عدد الإطارات"
+
+#: template-parts/dashboard/publish.php:107 templates/single-listing.php:42
+msgid "Roof covering"
+msgstr "تغطية السقف"
+
+#: template-parts/dashboard/publish.php:110
+msgid "Element inventory"
+msgstr "جرد العناصر"
+
+#: template-parts/dashboard/publish.php:113
+#: template-parts/dashboard/publish.php:116 templates/single-listing.php:168
+#: templates/single-listing.php:179
+msgid "Element"
+msgstr "العنصر"
+
+#: template-parts/dashboard/publish.php:113
+#: template-parts/dashboard/publish.php:117 templates/single-listing.php:169
+#: templates/single-listing.php:180
+msgid "Profile"
+msgstr "المقطع"
+
+#: template-parts/dashboard/publish.php:113
+#: template-parts/dashboard/publish.php:118 templates/rfq-board.php:61
+#: templates/single-listing.php:170 templates/single-listing.php:181
+msgid "Quantity"
+msgstr "الكمية"
+
+#: template-parts/dashboard/publish.php:120
+msgid "Remove row"
+msgstr "حذف السطر"
+
+#: template-parts/dashboard/publish.php:125
+msgid "Add an element"
+msgstr "إضافة عنصر"
+
+#: template-parts/dashboard/publish.php:130
+msgid "Title in French"
+msgstr "العنوان بالفرنسية"
+
+#: template-parts/dashboard/publish.php:134
+msgid "Title in Arabic (optional)"
+msgstr "العنوان بالعربية (اختياري)"
+
+#: template-parts/dashboard/publish.php:138
+msgid "Description and technical notes"
+msgstr "الوصف والملاحظات التقنية"
+
+#: template-parts/dashboard/publish.php:144
+msgid "Photos and documents"
+msgstr "الصور والوثائق"
+
+#: template-parts/dashboard/publish.php:148
+msgid "Take or add photos"
+msgstr "التقط أو أضف صورا"
+
+#: template-parts/dashboard/publish.php:149
+msgid "Up to 10 photos. Show the section, the length marks and the condition."
+msgstr "حتى 10 صور. أظهر المقطع وعلامات الطول والحالة."
+
+#: template-parts/dashboard/publish.php:155
+msgid "Add technical documents (optional)"
+msgstr "أضف وثائق تقنية (اختياري)"
+
+#: template-parts/dashboard/publish.php:156
+msgid "Material certificates, drawings, inventory lists (PDF, DWG)."
+msgstr "شهادات المادة، المخططات، قوائم الجرد (PDF، DWG)."
+
+#: template-parts/dashboard/publish.php:158
+msgid ""
+"Soon: the AI assistant will suggest the category and description from your "
+"photos. You always confirm the technical data."
+msgstr ""
+"قريبا: سيقترح المساعد الذكي الفئة والوصف من صورك. وتبقى أنت من يؤكد البيانات"
+" التقنية."
+
+#: template-parts/dashboard/publish.php:165
+msgid "Price per kg (DA)"
+msgstr "السعر للكيلوغرام (دج)"
+
+#: template-parts/dashboard/publish.php:165
+msgid "Asking price (DA)"
+msgstr "السعر المطلوب (دج)"
+
+#: template-parts/dashboard/publish.php:174
+msgid "Summary shown to buyers"
+msgstr "الملخص الذي يراه المشترون"
+
+#: template-parts/dashboard/publish.php:187
+msgid "Weight and total price are calculated by the weight engine (Phase 3)."
+msgstr "يحسب محرك الأوزان الوزن والسعر الإجمالي (المرحلة 3)."
+
+#: template-parts/dashboard/publish.php:193
+msgid "Back"
+msgstr "رجوع"
+
+#: template-parts/dashboard/publish.php:194
+msgid "Save draft"
+msgstr "حفظ كمسودة"
+
+#: template-parts/dashboard/publish.php:195 templates/styleguide.php:35
+msgid "Continue"
+msgstr "متابعة"
+
+#: template-parts/marketplace-archive.php:47
+msgid "Publish here"
+msgstr "انشر هنا"
+
+#: template-parts/marketplace-archive.php:51
+msgid "Categories"
+msgstr "الفئات"
+
+#. translators: %s: number of listings.
+#: template-parts/marketplace-archive.php:69
+msgid "<strong>%s</strong> listing"
+msgid_plural "<strong>%s</strong> listings"
+msgstr[0] "<strong>%s</strong> إعلان"
+msgstr[1] "<strong>%s</strong> إعلان"
+msgstr[2] "<strong>%s</strong> إعلانان"
+msgstr[3] "<strong>%s</strong> إعلانات"
+msgstr[4] "<strong>%s</strong> إعلانا"
+msgstr[5] "<strong>%s</strong> إعلان"
+
+#: template-parts/marketplace-archive.php:78
+msgid "Sort by"
+msgstr "ترتيب حسب"
+
+#: template-parts/marketplace-archive.php:81
+msgid "Most recent"
+msgstr "الأحدث"
+
+#: template-parts/marketplace-archive.php:82
+msgid "Price per kg: low to high"
+msgstr "السعر للكيلوغرام: تصاعدي"
+
+#: template-parts/marketplace-archive.php:83
+msgid "Price per kg: high to low"
+msgstr "السعر للكيلوغرام: تنازلي"
+
+#: template-parts/marketplace-archive.php:86
+msgid "Display"
+msgstr "العرض"
+
+#: template-parts/marketplace-archive.php:87
+msgid "Grid"
+msgstr "شبكة"
+
+#: template-parts/marketplace-archive.php:88
+msgid "List"
+msgstr "قائمة"
+
+#: template-parts/marketplace-archive.php:100
+msgid "Pagination"
+msgstr "ترقيم الصفحات"
+
+#: template-parts/marketplace-archive.php:111
+msgid "No listing matches these filters"
+msgstr "لا يوجد إعلان يطابق هذه التصفية"
+
+#: template-parts/marketplace-archive.php:112
+msgid ""
+"Widen your search, or publish a request for quotation so suppliers come to "
+"you."
+msgstr "وسّع بحثك أو انشر طلب عرض سعر ليأتيك الموردون."
+
+#. Template Name of the theme
+msgid "SM — Sign in"
+msgstr "SM — تسجيل الدخول"
+
+#: templates/auth-login.php:18
+msgid "Welcome back. Sign in with your email or phone number."
+msgstr "مرحبا بعودتك. سجّل الدخول ببريدك الإلكتروني أو رقم هاتفك."
+
+#: templates/auth-login.php:23 templates/auth-lost.php:19
+msgid "Email or phone"
+msgstr "البريد الإلكتروني أو الهاتف"
+
+#: templates/auth-login.php:27 templates/auth-register.php:74
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: templates/auth-login.php:34
+msgid "Remember me"
+msgstr "تذكرني"
+
+#: templates/auth-login.php:35
+msgid "Forgot password?"
+msgstr "نسيت كلمة المرور؟"
+
+#: templates/auth-login.php:38
+msgid "New on the platform?"
+msgstr "جديد على المنصة؟"
+
+#. Template Name of the theme
+msgid "SM — Lost password"
+msgstr "SM — نسيان كلمة المرور"
+
+#: templates/auth-lost.php:14
+msgid "Reset your password"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: templates/auth-lost.php:15
+msgid "Enter your email or phone. We will send you a reset link or code."
+msgstr ""
+"أدخل بريدك الإلكتروني أو هاتفك. سنرسل لك رابطا أو رمزا لإعادة التعيين."
+
+#: templates/auth-lost.php:20
+msgid "Send reset link"
+msgstr "إرسال الرابط"
+
+#: templates/auth-lost.php:21
+msgid "Back to sign in"
+msgstr "العودة إلى تسجيل الدخول"
+
+#. Template Name of the theme
+msgid "SM — Register"
+msgstr "SM — التسجيل"
+
+#: templates/auth-register.php:18
+msgid "Create your account"
+msgstr "أنشئ حسابك"
+
+#: templates/auth-register.php:19
+msgid ""
+"Choose the type of account. You can enable several business activities "
+"later."
+msgstr "اختر نوع الحساب. يمكنك تفعيل عدة أنشطة لاحقا."
+
+#: templates/auth-register.php:27
+msgid "Account type"
+msgstr "نوع الحساب"
+
+#: templates/auth-register.php:32 templates/dashboard.php:72
+msgid "Business account"
+msgstr "حساب مهني"
+
+#: templates/auth-register.php:33
+msgid ""
+"Buy and sell steel, reuse lots and buildings, answer quotations, offer "
+"fabrication."
+msgstr ""
+"اشترِ وبِع الفولاذ ومجموعات إعادة الاستعمال والمباني، وأجب عن طلبات العروض، "
+"واعرض خدمات التصنيع."
+
+#: templates/auth-register.php:41
+msgid ""
+"Publish engineering services and receive client requests. No product "
+"trading."
+msgstr "انشر خدمات هندسية واستقبل طلبات الزبائن. دون تجارة منتجات."
+
+#: templates/auth-register.php:47
+msgid "Business activities"
+msgstr "الأنشطة"
+
+#: templates/auth-register.php:56
+msgid "Company or trade name"
+msgstr "اسم المؤسسة أو الاسم التجاري"
+
+#: templates/auth-register.php:56
+msgid "Name or office name"
+msgstr "الاسم أو اسم المكتب"
+
+#: templates/auth-register.php:60 templates/single-listing.php:214
+msgid "Full name"
+msgstr "الاسم الكامل"
+
+#: templates/auth-register.php:64
+msgid "Select"
+msgstr "اختر"
+
+#: templates/auth-register.php:70
+msgid "Mobile phone"
+msgstr "الهاتف النقال"
+
+#: templates/auth-register.php:71
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: templates/auth-register.php:79
+msgid "At least 10 characters."
+msgstr "10 أحرف على الأقل."
+
+#: templates/auth-register.php:81
+msgid "I accept the terms of use and the listing rules."
+msgstr "أوافق على شروط الاستعمال وقواعد النشر."
+
+#: templates/auth-register.php:82
+msgid "Create my account"
+msgstr "إنشاء حسابي"
+
+#: templates/auth-register.php:83
+msgid ""
+"Your phone will be verified by SMS. Business verification (RC, NIF, NIS) "
+"unlocks the verified badge."
+msgstr ""
+"سيتم توثيق هاتفك عبر رسالة قصيرة. توثيق المؤسسة (السجل التجاري، NIF، NIS) "
+"يمنحك شارة التوثيق."
+
+#: templates/auth-register.php:84
+msgid "Already registered?"
+msgstr "مسجل من قبل؟"
+
+#. Template Name of the theme
+msgid "SM — Company directory"
+msgstr "SM — دليل المؤسسات"
+
+#: templates/companies.php:15
+msgid ""
+"Manufacturers, distributors, installers, recyclers, project owners and "
+"engineering offices."
+msgstr "مصنّعون وموزعون ومركّبون ومسترجعون وأصحاب مشاريع ومكاتب دراسات."
+
+#. Template Name of the theme
+msgid "SM — Company profile"
+msgstr "SM — ملف المؤسسة"
+
+#: templates/company-profile.php:18
+msgid "Company not found"
+msgstr "المؤسسة غير موجودة"
+
+#: templates/company-profile.php:41 templates/company-profile.php:103
+msgid "About"
+msgstr "نبذة"
+
+#. translators: %s: year.
+#: templates/company-profile.php:57 templates/single-listing.php:122
+msgid "Active since %s"
+msgstr "نشطة منذ %s"
+
+#: templates/company-profile.php:66
+msgid "Request a service"
+msgstr "طلب خدمة"
+
+#: templates/company-profile.php:70
+msgid "Company sections"
+msgstr "أقسام المؤسسة"
+
+#: templates/company-profile.php:108
+msgid "Qualifications"
+msgstr "المؤهلات"
+
+#: templates/company-profile.php:110
+msgid "Specialisations"
+msgstr "التخصصات"
+
+#: templates/company-profile.php:115
+msgid "Company details"
+msgstr "معلومات المؤسسة"
+
+#: templates/company-profile.php:118
+msgid "Commercial register"
+msgstr "السجل التجاري"
+
+#: templates/company-profile.php:118
+msgid "Checked by the platform"
+msgstr "مراقب من طرف المنصة"
+
+#: templates/company-profile.php:118
+msgid "Not yet checked"
+msgstr "لم يراقب بعد"
+
+#: templates/company-profile.php:119 templates/single-listing.php:215
+msgid "Phone"
+msgstr "الهاتف"
+
+#. Template Name of the theme
+msgid "SM — Dashboard"
+msgstr "SM — لوحة التحكم"
+
+#: templates/dashboard.php:25 templates/dashboard.php:35
+msgid "Overview"
+msgstr "نظرة عامة"
+
+#: templates/dashboard.php:26
+msgid "Professional profile"
+msgstr "الملف المهني"
+
+#: templates/dashboard.php:29
+msgid "Portfolio"
+msgstr "الأعمال السابقة"
+
+#: templates/dashboard.php:30
+msgid "Qualifications & verification"
+msgstr "المؤهلات والتوثيق"
+
+#: templates/dashboard.php:36
+msgid "Selling"
+msgstr "البيع"
+
+#: templates/dashboard.php:39
+msgid "Quotations sent"
+msgstr "العروض المرسلة"
+
+#: templates/dashboard.php:40
+msgid "Enquiries received"
+msgstr "الاستفسارات الواردة"
+
+#: templates/dashboard.php:41 templates/pricing.php:18
+msgid "Listing statistics"
+msgstr "إحصائيات الإعلانات"
+
+#: templates/dashboard.php:43
+msgid "Buying"
+msgstr "الشراء"
+
+#: templates/dashboard.php:45
+msgid "My requests for quotation"
+msgstr "طلبات عروضي"
+
+#: templates/dashboard.php:46
+msgid "Purchase history"
+msgstr "سجل المشتريات"
+
+#: templates/dashboard.php:48
+msgid "Company"
+msgstr "المؤسسة"
+
+#: templates/dashboard.php:49
+msgid "Company profile"
+msgstr "ملف المؤسسة"
+
+#: templates/dashboard.php:50
+msgid "Plan & AI credits"
+msgstr "الاشتراك وأرصدة الذكاء الاصطناعي"
+
+#: templates/dashboard.php:72
+msgid "Engineering account"
+msgstr "حساب هندسي"
+
+#: templates/dashboard.php:75
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+#: templates/dashboard.php:85
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: templates/dashboard.php:86
+msgid "Sign out"
+msgstr "تسجيل الخروج"
+
+#: templates/dashboard.php:102
+msgid "Demo engineering account."
+msgstr "حساب هندسي تجريبي."
+
+#: templates/dashboard.php:102
+msgid "Demo business account."
+msgstr "حساب مهني تجريبي."
+
+#: templates/dashboard.php:102
+msgid "Switch to the business dashboard"
+msgstr "الانتقال إلى لوحة الحساب المهني"
+
+#: templates/dashboard.php:102
+msgid "Switch to the engineer dashboard"
+msgstr "الانتقال إلى لوحة المهندس"
+
+#: templates/dashboard.php:116
+msgid "This section arrives with its plugin"
+msgstr "يُفعّل هذا القسم مع إضافته"
+
+#: templates/dashboard.php:117
+msgid ""
+"The layout is ready; the content will be provided by the corresponding "
+"marketplace plugin."
+msgstr "التصميم جاهز؛ وستوفر الإضافة المعنية المحتوى."
+
+#. Template Name of the theme
+msgid "SM — Home"
+msgstr "SM — الرئيسية"
+
+#: templates/front-page-template.php:20
+msgid "Steel · Reuse · Buildings · Services"
+msgstr "فولاذ · إعادة استعمال · مبانٍ · خدمات"
+
+#: templates/front-page-template.php:21
+msgid "Buy and sell steel by the kilogram, from beams to complete warehouses"
+msgstr "اشترِ وبِع الفولاذ بالكيلوغرام، من الرافدة إلى الهنغار الكامل"
+
+#: templates/front-page-template.php:22
+msgid ""
+"Compare prices per kg, find offcuts and used structures near you, and work "
+"with verified suppliers, fabricators and engineers."
+msgstr ""
+"قارن الأسعار بالكيلوغرام، وجد البقايا والهياكل المستعملة قربك، واعمل مع "
+"موردين ومصنّعين ومهندسين موثقين."
+
+#: templates/front-page-template.php:27
+msgid "Profile or product"
+msgstr "المقطع أو المنتج"
+
+#: templates/front-page-template.php:52
+msgid "active listings"
+msgstr "إعلان نشط"
+
+#: templates/front-page-template.php:53
+msgid "companies"
+msgstr "مؤسسة"
+
+#: templates/front-page-template.php:54
+msgid "of steel offered for reuse"
+msgstr "من الفولاذ معروضة لإعادة الاستعمال"
+
+#: templates/front-page-template.php:67
+msgid "Beams, channels, tubes, plates and bolts, new and certified."
+msgstr "روافد ومقاطع U وأنابيب وصفائح وبراغ، جديدة ومعتمدة."
+
+#: templates/front-page-template.php:68
+msgid "Offcuts and surplus at a lower price per kg, graded on 5 levels."
+msgstr "بقايا وفائض بسعر أقل للكيلوغرام، مصنفة على 5 مستويات."
+
+#: templates/front-page-template.php:69
+msgid "Warehouses and hangars, assembled or dismantled with inventory."
+msgstr "مستودعات وهناجر، مركبة أو مفككة مع الجرد."
+
+#: templates/front-page-template.php:71
+msgid "Design, calculation notes and inspection by verified engineers."
+msgstr "تصميم ومذكرات حساب وفحص من طرف مهندسين موثقين."
+
+#: templates/front-page-template.php:89
+msgid "Featured listings"
+msgstr "إعلانات مميزة"
+
+#: templates/front-page-template.php:90
+msgid "See all"
+msgstr "عرض الكل"
+
+#: templates/front-page-template.php:103
+msgid "Latest reuse lots"
+msgstr "أحدث مجموعات إعادة الاستعمال"
+
+#: templates/front-page-template.php:104
+msgid ""
+"Every lot shows its condition, its weight source and an automatic total "
+"price."
+msgstr "كل مجموعة تبين حالتها ومصدر وزنها وسعرا إجماليا تلقائيا."
+
+#: templates/front-page-template.php:106
+msgid "Browse reuse"
+msgstr "تصفح إعادة الاستعمال"
+
+#: templates/front-page-template.php:120
+msgid "Publish one request, receive several offers"
+msgstr "طلب واحد، عروض متعددة"
+
+#: templates/front-page-template.php:121
+msgid ""
+"Describe profiles, quantities and delivery wilaya. Suppliers answer with a "
+"price per kg and a delivery time you can compare side by side."
+msgstr ""
+"صف المقاطع والكميات وولاية التسليم. يجيب الموردون بسعر للكيلوغرام وأجل تسليم"
+" تقارنها جنبا إلى جنب."
+
+#: templates/front-page-template.php:126 templates/price-index.php:17
+msgid "Steel price index"
+msgstr "مؤشر أسعار الفولاذ"
+
+#: templates/front-page-template.php:127
+msgid ""
+"Average advertised prices per kg by profile, condition and wilaya, updated "
+"from live listings. Asking prices, not official market prices."
+msgstr ""
+"متوسط الأسعار المعروضة للكيلوغرام حسب المقطع والحالة والولاية، محدّثة من "
+"الإعلانات. أسعار مطلوبة وليست رسمية."
+
+#: templates/front-page-template.php:128
+msgid "Open the index"
+msgstr "فتح المؤشر"
+
+#: templates/front-page-template.php:135
+msgid "Fabricators and engineers"
+msgstr "المصنّعون والمهندسون"
+
+#: templates/front-page-template.php:136
+msgid "All services"
+msgstr "كل الخدمات"
+
+#: templates/front-page-template.php:147
+msgid "Verified companies"
+msgstr "مؤسسات موثقة"
+
+#: templates/front-page-template.php:160
+msgid "Sell your stock, surplus or used building"
+msgstr "بِع مخزونك أو فائضك أو مبناك المستعمل"
+
+#: templates/front-page-template.php:161
+msgid ""
+"One business account to buy and sell. Engineers get a dedicated services "
+"account."
+msgstr "حساب مهني واحد للشراء والبيع. وللمهندسين حساب خدمات خاص."
+
+#: templates/front-page-template.php:164
+msgid "Create a free account"
+msgstr "إنشاء حساب مجاني"
+
+#: templates/front-page-template.php:165
+msgid "See the plans"
+msgstr "عرض الاشتراكات"
+
+#. Template Name of the theme
+msgid "SM — Steel buildings"
+msgstr "SM — المباني الفولاذية"
+
+#: templates/marketplace-buildings.php:16
+msgid ""
+"New warehouse kits and used buildings, sold assembled or dismantled with "
+"their full element inventory."
+msgstr ""
+"هياكل مستودعات جديدة ومبانٍ مستعملة، تباع مركبة أو مفككة مع الجرد الكامل "
+"لعناصرها."
+
+#. Template Name of the theme
+msgid "SM — Engineering"
+msgstr "SM — الهندسة"
+
+#: templates/marketplace-engineers.php:15
+msgid "Structural steel design"
+msgstr "تصميم الهياكل الفولاذية"
+
+#: templates/marketplace-engineers.php:15
+msgid "Structural calculations"
+msgstr "الحسابات الإنشائية"
+
+#: templates/marketplace-engineers.php:15
+msgid "Connection design"
+msgstr "تصميم الوصلات"
+
+#: templates/marketplace-engineers.php:16
+msgid "Shop drawings"
+msgstr "مخططات الورشة"
+
+#: templates/marketplace-engineers.php:16
+msgid "Technical inspection"
+msgstr "الفحص التقني"
+
+#: templates/marketplace-engineers.php:16
+msgid "Used structure assessment"
+msgstr "تقييم الهياكل المستعملة"
+
+#: templates/marketplace-engineers.php:24
+msgid "Engineering services"
+msgstr "الخدمات الهندسية"
+
+#: templates/marketplace-engineers.php:25
+msgid ""
+"Verified engineers and engineering offices for steel design, calculation "
+"notes, drawings and inspection of structures before reuse."
+msgstr ""
+"مهندسون ومكاتب دراسات موثقة للتصميم ومذكرات الحساب والمخططات وفحص الهياكل "
+"قبل إعادة استعمالها."
+
+#: templates/marketplace-engineers.php:27
+msgid "Join as an engineer"
+msgstr "انضم كمهندس"
+
+#: templates/marketplace-engineers.php:40
+msgid "Engineering offices"
+msgstr "مكاتب الدراسات"
+
+#: templates/marketplace-engineers.php:46
+msgid ""
+"AI tools on this platform never replace a structural calculation or an "
+"engineer’s signature."
+msgstr ""
+"أدوات الذكاء الاصطناعي في المنصة لا تعوض أبدا الحساب الإنشائي ولا توقيع "
+"المهندس."
+
+#. Template Name of the theme
+msgid "SM — Steel products"
+msgstr "SM — المنتجات الفولاذية"
+
+#: templates/marketplace-products.php:16
+msgid ""
+"New beams, channels, tubes, plates and accessories from manufacturers and "
+"distributors, priced per kilogram."
+msgstr ""
+"روافد ومقاطع U وأنابيب وصفائح وملحقات جديدة من المصنّعين والموزعين، بالسعر "
+"للكيلوغرام."
+
+#. Template Name of the theme
+msgid "SM — Steel reuse"
+msgstr "SM — إعادة استعمال الفولاذ"
+
+#: templates/marketplace-reuse.php:16
+msgid ""
+"Offcuts, site surplus, used profiles and scrap: search by profile, length, "
+"quantity and condition."
+msgstr ""
+"بقايا وفائض ورشات ومقاطع مستعملة وخردة: ابحث حسب المقطع والطول والكمية "
+"والحالة."
+
+#. Template Name of the theme
+msgid "SM — Search"
+msgstr "SM — البحث"
+
+#: templates/marketplace-search.php:15
+msgid "Search results"
+msgstr "نتائج البحث"
+
+#: templates/marketplace-search.php:16
+msgid "Results across steel products, reuse and buildings."
+msgstr "نتائج من المنتجات وإعادة الاستعمال والمباني."
+
+#. Template Name of the theme
+msgid "SM — Services"
+msgstr "SM — الخدمات"
+
+#: templates/marketplace-services.php:13
+msgid "Cutting"
+msgstr "القص"
+
+#: templates/marketplace-services.php:13
+msgid "Drilling"
+msgstr "الثقب"
+
+#: templates/marketplace-services.php:13
+msgid "Welding"
+msgstr "اللحام"
+
+#: templates/marketplace-services.php:13
+msgid "Structural fabrication"
+msgstr "تصنيع الهياكل"
+
+#: templates/marketplace-services.php:14
+msgid "Sandblasting"
+msgstr "السفع بالرمل"
+
+#: templates/marketplace-services.php:14
+msgid "Painting"
+msgstr "الطلاء"
+
+#: templates/marketplace-services.php:14
+msgid "Galvanizing"
+msgstr "التجليفن"
+
+#: templates/marketplace-services.php:14
+msgid "Installation"
+msgstr "التركيب"
+
+#: templates/marketplace-services.php:15 templates/single-listing.php:147
+msgid "Dismantling"
+msgstr "التفكيك"
+
+#: templates/marketplace-services.php:15
+msgid "Transport coordination"
+msgstr "تنسيق النقل"
+
+#: templates/marketplace-services.php:24
+msgid ""
+"Workshops and site teams for cutting, welding, assembly, installation and "
+"dismantling of steel structures."
+msgstr ""
+"ورشات وفرق ميدانية لقص الهياكل الفولاذية ولحامها وتجميعها وتركيبها وتفكيكها."
+
+#. Template Name of the theme
+msgid "SM — Price index"
+msgstr "SM — مؤشر الأسعار"
+
+#: templates/price-index.php:18
+msgid ""
+"Average advertised prices per kg by profile, condition, wilaya and period."
+msgstr ""
+"متوسط الأسعار المعروضة للكيلوغرام حسب المقطع والحالة والولاية والفترة."
+
+#: templates/price-index.php:22
+msgid ""
+"These are asking prices published by sellers on the platform, not official "
+"market prices and not completed transaction prices."
+msgstr ""
+"هذه أسعار يطلبها البائعون على المنصة، وليست أسعار سوق رسمية ولا أسعار صفقات "
+"منجزة."
+
+#: templates/price-index.php:34
+msgid "The index will appear once enough listings are published"
+msgstr "سيظهر المؤشر عند نشر عدد كاف من الإعلانات"
+
+#: templates/price-index.php:35
+msgid ""
+"Charts by profile, condition and wilaya are provided by the analytics "
+"module."
+msgstr "يوفر وحدة التحليل الرسوم حسب المقطع والحالة والولاية."
+
+#. Template Name of the theme
+msgid "SM — Plans"
+msgstr "SM — الاشتراكات"
+
+#: templates/pricing.php:17
+msgid "Free"
+msgstr "مجاني"
+
+#: templates/pricing.php:17
+msgid "Buy and contact sellers"
+msgstr "الشراء والتواصل مع البائعين"
+
+#: templates/pricing.php:17
+msgid "Limited number of listings"
+msgstr "عدد محدود من الإعلانات"
+
+#: templates/pricing.php:18
+msgid "Business"
+msgstr "أعمال"
+
+#: templates/pricing.php:18
+msgid "More listings and featured slots"
+msgstr "إعلانات وخانات تمييز أكثر"
+
+#: templates/pricing.php:18
+msgid "Company page with verified badge"
+msgstr "صفحة مؤسسة بشارة التوثيق"
+
+#: templates/pricing.php:18
+msgid "Monthly AI credits"
+msgstr "أرصدة ذكاء اصطناعي شهرية"
+
+#: templates/pricing.php:19
+msgid "Pro"
+msgstr "احترافي"
+
+#: templates/pricing.php:19
+msgid "Highest limits"
+msgstr "أعلى الحدود"
+
+#: templates/pricing.php:19
+msgid "Premium visibility"
+msgstr "ظهور مميز"
+
+#: templates/pricing.php:19
+msgid "Priority on quotation requests"
+msgstr "أولوية في طلبات العروض"
+
+#: templates/pricing.php:19
+msgid "Extended AI credits"
+msgstr "أرصدة ذكاء اصطناعي موسعة"
+
+#: templates/pricing.php:27
+msgid ""
+"Start free. Upgrade when you need more listings, visibility and AI credits. "
+"Payment by bank transfer, CCP or BaridiMob, activated by our team."
+msgstr ""
+"ابدأ مجانا. رقِّ اشتراكك عند حاجتك لإعلانات وظهور وأرصدة ذكاء اصطناعي أكثر. "
+"الدفع بالتحويل البنكي أو CCP أو BaridiMob، ويفعّله فريقنا."
+
+#: templates/pricing.php:35
+msgid "Price set by the administrator"
+msgstr "السعر يحدده المسؤول"
+
+#: templates/pricing.php:37
+msgid "Choose"
+msgstr "اختيار"
+
+#. Template Name of the theme
+msgid "SM — Requests for quotation"
+msgstr "SM — طلبات عروض الأسعار"
+
+#: templates/rfq-board.php:25
+msgid ""
+"Buyers describe what they need; suppliers answer with a price per kg and a "
+"delivery time."
+msgstr "يصف المشترون حاجتهم؛ ويجيب الموردون بسعر للكيلوغرام وأجل تسليم."
+
+#: templates/rfq-board.php:27
+msgid "New request"
+msgstr "طلب جديد"
+
+#: templates/rfq-board.php:45
+msgid "offer"
+msgid_plural "offers"
+msgstr[0] "عرض"
+msgstr[1] "عرض"
+msgstr[2] "عرضان"
+msgstr[3] "عروض"
+msgstr[4] "عرضا"
+msgstr[5] "عرض"
+
+#: templates/rfq-board.php:46
+msgid "Make an offer"
+msgstr "تقديم عرض"
+
+#: templates/rfq-board.php:53
+msgid "New request for quotation"
+msgstr "طلب عرض سعر جديد"
+
+#: templates/rfq-board.php:56
+msgid "What do you need?"
+msgstr "ماذا تحتاج؟"
+
+#: templates/rfq-board.php:65
+msgid "Delivery wilaya"
+msgstr "ولاية التسليم"
+
+#: templates/rfq-board.php:66
+msgid "Needed by"
+msgstr "التاريخ المطلوب"
+
+#: templates/rfq-board.php:68
+msgid "Technical description"
+msgstr "الوصف التقني"
+
+#: templates/rfq-board.php:69
+msgid "Attach drawings or a bill of materials"
+msgstr "أرفق مخططات أو قائمة مواد"
+
+#: templates/rfq-board.php:70
+msgid "Publish my request"
+msgstr "نشر طلبي"
+
+#. Template Name of the theme
+msgid "SM — Listing detail"
+msgstr "SM — تفاصيل الإعلان"
+
+#: templates/single-listing.php:20
+msgid "This listing is no longer available"
+msgstr "هذا الإعلان لم يعد متوفرا"
+
+#: templates/single-listing.php:20
+msgid "Back to the marketplace"
+msgstr "العودة إلى المنصة"
+
+#: templates/single-listing.php:37
+msgid "Length × width × height"
+msgstr "الطول × العرض × الارتفاع"
+
+#: templates/single-listing.php:38
+msgid "Total area"
+msgstr "المساحة الإجمالية"
+
+#: templates/single-listing.php:40
+msgid "Structural system"
+msgstr "النظام الإنشائي"
+
+#: templates/single-listing.php:41
+msgid "Roof design"
+msgstr "شكل السقف"
+
+#: templates/single-listing.php:43
+msgid "Side cladding"
+msgstr "الكسوة الجانبية"
+
+#: templates/single-listing.php:48
+msgid "Standard"
+msgstr "المعيار"
+
+#: templates/single-listing.php:51
+msgid "Length"
+msgstr "الطول"
+
+#: templates/single-listing.php:55
+msgid "Finish"
+msgstr "التشطيب"
+
+#: templates/single-listing.php:58
+msgid "Weight source"
+msgstr "مصدر الوزن"
+
+#: templates/single-listing.php:59
+msgid "Location"
+msgstr "الموقع"
+
+#. translators: %d: photo number.
+#: templates/single-listing.php:79
+msgid "Photo %d"
+msgstr "الصورة %d"
+
+#: templates/single-listing.php:104
+msgid "Contact the seller"
+msgstr "التواصل مع البائع"
+
+#: templates/single-listing.php:107
+msgid "Save"
+msgstr "حفظ"
+
+#: templates/single-listing.php:108
+msgid "Share"
+msgstr "مشاركة"
+
+#: templates/single-listing.php:133
+msgid "Technical specifications"
+msgstr "المواصفات التقنية"
+
+#: templates/single-listing.php:143
+msgid "What the price includes"
+msgstr "ما يشمله السعر"
+
+#: templates/single-listing.php:148
+msgid "Transport"
+msgstr "النقل"
+
+#: templates/single-listing.php:149
+msgid "Reinstallation"
+msgstr "إعادة التركيب"
+
+#: templates/single-listing.php:150
+msgid "Foundations and accessories"
+msgstr "الأساسات والملحقات"
+
+#: templates/single-listing.php:155
+msgid "included"
+msgstr "مشمول"
+
+#: templates/single-listing.php:155
+msgid "not included"
+msgstr "غير مشمول"
+
+#: templates/single-listing.php:163 templates/single-listing.php:164
+msgid "Structural element inventory"
+msgstr "جرد العناصر الإنشائية"
+
+#: templates/single-listing.php:172 templates/single-listing.php:183
+msgid "Unit weight (kg/m)"
+msgstr "الوزن الوحدوي (kg/m)"
+
+#: templates/single-listing.php:173 templates/single-listing.php:184
+msgid "Total weight (kg)"
+msgstr "الوزن الإجمالي (kg)"
+
+#: templates/single-listing.php:190 templates/single-listing.php:191
+msgid "Total steel weight"
+msgstr "الوزن الإجمالي للفولاذ"
+
+#: templates/single-listing.php:196
+msgid ""
+"Unit weights come from the platform’s standard section tables. The "
+"theoretical weight excludes bolts, plates and welds."
+msgstr ""
+"الأوزان الوحدوية مأخوذة من جداول المقاطع القياسية للمنصة. لا يشمل الوزن "
+"النظري البراغي والصفائح واللحام."
+
+#: templates/single-listing.php:201
+msgid "Description"
+msgstr "الوصف"
+
+#: templates/single-listing.php:204
+msgid "Shown in the language the seller wrote it in."
+msgstr "معروض باللغة التي كتب بها البائع."
+
+#: templates/single-listing.php:206
+msgid ""
+"Planning a structural reuse? Have the elements checked by a verified "
+"engineer before installation."
+msgstr ""
+"تنوي إعادة استعمال إنشائي؟ اطلب فحص العناصر من مهندس موثق قبل التركيب."
+
+#: templates/single-listing.php:206
+msgid "Find an engineer"
+msgstr "ابحث عن مهندس"
+
+#: templates/single-listing.php:211
+msgid "Send an enquiry"
+msgstr "إرسال استفسار"
+
+#: templates/single-listing.php:217
+msgid "Quantity needed"
+msgstr "الكمية المطلوبة"
+
+#: templates/single-listing.php:218
+msgid "Message"
+msgstr "الرسالة"
+
+#: templates/single-listing.php:219
+msgid "Send enquiry"
+msgstr "إرسال الاستفسار"
+
+#: templates/single-listing.php:220
+msgid "Enquiries will be delivered by the core plugin (Phase 2)."
+msgstr "ستوصل الإضافة المركزية الاستفسارات (المرحلة 2)."
+
+#: templates/single-listing.php:227
+msgid "Similar listings"
+msgstr "إعلانات مشابهة"
+
+#. Template Name of the theme
+msgid "SM — Styleguide"
+msgstr "SM — دليل التصميم"
+
+#: templates/styleguide.php:20
+msgid "Styleguide"
+msgstr "دليل التصميم"
+
+#: templates/styleguide.php:20
+msgid ""
+"Every component in the current language. Switch language in the header to "
+"review RTL and LTR."
+msgstr "كل المكونات باللغة الحالية. غيّر اللغة من الترويسة لمراجعة الاتجاهين."
+
+#: templates/styleguide.php:23
+msgid "Brand colours"
+msgstr "ألوان الهوية"
+
+#: templates/styleguide.php:29
+msgid "Editable in Appearance → Customize → SM Brand."
+msgstr "قابلة للتعديل من المظهر ← تخصيص ← هوية SM."
+
+#: templates/styleguide.php:32
+msgid "Buttons"
+msgstr "الأزرار"
+
+#: templates/styleguide.php:41
+msgid "Condition scale"
+msgstr "سلّم الحالة"
+
+#: templates/styleguide.php:45
+msgid "Status and chips"
+msgstr "الحالات والشارات"
+
+#: templates/styleguide.php:56
+msgid "Listing cards"
+msgstr "بطاقات الإعلانات"

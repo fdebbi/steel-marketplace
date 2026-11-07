@@ -1,0 +1,14 @@
+{
+  "name": "sm-marketplace",
+  "version": "0.1.1",
+  "private": true,
+  "description": "Build tools for the SM Marketplace theme",
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test:visual": "python3 tools/visual-test.py"
+  },
+  "devDependencies": {
+    "rtlcss": "^4.3.0"
+  }
+}
