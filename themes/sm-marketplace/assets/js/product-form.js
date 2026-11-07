@@ -49,7 +49,10 @@
 			if ( '' === String( value ).trim() ) { return; }
 			q.append( key, value );
 		} );
-		if ( changed && 'family' === changed.name ) {
+		var line = changed && changed.name ? changed.name.match( /^lines\[(\d+)\]\[family\]$/ ) : null;
+		if ( line ) {
+			q.delete( 'lines[' + line[1] + '][section]' ); // A size of another type means nothing.
+		} else if ( changed && 'family' === changed.name ) {
 			[ 'section', 'grade', 'grade_other' ].forEach( function ( k ) { q.delete( k ); } );
 			Array.from( q.keys() ).filter( function ( k ) { return 0 === k.indexOf( 'dims[' ); } ).forEach( function ( k ) { q.delete( k ); } );
 		} else if ( changed && 'section' === changed.name ) {
@@ -107,6 +110,18 @@
 		clearTimeout( timer );
 		var t = e.target;
 		timer = setTimeout( function () { refresh( t ); }, 500 );
+	} );
+	// Inventory rows: removing a row clears it; the server drops empty rows.
+	form.addEventListener( 'click', function ( e ) {
+		var btn = e.target.closest ? e.target.closest( '[data-smp-line-remove]' ) : null;
+		if ( ! btn || ! inTech( btn ) ) { return; }
+		var row = btn.closest( '[data-smp-line]' );
+		if ( ! row ) { return; }
+		row.querySelectorAll( 'input' ).forEach( function ( el ) { el.value = ''; } );
+		row.querySelectorAll( 'select' ).forEach( function ( el ) { if ( el.name && /\[section\]$/.test( el.name ) ) { el.value = ''; } } );
+		row.classList.add( 'is-leaving' );
+		clearTimeout( timer );
+		timer = setTimeout( function () { refresh( null ); }, 180 );
 	} );
 	// Enter in a technical field must not submit the whole form.
 	form.addEventListener( 'keydown', function ( e ) {

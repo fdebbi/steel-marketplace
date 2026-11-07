@@ -33,6 +33,7 @@ final class Installer {
 		dbDelta(
 			"CREATE TABLE {$p}product_categories (
 				slug varchar(40) NOT NULL,
+				market varchar(20) NOT NULL DEFAULT 'products',
 				name_fr varchar(120) NOT NULL,
 				name_ar varchar(120) NOT NULL,
 				icon varchar(30) NOT NULL DEFAULT 'layers',
@@ -49,6 +50,7 @@ final class Installer {
 			"CREATE TABLE {$p}products (
 				id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 				listing_id bigint(20) unsigned NOT NULL DEFAULT 0,
+				market varchar(20) NOT NULL DEFAULT 'products',
 				company_id bigint(20) unsigned NOT NULL,
 				user_id bigint(20) unsigned NOT NULL,
 				category varchar(40) NOT NULL,
@@ -59,6 +61,9 @@ final class Installer {
 				grade varchar(30) NOT NULL DEFAULT '',
 				dims text,
 				specs longtext,
+				item_condition varchar(20) NOT NULL DEFAULT '',
+				attrs text,
+				inventory longtext,
 				qty_mode varchar(10) NOT NULL DEFAULT 'bars',
 				length_mm int(11) NOT NULL DEFAULT 0,
 				width_mm int(11) NOT NULL DEFAULT 0,
@@ -85,6 +90,7 @@ final class Installer {
 				PRIMARY KEY  (id),
 				KEY company_status (company_id,status),
 				KEY status_category (status,category,published_at),
+				KEY market_status (market,status,published_at),
 				KEY listing_id (listing_id)
 			) $c;"
 		);
@@ -93,10 +99,18 @@ final class Installer {
 
 	/** Insert missing default categories; existing ones (maybe edited) are kept. */
 	public static function seed_categories() {
+		self::insert_categories( 'products', require SM_PRODUCTS_DIR . '/data/categories.php' );
+	}
+
+	/**
+	 * Add the default categories of a market (used by sm-reuse too). Existing
+	 * slugs are left as they are, so admin edits are never overwritten.
+	 */
+	public static function insert_categories( $market, array $categories ) {
 		global $wpdb;
 		$t    = $wpdb->prefix . 'sm_product_categories';
-		$sort = 0;
-		foreach ( require SM_PRODUCTS_DIR . '/data/categories.php' as $slug => $c ) {
+		$sort = 'products' === $market ? 0 : 1000;
+		foreach ( $categories as $slug => $c ) {
 			$sort += 10;
 			if ( $wpdb->get_var( $wpdb->prepare( "SELECT slug FROM {$t} WHERE slug = %s", $slug ) ) ) { // phpcs:ignore WordPress.DB
 				continue;
@@ -105,13 +119,14 @@ final class Installer {
 				$t,
 				array(
 					'slug'     => $slug,
+					'market'   => $market,
 					'name_fr'  => $c['name']['fr'],
 					'name_ar'  => $c['name']['ar'],
 					'icon'     => $c['icon'],
 					'kind'     => $c['kind'],
 					'families' => wp_json_encode( $c['families'] ?? array() ),
 					'units'    => wp_json_encode( $c['units'] ),
-					'fields'   => wp_json_encode( $c['fields'] ),
+					'fields'   => wp_json_encode( $c['fields'] ?? array() ),
 					'sort'     => $sort,
 					'active'   => 1,
 				)

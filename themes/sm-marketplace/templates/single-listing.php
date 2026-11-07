@@ -61,7 +61,7 @@ if ( ! empty( $item['spec_rows'] ) ) { // Rows prepared by the listing plugin fo
 		$specs[ $row[0] ] = $row[1];
 	}
 }
-if ( in_array( $item['weight_source'], array( 'actual', 'theoretical' ), true ) ) {
+if ( in_array( $item['weight_source'], array( 'actual', 'theoretical', 'estimated' ), true ) ) {
 	$specs[ __( 'Weight source', 'sm-marketplace' ) ] = esc_html( sm_weight_source_label( $item['weight_source'] ) );
 }
 $specs[ __( 'Location', 'sm-marketplace' ) ]      = esc_html( sm_t( $wilayas[ $item['wilaya'] ] ?? '' ) );
@@ -196,8 +196,9 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 
 		<?php if ( ! empty( $item['elements'] ) ) : ?>
 			<section class="sm-panel sm-panel--wide">
-				<h2 class="sm-panel__title"><?php esc_html_e( 'Structural element inventory', 'sm-marketplace' ); ?></h2>
-				<div class="sm-table-wrap" tabindex="0" role="region" aria-label="<?php esc_attr_e( 'Structural element inventory', 'sm-marketplace' ); ?>">
+				<?php $inv_title = 'reuse' === $market ? __( 'Lot inventory', 'sm-marketplace' ) : __( 'Structural element inventory', 'sm-marketplace' ); ?>
+				<h2 class="sm-panel__title"><?php echo esc_html( $inv_title ); ?></h2>
+				<div class="sm-table-wrap" tabindex="0" role="region" aria-label="<?php echo esc_attr( $inv_title ); ?>">
 					<table class="sm-table sm-table--stack">
 						<thead>
 							<tr>
@@ -215,8 +216,8 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 									<th scope="row" data-label="<?php esc_attr_e( 'Element', 'sm-marketplace' ); ?>"><?php sm_e( $el['type'] ); ?></th>
 									<td data-label="<?php esc_attr_e( 'Profile', 'sm-marketplace' ); ?>"><?php echo sm_tech( $el['designation'] ); // phpcs:ignore ?></td>
 									<td class="num" data-label="<?php esc_attr_e( 'Quantity', 'sm-marketplace' ); ?>"><?php echo esc_html( $el['qty'] ); ?></td>
-									<td class="num" data-label="<?php esc_attr_e( 'Length (m)', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_number( $el['length'], 1 ) ); ?></td>
-									<td class="num" data-label="<?php esc_attr_e( 'Unit weight (kg/m)', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_number( $el['unit_weight'], 1 ) ); ?></td>
+									<td class="num" data-label="<?php esc_attr_e( 'Length (m)', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_number( $el['length'], fmod( $el['length'] * 10, 1 ) ? 2 : 1 ) ); ?></td>
+									<td class="num" data-label="<?php esc_attr_e( 'Unit weight (kg/m)', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_number( $el['unit_weight'], 2 ) ); ?></td>
 									<td class="num" data-label="<?php esc_attr_e( 'Total weight (kg)', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_number( $el['total'] ) ); ?></td>
 								</tr>
 							<?php endforeach; ?>
@@ -242,7 +243,19 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 			<p class="sm-prewrap"<?php echo $desc['fallback'] ? ' lang="' . esc_attr( $desc['lang'] ) . '" dir="auto"' : ''; ?>><?php echo esc_html( $desc['text'] ); ?></p>
 			<?php endif; ?>
 			<?php if ( $desc['fallback'] ) : ?><p class="sm-muted"><?php esc_html_e( 'Shown in the language the seller wrote it in.', 'sm-marketplace' ); ?></p><?php endif; ?>
-			<?php if ( 'reuse' === $market || $is_build ) : ?>
+			<?php if ( ! empty( $item['advice'] ) ) : ?>
+				<?php $adv = $item['advice']; ?>
+				<div class="sm-advice sm-advice--<?php echo esc_attr( 'warning' === ( $adv['level'] ?? '' ) ? 'warning' : 'info' ); ?>" role="note">
+					<?php sm_icon( empty( $adv['link_page'] ) ? 'recycle' : 'hard-hat', 'sm-advice__icon' ); ?>
+					<div>
+						<p class="sm-advice__title"><?php echo esc_html( $adv['title'] ); ?></p>
+						<p><?php echo esc_html( $adv['text'] ); ?></p>
+						<?php if ( ! empty( $adv['link_page'] ) ) : ?>
+							<a class="sm-btn sm-btn--ghost sm-btn--sm" href="<?php echo esc_url( sm_page_url( $adv['link_page'] ) ); ?>"><?php echo esc_html( $adv['link_label'] ); ?><?php sm_icon( 'chevron-end' ); ?></a>
+						<?php endif; ?>
+					</div>
+				</div>
+			<?php elseif ( 'reuse' === $market || $is_build ) : ?>
 				<p class="sm-callout"><?php sm_icon( 'hard-hat' ); ?><span><?php esc_html_e( 'Planning a structural reuse? Have the elements checked by a verified engineer before installation.', 'sm-marketplace' ); ?> <a href="<?php echo esc_url( sm_page_url( 'engineers' ) ); ?>"><?php esc_html_e( 'Find an engineer', 'sm-marketplace' ); ?></a></span></p>
 			<?php endif; ?>
 		</section>

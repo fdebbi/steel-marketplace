@@ -32,11 +32,21 @@ final class Spec {
 		$d               = array( 'category' => $cat->slug );
 		$e               = array();
 
-		if ( 'engine' === $cat->kind ) {
-			self::engine( $cat, $in, $d, $e, $out );
-		} else {
-			self::specs( $cat, $in, $d, $e );
+		$d['market'] = $cat->market;
+		switch ( $cat->kind ) {
+			case 'engine':
+				self::engine( $cat, $in, $d, $e, $out );
+				break;
+			case 'lines':
+				self::lines( $cat, $in, $d, $e );
+				break;
+			case 'weight':
+				self::weight( $cat, $in, $d, $e );
+				break;
+			default:
+				self::specs( $cat, $in, $d, $e );
 		}
+		self::market_fields( $cat, $in, $d, $e, $for_save );
 
 		// Price.
 		$price = self::num( $in['price'] ?? '' );
@@ -49,9 +59,9 @@ final class Spec {
 			$e['price'] = __( 'This price is outside the accepted range.', 'sm-products' );
 		}
 		$d['price'] = $price;
-		if ( 'engine' === $cat->kind ) {
+		if ( 'specs' !== $cat->kind ) {
 			$d['price_unit'] = in_array( $in['price_unit'] ?? '', $cat->units, true ) ? $in['price_unit'] : $cat->units[0];
-			if ( 'unit' === $d['price_unit'] && 'weight' === ( $d['qty_mode'] ?? '' ) ) {
+			if ( 'unit' === $d['price_unit'] && ( 'weight' === ( $d['qty_mode'] ?? '' ) || 'weight' === $cat->kind ) ) {
 				$e['price_unit'] = __( 'A price per piece needs the number of pieces: choose "Number of bars" or a price per kg.', 'sm-products' );
 			}
 		} else {
@@ -66,7 +76,10 @@ final class Spec {
 					$total = $price * (float) ( $d['total_weight'] ?? 0 );
 					break;
 				case 'unit':
-					$total = $price * (float) ( 'engine' === $cat->kind ? ( $d['pieces'] ?? 0 ) : ( $d['quantity'] ?? 0 ) );
+					$total = $price * (float) ( 'specs' !== $cat->kind ? ( $d['pieces'] ?? 0 ) : ( $d['quantity'] ?? 0 ) );
+					break;
+				case 'lot':
+					$total = $price;
 					break;
 				default:
 					$total = $price * (float) ( $d['quantity'] ?? 0 );
@@ -202,6 +215,28 @@ final class Spec {
 
 	/** Roofing, finishing parts, others: category fields and a quantity in the chosen unit. */
 	private static function specs( $cat, array $in, array &$d, array &$e ) {
+		self::fields( $cat, $in, $d, $e );
+		$specs            = $d['specs'];
+		$d['designation'] = mb_substr( (string) ( $specs['maker_type'] ?? ( $specs['item'] ?? '' ) ), 0, 80 );
+		$d['unit']        = in_array( $in['unit'] ?? '', $cat->units, true ) ? $in['unit'] : $cat->units[0];
+		$q                = self::num( $in['quantity'] ?? '' );
+		if ( $q <= 0 ) {
+			$e['quantity'] = __( 'Enter the available quantity.', 'sm-products' );
+		}
+		$d['quantity'] = $q;
+		$d['pieces']   = 'unit' === $d['unit'] ? $q : 0;
+		if ( 'kg' === $d['unit'] ) {
+			$d['total_weight']  = $q;
+			$d['weight_source'] = 'actual';
+		} else {
+			$w                  = self::num( $in['actual_weight'] ?? '' );
+			$d['total_weight']  = $w > 0 ? $w : 0;
+			$d['weight_source'] = $w > 0 ? 'actual' : 'none';
+		}
+	}
+
+	/** Category fields (text, number, select). */
+	private static function fields( $cat, array $in, array &$d, array &$e ) {
 		$specs = array();
 		foreach ( $cat->fields as $f ) {
 			$v = $in['specs'][ $f['key'] ] ?? '';
@@ -225,22 +260,135 @@ final class Spec {
 			}
 			$specs[ $f['key'] ] = is_string( $v ) ? mb_substr( $v, 0, 120 ) : $v;
 		}
-		$d['specs']       = $specs;
-		$d['designation'] = mb_substr( (string) ( $specs['maker_type'] ?? ( $specs['item'] ?? '' ) ), 0, 80 );
-		$d['unit']        = in_array( $in['unit'] ?? '', $cat->units, true ) ? $in['unit'] : $cat->units[0];
-		$q                = self::num( $in['quantity'] ?? '' );
-		if ( $q <= 0 ) {
-			$e['quantity'] = __( 'Enter the available quantity.', 'sm-products' );
+		$d['specs'] = $specs;
+	}
+
+	/**
+	 * Inventory lot: several lines "type + size + number of pieces + length",
+	 * each weighed by the engine; the lot weight is their sum.
+	 */
+	private static function lines( $cat, array $in, array &$d, array &$e ) {
+		$engine = \SM\Core\Modules::service( 'weight' );
+		if ( ! $engine ) {
+			$e['lines'] = __( 'The weight engine is not active.', 'sm-products' );
+			return;
 		}
-		$d['quantity'] = $q;
-		$d['pieces']   = 'unit' === $d['unit'] ? $q : 0;
-		if ( 'kg' === $d['unit'] ) {
-			$d['total_weight']  = $q;
-			$d['weight_source'] = 'actual';
-		} else {
-			$w                  = self::num( $in['actual_weight'] ?? '' );
-			$d['total_weight']  = $w > 0 ? $w : 0;
-			$d['weight_source'] = $w > 0 ? 'actual' : 'none';
+		$rows  = array_slice( array_values( (array) ( $in['lines'] ?? array() ) ), 0, 30 );
+		$lines = array();
+		$total = 0.0;
+		$count = 0;
+		foreach ( $rows as $i => $row ) {
+			$row = array_map( static fn( $v ) => is_string( $v ) ? trim( sanitize_text_field( $v ) ) : '', (array) $row );
+			if ( '' === ( $row['section'] ?? '' ) && '' === ( $row['qty'] ?? '' ) && '' === ( $row['length'] ?? '' ) ) {
+				continue; // Empty row.
+			}
+			$family = strtoupper( $row['family'] ?? '' );
+			if ( ! in_array( $family, $cat->families, true ) || '' === ( $row['section'] ?? '' ) ) {
+				$e[ 'lines_' . $i ] = __( 'Choose the type and the size.', 'sm-products' );
+				continue;
+			}
+			$qty = (int) self::num( $row['qty'] ?? '' );
+			$len = self::num( $row['length'] ?? '' );
+			if ( $qty < 1 || $len <= 0 ) {
+				$e[ 'lines_' . $i ] = __( 'Enter the number of pieces and their length in metres.', 'sm-products' );
+				continue;
+			}
+			$r = $engine->calculate( array( 'family' => $family, 'section' => is_numeric( $row['section'] ) ? (int) $row['section'] : $row['section'], 'bars' => $qty, 'length' => $len * 1000 ) );
+			if ( is_wp_error( $r ) ) {
+				$e[ 'lines_' . $i ] = $r->get_error_message();
+				continue;
+			}
+			$lines[] = array(
+				'family'      => $family,
+				'section_id'  => (int) $r['section_id'],
+				'designation' => $r['designation'],
+				'qty'         => $qty,
+				'length_mm'   => (int) round( $r['length_mm'] ),
+				'kg_m'        => $r['mass_kg_m'],
+				'total'       => $r['total_kg'],
+			);
+			$d['line_rows'][ $i ] = array( 'kg_m' => $r['mass_kg_m'], 'total' => $r['total_kg'], 'designation' => $r['designation'] ); // Form row => result.
+			$total += $r['total_kg'];
+			$count += $qty;
+			$d['engine_version'] = $r['engine'];
+			$d['ref_version']    = $r['reference'];
+		}
+		if ( ! $lines && ! array_filter( array_keys( $e ), static fn( $k ) => 0 === strpos( $k, 'lines_' ) ) ) {
+			$e['lines'] = __( 'Describe the lot: at least one line with type, size, number of pieces and length.', 'sm-products' );
+		}
+		$d['lines']        = $lines;
+		$d['qty_mode']     = 'bars';
+		$d['pieces']       = $count;
+		$d['total_weight'] = round( $total, 3 );
+		if ( $lines ) {
+			$names            = array_values( array_unique( wp_list_pluck( $lines, 'designation' ) ) );
+			$d['designation'] = mb_substr( $names[0] . ( count( $names ) > 1 ? ' +' . ( count( $names ) - 1 ) : '' ), 0, 80 );
+			$d['family']      = $lines[0]['family'];
+			$d['section_id']  = $lines[0]['section_id'];
+			$d['length_mm']   = max( wp_list_pluck( $lines, 'length_mm' ) ); // Longest piece, for the length filter.
+		}
+		$source = 'actual' === ( $in['weight_source'] ?? '' ) ? 'actual' : 'theoretical';
+		if ( 'actual' === $source && $total > 0 ) {
+			$w = self::num( $in['actual_weight'] ?? '' );
+			if ( $w <= 0 ) {
+				$e['actual_weight'] = __( 'Enter the weighed weight in kg.', 'sm-products' );
+			} elseif ( $w > $total * 1.5 || $w < $total * 0.5 ) {
+				/* translators: %s: theoretical weight in kg. */
+				$e['actual_weight'] = sprintf( __( 'The weighed weight is very far from the theoretical %s kg. Check it.', 'sm-products' ), number_format( $total, 1, '.', ' ' ) );
+			} else {
+				$d['total_weight'] = round( $w, 3 );
+			}
+		}
+		$d['weight_source'] = $source;
+	}
+
+	/** Mixed lots and scrap: category fields and the total weight (weighed or estimated). */
+	private static function weight( $cat, array $in, array &$d, array &$e ) {
+		self::fields( $cat, $in, $d, $e );
+		$w = self::num( $in['total_kg'] ?? '' );
+		if ( $w <= 0 ) {
+			$e['total_kg'] = __( 'Enter the total weight.', 'sm-products' );
+		} elseif ( $w > (float) sm_weight_setting( 'max_total_kg', 10000000 ) ) {
+			$e['total_kg'] = __( 'This weight is outside the accepted range.', 'sm-products' );
+		}
+		$d['total_weight']  = $w;
+		$d['qty_mode']      = 'weight';
+		$d['weight_source'] = 'actual' === ( $in['weight_source'] ?? '' ) ? 'actual' : 'estimated';
+		$d['designation']   = mb_substr( (string) ( $d['specs']['item'] ?? $cat->name_fr ), 0, 80 );
+	}
+
+	/** Condition and extra fields of the market (e.g. reuse: origin, surface, cutting). */
+	private static function market_fields( $cat, array $in, array &$d, array &$e, $for_save ) {
+		$m = Markets::get( $cat->market );
+		if ( ! $m ) {
+			return;
+		}
+		if ( ! empty( $m['conditions'] ) ) {
+			$c = sanitize_key( (string) ( $in['condition'] ?? '' ) );
+			if ( isset( $m['conditions'][ $c ] ) ) {
+				$d['item_condition'] = $c;
+			} elseif ( $for_save ) {
+				$e['condition'] = __( 'Choose the condition.', 'sm-products' );
+			}
+		}
+		$attrs = array();
+		foreach ( (array) ( $m['fields'] ?? array() ) as $f ) {
+			$v = sanitize_key( (string) ( $in['attrs'][ $f['key'] ] ?? '' ) );
+			if ( 'bool' === $f['type'] ) {
+				if ( '' !== $v ) {
+					$attrs[ $f['key'] ] = '1' === $v || 'yes' === $v ? 1 : 0;
+				}
+			} elseif ( in_array( $v, wp_list_pluck( $f['options'], 'value' ), true ) ) {
+				$attrs[ $f['key'] ] = $v;
+			}
+			if ( ! isset( $attrs[ $f['key'] ] ) && ! empty( $f['required'] ) && $for_save ) {
+				$e[ 'attrs_' . $f['key'] ] = __( 'Required.', 'sm-products' );
+			}
+		}
+		$d['attrs'] = $attrs;
+		$extra      = apply_filters( 'sm_products_spec_check', array(), $cat, $d, $in );
+		foreach ( (array) $extra as $k => $msg ) {
+			$e[ $k ] = $msg;
 		}
 	}
 
@@ -259,6 +407,9 @@ final class Spec {
 			'total_price'   => (float) ( $d['total_price'] ?? 0 ),
 			'price_per_kg'  => (float) ( $d['price_per_kg'] ?? 0 ),
 			'length_mm'     => (int) ( $d['length_mm'] ?? 0 ),
+			'lines'         => $d['lines'] ?? array(),
+			'line_rows'     => $d['line_rows'] ?? array(),
+			'condition'     => $d['item_condition'] ?? '',
 		);
 	}
 

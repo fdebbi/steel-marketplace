@@ -133,3 +133,13 @@ function sm_theme_icon_sprite() {
 	}
 }
 add_action( 'wp_body_open', 'sm_theme_icon_sprite', 1 );
+
+/**
+ * Page transitions are a nicety: a cross-document transition the browser skips
+ * (fast clicks, form redirects) must not surface as an error. Printed in <head>
+ * because "pagereveal" fires before deferred scripts run.
+ */
+function sm_theme_quiet_transitions() {
+	echo "<script>(function(){function q(e){var v=e.viewTransition;if(!v){return;}[v.ready,v.finished,v.updateCallbackDone].forEach(function(p){if(p&&p.catch){p.catch(function(){});}});}addEventListener('pageswap',q);addEventListener('pagereveal',q);addEventListener('unhandledrejection',function(e){var r=e.reason;if(r&&/Transition/.test(String(r.message||''))){e.preventDefault();}});}());</script>\n"; // phpcs:ignore WordPress.Security.EscapeOutput
+}
+add_action( 'wp_head', 'sm_theme_quiet_transitions', 0 );

@@ -1,6 +1,8 @@
-# SM Products — marché des produits acier neufs
+# SM Products — moteur d'annonces acier (produits neufs et autres marchés)
 
-Extension de **Steel Marketplace** (Phase 4). Nécessite **SM Core 0.3.0** et **SM Weight Engine 0.1.0**.
+Extension de **ReuSteel** (Phase 4, multi-marchés depuis la Phase 5). Nécessite **SM Core 0.3.0** et **SM Weight Engine 0.1.0**.
+
+Depuis la version 0.2.0, cette extension est le **moteur d'annonces** commun : elle porte le marché des produits neufs et accueille les marchés ajoutés par d'autres extensions (SM Reuse ajoute le réemploi) — mêmes photos, modération, recherche, fiche et tableau de bord. Un marché ajoute sa permission, son échelle d'état, ses champs et ses catégories (types *inventaire* ligne par ligne et *lot au poids* disponibles). Voir `docs/hooks.md`.
 
 ## Ce qu'elle fait
 

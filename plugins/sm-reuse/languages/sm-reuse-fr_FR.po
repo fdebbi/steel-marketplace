@@ -1,0 +1,110 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Reuse 0.1.0\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: sm-reuse\n"
+
+#. Plugin Name of the plugin
+#: sm-reuse.php
+msgid "SM Reuse"
+msgstr "SM Reuse"
+
+#. Plugin URI of the plugin
+#: sm-reuse.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-reuse.php
+msgid ""
+"Steel reuse market: offcuts, dismantled profiles, used tubes, plate offcuts,"
+" mixed lots and scrap. Adds the \"reuse\" market to the SM Products listing "
+"engine (condition scale, origin, surface state, cutting and loading), seeds "
+"its categories and adds the engineer advice on reuse listings. Requires SM "
+"Core, SM Weight Engine and SM Products."
+msgstr ""
+"Marché du réemploi de l’acier : chutes, profilés de démontage, tubes "
+"d’occasion, chutes de tôles, lots mixtes et ferraille. Ajoute le marché « "
+"réemploi » au moteur d’annonces SM Products (échelle d’état, origine, état "
+"de surface, découpe et chargement), crée ses catégories et ajoute l’avis "
+"d’ingénieur sur les annonces. Nécessite SM Core, SM Weight Engine et SM "
+"Products."
+
+#. Author of the plugin
+#: sm-reuse.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-reuse.php:47
+msgid ""
+"SM Reuse needs the SM Core, SM Weight Engine and SM Products plugins. "
+"Activate them first."
+msgstr ""
+"SM Reuse nécessite les extensions SM Core, SM Weight Engine et SM Products. "
+"Activez-les d’abord."
+
+#: src/Advice.php:35
+msgid "For recycling only"
+msgstr "Uniquement pour le recyclage"
+
+#: src/Advice.php:36
+msgid "This lot is sold as scrap. It must not be used in a structure."
+msgstr ""
+"Ce lot est vendu comme ferraille. Il ne doit pas être utilisé dans une "
+"structure."
+
+#. translators: %s: platform name.
+#: src/Advice.php:41
+msgid ""
+"Used or surplus steel can be reused in a structure only after a check by a "
+"qualified engineer: condition of the elements, steel grade, holes, welds and"
+" corrosion. The information in this listing is declared by the seller; %s "
+"does not certify it."
+msgstr ""
+"L’acier d’occasion ou de surplus ne peut être réemployé dans une structure "
+"qu’après vérification par un ingénieur qualifié : état des éléments, nuance "
+"d’acier, perçages, soudures et corrosion. Les informations de cette annonce "
+"sont déclarées par le vendeur ; %s ne les certifie pas."
+
+#. translators: %s: platform name.
+#: src/Advice.php:44
+msgid ""
+"The seller says these elements need an inspection or a treatment. Have them "
+"checked by a qualified engineer before any structural use. The information "
+"in this listing is declared by the seller; %s does not certify it."
+msgstr ""
+"Le vendeur indique que ces éléments doivent être inspectés ou traités. "
+"Faites-les vérifier par un ingénieur qualifié avant tout usage structurel. "
+"Les informations de cette annonce sont déclarées par le vendeur ; %s ne les "
+"certifie pas."
+
+#: src/Advice.php:48
+msgid "Structural reuse: ask an engineer"
+msgstr "Réemploi structurel : consultez un ingénieur"
+
+#: src/Advice.php:50
+msgid "Find an engineer"
+msgstr "Trouver un ingénieur"
+
+#: src/Rules.php:37
+msgid ""
+"Scrap is published with the condition \"Scrap / recycling only\". For "
+"reusable steel, choose another category."
+msgstr ""
+"La ferraille se publie avec l’état « Ferraille / recyclage uniquement ». "
+"Pour de l’acier réutilisable, choisissez une autre catégorie."
+
+#: src/Rules.php:39
+msgid "Steel only good for recycling goes in the \"Scrap\" category."
+msgstr ""
+"L’acier bon uniquement pour le recyclage se publie dans la catégorie « "
+"Ferraille »."
+
+#: src/Rules.php:42
+msgid "Cutting on demand is offered for bars and profiles only."
+msgstr "La découpe à la demande ne concerne que les barres et profilés."

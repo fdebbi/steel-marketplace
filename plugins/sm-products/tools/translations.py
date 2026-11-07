@@ -121,3 +121,21 @@ T = {
 "Enter the available quantity.": ("Saisissez la quantité disponible.", "أدخل الكمية المتوفرة."),
 }
 P = {}
+
+# 0.2.0 — markets (reuse), inventory lots, lots by weight.
+T.update({
+"%s pieces in the lot": ("%s pièces dans le lot", "%s قطعة في الدفعة"),
+"All": ("Tous", "الكل"),
+"Choose the condition.": ("Choisissez l’état.", "اختر الحالة."),
+"Choose the type and the size.": ("Choisissez le type et le profil.", "اختر النوع والمقاس."),
+"Condition": ("État", "الحالة"),
+"Describe the lot: at least one line with type, size, number of pieces and length.": ("Décrivez le lot : au moins une ligne avec type, profil, nombre de pièces et longueur.", "صِف الدفعة: سطر واحد على الأقل بالنوع والمقاس وعدد القطع والطول."),
+"Enter the number of pieces and their length in metres.": ("Indiquez le nombre de pièces et leur longueur en mètres.", "أدخل عدد القطع وطولها بالمتر."),
+"Market:": ("Marché :", "السوق:"),
+"No": ("Non", "لا"),
+"This weight is outside the accepted range.": ("Ce poids est hors de la plage acceptée.", "هذا الوزن خارج النطاق المقبول."),
+"Unknown market.": ("Marché inconnu.", "سوق غير معروف."),
+"Weight of the lot": ("Poids du lot", "وزن الدفعة"),
+"Yes": ("Oui", "نعم"),
+"lot": ("lot", "دفعة"),
+})

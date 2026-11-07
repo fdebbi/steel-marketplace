@@ -1,8 +1,9 @@
 <?php
 /**
- * Publication form of a new steel product (sm-products).
+ * Publication form of the steel listing engine (sm-products, and sm-reuse for
+ * the reuse market).
  *
- * 1. category (links, no JavaScript needed); 2. technical part, quantity and
+ * 1. market and category (links, no JavaScript needed); 2. technical part, condition, quantity and
  * price with a live summary (product-tech); 3. title and description;
  * 4. photos and technical sheet; 5. location; draft or submit.
  *
@@ -12,6 +13,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$markets = (array) sm_theme_data( 'product_markets' );
 $cats    = (array) sm_theme_data( 'product_categories' );
 $edit_id = absint( sm_theme_query_arg( 'edit', '' ) );
 $edit    = $edit_id ? sm_theme_data( 'product_form', array( 'id' => $edit_id ) ) : null;
@@ -28,6 +30,14 @@ if ( $get_cat && isset( $cats[ $get_cat ] ) ) {
 }
 $cat_slug = (string) ( $state['category'] ?? '' );
 $cat      = $cats[ $cat_slug ] ?? null;
+// Market: the one of the chosen category, else the one asked in the address, else the first.
+$market = $cat ? $cat['market'] : sanitize_key( sm_theme_query_arg( 'market', '' ) );
+if ( ! isset( $markets[ $market ] ) ) {
+	$market = (string) array_key_first( $markets );
+}
+$mk        = $markets[ $market ] ?? array( 'allowed' => true, 'conditions' => array(), 'fields' => array() );
+$mcats     = array_filter( $cats, static fn( $c ) => ( $c['market'] ?? 'products' ) === $market );
+$is_reuse  = 'reuse' === $market;
 $ps       = (array) sm_theme_data( 'product_settings' );
 $base_url = sm_page_url( 'account', array( 'view' => 'publish' ) );
 
@@ -44,11 +54,31 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 <?php endif; ?>
 
 <section class="sm-panel smp-step">
-	<h2 class="smw-step__title"><span class="smw-step__n">1</span><?php esc_html_e( 'Category', 'sm-marketplace' ); ?></h2>
+	<h2 class="smw-step__title"><span class="smw-step__n">1</span><?php echo esc_html( count( $markets ) > 1 ? __( 'Market and category', 'sm-marketplace' ) : __( 'Category', 'sm-marketplace' ) ); ?></h2>
+	<?php if ( count( $markets ) > 1 && ! $edit ) : ?>
+		<ul class="smp-markets" role="list" aria-label="<?php esc_attr_e( 'Market', 'sm-marketplace' ); ?>">
+			<?php foreach ( $markets as $key => $m ) : ?>
+				<?php $cur = $key === $market; ?>
+				<li>
+					<a class="smp-market<?php echo $cur ? ' is-current' : ''; ?><?php echo $m['allowed'] ? '' : ' is-locked'; ?>" href="<?php echo esc_url( add_query_arg( 'market', $key, $base_url ) ); ?>"<?php echo $cur ? ' aria-current="true"' : ''; ?>>
+						<span class="smp-market__icon"><?php sm_icon( $m['icon'] ? $m['icon'] : 'layers' ); ?></span>
+						<span class="smp-market__text">
+							<strong><?php echo esc_html( sm_t( $m['label'] ) ); ?></strong>
+							<small><?php echo esc_html( sm_t( $m['intro'] ) ); ?></small>
+						</span>
+						<?php if ( ! $m['allowed'] ) : ?><?php sm_icon( 'lock', 'smp-market__lock' ); ?><?php endif; ?>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	<?php endif; ?>
+	<?php if ( ! $mk['allowed'] ) : ?>
+		<div class="sm-notice sm-notice--warn"><?php sm_icon( 'lock' ); ?><p><?php echo esc_html( $mk['reason'] ); ?></p></div>
+	<?php endif; ?>
 	<ul class="smp-cats" role="list">
-		<?php foreach ( $cats as $slug => $c ) : ?>
+		<?php foreach ( $mcats as $slug => $c ) : ?>
 			<li>
-				<a class="smp-cat<?php echo $slug === $cat_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url( add_query_arg( array_filter( array( 'cat' => $slug, 'edit' => $edit_id ? $edit_id : null ) ), $base_url ) ); ?>"<?php echo $slug === $cat_slug ? ' aria-current="true"' : ''; ?>>
+				<a class="smp-cat<?php echo $slug === $cat_slug ? ' is-current' : ''; ?>" href="<?php echo esc_url( add_query_arg( array_filter( array( 'market' => $market, 'cat' => $slug, 'edit' => $edit_id ? $edit_id : null ) ), $base_url ) ); ?>"<?php echo $slug === $cat_slug ? ' aria-current="true"' : ''; ?>>
 					<?php sm_icon( $c['icon'] ); ?><span><?php echo esc_html( sm_t( $c['name'] ) ); ?></span>
 				</a>
 			</li>
@@ -57,7 +87,7 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 </section>
 
 <?php if ( ! $cat ) : ?>
-	<p class="smw-result__empty"><?php esc_html_e( 'Choose the category of the product to see its form.', 'sm-marketplace' ); ?></p>
+	<p class="smw-result__empty"><?php echo esc_html( $is_reuse ? __( 'Choose the kind of lot to see its form.', 'sm-marketplace' ) : __( 'Choose the category of the product to see its form.', 'sm-marketplace' ) ); ?></p>
 	<?php return; ?>
 <?php endif; ?>
 
@@ -67,14 +97,14 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 
 	<section class="sm-panel smp-step">
 		<h2 class="smw-step__title"><span class="smw-step__n">2</span><?php echo esc_html( sm_t( $cat['name'] ) ); ?> — <?php esc_html_e( 'technical data, quantity and price', 'sm-marketplace' ); ?></h2>
-		<?php sm_component( 'product-tech', array( 'state' => $state, 'category' => $cat ) ); ?>
+		<?php sm_component( 'product-tech', array( 'state' => $state, 'category' => $cat, 'market' => $mk ) ); ?>
 	</section>
 
 	<section class="sm-panel smp-step">
 		<h2 class="smw-step__title"><span class="smw-step__n">3</span><?php esc_html_e( 'Title and description', 'sm-marketplace' ); ?></h2>
 		<div class="sm-field">
 			<label for="smp-title-fr"><?php esc_html_e( 'Title in French', 'sm-marketplace' ); ?></label>
-			<input id="smp-title-fr" name="title[fr]" lang="fr" dir="ltr" maxlength="140" value="<?php echo esc_attr( (string) ( $state['title']['fr'] ?? '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. IPE 200 S275JR new, 12 m bars', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'title' ); ?>>
+			<input id="smp-title-fr" name="title[fr]" lang="fr" dir="ltr" maxlength="140" value="<?php echo esc_attr( (string) ( $state['title']['fr'] ?? '' ) ); ?>" placeholder="<?php echo esc_attr( $is_reuse ? __( 'e.g. IPE and HEA offcuts, 2 to 4 m, good condition', 'sm-marketplace' ) : __( 'e.g. IPE 200 S275JR new, 12 m bars', 'sm-marketplace' ) ); ?>"<?php sm_theme_aria( 'title' ); ?>>
 			<?php sm_theme_error( 'title' ); ?>
 		</div>
 		<div class="sm-field">
@@ -110,7 +140,8 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 			<small>
 				<?php
 				/* translators: 1: number of photos, 2: size in MB. */
-				echo esc_html( sprintf( __( 'Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the section, the markings and the stock.', 'sm-marketplace' ), (int) ( $ps['max_photos'] ?? 10 ), (int) ( $ps['photo_mb'] ?? 8 ) ) );
+				$photo_help = $is_reuse ? __( 'Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole lot, the condition of the surfaces and the ends.', 'sm-marketplace' ) : __( 'Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the section, the markings and the stock.', 'sm-marketplace' ); // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+				echo esc_html( sprintf( $photo_help, (int) ( $ps['max_photos'] ?? 10 ), (int) ( $ps['photo_mb'] ?? 8 ) ) );
 				?>
 			</small>
 		</label>

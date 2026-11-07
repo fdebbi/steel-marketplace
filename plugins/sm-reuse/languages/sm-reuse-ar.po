@@ -1,0 +1,101 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Reuse 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-reuse\n"
+
+#. Plugin Name of the plugin
+#: sm-reuse.php
+msgid "SM Reuse"
+msgstr "SM Reuse"
+
+#. Plugin URI of the plugin
+#: sm-reuse.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-reuse.php
+msgid ""
+"Steel reuse market: offcuts, dismantled profiles, used tubes, plate offcuts,"
+" mixed lots and scrap. Adds the \"reuse\" market to the SM Products listing "
+"engine (condition scale, origin, surface state, cutting and loading), seeds "
+"its categories and adds the engineer advice on reuse listings. Requires SM "
+"Core, SM Weight Engine and SM Products."
+msgstr ""
+"سوق إعادة استعمال الفولاذ: بقايا، مقاطع من التفكيك، أنابيب مستعملة، بقايا "
+"صفائح، دفعات مختلطة وخردة. يضيف سوق «إعادة الاستعمال» إلى محرك إعلانات SM "
+"Products (سلم الحالة، المصدر، حالة السطح، القص والتحميل)، وينشئ فئاته ويضيف "
+"توصية المهندس على الإعلانات. يتطلب SM Core وSM Weight Engine وSM Products."
+
+#. Author of the plugin
+#: sm-reuse.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-reuse.php:47
+msgid ""
+"SM Reuse needs the SM Core, SM Weight Engine and SM Products plugins. "
+"Activate them first."
+msgstr ""
+"يتطلب SM Reuse إضافات SM Core وSM Weight Engine وSM Products. فعّلها أولًا."
+
+#: src/Advice.php:35
+msgid "For recycling only"
+msgstr "للرسكلة فقط"
+
+#: src/Advice.php:36
+msgid "This lot is sold as scrap. It must not be used in a structure."
+msgstr "تُباع هذه الدفعة كخردة. لا يجوز استعمالها في هيكل إنشائي."
+
+#. translators: %s: platform name.
+#: src/Advice.php:41
+msgid ""
+"Used or surplus steel can be reused in a structure only after a check by a "
+"qualified engineer: condition of the elements, steel grade, holes, welds and"
+" corrosion. The information in this listing is declared by the seller; %s "
+"does not certify it."
+msgstr ""
+"لا يُعاد استعمال الفولاذ المستعمل أو الفائض في هيكل إنشائي إلا بعد فحص من "
+"مهندس مؤهل: حالة العناصر، رتبة الفولاذ، الثقوب، اللحامات والتآكل. معلومات "
+"هذا الإعلان يصرّح بها البائع، و%s لا تصادق عليها."
+
+#. translators: %s: platform name.
+#: src/Advice.php:44
+msgid ""
+"The seller says these elements need an inspection or a treatment. Have them "
+"checked by a qualified engineer before any structural use. The information "
+"in this listing is declared by the seller; %s does not certify it."
+msgstr ""
+"يصرّح البائع بأن هذه العناصر تحتاج إلى فحص أو معالجة. اعرضها على مهندس مؤهل "
+"قبل أي استعمال إنشائي. معلومات هذا الإعلان يصرّح بها البائع، و%s لا تصادق "
+"عليها."
+
+#: src/Advice.php:48
+msgid "Structural reuse: ask an engineer"
+msgstr "إعادة الاستعمال الإنشائي: استشر مهندسًا"
+
+#: src/Advice.php:50
+msgid "Find an engineer"
+msgstr "ابحث عن مهندس"
+
+#: src/Rules.php:37
+msgid ""
+"Scrap is published with the condition \"Scrap / recycling only\". For "
+"reusable steel, choose another category."
+msgstr ""
+"تُنشر الخردة بحالة «خردة / للرسكلة فقط». للفولاذ القابل لإعادة الاستعمال، "
+"اختر فئة أخرى."
+
+#: src/Rules.php:39
+msgid "Steel only good for recycling goes in the \"Scrap\" category."
+msgstr "الفولاذ الصالح للرسكلة فقط يُنشر في فئة «الخردة»."
+
+#: src/Rules.php:42
+msgid "Cutting on demand is offered for bars and profiles only."
+msgstr "القص حسب الطلب متاح للقضبان والمقاطع فقط."

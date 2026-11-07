@@ -681,3 +681,35 @@ T.update({
 "plate": ("tôle", "صفيحة"),
 "technical data, quantity and price": ("données techniques, quantité et prix", "البيانات التقنية والكمية والسعر"),
 })
+
+# 0.7.0 — reuse market in the listing engine.
+T.update({
+"%1$s pcs · up to %2$s m": ("%1$s pcs · jusqu’à %2$s m", "%1$s قطعة · حتى %2$s م"),
+"Buyers will see a notice recommending a check by a qualified engineer before any structural reuse.": ("Les acheteurs verront un avis recommandant une vérification par un ingénieur qualifié avant tout réemploi structurel.", "سيرى المشترون تنبيهًا يوصي بفحص من مهندس مؤهل قبل أي إعادة استعمال إنشائي."),
+"Choose the kind of lot to see its form.": ("Choisissez le type de lot pour afficher son formulaire.", "اختر نوع الدفعة لعرض نموذجها."),
+"Condition of the steel": ("État de l’acier", "حالة الفولاذ"),
+"Content of the lot": ("Contenu du lot", "محتوى الدفعة"),
+"Estimated by the seller, not weighed.": ("Estimé par le vendeur, non pesé.", "قدّره البائع، دون وزن."),
+"Estimated weight": ("Poids estimé", "وزن تقديري"),
+"Lot inventory": ("Inventaire du lot", "جرد الدفعة"),
+"Market and category": ("Marché et catégorie", "السوق والفئة"),
+"Measured weight of the lot (kg)": ("Poids pesé du lot (kg)", "الوزن الموزون للدفعة (كغ)"),
+"One row per size and length. A new empty row appears when you fill the last one; clear a row to remove it.": ("Une ligne par profil et longueur. Une nouvelle ligne vide apparaît quand vous remplissez la dernière ; videz une ligne pour la supprimer.", "سطر لكل مقاس وطول. يظهر سطر فارغ جديد عند ملء الأخير؛ أفرغ السطر لحذفه."),
+"Pieces": ("Pièces", "القطع"),
+"Pieces in the lot": ("Pièces dans le lot", "عدد القطع في الدفعة"),
+"Price for the whole lot": ("Prix du lot entier", "سعر الدفعة كاملة"),
+"Price of the lot": ("Prix du lot", "سعر الدفعة"),
+"Remove this row": ("Supprimer cette ligne", "حذف هذا السطر"),
+"The weight of this lot is given by you: say whether it was weighed or estimated. Buyers see the difference.": ("Le poids de ce lot est indiqué par vous : précisez s’il a été pesé ou estimé. Les acheteurs voient la différence.", "وزن هذه الدفعة تحدده أنت: وضّح هل تم وزنها أم تقديرها. يرى المشترون الفرق."),
+"Type": ("Type", "النوع"),
+"Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole lot, the condition of the surfaces and the ends.": ("Jusqu’à %1$d photos (JPG, PNG, WebP, %2$d Mo chacune). Montrez le lot entier, l’état des surfaces et les extrémités.", "حتى %1$d صور (JPG وPNG وWebP، %2$d ميغابايت لكل صورة). أظهر الدفعة كاملة وحالة الأسطح والأطراف."),
+"Weighed weight": ("Poids pesé", "الوزن الموزون"),
+"Weight of the lot": ("Poids du lot", "وزن الدفعة"),
+"e.g. IPE and HEA offcuts, 2 to 4 m, good condition": ("ex. chutes IPE et HEA, 2 à 4 m, bon état", "مثلا بقايا IPE وHEA، من 2 إلى 4 م، حالة جيدة"),
+"estimated": ("estimé", "تقديري"),
+"lot": ("lot", "دفعة"),
+"the whole lot": ("le lot entier", "الدفعة كاملة"),
+})
+P.update({
+("%s size", "%s sizes"): (["%s profil", "%s profils"], ["%s مقاس", "مقاس واحد", "مقاسان", "%s مقاسات", "%s مقاسًا", "%s مقاس"]),
+})

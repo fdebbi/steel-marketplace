@@ -36,8 +36,10 @@ final class Form {
 		Forms::begin( 'product_save' );
 		$user_id = get_current_user_id();
 		$company = Companies::for_user( $user_id );
-		$allowed = sm_can_explain( 'listing.products' );
 		$intent  = sanitize_key( Forms::post( 'intent', 'submit' ) );
+		$cat     = Categories::get( Forms::post( 'category' ) );
+		$market  = Markets::get( $cat ? $cat->market : 'products' );
+		$allowed = sm_can_explain( $market ? $market['cap'] : 'listing.products' );
 		if ( is_wp_error( $allowed ) && 'refresh' !== $intent ) {
 			Forms::back( array( $allowed->get_error_message() ) );
 		}

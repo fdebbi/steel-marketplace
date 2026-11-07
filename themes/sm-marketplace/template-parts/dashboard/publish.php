@@ -21,14 +21,15 @@ if ( 'engineering' === $account['class'] ) {
 	echo '<div class="sm-notice sm-notice--warn">' . sm_get_icon( 'lock' ) . '<p>' . esc_html__( 'Engineering accounts offer services only. To trade steel, open a separate business account.', 'sm-marketplace' ) . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput
 	return;
 }
+// Markets served by the listing engine (sm-products: new steel; sm-reuse: reuse lots).
+$engine_markets = (array) sm_theme_data( 'product_markets' );
+if ( isset( $engine_markets[ $market ] ) || ( sm_theme_query_arg( 'edit', '' ) && $engine_markets ) ) {
+	sm_component( 'product-form', array( 'account' => $account ) );
+	return;
+}
 $cap_reason = sm_theme_cannot_reason( 'listing.' . $market );
 if ( $cap_reason ) {
 	echo '<div class="sm-notice sm-notice--warn">' . sm_get_icon( 'shield' ) . '<p>' . esc_html( $cap_reason ) . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput
-}
-// New steel products: real form of sm-products (reuse and buildings come in the next phases).
-if ( 'products' === $market && sm_theme_data( 'product_categories' ) ) {
-	sm_component( 'product-form', array( 'account' => $account ) );
-	return;
 }
 $steps = array(
 	__( 'Market', 'sm-marketplace' ),

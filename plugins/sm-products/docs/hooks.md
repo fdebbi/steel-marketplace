@@ -17,3 +17,16 @@
 | Cron | `sm_products_daily` : expiration des annonces. |
 
 Chaque produit enregistre `section_id`, `engine_version` et `ref_version` du moteur de poids : un poids peut toujours être retracé.
+
+## Marchés (0.2.0)
+
+| Élément | Usage |
+| --- | --- |
+| `sm_products_markets` (filtre) | `code => [label {fr, ar}, intro {fr, ar}, icon, cap, conditions {code => {fr, ar}}, fields [{key, type select\|bool, label, options, required}]]`. |
+| `sm_products_spec_check` (filtre) | `($errors, $category, $data, $input)` → erreurs supplémentaires `champ => message`. |
+| `sm_products_listing_detail` (filtre) | `($detail, $product)` → données de fiche (sm-reuse ajoute `advice`). |
+| `sm_theme_data_product_markets` | Marchés avec `allowed`, `reason`, `count`. |
+| `sm_theme_data_product_categories` (`market`) | Catégories d'un marché (toutes sinon), avec `market`. |
+| `sm_theme_data_listings` | `market` : un code ou une liste ; filtres `condition`, `length_min` (m), `qty_min`. Une recherche qui mêle un marché non servi est laissée au mode démo tant qu'il est actif. |
+| `Installer::insert_categories( $market, $categories )` | Création initiale des catégories d'un marché (une seule fois ; modifiables ensuite dans wp-admin). |
+| Champs du formulaire | `condition`, `attrs[clé]`, `lines[i][family\|section\|qty\|length]`, `total_kg`, `weight_source` (`theoretical`, `actual`, `estimated`), `price_unit` `lot`. |

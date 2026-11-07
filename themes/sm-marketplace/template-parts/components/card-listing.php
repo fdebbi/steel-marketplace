@@ -47,12 +47,14 @@ $market  = $item['market'];
 				<li><?php sm_icon( 'ruler' ); ?><?php echo sm_tech( sm_number( $item['length'] ) . ' × ' . sm_number( $item['width'] ) . ' × ' . sm_number( $item['height'], 1 ) . ' m' ); // phpcs:ignore ?></li>
 				<li><?php sm_icon( 'grid' ); ?><?php echo sm_tech( sm_number( $item['area'] ) . ' m²' ); // phpcs:ignore ?></li>
 			<?php else : ?>
-				<?php if ( ! empty( $item['length_m'] ) ) : ?>
+				<?php if ( 'lines' === ( $item['kind'] ?? '' ) && ! empty( $item['quantity'] ) ) : ?>
+					<li><?php sm_icon( 'ruler' ); ?><?php echo sm_tech( sprintf( /* translators: 1: number of pieces, 2: longest length in metres. */ __( '%1$s pcs · up to %2$s m', 'sm-marketplace' ), sm_number( $item['quantity'] ), sm_number( $item['length_m'], fmod( $item['length_m'], 1 ) ? 1 : 0 ) ) ); // phpcs:ignore ?></li>
+				<?php elseif ( ! empty( $item['length_m'] ) && 'weight' !== ( $item['kind'] ?? '' ) ) : ?>
 					<li><?php sm_icon( 'ruler' ); ?><?php echo sm_tech( sm_number( $item['quantity'], fmod( (float) $item['quantity'], 1 ) ? 1 : 0 ) . ' × ' . sm_number( $item['length_m'], fmod( $item['length_m'], 1 ) ? 1 : 0 ) . ' m' ); // phpcs:ignore ?></li>
 				<?php endif; ?>
 			<?php endif; ?>
 			<?php if ( ! empty( $item['weight_kg'] ) ) : ?>
-				<li><?php sm_icon( 'weight' ); ?><?php echo sm_kg( $item['weight_kg'] ); // phpcs:ignore ?> <span class="sm-weight-src sm-weight-src--<?php echo esc_attr( $item['weight_source'] ); ?>"><?php echo esc_html( 'actual' === $item['weight_source'] ? __( 'actual', 'sm-marketplace' ) : __( 'theoretical', 'sm-marketplace' ) ); ?></span></li>
+				<li><?php sm_icon( 'weight' ); ?><?php echo sm_kg( $item['weight_kg'] ); // phpcs:ignore ?> <span class="sm-weight-src sm-weight-src--<?php echo esc_attr( $item['weight_source'] ); ?>"><?php echo esc_html( sm_weight_source_short( $item['weight_source'] ) ); ?></span></li>
 			<?php endif; ?>
 		</ul>
 

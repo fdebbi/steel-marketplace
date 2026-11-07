@@ -12,6 +12,7 @@ use SM\Core\Content\Media;
 use SM\Core\Content\Translations;
 use SM\Products\Categories;
 use SM\Products\Form;
+use SM\Products\Markets;
 use SM\Products\Presenter;
 use SM\Products\Products;
 use SM\Products\Settings;
@@ -25,26 +26,40 @@ final class Bridge {
 		add_filter( 'sm_theme_data_listings', array( __CLASS__, 'listings' ), 10, 2 );
 		add_filter( 'sm_theme_data_listing', array( __CLASS__, 'listing' ), 10, 2 );
 		add_filter( 'sm_theme_data_categories', array( __CLASS__, 'categories' ), 10, 2 );
-		add_filter( 'sm_theme_data_product_categories', array( __CLASS__, 'product_categories' ) );
+		add_filter( 'sm_theme_data_product_categories', array( __CLASS__, 'product_categories' ), 10, 2 );
+		add_filter( 'sm_theme_data_product_markets', array( __CLASS__, 'product_markets' ) );
 		add_filter( 'sm_theme_data_product_form', array( __CLASS__, 'product_form' ), 10, 2 );
 		add_filter( 'sm_theme_data_product_preview', array( __CLASS__, 'product_preview' ), 10, 2 );
 		add_filter( 'sm_theme_data_my_products', array( __CLASS__, 'my_products' ), 10, 2 );
 		add_filter( 'sm_theme_data_product_settings', array( __CLASS__, 'settings' ) );
 	}
 
-	private static function only_products( $args ) {
-		$m = (array) ( $args['market'] ?? array() );
-		return array( 'products' ) === array_values( $m );
+	/**
+	 * Requested markets this engine serves. A mixed request that includes a market
+	 * no plugin serves yet is left to the demo provider while demo mode is on.
+	 */
+	private static function served_markets( $args ) {
+		$asked = array_values( array_filter( (array) ( $args['market'] ?? array() ) ) );
+		$mine  = array_values( array_filter( $asked, array( Markets::class, 'exists' ) ) );
+		if ( ! $mine || ( count( $mine ) < count( $asked ) && function_exists( 'sm_theme_demo_enabled' ) && sm_theme_demo_enabled() ) ) {
+			return array();
+		}
+		return $mine;
 	}
 
 	public static function listings( $result, $args ) {
-		if ( null !== $result || ! self::only_products( $args ) ) {
+		$markets = null === $result ? self::served_markets( $args ) : array();
+		if ( ! $markets ) {
 			return $result;
 		}
 		$sort = array( 'price-asc' => 'price_asc', 'price-desc' => 'price_desc', 'weight' => 'weight_desc' )[ $args['sort'] ?? '' ] ?? 'recent';
 		$q    = Products::query(
 			array(
-				'status'    => 'published',
+				'status'     => 'published',
+				'market'     => $markets,
+				'condition'  => sanitize_key( (string) ( $args['condition'] ?? '' ) ),
+				'length_min' => (float) ( $args['length_min'] ?? 0 ),
+				'qty_min'    => (float) ( $args['qty_min'] ?? 0 ),
 				'category'  => sanitize_key( (string) ( $args['category'] ?? '' ) ),
 				'family'    => strtoupper( sanitize_key( (string) ( $args['family'] ?? '' ) ) ),
 				'wilaya'    => preg_replace( '/\D/', '', (string) ( $args['wilaya'] ?? '' ) ),
@@ -86,20 +101,47 @@ final class Bridge {
 	}
 
 	public static function categories( $result, $args ) {
-		if ( null !== $result || 'products' !== ( $args['market'] ?? '' ) ) {
+		$market = (string) ( $args['market'] ?? '' );
+		if ( null !== $result || ! Markets::exists( $market ) ) {
 			return $result;
 		}
-		return Categories::labels();
+		return Categories::labels( $market );
 	}
 
-	public static function product_categories( $result ) {
+	/** Markets a seller can publish in, with conditions and extra fields. */
+	public static function product_markets( $result ) {
 		if ( null !== $result ) {
 			return $result;
 		}
 		$out = array();
-		foreach ( Categories::all() as $slug => $c ) {
+		foreach ( Markets::all() as $key => $m ) {
+			$allowed     = sm_can_explain( $m['cap'] );
+			$out[ $key ] = array(
+				'key'        => $key,
+				'label'      => $m['label'],
+				'intro'      => $m['intro'] ?? array(),
+				'icon'       => $m['icon'] ?? '',
+				'conditions' => $m['conditions'],
+				'fields'     => $m['fields'],
+				'allowed'    => ! is_wp_error( $allowed ),
+				'reason'     => is_wp_error( $allowed ) ? $allowed->get_error_message() : '',
+				'count'      => count( Categories::all( false, $key ) ),
+			);
+		}
+		return $out;
+	}
+
+	/** Categories a seller can publish in; all markets unless args.market is given. */
+	public static function product_categories( $result, $args = array() ) {
+		if ( null !== $result ) {
+			return $result;
+		}
+		$market = (string) ( $args['market'] ?? '' );
+		$out    = array();
+		foreach ( Categories::all( false, '' !== $market ? $market : null ) as $slug => $c ) {
 			$out[ $slug ] = array(
 				'slug'     => $slug,
+				'market'   => $c->market,
 				'name'     => array( 'fr' => $c->name_fr, 'ar' => $c->name_ar ),
 				'icon'     => $c->icon,
 				'kind'     => $c->kind,
@@ -123,6 +165,9 @@ final class Bridge {
 		$t = Translations::get( 'product', $p->id );
 		$v = array(
 			'product_id'    => $p->id,
+			'market'        => $p->market,
+			'condition'     => (string) $p->item_condition,
+			'attrs'         => array_map( 'strval', (array) $p->attrs ),
 			'category'      => $p->category,
 			'family'        => $p->family,
 			'section'       => $p->section_id ? $p->section_id : '',
@@ -144,7 +189,22 @@ final class Bridge {
 			'keep_photos'   => Media::get( 'product', $p->id, 'photo' ),
 			'keep_sheets'   => Media::get( 'product', $p->id, 'sheet' ),
 		);
-		if ( 'PLATE' === $p->family ) {
+		$kind = Categories::get( $p->category )->kind ?? 'specs';
+		if ( 'lines' === $kind ) {
+			$v['lines'] = array();
+			foreach ( $p->lines as $l ) {
+				$v['lines'][] = array(
+					'family'  => $l['family'],
+					'section' => (string) $l['section_id'],
+					'qty'     => (string) $l['qty'],
+					'length'  => (string) ( $l['length_mm'] / 1000 ),
+				);
+			}
+			$v['actual_weight'] = 'actual' === $p->weight_source ? (string) $p->total_weight : '';
+			$v['section']       = '';
+		} elseif ( 'weight' === $kind ) {
+			$v['total_kg'] = $p->total_weight ? (string) $p->total_weight : '';
+		} elseif ( 'PLATE' === $p->family ) {
 			$v['width']        = (string) $p->width_mm;
 			$v['plate_length'] = (string) $p->length_mm;
 		} elseif ( $p->length_mm ) {
@@ -188,6 +248,7 @@ final class Bridge {
 		$q      = Products::query(
 			array(
 				'status'   => in_array( $status, Products::STATUSES, true ) ? $status : 'any',
+				'market'   => Markets::exists( (string) ( $args['market'] ?? '' ) ) ? $args['market'] : '',
 				'company'  => $company->id,
 				'sort'     => 'updated',
 				'per_page' => 20,

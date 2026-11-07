@@ -117,6 +117,7 @@ function sm_price_unit_label( $unit ) {
 		'm2'   => 'm²',
 		'ml'   => 'ml',
 		'unit' => __( 'piece', 'sm-marketplace' ),
+		'lot'  => __( 'lot', 'sm-marketplace' ),
 	);
 	return $labels[ $unit ] ?? 'kg';
 }
@@ -186,7 +187,20 @@ function sm_condition_level( $code ) {
 
 /** Label of a weight source. */
 function sm_weight_source_label( $source ) {
-	return 'actual' === $source ? __( 'Actual weight', 'sm-marketplace' ) : __( 'Theoretical weight', 'sm-marketplace' );
+	$labels = array(
+		'actual'    => __( 'Actual weight', 'sm-marketplace' ),
+		'estimated' => __( 'Estimated weight', 'sm-marketplace' ),
+	);
+	return $labels[ $source ] ?? __( 'Theoretical weight', 'sm-marketplace' );
+}
+
+/** Short label of a weight source, for cards. */
+function sm_weight_source_short( $source ) {
+	$labels = array(
+		'actual'    => __( 'actual', 'sm-marketplace' ),
+		'estimated' => __( 'estimated', 'sm-marketplace' ),
+	);
+	return $labels[ $source ] ?? __( 'theoretical', 'sm-marketplace' );
 }
 
 /** Market labels. */

@@ -73,3 +73,16 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 ## 7 novembre 2026 — cache
 
 - Le cache de page Hostinger ignore les paramètres d'URL : le thème 0.1.1 marque comme non cachables les pages dépendant d'un paramètre et les pages de compte. Solution définitive en Phase 2 : adresses sans paramètres (`/ar/...`, `/annonce/302/`).
+
+## 7 novembre 2026 — Phase 5 : marché du réemploi
+
+| Sujet | Décision | Raison |
+| --- | --- | --- |
+| Architecture | Un seul moteur d'annonces (`sm-products` 0.2.0) pour plusieurs marchés ; `sm-reuse` ajoute le marché « réemploi » par filtres (permission, états, champs, catégories, règles, avis) | Photos, modération, recherche, fiche, tableau de bord et index écrits une fois ; désactiver `sm-reuse` retire le marché sans toucher aux produits neufs |
+| Description d'un lot | Inventaire ligne par ligne (type, profil, pièces, longueur ; 30 lignes au plus) pour les profilés et tubes ; lot au poids pour tôles, lots mixtes et ferraille | Les chutes ont des longueurs différentes ; les tôles et la ferraille ne se décrivent pas profil par profil |
+| Poids | Inventaire : calculé par le moteur de poids, ligne par ligne (théorique) ou pesé ; lot au poids : pesé ou **estimé**, affiché comme tel | Aucune donnée inventée ; l'acheteur voit l'origine du poids |
+| Prix | Au kg, à la pièce ou pour le lot entier ; l'équivalent au kg est toujours calculé | Usage courant pour les chutes et la ferraille |
+| États | Les cinq classes du cahier des charges ; la ferraille seulement dans la catégorie « Ferraille » et inversement | Un acheteur qui cherche de l'acier réutilisable ne tombe jamais sur de la ferraille |
+| Ingénierie | Avis fixe sur chaque fiche de réemploi : vérification par un ingénieur qualifié avant tout usage structurel ; informations déclarées par le vendeur, non certifiées | « L'IA ne remplace jamais l'ingénierie » ; la plateforme ne garantit pas l'aptitude structurelle |
+| Filtre longueur | Longueur minimale appliquée à la plus longue pièce du lot | Répond à « y a-t-il des pièces d'au moins X m ? » |
+| Recherche multi-marchés | Servie par le moteur ; tant que le mode démo est actif, une recherche qui inclut les bâtiments (Phase 6) reste en démonstration | Évite une page de recherche à moitié vide pendant la revue |

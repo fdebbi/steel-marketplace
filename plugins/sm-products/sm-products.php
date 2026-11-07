@@ -3,7 +3,7 @@
  * Plugin Name:       SM Products
  * Plugin URI:        https://github.com/fdebbi/steel-marketplace
  * Description:       New steel products market: publication by category with category-specific fields (profiles from the European catalogue, tubes, plates, bars, roofing, finishing parts), weights from SM Weight Engine, photos and technical sheets, moderation, public listings and seller dashboard. Requires SM Core and SM Weight Engine.
- * Version:           0.1.0
+ * Version:           0.2.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Requires Plugins:  sm-core, sm-weight-engine
@@ -17,8 +17,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_PRODUCTS_VERSION', '0.1.0' );
-define( 'SM_PRODUCTS_DB_VERSION', 1 );
+define( 'SM_PRODUCTS_VERSION', '0.2.0' );
+define( 'SM_PRODUCTS_DB_VERSION', 2 );
 define( 'SM_PRODUCTS_FILE', __FILE__ );
 define( 'SM_PRODUCTS_DIR', __DIR__ );
 

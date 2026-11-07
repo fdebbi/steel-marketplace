@@ -16,6 +16,8 @@ $query    = array(
 	'category'  => sm_theme_query_arg( 'category' ),
 	'condition' => sm_theme_query_arg( 'condition' ),
 	'mode'      => sm_theme_query_arg( 'mode' ),
+	'length_min' => sm_theme_query_arg( 'length_min' ),
+	'qty_min'    => sm_theme_query_arg( 'qty_min' ),
 	'wilaya'    => sm_theme_query_arg( 'wilaya' ),
 	'q'         => sm_theme_query_arg( 'q' ),
 	'sort'      => sm_theme_query_arg( 'sort', 'recent' ),
@@ -72,7 +74,7 @@ if ( $category && isset( $cats[ $category ] ) ) {
 			<div class="sm-toolbar__controls">
 				<button class="sm-btn sm-btn--ghost sm-toolbar__filters" type="button" aria-controls="sm-filters" aria-expanded="false" data-sm-filters-open><?php sm_icon( 'filter' ); ?><?php esc_html_e( 'Filters', 'sm-marketplace' ); ?></button>
 				<form method="get" class="sm-sort">
-					<?php foreach ( array( 'category', 'condition', 'mode', 'wilaya', 'q', 'display', 'market' ) as $keep ) : ?>
+					<?php foreach ( array( 'category', 'condition', 'mode', 'wilaya', 'q', 'display', 'market', 'length_min', 'qty_min' ) as $keep ) : ?>
 						<?php if ( '' !== sm_theme_query_arg( $keep ) ) : ?><input type="hidden" name="<?php echo esc_attr( $keep ); ?>" value="<?php echo esc_attr( sm_theme_query_arg( $keep ) ); ?>"><?php endif; ?>
 					<?php endforeach; ?>
 					<label class="screen-reader-text" for="sm-sort"><?php esc_html_e( 'Sort by', 'sm-marketplace' ); ?></label>

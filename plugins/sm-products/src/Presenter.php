@@ -28,7 +28,7 @@ final class Presenter {
 		$out = array(
 			'id'             => $p->listing_id,
 			'product_id'     => $p->id,
-			'market'         => 'products',
+			'market'         => $p->market,
 			'category'       => $p->category,
 			'category_label' => $cat ? array( 'fr' => $cat->name_fr, 'ar' => $cat->name_ar ) : array(),
 			'kind'           => $cat ? $cat->kind : 'specs',
@@ -55,7 +55,7 @@ final class Presenter {
 			'views'          => $p->views,
 			'expires_at'     => $p->expires_at,
 			'reject_reason'  => (string) $p->reject_reason,
-			'condition'      => '',
+			'condition'      => (string) $p->item_condition,
 			'mode'           => '',
 			'specs'          => array(),
 		);
@@ -76,16 +76,23 @@ final class Presenter {
 			);
 		}
 		$out['spec_rows'] = self::spec_rows( $p );
+		$out['elements']  = self::elements( $p );
 		$out['drawing']   = '';
 		$out['drawing_dims'] = array();
-		if ( $p->family && 'PLATE' !== $p->family ) {
+		if ( $p->family && 'PLATE' !== $p->family && ! $p->lines ) {
 			$engine = \SM\Core\Modules::service( 'weight' );
 			$fam    = $engine ? \SM\WeightEngine\Catalogue::family( $p->family ) : null;
 			if ( $fam && $p->dims ) {
 				$out['drawing'] = $engine->drawing( $fam->shape, $p->dims, $p->designation );
 			}
 		}
-		return $out;
+		/**
+		 * Product page data; market plugins add their notes (sm-reuse: engineer advice).
+		 *
+		 * @param array  $out Listing detail.
+		 * @param object $p   Product row.
+		 */
+		return apply_filters( 'sm_products_listing_detail', $out, $p );
 	}
 
 	/** Label / value rows of the technical specification (values are safe HTML). */
@@ -125,7 +132,15 @@ final class Presenter {
 			if ( $p->unit_weight && $p->length_mm && 'PLATE' !== $p->family ) {
 				$rows[] = array( __( 'Weight per metre', 'sm-products' ), $tech( self::n( $p->unit_weight / ( $p->length_mm / 1000 ), 2 ) . ' kg/m' ) );
 			}
+		} elseif ( $cat && 'lines' === $cat->kind ) {
+			$rows[] = array( __( 'Designation', 'sm-products' ), '<bdi dir="ltr">' . esc_html( implode( ', ', array_unique( wp_list_pluck( $p->lines, 'designation' ) ) ) ) . '</bdi>' );
+			$rows[] = array( __( 'Steel grade', 'sm-products' ), $p->grade ? $tech( $p->grade ) : esc_html__( 'Not specified', 'sm-products' ) );
+			/* translators: %s: number of pieces. */
+			$rows[] = array( __( 'Quantity', 'sm-products' ), sprintf( esc_html__( '%s pieces in the lot', 'sm-products' ), '<bdi dir="ltr">' . esc_html( self::n( $p->pieces ) ) . '</bdi>' ) );
 		} elseif ( $cat ) {
+			if ( 'weight' === $cat->kind ) {
+				$rows[] = array( __( 'Weight of the lot', 'sm-products' ), $tech( self::n( $p->total_weight ) . ' kg' ) );
+			}
 			foreach ( $cat->fields as $f ) {
 				if ( ! isset( $p->specs[ $f['key'] ] ) ) {
 					continue;
@@ -145,9 +160,49 @@ final class Presenter {
 				}
 				$rows[] = array( self::pick( $f['label'] ), $html );
 			}
-			$rows[] = array( __( 'Available quantity', 'sm-products' ), $tech( self::n( $p->quantity, fmod( $p->quantity, 1 ) ? 2 : 0 ) . ' ' . self::unit_label( $p->unit ) ) );
+			if ( 'specs' === $cat->kind ) {
+				$rows[] = array( __( 'Available quantity', 'sm-products' ), $tech( self::n( $p->quantity, fmod( $p->quantity, 1 ) ? 2 : 0 ) . ' ' . self::unit_label( $p->unit ) ) );
+			}
+		}
+		// Condition and extra fields of the market.
+		$m = Markets::get( $p->market );
+		if ( $m && $p->item_condition && isset( $m['conditions'][ $p->item_condition ] ) ) {
+			$rows[] = array( __( 'Condition', 'sm-products' ), esc_html( self::pick( $m['conditions'][ $p->item_condition ] ) ) );
+		}
+		foreach ( (array) ( $m['fields'] ?? array() ) as $f ) {
+			if ( ! isset( $p->attrs[ $f['key'] ] ) ) {
+				continue;
+			}
+			$v = $p->attrs[ $f['key'] ];
+			if ( 'bool' === $f['type'] ) {
+				$v = $v ? __( 'Yes', 'sm-products' ) : __( 'No', 'sm-products' );
+			} else {
+				foreach ( $f['options'] as $o ) {
+					if ( $o['value'] === $v ) {
+						$v = self::pick( $o );
+					}
+				}
+			}
+			$rows[] = array( self::pick( $f['label'] ), esc_html( $v ) );
 		}
 		return $rows;
+	}
+
+	/** Inventory lines in the shape of the theme's element table. */
+	public static function elements( $p ) {
+		$out = array();
+		foreach ( (array) $p->lines as $l ) {
+			$fam   = class_exists( '\\SM\\WeightEngine\\Catalogue' ) ? \SM\WeightEngine\Catalogue::family( $l['family'] ) : null;
+			$out[] = array(
+				'type'        => $fam ? array( 'fr' => $fam->name_fr, 'ar' => $fam->name_ar ) : $l['family'],
+				'designation' => $l['designation'],
+				'qty'         => (int) $l['qty'],
+				'length'      => $l['length_mm'] / 1000,
+				'unit_weight' => (float) $l['kg_m'],
+				'total'       => (float) $l['total'],
+			);
+		}
+		return $out;
 	}
 
 	public static function unit_label( $unit ) {
@@ -156,6 +211,7 @@ final class Presenter {
 			'm2'   => 'm²',
 			'ml'   => __( 'm (linear)', 'sm-products' ),
 			'unit' => __( 'pieces', 'sm-products' ),
+			'lot'  => __( 'lot', 'sm-products' ),
 		);
 		return $l[ $unit ] ?? $unit;
 	}

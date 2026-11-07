@@ -24,7 +24,8 @@ if ( sm_theme_query_arg( 'smp_partial' ) && is_user_logged_in() ) {
 	$sm_state = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$sm_cat   = $sm_cats[ sanitize_key( $sm_state['category'] ?? '' ) ] ?? null;
 	if ( $sm_cat ) {
-		sm_component( 'product-tech', array( 'state' => $sm_state, 'category' => $sm_cat ) );
+		$sm_markets = (array) sm_theme_data( 'product_markets' );
+		sm_component( 'product-tech', array( 'state' => $sm_state, 'category' => $sm_cat, 'market' => $sm_markets[ $sm_cat['market'] ?? 'products' ] ?? array() ) );
 	}
 	return;
 }

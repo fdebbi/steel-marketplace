@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) || exit;
 
 final class Products {
 
-	const MODULE   = 'products';
+	const MODULE   = 'products'; // Default market; each product stores its own market.
 	const STATUSES = array( 'draft', 'pending', 'published', 'rejected', 'sold', 'expired' );
 
 	private static function table() {
@@ -38,7 +38,7 @@ final class Products {
 	/** Product behind a public listing number. */
 	public static function by_listing( $listing_id ) {
 		$idx = Index::get( $listing_id );
-		return $idx && self::MODULE === $idx->module ? self::get( $idx->entity_id ) : null;
+		return $idx && Markets::exists( $idx->module ) ? self::get( $idx->entity_id ) : null;
 	}
 
 	private static function hydrate( $r ) {
@@ -48,8 +48,11 @@ final class Products {
 		foreach ( array( 'pieces', 'quantity', 'unit_weight', 'total_weight', 'price', 'total_price', 'price_per_kg' ) as $k ) {
 			$r->$k = (float) $r->$k;
 		}
-		$r->dims  = json_decode( (string) $r->dims, true ) ?: array();
-		$r->specs = json_decode( (string) $r->specs, true ) ?: array();
+		$r->dims   = json_decode( (string) $r->dims, true ) ?: array();
+		$r->specs  = json_decode( (string) $r->specs, true ) ?: array();
+		$r->attrs  = json_decode( (string) ( $r->attrs ?? '' ), true ) ?: array();
+		$r->lines  = json_decode( (string) ( $r->inventory ?? '' ), true ) ?: array();
+		$r->market = $r->market ? $r->market : self::MODULE;
 		return $r;
 	}
 
@@ -64,7 +67,7 @@ final class Products {
 	public static function save( $id, $company_id, $user_id, array $spec, $status, $photos = null, $sheets = null ) {
 		global $wpdb;
 		$now  = current_time( 'mysql', true );
-		$cols = array( 'category', 'family', 'section_id', 'designation', 'grade', 'qty_mode', 'length_mm', 'width_mm', 'pieces', 'quantity', 'unit', 'unit_weight', 'total_weight', 'weight_source', 'engine_version', 'ref_version', 'price', 'price_unit', 'total_price', 'price_per_kg', 'wilaya' );
+		$cols = array( 'market', 'item_condition', 'category', 'family', 'section_id', 'designation', 'grade', 'qty_mode', 'length_mm', 'width_mm', 'pieces', 'quantity', 'unit', 'unit_weight', 'total_weight', 'weight_source', 'engine_version', 'ref_version', 'price', 'price_unit', 'total_price', 'price_per_kg', 'wilaya' );
 		$row  = array();
 		foreach ( $cols as $c ) {
 			if ( array_key_exists( $c, $spec['data'] ) ) {
@@ -73,6 +76,8 @@ final class Products {
 		}
 		$row['dims']       = wp_json_encode( $spec['data']['dims'] ?? array() );
 		$row['specs']      = wp_json_encode( $spec['data']['specs'] ?? array() );
+		$row['attrs']      = wp_json_encode( $spec['data']['attrs'] ?? array() );
+		$row['inventory']  = wp_json_encode( $spec['data']['lines'] ?? array() ); // "lines" is a reserved word in MySQL.
 		$row['status']     = $status;
 		$row['updated_at'] = $now;
 		if ( 'pending' === $status ) {
@@ -146,7 +151,7 @@ final class Products {
 			return false;
 		}
 		$wpdb->delete( self::table(), array( 'id' => (int) $id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-		Index::remove( self::MODULE, $id );
+		Index::remove( $p->market, $id );
 		Translations::delete( 'product', $id );
 		Media::set( 'product', $id, 'photo', array() );
 		Media::set( 'product', $id, 'sheet', array() );
@@ -162,10 +167,11 @@ final class Products {
 			return 0;
 		}
 		$listing_id = Index::sync(
-			self::MODULE,
+			$p->market,
 			$p->id,
 			array(
-				'company_id'   => $p->company_id,
+				'company_id'     => $p->company_id,
+				'item_condition' => $p->item_condition,
 				'category'     => $p->category,
 				'designation'  => mb_substr( $p->designation, 0, 60 ),
 				'wilaya'       => $p->wilaya,
@@ -187,7 +193,7 @@ final class Products {
 	/**
 	 * Query products.
 	 *
-	 * @param array $a status, company, category, family, wilaya, q, min_price, max_price, sort (recent|price_asc|price_desc|weight_desc), per_page, page.
+	 * @param array $a status, market (string|string[]), condition, length_min (m), qty_min, company, category, family, wilaya, q, min_price, max_price, sort (recent|price_asc|price_desc|weight_desc), per_page, page.
 	 * @return array{items: object[], total: int, pages: int}
 	 */
 	public static function query( array $a ) {
@@ -200,7 +206,20 @@ final class Products {
 			$where[] = 'status IN (' . implode( ',', array_fill( 0, count( $st ), '%s' ) ) . ')';
 			$args    = array_merge( $args, $st );
 		}
-		foreach ( array( 'company' => 'company_id = %d', 'category' => 'category = %s', 'family' => 'family = %s', 'wilaya' => 'wilaya = %s' ) as $k => $sql ) {
+		if ( ! empty( $a['market'] ) ) {
+			$m       = array_values( (array) $a['market'] );
+			$where[] = 'market IN (' . implode( ',', array_fill( 0, count( $m ), '%s' ) ) . ')';
+			$args    = array_merge( $args, $m );
+		}
+		if ( ! empty( $a['length_min'] ) ) {
+			$where[] = 'length_mm >= %d';
+			$args[]  = (int) round( (float) $a['length_min'] * 1000 );
+		}
+		if ( ! empty( $a['qty_min'] ) ) {
+			$where[] = 'pieces >= %f';
+			$args[]  = (float) $a['qty_min'];
+		}
+		foreach ( array( 'company' => 'company_id = %d', 'category' => 'category = %s', 'family' => 'family = %s', 'wilaya' => 'wilaya = %s', 'condition' => 'item_condition = %s' ) as $k => $sql ) {
 			if ( ! empty( $a[ $k ] ) ) {
 				$where[] = $sql;
 				$args[]  = $a[ $k ];
@@ -209,7 +228,8 @@ final class Products {
 		if ( ! empty( $a['q'] ) ) {
 			$like    = '%' . $wpdb->esc_like( preg_replace( '/\s+/', '', (string) $a['q'] ) ) . '%';
 			$tlike   = '%' . $wpdb->esc_like( (string) $a['q'] ) . '%';
-			$where[] = "(REPLACE(designation, ' ', '') LIKE %s OR id IN (SELECT entity_id FROM {$wpdb->prefix}sm_translations WHERE entity_type = 'product' AND value LIKE %s))";
+			$where[] = "(REPLACE(designation, ' ', '') LIKE %s OR REPLACE(inventory, ' ', '') LIKE %s OR id IN (SELECT entity_id FROM {$wpdb->prefix}sm_translations WHERE entity_type = 'product' AND value LIKE %s))";
+			$args[]  = $like;
 			$args[]  = $like;
 			$args[]  = $tlike;
 		}

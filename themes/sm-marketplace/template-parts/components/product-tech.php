@@ -6,7 +6,7 @@
  * Refreshed in place by assets/js/product-form.js (?smp_partial=1) on every
  * change; without JavaScript the "Update" button reloads the form.
  *
- * @var array $args { state: array, category: array }
+ * @var array $args { state: array, category: array, market?: array }
  * @package SM_Marketplace
  */
 
@@ -14,6 +14,7 @@ defined( 'ABSPATH' ) || exit;
 
 $st  = (array) ( $args['state'] ?? array() );
 $cat = (array) $args['category'];
+$mk  = (array) ( $args['market'] ?? array() );
 $v   = static fn( $k, $d = '' ) => isset( $st[ $k ] ) && ! is_array( $st[ $k ] ) ? (string) $st[ $k ] : $d;
 $pv  = (array) sm_theme_data( 'product_preview', $st );
 $sum = $pv['summary'] ?? null;
@@ -25,6 +26,7 @@ $unit_labels = array(
 	'unit' => __( 'piece', 'sm-marketplace' ),
 	'm2'   => 'm²',
 	'ml'   => __( 'linear metre', 'sm-marketplace' ),
+	'lot'  => __( 'the whole lot', 'sm-marketplace' ),
 );
 // Server errors of the previous submission win; live errors show only once the field was filled.
 $field_error = static function ( $key ) use ( $err, $st ) {
@@ -35,12 +37,101 @@ $field_error = static function ( $key ) use ( $err, $st ) {
 			$msg = $err[ $key ];
 		}
 	}
+	if ( ! $msg && isset( $err[ $key ] ) && ( 0 === strpos( $key, 'lines_' ) || in_array( $key, array( 'condition', 'attrs_cut' ), true ) ) ) {
+		$msg = $err[ $key ]; // Only reported once something was typed or chosen.
+		if ( 'condition' === $key && '' === (string) ( $st['condition'] ?? '' ) ) {
+			$msg = '';
+		}
+	}
 	if ( $msg ) {
 		printf( '<p class="sm-field-error" id="err-%s">%s</p>', esc_attr( $key ), esc_html( $msg ) );
 	}
 };
+// Category fields (specs and weight kinds).
+$render_fields = static function () use ( $cat, $st ) {
+	$specs = (array) ( $st['specs'] ?? array() );
+	if ( empty( $cat['fields'] ) ) {
+		return;
+	}
+	echo '<div class="sm-field-grid">';
+	foreach ( $cat['fields'] as $f ) {
+		$id  = 'smp-s-' . $f['key'];
+		$val = (string) ( $specs[ $f['key'] ] ?? '' );
+		echo '<div class="sm-field"><label for="' . esc_attr( $id ) . '">' . esc_html( sm_t( $f['label'] ) ) . ( empty( $f['unit'] ) ? '' : ' <small>(' . esc_html( $f['unit'] ) . ')</small>' ) . ( empty( $f['required'] ) ? ' <small class="sm-optional">' . esc_html__( 'optional', 'sm-marketplace' ) . '</small>' : '' ) . '</label>';
+		if ( 'select' === $f['type'] ) {
+			echo '<select id="' . esc_attr( $id ) . '" name="specs[' . esc_attr( $f['key'] ) . ']"';
+			sm_theme_aria( 'specs_' . $f['key'] );
+			echo '><option value="">' . esc_html__( 'Choose…', 'sm-marketplace' ) . '</option>';
+			foreach ( $f['options'] as $o ) {
+				echo '<option value="' . esc_attr( $o['value'] ) . '"' . selected( $val, $o['value'], false ) . '>' . esc_html( sm_t( array( 'fr' => $o['fr'], 'ar' => $o['ar'] ) ) ) . '</option>';
+			}
+			echo '</select>';
+		} else {
+			echo '<input id="' . esc_attr( $id ) . '" name="specs[' . esc_attr( $f['key'] ) . ']" value="' . esc_attr( $val ) . '"' . ( 'number' === $f['type'] ? ' inputmode="decimal" dir="ltr"' : ' dir="auto"' );
+			sm_theme_aria( 'specs_' . $f['key'] );
+			echo '>';
+		}
+		sm_theme_error( 'specs_' . $f['key'] );
+		echo '</div>';
+	}
+	echo '</div>';
+};
+// Steel grade (engine and lines kinds).
+$render_grade = static function () use ( $v, $ps ) {
+	$grade  = $v( 'grade' );
+	$grades = (array) ( $ps['grades'] ?? array() );
+	$other  = $grade && ! in_array( $grade, $grades, true ) && 'OTHER' !== $grade;
+	echo '<div class="sm-field"><label for="smp-grade">' . esc_html__( 'Steel grade', 'sm-marketplace' ) . '</label><select id="smp-grade" name="grade" dir="ltr"><option value="">' . esc_html__( 'Not specified', 'sm-marketplace' ) . '</option>';
+	foreach ( $grades as $g ) {
+		echo '<option value="' . esc_attr( $g ) . '"' . selected( $grade, $g, false ) . '>' . esc_html( $g ) . '</option>';
+	}
+	echo '<option value="OTHER"' . selected( $other || 'OTHER' === $grade, true, false ) . '>' . esc_html__( 'Other…', 'sm-marketplace' ) . '</option></select>';
+	if ( $other || 'OTHER' === $grade ) {
+		echo '<input name="grade_other" class="smp-inline" dir="ltr" value="' . esc_attr( $other ? $grade : $v( 'grade_other' ) ) . '" placeholder="S460N" aria-label="' . esc_attr__( 'Other steel grade', 'sm-marketplace' ) . '">';
+	}
+	echo '</div>';
+};
 ?>
 <div class="smp-tech" data-smp-tech>
+	<?php if ( ! empty( $mk['conditions'] ) ) : ?>
+		<?php $cond = $v( 'condition' ); ?>
+		<fieldset class="sm-field smp-conditions">
+			<legend class="sm-field__legend"><?php esc_html_e( 'Condition of the steel', 'sm-marketplace' ); ?></legend>
+			<div class="smp-cond-list">
+				<?php foreach ( $mk['conditions'] as $code => $label ) : ?>
+					<label class="smp-cond smp-cond--<?php echo esc_attr( (string) sm_condition_level( $code ) ); ?>">
+						<input type="radio" name="condition" value="<?php echo esc_attr( $code ); ?>" <?php checked( $cond, $code ); ?><?php sm_theme_aria( 'condition' ); ?>>
+						<span class="smp-cond__card"><span class="smp-cond__dot" aria-hidden="true"></span><?php echo esc_html( sm_t( $label ) ); ?></span>
+					</label>
+				<?php endforeach; ?>
+			</div>
+			<?php $field_error( 'condition' ); ?>
+		</fieldset>
+	<?php endif; ?>
+	<?php if ( ! empty( $mk['fields'] ) ) : ?>
+		<?php $attrs = (array) ( $st['attrs'] ?? array() ); ?>
+		<div class="sm-field-grid smp-attrs">
+			<?php foreach ( $mk['fields'] as $f ) : ?>
+				<?php $id = 'smp-a-' . $f['key']; $val = (string) ( $attrs[ $f['key'] ] ?? '' ); ?>
+				<?php if ( 'bool' === $f['type'] ) : ?>
+					<div class="sm-field smp-attr-bool">
+						<label class="sm-check" for="<?php echo esc_attr( $id ); ?>"><input type="checkbox" id="<?php echo esc_attr( $id ); ?>" name="attrs[<?php echo esc_attr( $f['key'] ); ?>]" value="1" <?php checked( '1', $val ); ?>><span><?php echo esc_html( sm_t( $f['label'] ) ); ?></span></label>
+						<?php $field_error( 'attrs_' . $f['key'] ); ?>
+					</div>
+				<?php else : ?>
+					<div class="sm-field">
+						<label for="<?php echo esc_attr( $id ); ?>"><?php echo esc_html( sm_t( $f['label'] ) ); ?><?php echo empty( $f['required'] ) ? ' <small class="sm-optional">' . esc_html__( 'optional', 'sm-marketplace' ) . '</small>' : ''; ?></label>
+						<select id="<?php echo esc_attr( $id ); ?>" name="attrs[<?php echo esc_attr( $f['key'] ); ?>]"<?php sm_theme_aria( 'attrs_' . $f['key'] ); ?>>
+							<option value=""><?php esc_html_e( 'Choose…', 'sm-marketplace' ); ?></option>
+							<?php foreach ( $f['options'] as $o ) : ?><option value="<?php echo esc_attr( $o['value'] ); ?>" <?php selected( $val, $o['value'] ); ?>><?php echo esc_html( sm_t( array( 'fr' => $o['fr'], 'ar' => $o['ar'] ) ) ); ?></option><?php endforeach; ?>
+						</select>
+						<?php sm_theme_error( 'attrs_' . $f['key'] ); ?>
+					</div>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
+
 	<?php if ( 'engine' === $cat['kind'] ) : ?>
 		<?php
 		$all_fam  = array();
@@ -126,18 +217,7 @@ $field_error = static function ( $key ) use ( $err, $st ) {
 						</div>
 						<?php if ( ! $section ) { $field_error( 'section' ); } ?>
 					<?php endif; ?>
-					<div class="sm-field">
-						<label for="smp-grade"><?php esc_html_e( 'Steel grade', 'sm-marketplace' ); ?></label>
-						<?php $grade = $v( 'grade' ); $grades = (array) ( $ps['grades'] ?? array() ); $other = $grade && ! in_array( $grade, $grades, true ) && 'OTHER' !== $grade; ?>
-						<select id="smp-grade" name="grade" dir="ltr">
-							<option value=""><?php esc_html_e( 'Not specified', 'sm-marketplace' ); ?></option>
-							<?php foreach ( $grades as $g ) : ?><option value="<?php echo esc_attr( $g ); ?>" <?php selected( $grade, $g ); ?>><?php echo esc_html( $g ); ?></option><?php endforeach; ?>
-							<option value="OTHER" <?php selected( $other || 'OTHER' === $grade ); ?>><?php esc_html_e( 'Other…', 'sm-marketplace' ); ?></option>
-						</select>
-						<?php if ( $other || 'OTHER' === $grade ) : ?>
-							<input name="grade_other" class="smp-inline" dir="ltr" value="<?php echo esc_attr( $other ? $grade : $v( 'grade_other' ) ); ?>" placeholder="S460N" aria-label="<?php esc_attr_e( 'Other steel grade', 'sm-marketplace' ); ?>">
-						<?php endif; ?>
-					</div>
+					<?php $render_grade(); ?>
 				</div>
 				<?php if ( $shape ) : ?>
 					<figure class="smw-profile smp-profile">
@@ -211,25 +291,116 @@ $field_error = static function ( $key ) use ( $err, $st ) {
 			</fieldset>
 		<?php endif; ?>
 
-	<?php else : ?>
-		<?php $specs = (array) ( $st['specs'] ?? array() ); ?>
-		<div class="sm-field-grid">
-			<?php foreach ( $cat['fields'] as $f ) : ?>
-				<?php $id = 'smp-s-' . $f['key']; $val = (string) ( $specs[ $f['key'] ] ?? '' ); ?>
-				<div class="sm-field">
-					<label for="<?php echo esc_attr( $id ); ?>"><?php echo esc_html( sm_t( $f['label'] ) ); ?><?php echo empty( $f['unit'] ) ? '' : ' <small>(' . esc_html( $f['unit'] ) . ')</small>'; ?><?php echo empty( $f['required'] ) ? ' <small class="sm-optional">' . esc_html__( 'optional', 'sm-marketplace' ) . '</small>' : ''; ?></label>
-					<?php if ( 'select' === $f['type'] ) : ?>
-						<select id="<?php echo esc_attr( $id ); ?>" name="specs[<?php echo esc_attr( $f['key'] ); ?>]"<?php sm_theme_aria( 'specs_' . $f['key'] ); ?>>
-							<option value=""><?php esc_html_e( 'Choose…', 'sm-marketplace' ); ?></option>
-							<?php foreach ( $f['options'] as $o ) : ?><option value="<?php echo esc_attr( $o['value'] ); ?>" <?php selected( $val, $o['value'] ); ?>><?php echo esc_html( sm_t( array( 'fr' => $o['fr'], 'ar' => $o['ar'] ) ) ); ?></option><?php endforeach; ?>
-						</select>
-					<?php else : ?>
-						<input id="<?php echo esc_attr( $id ); ?>" name="specs[<?php echo esc_attr( $f['key'] ); ?>]" value="<?php echo esc_attr( $val ); ?>"<?php echo 'number' === $f['type'] ? ' inputmode="decimal" dir="ltr"' : ' dir="auto"'; ?><?php sm_theme_aria( 'specs_' . $f['key'] ); ?>>
-					<?php endif; ?>
-					<?php sm_theme_error( 'specs_' . $f['key'] ); ?>
-				</div>
-			<?php endforeach; ?>
+	<?php elseif ( 'lines' === $cat['kind'] ) : ?>
+		<?php
+		$all_fam = array();
+		foreach ( (array) sm_theme_data( 'weight_families' ) as $f ) {
+			$all_fam[ $f['code'] ] = $f;
+		}
+		$families = array_values( array_filter( array_map( static fn( $c ) => $all_fam[ $c ] ?? null, $cat['families'] ) ) );
+		$rows     = array_values( array_filter( (array) ( $st['lines'] ?? array() ), static fn( $r ) => is_array( $r ) && implode( '', array_map( 'strval', array_intersect_key( $r, array_flip( array( 'section', 'qty', 'length' ) ) ) ) ) !== '' ) );
+		$rows     = array_slice( $rows, 0, 29 );
+		$raw_rows = array_values( (array) ( $st['lines'] ?? array() ) );
+		$tail     = $raw_rows ? end( $raw_rows ) : null;
+		$last_fam = $rows ? (string) ( end( $rows )['family'] ?? '' ) : '';
+		if ( is_array( $tail ) && ! in_array( $tail, $rows, true ) && ! empty( $tail['family'] ) ) {
+			$last_fam = (string) $tail['family']; // Type chosen on the empty row is kept.
+		}
+		$rows[]   = array( 'family' => $last_fam ? $last_fam : ( $families[0]['code'] ?? '' ), 'section' => '', 'qty' => '', 'length' => '' );
+		$results  = (array) ( $sum['line_rows'] ?? array() );
+		$sections = array();
+		?>
+		<div class="smp-lines-head">
+			<?php $render_grade(); ?>
 		</div>
+		<fieldset class="sm-field smp-lines">
+			<legend class="sm-field__legend"><?php esc_html_e( 'Content of the lot', 'sm-marketplace' ); ?></legend>
+			<p class="sm-help"><?php esc_html_e( 'One row per size and length. A new empty row appears when you fill the last one; clear a row to remove it.', 'sm-marketplace' ); ?></p>
+			<ol class="smp-lines__list" role="list">
+				<?php foreach ( $rows as $i => $row ) : ?>
+					<?php
+					$fam = strtoupper( (string) ( $row['family'] ?? '' ) );
+					if ( ! isset( $all_fam[ $fam ] ) || ! in_array( $fam, $cat['families'], true ) ) {
+						$fam = $families[0]['code'] ?? '';
+					}
+					if ( $fam && ! isset( $sections[ $fam ] ) ) {
+						$fd               = sm_theme_data( 'weight_family', array( 'code' => $fam ) );
+						$sections[ $fam ] = (array) ( $fd['sections'] ?? array() );
+					}
+					$sec = (string) ( $row['section'] ?? '' );
+					$res = $results[ $i ] ?? null;
+					$n   = 'lines[' . $i . ']';
+					?>
+					<li class="smp-line<?php echo $res ? ' is-done' : ''; ?>" data-smp-line>
+						<span class="smp-line__n" aria-hidden="true"><?php echo esc_html( $i + 1 ); ?></span>
+						<div class="smp-line__fields">
+							<div class="smp-line__f smp-line__f--fam">
+								<label for="smp-l<?php echo esc_attr( $i ); ?>-f"><?php esc_html_e( 'Type', 'sm-marketplace' ); ?></label>
+								<select id="smp-l<?php echo esc_attr( $i ); ?>-f" name="<?php echo esc_attr( $n ); ?>[family]" dir="ltr">
+									<?php foreach ( $families as $f ) : ?><option value="<?php echo esc_attr( $f['code'] ); ?>" <?php selected( $fam, $f['code'] ); ?>><?php echo esc_html( $f['code'] ); ?></option><?php endforeach; ?>
+								</select>
+							</div>
+							<div class="smp-line__f smp-line__f--size">
+								<label for="smp-l<?php echo esc_attr( $i ); ?>-s"><?php esc_html_e( 'Size', 'sm-marketplace' ); ?></label>
+								<select id="smp-l<?php echo esc_attr( $i ); ?>-s" name="<?php echo esc_attr( $n ); ?>[section]" dir="ltr">
+									<option value=""><?php esc_html_e( 'Choose…', 'sm-marketplace' ); ?></option>
+									<?php foreach ( $sections[ $fam ] ?? array() as $o ) : ?><option value="<?php echo esc_attr( $o['id'] ); ?>" <?php selected( $sec, (string) $o['id'] ); ?>><?php echo esc_html( $o['designation'] ); ?></option><?php endforeach; ?>
+								</select>
+							</div>
+							<div class="smp-line__f smp-line__f--qty">
+								<label for="smp-l<?php echo esc_attr( $i ); ?>-q"><?php esc_html_e( 'Pieces', 'sm-marketplace' ); ?></label>
+								<input id="smp-l<?php echo esc_attr( $i ); ?>-q" name="<?php echo esc_attr( $n ); ?>[qty]" inputmode="numeric" dir="ltr" value="<?php echo esc_attr( (string) ( $row['qty'] ?? '' ) ); ?>">
+							</div>
+							<div class="smp-line__f smp-line__f--len">
+								<label for="smp-l<?php echo esc_attr( $i ); ?>-l"><?php esc_html_e( 'Length', 'sm-marketplace' ); ?> <small>(m)</small></label>
+								<input id="smp-l<?php echo esc_attr( $i ); ?>-l" name="<?php echo esc_attr( $n ); ?>[length]" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( (string) ( $row['length'] ?? '' ) ); ?>">
+							</div>
+						</div>
+						<p class="smp-line__result" aria-live="polite">
+							<?php if ( $res ) : ?>
+								<span class="smp-line__kgm"><?php echo sm_tech( sm_number( $res['kg_m'], 2 ) . ' kg/m' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+								<strong><?php echo sm_kg( $res['total'], 1 ); // phpcs:ignore WordPress.Security.EscapeOutput ?></strong>
+							<?php endif; ?>
+						</p>
+						<?php if ( $i < count( $rows ) - 1 ) : ?>
+							<button type="button" class="sm-icon-btn smp-line__remove" data-smp-line-remove><?php sm_icon( 'trash', '', __( 'Remove this row', 'sm-marketplace' ) ); ?></button>
+						<?php endif; ?>
+						<?php $field_error( 'lines_' . $i ); ?>
+					</li>
+				<?php endforeach; ?>
+			</ol>
+			<?php sm_theme_error( 'lines' ); ?>
+		</fieldset>
+		<?php $source = 'actual' === $v( 'weight_source' ) ? 'actual' : 'theoretical'; ?>
+		<fieldset class="sm-field">
+			<legend class="sm-field__legend"><?php esc_html_e( 'Weight shown to buyers', 'sm-marketplace' ); ?></legend>
+			<div class="sm-segment">
+				<label><input type="radio" name="weight_source" value="theoretical" <?php checked( $source, 'theoretical' ); ?>><span><?php sm_icon( 'ruler' ); ?><?php esc_html_e( 'Theoretical (calculated)', 'sm-marketplace' ); ?></span></label>
+				<label><input type="radio" name="weight_source" value="actual" <?php checked( $source, 'actual' ); ?>><span><?php sm_icon( 'scale' ); ?><?php esc_html_e( 'Actual (weighed)', 'sm-marketplace' ); ?></span></label>
+			</div>
+			<?php if ( 'actual' === $source ) : ?>
+				<label for="smp-actual"><?php esc_html_e( 'Measured weight of the lot (kg)', 'sm-marketplace' ); ?></label>
+				<input id="smp-actual" name="actual_weight" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( $v( 'actual_weight' ) ); ?>">
+				<?php $field_error( 'actual_weight' ); ?>
+			<?php endif; ?>
+		</fieldset>
+
+	<?php elseif ( 'weight' === $cat['kind'] ) : ?>
+		<?php $render_fields(); ?>
+		<?php $source = 'actual' === $v( 'weight_source' ) ? 'actual' : 'estimated'; ?>
+		<fieldset class="sm-field">
+			<legend class="sm-field__legend"><?php esc_html_e( 'Weight of the lot', 'sm-marketplace' ); ?></legend>
+			<div class="sm-segment">
+				<label><input type="radio" name="weight_source" value="estimated" <?php checked( $source, 'estimated' ); ?>><span><?php sm_icon( 'ruler' ); ?><?php esc_html_e( 'Estimated', 'sm-marketplace' ); ?></span></label>
+				<label><input type="radio" name="weight_source" value="actual" <?php checked( $source, 'actual' ); ?>><span><?php sm_icon( 'scale' ); ?><?php esc_html_e( 'Actual (weighed)', 'sm-marketplace' ); ?></span></label>
+			</div>
+			<label for="smp-total"><?php echo esc_html( 'actual' === $source ? __( 'Weighed weight', 'sm-marketplace' ) : __( 'Estimated weight', 'sm-marketplace' ) ); ?> <small>(kg)</small></label>
+			<input id="smp-total" name="total_kg" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( $v( 'total_kg' ) ); ?>"<?php sm_theme_aria( 'total_kg' ); ?>>
+			<?php $field_error( 'total_kg' ); ?>
+		</fieldset>
+
+	<?php else : ?>
+		<?php $render_fields(); ?>
 		<?php $unit = in_array( $v( 'unit' ), $cat['units'], true ) ? $v( 'unit' ) : $cat['units'][0]; ?>
 		<div class="sm-field sm-field--row">
 			<div>
@@ -252,7 +423,8 @@ $field_error = static function ( $key ) use ( $err, $st ) {
 
 	<?php
 	$units = $cat['units'];
-	$price_unit = 'engine' === $cat['kind'] ? ( in_array( $v( 'price_unit' ), $units, true ) ? $v( 'price_unit' ) : $units[0] ) : ( $unit ?? $units[0] );
+	$has_punit  = 'specs' !== $cat['kind'];
+	$price_unit = $has_punit ? ( in_array( $v( 'price_unit' ), $units, true ) ? $v( 'price_unit' ) : $units[0] ) : ( $unit ?? $units[0] );
 	?>
 	<div class="sm-field sm-field--row">
 		<div>
@@ -261,9 +433,9 @@ $field_error = static function ( $key ) use ( $err, $st ) {
 			<?php $field_error( 'price' ); ?>
 		</div>
 		<div>
-			<?php if ( 'engine' === $cat['kind'] ) : ?>
+			<?php if ( $has_punit ) : ?>
 				<label for="smp-punit"><?php esc_html_e( 'Price per', 'sm-marketplace' ); ?></label>
-				<select id="smp-punit" name="price_unit"><?php foreach ( $units as $u ) : ?><option value="<?php echo esc_attr( $u ); ?>" <?php selected( $price_unit, $u ); ?>><?php echo esc_html( 'unit' === $u ? ( ! empty( $is_plate ) ? __( 'plate', 'sm-marketplace' ) : __( 'bar', 'sm-marketplace' ) ) : ( $unit_labels[ $u ] ?? $u ) ); ?></option><?php endforeach; ?></select>
+				<select id="smp-punit" name="price_unit"><?php foreach ( $units as $u ) : ?><option value="<?php echo esc_attr( $u ); ?>" <?php selected( $price_unit, $u ); ?>><?php echo esc_html( 'unit' === $u && 'engine' === $cat['kind'] ? ( ! empty( $is_plate ) ? __( 'plate', 'sm-marketplace' ) : __( 'bar', 'sm-marketplace' ) ) : ( $unit_labels[ $u ] ?? $u ) ); ?></option><?php endforeach; ?></select>
 				<?php $field_error( 'price_unit' ); ?>
 			<?php else : ?>
 				<p class="smp-per"><?php echo esc_html( sprintf( /* translators: %s: unit. */ __( 'per %s', 'sm-marketplace' ), $unit_labels[ $price_unit ] ?? $price_unit ) ); ?></p>
@@ -287,12 +459,27 @@ $field_error = static function ( $key ) use ( $err, $st ) {
 					<?php else : ?>—<?php endif; ?>
 				</dd></div>
 			<?php endif; ?>
-			<div class="is-key"><dt><?php esc_html_e( 'Total price', 'sm-marketplace' ); ?></dt><dd><?php echo $sum && $sum['total_price'] > 0 ? esc_html( sm_money( $sum['total_price'] ) ) : '—'; ?></dd></div>
+			<?php if ( 'lines' === $cat['kind'] ) : ?>
+				<div><dt><?php esc_html_e( 'Pieces in the lot', 'sm-marketplace' ); ?></dt><dd>
+					<?php if ( $sum && $sum['pieces'] > 0 ) : ?>
+						<?php echo sm_tech( sm_number( $sum['pieces'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+						<small><?php echo esc_html( sprintf( /* translators: %s: number of sizes. */ _n( '%s size', '%s sizes', count( $sum['lines'] ), 'sm-marketplace' ), sm_number( count( $sum['lines'] ) ) ) ); ?></small>
+					<?php else : ?>—<?php endif; ?>
+				</dd></div>
+			<?php endif; ?>
+			<div class="is-key"><dt><?php echo esc_html( 'lot' === ( $sum['price_unit'] ?? '' ) ? __( 'Price of the lot', 'sm-marketplace' ) : __( 'Total price', 'sm-marketplace' ) ); ?></dt><dd><?php echo $sum && $sum['total_price'] > 0 ? esc_html( sm_money( $sum['total_price'] ) ) : '—'; ?></dd></div>
 			<?php if ( $sum && $sum['price_per_kg'] > 0 && 'kg' !== $sum['price_unit'] ) : ?>
 				<div><dt><?php esc_html_e( 'Equivalent price per kg', 'sm-marketplace' ); ?></dt><dd><?php echo sm_per_unit( $sum['price_per_kg'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></dd></div>
 			<?php endif; ?>
 		</dl>
-		<p class="sm-help"><?php esc_html_e( 'Weight and totals are calculated by the platform from the European tables; you can still give the weighed weight.', 'sm-marketplace' ); ?></p>
+		<?php if ( 'weight' === $cat['kind'] ) : ?>
+			<p class="sm-help"><?php esc_html_e( 'The weight of this lot is given by you: say whether it was weighed or estimated. Buyers see the difference.', 'sm-marketplace' ); ?></p>
+		<?php else : ?>
+			<p class="sm-help"><?php esc_html_e( 'Weight and totals are calculated by the platform from the European tables; you can still give the weighed weight.', 'sm-marketplace' ); ?></p>
+		<?php endif; ?>
+		<?php if ( ! empty( $mk['conditions'] ) && 'scrap' !== $v( 'condition' ) ) : ?>
+			<p class="smp-advice-note"><?php sm_icon( 'hard-hat' ); ?><span><?php esc_html_e( 'Buyers will see a notice recommending a check by a qualified engineer before any structural reuse.', 'sm-marketplace' ); ?></span></p>
+		<?php endif; ?>
 	</div>
 	<noscript><button class="sm-btn sm-btn--ghost" type="submit" name="intent" value="refresh"><?php esc_html_e( 'Update', 'sm-marketplace' ); ?></button></noscript>
 </div>

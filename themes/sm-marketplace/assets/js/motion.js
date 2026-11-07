@@ -6,6 +6,8 @@
 ( function () {
 	'use strict';
 
+	// Skipped page transitions are silenced by a tiny script in <head> (inc/assets.php).
+
 	var header = document.querySelector( '.sm-header' );
 	if ( header ) {
 		var ticking = false;

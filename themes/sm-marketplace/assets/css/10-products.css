@@ -61,3 +61,69 @@
 .smp-docs a { display: flex; align-items: center; gap: var(--sm-s2); padding: var(--sm-s3); border: 1px solid var(--sm-line); border-radius: var(--sm-radius); text-decoration: none; color: var(--sm-ink); }
 .smp-docs small { color: var(--sm-muted); margin-inline-start: auto; }
 .sm-prewrap { white-space: pre-line; }
+
+/* ==========================================================================
+   Markets of the listing engine (0.7.0): market chooser, reuse condition,
+   inventory rows, engineer advice.
+   ========================================================================== */
+.smp-markets { list-style: none; margin: 0 0 var(--sm-s3); padding: 0; display: grid; gap: var(--sm-s2); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 640px) { .smp-markets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.smp-market { position: relative; display: flex; align-items: flex-start; gap: var(--sm-s3); padding: var(--sm-s3) var(--sm-s4); border: 1.5px solid var(--sm-line); border-radius: var(--sm-radius-lg); background: var(--sm-surface); color: var(--sm-ink); text-decoration: none; transition: border-color var(--sm-dur-1, 150ms) var(--sm-ease, ease), background-color var(--sm-dur-1, 150ms) var(--sm-ease, ease), box-shadow var(--sm-dur-2, 250ms) var(--sm-ease, ease), transform var(--sm-dur-2, 250ms) var(--sm-ease, ease); }
+.smp-market:hover { border-color: var(--sm-line-strong); }
+.smp-market.is-current { border-color: var(--sm-accent); background: var(--sm-accent-soft); box-shadow: 0 0 0 1px var(--sm-accent) inset, 0 10px 24px -18px var(--sm-accent); }
+.smp-market__icon { flex: none; display: grid; place-items: center; inline-size: 44px; block-size: 44px; border-radius: 12px; background: var(--sm-bg); color: var(--sm-primary); }
+.smp-market.is-current .smp-market__icon { background: var(--sm-accent); color: var(--sm-on-accent, #fff); }
+.smp-market__text { display: grid; gap: 2px; min-inline-size: 0; }
+.smp-market__text small { color: var(--sm-muted); line-height: 1.4; }
+.smp-market__lock { position: absolute; inset-block-start: var(--sm-s2); inset-inline-end: var(--sm-s2); color: var(--sm-muted); }
+.smp-market.is-locked { opacity: .78; }
+
+/* Condition scale: five cards, colour of the level on the dot and the border. */
+.smp-cond-list { display: grid; gap: var(--sm-s2); grid-template-columns: minmax(0, 1fr); margin-block-start: var(--sm-s2); }
+@media (min-width: 640px) { .smp-cond-list { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.smp-cond { --c: var(--sm-line-strong); position: relative; }
+.smp-cond--1 { --c: var(--sm-cond-1); } .smp-cond--2 { --c: var(--sm-cond-2); } .smp-cond--3 { --c: var(--sm-cond-3); } .smp-cond--4 { --c: var(--sm-cond-4); } .smp-cond--5 { --c: var(--sm-cond-5); }
+.smp-cond input { position: absolute; opacity: 0; inline-size: 1px; block-size: 1px; }
+.smp-cond__card { display: flex; align-items: center; gap: var(--sm-s2); block-size: 100%; min-block-size: 52px; padding: var(--sm-s2) var(--sm-s3); border: 1.5px solid var(--sm-line); border-radius: var(--sm-radius); background: var(--sm-surface); font-size: var(--sm-fs-sm); font-weight: 600; line-height: 1.3; cursor: pointer; transition: border-color var(--sm-dur-1, 150ms) var(--sm-ease, ease), background-color var(--sm-dur-1, 150ms) var(--sm-ease, ease), box-shadow var(--sm-dur-2, 250ms) var(--sm-ease, ease); }
+.smp-cond__dot { flex: none; inline-size: 12px; block-size: 12px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 22%, transparent); transition: transform var(--sm-dur-2, 250ms) var(--sm-ease, ease); }
+.smp-cond:hover .smp-cond__card { border-color: color-mix(in srgb, var(--c) 55%, var(--sm-line)); }
+.smp-cond input:checked + .smp-cond__card { border-color: var(--c); background: color-mix(in srgb, var(--c) 10%, var(--sm-surface)); box-shadow: 0 0 0 1px var(--c) inset; }
+.smp-cond input:checked + .smp-cond__card .smp-cond__dot { transform: scale(1.25); }
+.smp-cond input:focus-visible + .smp-cond__card { box-shadow: var(--sm-focus); }
+.smp-attr-bool { align-self: end; }
+
+/* Inventory rows of a reuse lot. */
+.smp-lines__list { list-style: none; margin: var(--sm-s2) 0 0; padding: 0; display: grid; gap: var(--sm-s2); }
+.smp-line { position: relative; display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: var(--sm-s2) var(--sm-s3); padding: var(--sm-s3); border: 1px solid var(--sm-line); border-radius: var(--sm-radius); background: var(--sm-surface); transition: border-color var(--sm-dur-2, 250ms) var(--sm-ease, ease), background-color var(--sm-dur-2, 250ms) var(--sm-ease, ease), opacity var(--sm-dur-2, 250ms) var(--sm-ease, ease), transform var(--sm-dur-2, 250ms) var(--sm-ease, ease); }
+.smp-line.is-done { border-color: color-mix(in srgb, var(--sm-accent) 35%, var(--sm-line)); background: color-mix(in srgb, var(--sm-accent) 4%, var(--sm-surface)); }
+.smp-line.is-leaving { opacity: 0; transform: translateX(12px); }
+.smp-line__n { display: grid; place-items: center; inline-size: 28px; block-size: 28px; border-radius: 50%; background: var(--sm-bg); color: var(--sm-muted); font-weight: 700; font-size: var(--sm-fs-xs); }
+.smp-line.is-done .smp-line__n { background: var(--sm-accent); color: var(--sm-on-accent, #fff); }
+.smp-line__fields { display: grid; gap: var(--sm-s2); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 720px) { .smp-line__fields { grid-template-columns: 1fr 1.6fr 1fr 1fr; } }
+.smp-line__f { display: grid; gap: 2px; min-inline-size: 0; }
+.smp-line__f label { font-size: var(--sm-fs-xs); font-weight: 600; color: var(--sm-muted); }
+.smp-line__f input, .smp-line__f select { inline-size: 100%; min-inline-size: 0; }
+.smp-line__result { grid-column: 2 / -1; margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px var(--sm-s3); font-size: var(--sm-fs-sm); min-block-size: 0; }
+.smp-line__result:empty { display: none; }
+.smp-line__kgm { color: var(--sm-muted); }
+.smp-line__result strong { color: var(--sm-accent-ink); }
+.smp-line__remove { grid-column: 3; grid-row: 1; align-self: start; }
+.smp-line .sm-field-error { grid-column: 2 / -1; margin: 0; }
+@media (min-width: 720px) {
+	.smp-line { grid-template-columns: 28px minmax(0, 1fr) 150px 40px; }
+	.smp-line__result { grid-column: 3; grid-row: 1; justify-content: flex-end; text-align: end; display: grid; }
+	.smp-line__result:empty { display: block; }
+	.smp-line__remove { grid-column: 4; align-self: center; }
+}
+.smp-lines-head { max-inline-size: 320px; }
+
+/* Engineer advice: in the form and on the product page. */
+.smp-advice-note { display: flex; gap: var(--sm-s2); align-items: flex-start; margin: var(--sm-s3) 0 0; padding: var(--sm-s2) var(--sm-s3); border-radius: var(--sm-radius); background: var(--sm-info-soft); color: var(--sm-info); font-size: var(--sm-fs-sm); }
+.smp-advice-note .sm-icon { flex: none; margin-block-start: 2px; }
+.sm-advice { display: flex; gap: var(--sm-s3); align-items: flex-start; margin-block-start: var(--sm-s4); padding: var(--sm-s4); border-radius: var(--sm-radius-lg); border: 1px solid color-mix(in srgb, var(--sm-info) 25%, transparent); background: color-mix(in srgb, var(--sm-info-soft) 70%, var(--sm-surface)); }
+.sm-advice--warning { border-color: color-mix(in srgb, var(--sm-warn) 30%, transparent); background: color-mix(in srgb, var(--sm-warn-soft) 75%, var(--sm-surface)); }
+.sm-advice__icon { flex: none; inline-size: 28px; block-size: 28px; color: var(--sm-info); }
+.sm-advice--warning .sm-advice__icon { color: var(--sm-warn); }
+.sm-advice p { margin: 0 0 var(--sm-s2); }
+.sm-advice__title { font-weight: 700; color: var(--sm-ink); }

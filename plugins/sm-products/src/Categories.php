@@ -11,10 +11,13 @@ defined( 'ABSPATH' ) || exit;
 
 final class Categories {
 
-	const UNITS = array( 'kg', 'unit', 'm2', 'ml' );
+	const UNITS = array( 'kg', 'unit', 'm2', 'ml', 'lot' );
+	/** engine: one size from the weight engine; lines: several sizes and lengths (inventory);
+	 *  weight: total weight only (mixed lots, scrap); specs: category fields. */
+	const KINDS = array( 'engine', 'lines', 'weight', 'specs' );
 
-	/** slug => object (families, units, fields decoded). */
-	public static function all( $include_inactive = false ) {
+	/** slug => object (families, units, fields decoded), optionally of one market. */
+	public static function all( $include_inactive = false, $market = null ) {
 		global $wpdb;
 		$rows = wp_cache_get( 'product_categories', 'sm' );
 		if ( false === $rows ) {
@@ -27,6 +30,11 @@ final class Categories {
 			}
 			wp_cache_set( 'product_categories', $rows, 'sm', HOUR_IN_SECONDS );
 		}
+		$known = Markets::all();
+		$rows  = array_filter( $rows, static fn( $r ) => isset( $known[ $r->market ] ) ); // Market plugin switched off.
+		if ( null !== $market ) {
+			$rows = array_filter( $rows, static fn( $r ) => $r->market === $market );
+		}
 		return $include_inactive ? $rows : array_filter( $rows, static fn( $r ) => $r->active );
 	}
 
@@ -36,9 +44,9 @@ final class Categories {
 	}
 
 	/** slug => [fr, ar] for the theme (data contract "categories"). */
-	public static function labels() {
+	public static function labels( $market = 'products' ) {
 		$out = array();
-		foreach ( self::all() as $slug => $c ) {
+		foreach ( self::all( false, $market ) as $slug => $c ) {
 			$out[ $slug ] = array( 'fr' => $c->name_fr, 'ar' => $c->name_ar );
 		}
 		return $out;

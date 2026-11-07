@@ -62,14 +62,14 @@ function smp_cleanup() {
 smp_cleanup();
 $suffix = substr( md5( (string) microtime( true ) ), 0, 6 );
 list( $u_sel, $c_sel ) = smp_user( 's' . $suffix, 'commercial', array( 'supplier' ) );
-list( $u_oth, $c_oth ) = smp_user( 'o' . $suffix, 'commercial', array( 'buyer' ) );
-list( $u_eng, $c_eng ) = smp_user( 'e' . $suffix, 'engineering', array() );
+list( $u_oth, $c_oth ) = smp_user( 'o' . $suffix, 'commercial', array( 'fabrication' ) );
+list( $u_eng, $c_eng ) = smp_user( 'e' . $suffix, 'engineering', array( 'engineer' ) );
 
 $base = array( 'wilaya' => '28', 'title' => array( 'fr' => 'Test produit' ), 'price' => '245' );
 
 /* ------------------------------------------------------------------ */
 smp_section( '1. Categories' );
-$cats = Categories::all();
+$cats = Categories::all( false, 'products' );
 smp_assert( 7 === count( $cats ) && 'engine' === $cats['profiles']->kind && 'specs' === $cats['roofing']->kind, '7 default categories (4 from the weight engine, 3 with their own fields)' );
 smp_assert( array( 'IPE', 'HEA', 'HEB', 'HEM', 'IPN', 'UPN', 'UPE', 'L', 'LI' ) === $cats['profiles']->families, 'profiles cover the 9 rolled-section families' );
 $keys = wp_list_pluck( $cats['roofing']->fields, 'key' );
@@ -125,7 +125,14 @@ smp_assert( 1 === Products::get( $pid )->views, 'a visit by a buyer is counted' 
 $list = Bridge::listings( null, array( 'market' => 'products', 'category' => 'profiles', 'q' => 'IPE200', 'per_page' => 60 ) );
 smp_assert( in_array( $p->listing_id, wp_list_pluck( $list['items'], 'id' ), true ), 'found by category and by designation typed without space (IPE200)' );
 smp_assert( ! in_array( $p->listing_id, wp_list_pluck( Bridge::listings( null, array( 'market' => 'products', 'wilaya' => '16', 'per_page' => 60 ) )['items'], 'id' ), true ), 'wilaya filter' );
-smp_assert( null === Bridge::listings( null, array( 'market' => array( 'products', 'reuse' ) ) ), 'mixed-market searches are left to the other providers' );
+add_filter( 'sm_theme_demo_enabled', '__return_true', 99 );
+smp_assert( null === Bridge::listings( null, array( 'market' => array( 'products', 'buildings' ) ) ), 'a search mixing a market no plugin serves yet is left to the demo provider' );
+remove_filter( 'sm_theme_demo_enabled', '__return_true', 99 );
+add_filter( 'sm_theme_demo_enabled', '__return_false', 99 );
+$mixed = Bridge::listings( null, array( 'market' => array( 'products', 'buildings' ), 'per_page' => 60 ) );
+smp_assert( is_array( $mixed ) && in_array( $p->listing_id, wp_list_pluck( $mixed['items'], 'id' ), true ), '…and answered with the served markets once demo mode is off' );
+remove_filter( 'sm_theme_demo_enabled', '__return_false', 99 );
+smp_assert( null === Bridge::listings( null, array( 'market' => 'buildings' ) ), 'a market no plugin serves is never answered' );
 
 /* ------------------------------------------------------------------ */
 smp_section( '4. Life cycle' );
@@ -153,7 +160,7 @@ smp_section( '5. Rules' );
 wp_set_current_user( $u_eng );
 smp_assert( ! sm_can( 'listing.products' ), 'an engineering account can never publish products' );
 wp_set_current_user( $u_oth );
-smp_assert( ! sm_can( 'listing.products' ), 'a buyer-only company cannot publish products' );
+smp_assert( ! sm_can( 'listing.products' ), 'a fabrication-only company cannot publish new products' );
 wp_set_current_user( $u_sel );
 smp_assert( sm_can( 'listing.products' ), 'a supplier with a verified contact can publish' );
 wp_set_current_user( 0 );

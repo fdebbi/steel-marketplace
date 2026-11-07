@@ -30,12 +30,16 @@ final class Api {
 	}
 
 	public static function index( \WP_REST_Request $r ) {
-		$args = array_merge( $r->get_params(), array( 'market' => 'products', 'per_page' => min( 50, (int) ( $r['per_page'] ?? 20 ) ) ) );
+		$market = sanitize_key( (string) ( $r['market'] ?? 'products' ) );
+		if ( ! \SM\Products\Markets::exists( $market ) ) {
+			return new \WP_Error( 'smp_market', __( 'Unknown market.', 'sm-products' ), array( 'status' => 400 ) );
+		}
+		$args = array_merge( $r->get_params(), array( 'market' => $market, 'per_page' => min( 50, (int) ( $r['per_page'] ?? 20 ) ) ) );
 		return rest_ensure_response( Bridge::listings( null, $args ) );
 	}
 
-	public static function categories() {
-		return rest_ensure_response( Bridge::product_categories( null ) );
+	public static function categories( \WP_REST_Request $r ) {
+		return rest_ensure_response( Bridge::product_categories( null, array( 'market' => sanitize_key( (string) ( $r['market'] ?? '' ) ) ) ) );
 	}
 
 	public static function show( \WP_REST_Request $r ) {

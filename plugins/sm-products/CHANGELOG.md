@@ -1,5 +1,17 @@
 # Changelog — sm-products
 
+## 0.2.0 — 2026-11-07 (Phase 5 : moteur multi-marchés)
+
+- `sm-products` devient le moteur d'annonces acier de plusieurs marchés : chaque annonce et chaque catégorie portent un marché (`products` par défaut). D'autres extensions ajoutent le leur par le filtre `sm_products_markets` (sm-reuse ajoute `reuse`) ; un marché définit sa permission, son échelle d'état et ses champs communs.
+- Deux nouveaux types de catégorie : **inventaire** (`lines` : une ligne par profil et longueur, jusqu'à 30, chaque ligne calculée par SM Weight Engine) et **lot au poids** (`weight` : poids pesé ou estimé, champs propres).
+- Unité de prix « lot » (prix du lot entier, avec équivalent au kg).
+- État (`item_condition`) et champs du marché (`attrs`) contrôlés côté serveur ; filtre `sm_products_spec_check` pour les règles d'un marché.
+- Recherche : plusieurs marchés à la fois, filtres état, longueur minimale (plus longue pièce) et nombre minimal de pièces ; recherche dans toutes les tailles d'un inventaire.
+- Fiche : tableau d'inventaire (`elements`), lignes état et champs du marché, filtre `sm_products_listing_detail`.
+- Admin : filtre et colonne marché, catégories groupées par marché. REST : paramètre `market`.
+- Base v2 : colonnes `market`, `item_condition`, `attrs`, `inventory` (le mot `lines` est réservé en MySQL).
+- Traductions : 130 chaînes. Tests : 40 PHP (fixtures d'entreprises corrigées : deux tests passaient sans entreprise valide).
+
 ## 0.1.0 — 2026-11-07 (Phase 4)
 
 - Catégories : profilés, tubes, tôles, fers plats et barres (données et poids de SM Weight Engine), toiture et bardage, pièces de finition, autres ; noms, unités et champs modifiables dans wp-admin.

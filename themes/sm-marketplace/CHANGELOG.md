@@ -1,5 +1,15 @@
 # Changelog — sm-marketplace
 
+## 0.7.0 — 2026-11-07 (Phase 5, réemploi, avec sm-reuse 0.1.0)
+
+- « Publier une annonce » : choix du marché (produits neufs / réemploi) puis de la catégorie ; le marché verrouillé pour le compte affiche la raison.
+- Formulaire de réemploi : échelle d'état en cinq cartes colorées, origine, état de surface, découpe à la demande, chargement ; inventaire ligne par ligne (type, profil, pièces, longueur) avec poids de chaque ligne en direct, nouvelle ligne vide ajoutée automatiquement, suppression d'une ligne en douceur ; lots au poids (pesé ou estimé) ; prix au kg, à la pièce ou pour le lot entier ; rappel de l'avis d'ingénieur.
+- Fiche : « Inventaire du lot », bloc prix « Prix du lot entier », poids estimé distingué, avis d'ingénieur fourni par l'extension (lien vers les ingénieurs, avertissement renforcé pour « à inspecter », note de recyclage pour la ferraille).
+- Cartes : « 9 pcs · jusqu'à 4 m » pour un inventaire, mention « estimé ».
+- Page Réemploi : filtres longueur minimale et nombre minimal de pièces transmis au moteur.
+- Les transitions de page interrompues par le navigateur ne produisent plus d'erreur.
+- Traductions : 674 chaînes.
+
 ## 0.6.0 — 2026-11-07 (nom ReuSteel, animations)
 
 - La plateforme s'appelle **ReuSteel** : nom par défaut, logo-texte « Reu » + « Steel » en couleur d'accent, titre du site. Un nom déjà choisi dans le Personnalisateur est conservé.

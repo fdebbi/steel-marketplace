@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.6.0\n"
+"Project-Id-Version: SM Marketplace 0.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-07T17:41:21+00:00\n"
+"POT-Creation-Date: 2026-11-07T17:55:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #: footer.php:22
 #: inc/menus.php:16
-#: inc/template-tags.php:195
+#: inc/template-tags.php:209
 #: templates/front-page-template.php:67
 #: templates/marketplace-products.php:15
 msgid "Steel products"
@@ -67,7 +67,7 @@ msgstr ""
 
 #: footer.php:23
 #: inc/menus.php:24
-#: inc/template-tags.php:196
+#: inc/template-tags.php:210
 #: templates/front-page-template.php:68
 #: templates/marketplace-reuse.php:15
 msgid "Steel reuse"
@@ -75,7 +75,7 @@ msgstr ""
 
 #: footer.php:24
 #: inc/menus.php:32
-#: inc/template-tags.php:197
+#: inc/template-tags.php:211
 #: templates/front-page-template.php:69
 #: templates/marketplace-buildings.php:15
 msgid "Steel buildings"
@@ -98,7 +98,7 @@ msgstr ""
 
 #: footer.php:31
 #: inc/menus.php:62
-#: inc/template-tags.php:198
+#: inc/template-tags.php:212
 #: template-parts/components/card-service.php:22
 #: templates/front-page-template.php:70
 #: templates/marketplace-services.php:20
@@ -110,7 +110,7 @@ msgstr ""
 #: header.php:100
 #: header.php:130
 #: inc/menus.php:63
-#: inc/template-tags.php:199
+#: inc/template-tags.php:213
 #: template-parts/components/card-service.php:22
 #: templates/company-profile.php:45
 #: templates/front-page-template.php:71
@@ -165,7 +165,7 @@ msgstr ""
 #: footer.php:43
 #: header.php:32
 #: templates/company-profile.php:66
-#: templates/single-listing.php:277
+#: templates/single-listing.php:290
 msgid "Contact"
 msgstr ""
 
@@ -178,7 +178,7 @@ msgid "Quick navigation"
 msgstr ""
 
 #: footer.php:55
-#: inc/template-tags.php:265
+#: inc/template-tags.php:279
 msgid "Home"
 msgstr ""
 
@@ -191,8 +191,8 @@ msgstr ""
 
 #: footer.php:57
 #: header.php:77
-#: template-parts/components/product-form.php:156
-#: template-parts/dashboard/publish.php:210
+#: template-parts/components/product-form.php:187
+#: template-parts/dashboard/publish.php:211
 #: templates/styleguide.php:34
 msgid "Publish"
 msgstr ""
@@ -224,10 +224,11 @@ msgstr ""
 
 #: header.php:48
 #: template-parts/components/filter-panel.php:32
+#: template-parts/components/product-form.php:59
 #: template-parts/dashboard/listings.php:32
 #: template-parts/dashboard/listings.php:46
-#: template-parts/dashboard/publish.php:34
-#: template-parts/dashboard/publish.php:50
+#: template-parts/dashboard/publish.php:35
+#: template-parts/dashboard/publish.php:51
 #: templates/front-page-template.php:31
 msgid "Market"
 msgstr ""
@@ -488,105 +489,128 @@ msgid "Top utility menu"
 msgstr ""
 
 #: inc/template-tags.php:119
-#: template-parts/components/product-tech.php:25
+#: template-parts/components/product-tech.php:26
 msgid "piece"
 msgstr ""
 
-#: inc/template-tags.php:172
-msgid "New unused surplus"
+#: inc/template-tags.php:120
+msgid "lot"
 msgstr ""
 
 #: inc/template-tags.php:173
-msgid "Excellent used condition"
+msgid "New unused surplus"
 msgstr ""
 
 #: inc/template-tags.php:174
-msgid "Good used condition"
+msgid "Excellent used condition"
 msgstr ""
 
 #: inc/template-tags.php:175
-msgid "Requires inspection or treatment"
+msgid "Good used condition"
 msgstr ""
 
 #: inc/template-tags.php:176
+msgid "Requires inspection or treatment"
+msgstr ""
+
+#: inc/template-tags.php:177
 msgid "Scrap / recycling only"
 msgstr ""
 
-#: inc/template-tags.php:189
+#: inc/template-tags.php:191
 msgid "Actual weight"
 msgstr ""
 
-#: inc/template-tags.php:189
+#: inc/template-tags.php:192
+#: template-parts/components/product-tech.php:397
+msgid "Estimated weight"
+msgstr ""
+
+#: inc/template-tags.php:194
 msgid "Theoretical weight"
 msgstr ""
 
-#: inc/template-tags.php:206
+#: inc/template-tags.php:200
+#: templates/styleguide.php:51
+msgid "actual"
+msgstr ""
+
+#: inc/template-tags.php:201
+msgid "estimated"
+msgstr ""
+
+#: inc/template-tags.php:203
+#: templates/styleguide.php:52
+msgid "theoretical"
+msgstr ""
+
+#: inc/template-tags.php:220
 msgid "Manufacturer"
 msgstr ""
 
-#: inc/template-tags.php:207
+#: inc/template-tags.php:221
 msgid "Supplier / distributor"
 msgstr ""
 
-#: inc/template-tags.php:208
+#: inc/template-tags.php:222
 msgid "Installation company"
 msgstr ""
 
-#: inc/template-tags.php:209
+#: inc/template-tags.php:223
 msgid "Project owner"
 msgstr ""
 
-#: inc/template-tags.php:210
+#: inc/template-tags.php:224
 msgid "Second-hand dealer / recycler"
 msgstr ""
 
-#: inc/template-tags.php:211
+#: inc/template-tags.php:225
 msgid "Fabrication services"
 msgstr ""
 
-#: inc/template-tags.php:212
+#: inc/template-tags.php:226
 #: templates/auth-register.php:42
 msgid "Engineer / engineering office"
 msgstr ""
 
-#: inc/template-tags.php:219
+#: inc/template-tags.php:233
 msgid "Not verified"
 msgstr ""
 
-#: inc/template-tags.php:220
+#: inc/template-tags.php:234
 #: template-parts/components/verification-steps.php:15
 msgid "Contact verified"
 msgstr ""
 
-#: inc/template-tags.php:221
+#: inc/template-tags.php:235
 #: template-parts/components/verification-steps.php:16
 msgid "Verified business"
 msgstr ""
 
-#: inc/template-tags.php:222
+#: inc/template-tags.php:236
 #: template-parts/components/verification-steps.php:16
 msgid "Verified engineer"
 msgstr ""
 
-#: inc/template-tags.php:231
+#: inc/template-tags.php:245
 msgid "just now"
 msgstr ""
 
 #. translators: %s: number of hours.
-#: inc/template-tags.php:236
+#: inc/template-tags.php:250
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s: number of days.
-#: inc/template-tags.php:240
+#: inc/template-tags.php:254
 msgid "%s day ago"
 msgid_plural "%s days ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:264
+#: inc/template-tags.php:278
 msgid "Breadcrumb"
 msgstr ""
 
@@ -620,7 +644,7 @@ msgstr ""
 
 #: template-parts/components/card-listing.php:34
 #: template-parts/components/filter-panel.php:68
-#: template-parts/dashboard/publish.php:111
+#: template-parts/dashboard/publish.php:112
 #: templates/single-listing.php:36
 #: templates/single-listing.php:115
 msgid "Assembled"
@@ -628,23 +652,18 @@ msgstr ""
 
 #: template-parts/components/card-listing.php:34
 #: template-parts/components/filter-panel.php:69
-#: template-parts/dashboard/publish.php:112
+#: template-parts/dashboard/publish.php:113
 #: templates/single-listing.php:36
 #: templates/single-listing.php:115
 msgid "Dismantled"
 msgstr ""
 
-#: template-parts/components/card-listing.php:55
-#: templates/styleguide.php:51
-msgid "actual"
+#. translators: 1: number of pieces, 2: longest length in metres.
+#: template-parts/components/card-listing.php:51
+msgid "%1$s pcs · up to %2$s m"
 msgstr ""
 
-#: template-parts/components/card-listing.php:55
-#: templates/styleguide.php:52
-msgid "theoretical"
-msgstr ""
-
-#: template-parts/components/card-listing.php:65
+#: template-parts/components/card-listing.php:67
 msgid "Total"
 msgstr ""
 
@@ -708,8 +727,8 @@ msgid "Profile designation or keyword"
 msgstr ""
 
 #: template-parts/components/filter-panel.php:42
-#: template-parts/components/product-form.php:47
-#: template-parts/dashboard/publish.php:66
+#: template-parts/components/product-form.php:57
+#: template-parts/dashboard/publish.php:67
 msgid "Category"
 msgstr ""
 
@@ -718,7 +737,7 @@ msgid "All categories"
 msgstr ""
 
 #: template-parts/components/filter-panel.php:52
-#: template-parts/dashboard/publish.php:92
+#: template-parts/dashboard/publish.php:93
 msgid "Condition"
 msgstr ""
 
@@ -757,7 +776,7 @@ msgstr ""
 
 #: template-parts/components/filter-panel.php:78
 #: template-parts/dashboard/company.php:72
-#: template-parts/dashboard/publish.php:183
+#: template-parts/dashboard/publish.php:184
 #: templates/auth-register.php:66
 #: templates/company-profile.php:123
 #: templates/front-page-template.php:40
@@ -911,7 +930,7 @@ msgid "Delete this product for good?"
 msgstr ""
 
 #: template-parts/components/price-block.php:15
-#: template-parts/components/product-tech.php:259
+#: template-parts/components/product-tech.php:431
 msgid "Price"
 msgstr ""
 
@@ -920,8 +939,8 @@ msgid "Asking price"
 msgstr ""
 
 #: template-parts/components/price-block.php:20
-#: template-parts/components/price-block.php:33
-#: template-parts/components/product-tech.php:292
+#: template-parts/components/price-block.php:36
+#: template-parts/components/product-tech.php:472
 msgid "Equivalent price per kg"
 msgstr ""
 
@@ -933,340 +952,442 @@ msgstr ""
 msgid "Estimated steel weight"
 msgstr ""
 
-#: template-parts/components/price-block.php:26
+#: template-parts/components/price-block.php:29
 msgid "Price per kilogram"
 msgstr ""
 
-#: template-parts/components/price-block.php:26
+#: template-parts/components/price-block.php:29
+msgid "Price for the whole lot"
+msgstr ""
+
+#: template-parts/components/price-block.php:29
 msgid "Unit price"
 msgstr ""
 
-#: template-parts/components/price-block.php:30
-#: template-parts/components/product-tech.php:187
-#: template-parts/components/product-tech.php:190
-#: template-parts/components/product-tech.php:277
+#: template-parts/components/price-block.php:33
+#: template-parts/components/product-tech.php:267
+#: template-parts/components/product-tech.php:270
+#: template-parts/components/product-tech.php:449
 #: template-parts/components/weight-calculator.php:202
 #: template-parts/components/weight-calculator.php:224
 #: template-parts/components/weight-calculator.php:269
-#: template-parts/dashboard/publish.php:198
+#: template-parts/dashboard/publish.php:199
 msgid "Total weight"
 msgstr ""
 
-#: template-parts/components/price-block.php:35
-#: template-parts/components/product-tech.php:290
+#: template-parts/components/price-block.php:39
+#: template-parts/components/product-tech.php:470
 #: template-parts/dashboard/listings.php:35
 #: template-parts/dashboard/listings.php:49
-#: template-parts/dashboard/publish.php:199
+#: template-parts/dashboard/publish.php:200
 msgid "Total price"
 msgstr ""
 
-#: template-parts/components/price-block.php:44
+#: template-parts/components/price-block.php:47
 msgid "Weighed by the seller."
 msgstr ""
 
-#: template-parts/components/price-block.php:44
+#: template-parts/components/price-block.php:48
 msgid "Calculated from standard section tables."
 msgstr ""
 
 #: template-parts/components/price-block.php:49
+msgid "Estimated by the seller, not weighed."
+msgstr ""
+
+#: template-parts/components/price-block.php:61
 msgid "Demo listing: values are illustrative and will be computed by the weight engine."
 msgstr ""
 
-#: template-parts/components/product-form.php:35
+#: template-parts/components/product-form.php:45
 msgid "This product cannot be edited from your account."
 msgstr ""
 
-#: template-parts/components/product-form.php:41
+#: template-parts/components/product-form.php:51
 msgid "Changes requested by the platform team:"
 msgstr ""
 
-#: template-parts/components/product-form.php:43
+#: template-parts/components/product-form.php:53
 msgid "This product is online. After your changes it will be checked again before it reappears."
 msgstr ""
 
-#: template-parts/components/product-form.php:60
+#: template-parts/components/product-form.php:57
+msgid "Market and category"
+msgstr ""
+
+#: template-parts/components/product-form.php:90
+msgid "Choose the kind of lot to see its form."
+msgstr ""
+
+#: template-parts/components/product-form.php:90
 msgid "Choose the category of the product to see its form."
 msgstr ""
 
-#: template-parts/components/product-form.php:69
+#: template-parts/components/product-form.php:99
 msgid "technical data, quantity and price"
 msgstr ""
 
-#: template-parts/components/product-form.php:74
+#: template-parts/components/product-form.php:104
 msgid "Title and description"
 msgstr ""
 
-#: template-parts/components/product-form.php:76
-#: template-parts/dashboard/publish.php:144
+#: template-parts/components/product-form.php:106
+#: template-parts/dashboard/publish.php:145
 msgid "Title in French"
 msgstr ""
 
-#: template-parts/components/product-form.php:77
+#: template-parts/components/product-form.php:107
+msgid "e.g. IPE and HEA offcuts, 2 to 4 m, good condition"
+msgstr ""
+
+#: template-parts/components/product-form.php:107
 msgid "e.g. IPE 200 S275JR new, 12 m bars"
 msgstr ""
 
-#: template-parts/components/product-form.php:81
+#: template-parts/components/product-form.php:111
 msgid "Title in Arabic"
 msgstr ""
 
-#: template-parts/components/product-form.php:81
-#: template-parts/components/product-form.php:85
-#: template-parts/components/product-form.php:131
-#: template-parts/components/product-tech.php:220
+#: template-parts/components/product-form.php:111
+#: template-parts/components/product-form.php:115
+#: template-parts/components/product-form.php:162
+#: template-parts/components/product-tech.php:60
+#: template-parts/components/product-tech.php:123
 msgid "optional"
 msgstr ""
 
-#: template-parts/components/product-form.php:85
-#: template-parts/dashboard/publish.php:152
+#: template-parts/components/product-form.php:115
+#: template-parts/dashboard/publish.php:153
 msgid "Description and technical notes"
 msgstr ""
 
-#: template-parts/components/product-form.php:92
+#: template-parts/components/product-form.php:122
 msgid "Photos and technical sheet"
 msgstr ""
 
-#: template-parts/components/product-form.php:100
+#: template-parts/components/product-form.php:130
 msgid "Keep"
 msgstr ""
 
-#: template-parts/components/product-form.php:109
-#: template-parts/dashboard/publish.php:162
+#: template-parts/components/product-form.php:139
+#: template-parts/dashboard/publish.php:163
 msgid "Take or add photos"
 msgstr ""
 
 #. translators: 1: number of photos, 2: size in MB.
-#: template-parts/components/product-form.php:113
+#: template-parts/components/product-form.php:143
+msgid "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole lot, the condition of the surfaces and the ends."
+msgstr ""
+
+#. translators: 1: number of photos, 2: size in MB.
+#: template-parts/components/product-form.php:143
 msgid "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the section, the markings and the stock."
 msgstr ""
 
-#: template-parts/components/product-form.php:131
+#: template-parts/components/product-form.php:162
 msgid "Add the technical sheet (PDF)"
 msgstr ""
 
 #. translators: %d: size in MB.
-#: template-parts/components/product-form.php:135
+#: template-parts/components/product-form.php:166
 msgid "Manufacturer data sheet, certificate of inspection (up to 3 PDF, %d MB each). Buyers can download it."
 msgstr ""
 
-#: template-parts/components/product-form.php:142
+#: template-parts/components/product-form.php:173
 #: templates/company-profile.php:131
 #: templates/single-listing.php:67
 msgid "Location"
 msgstr ""
 
-#: template-parts/components/product-form.php:145
+#: template-parts/components/product-form.php:176
 msgid "Wilaya where the product is"
 msgstr ""
 
-#: template-parts/components/product-form.php:147
-#: template-parts/components/product-tech.php:105
-#: template-parts/components/product-tech.php:223
+#: template-parts/components/product-form.php:178
+#: template-parts/components/product-tech.php:64
+#: template-parts/components/product-tech.php:125
+#: template-parts/components/product-tech.php:196
+#: template-parts/components/product-tech.php:346
 #: template-parts/components/weight-calculator.php:139
 msgid "Choose…"
 msgstr ""
 
-#: template-parts/components/product-form.php:155
-#: template-parts/dashboard/publish.php:208
+#: template-parts/components/product-form.php:186
+#: template-parts/dashboard/publish.php:209
 msgid "Save draft"
 msgstr ""
 
-#: template-parts/components/product-form.php:156
+#: template-parts/components/product-form.php:187
 msgid "Send for publication"
 msgstr ""
 
-#: template-parts/components/product-form.php:159
+#: template-parts/components/product-form.php:190
 msgid "The platform team checks each product (usually within a working day) before it is shown to buyers."
 msgstr ""
 
-#: template-parts/components/product-tech.php:27
+#: template-parts/components/product-tech.php:28
 msgid "linear metre"
 msgstr ""
 
-#: template-parts/components/product-tech.php:57
-#: template-parts/components/weight-calculator.php:109
-msgid "Product type"
+#: template-parts/components/product-tech.php:29
+msgid "the whole lot"
 msgstr ""
 
-#: template-parts/components/product-tech.php:103
-#: template-parts/components/weight-calculator.php:137
-msgid "Common size"
-msgstr ""
-
-#: template-parts/components/product-tech.php:103
-#: template-parts/components/weight-calculator.php:137
-msgid "Size (European catalogue)"
-msgstr ""
-
-#: template-parts/components/product-tech.php:105
-#: template-parts/components/weight-calculator.php:139
-msgid "— or type the dimensions below —"
-msgstr ""
-
-#: template-parts/components/product-tech.php:117
-#: template-parts/components/weight-calculator.php:41
-msgid "Height h"
-msgstr ""
-
-#: template-parts/components/product-tech.php:117
-#: template-parts/components/weight-calculator.php:157
-msgid "Side"
-msgstr ""
-
-#: template-parts/components/product-tech.php:117
-#: template-parts/components/weight-calculator.php:42
-msgid "Width b"
-msgstr ""
-
-#: template-parts/components/product-tech.php:117
-#: template-parts/components/product-tech.php:158
-#: template-parts/components/weight-calculator.php:43
-msgid "Thickness t"
-msgstr ""
-
-#: template-parts/components/product-tech.php:117
-#: template-parts/components/weight-calculator.php:44
-msgid "Diameter D"
-msgstr ""
-
-#: template-parts/components/product-tech.php:117
-#: template-parts/components/weight-calculator.php:45
-msgid "Side a"
-msgstr ""
-
-#: template-parts/components/product-tech.php:130
-#: template-parts/dashboard/publish.php:86
+#: template-parts/components/product-tech.php:84
+#: template-parts/dashboard/publish.php:87
 #: templates/single-listing.php:46
 msgid "Steel grade"
 msgstr ""
 
-#: template-parts/components/product-tech.php:133
+#: template-parts/components/product-tech.php:84
 msgid "Not specified"
 msgstr ""
 
-#: template-parts/components/product-tech.php:135
+#: template-parts/components/product-tech.php:88
 msgid "Other…"
 msgstr ""
 
-#: template-parts/components/product-tech.php:138
+#: template-parts/components/product-tech.php:90
 msgid "Other steel grade"
 msgstr ""
 
-#: template-parts/components/product-tech.php:159
+#: template-parts/components/product-tech.php:99
+msgid "Condition of the steel"
+msgstr ""
+
+#: template-parts/components/product-tech.php:148
+#: template-parts/components/weight-calculator.php:109
+msgid "Product type"
+msgstr ""
+
+#: template-parts/components/product-tech.php:194
+#: template-parts/components/weight-calculator.php:137
+msgid "Common size"
+msgstr ""
+
+#: template-parts/components/product-tech.php:194
+#: template-parts/components/weight-calculator.php:137
+msgid "Size (European catalogue)"
+msgstr ""
+
+#: template-parts/components/product-tech.php:196
+#: template-parts/components/weight-calculator.php:139
+msgid "— or type the dimensions below —"
+msgstr ""
+
+#: template-parts/components/product-tech.php:208
+#: template-parts/components/weight-calculator.php:41
+msgid "Height h"
+msgstr ""
+
+#: template-parts/components/product-tech.php:208
+#: template-parts/components/weight-calculator.php:157
+msgid "Side"
+msgstr ""
+
+#: template-parts/components/product-tech.php:208
+#: template-parts/components/weight-calculator.php:42
+msgid "Width b"
+msgstr ""
+
+#: template-parts/components/product-tech.php:208
+#: template-parts/components/product-tech.php:238
+#: template-parts/components/weight-calculator.php:43
+msgid "Thickness t"
+msgstr ""
+
+#: template-parts/components/product-tech.php:208
+#: template-parts/components/weight-calculator.php:44
+msgid "Diameter D"
+msgstr ""
+
+#: template-parts/components/product-tech.php:208
+#: template-parts/components/weight-calculator.php:45
+msgid "Side a"
+msgstr ""
+
+#: template-parts/components/product-tech.php:239
 #: template-parts/components/weight-calculator.php:206
 msgid "Plate width"
 msgstr ""
 
-#: template-parts/components/product-tech.php:160
+#: template-parts/components/product-tech.php:240
 #: template-parts/components/weight-calculator.php:207
 msgid "Plate length"
 msgstr ""
 
-#: template-parts/components/product-tech.php:170
+#: template-parts/components/product-tech.php:250
 #: template-parts/components/weight-calculator.php:210
 msgid "Bar length"
 msgstr ""
 
-#: template-parts/components/product-tech.php:173
+#: template-parts/components/product-tech.php:253
 #: template-parts/components/weight-calculator.php:213
 msgid "Other length…"
 msgstr ""
 
-#: template-parts/components/product-tech.php:177
+#: template-parts/components/product-tech.php:257
+#: template-parts/components/product-tech.php:355
 #: template-parts/components/weight-calculator.php:217
 #: templates/single-listing.php:51
 msgid "Length"
 msgstr ""
 
-#: template-parts/components/product-tech.php:184
+#: template-parts/components/product-tech.php:264
 msgid "Quantity for sale"
 msgstr ""
 
-#: template-parts/components/product-tech.php:186
-#: template-parts/components/product-tech.php:194
-#: template-parts/components/product-tech.php:284
+#: template-parts/components/product-tech.php:266
+#: template-parts/components/product-tech.php:274
+#: template-parts/components/product-tech.php:456
 #: template-parts/components/weight-calculator.php:201
 #: template-parts/components/weight-calculator.php:227
 #: template-parts/components/weight-calculator.php:249
 msgid "Number of plates"
 msgstr ""
 
-#: template-parts/components/product-tech.php:186
-#: template-parts/components/product-tech.php:194
-#: template-parts/components/product-tech.php:284
+#: template-parts/components/product-tech.php:266
+#: template-parts/components/product-tech.php:274
+#: template-parts/components/product-tech.php:456
 #: template-parts/components/weight-calculator.php:201
 #: template-parts/components/weight-calculator.php:227
 #: template-parts/components/weight-calculator.php:249
 msgid "Number of bars"
 msgstr ""
 
-#: template-parts/components/product-tech.php:201
+#: template-parts/components/product-tech.php:281
+#: template-parts/components/product-tech.php:376
 msgid "Weight shown to buyers"
 msgstr ""
 
-#: template-parts/components/product-tech.php:203
+#: template-parts/components/product-tech.php:283
+#: template-parts/components/product-tech.php:394
 msgid "Estimated"
 msgstr ""
 
-#: template-parts/components/product-tech.php:203
-#: template-parts/dashboard/publish.php:99
+#: template-parts/components/product-tech.php:283
+#: template-parts/components/product-tech.php:378
+#: template-parts/dashboard/publish.php:100
 msgid "Theoretical (calculated)"
 msgstr ""
 
-#: template-parts/components/product-tech.php:204
-#: template-parts/dashboard/publish.php:100
+#: template-parts/components/product-tech.php:284
+#: template-parts/components/product-tech.php:379
+#: template-parts/components/product-tech.php:395
+#: template-parts/dashboard/publish.php:101
 msgid "Actual (weighed)"
 msgstr ""
 
-#: template-parts/components/product-tech.php:207
-#: template-parts/dashboard/publish.php:103
+#: template-parts/components/product-tech.php:287
+#: template-parts/dashboard/publish.php:104
 msgid "Measured weight (kg)"
 msgstr ""
 
-#: template-parts/components/product-tech.php:236
+#: template-parts/components/product-tech.php:317
+msgid "Content of the lot"
+msgstr ""
+
+#: template-parts/components/product-tech.php:318
+msgid "One row per size and length. A new empty row appears when you fill the last one; clear a row to remove it."
+msgstr ""
+
+#: template-parts/components/product-tech.php:338
+msgid "Type"
+msgstr ""
+
+#: template-parts/components/product-tech.php:344
+#: template-parts/components/weight-calculator.php:132
+msgid "Size"
+msgstr ""
+
+#: template-parts/components/product-tech.php:351
+msgid "Pieces"
+msgstr ""
+
+#: template-parts/components/product-tech.php:366
+msgid "Remove this row"
+msgstr ""
+
+#: template-parts/components/product-tech.php:382
+msgid "Measured weight of the lot (kg)"
+msgstr ""
+
+#: template-parts/components/product-tech.php:392
+msgid "Weight of the lot"
+msgstr ""
+
+#: template-parts/components/product-tech.php:397
+msgid "Weighed weight"
+msgstr ""
+
+#: template-parts/components/product-tech.php:407
 msgid "Available quantity"
 msgstr ""
 
-#: template-parts/components/product-tech.php:241
+#: template-parts/components/product-tech.php:412
 msgid "Unit"
 msgstr ""
 
-#: template-parts/components/product-tech.php:247
-#: templates/single-listing.php:209
-#: templates/single-listing.php:220
+#: template-parts/components/product-tech.php:418
+#: templates/single-listing.php:210
+#: templates/single-listing.php:221
 msgid "Total weight (kg)"
 msgstr ""
 
-#: template-parts/components/product-tech.php:247
+#: template-parts/components/product-tech.php:418
 msgid "optional, if weighed"
 msgstr ""
 
-#: template-parts/components/product-tech.php:265
+#: template-parts/components/product-tech.php:437
 msgid "Price per"
 msgstr ""
 
-#: template-parts/components/product-tech.php:266
+#: template-parts/components/product-tech.php:438
 msgid "plate"
 msgstr ""
 
-#: template-parts/components/product-tech.php:266
+#: template-parts/components/product-tech.php:438
 msgid "bar"
 msgstr ""
 
 #. translators: %s: unit.
-#: template-parts/components/product-tech.php:269
+#: template-parts/components/product-tech.php:441
 msgid "per %s"
 msgstr ""
 
-#: template-parts/components/product-tech.php:275
-#: template-parts/dashboard/publish.php:188
+#: template-parts/components/product-tech.php:447
+#: template-parts/dashboard/publish.php:189
 msgid "Summary shown to buyers"
 msgstr ""
 
-#: template-parts/components/product-tech.php:295
+#: template-parts/components/product-tech.php:463
+msgid "Pieces in the lot"
+msgstr ""
+
+#. translators: %s: number of sizes.
+#: template-parts/components/product-tech.php:466
+msgid "%s size"
+msgid_plural "%s sizes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/components/product-tech.php:470
+msgid "Price of the lot"
+msgstr ""
+
+#: template-parts/components/product-tech.php:476
+msgid "The weight of this lot is given by you: say whether it was weighed or estimated. Buyers see the difference."
+msgstr ""
+
+#: template-parts/components/product-tech.php:478
 msgid "Weight and totals are calculated by the platform from the European tables; you can still give the weighed weight."
 msgstr ""
 
-#: template-parts/components/product-tech.php:297
+#: template-parts/components/product-tech.php:481
+msgid "Buyers will see a notice recommending a check by a qualified engineer before any structural reuse."
+msgstr ""
+
+#: template-parts/components/product-tech.php:484
 msgid "Update"
 msgstr ""
 
@@ -1336,17 +1457,13 @@ msgstr ""
 
 #: template-parts/components/weight-calculator.php:127
 #: template-parts/components/weight-calculator.php:166
-#: template-parts/dashboard/publish.php:209
+#: template-parts/dashboard/publish.php:210
 #: templates/styleguide.php:35
 msgid "Continue"
 msgstr ""
 
 #: template-parts/components/weight-calculator.php:132
 msgid "Thickness"
-msgstr ""
-
-#: template-parts/components/weight-calculator.php:132
-msgid "Size"
 msgstr ""
 
 #: template-parts/components/weight-calculator.php:181
@@ -1362,11 +1479,11 @@ msgid "Source table"
 msgstr ""
 
 #: template-parts/components/weight-calculator.php:199
-#: template-parts/dashboard/publish.php:127
-#: template-parts/dashboard/publish.php:132
+#: template-parts/dashboard/publish.php:128
+#: template-parts/dashboard/publish.php:133
 #: templates/rfq-board.php:61
-#: templates/single-listing.php:206
-#: templates/single-listing.php:217
+#: templates/single-listing.php:207
+#: templates/single-listing.php:218
 msgid "Quantity"
 msgstr ""
 
@@ -1599,7 +1716,7 @@ msgstr ""
 
 #: template-parts/dashboard/listings.php:33
 #: template-parts/dashboard/listings.php:47
-#: template-parts/dashboard/publish.php:97
+#: template-parts/dashboard/publish.php:98
 msgid "Weight"
 msgstr ""
 
@@ -1713,158 +1830,158 @@ msgstr ""
 msgid "Engineering accounts offer services only. To trade steel, open a separate business account."
 msgstr ""
 
-#: template-parts/dashboard/publish.php:35
-#: template-parts/dashboard/publish.php:76
+#: template-parts/dashboard/publish.php:36
+#: template-parts/dashboard/publish.php:77
 msgid "Technical details"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:36
+#: template-parts/dashboard/publish.php:37
 msgid "Photos"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:37
-#: template-parts/dashboard/publish.php:176
+#: template-parts/dashboard/publish.php:38
+#: template-parts/dashboard/publish.php:177
 msgid "Price & location"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:41
+#: template-parts/dashboard/publish.php:42
 msgid "Steps"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:48
+#: template-parts/dashboard/publish.php:49
 msgid "What are you selling?"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:53
+#: template-parts/dashboard/publish.php:54
 msgid "New steel"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:53
+#: template-parts/dashboard/publish.php:54
 msgid "Profiles, tubes, plates, accessories"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:54
+#: template-parts/dashboard/publish.php:55
 msgid "Reuse lot"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:54
+#: template-parts/dashboard/publish.php:55
 msgid "Offcuts, surplus, used, scrap"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:55
+#: template-parts/dashboard/publish.php:56
 msgid "Building"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:55
+#: template-parts/dashboard/publish.php:56
 msgid "Warehouse, hangar, kit"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:81
+#: template-parts/dashboard/publish.php:82
 #: templates/rfq-board.php:60
 #: templates/single-listing.php:45
 msgid "Profile designation"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:84
+#: template-parts/dashboard/publish.php:85
 msgid "Choose from the standard profile list; unit weights come from the platform tables."
 msgstr ""
 
-#: template-parts/dashboard/publish.php:89
-#: template-parts/dashboard/publish.php:115
-#: template-parts/dashboard/publish.php:127
-#: template-parts/dashboard/publish.php:133
-#: templates/single-listing.php:207
-#: templates/single-listing.php:218
+#: template-parts/dashboard/publish.php:90
+#: template-parts/dashboard/publish.php:116
+#: template-parts/dashboard/publish.php:128
+#: template-parts/dashboard/publish.php:134
+#: templates/single-listing.php:208
+#: templates/single-listing.php:219
 msgid "Length (m)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:90
+#: template-parts/dashboard/publish.php:91
 #: templates/single-listing.php:53
 msgid "Number of pieces"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:116
+#: template-parts/dashboard/publish.php:117
 msgid "Width (m)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:117
+#: template-parts/dashboard/publish.php:118
 msgid "Height (m)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:120
+#: template-parts/dashboard/publish.php:121
 #: templates/single-listing.php:39
 msgid "Number of portals"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:121
+#: template-parts/dashboard/publish.php:122
 #: templates/single-listing.php:42
 msgid "Roof covering"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:124
+#: template-parts/dashboard/publish.php:125
 msgid "Element inventory"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:127
-#: template-parts/dashboard/publish.php:130
-#: templates/single-listing.php:204
-#: templates/single-listing.php:215
+#: template-parts/dashboard/publish.php:128
+#: template-parts/dashboard/publish.php:131
+#: templates/single-listing.php:205
+#: templates/single-listing.php:216
 msgid "Element"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:127
-#: template-parts/dashboard/publish.php:131
+#: template-parts/dashboard/publish.php:128
+#: template-parts/dashboard/publish.php:132
 #: template-parts/dashboard/settings.php:20
-#: templates/single-listing.php:205
-#: templates/single-listing.php:216
+#: templates/single-listing.php:206
+#: templates/single-listing.php:217
 msgid "Profile"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:134
+#: template-parts/dashboard/publish.php:135
 msgid "Remove row"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:139
+#: template-parts/dashboard/publish.php:140
 msgid "Add an element"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:148
+#: template-parts/dashboard/publish.php:149
 msgid "Title in Arabic (optional)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:158
+#: template-parts/dashboard/publish.php:159
 msgid "Photos and documents"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:163
+#: template-parts/dashboard/publish.php:164
 msgid "Up to 10 photos. Show the section, the length marks and the condition."
 msgstr ""
 
-#: template-parts/dashboard/publish.php:169
+#: template-parts/dashboard/publish.php:170
 msgid "Add technical documents (optional)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:170
+#: template-parts/dashboard/publish.php:171
 msgid "Material certificates, drawings, inventory lists (PDF, DWG)."
 msgstr ""
 
-#: template-parts/dashboard/publish.php:172
+#: template-parts/dashboard/publish.php:173
 msgid "Soon: the AI assistant will suggest the category and description from your photos. You always confirm the technical data."
 msgstr ""
 
-#: template-parts/dashboard/publish.php:179
+#: template-parts/dashboard/publish.php:180
 msgid "Price per kg (DA)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:179
+#: template-parts/dashboard/publish.php:180
 msgid "Asking price (DA)"
 msgstr ""
 
-#: template-parts/dashboard/publish.php:201
+#: template-parts/dashboard/publish.php:202
 msgid "Weight and total price are calculated by the weight engine (Phase 3)."
 msgstr ""
 
-#: template-parts/dashboard/publish.php:207
+#: template-parts/dashboard/publish.php:208
 msgid "Back"
 msgstr ""
 
@@ -2820,45 +2937,48 @@ msgid "not included"
 msgstr ""
 
 #: templates/single-listing.php:199
-#: templates/single-listing.php:200
+msgid "Lot inventory"
+msgstr ""
+
+#: templates/single-listing.php:199
 msgid "Structural element inventory"
 msgstr ""
 
-#: templates/single-listing.php:208
-#: templates/single-listing.php:219
+#: templates/single-listing.php:209
+#: templates/single-listing.php:220
 msgid "Unit weight (kg/m)"
 msgstr ""
 
-#: templates/single-listing.php:226
 #: templates/single-listing.php:227
+#: templates/single-listing.php:228
 msgid "Total steel weight"
 msgstr ""
 
-#: templates/single-listing.php:232
+#: templates/single-listing.php:233
 msgid "Unit weights come from the platform’s standard section tables. The theoretical weight excludes bolts, plates and welds."
 msgstr ""
 
-#: templates/single-listing.php:238
+#: templates/single-listing.php:239
 msgid "Description"
 msgstr ""
 
-#: templates/single-listing.php:240
+#: templates/single-listing.php:241
 msgid "No description. Ask the seller for details with the form below."
 msgstr ""
 
-#: templates/single-listing.php:244
+#: templates/single-listing.php:245
 msgid "Shown in the language the seller wrote it in."
 msgstr ""
 
-#: templates/single-listing.php:246
+#: templates/single-listing.php:259
 msgid "Planning a structural reuse? Have the elements checked by a verified engineer before installation."
 msgstr ""
 
-#: templates/single-listing.php:246
+#: templates/single-listing.php:259
 msgid "Find an engineer"
 msgstr ""
 
-#: templates/single-listing.php:266
+#: templates/single-listing.php:279
 msgid "Similar listings"
 msgstr ""
 

@@ -14,6 +14,7 @@ namespace SM\Products\Admin;
 use SM\Core\Accounts\Companies;
 use SM\Core\Notifications\Notifications;
 use SM\Products\Categories;
+use SM\Products\Markets;
 use SM\Products\Presenter;
 use SM\Products\Products;
 use SM\Products\Settings;
@@ -95,13 +96,26 @@ final class Admin {
 		}
 		echo '<ul class="subsubsub">';
 		$links = array();
-		foreach ( $labels as $k => $l ) {
-			$n       = Products::query( array( 'status' => $k, 'per_page' => 1 ) )['total'];
-			$links[] = sprintf( '<li><a href="%s"%s>%s <span class="count">(%d)</span></a></li>', esc_url( self::url( array( 'status' => $k ) ) ), $k === $status ? ' class="current"' : '', esc_html( $l ), $n );
-		}
-		echo implode( ' | ', $links ) . '</ul><br class="clear">'; // phpcs:ignore WordPress.Security.EscapeOutput
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$q = Products::query( array( 'status' => $status, 'per_page' => 30, 'page' => max( 1, (int) ( $_GET['paged'] ?? 1 ) ), 'sort' => 'updated' ) );
+		$market = sanitize_key( (string) ( $_GET['market'] ?? '' ) );
+		$market = Markets::exists( $market ) ? $market : '';
+		foreach ( $labels as $k => $l ) {
+			$n       = Products::query( array( 'status' => $k, 'market' => $market, 'per_page' => 1 ) )['total'];
+			$links[] = sprintf( '<li><a href="%s"%s>%s <span class="count">(%d)</span></a></li>', esc_url( self::url( array_filter( array( 'status' => $k, 'market' => $market ) ) ) ), $k === $status ? ' class="current"' : '', esc_html( $l ), $n );
+		}
+		echo implode( ' | ', $links ) . '</ul>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		$markets = Markets::all();
+		if ( count( $markets ) > 1 ) {
+			echo '<p style="float:right;margin:0">' . esc_html__( 'Market:', 'sm-products' ) . ' ';
+			$m_links = array( sprintf( '<a href="%s"%s>%s</a>', esc_url( self::url( array( 'status' => $status ) ) ), '' === $market ? ' style="font-weight:600"' : '', esc_html__( 'All', 'sm-products' ) ) );
+			foreach ( $markets as $k => $m ) {
+				$m_links[] = sprintf( '<a href="%s"%s>%s</a>', esc_url( self::url( array( 'status' => $status, 'market' => $k ) ) ), $k === $market ? ' style="font-weight:600"' : '', esc_html( $m['label']['fr'] ) );
+			}
+			echo implode( ' · ', $m_links ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		}
+		echo '<br class="clear">';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$q = Products::query( array( 'status' => $status, 'market' => $market, 'per_page' => 30, 'page' => max( 1, (int) ( $_GET['paged'] ?? 1 ) ), 'sort' => 'updated' ) );
 		if ( ! $q['items'] ) {
 			echo '<p>' . esc_html__( 'Nothing here.', 'sm-products' ) . '</p>';
 			return;
@@ -110,7 +124,7 @@ final class Admin {
 		foreach ( $q['items'] as $p ) {
 			$c    = Companies::get( $p->company_id );
 			$view = add_query_arg( 'preview', 1, sm_url( 'listing', array( 'id' => $p->listing_id ) ) );
-			echo '<tr><td><strong><a href="' . esc_url( $view ) . '" target="_blank">' . esc_html( Presenter::title_text( $p ) ) . '</a></strong><br><code>' . esc_html( $p->designation ) . '</code> · ' . esc_html( Categories::get( $p->category )->name_fr ?? $p->category ) . '</td>';
+			echo '<tr><td><strong><a href="' . esc_url( $view ) . '" target="_blank">' . esc_html( Presenter::title_text( $p ) ) . '</a></strong><br><code>' . esc_html( $p->designation ) . '</code> · ' . esc_html( Categories::get( $p->category )->name_fr ?? $p->category ) . ( count( $markets ) > 1 ? ' · <em>' . esc_html( $markets[ $p->market ]['label']['fr'] ?? $p->market ) . '</em>' : '' ) . ( $p->item_condition ? ' · ' . esc_html( $markets[ $p->market ]['conditions'][ $p->item_condition ]['fr'] ?? $p->item_condition ) : '' ) . '</td>';
 			echo '<td>' . esc_html( $c ? $c->name : '—' ) . ( $c ? '<br><small>' . esc_html( sprintf( /* translators: %d: level. */ __( 'Verification level %d', 'sm-products' ), $c->verification_level ?? 0 ) ) . '</small>' : '' ) . '</td>';
 			echo '<td>' . esc_html( $p->total_weight ? Presenter::n( $p->total_weight, 1 ) . ' kg (' . $p->weight_source . ')' : Presenter::n( $p->quantity ) . ' ' . Presenter::unit_label( $p->unit ) ) . '</td>';
 			echo '<td>' . esc_html( Presenter::n( $p->price, 2 ) . ' DA / ' . Presenter::unit_label( $p->price_unit ) ) . '<br><small>' . esc_html( Presenter::n( $p->total_price ) . ' DA' ) . '</small></td>';
@@ -136,7 +150,15 @@ final class Admin {
 	private static function tab_categories() {
 		$can = current_user_can( 'sm_manage_settings' );
 		echo '<p>' . esc_html__( 'Profiles, tubes, plates and bars take their technical data and weight from the weight engine. For the other categories, the fields below are the form shown to sellers. Select options: one per line, "value|Français|عربي".', 'sm-products' ) . '</p>';
-		foreach ( Categories::all( true ) as $c ) {
+		$market = '';
+		$cats   = Categories::all( true );
+		$order  = array_flip( array_keys( Markets::all() ) );
+		uasort( $cats, static fn( $x, $y ) => array( $order[ $x->market ] ?? 99, (int) $x->sort ) <=> array( $order[ $y->market ] ?? 99, (int) $y->sort ) );
+		foreach ( $cats as $c ) {
+			if ( $c->market !== $market ) {
+				$market = $c->market;
+				echo '<h2 class="title">' . esc_html( Markets::get( $market )['label']['fr'] ?? $market ) . '</h2>';
+			}
 			echo '<div class="card" style="max-width:none"><form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
 			wp_nonce_field( 'smp_category' );
 			echo '<input type="hidden" name="action" value="smp_category"><input type="hidden" name="slug" value="' . esc_attr( $c->slug ) . '">';
@@ -147,7 +169,7 @@ final class Admin {
 				echo '<label style="margin-inline-end:12px"><input type="checkbox" name="units[]" value="' . esc_attr( $u ) . '"' . checked( in_array( $u, $c->units, true ), true, false ) . '> ' . esc_html( Presenter::unit_label( $u ) ) . '</label>';
 			}
 			echo '</p>';
-			if ( 'engine' === $c->kind ) {
+			if ( 'engine' === $c->kind || 'lines' === $c->kind ) {
 				echo '<p>' . esc_html__( 'Weight engine families:', 'sm-products' ) . ' <code>' . esc_html( implode( ', ', $c->families ) ) . '</code></p>';
 			} else {
 				echo '<table class="widefat"><thead><tr><th>' . esc_html__( 'Key', 'sm-products' ) . '</th><th>' . esc_html__( 'Type', 'sm-products' ) . '</th><th>' . esc_html__( 'Label (French)', 'sm-products' ) . '</th><th>' . esc_html__( 'Label (Arabic)', 'sm-products' ) . '</th><th>' . esc_html__( 'Unit', 'sm-products' ) . '</th><th>' . esc_html__( 'Required', 'sm-products' ) . '</th><th>' . esc_html__( 'Options (lists)', 'sm-products' ) . '</th></tr></thead><tbody>';
