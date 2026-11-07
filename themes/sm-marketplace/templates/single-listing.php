@@ -34,7 +34,7 @@ $is_build = 'buildings' === $market;
 $specs = array();
 if ( $is_build ) {
 	$specs[ __( 'State', 'sm-marketplace' ) ]             = 'assembled' === $item['mode'] ? __( 'Assembled', 'sm-marketplace' ) : __( 'Dismantled', 'sm-marketplace' );
-	$specs[ __( 'Length × width × height', 'sm-marketplace' ) ] = sm_tech( sm_number( $item['length'] ) . ' × ' . sm_number( $item['width'] ) . ' × ' . sm_number( $item['height'], 1 ) . ' m' );
+	$specs[ __( 'Length × width × height', 'sm-marketplace' ) ] = sm_tech( sm_number( $item['length'] ) . ' × ' . sm_number( $item['width'] ) . ' × ' . sm_number( $item['height'], fmod( (float) $item['height'], 1 ) ? 1 : 0 ) . ' m' );
 	$specs[ __( 'Total area', 'sm-marketplace' ) ]        = sm_tech( sm_number( $item['area'] ) . ' m²' );
 	$specs[ __( 'Number of portals', 'sm-marketplace' ) ] = sm_tech( (string) $item['portals'] );
 	$specs[ __( 'Structural system', 'sm-marketplace' ) ] = esc_html( sm_t( $item['system'] ) );
@@ -160,7 +160,10 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 				<?php endforeach; ?>
 			</dl>
 			<?php if ( ! empty( $item['drawing'] ) ) : ?>
-				<figure class="smp-drawing" dir="ltr"><?php echo $item['drawing']; // phpcs:ignore WordPress.Security.EscapeOutput -- SVG built from numbers by sm-weight-engine. ?></figure>
+				<figure class="smp-drawing<?php echo $is_build ? ' smp-drawing--wide' : ''; ?>">
+					<div dir="ltr"><?php echo $item['drawing']; // phpcs:ignore WordPress.Security.EscapeOutput -- SVG built from numbers by the listing plugin. ?></div>
+					<?php if ( ! empty( $item['drawing_note'] ) ) : ?><figcaption><?php sm_icon( 'info' ); ?><span><?php echo esc_html( $item['drawing_note'] ); ?></span></figcaption><?php endif; ?>
+				</figure>
 			<?php endif; ?>
 		</section>
 		<?php if ( ! empty( $item['sheets'] ) ) : ?>

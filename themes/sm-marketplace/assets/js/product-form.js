@@ -50,6 +50,9 @@
 			q.append( key, value );
 		} );
 		var line = changed && changed.name ? changed.name.match( /^lines\[(\d+)\]\[family\]$/ ) : null;
+		if ( changed && 'mode' === changed.name ) {
+			q.delete( 'price_unit' ); // Assembled and dismantled buildings have different default units.
+		}
 		if ( line ) {
 			q.delete( 'lines[' + line[1] + '][section]' ); // A size of another type means nothing.
 		} else if ( changed && 'family' === changed.name ) {

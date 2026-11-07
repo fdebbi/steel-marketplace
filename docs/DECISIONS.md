@@ -86,3 +86,16 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Ingénierie | Avis fixe sur chaque fiche de réemploi : vérification par un ingénieur qualifié avant tout usage structurel ; informations déclarées par le vendeur, non certifiées | « L'IA ne remplace jamais l'ingénierie » ; la plateforme ne garantit pas l'aptitude structurelle |
 | Filtre longueur | Longueur minimale appliquée à la plus longue pièce du lot | Répond à « y a-t-il des pièces d'au moins X m ? » |
 | Recherche multi-marchés | Servie par le moteur ; tant que le mode démo est actif, une recherche qui inclut les bâtiments (Phase 6) reste en démonstration | Évite une page de recherche à moitié vide pendant la revue |
+
+## 7 novembre 2026 — Phase 6 : bâtiments métalliques
+
+| Sujet | Décision | Raison |
+| --- | --- | --- |
+| Architecture | `sm-buildings` ajoute un marché et un **type de catégorie** (`building`) au moteur `sm-products` 0.3.0, qui expose pour cela un point d'extension | Photos, modération, recherche et tableau de bord restent communs ; le moteur ne connaît rien des bâtiments |
+| Monté | Prix demandé global obligatoire ; prix au kg et au m² dérivés | Cahier des charges ; un bâtiment monté ne se vend pas au kilo |
+| Poids d'un bâtiment monté | Estimé par le vendeur (affiché « estimé ») ou calculé depuis un inventaire facultatif | Aucun poids inventé ; l'acheteur voit l'origine |
+| Démonté | Inventaire obligatoire par type d'élément, profil, quantité, longueur ; prix au kg par défaut | Cahier des charges ; la valeur d'un bâtiment démonté est son acier |
+| Surface | Longueur × largeur, calculée | Base du prix au m² |
+| Limites | Dimensions, portiques et lignes d'inventaire réglables dans l'administration | Aucune limite codée en dur |
+| Visualisation | Schéma indicatif plan + façade tracé depuis les chiffres saisis, marqué « pas une étude structurelle » ; données de forme exposées pour le configurateur 3D | Préparer le configurateur sans présenter un dessin comme une conception approuvée |
+| Ingénierie | Avis avant remontage sur tout bâtiment d'occasion | Un bâtiment remonté ailleurs doit être recalculé (vent, neige, fondations) |

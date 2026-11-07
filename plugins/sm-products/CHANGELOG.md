@@ -1,5 +1,13 @@
 # Changelog — sm-products
 
+## 0.3.0 — 2026-11-07 (Phase 6 : types de catégorie ouverts aux marchés)
+
+- Un marché peut ajouter son propre type de catégorie (filtre `sm_products_kinds`, action `sm_products_spec_kind_{type}`) ; `Spec::lines()` est public pour qu'il réutilise l'inventaire pesé par le moteur.
+- Lignes d'inventaire avec type d'élément quand le marché en définit (`line_elements`) ; nombre de lignes réglable (`sm_products_max_lines`).
+- Colonne `variant` (base v3) : monté / démonté pour les bâtiments, filtre `mode`.
+- Prix au m² calculé quand la quantité est une surface ; filtre `sm_products_listing` sur la forme « annonce » ; champs de marché masquables dans les caractéristiques (`row => false`) ; valeurs de formulaire filtrables (`sm_products_form_values`).
+- Une recherche sur les trois marchés est désormais servie entièrement par le moteur.
+
 ## 0.2.0 — 2026-11-07 (Phase 5 : moteur multi-marchés)
 
 - `sm-products` devient le moteur d'annonces acier de plusieurs marchés : chaque annonce et chaque catégorie portent un marché (`products` par défaut). D'autres extensions ajoutent le leur par le filtre `sm_products_markets` (sm-reuse ajoute `reuse`) ; un marché définit sa permission, son échelle d'état et ses champs communs.

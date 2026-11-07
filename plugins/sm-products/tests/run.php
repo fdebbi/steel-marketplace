@@ -126,13 +126,13 @@ $list = Bridge::listings( null, array( 'market' => 'products', 'category' => 'pr
 smp_assert( in_array( $p->listing_id, wp_list_pluck( $list['items'], 'id' ), true ), 'found by category and by designation typed without space (IPE200)' );
 smp_assert( ! in_array( $p->listing_id, wp_list_pluck( Bridge::listings( null, array( 'market' => 'products', 'wilaya' => '16', 'per_page' => 60 ) )['items'], 'id' ), true ), 'wilaya filter' );
 add_filter( 'sm_theme_demo_enabled', '__return_true', 99 );
-smp_assert( null === Bridge::listings( null, array( 'market' => array( 'products', 'buildings' ) ) ), 'a search mixing a market no plugin serves yet is left to the demo provider' );
+smp_assert( null === Bridge::listings( null, array( 'market' => array( 'products', 'services' ) ) ), 'a search mixing a market no plugin serves yet (services) is left to the demo provider' );
 remove_filter( 'sm_theme_demo_enabled', '__return_true', 99 );
 add_filter( 'sm_theme_demo_enabled', '__return_false', 99 );
-$mixed = Bridge::listings( null, array( 'market' => array( 'products', 'buildings' ), 'per_page' => 60 ) );
+$mixed = Bridge::listings( null, array( 'market' => array( 'products', 'services' ), 'per_page' => 60 ) );
 smp_assert( is_array( $mixed ) && in_array( $p->listing_id, wp_list_pluck( $mixed['items'], 'id' ), true ), '…and answered with the served markets once demo mode is off' );
 remove_filter( 'sm_theme_demo_enabled', '__return_false', 99 );
-smp_assert( null === Bridge::listings( null, array( 'market' => 'buildings' ) ), 'a market no plugin serves is never answered' );
+smp_assert( null === Bridge::listings( null, array( 'market' => 'services' ) ), 'a market no plugin serves is never answered' );
 
 /* ------------------------------------------------------------------ */
 smp_section( '4. Life cycle' );

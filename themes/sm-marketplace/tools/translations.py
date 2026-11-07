@@ -713,3 +713,23 @@ T.update({
 P.update({
 ("%s size", "%s sizes"): (["%s profil", "%s profils"], ["%s مقاس", "مقاس واحد", "مقاسان", "%s مقاسات", "%s مقاسًا", "%s مقاس"]),
 })
+
+# 0.8.0 — steel buildings.
+T.update({
+"Buyers will see a notice recommending a check by a qualified engineer before reassembling a used building.": ("Les acheteurs verront un avis recommandant une vérification par un ingénieur qualifié avant de remonter un bâtiment d’occasion.", "سيرى المشترون تنبيهًا يوصي بفحص من مهندس مؤهل قبل إعادة تركيب مبنى مستعمل."),
+"Eaves height": ("Hauteur à l’égout", "الارتفاع عند الحافة"),
+"Estimated weight of the steel structure": ("Poids estimé de la charpente métallique", "الوزن التقديري للهيكل الفولاذي"),
+"Inventory of the structural elements": ("Inventaire des éléments de structure", "جرد العناصر الإنشائية"),
+"List the structural elements (optional): the weight is then calculated": ("Lister les éléments de structure (facultatif) : le poids est alors calculé", "اذكر العناصر الإنشائية (اختياري): يُحسب الوزن حينها"),
+"Portal frames": ("Portiques", "الإطارات"),
+"Price per kg and per m² are calculated by the platform from your price, the area and the steel weight.": ("Le prix au kg et au m² sont calculés par la plateforme à partir de votre prix, de la surface et du poids d’acier.", "تحسب المنصة السعر للكيلوغرام وللمتر المربع انطلاقًا من سعرك والمساحة ووزن الفولاذ."),
+"Roof slope": ("Pente de toiture", "ميل السقف"),
+"Shown to buyers as an estimate. For a calculated weight, list the elements below instead.": ("Affiché aux acheteurs comme une estimation. Pour un poids calculé, listez plutôt les éléments ci-dessous.", "يظهر للمشترين كتقدير. للحصول على وزن محسوب، اذكر العناصر أدناه."),
+"State of the building": ("État du bâtiment", "حالة المبنى"),
+"Still standing: sold at a price for the whole building.": ("Encore debout : vendu à un prix pour le bâtiment entier.", "ما زال قائمًا: يُباع بسعر للمبنى كاملًا."),
+"Taken down: sold with the inventory of its elements.": ("Démonté : vendu avec l’inventaire de ses éléments.", "مفكك: يُباع مع جرد عناصره."),
+"Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole building, the frames, the connections and the roof.": ("Jusqu’à %1$d photos (JPG, PNG, WebP, %2$d Mo chacune). Montrez le bâtiment entier, les portiques, les assemblages et la toiture.", "حتى %1$d صور (JPG وPNG وWebP، %2$d ميغابايت لكل صورة). أظهر المبنى كاملًا والإطارات والوصلات والسقف."),
+"Width (span)": ("Largeur (portée)", "العرض (البحر)"),
+"e.g. Industrial hangar 40 × 20 m, assembled": ("ex. Hangar industriel 40 × 20 m, monté", "مثلا هنغار صناعي 40 × 20 م، مركب"),
+"the whole building": ("le bâtiment entier", "المبنى كاملًا"),
+})

@@ -43,8 +43,25 @@ final class Spec {
 			case 'weight':
 				self::weight( $cat, $in, $d, $e );
 				break;
-			default:
+			case 'specs':
 				self::specs( $cat, $in, $d, $e );
+				break;
+			default:
+				/**
+				 * A kind added by a market plugin (sm-buildings: "building") fills $d and $e.
+				 * The handler may call Spec::lines() for an inventory.
+				 *
+				 * @param object $cat  Category.
+				 * @param array  $in   Raw input.
+				 * @param array  $d    Data (by reference).
+				 * @param array  $e    Errors (by reference).
+				 * @param bool   $for_save Full check (save) or live preview.
+				 */
+				if ( has_action( 'sm_products_spec_kind_' . $cat->kind ) ) {
+					do_action_ref_array( 'sm_products_spec_kind_' . $cat->kind, array( $cat, $in, &$d, &$e, $for_save ) );
+				} else {
+					$e['category'] = __( 'This category is not available.', 'sm-products' );
+				}
 		}
 		self::market_fields( $cat, $in, $d, $e, $for_save );
 
@@ -60,7 +77,7 @@ final class Spec {
 		}
 		$d['price'] = $price;
 		if ( 'specs' !== $cat->kind ) {
-			$d['price_unit'] = in_array( $in['price_unit'] ?? '', $cat->units, true ) ? $in['price_unit'] : $cat->units[0];
+			$d['price_unit'] = in_array( $in['price_unit'] ?? '', $cat->units, true ) ? $in['price_unit'] : ( $d['price_unit'] ?? $cat->units[0] ); // A kind handler may suggest the default.
 			if ( 'unit' === $d['price_unit'] && ( 'weight' === ( $d['qty_mode'] ?? '' ) || 'weight' === $cat->kind ) ) {
 				$e['price_unit'] = __( 'A price per piece needs the number of pieces: choose "Number of bars" or a price per kg.', 'sm-products' );
 			}
@@ -87,6 +104,7 @@ final class Spec {
 		}
 		$d['total_price']  = round( $total, 2 );
 		$d['price_per_kg'] = ! empty( $d['total_weight'] ) && $total > 0 ? round( $total / $d['total_weight'], 2 ) : 0;
+		$d['price_per_m2'] = 'm2' === ( $d['unit'] ?? '' ) && ! empty( $d['quantity'] ) && $total > 0 ? round( $total / $d['quantity'], 2 ) : 0;
 
 		// Common fields.
 		$title = array(
@@ -267,14 +285,21 @@ final class Spec {
 	 * Inventory lot: several lines "type + size + number of pieces + length",
 	 * each weighed by the engine; the lot weight is their sum.
 	 */
-	private static function lines( $cat, array $in, array &$d, array &$e ) {
+	/**
+	 * Inventory: one row per size and length, each weighed by SM Weight Engine.
+	 * Rows may carry an element type when the market defines line_elements
+	 * (sm-buildings: columns, rafters, purlins…). Public for market plugins.
+	 */
+	public static function lines( $cat, array $in, array &$d, array &$e ) {
 		$engine = \SM\Core\Modules::service( 'weight' );
 		if ( ! $engine ) {
 			$e['lines'] = __( 'The weight engine is not active.', 'sm-products' );
 			return;
 		}
-		$rows  = array_slice( array_values( (array) ( $in['lines'] ?? array() ) ), 0, 30 );
-		$lines = array();
+		$max      = (int) apply_filters( 'sm_products_max_lines', 30, $cat );
+		$rows     = array_slice( array_values( (array) ( $in['lines'] ?? array() ) ), 0, $max );
+		$elements = (array) ( Markets::get( $cat->market )['line_elements'] ?? array() );
+		$lines    = array();
 		$total = 0.0;
 		$count = 0;
 		foreach ( $rows as $i => $row ) {
@@ -282,7 +307,12 @@ final class Spec {
 			if ( '' === ( $row['section'] ?? '' ) && '' === ( $row['qty'] ?? '' ) && '' === ( $row['length'] ?? '' ) ) {
 				continue; // Empty row.
 			}
-			$family = strtoupper( $row['family'] ?? '' );
+			$family  = strtoupper( $row['family'] ?? '' );
+			$element = sanitize_key( $row['element'] ?? '' );
+			if ( $elements && ! isset( $elements[ $element ] ) ) {
+				$e[ 'lines_' . $i ] = __( 'Choose the element (column, rafter, purlin…).', 'sm-products' );
+				continue;
+			}
 			if ( ! in_array( $family, $cat->families, true ) || '' === ( $row['section'] ?? '' ) ) {
 				$e[ 'lines_' . $i ] = __( 'Choose the type and the size.', 'sm-products' );
 				continue;
@@ -298,7 +328,11 @@ final class Spec {
 				$e[ 'lines_' . $i ] = $r->get_error_message();
 				continue;
 			}
-			$lines[] = array(
+			$lines[] = array_filter(
+				array(
+					'element' => $elements ? $element : null,
+				)
+			) + array(
 				'family'      => $family,
 				'section_id'  => (int) $r['section_id'],
 				'designation' => $r['designation'],
@@ -409,6 +443,8 @@ final class Spec {
 			'length_mm'     => (int) ( $d['length_mm'] ?? 0 ),
 			'lines'         => $d['lines'] ?? array(),
 			'line_rows'     => $d['line_rows'] ?? array(),
+			'variant'       => $d['variant'] ?? '',
+			'price_per_m2'  => (float) ( $d['price_per_m2'] ?? 0 ),
 			'condition'     => $d['item_condition'] ?? '',
 		);
 	}

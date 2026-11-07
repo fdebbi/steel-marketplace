@@ -38,6 +38,7 @@ if ( ! isset( $markets[ $market ] ) ) {
 $mk        = $markets[ $market ] ?? array( 'allowed' => true, 'conditions' => array(), 'fields' => array() );
 $mcats     = array_filter( $cats, static fn( $c ) => ( $c['market'] ?? 'products' ) === $market );
 $is_reuse  = 'reuse' === $market;
+$is_build  = 'buildings' === $market;
 $ps       = (array) sm_theme_data( 'product_settings' );
 $base_url = sm_page_url( 'account', array( 'view' => 'publish' ) );
 
@@ -104,7 +105,7 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 		<h2 class="smw-step__title"><span class="smw-step__n">3</span><?php esc_html_e( 'Title and description', 'sm-marketplace' ); ?></h2>
 		<div class="sm-field">
 			<label for="smp-title-fr"><?php esc_html_e( 'Title in French', 'sm-marketplace' ); ?></label>
-			<input id="smp-title-fr" name="title[fr]" lang="fr" dir="ltr" maxlength="140" value="<?php echo esc_attr( (string) ( $state['title']['fr'] ?? '' ) ); ?>" placeholder="<?php echo esc_attr( $is_reuse ? __( 'e.g. IPE and HEA offcuts, 2 to 4 m, good condition', 'sm-marketplace' ) : __( 'e.g. IPE 200 S275JR new, 12 m bars', 'sm-marketplace' ) ); ?>"<?php sm_theme_aria( 'title' ); ?>>
+			<input id="smp-title-fr" name="title[fr]" lang="fr" dir="ltr" maxlength="140" value="<?php echo esc_attr( (string) ( $state['title']['fr'] ?? '' ) ); ?>" placeholder="<?php echo esc_attr( $is_build ? __( 'e.g. Industrial hangar 40 × 20 m, assembled', 'sm-marketplace' ) : ( $is_reuse ? __( 'e.g. IPE and HEA offcuts, 2 to 4 m, good condition', 'sm-marketplace' ) : __( 'e.g. IPE 200 S275JR new, 12 m bars', 'sm-marketplace' ) ) ); ?>"<?php sm_theme_aria( 'title' ); ?>>
 			<?php sm_theme_error( 'title' ); ?>
 		</div>
 		<div class="sm-field">
@@ -140,7 +141,7 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 			<small>
 				<?php
 				/* translators: 1: number of photos, 2: size in MB. */
-				$photo_help = $is_reuse ? __( 'Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole lot, the condition of the surfaces and the ends.', 'sm-marketplace' ) : __( 'Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the section, the markings and the stock.', 'sm-marketplace' ); // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+				$photo_help = $is_build ? __( 'Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole building, the frames, the connections and the roof.', 'sm-marketplace' ) : ( $is_reuse ? __( 'Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole lot, the condition of the surfaces and the ends.', 'sm-marketplace' ) : __( 'Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the section, the markings and the stock.', 'sm-marketplace' ) ); // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 				echo esc_html( sprintf( $photo_help, (int) ( $ps['max_photos'] ?? 10 ), (int) ( $ps['photo_mb'] ?? 8 ) ) );
 				?>
 			</small>

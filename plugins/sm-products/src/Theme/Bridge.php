@@ -58,6 +58,7 @@ final class Bridge {
 				'status'     => 'published',
 				'market'     => $markets,
 				'condition'  => sanitize_key( (string) ( $args['condition'] ?? '' ) ),
+				'mode'       => sanitize_key( (string) ( $args['mode'] ?? '' ) ),
 				'length_min' => (float) ( $args['length_min'] ?? 0 ),
 				'qty_min'    => (float) ( $args['qty_min'] ?? 0 ),
 				'category'  => sanitize_key( (string) ( $args['category'] ?? '' ) ),
@@ -123,6 +124,7 @@ final class Bridge {
 				'icon'       => $m['icon'] ?? '',
 				'conditions' => $m['conditions'],
 				'fields'     => $m['fields'],
+				'elements'   => $m['line_elements'] ?? array(),
 				'allowed'    => ! is_wp_error( $allowed ),
 				'reason'     => is_wp_error( $allowed ) ? $allowed->get_error_message() : '',
 				'count'      => count( Categories::all( false, $key ) ),
@@ -142,6 +144,7 @@ final class Bridge {
 			$out[ $slug ] = array(
 				'slug'     => $slug,
 				'market'   => $c->market,
+				'max_lines' => (int) apply_filters( 'sm_products_max_lines', 30, $c ),
 				'name'     => array( 'fr' => $c->name_fr, 'ar' => $c->name_ar ),
 				'icon'     => $c->icon,
 				'kind'     => $c->kind,
@@ -167,6 +170,7 @@ final class Bridge {
 			'product_id'    => $p->id,
 			'market'        => $p->market,
 			'condition'     => (string) $p->item_condition,
+			'mode'          => $p->variant,
 			'attrs'         => array_map( 'strval', (array) $p->attrs ),
 			'category'      => $p->category,
 			'family'        => $p->family,
@@ -190,10 +194,11 @@ final class Bridge {
 			'keep_sheets'   => Media::get( 'product', $p->id, 'sheet' ),
 		);
 		$kind = Categories::get( $p->category )->kind ?? 'specs';
-		if ( 'lines' === $kind ) {
+		if ( $p->lines ) {
 			$v['lines'] = array();
 			foreach ( $p->lines as $l ) {
 				$v['lines'][] = array(
+					'element' => (string) ( $l['element'] ?? '' ),
 					'family'  => $l['family'],
 					'section' => (string) $l['section_id'],
 					'qty'     => (string) $l['qty'],
@@ -202,6 +207,9 @@ final class Bridge {
 			}
 			$v['actual_weight'] = 'actual' === $p->weight_source ? (string) $p->total_weight : '';
 			$v['section']       = '';
+		}
+		if ( 'lines' === $kind || ! in_array( $kind, array( 'engine', 'weight', 'specs' ), true ) ) {
+			$v = apply_filters( 'sm_products_form_values', $v, $p );
 		} elseif ( 'weight' === $kind ) {
 			$v['total_kg'] = $p->total_weight ? (string) $p->total_weight : '';
 		} elseif ( 'PLATE' === $p->family ) {

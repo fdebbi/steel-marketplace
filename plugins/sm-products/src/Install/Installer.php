@@ -62,6 +62,7 @@ final class Installer {
 				dims text,
 				specs longtext,
 				item_condition varchar(20) NOT NULL DEFAULT '',
+				variant varchar(20) NOT NULL DEFAULT '',
 				attrs text,
 				inventory longtext,
 				qty_mode varchar(10) NOT NULL DEFAULT 'bars',

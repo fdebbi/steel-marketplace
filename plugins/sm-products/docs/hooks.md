@@ -30,3 +30,16 @@ Chaque produit enregistre `section_id`, `engine_version` et `ref_version` du mot
 | `sm_theme_data_listings` | `market` : un code ou une liste ; filtres `condition`, `length_min` (m), `qty_min`. Une recherche qui mêle un marché non servi est laissée au mode démo tant qu'il est actif. |
 | `Installer::insert_categories( $market, $categories )` | Création initiale des catégories d'un marché (une seule fois ; modifiables ensuite dans wp-admin). |
 | Champs du formulaire | `condition`, `attrs[clé]`, `lines[i][family\|section\|qty\|length]`, `total_kg`, `weight_source` (`theoretical`, `actual`, `estimated`), `price_unit` `lot`. |
+
+## Types de catégorie des marchés (0.3.0)
+
+| Élément | Usage |
+| --- | --- |
+| `sm_products_kinds` (filtre) | Ajoute un type de catégorie (sm-buildings : `building`). |
+| `sm_products_spec_kind_{type}` (action, par référence) | `($category, $input, &$data, &$errors, $for_save)` : remplit les données techniques du type. Peut appeler `Spec::lines()` et proposer l'unité de prix par défaut (`$data['price_unit']`). |
+| `sm_products_max_lines` (filtre) | Nombre maximal de lignes d'inventaire d'une catégorie (30 par défaut). |
+| `line_elements` (marché) | `code => {fr, ar}` : chaque ligne d'inventaire doit alors indiquer son élément. |
+| `sm_products_listing` (filtre) | Forme « annonce » enrichie par un marché. |
+| `sm_products_form_values` (filtre) | Valeurs d'un produit à modifier pour un type ajouté. |
+| Champ de marché `row => false`, `group` | Masqué dans les caractéristiques ; groupé dans le formulaire (bâtiments : « ce que comprend le prix »). |
+| Colonne `variant`, argument `mode` | Sous-type d'annonce (monté / démonté), filtre de liste. |

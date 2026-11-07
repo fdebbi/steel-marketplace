@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.8.0 — 2026-11-07 (Phase 6, bâtiments, avec sm-buildings 0.1.0)
+
+- Publication d'un bâtiment : choix monté / démonté en deux cartes, dimensions (longueur, largeur, hauteur à l'égout, portiques, pente) avec surface en direct, état, système porteur, toiture, couverture, bardage, « ce que comprend le prix » en cases à cocher, poids estimé ou inventaire des éléments (type d'élément, profil, quantité, longueur), prix du bâtiment ou au kg, résumé avec prix au kg et au m².
+- Inventaire commun (`product-lines`) au réemploi et aux bâtiments.
+- Fiche : schéma indicatif plan + façade avec mention « ce n'est pas une étude structurelle », inventaire des éléments, avis d'ingénieur avant remontage.
+- Choix du marché sur trois colonnes ; état « neuf » sur l'échelle des états.
+- Traductions : 690 chaînes.
+
 ## 0.7.0 — 2026-11-07 (Phase 5, réemploi, avec sm-reuse 0.1.0)
 
 - « Publier une annonce » : choix du marché (produits neufs / réemploi) puis de la catégorie ; le marché verrouillé pour le compte affiche la raison.

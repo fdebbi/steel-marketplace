@@ -1,0 +1,181 @@
+# Copyright (C) 2026 ReuSteel
+# This file is distributed under the Proprietary.
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Buildings 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-buildings\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-07T21:59:03+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: sm-buildings\n"
+
+#. Plugin Name of the plugin
+#: sm-buildings.php
+msgid "SM Buildings"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: sm-buildings.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr ""
+
+#. Description of the plugin
+#: sm-buildings.php
+msgid "Steel buildings market: new and used warehouses, agricultural and industrial hangars, workshops, livestock buildings and building kits, assembled or dismantled. Adds the \"buildings\" market to the SM Products listing engine: dimensions and area, structural system, roof and cladding, what the price includes, structural element inventory weighed by SM Weight Engine, price per kg and per m², indicative drawing. Requires SM Core, SM Weight Engine and SM Products 0.3.0."
+msgstr ""
+
+#. Author of the plugin
+#: sm-buildings.php
+msgid "ReuSteel"
+msgstr ""
+
+#: sm-buildings.php:47
+msgid "SM Buildings needs the SM Core, SM Weight Engine and SM Products plugins. Activate them first."
+msgstr ""
+
+#: src/Admin/Admin.php:25
+msgid "Buildings"
+msgstr ""
+
+#: src/Admin/Admin.php:31
+msgid "Maximum length and width (m)"
+msgstr ""
+
+#: src/Admin/Admin.php:32
+msgid "Maximum eaves height (m)"
+msgstr ""
+
+#: src/Admin/Admin.php:33
+msgid "Maximum number of portal frames"
+msgstr ""
+
+#: src/Admin/Admin.php:34
+msgid "Maximum rows in the element inventory"
+msgstr ""
+
+#: src/Admin/Admin.php:36
+msgid "Steel buildings"
+msgstr ""
+
+#: src/Admin/Admin.php:39
+msgid "Settings saved."
+msgstr ""
+
+#: src/Admin/Admin.php:41
+msgid "Categories, moderation and listings of buildings are managed in SM → Products, with the other markets. Here: the limits of the publication form."
+msgstr ""
+
+#: src/Admin/Admin.php:55
+msgid "You cannot change these settings."
+msgstr ""
+
+#: src/Presenter.php:87
+msgid "Assembled or dismantled"
+msgstr ""
+
+#: src/Presenter.php:87
+msgid "Assembled"
+msgstr ""
+
+#: src/Presenter.php:87
+msgid "Dismantled"
+msgstr ""
+
+#: src/Presenter.php:88
+msgid "Length × width × eaves height"
+msgstr ""
+
+#: src/Presenter.php:89
+msgid "Total area"
+msgstr ""
+
+#: src/Presenter.php:90
+msgid "Number of portal frames"
+msgstr ""
+
+#: src/Presenter.php:93
+msgid "Roof slope"
+msgstr ""
+
+#: src/Presenter.php:96
+msgid "Estimated steel weight"
+msgstr ""
+
+#: src/Presenter.php:96
+msgid "Steel weight"
+msgstr ""
+
+#: src/Presenter.php:101
+msgid "Indicative drawing made from the figures given by the seller. It is not a structural design."
+msgstr ""
+
+#: src/Presenter.php:107
+msgid "Before buying and reassembling: ask an engineer"
+msgstr ""
+
+#. translators: %s: platform name.
+#: src/Presenter.php:109
+msgid "A used steel building must be checked by a qualified engineer before it is reassembled: condition of the members and connections, corrosion, and a new calculation for the new site (wind, snow, foundations). The information in this listing is declared by the seller; %s does not certify it."
+msgstr ""
+
+#: src/Presenter.php:110
+msgid "Find an engineer"
+msgstr ""
+
+#: src/Rules.php:29
+msgid "An assembled building is sold at a price for the whole building. The price per kg and per m² are calculated from it."
+msgstr ""
+
+#: src/Rules.php:32
+msgid "The building is already dismantled: untick \"Dismantling included\"."
+msgstr ""
+
+#: src/Spec.php:33
+msgid "Say whether the building is assembled or dismantled."
+msgstr ""
+
+#: src/Spec.php:41
+msgid "Enter the length in metres."
+msgstr ""
+
+#: src/Spec.php:42
+msgid "Enter the width in metres."
+msgstr ""
+
+#: src/Spec.php:43
+msgid "Enter the eaves height in metres."
+msgstr ""
+
+#. translators: %s: maximum in metres.
+#: src/Spec.php:51
+msgid "At most %s m."
+msgstr ""
+
+#: src/Spec.php:58
+msgid "Enter the number of portal frames (2 or more)."
+msgstr ""
+
+#: src/Spec.php:60
+msgid "This number of portal frames is outside the accepted range."
+msgstr ""
+
+#: src/Spec.php:68
+msgid "Roof slope in % (between 1 and 100)."
+msgstr ""
+
+#: src/Spec.php:86
+msgid "A dismantled building is sold with its inventory: add at least one element (type, profile, quantity, length)."
+msgstr ""
+
+#: src/Spec.php:92
+msgid "Give the estimated weight of the steel structure, or list its elements below."
+msgstr ""
+
+#: src/Spec.php:94
+msgid "This weight is outside the accepted range."
+msgstr ""

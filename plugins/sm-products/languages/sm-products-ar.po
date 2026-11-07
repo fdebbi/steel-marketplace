@@ -380,91 +380,91 @@ msgid ""
 "still available."
 msgstr "لم يعد «%s» معروضا. أعد نشره من «إعلاناتي» إن كان لا يزال متوفرا."
 
-#: src/Presenter.php:106
+#: src/Presenter.php:114
 msgid "Product type"
 msgstr "نوع المنتج"
 
-#: src/Presenter.php:108 src/Presenter.php:136
+#: src/Presenter.php:116 src/Presenter.php:144
 msgid "Designation"
 msgstr "التسمية"
 
-#: src/Presenter.php:109 src/Presenter.php:137
+#: src/Presenter.php:117 src/Presenter.php:145
 msgid "Steel grade"
 msgstr "درجة الفولاذ"
 
-#: src/Presenter.php:109 src/Presenter.php:137
+#: src/Presenter.php:117 src/Presenter.php:145
 msgid "Not specified"
 msgstr "غير محددة"
 
-#: src/Presenter.php:111
+#: src/Presenter.php:119
 msgid "Standard"
 msgstr "المعيار"
 
-#: src/Presenter.php:121
+#: src/Presenter.php:129
 msgid "Dimensions"
 msgstr "الأبعاد"
 
-#: src/Presenter.php:124
+#: src/Presenter.php:132
 msgid "Plate size"
 msgstr "مقاس الصفيحة"
 
-#: src/Presenter.php:126
+#: src/Presenter.php:134
 msgid "Bar length"
 msgstr "طول القضبان"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:129
+#: src/Presenter.php:137
 msgid "%s plates"
 msgstr "%s صفائح"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:129
+#: src/Presenter.php:137
 msgid "%s bars"
 msgstr "%s قضبان"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:131 src/Presenter.php:139
+#: src/Presenter.php:139 src/Presenter.php:147
 msgid "Quantity"
 msgstr "الكمية"
 
-#: src/Presenter.php:133
+#: src/Presenter.php:141
 msgid "Weight per metre"
 msgstr "الوزن لكل متر"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:139
+#: src/Presenter.php:147
 msgid "%s pieces in the lot"
 msgstr "%s قطعة في الدفعة"
 
-#: src/Presenter.php:142
+#: src/Presenter.php:150
 msgid "Weight of the lot"
 msgstr "وزن الدفعة"
 
-#: src/Presenter.php:164
+#: src/Presenter.php:172
 msgid "Available quantity"
 msgstr "الكمية المتوفرة"
 
-#: src/Presenter.php:170
+#: src/Presenter.php:178
 msgid "Condition"
 msgstr "الحالة"
 
-#: src/Presenter.php:178
+#: src/Presenter.php:186
 msgid "Yes"
 msgstr "نعم"
 
-#: src/Presenter.php:178
+#: src/Presenter.php:186
 msgid "No"
 msgstr "لا"
 
-#: src/Presenter.php:212
+#: src/Presenter.php:225
 msgid "m (linear)"
 msgstr "م.ط"
 
-#: src/Presenter.php:213
+#: src/Presenter.php:226
 msgid "pieces"
 msgstr "قطع"
 
-#: src/Presenter.php:214
+#: src/Presenter.php:227
 msgid "lot"
 msgstr "دفعة"
 
@@ -476,95 +476,103 @@ msgstr "سوق غير معروف."
 msgid "This listing is not available."
 msgstr "هذا الإعلان غير متاح."
 
-#: src/Spec.php:56
+#: src/Spec.php:63
+msgid "This category is not available."
+msgstr "هذه الفئة غير متاحة."
+
+#: src/Spec.php:73
 msgid "Enter the price."
 msgstr "أدخل السعر."
 
-#: src/Spec.php:59
+#: src/Spec.php:76
 msgid "This price is outside the accepted range."
 msgstr "هذا السعر خارج النطاق المقبول."
 
-#: src/Spec.php:65
+#: src/Spec.php:82
 msgid ""
 "A price per piece needs the number of pieces: choose \"Number of bars\" or a"
 " price per kg."
 msgstr "السعر للقطعة يتطلب عدد القطع: اختر «عدد القضبان» أو سعرا للكيلوغرام."
 
-#: src/Spec.php:97
+#: src/Spec.php:115
 msgid "Give the product a title (in French or in Arabic)."
 msgstr "أعط المنتج عنوانا (بالفرنسية أو بالعربية)."
 
-#: src/Spec.php:101
+#: src/Spec.php:119
 msgid "The description is too long (4000 characters at most)."
 msgstr "الوصف طويل جدا (4000 حرف كحد أقصى)."
 
-#: src/Spec.php:105
+#: src/Spec.php:123
 msgid "Choose the wilaya where the product is."
 msgstr "اختر الولاية التي يوجد فيها المنتج."
 
-#: src/Spec.php:125 src/Spec.php:273
+#: src/Spec.php:143 src/Spec.php:296
 msgid "The weight engine is not active."
 msgstr "محرك الأوزان غير مفعّل."
 
-#: src/Spec.php:129
+#: src/Spec.php:147
 msgid "Choose the product type."
 msgstr "اختر نوع المنتج."
 
-#: src/Spec.php:147
+#: src/Spec.php:165
 msgid "Choose the size."
 msgstr "اختر المقاس."
 
-#: src/Spec.php:164 src/Spec.php:350
+#: src/Spec.php:182 src/Spec.php:384
 msgid "Enter the total weight."
 msgstr "أدخل الوزن الإجمالي."
 
-#: src/Spec.php:164
+#: src/Spec.php:182
 msgid "Enter the number of pieces."
 msgstr "أدخل عدد القطع."
 
-#: src/Spec.php:198 src/Spec.php:334
+#: src/Spec.php:216 src/Spec.php:368
 msgid "Enter the weighed weight in kg."
 msgstr "أدخل الوزن الفعلي بالكيلوغرام."
 
 #. translators: %s: theoretical weight in kg.
-#: src/Spec.php:201 src/Spec.php:337
+#: src/Spec.php:219 src/Spec.php:371
 msgid "The weighed weight is very far from the theoretical %s kg. Check it."
 msgstr "الوزن الفعلي بعيد جدا عن الوزن النظري %s كغ. تحقق منه."
 
-#: src/Spec.php:224
+#: src/Spec.php:242
 msgid "Enter the available quantity."
 msgstr "أدخل الكمية المتوفرة."
 
-#: src/Spec.php:246 src/Spec.php:385
+#: src/Spec.php:264 src/Spec.php:419
 msgid "Required."
 msgstr "إلزامي."
 
-#: src/Spec.php:253
+#: src/Spec.php:271
 msgid "Enter a positive number."
 msgstr "أدخل عددا موجبا."
 
-#: src/Spec.php:258
+#: src/Spec.php:276
 msgid "Choose a value from the list."
 msgstr "اختر قيمة من القائمة."
 
-#: src/Spec.php:287
+#: src/Spec.php:313
+msgid "Choose the element (column, rafter, purlin…)."
+msgstr "اختر العنصر (عمود، عارضة، مداد…)."
+
+#: src/Spec.php:317
 msgid "Choose the type and the size."
 msgstr "اختر النوع والمقاس."
 
-#: src/Spec.php:293
+#: src/Spec.php:323
 msgid "Enter the number of pieces and their length in metres."
 msgstr "أدخل عدد القطع وطولها بالمتر."
 
-#: src/Spec.php:317
+#: src/Spec.php:351
 msgid ""
 "Describe the lot: at least one line with type, size, number of pieces and "
 "length."
 msgstr "صِف الدفعة: سطر واحد على الأقل بالنوع والمقاس وعدد القطع والطول."
 
-#: src/Spec.php:352
+#: src/Spec.php:386
 msgid "This weight is outside the accepted range."
 msgstr "هذا الوزن خارج النطاق المقبول."
 
-#: src/Spec.php:371
+#: src/Spec.php:405
 msgid "Choose the condition."
 msgstr "اختر الحالة."

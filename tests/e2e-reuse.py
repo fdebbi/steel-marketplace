@@ -51,7 +51,7 @@ with sync_playwright() as p:
 
     print('\nA. Publish an inventory lot (mobile)')
     pg.goto(BASE + '/compte/publier/?market=reuse')
-    check(pg.locator('.smp-market').count() == 2 and pg.locator('.smp-market.is-current:has-text("Réemploi")').count() == 1, 'market chooser: new products / reuse, reuse selected')
+    check(pg.locator('.smp-market').count() >= 2 and pg.locator('.smp-market.is-current:has-text("Réemploi")').count() == 1, 'market chooser offers the markets, reuse selected')
     check(pg.locator('.smp-cat').count() == 6, '6 kinds of reuse lots offered')
     pg.click('.smp-cat:has-text("Chutes de profilés")'); pg.wait_for_load_state()
     check(pg.locator('.smp-cond').count() == 5, 'five condition classes')

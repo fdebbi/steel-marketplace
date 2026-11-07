@@ -56,10 +56,18 @@ final class Presenter {
 			'expires_at'     => $p->expires_at,
 			'reject_reason'  => (string) $p->reject_reason,
 			'condition'      => (string) $p->item_condition,
-			'mode'           => '',
+			'mode'           => $p->variant,
+			'price_per_m2'   => 'm2' === $p->unit && $p->quantity > 0 && $p->total_price > 0 ? round( $p->total_price / $p->quantity, 2 ) : 0,
 			'specs'          => array(),
 		);
-		return $out;
+		/**
+		 * Listing shape (cards, lists, REST); market plugins add their keys
+		 * (sm-buildings: dimensions, area, includes).
+		 *
+		 * @param array  $out Listing.
+		 * @param object $p   Product row.
+		 */
+		return apply_filters( 'sm_products_listing', $out, $p );
 	}
 
 	/** Details only needed on the product page. */
@@ -170,7 +178,7 @@ final class Presenter {
 			$rows[] = array( __( 'Condition', 'sm-products' ), esc_html( self::pick( $m['conditions'][ $p->item_condition ] ) ) );
 		}
 		foreach ( (array) ( $m['fields'] ?? array() ) as $f ) {
-			if ( ! isset( $p->attrs[ $f['key'] ] ) ) {
+			if ( ! isset( $p->attrs[ $f['key'] ] ) || ( isset( $f['row'] ) && ! $f['row'] ) ) {
 				continue;
 			}
 			$v = $p->attrs[ $f['key'] ];
@@ -191,10 +199,15 @@ final class Presenter {
 	/** Inventory lines in the shape of the theme's element table. */
 	public static function elements( $p ) {
 		$out = array();
+		$elements = (array) ( Markets::get( $p->market )['line_elements'] ?? array() );
 		foreach ( (array) $p->lines as $l ) {
 			$fam   = class_exists( '\\SM\\WeightEngine\\Catalogue' ) ? \SM\WeightEngine\Catalogue::family( $l['family'] ) : null;
+			$type  = $fam ? array( 'fr' => $fam->name_fr, 'ar' => $fam->name_ar ) : $l['family'];
+			if ( ! empty( $l['element'] ) && isset( $elements[ $l['element'] ] ) ) {
+				$type = $elements[ $l['element'] ];
+			}
 			$out[] = array(
-				'type'        => $fam ? array( 'fr' => $fam->name_fr, 'ar' => $fam->name_ar ) : $l['family'],
+				'type'        => $type,
 				'designation' => $l['designation'],
 				'qty'         => (int) $l['qty'],
 				'length'      => $l['length_mm'] / 1000,

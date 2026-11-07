@@ -52,7 +52,8 @@ final class Products {
 		$r->specs  = json_decode( (string) $r->specs, true ) ?: array();
 		$r->attrs  = json_decode( (string) ( $r->attrs ?? '' ), true ) ?: array();
 		$r->lines  = json_decode( (string) ( $r->inventory ?? '' ), true ) ?: array();
-		$r->market = $r->market ? $r->market : self::MODULE;
+		$r->market  = $r->market ? $r->market : self::MODULE;
+		$r->variant = (string) ( $r->variant ?? '' );
 		return $r;
 	}
 
@@ -67,7 +68,7 @@ final class Products {
 	public static function save( $id, $company_id, $user_id, array $spec, $status, $photos = null, $sheets = null ) {
 		global $wpdb;
 		$now  = current_time( 'mysql', true );
-		$cols = array( 'market', 'item_condition', 'category', 'family', 'section_id', 'designation', 'grade', 'qty_mode', 'length_mm', 'width_mm', 'pieces', 'quantity', 'unit', 'unit_weight', 'total_weight', 'weight_source', 'engine_version', 'ref_version', 'price', 'price_unit', 'total_price', 'price_per_kg', 'wilaya' );
+		$cols = array( 'market', 'item_condition', 'variant', 'category', 'family', 'section_id', 'designation', 'grade', 'qty_mode', 'length_mm', 'width_mm', 'pieces', 'quantity', 'unit', 'unit_weight', 'total_weight', 'weight_source', 'engine_version', 'ref_version', 'price', 'price_unit', 'total_price', 'price_per_kg', 'wilaya' );
 		$row  = array();
 		foreach ( $cols as $c ) {
 			if ( array_key_exists( $c, $spec['data'] ) ) {
@@ -219,7 +220,7 @@ final class Products {
 			$where[] = 'pieces >= %f';
 			$args[]  = (float) $a['qty_min'];
 		}
-		foreach ( array( 'company' => 'company_id = %d', 'category' => 'category = %s', 'family' => 'family = %s', 'wilaya' => 'wilaya = %s', 'condition' => 'item_condition = %s' ) as $k => $sql ) {
+		foreach ( array( 'mode' => 'variant = %s', 'company' => 'company_id = %d', 'category' => 'category = %s', 'family' => 'family = %s', 'wilaya' => 'wilaya = %s', 'condition' => 'item_condition = %s' ) as $k => $sql ) {
 			if ( ! empty( $a[ $k ] ) ) {
 				$where[] = $sql;
 				$args[]  = $a[ $k ];

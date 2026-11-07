@@ -180,6 +180,9 @@ function sm_condition_labels() {
 
 /** Position of a condition on the 5-step scale (1 = best). */
 function sm_condition_level( $code ) {
+	if ( 'new' === $code ) {
+		return 1; // Buildings: new.
+	}
 	$keys = array_keys( sm_condition_labels() );
 	$pos  = array_search( $code, $keys, true );
 	return false === $pos ? 0 : $pos + 1;

@@ -16,6 +16,11 @@ final class Categories {
 	 *  weight: total weight only (mixed lots, scrap); specs: category fields. */
 	const KINDS = array( 'engine', 'lines', 'weight', 'specs' );
 
+	/** Core kinds plus the ones added by market plugins (sm_products_kinds). */
+	public static function kinds() {
+		return array_values( array_unique( array_merge( self::KINDS, (array) apply_filters( 'sm_products_kinds', array() ) ) ) );
+	}
+
 	/** slug => object (families, units, fields decoded), optionally of one market. */
 	public static function all( $include_inactive = false, $market = null ) {
 		global $wpdb;

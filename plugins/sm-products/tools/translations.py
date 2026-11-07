@@ -139,3 +139,9 @@ T.update({
 "Yes": ("Oui", "نعم"),
 "lot": ("lot", "دفعة"),
 })
+
+# 0.3.0 — kinds from market plugins, element types.
+T.update({
+"Choose the element (column, rafter, purlin…).": ("Choisissez l’élément (poteau, traverse, panne…).", "اختر العنصر (عمود، عارضة، مداد…)."),
+"This category is not available.": ("Cette catégorie n’est pas disponible.", "هذه الفئة غير متاحة."),
+})

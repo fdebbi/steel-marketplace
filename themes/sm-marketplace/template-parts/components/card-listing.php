@@ -44,7 +44,7 @@ $market  = $item['market'];
 
 		<ul class="sm-card__facts">
 			<?php if ( 'buildings' === $market ) : ?>
-				<li><?php sm_icon( 'ruler' ); ?><?php echo sm_tech( sm_number( $item['length'] ) . ' × ' . sm_number( $item['width'] ) . ' × ' . sm_number( $item['height'], 1 ) . ' m' ); // phpcs:ignore ?></li>
+				<li><?php sm_icon( 'ruler' ); ?><?php echo sm_tech( sm_number( $item['length'] ) . ' × ' . sm_number( $item['width'] ) . ' × ' . sm_number( $item['height'], fmod( (float) $item['height'], 1 ) ? 1 : 0 ) . ' m' ); // phpcs:ignore ?></li>
 				<li><?php sm_icon( 'grid' ); ?><?php echo sm_tech( sm_number( $item['area'] ) . ' m²' ); // phpcs:ignore ?></li>
 			<?php else : ?>
 				<?php if ( 'lines' === ( $item['kind'] ?? '' ) && ! empty( $item['quantity'] ) ) : ?>

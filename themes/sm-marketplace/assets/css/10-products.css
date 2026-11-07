@@ -56,7 +56,12 @@
 .smp-filter a[aria-current] { background: var(--sm-primary); color: var(--sm-on-dark); border-color: var(--sm-primary); }
 
 /* Product page */
-.smp-drawing { /*rtl:ignore*/ direction: ltr; color: var(--sm-primary); max-inline-size: 220px; margin-inline: auto; }
+.smp-drawing { color: var(--sm-primary); max-inline-size: 220px; margin: var(--sm-s3) auto 0; }
+.smp-drawing > div { /*rtl:ignore*/ direction: ltr; }
+.smp-drawing--wide { max-inline-size: 640px; }
+.smp-drawing > div svg { display: block; inline-size: 100%; block-size: auto; }
+.smp-drawing figcaption { display: flex; gap: var(--sm-s2); align-items: flex-start; margin-block-start: var(--sm-s2); font-size: var(--sm-fs-sm); color: var(--sm-muted); }
+.smp-drawing figcaption .sm-icon { flex: none; margin-block-start: 2px; }
 .smp-docs { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sm-s2); }
 .smp-docs a { display: flex; align-items: center; gap: var(--sm-s2); padding: var(--sm-s3); border: 1px solid var(--sm-line); border-radius: var(--sm-radius); text-decoration: none; color: var(--sm-ink); }
 .smp-docs small { color: var(--sm-muted); margin-inline-start: auto; }
@@ -127,3 +132,40 @@
 .sm-advice--warning .sm-advice__icon { color: var(--sm-warn); }
 .sm-advice p { margin: 0 0 var(--sm-s2); }
 .sm-advice__title { font-weight: 700; color: var(--sm-ink); }
+
+/* ==========================================================================
+   Steel buildings (0.8.0): state cards, dimensions, inventory with element
+   types, what the price includes.
+   ========================================================================== */
+@media (min-width: 900px) { .smp-markets { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.smb-modes { display: grid; gap: var(--sm-s2); grid-template-columns: minmax(0, 1fr); margin-block-start: var(--sm-s2); }
+@media (min-width: 560px) { .smb-modes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.smb-mode-card { position: relative; }
+.smb-mode-card input { position: absolute; opacity: 0; inline-size: 1px; block-size: 1px; }
+.smb-mode-card > span { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px var(--sm-s3); align-items: center; block-size: 100%; padding: var(--sm-s3) var(--sm-s4); border: 1.5px solid var(--sm-line); border-radius: var(--sm-radius-lg); background: var(--sm-surface); cursor: pointer; transition: border-color var(--sm-dur-1, 150ms) var(--sm-ease, ease), background-color var(--sm-dur-1, 150ms) var(--sm-ease, ease), box-shadow var(--sm-dur-2, 250ms) var(--sm-ease, ease); }
+.smb-mode-card .sm-icon { grid-row: span 2; inline-size: 28px; block-size: 28px; color: var(--sm-primary); }
+.smb-mode-card small { color: var(--sm-muted); line-height: 1.4; }
+.smb-mode-card:hover > span { border-color: var(--sm-line-strong); }
+.smb-mode-card input:checked + span { border-color: var(--sm-accent); background: var(--sm-accent-soft); box-shadow: 0 0 0 1px var(--sm-accent) inset; }
+.smb-mode-card input:checked + span .sm-icon { color: var(--sm-accent-ink); }
+.smb-mode-card input:focus-visible + span { box-shadow: var(--sm-focus); }
+.smb-dims { display: grid; gap: 0 var(--sm-s3); grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; }
+@media (min-width: 720px) { .smb-dims { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.smb-dims .sm-field { min-inline-size: 0; }
+.smb-dims input { inline-size: 100%; }
+.smb-area { display: grid; gap: 2px; margin-block-end: var(--sm-s3); padding: var(--sm-s2) var(--sm-s3); border-radius: var(--sm-radius); background: var(--sm-accent-soft); }
+.smb-area span { font-size: var(--sm-fs-xs); font-weight: 600; color: var(--sm-muted); }
+.smb-area strong { font-size: var(--sm-fs-lg); color: var(--sm-accent-ink); }
+.smb-inv { border: 1px dashed var(--sm-line-strong); border-radius: var(--sm-radius); padding: var(--sm-s2) var(--sm-s3); }
+.smb-inv > summary { display: flex; gap: var(--sm-s2); align-items: center; cursor: pointer; font-weight: 600; color: var(--sm-primary); min-block-size: 40px; }
+.smb-inv[open] > summary { margin-block-end: var(--sm-s2); }
+.smp-includes__list { display: grid; gap: var(--sm-s2); grid-template-columns: minmax(0, 1fr); margin-block-start: var(--sm-s2); }
+@media (min-width: 640px) { .smp-includes__list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.smp-include { position: relative; display: block; }
+.smp-include input { position: absolute; opacity: 0; inline-size: 1px; block-size: 1px; }
+.smp-include > span { display: flex; gap: var(--sm-s2); align-items: center; min-block-size: 48px; padding: var(--sm-s2) var(--sm-s3); border: 1.5px solid var(--sm-line); border-radius: var(--sm-radius); background: var(--sm-surface); font-size: var(--sm-fs-sm); font-weight: 600; cursor: pointer; transition: border-color var(--sm-dur-1, 150ms) var(--sm-ease, ease), background-color var(--sm-dur-1, 150ms) var(--sm-ease, ease); }
+.smp-include .sm-icon { flex: none; inline-size: 20px; block-size: 20px; padding: 2px; border-radius: 6px; border: 1.5px solid var(--sm-line-strong); color: transparent; transition: background-color var(--sm-dur-1, 150ms) var(--sm-ease, ease), color var(--sm-dur-1, 150ms) var(--sm-ease, ease), border-color var(--sm-dur-1, 150ms) var(--sm-ease, ease); }
+.smp-include input:checked + span { border-color: var(--sm-accent); background: var(--sm-accent-soft); }
+.smp-include input:checked + span .sm-icon { background: var(--sm-accent); border-color: var(--sm-accent); color: var(--sm-on-accent, #fff); }
+.smp-include input:focus-visible + span { box-shadow: var(--sm-focus); }
+@media (min-width: 720px) { .smp-line--el .smp-line__fields { grid-template-columns: 1.4fr .9fr 1.4fr .8fr .8fr; } }
