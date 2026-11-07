@@ -23,6 +23,12 @@ add_filter( 'sm_theme_data_listings', function ( $result, $args ) {
 | `categories` | market | `slug => [fr, ar]` |
 | `wilayas` | — | `code => [fr, ar]` |
 | `wilaya_centres` | — | `code => [lat, lng]` (ouverture de la carte) |
+| `weight_families` | — | familles de profilés (sm-weight-engine) : code, shape, group, name, standard, method, count, icon (SVG) |
+| `weight_family` | code | famille + `sections` |
+| `weight_section` | id | dimension + `drawing` + `source` |
+| `weight_calc` | entrée du calcul (voir sm-weight-engine/docs/rest.md) | résultat, ou `['error' => message]` |
+| `weight_drawing` | family, dims | `designation, dims, drawing`, ou `['error' => message]` |
+| `weight_settings` | — | `bar_lengths, default_length, max_length, density, version` |
 | `map` | — | `tiles`, `attribution`, `max_zoom`, `bounds` (lat_min, lat_max, lng_min, lng_max), `country` [lat, lng, zoom] |
 | `account` | — | compte connecté : class, company, plan, usage, kpis |
 | `stats`, `plans` | — | chiffres d'accueil, abonnements (prix fournis par sm-subscriptions) |

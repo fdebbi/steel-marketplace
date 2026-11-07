@@ -27,6 +27,7 @@ function sm_theme_page_definitions() {
 		'company'     => array( 'entreprise', 'Entreprise', 'templates/company-profile.php' ),
 		'rfq'         => array( 'demandes-de-devis', 'Demandes de devis', 'templates/rfq-board.php' ),
 		'price-index' => array( 'indice-prix', 'Indice des prix', 'templates/price-index.php' ),
+		'weight'      => array( 'calcul-poids', 'Calculateur de poids', 'templates/weight-calculator.php' ),
 		'pricing'     => array( 'tarifs', 'Tarifs', 'templates/pricing.php' ),
 		'login'       => array( 'connexion', 'Connexion', 'templates/auth-login.php' ),
 		'register'    => array( 'inscription', 'Inscription', 'templates/auth-register.php' ),
@@ -65,6 +66,7 @@ function sm_theme_install_pages() {
 	}
 
 	update_option( 'sm_theme_pages', $map, false );
+	update_option( 'sm_theme_pages_version', SM_THEME_VERSION, false );
 
 	if ( ! empty( $map['home'] ) && 'page' !== get_option( 'show_on_front' ) ) {
 		update_option( 'show_on_front', 'page' );
@@ -72,6 +74,14 @@ function sm_theme_install_pages() {
 	}
 }
 add_action( 'after_switch_theme', 'sm_theme_install_pages' );
+
+/** After a theme update, create the pages that new versions need (never overwrites). */
+function sm_theme_maybe_install_pages() {
+	if ( get_option( 'sm_theme_pages_version' ) !== SM_THEME_VERSION && current_user_can( 'edit_pages' ) ) {
+		sm_theme_install_pages();
+	}
+}
+add_action( 'admin_init', 'sm_theme_maybe_install_pages' );
 
 /** Small admin screen to re-run the installer. */
 function sm_theme_pages_admin_menu() {

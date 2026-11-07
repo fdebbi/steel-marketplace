@@ -46,7 +46,12 @@ final class Calculator {
 			}
 			$dims = $section->dims;
 		} elseif ( 'formula' === $fam->method && ! empty( $in['dims'] ) && is_array( $in['dims'] ) ) {
-			$dims = self::read_dims( $fam->shape, $in['dims'] );
+			$raw = $in['dims'];
+			if ( 'SHS' === $fam->code ) { // Square tube: one side.
+				$raw['h'] = $raw['b'] ?? ( $raw['h'] ?? 0 );
+				$raw['b'] = $raw['h'];
+			}
+			$dims = self::read_dims( $fam->shape, $raw );
 			if ( is_wp_error( $dims ) ) {
 				return $dims;
 			}
@@ -121,7 +126,8 @@ final class Calculator {
 			$result['bars_full']     = $full;
 			$result['bars_full_kg']  = round( $full * $per_piece, 3 );
 			$result['remainder_kg']  = round( $total - $full * $per_piece, 3 );
-			$result['bars_rounded']  = (int) max( 1, round( $exact ) );
+			$result['bars_next']     = $full + 1;
+			$result['bars_next_kg']  = round( ( $full + 1 ) * $per_piece, 3 );
 		}
 		return $result;
 	}

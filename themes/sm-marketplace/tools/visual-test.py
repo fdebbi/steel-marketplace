@@ -36,6 +36,7 @@ PAGES = {
     'register': '/inscription/',
     'login': '/connexion/',
     'rfq': '/demandes-de-devis/',
+    'weight-calculator': '/calcul-poids/?family=IPE&section=7&mode=weight&total_kg=5000',
     'dashboard': ('/compte/', 'com'),
     'dashboard-company': ('/compte/?view=company', 'com'),
     'dashboard-verification': ('/compte/?view=verification', 'com'),

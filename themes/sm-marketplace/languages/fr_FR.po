@@ -43,7 +43,7 @@ msgstr "Page introuvable"
 msgid "The page you are looking for has moved or no longer exists."
 msgstr "La page que vous cherchez a été déplacée ou n’existe plus."
 
-#: 404.php:19 header.php:46
+#: 404.php:19 header.php:47
 msgid "Search the marketplace"
 msgstr "Rechercher sur la plateforme"
 
@@ -55,7 +55,7 @@ msgstr ""
 "Achetez et vendez l’acier au kilo, échangez des structures d’occasion et "
 "trouvez fabricants et ingénieurs dans toute l’Algérie."
 
-#: footer.php:20 header.php:84 header.php:113
+#: footer.php:20 header.php:85 header.php:114
 msgid "Marketplaces"
 msgstr "Marchés"
 
@@ -91,72 +91,77 @@ msgstr "Services"
 msgid "Fabrication & installation"
 msgstr "Fabrication et montage"
 
-#: footer.php:32 header.php:99 header.php:129 inc/menus.php:63
+#: footer.php:32 header.php:100 header.php:130 inc/menus.php:63
 #: inc/template-tags.php:179 template-parts/components/card-service.php:22
 #: templates/company-profile.php:45 templates/front-page-template.php:71
 #: templates/marketplace-engineers.php:21
 msgid "Engineering"
 msgstr "Ingénierie"
 
-#: footer.php:33 header.php:130 inc/menus.php:64 templates/companies.php:13
+#: footer.php:33 header.php:131 inc/menus.php:64 templates/companies.php:13
 #: templates/companies.php:14 templates/company-profile.php:18
 #: templates/company-profile.php:45 templates/front-page-template.php:148
 msgid "Company directory"
 msgstr "Annuaire des entreprises"
 
-#: footer.php:34 header.php:29 header.php:131 templates/price-index.php:16
+#: footer.php:34 header.php:29 header.php:132
+#: templates/weight-calculator.php:37
+msgid "Weight calculator"
+msgstr "Calculateur de poids"
+
+#: footer.php:35 header.php:30 header.php:133 templates/price-index.php:16
 msgid "Price index"
 msgstr "Indice des prix"
 
-#: footer.php:38
+#: footer.php:39
 msgid "Platform"
 msgstr "Plateforme"
 
-#: footer.php:40 header.php:30 templates/pricing.php:25
+#: footer.php:41 header.php:31 templates/pricing.php:25
 #: templates/pricing.php:26
 msgid "Plans"
 msgstr "Abonnements"
 
-#: footer.php:41 header.php:140 template-parts/components/enquiry-form.php:27
+#: footer.php:42 header.php:142 template-parts/components/enquiry-form.php:27
 #: templates/auth-login.php:40 templates/dashboard.php:25
 msgid "Create an account"
 msgstr "Créer un compte"
 
-#: footer.php:42 header.php:31 templates/company-profile.php:66
+#: footer.php:43 header.php:32 templates/company-profile.php:66
 #: templates/single-listing.php:237
 msgid "Contact"
 msgstr "Contact"
 
-#: footer.php:48
+#: footer.php:49
 msgid ""
 "Advertised prices are set by sellers and are not official market prices."
 msgstr ""
 "Les prix affichés sont fixés par les vendeurs et ne sont pas des prix "
 "officiels du marché."
 
-#: footer.php:53
+#: footer.php:54
 msgid "Quick navigation"
 msgstr "Navigation rapide"
 
-#: footer.php:54 inc/template-tags.php:239
+#: footer.php:55 inc/template-tags.php:239
 msgid "Home"
 msgstr "Accueil"
 
-#: footer.php:55 header.php:54 header.php:58
+#: footer.php:56 header.php:55 header.php:59
 #: templates/front-page-template.php:48
 msgid "Search"
 msgstr "Rechercher"
 
-#: footer.php:56 header.php:76 template-parts/dashboard/publish.php:205
+#: footer.php:57 header.php:77 template-parts/dashboard/publish.php:205
 #: templates/styleguide.php:34
 msgid "Publish"
 msgstr "Publier"
 
-#: footer.php:57
+#: footer.php:58
 msgid "Enquiries"
 msgstr "Demandes"
 
-#: footer.php:58
+#: footer.php:59
 msgid "Account"
 msgstr "Compte"
 
@@ -172,11 +177,11 @@ msgstr "La place de marché industrielle de l’acier en Algérie"
 msgid "Utility"
 msgstr "Liens utiles"
 
-#: header.php:40 inc/assets.php:32
+#: header.php:41 inc/assets.php:32
 msgid "Open menu"
 msgstr "Ouvrir le menu"
 
-#: header.php:47 template-parts/components/filter-panel.php:32
+#: header.php:48 template-parts/components/filter-panel.php:32
 #: template-parts/dashboard/listings.php:27
 #: template-parts/dashboard/listings.php:41
 #: template-parts/dashboard/publish.php:29
@@ -185,60 +190,60 @@ msgstr "Ouvrir le menu"
 msgid "Market"
 msgstr "Marché"
 
-#: header.php:48 template-parts/components/filter-panel.php:36
+#: header.php:49 template-parts/components/filter-panel.php:36
 #: templates/front-page-template.php:33
 msgid "All markets"
 msgstr "Tous les marchés"
 
-#: header.php:53
+#: header.php:54
 msgid "IPE 200, HEA, tube 100×50, hangar…"
 msgstr "IPE 200, HEA, tube 100×50, hangar…"
 
-#: header.php:59 templates/dashboard.php:59
+#: header.php:60 templates/dashboard.php:59
 msgid "Saved listings"
 msgstr "Annonces enregistrées"
 
-#: header.php:64 template-parts/dashboard/notifications.php:18
+#: header.php:65 template-parts/dashboard/notifications.php:18
 msgid "Notifications"
 msgstr "Notifications"
 
-#: header.php:68 header.php:136
+#: header.php:69 header.php:138
 msgid "My account"
 msgstr "Mon compte"
 
-#: header.php:71
+#: header.php:72
 msgid "Administration"
 msgstr "Administration"
 
-#: header.php:73 header.php:139 template-parts/components/enquiry-form.php:26
+#: header.php:74 header.php:141 template-parts/components/enquiry-form.php:26
 #: templates/auth-login.php:17 templates/auth-login.php:39
 #: templates/auth-register.php:91
 msgid "Sign in"
 msgstr "Se connecter"
 
-#: header.php:78 template-parts/dashboard/engineer-overview.php:53
+#: header.php:79 template-parts/dashboard/engineer-overview.php:53
 #: templates/dashboard.php:42
 msgid "My services"
 msgstr "Mes services"
 
-#: header.php:107
+#: header.php:108
 msgid "Menu"
 msgstr "Menu"
 
-#: header.php:110 inc/assets.php:33
+#: header.php:111 inc/assets.php:33
 msgid "Close menu"
 msgstr "Fermer le menu"
 
-#: header.php:119 inc/menus.php:75
+#: header.php:120 inc/menus.php:75
 msgid "View all listings"
 msgstr "Voir toutes les annonces"
 
-#: header.php:134 template-parts/dashboard/listings.php:20
+#: header.php:136 template-parts/dashboard/listings.php:20
 #: templates/dashboard.php:52
 msgid "Publish a listing"
 msgstr "Publier une annonce"
 
-#: header.php:137 templates/dashboard.php:106 templates/dashboard.php:120
+#: header.php:139 templates/dashboard.php:106 templates/dashboard.php:120
 msgid "Sign out"
 msgstr "Se déconnecter"
 
@@ -259,41 +264,41 @@ msgstr "Enregistrée"
 msgid "Removed from saved listings"
 msgstr "Retirée des annonces enregistrées"
 
-#: inc/assets.php:79
+#: inc/assets.php:84
 msgid "Company position. Drag it, or use the arrow keys."
 msgstr ""
 "Position de l’entreprise. Faites-la glisser ou utilisez les flèches du "
 "clavier."
 
-#: inc/assets.php:80 template-parts/components/location-map.php:59
+#: inc/assets.php:85 template-parts/components/location-map.php:59
 msgid "No position yet."
 msgstr "Aucune position pour le moment."
 
-#: inc/assets.php:81
+#: inc/assets.php:86
 msgid "Drag the marker to your exact address, or click the map."
 msgstr ""
 "Faites glisser le repère jusqu’à votre adresse exacte, ou cliquez sur la "
 "carte."
 
-#: inc/assets.php:82
+#: inc/assets.php:87
 msgid "Position placed:"
 msgstr "Position placée :"
 
-#: inc/assets.php:83
+#: inc/assets.php:88
 msgid "Current location found:"
 msgstr "Position actuelle trouvée :"
 
 #. translators: %d: accuracy in metres.
-#: inc/assets.php:85
+#: inc/assets.php:90
 msgid "Approximate (about %d m): drag the marker to correct it."
 msgstr ""
 "Approximative (environ %d m) : faites glisser le repère pour la corriger."
 
-#: inc/assets.php:86
+#: inc/assets.php:91
 msgid "Looking for your location…"
 msgstr "Recherche de votre position…"
 
-#: inc/assets.php:87
+#: inc/assets.php:92
 msgid ""
 "Location access was refused. Allow it in your browser, or place the marker "
 "by hand."
@@ -301,18 +306,18 @@ msgstr ""
 "L’accès à la position a été refusé. Autorisez-le dans votre navigateur, ou "
 "placez le repère à la main."
 
-#: inc/assets.php:88
+#: inc/assets.php:93
 msgid "Your location could not be found. Place the marker by hand."
 msgstr "Votre position est introuvable. Placez le repère à la main."
 
-#: inc/assets.php:89
+#: inc/assets.php:94
 msgid ""
 "Finding your location took too long. Try again or place the marker by hand."
 msgstr ""
 "La recherche de votre position a pris trop de temps. Réessayez ou placez le "
 "repère à la main."
 
-#: inc/assets.php:90
+#: inc/assets.php:95
 msgid ""
 "Your browser only shares your location on a secure (https) site. Place the "
 "marker by hand."
@@ -320,16 +325,16 @@ msgstr ""
 "Votre navigateur ne partage la position que sur un site sécurisé (https). "
 "Placez le repère à la main."
 
-#: inc/assets.php:91
+#: inc/assets.php:96
 msgid "This position is outside Algeria. Place the marker on your address."
 msgstr ""
 "Cette position est hors d’Algérie. Placez le repère sur votre adresse."
 
-#: inc/assets.php:92
+#: inc/assets.php:97
 msgid "Wilaya changed: place the marker again on your address."
 msgstr "Wilaya modifiée : replacez le repère sur votre adresse."
 
-#: inc/assets.php:93
+#: inc/assets.php:98
 msgid "Position removed. It will be deleted when you save."
 msgstr "Position retirée. Elle sera supprimée à l’enregistrement."
 
@@ -388,23 +393,23 @@ msgstr ""
 "Afficher les annonces de démonstration tant qu’aucune extension ne fournit "
 "de données"
 
-#: inc/demo/installer.php:79 inc/demo/installer.php:80
-#: inc/demo/installer.php:94
+#: inc/demo/installer.php:89 inc/demo/installer.php:90
+#: inc/demo/installer.php:104
 msgid "SM Pages"
 msgstr "Pages SM"
 
-#: inc/demo/installer.php:91
+#: inc/demo/installer.php:101
 msgid "Missing pages were created."
 msgstr "Les pages manquantes ont été créées."
 
-#: inc/demo/installer.php:95
+#: inc/demo/installer.php:105
 msgid ""
 "Pages used by the theme templates. Existing pages are never overwritten."
 msgstr ""
 "Pages utilisées par les gabarits du thème. Les pages existantes ne sont "
 "jamais écrasées."
 
-#: inc/demo/installer.php:103
+#: inc/demo/installer.php:113
 msgid "Create missing pages"
 msgstr "Créer les pages manquantes"
 
@@ -812,6 +817,9 @@ msgid "Price per kilogram"
 msgstr "Prix au kilogramme"
 
 #: template-parts/components/price-block.php:28
+#: template-parts/components/weight-calculator.php:194
+#: template-parts/components/weight-calculator.php:216
+#: template-parts/components/weight-calculator.php:261
 #: template-parts/dashboard/publish.php:193
 msgid "Total weight"
 msgstr "Poids total"
@@ -854,6 +862,214 @@ msgstr "RC, NIF et NIS contrôlés"
 #: template-parts/components/verification-steps.php:29
 msgid "Do it"
 msgstr "Le faire"
+
+#: template-parts/components/weight-calculator.php:18
+msgid "The weight calculator is not available yet."
+msgstr "Le calculateur de poids n’est pas encore disponible."
+
+#: template-parts/components/weight-calculator.php:33
+msgid "Beams"
+msgstr "Poutrelles"
+
+#: template-parts/components/weight-calculator.php:34
+msgid "Channels"
+msgstr "Profilés en U"
+
+#: template-parts/components/weight-calculator.php:35
+msgid "Angles"
+msgstr "Cornières"
+
+#: template-parts/components/weight-calculator.php:36
+msgid "Tubes"
+msgstr "Tubes"
+
+#: template-parts/components/weight-calculator.php:37
+msgid "Flats and bars"
+msgstr "Fers plats et barres"
+
+#: template-parts/components/weight-calculator.php:38
+msgid "Plates"
+msgstr "Tôles"
+
+#: template-parts/components/weight-calculator.php:41
+msgid "Height h"
+msgstr "Hauteur h"
+
+#: template-parts/components/weight-calculator.php:42
+msgid "Width b"
+msgstr "Largeur b"
+
+#: template-parts/components/weight-calculator.php:43
+msgid "Thickness t"
+msgstr "Épaisseur t"
+
+#: template-parts/components/weight-calculator.php:44
+msgid "Diameter D"
+msgstr "Diamètre D"
+
+#: template-parts/components/weight-calculator.php:45
+msgid "Side a"
+msgstr "Côté a"
+
+#: template-parts/components/weight-calculator.php:46
+msgid "Web tw"
+msgstr "Âme tw"
+
+#: template-parts/components/weight-calculator.php:47
+msgid "Flange tf"
+msgstr "Aile tf"
+
+#: template-parts/components/weight-calculator.php:48
+msgid "Root radius r"
+msgstr "Rayon de congé r"
+
+#: template-parts/components/weight-calculator.php:49
+msgid "Root radius r1"
+msgstr "Rayon de congé r1"
+
+#: template-parts/components/weight-calculator.php:50
+msgid "Toe radius r2"
+msgstr "Rayon d’aile r2"
+
+#: template-parts/components/weight-calculator.php:104
+msgid "Product type"
+msgstr "Type de produit"
+
+#: template-parts/components/weight-calculator.php:122
+#: template-parts/components/weight-calculator.php:158
+#: template-parts/dashboard/publish.php:204 templates/styleguide.php:35
+msgid "Continue"
+msgstr "Continuer"
+
+#: template-parts/components/weight-calculator.php:127
+msgid "Thickness"
+msgstr "Épaisseur"
+
+#: template-parts/components/weight-calculator.php:127
+msgid "Size"
+msgstr "Dimension"
+
+#: template-parts/components/weight-calculator.php:132
+msgid "Common size"
+msgstr "Dimension courante"
+
+#: template-parts/components/weight-calculator.php:132
+msgid "Size (European catalogue)"
+msgstr "Dimension (catalogue européen)"
+
+#: template-parts/components/weight-calculator.php:134
+msgid "— or type the dimensions below —"
+msgstr "— ou saisissez les dimensions ci-dessous —"
+
+#: template-parts/components/weight-calculator.php:134
+msgid "Choose…"
+msgstr "Choisir…"
+
+#: template-parts/components/weight-calculator.php:152
+msgid "Side"
+msgstr "Côté"
+
+#: template-parts/components/weight-calculator.php:173
+msgid "Area"
+msgstr "Aire"
+
+#: template-parts/components/weight-calculator.php:174
+msgid "Weight per metre"
+msgstr "Poids au mètre"
+
+#: template-parts/components/weight-calculator.php:178
+msgid "Source table"
+msgstr "Table source"
+
+#: template-parts/components/weight-calculator.php:191
+#: template-parts/dashboard/publish.php:122
+#: template-parts/dashboard/publish.php:127 templates/rfq-board.php:61
+#: templates/single-listing.php:170 templates/single-listing.php:181
+msgid "Quantity"
+msgstr "Quantité"
+
+#: template-parts/components/weight-calculator.php:192
+msgid "What do you know?"
+msgstr "Que connaissez-vous ?"
+
+#: template-parts/components/weight-calculator.php:193
+#: template-parts/components/weight-calculator.php:219
+#: template-parts/components/weight-calculator.php:241
+msgid "Number of plates"
+msgstr "Nombre de tôles"
+
+#: template-parts/components/weight-calculator.php:193
+#: template-parts/components/weight-calculator.php:219
+#: template-parts/components/weight-calculator.php:241
+msgid "Number of bars"
+msgstr "Nombre de barres"
+
+#: template-parts/components/weight-calculator.php:198
+msgid "Plate width"
+msgstr "Largeur de la tôle"
+
+#: template-parts/components/weight-calculator.php:199
+msgid "Plate length"
+msgstr "Longueur de la tôle"
+
+#: template-parts/components/weight-calculator.php:202
+msgid "Bar length"
+msgstr "Longueur de barre"
+
+#: template-parts/components/weight-calculator.php:205
+msgid "Other length…"
+msgstr "Autre longueur…"
+
+#: template-parts/components/weight-calculator.php:209
+#: templates/single-listing.php:51
+msgid "Length"
+msgstr "Longueur"
+
+#: template-parts/components/weight-calculator.php:223
+msgid "Calculate"
+msgstr "Calculer"
+
+#. translators: %s: weight of one piece.
+#: template-parts/components/weight-calculator.php:233
+msgid "One plate weighs %s"
+msgstr "Une tôle pèse %s"
+
+#. translators: %s: weight of one piece.
+#: template-parts/components/weight-calculator.php:233
+msgid "One bar weighs %s"
+msgstr "Une barre pèse %s"
+
+#. translators: 1: number of pieces, 2: their weight.
+#: template-parts/components/weight-calculator.php:235
+msgid "%1$s whole plates = %2$s"
+msgstr "%1$s tôles entières = %2$s"
+
+#. translators: 1: number of pieces, 2: their weight.
+#: template-parts/components/weight-calculator.php:235
+msgid "%1$s whole bars = %2$s"
+msgstr "%1$s barres entières = %2$s"
+
+#. translators: 1: weight, 2: size and length of one piece.
+#: template-parts/components/weight-calculator.php:247
+msgid "for %1$s of %2$s"
+msgstr "pour %1$s de %2$s"
+
+#. translators: %s: density.
+#: template-parts/components/weight-calculator.php:273
+msgid ""
+"Theoretical weight: nominal dimensions × %s kg/m³. The weighed weight can "
+"differ within the manufacturing tolerances."
+msgstr ""
+"Poids théorique : dimensions nominales × %s kg/m³. Le poids pesé peut "
+"différer dans les limites des tolérances de fabrication."
+
+#: template-parts/components/weight-calculator.php:276
+msgid "Enter the total weight to see the number of pieces."
+msgstr "Saisissez le poids total pour voir le nombre de pièces."
+
+#: template-parts/components/weight-calculator.php:276
+msgid "Enter the number of pieces to see the total weight."
+msgstr "Saisissez le nombre de pièces pour voir le poids total."
 
 #: template-parts/dashboard/company.php:20
 msgid "Sign in with a real account to edit the company profile."
@@ -1315,12 +1531,6 @@ msgstr "Élément"
 msgid "Profile"
 msgstr "Profilé"
 
-#: template-parts/dashboard/publish.php:122
-#: template-parts/dashboard/publish.php:127 templates/rfq-board.php:61
-#: templates/single-listing.php:170 templates/single-listing.php:181
-msgid "Quantity"
-msgstr "Quantité"
-
 #: template-parts/dashboard/publish.php:129
 msgid "Remove row"
 msgstr "Supprimer la ligne"
@@ -1394,10 +1604,6 @@ msgstr "Retour"
 #: template-parts/dashboard/publish.php:203
 msgid "Save draft"
 msgstr "Enregistrer le brouillon"
-
-#: template-parts/dashboard/publish.php:204 templates/styleguide.php:35
-msgid "Continue"
-msgstr "Continuer"
 
 #: template-parts/dashboard/settings.php:13
 msgid "Sign in with a real account to change your settings."
@@ -2377,10 +2583,6 @@ msgstr "Bardage"
 msgid "Standard"
 msgstr "Norme"
 
-#: templates/single-listing.php:51
-msgid "Length"
-msgstr "Longueur"
-
 #: templates/single-listing.php:55
 msgid "Finish"
 msgstr "Finition"
@@ -2521,3 +2723,21 @@ msgstr "Devis envoyé"
 #: templates/styleguide.php:56
 msgid "Listing cards"
 msgstr "Cartes d’annonce"
+
+#. Template Name of the theme
+msgid "SM — Weight calculator"
+msgstr "SM — Calculateur de poids"
+
+#: templates/weight-calculator.php:38
+msgid "Steel weight calculator"
+msgstr "Calculateur de poids de l’acier"
+
+#: templates/weight-calculator.php:39
+msgid ""
+"Choose a section, its size and the quantity: the weight is calculated from "
+"the European standard tables. You can also start from a total weight to know"
+" how many bars it makes."
+msgstr ""
+"Choisissez un profilé, sa dimension et la quantité : le poids est calculé à "
+"partir des tables des normes européennes. Vous pouvez aussi partir d’un "
+"poids total pour connaître le nombre de barres."

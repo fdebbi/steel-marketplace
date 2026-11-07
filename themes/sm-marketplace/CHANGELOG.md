@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.4.0 — 2026-11-07 (Phase 3, avec sm-weight-engine 0.1.0)
+
+- Nouvelle page **Calculateur de poids** (`/calcul-poids/`, créée automatiquement après la mise à jour) : choix du produit parmi 16 types illustrés par leur section, choix de la dimension du catalogue européen (ou saisie des cotes pour les tubes, fers plats, barres et tôles), schéma exact à l'échelle avec ses cotes et le poids au mètre, quantité en nombre de barres ou en poids total, longueur 12 m, 6 m ou libre.
+- Résultat : poids total, ou nombre de barres (exact, barres entières inférieure et supérieure), poids d'une barre, mention « poids théorique ».
+- Fonctionne sans JavaScript (formulaire GET) ; avec JavaScript, mise à jour instantanée. Chaque calcul a une adresse partageable.
+- Liens « Calculateur de poids » dans l'en-tête, le menu mobile et le pied de page. Schémas toujours de gauche à droite en arabe.
+- 48 nouvelles chaînes traduites (fr, ar).
+
 ## 0.3.0 — 2026-11-07 (carte de l'entreprise, avec sm-core 0.2.0)
 
 - Fiche entreprise / profil : carte de positionnement. Le choix de la wilaya ouvre la carte dessus ; on fait glisser le repère (ou on clique sur la carte) jusqu'à l'adresse exacte ; bouton « Utiliser ma position actuelle » (géolocalisation du navigateur, précision affichée) ; bouton « Supprimer la position » ; case « Afficher la carte sur ma page publique ».

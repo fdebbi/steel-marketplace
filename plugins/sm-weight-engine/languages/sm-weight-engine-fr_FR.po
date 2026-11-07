@@ -1,0 +1,411 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Weight Engine 0.1.0\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: sm-weight-engine\n"
+
+#. Plugin Name of the plugin
+#: sm-weight-engine.php
+msgid "SM Weight Engine"
+msgstr "SM Weight Engine"
+
+#. Plugin URI of the plugin
+#: sm-weight-engine.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-weight-engine.php
+msgid ""
+"Steel section catalogue (IPE, HEA, HEB, HEM, IPN, UPN, UPE, angles, tubes, "
+"flats, bars, plates) with sourced and cross-checked reference data, exact "
+"cross-section drawings and theoretical weight calculations (bars <-> total "
+"weight). Requires SM Core."
+msgstr ""
+"Catalogue des profilés acier (IPE, HEA, HEB, HEM, IPN, UPN, UPE, cornières, "
+"tubes, fers plats, barres, tôles) avec données de référence sourcées et "
+"vérifiées, schémas de section exacts et calcul des poids théoriques (barres "
+"↔ poids total). Nécessite SM Core."
+
+#. Author of the plugin
+#: sm-weight-engine.php
+msgid "Steel Marketplace"
+msgstr "Steel Marketplace"
+
+#: sm-weight-engine.php:56
+msgid "SM Weight Engine needs the SM Core plugin. Activate SM Core first."
+msgstr ""
+"SM Weight Engine nécessite l’extension SM Core. Activez d’abord SM Core."
+
+#: src/Admin/Admin.php:35 src/Admin/Admin.php:63
+msgid "Steel catalogue"
+msgstr "Catalogue acier"
+
+#: src/Admin/Admin.php:49
+msgid "You are not allowed to change the catalogue."
+msgstr "Vous n’êtes pas autorisé à modifier le catalogue."
+
+#. translators: 1: engine version, 2: reference data version.
+#: src/Admin/Admin.php:69
+msgid ""
+"Weight engine %1$s, reference data %2$s. Weights are theoretical: nominal "
+"dimensions × density."
+msgstr ""
+"Moteur de poids %1$s, données de référence %2$s. Les poids sont théoriques :"
+" dimensions nominales × masse volumique."
+
+#: src/Admin/Admin.php:82
+msgid "Families and sizes"
+msgstr "Familles et dimensions"
+
+#: src/Admin/Admin.php:83
+msgid "Settings"
+msgstr "Réglages"
+
+#: src/Admin/Admin.php:84
+msgid "Change log"
+msgstr "Journal des modifications"
+
+#: src/Admin/Admin.php:85
+msgid "Sources and verification"
+msgstr "Sources et vérification"
+
+#: src/Admin/Admin.php:109
+msgid "Size saved."
+msgstr "Dimension enregistrée."
+
+#: src/Admin/Admin.php:110
+msgid "Status changed."
+msgstr "Statut modifié."
+
+#: src/Admin/Admin.php:111
+msgid "Family updated."
+msgstr "Famille mise à jour."
+
+#: src/Admin/Admin.php:112
+msgid "Settings saved."
+msgstr "Réglages enregistrés."
+
+#: src/Admin/Admin.php:113
+msgid "Reference data checked. Sizes corrected by an administrator were kept."
+msgstr ""
+"Données de référence vérifiées. Les dimensions corrigées par un "
+"administrateur ont été conservées."
+
+#: src/Admin/Admin.php:120 src/Admin/Admin.php:249 src/Admin/Admin.php:259
+msgid "Family"
+msgstr "Famille"
+
+#: src/Admin/Admin.php:120 src/Admin/Admin.php:259
+msgid "Standard"
+msgstr "Norme"
+
+#: src/Admin/Admin.php:120
+msgid "Method"
+msgstr "Méthode"
+
+#: src/Admin/Admin.php:120
+msgid "Sizes"
+msgstr "Dimensions"
+
+#: src/Admin/Admin.php:120
+msgid "Status"
+msgstr "Statut"
+
+#: src/Admin/Admin.php:124
+msgid "Reference table"
+msgstr "Table de référence"
+
+#: src/Admin/Admin.php:124
+msgid "Standard formula"
+msgstr "Formule de la norme"
+
+#: src/Admin/Admin.php:126
+msgid "Active"
+msgstr "Active"
+
+#: src/Admin/Admin.php:126
+msgid "Hidden"
+msgstr "Masquée"
+
+#: src/Admin/Admin.php:131
+msgid "Hide"
+msgstr "Masquer"
+
+#: src/Admin/Admin.php:131
+msgid "Show"
+msgstr "Afficher"
+
+#: src/Admin/Admin.php:141
+msgid "Check the reference data again"
+msgstr "Revérifier les données de référence"
+
+#: src/Admin/Admin.php:151
+msgid "All families"
+msgstr "Toutes les familles"
+
+#: src/Admin/Admin.php:155
+msgid "Source document"
+msgstr "Document source"
+
+#: src/Admin/Admin.php:164
+msgid "Add a size"
+msgstr "Ajouter une dimension"
+
+#: src/Admin/Admin.php:166 src/Admin/Admin.php:198
+msgid "Designation"
+msgstr "Désignation"
+
+#: src/Admin/Admin.php:170
+msgid "Computed kg/m"
+msgstr "kg/m calculé"
+
+#: src/Admin/Admin.php:170
+msgid "Published kg/m"
+msgstr "kg/m publié"
+
+#: src/Admin/Admin.php:170
+msgid "Origin"
+msgstr "Origine"
+
+#: src/Admin/Admin.php:173
+msgid "disabled"
+msgstr "désactivée"
+
+#: src/Admin/Admin.php:178
+msgid "Reference, corrected"
+msgstr "Référence, corrigée"
+
+#: src/Admin/Admin.php:178
+msgid "Reference"
+msgstr "Référence"
+
+#: src/Admin/Admin.php:178
+msgid "Added by an administrator"
+msgstr "Ajoutée par un administrateur"
+
+#: src/Admin/Admin.php:180
+msgid "Edit"
+msgstr "Modifier"
+
+#: src/Admin/Admin.php:184
+msgid "Enable"
+msgstr "Activer"
+
+#: src/Admin/Admin.php:184
+msgid "Disable"
+msgstr "Désactiver"
+
+#. translators: %s: designation.
+#: src/Admin/Admin.php:194
+msgid "Edit %s"
+msgstr "Modifier %s"
+
+#. translators: %s: designation.
+#: src/Admin/Admin.php:194
+msgid "New size"
+msgstr "Nouvelle dimension"
+
+#: src/Admin/Admin.php:202
+msgid "Published mass (kg/m)"
+msgstr "Masse publiée (kg/m)"
+
+#: src/Admin/Admin.php:202
+msgid ""
+"Value printed in the source table. It must agree with the mass computed from"
+" the dimensions (2 %)."
+msgstr ""
+"Valeur imprimée dans la table source. Elle doit concorder avec la masse "
+"calculée à partir des dimensions (2 %)."
+
+#: src/Admin/Admin.php:203
+msgid "Reason and source of the change"
+msgstr "Motif et source de la modification"
+
+#: src/Admin/Admin.php:204
+msgid "I confirm these values even if the masses disagree"
+msgstr "Je confirme ces valeurs même si les masses ne concordent pas"
+
+#: src/Admin/Admin.php:205
+msgid "Save the size"
+msgstr "Enregistrer la dimension"
+
+#: src/Admin/Admin.php:220
+msgid "Density of steel (kg/m³)"
+msgstr "Masse volumique de l’acier (kg/m³)"
+
+#: src/Admin/Admin.php:220
+msgid "7850 is the value used by EN 10365 and EN 10219-2 for their tables."
+msgstr ""
+"7850 est la valeur utilisée par l’EN 10365 et l’EN 10219-2 pour leurs "
+"tables."
+
+#: src/Admin/Admin.php:221
+msgid "Commercial bar lengths (mm)"
+msgstr "Longueurs commerciales des barres (mm)"
+
+#: src/Admin/Admin.php:221
+msgid ""
+"Separated by commas, for example 12000, 6000. The seller can also type "
+"another length."
+msgstr ""
+"Séparées par des virgules, par exemple 12000, 6000. Le vendeur peut aussi "
+"saisir une autre longueur."
+
+#: src/Admin/Admin.php:222
+msgid "Default bar length (mm)"
+msgstr "Longueur de barre par défaut (mm)"
+
+#: src/Admin/Admin.php:223
+msgid "Longest length accepted (mm)"
+msgstr "Longueur maximale acceptée (mm)"
+
+#: src/Admin/Admin.php:224
+msgid "Most bars in one calculation"
+msgstr "Nombre maximal de barres par calcul"
+
+#: src/Admin/Admin.php:225
+msgid "Largest total weight (kg)"
+msgstr "Poids total maximal (kg)"
+
+#: src/Admin/Admin.php:226
+msgid "Largest typed dimension (mm)"
+msgstr "Dimension saisie maximale (mm)"
+
+#: src/Admin/Admin.php:226
+msgid "Tubes, flats, bars."
+msgstr "Tubes, fers plats, barres."
+
+#: src/Admin/Admin.php:227
+msgid "Largest typed thickness (mm)"
+msgstr "Épaisseur saisie maximale (mm)"
+
+#: src/Admin/Admin.php:228
+msgid "Largest plate (m²)"
+msgstr "Tôle la plus grande (m²)"
+
+#: src/Admin/Admin.php:246
+msgid "No change yet."
+msgstr "Aucune modification pour le moment."
+
+#: src/Admin/Admin.php:249
+msgid "Date (UTC)"
+msgstr "Date (UTC)"
+
+#: src/Admin/Admin.php:249
+msgid "User"
+msgstr "Utilisateur"
+
+#: src/Admin/Admin.php:249
+msgid "Action"
+msgstr "Action"
+
+#: src/Admin/Admin.php:249
+msgid "Details"
+msgstr "Détails"
+
+#: src/Admin/Admin.php:258
+msgid ""
+"Every size of a reference table was accepted only if (1) its dimensions "
+"match an independent compilation, (2) the area recomputed from the "
+"dimensions matches the published area and (3) the mass recomputed (area × "
+"7850 kg/m³) matches the published mass. Sizes that failed were left out. The"
+" full report is in the plugin (docs/VERIFICATION.md)."
+msgstr ""
+"Chaque dimension d’une table de référence n’a été acceptée que si (1) ses "
+"cotes concordent avec une compilation indépendante, (2) l’aire recalculée à "
+"partir des cotes concorde avec l’aire publiée et (3) la masse recalculée "
+"(aire × 7850 kg/m³) concorde avec la masse publiée. Les dimensions en échec "
+"ont été écartées. Le rapport complet est dans l’extension "
+"(docs/VERIFICATION.md)."
+
+#: src/Admin/Admin.php:259
+msgid "Source and checks"
+msgstr "Source et contrôles"
+
+#: src/Admin/Admin.php:261
+msgid "Open"
+msgstr "Ouvrir"
+
+#: src/Admin/Admin.php:282
+msgid "Explain the change and give its source."
+msgstr "Expliquez la modification et indiquez sa source."
+
+#: src/Calculator.php:36
+msgid "Choose a section type."
+msgstr "Choisissez un type de produit."
+
+#: src/Calculator.php:45 src/Calculator.php:59
+msgid "Choose a size from the list."
+msgstr "Choisissez une dimension dans la liste."
+
+#: src/Calculator.php:59
+msgid "Enter the dimensions."
+msgstr "Saisissez les dimensions."
+
+#. translators: %s: maximum length in metres.
+#: src/Calculator.php:67
+msgid "Enter a length between 0.1 and %s m."
+msgstr "Saisissez une longueur entre 0,1 et %s m."
+
+#: src/Calculator.php:90
+msgid "Enter the plate width in mm."
+msgstr "Saisissez la largeur de la tôle en mm."
+
+#: src/Calculator.php:93
+msgid "This plate is larger than the allowed size."
+msgstr "Cette tôle dépasse la taille autorisée."
+
+#: src/Calculator.php:113
+msgid "Enter a whole number of bars (1 or more)."
+msgstr "Saisissez un nombre entier de pièces (1 ou plus)."
+
+#: src/Calculator.php:120
+msgid "Enter the total weight in kg."
+msgstr "Saisissez le poids total en kg."
+
+#: src/Calculator.php:143
+msgid "Check the dimensions (in mm)."
+msgstr "Vérifiez les dimensions (en mm)."
+
+#: src/Calculator.php:148
+msgid "The thickness is too large for this size."
+msgstr "L’épaisseur est trop grande pour cette dimension."
+
+#: src/Catalogue.php:96 src/Rest/Api.php:64 src/Rest/Api.php:82
+msgid "Unknown section family."
+msgstr "Famille de profilés inconnue."
+
+#: src/Catalogue.php:100
+msgid "Enter the designation (for example IPE 200)."
+msgstr "Saisissez la désignation (par exemple IPE 200)."
+
+#: src/Catalogue.php:108
+msgid ""
+"Check the dimensions: every value is required, in mm, and thicknesses must "
+"be smaller than the section."
+msgstr ""
+"Vérifiez les dimensions : toutes les valeurs sont obligatoires, en mm, et "
+"les épaisseurs doivent être inférieures à la section."
+
+#. translators: 1: mass computed from the dimensions, 2: published mass.
+#: src/Catalogue.php:117
+msgid ""
+"The dimensions give %1$s kg/m but the published mass is %2$s kg/m. Check the"
+" values or confirm with a note."
+msgstr ""
+"Les dimensions donnent %1$s kg/m mais la masse publiée est %2$s kg/m. "
+"Vérifiez les valeurs ou confirmez avec une note."
+
+#: src/Catalogue.php:123
+msgid "This designation already exists in the family."
+msgstr "Cette désignation existe déjà dans la famille."
+
+#: src/Rest/Api.php:74
+msgid "Unknown size."
+msgstr "Dimension inconnue."

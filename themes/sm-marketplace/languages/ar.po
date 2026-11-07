@@ -42,7 +42,7 @@ msgstr "الصفحة غير موجودة"
 msgid "The page you are looking for has moved or no longer exists."
 msgstr "الصفحة التي تبحث عنها نُقلت أو لم تعد موجودة."
 
-#: 404.php:19 header.php:46
+#: 404.php:19 header.php:47
 msgid "Search the marketplace"
 msgstr "ابحث في المنصة"
 
@@ -54,7 +54,7 @@ msgstr ""
 "اشترِ وبِع الفولاذ بالكيلوغرام، وتبادل الهياكل المستعملة، وجد المصنّعين "
 "والمهندسين في كامل أنحاء الجزائر."
 
-#: footer.php:20 header.php:84 header.php:113
+#: footer.php:20 header.php:85 header.php:114
 msgid "Marketplaces"
 msgstr "الأسواق"
 
@@ -90,70 +90,75 @@ msgstr "الخدمات"
 msgid "Fabrication & installation"
 msgstr "التصنيع والتركيب"
 
-#: footer.php:32 header.php:99 header.php:129 inc/menus.php:63
+#: footer.php:32 header.php:100 header.php:130 inc/menus.php:63
 #: inc/template-tags.php:179 template-parts/components/card-service.php:22
 #: templates/company-profile.php:45 templates/front-page-template.php:71
 #: templates/marketplace-engineers.php:21
 msgid "Engineering"
 msgstr "الهندسة"
 
-#: footer.php:33 header.php:130 inc/menus.php:64 templates/companies.php:13
+#: footer.php:33 header.php:131 inc/menus.php:64 templates/companies.php:13
 #: templates/companies.php:14 templates/company-profile.php:18
 #: templates/company-profile.php:45 templates/front-page-template.php:148
 msgid "Company directory"
 msgstr "دليل المؤسسات"
 
-#: footer.php:34 header.php:29 header.php:131 templates/price-index.php:16
+#: footer.php:34 header.php:29 header.php:132
+#: templates/weight-calculator.php:37
+msgid "Weight calculator"
+msgstr "حاسبة الوزن"
+
+#: footer.php:35 header.php:30 header.php:133 templates/price-index.php:16
 msgid "Price index"
 msgstr "مؤشر الأسعار"
 
-#: footer.php:38
+#: footer.php:39
 msgid "Platform"
 msgstr "المنصة"
 
-#: footer.php:40 header.php:30 templates/pricing.php:25
+#: footer.php:41 header.php:31 templates/pricing.php:25
 #: templates/pricing.php:26
 msgid "Plans"
 msgstr "الاشتراكات"
 
-#: footer.php:41 header.php:140 template-parts/components/enquiry-form.php:27
+#: footer.php:42 header.php:142 template-parts/components/enquiry-form.php:27
 #: templates/auth-login.php:40 templates/dashboard.php:25
 msgid "Create an account"
 msgstr "إنشاء حساب"
 
-#: footer.php:42 header.php:31 templates/company-profile.php:66
+#: footer.php:43 header.php:32 templates/company-profile.php:66
 #: templates/single-listing.php:237
 msgid "Contact"
 msgstr "اتصل بنا"
 
-#: footer.php:48
+#: footer.php:49
 msgid ""
 "Advertised prices are set by sellers and are not official market prices."
 msgstr "الأسعار المعروضة يحددها البائعون وليست أسعار سوق رسمية."
 
-#: footer.php:53
+#: footer.php:54
 msgid "Quick navigation"
 msgstr "تنقل سريع"
 
-#: footer.php:54 inc/template-tags.php:239
+#: footer.php:55 inc/template-tags.php:239
 msgid "Home"
 msgstr "الرئيسية"
 
-#: footer.php:55 header.php:54 header.php:58
+#: footer.php:56 header.php:55 header.php:59
 #: templates/front-page-template.php:48
 msgid "Search"
 msgstr "بحث"
 
-#: footer.php:56 header.php:76 template-parts/dashboard/publish.php:205
+#: footer.php:57 header.php:77 template-parts/dashboard/publish.php:205
 #: templates/styleguide.php:34
 msgid "Publish"
 msgstr "نشر"
 
-#: footer.php:57
+#: footer.php:58
 msgid "Enquiries"
 msgstr "الاستفسارات"
 
-#: footer.php:58
+#: footer.php:59
 msgid "Account"
 msgstr "الحساب"
 
@@ -169,11 +174,11 @@ msgstr "السوق الصناعية للفولاذ في الجزائر"
 msgid "Utility"
 msgstr "روابط مفيدة"
 
-#: header.php:40 inc/assets.php:32
+#: header.php:41 inc/assets.php:32
 msgid "Open menu"
 msgstr "فتح القائمة"
 
-#: header.php:47 template-parts/components/filter-panel.php:32
+#: header.php:48 template-parts/components/filter-panel.php:32
 #: template-parts/dashboard/listings.php:27
 #: template-parts/dashboard/listings.php:41
 #: template-parts/dashboard/publish.php:29
@@ -182,60 +187,60 @@ msgstr "فتح القائمة"
 msgid "Market"
 msgstr "السوق"
 
-#: header.php:48 template-parts/components/filter-panel.php:36
+#: header.php:49 template-parts/components/filter-panel.php:36
 #: templates/front-page-template.php:33
 msgid "All markets"
 msgstr "كل الأسواق"
 
-#: header.php:53
+#: header.php:54
 msgid "IPE 200, HEA, tube 100×50, hangar…"
 msgstr "IPE 200، HEA، أنبوب 100×50، هنغار…"
 
-#: header.php:59 templates/dashboard.php:59
+#: header.php:60 templates/dashboard.php:59
 msgid "Saved listings"
 msgstr "الإعلانات المحفوظة"
 
-#: header.php:64 template-parts/dashboard/notifications.php:18
+#: header.php:65 template-parts/dashboard/notifications.php:18
 msgid "Notifications"
 msgstr "الإشعارات"
 
-#: header.php:68 header.php:136
+#: header.php:69 header.php:138
 msgid "My account"
 msgstr "حسابي"
 
-#: header.php:71
+#: header.php:72
 msgid "Administration"
 msgstr "الإدارة"
 
-#: header.php:73 header.php:139 template-parts/components/enquiry-form.php:26
+#: header.php:74 header.php:141 template-parts/components/enquiry-form.php:26
 #: templates/auth-login.php:17 templates/auth-login.php:39
 #: templates/auth-register.php:91
 msgid "Sign in"
 msgstr "تسجيل الدخول"
 
-#: header.php:78 template-parts/dashboard/engineer-overview.php:53
+#: header.php:79 template-parts/dashboard/engineer-overview.php:53
 #: templates/dashboard.php:42
 msgid "My services"
 msgstr "خدماتي"
 
-#: header.php:107
+#: header.php:108
 msgid "Menu"
 msgstr "القائمة"
 
-#: header.php:110 inc/assets.php:33
+#: header.php:111 inc/assets.php:33
 msgid "Close menu"
 msgstr "إغلاق القائمة"
 
-#: header.php:119 inc/menus.php:75
+#: header.php:120 inc/menus.php:75
 msgid "View all listings"
 msgstr "عرض كل الإعلانات"
 
-#: header.php:134 template-parts/dashboard/listings.php:20
+#: header.php:136 template-parts/dashboard/listings.php:20
 #: templates/dashboard.php:52
 msgid "Publish a listing"
 msgstr "نشر إعلان"
 
-#: header.php:137 templates/dashboard.php:106 templates/dashboard.php:120
+#: header.php:139 templates/dashboard.php:106 templates/dashboard.php:120
 msgid "Sign out"
 msgstr "تسجيل الخروج"
 
@@ -256,65 +261,65 @@ msgstr "تم الحفظ"
 msgid "Removed from saved listings"
 msgstr "أزيل من الإعلانات المحفوظة"
 
-#: inc/assets.php:79
+#: inc/assets.php:84
 msgid "Company position. Drag it, or use the arrow keys."
 msgstr "موقع المؤسسة. اسحبه أو استعمل أسهم لوحة المفاتيح."
 
-#: inc/assets.php:80 template-parts/components/location-map.php:59
+#: inc/assets.php:85 template-parts/components/location-map.php:59
 msgid "No position yet."
 msgstr "لم يُحدَّد أي موقع بعد."
 
-#: inc/assets.php:81
+#: inc/assets.php:86
 msgid "Drag the marker to your exact address, or click the map."
 msgstr "اسحب العلامة إلى عنوانك بالضبط، أو انقر على الخريطة."
 
-#: inc/assets.php:82
+#: inc/assets.php:87
 msgid "Position placed:"
 msgstr "تم تحديد الموقع:"
 
-#: inc/assets.php:83
+#: inc/assets.php:88
 msgid "Current location found:"
 msgstr "تم العثور على موقعك الحالي:"
 
 #. translators: %d: accuracy in metres.
-#: inc/assets.php:85
+#: inc/assets.php:90
 msgid "Approximate (about %d m): drag the marker to correct it."
 msgstr "تقريبي (حوالي %d م): اسحب العلامة لتصحيحه."
 
-#: inc/assets.php:86
+#: inc/assets.php:91
 msgid "Looking for your location…"
 msgstr "جارٍ البحث عن موقعك…"
 
-#: inc/assets.php:87
+#: inc/assets.php:92
 msgid ""
 "Location access was refused. Allow it in your browser, or place the marker "
 "by hand."
 msgstr "تم رفض الوصول إلى الموقع. اسمح به في متصفحك، أو ضع العلامة يدويا."
 
-#: inc/assets.php:88
+#: inc/assets.php:93
 msgid "Your location could not be found. Place the marker by hand."
 msgstr "تعذّر العثور على موقعك. ضع العلامة يدويا."
 
-#: inc/assets.php:89
+#: inc/assets.php:94
 msgid ""
 "Finding your location took too long. Try again or place the marker by hand."
 msgstr "استغرق البحث عن موقعك وقتا طويلا. أعد المحاولة أو ضع العلامة يدويا."
 
-#: inc/assets.php:90
+#: inc/assets.php:95
 msgid ""
 "Your browser only shares your location on a secure (https) site. Place the "
 "marker by hand."
 msgstr "لا يشارك متصفحك الموقع إلا على موقع آمن (https). ضع العلامة يدويا."
 
-#: inc/assets.php:91
+#: inc/assets.php:96
 msgid "This position is outside Algeria. Place the marker on your address."
 msgstr "هذا الموقع خارج الجزائر. ضع العلامة على عنوانك."
 
-#: inc/assets.php:92
+#: inc/assets.php:97
 msgid "Wilaya changed: place the marker again on your address."
 msgstr "تم تغيير الولاية: ضع العلامة من جديد على عنوانك."
 
-#: inc/assets.php:93
+#: inc/assets.php:98
 msgid "Position removed. It will be deleted when you save."
 msgstr "تمت إزالة الموقع. سيُحذف عند الحفظ."
 
@@ -370,22 +375,22 @@ msgstr "اسم العلامة (يظهر عند غياب الشعار)"
 msgid "Show demo listings when no marketplace plugin provides data"
 msgstr "عرض إعلانات تجريبية ما دامت إضافات السوق لا توفر بيانات"
 
-#: inc/demo/installer.php:79 inc/demo/installer.php:80
-#: inc/demo/installer.php:94
+#: inc/demo/installer.php:89 inc/demo/installer.php:90
+#: inc/demo/installer.php:104
 msgid "SM Pages"
 msgstr "صفحات SM"
 
-#: inc/demo/installer.php:91
+#: inc/demo/installer.php:101
 msgid "Missing pages were created."
 msgstr "تم إنشاء الصفحات الناقصة."
 
-#: inc/demo/installer.php:95
+#: inc/demo/installer.php:105
 msgid ""
 "Pages used by the theme templates. Existing pages are never overwritten."
 msgstr ""
 "الصفحات التي تستعملها قوالب القالب. لا يتم استبدال الصفحات الموجودة أبدا."
 
-#: inc/demo/installer.php:103
+#: inc/demo/installer.php:113
 msgid "Create missing pages"
 msgstr "إنشاء الصفحات الناقصة"
 
@@ -798,6 +803,9 @@ msgid "Price per kilogram"
 msgstr "السعر للكيلوغرام"
 
 #: template-parts/components/price-block.php:28
+#: template-parts/components/weight-calculator.php:194
+#: template-parts/components/weight-calculator.php:216
+#: template-parts/components/weight-calculator.php:261
 #: template-parts/dashboard/publish.php:193
 msgid "Total weight"
 msgstr "الوزن الإجمالي"
@@ -838,6 +846,214 @@ msgstr "تمت مراقبة السجل التجاري وNIF وNIS"
 #: template-parts/components/verification-steps.php:29
 msgid "Do it"
 msgstr "قم بذلك"
+
+#: template-parts/components/weight-calculator.php:18
+msgid "The weight calculator is not available yet."
+msgstr "حاسبة الوزن غير متاحة بعد."
+
+#: template-parts/components/weight-calculator.php:33
+msgid "Beams"
+msgstr "العوارض"
+
+#: template-parts/components/weight-calculator.php:34
+msgid "Channels"
+msgstr "المجاري (U)"
+
+#: template-parts/components/weight-calculator.php:35
+msgid "Angles"
+msgstr "الزوايا"
+
+#: template-parts/components/weight-calculator.php:36
+msgid "Tubes"
+msgstr "الأنابيب"
+
+#: template-parts/components/weight-calculator.php:37
+msgid "Flats and bars"
+msgstr "الحديد المسطح والقضبان"
+
+#: template-parts/components/weight-calculator.php:38
+msgid "Plates"
+msgstr "الصفائح"
+
+#: template-parts/components/weight-calculator.php:41
+msgid "Height h"
+msgstr "الارتفاع h"
+
+#: template-parts/components/weight-calculator.php:42
+msgid "Width b"
+msgstr "العرض b"
+
+#: template-parts/components/weight-calculator.php:43
+msgid "Thickness t"
+msgstr "السُّمك t"
+
+#: template-parts/components/weight-calculator.php:44
+msgid "Diameter D"
+msgstr "القطر D"
+
+#: template-parts/components/weight-calculator.php:45
+msgid "Side a"
+msgstr "الضلع a"
+
+#: template-parts/components/weight-calculator.php:46
+msgid "Web tw"
+msgstr "الجذع tw"
+
+#: template-parts/components/weight-calculator.php:47
+msgid "Flange tf"
+msgstr "الجناح tf"
+
+#: template-parts/components/weight-calculator.php:48
+msgid "Root radius r"
+msgstr "نصف قطر الوصلة r"
+
+#: template-parts/components/weight-calculator.php:49
+msgid "Root radius r1"
+msgstr "نصف قطر الوصلة r1"
+
+#: template-parts/components/weight-calculator.php:50
+msgid "Toe radius r2"
+msgstr "نصف قطر الحافة r2"
+
+#: template-parts/components/weight-calculator.php:104
+msgid "Product type"
+msgstr "نوع المنتج"
+
+#: template-parts/components/weight-calculator.php:122
+#: template-parts/components/weight-calculator.php:158
+#: template-parts/dashboard/publish.php:204 templates/styleguide.php:35
+msgid "Continue"
+msgstr "متابعة"
+
+#: template-parts/components/weight-calculator.php:127
+msgid "Thickness"
+msgstr "السُّمك"
+
+#: template-parts/components/weight-calculator.php:127
+msgid "Size"
+msgstr "المقاس"
+
+#: template-parts/components/weight-calculator.php:132
+msgid "Common size"
+msgstr "مقاس شائع"
+
+#: template-parts/components/weight-calculator.php:132
+msgid "Size (European catalogue)"
+msgstr "المقاس (الكتالوج الأوروبي)"
+
+#: template-parts/components/weight-calculator.php:134
+msgid "— or type the dimensions below —"
+msgstr "— أو أدخل الأبعاد أدناه —"
+
+#: template-parts/components/weight-calculator.php:134
+msgid "Choose…"
+msgstr "اختر…"
+
+#: template-parts/components/weight-calculator.php:152
+msgid "Side"
+msgstr "الضلع"
+
+#: template-parts/components/weight-calculator.php:173
+msgid "Area"
+msgstr "المساحة"
+
+#: template-parts/components/weight-calculator.php:174
+msgid "Weight per metre"
+msgstr "الوزن لكل متر"
+
+#: template-parts/components/weight-calculator.php:178
+msgid "Source table"
+msgstr "الجدول المصدر"
+
+#: template-parts/components/weight-calculator.php:191
+#: template-parts/dashboard/publish.php:122
+#: template-parts/dashboard/publish.php:127 templates/rfq-board.php:61
+#: templates/single-listing.php:170 templates/single-listing.php:181
+msgid "Quantity"
+msgstr "الكمية"
+
+#: template-parts/components/weight-calculator.php:192
+msgid "What do you know?"
+msgstr "ماذا تعرف؟"
+
+#: template-parts/components/weight-calculator.php:193
+#: template-parts/components/weight-calculator.php:219
+#: template-parts/components/weight-calculator.php:241
+msgid "Number of plates"
+msgstr "عدد الصفائح"
+
+#: template-parts/components/weight-calculator.php:193
+#: template-parts/components/weight-calculator.php:219
+#: template-parts/components/weight-calculator.php:241
+msgid "Number of bars"
+msgstr "عدد القضبان"
+
+#: template-parts/components/weight-calculator.php:198
+msgid "Plate width"
+msgstr "عرض الصفيحة"
+
+#: template-parts/components/weight-calculator.php:199
+msgid "Plate length"
+msgstr "طول الصفيحة"
+
+#: template-parts/components/weight-calculator.php:202
+msgid "Bar length"
+msgstr "طول القضيب"
+
+#: template-parts/components/weight-calculator.php:205
+msgid "Other length…"
+msgstr "طول آخر…"
+
+#: template-parts/components/weight-calculator.php:209
+#: templates/single-listing.php:51
+msgid "Length"
+msgstr "الطول"
+
+#: template-parts/components/weight-calculator.php:223
+msgid "Calculate"
+msgstr "احسب"
+
+#. translators: %s: weight of one piece.
+#: template-parts/components/weight-calculator.php:233
+msgid "One plate weighs %s"
+msgstr "تزن الصفيحة الواحدة %s"
+
+#. translators: %s: weight of one piece.
+#: template-parts/components/weight-calculator.php:233
+msgid "One bar weighs %s"
+msgstr "يزن القضيب الواحد %s"
+
+#. translators: 1: number of pieces, 2: their weight.
+#: template-parts/components/weight-calculator.php:235
+msgid "%1$s whole plates = %2$s"
+msgstr "%1$s صفائح كاملة = %2$s"
+
+#. translators: 1: number of pieces, 2: their weight.
+#: template-parts/components/weight-calculator.php:235
+msgid "%1$s whole bars = %2$s"
+msgstr "%1$s قضبان كاملة = %2$s"
+
+#. translators: 1: weight, 2: size and length of one piece.
+#: template-parts/components/weight-calculator.php:247
+msgid "for %1$s of %2$s"
+msgstr "لـ %1$s من %2$s"
+
+#. translators: %s: density.
+#: template-parts/components/weight-calculator.php:273
+msgid ""
+"Theoretical weight: nominal dimensions × %s kg/m³. The weighed weight can "
+"differ within the manufacturing tolerances."
+msgstr ""
+"وزن نظري: الأبعاد الاسمية × %s kg/m³. قد يختلف الوزن عند الوزن الفعلي ضمن "
+"حدود تفاوتات التصنيع."
+
+#: template-parts/components/weight-calculator.php:276
+msgid "Enter the total weight to see the number of pieces."
+msgstr "أدخل الوزن الإجمالي لمعرفة عدد القطع."
+
+#: template-parts/components/weight-calculator.php:276
+msgid "Enter the number of pieces to see the total weight."
+msgstr "أدخل عدد القطع لمعرفة الوزن الإجمالي."
 
 #: template-parts/dashboard/company.php:20
 msgid "Sign in with a real account to edit the company profile."
@@ -1293,12 +1509,6 @@ msgstr "العنصر"
 msgid "Profile"
 msgstr "المقطع"
 
-#: template-parts/dashboard/publish.php:122
-#: template-parts/dashboard/publish.php:127 templates/rfq-board.php:61
-#: templates/single-listing.php:170 templates/single-listing.php:181
-msgid "Quantity"
-msgstr "الكمية"
-
 #: template-parts/dashboard/publish.php:129
 msgid "Remove row"
 msgstr "حذف السطر"
@@ -1370,10 +1580,6 @@ msgstr "رجوع"
 #: template-parts/dashboard/publish.php:203
 msgid "Save draft"
 msgstr "حفظ كمسودة"
-
-#: template-parts/dashboard/publish.php:204 templates/styleguide.php:35
-msgid "Continue"
-msgstr "متابعة"
 
 #: template-parts/dashboard/settings.php:13
 msgid "Sign in with a real account to change your settings."
@@ -2331,10 +2537,6 @@ msgstr "الكسوة الجانبية"
 msgid "Standard"
 msgstr "المعيار"
 
-#: templates/single-listing.php:51
-msgid "Length"
-msgstr "الطول"
-
 #: templates/single-listing.php:55
 msgid "Finish"
 msgstr "التشطيب"
@@ -2472,3 +2674,20 @@ msgstr "أُرسل العرض"
 #: templates/styleguide.php:56
 msgid "Listing cards"
 msgstr "بطاقات الإعلانات"
+
+#. Template Name of the theme
+msgid "SM — Weight calculator"
+msgstr "SM — حاسبة الوزن"
+
+#: templates/weight-calculator.php:38
+msgid "Steel weight calculator"
+msgstr "حاسبة وزن الفولاذ"
+
+#: templates/weight-calculator.php:39
+msgid ""
+"Choose a section, its size and the quantity: the weight is calculated from "
+"the European standard tables. You can also start from a total weight to know"
+" how many bars it makes."
+msgstr ""
+"اختر المقطع ومقاسه والكمية: يُحسب الوزن من جداول المعايير الأوروبية. يمكنك "
+"أيضا الانطلاق من وزن إجمالي لمعرفة عدد القضبان."

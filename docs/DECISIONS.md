@@ -26,6 +26,19 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Documents de vérification | Stockés au-dessus du dossier public quand c'est possible | Inaccessibles par URL quel que soit le serveur |
 | Contact | Compte obligatoire pour contacter un vendeur ou demander une prestation (conforme Phase 0) ; demandes sur annonces de démonstration envoyées aux modérateurs | |
 
+## 7 novembre 2026 — Phase 3 (moteur de poids)
+
+| Sujet | Décision | Raison |
+| --- | --- | --- |
+| Sources | Fiches de STAD et d'ArcelorMittal reproduisant l'EN 10365 / EN 10056-1, formule de l'EN 10219-2 contrôlée sur le catalogue Ferpinta | Documents publics et datés ; la norme elle-même est payante |
+| Contrôle | Une ligne n'entre au catalogue que si cotes, aire et masse concordent avec une seconde source et avec le calcul ; 36 cornières sans seconde source écartées | Règle « aucune donnée inventée » |
+| Poids | Calculé : aire exacte (à partir des cotes) × 7850 kg/m³, affiché comme théorique ; la masse imprimée est conservée pour contrôle | Une seule méthode pour tous les produits, cohérente avec les normes |
+| Profilés laminés | Uniquement depuis le catalogue (pas de cotes libres) | Évite les profils inexistants |
+| Tubes, fers plats, barres, tôles | Cotes libres dans des limites réglables | Dimensions commerciales très variées |
+| Longueurs | 12 m par défaut, 6 m, ou longueur libre ; liste modifiable dans l'administration | Remarque du client ; en attente de confirmation des autres longueurs |
+| Tubes | EN 10219 (formés à froid) | Les plus courants sur le marché algérien ; EN 10210 à ajouter si besoin |
+| Corrections | Motif et source obligatoires, journal ; une mise à jour des données n'écrase jamais une correction | Traçabilité des poids des annonces |
+
 ## 7 novembre 2026 — carte de l'entreprise (remarque n° 2)
 
 | Sujet | Décision | Raison |

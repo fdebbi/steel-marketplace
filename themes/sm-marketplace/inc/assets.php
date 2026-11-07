@@ -47,6 +47,11 @@ function sm_theme_enqueue_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'sm_theme_enqueue_assets', 20 );
 
+/** Weight calculator live refresh (loaded by the weight-calculator component). */
+function sm_theme_enqueue_weight() {
+	wp_enqueue_script( 'sm-weight', SM_THEME_URI . '/assets/js/weight.js', array(), sm_theme_asset_version( 'assets/js/weight.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
+}
+
 /**
  * Location map: self-hosted Leaflet + map.js, loaded only on pages that show a
  * map (called by the location-map component). Map data (wilaya centres, tile

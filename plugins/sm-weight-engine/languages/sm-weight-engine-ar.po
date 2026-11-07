@@ -1,0 +1,402 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Weight Engine 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-weight-engine\n"
+
+#. Plugin Name of the plugin
+#: sm-weight-engine.php
+msgid "SM Weight Engine"
+msgstr "SM Weight Engine"
+
+#. Plugin URI of the plugin
+#: sm-weight-engine.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-weight-engine.php
+msgid ""
+"Steel section catalogue (IPE, HEA, HEB, HEM, IPN, UPN, UPE, angles, tubes, "
+"flats, bars, plates) with sourced and cross-checked reference data, exact "
+"cross-section drawings and theoretical weight calculations (bars <-> total "
+"weight). Requires SM Core."
+msgstr ""
+"كتالوج المقاطع الفولاذية (IPE وHEA وHEB وHEM وIPN وUPN وUPE والزوايا "
+"والأنابيب والحديد المسطح والقضبان والصفائح) ببيانات مرجعية موثّقة المصدر "
+"ومدقّقة، ورسوم مقاطع دقيقة، وحساب الأوزان النظرية (القضبان ↔ الوزن "
+"الإجمالي). يتطلب SM Core."
+
+#. Author of the plugin
+#: sm-weight-engine.php
+msgid "Steel Marketplace"
+msgstr "Steel Marketplace"
+
+#: sm-weight-engine.php:56
+msgid "SM Weight Engine needs the SM Core plugin. Activate SM Core first."
+msgstr "تحتاج SM Weight Engine إلى إضافة SM Core. فعّل SM Core أولا."
+
+#: src/Admin/Admin.php:35 src/Admin/Admin.php:63
+msgid "Steel catalogue"
+msgstr "كتالوج الفولاذ"
+
+#: src/Admin/Admin.php:49
+msgid "You are not allowed to change the catalogue."
+msgstr "غير مسموح لك بتعديل الكتالوج."
+
+#. translators: 1: engine version, 2: reference data version.
+#: src/Admin/Admin.php:69
+msgid ""
+"Weight engine %1$s, reference data %2$s. Weights are theoretical: nominal "
+"dimensions × density."
+msgstr ""
+"محرك الأوزان %1$s، البيانات المرجعية %2$s. الأوزان نظرية: الأبعاد الاسمية × "
+"الكتلة الحجمية."
+
+#: src/Admin/Admin.php:82
+msgid "Families and sizes"
+msgstr "العائلات والمقاسات"
+
+#: src/Admin/Admin.php:83
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: src/Admin/Admin.php:84
+msgid "Change log"
+msgstr "سجل التعديلات"
+
+#: src/Admin/Admin.php:85
+msgid "Sources and verification"
+msgstr "المصادر والتحقق"
+
+#: src/Admin/Admin.php:109
+msgid "Size saved."
+msgstr "تم حفظ المقاس."
+
+#: src/Admin/Admin.php:110
+msgid "Status changed."
+msgstr "تم تغيير الحالة."
+
+#: src/Admin/Admin.php:111
+msgid "Family updated."
+msgstr "تم تحديث العائلة."
+
+#: src/Admin/Admin.php:112
+msgid "Settings saved."
+msgstr "تم حفظ الإعدادات."
+
+#: src/Admin/Admin.php:113
+msgid "Reference data checked. Sizes corrected by an administrator were kept."
+msgstr "تم التحقق من البيانات المرجعية. احتُفظ بالمقاسات التي صحّحها مدير."
+
+#: src/Admin/Admin.php:120 src/Admin/Admin.php:249 src/Admin/Admin.php:259
+msgid "Family"
+msgstr "العائلة"
+
+#: src/Admin/Admin.php:120 src/Admin/Admin.php:259
+msgid "Standard"
+msgstr "المعيار"
+
+#: src/Admin/Admin.php:120
+msgid "Method"
+msgstr "الطريقة"
+
+#: src/Admin/Admin.php:120
+msgid "Sizes"
+msgstr "المقاسات"
+
+#: src/Admin/Admin.php:120
+msgid "Status"
+msgstr "الحالة"
+
+#: src/Admin/Admin.php:124
+msgid "Reference table"
+msgstr "جدول مرجعي"
+
+#: src/Admin/Admin.php:124
+msgid "Standard formula"
+msgstr "معادلة المعيار"
+
+#: src/Admin/Admin.php:126
+msgid "Active"
+msgstr "مفعّلة"
+
+#: src/Admin/Admin.php:126
+msgid "Hidden"
+msgstr "مخفية"
+
+#: src/Admin/Admin.php:131
+msgid "Hide"
+msgstr "إخفاء"
+
+#: src/Admin/Admin.php:131
+msgid "Show"
+msgstr "إظهار"
+
+#: src/Admin/Admin.php:141
+msgid "Check the reference data again"
+msgstr "إعادة التحقق من البيانات المرجعية"
+
+#: src/Admin/Admin.php:151
+msgid "All families"
+msgstr "كل العائلات"
+
+#: src/Admin/Admin.php:155
+msgid "Source document"
+msgstr "المستند المصدر"
+
+#: src/Admin/Admin.php:164
+msgid "Add a size"
+msgstr "إضافة مقاس"
+
+#: src/Admin/Admin.php:166 src/Admin/Admin.php:198
+msgid "Designation"
+msgstr "التسمية"
+
+#: src/Admin/Admin.php:170
+msgid "Computed kg/m"
+msgstr "kg/m المحسوب"
+
+#: src/Admin/Admin.php:170
+msgid "Published kg/m"
+msgstr "kg/m المنشور"
+
+#: src/Admin/Admin.php:170
+msgid "Origin"
+msgstr "المصدر"
+
+#: src/Admin/Admin.php:173
+msgid "disabled"
+msgstr "معطّل"
+
+#: src/Admin/Admin.php:178
+msgid "Reference, corrected"
+msgstr "مرجعي، مصحَّح"
+
+#: src/Admin/Admin.php:178
+msgid "Reference"
+msgstr "مرجعي"
+
+#: src/Admin/Admin.php:178
+msgid "Added by an administrator"
+msgstr "أضافه مدير"
+
+#: src/Admin/Admin.php:180
+msgid "Edit"
+msgstr "تعديل"
+
+#: src/Admin/Admin.php:184
+msgid "Enable"
+msgstr "تفعيل"
+
+#: src/Admin/Admin.php:184
+msgid "Disable"
+msgstr "تعطيل"
+
+#. translators: %s: designation.
+#: src/Admin/Admin.php:194
+msgid "Edit %s"
+msgstr "تعديل %s"
+
+#. translators: %s: designation.
+#: src/Admin/Admin.php:194
+msgid "New size"
+msgstr "مقاس جديد"
+
+#: src/Admin/Admin.php:202
+msgid "Published mass (kg/m)"
+msgstr "الكتلة المنشورة (kg/m)"
+
+#: src/Admin/Admin.php:202
+msgid ""
+"Value printed in the source table. It must agree with the mass computed from"
+" the dimensions (2 %)."
+msgstr ""
+"القيمة المطبوعة في الجدول المصدر. يجب أن تتوافق مع الكتلة المحسوبة من "
+"الأبعاد (2 %)."
+
+#: src/Admin/Admin.php:203
+msgid "Reason and source of the change"
+msgstr "سبب التعديل ومصدره"
+
+#: src/Admin/Admin.php:204
+msgid "I confirm these values even if the masses disagree"
+msgstr "أؤكد هذه القيم حتى لو لم تتطابق الكتل"
+
+#: src/Admin/Admin.php:205
+msgid "Save the size"
+msgstr "حفظ المقاس"
+
+#: src/Admin/Admin.php:220
+msgid "Density of steel (kg/m³)"
+msgstr "الكتلة الحجمية للفولاذ (kg/m³)"
+
+#: src/Admin/Admin.php:220
+msgid "7850 is the value used by EN 10365 and EN 10219-2 for their tables."
+msgstr "7850 هي القيمة المعتمدة في جداول EN 10365 وEN 10219-2."
+
+#: src/Admin/Admin.php:221
+msgid "Commercial bar lengths (mm)"
+msgstr "الأطوال التجارية للقضبان (mm)"
+
+#: src/Admin/Admin.php:221
+msgid ""
+"Separated by commas, for example 12000, 6000. The seller can also type "
+"another length."
+msgstr "مفصولة بفواصل، مثلا 12000، 6000. يمكن للبائع أيضا إدخال طول آخر."
+
+#: src/Admin/Admin.php:222
+msgid "Default bar length (mm)"
+msgstr "طول القضيب الافتراضي (mm)"
+
+#: src/Admin/Admin.php:223
+msgid "Longest length accepted (mm)"
+msgstr "أقصى طول مقبول (mm)"
+
+#: src/Admin/Admin.php:224
+msgid "Most bars in one calculation"
+msgstr "أقصى عدد قضبان في حساب واحد"
+
+#: src/Admin/Admin.php:225
+msgid "Largest total weight (kg)"
+msgstr "أقصى وزن إجمالي (kg)"
+
+#: src/Admin/Admin.php:226
+msgid "Largest typed dimension (mm)"
+msgstr "أقصى بُعد مُدخل (mm)"
+
+#: src/Admin/Admin.php:226
+msgid "Tubes, flats, bars."
+msgstr "الأنابيب، الحديد المسطح، القضبان."
+
+#: src/Admin/Admin.php:227
+msgid "Largest typed thickness (mm)"
+msgstr "أقصى سُمك مُدخل (mm)"
+
+#: src/Admin/Admin.php:228
+msgid "Largest plate (m²)"
+msgstr "أكبر صفيحة (m²)"
+
+#: src/Admin/Admin.php:246
+msgid "No change yet."
+msgstr "لا توجد تعديلات بعد."
+
+#: src/Admin/Admin.php:249
+msgid "Date (UTC)"
+msgstr "التاريخ (UTC)"
+
+#: src/Admin/Admin.php:249
+msgid "User"
+msgstr "المستخدم"
+
+#: src/Admin/Admin.php:249
+msgid "Action"
+msgstr "الإجراء"
+
+#: src/Admin/Admin.php:249
+msgid "Details"
+msgstr "التفاصيل"
+
+#: src/Admin/Admin.php:258
+msgid ""
+"Every size of a reference table was accepted only if (1) its dimensions "
+"match an independent compilation, (2) the area recomputed from the "
+"dimensions matches the published area and (3) the mass recomputed (area × "
+"7850 kg/m³) matches the published mass. Sizes that failed were left out. The"
+" full report is in the plugin (docs/VERIFICATION.md)."
+msgstr ""
+"لم يُقبل أي مقاس من جدول مرجعي إلا إذا (1) تطابقت أبعاده مع مصدر مستقل، و(2)"
+" تطابقت المساحة المحسوبة من الأبعاد مع المساحة المنشورة، و(3) تطابقت الكتلة "
+"المحسوبة (المساحة × 7850 kg/m³) مع الكتلة المنشورة. استُبعدت المقاسات التي "
+"لم تنجح. التقرير الكامل داخل الإضافة (docs/VERIFICATION.md)."
+
+#: src/Admin/Admin.php:259
+msgid "Source and checks"
+msgstr "المصدر والتدقيق"
+
+#: src/Admin/Admin.php:261
+msgid "Open"
+msgstr "فتح"
+
+#: src/Admin/Admin.php:282
+msgid "Explain the change and give its source."
+msgstr "اشرح التعديل واذكر مصدره."
+
+#: src/Calculator.php:36
+msgid "Choose a section type."
+msgstr "اختر نوع المنتج."
+
+#: src/Calculator.php:45 src/Calculator.php:59
+msgid "Choose a size from the list."
+msgstr "اختر مقاسا من القائمة."
+
+#: src/Calculator.php:59
+msgid "Enter the dimensions."
+msgstr "أدخل الأبعاد."
+
+#. translators: %s: maximum length in metres.
+#: src/Calculator.php:67
+msgid "Enter a length between 0.1 and %s m."
+msgstr "أدخل طولا بين 0.1 و%s م."
+
+#: src/Calculator.php:90
+msgid "Enter the plate width in mm."
+msgstr "أدخل عرض الصفيحة بالمليمتر."
+
+#: src/Calculator.php:93
+msgid "This plate is larger than the allowed size."
+msgstr "هذه الصفيحة أكبر من الحجم المسموح."
+
+#: src/Calculator.php:113
+msgid "Enter a whole number of bars (1 or more)."
+msgstr "أدخل عددا صحيحا من القطع (1 أو أكثر)."
+
+#: src/Calculator.php:120
+msgid "Enter the total weight in kg."
+msgstr "أدخل الوزن الإجمالي بالكيلوغرام."
+
+#: src/Calculator.php:143
+msgid "Check the dimensions (in mm)."
+msgstr "تحقق من الأبعاد (بالمليمتر)."
+
+#: src/Calculator.php:148
+msgid "The thickness is too large for this size."
+msgstr "السُّمك كبير جدا بالنسبة لهذا المقاس."
+
+#: src/Catalogue.php:96 src/Rest/Api.php:64 src/Rest/Api.php:82
+msgid "Unknown section family."
+msgstr "عائلة مقاطع غير معروفة."
+
+#: src/Catalogue.php:100
+msgid "Enter the designation (for example IPE 200)."
+msgstr "أدخل التسمية (مثلا IPE 200)."
+
+#: src/Catalogue.php:108
+msgid ""
+"Check the dimensions: every value is required, in mm, and thicknesses must "
+"be smaller than the section."
+msgstr ""
+"تحقق من الأبعاد: كل القيم مطلوبة بالمليمتر، ويجب أن تكون السماكات أصغر من "
+"المقطع."
+
+#. translators: 1: mass computed from the dimensions, 2: published mass.
+#: src/Catalogue.php:117
+msgid ""
+"The dimensions give %1$s kg/m but the published mass is %2$s kg/m. Check the"
+" values or confirm with a note."
+msgstr ""
+"تعطي الأبعاد %1$s kg/m بينما الكتلة المنشورة %2$s kg/m. تحقق من القيم أو "
+"أكّد مع ملاحظة."
+
+#: src/Catalogue.php:123
+msgid "This designation already exists in the family."
+msgstr "هذه التسمية موجودة مسبقا في العائلة."
+
+#: src/Rest/Api.php:74
+msgid "Unknown size."
+msgstr "مقاس غير معروف."
