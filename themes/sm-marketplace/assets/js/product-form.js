@@ -80,6 +80,7 @@
 				var fresh = tpl.content.querySelector( '[data-smp-tech]' );
 				if ( ! fresh ) { throw new Error( 'empty' ); }
 				var again = carry( before, tech(), fresh );
+				fresh.classList.add( 'sm-swap-in' );
 				tech().replaceWith( fresh );
 				if ( again ) { clearTimeout( timer ); timer = setTimeout( function () { refresh( null ); }, 300 ); }
 				var el = focusId ? document.getElementById( focusId ) : null;

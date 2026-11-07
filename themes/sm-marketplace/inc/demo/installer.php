@@ -78,7 +78,21 @@ add_action( 'after_switch_theme', 'sm_theme_install_pages' );
 /** After a theme update, create the pages that new versions need (never overwrites). */
 function sm_theme_maybe_install_pages() {
 	if ( get_option( 'sm_theme_pages_version' ) !== SM_THEME_VERSION && current_user_can( 'edit_pages' ) ) {
+		sm_theme_rename_brand();
 		sm_theme_install_pages();
+	}
+}
+
+/**
+ * 0.6.0: the platform is now called ReuSteel. The old default name is
+ * replaced; a name chosen by the administrator is kept.
+ */
+function sm_theme_rename_brand() {
+	if ( 'Steel Marketplace' === get_theme_mod( 'sm_brand_name' ) ) {
+		set_theme_mod( 'sm_brand_name', 'ReuSteel' );
+	}
+	if ( 'Steel Marketplace' === get_option( 'blogname' ) ) {
+		update_option( 'blogname', 'ReuSteel' );
 	}
 }
 add_action( 'admin_init', 'sm_theme_maybe_install_pages' );

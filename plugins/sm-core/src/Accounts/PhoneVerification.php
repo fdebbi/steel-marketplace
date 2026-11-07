@@ -74,7 +74,7 @@ final class PhoneVerification {
 			$phone = get_user_meta( $user_id, 'sm_phone', true );
 			$text  = \SM\Core\I18n\Language::with_language(
 				$lang,
-				static fn() => sprintf( /* translators: %s: 6-digit code. */ __( 'Steel Marketplace: your verification code is %s. It expires in 10 minutes.', 'sm-core' ), $code )
+				static fn() => sprintf( /* translators: 1: platform name, 2: 6-digit code. */ __( '%1$s: your verification code is %2$s. It expires in 10 minutes.', 'sm-core' ), sm_brand_name(), $code )
 			);
 			$result = self::sms_provider()->send( $phone, $text );
 			if ( is_wp_error( $result ) ) {
@@ -85,8 +85,9 @@ final class PhoneVerification {
 				$user_id,
 				static fn() => __( 'Your verification code', 'sm-core' ),
 				static fn() => sprintf(
-					/* translators: %s: 6-digit code. */
-					__( 'Your Steel Marketplace verification code is %s. It expires in 10 minutes. If you did not create an account, ignore this message.', 'sm-core' ),
+					/* translators: 1: platform name, 2: 6-digit code. */
+					__( 'Your %1$s verification code is %2$s. It expires in 10 minutes. If you did not create an account, ignore this message.', 'sm-core' ),
+					esc_html( sm_brand_name() ),
 					'<strong style="font-size:22px;letter-spacing:4px">' . $code . '</strong>'
 				)
 			);

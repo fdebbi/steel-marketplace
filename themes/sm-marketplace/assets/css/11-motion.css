@@ -1,0 +1,95 @@
+/* ==========================================================================
+   Motion and modern touch (0.6.0).
+   Smooth, short and discreet: 150-450 ms, one easing curve, nothing that
+   moves on its own. Everything below is skipped when the device asks for
+   reduced motion. Content is never hidden without JavaScript.
+   ========================================================================== */
+:root {
+	--sm-ease: cubic-bezier(.2, .8, .2, 1);
+	--sm-ease-in: cubic-bezier(.4, 0, 1, 1);
+	--sm-dur-1: 150ms;
+	--sm-dur-2: 250ms;
+	--sm-dur-3: 450ms;
+}
+
+/* Brand word-mark: "Reu" + accented "Steel". */
+.sm-brand__accent { color: var(--sm-accent); }
+.sm-footer .sm-brand__accent { color: var(--sm-accent); }
+
+/* Header: translucent with a soft shadow once the page scrolls. */
+.sm-header { transition: background-color var(--sm-dur-2) var(--sm-ease), box-shadow var(--sm-dur-2) var(--sm-ease); }
+.sm-header.is-scrolled { background: color-mix(in srgb, var(--sm-primary) 90%, transparent); box-shadow: 0 8px 24px -12px rgb(15 23 42 / .45); }
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+	.sm-header.is-scrolled { -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); }
+}
+
+/* Hero: soft light behind the title. */
+.sm-hero::after {
+	content: ""; position: absolute; inset: -20% -10% auto auto; inline-size: 70%; aspect-ratio: 1; pointer-events: none;
+	background: radial-gradient(closest-side, color-mix(in srgb, var(--sm-accent) 28%, transparent), transparent 70%);
+	opacity: .55; filter: blur(8px);
+}
+.sm-hero > * { position: relative; z-index: 1; }
+
+/* Interactive surfaces. */
+.sm-btn { transition: background-color var(--sm-dur-1) var(--sm-ease), border-color var(--sm-dur-1) var(--sm-ease), color var(--sm-dur-1) var(--sm-ease), box-shadow var(--sm-dur-2) var(--sm-ease), transform var(--sm-dur-1) var(--sm-ease); }
+.sm-card { transition: box-shadow var(--sm-dur-2) var(--sm-ease), border-color var(--sm-dur-2) var(--sm-ease), transform var(--sm-dur-2) var(--sm-ease); }
+.sm-card__media img { transition: transform var(--sm-dur-3) var(--sm-ease); }
+.smw-type__card, .smp-cat, .sm-choice__card { transition: border-color var(--sm-dur-1) var(--sm-ease), background-color var(--sm-dur-1) var(--sm-ease), box-shadow var(--sm-dur-2) var(--sm-ease), transform var(--sm-dur-2) var(--sm-ease); }
+a, .sm-link { transition: color var(--sm-dur-1) var(--sm-ease); }
+input, select, textarea { transition: border-color var(--sm-dur-1) var(--sm-ease), box-shadow var(--sm-dur-1) var(--sm-ease); }
+:focus-visible { transition: outline-offset var(--sm-dur-1) var(--sm-ease); }
+
+@media (prefers-reduced-motion: no-preference) {
+	/* Hover lift (pointer devices only, so taps on phones stay still). */
+	@media (hover: hover) {
+		.sm-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px -8px rgb(15 23 42 / .35); }
+		.sm-card:hover { transform: translateY(-3px); box-shadow: var(--sm-shadow); border-color: var(--sm-line-strong); }
+		.sm-card:hover .sm-card__media img { transform: scale(1.035); }
+		.smw-type:hover .smw-type__card, .smp-cat:hover, .sm-choice__item:hover .sm-choice__card { transform: translateY(-2px); box-shadow: var(--sm-shadow); }
+	}
+	.sm-btn:active { transform: translateY(0) scale(.98); }
+	.smw-type input:checked + .smw-type__card .smw-type__icon svg { animation: sm-pop var(--sm-dur-2) var(--sm-ease); }
+
+	/* Things that appear. */
+	.sm-mega:not([hidden]) { animation: sm-drop var(--sm-dur-2) var(--sm-ease); }
+	.sm-drawer:not([hidden]) .sm-drawer__backdrop { animation: sm-fade var(--sm-dur-2) var(--sm-ease); }
+	.sm-drawer__panel { animation: sm-slide-in var(--sm-dur-2) var(--sm-ease); }
+	.sm-drawer.is-leaving .sm-drawer__panel { animation: sm-slide-out 180ms var(--sm-ease-in) forwards; }
+	.sm-drawer.is-leaving .sm-drawer__backdrop { animation: sm-fade 180ms var(--sm-ease-in) reverse forwards; }
+	[dir="rtl"] .sm-drawer__panel { animation-name: sm-slide-in-rtl; }
+	[dir="rtl"] .sm-drawer.is-leaving .sm-drawer__panel { animation-name: sm-slide-out-rtl; }
+	.sm-notice, .sm-toast:not([hidden]) { animation: sm-rise var(--sm-dur-2) var(--sm-ease); }
+	.sm-field-error { animation: sm-fade var(--sm-dur-2) var(--sm-ease); }
+	details[open] > *:not(summary) { animation: sm-rise var(--sm-dur-2) var(--sm-ease); }
+	.sm-step:not([hidden]) { animation: sm-rise var(--sm-dur-2) var(--sm-ease); }
+	.sm-swap-in { animation: sm-fade-up var(--sm-dur-2) var(--sm-ease); }
+	[aria-busy="true"] { transition: opacity var(--sm-dur-1) var(--sm-ease); }
+
+	/* Scroll reveal (classes added by motion.js only). */
+	.sm-js-motion .sm-reveal { opacity: 0; transform: translateY(14px); }
+	.sm-js-motion .sm-reveal.is-in { opacity: 1; transform: none; transition: opacity var(--sm-dur-3) var(--sm-ease) var(--sm-delay, 0ms), transform var(--sm-dur-3) var(--sm-ease) var(--sm-delay, 0ms); }
+
+	/* Page to page: cross-fade, the header stays in place (browsers that support it). */
+	@view-transition { navigation: auto; }
+	.sm-header { view-transition-name: sm-header; }
+	.sm-tabbar { view-transition-name: sm-tabbar; }
+	::view-transition-old(root) { animation: sm-fade 140ms var(--sm-ease-in) reverse both; }
+	::view-transition-new(root) { animation: sm-fade-up 260ms var(--sm-ease) both; }
+}
+
+@keyframes sm-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sm-fade-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes sm-rise { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@keyframes sm-drop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@keyframes sm-pop { 0% { transform: scale(.9); } 60% { transform: scale(1.06); } 100% { transform: none; } }
+/* rtl:begin:ignore */
+@keyframes sm-slide-in { from { transform: translateX(-100%); } to { transform: none; } }
+@keyframes sm-slide-out { from { transform: none; } to { transform: translateX(-100%); } }
+@keyframes sm-slide-in-rtl { from { transform: translateX(100%); } to { transform: none; } }
+@keyframes sm-slide-out-rtl { from { transform: none; } to { transform: translateX(100%); } }
+/* rtl:end:ignore */
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

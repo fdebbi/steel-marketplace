@@ -143,63 +143,61 @@ msgstr "Paramètres enregistrés."
 msgid "Wait one minute before asking for a new code."
 msgstr "Attendez une minute avant de demander un nouveau code."
 
-#. translators: %s: 6-digit code.
+#. translators: 1: platform name, 2: 6-digit code.
 #: src/Accounts/PhoneVerification.php:77
-msgid ""
-"Steel Marketplace: your verification code is %s. It expires in 10 minutes."
+msgid "%1$s: your verification code is %2$s. It expires in 10 minutes."
 msgstr ""
-"Steel Marketplace : votre code de vérification est %s. Il expire dans 10 "
-"minutes."
+"%1$s : votre code de vérification est %2$s. Il expire dans 10 minutes."
 
 #: src/Accounts/PhoneVerification.php:86
 msgid "Your verification code"
 msgstr "Votre code de vérification"
 
-#. translators: %s: 6-digit code.
+#. translators: 1: platform name, 2: 6-digit code.
 #: src/Accounts/PhoneVerification.php:89
 msgid ""
-"Your Steel Marketplace verification code is %s. It expires in 10 minutes. If"
-" you did not create an account, ignore this message."
+"Your %1$s verification code is %2$s. It expires in 10 minutes. If you did "
+"not create an account, ignore this message."
 msgstr ""
-"Votre code de vérification Steel Marketplace est %s. Il expire dans 10 "
-"minutes. Si vous n’avez pas créé de compte, ignorez ce message."
+"Votre code de vérification %1$s est %2$s. Il expire dans 10 minutes. Si vous"
+" n’avez pas créé de compte, ignorez ce message."
 
 #. translators: %s: masked phone number.
-#: src/Accounts/PhoneVerification.php:109
+#: src/Accounts/PhoneVerification.php:110
 msgid "A 6-digit code was sent by SMS to %s."
 msgstr "Un code à 6 chiffres a été envoyé par SMS au %s."
 
 #. translators: %s: masked e-mail address.
-#: src/Accounts/PhoneVerification.php:114
+#: src/Accounts/PhoneVerification.php:115
 msgid "A 6-digit code was sent to %s."
 msgstr "Un code à 6 chiffres a été envoyé à %s."
 
-#: src/Accounts/PhoneVerification.php:121
+#: src/Accounts/PhoneVerification.php:122
 msgid "Ask for a new code."
 msgstr "Demandez un nouveau code."
 
-#: src/Accounts/PhoneVerification.php:124
+#: src/Accounts/PhoneVerification.php:125
 msgid "This code has expired. Ask for a new one."
 msgstr "Ce code a expiré. Demandez-en un nouveau."
 
-#: src/Accounts/PhoneVerification.php:127
+#: src/Accounts/PhoneVerification.php:128
 msgid "Too many wrong codes. Ask for a new one."
 msgstr "Trop de codes erronés. Demandez-en un nouveau."
 
-#: src/Accounts/PhoneVerification.php:133
+#: src/Accounts/PhoneVerification.php:134
 msgid "Wrong code. Check it and try again."
 msgstr "Code incorrect. Vérifiez-le et réessayez."
 
-#: src/Accounts/PhoneVerification.php:157
+#: src/Accounts/PhoneVerification.php:158
 msgid "Your account is verified. You can now publish your services."
 msgstr ""
 "Votre compte est vérifié. Vous pouvez maintenant publier vos services."
 
-#: src/Accounts/PhoneVerification.php:158
+#: src/Accounts/PhoneVerification.php:159
 msgid "Your account is verified. You can now publish."
 msgstr "Votre compte est vérifié. Vous pouvez maintenant publier."
 
-#: src/Accounts/PhoneVerification.php:165
+#: src/Accounts/PhoneVerification.php:166
 msgid "Too many codes requested. Try again in an hour."
 msgstr "Trop de codes demandés. Réessayez dans une heure."
 
@@ -625,29 +623,30 @@ msgstr ""
 msgid "Enquiry not found."
 msgstr "Demande introuvable."
 
-#: src/Notifications/Notifications.php:31
-msgid "New enquiry on Steel Marketplace"
-msgstr "Nouvelle demande sur Steel Marketplace"
+#. translators: %s: platform name.
+#: src/Notifications/Notifications.php:32
+msgid "New enquiry on %s"
+msgstr "Nouvelle demande sur %s"
 
 #. translators: 1: sender name, 2: subject of the enquiry.
-#: src/Notifications/Notifications.php:34
+#: src/Notifications/Notifications.php:35
 msgid "%1$s sent you an enquiry: %2$s"
 msgstr "%1$s vous a envoyé une demande : %2$s"
 
-#: src/Notifications/Notifications.php:42
+#: src/Notifications/Notifications.php:43
 msgid "New verification request to review"
 msgstr "Nouvelle demande de vérification à examiner"
 
 #. translators: %s: company name.
-#: src/Notifications/Notifications.php:45
+#: src/Notifications/Notifications.php:46
 msgid "%s submitted documents for verification."
 msgstr "%s a envoyé des documents pour vérification."
 
-#: src/Notifications/Notifications.php:52
+#: src/Notifications/Notifications.php:53
 msgid "Your account is verified"
 msgstr "Votre compte est vérifié"
 
-#: src/Notifications/Notifications.php:53
+#: src/Notifications/Notifications.php:54
 msgid ""
 "Good news: the platform team verified your documents. The verified badge now"
 " appears on your company page and listings."
@@ -655,24 +654,24 @@ msgstr ""
 "Bonne nouvelle : l’équipe de la plateforme a vérifié vos documents. Le badge"
 " vérifié apparaît désormais sur votre page et vos annonces."
 
-#: src/Notifications/Notifications.php:58
+#: src/Notifications/Notifications.php:59
 msgid "Your verification request needs changes"
 msgstr "Votre demande de vérification doit être complétée"
 
-#: src/Notifications/Notifications.php:59
+#: src/Notifications/Notifications.php:60
 msgid "The platform team could not validate your documents."
 msgstr "L’équipe de la plateforme n’a pas pu valider vos documents."
 
-#: src/Notifications/Notifications.php:99
+#: src/Notifications/Notifications.php:100
 msgid "Open"
 msgstr "Ouvrir"
 
 #. translators: %s: user display name.
-#: src/Notifications/Notifications.php:139
+#: src/Notifications/Notifications.php:140
 msgid "Hello %s,"
 msgstr "Bonjour %s,"
 
-#: src/Notifications/Notifications.php:141
+#: src/Notifications/Notifications.php:142
 msgid "You receive this e-mail because you have an account on the platform."
 msgstr "Vous recevez cet e-mail car vous avez un compte sur la plateforme."
 

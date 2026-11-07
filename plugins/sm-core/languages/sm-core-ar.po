@@ -140,61 +140,59 @@ msgstr "تم حفظ الإعدادات."
 msgid "Wait one minute before asking for a new code."
 msgstr "انتظر دقيقة قبل طلب رمز جديد."
 
-#. translators: %s: 6-digit code.
+#. translators: 1: platform name, 2: 6-digit code.
 #: src/Accounts/PhoneVerification.php:77
-msgid ""
-"Steel Marketplace: your verification code is %s. It expires in 10 minutes."
-msgstr ""
-"Steel Marketplace: رمز التحقق الخاص بك هو %s. تنتهي صلاحيته بعد 10 دقائق."
+msgid "%1$s: your verification code is %2$s. It expires in 10 minutes."
+msgstr "%1$s: رمز التحقق الخاص بك هو %2$s. تنتهي صلاحيته خلال 10 دقائق."
 
 #: src/Accounts/PhoneVerification.php:86
 msgid "Your verification code"
 msgstr "رمز التحقق الخاص بك"
 
-#. translators: %s: 6-digit code.
+#. translators: 1: platform name, 2: 6-digit code.
 #: src/Accounts/PhoneVerification.php:89
 msgid ""
-"Your Steel Marketplace verification code is %s. It expires in 10 minutes. If"
-" you did not create an account, ignore this message."
+"Your %1$s verification code is %2$s. It expires in 10 minutes. If you did "
+"not create an account, ignore this message."
 msgstr ""
-"رمز التحقق الخاص بك في Steel Marketplace هو %s. تنتهي صلاحيته بعد 10 دقائق. "
-"إذا لم تنشئ حسابا فتجاهل هذه الرسالة."
+"رمز التحقق الخاص بك في %1$s هو %2$s. تنتهي صلاحيته خلال 10 دقائق. إذا لم "
+"تنشئ حسابا، تجاهل هذه الرسالة."
 
 #. translators: %s: masked phone number.
-#: src/Accounts/PhoneVerification.php:109
+#: src/Accounts/PhoneVerification.php:110
 msgid "A 6-digit code was sent by SMS to %s."
 msgstr "أُرسل رمز من 6 أرقام عبر رسالة قصيرة إلى %s."
 
 #. translators: %s: masked e-mail address.
-#: src/Accounts/PhoneVerification.php:114
+#: src/Accounts/PhoneVerification.php:115
 msgid "A 6-digit code was sent to %s."
 msgstr "أُرسل رمز من 6 أرقام إلى %s."
 
-#: src/Accounts/PhoneVerification.php:121
+#: src/Accounts/PhoneVerification.php:122
 msgid "Ask for a new code."
 msgstr "اطلب رمزا جديدا."
 
-#: src/Accounts/PhoneVerification.php:124
+#: src/Accounts/PhoneVerification.php:125
 msgid "This code has expired. Ask for a new one."
 msgstr "انتهت صلاحية هذا الرمز. اطلب رمزا جديدا."
 
-#: src/Accounts/PhoneVerification.php:127
+#: src/Accounts/PhoneVerification.php:128
 msgid "Too many wrong codes. Ask for a new one."
 msgstr "رموز خاطئة كثيرة. اطلب رمزا جديدا."
 
-#: src/Accounts/PhoneVerification.php:133
+#: src/Accounts/PhoneVerification.php:134
 msgid "Wrong code. Check it and try again."
 msgstr "رمز خاطئ. تحقق منه وأعد المحاولة."
 
-#: src/Accounts/PhoneVerification.php:157
+#: src/Accounts/PhoneVerification.php:158
 msgid "Your account is verified. You can now publish your services."
 msgstr "تم توثيق حسابك. يمكنك الآن نشر خدماتك."
 
-#: src/Accounts/PhoneVerification.php:158
+#: src/Accounts/PhoneVerification.php:159
 msgid "Your account is verified. You can now publish."
 msgstr "تم توثيق حسابك. يمكنك الآن النشر."
 
-#: src/Accounts/PhoneVerification.php:165
+#: src/Accounts/PhoneVerification.php:166
 msgid "Too many codes requested. Try again in an hour."
 msgstr "طلبت رموزا كثيرة. أعد المحاولة بعد ساعة."
 
@@ -606,29 +604,30 @@ msgstr "تم إرسال استفسارك. ستتواصل معك المؤسسة �
 msgid "Enquiry not found."
 msgstr "الاستفسار غير موجود."
 
-#: src/Notifications/Notifications.php:31
-msgid "New enquiry on Steel Marketplace"
-msgstr "استفسار جديد على Steel Marketplace"
+#. translators: %s: platform name.
+#: src/Notifications/Notifications.php:32
+msgid "New enquiry on %s"
+msgstr "استفسار جديد على %s"
 
 #. translators: 1: sender name, 2: subject of the enquiry.
-#: src/Notifications/Notifications.php:34
+#: src/Notifications/Notifications.php:35
 msgid "%1$s sent you an enquiry: %2$s"
 msgstr "أرسل لك %1$s استفسارا: %2$s"
 
-#: src/Notifications/Notifications.php:42
+#: src/Notifications/Notifications.php:43
 msgid "New verification request to review"
 msgstr "طلب توثيق جديد للمراجعة"
 
 #. translators: %s: company name.
-#: src/Notifications/Notifications.php:45
+#: src/Notifications/Notifications.php:46
 msgid "%s submitted documents for verification."
 msgstr "أرسلت %s وثائق للتوثيق."
 
-#: src/Notifications/Notifications.php:52
+#: src/Notifications/Notifications.php:53
 msgid "Your account is verified"
 msgstr "تم توثيق حسابك"
 
-#: src/Notifications/Notifications.php:53
+#: src/Notifications/Notifications.php:54
 msgid ""
 "Good news: the platform team verified your documents. The verified badge now"
 " appears on your company page and listings."
@@ -636,24 +635,24 @@ msgstr ""
 "خبر سار: تحقق فريق المنصة من وثائقك. تظهر شارة التوثيق الآن في صفحة مؤسستك "
 "وإعلاناتك."
 
-#: src/Notifications/Notifications.php:58
+#: src/Notifications/Notifications.php:59
 msgid "Your verification request needs changes"
 msgstr "طلب التوثيق يحتاج إلى تعديلات"
 
-#: src/Notifications/Notifications.php:59
+#: src/Notifications/Notifications.php:60
 msgid "The platform team could not validate your documents."
 msgstr "لم يتمكن فريق المنصة من قبول وثائقك."
 
-#: src/Notifications/Notifications.php:99
+#: src/Notifications/Notifications.php:100
 msgid "Open"
 msgstr "فتح"
 
 #. translators: %s: user display name.
-#: src/Notifications/Notifications.php:139
+#: src/Notifications/Notifications.php:140
 msgid "Hello %s,"
 msgstr "مرحبا %s،"
 
-#: src/Notifications/Notifications.php:141
+#: src/Notifications/Notifications.php:142
 msgid "You receive this e-mail because you have an account on the platform."
 msgstr "تصلك هذه الرسالة لأن لديك حسابا على المنصة."
 

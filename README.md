@@ -1,4 +1,4 @@
-# Steel Marketplace
+# ReuSteel (projet Steel Marketplace)
 
 Plateforme industrielle B2B/B2C de l'acier en Algérie : produits sidérurgiques au kilo, réemploi (chutes, surplus, occasion), bâtiments métalliques, fabrication/montage et services d'ingénierie. Bilingue arabe (RTL) / français (LTR), responsive mobile → desktop.
 
@@ -8,7 +8,7 @@ Architecture : un thème WordPress sur mesure (présentation uniquement) + des e
 
 | Dossier | Contenu | État |
 | --- | --- | --- |
-| `themes/sm-marketplace/` | Thème de présentation | 0.5.0 |
+| `themes/sm-marketplace/` | Thème de présentation | 0.6.0 |
 | `plugins/sm-products/` | Marché des produits neufs : publication par catégorie, modération, annonces | 0.1.0 — Phase 4 |
 | `plugins/sm-weight-engine/` | Catalogue acier vérifié, schémas exacts, calcul des poids | 0.1.0 — Phase 3 |
 | `plugins/sm-core/` | Socle : comptes, permissions, vérification, langues, notifications, demandes, API | 0.2.0 — Phase 2 |

@@ -58,6 +58,7 @@
 					var twin = fresh.querySelector( '[name="' + el.name.replace( /"/g, '' ) + '"]:not([type="radio"])' );
 					if ( twin ) { twin.value = el.value; again = true; }
 				} );
+				fresh.classList.add( 'sm-swap-in' );
 				form.replaceWith( fresh );
 				bind( fresh );
 				if ( again ) { clearTimeout( timer ); timer = setTimeout( function () { refresh( fresh, null ); }, 300 ); }

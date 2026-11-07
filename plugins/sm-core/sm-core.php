@@ -3,7 +3,7 @@
  * Plugin Name:       SM Core
  * Plugin URI:        https://github.com/fdebbi/steel-marketplace
  * Description:       Central foundation of Steel Marketplace: accounts and companies, business activities, permissions, verification, languages (/ar/), notifications, enquiries, audit log and the sm/v1 REST API. Every other sm-* plugin depends on it.
- * Version:           0.3.0
+ * Version:           0.3.1
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Author:            Steel Marketplace
@@ -16,7 +16,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_CORE_VERSION', '0.3.0' );
+define( 'SM_CORE_VERSION', '0.3.1' );
 define( 'SM_CORE_DB_VERSION', 3 );
 define( 'SM_CORE_FILE', __FILE__ );
 define( 'SM_CORE_DIR', __DIR__ );

@@ -26,6 +26,14 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Documents de vérification | Stockés au-dessus du dossier public quand c'est possible | Inaccessibles par URL quel que soit le serveur |
 | Contact | Compte obligatoire pour contacter un vendeur ou demander une prestation (conforme Phase 0) ; demandes sur annonces de démonstration envoyées aux modérateurs | |
 
+## 7 novembre 2026 — nom et style
+
+| Sujet | Décision | Raison |
+| --- | --- | --- |
+| Nom | **ReuSteel** (domaine reusteel.com disponible selon le client), écrit « Reu » + « Steel » en couleur d'accent | Choix du client ; met en avant le réemploi du fabricant d'acier |
+| Code | Les identifiants techniques restent `sm-*` (extensions, tables, fonctions) | Renommer le code n'apporte rien aux utilisateurs et casserait les installations |
+| Animations | Courtes, discrètes, désactivées si l'appareil demande moins d'animations | Touche moderne sans gêner les téléphones modestes ni l'accessibilité |
+
 ## 7 novembre 2026 — Phase 4 (produits neufs)
 
 | Sujet | Décision | Raison |

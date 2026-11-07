@@ -140,7 +140,7 @@ msgstr "الأسعار المعروضة يحددها البائعون وليست
 msgid "Quick navigation"
 msgstr "تنقل سريع"
 
-#: footer.php:55 inc/template-tags.php:259
+#: footer.php:55 inc/template-tags.php:265
 msgid "Home"
 msgstr "الرئيسية"
 
@@ -174,7 +174,7 @@ msgstr "السوق الصناعية للفولاذ في الجزائر"
 msgid "Utility"
 msgstr "روابط مفيدة"
 
-#: header.php:41 inc/assets.php:32
+#: header.php:41 inc/assets.php:33
 msgid "Open menu"
 msgstr "فتح القائمة"
 
@@ -227,7 +227,7 @@ msgstr "خدماتي"
 msgid "Menu"
 msgstr "القائمة"
 
-#: header.php:111 inc/assets.php:33
+#: header.php:111 inc/assets.php:34
 msgid "Close menu"
 msgstr "إغلاق القائمة"
 
@@ -245,82 +245,82 @@ msgstr "نشر إعلان"
 msgid "Sign out"
 msgstr "تسجيل الخروج"
 
-#: inc/assets.php:34 templates/auth-login.php:32
+#: inc/assets.php:35 templates/auth-login.php:32
 #: templates/auth-register.php:82
 msgid "Show"
 msgstr "إظهار"
 
-#: inc/assets.php:35
+#: inc/assets.php:36
 msgid "Hide"
 msgstr "إخفاء"
 
-#: inc/assets.php:36
+#: inc/assets.php:37
 msgid "Saved"
 msgstr "تم الحفظ"
 
-#: inc/assets.php:37
+#: inc/assets.php:38
 msgid "Removed from saved listings"
 msgstr "أزيل من الإعلانات المحفوظة"
 
-#: inc/assets.php:84
+#: inc/assets.php:85
 msgid "Company position. Drag it, or use the arrow keys."
 msgstr "موقع المؤسسة. اسحبه أو استعمل أسهم لوحة المفاتيح."
 
-#: inc/assets.php:85 template-parts/components/location-map.php:59
+#: inc/assets.php:86 template-parts/components/location-map.php:59
 msgid "No position yet."
 msgstr "لم يُحدَّد أي موقع بعد."
 
-#: inc/assets.php:86
+#: inc/assets.php:87
 msgid "Drag the marker to your exact address, or click the map."
 msgstr "اسحب العلامة إلى عنوانك بالضبط، أو انقر على الخريطة."
 
-#: inc/assets.php:87
+#: inc/assets.php:88
 msgid "Position placed:"
 msgstr "تم تحديد الموقع:"
 
-#: inc/assets.php:88
+#: inc/assets.php:89
 msgid "Current location found:"
 msgstr "تم العثور على موقعك الحالي:"
 
 #. translators: %d: accuracy in metres.
-#: inc/assets.php:90
+#: inc/assets.php:91
 msgid "Approximate (about %d m): drag the marker to correct it."
 msgstr "تقريبي (حوالي %d م): اسحب العلامة لتصحيحه."
 
-#: inc/assets.php:91
+#: inc/assets.php:92
 msgid "Looking for your location…"
 msgstr "جارٍ البحث عن موقعك…"
 
-#: inc/assets.php:92
+#: inc/assets.php:93
 msgid ""
 "Location access was refused. Allow it in your browser, or place the marker "
 "by hand."
 msgstr "تم رفض الوصول إلى الموقع. اسمح به في متصفحك، أو ضع العلامة يدويا."
 
-#: inc/assets.php:93
+#: inc/assets.php:94
 msgid "Your location could not be found. Place the marker by hand."
 msgstr "تعذّر العثور على موقعك. ضع العلامة يدويا."
 
-#: inc/assets.php:94
+#: inc/assets.php:95
 msgid ""
 "Finding your location took too long. Try again or place the marker by hand."
 msgstr "استغرق البحث عن موقعك وقتا طويلا. أعد المحاولة أو ضع العلامة يدويا."
 
-#: inc/assets.php:95
+#: inc/assets.php:96
 msgid ""
 "Your browser only shares your location on a secure (https) site. Place the "
 "marker by hand."
 msgstr "لا يشارك متصفحك الموقع إلا على موقع آمن (https). ضع العلامة يدويا."
 
-#: inc/assets.php:96
+#: inc/assets.php:97
 msgid "This position is outside Algeria. Place the marker on your address."
 msgstr "هذا الموقع خارج الجزائر. ضع العلامة على عنوانك."
 
-#: inc/assets.php:97
+#: inc/assets.php:98
 msgid "Wilaya changed: place the marker again on your address."
 msgstr "تم تغيير الولاية: ضع العلامة من جديد على عنوانك."
 
-#: inc/assets.php:98
+#: inc/assets.php:99
 msgid "Position removed. It will be deleted when you save."
 msgstr "تمت إزالة الموقع. سيُحذف عند الحفظ."
 
@@ -376,22 +376,22 @@ msgstr "اسم العلامة (يظهر عند غياب الشعار)"
 msgid "Show demo listings when no marketplace plugin provides data"
 msgstr "عرض إعلانات تجريبية ما دامت إضافات السوق لا توفر بيانات"
 
-#: inc/demo/installer.php:89 inc/demo/installer.php:90
-#: inc/demo/installer.php:104
+#: inc/demo/installer.php:103 inc/demo/installer.php:104
+#: inc/demo/installer.php:118
 msgid "SM Pages"
 msgstr "صفحات SM"
 
-#: inc/demo/installer.php:101
+#: inc/demo/installer.php:115
 msgid "Missing pages were created."
 msgstr "تم إنشاء الصفحات الناقصة."
 
-#: inc/demo/installer.php:105
+#: inc/demo/installer.php:119
 msgid ""
 "Pages used by the theme templates. Existing pages are never overwritten."
 msgstr ""
 "الصفحات التي تستعملها قوالب القالب. لا يتم استبدال الصفحات الموجودة أبدا."
 
-#: inc/demo/installer.php:113
+#: inc/demo/installer.php:127
 msgid "Create missing pages"
 msgstr "إنشاء الصفحات الناقصة"
 
@@ -540,7 +540,7 @@ msgstr[3] "منذ %s أيام"
 msgstr[4] "منذ %s يوما"
 msgstr[5] "منذ %s يوم"
 
-#: inc/template-tags.php:258
+#: inc/template-tags.php:264
 msgid "Breadcrumb"
 msgstr "مسار التنقل"
 

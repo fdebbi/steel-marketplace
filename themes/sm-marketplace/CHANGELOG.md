@@ -1,5 +1,12 @@
 # Changelog — sm-marketplace
 
+## 0.6.0 — 2026-11-07 (nom ReuSteel, animations)
+
+- La plateforme s'appelle **ReuSteel** : nom par défaut, logo-texte « Reu » + « Steel » en couleur d'accent, titre du site. Un nom déjà choisi dans le Personnalisateur est conservé.
+- Animations douces (150 à 450 ms, une seule courbe) : apparition progressive des sections au défilement, transition fondue entre les pages (navigateurs compatibles), en-tête translucide au défilement, cartes et boutons qui se soulèvent au survol, menu mobile qui glisse à l'ouverture et à la fermeture, méga-menu, messages et étapes qui apparaissent en fondu, mises à jour en direct du calculateur et du formulaire en fondu.
+- Lumière douce dans le bandeau d'accueil.
+- Tout est désactivé quand l'appareil demande moins d'animations ; sans JavaScript, rien n'est caché.
+
 ## 0.5.0 — 2026-11-07 (Phase 4, avec sm-products 0.1.0)
 
 - « Publier une annonce » : formulaire réel par catégorie (catégorie → données techniques avec schéma, quantité en barres ou en poids total, prix et résumé en direct → titre et description → photos et fiche technique PDF → wilaya), brouillon ou envoi pour publication. Fonctionne sans JavaScript (bouton « Mettre à jour »).

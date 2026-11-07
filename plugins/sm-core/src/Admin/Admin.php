@@ -40,7 +40,7 @@ final class Admin {
 	public static function menu() {
 		$pending = count( Verifications::pending() );
 		$badge   = $pending ? ' <span class="awaiting-mod">' . (int) $pending . '</span>' : '';
-		add_menu_page( 'Steel Marketplace', 'Steel Marketplace' . $badge, 'sm_moderate', 'sm-core', array( __CLASS__, 'page_overview' ), 'dashicons-building', 3 );
+		add_menu_page( sm_brand_name(), sm_brand_name() . $badge, 'sm_moderate', 'sm-core', array( __CLASS__, 'page_overview' ), 'dashicons-building', 3 );
 		add_submenu_page( 'sm-core', __( 'Overview', 'sm-core' ), __( 'Overview', 'sm-core' ), 'sm_moderate', 'sm-core', array( __CLASS__, 'page_overview' ) );
 		add_submenu_page( 'sm-core', __( 'Companies', 'sm-core' ), __( 'Companies', 'sm-core' ), 'sm_moderate', 'sm-companies', array( __CLASS__, 'page_companies' ) );
 		add_submenu_page( 'sm-core', __( 'Verifications', 'sm-core' ), __( 'Verifications', 'sm-core' ) . $badge, 'sm_moderate', 'sm-verifications', array( __CLASS__, 'page_verifications' ) );
@@ -92,7 +92,7 @@ final class Admin {
 		global $wpdb;
 		$count = static fn( $sql ) => (int) $wpdb->get_var( $sql ); // phpcs:ignore WordPress.DB
 		$c     = sm_table( 'companies' );
-		echo '<div class="wrap sm-admin"><h1>Steel Marketplace</h1>';
+		echo '<div class="wrap sm-admin"><h1>' . esc_html( sm_brand_name() ) . '</h1>';
 		echo '<div class="sm-cards">';
 		printf( '<div><span>%s</span><strong>%d</strong></div>', esc_html__( 'Business accounts', 'sm-core' ), $count( "SELECT COUNT(*) FROM $c WHERE account_class='commercial' AND deleted_at IS NULL" ) ); // phpcs:ignore
 		printf( '<div><span>%s</span><strong>%d</strong></div>', esc_html__( 'Engineering accounts', 'sm-core' ), $count( "SELECT COUNT(*) FROM $c WHERE account_class='engineering' AND deleted_at IS NULL" ) ); // phpcs:ignore

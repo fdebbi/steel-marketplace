@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.4.0\n"
+"Project-Id-Version: SM Marketplace 0.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-07T16:09:30+00:00\n"
+"POT-Creation-Date: 2026-11-07T17:41:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -178,7 +178,7 @@ msgid "Quick navigation"
 msgstr ""
 
 #: footer.php:55
-#: inc/template-tags.php:259
+#: inc/template-tags.php:265
 msgid "Home"
 msgstr ""
 
@@ -218,7 +218,7 @@ msgid "Utility"
 msgstr ""
 
 #: header.php:41
-#: inc/assets.php:32
+#: inc/assets.php:33
 msgid "Open menu"
 msgstr ""
 
@@ -281,7 +281,7 @@ msgid "Menu"
 msgstr ""
 
 #: header.php:111
-#: inc/assets.php:33
+#: inc/assets.php:34
 msgid "Close menu"
 msgstr ""
 
@@ -304,79 +304,79 @@ msgstr ""
 msgid "Sign out"
 msgstr ""
 
-#: inc/assets.php:34
+#: inc/assets.php:35
 #: templates/auth-login.php:32
 #: templates/auth-register.php:82
 msgid "Show"
 msgstr ""
 
-#: inc/assets.php:35
+#: inc/assets.php:36
 msgid "Hide"
 msgstr ""
 
-#: inc/assets.php:36
+#: inc/assets.php:37
 msgid "Saved"
 msgstr ""
 
-#: inc/assets.php:37
+#: inc/assets.php:38
 msgid "Removed from saved listings"
 msgstr ""
 
-#: inc/assets.php:84
+#: inc/assets.php:85
 msgid "Company position. Drag it, or use the arrow keys."
 msgstr ""
 
-#: inc/assets.php:85
+#: inc/assets.php:86
 #: template-parts/components/location-map.php:59
 msgid "No position yet."
 msgstr ""
 
-#: inc/assets.php:86
+#: inc/assets.php:87
 msgid "Drag the marker to your exact address, or click the map."
 msgstr ""
 
-#: inc/assets.php:87
+#: inc/assets.php:88
 msgid "Position placed:"
 msgstr ""
 
-#: inc/assets.php:88
+#: inc/assets.php:89
 msgid "Current location found:"
 msgstr ""
 
 #. translators: %d: accuracy in metres.
-#: inc/assets.php:90
+#: inc/assets.php:91
 msgid "Approximate (about %d m): drag the marker to correct it."
 msgstr ""
 
-#: inc/assets.php:91
+#: inc/assets.php:92
 msgid "Looking for your location…"
 msgstr ""
 
-#: inc/assets.php:92
+#: inc/assets.php:93
 msgid "Location access was refused. Allow it in your browser, or place the marker by hand."
 msgstr ""
 
-#: inc/assets.php:93
+#: inc/assets.php:94
 msgid "Your location could not be found. Place the marker by hand."
 msgstr ""
 
-#: inc/assets.php:94
+#: inc/assets.php:95
 msgid "Finding your location took too long. Try again or place the marker by hand."
 msgstr ""
 
-#: inc/assets.php:95
+#: inc/assets.php:96
 msgid "Your browser only shares your location on a secure (https) site. Place the marker by hand."
 msgstr ""
 
-#: inc/assets.php:96
+#: inc/assets.php:97
 msgid "This position is outside Algeria. Place the marker on your address."
 msgstr ""
 
-#: inc/assets.php:97
+#: inc/assets.php:98
 msgid "Wilaya changed: place the marker again on your address."
 msgstr ""
 
-#: inc/assets.php:98
+#: inc/assets.php:99
 msgid "Position removed. It will be deleted when you save."
 msgstr ""
 
@@ -428,21 +428,21 @@ msgstr ""
 msgid "Show demo listings when no marketplace plugin provides data"
 msgstr ""
 
-#: inc/demo/installer.php:89
-#: inc/demo/installer.php:90
+#: inc/demo/installer.php:103
 #: inc/demo/installer.php:104
+#: inc/demo/installer.php:118
 msgid "SM Pages"
 msgstr ""
 
-#: inc/demo/installer.php:101
+#: inc/demo/installer.php:115
 msgid "Missing pages were created."
 msgstr ""
 
-#: inc/demo/installer.php:105
+#: inc/demo/installer.php:119
 msgid "Pages used by the theme templates. Existing pages are never overwritten."
 msgstr ""
 
-#: inc/demo/installer.php:113
+#: inc/demo/installer.php:127
 msgid "Create missing pages"
 msgstr ""
 
@@ -586,7 +586,7 @@ msgid_plural "%s days ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:258
+#: inc/template-tags.php:264
 msgid "Breadcrumb"
 msgstr ""
 

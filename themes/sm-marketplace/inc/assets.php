@@ -22,6 +22,7 @@ function sm_theme_enqueue_assets() {
 	wp_style_add_data( 'sm-main', 'suffix', '' );
 
 	wp_enqueue_script( 'sm-main', SM_THEME_URI . '/assets/js/main.js', array(), sm_theme_asset_version( 'assets/js/main.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	wp_enqueue_script( 'sm-motion', SM_THEME_URI . '/assets/js/motion.js', array(), sm_theme_asset_version( 'assets/js/motion.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	wp_localize_script(
 		'sm-main',
 		'smTheme',

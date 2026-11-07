@@ -248,7 +248,13 @@ function sm_brand() {
 		echo wp_get_attachment_image( $logo_id, 'full', false, array( 'class' => 'sm-brand__logo', 'alt' => esc_attr( sm_theme_brand_name() ) ) );
 	} else {
 		echo '<span class="sm-brand__mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 7h22v4H18.5v10H27v4H5v-4h8.5V11H5z" fill="currentColor"/></svg></span>';
-		echo '<span class="sm-brand__name">' . esc_html( sm_theme_brand_name() ) . '</span>';
+		// "ReuSteel" -> "Reu" + accented "Steel" (any CamelCase name is split the same way).
+		$name = sm_theme_brand_name();
+		if ( preg_match( '/^(\p{Lu}\p{Ll}+)(\p{Lu}.*)$/u', $name, $m ) ) {
+			echo '<span class="sm-brand__name">' . esc_html( $m[1] ) . '<span class="sm-brand__accent">' . esc_html( $m[2] ) . '</span></span>';
+		} else {
+			echo '<span class="sm-brand__name">' . esc_html( $name ) . '</span>';
+		}
 	}
 	echo '</a>';
 }

@@ -90,7 +90,7 @@ def main():
                     path, who = spec if isinstance(spec, tuple) else (spec, None)
                     pages_by_account.setdefault(who, []).append((name, path))
                 for who, entries in pages_by_account.items():
-                  ctx = browser.new_context(viewport={'width': width, 'height': 900}, device_scale_factor=1)
+                  ctx = browser.new_context(viewport={'width': width, 'height': 900}, device_scale_factor=1, reduced_motion='reduce')
                   page = ctx.new_page()
                   login(page, who)
                   for name, path in entries:

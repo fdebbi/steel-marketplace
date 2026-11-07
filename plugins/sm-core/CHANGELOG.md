@@ -1,5 +1,9 @@
 # Changelog — sm-core
 
+## 0.3.1 — 2026-11-07
+
+- Nom de la plateforme dans les e-mails, le code de vérification et le menu d'administration : `sm_brand_name()` (« ReuSteel » par défaut, suit le Personnalisateur).
+
 ## 0.3.0 — 2026-11-07 (Phase 4)
 
 - Index des annonces (`SM\Core\Listings\Index`) : un numéro public par annonce, commun à tous les marchés ; prix, unité, total, date de mise à jour (base v3) ; propriétaire pour les demandes de contact.

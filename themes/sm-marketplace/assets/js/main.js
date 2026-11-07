@@ -21,9 +21,17 @@
 	/* ---- Mobile drawer -------------------------------------------------- */
 	var drawer = $( '[data-sm-drawer]' );
 	var opener = $( '[data-sm-drawer-open]' );
+	var calm = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
 	function setDrawer( open ) {
 		if ( ! drawer ) { return; }
-		drawer.hidden = ! open;
+		if ( ! open && ! drawer.hidden && ! calm ) {
+			// Let the panel slide out before hiding it.
+			drawer.classList.add( 'is-leaving' );
+			setTimeout( function () { drawer.hidden = true; drawer.classList.remove( 'is-leaving' ); }, 180 );
+		} else {
+			drawer.classList.remove( 'is-leaving' );
+			drawer.hidden = ! open;
+		}
 		document.body.classList.toggle( 'sm-no-scroll', open );
 		if ( opener ) { opener.setAttribute( 'aria-expanded', String( open ) ); }
 		if ( open ) {

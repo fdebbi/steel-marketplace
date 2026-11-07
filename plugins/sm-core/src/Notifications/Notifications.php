@@ -28,7 +28,8 @@ final class Notifications {
 		$types = array(
 			'enquiry.received'       => array(
 				'email'   => true,
-				'subject' => static fn( $p ) => __( 'New enquiry on Steel Marketplace', 'sm-core' ),
+				/* translators: %s: platform name. */
+				'subject' => static fn( $p ) => sprintf( __( 'New enquiry on %s', 'sm-core' ), sm_brand_name() ),
 				'body'    => static fn( $p ) => sprintf(
 					/* translators: 1: sender name, 2: subject of the enquiry. */
 					__( '%1$s sent you an enquiry: %2$s', 'sm-core' ),
@@ -129,7 +130,7 @@ final class Notifications {
 			$lang,
 			static function () use ( $user, $subject, $body_html, $lang ) {
 				$dir     = Language::dir( $lang );
-				$brand   = get_theme_mod( 'sm_brand_name', 'Steel Marketplace' );
+				$brand   = sm_brand_name();
 				$primary = sanitize_hex_color( get_theme_mod( 'sm_color_primary', '#172B3A' ) ) ?: '#172B3A';
 				$html    = '<!doctype html><html lang="' . esc_attr( $lang ) . '" dir="' . esc_attr( $dir ) . '"><body style="margin:0;background:#F1F5F9;font-family:Arial,Tahoma,sans-serif;color:#0f172a">'
 					. '<div style="max-width:560px;margin:24px auto;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e2e8f0;text-align:' . ( 'rtl' === $dir ? 'right' : 'left' ) . '">'

@@ -88,7 +88,7 @@ function sm_theme_customize_register( WP_Customize_Manager $wp_customize ) {
 	$wp_customize->add_setting(
 		'sm_brand_name',
 		array(
-			'default'           => 'Steel Marketplace',
+			'default'           => 'ReuSteel',
 			'sanitize_callback' => 'sanitize_text_field',
 			'transport'         => 'postMessage',
 		)
@@ -147,5 +147,6 @@ add_action( 'customize_preview_init', 'sm_theme_customize_preview_js' );
 
 /** Brand name used in header/footer when no custom logo is uploaded. */
 function sm_theme_brand_name() {
-	return get_theme_mod( 'sm_brand_name', 'Steel Marketplace' );
+	$name = trim( (string) get_theme_mod( 'sm_brand_name', 'ReuSteel' ) );
+	return '' === $name ? 'ReuSteel' : $name;
 }

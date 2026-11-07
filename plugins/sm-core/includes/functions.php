@@ -86,3 +86,9 @@ function sm_route_arg( $key ) {
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	return isset( $_GET[ $key ] ) ? sanitize_text_field( wp_unslash( $_GET[ $key ] ) ) : '';
 }
+
+/** Public name of the platform (set in the theme Customizer, "ReuSteel" by default). */
+function sm_brand_name() {
+	$name = trim( (string) get_theme_mod( 'sm_brand_name', '' ) );
+	return '' !== $name ? $name : 'ReuSteel';
+}

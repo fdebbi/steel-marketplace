@@ -85,8 +85,7 @@
 /* Mobile drawer */
 .sm-drawer { position: fixed; inset: 0; z-index: 80; }
 .sm-drawer__backdrop { position: absolute; inset: 0; background: rgb(15 23 42 / .5); }
-.sm-drawer__panel { position: absolute; inset-block: 0; inset-inline-start: 0; inline-size: min(88vw, 380px); display: flex; flex-direction: column; background: var(--sm-surface); box-shadow: var(--sm-shadow-lg); overflow-y: auto; animation: sm-slide-in .2s ease-out; }
-@keyframes sm-slide-in { from { transform: translateX(-100%); } to { transform: none; } }
+.sm-drawer__panel { position: absolute; inset-block: 0; inset-inline-start: 0; inline-size: min(88vw, 380px); display: flex; flex-direction: column; background: var(--sm-surface); box-shadow: var(--sm-shadow-lg); overflow-y: auto; }
 .sm-drawer__head { display: flex; align-items: center; justify-content: space-between; padding: var(--sm-s3) var(--sm-s4); background: var(--sm-primary); color: var(--sm-on-dark); }
 .sm-drawer__head .sm-icon-btn:hover { background: color-mix(in srgb, #fff 10%, transparent); color: var(--sm-on-dark); }
 .sm-drawer__nav { display: grid; padding-inline: var(--sm-s2); }
