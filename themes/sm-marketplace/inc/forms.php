@@ -119,6 +119,11 @@ function sm_theme_aria( $field ) {
 	}
 }
 
+/** All previously submitted values (after a failed submission), or an empty array. */
+function sm_theme_old_all() {
+	return (array) apply_filters( 'sm_form_old_all', array() );
+}
+
 /** Previously submitted value (after a failed submission) or $default. */
 function sm_theme_old( $field, $default = '' ) {
 	return apply_filters( 'sm_form_old', $default, $field, $default );

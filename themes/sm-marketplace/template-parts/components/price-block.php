@@ -22,14 +22,21 @@ $assembled = 'buildings' === $item['market'] && 'assembled' === ( $item['mode'] 
 			<div><dt><?php esc_html_e( 'Estimated steel weight', 'sm-marketplace' ); ?></dt><dd><?php echo sm_kg( $item['weight_kg'] ); // phpcs:ignore ?></dd></div>
 		</dl>
 	<?php else : ?>
-		<p class="sm-priceblock__label"><?php esc_html_e( 'Price per kilogram', 'sm-marketplace' ); ?></p>
-		<p class="sm-priceblock__main"><?php echo sm_per_unit( $item['price_per_kg'], 'kg', true ); // phpcs:ignore ?></p>
+		<?php $per_kg = 'kg' === ( $item['price_unit'] ?? 'kg' ); ?>
+		<p class="sm-priceblock__label"><?php echo esc_html( $per_kg ? __( 'Price per kilogram', 'sm-marketplace' ) : __( 'Unit price', 'sm-marketplace' ) ); ?></p>
+		<p class="sm-priceblock__main"><?php echo sm_listing_price( $item ); // phpcs:ignore ?></p>
 		<dl class="sm-priceblock__rows">
-			<div><dt><?php esc_html_e( 'Total weight', 'sm-marketplace' ); ?></dt><dd><?php echo sm_kg( $item['weight_kg'] ); // phpcs:ignore ?></dd></div>
+			<?php if ( ! empty( $item['weight_kg'] ) ) : ?>
+				<div><dt><?php esc_html_e( 'Total weight', 'sm-marketplace' ); ?></dt><dd><?php echo sm_kg( $item['weight_kg'] ); // phpcs:ignore ?></dd></div>
+			<?php endif; ?>
+			<?php if ( ! $per_kg && ! empty( $item['price_per_kg'] ) ) : ?>
+				<div><dt><?php esc_html_e( 'Equivalent price per kg', 'sm-marketplace' ); ?></dt><dd><?php echo sm_per_unit( $item['price_per_kg'] ); // phpcs:ignore ?></dd></div>
+			<?php endif; ?>
 			<div class="sm-priceblock__total"><dt><?php esc_html_e( 'Total price', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( sm_money( $item['total_price'] ) ); ?></dd></div>
 		</dl>
 	<?php endif; ?>
 
+	<?php if ( in_array( $item['weight_source'], array( 'actual', 'theoretical' ), true ) ) : ?>
 	<p class="sm-weight-note sm-weight-note--<?php echo esc_attr( $item['weight_source'] ); ?>">
 		<?php sm_icon( 'actual' === $item['weight_source'] ? 'scale' : 'ruler' ); ?>
 		<span>
@@ -37,6 +44,7 @@ $assembled = 'buildings' === $item['market'] && 'assembled' === ( $item['mode'] 
 			<?php echo esc_html( 'actual' === $item['weight_source'] ? __( 'Weighed by the seller.', 'sm-marketplace' ) : __( 'Calculated from standard section tables.', 'sm-marketplace' ) ); ?>
 		</span>
 	</p>
+	<?php endif; ?>
 	<?php if ( ! empty( $item['demo'] ) ) : ?>
 		<p class="sm-demo-note"><?php sm_icon( 'info' ); ?><?php esc_html_e( 'Demo listing: values are illustrative and will be computed by the weight engine.', 'sm-marketplace' ); ?></p>
 	<?php endif; ?>

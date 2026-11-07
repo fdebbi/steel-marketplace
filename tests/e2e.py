@@ -204,7 +204,7 @@ with sync_playwright() as p:
     check(wp('global $wpdb; echo $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}sm_enquiries WHERE quantity=\'10 barres\'");') == '1', 'enquiry stored')
 
     c.goto(BASE + '/compte/publier/')
-    check(c.locator('.sm-stepper').count() == 1 and c.locator('.sm-notice--warn').count() == 0, 'verified business account can open the publish form')
+    check((c.locator('.sm-stepper').count() == 1 or c.locator('.smp-cats').count() == 1) and c.locator('.sm-notice--warn').count() == 0, 'verified business account can open the publish form')
 
     # ------------------------------------------------------------------
     print('\nC. Engineering account (Arabic, desktop)')
@@ -261,7 +261,7 @@ with sync_playwright() as p:
     a = browser.new_context(viewport={'width': 1280, 'height': 900}).new_page()
     a.goto(BASE + '/wp-login.php')
     a.fill('#user_login', 'admin')
-    a.fill('#user_pass', 'admin')
+    a.fill('#user_pass', os.environ.get('SM_ADMIN', 'admin:Admin-2026-test!').split(':', 1)[1])
     a.click('#wp-submit')
     a.wait_for_load_state()
     a.goto(BASE + '/wp-admin/admin.php?page=sm-verifications')

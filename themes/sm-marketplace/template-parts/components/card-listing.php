@@ -48,10 +48,12 @@ $market  = $item['market'];
 				<li><?php sm_icon( 'grid' ); ?><?php echo sm_tech( sm_number( $item['area'] ) . ' m²' ); // phpcs:ignore ?></li>
 			<?php else : ?>
 				<?php if ( ! empty( $item['length_m'] ) ) : ?>
-					<li><?php sm_icon( 'ruler' ); ?><?php echo sm_tech( $item['quantity'] . ' × ' . sm_number( $item['length_m'], fmod( $item['length_m'], 1 ) ? 1 : 0 ) . ' m' ); // phpcs:ignore ?></li>
+					<li><?php sm_icon( 'ruler' ); ?><?php echo sm_tech( sm_number( $item['quantity'], fmod( (float) $item['quantity'], 1 ) ? 1 : 0 ) . ' × ' . sm_number( $item['length_m'], fmod( $item['length_m'], 1 ) ? 1 : 0 ) . ' m' ); // phpcs:ignore ?></li>
 				<?php endif; ?>
 			<?php endif; ?>
-			<li><?php sm_icon( 'weight' ); ?><?php echo sm_kg( $item['weight_kg'] ); // phpcs:ignore ?> <span class="sm-weight-src sm-weight-src--<?php echo esc_attr( $item['weight_source'] ); ?>"><?php echo esc_html( 'actual' === $item['weight_source'] ? __( 'actual', 'sm-marketplace' ) : __( 'theoretical', 'sm-marketplace' ) ); ?></span></li>
+			<?php if ( ! empty( $item['weight_kg'] ) ) : ?>
+				<li><?php sm_icon( 'weight' ); ?><?php echo sm_kg( $item['weight_kg'] ); // phpcs:ignore ?> <span class="sm-weight-src sm-weight-src--<?php echo esc_attr( $item['weight_source'] ); ?>"><?php echo esc_html( 'actual' === $item['weight_source'] ? __( 'actual', 'sm-marketplace' ) : __( 'theoretical', 'sm-marketplace' ) ); ?></span></li>
+			<?php endif; ?>
 		</ul>
 
 		<div class="sm-card__price">
@@ -59,7 +61,7 @@ $market  = $item['market'];
 				<strong class="sm-price-main"><?php echo esc_html( sm_money( $item['total_price'] ) ); ?></strong>
 				<span class="sm-price-sub"><?php echo sm_per_unit( $item['price_per_kg'] ); // phpcs:ignore ?> · <?php echo sm_per_unit( $item['price_per_m2'], 'm²' ); // phpcs:ignore ?></span>
 			<?php else : ?>
-				<strong class="sm-price-main"><?php echo sm_per_unit( $item['price_per_kg'], 'kg', true ); // phpcs:ignore ?></strong>
+				<strong class="sm-price-main"><?php echo sm_listing_price( $item ); // phpcs:ignore ?></strong>
 				<span class="sm-price-sub"><?php esc_html_e( 'Total', 'sm-marketplace' ); ?> <?php echo esc_html( sm_money( $item['total_price'] ) ); ?></span>
 			<?php endif; ?>
 		</div>

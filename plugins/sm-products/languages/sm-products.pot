@@ -1,0 +1,496 @@
+# Copyright (C) 2026 Steel Marketplace
+# This file is distributed under the Proprietary.
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Products 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-products\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-07T16:09:27+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: sm-products\n"
+
+#. Plugin Name of the plugin
+#: sm-products.php
+msgid "SM Products"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: sm-products.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr ""
+
+#. Description of the plugin
+#: sm-products.php
+msgid "New steel products market: publication by category with category-specific fields (profiles from the European catalogue, tubes, plates, bars, roofing, finishing parts), weights from SM Weight Engine, photos and technical sheets, moderation, public listings and seller dashboard. Requires SM Core and SM Weight Engine."
+msgstr ""
+
+#. Author of the plugin
+#: sm-products.php
+msgid "Steel Marketplace"
+msgstr ""
+
+#: sm-products.php:47
+msgid "SM Products needs the SM Core and SM Weight Engine plugins. Activate them first."
+msgstr ""
+
+#: src/Admin/Admin.php:37
+#: src/Admin/Admin.php:38
+#: src/Admin/Admin.php:56
+#: src/Admin/Admin.php:61
+msgid "Products"
+msgstr ""
+
+#: src/Admin/Admin.php:62
+msgid "Categories"
+msgstr ""
+
+#: src/Admin/Admin.php:63
+msgid "Settings"
+msgstr ""
+
+#: src/Admin/Admin.php:82
+msgid "Waiting for review"
+msgstr ""
+
+#: src/Admin/Admin.php:83
+msgid "Published"
+msgstr ""
+
+#: src/Admin/Admin.php:84
+msgid "Changes requested"
+msgstr ""
+
+#: src/Admin/Admin.php:85
+msgid "Drafts"
+msgstr ""
+
+#: src/Admin/Admin.php:86
+msgid "Sold"
+msgstr ""
+
+#: src/Admin/Admin.php:87
+msgid "Expired"
+msgstr ""
+
+#: src/Admin/Admin.php:106
+msgid "Nothing here."
+msgstr ""
+
+#: src/Admin/Admin.php:109
+msgid "Product"
+msgstr ""
+
+#: src/Admin/Admin.php:109
+msgid "Company"
+msgstr ""
+
+#: src/Admin/Admin.php:109
+msgid "Weight / quantity"
+msgstr ""
+
+#: src/Admin/Admin.php:109
+msgid "Price"
+msgstr ""
+
+#: src/Admin/Admin.php:109
+msgid "Updated (UTC)"
+msgstr ""
+
+#: src/Admin/Admin.php:109
+msgid "Decision"
+msgstr ""
+
+#. translators: %d: level.
+#: src/Admin/Admin.php:114
+msgid "Verification level %d"
+msgstr ""
+
+#: src/Admin/Admin.php:123
+msgid "Publish"
+msgstr ""
+
+#: src/Admin/Admin.php:125
+msgid "Reason (sent to the seller)"
+msgstr ""
+
+#: src/Admin/Admin.php:125
+msgid "Unpublish"
+msgstr ""
+
+#: src/Admin/Admin.php:125
+msgid "Request changes"
+msgstr ""
+
+#: src/Admin/Admin.php:138
+msgid "Profiles, tubes, plates and bars take their technical data and weight from the weight engine. For the other categories, the fields below are the form shown to sellers. Select options: one per line, \"value|Français|عربي\"."
+msgstr ""
+
+#: src/Admin/Admin.php:143
+msgid "hidden"
+msgstr ""
+
+#: src/Admin/Admin.php:144
+msgid "Name (French)"
+msgstr ""
+
+#: src/Admin/Admin.php:144
+msgid "Name (Arabic)"
+msgstr ""
+
+#: src/Admin/Admin.php:144
+msgid "Order"
+msgstr ""
+
+#: src/Admin/Admin.php:144
+msgid "Visible"
+msgstr ""
+
+#: src/Admin/Admin.php:145
+msgid "Units:"
+msgstr ""
+
+#: src/Admin/Admin.php:151
+msgid "Weight engine families:"
+msgstr ""
+
+#: src/Admin/Admin.php:153
+msgid "Key"
+msgstr ""
+
+#: src/Admin/Admin.php:153
+msgid "Type"
+msgstr ""
+
+#: src/Admin/Admin.php:153
+msgid "Label (French)"
+msgstr ""
+
+#: src/Admin/Admin.php:153
+msgid "Label (Arabic)"
+msgstr ""
+
+#: src/Admin/Admin.php:153
+msgid "Unit"
+msgstr ""
+
+#: src/Admin/Admin.php:153
+msgid "Required"
+msgstr ""
+
+#: src/Admin/Admin.php:153
+msgid "Options (lists)"
+msgstr ""
+
+#: src/Admin/Admin.php:158
+msgid "new_field"
+msgstr ""
+
+#: src/Admin/Admin.php:164
+msgid "To remove a field, empty its key. The last row adds a field."
+msgstr ""
+
+#: src/Admin/Admin.php:167
+msgid "Save the category"
+msgstr ""
+
+#: src/Admin/Admin.php:178
+msgid "Moderation"
+msgstr ""
+
+#: src/Admin/Admin.php:178
+msgid "Check every product before it is published"
+msgstr ""
+
+#: src/Admin/Admin.php:180
+msgid "Publication period (days, 0 = no end)"
+msgstr ""
+
+#: src/Admin/Admin.php:181
+msgid "Photos per product"
+msgstr ""
+
+#: src/Admin/Admin.php:182
+msgid "Largest photo (MB)"
+msgstr ""
+
+#: src/Admin/Admin.php:183
+msgid "Largest technical sheet (MB)"
+msgstr ""
+
+#: src/Admin/Admin.php:184
+msgid "Lowest price accepted (DA)"
+msgstr ""
+
+#: src/Admin/Admin.php:185
+msgid "Highest price accepted (DA)"
+msgstr ""
+
+#: src/Admin/Admin.php:186
+msgid "Steel grades offered (comma separated)"
+msgstr ""
+
+#: src/Admin/Admin.php:219
+msgid "Product published. The seller was notified."
+msgstr ""
+
+#: src/Admin/Admin.php:223
+msgid "Give the reason, so the seller knows what to change."
+msgstr ""
+
+#: src/Admin/Admin.php:227
+msgid "The seller was asked to change the product."
+msgstr ""
+
+#: src/Admin/Admin.php:257
+msgid "Category saved."
+msgstr ""
+
+#: src/Admin/Admin.php:267
+msgid "Settings saved."
+msgstr ""
+
+#: src/Form.php:45
+msgid "Your account has no company."
+msgstr ""
+
+#: src/Form.php:50
+msgid "You cannot edit this product."
+msgstr ""
+
+#: src/Form.php:53
+msgid "You published many products today. Try again tomorrow."
+msgstr ""
+
+#: src/Form.php:77
+msgid "Add at least one photo of the product."
+msgstr ""
+
+#: src/Form.php:80
+#: src/Spec.php:28
+msgid "Choose a category."
+msgstr ""
+
+#: src/Form.php:104
+msgid "Draft saved. You can finish it later from \"My listings\"."
+msgstr ""
+
+#: src/Form.php:105
+msgid "Thank you. Your product will be visible after a quick check by the platform team."
+msgstr ""
+
+#: src/Form.php:106
+#: src/Form.php:154
+msgid "Your product is published."
+msgstr ""
+
+#: src/Form.php:131
+msgid "You cannot change this product."
+msgstr ""
+
+#: src/Form.php:136
+msgid "Only a published product can be marked as sold."
+msgstr ""
+
+#: src/Form.php:139
+msgid "Marked as sold. Buyers no longer see it."
+msgstr ""
+
+#: src/Form.php:143
+msgid "The product is withdrawn and saved as a draft."
+msgstr ""
+
+#: src/Form.php:147
+msgid "This product cannot be published again from here. Edit it instead."
+msgstr ""
+
+#: src/Form.php:154
+msgid "Sent for review again."
+msgstr ""
+
+#: src/Form.php:158
+msgid "Withdraw the product before deleting it."
+msgstr ""
+
+#: src/Form.php:161
+msgid "Product deleted."
+msgstr ""
+
+#: src/Form.php:164
+msgid "Unknown action."
+msgstr ""
+
+#: src/Notifications.php:27
+msgid "New product to review"
+msgstr ""
+
+#. translators: %s: product title.
+#: src/Notifications.php:29
+msgid "A seller submitted \"%s\". Check it before it is published."
+msgstr ""
+
+#: src/Notifications.php:34
+msgid "Your product is published"
+msgstr ""
+
+#. translators: %s: product title.
+#: src/Notifications.php:36
+msgid "\"%s\" is now visible to buyers."
+msgstr ""
+
+#: src/Notifications.php:41
+msgid "Your product needs changes"
+msgstr ""
+
+#. translators: 1: product title, 2: reason.
+#: src/Notifications.php:43
+msgid "\"%1$s\" was not published: %2$s Edit it and send it again."
+msgstr ""
+
+#: src/Notifications.php:48
+msgid "Your product has expired"
+msgstr ""
+
+#. translators: %s: product title.
+#: src/Notifications.php:50
+msgid "\"%s\" is no longer shown. Publish it again from \"My listings\" if it is still available."
+msgstr ""
+
+#: src/Presenter.php:99
+msgid "Product type"
+msgstr ""
+
+#: src/Presenter.php:101
+msgid "Designation"
+msgstr ""
+
+#: src/Presenter.php:102
+msgid "Steel grade"
+msgstr ""
+
+#: src/Presenter.php:102
+msgid "Not specified"
+msgstr ""
+
+#: src/Presenter.php:104
+msgid "Standard"
+msgstr ""
+
+#: src/Presenter.php:114
+msgid "Dimensions"
+msgstr ""
+
+#: src/Presenter.php:117
+msgid "Plate size"
+msgstr ""
+
+#: src/Presenter.php:119
+msgid "Bar length"
+msgstr ""
+
+#. translators: %s: number of plates.
+#: src/Presenter.php:122
+msgid "%s plates"
+msgstr ""
+
+#. translators: %s: number of plates.
+#: src/Presenter.php:122
+msgid "%s bars"
+msgstr ""
+
+#: src/Presenter.php:124
+msgid "Quantity"
+msgstr ""
+
+#: src/Presenter.php:126
+msgid "Weight per metre"
+msgstr ""
+
+#: src/Presenter.php:148
+msgid "Available quantity"
+msgstr ""
+
+#: src/Presenter.php:157
+msgid "m (linear)"
+msgstr ""
+
+#: src/Presenter.php:158
+msgid "pieces"
+msgstr ""
+
+#: src/Rest/Api.php:44
+msgid "This listing is not available."
+msgstr ""
+
+#: src/Spec.php:46
+msgid "Enter the price."
+msgstr ""
+
+#: src/Spec.php:49
+msgid "This price is outside the accepted range."
+msgstr ""
+
+#: src/Spec.php:55
+msgid "A price per piece needs the number of pieces: choose \"Number of bars\" or a price per kg."
+msgstr ""
+
+#: src/Spec.php:84
+msgid "Give the product a title (in French or in Arabic)."
+msgstr ""
+
+#: src/Spec.php:88
+msgid "The description is too long (4000 characters at most)."
+msgstr ""
+
+#: src/Spec.php:92
+msgid "Choose the wilaya where the product is."
+msgstr ""
+
+#: src/Spec.php:112
+msgid "The weight engine is not active."
+msgstr ""
+
+#: src/Spec.php:116
+msgid "Choose the product type."
+msgstr ""
+
+#: src/Spec.php:134
+msgid "Choose the size."
+msgstr ""
+
+#: src/Spec.php:151
+msgid "Enter the total weight."
+msgstr ""
+
+#: src/Spec.php:151
+msgid "Enter the number of pieces."
+msgstr ""
+
+#: src/Spec.php:185
+msgid "Enter the weighed weight in kg."
+msgstr ""
+
+#. translators: %s: theoretical weight in kg.
+#: src/Spec.php:188
+msgid "The weighed weight is very far from the theoretical %s kg. Check it."
+msgstr ""
+
+#: src/Spec.php:211
+msgid "Required."
+msgstr ""
+
+#: src/Spec.php:218
+msgid "Enter a positive number."
+msgstr ""
+
+#: src/Spec.php:223
+msgid "Choose a value from the list."
+msgstr ""
+
+#: src/Spec.php:233
+msgid "Enter the available quantity."
+msgstr ""

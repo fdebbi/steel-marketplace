@@ -25,6 +25,11 @@ $cap_reason = sm_theme_cannot_reason( 'listing.' . $market );
 if ( $cap_reason ) {
 	echo '<div class="sm-notice sm-notice--warn">' . sm_get_icon( 'shield' ) . '<p>' . esc_html( $cap_reason ) . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput
 }
+// New steel products: real form of sm-products (reuse and buildings come in the next phases).
+if ( 'products' === $market && sm_theme_data( 'product_categories' ) ) {
+	sm_component( 'product-form', array( 'account' => $account ) );
+	return;
+}
 $steps = array(
 	__( 'Market', 'sm-marketplace' ),
 	__( 'Technical details', 'sm-marketplace' ),

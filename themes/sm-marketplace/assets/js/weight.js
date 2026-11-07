@@ -41,6 +41,8 @@
 		var focusId = active && form.contains( active ) ? active.id : '';
 		var caret = active && 'selectionStart' in active ? active.selectionStart : null;
 		var familyChanged = changed && 'family' === changed.name;
+		var before = {};
+		form.querySelectorAll( 'input[name]:not([type="radio"]), select[name]' ).forEach( function ( el ) { before[ el.name ] = el.value; } );
 
 		fetch( url + '?' + query.toString(), { credentials: 'same-origin', signal: ctrl ? ctrl.signal : undefined } )
 			.then( function ( r ) { if ( ! r.ok ) { throw new Error( r.status ); } return r.text(); } )
@@ -49,8 +51,16 @@
 				tpl.innerHTML = html.trim();
 				var fresh = tpl.content.querySelector( '[data-smw]' );
 				if ( ! fresh ) { throw new Error( 'empty' ); }
+				// Keep what was typed while the request was running.
+				var again = false;
+				form.querySelectorAll( 'input[name]:not([type="radio"]), select[name]' ).forEach( function ( el ) {
+					if ( el.value === before[ el.name ] ) { return; }
+					var twin = fresh.querySelector( '[name="' + el.name.replace( /"/g, '' ) + '"]:not([type="radio"])' );
+					if ( twin ) { twin.value = el.value; again = true; }
+				} );
 				form.replaceWith( fresh );
 				bind( fresh );
+				if ( again ) { clearTimeout( timer ); timer = setTimeout( function () { refresh( fresh, null ); }, 300 ); }
 				if ( window.history && history.replaceState ) { history.replaceState( null, '', shown ); }
 				var el = focusId ? document.getElementById( focusId ) : null;
 				if ( el ) {

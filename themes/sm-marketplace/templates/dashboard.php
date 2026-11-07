@@ -17,6 +17,18 @@
 
 defined( 'ABSPATH' ) || exit;
 
+// Live refresh of the technical part of the product form (assets/js/product-form.js).
+if ( sm_theme_query_arg( 'smp_partial' ) && is_user_logged_in() ) {
+	$sm_cats = (array) sm_theme_data( 'product_categories' );
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only preview, nothing is saved.
+	$sm_state = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
+	$sm_cat   = $sm_cats[ sanitize_key( $sm_state['category'] ?? '' ) ] ?? null;
+	if ( $sm_cat ) {
+		sm_component( 'product-tech', array( 'state' => $sm_state, 'category' => $sm_cat ) );
+	}
+	return;
+}
+
 $account = sm_theme_account();
 if ( ! $account ) {
 	// Signed-in user without a company (e.g. an administrator).

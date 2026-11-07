@@ -42,6 +42,8 @@ PAGES = {
     'dashboard-verification': ('/compte/?view=verification', 'com'),
     'dashboard-messages': ('/compte/?view=messages', 'com'),
     'dashboard-publish': ('/compte/?view=publish', 'com'),
+    'dashboard-publish-profiles': ('/compte/?view=publish&cat=profiles', 'com'),
+    'dashboard-publish-roofing': ('/compte/?view=publish&cat=roofing', 'com'),
     'dashboard-engineer': ('/compte/', 'eng'),
     'dashboard-engineer-requests': ('/compte/?view=requests', 'eng'),
 }

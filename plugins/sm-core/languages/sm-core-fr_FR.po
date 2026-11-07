@@ -581,6 +581,22 @@ msgstr "Objet"
 msgid "Details"
 msgstr "Détails"
 
+#. translators: %d: maximum number of files.
+#: src/Content/Media.php:75
+msgid "Only the first %d files were kept."
+msgstr "Seuls les %d premiers fichiers ont été conservés."
+
+#. translators: 1: file name, 2: size limit in MB.
+#: src/Content/Media.php:80
+msgid "%1$s was not added: files must be smaller than %2$s MB."
+msgstr ""
+"%1$s n’a pas été ajouté : les fichiers doivent faire moins de %2$s Mo."
+
+#. translators: %s: file name.
+#: src/Content/Media.php:86
+msgid "%s was not added: this file type is not accepted."
+msgstr "%s n’a pas été ajouté : ce type de fichier n’est pas accepté."
+
 #: src/Enquiries/Enquiries.php:34
 msgid "Sign in or create an account to contact the seller."
 msgstr "Connectez-vous ou créez un compte pour contacter le vendeur."

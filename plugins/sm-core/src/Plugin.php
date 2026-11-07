@@ -27,6 +27,7 @@ final class Plugin {
 		Verification\Verifications::init();
 		Notifications\Notifications::init();
 		Enquiries\Enquiries::init();
+		Listings\Index::init();
 		Audit\AuditLog::init();
 		Rest\Api::init();
 		Theme\Bridge::init();

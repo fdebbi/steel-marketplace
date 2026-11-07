@@ -26,6 +26,18 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Documents de vérification | Stockés au-dessus du dossier public quand c'est possible | Inaccessibles par URL quel que soit le serveur |
 | Contact | Compte obligatoire pour contacter un vendeur ou demander une prestation (conforme Phase 0) ; demandes sur annonces de démonstration envoyées aux modérateurs | |
 
+## 7 novembre 2026 — Phase 4 (produits neufs)
+
+| Sujet | Décision | Raison |
+| --- | --- | --- |
+| Catégories | Profilés, tubes, tôles, fers plats et barres (moteur de poids) ; toiture et bardage ; pièces de finition ; autres. Noms, unités et champs modifiables dans wp-admin | Remarque n° 1 du client ; liste à compléter sans redéveloppement |
+| Quantité | En nombre de barres ou en poids total, l'autre valeur estimée par le moteur | Remarque n° 1 |
+| Toiture | Prix et quantité au m², au ml ou à la pièce ; poids seulement s'il est pesé | Pas de table normalisée fiable pour les panneaux : aucun poids inventé |
+| Calculs | Poids, totaux et prix au kg équivalent recalculés par le serveur à l'enregistrement | Le navigateur ne décide jamais d'un poids ni d'un prix |
+| Modération | Activée par défaut, motif obligatoire pour un refus | Qualité des annonces au lancement |
+| Numéro d'annonce | Index commun de sm-core | Adresses uniques quand réemploi et bâtiments arriveront |
+| Durée | 90 jours, puis « expirée » avec notification ; republication en un clic | Annonces à jour |
+
 ## 7 novembre 2026 — Phase 3 (moteur de poids)
 
 | Sujet | Décision | Raison |

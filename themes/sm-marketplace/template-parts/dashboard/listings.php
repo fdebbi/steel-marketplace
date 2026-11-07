@@ -8,6 +8,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$mine = sm_theme_data( 'my_products', array( 'status' => sm_theme_query_arg( 'status' ), 'page' => (int) sm_theme_query_arg( 'pg', 1 ) ) );
+if ( is_array( $mine ) && isset( $mine['counts'] ) ) {
+	sm_component( 'my-products', array( 'data' => $mine ) );
+	return;
+}
 $items = sm_theme_listings( array( 'company' => $args['account']['company']['slug'], 'per_page' => 50 ) )['items'];
 ?>
 <div class="sm-toolbar">

@@ -38,6 +38,7 @@ final class Bridge {
 		add_filter( 'sm_form_old', array( __CLASS__, 'old' ), 10, 3 );
 		add_filter( 'sm_form_action', array( __CLASS__, 'form_action' ), 10, 2 );
 		add_action( 'sm_form_fields', array( __CLASS__, 'form_fields' ) );
+		add_filter( 'sm_form_old_all', array( __CLASS__, 'old_all' ) );
 		add_filter( 'sm_theme_demo_account', '__return_false' );
 	}
 
@@ -134,7 +135,7 @@ final class Bridge {
 		}
 		global $wpdb;
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
-		$active = (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM ' . sm_table( 'listing_index' ) . " WHERE company_id = %d AND status = 'published'", $company->id ) );
+		$active = \SM\Core\Listings\Index::count_published( $company->id );
 		$is_eng = 'engineering' === $company->account_class;
 		$can_manage = Companies::can_manage( $company->id, $user->ID );
 
@@ -248,12 +249,21 @@ final class Bridge {
 	public static function notices( $notices ) {
 		$n = Forms::current_notice();
 		foreach ( (array) $n['errors'] as $field => $message ) {
+			if ( '' === $message ) { // Marker without a message (e.g. form refreshed without JavaScript).
+				continue;
+			}
 			$notices[] = array( 'type' => 'error', 'message' => $message, 'field' => is_string( $field ) ? $field : '' );
 		}
 		if ( $n['success'] ) {
 			$notices[] = array( 'type' => 'success', 'message' => $n['success'], 'field' => '' );
 		}
 		return $notices;
+	}
+
+	/** All previously submitted values (forms with nested fields). */
+	public static function old_all( $value ) {
+		$n = Forms::current_notice();
+		return (array) $n['old'] ? (array) $n['old'] : $value;
 	}
 
 	public static function old( $value, $field, $default = '' ) {

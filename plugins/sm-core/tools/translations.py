@@ -180,5 +180,8 @@ T = {
 "You are not allowed to view this document.": ("Vous n’êtes pas autorisé à consulter ce document.", "غير مسموح لك بالاطلاع على هذه الوثيقة."),
 "The map position is not valid. Place the marker again.": ("La position sur la carte n’est pas valide. Replacez le repère.", "الموقع على الخريطة غير صالح. ضع العلامة من جديد."),
 "The map position must be in Algeria.": ("La position sur la carte doit se trouver en Algérie.", "يجب أن يكون الموقع على الخريطة داخل الجزائر."),
+"%1$s was not added: files must be smaller than %2$s MB.": ("%1$s n’a pas été ajouté : les fichiers doivent faire moins de %2$s Mo.", "لم تتم إضافة %1$s: يجب أن يكون حجم الملفات أقل من %2$s MB."),
+"%s was not added: this file type is not accepted.": ("%s n’a pas été ajouté : ce type de fichier n’est pas accepté.", "لم تتم إضافة %s: نوع الملف غير مقبول."),
+"Only the first %d files were kept.": ("Seuls les %d premiers fichiers ont été conservés.", "احتُفظ بأول %d ملفات فقط."),
 }
 P = {}

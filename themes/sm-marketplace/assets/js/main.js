@@ -244,4 +244,12 @@
 			toast( form.getAttribute( 'data-sm-demo-message' ) || '✓' );
 		} );
 	} );
+	/* Confirm destructive buttons (data-sm-confirm="question"). */
+	document.addEventListener( 'click', function ( e ) {
+		var btn = e.target.closest && e.target.closest( '[data-sm-confirm]' );
+		if ( btn && ! window.confirm( btn.getAttribute( 'data-sm-confirm' ) ) ) {
+			e.preventDefault();
+		}
+	} );
+
 }() );

@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.5.0 — 2026-11-07 (Phase 4, avec sm-products 0.1.0)
+
+- « Publier une annonce » : formulaire réel par catégorie (catégorie → données techniques avec schéma, quantité en barres ou en poids total, prix et résumé en direct → titre et description → photos et fiche technique PDF → wilaya), brouillon ou envoi pour publication. Fonctionne sans JavaScript (bouton « Mettre à jour »).
+- « Mes annonces » : filtre par statut, modifier, marquer vendu, retirer, republier, supprimer (avec confirmation), motif des modifications demandées.
+- Fiche produit : galerie des vraies photos, caractéristiques propres à la catégorie, schéma exact, documents techniques, avis « vendu / expiré / aperçu ».
+- Prix par unité (kg, pièce, m², ml) dans les cartes, le bloc prix et la barre mobile.
+- Les valeurs saisies pendant une mise à jour en direct ne sont plus perdues (calculateur et formulaire).
+
 ## 0.4.0 — 2026-11-07 (Phase 3, avec sm-weight-engine 0.1.0)
 
 - Nouvelle page **Calculateur de poids** (`/calcul-poids/`, créée automatiquement après la mise à jour) : choix du produit parmi 16 types illustrés par leur section, choix de la dimension du catalogue européen (ou saisie des cotes pour les tubes, fers plats, barres et tôles), schéma exact à l'échelle avec ses cotes et le poids au mètre, quantité en nombre de barres ou en poids total, longueur 12 m, 6 m ou libre.

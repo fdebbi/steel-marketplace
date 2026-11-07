@@ -1,5 +1,11 @@
 # Changelog — sm-core
 
+## 0.3.0 — 2026-11-07 (Phase 4)
+
+- Index des annonces (`SM\Core\Listings\Index`) : un numéro public par annonce, commun à tous les marchés ; prix, unité, total, date de mise à jour (base v3) ; propriétaire pour les demandes de contact.
+- Textes traduisibles des annonces (`SM\Core\Content\Translations`) et fichiers liés avec envoi contrôlé (`SM\Core\Content\Media` : type réel du fichier, taille, nombre).
+- Passerelle thème : toutes les valeurs d'un formulaire refusé (`sm_form_old_all`).
+
 ## 0.2.0 — 2026-11-07 (complément Phase 2 : carte)
 
 - Emplacement de l'entreprise sur la carte : colonnes `lat`, `lng`, `map_public` (base v2, migration automatique à la mise à jour).

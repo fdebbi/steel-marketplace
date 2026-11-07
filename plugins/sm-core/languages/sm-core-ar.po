@@ -566,6 +566,21 @@ msgstr "العنصر"
 msgid "Details"
 msgstr "التفاصيل"
 
+#. translators: %d: maximum number of files.
+#: src/Content/Media.php:75
+msgid "Only the first %d files were kept."
+msgstr "احتُفظ بأول %d ملفات فقط."
+
+#. translators: 1: file name, 2: size limit in MB.
+#: src/Content/Media.php:80
+msgid "%1$s was not added: files must be smaller than %2$s MB."
+msgstr "لم تتم إضافة %1$s: يجب أن يكون حجم الملفات أقل من %2$s MB."
+
+#. translators: %s: file name.
+#: src/Content/Media.php:86
+msgid "%s was not added: this file type is not accepted."
+msgstr "لم تتم إضافة %s: نوع الملف غير مقبول."
+
 #: src/Enquiries/Enquiries.php:34
 msgid "Sign in or create an account to contact the seller."
 msgstr "سجّل الدخول أو أنشئ حسابا للتواصل مع البائع."

@@ -55,13 +55,35 @@ if ( $is_build ) {
 		$specs[ __( 'Finish', 'sm-marketplace' ) ] = esc_html( sm_t( $item['specs']['finish'] ) );
 	}
 }
-$specs[ __( 'Weight source', 'sm-marketplace' ) ] = esc_html( sm_weight_source_label( $item['weight_source'] ) );
+if ( ! empty( $item['spec_rows'] ) ) { // Rows prepared by the listing plugin for its category.
+	$specs = array();
+	foreach ( $item['spec_rows'] as $row ) {
+		$specs[ $row[0] ] = $row[1];
+	}
+}
+if ( in_array( $item['weight_source'], array( 'actual', 'theoretical' ), true ) ) {
+	$specs[ __( 'Weight source', 'sm-marketplace' ) ] = esc_html( sm_weight_source_label( $item['weight_source'] ) );
+}
 $specs[ __( 'Location', 'sm-marketplace' ) ]      = esc_html( sm_t( $wilayas[ $item['wilaya'] ] ?? '' ) );
 
 $similar = sm_theme_listings( array( 'market' => $market, 'per_page' => 4 ) )['items'];
 $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !== $item['id'] ) );
 ?>
 <div class="sm-container sm-detail">
+	<?php if ( ! empty( $item['unavailable'] ) || ( isset( $item['status'] ) && 'published' !== $item['status'] ) ) : ?>
+		<div class="sm-notice sm-notice--warn"><?php sm_icon( 'info' ); ?><p>
+			<?php
+			$sm_status_text = array(
+				'sold'     => __( 'This product has been sold.', 'sm-marketplace' ),
+				'expired'  => __( 'This listing has expired.', 'sm-marketplace' ),
+				'pending'  => __( 'Preview: this product is waiting for review and is not visible to buyers yet.', 'sm-marketplace' ),
+				'draft'    => __( 'Preview of a draft: not visible to buyers.', 'sm-marketplace' ),
+				'rejected' => __( 'Preview: changes were requested; not visible to buyers.', 'sm-marketplace' ),
+			);
+			echo esc_html( $sm_status_text[ $item['status'] ] ?? '' );
+			?>
+		</p></div>
+	<?php endif; ?>
 	<?php sm_breadcrumb( array( array( $labels[ $market ], sm_page_url( $market ) ), array( sm_t( $cats[ $item['category'] ] ?? '' ), sm_page_url( $market, array( 'category' => $item['category'] ) ) ), array( sm_t( $item['title'] ), '' ) ) ); ?>
 
 	<div class="sm-detail__top">
@@ -70,7 +92,8 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 				<img src="<?php echo esc_url( sm_image_url( $item['image'] ) ); ?>" alt="<?php echo esc_attr( sm_t( $item['title'] ) ); ?>" width="1280" height="960" data-sm-gallery-main>
 			</figure>
 			<div class="sm-gallery__thumbs">
-				<?php foreach ( array( $item['image'], 'demo:detail-section', 'demo:detail-stack' ) as $n => $img ) : ?>
+				<?php $gallery = ! empty( $item['photos'] ) ? $item['photos'] : ( ! empty( $item['demo'] ) ? array( $item['image'], 'demo:detail-section', 'demo:detail-stack' ) : array( $item['image'] ) ); ?>
+				<?php foreach ( count( $gallery ) > 1 ? $gallery : array() as $n => $img ) : ?>
 					<button type="button" class="sm-gallery__thumb" aria-pressed="<?php echo 0 === $n ? 'true' : 'false'; ?>" data-src="<?php echo esc_url( sm_image_url( $img ) ); ?>">
 						<img src="<?php echo esc_url( sm_image_url( $img ) ); ?>" alt="" width="160" height="120" loading="lazy">
 						<span class="screen-reader-text">
@@ -136,7 +159,20 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 					<div><dt><?php echo esc_html( $label ); ?></dt><dd><?php echo sm_kses_tech( $value ); // phpcs:ignore ?></dd></div>
 				<?php endforeach; ?>
 			</dl>
+			<?php if ( ! empty( $item['drawing'] ) ) : ?>
+				<figure class="smp-drawing" dir="ltr"><?php echo $item['drawing']; // phpcs:ignore WordPress.Security.EscapeOutput -- SVG built from numbers by sm-weight-engine. ?></figure>
+			<?php endif; ?>
 		</section>
+		<?php if ( ! empty( $item['sheets'] ) ) : ?>
+			<section class="sm-panel">
+				<h2 class="sm-panel__title"><?php esc_html_e( 'Technical documents', 'sm-marketplace' ); ?></h2>
+				<ul class="smp-docs" role="list">
+					<?php foreach ( $item['sheets'] as $doc ) : ?>
+						<li><a href="<?php echo esc_url( $doc['url'] ); ?>" target="_blank" rel="noopener" download><?php sm_icon( 'file' ); ?><span><?php echo esc_html( $doc['name'] ); ?></span><small>PDF<?php echo $doc['size'] ? ' · ' . esc_html( size_format( $doc['size'], 1 ) ) : ''; ?></small></a></li>
+					<?php endforeach; ?>
+				</ul>
+			</section>
+		<?php endif; ?>
 
 		<?php if ( $is_build ) : ?>
 			<section class="sm-panel">
@@ -197,10 +233,14 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 			</section>
 		<?php endif; ?>
 
+		<?php $desc = sm_field( $item['description'] ); ?>
 		<section class="sm-panel">
 			<h2 class="sm-panel__title"><?php esc_html_e( 'Description', 'sm-marketplace' ); ?></h2>
-			<?php $desc = sm_field( $item['description'] ); ?>
-			<p<?php echo $desc['fallback'] ? ' lang="' . esc_attr( $desc['lang'] ) . '" dir="auto"' : ''; ?>><?php echo esc_html( $desc['text'] ); ?></p>
+			<?php if ( '' === trim( (string) $desc['text'] ) ) : ?>
+				<p class="sm-muted"><?php esc_html_e( 'No description. Ask the seller for details with the form below.', 'sm-marketplace' ); ?></p>
+			<?php else : ?>
+			<p class="sm-prewrap"<?php echo $desc['fallback'] ? ' lang="' . esc_attr( $desc['lang'] ) . '" dir="auto"' : ''; ?>><?php echo esc_html( $desc['text'] ); ?></p>
+			<?php endif; ?>
 			<?php if ( $desc['fallback'] ) : ?><p class="sm-muted"><?php esc_html_e( 'Shown in the language the seller wrote it in.', 'sm-marketplace' ); ?></p><?php endif; ?>
 			<?php if ( 'reuse' === $market || $is_build ) : ?>
 				<p class="sm-callout"><?php sm_icon( 'hard-hat' ); ?><span><?php esc_html_e( 'Planning a structural reuse? Have the elements checked by a verified engineer before installation.', 'sm-marketplace' ); ?> <a href="<?php echo esc_url( sm_page_url( 'engineers' ) ); ?>"><?php esc_html_e( 'Find an engineer', 'sm-marketplace' ); ?></a></span></p>
@@ -233,7 +273,7 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 	<?php endif; ?>
 </div>
 <div class="sm-stickybar" aria-hidden="false">
-	<div><strong><?php echo $is_build && 'assembled' === $item['mode'] ? esc_html( sm_money( $item['total_price'] ) ) : sm_per_unit( $item['price_per_kg'] ); // phpcs:ignore ?></strong></div>
+	<div><strong><?php echo $is_build && 'assembled' === $item['mode'] ? esc_html( sm_money( $item['total_price'] ) ) : sm_listing_price( $item, false ); // phpcs:ignore ?></strong></div>
 	<a class="sm-btn sm-btn--accent" href="#sm-enquiry"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Contact', 'sm-marketplace' ); ?></a>
 </div>
 <?php

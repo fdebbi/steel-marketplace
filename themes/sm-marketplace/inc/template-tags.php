@@ -110,6 +110,26 @@ function sm_per_unit( $value, $unit = 'kg', $small = false, $decimals = 0 ) {
 	return '<bdi class="sm-perunit">' . esc_html( sm_number( $value, $decimals ) ) . "\u{00A0}" . ( $small ? '<small>' . $u . '</small>' : $u ) . '</bdi>';
 }
 
+/** Short unit of a price ("kg", "m²", "ml", "pièce"). */
+function sm_price_unit_label( $unit ) {
+	$labels = array(
+		'kg'   => 'kg',
+		'm2'   => 'm²',
+		'ml'   => 'ml',
+		'unit' => __( 'piece', 'sm-marketplace' ),
+	);
+	return $labels[ $unit ] ?? 'kg';
+}
+
+/** Main price of a listing: price per kg, or per its own unit (m², piece…). */
+function sm_listing_price( array $item, $small = true ) {
+	$unit = $item['price_unit'] ?? 'kg';
+	if ( 'kg' !== $unit && ! empty( $item['price'] ) ) {
+		return sm_per_unit( $item['price'], sm_price_unit_label( $unit ), $small );
+	}
+	return sm_per_unit( $item['price_per_kg'], 'kg', $small );
+}
+
 /** Allowed markup for pre-formatted technical values (spec tables). */
 function sm_kses_tech( $html ) {
 	return wp_kses(

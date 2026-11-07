@@ -1,0 +1,510 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Products 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-products\n"
+
+#. Plugin Name of the plugin
+#: sm-products.php
+msgid "SM Products"
+msgstr "SM Products"
+
+#. Plugin URI of the plugin
+#: sm-products.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-products.php
+msgid ""
+"New steel products market: publication by category with category-specific "
+"fields (profiles from the European catalogue, tubes, plates, bars, roofing, "
+"finishing parts), weights from SM Weight Engine, photos and technical "
+"sheets, moderation, public listings and seller dashboard. Requires SM Core "
+"and SM Weight Engine."
+msgstr ""
+"سوق المنتجات الفولاذية الجديدة: النشر حسب الفئة مع حقول خاصة بكل فئة (مقاطع "
+"الكتالوج الأوروبي، أنابيب، صفائح، قضبان، تسقيف، قطع تشطيب)، أوزان يحسبها SM "
+"Weight Engine، صور وبطاقات تقنية، مراجعة، إعلانات عامة ولوحة تحكم للبائع. "
+"يتطلب SM Core وSM Weight Engine."
+
+#. Author of the plugin
+#: sm-products.php
+msgid "Steel Marketplace"
+msgstr "Steel Marketplace"
+
+#: sm-products.php:47
+msgid ""
+"SM Products needs the SM Core and SM Weight Engine plugins. Activate them "
+"first."
+msgstr "تحتاج SM Products إلى إضافتي SM Core وSM Weight Engine. فعّلهما أولا."
+
+#: src/Admin/Admin.php:37 src/Admin/Admin.php:38 src/Admin/Admin.php:56
+#: src/Admin/Admin.php:61
+msgid "Products"
+msgstr "المنتجات"
+
+#: src/Admin/Admin.php:62
+msgid "Categories"
+msgstr "الفئات"
+
+#: src/Admin/Admin.php:63
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: src/Admin/Admin.php:82
+msgid "Waiting for review"
+msgstr "في انتظار المراجعة"
+
+#: src/Admin/Admin.php:83
+msgid "Published"
+msgstr "منشورة"
+
+#: src/Admin/Admin.php:84
+msgid "Changes requested"
+msgstr "تعديلات مطلوبة"
+
+#: src/Admin/Admin.php:85
+msgid "Drafts"
+msgstr "مسودات"
+
+#: src/Admin/Admin.php:86
+msgid "Sold"
+msgstr "مباعة"
+
+#: src/Admin/Admin.php:87
+msgid "Expired"
+msgstr "منتهية"
+
+#: src/Admin/Admin.php:106
+msgid "Nothing here."
+msgstr "لا شيء هنا."
+
+#: src/Admin/Admin.php:109
+msgid "Product"
+msgstr "المنتج"
+
+#: src/Admin/Admin.php:109
+msgid "Company"
+msgstr "المؤسسة"
+
+#: src/Admin/Admin.php:109
+msgid "Weight / quantity"
+msgstr "الوزن / الكمية"
+
+#: src/Admin/Admin.php:109
+msgid "Price"
+msgstr "السعر"
+
+#: src/Admin/Admin.php:109
+msgid "Updated (UTC)"
+msgstr "آخر تحديث (UTC)"
+
+#: src/Admin/Admin.php:109
+msgid "Decision"
+msgstr "القرار"
+
+#. translators: %d: level.
+#: src/Admin/Admin.php:114
+msgid "Verification level %d"
+msgstr "مستوى التحقق %d"
+
+#: src/Admin/Admin.php:123
+msgid "Publish"
+msgstr "نشر"
+
+#: src/Admin/Admin.php:125
+msgid "Reason (sent to the seller)"
+msgstr "السبب (يُرسل إلى البائع)"
+
+#: src/Admin/Admin.php:125
+msgid "Unpublish"
+msgstr "إلغاء النشر"
+
+#: src/Admin/Admin.php:125
+msgid "Request changes"
+msgstr "طلب تعديلات"
+
+#: src/Admin/Admin.php:138
+msgid ""
+"Profiles, tubes, plates and bars take their technical data and weight from "
+"the weight engine. For the other categories, the fields below are the form "
+"shown to sellers. Select options: one per line, \"value|Français|عربي\"."
+msgstr ""
+"تأخذ المقاطع والأنابيب والصفائح والقضبان بياناتها التقنية ووزنها من محرك "
+"الأوزان. بالنسبة للفئات الأخرى، تشكّل الحقول أدناه الاستمارة المعروضة على "
+"البائعين. خيارات القوائم: خيار في كل سطر، «القيمة|Français|عربي»."
+
+#: src/Admin/Admin.php:143
+msgid "hidden"
+msgstr "مخفية"
+
+#: src/Admin/Admin.php:144
+msgid "Name (French)"
+msgstr "الاسم (بالفرنسية)"
+
+#: src/Admin/Admin.php:144
+msgid "Name (Arabic)"
+msgstr "الاسم (بالعربية)"
+
+#: src/Admin/Admin.php:144
+msgid "Order"
+msgstr "الترتيب"
+
+#: src/Admin/Admin.php:144
+msgid "Visible"
+msgstr "ظاهرة"
+
+#: src/Admin/Admin.php:145
+msgid "Units:"
+msgstr "الوحدات:"
+
+#: src/Admin/Admin.php:151
+msgid "Weight engine families:"
+msgstr "عائلات محرك الأوزان:"
+
+#: src/Admin/Admin.php:153
+msgid "Key"
+msgstr "المفتاح"
+
+#: src/Admin/Admin.php:153
+msgid "Type"
+msgstr "النوع"
+
+#: src/Admin/Admin.php:153
+msgid "Label (French)"
+msgstr "التسمية (بالفرنسية)"
+
+#: src/Admin/Admin.php:153
+msgid "Label (Arabic)"
+msgstr "التسمية (بالعربية)"
+
+#: src/Admin/Admin.php:153
+msgid "Unit"
+msgstr "الوحدة"
+
+#: src/Admin/Admin.php:153
+msgid "Required"
+msgstr "إلزامي"
+
+#: src/Admin/Admin.php:153
+msgid "Options (lists)"
+msgstr "الخيارات (القوائم)"
+
+#: src/Admin/Admin.php:158
+msgid "new_field"
+msgstr "new_field"
+
+#: src/Admin/Admin.php:164
+msgid "To remove a field, empty its key. The last row adds a field."
+msgstr "لحذف حقل، أفرغ مفتاحه. السطر الأخير يضيف حقلا."
+
+#: src/Admin/Admin.php:167
+msgid "Save the category"
+msgstr "حفظ الفئة"
+
+#: src/Admin/Admin.php:178
+msgid "Moderation"
+msgstr "المراجعة"
+
+#: src/Admin/Admin.php:178
+msgid "Check every product before it is published"
+msgstr "مراجعة كل منتج قبل نشره"
+
+#: src/Admin/Admin.php:180
+msgid "Publication period (days, 0 = no end)"
+msgstr "مدة النشر (أيام، 0 = بلا نهاية)"
+
+#: src/Admin/Admin.php:181
+msgid "Photos per product"
+msgstr "عدد الصور لكل منتج"
+
+#: src/Admin/Admin.php:182
+msgid "Largest photo (MB)"
+msgstr "أقصى حجم للصورة (MB)"
+
+#: src/Admin/Admin.php:183
+msgid "Largest technical sheet (MB)"
+msgstr "أقصى حجم للبطاقة التقنية (MB)"
+
+#: src/Admin/Admin.php:184
+msgid "Lowest price accepted (DA)"
+msgstr "أدنى سعر مقبول (دج)"
+
+#: src/Admin/Admin.php:185
+msgid "Highest price accepted (DA)"
+msgstr "أعلى سعر مقبول (دج)"
+
+#: src/Admin/Admin.php:186
+msgid "Steel grades offered (comma separated)"
+msgstr "درجات الفولاذ المقترحة (مفصولة بفواصل)"
+
+#: src/Admin/Admin.php:219
+msgid "Product published. The seller was notified."
+msgstr "تم نشر المنتج. أُبلغ البائع."
+
+#: src/Admin/Admin.php:223
+msgid "Give the reason, so the seller knows what to change."
+msgstr "اذكر السبب ليعرف البائع ما يجب تعديله."
+
+#: src/Admin/Admin.php:227
+msgid "The seller was asked to change the product."
+msgstr "طُلب من البائع تعديل المنتج."
+
+#: src/Admin/Admin.php:257
+msgid "Category saved."
+msgstr "تم حفظ الفئة."
+
+#: src/Admin/Admin.php:267
+msgid "Settings saved."
+msgstr "تم حفظ الإعدادات."
+
+#: src/Form.php:45
+msgid "Your account has no company."
+msgstr "حسابك غير مرتبط بمؤسسة."
+
+#: src/Form.php:50
+msgid "You cannot edit this product."
+msgstr "لا يمكنك تعديل هذا المنتج."
+
+#: src/Form.php:53
+msgid "You published many products today. Try again tomorrow."
+msgstr "نشرت عددا كبيرا من المنتجات اليوم. أعد المحاولة غدا."
+
+#: src/Form.php:77
+msgid "Add at least one photo of the product."
+msgstr "أضف صورة واحدة على الأقل للمنتج."
+
+#: src/Form.php:80 src/Spec.php:28
+msgid "Choose a category."
+msgstr "اختر فئة."
+
+#: src/Form.php:104
+msgid "Draft saved. You can finish it later from \"My listings\"."
+msgstr "تم حفظ المسودة. يمكنك إكمالها لاحقا من «إعلاناتي»."
+
+#: src/Form.php:105
+msgid ""
+"Thank you. Your product will be visible after a quick check by the platform "
+"team."
+msgstr "شكرا. سيظهر منتجك بعد مراجعة سريعة من فريق المنصة."
+
+#: src/Form.php:106 src/Form.php:154
+msgid "Your product is published."
+msgstr "تم نشر منتجك."
+
+#: src/Form.php:131
+msgid "You cannot change this product."
+msgstr "لا يمكنك تغيير هذا المنتج."
+
+#: src/Form.php:136
+msgid "Only a published product can be marked as sold."
+msgstr "لا يمكن وضع علامة «مباع» إلا على منتج منشور."
+
+#: src/Form.php:139
+msgid "Marked as sold. Buyers no longer see it."
+msgstr "تم وضع علامة «مباع». لم يعد المشترون يرونه."
+
+#: src/Form.php:143
+msgid "The product is withdrawn and saved as a draft."
+msgstr "تم سحب المنتج وحفظه كمسودة."
+
+#: src/Form.php:147
+msgid "This product cannot be published again from here. Edit it instead."
+msgstr "لا يمكن إعادة نشر هذا المنتج من هنا. عدّله بدلا من ذلك."
+
+#: src/Form.php:154
+msgid "Sent for review again."
+msgstr "أُعيد إرساله للمراجعة."
+
+#: src/Form.php:158
+msgid "Withdraw the product before deleting it."
+msgstr "اسحب المنتج قبل حذفه."
+
+#: src/Form.php:161
+msgid "Product deleted."
+msgstr "تم حذف المنتج."
+
+#: src/Form.php:164
+msgid "Unknown action."
+msgstr "إجراء غير معروف."
+
+#: src/Notifications.php:27
+msgid "New product to review"
+msgstr "منتج جديد للمراجعة"
+
+#. translators: %s: product title.
+#: src/Notifications.php:29
+msgid "A seller submitted \"%s\". Check it before it is published."
+msgstr "أرسل بائع «%s». راجعه قبل نشره."
+
+#: src/Notifications.php:34
+msgid "Your product is published"
+msgstr "تم نشر منتجك"
+
+#. translators: %s: product title.
+#: src/Notifications.php:36
+msgid "\"%s\" is now visible to buyers."
+msgstr "«%s» ظاهر الآن للمشترين."
+
+#: src/Notifications.php:41
+msgid "Your product needs changes"
+msgstr "منتجك يحتاج إلى تعديلات"
+
+#. translators: 1: product title, 2: reason.
+#: src/Notifications.php:43
+msgid "\"%1$s\" was not published: %2$s Edit it and send it again."
+msgstr "لم يُنشر «%1$s»: %2$s عدّله وأرسله من جديد."
+
+#: src/Notifications.php:48
+msgid "Your product has expired"
+msgstr "انتهت صلاحية منتجك"
+
+#. translators: %s: product title.
+#: src/Notifications.php:50
+msgid ""
+"\"%s\" is no longer shown. Publish it again from \"My listings\" if it is "
+"still available."
+msgstr "لم يعد «%s» معروضا. أعد نشره من «إعلاناتي» إن كان لا يزال متوفرا."
+
+#: src/Presenter.php:99
+msgid "Product type"
+msgstr "نوع المنتج"
+
+#: src/Presenter.php:101
+msgid "Designation"
+msgstr "التسمية"
+
+#: src/Presenter.php:102
+msgid "Steel grade"
+msgstr "درجة الفولاذ"
+
+#: src/Presenter.php:102
+msgid "Not specified"
+msgstr "غير محددة"
+
+#: src/Presenter.php:104
+msgid "Standard"
+msgstr "المعيار"
+
+#: src/Presenter.php:114
+msgid "Dimensions"
+msgstr "الأبعاد"
+
+#: src/Presenter.php:117
+msgid "Plate size"
+msgstr "مقاس الصفيحة"
+
+#: src/Presenter.php:119
+msgid "Bar length"
+msgstr "طول القضبان"
+
+#. translators: %s: number of plates.
+#: src/Presenter.php:122
+msgid "%s plates"
+msgstr "%s صفائح"
+
+#. translators: %s: number of plates.
+#: src/Presenter.php:122
+msgid "%s bars"
+msgstr "%s قضبان"
+
+#: src/Presenter.php:124
+msgid "Quantity"
+msgstr "الكمية"
+
+#: src/Presenter.php:126
+msgid "Weight per metre"
+msgstr "الوزن لكل متر"
+
+#: src/Presenter.php:148
+msgid "Available quantity"
+msgstr "الكمية المتوفرة"
+
+#: src/Presenter.php:157
+msgid "m (linear)"
+msgstr "م.ط"
+
+#: src/Presenter.php:158
+msgid "pieces"
+msgstr "قطع"
+
+#: src/Rest/Api.php:44
+msgid "This listing is not available."
+msgstr "هذا الإعلان غير متاح."
+
+#: src/Spec.php:46
+msgid "Enter the price."
+msgstr "أدخل السعر."
+
+#: src/Spec.php:49
+msgid "This price is outside the accepted range."
+msgstr "هذا السعر خارج النطاق المقبول."
+
+#: src/Spec.php:55
+msgid ""
+"A price per piece needs the number of pieces: choose \"Number of bars\" or a"
+" price per kg."
+msgstr "السعر للقطعة يتطلب عدد القطع: اختر «عدد القضبان» أو سعرا للكيلوغرام."
+
+#: src/Spec.php:84
+msgid "Give the product a title (in French or in Arabic)."
+msgstr "أعط المنتج عنوانا (بالفرنسية أو بالعربية)."
+
+#: src/Spec.php:88
+msgid "The description is too long (4000 characters at most)."
+msgstr "الوصف طويل جدا (4000 حرف كحد أقصى)."
+
+#: src/Spec.php:92
+msgid "Choose the wilaya where the product is."
+msgstr "اختر الولاية التي يوجد فيها المنتج."
+
+#: src/Spec.php:112
+msgid "The weight engine is not active."
+msgstr "محرك الأوزان غير مفعّل."
+
+#: src/Spec.php:116
+msgid "Choose the product type."
+msgstr "اختر نوع المنتج."
+
+#: src/Spec.php:134
+msgid "Choose the size."
+msgstr "اختر المقاس."
+
+#: src/Spec.php:151
+msgid "Enter the total weight."
+msgstr "أدخل الوزن الإجمالي."
+
+#: src/Spec.php:151
+msgid "Enter the number of pieces."
+msgstr "أدخل عدد القطع."
+
+#: src/Spec.php:185
+msgid "Enter the weighed weight in kg."
+msgstr "أدخل الوزن الفعلي بالكيلوغرام."
+
+#. translators: %s: theoretical weight in kg.
+#: src/Spec.php:188
+msgid "The weighed weight is very far from the theoretical %s kg. Check it."
+msgstr "الوزن الفعلي بعيد جدا عن الوزن النظري %s كغ. تحقق منه."
+
+#: src/Spec.php:211
+msgid "Required."
+msgstr "إلزامي."
+
+#: src/Spec.php:218
+msgid "Enter a positive number."
+msgstr "أدخل عددا موجبا."
+
+#: src/Spec.php:223
+msgid "Choose a value from the list."
+msgstr "اختر قيمة من القائمة."
+
+#: src/Spec.php:233
+msgid "Enter the available quantity."
+msgstr "أدخل الكمية المتوفرة."
