@@ -4,7 +4,15 @@ Livrables : extension `sm-products` 0.1.0, `sm-core` 0.3.0 (index des annonces, 
 
 ## Tests
 
-Voir le tableau en fin de fichier (rempli après exécution).
+| Suite | Résultat |
+| --- | --- |
+| sm-products, tests PHP | 38/38 |
+| sm-weight-engine, tests PHP | 46/46 |
+| sm-core, tests PHP | 103/103 |
+| Produits dans le navigateur (`tests/e2e-products.py` : publication mobile, erreurs et fichiers conservés, toiture, brouillon, modération, pages publiques FR/AR, vendu, suppression, sans JavaScript) | 25/25 |
+| Calculateur de poids (`tests/e2e-weight.py`) | 22/22 |
+| Parcours Phase 2 (`tests/e2e.py`) | 56/56 |
+| Tests visuels AR/FR, 7 largeurs, 23 pages | 322/322 |
 
 ## Limites connues
 
