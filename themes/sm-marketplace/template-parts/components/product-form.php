@@ -54,6 +54,9 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 	<div class="sm-notice sm-notice--info"><?php sm_icon( 'info' ); ?><p><?php esc_html_e( 'This product is online. After your changes it will be checked again before it reappears.', 'sm-marketplace' ); ?></p></div>
 <?php endif; ?>
 
+<?php if ( ! $edit && ! $old ) : ?>
+	<?php sm_component( 'ai-callout', array( 'tool' => 'listing', 'text' => __( 'Save time: send photos to the AI assistant, it prepares the category, the titles in French and Arabic and the description.', 'sm-marketplace' ), 'button' => __( 'Prepare with the AI', 'sm-marketplace' ) ) ); ?>
+<?php endif; ?>
 <section class="sm-panel smp-step">
 	<h2 class="smw-step__title"><span class="smw-step__n">1</span><?php echo esc_html( count( $markets ) > 1 ? __( 'Market and category', 'sm-marketplace' ) : __( 'Category', 'sm-marketplace' ) ); ?></h2>
 	<?php if ( count( $markets ) > 1 && ! $edit ) : ?>

@@ -260,4 +260,18 @@
 		}
 	} );
 
+	/* Long requests (AI assistant): disable the button and say it is working (data-sm-busy="label"). */
+	document.querySelectorAll( 'form[data-sm-busy]' ).forEach( function ( form ) {
+		form.addEventListener( 'submit', function () {
+			var btn = form.querySelector( 'button[type="submit"]' );
+			form.setAttribute( 'aria-busy', 'true' );
+			if ( btn ) {
+				btn.disabled = true;
+				btn.classList.add( 'is-busy' );
+				var label = btn.querySelector( '[data-sm-busy-label]' ) || btn;
+				label.textContent = form.getAttribute( 'data-sm-busy' );
+			}
+		} );
+	} );
+
 }() );

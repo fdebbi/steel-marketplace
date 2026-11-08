@@ -20,6 +20,8 @@ $query    = array(
 	'qty_min'    => sm_theme_query_arg( 'qty_min' ),
 	'wilaya'    => sm_theme_query_arg( 'wilaya' ),
 	'q'         => sm_theme_query_arg( 'q' ),
+	'min_price' => sm_theme_query_arg( 'price_min' ),
+	'max_price' => sm_theme_query_arg( 'max_price', sm_theme_query_arg( 'price_max' ) ),
 	'sort'      => sm_theme_query_arg( 'sort', 'recent' ),
 	'per_page'  => 12,
 	'page'      => $page_num,
@@ -59,6 +61,10 @@ if ( $category && isset( $cats[ $category ] ) ) {
 		<?php endif; ?>
 	</div>
 </section>
+
+<div class="sm-container">
+	<?php sm_component( 'ai-search' ); ?>
+</div>
 
 <div class="sm-container sm-results">
 	<?php sm_component( 'filter-panel', array( 'market' => $market, 'action' => $action, 'total' => $result['total'] ) ); ?>

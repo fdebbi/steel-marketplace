@@ -35,6 +35,9 @@ $markets = (array) ( $set['markets'] ?? array() );
 $cats    = (array) ( $set['categories'] ?? array() );
 wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js', array(), sm_theme_asset_version( 'assets/js/product-form.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 ?>
+<?php if ( ! $edit && ! $old ) : ?>
+	<?php sm_component( 'ai-callout', array( 'tool' => 'document', 'text' => __( 'You have a bill of quantities or a list of profiles? The AI assistant reads it and fills the rows for you.', 'sm-marketplace' ), 'button' => __( 'Import from a document', 'sm-marketplace' ) ) ); ?>
+<?php endif; ?>
 <?php sm_theme_form_open( 'rfq_save', array( 'class' => 'sm-form smp-form smq-form', 'enctype' => 'multipart/form-data', 'data-smp' => '', 'data-smp-partial' => add_query_arg( 'smq_partial', '1', $base ) ) ); ?>
 	<input type="hidden" name="rfq_id" value="<?php echo esc_attr( $v( 'rfq_id' ) ); ?>">
 

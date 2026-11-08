@@ -83,7 +83,7 @@ msgstr "Demandes de devis"
 #: footer.php:29 inc/menus.php:40
 #: template-parts/components/services-board.php:30
 #: templates/company-profile.php:39 templates/company-profile.php:103
-#: templates/dashboard.php:86
+#: templates/dashboard.php:93
 msgid "Services"
 msgstr "Services"
 
@@ -157,7 +157,7 @@ msgstr "Accueil"
 msgid "Search"
 msgstr "Rechercher"
 
-#: footer.php:57 header.php:77 template-parts/components/product-form.php:188
+#: footer.php:57 header.php:77 template-parts/components/product-form.php:191
 #: template-parts/dashboard/publish.php:211 templates/styleguide.php:34
 msgid "Publish"
 msgstr "Publier"
@@ -187,10 +187,10 @@ msgid "Open menu"
 msgstr "Ouvrir le menu"
 
 #: header.php:48 template-parts/components/filter-panel.php:32
-#: template-parts/components/product-form.php:60
-#: template-parts/components/rfq-form.php:45
+#: template-parts/components/product-form.php:63
+#: template-parts/components/rfq-form.php:48
 #: template-parts/components/rfq-single.php:21
-#: template-parts/dashboard/listings.php:32
+#: template-parts/dashboard/ai.php:66 template-parts/dashboard/listings.php:32
 #: template-parts/dashboard/listings.php:46
 #: template-parts/dashboard/publish.php:35
 #: template-parts/dashboard/publish.php:51
@@ -207,7 +207,7 @@ msgstr "Tous les marchés"
 msgid "IPE 200, HEA, tube 100×50, hangar…"
 msgstr "IPE 200, HEA, tube 100×50, hangar…"
 
-#: header.php:60 templates/dashboard.php:82
+#: header.php:60 templates/dashboard.php:89
 msgid "Saved listings"
 msgstr "Annonces enregistrées"
 
@@ -232,8 +232,8 @@ msgstr "Se connecter"
 
 #: header.php:79 template-parts/components/service-requests-list.php:38
 #: template-parts/dashboard/engineer-overview.php:55
-#: template-parts/dashboard/services.php:19 templates/dashboard.php:62
-#: templates/dashboard.php:88
+#: template-parts/dashboard/services.php:19 templates/dashboard.php:64
+#: templates/dashboard.php:95
 msgid "My services"
 msgstr "Mes services"
 
@@ -251,11 +251,11 @@ msgstr "Voir toutes les annonces"
 
 #: header.php:136 template-parts/components/my-products.php:47
 #: template-parts/components/my-products.php:51
-#: template-parts/dashboard/listings.php:25 templates/dashboard.php:75
+#: template-parts/dashboard/listings.php:25 templates/dashboard.php:82
 msgid "Publish a listing"
 msgstr "Publier une annonce"
 
-#: header.php:139 templates/dashboard.php:137 templates/dashboard.php:151
+#: header.php:139 templates/dashboard.php:144 templates/dashboard.php:158
 msgid "Sign out"
 msgstr "Se déconnecter"
 
@@ -504,7 +504,9 @@ msgstr "Poids réel"
 msgid "Estimated weight"
 msgstr "Poids estimé"
 
-#: inc/template-tags.php:197 template-parts/components/rfq-single.php:33
+#: inc/template-tags.php:197
+#: template-parts/components/ai-result-document.php:25
+#: template-parts/components/rfq-single.php:33
 msgid "Theoretical weight"
 msgstr "Poids théorique"
 
@@ -701,6 +703,215 @@ msgstr "Entreprises et ingénieurs vérifiés"
 msgid "Requests for quotation compared side by side"
 msgstr "Devis comparés côte à côte"
 
+#: template-parts/components/ai-confidence.php:13
+msgid "Likely"
+msgstr "Probable"
+
+#: template-parts/components/ai-confidence.php:13
+msgid "Possible"
+msgstr "Possible"
+
+#: template-parts/components/ai-confidence.php:13
+msgid "Uncertain"
+msgstr "Incertain"
+
+#: template-parts/components/ai-result-document.php:12
+msgid "pcs"
+msgstr "pcs"
+
+#: template-parts/components/ai-result-document.php:16
+msgid "Steel items found"
+msgstr "Articles en acier trouvés"
+
+#: template-parts/components/ai-result-document.php:17
+#: template-parts/components/ai-result-listing.php:17
+#: template-parts/components/ai-result-recognize.php:16
+#: template-parts/components/ai-search.php:23
+#: template-parts/dashboard/ai.php:52
+msgid "Simulation"
+msgstr "Simulation"
+
+#: template-parts/components/ai-result-document.php:21
+msgid "No steel item was found in this document."
+msgstr "Aucun article en acier n’a été trouvé dans ce document."
+
+#: template-parts/components/ai-result-document.php:25
+msgid "Item"
+msgstr "Article"
+
+#. translators: %s: kg/m.
+#: template-parts/components/ai-result-document.php:25
+#: template-parts/components/ai-result-listing.php:23
+msgid "Grade"
+msgstr "Nuance"
+
+#: template-parts/components/ai-result-document.php:25
+#: template-parts/components/product-lines.php:90
+#: template-parts/components/product-tech.php:288
+#: template-parts/components/product-tech.php:363
+#: template-parts/components/weight-calculator.php:217
+#: templates/single-listing.php:51
+msgid "Length"
+msgstr "Longueur"
+
+#: template-parts/components/ai-result-document.php:25
+#: template-parts/components/rfq-form.php:71
+#: template-parts/components/rfq-single.php:30
+#: template-parts/components/rfq-single.php:82
+#: template-parts/components/rfq-single.php:87
+#: template-parts/components/rfq-tech.php:54
+#: template-parts/components/weight-calculator.php:199
+#: template-parts/dashboard/publish.php:128
+#: template-parts/dashboard/publish.php:133 templates/single-listing.php:210
+#: templates/single-listing.php:221
+msgid "Quantity"
+msgstr "Quantité"
+
+#: template-parts/components/ai-result-document.php:31
+msgid "In the catalogue"
+msgstr "Au catalogue"
+
+#: template-parts/components/ai-result-document.php:31
+msgid "To specify"
+msgstr "À préciser"
+
+#: template-parts/components/ai-result-document.php:42
+msgid "Theoretical weight of the catalogue profiles (weight engine)"
+msgstr "Poids théorique des profilés du catalogue (moteur de poids)"
+
+#: template-parts/components/ai-result-document.php:49
+msgid "Points to check"
+msgstr "Points à vérifier"
+
+#: template-parts/components/ai-result-document.php:56
+msgid ""
+"Catalogue profiles become rows weighed by the engine; the other items go "
+"into the description. You complete and check before publishing."
+msgstr ""
+"Les profilés du catalogue deviennent des lignes pesées par le moteur ; les "
+"autres articles vont dans la description. Vous complétez et vérifiez avant "
+"de publier."
+
+#: template-parts/components/ai-result-document.php:57
+msgid "Create a request for quotation"
+msgstr "Créer une demande de devis"
+
+#: template-parts/components/ai-result-listing.php:16
+msgid "Suggested listing"
+msgstr "Annonce proposée"
+
+#: template-parts/components/ai-result-listing.php:21
+#: template-parts/components/filter-panel.php:42
+#: template-parts/components/product-form.php:61
+#: template-parts/components/rfq-form.php:56
+#: template-parts/dashboard/publish.php:67
+msgid "Category"
+msgstr "Catégorie"
+
+#: template-parts/components/ai-result-listing.php:21
+msgid "Not found — choose it on the form"
+msgstr "Non trouvée — à choisir dans le formulaire"
+
+#: template-parts/components/ai-result-listing.php:22
+#: template-parts/components/rfq-single.php:82
+#: template-parts/components/rfq-single.php:86
+#: template-parts/dashboard/publish.php:128
+#: template-parts/dashboard/publish.php:132
+#: template-parts/dashboard/settings.php:20 templates/single-listing.php:209
+#: templates/single-listing.php:220
+msgid "Profile"
+msgstr "Profilé"
+
+#. translators: %s: kg/m.
+#: template-parts/components/ai-result-listing.php:22
+msgid "%s kg/m (catalogue)"
+msgstr "%s kg/m (catalogue)"
+
+#. translators: %s: kg/m.
+#: template-parts/components/ai-result-listing.php:22
+msgid "Not identified"
+msgstr "Non identifié"
+
+#: template-parts/components/ai-result-listing.php:38
+msgid "To complete on the form"
+msgstr "À compléter dans le formulaire"
+
+#: template-parts/components/ai-result-listing.php:47
+msgid ""
+"The form opens filled with these suggestions; quantity, length, price and "
+"photos are yours to give. Nothing is published before you submit."
+msgstr ""
+"Le formulaire s’ouvre rempli avec ces suggestions ; la quantité, la "
+"longueur, le prix et les photos restent à indiquer. Rien n’est publié avant "
+"votre envoi."
+
+#: template-parts/components/ai-result-listing.php:48
+msgid "Create the listing with these suggestions"
+msgstr "Créer l’annonce avec ces suggestions"
+
+#: template-parts/components/ai-result-recognize.php:15
+msgid "Possible profiles"
+msgstr "Profilés possibles"
+
+#: template-parts/components/ai-result-recognize.php:18
+msgid "To confirm by measuring: a photo is not a certified identification."
+msgstr ""
+"À confirmer par une mesure : une photo n’est pas une identification "
+"certifiée."
+
+#: template-parts/components/ai-result-recognize.php:20
+msgid ""
+"The assistant could not recognise a profile of the catalogue on these "
+"photos. Try a photo of the end of the profile, with a tape measure."
+msgstr ""
+"L’assistant n’a reconnu aucun profilé du catalogue sur ces photos. Essayez "
+"une photo du bout du profilé, avec un mètre."
+
+#. translators: %s: kg/m.
+#: template-parts/components/ai-result-recognize.php:29
+msgid "Catalogue: %s kg/m"
+msgstr "Catalogue : %s kg/m"
+
+#: template-parts/components/ai-result-recognize.php:32
+msgid "Weigh it"
+msgstr "Le peser"
+
+#: template-parts/components/ai-result-recognize.php:33
+msgid "Find it on the marketplace"
+msgstr "Le trouver sur la plateforme"
+
+#: template-parts/components/ai-result-recognize.php:41
+msgid "To remove the doubt"
+msgstr "Pour lever le doute"
+
+#: template-parts/components/ai-search.php:18
+msgid "A simple keyword search was done instead."
+msgstr "Une recherche simple par mots-clés a été faite à la place."
+
+#: template-parts/components/ai-search.php:23
+msgid "Understood as"
+msgstr "Compris comme"
+
+#: template-parts/components/ai-search.php:27
+msgid "No precise filter: all listings are shown."
+msgstr "Aucun filtre précis : toutes les annonces sont affichées."
+
+#: template-parts/components/ai-search.php:34
+msgid "Searching…"
+msgstr "Recherche en cours…"
+
+#: template-parts/components/ai-search.php:35
+msgid "Describe what you need"
+msgstr "Décrivez votre besoin"
+
+#: template-parts/components/ai-search.php:37
+msgid "Describe what you need, e.g. “used IPE 200 in Oran, at least 6 m”"
+msgstr "Décrivez votre besoin, ex. « IPE 200 d’occasion à Oran, 6 m minimum »"
+
+#: template-parts/components/ai-search.php:38
+msgid "Smart search"
+msgstr "Recherche intelligente"
+
 #: template-parts/components/card-listing.php:24
 msgid "Featured"
 msgstr "À la une"
@@ -826,7 +1037,7 @@ msgstr ""
 
 #: template-parts/components/filter-panel.php:16
 #: template-parts/components/filter-panel.php:20
-#: template-parts/marketplace-archive.php:75
+#: template-parts/marketplace-archive.php:81
 msgid "Filters"
 msgstr "Filtres"
 
@@ -837,13 +1048,6 @@ msgstr "Fermer les filtres"
 #: template-parts/components/filter-panel.php:26
 msgid "Profile designation or keyword"
 msgstr "Désignation du profilé ou mot-clé"
-
-#: template-parts/components/filter-panel.php:42
-#: template-parts/components/product-form.php:58
-#: template-parts/components/rfq-form.php:53
-#: template-parts/dashboard/publish.php:67
-msgid "Category"
-msgstr "Catégorie"
 
 #: template-parts/components/filter-panel.php:43
 msgid "All categories"
@@ -877,7 +1081,7 @@ msgstr "État du bâtiment"
 #: template-parts/components/services-board.php:31
 #: template-parts/dashboard/listings.php:20
 #: template-parts/dashboard/rfq.php:29
-#: template-parts/marketplace-archive.php:54 templates/companies.php:17
+#: template-parts/marketplace-archive.php:56 templates/companies.php:17
 msgid "All"
 msgstr "Tous"
 
@@ -1152,63 +1356,75 @@ msgstr ""
 " réapparaître."
 
 #: template-parts/components/product-form.php:58
+msgid ""
+"Save time: send photos to the AI assistant, it prepares the category, the "
+"titles in French and Arabic and the description."
+msgstr ""
+"Gagnez du temps : envoyez des photos à l’assistant IA, il prépare la "
+"catégorie, les titres en français et en arabe et la description."
+
+#: template-parts/components/product-form.php:58
+msgid "Prepare with the AI"
+msgstr "Préparer avec l’IA"
+
+#: template-parts/components/product-form.php:61
 msgid "Market and category"
 msgstr "Marché et catégorie"
 
-#: template-parts/components/product-form.php:91
+#: template-parts/components/product-form.php:94
 msgid "Choose the kind of lot to see its form."
 msgstr "Choisissez le type de lot pour afficher son formulaire."
 
-#: template-parts/components/product-form.php:91
+#: template-parts/components/product-form.php:94
 msgid "Choose the category of the product to see its form."
 msgstr "Choisissez la catégorie du produit pour afficher son formulaire."
 
-#: template-parts/components/product-form.php:100
+#: template-parts/components/product-form.php:103
 msgid "technical data, quantity and price"
 msgstr "données techniques, quantité et prix"
 
-#: template-parts/components/product-form.php:105
-#: template-parts/components/rfq-form.php:73
+#: template-parts/components/product-form.php:108
+#: template-parts/components/rfq-form.php:76
 msgid "Title and description"
 msgstr "Titre et description"
 
-#: template-parts/components/product-form.php:107
-#: template-parts/components/rfq-form.php:75
+#: template-parts/components/product-form.php:110
+#: template-parts/components/rfq-form.php:78
 #: template-parts/components/service-form.php:64
 #: template-parts/dashboard/publish.php:145
 msgid "Title in French"
 msgstr "Titre en français"
 
-#: template-parts/components/product-form.php:108
+#: template-parts/components/product-form.php:111
 msgid "e.g. Industrial hangar 40 × 20 m, assembled"
 msgstr "ex. Hangar industriel 40 × 20 m, monté"
 
-#: template-parts/components/product-form.php:108
+#: template-parts/components/product-form.php:111
 msgid "e.g. IPE and HEA offcuts, 2 to 4 m, good condition"
 msgstr "ex. chutes IPE et HEA, 2 à 4 m, bon état"
 
-#: template-parts/components/product-form.php:108
+#: template-parts/components/product-form.php:111
 msgid "e.g. IPE 200 S275JR new, 12 m bars"
 msgstr "ex. IPE 200 S275JR neuves, barres de 12 m"
 
-#: template-parts/components/product-form.php:112
-#: template-parts/components/rfq-form.php:80
+#: template-parts/components/product-form.php:115
+#: template-parts/components/rfq-form.php:83
 #: template-parts/components/service-form.php:69
 msgid "Title in Arabic"
 msgstr "Titre en arabe"
 
-#: template-parts/components/product-form.php:112
-#: template-parts/components/product-form.php:116
-#: template-parts/components/product-form.php:163
+#: template-parts/components/product-form.php:115
+#: template-parts/components/product-form.php:119
+#: template-parts/components/product-form.php:166
 #: template-parts/components/product-tech.php:63
 #: template-parts/components/product-tech.php:131
 #: template-parts/components/product-tech.php:372
-#: template-parts/components/rfq-form.php:53
-#: template-parts/components/rfq-form.php:80
-#: template-parts/components/rfq-form.php:89
-#: template-parts/components/rfq-form.php:107
-#: template-parts/components/rfq-form.php:111
-#: template-parts/components/rfq-form.php:131
+#: template-parts/components/rfq-form.php:56
+#: template-parts/components/rfq-form.php:83
+#: template-parts/components/rfq-form.php:92
+#: template-parts/components/rfq-form.php:110
+#: template-parts/components/rfq-form.php:114
+#: template-parts/components/rfq-form.php:134
 #: template-parts/components/rfq-offer-form.php:44
 #: template-parts/components/rfq-offer-form.php:63
 #: template-parts/components/rfq-offer-form.php:67
@@ -1222,33 +1438,34 @@ msgstr "Titre en arabe"
 #: template-parts/components/service-request-form.php:39
 #: template-parts/components/service-request-form.php:47
 #: template-parts/components/service-request-row.php:87
+#: template-parts/dashboard/ai.php:66 template-parts/dashboard/ai.php:92
 #: template-parts/dashboard/portfolio.php:48
 #: template-parts/dashboard/portfolio.php:54
 #: template-parts/dashboard/portfolio.php:74 templates/contact.php:56
 msgid "optional"
 msgstr "facultatif"
 
-#: template-parts/components/product-form.php:116
+#: template-parts/components/product-form.php:119
 #: template-parts/dashboard/publish.php:153
 msgid "Description and technical notes"
 msgstr "Description et notes techniques"
 
-#: template-parts/components/product-form.php:123
+#: template-parts/components/product-form.php:126
 msgid "Photos and technical sheet"
 msgstr "Photos et fiche technique"
 
-#: template-parts/components/product-form.php:131
+#: template-parts/components/product-form.php:134
 #: template-parts/components/service-form.php:146
 msgid "Keep"
 msgstr "Garder"
 
-#: template-parts/components/product-form.php:140
+#: template-parts/components/product-form.php:143
 #: template-parts/dashboard/publish.php:163
 msgid "Take or add photos"
 msgstr "Prendre ou ajouter des photos"
 
 #. translators: 1: number of photos, 2: size in MB.
-#: template-parts/components/product-form.php:144
+#: template-parts/components/product-form.php:147
 msgid ""
 "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole building, "
 "the frames, the connections and the roof."
@@ -1257,7 +1474,7 @@ msgstr ""
 "entier, les portiques, les assemblages et la toiture."
 
 #. translators: 1: number of photos, 2: size in MB.
-#: template-parts/components/product-form.php:144
+#: template-parts/components/product-form.php:147
 msgid ""
 "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole lot, the "
 "condition of the surfaces and the ends."
@@ -1266,7 +1483,7 @@ msgstr ""
 "entier, l’état des surfaces et les extrémités."
 
 #. translators: 1: number of photos, 2: size in MB.
-#: template-parts/components/product-form.php:144
+#: template-parts/components/product-form.php:147
 msgid ""
 "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the section, the "
 "markings and the stock."
@@ -1274,12 +1491,12 @@ msgstr ""
 "Jusqu’à %1$d photos (JPG, PNG, WebP, %2$d Mo chacune). Montrez la section, "
 "les marquages et le stock."
 
-#: template-parts/components/product-form.php:163
+#: template-parts/components/product-form.php:166
 msgid "Add the technical sheet (PDF)"
 msgstr "Ajouter la fiche technique (PDF)"
 
 #. translators: %d: size in MB.
-#: template-parts/components/product-form.php:167
+#: template-parts/components/product-form.php:170
 msgid ""
 "Manufacturer data sheet, certificate of inspection (up to 3 PDF, %d MB "
 "each). Buyers can download it."
@@ -1287,38 +1504,38 @@ msgstr ""
 "Fiche du fabricant, certificat de réception (jusqu’à 3 PDF de %d Mo). Les "
 "acheteurs pourront la télécharger."
 
-#: template-parts/components/product-form.php:174
+#: template-parts/components/product-form.php:177
 #: templates/company-profile.php:153 templates/single-listing.php:67
 msgid "Location"
 msgstr "Localisation"
 
-#: template-parts/components/product-form.php:177
+#: template-parts/components/product-form.php:180
 msgid "Wilaya where the product is"
 msgstr "Wilaya où se trouve le produit"
 
-#: template-parts/components/product-form.php:179
+#: template-parts/components/product-form.php:182
 #: template-parts/components/product-lines.php:67
 #: template-parts/components/product-lines.php:81
 #: template-parts/components/product-tech.php:67
 #: template-parts/components/product-tech.php:133
 #: template-parts/components/product-tech.php:227
-#: template-parts/components/rfq-form.php:47
-#: template-parts/components/rfq-form.php:101
+#: template-parts/components/rfq-form.php:50
+#: template-parts/components/rfq-form.php:104
 #: template-parts/components/service-request-form.php:28
 #: template-parts/components/weight-calculator.php:139
 msgid "Choose…"
 msgstr "Choisir…"
 
-#: template-parts/components/product-form.php:187
+#: template-parts/components/product-form.php:190
 #: template-parts/dashboard/publish.php:209
 msgid "Save draft"
 msgstr "Enregistrer le brouillon"
 
-#: template-parts/components/product-form.php:188
+#: template-parts/components/product-form.php:191
 msgid "Send for publication"
 msgstr "Envoyer pour publication"
 
-#: template-parts/components/product-form.php:191
+#: template-parts/components/product-form.php:194
 msgid ""
 "The platform team checks each product (usually within a working day) before "
 "it is shown to buyers."
@@ -1353,14 +1570,6 @@ msgstr "Dimension"
 #: template-parts/components/product-lines.php:86
 msgid "Pieces"
 msgstr "Pièces"
-
-#: template-parts/components/product-lines.php:90
-#: template-parts/components/product-tech.php:288
-#: template-parts/components/product-tech.php:363
-#: template-parts/components/weight-calculator.php:217
-#: templates/single-listing.php:51
-msgid "Length"
-msgstr "Longueur"
 
 #: template-parts/components/product-lines.php:101
 msgid "Remove this row"
@@ -1851,111 +2060,111 @@ msgstr ""
 "Cette demande a déjà des offres : elle ne peut plus être modifiée. Clôturez-"
 "la et publiez-en une nouvelle si votre besoin a changé."
 
-#: template-parts/components/rfq-form.php:42
+#: template-parts/components/rfq-form.php:39
+msgid ""
+"You have a bill of quantities or a list of profiles? The AI assistant reads "
+"it and fills the rows for you."
+msgstr ""
+"Vous avez un métré ou une liste de profilés ? L’assistant IA le lit et "
+"remplit les lignes pour vous."
+
+#: template-parts/components/rfq-form.php:39
+msgid "Import from a document"
+msgstr "Importer depuis un document"
+
+#: template-parts/components/rfq-form.php:45
 msgid "What do you need?"
 msgstr "De quoi avez-vous besoin ?"
 
-#: template-parts/components/rfq-form.php:55
+#: template-parts/components/rfq-form.php:58
 msgid "Any category"
 msgstr "Toutes catégories"
 
-#: template-parts/components/rfq-form.php:68
-#: template-parts/components/rfq-single.php:30
-#: template-parts/components/rfq-single.php:82
-#: template-parts/components/rfq-single.php:87
-#: template-parts/components/rfq-tech.php:54
-#: template-parts/components/weight-calculator.php:199
-#: template-parts/dashboard/publish.php:128
-#: template-parts/dashboard/publish.php:133 templates/single-listing.php:210
-#: templates/single-listing.php:221
-msgid "Quantity"
-msgstr "Quantité"
-
-#: template-parts/components/rfq-form.php:76
+#: template-parts/components/rfq-form.php:79
 msgid "e.g. IPE 270 beams for a hangar, delivery on site"
 msgstr "ex. Poutrelles IPE 270 pour hangar, livraison chantier"
 
-#: template-parts/components/rfq-form.php:84
+#: template-parts/components/rfq-form.php:87
 #: template-parts/components/rfq-single.php:101
 msgid "Technical description"
 msgstr "Description technique"
 
-#: template-parts/components/rfq-form.php:85
+#: template-parts/components/rfq-form.php:88
 msgid "Steel grade, standard, finish, tolerances, certificates, cutting…"
 msgstr "Nuance, norme, finition, tolérances, certificats, découpe…"
 
-#: template-parts/components/rfq-form.php:89
+#: template-parts/components/rfq-form.php:92
 #: template-parts/components/rfq-single.php:104
 msgid "Additional notes"
 msgstr "Notes complémentaires"
 
-#: template-parts/components/rfq-form.php:90
+#: template-parts/components/rfq-form.php:93
 msgid "Site access, unloading, invoicing…"
 msgstr "Accès au chantier, déchargement, facturation…"
 
-#: template-parts/components/rfq-form.php:96
+#: template-parts/components/rfq-form.php:99
 msgid "Delivery and deadline"
 msgstr "Livraison et délai"
 
-#: template-parts/components/rfq-form.php:99 templates/rfq-board.php:77
+#: template-parts/components/rfq-form.php:102 templates/rfq-board.php:77
 msgid "Delivery wilaya"
 msgstr "Wilaya de livraison"
 
-#: template-parts/components/rfq-form.php:107
+#: template-parts/components/rfq-form.php:110
 msgid "Delivery place"
 msgstr "Lieu de livraison"
 
-#: template-parts/components/rfq-form.php:108
+#: template-parts/components/rfq-form.php:111
 msgid "Town, industrial zone, site"
 msgstr "Ville, zone industrielle, chantier"
 
-#: template-parts/components/rfq-form.php:111
+#: template-parts/components/rfq-form.php:114
 #: template-parts/components/rfq-single.php:37
 #: template-parts/components/service-request-row.php:43
 msgid "Needed by"
 msgstr "Date souhaitée"
 
-#: template-parts/components/rfq-form.php:116
+#: template-parts/components/rfq-form.php:119
 #: template-parts/components/rfq-single.php:40
 msgid "Offers accepted until"
 msgstr "Offres acceptées jusqu’au"
 
-#: template-parts/components/rfq-form.php:124
+#: template-parts/components/rfq-form.php:127
 #: template-parts/components/rfq-single.php:108
 msgid "Drawings and documents"
 msgstr "Plans et documents"
 
-#: template-parts/components/rfq-form.php:131
+#: template-parts/components/rfq-form.php:134
 msgid "Attach drawings, a bill of materials or photos"
 msgstr "Joindre des plans, une nomenclature ou des photos"
 
 #. translators: 1: files, 2: MB.
-#: template-parts/components/rfq-form.php:132
+#: template-parts/components/rfq-form.php:135
 msgid ""
 "PDF or images, up to %1$d files of %2$d MB. Export DWG/DXF drawings to PDF."
 msgstr ""
 "PDF ou images, jusqu’à %1$d fichiers de %2$d Mo. Exportez les plans DWG/DXF "
 "en PDF."
 
-#: template-parts/components/rfq-form.php:134
+#: template-parts/components/rfq-form.php:137
 msgid "Documents are shown only to signed-in companies."
 msgstr "Les documents ne sont visibles que par les entreprises connectées."
 
-#: template-parts/components/rfq-form.php:138
+#: template-parts/components/rfq-form.php:141
 #: template-parts/components/service-form.php:160
 #: template-parts/dashboard/portfolio.php:86
 msgid "Cancel"
 msgstr "Annuler"
 
-#: template-parts/components/rfq-form.php:139
+#: template-parts/components/rfq-form.php:142
 msgid "Save the request"
 msgstr "Enregistrer la demande"
 
-#: template-parts/components/rfq-form.php:139
+#: template-parts/components/rfq-form.php:142
 msgid "Publish my request"
 msgstr "Publier ma demande"
 
-#: template-parts/components/rfq-form.php:142
+#: template-parts/components/rfq-form.php:145
 msgid "The platform team checks each request before it is shown to suppliers."
 msgstr ""
 "L’équipe de la plateforme vérifie chaque demande avant de la montrer aux "
@@ -2106,15 +2315,6 @@ msgstr "Le besoin"
 #: template-parts/components/rfq-single.php:80
 msgid "Profiles requested"
 msgstr "Profils demandés"
-
-#: template-parts/components/rfq-single.php:82
-#: template-parts/components/rfq-single.php:86
-#: template-parts/dashboard/publish.php:128
-#: template-parts/dashboard/publish.php:132
-#: template-parts/dashboard/settings.php:20 templates/single-listing.php:209
-#: templates/single-listing.php:220
-msgid "Profile"
-msgstr "Profilé"
 
 #: template-parts/components/rfq-single.php:82
 #: template-parts/components/rfq-single.php:88
@@ -2485,12 +2685,12 @@ msgid "Cancel this request? The provider is told."
 msgstr "Annuler cette demande ? Le prestataire est prévenu."
 
 #: template-parts/components/service-requests-list.php:16
-#: templates/dashboard.php:63
+#: templates/dashboard.php:65
 msgid "Service requests"
 msgstr "Demandes de service"
 
 #: template-parts/components/service-requests-list.php:16
-#: template-parts/dashboard/offers.php:13
+#: template-parts/dashboard/ai.php:16 template-parts/dashboard/offers.php:13
 #: template-parts/dashboard/portfolio.php:13
 #: template-parts/dashboard/rfq.php:19
 #: template-parts/dashboard/services.php:19
@@ -2713,6 +2913,121 @@ msgstr "Saisissez le poids total pour voir le nombre de pièces."
 msgid "Enter the number of pieces to see the total weight."
 msgstr "Saisissez le nombre de pièces pour voir le poids total."
 
+#: template-parts/dashboard/ai.php:16 templates/dashboard.php:62
+#: templates/dashboard.php:78
+msgid "AI assistant"
+msgstr "Assistant IA"
+
+#: template-parts/dashboard/ai.php:31
+msgid ""
+"Send photos of your steel and a few words: the assistant proposes the "
+"category, the profile, the title in French and Arabic and the description, "
+"and tells you what is missing. You check everything before publishing."
+msgstr ""
+"Envoyez des photos de votre acier et quelques mots : l’assistant propose la "
+"catégorie, le profilé, le titre en français et en arabe et la description, "
+"et vous dit ce qui manque. Vous vérifiez tout avant de publier."
+
+#: template-parts/dashboard/ai.php:32
+msgid ""
+"Not sure which profile it is? Send one or two photos (end view if possible):"
+" the assistant proposes the possible profiles, checked against the "
+"catalogue."
+msgstr ""
+"Vous ne savez pas quel profilé c’est ? Envoyez une ou deux photos (vue en "
+"bout si possible) : l’assistant propose les profilés possibles, vérifiés "
+"dans le catalogue."
+
+#: template-parts/dashboard/ai.php:33
+msgid ""
+"Send a bill of quantities, a list of profiles or a specification (PDF or "
+"photo): the assistant extracts the steel items; the weight engine weighs the"
+" known profiles and you can create a request for quotation."
+msgstr ""
+"Envoyez un métré, une liste de profilés ou un cahier des charges (PDF ou "
+"photo) : l’assistant extrait les articles en acier ; le moteur de poids pèse"
+" les profilés connus et vous pouvez créer une demande de devis."
+
+#: template-parts/dashboard/ai.php:38
+msgid ""
+"The AI gives suggestions to check. It never gives weights (computed by the "
+"weight engine) and never replaces an engineer, a structural check or a "
+"certification."
+msgstr ""
+"L’IA donne des suggestions à vérifier. Elle ne donne jamais de poids "
+"(calculés par le moteur de poids) et ne remplace jamais un ingénieur, une "
+"vérification structurelle ou une certification."
+
+#: template-parts/dashboard/ai.php:40
+msgid "AI tools"
+msgstr "Outils IA"
+
+#. translators: %d: remaining uses.
+#: template-parts/dashboard/ai.php:54
+msgid "%d use left this month"
+msgid_plural "%d uses left this month"
+msgstr[0] "%d utilisation restante ce mois-ci"
+msgstr[1] "%d utilisations restantes ce mois-ci"
+
+#: template-parts/dashboard/ai.php:62
+msgid "The assistant is working… (up to a minute)"
+msgstr "L’assistant travaille… (jusqu’à une minute)"
+
+#: template-parts/dashboard/ai.php:68
+msgid "Let the assistant propose"
+msgstr "Laisser l’assistant proposer"
+
+#: template-parts/dashboard/ai.php:77
+msgid "Choose the document"
+msgstr "Choisir le document"
+
+#. translators: %d: MB.
+#: template-parts/dashboard/ai.php:78
+msgid "PDF or photo, %d MB at most."
+msgstr "PDF ou photo, %d Mo au maximum."
+
+#: template-parts/dashboard/ai.php:85
+msgid "Add photos of the profile"
+msgstr "Ajoutez des photos du profilé"
+
+#: template-parts/dashboard/ai.php:85
+msgid "Add photos of the product"
+msgstr "Ajoutez des photos du produit"
+
+#. translators: 1: photos, 2: MB.
+#: template-parts/dashboard/ai.php:86
+msgid "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each)."
+msgstr "Jusqu’à %1$d photos (JPG, PNG, WebP, %2$d Mo chacune)."
+
+#: template-parts/dashboard/ai.php:92
+msgid "What are you looking for in it?"
+msgstr "Que cherchez-vous dans ce document ?"
+
+#: template-parts/dashboard/ai.php:92
+msgid "Your notes"
+msgstr "Vos précisions"
+
+#: template-parts/dashboard/ai.php:92
+msgid "recommended"
+msgstr "conseillé"
+
+#: template-parts/dashboard/ai.php:93
+msgid "e.g. 12 bars HEA 160 S355JR, new, 12 m, stored under shelter in Rouiba"
+msgstr ""
+"ex. 12 barres HEA 160 S355JR neuves, 12 m, stockées sous abri à Rouiba"
+
+#: template-parts/dashboard/ai.php:93
+msgid "e.g. height about 20 cm, found on a dismantled hangar"
+msgstr "ex. hauteur environ 20 cm, récupéré sur un hangar démonté"
+
+#: template-parts/dashboard/ai.php:93
+msgid "e.g. only the structure, not the roofing"
+msgstr "ex. seulement la structure, pas la couverture"
+
+#: template-parts/dashboard/ai.php:97
+msgid "Ask the assistant"
+msgstr "Demander à l’assistant"
+
 #: template-parts/dashboard/company.php:20
 msgid "Sign in with a real account to edit the company profile."
 msgstr "Connectez-vous avec un vrai compte pour modifier la fiche entreprise."
@@ -2726,7 +3041,7 @@ msgstr ""
 msgid "Identity"
 msgstr "Identité"
 
-#: template-parts/dashboard/company.php:30 templates/dashboard.php:93
+#: template-parts/dashboard/company.php:30 templates/dashboard.php:100
 msgid "Company"
 msgstr "Entreprise"
 
@@ -2855,7 +3170,7 @@ msgid "New service requests"
 msgstr "Nouvelles demandes de service"
 
 #: template-parts/dashboard/engineer-overview.php:28
-#: templates/dashboard.php:95
+#: templates/dashboard.php:102
 msgid "Verification"
 msgstr "Vérification"
 
@@ -2897,7 +3212,7 @@ msgstr ""
 "Les comptes ingénierie publient uniquement des services. Pour commercer de "
 "l’acier, ouvrez un compte professionnel séparé, avec sa propre vérification."
 
-#: template-parts/dashboard/listings.php:27 templates/dashboard.php:76
+#: template-parts/dashboard/listings.php:27 templates/dashboard.php:83
 msgid "My listings"
 msgstr "Mes annonces"
 
@@ -2952,7 +3267,7 @@ msgstr "Tout marquer comme lu"
 msgid "No notification yet."
 msgstr "Aucune notification pour l’instant."
 
-#: template-parts/dashboard/offers.php:13 templates/dashboard.php:77
+#: template-parts/dashboard/offers.php:13 templates/dashboard.php:84
 msgid "Quotations sent"
 msgstr "Devis envoyés"
 
@@ -3049,7 +3364,7 @@ msgid "Complete the company profile"
 msgstr "Compléter la fiche entreprise"
 
 #: template-parts/dashboard/portfolio.php:13 templates/company-profile.php:43
-#: templates/company-profile.php:112 templates/dashboard.php:65
+#: templates/company-profile.php:112 templates/dashboard.php:67
 #: templates/single-service.php:142
 msgid "References"
 msgstr "Références"
@@ -3392,7 +3707,7 @@ msgstr ""
 msgid "Verify your contact details first."
 msgstr "Vérifiez d’abord vos coordonnées."
 
-#: template-parts/dashboard/verification.php:32 templates/dashboard.php:160
+#: template-parts/dashboard/verification.php:32 templates/dashboard.php:167
 msgid "Enter the code"
 msgstr "Saisir le code"
 
@@ -3450,58 +3765,58 @@ msgstr "Pas de code reçu ?"
 msgid "Send a new code"
 msgstr "Envoyer un nouveau code"
 
-#: template-parts/marketplace-archive.php:49
+#: template-parts/marketplace-archive.php:51
 msgid "Publish here"
 msgstr "Publier ici"
 
-#: template-parts/marketplace-archive.php:53
+#: template-parts/marketplace-archive.php:55
 msgid "Categories"
 msgstr "Catégories"
 
 #. translators: %s: number of listings.
-#: template-parts/marketplace-archive.php:71
+#: template-parts/marketplace-archive.php:77
 msgid "<strong>%s</strong> listing"
 msgid_plural "<strong>%s</strong> listings"
 msgstr[0] "<strong>%s</strong> annonce"
 msgstr[1] "<strong>%s</strong> annonces"
 
-#: template-parts/marketplace-archive.php:80 templates/rfq-board.php:81
+#: template-parts/marketplace-archive.php:86 templates/rfq-board.php:81
 msgid "Sort by"
 msgstr "Trier par"
 
-#: template-parts/marketplace-archive.php:83 templates/rfq-board.php:82
+#: template-parts/marketplace-archive.php:89 templates/rfq-board.php:82
 msgid "Most recent"
 msgstr "Plus récentes"
 
-#: template-parts/marketplace-archive.php:84
+#: template-parts/marketplace-archive.php:90
 msgid "Price per kg: low to high"
 msgstr "Prix au kg croissant"
 
-#: template-parts/marketplace-archive.php:85
+#: template-parts/marketplace-archive.php:91
 msgid "Price per kg: high to low"
 msgstr "Prix au kg décroissant"
 
-#: template-parts/marketplace-archive.php:88
+#: template-parts/marketplace-archive.php:94
 msgid "Display"
 msgstr "Affichage"
 
-#: template-parts/marketplace-archive.php:89
+#: template-parts/marketplace-archive.php:95
 msgid "Grid"
 msgstr "Grille"
 
-#: template-parts/marketplace-archive.php:90
+#: template-parts/marketplace-archive.php:96
 msgid "List"
 msgstr "Liste"
 
-#: template-parts/marketplace-archive.php:102 templates/rfq-board.php:101
+#: template-parts/marketplace-archive.php:108 templates/rfq-board.php:101
 msgid "Pagination"
 msgstr "Pagination"
 
-#: template-parts/marketplace-archive.php:113
+#: template-parts/marketplace-archive.php:119
 msgid "No listing matches these filters"
 msgstr "Aucune annonce ne correspond à ces filtres"
 
-#: template-parts/marketplace-archive.php:114
+#: template-parts/marketplace-archive.php:120
 msgid ""
 "Widen your search, or publish a request for quotation so suppliers come to "
 "you."
@@ -3509,7 +3824,7 @@ msgstr ""
 "Élargissez votre recherche ou publiez une demande de devis : les "
 "fournisseurs viendront à vous."
 
-#: template-parts/marketplace-archive.php:115
+#: template-parts/marketplace-archive.php:121
 #: templates/front-page-template.php:122 templates/single-listing.php:128
 #: templates/single-service.php:93 templates/single-service.php:122
 #: templates/styleguide.php:36
@@ -3587,7 +3902,7 @@ msgstr ""
 msgid "Account type"
 msgstr "Type de compte"
 
-#: templates/auth-register.php:34 templates/dashboard.php:121
+#: templates/auth-register.php:34 templates/dashboard.php:128
 msgid "Business account"
 msgstr "Compte professionnel"
 
@@ -3809,106 +4124,106 @@ msgstr ""
 "Créez un compte professionnel ou ingénierie pour utiliser le tableau de "
 "bord."
 
-#: templates/dashboard.php:60 templates/dashboard.php:73
+#: templates/dashboard.php:61 templates/dashboard.php:77
 msgid "Overview"
 msgstr "Vue d’ensemble"
 
-#: templates/dashboard.php:61
+#: templates/dashboard.php:63
 msgid "Professional profile"
 msgstr "Profil professionnel"
 
-#: templates/dashboard.php:64
+#: templates/dashboard.php:66
 msgid "Messages"
 msgstr "Messages"
 
-#: templates/dashboard.php:66
+#: templates/dashboard.php:68
 msgid "Qualifications & verification"
 msgstr "Qualifications et vérification"
 
-#: templates/dashboard.php:74
+#: templates/dashboard.php:81
 msgid "Selling"
 msgstr "Vente"
 
-#: templates/dashboard.php:78
+#: templates/dashboard.php:85
 msgid "Enquiries received"
 msgstr "Demandes reçues"
 
-#: templates/dashboard.php:79 templates/pricing.php:18
+#: templates/dashboard.php:86 templates/pricing.php:18
 msgid "Listing statistics"
 msgstr "Statistiques des annonces"
 
-#: templates/dashboard.php:81
+#: templates/dashboard.php:88
 msgid "Buying"
 msgstr "Achat"
 
-#: templates/dashboard.php:83
+#: templates/dashboard.php:90
 msgid "My requests for quotation"
 msgstr "Mes demandes de devis"
 
-#: templates/dashboard.php:84
+#: templates/dashboard.php:91
 msgid "Purchase history"
 msgstr "Historique d’achats"
 
-#: templates/dashboard.php:89
+#: templates/dashboard.php:96
 msgid "Service requests received"
 msgstr "Demandes de service reçues"
 
-#: templates/dashboard.php:91
+#: templates/dashboard.php:98
 msgid "My service requests"
 msgstr "Mes demandes de service"
 
-#: templates/dashboard.php:94
+#: templates/dashboard.php:101
 msgid "Company profile"
 msgstr "Fiche entreprise"
 
-#: templates/dashboard.php:96
+#: templates/dashboard.php:103
 msgid "Plan & AI credits"
 msgstr "Abonnement et crédits IA"
 
-#: templates/dashboard.php:107 templates/dashboard.php:136
+#: templates/dashboard.php:114 templates/dashboard.php:143
 msgid "Settings"
 msgstr "Paramètres"
 
-#: templates/dashboard.php:108
+#: templates/dashboard.php:115
 msgid "Verify your account"
 msgstr "Vérifier votre compte"
 
-#: templates/dashboard.php:121
+#: templates/dashboard.php:128
 msgid "Engineering account"
 msgstr "Compte ingénierie"
 
-#: templates/dashboard.php:124
+#: templates/dashboard.php:131
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#: templates/dashboard.php:156
+#: templates/dashboard.php:163
 msgid "Demo engineering account."
 msgstr "Compte ingénierie de démonstration."
 
-#: templates/dashboard.php:156
+#: templates/dashboard.php:163
 msgid "Demo business account."
 msgstr "Compte professionnel de démonstration."
 
-#: templates/dashboard.php:156
+#: templates/dashboard.php:163
 msgid "Switch to the business dashboard"
 msgstr "Voir le tableau de bord professionnel"
 
-#: templates/dashboard.php:156
+#: templates/dashboard.php:163
 msgid "Switch to the engineer dashboard"
 msgstr "Voir le tableau de bord ingénieur"
 
-#: templates/dashboard.php:160
+#: templates/dashboard.php:167
 msgid ""
 "Verify your account with the 6-digit code to publish and answer requests."
 msgstr ""
 "Vérifiez votre compte avec le code à 6 chiffres pour publier et répondre aux"
 " demandes."
 
-#: templates/dashboard.php:191
+#: templates/dashboard.php:198
 msgid "This section arrives with its plugin"
 msgstr "Cette rubrique arrive avec son extension"
 
-#: templates/dashboard.php:192
+#: templates/dashboard.php:199
 msgid ""
 "The layout is ready; the content will be provided by the corresponding "
 "marketplace plugin."

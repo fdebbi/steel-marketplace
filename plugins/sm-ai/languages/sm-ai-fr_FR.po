@@ -1,0 +1,494 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM AI 0.1.0\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: sm-ai\n"
+
+#. Plugin Name of the plugin
+#: sm-ai.php
+msgid "SM AI"
+msgstr "SM AI"
+
+#. Plugin URI of the plugin
+#: sm-ai.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-ai.php
+msgid ""
+"AI assistance services, independent of the provider (Anthropic Claude, "
+"OpenAI-compatible APIs): listing assistant, steel profile recognition on "
+"photos, smart search, document analysis. Encrypted API keys, quotas, monthly"
+" budget, usage and cost log. Suggestions only: weights come from the weight "
+"engine, and AI never replaces engineering. Requires SM Core."
+msgstr ""
+"Services d’assistance IA, indépendants du fournisseur (Anthropic Claude, API"
+" compatibles OpenAI) : assistant d’annonce, reconnaissance de profilés sur "
+"photo, recherche intelligente, analyse de documents. Clés API chiffrées, "
+"quotas, budget mensuel, journal de consommation et de coûts. Des suggestions"
+" uniquement : les poids viennent du moteur de calcul et l’IA ne remplace "
+"jamais l’ingénierie. Nécessite SM Core."
+
+#. Author of the plugin
+#: sm-ai.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-ai.php:47
+msgid "SM AI needs the SM Core plugin. Activate it first."
+msgstr "SM AI nécessite l’extension SM Core. Activez-la d’abord."
+
+#: src/Admin/Admin.php:31 src/Admin/Admin.php:54 src/Plugin.php:36
+msgid "AI assistant"
+msgstr "Assistant IA"
+
+#: src/Admin/Admin.php:40 src/Features/Listing.php:24
+msgid "Listing assistant"
+msgstr "Assistant d’annonce"
+
+#: src/Admin/Admin.php:41 src/Features/Recognize.php:23
+msgid "Profile recognition"
+msgstr "Reconnaissance de profilé"
+
+#: src/Admin/Admin.php:42 src/Features/Search.php:24
+msgid "Smart search"
+msgstr "Recherche intelligente"
+
+#: src/Admin/Admin.php:43 src/Features/Document.php:26
+msgid "Document analysis"
+msgstr "Analyse de document"
+
+#: src/Admin/Admin.php:44
+msgid "Connection test"
+msgstr "Test de connexion"
+
+#: src/Admin/Admin.php:56
+msgid "Saved."
+msgstr "Enregistré."
+
+#: src/Admin/Admin.php:60
+msgid "Connection works: the provider answered."
+msgstr "La connexion fonctionne : le fournisseur a répondu."
+
+#. translators: %s: error.
+#: src/Admin/Admin.php:60
+msgid "Connection failed: %s"
+msgstr "Échec de la connexion : %s"
+
+#: src/Admin/Admin.php:64
+msgid ""
+"The AI gives suggestions that users confirm. It never gives weights "
+"(computed by the weight engine), never replaces engineering calculations, "
+"structural checks or certifications."
+msgstr ""
+"L’IA donne des suggestions que les utilisateurs confirment. Elle ne donne "
+"jamais de poids (calculés par le moteur de poids) et ne remplace jamais les "
+"calculs d’ingénierie, les vérifications structurelles ni les certifications."
+
+#: src/Admin/Admin.php:66
+msgid "Providers and services"
+msgstr "Fournisseurs et services"
+
+#: src/Admin/Admin.php:66
+msgid "Consumption"
+msgstr "Consommation"
+
+#: src/Admin/Admin.php:79
+msgid "Providers"
+msgstr "Fournisseurs"
+
+#: src/Admin/Admin.php:80
+msgid ""
+"Keys are stored encrypted and never shown again. For more safety, define "
+"them in wp-config.php: SM_AI_ANTHROPIC_KEY, SM_AI_OPENAI_KEY. Prices (US "
+"dollars per million tokens, as published by the provider) only serve the "
+"cost estimates and the monthly budget."
+msgstr ""
+"Les clés sont enregistrées chiffrées et ne sont plus jamais affichées. Pour "
+"plus de sécurité, définissez-les dans wp-config.php : SM_AI_ANTHROPIC_KEY, "
+"SM_AI_OPENAI_KEY. Les prix (dollars US par million de jetons, tels que "
+"publiés par le fournisseur) servent seulement à estimer les coûts et à "
+"appliquer le budget mensuel."
+
+#: src/Admin/Admin.php:81 src/Admin/Admin.php:107
+msgid "Provider"
+msgstr "Fournisseur"
+
+#: src/Admin/Admin.php:81
+msgid "API key"
+msgstr "Clé API"
+
+#: src/Admin/Admin.php:81
+msgid "Model"
+msgstr "Modèle"
+
+#: src/Admin/Admin.php:81
+msgid "Price in / out ($ per 1M tokens)"
+msgstr "Prix entrée / sortie ($ par million de jetons)"
+
+#: src/Admin/Admin.php:86
+msgid "Base URL"
+msgstr "URL de base"
+
+#: src/Admin/Admin.php:90
+msgid "Defined in wp-config.php"
+msgstr "Définie dans wp-config.php"
+
+#: src/Admin/Admin.php:92
+msgid "Paste the key"
+msgstr "Collez la clé"
+
+#: src/Admin/Admin.php:94
+msgid "Remove the key"
+msgstr "Supprimer la clé"
+
+#: src/Admin/Admin.php:97
+msgid "Model name of the provider"
+msgstr "Nom du modèle chez le fournisseur"
+
+#: src/Admin/Admin.php:101
+msgid "Default provider"
+msgstr "Fournisseur par défaut"
+
+#: src/Admin/Admin.php:101
+msgid "— none (AI off) —"
+msgstr "— aucun (IA désactivée) —"
+
+#: src/Admin/Admin.php:107
+msgid "Services"
+msgstr "Services"
+
+#. translators: %s: amount.
+#: src/Admin/Admin.php:107 src/Admin/Admin.php:156 src/Admin/Admin.php:170
+msgid "Service"
+msgstr "Service"
+
+#: src/Admin/Admin.php:107
+msgid "On"
+msgstr "Actif"
+
+#: src/Admin/Admin.php:107
+msgid "Model (empty = the provider's)"
+msgstr "Modèle (vide = celui du fournisseur)"
+
+#: src/Admin/Admin.php:107
+msgid "Uses per company per month"
+msgstr "Utilisations par entreprise et par mois"
+
+#: src/Admin/Admin.php:107
+msgid "Visitors: uses per day"
+msgstr "Visiteurs : utilisations par jour"
+
+#: src/Admin/Admin.php:107 src/Admin/Admin.php:170
+msgid "State"
+msgstr "État"
+
+#: src/Admin/Admin.php:113
+msgid "Default"
+msgstr "Par défaut"
+
+#: src/Admin/Admin.php:118
+msgid "0 = no limit"
+msgstr "0 = sans limite"
+
+#: src/Admin/Admin.php:120
+msgid "Not available (no provider, key or model)"
+msgstr "Indisponible (pas de fournisseur, de clé ou de modèle)"
+
+#: src/Admin/Admin.php:124
+msgid "Limits"
+msgstr "Limites"
+
+#: src/Admin/Admin.php:126
+msgid "Monthly budget (US dollars, 0 = no limit)"
+msgstr "Budget mensuel (dollars US, 0 = sans limite)"
+
+#: src/Admin/Admin.php:127
+msgid "Uses per user per day"
+msgstr "Utilisations par utilisateur et par jour"
+
+#: src/Admin/Admin.php:128
+msgid "Maximum length of an answer (tokens)"
+msgstr "Longueur maximale d’une réponse (jetons)"
+
+#: src/Admin/Admin.php:129
+msgid "Photos per request"
+msgstr "Photos par demande"
+
+#: src/Admin/Admin.php:130
+msgid "Largest photo (MB)"
+msgstr "Taille maximale d’une photo (Mo)"
+
+#: src/Admin/Admin.php:131
+msgid "Largest document (MB)"
+msgstr "Taille maximale d’un document (Mo)"
+
+#: src/Admin/Admin.php:132
+msgid "Waiting time for an answer (seconds)"
+msgstr "Temps d’attente d’une réponse (secondes)"
+
+#: src/Admin/Admin.php:133
+msgid "Keep the consumption log (days)"
+msgstr "Conserver le journal de consommation (jours)"
+
+#: src/Admin/Admin.php:140
+msgid "Test the connection"
+msgstr "Tester la connexion"
+
+#: src/Admin/Admin.php:146
+msgid "Sends a tiny request (a few tokens) with the saved key and model."
+msgstr ""
+"Envoie une toute petite requête (quelques jetons) avec la clé et le modèle "
+"enregistrés."
+
+#. translators: %s: month.
+#: src/Admin/Admin.php:154
+msgid "This month (%s)"
+msgstr "Ce mois-ci (%s)"
+
+#. translators: %s: amount.
+#: src/Admin/Admin.php:155
+msgid "Estimated cost: %s $"
+msgstr "Coût estimé : %s $"
+
+#. translators: %s: amount.
+#: src/Admin/Admin.php:156
+msgid "Answers"
+msgstr "Réponses"
+
+#. translators: %s: amount.
+#: src/Admin/Admin.php:156
+msgid "Errors"
+msgstr "Erreurs"
+
+#. translators: %s: amount.
+#: src/Admin/Admin.php:156
+msgid "Refused (limits)"
+msgstr "Refusées (limites)"
+
+#. translators: %s: amount.
+#: src/Admin/Admin.php:156
+msgid "Tokens in / out"
+msgstr "Jetons entrée / sortie"
+
+#. translators: %s: amount.
+#: src/Admin/Admin.php:156
+msgid "Estimated cost ($)"
+msgstr "Coût estimé ($)"
+
+#: src/Admin/Admin.php:163
+msgid "Companies using it the most"
+msgstr "Entreprises qui l’utilisent le plus"
+
+#: src/Admin/Admin.php:170
+msgid "Last calls"
+msgstr "Derniers appels"
+
+#: src/Admin/Admin.php:170
+msgid "Date"
+msgstr "Date"
+
+#: src/Admin/Admin.php:170
+msgid "Provider · model"
+msgstr "Fournisseur · modèle"
+
+#: src/Admin/Admin.php:170
+msgid "Company"
+msgstr "Entreprise"
+
+#: src/Admin/Admin.php:170
+msgid "Tokens"
+msgstr "Jetons"
+
+#: src/Admin/Admin.php:170
+msgid "Time"
+msgstr "Durée"
+
+#: src/Admin/Admin.php:177
+msgid "Visitor"
+msgstr "Visiteur"
+
+#: src/Admin/Admin.php:185 src/Admin/Admin.php:196
+msgid "You cannot change these settings."
+msgstr "Vous ne pouvez pas modifier ces réglages."
+
+#: src/Features/Document.php:31
+msgid "Sign in with your company account to analyse a document."
+msgstr ""
+"Connectez-vous avec le compte de votre entreprise pour analyser un document."
+
+#: src/Features/Listing.php:43
+msgid "Sign in with a business account to use the listing assistant."
+msgstr ""
+"Connectez-vous avec un compte entreprise pour utiliser l’assistant "
+"d’annonce."
+
+#: src/Features/Listing.php:46
+msgid "Your account cannot publish listings."
+msgstr "Votre compte ne peut pas publier d’annonces."
+
+#: src/Features/Recognize.php:28 src/Gateway.php:55
+msgid "Sign in to use the AI assistant."
+msgstr "Connectez-vous pour utiliser l’assistant IA."
+
+#: src/Features/Recognize.php:30
+msgid "The weight engine is not active."
+msgstr "Le moteur de poids n’est pas actif."
+
+#: src/Features/Search.php:32
+msgid "The marketplace is not active."
+msgstr "La place de marché n’est pas active."
+
+#. translators: %s: metres.
+#: src/Features/Search.php:110
+msgid "≥ %s m"
+msgstr "≥ %s m"
+
+#. translators: %s: pieces.
+#: src/Features/Search.php:114
+msgid "≥ %s pieces"
+msgstr "≥ %s pièces"
+
+#. translators: %s: price.
+#: src/Features/Search.php:118
+msgid "≤ %s DA/kg"
+msgstr "≤ %s DA/kg"
+
+#: src/Features/Search.php:121
+msgid "Assembled"
+msgstr "Monté"
+
+#: src/Features/Search.php:121
+msgid "Dismantled"
+msgstr "Démonté"
+
+#. translators: %d: number of files.
+#: src/Files.php:45
+msgid "Send %d file at most."
+msgid_plural "Send %d files at most."
+msgstr[0] "Envoyez %d fichier au maximum."
+msgstr[1] "Envoyez %d fichiers au maximum."
+
+#: src/Files.php:60
+msgid "The file could not be received. Try again."
+msgstr "Le fichier n’a pas pu être reçu. Réessayez."
+
+#: src/Files.php:66 src/Files.php:75
+msgid "Send photos (JPG, PNG, WebP)."
+msgstr "Envoyez des photos (JPG, PNG, WebP)."
+
+#. translators: %d: megabytes.
+#: src/Files.php:70
+msgid "The document is too large (%d MB at most)."
+msgstr "Le document est trop lourd (%d Mo au maximum)."
+
+#: src/Files.php:75
+msgid "Send a PDF document or a photo (JPG, PNG, WebP)."
+msgstr "Envoyez un document PDF ou une photo (JPG, PNG, WebP)."
+
+#. translators: %d: megabytes.
+#: src/Files.php:79
+msgid "A photo is too large (%d MB at most)."
+msgstr "Une photo est trop lourde (%d Mo au maximum)."
+
+#: src/Form.php:39
+msgid "Choose an AI tool."
+msgstr "Choisissez un outil IA."
+
+#: src/Form.php:51
+msgid "Add at least one photo of the profile."
+msgstr "Ajoutez au moins une photo du profilé."
+
+#: src/Form.php:54
+msgid "Add the document to analyse (PDF or photo)."
+msgstr "Ajoutez le document à analyser (PDF ou photo)."
+
+#: src/Form.php:57
+msgid "Add photos or describe the product in a few words."
+msgstr "Ajoutez des photos ou décrivez le produit en quelques mots."
+
+#: src/Form.php:84
+msgid "This suggestion expired. Run the assistant again."
+msgstr "Cette suggestion a expiré. Relancez l’assistant."
+
+#: src/Form.php:86
+msgid ""
+"Form pre-filled by the AI assistant: check every field before publishing. "
+"The weight is computed by the weight engine."
+msgstr ""
+"Formulaire pré-rempli par l’assistant IA : vérifiez chaque champ avant de "
+"publier. Le poids est calculé par le moteur de poids."
+
+#: src/Form.php:93
+msgid "Your account cannot create requests for quotation."
+msgstr "Votre compte ne peut pas créer de demandes de devis."
+
+#: src/Form.php:98
+msgid "Nothing to use from this result."
+msgstr "Rien à reprendre de ce résultat."
+
+#: src/Gateway.php:47
+msgid "This AI service is not available."
+msgstr "Ce service IA n’est pas disponible."
+
+#: src/Gateway.php:51
+msgid "The AI assistant is not configured yet. Try again later."
+msgstr "L’assistant IA n’est pas encore configuré. Réessayez plus tard."
+
+#: src/Gateway.php:67
+msgid ""
+"The AI assistant has reached its monthly limit. It will be available again "
+"next month."
+msgstr ""
+"L’assistant IA a atteint sa limite mensuelle. Il sera de nouveau disponible "
+"le mois prochain."
+
+#: src/Gateway.php:71
+msgid "You used the AI assistant many times today. Try again tomorrow."
+msgstr ""
+"Vous avez beaucoup utilisé l’assistant IA aujourd’hui. Réessayez demain."
+
+#: src/Gateway.php:74
+msgid "Your company used all its requests of this month for this AI service."
+msgstr ""
+"Votre entreprise a utilisé toutes ses demandes du mois pour ce service IA."
+
+#: src/Gateway.php:77
+msgid "Create a free account to keep using the smart search today."
+msgstr ""
+"Créez un compte gratuit pour continuer à utiliser la recherche intelligente "
+"aujourd’hui."
+
+#: src/Gateway.php:132
+msgid "The AI service did not answer. Try again in a moment."
+msgstr "Le service IA n’a pas répondu. Réessayez dans un instant."
+
+#: src/Gateway.php:137
+msgid "The AI answer could not be read. Try again."
+msgstr "La réponse de l’IA n’a pas pu être lue. Réessayez."
+
+#: src/Gateway.php:165
+msgid "Give the model name first."
+msgstr "Indiquez d’abord le nom du modèle."
+
+#: src/Plugin.php:46
+msgid "AI settings changed"
+msgstr "Réglages IA modifiés"
+
+#: src/Plugin.php:47
+msgid "AI assistant used"
+msgstr "Assistant IA utilisé"
+
+#: src/Settings.php:78
+msgid "OpenAI-compatible API"
+msgstr "API compatible OpenAI"
+
+#: src/Settings.php:81
+msgid "Simulation (tests, no real AI)"
+msgstr "Simulation (tests, sans vraie IA)"

@@ -122,6 +122,27 @@ final class Forms {
 		exit;
 	}
 
+	/**
+	 * Open a form already filled with values (e.g. suggestions of the AI assistant):
+	 * the theme reads them like values sent back after an error, and shows $message.
+	 * Values are sanitized the same way; nothing is saved until the user submits.
+	 */
+	public static function prefill( array $values, $target, $message = '' ) {
+		$token = wp_generate_password( 20, false );
+		set_transient(
+			'sm_n_' . $token,
+			array(
+				'errors'  => array(),
+				'success' => (string) $message,
+				'old'     => map_deep( $values, static fn( $v ) => is_scalar( $v ) ? sanitize_textarea_field( (string) $v ) : '' ),
+				'prefill' => true,
+			),
+			30 * MINUTE_IN_SECONDS
+		);
+		wp_safe_redirect( add_query_arg( 'sm_n', $token, $target ) );
+		exit;
+	}
+
 	/** Messages for the current page request (theme side). */
 	public static function current_notice() {
 		static $notice = null;

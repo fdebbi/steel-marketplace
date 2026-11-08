@@ -1,5 +1,9 @@
 # Changelog — sm-core
 
+## 0.5.0 — 2026-11-08 (Phase 9)
+
+- `Forms::prefill( $values, $target, $message )` : ouvre un formulaire déjà rempli (suggestions de l'assistant IA), lu par le thème comme des valeurs renvoyées ; rien n'est enregistré avant l'envoi.
+
 ## 0.4.1 — 2026-11-08 (e-mails : en-tête et signature)
 
 - *SM → E-mails → En-tête et signature* : image d'en-tête (médiathèque) ou bandeau de couleur avec logo, signature (logo, nom, adresse FR/AR, téléphone, e-mail, site web, formule de politesse FR/AR), liens des réseaux sociaux (Facebook, Instagram, LinkedIn, YouTube, TikTok, X, WhatsApp) ; appliqués à tous les e-mails ; aperçu FR/AR. 6 tests ajoutés.

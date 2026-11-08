@@ -54,10 +54,12 @@ $view    = sanitize_key( sm_theme_route( 'view', 'overview' ) );
 $extra   = ( $is_eng && $is_demo ) ? array( 'account' => 'engineer' ) : array();
 $unread  = (int) ( $account['unread'] ?? 0 );
 
+$has_ai = ! $is_demo && is_array( sm_theme_data( 'ai_tools' ) );
 if ( $is_eng ) {
 	$menu = array(
 		'' => array(
 			'overview'         => array( 'home', __( 'Overview', 'sm-marketplace' ) ),
+			'ai'               => $has_ai ? array( 'ai', __( 'AI assistant', 'sm-marketplace' ) ) : null,
 			'profile'          => array( 'user', __( 'Professional profile', 'sm-marketplace' ) ),
 			'services'         => array( 'wrench', __( 'My services', 'sm-marketplace' ) ),
 			'service-requests' => array( 'rfq', __( 'Service requests', 'sm-marketplace' ) ),
@@ -70,7 +72,12 @@ if ( $is_eng ) {
 	$svc_set = (array) sm_theme_data( 'services_settings' );
 	$can_fab = ! empty( $svc_set['kinds']['fabrication']['allowed'] );
 	$menu    = array(
-		''                                  => array( 'overview' => array( 'home', __( 'Overview', 'sm-marketplace' ) ) ),
+		''                                  => array_filter(
+			array(
+				'overview' => array( 'home', __( 'Overview', 'sm-marketplace' ) ),
+				'ai'       => $has_ai ? array( 'ai', __( 'AI assistant', 'sm-marketplace' ) ) : null,
+			)
+		),
 		__( 'Selling', 'sm-marketplace' )   => array(
 			'publish'  => array( 'plus', __( 'Publish a listing', 'sm-marketplace' ) ),
 			'listings' => array( 'package', __( 'My listings', 'sm-marketplace' ) ),
@@ -97,7 +104,7 @@ if ( $is_eng ) {
 		),
 	);
 }
-$menu   = array_filter( $menu );
+$menu   = array_filter( array_map( 'array_filter', $menu ) );
 $titles = array();
 foreach ( $menu as $group ) {
 	foreach ( $group as $key => $entry ) {

@@ -57,6 +57,9 @@ PAGES = {
     'dashboard-engineer-service-requests': ('/compte/?view=service-requests', 'eng'),
     'dashboard-engineer-portfolio': ('/compte/?view=portfolio', 'eng'),
     'dashboard-engineer-portfolio-form': ('/compte/?view=portfolio&new=1', 'eng'),
+    'dashboard-ai': ('/compte/?view=ai', 'com'),
+    'dashboard-ai-document': ('/compte/?view=ai&tool=document', 'com'),
+    'dashboard-engineer-ai': ('/compte/?view=ai&tool=listing', 'eng'),
 }
 ACCOUNTS = {k: os.environ.get(v) for k, v in (('com', 'SM_VT_COM'), ('eng', 'SM_VT_ENG'))}
 

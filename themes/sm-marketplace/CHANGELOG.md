@@ -1,5 +1,18 @@
 # Changelog — sm-marketplace
 
+## 0.12.0 — 2026-11-08 (Phase 9, avec sm-ai 0.1.0)
+
+- Tableau de bord « Assistant IA » (entreprises et ingénieurs) :
+  - trois outils : annonce, profilé, document ;
+  - envoi de photos ou d'un document avec des notes, et bouton occupé pendant l'analyse ;
+  - résultats avec confiance, masses du catalogue, tableau des articles pesés par le moteur ;
+  - boutons « Créer l'annonce » et « Créer une demande de devis » ;
+  - quotas restants et badge « Simulation ».
+- Encarts « Préparer avec l'IA » sur le formulaire d'annonce et « Importer depuis un document » sur le formulaire de demande de devis.
+- Recherche intelligente sur les pages de marché et de recherche, avec « Compris comme » (pastilles des filtres) ou repli sur la recherche simple.
+- Les filtres prix minimum et maximum de la recherche sont maintenant transmis.
+- `14-ai.css`, 1006 chaînes traduites, tests visuels étendus à 35 pages.
+
 ## 0.11.0 — 2026-11-08 (Phase 8.1, avec sm-core 0.4.0)
 
 - Page « Contact » réelle (modèle `templates/contact.php`) : nom, e-mail, téléphone, objet (suggestions), message ; erreurs par champ, confirmation, champs préremplis pour un membre connecté ; adresse de contact de la plateforme.

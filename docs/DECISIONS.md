@@ -139,3 +139,17 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Journal des e-mails | Chaque envoi avec statut et erreur ; contenu conservé pour relecture et renvoi, sauf codes de vérification | Répondre à « je n'ai rien reçu » ; un code de vérification ne doit jamais rester lisible |
 | Journal d'activité | Phrases lisibles, connexions réussies rangées sous « Sécurité », export CSV, conservation réglable (365 jours par défaut) | Lisible par un non-technicien ; les connexions noieraient le reste |
 | Robustesse | Une erreur d'e-mail n'interrompt jamais l'action de l'utilisateur | L'inscription ou la publication ne doit pas échouer à cause d'un serveur SMTP |
+
+## 8 novembre 2026 — Phase 9 : sm-ai
+
+| Sujet | Décision | Raison |
+| --- | --- | --- |
+| Fournisseurs | Deux connecteurs : Anthropic (Messages) et « compatible OpenAI » (Chat Completions, URL de base réglable) ; fournisseur et modèle par service | Indépendance exigée par le cahier des charges ; le format OpenAI couvre de nombreux fournisseurs |
+| Clés | Chiffrées en base, jamais réaffichées ; prioritaires si définies dans wp-config.php ; appels uniquement depuis le serveur | Sécurité des clés |
+| Contrôle des réponses | Toute valeur proposée par l'IA est vérifiée contre la plateforme (catégories, familles, désignations du catalogue, nuances, wilayas) ; le reste est écarté ou marqué « à préciser » | L'IA ne doit pas inventer de données de référence |
+| Poids | Jamais demandés à l'IA ni conservés depuis sa réponse : masse linéique du catalogue, poids du moteur de poids | « Never allow AI to invent or independently determine official profile weights » |
+| Pré-remplissage | `Forms::prefill` (sm-core) : le formulaire existant s'ouvre rempli, l'utilisateur vérifie et envoie | Pas de publication automatique ; réutilise les formulaires et leurs contrôles |
+| Coûts | Quotas par entreprise et par mois, limites par jour (utilisateur, visiteur par IP), budget mensuel calculé avec les prix saisis, journal des appels | Maîtriser la dépense avant les crédits payants (Phase 10) |
+| Crédits | Filtre `sm_ai_can_use` prévu pour la Phase 10 | Brancher les crédits sans modifier sm-ai |
+| Fichiers | Lus, réduits (1568 px) et transmis, jamais stockés | Confidentialité et place disque |
+| Tests | Fournisseur « Simulation » (SM_AI_SIMULATION) et réponses enregistrées aux formats réels ; pas d'appel réel depuis l'environnement de développement | Les API externes ne sont pas joignables depuis l'environnement de test |
