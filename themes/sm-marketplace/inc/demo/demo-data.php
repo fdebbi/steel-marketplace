@@ -20,6 +20,9 @@ class SM_Theme_Demo_Data {
 	/** Route a resource request to its demo source. */
 	public static function get( $resource, $args = array() ) {
 		switch ( $resource ) {
+			case 'rfqs':
+				$items = self::rfqs();
+				return array( 'items' => $items, 'total' => count( $items ), 'pages' => 1 );
 			case 'listings':
 				return self::query_listings( $args );
 			case 'listing':
@@ -402,6 +405,18 @@ class SM_Theme_Demo_Data {
 			'plan'    => array( 'fr' => 'Business', 'ar' => 'أعمال' ),
 			'usage'   => array( 'listings' => array( 18, 50 ), 'featured' => array( 2, 5 ), 'ai_credits' => array( 120, 300 ) ),
 			'kpis'    => array( 'active' => 18, 'views' => 5320, 'enquiries' => 26, 'offers' => 4 ),
+		);
+	}
+
+	/** Demo requests for quotation (same shape as sm-rfq's "rfq" resource). */
+	public static function rfqs() {
+		$d    = static fn( $days ) => gmdate( 'Y-m-d H:i:s', time() - $days * DAY_IN_SECONDS );
+		$in   = static fn( $days ) => gmdate( 'Y-m-d', time() + $days * DAY_IN_SECONDS );
+		$base = array( 'description' => array(), 'notes' => array(), 'category' => '', 'category_label' => array(), 'dimensions' => '', 'lines' => array(), 'place' => '', 'needed_by' => null, 'status' => 'open', 'is_open' => true, 'company' => '', 'company_name' => array(), 'verification' => 1, 'weight_source' => '', 'demo' => true );
+		return array(
+			array_merge( $base, array( 'id' => 9001, 'title' => array( 'fr' => 'IPE 270 — 48 barres de 12 m, livraison chantier', 'ar' => 'IPE 270 — 48 قضيبا بطول 12 م، توصيل إلى الورشة' ), 'market' => 'products', 'market_label' => array( 'fr' => 'Produits neufs', 'ar' => 'منتجات جديدة' ), 'designation' => 'IPE 270', 'quantity' => 48, 'unit' => 'pieces', 'weight_kg' => 20909, 'weight_source' => 'theoretical', 'wilaya' => '16', 'date' => $d( 1 ), 'deadline' => $in( 12 ), 'days_left' => 12, 'offers_count' => 5 ) ),
+			array_merge( $base, array( 'id' => 9002, 'title' => array( 'fr' => 'Hangar de stockage 25 × 15 m, neuf ou occasion', 'ar' => 'هنغار تخزين 25 × 15 م، جديد أو مستعمل' ), 'market' => 'buildings', 'market_label' => array( 'fr' => 'Bâtiments métalliques', 'ar' => 'المباني الفولاذية' ), 'designation' => 'Hangar 25 × 15 m', 'quantity' => 1, 'unit' => 'lot', 'weight_kg' => 0, 'wilaya' => '19', 'date' => $d( 2 ), 'deadline' => $in( 20 ), 'days_left' => 20, 'offers_count' => 3 ) ),
+			array_merge( $base, array( 'id' => 9003, 'title' => array( 'fr' => 'Tubes carrés 80×80×4 — 120 barres', 'ar' => 'أنابيب مربعة 80×80×4 — 120 قضيبا' ), 'market' => 'products', 'market_label' => array( 'fr' => 'Produits neufs', 'ar' => 'منتجات جديدة' ), 'designation' => 'SHS 80x80x4', 'quantity' => 120, 'unit' => 'pieces', 'weight_kg' => 0, 'wilaya' => '28', 'date' => $d( 4 ), 'deadline' => $in( 6 ), 'days_left' => 6, 'offers_count' => 7 ) ),
 		);
 	}
 

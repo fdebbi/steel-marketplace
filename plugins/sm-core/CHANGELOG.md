@@ -1,5 +1,11 @@
 # Changelog — sm-core
 
+
+## 0.3.2 — 2026-11-08
+
+- Formulaires : après une erreur, les valeurs imbriquées (lignes d'inventaire, `lines[0][qty]`) sont conservées.
+- Capacités `rfq.create` / `rfq.offer` utilisées par SM RFQ (inchangées).
+
 ## 0.3.1 — 2026-11-07
 
 - Nom de la plateforme dans les e-mails, le code de vérification et le menu d'administration : `sm_brand_name()` (« ReuSteel » par défaut, suit le Personnalisateur).

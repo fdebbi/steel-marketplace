@@ -105,7 +105,7 @@ final class Forms {
 			if ( in_array( $k, array( 'password', 'pwd', 'password2', '_sm_nonce', 'action', self::HONEYPOT, 'code' ), true ) ) {
 				continue;
 			}
-			$old[ $k ] = is_array( $v ) ? array_map( 'sanitize_text_field', wp_unslash( $v ) ) : sanitize_text_field( wp_unslash( $v ) );
+			$old[ $k ] = is_array( $v ) ? map_deep( wp_unslash( $v ), 'sanitize_text_field' ) : sanitize_text_field( wp_unslash( $v ) ); // Nested rows (lines[0][qty]) kept.
 		}
 		$token = wp_generate_password( 20, false );
 		set_transient(

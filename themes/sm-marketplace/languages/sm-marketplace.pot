@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.8.0\n"
+"Project-Id-Version: SM Marketplace 0.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-07T21:57:28+00:00\n"
+"POT-Creation-Date: 2026-11-08T07:40:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -83,9 +83,11 @@ msgstr ""
 
 #: footer.php:25
 #: inc/menus.php:47
+#: template-parts/components/rfq-single.php:45
+#: template-parts/dashboard/rfq.php:19
 #: templates/pricing.php:17
-#: templates/rfq-board.php:21
-#: templates/rfq-board.php:24
+#: templates/rfq-board.php:54
+#: templates/rfq-board.php:57
 msgid "Requests for quotation"
 msgstr ""
 
@@ -157,8 +159,9 @@ msgstr ""
 #: footer.php:42
 #: header.php:142
 #: template-parts/components/enquiry-form.php:27
+#: template-parts/components/rfq-single.php:158
 #: templates/auth-login.php:40
-#: templates/dashboard.php:38
+#: templates/dashboard.php:45
 msgid "Create an account"
 msgstr ""
 
@@ -225,17 +228,21 @@ msgstr ""
 #: header.php:48
 #: template-parts/components/filter-panel.php:32
 #: template-parts/components/product-form.php:60
+#: template-parts/components/rfq-form.php:45
+#: template-parts/components/rfq-single.php:21
 #: template-parts/dashboard/listings.php:32
 #: template-parts/dashboard/listings.php:46
 #: template-parts/dashboard/publish.php:35
 #: template-parts/dashboard/publish.php:51
 #: templates/front-page-template.php:31
+#: templates/rfq-board.php:72
 msgid "Market"
 msgstr ""
 
 #: header.php:49
 #: template-parts/components/filter-panel.php:36
 #: templates/front-page-template.php:33
+#: templates/rfq-board.php:73
 msgid "All markets"
 msgstr ""
 
@@ -244,7 +251,7 @@ msgid "IPE 200, HEA, tube 100×50, hangar…"
 msgstr ""
 
 #: header.php:60
-#: templates/dashboard.php:72
+#: templates/dashboard.php:79
 msgid "Saved listings"
 msgstr ""
 
@@ -265,6 +272,7 @@ msgstr ""
 #: header.php:74
 #: header.php:141
 #: template-parts/components/enquiry-form.php:26
+#: template-parts/components/rfq-single.php:157
 #: templates/auth-login.php:17
 #: templates/auth-login.php:39
 #: templates/auth-register.php:91
@@ -273,7 +281,7 @@ msgstr ""
 
 #: header.php:79
 #: template-parts/dashboard/engineer-overview.php:53
-#: templates/dashboard.php:55
+#: templates/dashboard.php:62
 msgid "My services"
 msgstr ""
 
@@ -295,13 +303,13 @@ msgstr ""
 #: template-parts/components/my-products.php:47
 #: template-parts/components/my-products.php:51
 #: template-parts/dashboard/listings.php:25
-#: templates/dashboard.php:65
+#: templates/dashboard.php:72
 msgid "Publish a listing"
 msgstr ""
 
 #: header.php:139
-#: templates/dashboard.php:119
-#: templates/dashboard.php:133
+#: templates/dashboard.php:126
+#: templates/dashboard.php:140
 msgid "Sign out"
 msgstr ""
 
@@ -489,11 +497,15 @@ msgid "Top utility menu"
 msgstr ""
 
 #: inc/template-tags.php:119
+#: inc/template-tags.php:308
 #: template-parts/components/product-tech.php:26
 msgid "piece"
-msgstr ""
+msgid_plural "pieces"
+msgstr[0] ""
+msgstr[1] ""
 
 #: inc/template-tags.php:120
+#: inc/template-tags.php:313
 msgid "lot"
 msgstr ""
 
@@ -527,6 +539,7 @@ msgid "Estimated weight"
 msgstr ""
 
 #: inc/template-tags.php:197
+#: template-parts/components/rfq-single.php:33
 msgid "Theoretical weight"
 msgstr ""
 
@@ -614,6 +627,54 @@ msgstr[1] ""
 msgid "Breadcrumb"
 msgstr ""
 
+#: inc/template-tags.php:321
+#: template-parts/components/my-products.php:18
+#: template-parts/components/my-products.php:26
+msgid "Waiting for review"
+msgstr ""
+
+#: inc/template-tags.php:322
+msgid "Open for offers"
+msgstr ""
+
+#: inc/template-tags.php:323
+msgid "Awarded"
+msgstr ""
+
+#: inc/template-tags.php:324
+msgid "Closed"
+msgstr ""
+
+#: inc/template-tags.php:325
+msgid "Deadline passed"
+msgstr ""
+
+#: inc/template-tags.php:326
+#: template-parts/components/my-products.php:19
+#: template-parts/components/my-products.php:27
+msgid "Changes requested"
+msgstr ""
+
+#: inc/template-tags.php:333
+msgid "Sent"
+msgstr ""
+
+#: inc/template-tags.php:334
+msgid "Shortlisted"
+msgstr ""
+
+#: inc/template-tags.php:335
+msgid "Accepted"
+msgstr ""
+
+#: inc/template-tags.php:336
+msgid "Not retained"
+msgstr ""
+
+#: inc/template-tags.php:337
+msgid "Withdrawn"
+msgstr ""
+
 #: index.php:21
 msgid "Nothing here yet"
 msgstr ""
@@ -666,7 +727,36 @@ msgid "%1$s pcs · up to %2$s m"
 msgstr ""
 
 #: template-parts/components/card-listing.php:67
+#: template-parts/components/rfq-compare.php:64
 msgid "Total"
+msgstr ""
+
+#: template-parts/components/card-rfq.php:21
+msgid "Last day"
+msgstr ""
+
+#. translators: %d: days.
+#: template-parts/components/card-rfq.php:21
+msgid "%d day left"
+msgid_plural "%d days left"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: date.
+#: template-parts/components/card-rfq.php:29
+#: template-parts/dashboard/rfq.php:51
+msgid "Offers until %s"
+msgstr ""
+
+#: template-parts/components/card-rfq.php:34
+#: template-parts/dashboard/rfq.php:44
+msgid "offer"
+msgid_plural "offers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/components/card-rfq.php:35
+msgid "See and answer"
 msgstr ""
 
 #: template-parts/components/enquiry-form.php:14
@@ -678,7 +768,7 @@ msgid "Sign in or create a free account to contact companies on the platform."
 msgstr ""
 
 #: template-parts/components/enquiry-form.php:31
-#: templates/dashboard.php:38
+#: templates/dashboard.php:45
 msgid "This user has no company account"
 msgstr ""
 
@@ -730,6 +820,7 @@ msgstr ""
 
 #: template-parts/components/filter-panel.php:42
 #: template-parts/components/product-form.php:58
+#: template-parts/components/rfq-form.php:53
 #: template-parts/dashboard/publish.php:67
 msgid "Category"
 msgstr ""
@@ -763,6 +854,7 @@ msgstr ""
 #: template-parts/components/filter-panel.php:67
 #: template-parts/components/my-products.php:41
 #: template-parts/dashboard/listings.php:20
+#: template-parts/dashboard/rfq.php:29
 #: template-parts/marketplace-archive.php:54
 #: templates/companies.php:17
 msgid "All"
@@ -787,6 +879,7 @@ msgstr ""
 
 #: template-parts/components/filter-panel.php:80
 #: templates/front-page-template.php:42
+#: templates/rfq-board.php:78
 msgid "All wilayas"
 msgstr ""
 
@@ -862,16 +955,6 @@ msgstr ""
 msgid "Published"
 msgstr ""
 
-#: template-parts/components/my-products.php:18
-#: template-parts/components/my-products.php:26
-msgid "Waiting for review"
-msgstr ""
-
-#: template-parts/components/my-products.php:19
-#: template-parts/components/my-products.php:27
-msgid "Changes requested"
-msgstr ""
-
 #: template-parts/components/my-products.php:20
 #: template-parts/dashboard/listings.php:22
 msgid "Drafts"
@@ -893,6 +976,7 @@ msgid "Draft"
 msgstr ""
 
 #: template-parts/components/my-products.php:40
+#: template-parts/dashboard/rfq.php:28
 msgid "Filter by status"
 msgstr ""
 
@@ -905,7 +989,9 @@ msgid "Publish your first product: profiles, tubes, plates, roofing…"
 msgstr ""
 
 #: template-parts/components/my-products.php:75
+#: template-parts/components/rfq-single.php:127
 #: template-parts/dashboard/listings.php:52
+#: template-parts/dashboard/rfq.php:57
 msgid "Edit"
 msgstr ""
 
@@ -923,6 +1009,7 @@ msgid "Publish again"
 msgstr ""
 
 #: template-parts/components/my-products.php:86
+#: template-parts/components/rfq-single.php:138
 #: template-parts/dashboard/listings.php:54
 msgid "Delete"
 msgstr ""
@@ -933,6 +1020,7 @@ msgstr ""
 
 #: template-parts/components/price-block.php:15
 #: template-parts/components/product-tech.php:447
+#: template-parts/components/rfq-offer-form.php:39
 msgid "Price"
 msgstr ""
 
@@ -981,6 +1069,9 @@ msgstr ""
 
 #: template-parts/components/price-block.php:39
 #: template-parts/components/product-tech.php:489
+#: template-parts/components/rfq-compare.php:20
+#: template-parts/components/rfq-my-offer.php:18
+#: template-parts/components/rfq-offer-form.php:35
 #: template-parts/dashboard/listings.php:35
 #: template-parts/dashboard/listings.php:49
 #: template-parts/dashboard/publish.php:200
@@ -1008,6 +1099,7 @@ msgid "This product cannot be edited from your account."
 msgstr ""
 
 #: template-parts/components/product-form.php:52
+#: template-parts/components/rfq-single.php:67
 msgid "Changes requested by the platform team:"
 msgstr ""
 
@@ -1032,10 +1124,12 @@ msgid "technical data, quantity and price"
 msgstr ""
 
 #: template-parts/components/product-form.php:105
+#: template-parts/components/rfq-form.php:73
 msgid "Title and description"
 msgstr ""
 
 #: template-parts/components/product-form.php:107
+#: template-parts/components/rfq-form.php:75
 #: template-parts/dashboard/publish.php:145
 msgid "Title in French"
 msgstr ""
@@ -1053,6 +1147,7 @@ msgid "e.g. IPE 200 S275JR new, 12 m bars"
 msgstr ""
 
 #: template-parts/components/product-form.php:112
+#: template-parts/components/rfq-form.php:80
 msgid "Title in Arabic"
 msgstr ""
 
@@ -1062,6 +1157,17 @@ msgstr ""
 #: template-parts/components/product-tech.php:63
 #: template-parts/components/product-tech.php:131
 #: template-parts/components/product-tech.php:372
+#: template-parts/components/rfq-form.php:53
+#: template-parts/components/rfq-form.php:80
+#: template-parts/components/rfq-form.php:89
+#: template-parts/components/rfq-form.php:107
+#: template-parts/components/rfq-form.php:111
+#: template-parts/components/rfq-form.php:131
+#: template-parts/components/rfq-offer-form.php:44
+#: template-parts/components/rfq-offer-form.php:63
+#: template-parts/components/rfq-offer-form.php:67
+#: template-parts/components/rfq-offer-form.php:77
+#: template-parts/components/rfq-tech.php:48
 msgid "optional"
 msgstr ""
 
@@ -1123,6 +1229,8 @@ msgstr ""
 #: template-parts/components/product-tech.php:67
 #: template-parts/components/product-tech.php:133
 #: template-parts/components/product-tech.php:227
+#: template-parts/components/rfq-form.php:47
+#: template-parts/components/rfq-form.php:101
 #: template-parts/components/weight-calculator.php:139
 msgid "Choose…"
 msgstr ""
@@ -1405,10 +1513,13 @@ msgid "Available quantity"
 msgstr ""
 
 #: template-parts/components/product-tech.php:427
+#: template-parts/components/rfq-tech.php:59
 msgid "Unit"
 msgstr ""
 
 #: template-parts/components/product-tech.php:433
+#: template-parts/components/rfq-single.php:82
+#: template-parts/components/rfq-single.php:90
 #: templates/single-listing.php:213
 #: templates/single-listing.php:224
 msgid "Total weight (kg)"
@@ -1480,7 +1591,480 @@ msgid "Buyers will see a notice recommending a check by a qualified engineer bef
 msgstr ""
 
 #: template-parts/components/product-tech.php:510
+#: template-parts/components/rfq-tech.php:71
 msgid "Update"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:21
+#: template-parts/components/rfq-my-offer.php:19
+msgid "Price per kg"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:22
+msgid "Delivery time"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:23
+msgid "Verified suppliers first"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:33
+msgid "Offers received"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:35
+msgid "Sort the offers"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:43
+msgid "No offer yet"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:43
+msgid "You will be told by notification and e-mail as soon as a supplier answers."
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:64
+msgid "Lowest"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:65
+#: template-parts/components/rfq-offer-form.php:34
+msgid "Per kg"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:65
+msgid "Best per kg"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:66
+#: template-parts/components/rfq-my-offer.php:20
+#: template-parts/components/rfq-single.php:35
+msgid "Delivery"
+msgstr ""
+
+#. translators: %d: days.
+#: template-parts/components/rfq-compare.php:66
+#: template-parts/components/rfq-my-offer.php:20
+#: template-parts/dashboard/offers.php:36
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: days.
+#: template-parts/components/rfq-compare.php:66
+msgid "Fastest"
+msgstr ""
+
+#. translators: %d: days.
+#: template-parts/components/rfq-compare.php:67
+#: template-parts/components/rfq-my-offer.php:21
+msgid "Valid until"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:70
+msgid "Delivery included"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:70
+msgid "Delivery not included"
+msgstr ""
+
+#. translators: %s: weight.
+#: template-parts/components/rfq-compare.php:71
+msgid "For %s kg"
+msgstr ""
+
+#. translators: %s: weight.
+#: template-parts/components/rfq-compare.php:71
+msgid "supplier's weight"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:76
+msgid "Message and documents"
+msgstr ""
+
+#. translators: %d: request number.
+#: template-parts/components/rfq-compare.php:86
+msgid "Request for quotation no. %d"
+msgstr ""
+
+#. translators: %d: request number.
+#: template-parts/components/rfq-compare.php:86
+msgid "E-mail"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:90
+msgid "Remove from shortlist"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:90
+msgid "Shortlist"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:91
+msgid "Decline"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:91
+msgid "Decline this offer? The supplier is told."
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:92
+msgid "Accept this offer"
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:92
+msgid "Accept this offer? The request is closed and the other suppliers are told."
+msgstr ""
+
+#: template-parts/components/rfq-compare.php:99
+msgid "Prices are given by the suppliers. The price per kg is calculated from each offer's total and weight. Check the conditions with the supplier before ordering."
+msgstr ""
+
+#: template-parts/components/rfq-form.php:16
+msgid "This request cannot be edited from your account."
+msgstr ""
+
+#: template-parts/components/rfq-form.php:24
+msgid "This request already has offers: it can no longer be edited. Close it and publish a new one if your need changed."
+msgstr ""
+
+#: template-parts/components/rfq-form.php:42
+msgid "What do you need?"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:55
+msgid "Any category"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:68
+#: template-parts/components/rfq-single.php:30
+#: template-parts/components/rfq-single.php:82
+#: template-parts/components/rfq-single.php:87
+#: template-parts/components/rfq-tech.php:54
+#: template-parts/components/weight-calculator.php:199
+#: template-parts/dashboard/publish.php:128
+#: template-parts/dashboard/publish.php:133
+#: templates/single-listing.php:210
+#: templates/single-listing.php:221
+msgid "Quantity"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:76
+msgid "e.g. IPE 270 beams for a hangar, delivery on site"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:84
+#: template-parts/components/rfq-single.php:101
+msgid "Technical description"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:85
+msgid "Steel grade, standard, finish, tolerances, certificates, cutting…"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:89
+#: template-parts/components/rfq-single.php:104
+msgid "Additional notes"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:90
+msgid "Site access, unloading, invoicing…"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:96
+msgid "Delivery and deadline"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:99
+#: templates/rfq-board.php:77
+msgid "Delivery wilaya"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:107
+msgid "Delivery place"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:108
+msgid "Town, industrial zone, site"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:111
+#: template-parts/components/rfq-single.php:37
+msgid "Needed by"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:116
+#: template-parts/components/rfq-single.php:40
+msgid "Offers accepted until"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:124
+#: template-parts/components/rfq-single.php:108
+msgid "Drawings and documents"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:131
+msgid "Attach drawings, a bill of materials or photos"
+msgstr ""
+
+#. translators: 1: files, 2: MB.
+#: template-parts/components/rfq-form.php:132
+msgid "PDF or images, up to %1$d files of %2$d MB. Export DWG/DXF drawings to PDF."
+msgstr ""
+
+#: template-parts/components/rfq-form.php:134
+msgid "Documents are shown only to signed-in companies."
+msgstr ""
+
+#: template-parts/components/rfq-form.php:138
+msgid "Cancel"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:139
+msgid "Save the request"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:139
+msgid "Publish my request"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:142
+msgid "The platform team checks each request before it is shown to suppliers."
+msgstr ""
+
+#: template-parts/components/rfq-my-offer.php:16
+msgid "Your offer"
+msgstr ""
+
+#. translators: %d: days.
+#: template-parts/components/rfq-my-offer.php:20
+#: templates/single-listing.php:194
+msgid "included"
+msgstr ""
+
+#: template-parts/components/rfq-my-offer.php:24
+msgid "The buyer accepted your offer. Contact him to confirm the order."
+msgstr ""
+
+#: template-parts/components/rfq-my-offer.php:29
+msgid "Withdraw your offer?"
+msgstr ""
+
+#: template-parts/components/rfq-my-offer.php:29
+msgid "Withdraw my offer"
+msgstr ""
+
+#: template-parts/components/rfq-offer-form.php:28
+msgid "Update your offer"
+msgstr ""
+
+#: template-parts/components/rfq-offer-form.php:28
+msgid "Send your offer"
+msgstr ""
+
+#: template-parts/components/rfq-offer-form.php:32
+msgid "Your price"
+msgstr ""
+
+#: template-parts/components/rfq-offer-form.php:44
+msgid "Weight your price is for (kg)"
+msgstr ""
+
+#. translators: %s: weight.
+#: template-parts/components/rfq-offer-form.php:46
+msgid "Leave empty to quote for the requested weight (%s kg). Give your own if it differs (e.g. actual weight of your stock)."
+msgstr ""
+
+#. translators: %s: weight.
+#: template-parts/components/rfq-offer-form.php:46
+msgid "The request gives no weight: give it to show your price per kg."
+msgstr ""
+
+#: template-parts/components/rfq-offer-form.php:51
+msgid "Delivery time (days)"
+msgstr ""
+
+#: template-parts/components/rfq-offer-form.php:56
+msgid "Price valid for (days)"
+msgstr ""
+
+#. translators: %s: wilaya.
+#: template-parts/components/rfq-offer-form.php:61
+msgid "Delivery to %s included in the price"
+msgstr ""
+
+#: template-parts/components/rfq-offer-form.php:63
+msgid "Payment terms"
+msgstr ""
+
+#: template-parts/components/rfq-offer-form.php:64
+msgid "e.g. 30 % on order, balance on delivery"
+msgstr ""
+
+#: template-parts/components/rfq-offer-form.php:67
+msgid "Message to the buyer"
+msgstr ""
+
+#: template-parts/components/rfq-offer-form.php:77
+msgid "Attach your quotation or data sheets"
+msgstr ""
+
+#. translators: 1: files, 2: MB.
+#: template-parts/components/rfq-offer-form.php:78
+msgid "PDF or images, up to %1$d files of %2$d MB."
+msgstr ""
+
+#: template-parts/components/rfq-offer-form.php:80
+msgid "Update my offer"
+msgstr ""
+
+#: template-parts/components/rfq-offer-form.php:80
+msgid "Send my offer"
+msgstr ""
+
+#: template-parts/components/rfq-offer-form.php:81
+msgid "Only the buyer sees your offer. Your total and price per kg are calculated when you send it."
+msgstr ""
+
+#: template-parts/components/rfq-single.php:24
+msgid "Designation"
+msgstr ""
+
+#: template-parts/components/rfq-single.php:27
+#: template-parts/components/rfq-tech.php:48
+msgid "Dimensions"
+msgstr ""
+
+#: template-parts/components/rfq-single.php:33
+#: template-parts/dashboard/listings.php:33
+#: template-parts/dashboard/listings.php:47
+#: template-parts/dashboard/publish.php:98
+msgid "Weight"
+msgstr ""
+
+#. translators: %d: request number.
+#: template-parts/components/rfq-single.php:48
+msgid "Request no. %d"
+msgstr ""
+
+#: template-parts/components/rfq-single.php:58
+msgid "Last day for offers"
+msgstr ""
+
+#. translators: %d: days.
+#: template-parts/components/rfq-single.php:58
+msgid "%d day left for offers"
+msgid_plural "%d days left for offers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/components/rfq-single.php:73
+msgid "What is needed"
+msgstr ""
+
+#: template-parts/components/rfq-single.php:80
+msgid "Profiles requested"
+msgstr ""
+
+#: template-parts/components/rfq-single.php:82
+#: template-parts/components/rfq-single.php:86
+#: template-parts/dashboard/publish.php:128
+#: template-parts/dashboard/publish.php:132
+#: template-parts/dashboard/settings.php:20
+#: templates/single-listing.php:209
+#: templates/single-listing.php:220
+msgid "Profile"
+msgstr ""
+
+#: template-parts/components/rfq-single.php:82
+#: template-parts/components/rfq-single.php:88
+#: template-parts/dashboard/publish.php:90
+#: template-parts/dashboard/publish.php:116
+#: template-parts/dashboard/publish.php:128
+#: template-parts/dashboard/publish.php:134
+#: templates/single-listing.php:211
+#: templates/single-listing.php:222
+msgid "Length (m)"
+msgstr ""
+
+#: template-parts/components/rfq-single.php:82
+#: template-parts/components/rfq-single.php:89
+#: templates/single-listing.php:212
+#: templates/single-listing.php:223
+msgid "Unit weight (kg/m)"
+msgstr ""
+
+#: template-parts/components/rfq-single.php:96
+msgid "Theoretical weights from the European section tables."
+msgstr ""
+
+#. translators: %d: number of files.
+#: template-parts/components/rfq-single.php:115
+msgid "%d drawing or document: sign in with a business account to download it."
+msgid_plural "%d drawings or documents: sign in with a business account to download them."
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/components/rfq-single.php:123
+msgid "Your request"
+msgstr ""
+
+#: template-parts/components/rfq-single.php:124
+msgid "offer received"
+msgid_plural "offers received"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/components/rfq-single.php:132
+msgid "Close this request? Suppliers can no longer answer."
+msgstr ""
+
+#: template-parts/components/rfq-single.php:132
+msgid "Close the request"
+msgstr ""
+
+#: template-parts/components/rfq-single.php:138
+msgid "Delete this request for good?"
+msgstr ""
+
+#: template-parts/components/rfq-single.php:142
+msgid "Only you see the offers. Each supplier only sees his own."
+msgstr ""
+
+#: template-parts/components/rfq-single.php:153
+msgid "Answer this request"
+msgstr ""
+
+#: template-parts/components/rfq-tech.php:32
+msgid "Profiles needed (optional)"
+msgstr ""
+
+#. translators: %s: number of pieces.
+#: template-parts/components/rfq-tech.php:35
+msgid "%s pieces"
+msgstr ""
+
+#: template-parts/components/rfq-tech.php:37
+msgid "Theoretical weight, European tables"
+msgstr ""
+
+#: template-parts/components/rfq-tech.php:41
+msgid "Or describe it freely"
+msgstr ""
+
+#: template-parts/components/rfq-tech.php:44
+msgid "Product or structure"
+msgstr ""
+
+#: template-parts/components/rfq-tech.php:45
+msgid "e.g. Storage hangar, sandwich panels 40 mm"
+msgstr ""
+
+#: template-parts/components/rfq-tech.php:64
+msgid "Weight, if known"
 msgstr ""
 
 #: template-parts/components/verification-steps.php:15
@@ -1570,15 +2154,6 @@ msgstr ""
 msgid "Source table"
 msgstr ""
 
-#: template-parts/components/weight-calculator.php:199
-#: template-parts/dashboard/publish.php:128
-#: template-parts/dashboard/publish.php:133
-#: templates/rfq-board.php:61
-#: templates/single-listing.php:210
-#: templates/single-listing.php:221
-msgid "Quantity"
-msgstr ""
-
 #: template-parts/components/weight-calculator.php:200
 msgid "What do you know?"
 msgstr ""
@@ -1638,7 +2213,7 @@ msgid "Identity"
 msgstr ""
 
 #: template-parts/dashboard/company.php:30
-#: templates/dashboard.php:76
+#: templates/dashboard.php:83
 msgid "Company"
 msgstr ""
 
@@ -1765,12 +2340,12 @@ msgid "Quotes sent"
 msgstr ""
 
 #: template-parts/dashboard/engineer-overview.php:26
-#: templates/dashboard.php:78
+#: templates/dashboard.php:85
 msgid "Verification"
 msgstr ""
 
 #: template-parts/dashboard/engineer-overview.php:32
-#: templates/dashboard.php:56
+#: templates/dashboard.php:63
 msgid "Client requests"
 msgstr ""
 
@@ -1797,19 +2372,13 @@ msgid "Engineering accounts publish services only. To trade steel, open a separa
 msgstr ""
 
 #: template-parts/dashboard/listings.php:27
-#: templates/dashboard.php:66
+#: templates/dashboard.php:73
 msgid "My listings"
 msgstr ""
 
 #: template-parts/dashboard/listings.php:31
 #: template-parts/dashboard/listings.php:43
 msgid "Listing"
-msgstr ""
-
-#: template-parts/dashboard/listings.php:33
-#: template-parts/dashboard/listings.php:47
-#: template-parts/dashboard/publish.php:98
-msgid "Weight"
 msgstr ""
 
 #: template-parts/dashboard/listings.php:34
@@ -1852,6 +2421,42 @@ msgstr ""
 
 #: template-parts/dashboard/notifications.php:38
 msgid "No notification yet."
+msgstr ""
+
+#: template-parts/dashboard/offers.php:13
+#: templates/dashboard.php:74
+msgid "Quotations sent"
+msgstr ""
+
+#: template-parts/dashboard/offers.php:13
+#: template-parts/dashboard/rfq.php:19
+msgid "This module is not active yet."
+msgstr ""
+
+#: template-parts/dashboard/offers.php:19
+msgid "Your answers to requests for quotation. Only the buyer sees them."
+msgstr ""
+
+#: template-parts/dashboard/offers.php:20
+msgid "Find requests to answer"
+msgstr ""
+
+#: template-parts/dashboard/offers.php:23
+msgid "No quotation sent yet"
+msgstr ""
+
+#: template-parts/dashboard/offers.php:23
+msgid "Browse the open requests and send your price and delivery time."
+msgstr ""
+
+#: template-parts/dashboard/offers.php:23
+#: templates/rfq-board.php:20
+msgid "See the requests for quotation"
+msgstr ""
+
+#: template-parts/dashboard/offers.php:41
+#: template-parts/dashboard/rfq.php:55
+msgid "View"
 msgstr ""
 
 #: template-parts/dashboard/overview.php:18
@@ -1969,22 +2574,12 @@ msgid "Warehouse, hangar, kit"
 msgstr ""
 
 #: template-parts/dashboard/publish.php:82
-#: templates/rfq-board.php:60
 #: templates/single-listing.php:45
 msgid "Profile designation"
 msgstr ""
 
 #: template-parts/dashboard/publish.php:85
 msgid "Choose from the standard profile list; unit weights come from the platform tables."
-msgstr ""
-
-#: template-parts/dashboard/publish.php:90
-#: template-parts/dashboard/publish.php:116
-#: template-parts/dashboard/publish.php:128
-#: template-parts/dashboard/publish.php:134
-#: templates/single-listing.php:211
-#: templates/single-listing.php:222
-msgid "Length (m)"
 msgstr ""
 
 #: template-parts/dashboard/publish.php:91
@@ -2012,14 +2607,6 @@ msgstr ""
 
 #: template-parts/dashboard/publish.php:125
 msgid "Element inventory"
-msgstr ""
-
-#: template-parts/dashboard/publish.php:128
-#: template-parts/dashboard/publish.php:132
-#: template-parts/dashboard/settings.php:20
-#: templates/single-listing.php:209
-#: templates/single-listing.php:220
-msgid "Profile"
 msgstr ""
 
 #: template-parts/dashboard/publish.php:135
@@ -2068,6 +2655,26 @@ msgstr ""
 
 #: template-parts/dashboard/publish.php:208
 msgid "Back"
+msgstr ""
+
+#: template-parts/dashboard/rfq.php:35
+#: template-parts/dashboard/rfq.php:38
+#: templates/rfq-board.php:60
+#: templates/rfq-board.php:95
+#: templates/rfq-board.php:116
+msgid "New request"
+msgstr ""
+
+#: template-parts/dashboard/rfq.php:38
+msgid "No request yet"
+msgstr ""
+
+#: template-parts/dashboard/rfq.php:38
+msgid "Describe what you need: suppliers and manufacturers answer with their prices and delivery times."
+msgstr ""
+
+#: template-parts/dashboard/rfq.php:55
+msgid "Compare the offers"
 msgstr ""
 
 #: template-parts/dashboard/settings.php:13
@@ -2124,7 +2731,7 @@ msgid "Verify your contact details first."
 msgstr ""
 
 #: template-parts/dashboard/verification.php:32
-#: templates/dashboard.php:142
+#: templates/dashboard.php:149
 msgid "Enter the code"
 msgstr ""
 
@@ -2196,10 +2803,12 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: template-parts/marketplace-archive.php:80
+#: templates/rfq-board.php:81
 msgid "Sort by"
 msgstr ""
 
 #: template-parts/marketplace-archive.php:83
+#: templates/rfq-board.php:82
 msgid "Most recent"
 msgstr ""
 
@@ -2224,6 +2833,7 @@ msgid "List"
 msgstr ""
 
 #: template-parts/marketplace-archive.php:102
+#: templates/rfq-board.php:101
 msgid "Pagination"
 msgstr ""
 
@@ -2309,7 +2919,7 @@ msgid "Account type"
 msgstr ""
 
 #: templates/auth-register.php:34
-#: templates/dashboard.php:103
+#: templates/dashboard.php:110
 msgid "Business account"
 msgstr ""
 
@@ -2429,106 +3039,102 @@ msgstr ""
 msgid "SM — Dashboard"
 msgstr ""
 
-#: templates/dashboard.php:38
+#: templates/dashboard.php:45
 msgid "Create a business or engineering account to use the dashboard."
 msgstr ""
 
-#: templates/dashboard.php:53
-#: templates/dashboard.php:63
+#: templates/dashboard.php:60
+#: templates/dashboard.php:70
 msgid "Overview"
 msgstr ""
 
-#: templates/dashboard.php:54
+#: templates/dashboard.php:61
 msgid "Professional profile"
 msgstr ""
 
-#: templates/dashboard.php:57
+#: templates/dashboard.php:64
 msgid "Portfolio"
 msgstr ""
 
-#: templates/dashboard.php:58
+#: templates/dashboard.php:65
 msgid "Qualifications & verification"
 msgstr ""
 
-#: templates/dashboard.php:64
+#: templates/dashboard.php:71
 msgid "Selling"
 msgstr ""
 
-#: templates/dashboard.php:67
-msgid "Quotations sent"
-msgstr ""
-
-#: templates/dashboard.php:68
+#: templates/dashboard.php:75
 msgid "Enquiries received"
 msgstr ""
 
-#: templates/dashboard.php:69
+#: templates/dashboard.php:76
 #: templates/pricing.php:18
 msgid "Listing statistics"
 msgstr ""
 
-#: templates/dashboard.php:71
+#: templates/dashboard.php:78
 msgid "Buying"
 msgstr ""
 
-#: templates/dashboard.php:73
+#: templates/dashboard.php:80
 msgid "My requests for quotation"
 msgstr ""
 
-#: templates/dashboard.php:74
+#: templates/dashboard.php:81
 msgid "Purchase history"
 msgstr ""
 
-#: templates/dashboard.php:77
+#: templates/dashboard.php:84
 msgid "Company profile"
 msgstr ""
 
-#: templates/dashboard.php:79
+#: templates/dashboard.php:86
 msgid "Plan & AI credits"
 msgstr ""
 
-#: templates/dashboard.php:89
-#: templates/dashboard.php:118
+#: templates/dashboard.php:96
+#: templates/dashboard.php:125
 msgid "Settings"
 msgstr ""
 
-#: templates/dashboard.php:90
+#: templates/dashboard.php:97
 msgid "Verify your account"
 msgstr ""
 
-#: templates/dashboard.php:103
+#: templates/dashboard.php:110
 msgid "Engineering account"
 msgstr ""
 
-#: templates/dashboard.php:106
+#: templates/dashboard.php:113
 msgid "Dashboard"
 msgstr ""
 
-#: templates/dashboard.php:138
+#: templates/dashboard.php:145
 msgid "Demo engineering account."
 msgstr ""
 
-#: templates/dashboard.php:138
+#: templates/dashboard.php:145
 msgid "Demo business account."
 msgstr ""
 
-#: templates/dashboard.php:138
+#: templates/dashboard.php:145
 msgid "Switch to the business dashboard"
 msgstr ""
 
-#: templates/dashboard.php:138
+#: templates/dashboard.php:145
 msgid "Switch to the engineer dashboard"
 msgstr ""
 
-#: templates/dashboard.php:142
+#: templates/dashboard.php:149
 msgid "Verify your account with the 6-digit code to publish and answer requests."
 msgstr ""
 
-#: templates/dashboard.php:173
+#: templates/dashboard.php:180
 msgid "This section arrives with its plugin"
 msgstr ""
 
-#: templates/dashboard.php:174
+#: templates/dashboard.php:181
 msgid "The layout is ready; the content will be provided by the corresponding marketplace plugin."
 msgstr ""
 
@@ -2866,50 +3472,75 @@ msgstr ""
 msgid "SM — Requests for quotation"
 msgstr ""
 
-#: templates/rfq-board.php:25
+#: templates/rfq-board.php:20
+msgid "This request is not available"
+msgstr ""
+
+#: templates/rfq-board.php:20
+msgid "It may have been removed, or it is waiting for review."
+msgstr ""
+
+#: templates/rfq-board.php:58
 msgid "Buyers describe what they need; suppliers answer with a price per kg and a delivery time."
 msgstr ""
 
-#: templates/rfq-board.php:27
-msgid "New request"
+#: templates/rfq-board.php:65
+msgid "Filter the requests"
 msgstr ""
 
-#: templates/rfq-board.php:45
-msgid "offer"
-msgid_plural "offers"
+#: templates/rfq-board.php:67
+msgid "Profile or keyword"
+msgstr ""
+
+#: templates/rfq-board.php:82
+msgid "Deadline soonest"
+msgstr ""
+
+#: templates/rfq-board.php:84
+msgid "Filter"
+msgstr ""
+
+#. translators: %s: number of requests.
+#: templates/rfq-board.php:91
+msgid "<strong>%s</strong> open request"
+msgid_plural "<strong>%s</strong> open requests"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/rfq-board.php:46
-msgid "Make an offer"
+#: templates/rfq-board.php:95
+msgid "No open request here"
 msgstr ""
 
-#: templates/rfq-board.php:53
-msgid "New request for quotation"
+#: templates/rfq-board.php:95
+msgid "Publish yours: suppliers answer with their prices."
 msgstr ""
 
-#: templates/rfq-board.php:56
-msgid "What do you need?"
+#: templates/rfq-board.php:110
+msgid "How it works"
 msgstr ""
 
-#: templates/rfq-board.php:65
-msgid "Delivery wilaya"
+#: templates/rfq-board.php:112
+msgid "Describe your need"
 msgstr ""
 
-#: templates/rfq-board.php:66
-msgid "Needed by"
+#: templates/rfq-board.php:112
+msgid "Profiles and lengths (the weight is calculated), or a free description, delivery place and date, drawings."
 msgstr ""
 
-#: templates/rfq-board.php:68
-msgid "Technical description"
+#: templates/rfq-board.php:113
+msgid "Receive offers"
 msgstr ""
 
-#: templates/rfq-board.php:69
-msgid "Attach drawings or a bill of materials"
+#: templates/rfq-board.php:113
+msgid "Suppliers and manufacturers answer with a price, a price per kg and a delivery time. Only you see all the offers."
 msgstr ""
 
-#: templates/rfq-board.php:70
-msgid "Publish my request"
+#: templates/rfq-board.php:114
+msgid "Compare and choose"
+msgstr ""
+
+#: templates/rfq-board.php:114
+msgid "Side by side: total, price per kg, delivery, supplier verification. Contact them, then accept the offer you choose."
 msgstr ""
 
 #. Template Name of the theme
@@ -3006,10 +3637,6 @@ msgid "Foundations and accessories"
 msgstr ""
 
 #: templates/single-listing.php:194
-msgid "included"
-msgstr ""
-
-#: templates/single-listing.php:194
 msgid "not included"
 msgstr ""
 
@@ -3019,11 +3646,6 @@ msgstr ""
 
 #: templates/single-listing.php:202
 msgid "Structural element inventory"
-msgstr ""
-
-#: templates/single-listing.php:212
-#: templates/single-listing.php:223
-msgid "Unit weight (kg/m)"
 msgstr ""
 
 #: templates/single-listing.php:230

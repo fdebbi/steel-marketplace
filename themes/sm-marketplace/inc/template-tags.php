@@ -301,3 +301,58 @@ function sm_image_url( $image ) {
 	}
 	return is_string( $image ) ? $image : '';
 }
+
+/** Labels of the quantity units of a request for quotation. */
+function sm_rfq_unit_label( $unit, $qty = 2 ) {
+	$labels = array(
+		'pieces' => _n( 'piece', 'pieces', max( 1, (int) ceil( (float) $qty ) ), 'sm-marketplace' ),
+		'kg'     => 'kg',
+		't'      => 't',
+		'm'      => 'm',
+		'm2'     => 'm²',
+		'lot'    => __( 'lot', 'sm-marketplace' ),
+	);
+	return $labels[ $unit ] ?? $unit;
+}
+
+/** Status labels of a request for quotation. */
+function sm_rfq_status_labels() {
+	return array(
+		'pending'  => __( 'Waiting for review', 'sm-marketplace' ),
+		'open'     => __( 'Open for offers', 'sm-marketplace' ),
+		'awarded'  => __( 'Awarded', 'sm-marketplace' ),
+		'closed'   => __( 'Closed', 'sm-marketplace' ),
+		'expired'  => __( 'Deadline passed', 'sm-marketplace' ),
+		'rejected' => __( 'Changes requested', 'sm-marketplace' ),
+	);
+}
+
+/** Status labels of an offer. */
+function sm_offer_status_labels() {
+	return array(
+		'submitted'   => __( 'Sent', 'sm-marketplace' ),
+		'shortlisted' => __( 'Shortlisted', 'sm-marketplace' ),
+		'accepted'    => __( 'Accepted', 'sm-marketplace' ),
+		'declined'    => __( 'Not retained', 'sm-marketplace' ),
+		'withdrawn'   => __( 'Withdrawn', 'sm-marketplace' ),
+	);
+}
+
+/** Date as "12 nov. 2026" in the current language. */
+function sm_date( $ymd ) {
+	if ( ! $ymd || ! preg_match( '/^(\d{4})-(\d{2})-(\d{2})/', (string) $ymd, $m ) ) {
+		return '';
+	}
+	$months = array(
+		'fr' => array( 'janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.' ),
+		'ar' => array( 'جانفي', 'فيفري', 'مارس', 'أفريل', 'ماي', 'جوان', 'جويلية', 'أوت', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر' ),
+	);
+	$lang = 'ar' === sm_theme_current_language() ? 'ar' : 'fr';
+	return (int) $m[3] . "\u{00A0}" . $months[ $lang ][ (int) $m[2] - 1 ] . "\u{00A0}" . $m[1];
+}
+
+/** Public number of the request being viewed on the RFQ page (0 = the board). */
+function sm_theme_current_rfq_id() {
+	$id = get_query_var( 'sm_id' );
+	return absint( $id ? $id : sm_theme_query_arg( 'id', 0 ) );
+}

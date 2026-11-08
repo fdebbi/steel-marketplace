@@ -99,3 +99,16 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Limites | Dimensions, portiques et lignes d'inventaire réglables dans l'administration | Aucune limite codée en dur |
 | Visualisation | Schéma indicatif plan + façade tracé depuis les chiffres saisis, marqué « pas une étude structurelle » ; données de forme exposées pour le configurateur 3D | Préparer le configurateur sans présenter un dessin comme une conception approuvée |
 | Ingénierie | Avis avant remontage sur tout bâtiment d'occasion | Un bâtiment remonté ailleurs doit être recalculé (vent, neige, fondations) |
+
+## 8 novembre 2026 — Phase 7 : demandes de devis
+
+| Sujet | Décision | Raison |
+| --- | --- | --- |
+| Description du besoin | Lignes de profils pesées par le moteur, ou description libre avec quantité, unité et poids s'il est connu | Les acheteurs d'acier raisonnent en profils et longueurs ; les autres besoins (bâtiment, pièces) restent possibles |
+| Prix d'une offre | Total ou prix au kg ; le prix au kg affiché est toujours recalculé (total ÷ poids de l'offre ou de la demande) | Comparer des offres formulées différemment |
+| Confidentialité | L'acheteur voit toutes les offres, chaque fournisseur la sienne, les visiteurs aucune ; plans réservés aux entreprises connectées | Secret des prix entre concurrents ; protection des plans |
+| Une offre par entreprise | Renvoyer une offre la met à jour ; retrait possible | Éviter les doublons dans la comparaison |
+| Décision | Accepter une offre attribue la demande, refuse les autres et prévient tout le monde ; la commande se conclut hors plateforme (paiement hors ligne) | Décision de la Phase 0 ; pas de paiement en ligne |
+| Modification | Interdite dès la première offre (clôturer puis republier) | Les fournisseurs ont chiffré une demande précise |
+| Délais | Date limite proposée (21 jours) et maximale (90 jours) réglables ; expiration quotidienne ; acceptation encore possible après la date limite | Pas de limite codée en dur ; l'acheteur garde la main |
+| Plans | PDF et images seulement (DWG/DXF à exporter en PDF) | Contrôle fiable du type de fichier à l'envoi |

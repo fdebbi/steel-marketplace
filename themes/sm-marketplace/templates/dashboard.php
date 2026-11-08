@@ -30,6 +30,13 @@ if ( sm_theme_query_arg( 'smp_partial' ) && is_user_logged_in() ) {
 	return;
 }
 
+// Live refresh of the quantity part of the request-for-quotation form.
+if ( sm_theme_query_arg( 'smq_partial' ) && is_user_logged_in() ) {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only preview, nothing is saved.
+	sm_component( 'rfq-tech', array( 'state' => map_deep( wp_unslash( $_GET ), 'sanitize_text_field' ) ) );
+	return;
+}
+
 $account = sm_theme_account();
 if ( ! $account ) {
 	// Signed-in user without a company (e.g. an administrator).

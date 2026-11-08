@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.9.0 — 2026-11-08 (Phase 7, demandes de devis, avec sm-rfq 0.1.0)
+
+- Page « Demandes de devis » réelle : filtres (mot-clé ou profil, marché, wilaya, tri), cartes avec quantité, poids, date limite et nombre d'offres, encadré « Comment ça marche ».
+- Page d'une demande (`/demandes-de-devis/{numéro}/`) : besoin, tableau des profils, description, plans ; selon le visiteur : formulaire d'offre, offre envoyée, actions de l'acheteur et **comparaison des offres** (tri, meilleures valeurs signalées, appel et e-mail du fournisseur, présélection, refus, acceptation).
+- Tableau de bord : « Mes demandes de devis » (formulaire avec lignes de profils pesées en direct ou description libre, liste par statut) et « Devis envoyés ».
+- Dates affichées en français ou en arabe (mois algériens).
+- Traductions : 816 chaînes.
+
 ## 0.8.0 — 2026-11-07 (Phase 6, bâtiments, avec sm-buildings 0.1.0)
 
 - Publication d'un bâtiment : choix monté / démonté en deux cartes, dimensions (longueur, largeur, hauteur à l'égout, portiques, pente) avec surface en direct, état, système porteur, toiture, couverture, bardage, « ce que comprend le prix » en cases à cocher, poids estimé ou inventaire des éléments (type d'élément, profil, quantité, longueur), prix du bâtiment ou au kg, résumé avec prix au kg et au m².

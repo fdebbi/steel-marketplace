@@ -1,0 +1,459 @@
+# Copyright (C) 2026 ReuSteel
+# This file is distributed under the Proprietary.
+msgid ""
+msgstr ""
+"Project-Id-Version: SM RFQ 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-rfq\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-08T07:39:36+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: sm-rfq\n"
+
+#. Plugin Name of the plugin
+#: sm-rfq.php
+msgid "SM RFQ"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: sm-rfq.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr ""
+
+#. Description of the plugin
+#: sm-rfq.php
+msgid "Requests for quotation: buyers describe what they need (profile rows weighed by SM Weight Engine or free description, quantity, delivery place and date, drawings); suppliers and manufacturers answer with a price, a price per kg and a delivery time; the buyer compares the offers, contacts suppliers and accepts one. Notifications in French and Arabic. Requires SM Core, SM Weight Engine and SM Products."
+msgstr ""
+
+#. Author of the plugin
+#: sm-rfq.php
+msgid "ReuSteel"
+msgstr ""
+
+#: sm-rfq.php:47
+msgid "SM RFQ needs the SM Core, SM Weight Engine and SM Products plugins. Activate them first."
+msgstr ""
+
+#: src/Admin/Admin.php:29
+#: src/Admin/Admin.php:49
+msgid "Requests for quotation"
+msgstr ""
+
+#: src/Admin/Admin.php:34
+msgid "Waiting for review"
+msgstr ""
+
+#: src/Admin/Admin.php:35
+msgid "Open"
+msgstr ""
+
+#: src/Admin/Admin.php:36
+msgid "Awarded"
+msgstr ""
+
+#: src/Admin/Admin.php:37
+msgid "Deadline passed"
+msgstr ""
+
+#: src/Admin/Admin.php:38
+msgid "Closed"
+msgstr ""
+
+#: src/Admin/Admin.php:39
+msgid "Changes requested"
+msgstr ""
+
+#: src/Admin/Admin.php:50
+msgid "Requests"
+msgstr ""
+
+#: src/Admin/Admin.php:50
+msgid "Settings"
+msgstr ""
+
+#: src/Admin/Admin.php:53
+msgid "Saved."
+msgstr ""
+
+#: src/Admin/Admin.php:68
+msgid "Nothing here."
+msgstr ""
+
+#: src/Admin/Admin.php:71
+msgid "Request"
+msgstr ""
+
+#: src/Admin/Admin.php:71
+msgid "Buyer"
+msgstr ""
+
+#: src/Admin/Admin.php:71
+msgid "Deadline"
+msgstr ""
+
+#: src/Admin/Admin.php:71
+msgid "Offers"
+msgstr ""
+
+#: src/Admin/Admin.php:71
+msgid "Decision"
+msgstr ""
+
+#: src/Admin/Admin.php:81
+msgid "Publish"
+msgstr ""
+
+#: src/Admin/Admin.php:83
+msgid "Reason (sent to the buyer)"
+msgstr ""
+
+#: src/Admin/Admin.php:83
+msgid "Unpublish"
+msgstr ""
+
+#: src/Admin/Admin.php:83
+msgid "Request changes"
+msgstr ""
+
+#: src/Admin/Admin.php:93
+msgid "Answer deadline proposed to buyers (days)"
+msgstr ""
+
+#: src/Admin/Admin.php:94
+msgid "Latest answer deadline (days)"
+msgstr ""
+
+#: src/Admin/Admin.php:95
+msgid "Files per request or offer"
+msgstr ""
+
+#: src/Admin/Admin.php:96
+msgid "Largest file (MB)"
+msgstr ""
+
+#: src/Admin/Admin.php:97
+msgid "Requests a company may publish per day"
+msgstr ""
+
+#: src/Admin/Admin.php:98
+msgid "Lowest price accepted (DA)"
+msgstr ""
+
+#: src/Admin/Admin.php:99
+msgid "Highest price accepted (DA)"
+msgstr ""
+
+#: src/Admin/Admin.php:103
+msgid "Moderation"
+msgstr ""
+
+#: src/Admin/Admin.php:103
+msgid "Check every request before it is published"
+msgstr ""
+
+#: src/Admin/Admin.php:114
+msgid "You cannot change these settings."
+msgstr ""
+
+#: src/Admin/Admin.php:124
+msgid "You cannot moderate requests."
+msgstr ""
+
+#: src/Form.php:38
+msgid "Sign in with a business account to send an offer."
+msgstr ""
+
+#: src/Form.php:46
+msgid "This is your own request."
+msgstr ""
+
+#: src/Form.php:49
+msgid "This request no longer accepts offers."
+msgstr ""
+
+#: src/Form.php:89
+#: src/Form.php:149
+msgid "Your account has no company."
+msgstr ""
+
+#: src/Form.php:94
+msgid "This request can no longer be edited: it already has offers or is closed."
+msgstr ""
+
+#: src/Form.php:97
+msgid "You published many requests today. Try again tomorrow."
+msgstr ""
+
+#: src/Form.php:110
+msgid "Thank you. Your request will be visible after a quick check by the platform team."
+msgstr ""
+
+#: src/Form.php:110
+msgid "Your request is published. Suppliers can now send their offers."
+msgstr ""
+
+#: src/Form.php:118
+msgid "You cannot change this request."
+msgstr ""
+
+#: src/Form.php:123
+msgid "This request is already closed."
+msgstr ""
+
+#: src/Form.php:129
+msgid "The request is closed. Suppliers were told."
+msgstr ""
+
+#: src/Form.php:133
+msgid "A request with offers is kept for your records: close it instead."
+msgstr ""
+
+#: src/Form.php:136
+msgid "Request deleted."
+msgstr ""
+
+#: src/Form.php:139
+#: src/Form.php:212
+msgid "Unknown action."
+msgstr ""
+
+#: src/Form.php:147
+msgid "This request does not exist."
+msgstr ""
+
+#: src/Form.php:153
+msgid "The buyer already decided on your offer."
+msgstr ""
+
+#: src/Form.php:163
+msgid "Your offer was sent. The buyer is notified."
+msgstr ""
+
+#: src/Form.php:163
+msgid "Your offer is updated. The buyer is notified."
+msgstr ""
+
+#: src/Form.php:173
+msgid "This offer does not exist."
+msgstr ""
+
+#: src/Form.php:177
+msgid "You cannot withdraw this offer."
+msgstr ""
+
+#: src/Form.php:181
+msgid "Your offer is withdrawn."
+msgstr ""
+
+#: src/Form.php:184
+msgid "Only the buyer can decide on an offer."
+msgstr ""
+
+#: src/Form.php:187
+msgid "This offer can no longer be changed."
+msgstr ""
+
+#: src/Form.php:192
+msgid "Offer shortlisted."
+msgstr ""
+
+#: src/Form.php:192
+msgid "Offer removed from the shortlist."
+msgstr ""
+
+#: src/Form.php:197
+msgid "Offer declined. The supplier is told."
+msgstr ""
+
+#: src/Form.php:209
+msgid "Offer accepted. The supplier is notified; contact him to confirm the order. The other suppliers were told."
+msgstr ""
+
+#: src/Notifications.php:31
+msgid "New request for quotation to review"
+msgstr ""
+
+#. translators: %s: request title.
+#: src/Notifications.php:33
+msgid "A buyer submitted \"%s\". Check it before it is published."
+msgstr ""
+
+#: src/Notifications.php:38
+msgid "Your request for quotation is published"
+msgstr ""
+
+#. translators: %s: request title.
+#: src/Notifications.php:40
+msgid "\"%s\" is visible to suppliers. You will be told of each offer."
+msgstr ""
+
+#: src/Notifications.php:45
+msgid "Your request for quotation needs changes"
+msgstr ""
+
+#. translators: 1: request title, 2: reason.
+#: src/Notifications.php:47
+msgid "\"%1$s\" was not published: %2$s"
+msgstr ""
+
+#: src/Notifications.php:52
+msgid "New offer on your request for quotation"
+msgstr ""
+
+#. translators: 1: supplier name, 2: request title.
+#: src/Notifications.php:54
+msgid "%1$s sent an offer for \"%2$s\". Compare the offers on the request page."
+msgstr ""
+
+#: src/Notifications.php:59
+msgid "An offer was updated"
+msgstr ""
+
+#. translators: 1: supplier name, 2: request title.
+#: src/Notifications.php:61
+msgid "%1$s updated its offer for \"%2$s\"."
+msgstr ""
+
+#: src/Notifications.php:66
+msgid "An offer was withdrawn"
+msgstr ""
+
+#. translators: 1: supplier name, 2: request title.
+#: src/Notifications.php:68
+msgid "%1$s withdrew its offer for \"%2$s\"."
+msgstr ""
+
+#: src/Notifications.php:73
+msgid "Your offer was accepted"
+msgstr ""
+
+#. translators: %s: request title.
+#: src/Notifications.php:75
+msgid "The buyer accepted your offer for \"%s\". Contact him to confirm the order and the delivery."
+msgstr ""
+
+#: src/Notifications.php:80
+msgid "Your offer was not retained"
+msgstr ""
+
+#. translators: %s: request title.
+#: src/Notifications.php:82
+msgid "The buyer did not retain your offer for \"%s\"."
+msgstr ""
+
+#: src/Notifications.php:87
+msgid "A request you answered was awarded"
+msgstr ""
+
+#. translators: %s: request title.
+#: src/Notifications.php:89
+msgid "The buyer chose another offer for \"%s\". Thank you for your answer."
+msgstr ""
+
+#: src/Notifications.php:94
+msgid "A request you answered was closed"
+msgstr ""
+
+#. translators: %s: request title.
+#: src/Notifications.php:96
+msgid "The buyer closed \"%s\" without choosing an offer on the platform."
+msgstr ""
+
+#: src/Notifications.php:101
+msgid "The answer deadline of your request has passed"
+msgstr ""
+
+#. translators: 1: request title, 2: number of offers.
+#: src/Notifications.php:103
+msgid "\"%1$s\" no longer accepts offers (%2$d received). You can still accept one of them."
+msgstr ""
+
+#: src/Rest/Api.php:35
+msgid "This request is not available."
+msgstr ""
+
+#: src/Spec.php:72
+msgid "Choose what you need."
+msgstr ""
+
+#: src/Spec.php:79
+msgid "This category does not belong to the chosen market."
+msgstr ""
+
+#: src/Spec.php:112
+msgid "Give the quantity, or list the profiles above."
+msgstr ""
+
+#: src/Spec.php:115
+msgid "Choose the unit."
+msgstr ""
+
+#: src/Spec.php:121
+#: src/Spec.php:206
+msgid "This weight is outside the accepted range."
+msgstr ""
+
+#: src/Spec.php:134
+msgid "Give your request a title (in French or in Arabic)."
+msgstr ""
+
+#: src/Spec.php:138
+msgid "Describe what you need (grade, finish, tolerances, standards…)."
+msgstr ""
+
+#: src/Spec.php:140
+msgid "The description is too long (4000 characters at most)."
+msgstr ""
+
+#: src/Spec.php:144
+msgid "The notes are too long (2000 characters at most)."
+msgstr ""
+
+#: src/Spec.php:149
+msgid "Choose the delivery wilaya."
+msgstr ""
+
+#: src/Spec.php:158
+msgid "The delivery date must be today or later."
+msgstr ""
+
+#: src/Spec.php:164
+msgid "Choose the date until which suppliers can answer."
+msgstr ""
+
+#. translators: %d: number of days.
+#: src/Spec.php:168
+msgid "The answer deadline must be between tomorrow and %d days from today."
+msgstr ""
+
+#: src/Spec.php:170
+msgid "The delivery date cannot be before the answer deadline."
+msgstr ""
+
+#: src/Spec.php:212
+msgid "Enter your price."
+msgstr ""
+
+#: src/Spec.php:215
+msgid "This price is outside the accepted range."
+msgstr ""
+
+#: src/Spec.php:218
+msgid "A price per kg needs a weight: give the weight you quote for."
+msgstr ""
+
+#: src/Spec.php:229
+msgid "Give the delivery time in days (0 if in stock today)."
+msgstr ""
+
+#: src/Spec.php:236
+msgid "Say how many days your price is valid (1 to 180)."
+msgstr ""
+
+#: src/Spec.php:243
+msgid "The message is too long (3000 characters at most)."
+msgstr ""

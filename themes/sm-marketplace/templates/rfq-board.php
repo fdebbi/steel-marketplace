@@ -2,19 +2,52 @@
 /**
  * Template Name: SM — Requests for quotation
  *
- * Public RFQ board layout and the "new request" form (sm-rfq, Phase 7).
+ * Public board of open requests (sm-rfq), or one request when the address
+ * carries its number (/demandes-de-devis/123/).
  *
  * @package SM_Marketplace
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$rfq_id = sm_theme_current_rfq_id();
+if ( $rfq_id ) {
+	$item = sm_theme_data( 'rfq', array( 'id' => $rfq_id, 'sort' => sm_theme_query_arg( 'sort', 'total' ) ) );
+	if ( ! $item ) {
+		status_header( 404 );
+		get_header();
+		echo '<div class="sm-container sm-section">';
+		sm_component( 'empty-state', array( 'icon' => 'rfq', 'title' => __( 'This request is not available', 'sm-marketplace' ), 'text' => __( 'It may have been removed, or it is waiting for review.', 'sm-marketplace' ), 'action_label' => __( 'See the requests for quotation', 'sm-marketplace' ), 'action_url' => sm_page_url( 'rfq' ) ) );
+		echo '</div>';
+		get_footer();
+		return;
+	}
+	get_header();
+	sm_component( 'rfq-single', array( 'item' => $item ) );
+	get_footer();
+	return;
+}
+
 get_header();
-$wilayas = sm_theme_wilayas();
-$rfqs    = array(
-	array( 't' => array( 'fr' => 'IPE 270 — 48 barres de 12 m, livraison chantier', 'ar' => 'IPE 270 — 48 قضيبا بطول 12 م، توصيل إلى الورشة' ), 'w' => '16', 'd' => 1, 'o' => 5, 'kg' => 21000 ),
-	array( 't' => array( 'fr' => 'Hangar de stockage 25 × 15 m, neuf ou occasion', 'ar' => 'هنغار تخزين 25 × 15 م، جديد أو مستعمل' ), 'w' => '19', 'd' => 2, 'o' => 3, 'kg' => 0 ),
-	array( 't' => array( 'fr' => 'Tubes carrés 80×80×4 — 120 barres', 'ar' => 'أنابيب مربعة 80×80×4 — 120 قضيبا' ), 'w' => '28', 'd' => 4, 'o' => 7, 'kg' => 0 ),
+$wilayas  = sm_theme_wilayas();
+$settings = (array) sm_theme_data( 'rfq_settings' );
+$markets  = (array) ( $settings['markets'] ?? array() );
+$page_num = max( 1, (int) sm_theme_query_arg( 'pg', 1 ) );
+$result   = wp_parse_args(
+	(array) sm_theme_data(
+		'rfqs',
+		array(
+			'market'   => sm_theme_query_arg( 'market' ),
+			'wilaya'   => sm_theme_query_arg( 'wilaya' ),
+			'q'        => sm_theme_query_arg( 'q' ),
+			'sort'     => sm_theme_query_arg( 'sort', 'recent' ),
+			'per_page' => 12,
+			'page'     => $page_num,
+		)
+	),
+	array( 'items' => array(), 'total' => 0, 'pages' => 0 )
 );
+$new_url = is_user_logged_in() ? sm_page_url( 'account', array( 'view' => 'rfq', 'new' => 1 ) ) : sm_page_url( 'login' );
 ?>
 <section class="sm-pagehead">
 	<div class="sm-container">
@@ -24,52 +57,64 @@ $rfqs    = array(
 				<h1 class="sm-pagehead__title"><?php esc_html_e( 'Requests for quotation', 'sm-marketplace' ); ?></h1>
 				<p class="sm-pagehead__intro"><?php esc_html_e( 'Buyers describe what they need; suppliers answer with a price per kg and a delivery time.', 'sm-marketplace' ); ?></p>
 			</div>
-			<a class="sm-btn sm-btn--accent" href="#sm-new-rfq"><?php sm_icon( 'plus' ); ?><?php esc_html_e( 'New request', 'sm-marketplace' ); ?></a>
+			<a class="sm-btn sm-btn--accent" href="<?php echo esc_url( $new_url ); ?>"><?php sm_icon( 'plus' ); ?><?php esc_html_e( 'New request', 'sm-marketplace' ); ?></a>
 		</div>
 	</div>
 </section>
-<div class="sm-container sm-section sm-rfq">
+<div class="sm-container sm-section sm-rfq sm-rfq--board">
+	<form class="smq-filters" method="get" role="search" aria-label="<?php esc_attr_e( 'Filter the requests', 'sm-marketplace' ); ?>">
+		<div class="sm-field">
+			<label for="smq-q"><?php esc_html_e( 'Profile or keyword', 'sm-marketplace' ); ?></label>
+			<input id="smq-q" name="q" type="search" value="<?php echo esc_attr( sm_theme_query_arg( 'q' ) ); ?>" placeholder="IPE 270, hangar…">
+		</div>
+		<?php if ( $markets ) : ?>
+			<div class="sm-field">
+				<label for="smq-market"><?php esc_html_e( 'Market', 'sm-marketplace' ); ?></label>
+				<select id="smq-market" name="market"><option value=""><?php esc_html_e( 'All markets', 'sm-marketplace' ); ?></option><?php foreach ( $markets as $k => $l ) : ?><option value="<?php echo esc_attr( $k ); ?>" <?php selected( sm_theme_query_arg( 'market' ), $k ); ?>><?php echo esc_html( sm_t( $l ) ); ?></option><?php endforeach; ?></select>
+			</div>
+		<?php endif; ?>
+		<div class="sm-field">
+			<label for="smq-wilaya"><?php esc_html_e( 'Delivery wilaya', 'sm-marketplace' ); ?></label>
+			<select id="smq-wilaya" name="wilaya"><option value=""><?php esc_html_e( 'All wilayas', 'sm-marketplace' ); ?></option><?php foreach ( $wilayas as $c => $n ) : ?><option value="<?php echo esc_attr( $c ); ?>" <?php selected( sm_theme_query_arg( 'wilaya' ), (string) $c ); ?>><?php echo esc_html( $c . ' — ' . sm_t( $n ) ); ?></option><?php endforeach; ?></select>
+		</div>
+		<div class="sm-field">
+			<label for="smq-sort"><?php esc_html_e( 'Sort by', 'sm-marketplace' ); ?></label>
+			<select id="smq-sort" name="sort"><option value="recent"><?php esc_html_e( 'Most recent', 'sm-marketplace' ); ?></option><option value="deadline" <?php selected( sm_theme_query_arg( 'sort' ), 'deadline' ); ?>><?php esc_html_e( 'Deadline soonest', 'sm-marketplace' ); ?></option></select>
+		</div>
+		<button class="sm-btn sm-btn--primary" type="submit"><?php sm_icon( 'search' ); ?><?php esc_html_e( 'Filter', 'sm-marketplace' ); ?></button>
+	</form>
+
 	<div class="sm-rfq__list">
-		<?php foreach ( $rfqs as $r ) : ?>
-			<article class="sm-card sm-card--rfq">
-				<div class="sm-card__body">
-					<h2 class="sm-card__title"><a href="#"><?php sm_e( $r['t'] ); ?></a></h2>
-					<p class="sm-card__facts-inline">
-						<span><?php sm_icon( 'map-pin' ); ?><?php echo esc_html( sm_t( $wilayas[ $r['w'] ] ) ); ?></span>
-						<span><?php sm_icon( 'calendar' ); ?><?php echo esc_html( sm_ago( gmdate( 'Y-m-d H:i:s', time() - $r['d'] * DAY_IN_SECONDS ) ) ); ?></span>
-						<?php if ( $r['kg'] ) : ?><span><?php sm_icon( 'weight' ); ?><?php echo sm_kg( $r['kg'] ); // phpcs:ignore ?></span><?php endif; ?>
-					</p>
-				</div>
-				<div class="sm-card--rfq__side">
-					<span class="sm-count sm-count--lg"><?php echo esc_html( $r['o'] ); ?></span>
-					<small><?php echo esc_html( _n( 'offer', 'offers', $r['o'], 'sm-marketplace' ) ); ?></small>
-					<a class="sm-btn sm-btn--primary-outline" href="#"><?php esc_html_e( 'Make an offer', 'sm-marketplace' ); ?></a>
-				</div>
-			</article>
+		<p class="sm-toolbar__count">
+			<?php
+			/* translators: %s: number of requests. */
+			echo wp_kses_post( sprintf( _n( '<strong>%s</strong> open request', '<strong>%s</strong> open requests', (int) $result['total'], 'sm-marketplace' ), sm_number( $result['total'] ) ) );
+			?>
+		</p>
+		<?php if ( ! $result['items'] ) : ?>
+			<?php sm_component( 'empty-state', array( 'icon' => 'rfq', 'title' => __( 'No open request here', 'sm-marketplace' ), 'text' => __( 'Publish yours: suppliers answer with their prices.', 'sm-marketplace' ), 'action_label' => __( 'New request', 'sm-marketplace' ), 'action_url' => $new_url ) ); ?>
+		<?php endif; ?>
+		<?php foreach ( $result['items'] as $r ) : ?>
+			<?php sm_component( 'card-rfq', array( 'item' => $r ) ); ?>
 		<?php endforeach; ?>
+		<?php if ( $result['pages'] > 1 ) : ?>
+			<nav class="sm-pagination" aria-label="<?php esc_attr_e( 'Pagination', 'sm-marketplace' ); ?>">
+				<?php for ( $i = 1; $i <= $result['pages']; $i++ ) : ?>
+					<a href="<?php echo esc_url( add_query_arg( 'pg', $i ) ); ?>" <?php echo $i === $page_num ? 'aria-current="page"' : ''; ?>><?php echo esc_html( $i ); ?></a>
+				<?php endfor; ?>
+			</nav>
+		<?php endif; ?>
 	</div>
 
-	<section class="sm-panel" id="sm-new-rfq">
-		<h2 class="sm-panel__title"><?php esc_html_e( 'New request for quotation', 'sm-marketplace' ); ?></h2>
-		<form class="sm-form" method="post" action="#" enctype="multipart/form-data" data-sm-demo-form>
-			<div class="sm-field">
-				<label for="q-cat"><?php esc_html_e( 'What do you need?', 'sm-marketplace' ); ?></label>
-				<select id="q-cat" name="market"><?php foreach ( array_slice( sm_market_labels(), 0, 4, true ) as $k => $l ) : ?><option value="<?php echo esc_attr( $k ); ?>"><?php echo esc_html( $l ); ?></option><?php endforeach; ?></select>
-			</div>
-			<div class="sm-field sm-field--row">
-				<div><label for="q-desig"><?php esc_html_e( 'Profile designation', 'sm-marketplace' ); ?></label><input id="q-desig" name="designation" list="sm-profiles-rfq" dir="ltr" placeholder="IPE 270"></div>
-				<div><label for="q-qty"><?php esc_html_e( 'Quantity', 'sm-marketplace' ); ?></label><input id="q-qty" name="quantity" inputmode="numeric" dir="ltr"></div>
-			</div>
-			<datalist id="sm-profiles-rfq"><?php foreach ( array( 'IPE', 'HEA', 'HEB', 'UPN' ) as $f ) : ?><option value="<?php echo esc_attr( $f ); ?> "></option><?php endforeach; ?></datalist>
-			<div class="sm-field sm-field--row">
-				<div><label for="q-w"><?php esc_html_e( 'Delivery wilaya', 'sm-marketplace' ); ?></label><select id="q-w" name="wilaya"><?php foreach ( $wilayas as $c => $n ) : ?><option value="<?php echo esc_attr( $c ); ?>"><?php echo esc_html( sm_t( $n ) ); ?></option><?php endforeach; ?></select></div>
-				<div><label for="q-date"><?php esc_html_e( 'Needed by', 'sm-marketplace' ); ?></label><input id="q-date" name="date" type="date"></div>
-			</div>
-			<div class="sm-field"><label for="q-desc"><?php esc_html_e( 'Technical description', 'sm-marketplace' ); ?></label><textarea id="q-desc" name="description" rows="4" dir="auto"></textarea></div>
-			<label class="sm-upload sm-upload--small"><input type="file" name="files[]" multiple accept=".pdf,.dwg,.dxf,image/*"><?php sm_icon( 'upload', 'sm-upload__icon' ); ?><strong><?php esc_html_e( 'Attach drawings or a bill of materials', 'sm-marketplace' ); ?></strong></label>
-			<button class="sm-btn sm-btn--accent sm-btn--block" type="submit"><?php esc_html_e( 'Publish my request', 'sm-marketplace' ); ?></button>
-		</form>
-	</section>
+	<aside class="sm-panel smq-how">
+		<h2 class="sm-panel__title"><?php esc_html_e( 'How it works', 'sm-marketplace' ); ?></h2>
+		<ol class="smq-steps">
+			<li><strong><?php esc_html_e( 'Describe your need', 'sm-marketplace' ); ?></strong><span><?php esc_html_e( 'Profiles and lengths (the weight is calculated), or a free description, delivery place and date, drawings.', 'sm-marketplace' ); ?></span></li>
+			<li><strong><?php esc_html_e( 'Receive offers', 'sm-marketplace' ); ?></strong><span><?php esc_html_e( 'Suppliers and manufacturers answer with a price, a price per kg and a delivery time. Only you see all the offers.', 'sm-marketplace' ); ?></span></li>
+			<li><strong><?php esc_html_e( 'Compare and choose', 'sm-marketplace' ); ?></strong><span><?php esc_html_e( 'Side by side: total, price per kg, delivery, supplier verification. Contact them, then accept the offer you choose.', 'sm-marketplace' ); ?></span></li>
+		</ol>
+		<a class="sm-btn sm-btn--accent sm-btn--block" href="<?php echo esc_url( $new_url ); ?>"><?php sm_icon( 'plus' ); ?><?php esc_html_e( 'New request', 'sm-marketplace' ); ?></a>
+	</aside>
 </div>
 <?php
 get_footer();

@@ -1,0 +1,475 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM RFQ 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-rfq\n"
+
+#. Plugin Name of the plugin
+#: sm-rfq.php
+msgid "SM RFQ"
+msgstr "SM RFQ"
+
+#. Plugin URI of the plugin
+#: sm-rfq.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-rfq.php
+msgid ""
+"Requests for quotation: buyers describe what they need (profile rows weighed"
+" by SM Weight Engine or free description, quantity, delivery place and date,"
+" drawings); suppliers and manufacturers answer with a price, a price per kg "
+"and a delivery time; the buyer compares the offers, contacts suppliers and "
+"accepts one. Notifications in French and Arabic. Requires SM Core, SM Weight"
+" Engine and SM Products."
+msgstr ""
+"طلبات عروض الأسعار: يصف المشتري حاجته (مقاطع موزونة عبر SM Weight Engine أو "
+"وصف حر، الكمية، مكان وتاريخ التسليم، المخططات)؛ يرد الموردون والمصنعون بسعر "
+"وسعر للكيلوغرام وأجل تسليم؛ يقارن المشتري العروض ويتواصل مع الموردين ويقبل "
+"أحدها. إشعارات بالفرنسية والعربية. يتطلب SM Core وSM Weight Engine وSM "
+"Products."
+
+#. Author of the plugin
+#: sm-rfq.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-rfq.php:47
+msgid ""
+"SM RFQ needs the SM Core, SM Weight Engine and SM Products plugins. Activate"
+" them first."
+msgstr ""
+"يتطلب SM RFQ إضافات SM Core وSM Weight Engine وSM Products. فعّلها أولًا."
+
+#: src/Admin/Admin.php:29 src/Admin/Admin.php:49
+msgid "Requests for quotation"
+msgstr "طلبات عروض الأسعار"
+
+#: src/Admin/Admin.php:34
+msgid "Waiting for review"
+msgstr "في انتظار المراجعة"
+
+#: src/Admin/Admin.php:35
+msgid "Open"
+msgstr "مفتوحة"
+
+#: src/Admin/Admin.php:36
+msgid "Awarded"
+msgstr "مُسندة"
+
+#: src/Admin/Admin.php:37
+msgid "Deadline passed"
+msgstr "انتهى الأجل"
+
+#: src/Admin/Admin.php:38
+msgid "Closed"
+msgstr "مغلقة"
+
+#: src/Admin/Admin.php:39
+msgid "Changes requested"
+msgstr "تعديلات مطلوبة"
+
+#: src/Admin/Admin.php:50
+msgid "Requests"
+msgstr "الطلبات"
+
+#: src/Admin/Admin.php:50
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: src/Admin/Admin.php:53
+msgid "Saved."
+msgstr "تم الحفظ."
+
+#: src/Admin/Admin.php:68
+msgid "Nothing here."
+msgstr "لا شيء هنا."
+
+#: src/Admin/Admin.php:71
+msgid "Request"
+msgstr "الطلب"
+
+#: src/Admin/Admin.php:71
+msgid "Buyer"
+msgstr "المشتري"
+
+#: src/Admin/Admin.php:71
+msgid "Deadline"
+msgstr "الأجل"
+
+#: src/Admin/Admin.php:71
+msgid "Offers"
+msgstr "العروض"
+
+#: src/Admin/Admin.php:71
+msgid "Decision"
+msgstr "القرار"
+
+#: src/Admin/Admin.php:81
+msgid "Publish"
+msgstr "نشر"
+
+#: src/Admin/Admin.php:83
+msgid "Reason (sent to the buyer)"
+msgstr "السبب (يُرسل إلى المشتري)"
+
+#: src/Admin/Admin.php:83
+msgid "Unpublish"
+msgstr "إلغاء النشر"
+
+#: src/Admin/Admin.php:83
+msgid "Request changes"
+msgstr "طلب تعديلات"
+
+#: src/Admin/Admin.php:93
+msgid "Answer deadline proposed to buyers (days)"
+msgstr "أجل الرد المقترح على المشترين (أيام)"
+
+#: src/Admin/Admin.php:94
+msgid "Latest answer deadline (days)"
+msgstr "أقصى أجل للرد (أيام)"
+
+#: src/Admin/Admin.php:95
+msgid "Files per request or offer"
+msgstr "عدد الملفات لكل طلب أو عرض"
+
+#: src/Admin/Admin.php:96
+msgid "Largest file (MB)"
+msgstr "أكبر حجم للملف (ميغابايت)"
+
+#: src/Admin/Admin.php:97
+msgid "Requests a company may publish per day"
+msgstr "عدد الطلبات المسموح بها لكل مؤسسة يوميًا"
+
+#: src/Admin/Admin.php:98
+msgid "Lowest price accepted (DA)"
+msgstr "أدنى سعر مقبول (دج)"
+
+#: src/Admin/Admin.php:99
+msgid "Highest price accepted (DA)"
+msgstr "أعلى سعر مقبول (دج)"
+
+#: src/Admin/Admin.php:103
+msgid "Moderation"
+msgstr "الإشراف"
+
+#: src/Admin/Admin.php:103
+msgid "Check every request before it is published"
+msgstr "مراجعة كل طلب قبل نشره"
+
+#: src/Admin/Admin.php:114
+msgid "You cannot change these settings."
+msgstr "لا يمكنك تعديل هذه الإعدادات."
+
+#: src/Admin/Admin.php:124
+msgid "You cannot moderate requests."
+msgstr "لا يمكنك الإشراف على الطلبات."
+
+#: src/Form.php:38
+msgid "Sign in with a business account to send an offer."
+msgstr "سجّل الدخول بحساب مؤسسة لإرسال عرض."
+
+#: src/Form.php:46
+msgid "This is your own request."
+msgstr "هذا طلبك أنت."
+
+#: src/Form.php:49
+msgid "This request no longer accepts offers."
+msgstr "لم يعد هذا الطلب يقبل العروض."
+
+#: src/Form.php:89 src/Form.php:149
+msgid "Your account has no company."
+msgstr "حسابك غير مرتبط بمؤسسة."
+
+#: src/Form.php:94
+msgid ""
+"This request can no longer be edited: it already has offers or is closed."
+msgstr "لم يعد بالإمكان تعديل هذا الطلب: لديه عروض أو أنه مغلق."
+
+#: src/Form.php:97
+msgid "You published many requests today. Try again tomorrow."
+msgstr "نشرت عدة طلبات اليوم. أعد المحاولة غدًا."
+
+#: src/Form.php:110
+msgid ""
+"Thank you. Your request will be visible after a quick check by the platform "
+"team."
+msgstr "شكرًا. سيظهر طلبك بعد مراجعة سريعة من فريق المنصة."
+
+#: src/Form.php:110
+msgid "Your request is published. Suppliers can now send their offers."
+msgstr "تم نشر طلبك. يمكن للموردين الآن إرسال عروضهم."
+
+#: src/Form.php:118
+msgid "You cannot change this request."
+msgstr "لا يمكنك تعديل هذا الطلب."
+
+#: src/Form.php:123
+msgid "This request is already closed."
+msgstr "هذا الطلب مغلق أصلًا."
+
+#: src/Form.php:129
+msgid "The request is closed. Suppliers were told."
+msgstr "تم إغلاق الطلب وإبلاغ الموردين."
+
+#: src/Form.php:133
+msgid "A request with offers is kept for your records: close it instead."
+msgstr "يُحتفظ بالطلب الذي تلقى عروضًا: أغلقه بدلًا من ذلك."
+
+#: src/Form.php:136
+msgid "Request deleted."
+msgstr "تم حذف الطلب."
+
+#: src/Form.php:139 src/Form.php:212
+msgid "Unknown action."
+msgstr "إجراء غير معروف."
+
+#: src/Form.php:147
+msgid "This request does not exist."
+msgstr "هذا الطلب غير موجود."
+
+#: src/Form.php:153
+msgid "The buyer already decided on your offer."
+msgstr "اتخذ المشتري قراره بشأن عرضك."
+
+#: src/Form.php:163
+msgid "Your offer was sent. The buyer is notified."
+msgstr "تم إرسال عرضك وإشعار المشتري."
+
+#: src/Form.php:163
+msgid "Your offer is updated. The buyer is notified."
+msgstr "تم تحديث عرضك وإشعار المشتري."
+
+#: src/Form.php:173
+msgid "This offer does not exist."
+msgstr "هذا العرض غير موجود."
+
+#: src/Form.php:177
+msgid "You cannot withdraw this offer."
+msgstr "لا يمكنك سحب هذا العرض."
+
+#: src/Form.php:181
+msgid "Your offer is withdrawn."
+msgstr "تم سحب عرضك."
+
+#: src/Form.php:184
+msgid "Only the buyer can decide on an offer."
+msgstr "المشتري وحده يقرر بشأن العرض."
+
+#: src/Form.php:187
+msgid "This offer can no longer be changed."
+msgstr "لم يعد بالإمكان تغيير هذا العرض."
+
+#: src/Form.php:192
+msgid "Offer shortlisted."
+msgstr "تمت إضافة العرض إلى القائمة المختصرة."
+
+#: src/Form.php:192
+msgid "Offer removed from the shortlist."
+msgstr "تمت إزالة العرض من القائمة المختصرة."
+
+#: src/Form.php:197
+msgid "Offer declined. The supplier is told."
+msgstr "تم رفض العرض وإبلاغ المورد."
+
+#: src/Form.php:209
+msgid ""
+"Offer accepted. The supplier is notified; contact him to confirm the order. "
+"The other suppliers were told."
+msgstr ""
+"تم قبول العرض وإشعار المورد؛ تواصل معه لتأكيد الطلبية. تم إبلاغ باقي "
+"الموردين."
+
+#: src/Notifications.php:31
+msgid "New request for quotation to review"
+msgstr "طلب عرض أسعار جديد للمراجعة"
+
+#. translators: %s: request title.
+#: src/Notifications.php:33
+msgid "A buyer submitted \"%s\". Check it before it is published."
+msgstr "قدّم مشترٍ «%s». راجعه قبل نشره."
+
+#: src/Notifications.php:38
+msgid "Your request for quotation is published"
+msgstr "تم نشر طلب عرض الأسعار"
+
+#. translators: %s: request title.
+#: src/Notifications.php:40
+msgid "\"%s\" is visible to suppliers. You will be told of each offer."
+msgstr "«%s» ظاهر للموردين. ستُبلَّغ بكل عرض."
+
+#: src/Notifications.php:45
+msgid "Your request for quotation needs changes"
+msgstr "طلب عرض الأسعار يحتاج إلى تعديل"
+
+#. translators: 1: request title, 2: reason.
+#: src/Notifications.php:47
+msgid "\"%1$s\" was not published: %2$s"
+msgstr "لم يُنشر «%1$s»: %2$s"
+
+#: src/Notifications.php:52
+msgid "New offer on your request for quotation"
+msgstr "عرض جديد على طلبك"
+
+#. translators: 1: supplier name, 2: request title.
+#: src/Notifications.php:54
+msgid "%1$s sent an offer for \"%2$s\". Compare the offers on the request page."
+msgstr "أرسل %1$s عرضًا لـ«%2$s». قارن العروض في صفحة الطلب."
+
+#: src/Notifications.php:59
+msgid "An offer was updated"
+msgstr "تم تحديث عرض"
+
+#. translators: 1: supplier name, 2: request title.
+#: src/Notifications.php:61
+msgid "%1$s updated its offer for \"%2$s\"."
+msgstr "حدّث %1$s عرضه لـ«%2$s»."
+
+#: src/Notifications.php:66
+msgid "An offer was withdrawn"
+msgstr "تم سحب عرض"
+
+#. translators: 1: supplier name, 2: request title.
+#: src/Notifications.php:68
+msgid "%1$s withdrew its offer for \"%2$s\"."
+msgstr "سحب %1$s عرضه لـ«%2$s»."
+
+#: src/Notifications.php:73
+msgid "Your offer was accepted"
+msgstr "تم قبول عرضك"
+
+#. translators: %s: request title.
+#: src/Notifications.php:75
+msgid ""
+"The buyer accepted your offer for \"%s\". Contact him to confirm the order "
+"and the delivery."
+msgstr "قبل المشتري عرضك لـ«%s». تواصل معه لتأكيد الطلبية والتسليم."
+
+#: src/Notifications.php:80
+msgid "Your offer was not retained"
+msgstr "لم يتم اختيار عرضك"
+
+#. translators: %s: request title.
+#: src/Notifications.php:82
+msgid "The buyer did not retain your offer for \"%s\"."
+msgstr "لم يختر المشتري عرضك لـ«%s»."
+
+#: src/Notifications.php:87
+msgid "A request you answered was awarded"
+msgstr "تم إسناد طلب رددت عليه"
+
+#. translators: %s: request title.
+#: src/Notifications.php:89
+msgid "The buyer chose another offer for \"%s\". Thank you for your answer."
+msgstr "اختار المشتري عرضًا آخر لـ«%s». شكرًا على ردك."
+
+#: src/Notifications.php:94
+msgid "A request you answered was closed"
+msgstr "تم إغلاق طلب رددت عليه"
+
+#. translators: %s: request title.
+#: src/Notifications.php:96
+msgid "The buyer closed \"%s\" without choosing an offer on the platform."
+msgstr "أغلق المشتري «%s» دون اختيار عرض على المنصة."
+
+#: src/Notifications.php:101
+msgid "The answer deadline of your request has passed"
+msgstr "انتهى أجل الرد على طلبك"
+
+#. translators: 1: request title, 2: number of offers.
+#: src/Notifications.php:103
+msgid ""
+"\"%1$s\" no longer accepts offers (%2$d received). You can still accept one "
+"of them."
+msgstr "لم يعد «%1$s» يقبل العروض (%2$d عرض). لا يزال بإمكانك قبول أحدها."
+
+#: src/Rest/Api.php:35
+msgid "This request is not available."
+msgstr "هذا الطلب غير متاح."
+
+#: src/Spec.php:72
+msgid "Choose what you need."
+msgstr "اختر ما تحتاجه."
+
+#: src/Spec.php:79
+msgid "This category does not belong to the chosen market."
+msgstr "هذه الفئة لا تنتمي إلى السوق المختار."
+
+#: src/Spec.php:112
+msgid "Give the quantity, or list the profiles above."
+msgstr "أدخل الكمية، أو اذكر المقاطع أعلاه."
+
+#: src/Spec.php:115
+msgid "Choose the unit."
+msgstr "اختر الوحدة."
+
+#: src/Spec.php:121 src/Spec.php:206
+msgid "This weight is outside the accepted range."
+msgstr "هذا الوزن خارج النطاق المقبول."
+
+#: src/Spec.php:134
+msgid "Give your request a title (in French or in Arabic)."
+msgstr "أعطِ طلبك عنوانًا (بالفرنسية أو بالعربية)."
+
+#: src/Spec.php:138
+msgid "Describe what you need (grade, finish, tolerances, standards…)."
+msgstr "صِف حاجتك (الرتبة، التشطيب، التفاوتات، المعايير…)."
+
+#: src/Spec.php:140
+msgid "The description is too long (4000 characters at most)."
+msgstr "الوصف طويل جدًا (4000 حرف كحد أقصى)."
+
+#: src/Spec.php:144
+msgid "The notes are too long (2000 characters at most)."
+msgstr "الملاحظات طويلة جدًا (2000 حرف كحد أقصى)."
+
+#: src/Spec.php:149
+msgid "Choose the delivery wilaya."
+msgstr "اختر ولاية التسليم."
+
+#: src/Spec.php:158
+msgid "The delivery date must be today or later."
+msgstr "يجب أن يكون تاريخ التسليم اليوم أو بعده."
+
+#: src/Spec.php:164
+msgid "Choose the date until which suppliers can answer."
+msgstr "اختر التاريخ الذي يمكن للموردين الرد قبله."
+
+#. translators: %d: number of days.
+#: src/Spec.php:168
+msgid "The answer deadline must be between tomorrow and %d days from today."
+msgstr "يجب أن يكون أجل العروض بين الغد و%d يومًا من اليوم."
+
+#: src/Spec.php:170
+msgid "The delivery date cannot be before the answer deadline."
+msgstr "لا يمكن أن يسبق تاريخ التسليم أجل العروض."
+
+#: src/Spec.php:212
+msgid "Enter your price."
+msgstr "أدخل سعرك."
+
+#: src/Spec.php:215
+msgid "This price is outside the accepted range."
+msgstr "هذا السعر خارج النطاق المقبول."
+
+#: src/Spec.php:218
+msgid "A price per kg needs a weight: give the weight you quote for."
+msgstr "السعر للكيلوغرام يحتاج إلى وزن: أدخل الوزن الذي يخص سعرك."
+
+#: src/Spec.php:229
+msgid "Give the delivery time in days (0 if in stock today)."
+msgstr "أدخل أجل التسليم بالأيام (0 إذا كان متوفرًا اليوم)."
+
+#: src/Spec.php:236
+msgid "Say how many days your price is valid (1 to 180)."
+msgstr "حدّد عدد أيام صلاحية سعرك (من 1 إلى 180)."
+
+#: src/Spec.php:243
+msgid "The message is too long (3000 characters at most)."
+msgstr "الرسالة طويلة جدًا (3000 حرف كحد أقصى)."
