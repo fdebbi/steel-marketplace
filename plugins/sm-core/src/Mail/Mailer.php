@@ -73,17 +73,16 @@ final class Mailer {
 
 	/** The common layout. Call inside the recipient's language. */
 	public static function layout( $lang, $body_html, $name = '', $footer = null ) {
-		$dir     = Language::dir( $lang );
-		$brand   = sm_brand_name();
-		$primary = sanitize_hex_color( get_theme_mod( 'sm_color_primary', '#172B3A' ) ) ?: '#172B3A';
-		$align   = 'rtl' === $dir ? 'right' : 'left';
-		$footer  = null === $footer ? __( 'You receive this e-mail because of your activity on the platform.', 'sm-core' ) : $footer;
-		$hello   = '' !== (string) $name ? '<p style="margin:0 0 14px">' . esc_html( sprintf( /* translators: %s: person name. */ __( 'Hello %s,', 'sm-core' ), $name ) ) . '</p>' : '';
+		$dir    = Language::dir( $lang );
+		$align  = 'rtl' === $dir ? 'right' : 'left';
+		$footer = null === $footer ? __( 'You receive this e-mail because of your activity on the platform.', 'sm-core' ) : $footer;
+		$hello  = '' !== (string) $name ? '<p style="margin:0 0 14px">' . esc_html( sprintf( /* translators: %s: person name. */ __( 'Hello %s,', 'sm-core' ), $name ) ) . '</p>' : '';
 		return '<!doctype html><html lang="' . esc_attr( $lang ) . '" dir="' . esc_attr( $dir ) . '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"></head>'
 			. '<body style="margin:0;background:#F1F5F9;font-family:Arial,Tahoma,sans-serif;color:#0f172a">'
 			. '<div dir="' . esc_attr( $dir ) . '" style="max-width:560px;margin:24px auto;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e2e8f0;text-align:' . $align . '">'
-			. '<div style="background:' . esc_attr( $primary ) . ';color:#fff;padding:16px 24px;font-weight:bold;font-size:18px">' . esc_html( $brand ) . '</div>'
+			. Branding::header_html( $lang )
 			. '<div style="padding:24px;font-size:15px;line-height:1.6">' . $hello . $body_html . '</div>'
+			. Branding::signature_html( $lang )
 			. '<div style="padding:12px 24px;font-size:12px;color:#64748b;border-top:1px solid #e2e8f0">' . esc_html( $footer ) . ' · <a href="' . esc_url( home_url( '/' ) ) . '" style="color:#64748b">' . esc_html( wp_parse_url( home_url(), PHP_URL_HOST ) ) . '</a></div>'
 			. '</div></body></html>';
 	}

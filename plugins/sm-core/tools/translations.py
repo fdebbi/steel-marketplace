@@ -370,3 +370,33 @@ P.update({
 ("%d entry", "%d entries"): (["%d entrée", "%d entrées"], ["%d عملية", "عملية واحدة", "عمليتان", "%d عمليات", "%d عملية", "%d عملية"]),
 ("%d event on the platform since the last summary:", "%d events on the platform since the last summary:"): (["%d événement sur la plateforme depuis le dernier résumé :", "%d événements sur la plateforme depuis le dernier résumé :"], ["%d حدث على المنصة منذ آخر ملخص:", "حدث واحد على المنصة منذ آخر ملخص:", "حدثان على المنصة منذ آخر ملخص:", "%d أحداث على المنصة منذ آخر ملخص:", "%d حدثًا على المنصة منذ آخر ملخص:", "%d حدث على المنصة منذ آخر ملخص:"]),
 })
+
+# 0.4.1 — header and signature of e-mails.
+T.update({
+"Header and signature": ("En-tête et signature", "الترويسة والتوقيع"),
+"No image": ("Aucune image", "لا توجد صورة"),
+"Choose an image": ("Choisir une image", "اختيار صورة"),
+"Remove": ("Retirer", "إزالة"),
+"Applies to every e-mail of the platform: alerts, confirmations, notifications, summaries and tests.": ("S’applique à tous les e-mails de la plateforme : alertes, confirmations, notifications, résumés et tests.", "يُطبَّق على كل رسائل المنصة: التنبيهات، التأكيدات، الإشعارات، الملخصات والاختبارات."),
+"Header": ("En-tête", "الترويسة"),
+"Header image": ("Image d’en-tête", "صورة الترويسة"),
+"Banner shown at the top of every e-mail, 1120 × 240 pixels recommended (PNG or JPG). Without an image, the logo or the name of the platform is shown on a coloured band.": ("Bannière affichée en haut de chaque e-mail, 1120 × 240 pixels conseillés (PNG ou JPG). Sans image, le logo ou le nom de la plateforme s’affiche sur un bandeau de couleur.", "لافتة تظهر أعلى كل رسالة، يُنصح بمقاس 1120 × 240 بكسل (PNG أو JPG). بدون صورة، يظهر الشعار أو اسم المنصة على شريط ملوّن."),
+"Band colour": ("Couleur du bandeau", "لون الشريط"),
+"Logo or name in the band": ("Logo ou nom dans le bandeau", "الشعار أو الاسم في الشريط"),
+"Centred": ("Centré", "في الوسط"),
+"At the start of the line": ("En début de ligne", "في بداية السطر"),
+"Signature": ("Signature", "التوقيع"),
+"Show the signature at the end of every e-mail": ("Afficher la signature à la fin de chaque e-mail", "إظهار التوقيع في آخر كل رسالة"),
+"Logo": ("Logo", "الشعار"),
+"Square logo shown in the signature (and in the band when there is no header image), 200 × 200 pixels recommended.": ("Logo carré affiché dans la signature (et dans le bandeau quand il n’y a pas d’image d’en-tête), 200 × 200 pixels conseillés.", "شعار مربع يظهر في التوقيع (وفي الشريط عند غياب صورة الترويسة)، يُنصح بمقاس 200 × 200 بكسل."),
+"Name": ("Nom", "الاسم"),
+"Phone": ("Téléphone", "الهاتف"),
+"E-mail": ("E-mail", "البريد الإلكتروني"),
+"Website": ("Site web", "الموقع"),
+"Closing words (before the name)": ("Formule de politesse (avant le nom)", "عبارة الختام (قبل الاسم)"),
+"Address": ("Adresse", "العنوان"),
+"Social networks": ("Réseaux sociaux", "الشبكات الاجتماعية"),
+"Leave empty the networks the platform does not use. For WhatsApp, give the phone number.": ("Laissez vides les réseaux que la plateforme n’utilise pas. Pour WhatsApp, indiquez le numéro de téléphone.", "اترك فارغة الشبكات التي لا تستعملها المنصة. بالنسبة لواتساب، أدخل رقم الهاتف."),
+"Preview": ("Aperçu", "معاينة"),
+"This is how your e-mails look.\n\nThe text of each message comes here, then the signature and the social links.": ("Voici l’apparence de vos e-mails.\n\nLe texte de chaque message vient ici, puis la signature et les liens des réseaux sociaux.", "هكذا تبدو رسائلك.\n\nيأتي نص كل رسالة هنا، ثم التوقيع وروابط الشبكات الاجتماعية."),
+})

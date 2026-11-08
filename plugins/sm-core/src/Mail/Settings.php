@@ -17,8 +17,6 @@ final class Settings {
 	const MODES  = array( 'now', 'digest', 'off' );
 
 	public static function defaults() {
-		$host = wp_parse_url( home_url(), PHP_URL_HOST );
-		$host = $host ? preg_replace( '/^www\./', '', $host ) : 'reusteel.com';
 		return array(
 			'from_name'   => sm_brand_name(),
 			'from_email'  => 'contact@reusteel.com',
@@ -29,7 +27,7 @@ final class Settings {
 			'log_bodies'  => 1,
 			'events'      => array(),
 			'notices'     => array(),
-			'host'        => $host,
+			'brand'       => array(),
 		);
 	}
 

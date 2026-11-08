@@ -1,5 +1,9 @@
 # Changelog — sm-core
 
+## 0.4.1 — 2026-11-08 (e-mails : en-tête et signature)
+
+- *SM → E-mails → En-tête et signature* : image d'en-tête (médiathèque) ou bandeau de couleur avec logo, signature (logo, nom, adresse FR/AR, téléphone, e-mail, site web, formule de politesse FR/AR), liens des réseaux sociaux (Facebook, Instagram, LinkedIn, YouTube, TikTok, X, WhatsApp) ; appliqués à tous les e-mails ; aperçu FR/AR. 6 tests ajoutés.
+
 ## 0.4.0 — 2026-11-08 (Phase 8.1 : e-mails et journal d'activité)
 
 - *SM → E-mails* : catalogue d'événements (filtre `sm_mail_events`), alerte aux administrateurs immédiate / résumé quotidien / non, confirmation à l'utilisateur, modèles FR/AR modifiables avec variables, aperçu, test, retour au texte par défaut ; e-mails des notifications activables et réécrivables (`notice:{type}`) ; expéditeur, destinataires, langue des alertes, heure du résumé, conservation.

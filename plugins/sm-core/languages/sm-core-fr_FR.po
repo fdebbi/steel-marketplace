@@ -256,11 +256,11 @@ msgstr "Wilayas"
 msgid "Settings"
 msgstr "Réglages"
 
-#: src/Admin/Admin.php:50 src/Admin/MailAdmin.php:546
+#: src/Admin/Admin.php:50 src/Admin/MailAdmin.php:639
 msgid "Activity journal"
 msgstr "Journal d’activité"
 
-#: src/Admin/Admin.php:64 src/Admin/MailAdmin.php:72
+#: src/Admin/Admin.php:64 src/Admin/MailAdmin.php:74
 msgid "Saved."
 msgstr "Enregistré."
 
@@ -339,18 +339,18 @@ msgstr "Actif"
 msgid "Suspended"
 msgstr "Suspendu"
 
-#: src/Admin/Admin.php:132 src/Admin/MailAdmin.php:264
-#: src/Admin/MailAdmin.php:558
+#: src/Admin/Admin.php:132 src/Admin/MailAdmin.php:349
+#: src/Admin/MailAdmin.php:651
 msgid "Filter"
 msgstr "Filtrer"
 
-#: src/Admin/Admin.php:133 src/Admin/MailAdmin.php:564
-#: src/Admin/MailAdmin.php:597
+#: src/Admin/Admin.php:133 src/Admin/MailAdmin.php:657
+#: src/Admin/MailAdmin.php:690
 msgid "Company"
 msgstr "Entreprise"
 
-#: src/Admin/Admin.php:133 src/Admin/Admin.php:173 src/Admin/MailAdmin.php:564
-#: src/Admin/MailAdmin.php:597
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:173 src/Admin/MailAdmin.php:657
+#: src/Admin/MailAdmin.php:690
 msgid "Type"
 msgstr "Type"
 
@@ -367,7 +367,7 @@ msgid "Verification"
 msgstr "Vérification"
 
 #. translators: %d: count.
-#: src/Admin/Admin.php:133 src/Admin/Admin.php:204 src/Admin/MailAdmin.php:265
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:204 src/Admin/MailAdmin.php:350
 msgid "Status"
 msgstr "Statut"
 
@@ -391,12 +391,12 @@ msgstr "Voir la page publique"
 msgid "fixed at registration"
 msgstr "fixé à l’inscription"
 
-#: src/Admin/Admin.php:175
+#: src/Admin/Admin.php:175 src/Admin/MailAdmin.php:292
 msgid "Phone"
 msgstr "Téléphone"
 
-#: src/Admin/Admin.php:176 src/Admin/MailAdmin.php:208
-#: src/Admin/MailAdmin.php:597
+#: src/Admin/Admin.php:176 src/Admin/MailAdmin.php:214
+#: src/Admin/MailAdmin.php:293 src/Admin/MailAdmin.php:690
 msgid "E-mail"
 msgstr "E-mail"
 
@@ -570,69 +570,73 @@ msgstr ""
 "journaux) lors de la suppression de l’extension"
 
 #. translators: %d: count.
-#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:265
-#: src/Admin/MailAdmin.php:299 src/Admin/MailAdmin.php:564
-#: src/Admin/MailAdmin.php:597
+#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:350
+#: src/Admin/MailAdmin.php:384 src/Admin/MailAdmin.php:657
+#: src/Admin/MailAdmin.php:690
 msgid "Date"
 msgstr "Date"
 
-#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:564
-#: src/Admin/MailAdmin.php:597
+#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:657
+#: src/Admin/MailAdmin.php:690
 msgid "Activity"
 msgstr "Activité"
 
-#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:185
+#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:191
 msgid "User"
 msgstr "Utilisateur"
 
-#: src/Admin/MailAdmin.php:42 src/Admin/MailAdmin.php:98
+#: src/Admin/MailAdmin.php:44 src/Admin/MailAdmin.php:100
 msgid "E-mails"
 msgstr "E-mails"
 
-#: src/Admin/MailAdmin.php:59 src/Admin/MailAdmin.php:587
+#: src/Admin/MailAdmin.php:61 src/Admin/MailAdmin.php:680
 msgid "You cannot change these settings."
 msgstr "Vous ne pouvez pas modifier ces réglages."
 
-#: src/Admin/MailAdmin.php:73
+#: src/Admin/MailAdmin.php:75
 msgid "The default template is back."
 msgstr "Le modèle par défaut est rétabli."
 
-#: src/Admin/MailAdmin.php:74
+#: src/Admin/MailAdmin.php:76
 msgid "The e-mail was sent again."
 msgstr "L’e-mail a été renvoyé."
 
-#: src/Admin/MailAdmin.php:75
+#: src/Admin/MailAdmin.php:77
 msgid "Test e-mail sent. Check the e-mail log below if it does not arrive."
 msgstr ""
 "E-mail de test envoyé. S’il n’arrive pas, consultez le journal des e-mails."
 
-#: src/Admin/MailAdmin.php:76
+#: src/Admin/MailAdmin.php:78
 msgid "Summary sent (when there was something to report)."
 msgstr "Résumé envoyé (s’il y avait quelque chose à signaler)."
 
-#: src/Admin/MailAdmin.php:77
+#: src/Admin/MailAdmin.php:79
 msgid "The e-mail could not be sent. See the error in the e-mail log."
 msgstr ""
 "L’e-mail n’a pas pu être envoyé. Voyez l’erreur dans le journal des e-mails."
 
-#: src/Admin/MailAdmin.php:111
+#: src/Admin/MailAdmin.php:113
 msgid "Platform events"
 msgstr "Événements de la plateforme"
 
-#: src/Admin/MailAdmin.php:112
+#: src/Admin/MailAdmin.php:114
 msgid "User notifications"
 msgstr "Notifications aux utilisateurs"
 
-#: src/Admin/MailAdmin.php:113
+#: src/Admin/MailAdmin.php:115
 msgid "Sender and recipients"
 msgstr "Expéditeur et destinataires"
 
-#: src/Admin/MailAdmin.php:114 src/Admin/MailAdmin.php:240
-#: src/Admin/MailAdmin.php:294
+#: src/Admin/MailAdmin.php:116
+msgid "Header and signature"
+msgstr "En-tête et signature"
+
+#: src/Admin/MailAdmin.php:117 src/Admin/MailAdmin.php:246
+#: src/Admin/MailAdmin.php:379
 msgid "E-mail log"
 msgstr "Journal des e-mails"
 
-#: src/Admin/MailAdmin.php:141
+#: src/Admin/MailAdmin.php:147
 msgid ""
 "WP Mail SMTP is active: e-mails leave through your SMTP account. Check its "
 "\"Email Test\" after any change."
@@ -640,7 +644,7 @@ msgstr ""
 "WP Mail SMTP est actif : les e-mails partent par votre compte SMTP. Faites "
 "son « Email Test » après chaque modification."
 
-#: src/Admin/MailAdmin.php:143
+#: src/Admin/MailAdmin.php:149
 msgid ""
 "WP Mail SMTP is not active: e-mails are sent by the server and often land in"
 " spam. Install WP Mail SMTP and connect the e-mail account of your domain "
@@ -650,20 +654,20 @@ msgstr ""
 "souvent en spam. Installez WP Mail SMTP et reliez le compte e-mail de votre "
 "domaine (voir docs/EMAIL-SETUP.md)."
 
-#: src/Admin/MailAdmin.php:154
+#: src/Admin/MailAdmin.php:160
 msgid "Immediately"
 msgstr "Immédiatement"
 
-#: src/Admin/MailAdmin.php:155
+#: src/Admin/MailAdmin.php:161
 msgid "In the daily summary"
 msgstr "Dans le résumé quotidien"
 
-#: src/Admin/MailAdmin.php:156
+#: src/Admin/MailAdmin.php:162
 msgid "No"
 msgstr "Non"
 
 #. translators: %s: addresses.
-#: src/Admin/MailAdmin.php:158
+#: src/Admin/MailAdmin.php:164
 msgid ""
 "Choose what the administrators (%s) are told about, and the confirmation "
 "e-mails sent to users. Each e-mail can be rewritten in French and Arabic."
@@ -673,35 +677,35 @@ msgstr ""
 "français et en arabe."
 
 #. translators: %d: count.
-#: src/Admin/MailAdmin.php:161 src/Admin/MailAdmin.php:265
+#: src/Admin/MailAdmin.php:167 src/Admin/MailAdmin.php:350
 msgid "Event"
 msgstr "Événement"
 
-#: src/Admin/MailAdmin.php:161
+#: src/Admin/MailAdmin.php:167
 msgid "Alert to the administrators"
 msgstr "Alerte aux administrateurs"
 
-#: src/Admin/MailAdmin.php:161
+#: src/Admin/MailAdmin.php:167
 msgid "E-mail to the user"
 msgstr "E-mail à l’utilisateur"
 
-#: src/Admin/MailAdmin.php:161
+#: src/Admin/MailAdmin.php:167
 msgid "Templates"
 msgstr "Modèles"
 
-#: src/Admin/MailAdmin.php:182 src/Admin/MailAdmin.php:216
+#: src/Admin/MailAdmin.php:188 src/Admin/MailAdmin.php:222
 msgid "Send"
 msgstr "Envoyer"
 
-#: src/Admin/MailAdmin.php:185
+#: src/Admin/MailAdmin.php:191
 msgid "Administrator"
 msgstr "Administrateur"
 
-#: src/Admin/MailAdmin.php:192 src/Admin/MailAdmin.php:217
+#: src/Admin/MailAdmin.php:198 src/Admin/MailAdmin.php:223
 msgid "edited"
 msgstr "modifié"
 
-#: src/Admin/MailAdmin.php:205
+#: src/Admin/MailAdmin.php:211
 msgid ""
 "Messages the platform sends to users about their own activity (offer "
 "received, quote accepted, listing approved…). They always appear in the "
@@ -713,71 +717,71 @@ msgstr ""
 "dans les notifications de l’utilisateur ; ici vous choisissez si un e-mail "
 "est aussi envoyé, et vous pouvez le réécrire."
 
-#: src/Admin/MailAdmin.php:208
+#: src/Admin/MailAdmin.php:214
 msgid "Notification"
 msgstr "Notification"
 
-#: src/Admin/MailAdmin.php:208
+#: src/Admin/MailAdmin.php:214
 msgid "Template"
 msgstr "Modèle"
 
-#: src/Admin/MailAdmin.php:217
+#: src/Admin/MailAdmin.php:223
 msgid "Edit"
 msgstr "Modifier"
 
-#: src/Admin/MailAdmin.php:230
+#: src/Admin/MailAdmin.php:236
 msgid "Sender name"
 msgstr "Nom de l’expéditeur"
 
-#: src/Admin/MailAdmin.php:231
+#: src/Admin/MailAdmin.php:237
 msgid "Sender address"
 msgstr "Adresse de l’expéditeur"
 
-#: src/Admin/MailAdmin.php:231
+#: src/Admin/MailAdmin.php:237
 msgid ""
 "An address of your domain, the same as the SMTP account in WP Mail SMTP."
 msgstr ""
 "Une adresse de votre domaine, la même que le compte SMTP de WP Mail SMTP."
 
-#: src/Admin/MailAdmin.php:232
+#: src/Admin/MailAdmin.php:238
 msgid "Administrators to alert"
 msgstr "Administrateurs à prévenir"
 
-#: src/Admin/MailAdmin.php:232
+#: src/Admin/MailAdmin.php:238
 msgid "One or more addresses, separated by commas or new lines."
 msgstr ""
 "Une ou plusieurs adresses, séparées par des virgules ou des retours à la "
 "ligne."
 
-#: src/Admin/MailAdmin.php:233
+#: src/Admin/MailAdmin.php:239
 msgid "Language of the alerts"
 msgstr "Langue des alertes"
 
-#: src/Admin/MailAdmin.php:234
+#: src/Admin/MailAdmin.php:240
 msgid "Daily summary at"
 msgstr "Résumé quotidien à"
 
 #. translators: %s: date.
-#: src/Admin/MailAdmin.php:238
+#: src/Admin/MailAdmin.php:244
 msgid "Last summary: %s"
 msgstr "Dernier résumé : %s"
 
 #. translators: %s: date.
-#: src/Admin/MailAdmin.php:238
+#: src/Admin/MailAdmin.php:244
 msgid "No summary sent yet."
 msgstr "Aucun résumé envoyé pour l’instant."
 
 #. translators: %s: date.
-#: src/Admin/MailAdmin.php:239
+#: src/Admin/MailAdmin.php:245
 msgid "Keep the journals"
 msgstr "Conserver les journaux"
 
 #. translators: %s: date.
-#: src/Admin/MailAdmin.php:239
+#: src/Admin/MailAdmin.php:245
 msgid "days (activity journal and e-mail log)"
 msgstr "jours (journal d’activité et journal des e-mails)"
 
-#: src/Admin/MailAdmin.php:240
+#: src/Admin/MailAdmin.php:246
 msgid ""
 "Keep the content of the e-mails (to read and resend them). Verification "
 "codes are never kept."
@@ -785,26 +789,26 @@ msgstr ""
 "Conserver le contenu des e-mails (pour les relire et les renvoyer). Les "
 "codes de vérification ne sont jamais conservés."
 
-#: src/Admin/MailAdmin.php:244
+#: src/Admin/MailAdmin.php:250
 msgid "Test the sending"
 msgstr "Tester l’envoi"
 
-#: src/Admin/MailAdmin.php:244
+#: src/Admin/MailAdmin.php:250
 msgid ""
 "Sends a test e-mail to the administrators with the layout of the platform."
 msgstr ""
 "Envoie un e-mail de test aux administrateurs avec la mise en page de la "
 "plateforme."
 
-#: src/Admin/MailAdmin.php:247
+#: src/Admin/MailAdmin.php:253
 msgid "Send a test e-mail"
 msgstr "Envoyer un e-mail de test"
 
-#: src/Admin/MailAdmin.php:248
+#: src/Admin/MailAdmin.php:254
 msgid "Daily summary"
 msgstr "Résumé quotidien"
 
-#: src/Admin/MailAdmin.php:248
+#: src/Admin/MailAdmin.php:254
 msgid ""
 "Sends now the summary of the events set to \"In the daily summary\" since "
 "the last one."
@@ -812,73 +816,189 @@ msgstr ""
 "Envoie maintenant le résumé des événements réglés sur « Dans le résumé "
 "quotidien » depuis le dernier."
 
-#: src/Admin/MailAdmin.php:251
+#: src/Admin/MailAdmin.php:257
 msgid "Send the summary now"
 msgstr "Envoyer le résumé maintenant"
 
-#: src/Admin/MailAdmin.php:263
+#: src/Admin/MailAdmin.php:273
+msgid "No image"
+msgstr "Aucune image"
+
+#: src/Admin/MailAdmin.php:274
+msgid "Choose an image"
+msgstr "Choisir une image"
+
+#: src/Admin/MailAdmin.php:274
+msgid "Remove"
+msgstr "Retirer"
+
+#: src/Admin/MailAdmin.php:280
+msgid ""
+"Applies to every e-mail of the platform: alerts, confirmations, "
+"notifications, summaries and tests."
+msgstr ""
+"S’applique à tous les e-mails de la plateforme : alertes, confirmations, "
+"notifications, résumés et tests."
+
+#: src/Admin/MailAdmin.php:283
+msgid "Header"
+msgstr "En-tête"
+
+#: src/Admin/MailAdmin.php:284
+msgid "Header image"
+msgstr "Image d’en-tête"
+
+#: src/Admin/MailAdmin.php:284
+msgid ""
+"Banner shown at the top of every e-mail, 1120 × 240 pixels recommended (PNG "
+"or JPG). Without an image, the logo or the name of the platform is shown on "
+"a coloured band."
+msgstr ""
+"Bannière affichée en haut de chaque e-mail, 1120 × 240 pixels conseillés "
+"(PNG ou JPG). Sans image, le logo ou le nom de la plateforme s’affiche sur "
+"un bandeau de couleur."
+
+#: src/Admin/MailAdmin.php:285
+msgid "Band colour"
+msgstr "Couleur du bandeau"
+
+#: src/Admin/MailAdmin.php:286
+msgid "Logo or name in the band"
+msgstr "Logo ou nom dans le bandeau"
+
+#: src/Admin/MailAdmin.php:286
+msgid "Centred"
+msgstr "Centré"
+
+#: src/Admin/MailAdmin.php:286
+msgid "At the start of the line"
+msgstr "En début de ligne"
+
+#: src/Admin/MailAdmin.php:287
+msgid "Signature"
+msgstr "Signature"
+
+#: src/Admin/MailAdmin.php:288
+msgid "Show the signature at the end of every e-mail"
+msgstr "Afficher la signature à la fin de chaque e-mail"
+
+#: src/Admin/MailAdmin.php:289
+msgid "Logo"
+msgstr "Logo"
+
+#: src/Admin/MailAdmin.php:289
+msgid ""
+"Square logo shown in the signature (and in the band when there is no header "
+"image), 200 × 200 pixels recommended."
+msgstr ""
+"Logo carré affiché dans la signature (et dans le bandeau quand il n’y a pas "
+"d’image d’en-tête), 200 × 200 pixels conseillés."
+
+#: src/Admin/MailAdmin.php:291
+msgid "Name"
+msgstr "Nom"
+
+#: src/Admin/MailAdmin.php:294
+msgid "Website"
+msgstr "Site web"
+
+#: src/Admin/MailAdmin.php:299
+msgid "Closing words (before the name)"
+msgstr "Formule de politesse (avant le nom)"
+
+#: src/Admin/MailAdmin.php:300
+msgid "Address"
+msgstr "Adresse"
+
+#: src/Admin/MailAdmin.php:302
+msgid "Social networks"
+msgstr "Réseaux sociaux"
+
+#: src/Admin/MailAdmin.php:302
+msgid ""
+"Leave empty the networks the platform does not use. For WhatsApp, give the "
+"phone number."
+msgstr ""
+"Laissez vides les réseaux que la plateforme n’utilise pas. Pour WhatsApp, "
+"indiquez le numéro de téléphone."
+
+#: src/Admin/MailAdmin.php:310
+msgid "Preview"
+msgstr "Aperçu"
+
+#: src/Admin/MailAdmin.php:312
+msgid ""
+"This is how your e-mails look.\n"
+"\n"
+"The text of each message comes here, then the signature and the social links."
+msgstr ""
+"Voici l’apparence de vos e-mails.\n"
+"\n"
+"Le texte de chaque message vient ici, puis la signature et les liens des réseaux sociaux."
+
+#: src/Admin/MailAdmin.php:348
 msgid "All"
 msgstr "Tous"
 
-#: src/Admin/MailAdmin.php:263 src/Admin/MailAdmin.php:272
+#: src/Admin/MailAdmin.php:348 src/Admin/MailAdmin.php:357
 msgid "Sent"
 msgstr "Envoyé"
 
-#: src/Admin/MailAdmin.php:263 src/Admin/MailAdmin.php:272
+#: src/Admin/MailAdmin.php:348 src/Admin/MailAdmin.php:357
 msgid "Failed"
 msgstr "Échec"
 
-#: src/Admin/MailAdmin.php:264
+#: src/Admin/MailAdmin.php:349
 msgid "Address or subject"
 msgstr "Adresse ou objet"
 
 #. translators: %d: count.
-#: src/Admin/MailAdmin.php:264
+#: src/Admin/MailAdmin.php:349
 msgid "%d e-mail"
 msgid_plural "%d e-mails"
 msgstr[0] "%d e-mail"
 msgstr[1] "%d e-mails"
 
 #. translators: %d: count.
-#: src/Admin/MailAdmin.php:265 src/Admin/MailAdmin.php:299
+#: src/Admin/MailAdmin.php:350 src/Admin/MailAdmin.php:384
 msgid "Recipient"
 msgstr "Destinataire"
 
 #. translators: %d: count.
-#: src/Admin/MailAdmin.php:265 src/Admin/MailAdmin.php:299
-#: src/Admin/MailAdmin.php:356
+#: src/Admin/MailAdmin.php:350 src/Admin/MailAdmin.php:384
+#: src/Admin/MailAdmin.php:441
 msgid "Subject"
 msgstr "Objet"
 
-#: src/Admin/MailAdmin.php:273
+#: src/Admin/MailAdmin.php:358
 msgid "View"
 msgstr "Voir"
 
-#: src/Admin/MailAdmin.php:308
+#: src/Admin/MailAdmin.php:393
 msgid "Send again"
 msgstr "Renvoyer"
 
-#: src/Admin/MailAdmin.php:311
+#: src/Admin/MailAdmin.php:396
 msgid "The content of this e-mail was not kept."
 msgstr "Le contenu de cet e-mail n’a pas été conservé."
 
-#: src/Admin/MailAdmin.php:321
+#: src/Admin/MailAdmin.php:406
 msgid "alert to the administrators"
 msgstr "alerte aux administrateurs"
 
-#: src/Admin/MailAdmin.php:321 src/Admin/MailAdmin.php:326
+#: src/Admin/MailAdmin.php:406 src/Admin/MailAdmin.php:411
 msgid "e-mail to the user"
 msgstr "e-mail à l’utilisateur"
 
-#: src/Admin/MailAdmin.php:338
+#: src/Admin/MailAdmin.php:423
 msgid "Back to the list"
 msgstr "Retour à la liste"
 
-#: src/Admin/MailAdmin.php:340
+#: src/Admin/MailAdmin.php:425
 msgid "Variables (copied as they are, replaced when sending):"
 msgstr "Variables (à copier telles quelles, remplacées à l’envoi) :"
 
-#: src/Admin/MailAdmin.php:344
+#: src/Admin/MailAdmin.php:429
 msgid ""
 "Plain text: an empty line starts a new paragraph, addresses become links. "
 "Leave a field empty to use the default text."
@@ -887,7 +1007,7 @@ msgstr ""
 "deviennent des liens. Laissez un champ vide pour utiliser le texte par "
 "défaut."
 
-#: src/Admin/MailAdmin.php:346
+#: src/Admin/MailAdmin.php:431
 msgid ""
 "{titre} and {message} are the built-in texts of the notification; when "
 "{lien} is not used, an \"Open\" button is added."
@@ -895,41 +1015,41 @@ msgstr ""
 "{titre} et {message} sont les textes d’origine de la notification ; si "
 "{lien} n’est pas utilisé, un bouton « Ouvrir » est ajouté."
 
-#: src/Admin/MailAdmin.php:357
+#: src/Admin/MailAdmin.php:442
 msgid "Message"
 msgstr "Message"
 
-#: src/Admin/MailAdmin.php:360
+#: src/Admin/MailAdmin.php:445
 msgid "Save the template"
 msgstr "Enregistrer le modèle"
 
-#: src/Admin/MailAdmin.php:362
+#: src/Admin/MailAdmin.php:447
 msgid "Save and send me a test"
 msgstr "Enregistrer et m’envoyer un test"
 
-#: src/Admin/MailAdmin.php:364
+#: src/Admin/MailAdmin.php:449
 msgid "Restore the default text"
 msgstr "Rétablir le texte par défaut"
 
-#: src/Admin/MailAdmin.php:364
+#: src/Admin/MailAdmin.php:449
 msgid "Replace your text by the default one in both languages?"
 msgstr "Remplacer votre texte par le texte par défaut dans les deux langues ?"
 
-#: src/Admin/MailAdmin.php:366
+#: src/Admin/MailAdmin.php:451
 msgid "Preview with example values"
 msgstr "Aperçu avec des valeurs d’exemple"
 
-#: src/Admin/MailAdmin.php:449
+#: src/Admin/MailAdmin.php:542
 msgid "Unknown template."
 msgstr "Modèle inconnu."
 
 #. translators: %s: platform name.
-#: src/Admin/MailAdmin.php:491
+#: src/Admin/MailAdmin.php:584
 msgid "%s — test e-mail"
 msgstr "%s — e-mail de test"
 
 #. translators: %s: platform name.
-#: src/Admin/MailAdmin.php:491
+#: src/Admin/MailAdmin.php:584
 msgid ""
 "This test e-mail shows that the platform can send e-mails.\n"
 "\n"
@@ -939,11 +1059,11 @@ msgstr ""
 "\n"
 "S’il est arrivé dans les spams, vérifiez les enregistrements SPF, DKIM et DMARC de votre domaine."
 
-#: src/Admin/MailAdmin.php:535
+#: src/Admin/MailAdmin.php:628
 msgid "Administration"
 msgstr "Administration"
 
-#: src/Admin/MailAdmin.php:547
+#: src/Admin/MailAdmin.php:640
 msgid ""
 "Everything that happens on the platform: registrations, listings, requests, "
 "quotes, services, messages, verifications and administration changes. "
@@ -953,48 +1073,48 @@ msgstr ""
 "devis, services, messages, vérifications et changements d’administration. "
 "Les connexions réussies sont dans « Sécurité »."
 
-#: src/Admin/MailAdmin.php:549
+#: src/Admin/MailAdmin.php:642
 msgid "All activities"
 msgstr "Toutes les activités"
 
-#: src/Admin/MailAdmin.php:553
+#: src/Admin/MailAdmin.php:646
 msgid "From"
 msgstr "Du"
 
-#: src/Admin/MailAdmin.php:553
+#: src/Admin/MailAdmin.php:646
 msgid "to"
 msgstr "au"
 
-#: src/Admin/MailAdmin.php:554
+#: src/Admin/MailAdmin.php:647
 msgid "Name, e-mail, IP…"
 msgstr "Nom, e-mail, IP…"
 
-#: src/Admin/MailAdmin.php:560
+#: src/Admin/MailAdmin.php:653
 msgid "Export (CSV)"
 msgstr "Exporter (CSV)"
 
 #. translators: %d: count.
-#: src/Admin/MailAdmin.php:560
+#: src/Admin/MailAdmin.php:653
 msgid "%d entry"
 msgid_plural "%d entries"
 msgstr[0] "%d entrée"
 msgstr[1] "%d entrées"
 
 #. translators: %s: company.
-#: src/Admin/MailAdmin.php:562
+#: src/Admin/MailAdmin.php:655
 msgid "Only the activity of %s."
 msgstr "Uniquement l’activité de %s."
 
 #. translators: %s: company.
-#: src/Admin/MailAdmin.php:562
+#: src/Admin/MailAdmin.php:655
 msgid "Show all"
 msgstr "Tout afficher"
 
-#: src/Admin/MailAdmin.php:564 src/Admin/MailAdmin.php:597
+#: src/Admin/MailAdmin.php:657 src/Admin/MailAdmin.php:690
 msgid "By"
 msgstr "Par"
 
-#: src/Admin/MailAdmin.php:597
+#: src/Admin/MailAdmin.php:690
 msgid "Action"
 msgstr "Action"
 
@@ -1454,12 +1574,12 @@ msgstr ""
 "\n"
 "Aucune action n’est nécessaire s’il s’agissait de l’utilisateur. Plusieurs alertes à la suite peuvent signaler une attaque."
 
-#: src/Mail/Mailer.php:80
+#: src/Mail/Mailer.php:78
 msgid "You receive this e-mail because of your activity on the platform."
 msgstr "Vous recevez cet e-mail suite à votre activité sur la plateforme."
 
 #. translators: %s: person name.
-#: src/Mail/Mailer.php:81
+#: src/Mail/Mailer.php:79
 msgid "Hello %s,"
 msgstr "Bonjour %s,"
 

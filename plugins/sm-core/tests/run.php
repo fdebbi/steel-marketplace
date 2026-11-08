@@ -457,6 +457,30 @@ sm_assert( array( 'name', 'email', 'phone', 'subject', 'message' ) === array_key
 list( $err, $data ) = Contact::validate( array( 'name' => 'Ali Benali', 'email' => 'ali@example.dz', 'phone' => '', 'subject' => 'Compte', 'message' => 'Bonjour, une question.' ) );
 sm_assert( ! $err && 'ali@example.dz' === $data['email'], 'contact form: valid message accepted (phone optional)' );
 
+
+// Header, signature and social links (0.4.1).
+$png = wp_upload_bits( 'sm-test-logo.png', null, base64_decode( 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==' ) );
+$att = wp_insert_attachment( array( 'post_mime_type' => 'image/png', 'post_title' => 'sm-test-logo', 'post_status' => 'inherit' ), $png['file'] );
+require_once ABSPATH . 'wp-admin/includes/image.php';
+wp_update_attachment_metadata( $att, wp_generate_attachment_metadata( $att, $png['file'] ) );
+$brand = \SM\Core\Mail\Branding::sanitize( array(
+	'header_image' => 999999, 'logo' => $att, 'header_bg' => 'red', 'name' => 'ReuSteel SPA', 'phone' => '+213 550 12 34 56', 'email' => 'pas-une-adresse',
+	'website' => 'https://reusteel.com', 'closing' => array( 'fr' => 'Cordialement,', 'ar' => 'مع التحية،' ), 'address' => array( 'fr' => 'M’Sila', 'ar' => 'المسيلة' ), 'signature' => 1,
+	'social' => array( 'facebook' => 'https://facebook.com/reusteel', 'instagram' => 'javascript:alert(1)', 'whatsapp' => '0550 12 34 56', 'x' => '' ),
+) );
+sm_assert( 0 === $brand['header_image'] && $att === $brand['logo'] && '' === $brand['header_bg'] && '' === $brand['email'], 'branding: unknown image, bad colour and bad e-mail refused' );
+sm_assert( array( 'facebook' => 'https://facebook.com/reusteel', 'whatsapp' => '213550123456' ) === $brand['social'], 'branding: only valid social links kept; WhatsApp number in international form' );
+MailSettings::save( array( 'brand' => $brand ) );
+$fr = Mailer::layout( 'fr', '<p>Corps</p>', 'Ali' );
+$ar = Mailer::layout( 'ar', '<p>Corps</p>', 'Ali' );
+sm_assert( false !== strpos( $fr, 'Cordialement,' ) && false !== strpos( $fr, 'ReuSteel SPA' ) && false !== strpos( $fr, 'M’Sila' ) && false !== strpos( $fr, 'tel:+213550123456' ) && false !== strpos( $fr, 'https://wa.me/213550123456' ) && false !== strpos( $fr, '>Facebook<' ) && false === strpos( $fr, 'javascript' ), 'every e-mail carries the signature, contact details and social links' );
+sm_assert( false !== strpos( $ar, 'مع التحية،' ) && false !== strpos( $ar, 'المسيلة' ) && false === strpos( $ar, 'Cordialement' ), 'signature in the language of the e-mail' );
+sm_assert( substr_count( $fr, wp_get_attachment_image_url( $att, 'medium' ) ?: wp_get_attachment_url( $att ) ) >= 1, 'logo shown (band and signature)' );
+MailSettings::save( array( 'brand' => array_merge( $brand, array( 'header_image' => $att, 'signature' => 0, 'social' => array() ) ) ) );
+$fr = Mailer::layout( 'fr', '<p>Corps</p>' );
+sm_assert( false !== strpos( $fr, 'width="560"' ) && false === strpos( $fr, 'Cordialement' ) && false === strpos( $fr, 'Facebook' ), 'header image used; signature can be turned off' );
+wp_delete_attachment( $att, true );
+
 // Restore.
 global $wpdb;
 $wpdb->query( "DELETE FROM {$wpdb->prefix}sm_mail_log WHERE recipient LIKE '%smtest@example.test' OR recipient = 'contact@reusteel.com' AND subject LIKE '%Prix IPE%'" );

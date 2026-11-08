@@ -28,6 +28,8 @@ final class MailAdmin {
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'menu' ), 20 );
 		add_action( 'admin_post_sm_mail_settings', array( __CLASS__, 'save_settings' ) );
+		add_action( 'admin_post_sm_mail_brand', array( __CLASS__, 'save_brand' ) );
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'media' ) );
 		add_action( 'admin_post_sm_mail_events', array( __CLASS__, 'save_events' ) );
 		add_action( 'admin_post_sm_mail_notices', array( __CLASS__, 'save_notices' ) );
 		add_action( 'admin_post_sm_mail_template', array( __CLASS__, 'save_template' ) );
@@ -47,7 +49,7 @@ final class MailAdmin {
 		if ( ! $screen || ( false === strpos( $screen->id, self::SLUG ) && false === strpos( $screen->id, 'sm-audit' ) ) ) {
 			return;
 		}
-		echo '<style>.smm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}.smm-card{background:#fff;border:1px solid #dcdcde;border-radius:8px;padding:16px}.smm-card h2{margin-top:0}.smm-lang[dir=rtl] textarea,.smm-lang[dir=rtl] input{direction:rtl}.smm-lang textarea{width:100%;min-height:280px;font-family:inherit}.smm-lang input[type=text]{width:100%}.smm-vars code{display:inline-block;margin:2px;cursor:copy}.smm-preview{width:100%;height:520px;border:1px solid #dcdcde;border-radius:8px;background:#f1f5f9}.smm-group th{background:#f6f7f7;font-weight:600}.smm-ok{color:#065f46}.smm-bad{color:#991b1b}.smm-desc{color:#50575e;font-size:12px}.smm-filters input,.smm-filters select{vertical-align:middle}.smm-pill{display:inline-block;padding:1px 8px;border-radius:999px;background:#f0f0f1;font-size:12px}.smm-pill.ok{background:#d1fae5;color:#065f46}.smm-pill.bad{background:#fee2e2;color:#991b1b}.smm-pill.edit{background:#e0e7ff;color:#3730a3}</style>';
+		echo '<style>.smm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}.smm-card{background:#fff;border:1px solid #dcdcde;border-radius:8px;padding:16px}.smm-card h2{margin-top:0}.smm-lang[dir=rtl] textarea,.smm-lang[dir=rtl] input{direction:rtl}.smm-lang textarea{width:100%;min-height:280px;font-family:inherit}.smm-lang input[type=text]{width:100%}.smm-vars code{display:inline-block;margin:2px;cursor:copy}.smm-preview{width:100%;height:520px;border:1px solid #dcdcde;border-radius:8px;background:#f1f5f9}.smm-group th{background:#f6f7f7;font-weight:600}.smm-ok{color:#065f46}.smm-bad{color:#991b1b}.smm-desc{color:#50575e;font-size:12px}.smm-filters input,.smm-filters select{vertical-align:middle}.smm-pill{display:inline-block;padding:1px 8px;border-radius:999px;background:#f0f0f1;font-size:12px}.smm-pill.ok{background:#d1fae5;color:#065f46}.smm-pill.bad{background:#fee2e2;color:#991b1b}.smm-pill.edit{background:#e0e7ff;color:#3730a3}.smm-image__preview{display:flex;align-items:center;justify-content:center;min-height:90px;max-width:420px;border:1px dashed #c3c4c7;border-radius:8px;background:#f6f7f7;padding:8px}.smm-image__preview img{max-width:100%;max-height:160px;height:auto}</style>';
 	}
 
 	private static function url( array $args = array() ) {
@@ -111,6 +113,7 @@ final class MailAdmin {
 			'events'   => __( 'Platform events', 'sm-core' ),
 			'notices'  => __( 'User notifications', 'sm-core' ),
 			'settings' => __( 'Sender and recipients', 'sm-core' ),
+			'layout'   => __( 'Header and signature', 'sm-core' ),
 			'log'      => __( 'E-mail log', 'sm-core' ),
 		);
 		echo '<nav class="nav-tab-wrapper">';
@@ -125,6 +128,9 @@ final class MailAdmin {
 				break;
 			case 'settings':
 				self::tab_settings();
+				break;
+			case 'layout':
+				self::tab_layout();
 				break;
 			case 'log':
 				self::tab_log();
@@ -250,6 +256,85 @@ final class MailAdmin {
 		wp_nonce_field( 'sm_mail_digest' );
 		submit_button( __( 'Send the summary now', 'sm-core' ), 'secondary', 'submit', false );
 		echo '</form></div></div>';
+	}
+
+	public static function media( $hook ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( false !== strpos( (string) $hook, self::SLUG ) && 'layout' === ( $_GET['tab'] ?? '' ) ) {
+			wp_enqueue_media();
+		}
+	}
+
+	/** Image chooser (media library) bound to a hidden input. */
+	private static function image_field( $name, $id, $label, $help ) {
+		$src = $id ? wp_get_attachment_image_url( $id, 'medium' ) : '';
+		echo '<div class="smm-image" data-smm-image>';
+		echo '<input type="hidden" name="' . esc_attr( $name ) . '" value="' . (int) $id . '">';
+		echo '<div class="smm-image__preview">' . ( $src ? '<img src="' . esc_url( $src ) . '" alt="">' : '<span class="description">' . esc_html__( 'No image', 'sm-core' ) . '</span>' ) . '</div>';
+		echo '<p><button type="button" class="button" data-smm-pick data-title="' . esc_attr( $label ) . '">' . esc_html__( 'Choose an image', 'sm-core' ) . '</button> <button type="button" class="button-link-delete" data-smm-clear' . ( $id ? '' : ' hidden' ) . '>' . esc_html__( 'Remove', 'sm-core' ) . '</button></p>';
+		echo '<p class="description">' . esc_html( $help ) . '</p></div>';
+	}
+
+	private static function tab_layout() {
+		$b = \SM\Core\Mail\Branding::get();
+		echo '<p>' . esc_html__( 'Applies to every e-mail of the platform: alerts, confirmations, notifications, summaries and tests.', 'sm-core' ) . '</p>';
+		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="sm_mail_brand">';
+		wp_nonce_field( 'sm_mail_brand' );
+		echo '<div class="smm-grid"><div class="smm-card"><h2>' . esc_html__( 'Header', 'sm-core' ) . '</h2>';
+		self::image_field( 'brand[header_image]', (int) $b['header_image'], __( 'Header image', 'sm-core' ), __( 'Banner shown at the top of every e-mail, 1120 × 240 pixels recommended (PNG or JPG). Without an image, the logo or the name of the platform is shown on a coloured band.', 'sm-core' ) );
+		echo '<p><label>' . esc_html__( 'Band colour', 'sm-core' ) . ' <input type="color" name="brand[header_bg]" value="' . esc_attr( $b['header_bg'] ?: '#172B3A' ) . '"></label></p>';
+		echo '<p><label>' . esc_html__( 'Logo or name in the band', 'sm-core' ) . ' <select name="brand[header_align]"><option value="center"' . selected( $b['header_align'], 'center', false ) . '>' . esc_html__( 'Centred', 'sm-core' ) . '</option><option value="start"' . selected( $b['header_align'], 'start', false ) . '>' . esc_html__( 'At the start of the line', 'sm-core' ) . '</option></select></label></p>';
+		echo '</div><div class="smm-card"><h2>' . esc_html__( 'Signature', 'sm-core' ) . '</h2>';
+		echo '<p><label><input type="checkbox" name="brand[signature]" value="1"' . checked( (int) $b['signature'], 1, false ) . '> ' . esc_html__( 'Show the signature at the end of every e-mail', 'sm-core' ) . '</label></p>';
+		self::image_field( 'brand[logo]', (int) $b['logo'], __( 'Logo', 'sm-core' ), __( 'Square logo shown in the signature (and in the band when there is no header image), 200 × 200 pixels recommended.', 'sm-core' ) );
+		echo '<table class="form-table"><tbody>';
+		echo '<tr><th><label for="smm-b-name">' . esc_html__( 'Name', 'sm-core' ) . '</label></th><td><input id="smm-b-name" class="regular-text" name="brand[name]" value="' . esc_attr( $b['name'] ) . '" placeholder="' . esc_attr( sm_brand_name() ) . '"></td></tr>';
+		echo '<tr><th><label for="smm-b-phone">' . esc_html__( 'Phone', 'sm-core' ) . '</label></th><td><input id="smm-b-phone" class="regular-text" name="brand[phone]" dir="ltr" value="' . esc_attr( $b['phone'] ) . '"></td></tr>';
+		echo '<tr><th><label for="smm-b-email">' . esc_html__( 'E-mail', 'sm-core' ) . '</label></th><td><input id="smm-b-email" class="regular-text" type="email" name="brand[email]" dir="ltr" value="' . esc_attr( $b['email'] ) . '"></td></tr>';
+		echo '<tr><th><label for="smm-b-web">' . esc_html__( 'Website', 'sm-core' ) . '</label></th><td><input id="smm-b-web" class="regular-text" type="url" name="brand[website]" dir="ltr" value="' . esc_attr( $b['website'] ) . '" placeholder="https://reusteel.com"></td></tr>';
+		echo '</tbody></table></div></div>';
+		echo '<div class="smm-grid">';
+		foreach ( array( 'fr' => 'Français', 'ar' => 'العربية' ) as $l => $ll ) {
+			echo '<div class="smm-card smm-lang" dir="' . ( 'ar' === $l ? 'rtl' : 'ltr' ) . '" lang="' . esc_attr( $l ) . '"><h2>' . esc_html( $ll ) . '</h2>';
+			echo '<p><label>' . esc_html__( 'Closing words (before the name)', 'sm-core' ) . '<br><textarea name="brand[closing][' . esc_attr( $l ) . ']" style="min-height:70px">' . esc_textarea( $b['closing'][ $l ] ) . '</textarea></label></p>';
+			echo '<p><label>' . esc_html__( 'Address', 'sm-core' ) . '<br><textarea name="brand[address][' . esc_attr( $l ) . ']" style="min-height:70px">' . esc_textarea( $b['address'][ $l ] ) . '</textarea></label></p></div>';
+		}
+		echo '</div><div class="smm-card" style="margin-top:16px"><h2>' . esc_html__( 'Social networks', 'sm-core' ) . '</h2><p class="description">' . esc_html__( 'Leave empty the networks the platform does not use. For WhatsApp, give the phone number.', 'sm-core' ) . '</p><table class="form-table"><tbody>';
+		foreach ( \SM\Core\Mail\Branding::networks() as $k => $label ) {
+			$v = (string) ( $b['social'][ $k ] ?? '' );
+			echo '<tr><th><label for="smm-s-' . esc_attr( $k ) . '">' . esc_html( $label ) . '</label></th><td><input id="smm-s-' . esc_attr( $k ) . '" class="regular-text" name="brand[social][' . esc_attr( $k ) . ']" dir="ltr" value="' . esc_attr( 'whatsapp' === $k && $v ? '+' . $v : $v ) . '" placeholder="' . esc_attr( 'whatsapp' === $k ? '0550 12 34 56' : 'https://' ) . '"></td></tr>';
+		}
+		echo '</tbody></table></div>';
+		submit_button();
+		echo '</form>';
+		echo '<h2>' . esc_html__( 'Preview', 'sm-core' ) . '</h2><div class="smm-grid">';
+		foreach ( array( 'fr', 'ar' ) as $l ) {
+			$html = Language::with_language( $l, static fn() => Mailer::layout( $l, Templates::body_html( __( "This is how your e-mails look.\n\nThe text of each message comes here, then the signature and the social links.", 'sm-core' ), array() ), 'Karim Benali' ) );
+			echo '<iframe class="smm-preview" sandbox="" title="' . esc_attr( $l ) . '" srcdoc="' . esc_attr( $html ) . '"></iframe>';
+		}
+		echo '</div>';
+		?>
+		<script>
+		document.querySelectorAll('[data-smm-image]').forEach(function (box) {
+			var input = box.querySelector('input[type=hidden]'), prev = box.querySelector('.smm-image__preview'), clear = box.querySelector('[data-smm-clear]'), frame;
+			box.querySelector('[data-smm-pick]').addEventListener('click', function (e) {
+				e.preventDefault();
+				if (!window.wp || !wp.media) { return; }
+				frame = frame || wp.media({ title: this.dataset.title, library: { type: 'image' }, multiple: false });
+				frame.off('select').on('select', function () {
+					var a = frame.state().get('selection').first().toJSON();
+					input.value = a.id;
+					var url = (a.sizes && a.sizes.medium ? a.sizes.medium.url : a.url);
+					prev.innerHTML = '';
+					var img = document.createElement('img'); img.src = url; img.alt = ''; prev.appendChild(img);
+					clear.hidden = false;
+				});
+				frame.open();
+			});
+			clear.addEventListener('click', function (e) { e.preventDefault(); input.value = 0; prev.innerHTML = ''; clear.hidden = true; });
+		});
+		</script>
+		<?php
 	}
 
 	private static function tab_log() {
@@ -404,6 +489,14 @@ final class MailAdmin {
 		);
 		AuditLog::add( 'admin.mail_updated', 'settings', 0, array( 'admins' => $admins ) );
 		self::back( array( 'tab' => 'settings', 'updated' => 1 ) );
+	}
+
+	public static function save_brand() {
+		self::guard( 'sm_mail_brand' );
+		$brand = \SM\Core\Mail\Branding::sanitize( (array) wp_unslash( $_POST['brand'] ?? array() ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput -- sanitized in Branding::sanitize().
+		Settings::save( array( 'brand' => $brand ) );
+		AuditLog::add( 'admin.mail_updated', 'settings', 0, array( 'brand' => true ) );
+		self::back( array( 'tab' => 'layout', 'updated' => 1 ) );
 	}
 
 	public static function save_events() {

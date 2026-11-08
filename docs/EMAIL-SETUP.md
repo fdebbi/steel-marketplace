@@ -50,6 +50,7 @@ Vérification : envoyez un e-mail de test vers Gmail, ouvrez-le, *⋮ → Affich
 *SM → E-mails* :
 
 - **Expéditeur et destinataires** : expéditeur `ReuSteel <contact@reusteel.com>` (la même adresse que dans WP Mail SMTP), administrateurs à prévenir (une ou plusieurs adresses), langue des alertes, heure du résumé quotidien, durée de conservation des journaux. Bouton **Envoyer un e-mail de test**.
+- **En-tête et signature** : image d’en-tête (1120 × 240 px conseillés) ou bandeau avec logo, signature (logo, nom, adresse, téléphone, e-mail, site, formule de politesse en français et en arabe) et liens des réseaux sociaux, ajoutés à tous les e-mails. Aperçu en direct.
 - **Événements de la plateforme** : pour chaque événement, alerte aux administrateurs (immédiate, dans le résumé quotidien, ou non) et e-mail de confirmation à l’utilisateur (oui / non). Boutons pour modifier les modèles.
 - **Notifications aux utilisateurs** : e-mails que reçoivent les utilisateurs sur leur propre activité (offre reçue, devis accepté…), activables et modifiables.
 - **Journal des e-mails** : chaque e-mail envoyé ou en échec, lisible et renvoyable.
