@@ -1,5 +1,8 @@
 # Changelog — sm-core
 
+## 0.3.3 — 2026-11-08
+
+- Profil professionnel : années d'expérience (`profile[experience_years]`), exposées au thème (`experience`).
 
 ## 0.3.2 — 2026-11-08
 

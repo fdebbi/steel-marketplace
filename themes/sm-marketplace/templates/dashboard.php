@@ -57,16 +57,19 @@ $unread  = (int) ( $account['unread'] ?? 0 );
 if ( $is_eng ) {
 	$menu = array(
 		'' => array(
-			'overview'     => array( 'home', __( 'Overview', 'sm-marketplace' ) ),
-			'profile'      => array( 'user', __( 'Professional profile', 'sm-marketplace' ) ),
-			'services'     => array( 'wrench', __( 'My services', 'sm-marketplace' ) ),
-			'requests'     => array( 'message', __( 'Client requests', 'sm-marketplace' ) ),
-			'portfolio'    => array( 'image', __( 'Portfolio', 'sm-marketplace' ) ),
-			'verification' => array( 'shield', __( 'Qualifications & verification', 'sm-marketplace' ) ),
+			'overview'         => array( 'home', __( 'Overview', 'sm-marketplace' ) ),
+			'profile'          => array( 'user', __( 'Professional profile', 'sm-marketplace' ) ),
+			'services'         => array( 'wrench', __( 'My services', 'sm-marketplace' ) ),
+			'service-requests' => array( 'rfq', __( 'Service requests', 'sm-marketplace' ) ),
+			'requests'         => array( 'message', __( 'Messages', 'sm-marketplace' ) ),
+			'portfolio'        => array( 'image', __( 'References', 'sm-marketplace' ) ),
+			'verification'     => array( 'shield', __( 'Qualifications & verification', 'sm-marketplace' ) ),
 		),
 	);
 } else {
-	$menu = array(
+	$svc_set = (array) sm_theme_data( 'services_settings' );
+	$can_fab = ! empty( $svc_set['kinds']['fabrication']['allowed'] );
+	$menu    = array(
 		''                                  => array( 'overview' => array( 'home', __( 'Overview', 'sm-marketplace' ) ) ),
 		__( 'Selling', 'sm-marketplace' )   => array(
 			'publish'  => array( 'plus', __( 'Publish a listing', 'sm-marketplace' ) ),
@@ -80,6 +83,13 @@ if ( $is_eng ) {
 			'rfq'      => array( 'file', __( 'My requests for quotation', 'sm-marketplace' ) ),
 			'history'  => array( 'calendar', __( 'Purchase history', 'sm-marketplace' ) ),
 		),
+		__( 'Services', 'sm-marketplace' )  => array_merge(
+			$can_fab ? array(
+				'services'         => array( 'wrench', __( 'My services', 'sm-marketplace' ) ),
+				'service-requests' => array( 'rfq', __( 'Service requests received', 'sm-marketplace' ) ),
+			) : array(),
+			$svc_set ? array( 'my-service-requests' => array( 'hard-hat', __( 'My service requests', 'sm-marketplace' ) ) ) : array()
+		),
 		__( 'Company', 'sm-marketplace' )   => array(
 			'company'      => array( 'company', __( 'Company profile', 'sm-marketplace' ) ),
 			'verification' => array( 'shield', __( 'Verification', 'sm-marketplace' ) ),
@@ -87,6 +97,7 @@ if ( $is_eng ) {
 		),
 	);
 }
+$menu   = array_filter( $menu );
 $titles = array();
 foreach ( $menu as $group ) {
 	foreach ( $group as $key => $entry ) {

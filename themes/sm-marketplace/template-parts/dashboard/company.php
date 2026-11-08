@@ -62,6 +62,10 @@ if ( empty( $account['can_manage'] ) ) {
 				<div><label for="c-qual"><?php esc_html_e( 'Qualifications (one per line)', 'sm-marketplace' ); ?></label><textarea id="c-qual" name="qualifications" rows="4" dir="auto"><?php echo esc_textarea( $old( 'qualifications' ) ); ?></textarea></div>
 				<div><label for="c-spec"><?php esc_html_e( 'Specialisations (one per line)', 'sm-marketplace' ); ?></label><textarea id="c-spec" name="specialities" rows="4" dir="auto"><?php echo esc_textarea( $old( 'specialities' ) ); ?></textarea></div>
 			</div>
+			<div class="sm-field">
+				<label for="c-exp"><?php esc_html_e( 'Years of professional experience', 'sm-marketplace' ); ?></label>
+				<input id="c-exp" name="experience_years" type="number" min="0" max="70" inputmode="numeric" dir="ltr" value="<?php echo esc_attr( $old( 'experience_years' ) ); ?>" style="max-inline-size:160px">
+			</div>
 		<?php endif; ?>
 	</section>
 

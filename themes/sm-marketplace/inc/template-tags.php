@@ -356,3 +356,44 @@ function sm_theme_current_rfq_id() {
 	$id = get_query_var( 'sm_id' );
 	return absint( $id ? $id : sm_theme_query_arg( 'id', 0 ) );
 }
+
+/** Units of an indicative service price. */
+function sm_service_unit_label( $unit ) {
+	$labels = array(
+		'project' => __( 'project', 'sm-marketplace' ),
+		'kg'      => 'kg',
+		't'       => 't',
+		'm2'      => 'm²',
+		'ml'      => 'ml',
+		'piece'   => __( 'piece', 'sm-marketplace' ),
+		'hour'    => __( 'hour', 'sm-marketplace' ),
+		'day'     => __( 'day', 'sm-marketplace' ),
+	);
+	return $labels[ $unit ] ?? $unit;
+}
+
+/** "On quotation" or "From 180 DA/kg" (safe HTML). */
+function sm_service_price( array $service ) {
+	if ( 'from' !== ( $service['price_mode'] ?? '' ) || empty( $service['price_from'] ) ) {
+		return esc_html__( 'On quotation', 'sm-marketplace' );
+	}
+	/* translators: %s: price with unit. */
+	return sprintf( esc_html__( 'From %s', 'sm-marketplace' ), sm_per_unit( $service['price_from'], sm_service_unit_label( $service['price_unit'] ) ) );
+}
+
+/** Status labels of a service request. */
+function sm_service_request_labels() {
+	return array(
+		'new'               => __( 'New', 'sm-marketplace' ),
+		'quoted'            => __( 'Quote sent', 'sm-marketplace' ),
+		'accepted'          => __( 'Accepted', 'sm-marketplace' ),
+		'declined'          => __( 'Quote declined', 'sm-marketplace' ),
+		'declined_provider' => __( 'Declined by the provider', 'sm-marketplace' ),
+		'cancelled'         => __( 'Cancelled', 'sm-marketplace' ),
+	);
+}
+
+/** Lines of a free text as a list ("one per line" fields). */
+function sm_lines( $text ) {
+	return array_values( array_filter( array_map( 'trim', preg_split( '/\r\n|\n/', (string) $text ) ) ) );
+}

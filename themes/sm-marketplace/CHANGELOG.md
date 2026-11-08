@@ -1,5 +1,15 @@
 # Changelog — sm-marketplace
 
+## 0.10.0 — 2026-11-08 (Phase 8, services, avec sm-services 0.1.0)
+
+- Pages « Fabrication et montage » et « Ingénierie » réelles : services en pastilles, filtres mot-clé et wilaya, cartes avec services, zone et prix indicatif ; la page Ingénierie garde l'annuaire des bureaux d'études.
+- Page d'un service (`/service/{numéro}/`) : photos, services proposés, prix, délai, zone, prestataire (vérification, expérience), description, capacités techniques, équipements, références, formulaire de demande de devis.
+- Tableau de bord : « Mes services » (formulaire en quatre étapes, liste avec pause et suppression), « Demandes de service reçues » (réponse par devis ou refus, erreurs affichées dans la demande concernée), « Mes demandes de service » (accepter, refuser, annuler ; téléphone après acceptation), « Références ».
+- Menu : groupe « Services » pour les entreprises de fabrication ; menu ingénieur avec services, demandes de service, messages et références.
+- Page entreprise : onglet « Références », années d'expérience ; le bloc qualifications vide n'est plus affiché.
+- Tests visuels étendus à 31 pages.
+- Traductions : 929 chaînes.
+
 ## 0.9.0 — 2026-11-08 (Phase 7, demandes de devis, avec sm-rfq 0.1.0)
 
 - Page « Demandes de devis » réelle : filtres (mot-clé ou profil, marché, wilaya, tri), cartes avec quantité, poids, date limite et nombre d'offres, encadré « Comment ça marche ».

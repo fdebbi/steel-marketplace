@@ -23,6 +23,7 @@ function sm_theme_page_definitions() {
 		'services'    => array( 'services', 'Fabrication et montage', 'templates/marketplace-services.php' ),
 		'engineers'   => array( 'ingenierie', 'Ingénierie', 'templates/marketplace-engineers.php' ),
 		'listing'     => array( 'annonce', 'Annonce', 'templates/single-listing.php' ),
+		'service'     => array( 'service', 'Service', 'templates/single-service.php' ),
 		'companies'   => array( 'entreprises', 'Entreprises', 'templates/companies.php' ),
 		'company'     => array( 'entreprise', 'Entreprise', 'templates/company-profile.php' ),
 		'rfq'         => array( 'demandes-de-devis', 'Demandes de devis', 'templates/rfq-board.php' ),

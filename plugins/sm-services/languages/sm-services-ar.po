@@ -1,0 +1,468 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Services 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-services\n"
+
+#. Plugin Name of the plugin
+#: sm-services.php
+msgid "SM Services"
+msgstr "SM Services"
+
+#. Plugin URI of the plugin
+#: sm-services.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-services.php
+msgid ""
+"Fabrication, site and engineering services: two separate catalogues "
+"(fabrication & site work for business accounts, engineering for engineering "
+"accounts), service pages with photos, capabilities, equipment and coverage, "
+"service requests answered with a quote, engineer profiles with experience "
+"and references. Requires SM Core."
+msgstr ""
+"خدمات التصنيع والورشات والهندسة: كتالوجان منفصلان (التصنيع والورشات لحسابات "
+"المؤسسات، الهندسة لحسابات الهندسة)، صفحات خدمات بالصور والقدرات والتجهيزات "
+"ومنطقة التدخل، طلبات خدمات يُرد عليها بعرض سعر، ملفات المهندسين بالخبرة "
+"والمراجع. يتطلب SM Core."
+
+#. Author of the plugin
+#: sm-services.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-services.php:47
+msgid "SM Services needs the SM Core plugin. Activate it first."
+msgstr "يتطلب SM Services إضافة SM Core. فعّلها أولًا."
+
+#: src/Admin/Admin.php:29 src/Admin/Admin.php:47
+msgid "Services"
+msgstr "الخدمات"
+
+#: src/Admin/Admin.php:34
+msgid "Waiting for review"
+msgstr "في انتظار المراجعة"
+
+#: src/Admin/Admin.php:35
+msgid "Published"
+msgstr "منشورة"
+
+#: src/Admin/Admin.php:36
+msgid "Paused"
+msgstr "متوقفة مؤقتًا"
+
+#: src/Admin/Admin.php:37
+msgid "Changes requested"
+msgstr "تعديلات مطلوبة"
+
+#: src/Admin/Admin.php:48
+msgid "Service pages"
+msgstr "صفحات الخدمات"
+
+#: src/Admin/Admin.php:48
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: src/Admin/Admin.php:51
+msgid "Saved."
+msgstr "تم الحفظ."
+
+#: src/Admin/Admin.php:66
+msgid "Nothing here."
+msgstr "لا شيء هنا."
+
+#: src/Admin/Admin.php:69
+msgid "Service"
+msgstr "الخدمة"
+
+#: src/Admin/Admin.php:69
+msgid "Provider"
+msgstr "مقدم الخدمة"
+
+#: src/Admin/Admin.php:69
+msgid "Catalogue"
+msgstr "الكتالوج"
+
+#: src/Admin/Admin.php:69
+msgid "Views"
+msgstr "المشاهدات"
+
+#: src/Admin/Admin.php:69
+msgid "Decision"
+msgstr "القرار"
+
+#: src/Admin/Admin.php:79
+msgid "Publish"
+msgstr "نشر"
+
+#: src/Admin/Admin.php:81
+msgid "Reason (sent to the provider)"
+msgstr "السبب (يُرسل إلى مقدم الخدمة)"
+
+#: src/Admin/Admin.php:81
+msgid "Unpublish"
+msgstr "إلغاء النشر"
+
+#: src/Admin/Admin.php:81
+msgid "Request changes"
+msgstr "طلب تعديلات"
+
+#: src/Admin/Admin.php:91
+msgid "Service pages per company"
+msgstr "صفحات الخدمات لكل مؤسسة"
+
+#: src/Admin/Admin.php:92
+msgid "Photos per service page"
+msgstr "الصور لكل صفحة خدمة"
+
+#: src/Admin/Admin.php:93
+msgid "Largest photo (MB)"
+msgstr "أكبر حجم للصورة (ميغابايت)"
+
+#: src/Admin/Admin.php:94
+msgid "Files per service request"
+msgstr "الملفات لكل طلب خدمة"
+
+#: src/Admin/Admin.php:95
+msgid "Largest file (MB)"
+msgstr "أكبر حجم للملف (ميغابايت)"
+
+#: src/Admin/Admin.php:96
+msgid "Service requests a company may send per day"
+msgstr "طلبات الخدمات التي يمكن لمؤسسة إرسالها يوميًا"
+
+#: src/Admin/Admin.php:97
+msgid "References per company"
+msgstr "المراجع لكل مؤسسة"
+
+#: src/Admin/Admin.php:98
+msgid "Highest price accepted (DA)"
+msgstr "أعلى سعر مقبول (دج)"
+
+#: src/Admin/Admin.php:102
+msgid "Moderation"
+msgstr "الإشراف"
+
+#: src/Admin/Admin.php:102
+msgid "Check every new service page before it is published"
+msgstr "مراجعة كل صفحة خدمة جديدة قبل نشرها"
+
+#: src/Admin/Admin.php:113
+msgid "You cannot change these settings."
+msgstr "لا يمكنك تغيير هذه الإعدادات."
+
+#: src/Admin/Admin.php:123
+msgid "You cannot moderate services."
+msgstr "لا يمكنك الإشراف على الخدمات."
+
+#: src/Form.php:36
+msgid "Sign in to send a request."
+msgstr "سجّل الدخول لإرسال طلب."
+
+#: src/Form.php:40 src/Form.php:79
+msgid "Your account has no company."
+msgstr "حسابك غير مرتبط بمؤسسة."
+
+#: src/Form.php:43
+msgid "This is your own service."
+msgstr "هذه خدمتك أنت."
+
+#: src/Form.php:50
+msgid "This service is not available at the moment."
+msgstr "هذه الخدمة غير متاحة حاليًا."
+
+#: src/Form.php:83 src/Spec.php:55
+msgid "Choose the type of service."
+msgstr "اختر نوع الخدمة."
+
+#: src/Form.php:90
+msgid "You cannot edit this service."
+msgstr "لا يمكنك تعديل هذه الخدمة."
+
+#: src/Form.php:93
+msgid "You reached the number of service pages allowed. Edit an existing one."
+msgstr "بلغت العدد المسموح به من صفحات الخدمات. عدّل صفحة موجودة."
+
+#: src/Form.php:113
+msgid ""
+"Thank you. Your service page will be visible after a quick check by the "
+"platform team."
+msgstr "شكرًا. ستظهر صفحة خدمتك بعد مراجعة سريعة من فريق المنصة."
+
+#: src/Form.php:113
+msgid "Your service page is saved."
+msgstr "تم حفظ صفحة خدمتك."
+
+#: src/Form.php:121
+msgid "You cannot change this service."
+msgstr "لا يمكنك تغيير هذه الخدمة."
+
+#: src/Form.php:126
+msgid "The service is paused: clients no longer see it."
+msgstr "الخدمة متوقفة مؤقتًا: لم يعد العملاء يرونها."
+
+#: src/Form.php:131
+msgid "The service is visible again."
+msgstr "الخدمة ظاهرة من جديد."
+
+#: src/Form.php:135
+msgid "Service deleted."
+msgstr "تم حذف الخدمة."
+
+#: src/Form.php:138
+msgid "Unknown action."
+msgstr "إجراء غير معروف."
+
+#: src/Form.php:145
+msgid "This service does not exist."
+msgstr "هذه الخدمة غير موجودة."
+
+#: src/Form.php:151
+msgid ""
+"You already have an open request for this service. Follow it in \"My service"
+" requests\"."
+msgstr "لديك طلب مفتوح لهذه الخدمة. تابعه في «طلبات الخدمات الخاصة بي»."
+
+#: src/Form.php:154
+msgid "You sent many requests today. Try again tomorrow."
+msgstr "أرسلت طلبات كثيرة اليوم. أعد المحاولة غدًا."
+
+#: src/Form.php:165
+msgid ""
+"Your request is sent. The provider is notified and will answer with a quote."
+msgstr "تم إرسال طلبك. تم إبلاغ مقدم الخدمة وسيرد بعرض سعر."
+
+#: src/Form.php:172
+msgid "You cannot answer this request."
+msgstr "لا يمكنك الرد على هذا الطلب."
+
+#: src/Form.php:175
+msgid "This request is closed."
+msgstr "هذا الطلب مغلق."
+
+#: src/Form.php:180
+msgid "You declined the request. The client is told."
+msgstr "اعتذرت عن الطلب. تم إبلاغ العميل."
+
+#: src/Form.php:189
+msgid "Your quote is sent. The client is notified."
+msgstr "تم إرسال عرض سعرك. تم إبلاغ العميل."
+
+#: src/Form.php:196
+msgid "You cannot change this request."
+msgstr "لا يمكنك تغيير هذا الطلب."
+
+#: src/Form.php:200
+msgid "Quote accepted. Contact the provider to organise the work."
+msgstr "تم قبول عرض السعر. تواصل مع مقدم الخدمة لتنظيم الأشغال."
+
+#: src/Form.php:201
+msgid "Quote declined. The provider is told."
+msgstr "تم رفض عرض السعر. تم إبلاغ مقدم الخدمة."
+
+#: src/Form.php:202
+msgid "Request cancelled. The provider is told."
+msgstr "تم إلغاء الطلب. تم إبلاغ مقدم الخدمة."
+
+#: src/Form.php:205
+msgid "This request can no longer be changed."
+msgstr "لم يعد بالإمكان تغيير هذا الطلب."
+
+#: src/Form.php:217
+msgid "Only the account owner can edit the references."
+msgstr "صاحب الحساب وحده يمكنه تعديل المراجع."
+
+#: src/Form.php:222
+msgid "You cannot edit this reference."
+msgstr "لا يمكنك تعديل هذا المرجع."
+
+#: src/Form.php:225
+msgid "You reached the number of references allowed."
+msgstr "بلغت العدد المسموح به من المراجع."
+
+#: src/Form.php:235
+msgid "Reference saved."
+msgstr "تم حفظ المرجع."
+
+#: src/Form.php:243
+msgid "You cannot delete this reference."
+msgstr "لا يمكنك حذف هذا المرجع."
+
+#: src/Form.php:246
+msgid "Reference deleted."
+msgstr "تم حذف المرجع."
+
+#: src/Notifications.php:31
+msgid "New service page to review"
+msgstr "صفحة خدمة جديدة للمراجعة"
+
+#. translators: %s: service title.
+#: src/Notifications.php:33
+msgid "A provider submitted \"%s\". Check it before it is published."
+msgstr "قدّم مقدم خدمة «%s». راجعها قبل نشرها."
+
+#: src/Notifications.php:38
+msgid "Your service page is published"
+msgstr "تم نشر صفحة خدمتك"
+
+#. translators: %s: service title.
+#: src/Notifications.php:40
+msgid "\"%s\" is now visible to clients."
+msgstr "«%s» ظاهرة الآن للعملاء."
+
+#: src/Notifications.php:45
+msgid "Your service page needs changes"
+msgstr "صفحة خدمتك تحتاج إلى تعديلات"
+
+#. translators: 1: service title, 2: reason.
+#: src/Notifications.php:47
+msgid "\"%1$s\" was not published: %2$s"
+msgstr "لم تُنشر «%1$s»: %2$s"
+
+#: src/Notifications.php:52
+msgid "New service request"
+msgstr "طلب خدمة جديد"
+
+#. translators: 1: client company, 2: service title.
+#: src/Notifications.php:54
+msgid ""
+"%1$s sent a request about \"%2$s\". Answer with a quote from your dashboard."
+msgstr "أرسل %1$s طلبًا بخصوص «%2$s». رد بعرض سعر من لوحة التحكم."
+
+#: src/Notifications.php:59
+msgid "You received a quote"
+msgstr "تلقيت عرض سعر"
+
+#. translators: 1: provider, 2: service title.
+#: src/Notifications.php:61
+msgid "%1$s answered your request about \"%2$s\" with a quote."
+msgstr "رد %1$s على طلبك بخصوص «%2$s» بعرض سعر."
+
+#: src/Notifications.php:66
+msgid "A provider cannot take your request"
+msgstr "مقدم خدمة لا يستطيع تلبية طلبك"
+
+#. translators: 1: provider, 2: service title.
+#: src/Notifications.php:68
+msgid "%1$s cannot take your request about \"%2$s\". Other providers may."
+msgstr "لا يستطيع %1$s تلبية طلبك بخصوص «%2$s». قد يستطيع مقدمو خدمات آخرون."
+
+#: src/Notifications.php:73
+msgid "Your quote was accepted"
+msgstr "تم قبول عرض سعرك"
+
+#. translators: 1: client, 2: service title.
+#: src/Notifications.php:75
+msgid ""
+"%1$s accepted your quote for \"%2$s\". Contact the client to organise the "
+"work."
+msgstr "قبل %1$s عرض سعرك لـ«%2$s». تواصل مع العميل لتنظيم الأشغال."
+
+#: src/Notifications.php:80
+msgid "Your quote was not accepted"
+msgstr "لم يُقبل عرض سعرك"
+
+#. translators: 1: client, 2: service title.
+#: src/Notifications.php:82
+msgid "%1$s did not accept your quote for \"%2$s\"."
+msgstr "لم يقبل %1$s عرض سعرك لـ«%2$s»."
+
+#: src/Notifications.php:87
+msgid "A service request was cancelled"
+msgstr "تم إلغاء طلب خدمة"
+
+#. translators: 1: client, 2: service title.
+#: src/Notifications.php:89
+msgid "%1$s cancelled its request about \"%2$s\"."
+msgstr "ألغى %1$s طلبه بخصوص «%2$s»."
+
+#: src/Rest/Api.php:34
+msgid "This service is not available."
+msgstr "هذه الخدمة غير متاحة."
+
+#: src/Spec.php:59
+msgid "Tick at least one service."
+msgstr "حدّد خدمة واحدة على الأقل."
+
+#: src/Spec.php:61
+msgid "Six services at most per page: create another page for the others."
+msgstr "ست خدمات كحد أقصى لكل صفحة: أنشئ صفحة أخرى للبقية."
+
+#: src/Spec.php:63
+msgid "Give the service a title (in French or in Arabic)."
+msgstr "أعطِ الخدمة عنوانًا (بالفرنسية أو بالعربية)."
+
+#: src/Spec.php:66
+msgid "Describe the service in a few sentences (30 characters at least)."
+msgstr "صِف الخدمة في بضع جمل (30 حرفًا على الأقل)."
+
+#: src/Spec.php:68
+msgid "The description is too long (4000 characters at most)."
+msgstr "الوصف طويل جدًا (4000 حرف كحد أقصى)."
+
+#: src/Spec.php:74
+msgid "Too long (2000 characters at most)."
+msgstr "طويل جدًا (2000 حرف كحد أقصى)."
+
+#: src/Spec.php:81
+msgid "Tick the wilayas you serve, or choose \"All of Algeria\"."
+msgstr "حدّد الولايات التي تتدخل فيها، أو اختر «كامل التراب الجزائري»."
+
+#: src/Spec.php:86
+msgid "Usual lead time in days (0 to 365)."
+msgstr "الأجل المعتاد بالأيام (من 0 إلى 365)."
+
+#: src/Spec.php:96
+msgid "Give the starting price, or choose \"On quotation\"."
+msgstr "حدّد السعر الابتدائي، أو اختر «حسب عرض السعر»."
+
+#: src/Spec.php:99
+msgid "Choose the unit of the price."
+msgstr "اختر وحدة السعر."
+
+#: src/Spec.php:126
+msgid "Describe your project in a few sentences (20 characters at least)."
+msgstr "صِف مشروعك في بضع جمل (20 حرفًا على الأقل)."
+
+#: src/Spec.php:128 src/Spec.php:164
+msgid "The message is too long (3000 characters at most)."
+msgstr "الرسالة طويلة جدًا (3000 حرف كحد أقصى)."
+
+#: src/Spec.php:132
+msgid "Choose the wilaya of the project."
+msgstr "اختر ولاية المشروع."
+
+#: src/Spec.php:138
+msgid "The date must be today or later."
+msgstr "يجب أن يكون التاريخ اليوم أو بعده."
+
+#: src/Spec.php:144
+msgid "This budget is outside the accepted range."
+msgstr "هذه الميزانية خارج المجال المقبول."
+
+#: src/Spec.php:156
+msgid "Give the amount of your quote."
+msgstr "حدّد مبلغ عرض سعرك."
+
+#: src/Spec.php:160
+msgid "Give the time needed in days."
+msgstr "حدّد المدة اللازمة بالأيام."
+
+#: src/Spec.php:171
+msgid "Give the project a title."
+msgstr "أعطِ المشروع عنوانًا."
+
+#: src/Spec.php:174
+msgid "Too long (1500 characters at most)."
+msgstr "طويل جدًا (1500 حرف كحد أقصى)."
+
+#: src/Spec.php:180
+msgid "Check the year."
+msgstr "تحقق من السنة."

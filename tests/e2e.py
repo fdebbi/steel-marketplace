@@ -232,7 +232,7 @@ with sync_playwright() as p:
     e.wait_for_load_state()
     check(path(e).endswith('/ar/compte') and 'توثيق' in notice(e), 'engineer verified, Arabic dashboard and message')
     nav = ' '.join(e.locator('.sm-dash__side nav').all_inner_texts())
-    check('نشر إعلان' not in nav and 'طلبات الزبائن' in nav, 'engineer menu: no "publish a listing", has "client requests"')
+    check('نشر إعلان' not in nav and 'طلبات الخدمات' in nav and 'المراجع' in nav, 'engineer menu: no "publish a listing", has "service requests" and "references"')
     shot(e, 'dashboard-engineer-ar-1280')
     e.goto(BASE + '/ar/compte/publier/')
     check(e.locator('.sm-stepper').count() == 0, 'publish form not available to engineers')

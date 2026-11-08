@@ -36,6 +36,8 @@ PAGES = {
     'register': '/inscription/',
     'login': '/connexion/',
     'rfq': '/demandes-de-devis/',
+    'services': '/services/',
+    'engineering': '/ingenierie/',
     'weight-calculator': '/calcul-poids/?family=IPE&section=7&mode=weight&total_kg=5000',
     'dashboard': ('/compte/', 'com'),
     'dashboard-company': ('/compte/?view=company', 'com'),
@@ -46,6 +48,14 @@ PAGES = {
     'dashboard-publish-roofing': ('/compte/?view=publish&cat=roofing', 'com'),
     'dashboard-engineer': ('/compte/', 'eng'),
     'dashboard-engineer-requests': ('/compte/?view=requests', 'eng'),
+    'dashboard-services': ('/compte/?view=services', 'com'),
+    'dashboard-service-form': ('/compte/?view=services&new=1', 'com'),
+    'dashboard-my-service-requests': ('/compte/?view=my-service-requests', 'com'),
+    'dashboard-engineer-services': ('/compte/?view=services', 'eng'),
+    'dashboard-engineer-service-form': ('/compte/?view=services&new=1', 'eng'),
+    'dashboard-engineer-service-requests': ('/compte/?view=service-requests', 'eng'),
+    'dashboard-engineer-portfolio': ('/compte/?view=portfolio', 'eng'),
+    'dashboard-engineer-portfolio-form': ('/compte/?view=portfolio&new=1', 'eng'),
 }
 ACCOUNTS = {k: os.environ.get(v) for k, v in (('com', 'SM_VT_COM'), ('eng', 'SM_VT_ENG'))}
 

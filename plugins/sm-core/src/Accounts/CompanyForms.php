@@ -84,6 +84,7 @@ final class CompanyForms {
 			$data['profile']  = array(
 				'qualifications' => preg_split( '/\r\n|\n/', Forms::post_textarea( 'qualifications' ) ),
 				'specialities'   => preg_split( '/\r\n|\n/', Forms::post_textarea( 'specialities' ) ),
+				'experience_years' => (int) Forms::post( 'experience_years' ),
 			);
 		}
 		Companies::update_profile( $company->id, $data );

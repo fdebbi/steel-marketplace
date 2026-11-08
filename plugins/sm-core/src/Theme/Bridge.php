@@ -69,6 +69,7 @@ final class Bridge {
 			'title'          => ( $c->title_fr || $c->title_ar ) ? array( 'fr' => $c->title_fr, 'ar' => $c->title_ar ) : null,
 			'qualifications' => array_map( static fn( $q ) => array( 'fr' => $q, 'ar' => $q ), $c->profile['qualifications'] ?? array() ),
 			'specialities'   => array_map( static fn( $s ) => array( 'fr' => $s, 'ar' => $s ), $c->profile['specialities'] ?? array() ),
+			'experience'     => (int) ( $c->profile['experience_years'] ?? 0 ),
 			'status'         => $c->status,
 			'location'       => Companies::public_location( $c ),
 		);
@@ -160,6 +161,7 @@ final class Bridge {
 				'title_fr'       => $company->title_fr,
 				'title_ar'       => $company->title_ar,
 				'qualifications' => implode( "\n", $company->profile['qualifications'] ?? array() ),
+				'experience_years' => (string) ( $company->profile['experience_years'] ?? '' ),
 				'specialities'   => implode( "\n", $company->profile['specialities'] ?? array() ),
 			) + ( $can_manage ? Companies::legal_numbers( $company ) : array() ),
 			'user'          => $user->display_name,

@@ -296,6 +296,10 @@ final class Companies {
 					$profile[ $list ] = array_slice( array_values( $items ), 0, 20 );
 				}
 			}
+			if ( isset( $data['profile']['experience_years'] ) ) {
+				$years = (int) $data['profile']['experience_years'];
+				$profile['experience_years'] = max( 0, min( 70, $years ) );
+			}
 			$fields['profile'] = wp_json_encode( $profile );
 		}
 		foreach ( array( 'rc_number', 'nif', 'nis' ) as $f ) {

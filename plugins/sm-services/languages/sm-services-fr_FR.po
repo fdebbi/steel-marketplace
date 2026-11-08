@@ -1,0 +1,486 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Services 0.1.0\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: sm-services\n"
+
+#. Plugin Name of the plugin
+#: sm-services.php
+msgid "SM Services"
+msgstr "SM Services"
+
+#. Plugin URI of the plugin
+#: sm-services.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-services.php
+msgid ""
+"Fabrication, site and engineering services: two separate catalogues "
+"(fabrication & site work for business accounts, engineering for engineering "
+"accounts), service pages with photos, capabilities, equipment and coverage, "
+"service requests answered with a quote, engineer profiles with experience "
+"and references. Requires SM Core."
+msgstr ""
+"Services de fabrication, de chantier et d’ingénierie : deux catalogues "
+"séparés (fabrication et chantier pour les comptes entreprise, ingénierie "
+"pour les comptes ingénierie), pages de service avec photos, capacités, "
+"équipements et zone d’intervention, demandes de service avec réponse par "
+"devis, profils d’ingénieurs avec expérience et références. Nécessite SM "
+"Core."
+
+#. Author of the plugin
+#: sm-services.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-services.php:47
+msgid "SM Services needs the SM Core plugin. Activate it first."
+msgstr "SM Services nécessite l’extension SM Core. Activez-la d’abord."
+
+#: src/Admin/Admin.php:29 src/Admin/Admin.php:47
+msgid "Services"
+msgstr "Services"
+
+#: src/Admin/Admin.php:34
+msgid "Waiting for review"
+msgstr "En attente de vérification"
+
+#: src/Admin/Admin.php:35
+msgid "Published"
+msgstr "Publiés"
+
+#: src/Admin/Admin.php:36
+msgid "Paused"
+msgstr "En pause"
+
+#: src/Admin/Admin.php:37
+msgid "Changes requested"
+msgstr "Modifications demandées"
+
+#: src/Admin/Admin.php:48
+msgid "Service pages"
+msgstr "Pages de service"
+
+#: src/Admin/Admin.php:48
+msgid "Settings"
+msgstr "Réglages"
+
+#: src/Admin/Admin.php:51
+msgid "Saved."
+msgstr "Enregistré."
+
+#: src/Admin/Admin.php:66
+msgid "Nothing here."
+msgstr "Rien ici."
+
+#: src/Admin/Admin.php:69
+msgid "Service"
+msgstr "Service"
+
+#: src/Admin/Admin.php:69
+msgid "Provider"
+msgstr "Prestataire"
+
+#: src/Admin/Admin.php:69
+msgid "Catalogue"
+msgstr "Catalogue"
+
+#: src/Admin/Admin.php:69
+msgid "Views"
+msgstr "Vues"
+
+#: src/Admin/Admin.php:69
+msgid "Decision"
+msgstr "Décision"
+
+#: src/Admin/Admin.php:79
+msgid "Publish"
+msgstr "Publier"
+
+#: src/Admin/Admin.php:81
+msgid "Reason (sent to the provider)"
+msgstr "Motif (envoyé au prestataire)"
+
+#: src/Admin/Admin.php:81
+msgid "Unpublish"
+msgstr "Dépublier"
+
+#: src/Admin/Admin.php:81
+msgid "Request changes"
+msgstr "Demander des modifications"
+
+#: src/Admin/Admin.php:91
+msgid "Service pages per company"
+msgstr "Pages de service par entreprise"
+
+#: src/Admin/Admin.php:92
+msgid "Photos per service page"
+msgstr "Photos par page de service"
+
+#: src/Admin/Admin.php:93
+msgid "Largest photo (MB)"
+msgstr "Taille maximale d’une photo (Mo)"
+
+#: src/Admin/Admin.php:94
+msgid "Files per service request"
+msgstr "Fichiers par demande de service"
+
+#: src/Admin/Admin.php:95
+msgid "Largest file (MB)"
+msgstr "Taille maximale d’un fichier (Mo)"
+
+#: src/Admin/Admin.php:96
+msgid "Service requests a company may send per day"
+msgstr "Demandes de service qu’une entreprise peut envoyer par jour"
+
+#: src/Admin/Admin.php:97
+msgid "References per company"
+msgstr "Références par entreprise"
+
+#: src/Admin/Admin.php:98
+msgid "Highest price accepted (DA)"
+msgstr "Prix maximal accepté (DA)"
+
+#: src/Admin/Admin.php:102
+msgid "Moderation"
+msgstr "Modération"
+
+#: src/Admin/Admin.php:102
+msgid "Check every new service page before it is published"
+msgstr "Vérifier chaque nouvelle page de service avant publication"
+
+#: src/Admin/Admin.php:113
+msgid "You cannot change these settings."
+msgstr "Vous ne pouvez pas modifier ces réglages."
+
+#: src/Admin/Admin.php:123
+msgid "You cannot moderate services."
+msgstr "Vous ne pouvez pas modérer les services."
+
+#: src/Form.php:36
+msgid "Sign in to send a request."
+msgstr "Connectez-vous pour envoyer une demande."
+
+#: src/Form.php:40 src/Form.php:79
+msgid "Your account has no company."
+msgstr "Votre compte n’a pas d’entreprise."
+
+#: src/Form.php:43
+msgid "This is your own service."
+msgstr "C’est votre propre service."
+
+#: src/Form.php:50
+msgid "This service is not available at the moment."
+msgstr "Ce service n’est pas disponible pour le moment."
+
+#: src/Form.php:83 src/Spec.php:55
+msgid "Choose the type of service."
+msgstr "Choisissez le type de service."
+
+#: src/Form.php:90
+msgid "You cannot edit this service."
+msgstr "Vous ne pouvez pas modifier ce service."
+
+#: src/Form.php:93
+msgid "You reached the number of service pages allowed. Edit an existing one."
+msgstr ""
+"Vous avez atteint le nombre de pages de service autorisé. Modifiez une page "
+"existante."
+
+#: src/Form.php:113
+msgid ""
+"Thank you. Your service page will be visible after a quick check by the "
+"platform team."
+msgstr ""
+"Merci. Votre page de service sera visible après une rapide vérification par "
+"l’équipe de la plateforme."
+
+#: src/Form.php:113
+msgid "Your service page is saved."
+msgstr "Votre page de service est enregistrée."
+
+#: src/Form.php:121
+msgid "You cannot change this service."
+msgstr "Vous ne pouvez pas modifier ce service."
+
+#: src/Form.php:126
+msgid "The service is paused: clients no longer see it."
+msgstr "Le service est en pause : les clients ne le voient plus."
+
+#: src/Form.php:131
+msgid "The service is visible again."
+msgstr "Le service est de nouveau visible."
+
+#: src/Form.php:135
+msgid "Service deleted."
+msgstr "Service supprimé."
+
+#: src/Form.php:138
+msgid "Unknown action."
+msgstr "Action inconnue."
+
+#: src/Form.php:145
+msgid "This service does not exist."
+msgstr "Ce service n’existe pas."
+
+#: src/Form.php:151
+msgid ""
+"You already have an open request for this service. Follow it in \"My service"
+" requests\"."
+msgstr ""
+"Vous avez déjà une demande en cours pour ce service. Suivez-la dans « Mes "
+"demandes de service »."
+
+#: src/Form.php:154
+msgid "You sent many requests today. Try again tomorrow."
+msgstr "Vous avez envoyé beaucoup de demandes aujourd’hui. Réessayez demain."
+
+#: src/Form.php:165
+msgid ""
+"Your request is sent. The provider is notified and will answer with a quote."
+msgstr ""
+"Votre demande est envoyée. Le prestataire est prévenu et répondra par un "
+"devis."
+
+#: src/Form.php:172
+msgid "You cannot answer this request."
+msgstr "Vous ne pouvez pas répondre à cette demande."
+
+#: src/Form.php:175
+msgid "This request is closed."
+msgstr "Cette demande est clôturée."
+
+#: src/Form.php:180
+msgid "You declined the request. The client is told."
+msgstr "Vous avez décliné la demande. Le client est prévenu."
+
+#: src/Form.php:189
+msgid "Your quote is sent. The client is notified."
+msgstr "Votre devis est envoyé. Le client est prévenu."
+
+#: src/Form.php:196
+msgid "You cannot change this request."
+msgstr "Vous ne pouvez pas modifier cette demande."
+
+#: src/Form.php:200
+msgid "Quote accepted. Contact the provider to organise the work."
+msgstr "Devis accepté. Contactez le prestataire pour organiser les travaux."
+
+#: src/Form.php:201
+msgid "Quote declined. The provider is told."
+msgstr "Devis refusé. Le prestataire est prévenu."
+
+#: src/Form.php:202
+msgid "Request cancelled. The provider is told."
+msgstr "Demande annulée. Le prestataire est prévenu."
+
+#: src/Form.php:205
+msgid "This request can no longer be changed."
+msgstr "Cette demande ne peut plus être modifiée."
+
+#: src/Form.php:217
+msgid "Only the account owner can edit the references."
+msgstr "Seul le titulaire du compte peut modifier les références."
+
+#: src/Form.php:222
+msgid "You cannot edit this reference."
+msgstr "Vous ne pouvez pas modifier cette référence."
+
+#: src/Form.php:225
+msgid "You reached the number of references allowed."
+msgstr "Vous avez atteint le nombre de références autorisé."
+
+#: src/Form.php:235
+msgid "Reference saved."
+msgstr "Référence enregistrée."
+
+#: src/Form.php:243
+msgid "You cannot delete this reference."
+msgstr "Vous ne pouvez pas supprimer cette référence."
+
+#: src/Form.php:246
+msgid "Reference deleted."
+msgstr "Référence supprimée."
+
+#: src/Notifications.php:31
+msgid "New service page to review"
+msgstr "Nouvelle page de service à vérifier"
+
+#. translators: %s: service title.
+#: src/Notifications.php:33
+msgid "A provider submitted \"%s\". Check it before it is published."
+msgstr "Un prestataire a soumis « %s ». Vérifiez-la avant publication."
+
+#: src/Notifications.php:38
+msgid "Your service page is published"
+msgstr "Votre page de service est publiée"
+
+#. translators: %s: service title.
+#: src/Notifications.php:40
+msgid "\"%s\" is now visible to clients."
+msgstr "« %s » est maintenant visible par les clients."
+
+#: src/Notifications.php:45
+msgid "Your service page needs changes"
+msgstr "Votre page de service doit être modifiée"
+
+#. translators: 1: service title, 2: reason.
+#: src/Notifications.php:47
+msgid "\"%1$s\" was not published: %2$s"
+msgstr "« %1$s » n’a pas été publiée : %2$s"
+
+#: src/Notifications.php:52
+msgid "New service request"
+msgstr "Nouvelle demande de service"
+
+#. translators: 1: client company, 2: service title.
+#: src/Notifications.php:54
+msgid ""
+"%1$s sent a request about \"%2$s\". Answer with a quote from your dashboard."
+msgstr ""
+"%1$s a envoyé une demande concernant « %2$s ». Répondez par un devis depuis "
+"votre tableau de bord."
+
+#: src/Notifications.php:59
+msgid "You received a quote"
+msgstr "Vous avez reçu un devis"
+
+#. translators: 1: provider, 2: service title.
+#: src/Notifications.php:61
+msgid "%1$s answered your request about \"%2$s\" with a quote."
+msgstr "%1$s a répondu à votre demande concernant « %2$s » par un devis."
+
+#: src/Notifications.php:66
+msgid "A provider cannot take your request"
+msgstr "Un prestataire ne peut pas prendre votre demande"
+
+#. translators: 1: provider, 2: service title.
+#: src/Notifications.php:68
+msgid "%1$s cannot take your request about \"%2$s\". Other providers may."
+msgstr ""
+"%1$s ne peut pas prendre votre demande concernant « %2$s ». D’autres "
+"prestataires le peuvent peut-être."
+
+#: src/Notifications.php:73
+msgid "Your quote was accepted"
+msgstr "Votre devis a été accepté"
+
+#. translators: 1: client, 2: service title.
+#: src/Notifications.php:75
+msgid ""
+"%1$s accepted your quote for \"%2$s\". Contact the client to organise the "
+"work."
+msgstr ""
+"%1$s a accepté votre devis pour « %2$s ». Contactez le client pour organiser"
+" les travaux."
+
+#: src/Notifications.php:80
+msgid "Your quote was not accepted"
+msgstr "Votre devis n’a pas été retenu"
+
+#. translators: 1: client, 2: service title.
+#: src/Notifications.php:82
+msgid "%1$s did not accept your quote for \"%2$s\"."
+msgstr "%1$s n’a pas retenu votre devis pour « %2$s »."
+
+#: src/Notifications.php:87
+msgid "A service request was cancelled"
+msgstr "Une demande de service a été annulée"
+
+#. translators: 1: client, 2: service title.
+#: src/Notifications.php:89
+msgid "%1$s cancelled its request about \"%2$s\"."
+msgstr "%1$s a annulé sa demande concernant « %2$s »."
+
+#: src/Rest/Api.php:34
+msgid "This service is not available."
+msgstr "Ce service n’est pas disponible."
+
+#: src/Spec.php:59
+msgid "Tick at least one service."
+msgstr "Cochez au moins un service."
+
+#: src/Spec.php:61
+msgid "Six services at most per page: create another page for the others."
+msgstr ""
+"Six services au maximum par page : créez une autre page pour les autres."
+
+#: src/Spec.php:63
+msgid "Give the service a title (in French or in Arabic)."
+msgstr "Donnez un titre au service (en français ou en arabe)."
+
+#: src/Spec.php:66
+msgid "Describe the service in a few sentences (30 characters at least)."
+msgstr "Décrivez le service en quelques phrases (30 caractères au moins)."
+
+#: src/Spec.php:68
+msgid "The description is too long (4000 characters at most)."
+msgstr "La description est trop longue (4000 caractères au maximum)."
+
+#: src/Spec.php:74
+msgid "Too long (2000 characters at most)."
+msgstr "Trop long (2000 caractères au maximum)."
+
+#: src/Spec.php:81
+msgid "Tick the wilayas you serve, or choose \"All of Algeria\"."
+msgstr ""
+"Cochez les wilayas où vous intervenez, ou choisissez « Toute l’Algérie »."
+
+#: src/Spec.php:86
+msgid "Usual lead time in days (0 to 365)."
+msgstr "Délai habituel en jours (0 à 365)."
+
+#: src/Spec.php:96
+msgid "Give the starting price, or choose \"On quotation\"."
+msgstr "Indiquez le prix de départ, ou choisissez « Sur devis »."
+
+#: src/Spec.php:99
+msgid "Choose the unit of the price."
+msgstr "Choisissez l’unité du prix."
+
+#: src/Spec.php:126
+msgid "Describe your project in a few sentences (20 characters at least)."
+msgstr "Décrivez votre projet en quelques phrases (20 caractères au moins)."
+
+#: src/Spec.php:128 src/Spec.php:164
+msgid "The message is too long (3000 characters at most)."
+msgstr "Le message est trop long (3000 caractères au maximum)."
+
+#: src/Spec.php:132
+msgid "Choose the wilaya of the project."
+msgstr "Choisissez la wilaya du projet."
+
+#: src/Spec.php:138
+msgid "The date must be today or later."
+msgstr "La date doit être aujourd’hui ou plus tard."
+
+#: src/Spec.php:144
+msgid "This budget is outside the accepted range."
+msgstr "Ce budget est hors de la plage acceptée."
+
+#: src/Spec.php:156
+msgid "Give the amount of your quote."
+msgstr "Indiquez le montant de votre devis."
+
+#: src/Spec.php:160
+msgid "Give the time needed in days."
+msgstr "Indiquez le délai nécessaire en jours."
+
+#: src/Spec.php:171
+msgid "Give the project a title."
+msgstr "Donnez un titre au projet."
+
+#: src/Spec.php:174
+msgid "Too long (1500 characters at most)."
+msgstr "Trop long (1500 caractères au maximum)."
+
+#: src/Spec.php:180
+msgid "Check the year."
+msgstr "Vérifiez l’année."

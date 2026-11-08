@@ -2,8 +2,8 @@
 /**
  * Template Name: SM — Engineering
  *
- * Engineering services marketplace (sm-engineer-services, Phase 8).
- * Kept visually separate from commercial listings: no price per kg, no stock.
+ * Engineering services (sm-services, catalogue "engineering") and engineering offices.
+ * Kept apart from commercial listings: no price per kg, no stock.
  *
  * @package SM_Marketplace
  */
@@ -11,10 +11,8 @@
 defined( 'ABSPATH' ) || exit;
 get_header();
 $engineers = sm_theme_companies( array( 'class' => 'engineering' ) );
-$kinds     = array(
-	__( 'Structural steel design', 'sm-marketplace' ), __( 'Structural calculations', 'sm-marketplace' ), __( 'Connection design', 'sm-marketplace' ),
-	__( 'Shop drawings', 'sm-marketplace' ), __( 'Technical inspection', 'sm-marketplace' ), __( 'Used structure assessment', 'sm-marketplace' ),
-);
+$set       = (array) sm_theme_data( 'services_settings' );
+$cta       = ! empty( $set['kinds']['engineering']['allowed'] ) ? sm_page_url( 'account', array( 'view' => 'services', 'new' => 'engineering' ) ) : sm_page_url( 'register', array( 'type' => 'engineering' ) );
 ?>
 <section class="sm-pagehead sm-pagehead--engineers">
 	<div class="sm-container">
@@ -24,25 +22,20 @@ $kinds     = array(
 				<h1 class="sm-pagehead__title"><?php esc_html_e( 'Engineering services', 'sm-marketplace' ); ?></h1>
 				<p class="sm-pagehead__intro"><?php esc_html_e( 'Verified engineers and engineering offices for steel design, calculation notes, drawings and inspection of structures before reuse.', 'sm-marketplace' ); ?></p>
 			</div>
-			<a class="sm-btn sm-btn--primary" href="<?php echo esc_url( sm_page_url( 'register', array( 'type' => 'engineering' ) ) ); ?>"><?php sm_icon( 'hard-hat' ); ?><?php esc_html_e( 'Join as an engineer', 'sm-marketplace' ); ?></a>
+			<a class="sm-btn sm-btn--primary" href="<?php echo esc_url( $cta ); ?>"><?php sm_icon( 'hard-hat' ); ?><?php echo esc_html( ! empty( $set['kinds']['engineering']['allowed'] ) ? __( 'Publish an engineering service', 'sm-marketplace' ) : __( 'Join as an engineer', 'sm-marketplace' ) ); ?></a>
 		</div>
-		<ul class="sm-catpills">
-			<?php foreach ( $kinds as $kind ) : ?><li><a href="#"><?php echo esc_html( $kind ); ?></a></li><?php endforeach; ?>
-		</ul>
 	</div>
 </section>
-<div class="sm-container sm-section">
-	<div class="sm-grid sm-grid--grid sm-grid--3">
-		<?php foreach ( sm_theme_services( array( 'kind' => 'engineering' ) ) as $service ) : ?>
-			<?php sm_component( 'card-service', array( 'service' => $service ) ); ?>
-		<?php endforeach; ?>
-	</div>
-	<div class="sm-section__head sm-section__head--spaced"><h2><?php esc_html_e( 'Engineering offices', 'sm-marketplace' ); ?></h2></div>
-	<div class="sm-grid sm-grid--companies">
-		<?php foreach ( $engineers as $company ) : ?>
-			<?php sm_component( 'card-company', array( 'company' => $company ) ); ?>
-		<?php endforeach; ?>
-	</div>
+<div class="sm-container sm-section sms-board">
+	<?php sm_component( 'services-board', array( 'kind' => 'engineering', 'page' => 'engineers' ) ); ?>
+	<?php if ( $engineers ) : ?>
+		<div class="sm-section__head sm-section__head--spaced"><h2><?php esc_html_e( 'Engineering offices', 'sm-marketplace' ); ?></h2></div>
+		<div class="sm-grid sm-grid--companies">
+			<?php foreach ( $engineers as $company ) : ?>
+				<?php sm_component( 'card-company', array( 'company' => $company ) ); ?>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
 	<p class="sm-callout"><?php sm_icon( 'info' ); ?><span><?php esc_html_e( 'AI tools on this platform never replace a structural calculation or an engineer’s signature.', 'sm-marketplace' ); ?></span></p>
 </div>
 <?php

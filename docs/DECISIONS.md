@@ -112,3 +112,16 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Modification | Interdite dès la première offre (clôturer puis republier) | Les fournisseurs ont chiffré une demande précise |
 | Délais | Date limite proposée (21 jours) et maximale (90 jours) réglables ; expiration quotidienne ; acceptation encore possible après la date limite | Pas de limite codée en dur ; l'acheteur garde la main |
 | Plans | PDF et images seulement (DWG/DXF à exporter en PDF) | Contrôle fiable du type de fichier à l'envoi |
+
+## 8 novembre 2026 — Phase 8 : services de fabrication et d'ingénierie
+
+| Sujet | Décision | Raison |
+| --- | --- | --- |
+| Architecture | Une extension `sm-services` avec deux catalogues séparés par permission, plutôt que deux extensions | Pages, demandes, devis et références sont identiques ; la séparation fabrication / ingénierie tient dans les permissions et les pages publiques. Une scission reste possible sans changer les données |
+| Séparation ingénierie / commerce | Un compte ingénierie ne publie que des services d'ingénierie et n'a toujours aucune permission commerciale ; les services ne passent pas par le moteur d'annonces `sm-products` | Cahier des charges : l'ingénierie reste séparée des annonces commerciales |
+| Prix | « Sur devis » ou « à partir de » avec unité ; pas de prix au kg en ingénierie ; montant maximal réglable | Un prix indicatif aide à trier ; le prix réel est le devis |
+| Zone d'intervention | Toute l'Algérie ou liste de wilayas ; la wilaya de l'entreprise compte toujours comme desservie | Recherche « qui intervient dans ma wilaya » |
+| Demande de service | Une demande ouverte par client et par service ; limite quotidienne réglable ; plans PDF/images | Éviter le harcèlement d'un prestataire |
+| Coordonnées | Le prestataire voit celles du client dès la demande ; le client voit celles du prestataire après acceptation du devis | Le prestataire doit pouvoir poser des questions ; le client décide quand il s'engage |
+| Profil ingénieur | Expérience ajoutée à SM Core (donnée de l'entreprise) ; références dans `sm-services` | Le profil appartient au compte ; les références illustrent les services |
+| IA | Rappel sur les pages d'ingénierie : aucun outil de la plateforme ne remplace un calcul ni la signature d'un ingénieur | « L'IA ne remplace jamais l'ingénierie » |

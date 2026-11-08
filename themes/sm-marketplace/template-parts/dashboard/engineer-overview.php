@@ -11,7 +11,9 @@ defined( 'ABSPATH' ) || exit;
 $account  = $args['account'];
 $kpis     = $account['kpis'];
 $is_demo  = empty( $account['real'] );
-$services = sm_theme_services( array( 'company' => $account['company']['slug'] ) );
+$mine     = $is_demo ? null : sm_theme_data( 'my_services' );
+$services = is_array( $mine ) && isset( $mine['items'] ) ? $mine['items'] : sm_theme_services( array( 'company' => $account['company']['slug'] ) );
+$svc_set  = $is_demo ? array() : (array) sm_theme_data( 'services_settings' );
 $requests = $is_demo ? array() : array_slice( (array) sm_theme_data( 'enquiries', array( 'box' => 'received' ) ), 0, 5 );
 $status   = array(
 	'new'      => array( 'info', __( 'New', 'sm-marketplace' ) ),
@@ -22,7 +24,7 @@ $status   = array(
 <ul class="sm-kpis">
 	<li><span><?php esc_html_e( 'New requests', 'sm-marketplace' ); ?></span><strong><?php echo esc_html( $kpis['requests'] ); ?></strong></li>
 	<li><span><?php esc_html_e( 'Profile views (30 days)', 'sm-marketplace' ); ?></span><strong><?php echo esc_html( sm_number( $kpis['views'] ) ); ?></strong></li>
-	<li><span><?php esc_html_e( 'Quotes sent', 'sm-marketplace' ); ?></span><strong><?php echo esc_html( $kpis['quotes'] ); ?></strong></li>
+	<li><span><?php esc_html_e( 'New service requests', 'sm-marketplace' ); ?></span><strong><?php echo esc_html( (int) ( $svc_set['new_requests'] ?? $kpis['quotes'] ) ); ?></strong></li>
 	<li><span><?php esc_html_e( 'Verification', 'sm-marketplace' ); ?></span><strong class="sm-kpis__badge"><?php sm_icon( $account['company']['verification'] >= 1 ? 'verified' : 'shield' ); ?><?php echo esc_html( sm_verification_label( $account['company']['verification'] ) ); ?></strong></li>
 </ul>
 
@@ -53,9 +55,11 @@ $status   = array(
 			<h3 class="sm-panel__subtitle"><?php esc_html_e( 'My services', 'sm-marketplace' ); ?></h3>
 			<ul class="sm-rowlist">
 				<?php foreach ( $services as $s ) : ?>
-					<li><span class="sm-rowlist__icon"><?php sm_icon( 'hard-hat' ); ?></span><div><?php sm_e( $s['title'] ); ?></div></li>
+					<li><span class="sm-rowlist__icon"><?php sm_icon( 'hard-hat' ); ?></span><div><?php if ( isset( $s['status'] ) ) : ?><a href="<?php echo esc_url( sm_page_url( 'service', array( 'id' => $s['id'] ) ) ); ?>"><?php sm_e( $s['title'] ); ?></a><?php else : ?><?php sm_e( $s['title'] ); ?><?php endif; ?></div></li>
 				<?php endforeach; ?>
 			</ul>
+		<?php elseif ( ! $is_demo ) : ?>
+			<a class="sm-btn sm-btn--accent sm-btn--block" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'services', 'new' => 1 ) ) ); ?>"><?php sm_icon( 'plus' ); ?><?php esc_html_e( 'Publish my first service', 'sm-marketplace' ); ?></a>
 		<?php endif; ?>
 		<a class="sm-btn sm-btn--primary sm-btn--block" href="<?php echo esc_url( sm_page_url( 'account', array_merge( $is_demo ? array( 'account' => 'engineer' ) : array(), array( 'view' => 'profile' ) ) ) ); ?>"><?php sm_icon( 'user' ); ?><?php esc_html_e( 'Complete my professional profile', 'sm-marketplace' ); ?></a>
 	</section>

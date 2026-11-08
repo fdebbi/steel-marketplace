@@ -38,6 +38,10 @@ if ( ! $is_eng ) {
 if ( $services ) {
 	$tabs['services'] = array( __( 'Services', 'sm-marketplace' ), count( $services ) );
 }
+$references = array_filter( (array) sm_theme_data( 'portfolio', array( 'company' => $company['slug'] ) ), 'is_array' );
+if ( $references ) {
+	$tabs['references'] = array( __( 'References', 'sm-marketplace' ), count( $references ) );
+}
 $tabs['about'] = array( __( 'About', 'sm-marketplace' ), 0 );
 ?>
 <section class="sm-company-head<?php echo $is_eng ? ' sm-company-head--eng' : ''; ?>">
@@ -51,6 +55,9 @@ $tabs['about'] = array( __( 'About', 'sm-marketplace' ), 0 );
 				<p class="sm-company-head__meta">
 					<span><?php sm_icon( 'map-pin' ); ?><?php echo esc_html( sm_t( $wilayas[ $company['wilaya'] ] ?? '' ) ); ?></span>
 					<span class="sm-seller__badge<?php echo $company['verification'] >= 2 ? ' is-verified' : ''; ?>"><?php sm_icon( $company['verification'] >= 2 ? 'verified' : 'shield' ); ?><?php echo esc_html( sm_verification_label( $company['verification'] ) ); ?></span>
+					<?php if ( ! empty( $company['experience'] ) ) : ?>
+						<span><?php sm_icon( 'hard-hat' ); ?><?php echo esc_html( sprintf( /* translators: %d: years. */ _n( '%d year of experience', '%d years of experience', (int) $company['experience'], 'sm-marketplace' ), (int) $company['experience'] ) ); ?></span>
+					<?php endif; ?>
 					<span>
 						<?php
 						/* translators: %s: year. */
@@ -100,6 +107,13 @@ $tabs['about'] = array( __( 'About', 'sm-marketplace' ), 0 );
 		</section>
 	<?php endif; ?>
 
+	<?php if ( $references ) : ?>
+		<section id="tab-references" class="sm-section">
+			<div class="sm-section__head"><h2><?php esc_html_e( 'References', 'sm-marketplace' ); ?></h2></div>
+			<?php sm_component( 'portfolio-grid', array( 'items' => $references ) ); ?>
+		</section>
+	<?php endif; ?>
+
 	<section id="tab-about" class="sm-section sm-about">
 		<div class="sm-panel">
 			<h2 class="sm-panel__title"><?php esc_html_e( 'About', 'sm-marketplace' ); ?></h2>
@@ -110,12 +124,20 @@ $tabs['about'] = array( __( 'About', 'sm-marketplace' ), 0 );
 			<?php endif; ?>
 		</div>
 		<?php if ( $is_eng ) : ?>
-			<div class="sm-panel">
-				<h2 class="sm-panel__title"><?php esc_html_e( 'Qualifications', 'sm-marketplace' ); ?></h2>
-				<ul class="sm-checklist"><?php foreach ( (array) ( $company['qualifications'] ?? array() ) as $q ) : ?><li><?php sm_icon( 'verified' ); ?><?php sm_e( $q ); ?></li><?php endforeach; ?></ul>
-				<h3 class="sm-panel__subtitle"><?php esc_html_e( 'Specialisations', 'sm-marketplace' ); ?></h3>
-				<ul class="sm-tags"><?php foreach ( (array) ( $company['specialities'] ?? array() ) as $s ) : ?><li><?php sm_e( $s ); ?></li><?php endforeach; ?></ul>
-			</div>
+			<?php $quals = array_filter( (array) ( $company['qualifications'] ?? array() ) ); ?>
+			<?php $specs = array_filter( (array) ( $company['specialities'] ?? array() ) ); ?>
+			<?php if ( $quals || $specs ) : ?>
+				<div class="sm-panel">
+					<?php if ( $quals ) : ?>
+						<h2 class="sm-panel__title"><?php esc_html_e( 'Qualifications', 'sm-marketplace' ); ?></h2>
+						<ul class="sm-checklist"><?php foreach ( $quals as $q ) : ?><li><?php sm_icon( 'verified' ); ?><?php sm_e( $q ); ?></li><?php endforeach; ?></ul>
+					<?php endif; ?>
+					<?php if ( $specs ) : ?>
+						<h3 class="sm-panel__subtitle"><?php esc_html_e( 'Specialisations', 'sm-marketplace' ); ?></h3>
+						<ul class="sm-tags"><?php foreach ( $specs as $sp ) : ?><li><?php sm_e( $sp ); ?></li><?php endforeach; ?></ul>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
 		<?php else : ?>
 			<div class="sm-panel">
 				<h2 class="sm-panel__title"><?php esc_html_e( 'Company details', 'sm-marketplace' ); ?></h2>
