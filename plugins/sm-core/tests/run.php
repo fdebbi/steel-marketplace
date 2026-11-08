@@ -328,6 +328,144 @@ sm_assert( null === Companies::get( $c_sup )->lat, 'PATCH /me/company with empty
 wp_set_current_user( 0 );
 sm_assert( isset( apply_filters( 'sm_theme_data_map', null )['tiles'] ) && 69 === count( apply_filters( 'sm_theme_data_wilaya_centres', null ) ), 'theme receives map settings and wilaya centres' );
 
+/* ------------------------------------------------------------------ */
+sm_section( '13. E-mails, templates and activity journal' );
+use SM\Core\Audit\AuditLog;
+use SM\Core\Mail\Activity;
+use SM\Core\Mail\Contact;
+use SM\Core\Mail\Events;
+use SM\Core\Mail\Mailer;
+use SM\Core\Mail\Settings as MailSettings;
+use SM\Core\Mail\Templates;
+use SM\Core\Notifications\Notifications;
+
+$GLOBALS['sm_mails'] = array();
+$GLOBALS['sm_mail_fail'] = false;
+// Recording is done by the capture at the top of this file; this one only simulates failures.
+$sm_catch = static fn( $null, $atts ) => $GLOBALS['sm_mail_fail'] ? false : $null;
+add_filter( 'pre_wp_mail', $sm_catch, 99, 2 );
+$mail_settings_before  = get_option( MailSettings::OPTION, null );
+$mail_templates_before = get_option( Templates::OPTION, null );
+$digest_before         = get_option( Activity::DIGEST_OPTION, null );
+delete_option( MailSettings::OPTION );
+delete_option( Templates::OPTION );
+$_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+$mails = static function () {
+	$m = $GLOBALS['sm_mails'];
+	$GLOBALS['sm_mails'] = array();
+	return $m;
+};
+$hdr = static fn( $m ) => implode( "\n", (array) $m['headers'] );
+
+sm_assert( array( 'contact@reusteel.com' ) === MailSettings::admin_emails(), 'default administrator address: contact@reusteel.com' );
+sm_assert( 'now' === MailSettings::admin_mode( 'account.registered' ) && 'digest' === MailSettings::admin_mode( 'enquiry.sent' ) && MailSettings::user_on( 'account.registered' ) && ! MailSettings::user_on( 'enquiry.sent' ), 'default modes: registration now + welcome, enquiries in the summary' );
+sm_assert( 'off' === MailSettings::admin_mode( 'unknown.event' ) && ! MailSettings::user_on( 'auth.locked' ), 'unknown event off; security events have no user e-mail' );
+$keys = array_keys( Events::all() );
+sm_assert( ! array_diff( array( 'account.registered', 'verification.submitted', 'contact.sent', 'enquiry.sent', 'auth.locked' ), $keys ), 'core events registered' );
+
+sm_assert( 'Bonjour Ali, IPE 270' === Templates::replace( 'Bonjour {nom}, {titre}{inconnu}', array( 'nom' => 'Ali', 'titre' => 'IPE 270' ) ), 'variables replaced, unknown ones empty' );
+$html = Templates::body_html( "Ligne 1\nLigne 2\n\nVoir https://example.com/a?b=1&c=2.\n\n{x}", array( 'x' => '<script>alert(1)</script>' ) );
+sm_assert( 3 === substr_count( $html, '<p ' ) && false !== strpos( $html, '<br>' ) && false !== strpos( $html, 'href="https://example.com/a?b=1&#038;c=2"' ) && false === strpos( $html, '<script>' ), 'body: paragraphs, line breaks, links, values escaped' );
+sm_assert( 'A B' === Templates::subject( "A\n<b>B</b>", array() ), 'subject: one plain line' );
+
+$fr = Templates::default_text( 'event:account.registered:user', 'fr' );
+$ar = Templates::default_text( 'event:account.registered:user', 'ar' );
+sm_assert( false !== strpos( $fr[0], 'Bienvenue' ) && false !== strpos( $ar[0], 'مرحبًا' ) && false !== strpos( $ar[1], '{entreprise}' ), 'default welcome e-mail translated (FR/AR), variables kept' );
+Templates::save( 'event:account.registered:user', 'fr', 'Salut {nom}', '' );
+$got = Templates::get( 'event:account.registered:user', 'fr' );
+sm_assert( 'Salut {nom}' === $got[0] && $got[1] === $fr[1] && Templates::get( 'event:account.registered:user', 'ar' ) === $ar, 'edited subject used, empty body falls back to the default, other language untouched' );
+sm_assert( Templates::is_custom( 'event:account.registered:user' ), 'template marked as edited' );
+Templates::reset( 'event:account.registered:user' );
+sm_assert( Templates::get( 'event:account.registered:user', 'fr' ) === $fr && ! Templates::is_custom( 'event:account.registered:user' ), 'reset brings back the default' );
+sm_assert( null === Templates::default_text( 'event:nope:user', 'fr' ) && array( '{titre}', '{message}' ) === Templates::default_text( 'notice:verification.approved', 'fr' ), 'unknown template refused; notification template defaults to its built-in text' );
+
+// Contact form: admin alert with Reply-To + acknowledgement in the visitor's language.
+$mails();
+AuditLog::add( 'contact.sent', 'contact', 0, array( 'name' => 'Ali Test', 'email' => 'ali.smtest@example.test', 'phone' => '0550 00 00 00', 'subject' => 'Prix IPE', 'message' => 'Bonjour, combien ?', 'lang' => 'ar' ) );
+$m = $mails();
+sm_assert( 2 === count( $m ), 'contact message: 2 e-mails' );
+sm_assert( 'contact@reusteel.com' === $m[0]['to'] && false !== strpos( $m[0]['subject'], 'Prix IPE' ) && false !== strpos( $hdr( $m[0] ), 'Reply-To: ali.smtest@example.test' ) && false !== strpos( $hdr( $m[0] ), 'From: "ReuSteel" <contact@reusteel.com>' ), 'admin alert: subject, Reply-To = visitor, From = platform' );
+sm_assert( 'ali.smtest@example.test' === $m[1]['to'] && false !== strpos( $m[1]['subject'], 'استلمنا' ) && false !== strpos( $m[1]['message'], 'dir="rtl"' ), 'acknowledgement in Arabic, right to left' );
+sm_assert( false !== strpos( $m[0]['message'], 'Bonjour, combien ?' ) && false !== strpos( $m[0]['message'], 'Nom' ), 'admin alert in French with the message' );
+
+// Switches.
+MailSettings::save( array( 'events' => array( 'contact.sent' => array( 'admin' => 'off', 'user' => false ) ) ) );
+AuditLog::add( 'contact.sent', 'contact', 0, array( 'name' => 'Ali Test', 'email' => 'ali.smtest@example.test', 'subject' => 'X', 'message' => 'Y', 'lang' => 'fr' ) );
+sm_assert( 0 === count( $mails() ), 'admin alert and acknowledgement can be turned off' );
+MailSettings::save( array( 'admins' => 'a.smtest@example.test, b.smtest@example.test', 'admin_lang' => 'ar', 'events' => array( 'contact.sent' => array( 'admin' => 'now', 'user' => false ) ) ) );
+AuditLog::add( 'contact.sent', 'contact', 0, array( 'name' => 'Ali Test', 'email' => 'ali.smtest@example.test', 'subject' => 'Z', 'message' => 'Y', 'lang' => 'fr' ) );
+$m = $mails();
+sm_assert( 2 === count( $m ) && 'b.smtest@example.test' === $m[1]['to'] && false !== strpos( $m[0]['subject'], 'اتصال' ), 'several administrators, alerts in the chosen language (Arabic)' );
+
+// Daily summary.
+MailSettings::save( array( 'admins' => 'contact@reusteel.com', 'admin_lang' => 'fr', 'events' => array( 'contact.sent' => array( 'admin' => 'digest', 'user' => false ) ) ) );
+Activity::send_digest(); // Starts from now.
+$mails();
+AuditLog::add( 'contact.sent', 'contact', 0, array( 'name' => 'Nadia Test', 'email' => 'n.smtest@example.test', 'subject' => 'Sujet 1', 'message' => 'Y', 'lang' => 'fr' ) );
+AuditLog::add( 'contact.sent', 'contact', 0, array( 'name' => 'Omar Test', 'email' => 'o.smtest@example.test', 'subject' => 'Sujet 2', 'message' => 'Y', 'lang' => 'fr' ) );
+sm_assert( 0 === count( $mails() ), 'digest mode: nothing sent immediately' );
+$sent = Activity::send_digest();
+$m    = $mails();
+sm_assert( 1 === $sent && 1 === count( $m ) && false !== strpos( $m[0]['message'], 'Nadia Test' ) && false !== strpos( $m[0]['message'], 'Omar Test' ) && false !== strpos( $m[0]['subject'], 'résumé' ), 'daily summary lists the events since the last one' );
+sm_assert( 0 === Activity::send_digest() && 0 === count( $mails() ), 'nothing new: no summary' );
+update_option( Activity::DIGEST_OPTION, array( 'last_id' => 0, 'date' => wp_date( 'Y-m-d' ) ) );
+sm_assert( false === Activity::maybe_digest(), 'one summary per day at most' );
+
+// E-mail log, failures, resend, verification codes.
+$GLOBALS['sm_mail_fail'] = true;
+$ok = Mailer::send( 'fail.smtest@example.test', 'fr', 'Échec', '<p>x</p>', array( 'event' => 'test' ) );
+$GLOBALS['sm_mail_fail'] = false;
+$log = Mailer::query( array( 'q' => 'fail.smtest' ) );
+sm_assert( ! $ok && 'failed' === ( $log['items'][0]->status ?? '' ), 'failed e-mail recorded as failed' );
+Mailer::send( 'log.smtest@example.test', 'fr', 'Journal', '<p>Bonjour</p>', array( 'event' => 'test' ) );
+$row = Mailer::query( array( 'q' => 'log.smtest' ) )['items'][0];
+sm_assert( 'sent' === $row->status && false !== strpos( (string) Mailer::get( $row->id )->body, 'Bonjour' ), 'sent e-mail recorded with its content' );
+$mails();
+sm_assert( Mailer::resend( $row->id ) && 'log.smtest@example.test' === ( $mails()[0]['to'] ?? '' ), 'e-mail sent again from the log' );
+Mailer::send( 'otp.smtest@example.test', 'fr', 'Code', '<p>123456</p>', array( 'event' => 'otp' ) );
+sm_assert( '' === (string) Mailer::get( Mailer::query( array( 'q' => 'otp.smtest' ) )['items'][0]->id )->body, 'verification codes are never kept in the log' );
+
+// Notification e-mails: switch and rewritten template.
+list( $u_n, $c_n ) = sm_test_company( 'mail', 'commercial', array( 'supplier' ) );
+update_user_meta( $u_n, 'sm_locale', 'fr' );
+$mails();
+Templates::save( 'notice:verification.approved', 'fr', 'Bravo {nom} !', "{message}\n\nL’équipe {site}" );
+Notifications::notify( array( $u_n ), 'verification.approved' );
+$m = $mails();
+sm_assert( 1 === count( $m ) && 'Bravo Test mail !' === $m[0]['subject'] && false !== strpos( $m[0]['message'], 'L’équipe ReuSteel' ), 'notification e-mail uses the rewritten template' );
+MailSettings::save( array( 'notices' => array( 'verification.approved' => false ) ) );
+Notifications::notify( array( $u_n ), 'verification.approved' );
+sm_assert( 0 === count( $mails() ) && 2 === count( Notifications::for_user( $u_n ) ), 'notification e-mail off: in-app notification still created' );
+
+// Journal.
+$e = AuditLog::entry( (object) array( 'id' => 0, 'action' => 'contact.sent', 'user_id' => 0, 'company_id' => 0, 'object_type' => 'contact', 'object_id' => 0, 'ip' => '', 'data' => wp_json_encode( array( 'name' => 'Ali', 'subject' => 'Prix' ) ), 'created_at' => '' ) );
+sm_assert( false !== strpos( Activity::describe( $e ), 'Ali' ) && false !== strpos( Activity::describe( $e ), 'Prix' ), 'journal sentence of an event' );
+$e->action = 'auth.password_changed';
+$e2 = clone $e;
+$e2->action = 'weird.thing';
+sm_assert( 'Mot de passe modifié' === Language::with_language( 'fr', static fn() => Activity::describe( $e ) ) && 'weird.thing' === Activity::describe( $e2 ), 'journal labels for other actions, raw code otherwise' );
+sm_assert( 'messages' === Activity::group_of( 'contact.sent' ) && 'security' === Activity::group_of( 'auth.failed' ), 'journal groups' );
+$n_all = AuditLog::query( array( 'q' => 'smtest@example.test', 'count' => true ) );
+$n_msg = AuditLog::query( array( 'q' => 'smtest@example.test', 'prefixes' => array( 'contact.' ), 'count' => true ) );
+$n_ex  = AuditLog::query( array( 'q' => 'smtest@example.test', 'exclude' => array( 'contact.sent' ), 'count' => true ) );
+sm_assert( $n_all >= 5 && $n_msg === $n_all && 0 === $n_ex, 'journal filters: text, group prefixes, excluded actions' );
+sm_assert( $n_all === AuditLog::query( array( 'q' => 'smtest@example.test', 'from' => wp_date( 'Y-m-d' ), 'to' => wp_date( 'Y-m-d' ), 'count' => true ) ) && 0 === AuditLog::query( array( 'q' => 'smtest@example.test', 'to' => '2000-01-01', 'count' => true ) ), 'journal filters: dates' );
+
+// Contact form validation.
+list( $err ) = Contact::validate( array( 'name' => 'A', 'email' => 'x', 'phone' => 'abc', 'subject' => '', 'message' => 'court' ) );
+sm_assert( array( 'name', 'email', 'phone', 'subject', 'message' ) === array_keys( $err ), 'contact form: every field checked' );
+list( $err, $data ) = Contact::validate( array( 'name' => 'Ali Benali', 'email' => 'ali@example.dz', 'phone' => '', 'subject' => 'Compte', 'message' => 'Bonjour, une question.' ) );
+sm_assert( ! $err && 'ali@example.dz' === $data['email'], 'contact form: valid message accepted (phone optional)' );
+
+// Restore.
+global $wpdb;
+$wpdb->query( "DELETE FROM {$wpdb->prefix}sm_mail_log WHERE recipient LIKE '%smtest@example.test' OR recipient = 'contact@reusteel.com' AND subject LIKE '%Prix IPE%'" );
+$wpdb->query( "DELETE FROM {$wpdb->prefix}sm_audit_log WHERE action = 'contact.sent' AND data LIKE '%smtest@example.test%'" );
+foreach ( array( MailSettings::OPTION => $mail_settings_before, Templates::OPTION => $mail_templates_before, Activity::DIGEST_OPTION => $digest_before ) as $opt => $val ) {
+	null === $val ? delete_option( $opt ) : update_option( $opt, $val, false );
+}
+remove_filter( 'pre_wp_mail', $sm_catch, 99 );
+
 sm_test_cleanup();
 
 $t = $GLOBALS['sm_t'];

@@ -1,5 +1,14 @@
 # Changelog — sm-core
 
+## 0.4.0 — 2026-11-08 (Phase 8.1 : e-mails et journal d'activité)
+
+- *SM → E-mails* : catalogue d'événements (filtre `sm_mail_events`), alerte aux administrateurs immédiate / résumé quotidien / non, confirmation à l'utilisateur, modèles FR/AR modifiables avec variables, aperçu, test, retour au texte par défaut ; e-mails des notifications activables et réécrivables (`notice:{type}`) ; expéditeur, destinataires, langue des alertes, heure du résumé, conservation.
+- Envoi commun (`Mail\Mailer`) : mise en page unique (RTL en arabe), en-têtes From et Reply-To, journal des e-mails `sm_mail_log` (statut, erreur, lecture, renvoi ; codes de vérification jamais conservés).
+- Résumé quotidien des événements choisis (tâche `sm_mail_hourly`).
+- *SM → Journal d'activité* (remplace « Journal d'audit ») : phrases lisibles, groupes, filtres par dates et recherche (nom, e-mail, entreprise, IP), export CSV, connexions réussies rangées sous « Sécurité » ; chaque nouvelle entrée déclenche `sm_audit_logged`.
+- Formulaire de contact (`sm_contact`) : validation, limite de 5 messages par heure, alerte avec Reply-To, accusé de réception.
+- Base de données version 4 (table `sm_mail_log`). 35 tests ajoutés.
+
 ## 0.3.3 — 2026-11-08
 
 - Profil professionnel : années d'expérience (`profile[experience_years]`), exposées au thème (`experience`).

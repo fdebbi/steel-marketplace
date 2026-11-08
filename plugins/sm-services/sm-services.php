@@ -3,7 +3,7 @@
  * Plugin Name:       SM Services
  * Plugin URI:        https://github.com/fdebbi/steel-marketplace
  * Description:       Fabrication, site and engineering services: two separate catalogues (fabrication & site work for business accounts, engineering for engineering accounts), service pages with photos, capabilities, equipment and coverage, service requests answered with a quote, engineer profiles with experience and references. Requires SM Core.
- * Version:           0.1.0
+ * Version:           0.1.1
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Requires Plugins:  sm-core
@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_SERVICES_VERSION', '0.1.0' );
+define( 'SM_SERVICES_VERSION', '0.1.1' );
 define( 'SM_SERVICES_DB_VERSION', 1 );
 define( 'SM_SERVICES_FILE', __FILE__ );
 define( 'SM_SERVICES_DIR', __DIR__ );

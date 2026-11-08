@@ -42,6 +42,157 @@ msgstr "ReuSteel"
 msgid "SM Services needs the SM Core plugin. Activate it first."
 msgstr "يتطلب SM Services إضافة SM Core. فعّلها أولًا."
 
+#: src/Activity.php:64
+msgid "New service page"
+msgstr "صفحة خدمة جديدة"
+
+#. translators: 1: company, 2: service.
+#: src/Activity.php:72
+msgid "%1$s published the service \"%2$s\""
+msgstr "نشرت %1$s الخدمة «%2$s»"
+
+#: src/Activity.php:75
+msgid "New service: {titre}"
+msgstr "خدمة جديدة: {titre}"
+
+#: src/Activity.php:76
+msgid ""
+"{entreprise} ({wilaya}) published a service page.\n"
+"\n"
+"{titre}\n"
+"Catalogue: {catalogue}\n"
+"\n"
+"By {nom} — {email} — {telephone}\n"
+"\n"
+"{lien}"
+msgstr ""
+"نشرت {entreprise} ({wilaya}) صفحة خدمة.\n"
+"\n"
+"{titre}\n"
+"الكتالوج: {catalogue}\n"
+"\n"
+"بواسطة {nom} — {email} — {telephone}\n"
+"\n"
+"{lien}"
+
+#: src/Activity.php:79
+msgid "Your service page is saved: {titre}"
+msgstr "تم حفظ صفحة خدمتك: {titre}"
+
+#: src/Activity.php:80
+msgid ""
+"Your service page \"{titre}\" is saved on {site}. Clients find it by service and wilaya and send you their requests, which you answer with a quote.\n"
+"\n"
+"See your page:\n"
+"{lien}\n"
+"\n"
+"Tip: add photos of your work and your references; they reassure clients.\n"
+"\n"
+"The {site} team"
+msgstr ""
+"تم حفظ صفحة خدمتك «{titre}» على {site}. يجدها العملاء حسب الخدمة والولاية ويرسلون إليك طلباتهم، فترد عليها بعرض سعر.\n"
+"\n"
+"عرض صفحتك:\n"
+"{lien}\n"
+"\n"
+"نصيحة: أضف صورًا لأعمالك ومراجعك؛ فهي تطمئن العملاء.\n"
+"\n"
+"فريق {site}"
+
+#: src/Activity.php:87
+msgid "Service request sent"
+msgstr "طلب خدمة مرسل"
+
+#. translators: 1: client, 2: provider, 3: service.
+#: src/Activity.php:94
+msgid "%1$s asked %2$s for a quote (\"%3$s\")"
+msgstr "طلبت %1$s عرض سعر من %2$s («%3$s»)"
+
+#: src/Activity.php:97
+msgid "Service request: {client} → {prestataire}"
+msgstr "طلب خدمة: {client} ← {prestataire}"
+
+#: src/Activity.php:98
+msgid ""
+"{client} ({wilaya}) asked {prestataire} for a quote about \"{titre}\".\n"
+"\n"
+"{message}\n"
+"\n"
+"Client: {nom} — {email} — {telephone}"
+msgstr ""
+"طلبت {client} ({wilaya}) عرض سعر من {prestataire} بخصوص «{titre}».\n"
+"\n"
+"{message}\n"
+"\n"
+"العميل: {nom} — {email} — {telephone}"
+
+#: src/Activity.php:101
+msgid "Your request is sent to {prestataire}"
+msgstr "تم إرسال طلبك إلى {prestataire}"
+
+#: src/Activity.php:102
+msgid ""
+"Your request about \"{titre}\" was sent to {prestataire}. You are told by e-mail when the quote arrives.\n"
+"\n"
+"The {site} team"
+msgstr ""
+"تم إرسال طلبك بخصوص «{titre}» إلى {prestataire}. سيتم إبلاغك بالبريد فور وصول عرض السعر.\n"
+"\n"
+"فريق {site}"
+
+#: src/Activity.php:108
+msgid "Service quote accepted"
+msgstr "عرض سعر خدمة مقبول"
+
+#. translators: 1: client, 2: provider, 3: amount.
+#: src/Activity.php:114
+msgid "%1$s accepted the quote of %2$s (%3$s)"
+msgstr "قبلت %1$s عرض سعر %2$s (%3$s)"
+
+#: src/Activity.php:117
+msgid "Deal: {client} accepted the quote of {prestataire}"
+msgstr "صفقة: {client} قبلت عرض سعر {prestataire}"
+
+#: src/Activity.php:118
+msgid ""
+"{client} accepted the quote of {prestataire} for \"{titre}\".\n"
+"\n"
+"Amount: {montant}\n"
+"Time: {delai} days"
+msgstr ""
+"قبلت {client} عرض سعر {prestataire} لـ«{titre}».\n"
+"\n"
+"المبلغ: {montant}\n"
+"المدة: {delai} يومًا"
+
+#: src/Activity.php:127
+msgid "Service page saved"
+msgstr "تم حفظ صفحة الخدمة"
+
+#: src/Activity.php:128
+msgid "Service page status changed"
+msgstr "تغيّرت حالة صفحة الخدمة"
+
+#: src/Activity.php:129
+msgid "Quote sent for a service request"
+msgstr "عرض سعر مرسل لطلب خدمة"
+
+#: src/Activity.php:130
+msgid "Quote declined by the client"
+msgstr "عرض سعر رفضه العميل"
+
+#: src/Activity.php:131
+msgid "Service request declined by the provider"
+msgstr "اعتذر مقدم الخدمة عن الطلب"
+
+#: src/Activity.php:132
+msgid "Service request cancelled"
+msgstr "تم إلغاء طلب الخدمة"
+
+#: src/Activity.php:133 src/Admin/Admin.php:69
+msgid "Service"
+msgstr "الخدمة"
+
 #: src/Admin/Admin.php:29 src/Admin/Admin.php:47
 msgid "Services"
 msgstr "الخدمات"
@@ -77,10 +228,6 @@ msgstr "تم الحفظ."
 #: src/Admin/Admin.php:66
 msgid "Nothing here."
 msgstr "لا شيء هنا."
-
-#: src/Admin/Admin.php:69
-msgid "Service"
-msgstr "الخدمة"
 
 #: src/Admin/Admin.php:69
 msgid "Provider"

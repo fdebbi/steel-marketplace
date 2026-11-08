@@ -45,6 +45,7 @@ final class Rfqs {
 
 	/** Create or update from a checked Spec result. */
 	public static function save( $id, $company_id, $user_id, array $spec, $status, $files = null ) {
+		$is_new = ! $id;
 		global $wpdb;
 		$now = current_time( 'mysql', true );
 		$d   = $spec['data'];
@@ -66,7 +67,7 @@ final class Rfqs {
 		if ( null !== $files ) {
 			Media::set( 'rfq', $id, 'file', $files );
 		}
-		AuditLog::add( 'rfq.saved', 'rfq', $id, array( 'status' => $status ), $user_id, $company_id );
+		AuditLog::add( 'rfq.saved', 'rfq', $id, array( 'status' => $status, 'new' => $is_new ), $user_id, $company_id );
 		return (int) $id;
 	}
 

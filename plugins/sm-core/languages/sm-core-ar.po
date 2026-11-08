@@ -24,12 +24,12 @@ msgstr "https://github.com/fdebbi/steel-marketplace"
 msgid ""
 "Central foundation of Steel Marketplace: accounts and companies, business "
 "activities, permissions, verification, languages (/ar/), notifications, "
-"enquiries, audit log and the sm/v1 REST API. Every other sm-* plugin depends"
-" on it."
+"enquiries, e-mail alerts with editable templates, activity journal, contact "
+"form and the sm/v1 REST API. Every other sm-* plugin depends on it."
 msgstr ""
-"الأساس المركزي لـ Steel Marketplace: الحسابات والمؤسسات، الأنشطة، الصلاحيات،"
-" التوثيق، اللغات (/ar/)، الإشعارات، الاستفسارات، سجل المراجعة وواجهة REST "
-"sm/v1. تعتمد عليه كل إضافات sm-* الأخرى."
+"أساس المنصة: الحسابات والمؤسسات، الأنشطة، الصلاحيات، التوثيق، اللغات (/ar/)،"
+" الإشعارات، الاستفسارات، تنبيهات البريد الإلكتروني بنماذج قابلة للتعديل، سجل"
+" النشاط، نموذج الاتصال وواجهة REST sm/v1. تعتمد عليها كل إضافات sm-* الأخرى."
 
 #. Author of the plugin
 #: sm-core.php
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Manufacturer"
 msgstr "مصنّع"
 
-#: src/Accounts/Companies.php:39
+#: src/Accounts/Companies.php:39 src/Mail/Templates.php:153
 msgid "Supplier / distributor"
 msgstr "مورد / موزع"
 
@@ -116,23 +116,23 @@ msgstr "اختر ولايتك."
 msgid "Enter a valid e-mail address."
 msgstr "أدخل بريدا إلكترونيا صحيحا."
 
-#: src/Accounts/CompanyForms.php:94
+#: src/Accounts/CompanyForms.php:95
 msgid "Company profile saved."
 msgstr "تم حفظ ملف المؤسسة."
 
-#: src/Accounts/CompanyForms.php:105 src/Accounts/Registration.php:113
+#: src/Accounts/CompanyForms.php:106 src/Accounts/Registration.php:113
 msgid "Enter your full name."
 msgstr "أدخل اسمك الكامل."
 
-#: src/Accounts/CompanyForms.php:118
+#: src/Accounts/CompanyForms.php:119
 msgid "Your current password is not correct."
 msgstr "كلمة المرور الحالية غير صحيحة."
 
-#: src/Accounts/CompanyForms.php:120 src/Accounts/Registration.php:138
+#: src/Accounts/CompanyForms.php:121 src/Accounts/Registration.php:138
 msgid "The password must have at least 10 characters."
 msgstr "يجب أن تتكون كلمة المرور من 10 أحرف على الأقل."
 
-#: src/Accounts/CompanyForms.php:138
+#: src/Accounts/CompanyForms.php:139
 msgid "Settings saved."
 msgstr "تم حفظ الإعدادات."
 
@@ -239,19 +239,19 @@ msgstr "التوثيقات"
 msgid "Rights"
 msgstr "الصلاحيات"
 
-#: src/Admin/Admin.php:48 src/Admin/Admin.php:300
+#: src/Admin/Admin.php:48 src/Admin/Admin.php:301
 msgid "Wilayas"
 msgstr "الولايات"
 
-#: src/Admin/Admin.php:49 src/Admin/Admin.php:319
+#: src/Admin/Admin.php:49 src/Admin/Admin.php:320
 msgid "Settings"
 msgstr "الإعدادات"
 
-#: src/Admin/Admin.php:50 src/Admin/Admin.php:347
-msgid "Audit log"
-msgstr "سجل المراجعة"
+#: src/Admin/Admin.php:50 src/Admin/MailAdmin.php:546
+msgid "Activity journal"
+msgstr "سجل النشاط"
 
-#: src/Admin/Admin.php:64
+#: src/Admin/Admin.php:64 src/Admin/MailAdmin.php:72
 msgid "Saved."
 msgstr "تم الحفظ."
 
@@ -291,7 +291,7 @@ msgstr "الحسابات الهندسية"
 msgid "Verified (level 2+)"
 msgstr "موثقة (المستوى 2+)"
 
-#: src/Admin/Admin.php:100 src/Admin/Admin.php:247
+#: src/Admin/Admin.php:100 src/Admin/Admin.php:248
 msgid "Verifications to review"
 msgstr "توثيقات للمراجعة"
 
@@ -321,7 +321,7 @@ msgid "All statuses"
 msgstr "كل الحالات"
 
 #: src/Admin/Admin.php:131 src/Admin/Admin.php:148 src/Admin/Admin.php:204
-#: src/Admin/Admin.php:305
+#: src/Admin/Admin.php:306
 msgid "Active"
 msgstr "نشط"
 
@@ -329,15 +329,18 @@ msgstr "نشط"
 msgid "Suspended"
 msgstr "موقوف"
 
-#: src/Admin/Admin.php:132 src/Admin/Admin.php:348
+#: src/Admin/Admin.php:132 src/Admin/MailAdmin.php:264
+#: src/Admin/MailAdmin.php:558
 msgid "Filter"
 msgstr "تصفية"
 
-#: src/Admin/Admin.php:133
+#: src/Admin/Admin.php:133 src/Admin/MailAdmin.php:564
+#: src/Admin/MailAdmin.php:597
 msgid "Company"
 msgstr "المؤسسة"
 
-#: src/Admin/Admin.php:133 src/Admin/Admin.php:173
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:173 src/Admin/MailAdmin.php:564
+#: src/Admin/MailAdmin.php:597
 msgid "Type"
 msgstr "النوع"
 
@@ -349,11 +352,12 @@ msgstr "الأنشطة"
 msgid "Wilaya"
 msgstr "الولاية"
 
-#: src/Admin/Admin.php:133
+#: src/Admin/Admin.php:133 src/Mail/Events.php:46
 msgid "Verification"
 msgstr "التوثيق"
 
-#: src/Admin/Admin.php:133 src/Admin/Admin.php:204
+#. translators: %d: count.
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:204 src/Admin/MailAdmin.php:265
 msgid "Status"
 msgstr "الحالة"
 
@@ -381,7 +385,8 @@ msgstr "يحدد عند التسجيل"
 msgid "Phone"
 msgstr "الهاتف"
 
-#: src/Admin/Admin.php:176
+#: src/Admin/Admin.php:176 src/Admin/MailAdmin.php:208
+#: src/Admin/MailAdmin.php:597
 msgid "E-mail"
 msgstr "البريد الإلكتروني"
 
@@ -409,32 +414,36 @@ msgstr "آخر طلب توثيق"
 msgid "Recent activity"
 msgstr "النشاط الأخير"
 
+#: src/Admin/Admin.php:219
+msgid "Full activity of this company"
+msgstr "كل نشاط هذه المؤسسة"
+
 #. translators: 1: date, 2: status.
-#: src/Admin/Admin.php:226
+#: src/Admin/Admin.php:227
 msgid "Submitted %1$s — status: %2$s"
 msgstr "أُرسل في %1$s — الحالة: %2$s"
 
-#: src/Admin/Admin.php:238
+#: src/Admin/Admin.php:239
 msgid "Reason (sent to the company if rejected)"
 msgstr "السبب (يُرسل إلى المؤسسة في حال الرفض)"
 
-#: src/Admin/Admin.php:239
+#: src/Admin/Admin.php:240
 msgid "Approve"
 msgstr "قبول"
 
-#: src/Admin/Admin.php:239
+#: src/Admin/Admin.php:240
 msgid "Reject"
 msgstr "رفض"
 
-#: src/Admin/Admin.php:251
+#: src/Admin/Admin.php:252
 msgid "Nothing to review."
 msgstr "لا شيء للمراجعة."
 
-#: src/Admin/Admin.php:270
+#: src/Admin/Admin.php:271
 msgid "Rights by activity"
 msgstr "الصلاحيات حسب النشاط"
 
-#: src/Admin/Admin.php:272
+#: src/Admin/Admin.php:273
 msgid ""
 "A company gets a right when at least one of its activities has it, its "
 "verification level is high enough, and its plan allows it."
@@ -442,7 +451,7 @@ msgstr ""
 "تحصل المؤسسة على صلاحية إذا كان أحد أنشطتها يمنحها، وكان مستوى توثيقها "
 "كافيا، وسمح بها اشتراكها."
 
-#: src/Admin/Admin.php:273
+#: src/Admin/Admin.php:274
 msgid ""
 "Engineering accounts can never receive trading rights (buy, listings, "
 "quotations, fabrication). This rule is enforced in code and cannot be "
@@ -451,27 +460,27 @@ msgstr ""
 "لا يمكن أبدا منح الحسابات الهندسية صلاحيات تجارية (الشراء، الإعلانات، "
 "العروض، التصنيع). هذه القاعدة مفروضة في البرمجة ولا تُعدّل هنا."
 
-#: src/Admin/Admin.php:276
+#: src/Admin/Admin.php:277
 msgid "Right"
 msgstr "الصلاحية"
 
-#: src/Admin/Admin.php:281
+#: src/Admin/Admin.php:282
 msgid "Minimum level"
 msgstr "المستوى الأدنى"
 
-#: src/Admin/Admin.php:286
+#: src/Admin/Admin.php:287
 msgid "Locked"
 msgstr "مقفل"
 
-#: src/Admin/Admin.php:295
+#: src/Admin/Admin.php:296
 msgid "Save rights"
 msgstr "حفظ الصلاحيات"
 
-#: src/Admin/Admin.php:296
+#: src/Admin/Admin.php:297
 msgid "Restore the default rights"
 msgstr "استعادة الصلاحيات الافتراضية"
 
-#: src/Admin/Admin.php:302
+#: src/Admin/Admin.php:303
 msgid ""
 "Official list (69 wilayas: loi n° 26-06 of 4 April 2026 and décret "
 "présidentiel n° 26-206 of 25 May 2026, effective 1 January 2027). Correct a "
@@ -481,88 +490,493 @@ msgstr ""
 " الرئاسي رقم 26-206 المؤرخ في 25 ماي 2026، سارية من 1 جانفي 2027). صحّح "
 "كتابة اسم أو أخفِ ولاية من هنا."
 
-#: src/Admin/Admin.php:305
+#: src/Admin/Admin.php:306
 msgid "Code"
 msgstr "الرمز"
 
-#: src/Admin/Admin.php:305
+#: src/Admin/Admin.php:306
 msgid "French"
 msgstr "الفرنسية"
 
-#: src/Admin/Admin.php:305
+#: src/Admin/Admin.php:306
 msgid "Arabic"
 msgstr "العربية"
 
-#: src/Admin/Admin.php:324
+#: src/Admin/Admin.php:325
 msgid "Default language"
 msgstr "اللغة الافتراضية"
 
-#: src/Admin/Admin.php:328
+#: src/Admin/Admin.php:329
 msgid ""
 "Pages in the default language have no prefix; the other language uses /ar/ "
 "(or its code)."
 msgstr ""
 "صفحات اللغة الافتراضية بلا بادئة؛ وتستعمل اللغة الأخرى /ar/ (أو رمزها)."
 
-#: src/Admin/Admin.php:329
+#: src/Admin/Admin.php:330
 msgid "Verification code channel"
 msgstr "قناة رمز التحقق"
 
-#: src/Admin/Admin.php:329
+#: src/Admin/Admin.php:330
 msgid "SMS"
 msgstr "رسالة قصيرة"
 
-#: src/Admin/Admin.php:329
+#: src/Admin/Admin.php:330
 msgid "E-mail (no SMS gateway configured)"
 msgstr "البريد الإلكتروني (لا توجد بوابة رسائل قصيرة)"
 
-#: src/Admin/Admin.php:329
+#: src/Admin/Admin.php:330
 msgid ""
 "An SMS gateway is added by a connector plugin through the sm_sms_provider "
 "filter."
 msgstr "تُضاف بوابة الرسائل القصيرة بإضافة ربط عبر المرشح sm_sms_provider."
 
-#: src/Admin/Admin.php:331
+#: src/Admin/Admin.php:332
 msgid "Failed sign-ins before a 15-minute lock"
 msgstr "محاولات الدخول الفاشلة قبل حظر لمدة 15 دقيقة"
 
-#: src/Admin/Admin.php:332
+#: src/Admin/Admin.php:333
 msgid "Sign-ups per hour from one connection"
 msgstr "التسجيلات في الساعة من اتصال واحد"
 
-#: src/Admin/Admin.php:333
+#: src/Admin/Admin.php:334
 msgid "Enquiries per hour per account"
 msgstr "الاستفسارات في الساعة لكل حساب"
 
-#: src/Admin/Admin.php:338
+#: src/Admin/Admin.php:339
 msgid "Uninstall"
 msgstr "إلغاء التثبيت"
 
-#: src/Admin/Admin.php:338
+#: src/Admin/Admin.php:339
 msgid ""
 "Delete all platform data (companies, enquiries, logs) when the plugin is "
 "deleted"
 msgstr "حذف كل بيانات المنصة (المؤسسات، الاستفسارات، السجلات) عند حذف الإضافة"
 
-#: src/Admin/Admin.php:354
+#. translators: %d: count.
+#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:265
+#: src/Admin/MailAdmin.php:299 src/Admin/MailAdmin.php:564
+#: src/Admin/MailAdmin.php:597
 msgid "Date"
 msgstr "التاريخ"
 
-#: src/Admin/Admin.php:354
-msgid "Action"
-msgstr "الإجراء"
+#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:564
+#: src/Admin/MailAdmin.php:597
+msgid "Activity"
+msgstr "النشاط"
 
-#: src/Admin/Admin.php:354
+#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:185
 msgid "User"
 msgstr "المستخدم"
 
-#: src/Admin/Admin.php:354
-msgid "Object"
-msgstr "العنصر"
+#: src/Admin/MailAdmin.php:42 src/Admin/MailAdmin.php:98
+msgid "E-mails"
+msgstr "البريد الإلكتروني"
 
-#: src/Admin/Admin.php:354
-msgid "Details"
-msgstr "التفاصيل"
+#: src/Admin/MailAdmin.php:59 src/Admin/MailAdmin.php:587
+msgid "You cannot change these settings."
+msgstr "لا يمكنك تغيير هذه الإعدادات."
+
+#: src/Admin/MailAdmin.php:73
+msgid "The default template is back."
+msgstr "تمت استعادة النموذج الافتراضي."
+
+#: src/Admin/MailAdmin.php:74
+msgid "The e-mail was sent again."
+msgstr "تمت إعادة إرسال البريد."
+
+#: src/Admin/MailAdmin.php:75
+msgid "Test e-mail sent. Check the e-mail log below if it does not arrive."
+msgstr "تم إرسال بريد الاختبار. إن لم يصل، راجع سجل البريد."
+
+#: src/Admin/MailAdmin.php:76
+msgid "Summary sent (when there was something to report)."
+msgstr "تم إرسال الملخص (إن وُجد ما يُبلَّغ عنه)."
+
+#: src/Admin/MailAdmin.php:77
+msgid "The e-mail could not be sent. See the error in the e-mail log."
+msgstr "تعذّر إرسال البريد. اطّلع على الخطأ في سجل البريد."
+
+#: src/Admin/MailAdmin.php:111
+msgid "Platform events"
+msgstr "أحداث المنصة"
+
+#: src/Admin/MailAdmin.php:112
+msgid "User notifications"
+msgstr "إشعارات المستخدمين"
+
+#: src/Admin/MailAdmin.php:113
+msgid "Sender and recipients"
+msgstr "المرسل والمستلمون"
+
+#: src/Admin/MailAdmin.php:114 src/Admin/MailAdmin.php:240
+#: src/Admin/MailAdmin.php:294
+msgid "E-mail log"
+msgstr "سجل البريد"
+
+#: src/Admin/MailAdmin.php:141
+msgid ""
+"WP Mail SMTP is active: e-mails leave through your SMTP account. Check its "
+"\"Email Test\" after any change."
+msgstr ""
+"WP Mail SMTP مفعّل: تُرسل الرسائل عبر حساب SMTP الخاص بك. أجرِ «Email Test» "
+"بعد كل تغيير."
+
+#: src/Admin/MailAdmin.php:143
+msgid ""
+"WP Mail SMTP is not active: e-mails are sent by the server and often land in"
+" spam. Install WP Mail SMTP and connect the e-mail account of your domain "
+"(see docs/EMAIL-SETUP.md)."
+msgstr ""
+"WP Mail SMTP غير مفعّل: تُرسل الرسائل من الخادم وتصل غالبًا إلى البريد "
+"المزعج. ثبّت WP Mail SMTP واربطه بحساب البريد الخاص بنطاقك (انظر docs/EMAIL-"
+"SETUP.md)."
+
+#: src/Admin/MailAdmin.php:154
+msgid "Immediately"
+msgstr "فورًا"
+
+#: src/Admin/MailAdmin.php:155
+msgid "In the daily summary"
+msgstr "في الملخص اليومي"
+
+#: src/Admin/MailAdmin.php:156
+msgid "No"
+msgstr "لا"
+
+#. translators: %s: addresses.
+#: src/Admin/MailAdmin.php:158
+msgid ""
+"Choose what the administrators (%s) are told about, and the confirmation "
+"e-mails sent to users. Each e-mail can be rewritten in French and Arabic."
+msgstr ""
+"اختر ما يُبلَّغ به المشرفون (%s)، ورسائل التأكيد المرسلة إلى المستخدمين. "
+"يمكن إعادة كتابة كل رسالة بالفرنسية والعربية."
+
+#. translators: %d: count.
+#: src/Admin/MailAdmin.php:161 src/Admin/MailAdmin.php:265
+msgid "Event"
+msgstr "الحدث"
+
+#: src/Admin/MailAdmin.php:161
+msgid "Alert to the administrators"
+msgstr "تنبيه المشرفين"
+
+#: src/Admin/MailAdmin.php:161
+msgid "E-mail to the user"
+msgstr "بريد إلى المستخدم"
+
+#: src/Admin/MailAdmin.php:161
+msgid "Templates"
+msgstr "النماذج"
+
+#: src/Admin/MailAdmin.php:182 src/Admin/MailAdmin.php:216
+msgid "Send"
+msgstr "إرسال"
+
+#: src/Admin/MailAdmin.php:185
+msgid "Administrator"
+msgstr "المشرف"
+
+#: src/Admin/MailAdmin.php:192 src/Admin/MailAdmin.php:217
+msgid "edited"
+msgstr "معدّل"
+
+#: src/Admin/MailAdmin.php:205
+msgid ""
+"Messages the platform sends to users about their own activity (offer "
+"received, quote accepted, listing approved…). They always appear in the "
+"user's notifications; here you choose whether an e-mail is also sent, and "
+"you can rewrite it."
+msgstr ""
+"رسائل ترسلها المنصة إلى المستخدمين حول نشاطهم (عرض مستلم، عرض سعر مقبول، "
+"إعلان معتمد…). تظهر دائمًا في إشعارات المستخدم؛ هنا تختار إن كان يُرسل بريد "
+"أيضًا، ويمكنك إعادة كتابته."
+
+#: src/Admin/MailAdmin.php:208
+msgid "Notification"
+msgstr "الإشعار"
+
+#: src/Admin/MailAdmin.php:208
+msgid "Template"
+msgstr "النموذج"
+
+#: src/Admin/MailAdmin.php:217
+msgid "Edit"
+msgstr "تعديل"
+
+#: src/Admin/MailAdmin.php:230
+msgid "Sender name"
+msgstr "اسم المرسل"
+
+#: src/Admin/MailAdmin.php:231
+msgid "Sender address"
+msgstr "عنوان المرسل"
+
+#: src/Admin/MailAdmin.php:231
+msgid ""
+"An address of your domain, the same as the SMTP account in WP Mail SMTP."
+msgstr "عنوان من نطاقك، هو نفسه حساب SMTP في WP Mail SMTP."
+
+#: src/Admin/MailAdmin.php:232
+msgid "Administrators to alert"
+msgstr "المشرفون الذين يُنبَّهون"
+
+#: src/Admin/MailAdmin.php:232
+msgid "One or more addresses, separated by commas or new lines."
+msgstr "عنوان أو أكثر، تفصل بينها فواصل أو أسطر جديدة."
+
+#: src/Admin/MailAdmin.php:233
+msgid "Language of the alerts"
+msgstr "لغة التنبيهات"
+
+#: src/Admin/MailAdmin.php:234
+msgid "Daily summary at"
+msgstr "الملخص اليومي على الساعة"
+
+#. translators: %s: date.
+#: src/Admin/MailAdmin.php:238
+msgid "Last summary: %s"
+msgstr "آخر ملخص: %s"
+
+#. translators: %s: date.
+#: src/Admin/MailAdmin.php:238
+msgid "No summary sent yet."
+msgstr "لم يُرسل أي ملخص بعد."
+
+#. translators: %s: date.
+#: src/Admin/MailAdmin.php:239
+msgid "Keep the journals"
+msgstr "مدة الاحتفاظ بالسجلات"
+
+#. translators: %s: date.
+#: src/Admin/MailAdmin.php:239
+msgid "days (activity journal and e-mail log)"
+msgstr "يومًا (سجل النشاط وسجل البريد)"
+
+#: src/Admin/MailAdmin.php:240
+msgid ""
+"Keep the content of the e-mails (to read and resend them). Verification "
+"codes are never kept."
+msgstr ""
+"الاحتفاظ بمحتوى الرسائل (لقراءتها وإعادة إرسالها). لا يُحتفظ أبدًا برموز "
+"التحقق."
+
+#: src/Admin/MailAdmin.php:244
+msgid "Test the sending"
+msgstr "اختبار الإرسال"
+
+#: src/Admin/MailAdmin.php:244
+msgid ""
+"Sends a test e-mail to the administrators with the layout of the platform."
+msgstr "يرسل بريد اختبار إلى المشرفين بتصميم المنصة."
+
+#: src/Admin/MailAdmin.php:247
+msgid "Send a test e-mail"
+msgstr "إرسال بريد اختبار"
+
+#: src/Admin/MailAdmin.php:248
+msgid "Daily summary"
+msgstr "الملخص اليومي"
+
+#: src/Admin/MailAdmin.php:248
+msgid ""
+"Sends now the summary of the events set to \"In the daily summary\" since "
+"the last one."
+msgstr "يرسل الآن ملخص الأحداث المضبوطة على «في الملخص اليومي» منذ آخر ملخص."
+
+#: src/Admin/MailAdmin.php:251
+msgid "Send the summary now"
+msgstr "إرسال الملخص الآن"
+
+#: src/Admin/MailAdmin.php:263
+msgid "All"
+msgstr "الكل"
+
+#: src/Admin/MailAdmin.php:263 src/Admin/MailAdmin.php:272
+msgid "Sent"
+msgstr "مُرسل"
+
+#: src/Admin/MailAdmin.php:263 src/Admin/MailAdmin.php:272
+msgid "Failed"
+msgstr "فشل"
+
+#: src/Admin/MailAdmin.php:264
+msgid "Address or subject"
+msgstr "العنوان أو الموضوع"
+
+#. translators: %d: count.
+#: src/Admin/MailAdmin.php:264
+msgid "%d e-mail"
+msgid_plural "%d e-mails"
+msgstr[0] "%d رسالة"
+msgstr[1] "رسالة واحدة"
+msgstr[2] "رسالتان"
+msgstr[3] "%d رسائل"
+msgstr[4] "%d رسالة"
+msgstr[5] "%d رسالة"
+
+#. translators: %d: count.
+#: src/Admin/MailAdmin.php:265 src/Admin/MailAdmin.php:299
+msgid "Recipient"
+msgstr "المستلم"
+
+#. translators: %d: count.
+#: src/Admin/MailAdmin.php:265 src/Admin/MailAdmin.php:299
+#: src/Admin/MailAdmin.php:356
+msgid "Subject"
+msgstr "الموضوع"
+
+#: src/Admin/MailAdmin.php:273
+msgid "View"
+msgstr "عرض"
+
+#: src/Admin/MailAdmin.php:308
+msgid "Send again"
+msgstr "إعادة الإرسال"
+
+#: src/Admin/MailAdmin.php:311
+msgid "The content of this e-mail was not kept."
+msgstr "لم يُحتفظ بمحتوى هذه الرسالة."
+
+#: src/Admin/MailAdmin.php:321
+msgid "alert to the administrators"
+msgstr "تنبيه المشرفين"
+
+#: src/Admin/MailAdmin.php:321 src/Admin/MailAdmin.php:326
+msgid "e-mail to the user"
+msgstr "بريد إلى المستخدم"
+
+#: src/Admin/MailAdmin.php:338
+msgid "Back to the list"
+msgstr "العودة إلى القائمة"
+
+#: src/Admin/MailAdmin.php:340
+msgid "Variables (copied as they are, replaced when sending):"
+msgstr "المتغيرات (تُنسخ كما هي، وتُستبدل عند الإرسال):"
+
+#: src/Admin/MailAdmin.php:344
+msgid ""
+"Plain text: an empty line starts a new paragraph, addresses become links. "
+"Leave a field empty to use the default text."
+msgstr ""
+"نص عادي: السطر الفارغ يبدأ فقرة جديدة، والعناوين تصبح روابط. اترك الحقل "
+"فارغًا لاستعمال النص الافتراضي."
+
+#: src/Admin/MailAdmin.php:346
+msgid ""
+"{titre} and {message} are the built-in texts of the notification; when "
+"{lien} is not used, an \"Open\" button is added."
+msgstr ""
+"{titre} و{message} هما النصان الأصليان للإشعار؛ إن لم يُستعمل {lien} يُضاف "
+"زر «فتح»."
+
+#: src/Admin/MailAdmin.php:357
+msgid "Message"
+msgstr "الرسالة"
+
+#: src/Admin/MailAdmin.php:360
+msgid "Save the template"
+msgstr "حفظ النموذج"
+
+#: src/Admin/MailAdmin.php:362
+msgid "Save and send me a test"
+msgstr "حفظ وإرسال اختبار إليّ"
+
+#: src/Admin/MailAdmin.php:364
+msgid "Restore the default text"
+msgstr "استعادة النص الافتراضي"
+
+#: src/Admin/MailAdmin.php:364
+msgid "Replace your text by the default one in both languages?"
+msgstr "استبدال نصك بالنص الافتراضي في اللغتين؟"
+
+#: src/Admin/MailAdmin.php:366
+msgid "Preview with example values"
+msgstr "معاينة بقيم توضيحية"
+
+#: src/Admin/MailAdmin.php:449
+msgid "Unknown template."
+msgstr "نموذج غير معروف."
+
+#. translators: %s: platform name.
+#: src/Admin/MailAdmin.php:491
+msgid "%s — test e-mail"
+msgstr "%s — بريد اختبار"
+
+#. translators: %s: platform name.
+#: src/Admin/MailAdmin.php:491
+msgid ""
+"This test e-mail shows that the platform can send e-mails.\n"
+"\n"
+"If it arrived in the spam folder, check the SPF, DKIM and DMARC records of your domain."
+msgstr ""
+"يُظهر بريد الاختبار هذا أن المنصة قادرة على إرسال الرسائل.\n"
+"\n"
+"إن وصل إلى البريد المزعج، تحقّق من سجلات SPF وDKIM وDMARC الخاصة بنطاقك."
+
+#: src/Admin/MailAdmin.php:535
+msgid "Administration"
+msgstr "الإدارة"
+
+#: src/Admin/MailAdmin.php:547
+msgid ""
+"Everything that happens on the platform: registrations, listings, requests, "
+"quotes, services, messages, verifications and administration changes. "
+"Successful sign-ins are listed under \"Security\"."
+msgstr ""
+"كل ما يحدث على المنصة: التسجيلات، الإعلانات، الطلبات، عروض الأسعار، الخدمات،"
+" الرسائل، التوثيق وتغييرات الإدارة. تسجيلات الدخول الناجحة مدرجة في "
+"«الأمان»."
+
+#: src/Admin/MailAdmin.php:549
+msgid "All activities"
+msgstr "كل الأنشطة"
+
+#: src/Admin/MailAdmin.php:553
+msgid "From"
+msgstr "من"
+
+#: src/Admin/MailAdmin.php:553
+msgid "to"
+msgstr "إلى"
+
+#: src/Admin/MailAdmin.php:554
+msgid "Name, e-mail, IP…"
+msgstr "الاسم، البريد، IP…"
+
+#: src/Admin/MailAdmin.php:560
+msgid "Export (CSV)"
+msgstr "تصدير (CSV)"
+
+#. translators: %d: count.
+#: src/Admin/MailAdmin.php:560
+msgid "%d entry"
+msgid_plural "%d entries"
+msgstr[0] "%d عملية"
+msgstr[1] "عملية واحدة"
+msgstr[2] "عمليتان"
+msgstr[3] "%d عمليات"
+msgstr[4] "%d عملية"
+msgstr[5] "%d عملية"
+
+#. translators: %s: company.
+#: src/Admin/MailAdmin.php:562
+msgid "Only the activity of %s."
+msgstr "نشاط %s فقط."
+
+#. translators: %s: company.
+#: src/Admin/MailAdmin.php:562
+msgid "Show all"
+msgstr "عرض الكل"
+
+#: src/Admin/MailAdmin.php:564 src/Admin/MailAdmin.php:597
+msgid "By"
+msgstr "بواسطة"
+
+#: src/Admin/MailAdmin.php:597
+msgid "Action"
+msgstr "الإجراء"
 
 #. translators: %d: maximum number of files.
 #: src/Content/Media.php:75
@@ -605,29 +1019,463 @@ msgid "Enquiry not found."
 msgstr "الاستفسار غير موجود."
 
 #. translators: %s: platform name.
-#: src/Notifications/Notifications.php:32
+#: src/Mail/Activity.php:72
+msgid "Alert for the administrators of %s. Choose the alerts in SM → E-mails."
+msgstr "تنبيه موجّه إلى مشرفي %s. اختر التنبيهات من SM ← البريد الإلكتروني."
+
+#. translators: %d: number of events.
+#: src/Mail/Activity.php:147
+msgid "%d event on the platform since the last summary:"
+msgid_plural "%d events on the platform since the last summary:"
+msgstr[0] "%d حدث على المنصة منذ آخر ملخص:"
+msgstr[1] "حدث واحد على المنصة منذ آخر ملخص:"
+msgstr[2] "حدثان على المنصة منذ آخر ملخص:"
+msgstr[3] "%d أحداث على المنصة منذ آخر ملخص:"
+msgstr[4] "%d حدثًا على المنصة منذ آخر ملخص:"
+msgstr[5] "%d حدث على المنصة منذ آخر ملخص:"
+
+#: src/Mail/Activity.php:155
+msgid "Open the activity journal"
+msgstr "فتح سجل النشاط"
+
+#. translators: 1: platform name, 2: date.
+#: src/Mail/Activity.php:157
+msgid "%1$s — daily summary of %2$s"
+msgstr "%1$s — ملخص يوم %2$s"
+
+#: src/Mail/Activity.php:196
+msgid "Signed in"
+msgstr "تسجيل الدخول"
+
+#: src/Mail/Activity.php:197
+msgid "Failed sign-in"
+msgstr "تسجيل دخول فاشل"
+
+#: src/Mail/Activity.php:198
+msgid "Password changed"
+msgstr "تم تغيير كلمة المرور"
+
+#: src/Mail/Activity.php:199
+msgid "Password reset requested"
+msgstr "طلب إعادة تعيين كلمة المرور"
+
+#: src/Mail/Activity.php:200
+msgid "Company page updated"
+msgstr "تم تعديل صفحة المؤسسة"
+
+#: src/Mail/Activity.php:201
+msgid "Verification approved"
+msgstr "تم اعتماد التوثيق"
+
+#: src/Mail/Activity.php:202
+msgid "Verification refused"
+msgstr "تم رفض التوثيق"
+
+#: src/Mail/Activity.php:203
+msgid "Verification document viewed"
+msgstr "تم الاطلاع على وثيقة التوثيق"
+
+#: src/Mail/Activity.php:204
+msgid "Company changed by an administrator"
+msgstr "تعديل المؤسسة من طرف مشرف"
+
+#: src/Mail/Activity.php:205
+msgid "Rights changed"
+msgstr "تم تعديل الصلاحيات"
+
+#: src/Mail/Activity.php:206
+msgid "Settings changed"
+msgstr "تم تعديل الإعدادات"
+
+#: src/Mail/Activity.php:207
+msgid "Wilayas changed"
+msgstr "تم تعديل الولايات"
+
+#: src/Mail/Activity.php:208
+msgid "E-mail settings changed"
+msgstr "تم تعديل إعدادات البريد"
+
+#: src/Mail/Activity.php:209
+msgid "E-mail template changed"
+msgstr "تم تعديل نموذج بريد"
+
+#: src/Mail/Contact.php:37
+msgid "Give your name."
+msgstr "أدخل اسمك."
+
+#: src/Mail/Contact.php:40
+msgid "Give a valid e-mail address so we can answer you."
+msgstr "أدخل بريدًا إلكترونيًا صحيحًا حتى نتمكن من الرد عليك."
+
+#: src/Mail/Contact.php:43
+msgid "Check the phone number."
+msgstr "تحقّق من رقم الهاتف."
+
+#: src/Mail/Contact.php:46
+msgid "Give a subject."
+msgstr "أدخل الموضوع."
+
+#: src/Mail/Contact.php:49
+msgid "Write your message (10 characters at least)."
+msgstr "اكتب رسالتك (10 أحرف على الأقل)."
+
+#: src/Mail/Contact.php:51
+msgid "The message is too long (4000 characters at most)."
+msgstr "الرسالة طويلة جدًا (4000 حرف كحد أقصى)."
+
+#: src/Mail/Contact.php:64
+msgid "You sent several messages in a short time. Try again in an hour."
+msgstr "أرسلت عدة رسائل في وقت قصير. أعد المحاولة بعد ساعة."
+
+#: src/Mail/Contact.php:67
+msgid ""
+"Thank you, your message is sent. We answer you by e-mail as soon as "
+"possible."
+msgstr "شكرًا، تم إرسال رسالتك. سنرد عليك بالبريد الإلكتروني في أقرب وقت."
+
+#: src/Mail/Events.php:45
+msgid "Accounts"
+msgstr "الحسابات"
+
+#: src/Mail/Events.php:47
+msgid "Listings"
+msgstr "الإعلانات"
+
+#: src/Mail/Events.php:48
+msgid "Requests for quotation"
+msgstr "طلبات عروض الأسعار"
+
+#: src/Mail/Events.php:49
+msgid "Services"
+msgstr "الخدمات"
+
+#: src/Mail/Events.php:50
+msgid "Messages"
+msgstr "الرسائل"
+
+#: src/Mail/Events.php:51
+msgid "Security"
+msgstr "الأمان"
+
+#: src/Mail/Events.php:121
+msgid "Engineering account"
+msgstr "حساب هندسي"
+
+#: src/Mail/Events.php:121 src/Mail/Templates.php:152
+msgid "Business account"
+msgstr "حساب مؤسسة"
+
+#: src/Mail/Events.php:159
+msgid "New registration"
+msgstr "تسجيل جديد"
+
+#. translators: 1: person, 2: company, 3: wilaya.
+#: src/Mail/Events.php:167
+msgid "%1$s registered (%2$s, %3$s)"
+msgstr "سجّل %1$s (%2$s، %3$s)"
+
+#: src/Mail/Events.php:170
+msgid "New registration: {entreprise}"
+msgstr "تسجيل جديد: {entreprise}"
+
+#: src/Mail/Events.php:171
+msgid ""
+"A new account was created on {site}.\n"
+"\n"
+"Name: {nom}\n"
+"E-mail: {email}\n"
+"Phone: {telephone}\n"
+"Company: {entreprise}\n"
+"Wilaya: {wilaya}\n"
+"Account: {type}\n"
+"Activities: {activites}\n"
+"\n"
+"Open the company in the administration:\n"
+"{lien_admin_entreprise}"
+msgstr ""
+"تم إنشاء حساب جديد على {site}.\n"
+"\n"
+"الاسم: {nom}\n"
+"البريد: {email}\n"
+"الهاتف: {telephone}\n"
+"المؤسسة: {entreprise}\n"
+"الولاية: {wilaya}\n"
+"الحساب: {type}\n"
+"الأنشطة: {activites}\n"
+"\n"
+"فتح المؤسسة في لوحة الإدارة:\n"
+"{lien_admin_entreprise}"
+
+#: src/Mail/Events.php:174
+msgid "Welcome to {site}"
+msgstr "مرحبًا بك في {site}"
+
+#: src/Mail/Events.php:175
+msgid ""
+"Thank you for registering on {site}, the steel marketplace of Algeria.\n"
+"\n"
+"Your account for {entreprise} is ready. Complete your company page and send your documents for verification: verified companies get more enquiries.\n"
+"\n"
+"Your dashboard:\n"
+"{lien}\n"
+"\n"
+"We are at your disposal for any question.\n"
+"The {site} team"
+msgstr ""
+"شكرًا لتسجيلك في {site}، سوق الفولاذ في الجزائر.\n"
+"\n"
+"حساب {entreprise} جاهز. أكمل صفحة مؤسستك وأرسل وثائقك للتوثيق: المؤسسات الموثّقة تتلقى طلبات أكثر.\n"
+"\n"
+"لوحة التحكم الخاصة بك:\n"
+"{lien}\n"
+"\n"
+"نحن في خدمتك لأي سؤال.\n"
+"فريق {site}"
+
+#: src/Mail/Events.php:181
+msgid "Documents sent for verification"
+msgstr "وثائق مرسلة للتوثيق"
+
+#. translators: %s: company.
+#: src/Mail/Events.php:188
+msgid "%s sent documents for verification"
+msgstr "أرسلت %s وثائقها للتوثيق"
+
+#: src/Mail/Events.php:191
+msgid "Verification to review: {entreprise}"
+msgstr "توثيق للمراجعة: {entreprise}"
+
+#: src/Mail/Events.php:192
+msgid ""
+"{entreprise} ({wilaya}) sent its documents for verification.\n"
+"\n"
+"Sent by: {nom} — {email} — {telephone}\n"
+"\n"
+"Review the documents:\n"
+"{lien_admin}"
+msgstr ""
+"أرسلت {entreprise} ({wilaya}) وثائقها للتوثيق.\n"
+"\n"
+"أرسلها: {nom} — {email} — {telephone}\n"
+"\n"
+"مراجعة الوثائق:\n"
+"{lien_admin}"
+
+#: src/Mail/Events.php:195
+msgid "We received your documents"
+msgstr "استلمنا وثائقك"
+
+#: src/Mail/Events.php:196
+msgid ""
+"We received the documents of {entreprise}. The platform team checks them and you will be told of the result.\n"
+"\n"
+"Follow your request:\n"
+"{lien}\n"
+"\n"
+"The {site} team"
+msgstr ""
+"استلمنا وثائق {entreprise}. يتحقق منها فريق المنصة وسيتم إبلاغك بالنتيجة.\n"
+"\n"
+"متابعة طلبك:\n"
+"{lien}\n"
+"\n"
+"فريق {site}"
+
+#: src/Mail/Events.php:202
+msgid "Phone or e-mail confirmed"
+msgstr "تأكيد الهاتف أو البريد"
+
+#. translators: %s: company.
+#: src/Mail/Events.php:208
+msgid "%s confirmed its phone or e-mail"
+msgstr "أكّدت %s هاتفها أو بريدها"
+
+#: src/Mail/Events.php:211
+msgid "Contact confirmed: {entreprise}"
+msgstr "تأكيد الاتصال: {entreprise}"
+
+#: src/Mail/Events.php:212
+msgid ""
+"{entreprise} ({wilaya}) confirmed its phone or e-mail.\n"
+"\n"
+"{nom} — {email} — {telephone}\n"
+"\n"
+"{lien_admin_entreprise}"
+msgstr ""
+"أكّدت {entreprise} ({wilaya}) هاتفها أو بريدها.\n"
+"\n"
+"{nom} — {email} — {telephone}\n"
+"\n"
+"{lien_admin_entreprise}"
+
+#: src/Mail/Events.php:218
+msgid "Enquiry sent to a company"
+msgstr "استفسار مرسل إلى مؤسسة"
+
+#. translators: 1: sender, 2: company.
+#: src/Mail/Events.php:226
+msgid "%1$s sent an enquiry to %2$s"
+msgstr "أرسل %1$s استفسارًا إلى %2$s"
+
+#: src/Mail/Events.php:229
+msgid "Enquiry to {destinataire}"
+msgstr "استفسار إلى {destinataire}"
+
+#: src/Mail/Events.php:230
+msgid ""
+"{nom} ({email}, {telephone}) sent an enquiry to {destinataire}.\n"
+"\n"
+"Subject: {sujet}\n"
+"\n"
+"{message}"
+msgstr ""
+"أرسل {nom} ({email}، {telephone}) استفسارًا إلى {destinataire}.\n"
+"\n"
+"الموضوع: {sujet}\n"
+"\n"
+"{message}"
+
+#: src/Mail/Events.php:233
+msgid "Your enquiry was sent to {destinataire}"
+msgstr "تم إرسال استفسارك إلى {destinataire}"
+
+#: src/Mail/Events.php:234
+msgid ""
+"Your enquiry \"{sujet}\" was sent to {destinataire}. The company answers you directly by phone or e-mail.\n"
+"\n"
+"The {site} team"
+msgstr ""
+"تم إرسال استفسارك «{sujet}» إلى {destinataire}. ترد عليك المؤسسة مباشرة بالهاتف أو البريد.\n"
+"\n"
+"فريق {site}"
+
+#: src/Mail/Events.php:240
+msgid "Contact form message"
+msgstr "رسالة نموذج الاتصال"
+
+#. translators: 1: person, 2: subject.
+#: src/Mail/Events.php:254
+msgid "%1$s wrote through the contact form: %2$s"
+msgstr "كتب %1$s عبر نموذج الاتصال: %2$s"
+
+#: src/Mail/Events.php:257
+msgid "Contact: {sujet}"
+msgstr "اتصال: {sujet}"
+
+#: src/Mail/Events.php:258
+msgid ""
+"Message from the contact form of {site}.\n"
+"\n"
+"Name: {nom}\n"
+"E-mail: {email}\n"
+"Phone: {telephone}\n"
+"Subject: {sujet}\n"
+"\n"
+"{message}\n"
+"\n"
+"Answer this e-mail to reply to {nom}."
+msgstr ""
+"رسالة من نموذج الاتصال في {site}.\n"
+"\n"
+"الاسم: {nom}\n"
+"البريد: {email}\n"
+"الهاتف: {telephone}\n"
+"الموضوع: {sujet}\n"
+"\n"
+"{message}\n"
+"\n"
+"رُدّ على هذا البريد للرد على {nom}."
+
+#: src/Mail/Events.php:261
+msgid "We received your message"
+msgstr "استلمنا رسالتك"
+
+#: src/Mail/Events.php:262
+msgid ""
+"Thank you for your message \"{sujet}\". The {site} team answers you as soon as possible.\n"
+"\n"
+"The {site} team"
+msgstr ""
+"شكرًا على رسالتك «{sujet}». يرد عليك فريق {site} في أقرب وقت.\n"
+"\n"
+"فريق {site}"
+
+#: src/Mail/Events.php:268
+msgid "Sign-in blocked after failed attempts"
+msgstr "حظر الدخول بعد محاولات فاشلة"
+
+#. translators: 1: login, 2: IP.
+#: src/Mail/Events.php:274
+msgid "Sign-in blocked for %1$s (IP %2$s)"
+msgstr "حظر الدخول لـ %1$s (IP %2$s)"
+
+#: src/Mail/Events.php:277
+msgid "Security: sign-in blocked"
+msgstr "الأمان: حظر تسجيل الدخول"
+
+#: src/Mail/Events.php:278
+msgid ""
+"Too many failed sign-ins: the account \"{identifiant}\" is blocked for a while.\n"
+"\n"
+"IP address: {ip}\n"
+"\n"
+"No action is needed if this was the user. Several alerts in a row may mean an attack."
+msgstr ""
+"محاولات دخول فاشلة كثيرة: الحساب «{identifiant}» محظور لبعض الوقت.\n"
+"\n"
+"عنوان IP: {ip}\n"
+"\n"
+"لا حاجة لأي إجراء إن كان المستخدم نفسه. عدة تنبيهات متتالية قد تعني هجومًا."
+
+#: src/Mail/Mailer.php:80
+msgid "You receive this e-mail because of your activity on the platform."
+msgstr "تتلقى هذا البريد بسبب نشاطك على المنصة."
+
+#. translators: %s: person name.
+#: src/Mail/Mailer.php:81
+msgid "Hello %s,"
+msgstr "مرحبا %s،"
+
+#: src/Mail/Templates.php:155
+msgid "Hello, we need 40 bars delivered to Rouiba next month."
+msgstr "مرحبًا، نحتاج 40 قضيبًا تُسلَّم في الرويبة الشهر المقبل."
+
+#: src/Mail/Templates.php:156
+msgid "Price request"
+msgstr "طلب سعر"
+
+#: src/Mail/Templates.php:163
+msgid "Steel products"
+msgstr "المنتجات الفولاذية"
+
+#: src/Mail/Templates.php:166
+msgid "Published"
+msgstr "منشور"
+
+#. translators: %s: platform name.
+#: src/Notifications/Notifications.php:35
 msgid "New enquiry on %s"
 msgstr "استفسار جديد على %s"
 
 #. translators: 1: sender name, 2: subject of the enquiry.
-#: src/Notifications/Notifications.php:35
+#: src/Notifications/Notifications.php:38
 msgid "%1$s sent you an enquiry: %2$s"
 msgstr "أرسل لك %1$s استفسارا: %2$s"
 
-#: src/Notifications/Notifications.php:43
+#: src/Notifications/Notifications.php:46
 msgid "New verification request to review"
 msgstr "طلب توثيق جديد للمراجعة"
 
 #. translators: %s: company name.
-#: src/Notifications/Notifications.php:46
+#: src/Notifications/Notifications.php:49
 msgid "%s submitted documents for verification."
 msgstr "أرسلت %s وثائق للتوثيق."
 
-#: src/Notifications/Notifications.php:53
+#: src/Notifications/Notifications.php:56
 msgid "Your account is verified"
 msgstr "تم توثيق حسابك"
 
-#: src/Notifications/Notifications.php:54
+#: src/Notifications/Notifications.php:57
 msgid ""
 "Good news: the platform team verified your documents. The verified badge now"
 " appears on your company page and listings."
@@ -635,24 +1483,20 @@ msgstr ""
 "خبر سار: تحقق فريق المنصة من وثائقك. تظهر شارة التوثيق الآن في صفحة مؤسستك "
 "وإعلاناتك."
 
-#: src/Notifications/Notifications.php:59
+#: src/Notifications/Notifications.php:62
 msgid "Your verification request needs changes"
 msgstr "طلب التوثيق يحتاج إلى تعديلات"
 
-#: src/Notifications/Notifications.php:60
+#: src/Notifications/Notifications.php:63
 msgid "The platform team could not validate your documents."
 msgstr "لم يتمكن فريق المنصة من قبول وثائقك."
 
-#: src/Notifications/Notifications.php:100
+#: src/Notifications/Notifications.php:135
 msgid "Open"
 msgstr "فتح"
 
-#. translators: %s: user display name.
-#: src/Notifications/Notifications.php:140
-msgid "Hello %s,"
-msgstr "مرحبا %s،"
-
-#: src/Notifications/Notifications.php:142
+#: src/Notifications/Notifications.php:137
+#: src/Notifications/Notifications.php:155
 msgid "You receive this e-mail because you have an account on the platform."
 msgstr "تصلك هذه الرسالة لأن لديك حسابا على المنصة."
 

@@ -1004,3 +1004,24 @@ P.update({
 ("%d wilaya served", "%d wilayas served"): (["%d wilaya desservie", "%d wilayas desservies"], ["%d ولاية", "ولاية واحدة", "ولايتان", "%d ولايات", "%d ولاية", "%d ولاية"]),
 ("%d year of experience", "%d years of experience"): (["%d an d’expérience", "%d ans d’expérience"], ["%d سنة خبرة", "سنة خبرة واحدة", "سنتان من الخبرة", "%d سنوات خبرة", "%d سنة خبرة", "%d سنة خبرة"]),
 })
+
+# 0.11.0 — contact page.
+T.update({
+"A question about the platform, your account, a verification or a partnership? Write to us: the team answers by e-mail.": ("Une question sur la plateforme, votre compte, une vérification ou un partenariat ? Écrivez-nous : l’équipe vous répond par e-mail.", "سؤال حول المنصة أو حسابك أو التوثيق أو شراكة؟ راسلنا: يرد عليك الفريق بالبريد الإلكتروني."),
+"Back to the home page": ("Retour à l’accueil", "العودة إلى الصفحة الرئيسية"),
+"Contact us": ("Nous contacter", "اتصل بنا"),
+"Message sent": ("Message envoyé", "تم إرسال الرسالة"),
+"Other ways to reach us": ("Nous joindre autrement", "طرق أخرى للتواصل معنا"),
+"Partnership": ("Partenariat", "شراكة"),
+"Plans and payment": ("Abonnements et paiement", "الاشتراكات والدفع"),
+"Report a listing": ("Signaler une annonce", "الإبلاغ عن إعلان"),
+"SM — Contact": ("SM — Contact", "SM — اتصل بنا"),
+"Send the message": ("Envoyer le message", "إرسال الرسالة"),
+"Subject": ("Objet", "الموضوع"),
+"The contact form is not active yet.": ("Le formulaire de contact n’est pas encore actif.", "نموذج الاتصال غير مفعّل بعد."),
+"To contact a seller, a workshop or an engineer, use the button on their listing or page: your message goes directly to them.": ("Pour contacter un vendeur, un atelier ou un ingénieur, utilisez le bouton de son annonce ou de sa page : votre message lui parvient directement.", "للتواصل مع بائع أو ورشة أو مهندس، استعمل الزر الموجود في إعلانه أو صفحته: تصله رسالتك مباشرة."),
+"Verification of my company": ("Vérification de mon entreprise", "توثيق مؤسستي"),
+"You will receive an acknowledgement by e-mail. We answer as soon as possible.": ("Vous allez recevoir un accusé de réception par e-mail. Nous vous répondons dès que possible.", "ستتلقى إشعارًا بالاستلام عبر البريد الإلكتروني. سنرد عليك في أقرب وقت."),
+"Your name": ("Votre nom", "اسمك"),
+"My account": ("Mon compte", "حسابي"),
+})

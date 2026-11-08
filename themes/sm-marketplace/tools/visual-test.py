@@ -36,6 +36,7 @@ PAGES = {
     'register': '/inscription/',
     'login': '/connexion/',
     'rfq': '/demandes-de-devis/',
+    'contact': '/contact/',
     'services': '/services/',
     'engineering': '/ingenierie/',
     'weight-calculator': '/calcul-poids/?family=IPE&section=7&mode=weight&total_kg=5000',

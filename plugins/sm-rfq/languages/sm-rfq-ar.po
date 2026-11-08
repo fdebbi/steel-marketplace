@@ -47,6 +47,179 @@ msgid ""
 msgstr ""
 "يتطلب SM RFQ إضافات SM Core وSM Weight Engine وSM Products. فعّلها أولًا."
 
+#: src/Activity.php:27
+msgid "piece"
+msgid_plural "pieces"
+msgstr[0] "قطعة"
+msgstr[1] "قطعة"
+msgstr[2] "قطعتان"
+msgstr[3] "قطع"
+msgstr[4] "قطعة"
+msgstr[5] "قطعة"
+
+#: src/Activity.php:32
+msgid "lot"
+msgstr "دفعة"
+
+#: src/Activity.php:73
+msgid "New request for quotation"
+msgstr "طلب عرض سعر جديد"
+
+#. translators: 1: company, 2: request.
+#: src/Activity.php:81
+msgid "%1$s published the request \"%2$s\""
+msgstr "نشرت %1$s الطلب «%2$s»"
+
+#: src/Activity.php:84
+msgid "New request for quotation: {titre}"
+msgstr "طلب عرض سعر جديد: {titre}"
+
+#: src/Activity.php:85
+msgid ""
+"{entreprise} ({wilaya}) published a request for quotation.\n"
+"\n"
+"{titre}\n"
+"Quantity: {quantite}\n"
+"Offers until: {date_limite}\n"
+"\n"
+"Buyer: {nom} — {email} — {telephone}\n"
+"\n"
+"{lien}"
+msgstr ""
+"نشرت {entreprise} ({wilaya}) طلب عرض سعر.\n"
+"\n"
+"{titre}\n"
+"الكمية: {quantite}\n"
+"العروض حتى: {date_limite}\n"
+"\n"
+"المشتري: {nom} — {email} — {telephone}\n"
+"\n"
+"{lien}"
+
+#: src/Activity.php:88 src/Notifications.php:38
+msgid "Your request for quotation is published"
+msgstr "تم نشر طلب عرض السعر الخاص بك"
+
+#: src/Activity.php:89
+msgid ""
+"Your request \"{titre}\" is published on {site}. Suppliers and manufacturers can now send you their offers until {date_limite}.\n"
+"\n"
+"You are told by e-mail for each offer. Compare them here:\n"
+"{lien}\n"
+"\n"
+"The {site} team"
+msgstr ""
+"تم نشر طلبك «{titre}» على {site}. يمكن للموردين والمصنعين إرسال عروضهم إليك حتى {date_limite}.\n"
+"\n"
+"سيتم إبلاغك بالبريد عند كل عرض. قارن بينها هنا:\n"
+"{lien}\n"
+"\n"
+"فريق {site}"
+
+#: src/Activity.php:96
+msgid "Offer sent on a request"
+msgstr "عرض مرسل على طلب"
+
+#. translators: 1: supplier, 2: request, 3: amount.
+#: src/Activity.php:103
+msgid "%1$s sent an offer on \"%2$s\" (%3$s)"
+msgstr "أرسلت %1$s عرضًا على «%2$s» (%3$s)"
+
+#: src/Activity.php:106
+msgid "Offer from {fournisseur} on {titre}"
+msgstr "عرض من {fournisseur} على {titre}"
+
+#: src/Activity.php:107
+msgid ""
+"{fournisseur} answered the request \"{titre}\" of {client}.\n"
+"\n"
+"Amount: {montant}\n"
+"Delivery: {delai} days\n"
+"\n"
+"{lien}"
+msgstr ""
+"ردّت {fournisseur} على طلب «{titre}» الخاص بـ {client}.\n"
+"\n"
+"المبلغ: {montant}\n"
+"الأجل: {delai} يومًا\n"
+"\n"
+"{lien}"
+
+#: src/Activity.php:110
+msgid "Your offer is sent: {titre}"
+msgstr "تم إرسال عرضك: {titre}"
+
+#: src/Activity.php:111
+msgid ""
+"Your offer of {montant} on \"{titre}\" was sent to {client}. You are told when the buyer decides.\n"
+"\n"
+"{lien}\n"
+"\n"
+"The {site} team"
+msgstr ""
+"تم إرسال عرضك بمبلغ {montant} على «{titre}» إلى {client}. سيتم إبلاغك عندما يقرر المشتري.\n"
+"\n"
+"{lien}\n"
+"\n"
+"فريق {site}"
+
+#: src/Activity.php:117
+msgid "Offer accepted by the buyer"
+msgstr "عرض قبله المشتري"
+
+#. translators: 1: buyer, 2: supplier, 3: request.
+#: src/Activity.php:123
+msgid "%1$s accepted the offer of %2$s on \"%3$s\""
+msgstr "قبلت %1$s عرض %2$s على «%3$s»"
+
+#: src/Activity.php:126
+msgid "Deal: {client} accepted {fournisseur}"
+msgstr "صفقة: {client} قبلت {fournisseur}"
+
+#: src/Activity.php:127
+msgid ""
+"{client} accepted the offer of {fournisseur} on \"{titre}\".\n"
+"\n"
+"Amount: {montant}\n"
+"Delivery: {delai} days\n"
+"\n"
+"{lien}"
+msgstr ""
+"قبلت {client} عرض {fournisseur} على «{titre}».\n"
+"\n"
+"المبلغ: {montant}\n"
+"الأجل: {delai} يومًا\n"
+"\n"
+"{lien}"
+
+#: src/Activity.php:136
+msgid "Request for quotation saved"
+msgstr "تم حفظ طلب عرض السعر"
+
+#: src/Activity.php:137
+msgid "Request for quotation status changed"
+msgstr "تغيّرت حالة طلب عرض السعر"
+
+#: src/Activity.php:138
+msgid "Offer updated"
+msgstr "تم تحديث العرض"
+
+#: src/Activity.php:139
+msgid "Offer declined"
+msgstr "عرض مرفوض"
+
+#: src/Activity.php:140
+msgid "Offer withdrawn"
+msgstr "تم سحب العرض"
+
+#: src/Activity.php:141
+msgid "Offer shortlisted"
+msgstr "عرض في القائمة المختصرة"
+
+#: src/Activity.php:142
+msgid "Request for quotation"
+msgstr "طلب عرض سعر"
+
 #: src/Admin/Admin.php:29 src/Admin/Admin.php:49
 msgid "Requests for quotation"
 msgstr "طلبات عروض الأسعار"
@@ -294,10 +467,6 @@ msgstr "طلب عرض أسعار جديد للمراجعة"
 #: src/Notifications.php:33
 msgid "A buyer submitted \"%s\". Check it before it is published."
 msgstr "قدّم مشترٍ «%s». راجعه قبل نشره."
-
-#: src/Notifications.php:38
-msgid "Your request for quotation is published"
-msgstr "تم نشر طلب عرض الأسعار"
 
 #. translators: %s: request title.
 #: src/Notifications.php:40

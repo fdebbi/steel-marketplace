@@ -112,3 +112,39 @@ T = {
 "Check the year.": ("Vérifiez l’année.", "تحقق من السنة."),
 }
 P = {}
+
+# 0.1.1 — e-mail events and activity journal.
+T.update({
+"%1$s accepted the quote of %2$s (%3$s)": ("%1$s a accepté le devis de %2$s (%3$s)", "قبلت %1$s عرض سعر %2$s (%3$s)"),
+"%1$s asked %2$s for a quote (\"%3$s\")": ("%1$s a demandé un devis à %2$s (« %3$s »)", "طلبت %1$s عرض سعر من %2$s («%3$s»)"),
+"%1$s published the service \"%2$s\"": ("%1$s a publié le service « %2$s »", "نشرت %1$s الخدمة «%2$s»"),
+"Deal: {client} accepted the quote of {prestataire}": ("Affaire conclue : {client} a accepté le devis de {prestataire}", "صفقة: {client} قبلت عرض سعر {prestataire}"),
+"New service page": ("Nouvelle page de service", "صفحة خدمة جديدة"),
+"New service: {titre}": ("Nouveau service : {titre}", "خدمة جديدة: {titre}"),
+"Quote declined by the client": ("Devis refusé par le client", "عرض سعر رفضه العميل"),
+"Quote sent for a service request": ("Devis envoyé pour une demande de service", "عرض سعر مرسل لطلب خدمة"),
+"Service page saved": ("Page de service enregistrée", "تم حفظ صفحة الخدمة"),
+"Service page status changed": ("Statut de la page de service modifié", "تغيّرت حالة صفحة الخدمة"),
+"Service quote accepted": ("Devis de service accepté", "عرض سعر خدمة مقبول"),
+"Service request cancelled": ("Demande de service annulée", "تم إلغاء طلب الخدمة"),
+"Service request declined by the provider": ("Demande de service déclinée par le prestataire", "اعتذر مقدم الخدمة عن الطلب"),
+"Service request sent": ("Demande de service envoyée", "طلب خدمة مرسل"),
+"Service request: {client} → {prestataire}": ("Demande de service : {client} → {prestataire}", "طلب خدمة: {client} ← {prestataire}"),
+"Your request about \"{titre}\" was sent to {prestataire}. You are told by e-mail when the quote arrives.\n\nThe {site} team": (
+ "Votre demande concernant « {titre} » a été envoyée à {prestataire}. Vous êtes prévenu par e-mail dès que le devis arrive.\n\nL’équipe {site}",
+ "تم إرسال طلبك بخصوص «{titre}» إلى {prestataire}. سيتم إبلاغك بالبريد فور وصول عرض السعر.\n\nفريق {site}"),
+"Your request is sent to {prestataire}": ("Votre demande est envoyée à {prestataire}", "تم إرسال طلبك إلى {prestataire}"),
+"Your service page \"{titre}\" is saved on {site}. Clients find it by service and wilaya and send you their requests, which you answer with a quote.\n\nSee your page:\n{lien}\n\nTip: add photos of your work and your references; they reassure clients.\n\nThe {site} team": (
+ "Votre page de service « {titre} » est enregistrée sur {site}. Les clients la trouvent par service et par wilaya et vous envoient leurs demandes, auxquelles vous répondez par un devis.\n\nVoir votre page :\n{lien}\n\nConseil : ajoutez des photos de vos réalisations et vos références ; elles rassurent les clients.\n\nL’équipe {site}",
+ "تم حفظ صفحة خدمتك «{titre}» على {site}. يجدها العملاء حسب الخدمة والولاية ويرسلون إليك طلباتهم، فترد عليها بعرض سعر.\n\nعرض صفحتك:\n{lien}\n\nنصيحة: أضف صورًا لأعمالك ومراجعك؛ فهي تطمئن العملاء.\n\nفريق {site}"),
+"Your service page is saved: {titre}": ("Votre page de service est enregistrée : {titre}", "تم حفظ صفحة خدمتك: {titre}"),
+"{client} ({wilaya}) asked {prestataire} for a quote about \"{titre}\".\n\n{message}\n\nClient: {nom} — {email} — {telephone}": (
+ "{client} ({wilaya}) a demandé un devis à {prestataire} pour « {titre} ».\n\n{message}\n\nClient : {nom} — {email} — {telephone}",
+ "طلبت {client} ({wilaya}) عرض سعر من {prestataire} بخصوص «{titre}».\n\n{message}\n\nالعميل: {nom} — {email} — {telephone}"),
+"{client} accepted the quote of {prestataire} for \"{titre}\".\n\nAmount: {montant}\nTime: {delai} days": (
+ "{client} a accepté le devis de {prestataire} pour « {titre} ».\n\nMontant : {montant}\nDélai : {delai} jours",
+ "قبلت {client} عرض سعر {prestataire} لـ«{titre}».\n\nالمبلغ: {montant}\nالمدة: {delai} يومًا"),
+"{entreprise} ({wilaya}) published a service page.\n\n{titre}\nCatalogue: {catalogue}\n\nBy {nom} — {email} — {telephone}\n\n{lien}": (
+ "{entreprise} ({wilaya}) a publié une page de service.\n\n{titre}\nCatalogue : {catalogue}\n\nPar {nom} — {email} — {telephone}\n\n{lien}",
+ "نشرت {entreprise} ({wilaya}) صفحة خدمة.\n\n{titre}\nالكتالوج: {catalogue}\n\nبواسطة {nom} — {email} — {telephone}\n\n{lien}"),
+})

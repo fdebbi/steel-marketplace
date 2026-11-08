@@ -111,3 +111,42 @@ T = {
 "The message is too long (3000 characters at most).": ("Le message est trop long (3000 caractères au maximum).", "الرسالة طويلة جدًا (3000 حرف كحد أقصى)."),
 }
 P = {}
+
+# 0.1.1 — e-mail events and activity journal.
+T.update({
+"%1$s accepted the offer of %2$s on \"%3$s\"": ("%1$s a accepté l’offre de %2$s sur « %3$s »", "قبلت %1$s عرض %2$s على «%3$s»"),
+"%1$s published the request \"%2$s\"": ("%1$s a publié la demande « %2$s »", "نشرت %1$s الطلب «%2$s»"),
+"%1$s sent an offer on \"%2$s\" (%3$s)": ("%1$s a envoyé une offre sur « %2$s » (%3$s)", "أرسلت %1$s عرضًا على «%2$s» (%3$s)"),
+"Deal: {client} accepted {fournisseur}": ("Affaire conclue : {client} a retenu {fournisseur}", "صفقة: {client} قبلت {fournisseur}"),
+"New request for quotation": ("Nouvelle demande de devis", "طلب عرض سعر جديد"),
+"New request for quotation: {titre}": ("Nouvelle demande de devis : {titre}", "طلب عرض سعر جديد: {titre}"),
+"Offer accepted by the buyer": ("Offre acceptée par l’acheteur", "عرض قبله المشتري"),
+"Offer declined": ("Offre refusée", "عرض مرفوض"),
+"Offer from {fournisseur} on {titre}": ("Offre de {fournisseur} sur {titre}", "عرض من {fournisseur} على {titre}"),
+"Offer sent on a request": ("Offre envoyée sur une demande", "عرض مرسل على طلب"),
+"Offer shortlisted": ("Offre présélectionnée", "عرض في القائمة المختصرة"),
+"Offer updated": ("Offre mise à jour", "تم تحديث العرض"),
+"Offer withdrawn": ("Offre retirée", "تم سحب العرض"),
+"Request for quotation": ("Demande de devis", "طلب عرض سعر"),
+"Request for quotation saved": ("Demande de devis enregistrée", "تم حفظ طلب عرض السعر"),
+"Request for quotation status changed": ("Statut de la demande de devis modifié", "تغيّرت حالة طلب عرض السعر"),
+"Your offer is sent: {titre}": ("Votre offre est envoyée : {titre}", "تم إرسال عرضك: {titre}"),
+"Your offer of {montant} on \"{titre}\" was sent to {client}. You are told when the buyer decides.\n\n{lien}\n\nThe {site} team": (
+ "Votre offre de {montant} sur « {titre} » a été envoyée à {client}. Vous êtes prévenu dès que l’acheteur décide.\n\n{lien}\n\nL’équipe {site}",
+ "تم إرسال عرضك بمبلغ {montant} على «{titre}» إلى {client}. سيتم إبلاغك عندما يقرر المشتري.\n\n{lien}\n\nفريق {site}"),
+"Your request \"{titre}\" is published on {site}. Suppliers and manufacturers can now send you their offers until {date_limite}.\n\nYou are told by e-mail for each offer. Compare them here:\n{lien}\n\nThe {site} team": (
+ "Votre demande « {titre} » est publiée sur {site}. Fournisseurs et fabricants peuvent vous envoyer leurs offres jusqu’au {date_limite}.\n\nVous êtes prévenu par e-mail à chaque offre. Comparez-les ici :\n{lien}\n\nL’équipe {site}",
+ "تم نشر طلبك «{titre}» على {site}. يمكن للموردين والمصنعين إرسال عروضهم إليك حتى {date_limite}.\n\nسيتم إبلاغك بالبريد عند كل عرض. قارن بينها هنا:\n{lien}\n\nفريق {site}"),
+"Your request for quotation is published": ("Votre demande de devis est publiée", "تم نشر طلب عرض السعر الخاص بك"),
+"{client} accepted the offer of {fournisseur} on \"{titre}\".\n\nAmount: {montant}\nDelivery: {delai} days\n\n{lien}": (
+ "{client} a accepté l’offre de {fournisseur} sur « {titre} ».\n\nMontant : {montant}\nDélai : {delai} jours\n\n{lien}",
+ "قبلت {client} عرض {fournisseur} على «{titre}».\n\nالمبلغ: {montant}\nالأجل: {delai} يومًا\n\n{lien}"),
+"{entreprise} ({wilaya}) published a request for quotation.\n\n{titre}\nQuantity: {quantite}\nOffers until: {date_limite}\n\nBuyer: {nom} — {email} — {telephone}\n\n{lien}": (
+ "{entreprise} ({wilaya}) a publié une demande de devis.\n\n{titre}\nQuantité : {quantite}\nOffres jusqu’au : {date_limite}\n\nAcheteur : {nom} — {email} — {telephone}\n\n{lien}",
+ "نشرت {entreprise} ({wilaya}) طلب عرض سعر.\n\n{titre}\nالكمية: {quantite}\nالعروض حتى: {date_limite}\n\nالمشتري: {nom} — {email} — {telephone}\n\n{lien}"),
+"{fournisseur} answered the request \"{titre}\" of {client}.\n\nAmount: {montant}\nDelivery: {delai} days\n\n{lien}": (
+ "{fournisseur} a répondu à la demande « {titre} » de {client}.\n\nMontant : {montant}\nDélai : {delai} jours\n\n{lien}",
+ "ردّت {fournisseur} على طلب «{titre}» الخاص بـ {client}.\n\nالمبلغ: {montant}\nالأجل: {delai} يومًا\n\n{lien}"),
+})
+T.update({"lot": ("lot", "دفعة")})
+P.update({("piece", "pieces"): (["pièce", "pièces"], ["قطعة", "قطعة", "قطعتان", "قطع", "قطعة", "قطعة"])})

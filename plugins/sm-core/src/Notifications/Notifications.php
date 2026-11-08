@@ -13,6 +13,9 @@ namespace SM\Core\Notifications;
 
 use SM\Core\Accounts\Companies;
 use SM\Core\I18n\Language;
+use SM\Core\Mail\Mailer;
+use SM\Core\Mail\Settings as MailSettings;
+use SM\Core\Mail\Templates;
 use SM\Core\Routing\Routes;
 
 defined( 'ABSPATH' ) || exit;
@@ -90,18 +93,8 @@ final class Notifications {
 					'created_at' => current_time( 'mysql', true ),
 				)
 			);
-			if ( $def && ! empty( $def['email'] ) ) {
-				self::email(
-					$user_id,
-					static fn() => ( $def['subject'] )( $payload ),
-					static function () use ( $def, $payload ) {
-						$body = esc_html( ( $def['body'] )( $payload ) );
-						if ( ! empty( $def['link'] ) ) {
-							$body .= '<p><a href="' . esc_url( ( $def['link'] )( $payload ) ) . '" style="display:inline-block;background:#16A36A;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none">' . esc_html__( 'Open', 'sm-core' ) . '</a></p>';
-						}
-						return $body;
-					}
-				);
+			if ( $def && ! empty( $def['email'] ) && MailSettings::notice_on( $type ) ) {
+				self::email_notice( $user_id, $type, $def, $payload );
 			}
 		}
 		sm_event( 'notification.sent', array( 'type' => $type, 'users' => $user_ids ) );
@@ -117,8 +110,39 @@ final class Notifications {
 	}
 
 	/**
-	 * Send an e-mail in the user's language. $subject and $body_html are callables
-	 * evaluated after switching language, so translated strings follow the recipient.
+	 * E-mail of a notification, in the recipient's language. The administrator
+	 * can rewrite it in SM → E-mails (template "notice:{type}", variables
+	 * {nom}, {titre}, {message}, {lien}); by default the built-in text is used.
+	 */
+	public static function email_notice( $user_id, $type, array $def, array $payload ) {
+		$user = get_userdata( $user_id );
+		if ( ! $user || ! is_email( $user->user_email ) ) {
+			return false;
+		}
+		$lang = Language::user_language( $user_id );
+		return Language::with_language(
+			$lang,
+			static function () use ( $user, $type, $def, $payload, $lang ) {
+				$vars = array(
+					'nom'     => $user->display_name,
+					'titre'   => (string) ( $def['subject'] )( $payload ),
+					'message' => (string) ( $def['body'] )( $payload ),
+					'lien'    => ! empty( $def['link'] ) ? (string) ( $def['link'] )( $payload ) : '',
+				);
+				$tpl  = Templates::get( 'notice:' . $type, $lang ) ?? array( '{titre}', '{message}' );
+				$body = Templates::body_html( $tpl[1], $vars );
+				if ( '' !== $vars['lien'] && false === strpos( $tpl[1], '{lien}' ) ) {
+					$body .= '<p><a href="' . esc_url( $vars['lien'] ) . '" style="display:inline-block;background:#16A36A;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none">' . esc_html__( 'Open', 'sm-core' ) . '</a></p>';
+				}
+				return Mailer::send( $user->user_email, $lang, Templates::subject( $tpl[0], $vars ), $body, array( 'event' => 'notice:' . $type, 'name' => $user->display_name, 'footer' => __( 'You receive this e-mail because you have an account on the platform.', 'sm-core' ) ) );
+			}
+		);
+	}
+
+	/**
+	 * Send an e-mail in the user's language (used for verification codes, never
+	 * kept in the e-mail log). $subject and $body_html are callables evaluated
+	 * after switching language, so translated strings follow the recipient.
 	 */
 	public static function email( $user_id, callable $subject, callable $body_html ) {
 		$user = get_userdata( $user_id );
@@ -128,20 +152,7 @@ final class Notifications {
 		$lang = Language::user_language( $user_id );
 		return Language::with_language(
 			$lang,
-			static function () use ( $user, $subject, $body_html, $lang ) {
-				$dir     = Language::dir( $lang );
-				$brand   = sm_brand_name();
-				$primary = sanitize_hex_color( get_theme_mod( 'sm_color_primary', '#172B3A' ) ) ?: '#172B3A';
-				$html    = '<!doctype html><html lang="' . esc_attr( $lang ) . '" dir="' . esc_attr( $dir ) . '"><body style="margin:0;background:#F1F5F9;font-family:Arial,Tahoma,sans-serif;color:#0f172a">'
-					. '<div style="max-width:560px;margin:24px auto;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e2e8f0;text-align:' . ( 'rtl' === $dir ? 'right' : 'left' ) . '">'
-					. '<div style="background:' . esc_attr( $primary ) . ';color:#fff;padding:16px 24px;font-weight:bold">' . esc_html( $brand ) . '</div>'
-					. '<div style="padding:24px;font-size:15px;line-height:1.6">'
-					/* translators: %s: user display name. */
-					. '<p>' . esc_html( sprintf( __( 'Hello %s,', 'sm-core' ), $user->display_name ) ) . '</p>'
-					. '<p>' . $body_html() . '</p>'
-					. '</div><div style="padding:12px 24px;font-size:12px;color:#64748b;border-top:1px solid #e2e8f0">' . esc_html__( 'You receive this e-mail because you have an account on the platform.', 'sm-core' ) . '</div></div></body></html>';
-				return wp_mail( $user->user_email, wp_strip_all_tags( $subject() ), $html, array( 'Content-Type: text/html; charset=UTF-8' ) );
-			}
+			static fn() => Mailer::send( $user->user_email, $lang, wp_strip_all_tags( $subject() ), '<p style="margin:0 0 14px">' . $body_html() . '</p>', array( 'event' => 'otp', 'name' => $user->display_name, 'footer' => __( 'You receive this e-mail because you have an account on the platform.', 'sm-core' ) ) )
 		);
 	}
 

@@ -30,6 +30,7 @@ final class Plugin {
 
 		Install\Installer::maybe_upgrade();
 		Notifications::init();
+		Activity::init();
 		Form::init();
 		Routes::init();
 		add_filter(

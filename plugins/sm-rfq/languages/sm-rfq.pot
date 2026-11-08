@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-08T07:39:36+00:00\n"
+"POT-Creation-Date: 2026-11-08T14:16:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-rfq\n"
@@ -36,6 +36,144 @@ msgstr ""
 
 #: sm-rfq.php:47
 msgid "SM RFQ needs the SM Core, SM Weight Engine and SM Products plugins. Activate them first."
+msgstr ""
+
+#: src/Activity.php:27
+msgid "piece"
+msgid_plural "pieces"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Activity.php:32
+msgid "lot"
+msgstr ""
+
+#: src/Activity.php:73
+msgid "New request for quotation"
+msgstr ""
+
+#. translators: 1: company, 2: request.
+#: src/Activity.php:81
+msgid "%1$s published the request \"%2$s\""
+msgstr ""
+
+#: src/Activity.php:84
+msgid "New request for quotation: {titre}"
+msgstr ""
+
+#: src/Activity.php:85
+msgid ""
+"{entreprise} ({wilaya}) published a request for quotation.\n"
+"\n"
+"{titre}\n"
+"Quantity: {quantite}\n"
+"Offers until: {date_limite}\n"
+"\n"
+"Buyer: {nom} — {email} — {telephone}\n"
+"\n"
+"{lien}"
+msgstr ""
+
+#: src/Activity.php:88
+#: src/Notifications.php:38
+msgid "Your request for quotation is published"
+msgstr ""
+
+#: src/Activity.php:89
+msgid ""
+"Your request \"{titre}\" is published on {site}. Suppliers and manufacturers can now send you their offers until {date_limite}.\n"
+"\n"
+"You are told by e-mail for each offer. Compare them here:\n"
+"{lien}\n"
+"\n"
+"The {site} team"
+msgstr ""
+
+#: src/Activity.php:96
+msgid "Offer sent on a request"
+msgstr ""
+
+#. translators: 1: supplier, 2: request, 3: amount.
+#: src/Activity.php:103
+msgid "%1$s sent an offer on \"%2$s\" (%3$s)"
+msgstr ""
+
+#: src/Activity.php:106
+msgid "Offer from {fournisseur} on {titre}"
+msgstr ""
+
+#: src/Activity.php:107
+msgid ""
+"{fournisseur} answered the request \"{titre}\" of {client}.\n"
+"\n"
+"Amount: {montant}\n"
+"Delivery: {delai} days\n"
+"\n"
+"{lien}"
+msgstr ""
+
+#: src/Activity.php:110
+msgid "Your offer is sent: {titre}"
+msgstr ""
+
+#: src/Activity.php:111
+msgid ""
+"Your offer of {montant} on \"{titre}\" was sent to {client}. You are told when the buyer decides.\n"
+"\n"
+"{lien}\n"
+"\n"
+"The {site} team"
+msgstr ""
+
+#: src/Activity.php:117
+msgid "Offer accepted by the buyer"
+msgstr ""
+
+#. translators: 1: buyer, 2: supplier, 3: request.
+#: src/Activity.php:123
+msgid "%1$s accepted the offer of %2$s on \"%3$s\""
+msgstr ""
+
+#: src/Activity.php:126
+msgid "Deal: {client} accepted {fournisseur}"
+msgstr ""
+
+#: src/Activity.php:127
+msgid ""
+"{client} accepted the offer of {fournisseur} on \"{titre}\".\n"
+"\n"
+"Amount: {montant}\n"
+"Delivery: {delai} days\n"
+"\n"
+"{lien}"
+msgstr ""
+
+#: src/Activity.php:136
+msgid "Request for quotation saved"
+msgstr ""
+
+#: src/Activity.php:137
+msgid "Request for quotation status changed"
+msgstr ""
+
+#: src/Activity.php:138
+msgid "Offer updated"
+msgstr ""
+
+#: src/Activity.php:139
+msgid "Offer declined"
+msgstr ""
+
+#: src/Activity.php:140
+msgid "Offer withdrawn"
+msgstr ""
+
+#: src/Activity.php:141
+msgid "Offer shortlisted"
+msgstr ""
+
+#: src/Activity.php:142
+msgid "Request for quotation"
 msgstr ""
 
 #: src/Admin/Admin.php:29
@@ -280,10 +418,6 @@ msgstr ""
 #. translators: %s: request title.
 #: src/Notifications.php:33
 msgid "A buyer submitted \"%s\". Check it before it is published."
-msgstr ""
-
-#: src/Notifications.php:38
-msgid "Your request for quotation is published"
 msgstr ""
 
 #. translators: %s: request title.

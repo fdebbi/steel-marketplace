@@ -33,6 +33,7 @@ final class Plugin {
 
 		Install\Installer::maybe_upgrade();
 		Notifications::init();
+		Activity::init();
 		Form::init();
 		Expiry::init();
 		Theme\Bridge::init();

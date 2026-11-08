@@ -145,3 +145,36 @@ T.update({
 "Choose the element (column, rafter, purlin…).": ("Choisissez l’élément (poteau, traverse, panne…).", "اختر العنصر (عمود، عارضة، مداد…)."),
 "This category is not available.": ("Cette catégorie n’est pas disponible.", "هذه الفئة غير متاحة."),
 })
+
+# 0.3.1 — e-mail events and activity journal.
+T.update({
+"%1$s published \"%2$s\"": ("%1$s a publié « %2$s »", "نشرت %1$s «%2$s»"),
+"%1$s sent \"%2$s\" for review": ("%1$s a soumis « %2$s » à vérification", "أرسلت %1$s «%2$s» للمراجعة"),
+"Listing": ("Annonce", "إعلان"),
+"Listing deleted": ("Annonce supprimée", "تم حذف الإعلان"),
+"Listing expired": ("Annonce expirée", "انتهت صلاحية الإعلان"),
+"Listing marked as sold": ("Annonce marquée vendue", "الإعلان مُعلَّم كمباع"),
+"Listing paused": ("Annonce en pause", "الإعلان متوقف مؤقتًا"),
+"Listing published": ("Annonce publiée", "تم نشر الإعلان"),
+"Listing saved": ("Annonce enregistrée", "تم حفظ الإعلان"),
+"Listing sent back for changes": ("Annonce renvoyée pour modifications", "أُعيد الإعلان للتعديل"),
+"Listing to review: {titre}": ("Annonce à vérifier : {titre}", "إعلان للمراجعة: {titre}"),
+"New listing published": ("Nouvelle annonce publiée", "إعلان جديد منشور"),
+"New listing waiting for review": ("Nouvelle annonce en attente de vérification", "إعلان جديد في انتظار المراجعة"),
+"New listing: {titre}": ("Nouvelle annonce : {titre}", "إعلان جديد: {titre}"),
+"Product category changed": ("Catégorie de produits modifiée", "تم تعديل فئة المنتجات"),
+"We received your listing: {titre}": ("Nous avons bien reçu votre annonce : {titre}", "استلمنا إعلانك: {titre}"),
+"Your listing \"{titre}\" is published on {site}. Buyers can now find it and contact you.\n\nSee your listing:\n{lien}\n\nTip: listings with clear photos and a complete description get more enquiries.\n\nThe {site} team": (
+ "Votre annonce « {titre} » est publiée sur {site}. Les acheteurs peuvent maintenant la trouver et vous contacter.\n\nVoir votre annonce :\n{lien}\n\nConseil : les annonces avec des photos nettes et une description complète reçoivent plus de demandes.\n\nL’équipe {site}",
+ "تم نشر إعلانك «{titre}» على {site}. يمكن للمشترين الآن إيجاده والتواصل معك.\n\nعرض إعلانك:\n{lien}\n\nنصيحة: الإعلانات ذات الصور الواضحة والوصف الكامل تتلقى طلبات أكثر.\n\nفريق {site}"),
+"Your listing \"{titre}\" was received. The platform team checks it quickly; you are told as soon as it is online.\n\nThe {site} team": (
+ "Votre annonce « {titre} » a bien été reçue. L’équipe de la plateforme la vérifie rapidement ; vous êtes prévenu dès qu’elle est en ligne.\n\nL’équipe {site}",
+ "استلمنا إعلانك «{titre}». يراجعه فريق المنصة بسرعة؛ وسيتم إبلاغك فور نشره.\n\nفريق {site}"),
+"Your listing is online: {titre}": ("Votre annonce est en ligne : {titre}", "إعلانك منشور: {titre}"),
+"{entreprise} ({wilaya}) published a listing.\n\n{titre}\nMarket: {marche}\nWeight: {poids}\nPrice: {prix}\n\nPublished by {nom} — {email} — {telephone}\n\n{lien}": (
+ "{entreprise} ({wilaya}) a publié une annonce.\n\n{titre}\nMarché : {marche}\nPoids : {poids}\nPrix : {prix}\n\nPubliée par {nom} — {email} — {telephone}\n\n{lien}",
+ "نشرت {entreprise} ({wilaya}) إعلانًا.\n\n{titre}\nالسوق: {marche}\nالوزن: {poids}\nالسعر: {prix}\n\nنشره {nom} — {email} — {telephone}\n\n{lien}"),
+"{entreprise} ({wilaya}) sent a listing for review.\n\n{titre}\nMarket: {marche}\nPrice: {prix}\n\nReview it:\n{lien_admin}": (
+ "{entreprise} ({wilaya}) a soumis une annonce à vérification.\n\n{titre}\nMarché : {marche}\nPrix : {prix}\n\nLa vérifier :\n{lien_admin}",
+ "أرسلت {entreprise} ({wilaya}) إعلانًا للمراجعة.\n\n{titre}\nالسوق: {marche}\nالسعر: {prix}\n\nمراجعته:\n{lien_admin}"),
+})

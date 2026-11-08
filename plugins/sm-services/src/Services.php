@@ -40,6 +40,7 @@ final class Services {
 	}
 
 	public static function save( $id, $company_id, $user_id, array $spec, $status, $photos = null ) {
+		$is_new = ! $id;
 		global $wpdb;
 		$now = current_time( 'mysql', true );
 		$d   = $spec['data'];
@@ -68,7 +69,7 @@ final class Services {
 		if ( null !== $photos ) {
 			Media::set( 'service', $id, 'photo', $photos );
 		}
-		AuditLog::add( 'service.saved', 'service', $id, array( 'status' => $status ), $user_id, $company_id );
+		AuditLog::add( 'service.saved', 'service', $id, array( 'status' => $status, 'new' => $is_new ), $user_id, $company_id );
 		return (int) $id;
 	}
 

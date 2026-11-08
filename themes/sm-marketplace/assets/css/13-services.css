@@ -77,3 +77,14 @@
 .sms-rstatus--new { background: var(--sm-info-soft); color: var(--sm-info); }
 .sms-rstatus--quoted { background: var(--sm-warn-soft); color: #78350F; }
 .sms-rstatus--accepted { background: var(--sm-success-soft, #DCFCE7); color: #166534; }
+
+/* Contact page (0.11.0) */
+.smc-layout { display: grid; gap: var(--sm-s4); grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 1024px) { .smc-layout { grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr); } }
+.smc-main, .smc-aside { display: grid; gap: var(--sm-s4); min-inline-size: 0; }
+.smc-form { display: grid; gap: var(--sm-s2); }
+.smc-line { display: flex; align-items: center; gap: var(--sm-s2); font-weight: 600; }
+.smc-line .sm-icon { color: var(--sm-accent-ink); }
+.smc-done { display: grid; justify-items: start; gap: var(--sm-s2); }
+.smc-done__icon { display: grid; place-items: center; inline-size: 48px; block-size: 48px; border-radius: 50%; background: var(--sm-accent-soft); color: var(--sm-accent-ink); }
+.smc-done__icon .sm-icon { inline-size: 26px; block-size: 26px; }

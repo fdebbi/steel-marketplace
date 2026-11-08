@@ -215,6 +215,20 @@ final class Installer {
 				KEY company_id (company_id),
 				KEY created_at (created_at)
 			) $charset;",
+			"CREATE TABLE {$p}mail_log (
+				id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+				event varchar(64) NOT NULL DEFAULT '',
+				recipient varchar(190) NOT NULL DEFAULT '',
+				reply_to varchar(190) NOT NULL DEFAULT '',
+				subject varchar(255) NOT NULL DEFAULT '',
+				body longtext,
+				status varchar(10) NOT NULL DEFAULT 'sent',
+				error varchar(255) NOT NULL DEFAULT '',
+				created_at datetime NOT NULL,
+				PRIMARY KEY  (id),
+				KEY status (status),
+				KEY created_at (created_at)
+			) $charset;",
 		);
 
 		foreach ( $tables as $sql ) {

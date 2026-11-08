@@ -1,5 +1,11 @@
 # Changelog — sm-marketplace
 
+## 0.11.0 — 2026-11-08 (Phase 8.1, avec sm-core 0.4.0)
+
+- Page « Contact » réelle (modèle `templates/contact.php`) : nom, e-mail, téléphone, objet (suggestions), message ; erreurs par champ, confirmation, champs préremplis pour un membre connecté ; adresse de contact de la plateforme.
+- Tests visuels étendus à la page Contact.
+- Traductions : 945 chaînes.
+
 ## 0.10.0 — 2026-11-08 (Phase 8, services, avec sm-services 0.1.0)
 
 - Pages « Fabrication et montage » et « Ingénierie » réelles : services en pastilles, filtres mot-clé et wilaya, cartes avec services, zone et prix indicatif ; la page Ingénierie garde l'annuaire des bureaux d'études.

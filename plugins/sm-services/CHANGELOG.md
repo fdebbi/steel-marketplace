@@ -1,5 +1,9 @@
 # Changelog — sm-services
 
+## 0.1.1 — 2026-11-08 (Phase 8.1)
+
+- E-mails (avec sm-core 0.4.0) : événements « nouvelle page de service », « demande de service envoyée », « devis de service accepté » (alerte aux administrateurs, confirmations, modèles FR/AR), phrases et liens du journal d'activité.
+
 ## 0.1.0 — 2026-11-08 (Phase 8)
 
 - Catalogues fabrication/chantier et ingénierie, séparés par permission.

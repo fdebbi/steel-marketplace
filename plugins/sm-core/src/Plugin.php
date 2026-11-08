@@ -29,11 +29,14 @@ final class Plugin {
 		Enquiries\Enquiries::init();
 		Listings\Index::init();
 		Audit\AuditLog::init();
+		Mail\Activity::init();
+		Mail\Contact::init();
 		Rest\Api::init();
 		Theme\Bridge::init();
 
 		if ( is_admin() ) {
 			Admin\Admin::init();
+			Admin\MailAdmin::init();
 		}
 
 		/**

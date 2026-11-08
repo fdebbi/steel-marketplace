@@ -125,3 +125,17 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Coordonnées | Le prestataire voit celles du client dès la demande ; le client voit celles du prestataire après acceptation du devis | Le prestataire doit pouvoir poser des questions ; le client décide quand il s'engage |
 | Profil ingénieur | Expérience ajoutée à SM Core (donnée de l'entreprise) ; références dans `sm-services` | Le profil appartient au compte ; les références illustrent les services |
 | IA | Rappel sur les pages d'ingénierie : aucun outil de la plateforme ne remplace un calcul ni la signature d'un ingénieur | « L'IA ne remplace jamais l'ingénierie » |
+
+## 8 novembre 2026 — Phase 8.1 : e-mails et journal d'activité
+
+| Sujet | Décision | Raison |
+| --- | --- | --- |
+| Emplacement | Module dans `sm-core` ; chaque extension déclare ses événements (filtre `sm_mail_events`) | Toutes les extensions en dépendent ; les phases futures s'ajoutent sans toucher au module |
+| Déclencheur | Le journal d'audit existant : chaque entrée déclenche `sm_audit_logged`, rapprochée des événements | Une seule source de vérité pour le journal et les alertes ; une action non journalisée ne peut pas envoyer d'e-mail « fantôme » |
+| Alertes administrateur | Par événement : immédiate, résumé quotidien ou non ; plusieurs adresses ; langue au choix | Être informé de tout sans être noyé (offres, annonces publiées, demandes de service en résumé par défaut) |
+| Modèles | Texte simple FR/AR avec variables `{nom}`… ; un texte identique au défaut n'est pas enregistré | Modifiable sans HTML ni risque de casser la mise en page ; les améliorations du texte par défaut continuent de s'appliquer |
+| Notifications existantes | Restent créées dans le tableau de bord ; leur e-mail devient activable et réécrivable (`{titre}`, `{message}`, `{lien}`) | Le texte d'origine dépend de chaque situation (montants, noms) ; l'administrateur peut l'entourer ou le remplacer |
+| Envoi | `wp_mail()` + **WP Mail SMTP** (choix du porteur de projet) ; expéditeur contact@reusteel.com ; Reply-To = l'utilisateur concerné dans les alertes | Délivrabilité par un compte authentifié ; l'administrateur répond directement depuis sa messagerie |
+| Journal des e-mails | Chaque envoi avec statut et erreur ; contenu conservé pour relecture et renvoi, sauf codes de vérification | Répondre à « je n'ai rien reçu » ; un code de vérification ne doit jamais rester lisible |
+| Journal d'activité | Phrases lisibles, connexions réussies rangées sous « Sécurité », export CSV, conservation réglable (365 jours par défaut) | Lisible par un non-technicien ; les connexions noieraient le reste |
+| Robustesse | Une erreur d'e-mail n'interrompt jamais l'action de l'utilisateur | L'inscription ou la publication ne doit pas échouer à cause d'un serveur SMTP |

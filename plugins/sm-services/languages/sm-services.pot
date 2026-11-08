@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-08T12:53:10+00:00\n"
+"POT-Creation-Date: 2026-11-08T14:06:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-services\n"
@@ -36,6 +36,130 @@ msgstr ""
 
 #: sm-services.php:47
 msgid "SM Services needs the SM Core plugin. Activate it first."
+msgstr ""
+
+#: src/Activity.php:64
+msgid "New service page"
+msgstr ""
+
+#. translators: 1: company, 2: service.
+#: src/Activity.php:72
+msgid "%1$s published the service \"%2$s\""
+msgstr ""
+
+#: src/Activity.php:75
+msgid "New service: {titre}"
+msgstr ""
+
+#: src/Activity.php:76
+msgid ""
+"{entreprise} ({wilaya}) published a service page.\n"
+"\n"
+"{titre}\n"
+"Catalogue: {catalogue}\n"
+"\n"
+"By {nom} — {email} — {telephone}\n"
+"\n"
+"{lien}"
+msgstr ""
+
+#: src/Activity.php:79
+msgid "Your service page is saved: {titre}"
+msgstr ""
+
+#: src/Activity.php:80
+msgid ""
+"Your service page \"{titre}\" is saved on {site}. Clients find it by service and wilaya and send you their requests, which you answer with a quote.\n"
+"\n"
+"See your page:\n"
+"{lien}\n"
+"\n"
+"Tip: add photos of your work and your references; they reassure clients.\n"
+"\n"
+"The {site} team"
+msgstr ""
+
+#: src/Activity.php:87
+msgid "Service request sent"
+msgstr ""
+
+#. translators: 1: client, 2: provider, 3: service.
+#: src/Activity.php:94
+msgid "%1$s asked %2$s for a quote (\"%3$s\")"
+msgstr ""
+
+#: src/Activity.php:97
+msgid "Service request: {client} → {prestataire}"
+msgstr ""
+
+#: src/Activity.php:98
+msgid ""
+"{client} ({wilaya}) asked {prestataire} for a quote about \"{titre}\".\n"
+"\n"
+"{message}\n"
+"\n"
+"Client: {nom} — {email} — {telephone}"
+msgstr ""
+
+#: src/Activity.php:101
+msgid "Your request is sent to {prestataire}"
+msgstr ""
+
+#: src/Activity.php:102
+msgid ""
+"Your request about \"{titre}\" was sent to {prestataire}. You are told by e-mail when the quote arrives.\n"
+"\n"
+"The {site} team"
+msgstr ""
+
+#: src/Activity.php:108
+msgid "Service quote accepted"
+msgstr ""
+
+#. translators: 1: client, 2: provider, 3: amount.
+#: src/Activity.php:114
+msgid "%1$s accepted the quote of %2$s (%3$s)"
+msgstr ""
+
+#: src/Activity.php:117
+msgid "Deal: {client} accepted the quote of {prestataire}"
+msgstr ""
+
+#: src/Activity.php:118
+msgid ""
+"{client} accepted the quote of {prestataire} for \"{titre}\".\n"
+"\n"
+"Amount: {montant}\n"
+"Time: {delai} days"
+msgstr ""
+
+#: src/Activity.php:127
+msgid "Service page saved"
+msgstr ""
+
+#: src/Activity.php:128
+msgid "Service page status changed"
+msgstr ""
+
+#: src/Activity.php:129
+msgid "Quote sent for a service request"
+msgstr ""
+
+#: src/Activity.php:130
+msgid "Quote declined by the client"
+msgstr ""
+
+#: src/Activity.php:131
+msgid "Service request declined by the provider"
+msgstr ""
+
+#: src/Activity.php:132
+msgid "Service request cancelled"
+msgstr ""
+
+#: src/Activity.php:133
+#: src/Admin/Admin.php:69
+msgid "Service"
 msgstr ""
 
 #: src/Admin/Admin.php:29
@@ -73,10 +197,6 @@ msgstr ""
 
 #: src/Admin/Admin.php:66
 msgid "Nothing here."
-msgstr ""
-
-#: src/Admin/Admin.php:69
-msgid "Service"
 msgstr ""
 
 #: src/Admin/Admin.php:69

@@ -8,7 +8,7 @@
  *  - Rights            activity x capability matrix + minimum verification levels
  *  - Wilayas           reference list (names, active)
  *  - Settings          language, verification channel, limits
- *  - Audit log
+ *  - Activity journal (MailAdmin)
  *
  * @package SM\Core
  */
@@ -47,7 +47,7 @@ final class Admin {
 		add_submenu_page( 'sm-core', __( 'Rights', 'sm-core' ), __( 'Rights', 'sm-core' ), 'sm_manage_settings', 'sm-rights', array( __CLASS__, 'page_rights' ) );
 		add_submenu_page( 'sm-core', __( 'Wilayas', 'sm-core' ), __( 'Wilayas', 'sm-core' ), 'sm_manage_settings', 'sm-wilayas', array( __CLASS__, 'page_wilayas' ) );
 		add_submenu_page( 'sm-core', __( 'Settings', 'sm-core' ), __( 'Settings', 'sm-core' ), 'sm_manage_settings', 'sm-settings', array( __CLASS__, 'page_settings' ) );
-		add_submenu_page( 'sm-core', __( 'Audit log', 'sm-core' ), __( 'Audit log', 'sm-core' ), 'sm_manage_settings', 'sm-audit', array( __CLASS__, 'page_audit' ) );
+		add_submenu_page( 'sm-core', __( 'Activity journal', 'sm-core' ), __( 'Activity journal', 'sm-core' ), 'sm_manage_settings', 'sm-audit', array( MailAdmin::class, 'page_activity' ) );
 	}
 
 	public static function styles() {
@@ -216,6 +216,7 @@ final class Admin {
 		}
 		echo '<h2>' . esc_html__( 'Recent activity', 'sm-core' ) . '</h2>';
 		self::audit_table( AuditLog::query( array( 'company_id' => $c->id, 'per_page' => 15 ) ) );
+		echo '<p><a href="' . esc_url( admin_url( 'admin.php?page=sm-audit&c=' . (int) $c->id ) ) . '">' . esc_html__( 'Full activity of this company', 'sm-core' ) . '</a></p>';
 		echo '</div>';
 	}
 
@@ -341,30 +342,21 @@ final class Admin {
 		echo '</form></div>';
 	}
 
-	public static function page_audit() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$action = isset( $_GET['log_action'] ) ? sanitize_text_field( wp_unslash( $_GET['log_action'] ) ) : '';
-		echo '<div class="wrap sm-admin"><h1>' . esc_html__( 'Audit log', 'sm-core' ) . '</h1>';
-		echo '<form method="get"><input type="hidden" name="page" value="sm-audit"><p><input name="log_action" value="' . esc_attr( $action ) . '" placeholder="auth., company., verification."> <button class="button">' . esc_html__( 'Filter', 'sm-core' ) . '</button></p></form>';
-		self::audit_table( AuditLog::query( array( 'action' => $action, 'per_page' => 100 ) ) );
-		echo '</div>';
-	}
-
 	private static function audit_table( $rows ) {
-		echo '<table class="widefat striped"><thead><tr><th>' . esc_html__( 'Date', 'sm-core' ) . '</th><th>' . esc_html__( 'Action', 'sm-core' ) . '</th><th>' . esc_html__( 'User', 'sm-core' ) . '</th><th>' . esc_html__( 'Object', 'sm-core' ) . '</th><th>IP</th><th>' . esc_html__( 'Details', 'sm-core' ) . '</th></tr></thead><tbody>';
+		echo '<table class="widefat striped"><thead><tr><th>' . esc_html__( 'Date', 'sm-core' ) . '</th><th>' . esc_html__( 'Activity', 'sm-core' ) . '</th><th>' . esc_html__( 'User', 'sm-core' ) . '</th><th>IP</th></tr></thead><tbody>';
 		if ( ! $rows ) {
-			echo '<tr><td colspan="6">—</td></tr>';
+			echo '<tr><td colspan="4">—</td></tr>';
 		}
 		foreach ( $rows as $r ) {
-			$u = $r->user_id ? get_userdata( $r->user_id ) : null;
+			$e = AuditLog::entry( $r );
+			$u = $e->user_id ? get_userdata( $e->user_id ) : null;
 			printf(
-				'<tr><td>%s</td><td><code>%s</code></td><td>%s</td><td>%s</td><td>%s</td><td><code style="font-size:11px">%s</code></td></tr>',
-				esc_html( get_date_from_gmt( $r->created_at, 'Y-m-d H:i' ) ),
-				esc_html( $r->action ),
+				'<tr><td>%s</td><td>%s <code style="font-size:11px">%s</code></td><td>%s</td><td>%s</td></tr>',
+				esc_html( get_date_from_gmt( $e->created_at, 'Y-m-d H:i' ) ),
+				esc_html( \SM\Core\Mail\Activity::describe( $e ) ),
+				esc_html( $e->action ),
 				esc_html( $u ? $u->user_email : '—' ),
-				esc_html( $r->object_type . ( $r->object_id ? ' #' . $r->object_id : '' ) ),
-				esc_html( $r->ip ),
-				esc_html( mb_substr( (string) $r->data, 0, 160 ) )
+				esc_html( $e->ip )
 			);
 		}
 		echo '</tbody></table>';

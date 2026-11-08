@@ -35,7 +35,7 @@ function sm_theme_page_definitions() {
 		'lost'        => array( 'mot-de-passe-oublie', 'Mot de passe oublié', 'templates/auth-lost.php' ),
 		'account'     => array( 'compte', 'Mon compte', 'templates/dashboard.php' ),
 		'styleguide'  => array( 'styleguide', 'Styleguide', 'templates/styleguide.php' ),
-		'contact'     => array( 'contact', 'Contact', '' ),
+		'contact'     => array( 'contact', 'Contact', 'templates/contact.php' ),
 	);
 }
 

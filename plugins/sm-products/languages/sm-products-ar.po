@@ -44,6 +44,150 @@ msgid ""
 "first."
 msgstr "تحتاج SM Products إلى إضافتي SM Core وSM Weight Engine. فعّلهما أولا."
 
+#: src/Activity.php:43
+msgid "New listing published"
+msgstr "إعلان جديد منشور"
+
+#. translators: 1: company, 2: listing.
+#: src/Activity.php:51
+msgid "%1$s published \"%2$s\""
+msgstr "نشرت %1$s «%2$s»"
+
+#: src/Activity.php:54
+msgid "New listing: {titre}"
+msgstr "إعلان جديد: {titre}"
+
+#: src/Activity.php:55
+msgid ""
+"{entreprise} ({wilaya}) published a listing.\n"
+"\n"
+"{titre}\n"
+"Market: {marche}\n"
+"Weight: {poids}\n"
+"Price: {prix}\n"
+"\n"
+"Published by {nom} — {email} — {telephone}\n"
+"\n"
+"{lien}"
+msgstr ""
+"نشرت {entreprise} ({wilaya}) إعلانًا.\n"
+"\n"
+"{titre}\n"
+"السوق: {marche}\n"
+"الوزن: {poids}\n"
+"السعر: {prix}\n"
+"\n"
+"نشره {nom} — {email} — {telephone}\n"
+"\n"
+"{lien}"
+
+#: src/Activity.php:58
+msgid "Your listing is online: {titre}"
+msgstr "إعلانك منشور: {titre}"
+
+#: src/Activity.php:59
+msgid ""
+"Your listing \"{titre}\" is published on {site}. Buyers can now find it and contact you.\n"
+"\n"
+"See your listing:\n"
+"{lien}\n"
+"\n"
+"Tip: listings with clear photos and a complete description get more enquiries.\n"
+"\n"
+"The {site} team"
+msgstr ""
+"تم نشر إعلانك «{titre}» على {site}. يمكن للمشترين الآن إيجاده والتواصل معك.\n"
+"\n"
+"عرض إعلانك:\n"
+"{lien}\n"
+"\n"
+"نصيحة: الإعلانات ذات الصور الواضحة والوصف الكامل تتلقى طلبات أكثر.\n"
+"\n"
+"فريق {site}"
+
+#: src/Activity.php:65
+msgid "New listing waiting for review"
+msgstr "إعلان جديد في انتظار المراجعة"
+
+#. translators: 1: company, 2: listing.
+#: src/Activity.php:73
+msgid "%1$s sent \"%2$s\" for review"
+msgstr "أرسلت %1$s «%2$s» للمراجعة"
+
+#: src/Activity.php:76
+msgid "Listing to review: {titre}"
+msgstr "إعلان للمراجعة: {titre}"
+
+#: src/Activity.php:77
+msgid ""
+"{entreprise} ({wilaya}) sent a listing for review.\n"
+"\n"
+"{titre}\n"
+"Market: {marche}\n"
+"Price: {prix}\n"
+"\n"
+"Review it:\n"
+"{lien_admin}"
+msgstr ""
+"أرسلت {entreprise} ({wilaya}) إعلانًا للمراجعة.\n"
+"\n"
+"{titre}\n"
+"السوق: {marche}\n"
+"السعر: {prix}\n"
+"\n"
+"مراجعته:\n"
+"{lien_admin}"
+
+#: src/Activity.php:80
+msgid "We received your listing: {titre}"
+msgstr "استلمنا إعلانك: {titre}"
+
+#: src/Activity.php:81
+msgid ""
+"Your listing \"{titre}\" was received. The platform team checks it quickly; you are told as soon as it is online.\n"
+"\n"
+"The {site} team"
+msgstr ""
+"استلمنا إعلانك «{titre}». يراجعه فريق المنصة بسرعة؛ وسيتم إبلاغك فور نشره.\n"
+"\n"
+"فريق {site}"
+
+#: src/Activity.php:90
+msgid "Listing saved"
+msgstr "تم حفظ الإعلان"
+
+#: src/Activity.php:91
+msgid "Listing published"
+msgstr "تم نشر الإعلان"
+
+#: src/Activity.php:92
+msgid "Listing sent back for changes"
+msgstr "أُعيد الإعلان للتعديل"
+
+#: src/Activity.php:93
+msgid "Listing paused"
+msgstr "الإعلان متوقف مؤقتًا"
+
+#: src/Activity.php:94
+msgid "Listing marked as sold"
+msgstr "الإعلان مُعلَّم كمباع"
+
+#: src/Activity.php:95
+msgid "Listing expired"
+msgstr "انتهت صلاحية الإعلان"
+
+#: src/Activity.php:96
+msgid "Listing deleted"
+msgstr "تم حذف الإعلان"
+
+#: src/Activity.php:97
+msgid "Listing"
+msgstr "إعلان"
+
+#: src/Activity.php:98
+msgid "Product category changed"
+msgstr "تم تعديل فئة المنتجات"
+
 #: src/Admin/Admin.php:38 src/Admin/Admin.php:39 src/Admin/Admin.php:57
 #: src/Admin/Admin.php:62
 msgid "Products"

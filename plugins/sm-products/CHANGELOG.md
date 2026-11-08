@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.3.1 — 2026-11-08 (Phase 8.1)
+
+- E-mails (avec sm-core 0.4.0) : événements « nouvelle annonce publiée » et « nouvelle annonce en attente de vérification » (alerte aux administrateurs, confirmation au vendeur, modèles FR/AR), phrases et liens du journal d'activité.
+
 ## 0.3.0 — 2026-11-07 (Phase 6 : types de catégorie ouverts aux marchés)
 
 - Un marché peut ajouter son propre type de catégorie (filtre `sm_products_kinds`, action `sm_products_spec_kind_{type}`) ; `Spec::lines()` est public pour qu'il réutilise l'inventaire pesé par le moteur.

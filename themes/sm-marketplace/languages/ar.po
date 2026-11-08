@@ -131,6 +131,7 @@ msgid "Create an account"
 msgstr "إنشاء حساب"
 
 #: footer.php:43 header.php:32 templates/company-profile.php:73
+#: templates/contact.php:23 templates/contact.php:32
 #: templates/single-listing.php:293
 msgid "Contact"
 msgstr "اتصل بنا"
@@ -211,7 +212,7 @@ msgstr "الإعلانات المحفوظة"
 msgid "Notifications"
 msgstr "الإشعارات"
 
-#: header.php:69 header.php:138
+#: header.php:69 header.php:138 templates/contact.php:64
 msgid "My account"
 msgstr "حسابي"
 
@@ -797,7 +798,7 @@ msgid "Full name"
 msgstr "الاسم الكامل"
 
 #: template-parts/components/enquiry-form.php:42
-#: templates/company-profile.php:139
+#: templates/company-profile.php:147 templates/contact.php:56
 msgid "Phone"
 msgstr "الهاتف"
 
@@ -806,7 +807,7 @@ msgstr "الهاتف"
 msgid "Quantity needed"
 msgstr "الكمية المطلوبة"
 
-#: template-parts/components/enquiry-form.php:47
+#: template-parts/components/enquiry-form.php:47 templates/contact.php:74
 msgid "Message"
 msgstr "الرسالة"
 
@@ -891,7 +892,7 @@ msgstr "الارتفاع الأدنى (m)"
 #: template-parts/dashboard/company.php:76
 #: template-parts/dashboard/portfolio.php:66
 #: template-parts/dashboard/publish.php:184 templates/auth-register.php:66
-#: templates/company-profile.php:137 templates/front-page-template.php:40
+#: templates/company-profile.php:145 templates/front-page-template.php:40
 msgid "Wilaya"
 msgstr "الولاية"
 
@@ -1219,10 +1220,10 @@ msgstr "العنوان بالعربية"
 #: template-parts/components/service-request-form.php:34
 #: template-parts/components/service-request-form.php:39
 #: template-parts/components/service-request-form.php:47
-#: template-parts/components/service-request-row.php:77
+#: template-parts/components/service-request-row.php:87
 #: template-parts/dashboard/portfolio.php:48
 #: template-parts/dashboard/portfolio.php:54
-#: template-parts/dashboard/portfolio.php:74
+#: template-parts/dashboard/portfolio.php:74 templates/contact.php:56
 msgid "optional"
 msgstr "اختياري"
 
@@ -1286,7 +1287,7 @@ msgstr ""
 "للمشترين تنزيلها."
 
 #: template-parts/components/product-form.php:174
-#: templates/company-profile.php:145 templates/single-listing.php:67
+#: templates/company-profile.php:153 templates/single-listing.php:67
 msgid "Location"
 msgstr "الموقع"
 
@@ -1744,7 +1745,7 @@ msgstr "التسليم"
 #. translators: %d: days.
 #: template-parts/components/rfq-compare.php:66
 #: template-parts/components/rfq-my-offer.php:20
-#: template-parts/components/service-request-row.php:38
+#: template-parts/components/service-request-row.php:46
 #: template-parts/dashboard/offers.php:36 templates/single-service.php:70
 msgid "%d day"
 msgid_plural "%d days"
@@ -1794,7 +1795,7 @@ msgid "Request for quotation no. %d"
 msgstr "طلب عرض أسعار رقم %d"
 
 #. translators: %d: request number.
-#: template-parts/components/rfq-compare.php:86
+#: template-parts/components/rfq-compare.php:86 templates/contact.php:49
 msgid "E-mail"
 msgstr "البريد الإلكتروني"
 
@@ -1904,7 +1905,7 @@ msgstr "المدينة، المنطقة الصناعية، الورشة"
 
 #: template-parts/components/rfq-form.php:111
 #: template-parts/components/rfq-single.php:37
-#: template-parts/components/service-request-row.php:35
+#: template-parts/components/service-request-row.php:43
 msgid "Needed by"
 msgstr "التاريخ المطلوب"
 
@@ -2401,75 +2402,75 @@ msgstr ""
 "يرد مقدم الخدمة بعرض سعر (المبلغ والأجل). تقرر بعد ذلك؛ لا شيء يُلزمك قبل "
 "ذلك."
 
-#: template-parts/components/service-request-row.php:24
+#: template-parts/components/service-request-row.php:32
 msgid "Service removed"
 msgstr "خدمة محذوفة"
 
-#: template-parts/components/service-request-row.php:36
+#: template-parts/components/service-request-row.php:44
 msgid "Indicative budget"
 msgstr "ميزانية تقديرية"
 
-#: template-parts/components/service-request-row.php:38
+#: template-parts/components/service-request-row.php:46
 msgid "Quote"
 msgstr "عرض السعر"
 
-#: template-parts/components/service-request-row.php:42
+#: template-parts/components/service-request-row.php:50
 msgid "Project details"
 msgstr "تفاصيل المشروع"
 
-#: template-parts/components/service-request-row.php:50
+#: template-parts/components/service-request-row.php:58
 msgid "Your answer:"
 msgstr "ردك:"
 
-#: template-parts/components/service-request-row.php:50
+#: template-parts/components/service-request-row.php:58
 msgid "Answer of the provider:"
 msgstr "رد مقدم الخدمة:"
 
-#: template-parts/components/service-request-row.php:63
+#: template-parts/components/service-request-row.php:71
 msgid "Update the quote"
 msgstr "تعديل عرض السعر"
 
-#: template-parts/components/service-request-row.php:63
+#: template-parts/components/service-request-row.php:71
 msgid "Answer with a quote"
 msgstr "الرد بعرض سعر"
 
-#: template-parts/components/service-request-row.php:68
+#: template-parts/components/service-request-row.php:76
 msgid "Amount of the quote"
 msgstr "مبلغ عرض السعر"
 
-#: template-parts/components/service-request-row.php:72
+#: template-parts/components/service-request-row.php:81
 msgid "Time needed (days)"
 msgstr "المدة اللازمة (أيام)"
 
-#: template-parts/components/service-request-row.php:77
+#: template-parts/components/service-request-row.php:87
 msgid "Message to the client"
 msgstr "رسالة إلى العميل"
 
-#: template-parts/components/service-request-row.php:81
+#: template-parts/components/service-request-row.php:92
 msgid "Send the quote"
 msgstr "إرسال عرض السعر"
 
-#: template-parts/components/service-request-row.php:82
+#: template-parts/components/service-request-row.php:93
 msgid "Decline this request? The client is told."
 msgstr "الاعتذار عن هذا الطلب؟ سيتم إبلاغ العميل."
 
-#: template-parts/components/service-request-row.php:82
+#: template-parts/components/service-request-row.php:93
 msgid "Decline the request"
 msgstr "الاعتذار عن الطلب"
 
-#: template-parts/components/service-request-row.php:95
+#: template-parts/components/service-request-row.php:106
 msgid "Accept the quote"
 msgstr "قبول عرض السعر"
 
-#: template-parts/components/service-request-row.php:96
+#: template-parts/components/service-request-row.php:107
 msgid "Decline the quote"
 msgstr "رفض عرض السعر"
 
-#: template-parts/components/service-request-row.php:98
+#: template-parts/components/service-request-row.php:109
 msgid "Cancel the request"
 msgstr "إلغاء الطلب"
 
-#: template-parts/components/service-request-row.php:98
+#: template-parts/components/service-request-row.php:109
 msgid "Cancel this request? The provider is told."
 msgstr "إلغاء هذا الطلب؟ سيتم إبلاغ مقدم الخدمة."
 
@@ -3637,7 +3638,7 @@ msgstr[5] "%d سنة خبرة"
 msgid "Active since %s"
 msgstr "نشطة منذ %s"
 
-#: templates/company-profile.php:73 templates/company-profile.php:168
+#: templates/company-profile.php:73 templates/company-profile.php:176
 msgid "Request a service"
 msgstr "طلب خدمة"
 
@@ -3649,41 +3650,116 @@ msgstr "أقسام المؤسسة"
 msgid "This company has not written its presentation yet."
 msgstr "لم تكتب هذه المؤسسة تقديمها بعد."
 
-#: templates/company-profile.php:128
+#: templates/company-profile.php:132
 msgid "Qualifications"
 msgstr "المؤهلات"
 
-#: templates/company-profile.php:130
+#: templates/company-profile.php:136
 msgid "Specialisations"
 msgstr "التخصصات"
 
-#: templates/company-profile.php:135
+#: templates/company-profile.php:143
 msgid "Company details"
 msgstr "معلومات المؤسسة"
 
-#: templates/company-profile.php:138
+#: templates/company-profile.php:146
 msgid "Commercial register"
 msgstr "السجل التجاري"
 
-#: templates/company-profile.php:138
+#: templates/company-profile.php:146
 msgid "Checked by the platform"
 msgstr "مراقب من طرف المنصة"
 
-#: templates/company-profile.php:138
+#: templates/company-profile.php:146
 msgid "Not yet checked"
 msgstr "لم يراقب بعد"
 
-#: templates/company-profile.php:167
+#: templates/company-profile.php:175
 msgid "Service request"
 msgstr "طلب خدمة"
 
-#: templates/company-profile.php:167
+#: templates/company-profile.php:175
 msgid "Contact from the company page"
 msgstr "تواصل من صفحة المؤسسة"
 
-#: templates/company-profile.php:168
+#: templates/company-profile.php:176
 msgid "Contact this company"
 msgstr "التواصل مع هذه المؤسسة"
+
+#. Template Name of the theme
+msgid "SM — Contact"
+msgstr "SM — اتصل بنا"
+
+#: templates/contact.php:24
+msgid "Contact us"
+msgstr "اتصل بنا"
+
+#: templates/contact.php:25
+msgid ""
+"A question about the platform, your account, a verification or a "
+"partnership? Write to us: the team answers by e-mail."
+msgstr ""
+"سؤال حول المنصة أو حسابك أو التوثيق أو شراكة؟ راسلنا: يرد عليك الفريق "
+"بالبريد الإلكتروني."
+
+#: templates/contact.php:32
+msgid "The contact form is not active yet."
+msgstr "نموذج الاتصال غير مفعّل بعد."
+
+#: templates/contact.php:36
+msgid "Message sent"
+msgstr "تم إرسال الرسالة"
+
+#: templates/contact.php:37
+msgid ""
+"You will receive an acknowledgement by e-mail. We answer as soon as "
+"possible."
+msgstr ""
+"ستتلقى إشعارًا بالاستلام عبر البريد الإلكتروني. سنرد عليك في أقرب وقت."
+
+#: templates/contact.php:38
+msgid "Back to the home page"
+msgstr "العودة إلى الصفحة الرئيسية"
+
+#: templates/contact.php:44
+msgid "Your name"
+msgstr "اسمك"
+
+#: templates/contact.php:61
+msgid "Subject"
+msgstr "الموضوع"
+
+#: templates/contact.php:65
+msgid "Verification of my company"
+msgstr "توثيق مؤسستي"
+
+#: templates/contact.php:66
+msgid "Plans and payment"
+msgstr "الاشتراكات والدفع"
+
+#: templates/contact.php:67
+msgid "Partnership"
+msgstr "شراكة"
+
+#: templates/contact.php:68
+msgid "Report a listing"
+msgstr "الإبلاغ عن إعلان"
+
+#: templates/contact.php:79
+msgid "Send the message"
+msgstr "إرسال الرسالة"
+
+#: templates/contact.php:86
+msgid "Other ways to reach us"
+msgstr "طرق أخرى للتواصل معنا"
+
+#: templates/contact.php:90
+msgid ""
+"To contact a seller, a workshop or an engineer, use the button on their "
+"listing or page: your message goes directly to them."
+msgstr ""
+"للتواصل مع بائع أو ورشة أو مهندس، استعمل الزر الموجود في إعلانه أو صفحته: "
+"تصله رسالتك مباشرة."
 
 #. Template Name of the theme
 msgid "SM — Dashboard"

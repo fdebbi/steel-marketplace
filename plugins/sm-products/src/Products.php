@@ -66,6 +66,7 @@ final class Products {
 	 * @return int Product ID.
 	 */
 	public static function save( $id, $company_id, $user_id, array $spec, $status, $photos = null, $sheets = null ) {
+		$is_new = ! $id;
 		global $wpdb;
 		$now  = current_time( 'mysql', true );
 		$cols = array( 'market', 'item_condition', 'variant', 'category', 'family', 'section_id', 'designation', 'grade', 'qty_mode', 'length_mm', 'width_mm', 'pieces', 'quantity', 'unit', 'unit_weight', 'total_weight', 'weight_source', 'engine_version', 'ref_version', 'price', 'price_unit', 'total_price', 'price_per_kg', 'wilaya' );
@@ -103,7 +104,7 @@ final class Products {
 			Media::set( 'product', $id, 'sheet', $sheets );
 		}
 		self::index( $id );
-		AuditLog::add( 'product.saved', 'product', $id, array( 'status' => $status ), $user_id, $company_id );
+		AuditLog::add( 'product.saved', 'product', $id, array( 'status' => $status, 'new' => $is_new ), $user_id, $company_id );
 		return (int) $id;
 	}
 

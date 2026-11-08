@@ -132,6 +132,7 @@ msgid "Create an account"
 msgstr "Créer un compte"
 
 #: footer.php:43 header.php:32 templates/company-profile.php:73
+#: templates/contact.php:23 templates/contact.php:32
 #: templates/single-listing.php:293
 msgid "Contact"
 msgstr "Contact"
@@ -214,7 +215,7 @@ msgstr "Annonces enregistrées"
 msgid "Notifications"
 msgstr "Notifications"
 
-#: header.php:69 header.php:138
+#: header.php:69 header.php:138 templates/contact.php:64
 msgid "My account"
 msgstr "Mon compte"
 
@@ -796,7 +797,7 @@ msgid "Full name"
 msgstr "Nom complet"
 
 #: template-parts/components/enquiry-form.php:42
-#: templates/company-profile.php:139
+#: templates/company-profile.php:147 templates/contact.php:56
 msgid "Phone"
 msgstr "Téléphone"
 
@@ -805,7 +806,7 @@ msgstr "Téléphone"
 msgid "Quantity needed"
 msgstr "Quantité souhaitée"
 
-#: template-parts/components/enquiry-form.php:47
+#: template-parts/components/enquiry-form.php:47 templates/contact.php:74
 msgid "Message"
 msgstr "Message"
 
@@ -892,7 +893,7 @@ msgstr "Hauteur min. (m)"
 #: template-parts/dashboard/company.php:76
 #: template-parts/dashboard/portfolio.php:66
 #: template-parts/dashboard/publish.php:184 templates/auth-register.php:66
-#: templates/company-profile.php:137 templates/front-page-template.php:40
+#: templates/company-profile.php:145 templates/front-page-template.php:40
 msgid "Wilaya"
 msgstr "Wilaya"
 
@@ -1220,10 +1221,10 @@ msgstr "Titre en arabe"
 #: template-parts/components/service-request-form.php:34
 #: template-parts/components/service-request-form.php:39
 #: template-parts/components/service-request-form.php:47
-#: template-parts/components/service-request-row.php:77
+#: template-parts/components/service-request-row.php:87
 #: template-parts/dashboard/portfolio.php:48
 #: template-parts/dashboard/portfolio.php:54
-#: template-parts/dashboard/portfolio.php:74
+#: template-parts/dashboard/portfolio.php:74 templates/contact.php:56
 msgid "optional"
 msgstr "facultatif"
 
@@ -1287,7 +1288,7 @@ msgstr ""
 "acheteurs pourront la télécharger."
 
 #: template-parts/components/product-form.php:174
-#: templates/company-profile.php:145 templates/single-listing.php:67
+#: templates/company-profile.php:153 templates/single-listing.php:67
 msgid "Location"
 msgstr "Localisation"
 
@@ -1751,7 +1752,7 @@ msgstr "Livraison"
 #. translators: %d: days.
 #: template-parts/components/rfq-compare.php:66
 #: template-parts/components/rfq-my-offer.php:20
-#: template-parts/components/service-request-row.php:38
+#: template-parts/components/service-request-row.php:46
 #: template-parts/dashboard/offers.php:36 templates/single-service.php:70
 msgid "%d day"
 msgid_plural "%d days"
@@ -1797,7 +1798,7 @@ msgid "Request for quotation no. %d"
 msgstr "Demande de devis n° %d"
 
 #. translators: %d: request number.
-#: template-parts/components/rfq-compare.php:86
+#: template-parts/components/rfq-compare.php:86 templates/contact.php:49
 msgid "E-mail"
 msgstr "E-mail"
 
@@ -1910,7 +1911,7 @@ msgstr "Ville, zone industrielle, chantier"
 
 #: template-parts/components/rfq-form.php:111
 #: template-parts/components/rfq-single.php:37
-#: template-parts/components/service-request-row.php:35
+#: template-parts/components/service-request-row.php:43
 msgid "Needed by"
 msgstr "Date souhaitée"
 
@@ -2411,75 +2412,75 @@ msgstr ""
 "Le prestataire répond par un devis (montant et délai). Vous décidez ensuite "
 "; rien ne vous engage avant."
 
-#: template-parts/components/service-request-row.php:24
+#: template-parts/components/service-request-row.php:32
 msgid "Service removed"
 msgstr "Service supprimé"
 
-#: template-parts/components/service-request-row.php:36
+#: template-parts/components/service-request-row.php:44
 msgid "Indicative budget"
 msgstr "Budget indicatif"
 
-#: template-parts/components/service-request-row.php:38
+#: template-parts/components/service-request-row.php:46
 msgid "Quote"
 msgstr "Devis"
 
-#: template-parts/components/service-request-row.php:42
+#: template-parts/components/service-request-row.php:50
 msgid "Project details"
 msgstr "Détails du projet"
 
-#: template-parts/components/service-request-row.php:50
+#: template-parts/components/service-request-row.php:58
 msgid "Your answer:"
 msgstr "Votre réponse :"
 
-#: template-parts/components/service-request-row.php:50
+#: template-parts/components/service-request-row.php:58
 msgid "Answer of the provider:"
 msgstr "Réponse du prestataire :"
 
-#: template-parts/components/service-request-row.php:63
+#: template-parts/components/service-request-row.php:71
 msgid "Update the quote"
 msgstr "Modifier le devis"
 
-#: template-parts/components/service-request-row.php:63
+#: template-parts/components/service-request-row.php:71
 msgid "Answer with a quote"
 msgstr "Répondre par un devis"
 
-#: template-parts/components/service-request-row.php:68
+#: template-parts/components/service-request-row.php:76
 msgid "Amount of the quote"
 msgstr "Montant du devis"
 
-#: template-parts/components/service-request-row.php:72
+#: template-parts/components/service-request-row.php:81
 msgid "Time needed (days)"
 msgstr "Délai nécessaire (jours)"
 
-#: template-parts/components/service-request-row.php:77
+#: template-parts/components/service-request-row.php:87
 msgid "Message to the client"
 msgstr "Message au client"
 
-#: template-parts/components/service-request-row.php:81
+#: template-parts/components/service-request-row.php:92
 msgid "Send the quote"
 msgstr "Envoyer le devis"
 
-#: template-parts/components/service-request-row.php:82
+#: template-parts/components/service-request-row.php:93
 msgid "Decline this request? The client is told."
 msgstr "Décliner cette demande ? Le client est prévenu."
 
-#: template-parts/components/service-request-row.php:82
+#: template-parts/components/service-request-row.php:93
 msgid "Decline the request"
 msgstr "Décliner la demande"
 
-#: template-parts/components/service-request-row.php:95
+#: template-parts/components/service-request-row.php:106
 msgid "Accept the quote"
 msgstr "Accepter le devis"
 
-#: template-parts/components/service-request-row.php:96
+#: template-parts/components/service-request-row.php:107
 msgid "Decline the quote"
 msgstr "Refuser le devis"
 
-#: template-parts/components/service-request-row.php:98
+#: template-parts/components/service-request-row.php:109
 msgid "Cancel the request"
 msgstr "Annuler la demande"
 
-#: template-parts/components/service-request-row.php:98
+#: template-parts/components/service-request-row.php:109
 msgid "Cancel this request? The provider is told."
 msgstr "Annuler cette demande ? Le prestataire est prévenu."
 
@@ -3674,7 +3675,7 @@ msgstr[1] "%d ans d’expérience"
 msgid "Active since %s"
 msgstr "Active depuis %s"
 
-#: templates/company-profile.php:73 templates/company-profile.php:168
+#: templates/company-profile.php:73 templates/company-profile.php:176
 msgid "Request a service"
 msgstr "Demander une prestation"
 
@@ -3686,41 +3687,117 @@ msgstr "Rubriques de l’entreprise"
 msgid "This company has not written its presentation yet."
 msgstr "Cette entreprise n’a pas encore rédigé sa présentation."
 
-#: templates/company-profile.php:128
+#: templates/company-profile.php:132
 msgid "Qualifications"
 msgstr "Qualifications"
 
-#: templates/company-profile.php:130
+#: templates/company-profile.php:136
 msgid "Specialisations"
 msgstr "Spécialités"
 
-#: templates/company-profile.php:135
+#: templates/company-profile.php:143
 msgid "Company details"
 msgstr "Informations"
 
-#: templates/company-profile.php:138
+#: templates/company-profile.php:146
 msgid "Commercial register"
 msgstr "Registre du commerce"
 
-#: templates/company-profile.php:138
+#: templates/company-profile.php:146
 msgid "Checked by the platform"
 msgstr "Contrôlé par la plateforme"
 
-#: templates/company-profile.php:138
+#: templates/company-profile.php:146
 msgid "Not yet checked"
 msgstr "Pas encore contrôlé"
 
-#: templates/company-profile.php:167
+#: templates/company-profile.php:175
 msgid "Service request"
 msgstr "Demande de prestation"
 
-#: templates/company-profile.php:167
+#: templates/company-profile.php:175
 msgid "Contact from the company page"
 msgstr "Contact depuis la page entreprise"
 
-#: templates/company-profile.php:168
+#: templates/company-profile.php:176
 msgid "Contact this company"
 msgstr "Contacter cette entreprise"
+
+#. Template Name of the theme
+msgid "SM — Contact"
+msgstr "SM — Contact"
+
+#: templates/contact.php:24
+msgid "Contact us"
+msgstr "Nous contacter"
+
+#: templates/contact.php:25
+msgid ""
+"A question about the platform, your account, a verification or a "
+"partnership? Write to us: the team answers by e-mail."
+msgstr ""
+"Une question sur la plateforme, votre compte, une vérification ou un "
+"partenariat ? Écrivez-nous : l’équipe vous répond par e-mail."
+
+#: templates/contact.php:32
+msgid "The contact form is not active yet."
+msgstr "Le formulaire de contact n’est pas encore actif."
+
+#: templates/contact.php:36
+msgid "Message sent"
+msgstr "Message envoyé"
+
+#: templates/contact.php:37
+msgid ""
+"You will receive an acknowledgement by e-mail. We answer as soon as "
+"possible."
+msgstr ""
+"Vous allez recevoir un accusé de réception par e-mail. Nous vous répondons "
+"dès que possible."
+
+#: templates/contact.php:38
+msgid "Back to the home page"
+msgstr "Retour à l’accueil"
+
+#: templates/contact.php:44
+msgid "Your name"
+msgstr "Votre nom"
+
+#: templates/contact.php:61
+msgid "Subject"
+msgstr "Objet"
+
+#: templates/contact.php:65
+msgid "Verification of my company"
+msgstr "Vérification de mon entreprise"
+
+#: templates/contact.php:66
+msgid "Plans and payment"
+msgstr "Abonnements et paiement"
+
+#: templates/contact.php:67
+msgid "Partnership"
+msgstr "Partenariat"
+
+#: templates/contact.php:68
+msgid "Report a listing"
+msgstr "Signaler une annonce"
+
+#: templates/contact.php:79
+msgid "Send the message"
+msgstr "Envoyer le message"
+
+#: templates/contact.php:86
+msgid "Other ways to reach us"
+msgstr "Nous joindre autrement"
+
+#: templates/contact.php:90
+msgid ""
+"To contact a seller, a workshop or an engineer, use the button on their "
+"listing or page: your message goes directly to them."
+msgstr ""
+"Pour contacter un vendeur, un atelier ou un ingénieur, utilisez le bouton de"
+" son annonce ou de sa page : votre message lui parvient directement."
 
 #. Template Name of the theme
 msgid "SM — Dashboard"

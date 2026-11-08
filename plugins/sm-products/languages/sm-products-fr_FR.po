@@ -47,6 +47,150 @@ msgstr ""
 "SM Products nécessite les extensions SM Core et SM Weight Engine. Activez-"
 "les d’abord."
 
+#: src/Activity.php:43
+msgid "New listing published"
+msgstr "Nouvelle annonce publiée"
+
+#. translators: 1: company, 2: listing.
+#: src/Activity.php:51
+msgid "%1$s published \"%2$s\""
+msgstr "%1$s a publié « %2$s »"
+
+#: src/Activity.php:54
+msgid "New listing: {titre}"
+msgstr "Nouvelle annonce : {titre}"
+
+#: src/Activity.php:55
+msgid ""
+"{entreprise} ({wilaya}) published a listing.\n"
+"\n"
+"{titre}\n"
+"Market: {marche}\n"
+"Weight: {poids}\n"
+"Price: {prix}\n"
+"\n"
+"Published by {nom} — {email} — {telephone}\n"
+"\n"
+"{lien}"
+msgstr ""
+"{entreprise} ({wilaya}) a publié une annonce.\n"
+"\n"
+"{titre}\n"
+"Marché : {marche}\n"
+"Poids : {poids}\n"
+"Prix : {prix}\n"
+"\n"
+"Publiée par {nom} — {email} — {telephone}\n"
+"\n"
+"{lien}"
+
+#: src/Activity.php:58
+msgid "Your listing is online: {titre}"
+msgstr "Votre annonce est en ligne : {titre}"
+
+#: src/Activity.php:59
+msgid ""
+"Your listing \"{titre}\" is published on {site}. Buyers can now find it and contact you.\n"
+"\n"
+"See your listing:\n"
+"{lien}\n"
+"\n"
+"Tip: listings with clear photos and a complete description get more enquiries.\n"
+"\n"
+"The {site} team"
+msgstr ""
+"Votre annonce « {titre} » est publiée sur {site}. Les acheteurs peuvent maintenant la trouver et vous contacter.\n"
+"\n"
+"Voir votre annonce :\n"
+"{lien}\n"
+"\n"
+"Conseil : les annonces avec des photos nettes et une description complète reçoivent plus de demandes.\n"
+"\n"
+"L’équipe {site}"
+
+#: src/Activity.php:65
+msgid "New listing waiting for review"
+msgstr "Nouvelle annonce en attente de vérification"
+
+#. translators: 1: company, 2: listing.
+#: src/Activity.php:73
+msgid "%1$s sent \"%2$s\" for review"
+msgstr "%1$s a soumis « %2$s » à vérification"
+
+#: src/Activity.php:76
+msgid "Listing to review: {titre}"
+msgstr "Annonce à vérifier : {titre}"
+
+#: src/Activity.php:77
+msgid ""
+"{entreprise} ({wilaya}) sent a listing for review.\n"
+"\n"
+"{titre}\n"
+"Market: {marche}\n"
+"Price: {prix}\n"
+"\n"
+"Review it:\n"
+"{lien_admin}"
+msgstr ""
+"{entreprise} ({wilaya}) a soumis une annonce à vérification.\n"
+"\n"
+"{titre}\n"
+"Marché : {marche}\n"
+"Prix : {prix}\n"
+"\n"
+"La vérifier :\n"
+"{lien_admin}"
+
+#: src/Activity.php:80
+msgid "We received your listing: {titre}"
+msgstr "Nous avons bien reçu votre annonce : {titre}"
+
+#: src/Activity.php:81
+msgid ""
+"Your listing \"{titre}\" was received. The platform team checks it quickly; you are told as soon as it is online.\n"
+"\n"
+"The {site} team"
+msgstr ""
+"Votre annonce « {titre} » a bien été reçue. L’équipe de la plateforme la vérifie rapidement ; vous êtes prévenu dès qu’elle est en ligne.\n"
+"\n"
+"L’équipe {site}"
+
+#: src/Activity.php:90
+msgid "Listing saved"
+msgstr "Annonce enregistrée"
+
+#: src/Activity.php:91
+msgid "Listing published"
+msgstr "Annonce publiée"
+
+#: src/Activity.php:92
+msgid "Listing sent back for changes"
+msgstr "Annonce renvoyée pour modifications"
+
+#: src/Activity.php:93
+msgid "Listing paused"
+msgstr "Annonce en pause"
+
+#: src/Activity.php:94
+msgid "Listing marked as sold"
+msgstr "Annonce marquée vendue"
+
+#: src/Activity.php:95
+msgid "Listing expired"
+msgstr "Annonce expirée"
+
+#: src/Activity.php:96
+msgid "Listing deleted"
+msgstr "Annonce supprimée"
+
+#: src/Activity.php:97
+msgid "Listing"
+msgstr "Annonce"
+
+#: src/Activity.php:98
+msgid "Product category changed"
+msgstr "Catégorie de produits modifiée"
+
 #: src/Admin/Admin.php:38 src/Admin/Admin.php:39 src/Admin/Admin.php:57
 #: src/Admin/Admin.php:62
 msgid "Products"

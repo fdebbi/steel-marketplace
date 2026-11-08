@@ -24,12 +24,13 @@ msgstr "https://github.com/fdebbi/steel-marketplace"
 msgid ""
 "Central foundation of Steel Marketplace: accounts and companies, business "
 "activities, permissions, verification, languages (/ar/), notifications, "
-"enquiries, audit log and the sm/v1 REST API. Every other sm-* plugin depends"
-" on it."
+"enquiries, e-mail alerts with editable templates, activity journal, contact "
+"form and the sm/v1 REST API. Every other sm-* plugin depends on it."
 msgstr ""
-"Socle de Steel Marketplace : comptes et entreprises, activités, permissions,"
-" vérification, langues (/ar/), notifications, demandes, journal d’audit et "
-"API REST sm/v1. Toutes les autres extensions sm-* en dépendent."
+"Socle de la plateforme : comptes et entreprises, activités, permissions, "
+"vérification, langues (/ar/), notifications, demandes de contact, alertes "
+"e-mail avec modèles modifiables, journal d’activité, formulaire de contact "
+"et API REST sm/v1. Toutes les autres extensions sm-* en dépendent."
 
 #. Author of the plugin
 #: sm-core.php
@@ -56,7 +57,7 @@ msgstr ""
 msgid "Manufacturer"
 msgstr "Fabricant"
 
-#: src/Accounts/Companies.php:39
+#: src/Accounts/Companies.php:39 src/Mail/Templates.php:153
 msgid "Supplier / distributor"
 msgstr "Fournisseur / distributeur"
 
@@ -119,23 +120,23 @@ msgstr "Choisissez votre wilaya."
 msgid "Enter a valid e-mail address."
 msgstr "Saisissez une adresse e-mail valide."
 
-#: src/Accounts/CompanyForms.php:94
+#: src/Accounts/CompanyForms.php:95
 msgid "Company profile saved."
 msgstr "Fiche entreprise enregistrée."
 
-#: src/Accounts/CompanyForms.php:105 src/Accounts/Registration.php:113
+#: src/Accounts/CompanyForms.php:106 src/Accounts/Registration.php:113
 msgid "Enter your full name."
 msgstr "Saisissez votre nom complet."
 
-#: src/Accounts/CompanyForms.php:118
+#: src/Accounts/CompanyForms.php:119
 msgid "Your current password is not correct."
 msgstr "Votre mot de passe actuel est incorrect."
 
-#: src/Accounts/CompanyForms.php:120 src/Accounts/Registration.php:138
+#: src/Accounts/CompanyForms.php:121 src/Accounts/Registration.php:138
 msgid "The password must have at least 10 characters."
 msgstr "Le mot de passe doit comporter au moins 10 caractères."
 
-#: src/Accounts/CompanyForms.php:138
+#: src/Accounts/CompanyForms.php:139
 msgid "Settings saved."
 msgstr "Paramètres enregistrés."
 
@@ -247,19 +248,19 @@ msgstr "Vérifications"
 msgid "Rights"
 msgstr "Droits"
 
-#: src/Admin/Admin.php:48 src/Admin/Admin.php:300
+#: src/Admin/Admin.php:48 src/Admin/Admin.php:301
 msgid "Wilayas"
 msgstr "Wilayas"
 
-#: src/Admin/Admin.php:49 src/Admin/Admin.php:319
+#: src/Admin/Admin.php:49 src/Admin/Admin.php:320
 msgid "Settings"
 msgstr "Réglages"
 
-#: src/Admin/Admin.php:50 src/Admin/Admin.php:347
-msgid "Audit log"
-msgstr "Journal d’audit"
+#: src/Admin/Admin.php:50 src/Admin/MailAdmin.php:546
+msgid "Activity journal"
+msgstr "Journal d’activité"
 
-#: src/Admin/Admin.php:64
+#: src/Admin/Admin.php:64 src/Admin/MailAdmin.php:72
 msgid "Saved."
 msgstr "Enregistré."
 
@@ -299,7 +300,7 @@ msgstr "Comptes ingénierie"
 msgid "Verified (level 2+)"
 msgstr "Vérifiés (niveau 2+)"
 
-#: src/Admin/Admin.php:100 src/Admin/Admin.php:247
+#: src/Admin/Admin.php:100 src/Admin/Admin.php:248
 msgid "Verifications to review"
 msgstr "Vérifications à examiner"
 
@@ -330,7 +331,7 @@ msgid "All statuses"
 msgstr "Tous les statuts"
 
 #: src/Admin/Admin.php:131 src/Admin/Admin.php:148 src/Admin/Admin.php:204
-#: src/Admin/Admin.php:305
+#: src/Admin/Admin.php:306
 msgid "Active"
 msgstr "Actif"
 
@@ -338,15 +339,18 @@ msgstr "Actif"
 msgid "Suspended"
 msgstr "Suspendu"
 
-#: src/Admin/Admin.php:132 src/Admin/Admin.php:348
+#: src/Admin/Admin.php:132 src/Admin/MailAdmin.php:264
+#: src/Admin/MailAdmin.php:558
 msgid "Filter"
 msgstr "Filtrer"
 
-#: src/Admin/Admin.php:133
+#: src/Admin/Admin.php:133 src/Admin/MailAdmin.php:564
+#: src/Admin/MailAdmin.php:597
 msgid "Company"
 msgstr "Entreprise"
 
-#: src/Admin/Admin.php:133 src/Admin/Admin.php:173
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:173 src/Admin/MailAdmin.php:564
+#: src/Admin/MailAdmin.php:597
 msgid "Type"
 msgstr "Type"
 
@@ -358,11 +362,12 @@ msgstr "Activités"
 msgid "Wilaya"
 msgstr "Wilaya"
 
-#: src/Admin/Admin.php:133
+#: src/Admin/Admin.php:133 src/Mail/Events.php:46
 msgid "Verification"
 msgstr "Vérification"
 
-#: src/Admin/Admin.php:133 src/Admin/Admin.php:204
+#. translators: %d: count.
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:204 src/Admin/MailAdmin.php:265
 msgid "Status"
 msgstr "Statut"
 
@@ -390,7 +395,8 @@ msgstr "fixé à l’inscription"
 msgid "Phone"
 msgstr "Téléphone"
 
-#: src/Admin/Admin.php:176
+#: src/Admin/Admin.php:176 src/Admin/MailAdmin.php:208
+#: src/Admin/MailAdmin.php:597
 msgid "E-mail"
 msgstr "E-mail"
 
@@ -418,32 +424,36 @@ msgstr "Dernière demande de vérification"
 msgid "Recent activity"
 msgstr "Activité récente"
 
+#: src/Admin/Admin.php:219
+msgid "Full activity of this company"
+msgstr "Toute l’activité de cette entreprise"
+
 #. translators: 1: date, 2: status.
-#: src/Admin/Admin.php:226
+#: src/Admin/Admin.php:227
 msgid "Submitted %1$s — status: %2$s"
 msgstr "Envoyée le %1$s — statut : %2$s"
 
-#: src/Admin/Admin.php:238
+#: src/Admin/Admin.php:239
 msgid "Reason (sent to the company if rejected)"
 msgstr "Motif (envoyé à l’entreprise en cas de refus)"
 
-#: src/Admin/Admin.php:239
+#: src/Admin/Admin.php:240
 msgid "Approve"
 msgstr "Approuver"
 
-#: src/Admin/Admin.php:239
+#: src/Admin/Admin.php:240
 msgid "Reject"
 msgstr "Refuser"
 
-#: src/Admin/Admin.php:251
+#: src/Admin/Admin.php:252
 msgid "Nothing to review."
 msgstr "Rien à examiner."
 
-#: src/Admin/Admin.php:270
+#: src/Admin/Admin.php:271
 msgid "Rights by activity"
 msgstr "Droits par activité"
 
-#: src/Admin/Admin.php:272
+#: src/Admin/Admin.php:273
 msgid ""
 "A company gets a right when at least one of its activities has it, its "
 "verification level is high enough, and its plan allows it."
@@ -451,7 +461,7 @@ msgstr ""
 "Une entreprise obtient un droit si au moins une de ses activités le possède,"
 " si son niveau de vérification est suffisant et si son abonnement le permet."
 
-#: src/Admin/Admin.php:273
+#: src/Admin/Admin.php:274
 msgid ""
 "Engineering accounts can never receive trading rights (buy, listings, "
 "quotations, fabrication). This rule is enforced in code and cannot be "
@@ -461,27 +471,27 @@ msgstr ""
 "(achat, annonces, devis, fabrication). Cette règle est imposée par le code "
 "et ne se modifie pas ici."
 
-#: src/Admin/Admin.php:276
+#: src/Admin/Admin.php:277
 msgid "Right"
 msgstr "Droit"
 
-#: src/Admin/Admin.php:281
+#: src/Admin/Admin.php:282
 msgid "Minimum level"
 msgstr "Niveau minimum"
 
-#: src/Admin/Admin.php:286
+#: src/Admin/Admin.php:287
 msgid "Locked"
 msgstr "Verrouillé"
 
-#: src/Admin/Admin.php:295
+#: src/Admin/Admin.php:296
 msgid "Save rights"
 msgstr "Enregistrer les droits"
 
-#: src/Admin/Admin.php:296
+#: src/Admin/Admin.php:297
 msgid "Restore the default rights"
 msgstr "Rétablir les droits par défaut"
 
-#: src/Admin/Admin.php:302
+#: src/Admin/Admin.php:303
 msgid ""
 "Official list (69 wilayas: loi n° 26-06 of 4 April 2026 and décret "
 "présidentiel n° 26-206 of 25 May 2026, effective 1 January 2027). Correct a "
@@ -491,23 +501,23 @@ msgstr ""
 "présidentiel n° 26-206 du 25 mai 2026, effectifs au 1er janvier 2027). "
 "Corrigez une orthographe ou masquez une wilaya ici."
 
-#: src/Admin/Admin.php:305
+#: src/Admin/Admin.php:306
 msgid "Code"
 msgstr "Code"
 
-#: src/Admin/Admin.php:305
+#: src/Admin/Admin.php:306
 msgid "French"
 msgstr "Français"
 
-#: src/Admin/Admin.php:305
+#: src/Admin/Admin.php:306
 msgid "Arabic"
 msgstr "Arabe"
 
-#: src/Admin/Admin.php:324
+#: src/Admin/Admin.php:325
 msgid "Default language"
 msgstr "Langue par défaut"
 
-#: src/Admin/Admin.php:328
+#: src/Admin/Admin.php:329
 msgid ""
 "Pages in the default language have no prefix; the other language uses /ar/ "
 "(or its code)."
@@ -515,19 +525,19 @@ msgstr ""
 "Les pages dans la langue par défaut n’ont pas de préfixe ; l’autre langue "
 "utilise /ar/ (ou son code)."
 
-#: src/Admin/Admin.php:329
+#: src/Admin/Admin.php:330
 msgid "Verification code channel"
 msgstr "Canal du code de vérification"
 
-#: src/Admin/Admin.php:329
+#: src/Admin/Admin.php:330
 msgid "SMS"
 msgstr "SMS"
 
-#: src/Admin/Admin.php:329
+#: src/Admin/Admin.php:330
 msgid "E-mail (no SMS gateway configured)"
 msgstr "E-mail (aucune passerelle SMS configurée)"
 
-#: src/Admin/Admin.php:329
+#: src/Admin/Admin.php:330
 msgid ""
 "An SMS gateway is added by a connector plugin through the sm_sms_provider "
 "filter."
@@ -535,23 +545,23 @@ msgstr ""
 "Une passerelle SMS s’ajoute avec une extension de connexion via le filtre "
 "sm_sms_provider."
 
-#: src/Admin/Admin.php:331
+#: src/Admin/Admin.php:332
 msgid "Failed sign-ins before a 15-minute lock"
 msgstr "Échecs de connexion avant un blocage de 15 minutes"
 
-#: src/Admin/Admin.php:332
+#: src/Admin/Admin.php:333
 msgid "Sign-ups per hour from one connection"
 msgstr "Inscriptions par heure depuis une connexion"
 
-#: src/Admin/Admin.php:333
+#: src/Admin/Admin.php:334
 msgid "Enquiries per hour per account"
 msgstr "Demandes par heure et par compte"
 
-#: src/Admin/Admin.php:338
+#: src/Admin/Admin.php:339
 msgid "Uninstall"
 msgstr "Désinstallation"
 
-#: src/Admin/Admin.php:338
+#: src/Admin/Admin.php:339
 msgid ""
 "Delete all platform data (companies, enquiries, logs) when the plugin is "
 "deleted"
@@ -559,25 +569,434 @@ msgstr ""
 "Supprimer toutes les données de la plateforme (entreprises, demandes, "
 "journaux) lors de la suppression de l’extension"
 
-#: src/Admin/Admin.php:354
+#. translators: %d: count.
+#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:265
+#: src/Admin/MailAdmin.php:299 src/Admin/MailAdmin.php:564
+#: src/Admin/MailAdmin.php:597
 msgid "Date"
 msgstr "Date"
 
-#: src/Admin/Admin.php:354
-msgid "Action"
-msgstr "Action"
+#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:564
+#: src/Admin/MailAdmin.php:597
+msgid "Activity"
+msgstr "Activité"
 
-#: src/Admin/Admin.php:354
+#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:185
 msgid "User"
 msgstr "Utilisateur"
 
-#: src/Admin/Admin.php:354
-msgid "Object"
+#: src/Admin/MailAdmin.php:42 src/Admin/MailAdmin.php:98
+msgid "E-mails"
+msgstr "E-mails"
+
+#: src/Admin/MailAdmin.php:59 src/Admin/MailAdmin.php:587
+msgid "You cannot change these settings."
+msgstr "Vous ne pouvez pas modifier ces réglages."
+
+#: src/Admin/MailAdmin.php:73
+msgid "The default template is back."
+msgstr "Le modèle par défaut est rétabli."
+
+#: src/Admin/MailAdmin.php:74
+msgid "The e-mail was sent again."
+msgstr "L’e-mail a été renvoyé."
+
+#: src/Admin/MailAdmin.php:75
+msgid "Test e-mail sent. Check the e-mail log below if it does not arrive."
+msgstr ""
+"E-mail de test envoyé. S’il n’arrive pas, consultez le journal des e-mails."
+
+#: src/Admin/MailAdmin.php:76
+msgid "Summary sent (when there was something to report)."
+msgstr "Résumé envoyé (s’il y avait quelque chose à signaler)."
+
+#: src/Admin/MailAdmin.php:77
+msgid "The e-mail could not be sent. See the error in the e-mail log."
+msgstr ""
+"L’e-mail n’a pas pu être envoyé. Voyez l’erreur dans le journal des e-mails."
+
+#: src/Admin/MailAdmin.php:111
+msgid "Platform events"
+msgstr "Événements de la plateforme"
+
+#: src/Admin/MailAdmin.php:112
+msgid "User notifications"
+msgstr "Notifications aux utilisateurs"
+
+#: src/Admin/MailAdmin.php:113
+msgid "Sender and recipients"
+msgstr "Expéditeur et destinataires"
+
+#: src/Admin/MailAdmin.php:114 src/Admin/MailAdmin.php:240
+#: src/Admin/MailAdmin.php:294
+msgid "E-mail log"
+msgstr "Journal des e-mails"
+
+#: src/Admin/MailAdmin.php:141
+msgid ""
+"WP Mail SMTP is active: e-mails leave through your SMTP account. Check its "
+"\"Email Test\" after any change."
+msgstr ""
+"WP Mail SMTP est actif : les e-mails partent par votre compte SMTP. Faites "
+"son « Email Test » après chaque modification."
+
+#: src/Admin/MailAdmin.php:143
+msgid ""
+"WP Mail SMTP is not active: e-mails are sent by the server and often land in"
+" spam. Install WP Mail SMTP and connect the e-mail account of your domain "
+"(see docs/EMAIL-SETUP.md)."
+msgstr ""
+"WP Mail SMTP n’est pas actif : les e-mails partent du serveur et arrivent "
+"souvent en spam. Installez WP Mail SMTP et reliez le compte e-mail de votre "
+"domaine (voir docs/EMAIL-SETUP.md)."
+
+#: src/Admin/MailAdmin.php:154
+msgid "Immediately"
+msgstr "Immédiatement"
+
+#: src/Admin/MailAdmin.php:155
+msgid "In the daily summary"
+msgstr "Dans le résumé quotidien"
+
+#: src/Admin/MailAdmin.php:156
+msgid "No"
+msgstr "Non"
+
+#. translators: %s: addresses.
+#: src/Admin/MailAdmin.php:158
+msgid ""
+"Choose what the administrators (%s) are told about, and the confirmation "
+"e-mails sent to users. Each e-mail can be rewritten in French and Arabic."
+msgstr ""
+"Choisissez ce dont les administrateurs (%s) sont informés, et les e-mails de"
+" confirmation envoyés aux utilisateurs. Chaque e-mail peut être réécrit en "
+"français et en arabe."
+
+#. translators: %d: count.
+#: src/Admin/MailAdmin.php:161 src/Admin/MailAdmin.php:265
+msgid "Event"
+msgstr "Événement"
+
+#: src/Admin/MailAdmin.php:161
+msgid "Alert to the administrators"
+msgstr "Alerte aux administrateurs"
+
+#: src/Admin/MailAdmin.php:161
+msgid "E-mail to the user"
+msgstr "E-mail à l’utilisateur"
+
+#: src/Admin/MailAdmin.php:161
+msgid "Templates"
+msgstr "Modèles"
+
+#: src/Admin/MailAdmin.php:182 src/Admin/MailAdmin.php:216
+msgid "Send"
+msgstr "Envoyer"
+
+#: src/Admin/MailAdmin.php:185
+msgid "Administrator"
+msgstr "Administrateur"
+
+#: src/Admin/MailAdmin.php:192 src/Admin/MailAdmin.php:217
+msgid "edited"
+msgstr "modifié"
+
+#: src/Admin/MailAdmin.php:205
+msgid ""
+"Messages the platform sends to users about their own activity (offer "
+"received, quote accepted, listing approved…). They always appear in the "
+"user's notifications; here you choose whether an e-mail is also sent, and "
+"you can rewrite it."
+msgstr ""
+"Messages que la plateforme envoie aux utilisateurs sur leur propre activité "
+"(offre reçue, devis accepté, annonce approuvée…). Ils apparaissent toujours "
+"dans les notifications de l’utilisateur ; ici vous choisissez si un e-mail "
+"est aussi envoyé, et vous pouvez le réécrire."
+
+#: src/Admin/MailAdmin.php:208
+msgid "Notification"
+msgstr "Notification"
+
+#: src/Admin/MailAdmin.php:208
+msgid "Template"
+msgstr "Modèle"
+
+#: src/Admin/MailAdmin.php:217
+msgid "Edit"
+msgstr "Modifier"
+
+#: src/Admin/MailAdmin.php:230
+msgid "Sender name"
+msgstr "Nom de l’expéditeur"
+
+#: src/Admin/MailAdmin.php:231
+msgid "Sender address"
+msgstr "Adresse de l’expéditeur"
+
+#: src/Admin/MailAdmin.php:231
+msgid ""
+"An address of your domain, the same as the SMTP account in WP Mail SMTP."
+msgstr ""
+"Une adresse de votre domaine, la même que le compte SMTP de WP Mail SMTP."
+
+#: src/Admin/MailAdmin.php:232
+msgid "Administrators to alert"
+msgstr "Administrateurs à prévenir"
+
+#: src/Admin/MailAdmin.php:232
+msgid "One or more addresses, separated by commas or new lines."
+msgstr ""
+"Une ou plusieurs adresses, séparées par des virgules ou des retours à la "
+"ligne."
+
+#: src/Admin/MailAdmin.php:233
+msgid "Language of the alerts"
+msgstr "Langue des alertes"
+
+#: src/Admin/MailAdmin.php:234
+msgid "Daily summary at"
+msgstr "Résumé quotidien à"
+
+#. translators: %s: date.
+#: src/Admin/MailAdmin.php:238
+msgid "Last summary: %s"
+msgstr "Dernier résumé : %s"
+
+#. translators: %s: date.
+#: src/Admin/MailAdmin.php:238
+msgid "No summary sent yet."
+msgstr "Aucun résumé envoyé pour l’instant."
+
+#. translators: %s: date.
+#: src/Admin/MailAdmin.php:239
+msgid "Keep the journals"
+msgstr "Conserver les journaux"
+
+#. translators: %s: date.
+#: src/Admin/MailAdmin.php:239
+msgid "days (activity journal and e-mail log)"
+msgstr "jours (journal d’activité et journal des e-mails)"
+
+#: src/Admin/MailAdmin.php:240
+msgid ""
+"Keep the content of the e-mails (to read and resend them). Verification "
+"codes are never kept."
+msgstr ""
+"Conserver le contenu des e-mails (pour les relire et les renvoyer). Les "
+"codes de vérification ne sont jamais conservés."
+
+#: src/Admin/MailAdmin.php:244
+msgid "Test the sending"
+msgstr "Tester l’envoi"
+
+#: src/Admin/MailAdmin.php:244
+msgid ""
+"Sends a test e-mail to the administrators with the layout of the platform."
+msgstr ""
+"Envoie un e-mail de test aux administrateurs avec la mise en page de la "
+"plateforme."
+
+#: src/Admin/MailAdmin.php:247
+msgid "Send a test e-mail"
+msgstr "Envoyer un e-mail de test"
+
+#: src/Admin/MailAdmin.php:248
+msgid "Daily summary"
+msgstr "Résumé quotidien"
+
+#: src/Admin/MailAdmin.php:248
+msgid ""
+"Sends now the summary of the events set to \"In the daily summary\" since "
+"the last one."
+msgstr ""
+"Envoie maintenant le résumé des événements réglés sur « Dans le résumé "
+"quotidien » depuis le dernier."
+
+#: src/Admin/MailAdmin.php:251
+msgid "Send the summary now"
+msgstr "Envoyer le résumé maintenant"
+
+#: src/Admin/MailAdmin.php:263
+msgid "All"
+msgstr "Tous"
+
+#: src/Admin/MailAdmin.php:263 src/Admin/MailAdmin.php:272
+msgid "Sent"
+msgstr "Envoyé"
+
+#: src/Admin/MailAdmin.php:263 src/Admin/MailAdmin.php:272
+msgid "Failed"
+msgstr "Échec"
+
+#: src/Admin/MailAdmin.php:264
+msgid "Address or subject"
+msgstr "Adresse ou objet"
+
+#. translators: %d: count.
+#: src/Admin/MailAdmin.php:264
+msgid "%d e-mail"
+msgid_plural "%d e-mails"
+msgstr[0] "%d e-mail"
+msgstr[1] "%d e-mails"
+
+#. translators: %d: count.
+#: src/Admin/MailAdmin.php:265 src/Admin/MailAdmin.php:299
+msgid "Recipient"
+msgstr "Destinataire"
+
+#. translators: %d: count.
+#: src/Admin/MailAdmin.php:265 src/Admin/MailAdmin.php:299
+#: src/Admin/MailAdmin.php:356
+msgid "Subject"
 msgstr "Objet"
 
-#: src/Admin/Admin.php:354
-msgid "Details"
-msgstr "Détails"
+#: src/Admin/MailAdmin.php:273
+msgid "View"
+msgstr "Voir"
+
+#: src/Admin/MailAdmin.php:308
+msgid "Send again"
+msgstr "Renvoyer"
+
+#: src/Admin/MailAdmin.php:311
+msgid "The content of this e-mail was not kept."
+msgstr "Le contenu de cet e-mail n’a pas été conservé."
+
+#: src/Admin/MailAdmin.php:321
+msgid "alert to the administrators"
+msgstr "alerte aux administrateurs"
+
+#: src/Admin/MailAdmin.php:321 src/Admin/MailAdmin.php:326
+msgid "e-mail to the user"
+msgstr "e-mail à l’utilisateur"
+
+#: src/Admin/MailAdmin.php:338
+msgid "Back to the list"
+msgstr "Retour à la liste"
+
+#: src/Admin/MailAdmin.php:340
+msgid "Variables (copied as they are, replaced when sending):"
+msgstr "Variables (à copier telles quelles, remplacées à l’envoi) :"
+
+#: src/Admin/MailAdmin.php:344
+msgid ""
+"Plain text: an empty line starts a new paragraph, addresses become links. "
+"Leave a field empty to use the default text."
+msgstr ""
+"Texte simple : une ligne vide commence un nouveau paragraphe, les adresses "
+"deviennent des liens. Laissez un champ vide pour utiliser le texte par "
+"défaut."
+
+#: src/Admin/MailAdmin.php:346
+msgid ""
+"{titre} and {message} are the built-in texts of the notification; when "
+"{lien} is not used, an \"Open\" button is added."
+msgstr ""
+"{titre} et {message} sont les textes d’origine de la notification ; si "
+"{lien} n’est pas utilisé, un bouton « Ouvrir » est ajouté."
+
+#: src/Admin/MailAdmin.php:357
+msgid "Message"
+msgstr "Message"
+
+#: src/Admin/MailAdmin.php:360
+msgid "Save the template"
+msgstr "Enregistrer le modèle"
+
+#: src/Admin/MailAdmin.php:362
+msgid "Save and send me a test"
+msgstr "Enregistrer et m’envoyer un test"
+
+#: src/Admin/MailAdmin.php:364
+msgid "Restore the default text"
+msgstr "Rétablir le texte par défaut"
+
+#: src/Admin/MailAdmin.php:364
+msgid "Replace your text by the default one in both languages?"
+msgstr "Remplacer votre texte par le texte par défaut dans les deux langues ?"
+
+#: src/Admin/MailAdmin.php:366
+msgid "Preview with example values"
+msgstr "Aperçu avec des valeurs d’exemple"
+
+#: src/Admin/MailAdmin.php:449
+msgid "Unknown template."
+msgstr "Modèle inconnu."
+
+#. translators: %s: platform name.
+#: src/Admin/MailAdmin.php:491
+msgid "%s — test e-mail"
+msgstr "%s — e-mail de test"
+
+#. translators: %s: platform name.
+#: src/Admin/MailAdmin.php:491
+msgid ""
+"This test e-mail shows that the platform can send e-mails.\n"
+"\n"
+"If it arrived in the spam folder, check the SPF, DKIM and DMARC records of your domain."
+msgstr ""
+"Cet e-mail de test montre que la plateforme peut envoyer des e-mails.\n"
+"\n"
+"S’il est arrivé dans les spams, vérifiez les enregistrements SPF, DKIM et DMARC de votre domaine."
+
+#: src/Admin/MailAdmin.php:535
+msgid "Administration"
+msgstr "Administration"
+
+#: src/Admin/MailAdmin.php:547
+msgid ""
+"Everything that happens on the platform: registrations, listings, requests, "
+"quotes, services, messages, verifications and administration changes. "
+"Successful sign-ins are listed under \"Security\"."
+msgstr ""
+"Tout ce qui se passe sur la plateforme : inscriptions, annonces, demandes, "
+"devis, services, messages, vérifications et changements d’administration. "
+"Les connexions réussies sont dans « Sécurité »."
+
+#: src/Admin/MailAdmin.php:549
+msgid "All activities"
+msgstr "Toutes les activités"
+
+#: src/Admin/MailAdmin.php:553
+msgid "From"
+msgstr "Du"
+
+#: src/Admin/MailAdmin.php:553
+msgid "to"
+msgstr "au"
+
+#: src/Admin/MailAdmin.php:554
+msgid "Name, e-mail, IP…"
+msgstr "Nom, e-mail, IP…"
+
+#: src/Admin/MailAdmin.php:560
+msgid "Export (CSV)"
+msgstr "Exporter (CSV)"
+
+#. translators: %d: count.
+#: src/Admin/MailAdmin.php:560
+msgid "%d entry"
+msgid_plural "%d entries"
+msgstr[0] "%d entrée"
+msgstr[1] "%d entrées"
+
+#. translators: %s: company.
+#: src/Admin/MailAdmin.php:562
+msgid "Only the activity of %s."
+msgstr "Uniquement l’activité de %s."
+
+#. translators: %s: company.
+#: src/Admin/MailAdmin.php:562
+msgid "Show all"
+msgstr "Tout afficher"
+
+#: src/Admin/MailAdmin.php:564 src/Admin/MailAdmin.php:597
+msgid "By"
+msgstr "Par"
+
+#: src/Admin/MailAdmin.php:597
+msgid "Action"
+msgstr "Action"
 
 #. translators: %d: maximum number of files.
 #: src/Content/Media.php:75
@@ -624,29 +1043,466 @@ msgid "Enquiry not found."
 msgstr "Demande introuvable."
 
 #. translators: %s: platform name.
-#: src/Notifications/Notifications.php:32
+#: src/Mail/Activity.php:72
+msgid "Alert for the administrators of %s. Choose the alerts in SM → E-mails."
+msgstr ""
+"Alerte destinée aux administrateurs de %s. Choisissez les alertes dans SM → "
+"E-mails."
+
+#. translators: %d: number of events.
+#: src/Mail/Activity.php:147
+msgid "%d event on the platform since the last summary:"
+msgid_plural "%d events on the platform since the last summary:"
+msgstr[0] "%d événement sur la plateforme depuis le dernier résumé :"
+msgstr[1] "%d événements sur la plateforme depuis le dernier résumé :"
+
+#: src/Mail/Activity.php:155
+msgid "Open the activity journal"
+msgstr "Ouvrir le journal d’activité"
+
+#. translators: 1: platform name, 2: date.
+#: src/Mail/Activity.php:157
+msgid "%1$s — daily summary of %2$s"
+msgstr "%1$s — résumé du %2$s"
+
+#: src/Mail/Activity.php:196
+msgid "Signed in"
+msgstr "Connexion"
+
+#: src/Mail/Activity.php:197
+msgid "Failed sign-in"
+msgstr "Connexion échouée"
+
+#: src/Mail/Activity.php:198
+msgid "Password changed"
+msgstr "Mot de passe modifié"
+
+#: src/Mail/Activity.php:199
+msgid "Password reset requested"
+msgstr "Réinitialisation du mot de passe demandée"
+
+#: src/Mail/Activity.php:200
+msgid "Company page updated"
+msgstr "Fiche entreprise modifiée"
+
+#: src/Mail/Activity.php:201
+msgid "Verification approved"
+msgstr "Vérification approuvée"
+
+#: src/Mail/Activity.php:202
+msgid "Verification refused"
+msgstr "Vérification refusée"
+
+#: src/Mail/Activity.php:203
+msgid "Verification document viewed"
+msgstr "Document de vérification consulté"
+
+#: src/Mail/Activity.php:204
+msgid "Company changed by an administrator"
+msgstr "Entreprise modifiée par un administrateur"
+
+#: src/Mail/Activity.php:205
+msgid "Rights changed"
+msgstr "Droits modifiés"
+
+#: src/Mail/Activity.php:206
+msgid "Settings changed"
+msgstr "Réglages modifiés"
+
+#: src/Mail/Activity.php:207
+msgid "Wilayas changed"
+msgstr "Wilayas modifiées"
+
+#: src/Mail/Activity.php:208
+msgid "E-mail settings changed"
+msgstr "Réglages des e-mails modifiés"
+
+#: src/Mail/Activity.php:209
+msgid "E-mail template changed"
+msgstr "Modèle d’e-mail modifié"
+
+#: src/Mail/Contact.php:37
+msgid "Give your name."
+msgstr "Indiquez votre nom."
+
+#: src/Mail/Contact.php:40
+msgid "Give a valid e-mail address so we can answer you."
+msgstr ""
+"Indiquez une adresse e-mail valide pour que nous puissions vous répondre."
+
+#: src/Mail/Contact.php:43
+msgid "Check the phone number."
+msgstr "Vérifiez le numéro de téléphone."
+
+#: src/Mail/Contact.php:46
+msgid "Give a subject."
+msgstr "Indiquez un objet."
+
+#: src/Mail/Contact.php:49
+msgid "Write your message (10 characters at least)."
+msgstr "Écrivez votre message (10 caractères au moins)."
+
+#: src/Mail/Contact.php:51
+msgid "The message is too long (4000 characters at most)."
+msgstr "Le message est trop long (4000 caractères au maximum)."
+
+#: src/Mail/Contact.php:64
+msgid "You sent several messages in a short time. Try again in an hour."
+msgstr ""
+"Vous avez envoyé plusieurs messages en peu de temps. Réessayez dans une "
+"heure."
+
+#: src/Mail/Contact.php:67
+msgid ""
+"Thank you, your message is sent. We answer you by e-mail as soon as "
+"possible."
+msgstr ""
+"Merci, votre message est envoyé. Nous vous répondons par e-mail dès que "
+"possible."
+
+#: src/Mail/Events.php:45
+msgid "Accounts"
+msgstr "Comptes"
+
+#: src/Mail/Events.php:47
+msgid "Listings"
+msgstr "Annonces"
+
+#: src/Mail/Events.php:48
+msgid "Requests for quotation"
+msgstr "Demandes de devis"
+
+#: src/Mail/Events.php:49
+msgid "Services"
+msgstr "Services"
+
+#: src/Mail/Events.php:50
+msgid "Messages"
+msgstr "Messages"
+
+#: src/Mail/Events.php:51
+msgid "Security"
+msgstr "Sécurité"
+
+#: src/Mail/Events.php:121
+msgid "Engineering account"
+msgstr "Compte ingénierie"
+
+#: src/Mail/Events.php:121 src/Mail/Templates.php:152
+msgid "Business account"
+msgstr "Compte entreprise"
+
+#: src/Mail/Events.php:159
+msgid "New registration"
+msgstr "Nouvelle inscription"
+
+#. translators: 1: person, 2: company, 3: wilaya.
+#: src/Mail/Events.php:167
+msgid "%1$s registered (%2$s, %3$s)"
+msgstr "%1$s s’est inscrit (%2$s, %3$s)"
+
+#: src/Mail/Events.php:170
+msgid "New registration: {entreprise}"
+msgstr "Nouvelle inscription : {entreprise}"
+
+#: src/Mail/Events.php:171
+msgid ""
+"A new account was created on {site}.\n"
+"\n"
+"Name: {nom}\n"
+"E-mail: {email}\n"
+"Phone: {telephone}\n"
+"Company: {entreprise}\n"
+"Wilaya: {wilaya}\n"
+"Account: {type}\n"
+"Activities: {activites}\n"
+"\n"
+"Open the company in the administration:\n"
+"{lien_admin_entreprise}"
+msgstr ""
+"Un nouveau compte a été créé sur {site}.\n"
+"\n"
+"Nom : {nom}\n"
+"E-mail : {email}\n"
+"Téléphone : {telephone}\n"
+"Entreprise : {entreprise}\n"
+"Wilaya : {wilaya}\n"
+"Compte : {type}\n"
+"Activités : {activites}\n"
+"\n"
+"Ouvrir l’entreprise dans l’administration :\n"
+"{lien_admin_entreprise}"
+
+#: src/Mail/Events.php:174
+msgid "Welcome to {site}"
+msgstr "Bienvenue sur {site}"
+
+#: src/Mail/Events.php:175
+msgid ""
+"Thank you for registering on {site}, the steel marketplace of Algeria.\n"
+"\n"
+"Your account for {entreprise} is ready. Complete your company page and send your documents for verification: verified companies get more enquiries.\n"
+"\n"
+"Your dashboard:\n"
+"{lien}\n"
+"\n"
+"We are at your disposal for any question.\n"
+"The {site} team"
+msgstr ""
+"Merci pour votre inscription sur {site}, la place de marché de l’acier en Algérie.\n"
+"\n"
+"Le compte de {entreprise} est prêt. Complétez votre fiche entreprise et envoyez vos documents pour la vérification : les entreprises vérifiées reçoivent plus de demandes.\n"
+"\n"
+"Votre tableau de bord :\n"
+"{lien}\n"
+"\n"
+"Nous restons à votre disposition pour toute question.\n"
+"L’équipe {site}"
+
+#: src/Mail/Events.php:181
+msgid "Documents sent for verification"
+msgstr "Documents envoyés pour vérification"
+
+#. translators: %s: company.
+#: src/Mail/Events.php:188
+msgid "%s sent documents for verification"
+msgstr "%s a envoyé ses documents pour vérification"
+
+#: src/Mail/Events.php:191
+msgid "Verification to review: {entreprise}"
+msgstr "Vérification à traiter : {entreprise}"
+
+#: src/Mail/Events.php:192
+msgid ""
+"{entreprise} ({wilaya}) sent its documents for verification.\n"
+"\n"
+"Sent by: {nom} — {email} — {telephone}\n"
+"\n"
+"Review the documents:\n"
+"{lien_admin}"
+msgstr ""
+"{entreprise} ({wilaya}) a envoyé ses documents pour vérification.\n"
+"\n"
+"Envoyé par : {nom} — {email} — {telephone}\n"
+"\n"
+"Examiner les documents :\n"
+"{lien_admin}"
+
+#: src/Mail/Events.php:195
+msgid "We received your documents"
+msgstr "Nous avons bien reçu vos documents"
+
+#: src/Mail/Events.php:196
+msgid ""
+"We received the documents of {entreprise}. The platform team checks them and you will be told of the result.\n"
+"\n"
+"Follow your request:\n"
+"{lien}\n"
+"\n"
+"The {site} team"
+msgstr ""
+"Nous avons bien reçu les documents de {entreprise}. L’équipe de la plateforme les vérifie et vous serez informé du résultat.\n"
+"\n"
+"Suivre votre demande :\n"
+"{lien}\n"
+"\n"
+"L’équipe {site}"
+
+#: src/Mail/Events.php:202
+msgid "Phone or e-mail confirmed"
+msgstr "Téléphone ou e-mail confirmé"
+
+#. translators: %s: company.
+#: src/Mail/Events.php:208
+msgid "%s confirmed its phone or e-mail"
+msgstr "%s a confirmé son téléphone ou son e-mail"
+
+#: src/Mail/Events.php:211
+msgid "Contact confirmed: {entreprise}"
+msgstr "Contact confirmé : {entreprise}"
+
+#: src/Mail/Events.php:212
+msgid ""
+"{entreprise} ({wilaya}) confirmed its phone or e-mail.\n"
+"\n"
+"{nom} — {email} — {telephone}\n"
+"\n"
+"{lien_admin_entreprise}"
+msgstr ""
+"{entreprise} ({wilaya}) a confirmé son téléphone ou son e-mail.\n"
+"\n"
+"{nom} — {email} — {telephone}\n"
+"\n"
+"{lien_admin_entreprise}"
+
+#: src/Mail/Events.php:218
+msgid "Enquiry sent to a company"
+msgstr "Demande envoyée à une entreprise"
+
+#. translators: 1: sender, 2: company.
+#: src/Mail/Events.php:226
+msgid "%1$s sent an enquiry to %2$s"
+msgstr "%1$s a envoyé une demande à %2$s"
+
+#: src/Mail/Events.php:229
+msgid "Enquiry to {destinataire}"
+msgstr "Demande à {destinataire}"
+
+#: src/Mail/Events.php:230
+msgid ""
+"{nom} ({email}, {telephone}) sent an enquiry to {destinataire}.\n"
+"\n"
+"Subject: {sujet}\n"
+"\n"
+"{message}"
+msgstr ""
+"{nom} ({email}, {telephone}) a envoyé une demande à {destinataire}.\n"
+"\n"
+"Objet : {sujet}\n"
+"\n"
+"{message}"
+
+#: src/Mail/Events.php:233
+msgid "Your enquiry was sent to {destinataire}"
+msgstr "Votre demande a été envoyée à {destinataire}"
+
+#: src/Mail/Events.php:234
+msgid ""
+"Your enquiry \"{sujet}\" was sent to {destinataire}. The company answers you directly by phone or e-mail.\n"
+"\n"
+"The {site} team"
+msgstr ""
+"Votre demande « {sujet} » a été envoyée à {destinataire}. L’entreprise vous répond directement par téléphone ou par e-mail.\n"
+"\n"
+"L’équipe {site}"
+
+#: src/Mail/Events.php:240
+msgid "Contact form message"
+msgstr "Message du formulaire de contact"
+
+#. translators: 1: person, 2: subject.
+#: src/Mail/Events.php:254
+msgid "%1$s wrote through the contact form: %2$s"
+msgstr "%1$s a écrit via le formulaire de contact : %2$s"
+
+#: src/Mail/Events.php:257
+msgid "Contact: {sujet}"
+msgstr "Contact : {sujet}"
+
+#: src/Mail/Events.php:258
+msgid ""
+"Message from the contact form of {site}.\n"
+"\n"
+"Name: {nom}\n"
+"E-mail: {email}\n"
+"Phone: {telephone}\n"
+"Subject: {sujet}\n"
+"\n"
+"{message}\n"
+"\n"
+"Answer this e-mail to reply to {nom}."
+msgstr ""
+"Message reçu par le formulaire de contact de {site}.\n"
+"\n"
+"Nom : {nom}\n"
+"E-mail : {email}\n"
+"Téléphone : {telephone}\n"
+"Objet : {sujet}\n"
+"\n"
+"{message}\n"
+"\n"
+"Répondez à cet e-mail pour répondre à {nom}."
+
+#: src/Mail/Events.php:261
+msgid "We received your message"
+msgstr "Nous avons bien reçu votre message"
+
+#: src/Mail/Events.php:262
+msgid ""
+"Thank you for your message \"{sujet}\". The {site} team answers you as soon as possible.\n"
+"\n"
+"The {site} team"
+msgstr ""
+"Merci pour votre message « {sujet} ». L’équipe {site} vous répond dès que possible.\n"
+"\n"
+"L’équipe {site}"
+
+#: src/Mail/Events.php:268
+msgid "Sign-in blocked after failed attempts"
+msgstr "Connexion bloquée après des échecs"
+
+#. translators: 1: login, 2: IP.
+#: src/Mail/Events.php:274
+msgid "Sign-in blocked for %1$s (IP %2$s)"
+msgstr "Connexion bloquée pour %1$s (IP %2$s)"
+
+#: src/Mail/Events.php:277
+msgid "Security: sign-in blocked"
+msgstr "Sécurité : connexion bloquée"
+
+#: src/Mail/Events.php:278
+msgid ""
+"Too many failed sign-ins: the account \"{identifiant}\" is blocked for a while.\n"
+"\n"
+"IP address: {ip}\n"
+"\n"
+"No action is needed if this was the user. Several alerts in a row may mean an attack."
+msgstr ""
+"Trop de connexions échouées : le compte « {identifiant} » est bloqué pour un moment.\n"
+"\n"
+"Adresse IP : {ip}\n"
+"\n"
+"Aucune action n’est nécessaire s’il s’agissait de l’utilisateur. Plusieurs alertes à la suite peuvent signaler une attaque."
+
+#: src/Mail/Mailer.php:80
+msgid "You receive this e-mail because of your activity on the platform."
+msgstr "Vous recevez cet e-mail suite à votre activité sur la plateforme."
+
+#. translators: %s: person name.
+#: src/Mail/Mailer.php:81
+msgid "Hello %s,"
+msgstr "Bonjour %s,"
+
+#: src/Mail/Templates.php:155
+msgid "Hello, we need 40 bars delivered to Rouiba next month."
+msgstr "Bonjour, il nous faut 40 barres livrées à Rouiba le mois prochain."
+
+#: src/Mail/Templates.php:156
+msgid "Price request"
+msgstr "Demande de prix"
+
+#: src/Mail/Templates.php:163
+msgid "Steel products"
+msgstr "Produits sidérurgiques"
+
+#: src/Mail/Templates.php:166
+msgid "Published"
+msgstr "Publié"
+
+#. translators: %s: platform name.
+#: src/Notifications/Notifications.php:35
 msgid "New enquiry on %s"
 msgstr "Nouvelle demande sur %s"
 
 #. translators: 1: sender name, 2: subject of the enquiry.
-#: src/Notifications/Notifications.php:35
+#: src/Notifications/Notifications.php:38
 msgid "%1$s sent you an enquiry: %2$s"
 msgstr "%1$s vous a envoyé une demande : %2$s"
 
-#: src/Notifications/Notifications.php:43
+#: src/Notifications/Notifications.php:46
 msgid "New verification request to review"
 msgstr "Nouvelle demande de vérification à examiner"
 
 #. translators: %s: company name.
-#: src/Notifications/Notifications.php:46
+#: src/Notifications/Notifications.php:49
 msgid "%s submitted documents for verification."
 msgstr "%s a envoyé des documents pour vérification."
 
-#: src/Notifications/Notifications.php:53
+#: src/Notifications/Notifications.php:56
 msgid "Your account is verified"
 msgstr "Votre compte est vérifié"
 
-#: src/Notifications/Notifications.php:54
+#: src/Notifications/Notifications.php:57
 msgid ""
 "Good news: the platform team verified your documents. The verified badge now"
 " appears on your company page and listings."
@@ -654,24 +1510,20 @@ msgstr ""
 "Bonne nouvelle : l’équipe de la plateforme a vérifié vos documents. Le badge"
 " vérifié apparaît désormais sur votre page et vos annonces."
 
-#: src/Notifications/Notifications.php:59
+#: src/Notifications/Notifications.php:62
 msgid "Your verification request needs changes"
 msgstr "Votre demande de vérification doit être complétée"
 
-#: src/Notifications/Notifications.php:60
+#: src/Notifications/Notifications.php:63
 msgid "The platform team could not validate your documents."
 msgstr "L’équipe de la plateforme n’a pas pu valider vos documents."
 
-#: src/Notifications/Notifications.php:100
+#: src/Notifications/Notifications.php:135
 msgid "Open"
 msgstr "Ouvrir"
 
-#. translators: %s: user display name.
-#: src/Notifications/Notifications.php:140
-msgid "Hello %s,"
-msgstr "Bonjour %s,"
-
-#: src/Notifications/Notifications.php:142
+#: src/Notifications/Notifications.php:137
+#: src/Notifications/Notifications.php:155
 msgid "You receive this e-mail because you have an account on the platform."
 msgstr "Vous recevez cet e-mail car vous avez un compte sur la plateforme."
 

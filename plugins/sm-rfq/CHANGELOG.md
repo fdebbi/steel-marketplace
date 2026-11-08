@@ -1,5 +1,9 @@
 # Changelog — sm-rfq
 
+## 0.1.1 — 2026-11-08 (Phase 8.1)
+
+- E-mails (avec sm-core 0.4.0) : événements « nouvelle demande de devis », « offre envoyée », « offre acceptée » (alerte aux administrateurs, confirmations, modèles FR/AR), phrases et liens du journal d'activité.
+
 ## 0.1.0 — 2026-11-08 (Phase 7)
 
 - Demandes de devis : profils pesés par le moteur ou description libre, livraison, date limite, plans et documents, modération facultative.
