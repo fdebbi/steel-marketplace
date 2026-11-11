@@ -24,6 +24,7 @@ final class Notifications {
 
 	public static function init() {
 		add_action( 'admin_post_sm_notifications_read', array( __CLASS__, 'handle_mark_all_read' ) );
+		add_action( 'admin_post_sm_notification_open', array( __CLASS__, 'handle_open' ) );
 	}
 
 	/** Type definitions: subject/body callables receive the payload; called inside the recipient's language. */
@@ -187,6 +188,23 @@ final class Notifications {
 		}
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		return $wpdb->update( sm_table( 'notifications' ), array( 'read_at' => current_time( 'mysql', true ) ), $where );
+	}
+
+	/** Mark one notification as read and go to its page (link of the bell panel). */
+	public static function handle_open() {
+		$id = absint( $_GET['id'] ?? 0 ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		check_admin_referer( 'sm_notification_open_' . $id );
+		$user = get_current_user_id();
+		$link = '';
+		foreach ( self::for_user( $user, 100 ) as $n ) {
+			if ( (int) $n->id === $id ) {
+				self::mark_read( $user, $id );
+				$link = (string) $n->link;
+				break;
+			}
+		}
+		wp_safe_redirect( $link ? $link : \SM\Core\Routing\Routes::url( 'account', array( 'view' => 'notifications' ) ) );
+		exit;
 	}
 
 	public static function handle_mark_all_read() {

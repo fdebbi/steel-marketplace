@@ -1,5 +1,9 @@
 # Changelog — sm-core
 
+## 0.7.2 — 2026-11-11
+
+- Notifications : page « Notifications » du tableau de bord, lien d'ouverture qui marque la notification comme lue, nombre réglable dans la ressource thème.
+
 ## 0.7.1 — 2026-11-11
 
 - Types et catégories : une liste peut afficher un bloc sous son tableau (utilisé pour les services proposés).

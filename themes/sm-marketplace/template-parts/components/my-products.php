@@ -61,6 +61,7 @@ $action  = static function ( $item, $do, $label, $style = 'ghost', $confirm = ''
 				<p class="smp-row__title"><a href="<?php echo esc_url( sm_page_url( 'listing', array( 'id' => $item['id'] ) ) ); ?>"><?php sm_e( $item['title'] ); ?></a></p>
 				<p class="smp-row__meta">
 					<span class="smp-status smp-status--<?php echo esc_attr( $item['status'] ); ?>"><?php echo esc_html( $one[ $item['status'] ] ?? $item['status'] ); ?></span>
+					<?php if ( ! empty( $item['revision'] ) ) : ?><span class="smp-status smp-status--pending"><?php esc_html_e( 'Changes being checked', 'sm-marketplace' ); ?></span><?php endif; ?>
 					<span><?php echo sm_tech( $item['designation'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
 					<?php if ( $item['weight_kg'] ) : ?><span><?php echo sm_kg( $item['weight_kg'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span><?php endif; ?>
 					<span><?php echo sm_listing_price( $item ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>

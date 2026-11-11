@@ -57,7 +57,8 @@ final class Services {
 			'status'     => $status,
 			'updated_at' => $now,
 		);
-		if ( 'published' === $status ) {
+		$was_live = $id && 'published' === (string) $wpdb->get_var( $wpdb->prepare( 'SELECT status FROM ' . self::table() . ' WHERE id = %d', $id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		if ( 'published' === $status && ! $was_live ) {
 			$row['published_at']  = $now;
 			$row['reject_reason'] = '';
 		}
@@ -83,6 +84,69 @@ final class Services {
 			}
 		}
 		return (int) $id;
+	}
+
+	/* ---- Changes waiting for review (0.3.3) ------------------------------ */
+
+	/** Does this edit of a published page need a review? (texts, service, image; price, area and lead time apply at once) */
+	public static function needs_review( $s, array $spec, array $photos ) {
+		$d = $spec['data'];
+		if ( wp_json_encode( array_values( (array) $s->categories ) ) !== wp_json_encode( array_values( (array) $d['categories'] ) ) || (string) ( $s->custom_service ?? '' ) !== (string) ( $d['custom_service'] ?? '' ) ) {
+			return true;
+		}
+		$t = Translations::get( 'service', $s->id );
+		foreach ( array( 'description', 'capabilities', 'equipment' ) as $k ) {
+			$old = trim( implode( '', (array) ( $t[ $k ] ?? array() ) ) );
+			$new = trim( implode( '', (array) ( $spec['texts'][ $k ] ?? array() ) ) );
+			if ( $old !== $new ) {
+				return true;
+			}
+		}
+		return array_map( 'intval', Media::get( 'service', $s->id, 'photo' ) ) !== array_map( 'intval', $photos );
+	}
+
+	public static function save_revision( $id, $user_id, array $spec, array $photos ) {
+		global $wpdb;
+		$now = current_time( 'mysql', true );
+		$rev = array( 'data' => $spec['data'], 'texts' => $spec['texts'], 'photos' => array_values( array_map( 'intval', $photos ) ), 'user_id' => (int) $user_id );
+		$wpdb->update( self::table(), array( 'revision' => wp_json_encode( $rev ), 'revision_at' => $now, 'updated_at' => $now ), array( 'id' => (int) $id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		$s = self::get( $id );
+		AuditLog::add( 'service.revision_submitted', 'service', $id, array(), $user_id, $s ? $s->company_id : 0 );
+	}
+
+	public static function revision( $s ) {
+		if ( ! $s || empty( $s->revision ) ) {
+			return null;
+		}
+		$r = json_decode( (string) $s->revision, true );
+		return is_array( $r ) && isset( $r['data'] ) ? $r : null;
+	}
+
+	public static function approve_revision( $id ) {
+		$s   = self::get( $id );
+		$rev = self::revision( $s );
+		if ( ! $rev ) {
+			return false;
+		}
+		self::save( $id, $s->company_id, (int) $rev['user_id'], array( 'data' => $rev['data'], 'texts' => $rev['texts'] ), $s->status, $rev['photos'] );
+		self::clear_revision( $id );
+		AuditLog::add( 'service.revision_approved', 'service', $id, array(), null, $s->company_id );
+		return true;
+	}
+
+	public static function reject_revision( $id, $reason ) {
+		$s = self::get( $id );
+		if ( ! self::revision( $s ) ) {
+			return false;
+		}
+		self::clear_revision( $id );
+		AuditLog::add( 'service.revision_rejected', 'service', $id, array( 'reason' => $reason ), null, $s->company_id );
+		return true;
+	}
+
+	public static function clear_revision( $id ) {
+		global $wpdb;
+		$wpdb->update( self::table(), array( 'revision' => null, 'revision_at' => null ), array( 'id' => (int) $id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 	}
 
 	/**
@@ -148,6 +212,9 @@ final class Services {
 			$st      = (array) $a['status'];
 			$where[] = 'status IN (' . implode( ',', array_fill( 0, count( $st ), '%s' ) ) . ')';
 			$args    = array_merge( $args, $st );
+		}
+		if ( ! empty( $a['revision'] ) ) {
+			$where[] = 'revision_at IS NOT NULL';
 		}
 		if ( ! empty( $a['kind'] ) ) {
 			$where[] = 'kind = %s';

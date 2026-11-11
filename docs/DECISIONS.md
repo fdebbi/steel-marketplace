@@ -207,3 +207,14 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Description | 15 caractères minimum, avec une aide pour inviter à détailler | Demande du client |
 | Autres services | Jusqu'à 6 petites cartes en bas de la page de service + lien vers le profil | Demande du client |
 
+## 11 novembre 2026 — Lot complet, modifications en attente, éditions par la plateforme, cloche
+
+| Sujet | Décision | Raison |
+|---|---|---|
+| Mode de vente | Détail, lot complet ou les deux, avec deux prix ; profilés, tubes, tôles, lots, chutes, ferraille, hangars démontés | Demande du client ; usage courant du réemploi |
+| Hangar « à la pièce » | Prix à la pièce ou au kg au détail ; le prix au kg reste le plus parlant car les éléments diffèrent | Éléments de tailles différentes |
+| Modification d'une annonce en ligne | Immédiat : prix, mode de vente, quantités, vendu/pause. Vérifié : textes, photos, fiches, données techniques ; la version publiée reste en ligne | Choix du client ; éviter de vendre un lot déjà vendu |
+| Modification mixte | Si une modification contient du texte/photo/technique, toute la modification attend la validation | Cohérence de l'annonce publiée |
+| Édition par l'admin | Écran dans l'admin WP (titre, description, photos, fiches ; services : textes et image), motif obligatoire, notification + e-mail au vendeur, journal | Demande du client |
+| Cloche | 8 dernières notifications, « Tout marquer comme lu », « Voir toutes » ; sur mobile la cloche n'est pas dans l'en-tête | Validé par le client |
+

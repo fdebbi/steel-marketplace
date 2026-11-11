@@ -65,25 +65,56 @@ final class Spec {
 		}
 		self::market_fields( $cat, $in, $d, $e, $for_save );
 
-		// Price.
-		$price = self::num( $in['price'] ?? '' );
-		$s     = Settings::all();
-		if ( $price <= 0 ) {
-			if ( $for_save ) {
-				$e['price'] = __( 'Enter the price.', 'sm-products' );
-			}
-		} elseif ( $price < $s['min_price'] || $price > $s['max_price'] ) {
-			$e['price'] = __( 'This price is outside the accepted range.', 'sm-products' );
+		// Price (0.5.0): sale mode "detail" (per kg / piece), "lot" (whole lot) or "both".
+		$s       = Settings::all();
+		$lot_ok  = self::lot_allowed( $cat, $d );
+		$detail  = self::detail_units( $cat );
+		$mode    = sanitize_key( (string) ( $in['sale_mode'] ?? '' ) );
+		$raw_pu  = (string) ( $in['price_unit'] ?? '' );
+		if ( ! $lot_ok ) {
+			$mode = 'detail';
+		} elseif ( ! in_array( $mode, array( 'detail', 'lot', 'both' ), true ) ) {
+			$mode = 'lot' === $raw_pu ? 'lot' : 'detail'; // Forms of before 0.5.0: a price "per lot".
 		}
-		$d['price'] = $price;
-		if ( 'specs' !== $cat->kind ) {
-			$d['price_unit'] = in_array( $in['price_unit'] ?? '', $cat->units, true ) ? $in['price_unit'] : ( $d['price_unit'] ?? $cat->units[0] ); // A kind handler may suggest the default.
+		$price     = self::num( $in['price'] ?? '' );
+		$lot_price = self::num( $in['lot_price'] ?? '' );
+		if ( 'lot' === $mode && $lot_price <= 0 && 'lot' === $raw_pu ) {
+			$lot_price = $price;
+		}
+		$range = static fn( $v ) => $v >= $s['min_price'] && $v <= $s['max_price'];
+		if ( 'lot' !== $mode ) {
+			if ( $price <= 0 ) {
+				if ( $for_save ) {
+					$e['price'] = __( 'Enter the price.', 'sm-products' );
+				}
+			} elseif ( ! $range( $price ) ) {
+				$e['price'] = __( 'This price is outside the accepted range.', 'sm-products' );
+			}
+		}
+		if ( 'detail' !== $mode ) {
+			if ( $lot_price <= 0 ) {
+				if ( $for_save ) {
+					$e['lot_price'] = __( 'Enter the price of the whole lot.', 'sm-products' );
+				}
+			} elseif ( ! $range( $lot_price ) ) {
+				$e['lot_price'] = __( 'This price is outside the accepted range.', 'sm-products' );
+			}
+		}
+		$d['sale_mode'] = $mode;
+		$d['lot_price'] = 'detail' === $mode ? 0 : $lot_price;
+		if ( 'lot' === $mode ) {
+			$price           = $lot_price;
+			$d['price_unit'] = 'lot';
+		} elseif ( 'specs' !== $cat->kind ) {
+			$units           = $lot_ok ? $detail : $cat->units;
+			$d['price_unit'] = in_array( $raw_pu, $units, true ) ? $raw_pu : ( in_array( $d['price_unit'] ?? '', $units, true ) ? $d['price_unit'] : $units[0] ); // A kind handler may suggest the default.
 			if ( 'unit' === $d['price_unit'] && ( 'weight' === ( $d['qty_mode'] ?? '' ) || 'weight' === $cat->kind ) ) {
 				$e['price_unit'] = __( 'A price per piece needs the number of pieces: choose "Number of bars" or a price per kg.', 'sm-products' );
 			}
 		} else {
 			$d['price_unit'] = $d['unit'] ?? $cat->units[0];
 		}
+		$d['price'] = $price;
 
 		// Totals (only when the technical part is complete).
 		$total = 0.0;
@@ -102,9 +133,13 @@ final class Spec {
 					$total = $price * (float) ( $d['quantity'] ?? 0 );
 			}
 		}
+		if ( 'both' === $mode && $total > 0 && $lot_price > $total ) {
+			$e['lot_price'] = __( 'The price of the whole lot is higher than the total at the detail price: check it.', 'sm-products' );
+		}
 		$d['total_price']  = round( $total, 2 );
 		$d['price_per_kg'] = ! empty( $d['total_weight'] ) && $total > 0 ? round( $total / $d['total_weight'], 2 ) : 0;
 		$d['price_per_m2'] = 'm2' === ( $d['unit'] ?? '' ) && ! empty( $d['quantity'] ) && $total > 0 ? round( $total / $d['quantity'], 2 ) : 0;
+		$d['lot_per_kg']   = 'both' === $mode && ! empty( $d['total_weight'] ) && $lot_price > 0 ? round( $lot_price / $d['total_weight'], 2 ) : 0;
 
 		// Common fields.
 		$title = array(
@@ -445,8 +480,32 @@ final class Spec {
 			'line_rows'     => $d['line_rows'] ?? array(),
 			'variant'       => $d['variant'] ?? '',
 			'price_per_m2'  => (float) ( $d['price_per_m2'] ?? 0 ),
+			'sale_mode'     => $d['sale_mode'] ?? 'detail',
+			'lot_price'     => (float) ( $d['lot_price'] ?? 0 ),
+			'lot_per_kg'    => (float) ( $d['lot_per_kg'] ?? 0 ),
 			'condition'     => $d['item_condition'] ?? '',
 		);
+	}
+
+	/**
+	 * Whole-lot sale is offered for profiles, tubes, plates, inventories,
+	 * offcuts and scrap, and dismantled buildings (an assembled building is
+	 * always sold at one asking price).
+	 */
+	public static function lot_allowed( $cat, array $d = array() ) {
+		if ( in_array( $cat->kind, array( 'engine', 'lines', 'weight' ), true ) ) {
+			return true;
+		}
+		return 'building' === $cat->kind && 'assembled' !== ( $d['variant'] ?? '' );
+	}
+
+	/** Units of the detail price (per kg, per piece…), without the whole lot. */
+	public static function detail_units( $cat ) {
+		$units = array_values( array_diff( (array) $cat->units, array( 'lot' ) ) );
+		if ( 'building' === $cat->kind && ! in_array( 'unit', $units, true ) ) {
+			$units[] = 'unit'; // A dismantled building: its elements sold one by one.
+		}
+		return $units ? $units : array( 'kg' );
 	}
 
 	/** "12,5" and "12 500" accepted. */

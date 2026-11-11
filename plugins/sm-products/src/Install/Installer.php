@@ -79,6 +79,10 @@ final class Installer {
 				price decimal(14,2) NOT NULL DEFAULT 0,
 				price_unit varchar(10) NOT NULL DEFAULT 'kg',
 				total_price decimal(16,2) NOT NULL DEFAULT 0,
+				sale_mode varchar(8) NOT NULL DEFAULT 'detail',
+				lot_price decimal(16,2) NOT NULL DEFAULT 0,
+				revision longtext,
+				revision_at datetime DEFAULT NULL,
 				price_per_kg decimal(14,2) NOT NULL DEFAULT 0,
 				wilaya char(2) NOT NULL DEFAULT '',
 				reject_reason text,
@@ -95,6 +99,11 @@ final class Installer {
 				KEY listing_id (listing_id)
 			) $c;"
 		);
+		$from = (int) get_option( 'sm_products_db_version', 0 );
+		if ( $from && $from < 4 ) {
+			// 0.5.0: a price "per lot" becomes the sale mode "whole lot" (assembled buildings keep their asking price).
+			$wpdb->query( "UPDATE {$wpdb->prefix}sm_products SET sale_mode = 'lot', lot_price = price WHERE price_unit = 'lot' AND variant <> 'assembled'" ); // phpcs:ignore WordPress.DB
+		}
 		update_option( 'sm_products_db_version', SM_PRODUCTS_DB_VERSION, false );
 	}
 

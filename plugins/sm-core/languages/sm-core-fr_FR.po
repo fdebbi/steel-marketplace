@@ -332,7 +332,7 @@ msgstr "Réglages"
 msgid "Activity journal"
 msgstr "Journal d’activité"
 
-#: src/Admin/Admin.php:65 src/Admin/MailAdmin.php:74 src/Admin/Terms.php:229
+#: src/Admin/Admin.php:65 src/Admin/MailAdmin.php:74 src/Admin/Terms.php:233
 msgid "Saved."
 msgstr "Enregistré."
 
@@ -1265,7 +1265,7 @@ msgstr "Ordre"
 msgid "Leave a name empty to use the default wording (translated)."
 msgstr "Laissez un nom vide pour garder le libellé par défaut (traduit)."
 
-#: src/Admin/Terms.php:182 src/Admin/Terms.php:223
+#: src/Admin/Terms.php:182 src/Admin/Terms.php:227
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -1289,17 +1289,17 @@ msgstr "Afficher"
 msgid "Hide"
 msgstr "Masquer"
 
-#: src/Admin/Terms.php:197 src/Admin/Terms.php:222
+#: src/Admin/Terms.php:197 src/Admin/Terms.php:226
 msgid "Delete"
 msgstr "Supprimer"
 
 #. translators: %s: name.
-#: src/Admin/Terms.php:209
+#: src/Admin/Terms.php:213
 msgid "Delete “%s”"
 msgstr "Supprimer « %s »"
 
 #. translators: %d: number of accounts or pages.
-#: src/Admin/Terms.php:211
+#: src/Admin/Terms.php:215
 msgid "%d entry uses it. Choose what replaces it before the deletion:"
 msgid_plural "%d entries use it. Choose what replaces it before the deletion:"
 msgstr[0] ""
@@ -1309,28 +1309,28 @@ msgstr[1] ""
 ":"
 
 #. translators: %d: number of accounts or pages.
-#: src/Admin/Terms.php:212
+#: src/Admin/Terms.php:216
 msgid "Replace with"
 msgstr "Remplacer par"
 
 #. translators: %d: number of accounts or pages.
-#: src/Admin/Terms.php:212
+#: src/Admin/Terms.php:216
 msgid "— choose —"
 msgstr "— choisir —"
 
-#: src/Admin/Terms.php:220
+#: src/Admin/Terms.php:224
 msgid "Nothing uses it. The deletion cannot be undone."
 msgstr "Rien ne l’utilise. La suppression est définitive."
 
-#: src/Admin/Terms.php:222
+#: src/Admin/Terms.php:226
 msgid "Replace and delete"
 msgstr "Remplacer et supprimer"
 
-#: src/Admin/Terms.php:267
+#: src/Admin/Terms.php:271
 msgid "Unknown entry."
 msgstr "Élément inconnu."
 
-#: src/Admin/Terms.php:284
+#: src/Admin/Terms.php:288
 msgid "The image must be a JPG, PNG or WEBP file."
 msgstr "L’image doit être un fichier JPG, PNG ou WEBP."
 
@@ -1828,29 +1828,29 @@ msgid "Published"
 msgstr "Publié"
 
 #. translators: %s: platform name.
-#: src/Notifications/Notifications.php:35
+#: src/Notifications/Notifications.php:36
 msgid "New enquiry on %s"
 msgstr "Nouvelle demande sur %s"
 
 #. translators: 1: sender name, 2: subject of the enquiry.
-#: src/Notifications/Notifications.php:38
+#: src/Notifications/Notifications.php:39
 msgid "%1$s sent you an enquiry: %2$s"
 msgstr "%1$s vous a envoyé une demande : %2$s"
 
-#: src/Notifications/Notifications.php:46
+#: src/Notifications/Notifications.php:47
 msgid "New verification request to review"
 msgstr "Nouvelle demande de vérification à examiner"
 
 #. translators: %s: company name.
-#: src/Notifications/Notifications.php:49
+#: src/Notifications/Notifications.php:50
 msgid "%s submitted documents for verification."
 msgstr "%s a envoyé des documents pour vérification."
 
-#: src/Notifications/Notifications.php:56
+#: src/Notifications/Notifications.php:57
 msgid "Your account is verified"
 msgstr "Votre compte est vérifié"
 
-#: src/Notifications/Notifications.php:57
+#: src/Notifications/Notifications.php:58
 msgid ""
 "Good news: the platform team verified your documents. The verified badge now"
 " appears on your company page and listings."
@@ -1858,20 +1858,20 @@ msgstr ""
 "Bonne nouvelle : l’équipe de la plateforme a vérifié vos documents. Le badge"
 " vérifié apparaît désormais sur votre page et vos annonces."
 
-#: src/Notifications/Notifications.php:62
+#: src/Notifications/Notifications.php:63
 msgid "Your verification request needs changes"
 msgstr "Votre demande de vérification doit être complétée"
 
-#: src/Notifications/Notifications.php:63
+#: src/Notifications/Notifications.php:64
 msgid "The platform team could not validate your documents."
 msgstr "L’équipe de la plateforme n’a pas pu valider vos documents."
 
-#: src/Notifications/Notifications.php:135
+#: src/Notifications/Notifications.php:136
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/Notifications/Notifications.php:137
-#: src/Notifications/Notifications.php:155
+#: src/Notifications/Notifications.php:138
+#: src/Notifications/Notifications.php:156
 msgid "You receive this e-mail because you have an account on the platform."
 msgstr "Vous recevez cet e-mail car vous avez un compte sur la plateforme."
 

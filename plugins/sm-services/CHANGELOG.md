@@ -1,5 +1,10 @@
 # Changelog — sm-services
 
+## 0.3.3 — 2026-11-11 (base v4)
+
+- Modification d'une page publiée : prix, zone et délai tout de suite ; service, textes et image en attente de validation, l'ancienne version restant en ligne.
+- L'administrateur modifie la description, les capacités, le matériel et l'image avec un motif envoyé au prestataire.
+
 ## 0.3.2 — 2026-11-11
 
 - Titre d'une page = nom du service dans la liste, en français et en arabe (renommer un service renomme ses pages) ; « Autre » : le nom écrit par l'entreprise.

@@ -93,6 +93,14 @@ $t = Spec::build( $base + array( 'category' => 'tubes', 'family' => 'RHS', 'dims
 smp_assert( ! $t['errors'] && 'RHS 120x80x4' === $t['data']['designation'] && 6500 === $t['data']['length_mm'], 'typed tube with a free length of 6,5 m' );
 $pl = Spec::build( array_merge( $base, array( 'category' => 'plates', 'dims' => array( 't' => '10' ), 'width' => '1500', 'plate_length' => '3000', 'bars' => '4', 'price' => '20000', 'price_unit' => 'unit' ) ) );
 smp_assert( ! $pl['errors'] && smp_near( $pl['data']['total_weight'], 1413 ) && smp_near( $pl['data']['total_price'], 80000 ) && smp_near( $pl['data']['price_per_kg'], 56.62 ), 'plates priced per piece: 4 × 20 000 DA, 56,62 DA/kg equivalent' );
+// 0.5.0: sale by the whole lot, or both.
+$ipe = $base + array( 'category' => 'profiles', 'family' => 'IPE', 'section' => 'IPE 200', 'bars' => '10', 'price_unit' => 'kg' );
+$lot = Spec::build( array( 'sale_mode' => 'lot', 'lot_price' => '600000' ) + $ipe );
+smp_assert( ! $lot['errors'] && 'lot' === $lot['data']['sale_mode'] && 'lot' === $lot['data']['price_unit'] && smp_near( $lot['data']['total_price'], 600000 ) && smp_near( $lot['data']['price_per_kg'], 223.61 ), 'whole lot only: 600 000 DA, ≈ 223,61 DA/kg shown for comparison' );
+$both = Spec::build( array( 'sale_mode' => 'both', 'lot_price' => '600000' ) + $ipe );
+smp_assert( ! $both['errors'] && smp_near( $both['data']['total_price'], 657384.49 ) && smp_near( $both['data']['lot_price'], 600000 ) && smp_near( $both['summary']['lot_per_kg'], 223.61 ), 'both: 245 DA/kg at detail, or 600 000 DA for the lot' );
+smp_assert( isset( Spec::build( array( 'sale_mode' => 'both', 'lot_price' => '700000' ) + $ipe )['errors']['lot_price'] ) && isset( Spec::build( array( 'sale_mode' => 'lot' ) + $ipe )['errors']['lot_price'] ), 'lot price required, and not above the detail total' );
+smp_assert( 'detail' === Spec::build( array( 'sale_mode' => 'lot', 'lot_price' => '1000', 'category' => 'roofing', 'specs' => array( 'roof_type' => 'sandwich_ps', 'maker_type' => 'TL 40', 'width_mm' => '1000', 'sheet_mm' => '0,4', 'insulation_mm' => '40' ), 'quantity' => '500', 'unit' => 'm2' ) + $base )['data']['sale_mode'], 'roofing panels keep their unit price (no whole lot)' );
 $x = Spec::build( $base + array( 'category' => 'profiles', 'family' => 'IPE', 'section' => 'IPE 200', 'qty_mode' => 'weight', 'total_kg' => '5000', 'price_unit' => 'unit' ) );
 smp_assert( isset( $x['errors']['price_unit'] ), 'price per piece refused when only the total weight is known' );
 $r = Spec::build( array_merge( $base, array( 'category' => 'roofing', 'specs' => array( 'roof_type' => 'sandwich_ps', 'maker_type' => 'TL 40', 'width_mm' => '1000', 'sheet_mm' => '0,4', 'insulation_mm' => '40' ), 'quantity' => '500', 'unit' => 'm2', 'price' => '2900' ) ) );

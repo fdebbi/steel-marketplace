@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Core 0.7.0\n"
+"Project-Id-Version: SM Core 0.7.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-core\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-11T14:55:08+00:00\n"
+"POT-Creation-Date: 2026-11-11T18:55:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-core\n"
@@ -332,7 +332,7 @@ msgstr ""
 
 #: src/Admin/Admin.php:65
 #: src/Admin/MailAdmin.php:74
-#: src/Admin/Terms.php:229
+#: src/Admin/Terms.php:233
 msgid "Saved."
 msgstr ""
 
@@ -1177,7 +1177,7 @@ msgid "Leave a name empty to use the default wording (translated)."
 msgstr ""
 
 #: src/Admin/Terms.php:182
-#: src/Admin/Terms.php:223
+#: src/Admin/Terms.php:227
 msgid "Cancel"
 msgstr ""
 
@@ -1202,45 +1202,45 @@ msgid "Hide"
 msgstr ""
 
 #: src/Admin/Terms.php:197
-#: src/Admin/Terms.php:222
+#: src/Admin/Terms.php:226
 msgid "Delete"
 msgstr ""
 
 #. translators: %s: name.
-#: src/Admin/Terms.php:209
+#: src/Admin/Terms.php:213
 msgid "Delete “%s”"
 msgstr ""
 
 #. translators: %d: number of accounts or pages.
-#: src/Admin/Terms.php:211
+#: src/Admin/Terms.php:215
 msgid "%d entry uses it. Choose what replaces it before the deletion:"
 msgid_plural "%d entries use it. Choose what replaces it before the deletion:"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d: number of accounts or pages.
-#: src/Admin/Terms.php:212
+#: src/Admin/Terms.php:216
 msgid "Replace with"
 msgstr ""
 
 #. translators: %d: number of accounts or pages.
-#: src/Admin/Terms.php:212
+#: src/Admin/Terms.php:216
 msgid "— choose —"
 msgstr ""
 
-#: src/Admin/Terms.php:220
+#: src/Admin/Terms.php:224
 msgid "Nothing uses it. The deletion cannot be undone."
 msgstr ""
 
-#: src/Admin/Terms.php:222
+#: src/Admin/Terms.php:226
 msgid "Replace and delete"
 msgstr ""
 
-#: src/Admin/Terms.php:267
+#: src/Admin/Terms.php:271
 msgid "Unknown entry."
 msgstr ""
 
-#: src/Admin/Terms.php:284
+#: src/Admin/Terms.php:288
 msgid "The image must be a JPG, PNG or WEBP file."
 msgstr ""
 
@@ -1656,46 +1656,46 @@ msgid "Published"
 msgstr ""
 
 #. translators: %s: platform name.
-#: src/Notifications/Notifications.php:35
+#: src/Notifications/Notifications.php:36
 msgid "New enquiry on %s"
 msgstr ""
 
 #. translators: 1: sender name, 2: subject of the enquiry.
-#: src/Notifications/Notifications.php:38
+#: src/Notifications/Notifications.php:39
 msgid "%1$s sent you an enquiry: %2$s"
 msgstr ""
 
-#: src/Notifications/Notifications.php:46
+#: src/Notifications/Notifications.php:47
 msgid "New verification request to review"
 msgstr ""
 
 #. translators: %s: company name.
-#: src/Notifications/Notifications.php:49
+#: src/Notifications/Notifications.php:50
 msgid "%s submitted documents for verification."
 msgstr ""
 
-#: src/Notifications/Notifications.php:56
+#: src/Notifications/Notifications.php:57
 msgid "Your account is verified"
 msgstr ""
 
-#: src/Notifications/Notifications.php:57
+#: src/Notifications/Notifications.php:58
 msgid "Good news: the platform team verified your documents. The verified badge now appears on your company page and listings."
 msgstr ""
 
-#: src/Notifications/Notifications.php:62
+#: src/Notifications/Notifications.php:63
 msgid "Your verification request needs changes"
 msgstr ""
 
-#: src/Notifications/Notifications.php:63
+#: src/Notifications/Notifications.php:64
 msgid "The platform team could not validate your documents."
 msgstr ""
 
-#: src/Notifications/Notifications.php:135
+#: src/Notifications/Notifications.php:136
 msgid "Open"
 msgstr ""
 
-#: src/Notifications/Notifications.php:137
-#: src/Notifications/Notifications.php:155
+#: src/Notifications/Notifications.php:138
+#: src/Notifications/Notifications.php:156
 msgid "You receive this e-mail because you have an account on the platform."
 msgstr ""
 

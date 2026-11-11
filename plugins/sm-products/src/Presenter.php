@@ -45,6 +45,9 @@ final class Presenter {
 			'price_unit'     => $p->price_unit,
 			'price_per_kg'   => $p->price_per_kg,
 			'total_price'    => $p->total_price,
+			'sale_mode'      => (string) ( $p->sale_mode ?? 'detail' ),
+			'lot_price'      => (float) ( $p->lot_price ?? 0 ),
+			'lot_per_kg'     => 'both' === ( $p->sale_mode ?? '' ) && $p->total_weight > 0 && (float) $p->lot_price > 0 ? round( (float) $p->lot_price / $p->total_weight, 2 ) : 0,
 			'wilaya'         => $p->wilaya,
 			// Clients (private sellers) have no public page: no link, "Private seller" on the card.
 			'company'        => $company && Companies::is_public_class( $company->account_class ) ? $company->slug : '',
@@ -55,6 +58,7 @@ final class Presenter {
 			'image'          => $photos ? (int) $photos[0] : 'demo:placeholder',
 			'photos'         => array_map( 'intval', $photos ),
 			'status'         => $p->status,
+			'revision'       => ! empty( $p->revision_at ),
 			'views'          => $p->views,
 			'expires_at'     => $p->expires_at,
 			'reject_reason'  => (string) $p->reject_reason,

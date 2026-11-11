@@ -124,6 +124,7 @@ foreach ( $menu as $group ) {
 }
 $titles['settings']     = __( 'Settings', 'sm-marketplace' );
 $titles['verify-phone'] = __( 'Verify your account', 'sm-marketplace' );
+$titles['notifications'] = __( 'Notifications', 'sm-marketplace' );
 if ( ! isset( $titles[ $view ] ) ) {
 	$view = 'overview';
 }

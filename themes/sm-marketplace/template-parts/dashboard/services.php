@@ -48,6 +48,7 @@ $new_url = sm_page_url( 'account', array( 'view' => 'services', 'new' => 1 ) );
 				<p class="smp-row__title"><a href="<?php echo esc_url( sm_page_url( 'service', array( 'id' => $s['id'] ) ) ); ?>"><?php sm_e( $s['title'] ); ?></a></p>
 				<p class="smp-row__meta">
 					<span class="smp-status smp-status--<?php echo esc_attr( $s['status'] ); ?>"><?php echo esc_html( $labels[ $s['status'] ] ?? $s['status'] ); ?></span>
+					<?php if ( ! empty( $s['revision'] ) ) : ?><span class="smp-status smp-status--pending"><?php esc_html_e( 'Changes being checked', 'sm-marketplace' ); ?></span><?php endif; ?>
 					<span><?php echo esc_html( implode( ', ', array_map( 'sm_t', array_slice( $s['tags'], 0, 3 ) ) ) ); ?></span>
 					<span><?php echo wp_kses_post( sm_service_price( $s ) ); ?></span>
 					<span><?php sm_icon( 'eye' ); ?> <?php echo esc_html( sm_number( $s['views'] ) ); ?></span>

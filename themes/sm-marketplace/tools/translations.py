@@ -1468,3 +1468,28 @@ T.update({
 "See all the services of the company": ("Voir tous les services de l’entreprise", "عرض كل خدمات المؤسسة"),
 "15 characters at least. Say what you do, the thicknesses or sizes, your lead times and your equipment: clients choose better.": ("15 caractères au moins. Précisez ce que vous faites, les épaisseurs ou dimensions, vos délais et votre matériel : les clients choisissent mieux.", "15 حرفا على الأقل. اذكر ما تقوم به والسماكات أو المقاسات وآجالك ومعدّاتك: يختار الزبائن بشكل أفضل."),
 })
+
+# 0.16.0 — sale by the whole lot, changes being checked, bell panel.
+T.update({
+"Whole lot only": ("Lot complet uniquement", "الحصة كاملة فقط"),
+"or %s for the whole lot": ("ou %s le lot complet", "أو %s للحصة كاملة"),
+"Changes being checked": ("Modification en vérification", "تعديل قيد المراجعة"),
+"sold as a whole lot only": ("vendu en lot complet uniquement", "يُباع كحصة كاملة فقط"),
+"Total at the detail price": ("Total au prix de détail", "المجموع بسعر التفصيل"),
+"Or the whole lot": ("Ou le lot complet", "أو الحصة كاملة"),
+"Your previous changes are waiting for the check of the platform team (shown below). The current version stays online meanwhile.": ("Vos modifications précédentes attendent la vérification de l’équipe de la plateforme (elles sont reprises ci-dessous). La version actuelle reste en ligne en attendant.", "تعديلاتك السابقة في انتظار مراجعة فريق المنصة (معروضة أدناه). تبقى النسخة الحالية منشورة في الأثناء."),
+"This product is online. Price, sale mode and quantities change at once. Changes of texts, photos or technical data are checked by the platform team; the current version stays online meanwhile.": ("Ce produit est en ligne. Le prix, le mode de vente et les quantités changent tout de suite. Les changements de texte, de photos ou de données techniques sont vérifiés par l’équipe de la plateforme ; la version actuelle reste en ligne en attendant.", "هذا المنتج منشور. يتغيّر السعر وطريقة البيع والكميات فورا. أما تعديلات النصوص والصور والمعطيات التقنية فيراجعها فريق المنصة، وتبقى النسخة الحالية منشورة في الأثناء."),
+"How do you sell it?": ("Comment le vendez-vous ?", "كيف تبيعه؟"),
+"By the piece / by the kg": ("À la pièce / au kg", "بالقطعة / بالكيلوغرام"),
+"The buyer takes the quantity he needs.": ("L’acheteur prend la quantité dont il a besoin.", "يأخذ المشتري الكمية التي يحتاجها."),
+"One price for everything.": ("Un seul prix pour l’ensemble.", "سعر واحد للكل."),
+"Both": ("Les deux", "الاثنان"),
+"A detail price and a price for the whole lot.": ("Un prix de détail et un prix pour le lot complet.", "سعر بالتفصيل وسعر للحصة كاملة."),
+"Detail price": ("Prix de détail", "سعر التفصيل"),
+"Price of the whole building": ("Prix du bâtiment complet", "سعر المبنى كاملا"),
+"Price of the whole lot": ("Prix du lot complet", "سعر الحصة كاملة"),
+"All notifications": ("Toutes les notifications", "كل الإشعارات"),
+"See all notifications": ("Voir toutes les notifications", "عرض كل الإشعارات"),
+"Unread": ("Non lue", "غير مقروء"),
+})
+P[("%d new", "%d new")] = (["%d nouvelle", "%d nouvelles"], ["لا جديد", "واحد جديد", "اثنان جديدان", "%d جديدة", "%d جديدا", "%d جديد"])

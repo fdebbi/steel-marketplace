@@ -1,5 +1,12 @@
 # Changelog — sm-products
 
+## 0.5.0 — 2026-11-11 (base v4)
+
+- Mode de vente : détail (kg / pièce), lot complet ou les deux ; prix du lot vérifié (pas au-dessus du total au détail) ; hangars démontés vendables aussi à la pièce. Les anciennes annonces « prix du lot » passent en « lot complet ».
+- Modification d'une annonce publiée : prix, mode de vente et quantités tout de suite ; textes, photos, fiches et données techniques en attente de validation, l'ancienne version restant en ligne (onglet « Modifications à vérifier », publier / refuser avec motif).
+- L'administrateur modifie le titre, la description, les photos et les fiches d'une annonce avec un motif ; le vendeur reçoit une notification et un e-mail avec le motif et la liste des changements.
+- Une annonce déjà en ligne garde sa date de publication quand elle est modifiée.
+
 ## 0.4.0 — 2026-11-11 (Phase 9.1)
 
 - Comptes client : annonces toujours vérifiées (réglable), nombre d'annonces en ligne limité (5 par défaut, réglable), vendeur affiché « Particulier » sans lien public.

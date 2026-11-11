@@ -234,6 +234,21 @@
 	} );
 
 	/* ---- Photo previews --------------------------------------------------- */
+	/* ---- Bell (0.16.0): floating panel of the latest notifications. ------ */
+	$$( '[data-sm-notif]' ).forEach( function ( box ) {
+		var btn = $( '[data-sm-notif-toggle]', box );
+		var panel = $( '[data-sm-notif-panel]', box );
+		if ( ! btn || ! panel ) { return; }
+		function set( open ) {
+			panel.hidden = ! open;
+			btn.setAttribute( 'aria-expanded', open ? 'true' : 'false' );
+			if ( open ) { var first = $( 'a, button', panel ); if ( first ) { first.focus(); } }
+		}
+		btn.addEventListener( 'click', function ( e ) { e.preventDefault(); set( panel.hidden ); } );
+		document.addEventListener( 'click', function ( e ) { if ( ! panel.hidden && ! box.contains( e.target ) ) { set( false ); } } );
+		document.addEventListener( 'keydown', function ( e ) { if ( 'Escape' === e.key && ! panel.hidden ) { set( false ); btn.focus(); } } );
+	} );
+
 	/* ---- Service form (0.15.2): "Other" shows the name field. ---------- */
 	$$( '[data-sms-category]' ).forEach( function ( sel ) {
 		var box = sel.form && $( '[data-sms-custom]', sel.form );

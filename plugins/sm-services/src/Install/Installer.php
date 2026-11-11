@@ -71,6 +71,8 @@ final class Installer {
 				price_from decimal(14,2) NOT NULL DEFAULT 0,
 				price_unit varchar(10) NOT NULL DEFAULT '',
 				reject_reason text,
+				revision longtext,
+				revision_at datetime DEFAULT NULL,
 				views int(11) NOT NULL DEFAULT 0,
 				created_at datetime NOT NULL,
 				updated_at datetime NOT NULL,

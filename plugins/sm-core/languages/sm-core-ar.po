@@ -323,7 +323,7 @@ msgstr "الإعدادات"
 msgid "Activity journal"
 msgstr "سجل النشاط"
 
-#: src/Admin/Admin.php:65 src/Admin/MailAdmin.php:74 src/Admin/Terms.php:229
+#: src/Admin/Admin.php:65 src/Admin/MailAdmin.php:74 src/Admin/Terms.php:233
 msgid "Saved."
 msgstr "تم الحفظ."
 
@@ -1242,7 +1242,7 @@ msgstr "الترتيب"
 msgid "Leave a name empty to use the default wording (translated)."
 msgstr "اترك الاسم فارغا لاستعمال التسمية الافتراضية (مترجمة)."
 
-#: src/Admin/Terms.php:182 src/Admin/Terms.php:223
+#: src/Admin/Terms.php:182 src/Admin/Terms.php:227
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -1266,17 +1266,17 @@ msgstr "إظهار"
 msgid "Hide"
 msgstr "إخفاء"
 
-#: src/Admin/Terms.php:197 src/Admin/Terms.php:222
+#: src/Admin/Terms.php:197 src/Admin/Terms.php:226
 msgid "Delete"
 msgstr "حذف"
 
 #. translators: %s: name.
-#: src/Admin/Terms.php:209
+#: src/Admin/Terms.php:213
 msgid "Delete “%s”"
 msgstr "حذف «%s»"
 
 #. translators: %d: number of accounts or pages.
-#: src/Admin/Terms.php:211
+#: src/Admin/Terms.php:215
 msgid "%d entry uses it. Choose what replaces it before the deletion:"
 msgid_plural "%d entries use it. Choose what replaces it before the deletion:"
 msgstr[0] "لا شيء يستعمله."
@@ -1287,28 +1287,28 @@ msgstr[4] "%d عنصرا يستعمله. اختر بديله قبل الحذف:"
 msgstr[5] "%d عنصر يستعمله. اختر بديله قبل الحذف:"
 
 #. translators: %d: number of accounts or pages.
-#: src/Admin/Terms.php:212
+#: src/Admin/Terms.php:216
 msgid "Replace with"
 msgstr "الاستبدال بـ"
 
 #. translators: %d: number of accounts or pages.
-#: src/Admin/Terms.php:212
+#: src/Admin/Terms.php:216
 msgid "— choose —"
 msgstr "— اختر —"
 
-#: src/Admin/Terms.php:220
+#: src/Admin/Terms.php:224
 msgid "Nothing uses it. The deletion cannot be undone."
 msgstr "لا شيء يستعمله. الحذف نهائي."
 
-#: src/Admin/Terms.php:222
+#: src/Admin/Terms.php:226
 msgid "Replace and delete"
 msgstr "استبدال ثم حذف"
 
-#: src/Admin/Terms.php:267
+#: src/Admin/Terms.php:271
 msgid "Unknown entry."
 msgstr "عنصر غير معروف."
 
-#: src/Admin/Terms.php:284
+#: src/Admin/Terms.php:288
 msgid "The image must be a JPG, PNG or WEBP file."
 msgstr "يجب أن تكون الصورة ملف JPG أو PNG أو WEBP."
 
@@ -1799,29 +1799,29 @@ msgid "Published"
 msgstr "منشور"
 
 #. translators: %s: platform name.
-#: src/Notifications/Notifications.php:35
+#: src/Notifications/Notifications.php:36
 msgid "New enquiry on %s"
 msgstr "استفسار جديد على %s"
 
 #. translators: 1: sender name, 2: subject of the enquiry.
-#: src/Notifications/Notifications.php:38
+#: src/Notifications/Notifications.php:39
 msgid "%1$s sent you an enquiry: %2$s"
 msgstr "أرسل لك %1$s استفسارا: %2$s"
 
-#: src/Notifications/Notifications.php:46
+#: src/Notifications/Notifications.php:47
 msgid "New verification request to review"
 msgstr "طلب توثيق جديد للمراجعة"
 
 #. translators: %s: company name.
-#: src/Notifications/Notifications.php:49
+#: src/Notifications/Notifications.php:50
 msgid "%s submitted documents for verification."
 msgstr "أرسلت %s وثائق للتوثيق."
 
-#: src/Notifications/Notifications.php:56
+#: src/Notifications/Notifications.php:57
 msgid "Your account is verified"
 msgstr "تم توثيق حسابك"
 
-#: src/Notifications/Notifications.php:57
+#: src/Notifications/Notifications.php:58
 msgid ""
 "Good news: the platform team verified your documents. The verified badge now"
 " appears on your company page and listings."
@@ -1829,20 +1829,20 @@ msgstr ""
 "خبر سار: تحقق فريق المنصة من وثائقك. تظهر شارة التوثيق الآن في صفحة مؤسستك "
 "وإعلاناتك."
 
-#: src/Notifications/Notifications.php:62
+#: src/Notifications/Notifications.php:63
 msgid "Your verification request needs changes"
 msgstr "طلب التوثيق يحتاج إلى تعديلات"
 
-#: src/Notifications/Notifications.php:63
+#: src/Notifications/Notifications.php:64
 msgid "The platform team could not validate your documents."
 msgstr "لم يتمكن فريق المنصة من قبول وثائقك."
 
-#: src/Notifications/Notifications.php:135
+#: src/Notifications/Notifications.php:136
 msgid "Open"
 msgstr "فتح"
 
-#: src/Notifications/Notifications.php:137
-#: src/Notifications/Notifications.php:155
+#: src/Notifications/Notifications.php:138
+#: src/Notifications/Notifications.php:156
 msgid "You receive this e-mail because you have an account on the platform."
 msgstr "تصلك هذه الرسالة لأن لديك حسابا على المنصة."
 

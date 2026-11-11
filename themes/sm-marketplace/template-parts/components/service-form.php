@@ -44,6 +44,8 @@ foreach ( (array) $def['units'] as $u ) {
 	<input type="hidden" name="kind" value="<?php echo esc_attr( $kind ); ?>">
 	<?php if ( $edit && 'rejected' === $edit['status'] && $edit['reject_reason'] ) : ?>
 		<div class="sm-notice sm-notice--warn"><?php sm_icon( 'alert' ); ?><p><strong><?php esc_html_e( 'Changes requested by the platform team:', 'sm-marketplace' ); ?></strong> <?php echo esc_html( $edit['reject_reason'] ); ?></p></div>
+	<?php elseif ( $edit && ! empty( $edit['values']['revision'] ) ) : ?>
+		<div class="sm-notice sm-notice--info"><?php sm_icon( 'info' ); ?><p><?php esc_html_e( 'Your previous changes are waiting for the check of the platform team (shown below). The current version stays online meanwhile.', 'sm-marketplace' ); ?></p></div>
 	<?php endif; ?>
 
 	<section class="sm-panel smp-step">

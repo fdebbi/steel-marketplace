@@ -6,7 +6,7 @@
 /* Board and cards */
 .sms-filters { margin-block-end: var(--sm-s4); }
 @media (min-width: 720px) { .sms-filters { grid-template-columns: 2fr 1.4fr auto; } }
-.sm-card__price-hint { font-weight: 700; color: var(--sm-ink); font-size: var(--sm-fs-sm); }
+.sm-card__price-hint { font-weight: 700; color: var(--sm-text); font-size: var(--sm-fs-sm); }
 .sm-card__price-hint small { font-weight: 500; color: var(--sm-muted); }
 
 /* Service page */
@@ -15,7 +15,7 @@
 .sms-provider { display: flex; align-items: center; gap: var(--sm-s3); padding: var(--sm-s3); margin-block-end: var(--sm-s3); border: 1px solid var(--sm-line); border-radius: var(--sm-radius-lg); background: var(--sm-surface); color: inherit; text-decoration: none; transition: border-color var(--sm-dur-2, 250ms) var(--sm-ease, ease), box-shadow var(--sm-dur-2, 250ms) var(--sm-ease, ease); }
 .sms-provider:hover { border-color: color-mix(in srgb, var(--sm-primary, #1E3A5F) 35%, var(--sm-line)); box-shadow: 0 10px 24px -18px rgb(15 23 42 / .4); }
 .sms-provider__text { display: grid; gap: 2px; min-inline-size: 0; }
-.sms-provider__text strong { display: inline-flex; align-items: center; gap: 4px; color: var(--sm-ink); }
+.sms-provider__text strong { display: inline-flex; align-items: center; gap: 4px; color: var(--sm-text); }
 .sms-provider__text small { color: var(--sm-muted); font-size: var(--sm-fs-xs); line-height: 1.4; }
 .sms-lists { display: grid; gap: var(--sm-s4); grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 720px) { .sms-lists { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

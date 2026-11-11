@@ -55,7 +55,7 @@
 .smq-o--declined, .smq-o--withdrawn { opacity: .62; }
 .smq-o__head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--sm-s2); }
 .smq-o__who { display: grid; gap: 2px; min-inline-size: 0; }
-.smq-o__name { font-weight: 800; color: var(--sm-ink); text-decoration: none; }
+.smq-o__name { font-weight: 800; color: var(--sm-text); text-decoration: none; }
 .smq-o__name:hover { text-decoration: underline; }
 .smq-o__sub { display: flex; align-items: center; gap: 4px; font-size: var(--sm-fs-xs); color: var(--sm-muted); }
 .smq-o__figs { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sm-s2); }

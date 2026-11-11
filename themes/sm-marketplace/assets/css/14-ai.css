@@ -7,7 +7,7 @@
 
 /* Tool tabs */
 .smai-tabs { display: grid; gap: var(--sm-s2); grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
-.smai-tab { display: flex; align-items: center; gap: var(--sm-s2); padding: var(--sm-s3); border: 1px solid var(--sm-line); border-radius: var(--sm-radius-lg); background: var(--sm-surface); color: var(--sm-ink); font-weight: 600; text-decoration: none; transition: border-color var(--sm-dur-2, 250ms) var(--sm-ease, ease), box-shadow var(--sm-dur-2, 250ms) var(--sm-ease, ease); }
+.smai-tab { display: flex; align-items: center; gap: var(--sm-s2); padding: var(--sm-s3); border: 1px solid var(--sm-line); border-radius: var(--sm-radius-lg); background: var(--sm-surface); color: var(--sm-text); font-weight: 600; text-decoration: none; transition: border-color var(--sm-dur-2, 250ms) var(--sm-ease, ease), box-shadow var(--sm-dur-2, 250ms) var(--sm-ease, ease); }
 .smai-tab:hover { border-color: color-mix(in srgb, var(--sm-accent) 45%, var(--sm-line)); }
 .smai-tab.is-current { border-color: var(--sm-accent); box-shadow: 0 0 0 1px var(--sm-accent) inset; }
 .smai-tab.is-locked { opacity: .6; }

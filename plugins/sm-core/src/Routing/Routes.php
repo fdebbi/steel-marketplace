@@ -43,6 +43,7 @@ final class Routes {
 				'requests'     => 'demandes-clients',
 				'portfolio'    => 'references',
 				'verify-phone' => 'verifier',
+				'notifications' => 'notifications',
 			)
 		);
 	}

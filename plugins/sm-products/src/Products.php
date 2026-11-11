@@ -45,7 +45,7 @@ final class Products {
 		foreach ( array( 'id', 'listing_id', 'company_id', 'user_id', 'section_id', 'length_mm', 'width_mm', 'views' ) as $k ) {
 			$r->$k = (int) $r->$k;
 		}
-		foreach ( array( 'pieces', 'quantity', 'unit_weight', 'total_weight', 'price', 'total_price', 'price_per_kg' ) as $k ) {
+		foreach ( array( 'pieces', 'quantity', 'unit_weight', 'total_weight', 'price', 'total_price', 'price_per_kg', 'lot_price' ) as $k ) {
 			$r->$k = (float) $r->$k;
 		}
 		$r->dims   = json_decode( (string) $r->dims, true ) ?: array();
@@ -69,7 +69,8 @@ final class Products {
 		$is_new = ! $id;
 		global $wpdb;
 		$now  = current_time( 'mysql', true );
-		$cols = array( 'market', 'item_condition', 'variant', 'category', 'family', 'section_id', 'designation', 'grade', 'qty_mode', 'length_mm', 'width_mm', 'pieces', 'quantity', 'unit', 'unit_weight', 'total_weight', 'weight_source', 'engine_version', 'ref_version', 'price', 'price_unit', 'total_price', 'price_per_kg', 'wilaya' );
+		$was  = $id ? self::get( $id ) : null;
+		$cols = array( 'market', 'item_condition', 'variant', 'category', 'family', 'section_id', 'designation', 'grade', 'qty_mode', 'length_mm', 'width_mm', 'pieces', 'quantity', 'unit', 'unit_weight', 'total_weight', 'weight_source', 'engine_version', 'ref_version', 'price', 'price_unit', 'total_price', 'price_per_kg', 'wilaya', 'sale_mode', 'lot_price' );
 		$row  = array();
 		foreach ( $cols as $c ) {
 			if ( array_key_exists( $c, $spec['data'] ) ) {
@@ -86,8 +87,8 @@ final class Products {
 			$row['submitted_at']  = $now;
 			$row['reject_reason'] = '';
 		}
-		if ( 'published' === $status ) {
-			$row += self::publish_dates();
+		if ( 'published' === $status && ! ( $was && 'published' === $was->status ) ) {
+			$row += self::publish_dates(); // A listing already online keeps its dates when it is edited.
 		}
 		if ( $id ) {
 			$wpdb->update( self::table(), $row, array( 'id' => (int) $id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
@@ -109,6 +110,10 @@ final class Products {
 	}
 
 	/** The description is stored under the language it was written in (detected: Arabic letters or not). */
+	public static function split_lang( $text ) {
+		return self::by_lang( $text );
+	}
+
 	private static function by_lang( $text ) {
 		if ( '' === $text ) {
 			return array( 'fr' => '', 'ar' => '' );
@@ -144,6 +149,108 @@ final class Products {
 		self::index( $id );
 		AuditLog::add( 'product.' . $status, 'product', $id, $reason ? array( 'reason' => $reason ) : array(), null, $p->company_id );
 		return true;
+	}
+
+	/* ---- Changes waiting for review (0.5.0) ------------------------------ */
+
+	/** Fields whose change is checked by the platform before it is shown. */
+	const REVIEWED = array( 'category', 'family', 'section_id', 'designation', 'grade', 'dims', 'specs', 'attrs', 'item_condition', 'variant', 'wilaya', 'unit', 'length_mm', 'width_mm' );
+
+	/**
+	 * Does this edit of a published listing need a review? Price, sale mode,
+	 * quantities and weights apply at once; texts, photos, files and technical
+	 * data wait for the platform.
+	 */
+	public static function needs_review( $p, array $spec, array $photos, array $sheets ) {
+		$d = $spec['data'];
+		foreach ( self::REVIEWED as $k ) {
+			if ( ! array_key_exists( $k, $d ) ) {
+				continue;
+			}
+			$old = $p->$k ?? '';
+			$new = $d[ $k ];
+			if ( is_array( $old ) || is_array( $new ) ) {
+				if ( wp_json_encode( (array) $old ) !== wp_json_encode( (array) $new ) ) {
+					return true;
+				}
+			} elseif ( (string) $old !== (string) $new && ! ( is_numeric( $old ) && is_numeric( $new ) && (float) $old === (float) $new ) ) {
+				return true;
+			}
+		}
+		$strip = static fn( $lines ) => array_map( static fn( $l ) => array_diff_key( (array) $l, array_flip( array( 'qty', 'total' ) ) ), (array) $lines );
+		if ( wp_json_encode( $strip( $p->lines ) ) !== wp_json_encode( $strip( $d['lines'] ?? array() ) ) ) {
+			return true;
+		}
+		$t = Translations::get( 'product', $p->id );
+		$old_title = array( 'fr' => (string) ( $t['title']['fr'] ?? '' ), 'ar' => (string) ( $t['title']['ar'] ?? '' ) );
+		if ( $old_title !== array( 'fr' => (string) ( $spec['title']['fr'] ?? '' ), 'ar' => (string) ( $spec['title']['ar'] ?? '' ) ) ) {
+			return true;
+		}
+		if ( trim( (string) ( $t['description']['fr'] ?? '' ) . (string) ( $t['description']['ar'] ?? '' ) ) !== trim( (string) $spec['description'] ) ) {
+			return true;
+		}
+		return array_map( 'intval', Media::get( 'product', $p->id, 'photo' ) ) !== array_map( 'intval', $photos )
+			|| array_map( 'intval', Media::get( 'product', $p->id, 'sheet' ) ) !== array_map( 'intval', $sheets );
+	}
+
+	/** Keep a change for review: the published version stays online meanwhile. */
+	public static function save_revision( $id, $user_id, array $spec, array $photos, array $sheets ) {
+		global $wpdb;
+		$rev = array(
+			'data'        => $spec['data'],
+			'title'       => $spec['title'],
+			'description' => $spec['description'],
+			'photos'      => array_values( array_map( 'intval', $photos ) ),
+			'sheets'      => array_values( array_map( 'intval', $sheets ) ),
+			'user_id'     => (int) $user_id,
+		);
+		$now = current_time( 'mysql', true );
+		$wpdb->update( self::table(), array( 'revision' => wp_json_encode( $rev ), 'revision_at' => $now, 'updated_at' => $now ), array( 'id' => (int) $id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		$p = self::get( $id );
+		AuditLog::add( 'product.revision_submitted', 'product', $id, array(), $user_id, $p ? $p->company_id : 0 );
+	}
+
+	/** The change waiting for review, or null. */
+	public static function revision( $p ) {
+		if ( ! $p || empty( $p->revision ) ) {
+			return null;
+		}
+		$r = json_decode( (string) $p->revision, true );
+		return is_array( $r ) && isset( $r['data'] ) ? $r : null;
+	}
+
+	/** Apply the change waiting for review (approved by the platform). */
+	public static function approve_revision( $id ) {
+		$p   = self::get( $id );
+		$rev = self::revision( $p );
+		if ( ! $rev ) {
+			return false;
+		}
+		self::save( $id, $p->company_id, (int) $rev['user_id'], array( 'data' => $rev['data'], 'title' => $rev['title'], 'description' => $rev['description'] ), 'published', $rev['photos'], $rev['sheets'] );
+		self::clear_revision( $id );
+		AuditLog::add( 'product.revision_approved', 'product', $id, array(), null, $p->company_id );
+		return true;
+	}
+
+	public static function reject_revision( $id, $reason ) {
+		$p = self::get( $id );
+		if ( ! self::revision( $p ) ) {
+			return false;
+		}
+		self::clear_revision( $id );
+		AuditLog::add( 'product.revision_rejected', 'product', $id, array( 'reason' => $reason ), null, $p->company_id );
+		return true;
+	}
+
+	public static function clear_revision( $id ) {
+		global $wpdb;
+		$wpdb->update( self::table(), array( 'revision' => null, 'revision_at' => null ), array( 'id' => (int) $id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+	}
+
+	/** Number of changes waiting for review. */
+	public static function count_revisions() {
+		global $wpdb;
+		return (int) $wpdb->get_var( 'SELECT COUNT(*) FROM ' . self::table() . ' WHERE revision_at IS NOT NULL' ); // phpcs:ignore WordPress.DB
 	}
 
 	public static function delete( $id ) {
@@ -207,6 +314,9 @@ final class Products {
 			$st      = (array) $a['status'];
 			$where[] = 'status IN (' . implode( ',', array_fill( 0, count( $st ), '%s' ) ) . ')';
 			$args    = array_merge( $args, $st );
+		}
+		if ( ! empty( $a['revision'] ) ) {
+			$where[] = 'revision_at IS NOT NULL';
 		}
 		if ( ! empty( $a['market'] ) ) {
 			$m       = array_values( (array) $a['market'] );

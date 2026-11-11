@@ -10,6 +10,8 @@
  */
 
 use SM\Core\Accounts\Companies;
+use SM\Core\Content\Media;
+use SM\Core\Content\Translations;
 use SM\Services\Catalogue;
 use SM\Services\Form;
 use SM\Services\Portfolio;
@@ -204,6 +206,18 @@ sms_assert( 1 === Catalogue::file_proposal( 'fabrication', 'PLIAGE DE TÔLES', '
 Services::delete( $oid );
 null === $cat_before ? delete_option( Catalogue::OPTION ) : update_option( Catalogue::OPTION, $cat_before, false );
 Catalogue::reset();
+
+// 0.3.3: changes of a published page wait for review; the published version stays.
+$live = Services::get( $sid );
+$same = Spec::service( array_merge( $fab, array( 'price_mode' => 'from', 'price_from' => '150' ) ) );
+sms_assert( ! Services::needs_review( $live, $same, Media::get( 'service', $sid, 'photo' ) ), 'a price change applies at once' );
+$chg  = Spec::service( array_merge( $fab, array( 'description' => 'Découpe plasma et oxycoupage jusqu’à 50 mm.' ) ) );
+sms_assert( Services::needs_review( $live, $chg, Media::get( 'service', $sid, 'photo' ) ), 'a new description needs a review' );
+Services::save_revision( $sid, $u_fab, $chg, Media::get( 'service', $sid, 'photo' ) );
+$desc = static fn() => trim( implode( '', (array) ( Translations::get( 'service', $sid )['description'] ?? array() ) ) );
+sms_assert( 'published' === Services::get( $sid )->status && false === strpos( $desc(), 'plasma' ) && 1 === Services::query( array( 'status' => 'any', 'revision' => 1, 'company' => $c_fab ) )['total'], 'the published page stays as it was; the change waits' );
+Services::approve_revision( $sid );
+sms_assert( false !== strpos( $desc(), 'plasma' ) && null === Services::revision( Services::get( $sid ) ), 'approved: the new description is online' );
 
 wp_set_current_user( 0 );
 sms_cleanup();

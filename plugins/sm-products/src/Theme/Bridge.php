@@ -150,6 +150,8 @@ final class Bridge {
 				'kind'     => $c->kind,
 				'families' => $c->families,
 				'units'    => $c->units,
+				'detail_units' => Spec::detail_units( $c ),
+				'lot'      => Spec::lot_allowed( $c ),
 				'fields'   => $c->fields,
 			);
 		}
@@ -165,8 +167,23 @@ final class Bridge {
 		if ( ! $p ) {
 			return null;
 		}
-		$t = Translations::get( 'product', $p->id );
+		// A change waiting for review is what the seller edits further (0.5.0).
+		$rev = Products::revision( $p );
+		if ( $rev ) {
+			$p = clone $p;
+			foreach ( (array) $rev['data'] as $k => $val ) {
+				if ( 'lines' === $k ) {
+					$p->lines = (array) $val;
+				} elseif ( property_exists( $p, $k ) ) {
+					$p->$k = $val;
+				}
+			}
+			$t = array( 'title' => (array) $rev['title'], 'description' => array( 'fr' => (string) $rev['description'], 'ar' => '' ) );
+		} else {
+			$t = Translations::get( 'product', $p->id );
+		}
 		$v = array(
+			'revision'      => (bool) $rev,
 			'product_id'    => $p->id,
 			'market'        => $p->market,
 			'condition'     => (string) $p->item_condition,
@@ -182,16 +199,18 @@ final class Bridge {
 			'total_kg'      => 'weight' === $p->qty_mode && $p->total_weight ? (string) $p->total_weight : '',
 			'weight_source' => $p->weight_source,
 			'actual_weight' => 'actual' === $p->weight_source && 'bars' === $p->qty_mode ? (string) $p->total_weight : '',
-			'price'         => $p->price ? (string) $p->price : '',
+			'price'         => $p->price && 'lot' !== ( $p->sale_mode ?? '' ) ? (string) $p->price : '',
 			'price_unit'    => $p->price_unit,
+			'sale_mode'     => (string) ( $p->sale_mode ?? 'detail' ),
+			'lot_price'     => (float) ( $p->lot_price ?? 0 ) > 0 ? (string) ( 0 + $p->lot_price ) : '',
 			'specs'         => $p->specs,
 			'quantity'      => $p->quantity ? (string) $p->quantity : '',
 			'unit'          => $p->unit,
 			'wilaya'        => $p->wilaya,
 			'title'         => array( 'fr' => $t['title']['fr'] ?? '', 'ar' => $t['title']['ar'] ?? '' ),
 			'description'   => trim( ( $t['description']['fr'] ?? '' ) . ( $t['description']['ar'] ?? '' ) ),
-			'keep_photos'   => Media::get( 'product', $p->id, 'photo' ),
-			'keep_sheets'   => Media::get( 'product', $p->id, 'sheet' ),
+			'keep_photos'   => $rev ? $rev['photos'] : Media::get( 'product', $p->id, 'photo' ),
+			'keep_sheets'   => $rev ? $rev['sheets'] : Media::get( 'product', $p->id, 'sheet' ),
 		);
 		$kind = Categories::get( $p->category )->kind ?? 'specs';
 		if ( $p->lines ) {

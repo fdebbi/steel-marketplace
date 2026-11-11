@@ -35,7 +35,7 @@ final class Bridge {
 		add_filter( 'sm_theme_data_contact_info', static fn( $r ) => null !== $r ? $r : array( 'email' => (string) \SM\Core\Mail\Settings::get( 'from_email' ), 'form' => true ) );
 		add_filter( 'sm_theme_data_account', array( __CLASS__, 'account' ) );
 		add_filter( 'sm_theme_data_enquiries', array( __CLASS__, 'enquiries' ), 10, 2 );
-		add_filter( 'sm_theme_data_notifications', array( __CLASS__, 'notifications' ) );
+		add_filter( 'sm_theme_data_notifications', array( __CLASS__, 'notifications' ), 10, 2 );
 		add_filter( 'sm_theme_data_verification', array( __CLASS__, 'verification' ) );
 		add_filter( 'sm_theme_data_stats', array( __CLASS__, 'stats' ) );
 		add_filter( 'sm_theme_notices', array( __CLASS__, 'notices' ) );
@@ -288,13 +288,24 @@ final class Bridge {
 		);
 	}
 
-	public static function notifications( $result ) {
+	/** Notifications of the signed-in user. Args: limit (default 10, at most 100). */
+	public static function notifications( $result, $args = array() ) {
 		if ( null !== $result || ! is_user_logged_in() ) {
 			return $result;
 		}
+		$limit = max( 1, min( 100, (int) ( $args['limit'] ?? 10 ) ) );
 		return array_map(
-			static fn( $n ) => array( 'id' => (int) $n->id, 'title' => $n->title, 'text' => $n->text, 'link' => $n->link, 'read' => (bool) $n->read_at, 'date' => get_date_from_gmt( $n->created_at ) ),
-			Notifications::for_user( get_current_user_id(), 10 )
+			static fn( $n ) => array(
+				'id'    => (int) $n->id,
+				'title' => $n->title,
+				'text'  => $n->text,
+				'link'  => $n->link,
+				// Opening a notification marks it as read, then goes to its page.
+				'open'  => wp_nonce_url( add_query_arg( array( 'action' => 'sm_notification_open', 'id' => (int) $n->id ), admin_url( 'admin-post.php' ) ), 'sm_notification_open_' . (int) $n->id ),
+				'read'  => (bool) $n->read_at,
+				'date'  => get_date_from_gmt( $n->created_at ),
+			),
+			Notifications::for_user( get_current_user_id(), $limit )
 		);
 	}
 

@@ -1,5 +1,12 @@
 # Changelog — sm-marketplace
 
+## 0.16.0 — 2026-11-11 (avec sm-products 0.5.0, sm-services 0.3.3, sm-core 0.7.2)
+
+- Formulaire d'annonce : « Comment le vendez-vous ? » — à la pièce / au kg, lot complet uniquement, ou les deux (profilés, tubes, tôles, lots d'inventaire, chutes et ferraille, hangars démontés). Le prix du lot complet et son prix au kg s'affichent dans le résumé, sur les cartes et sur la page de l'annonce.
+- Annonce ou service en ligne modifié : avis clair (prix, mode de vente et quantités changent tout de suite ; textes, photos, données techniques vérifiés) et étiquette « Modification en vérification » dans « Mes annonces » / « Mes services ».
+- Cloche : fenêtre flottante avec les 8 dernières notifications, « Tout marquer comme lu », « Voir toutes les notifications » ; nouvelle page « Notifications ». Ouvrir une notification la marque comme lue.
+- Correctif : la variable de couleur `--sm-ink` (inexistante) est remplacée par `--sm-text` dans les feuilles de style.
+
 ## 0.15.3 — 2026-11-11 (avec sm-services 0.3.2)
 
 - Formulaire de service : plus de titre FR/AR à saisir ; le titre de la page est le nom du service choisi (ou le nom écrit dans « Autre »). Aide sous la description (15 caractères minimum).

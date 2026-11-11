@@ -100,10 +100,19 @@ final class Bridge {
 		if ( ! $s || ! Companies::member_role( $s->company_id, get_current_user_id() ) ) {
 			return null;
 		}
-		$t = Translations::get( 'service', $s->id );
+		$t   = Translations::get( 'service', $s->id );
+		$rev = Services::revision( $s );
+		if ( $rev ) {
+			$s = clone $s;
+			foreach ( array( 'categories', 'custom_service' ) as $k ) {
+				$s->$k = $rev['data'][ $k ] ?? $s->$k;
+			}
+			$t = array_merge( $t, (array) $rev['texts'] );
+		}
 		return array(
 			'status' => $s->status,
 			'values' => array(
+				'revision'     => (bool) $rev,
 				'service_id'   => $s->id,
 				'kind'         => $s->kind,
 				'categories'   => $s->categories,
@@ -119,7 +128,7 @@ final class Bridge {
 				'price_mode'   => $s->price_mode,
 				'price_from'   => $s->price_from > 0 ? (string) ( 0 + $s->price_from ) : '',
 				'price_unit'   => $s->price_unit,
-				'keep_photos'  => array_slice( Media::get( 'service', $s->id, 'photo' ), 0, 1 ),
+				'keep_photos'  => $rev ? $rev['photos'] : array_slice( Media::get( 'service', $s->id, 'photo' ), 0, 1 ),
 			),
 			'reject_reason' => (string) $s->reject_reason,
 		);

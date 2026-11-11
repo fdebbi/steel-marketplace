@@ -107,7 +107,17 @@ final class Form {
 			Forms::back( array_merge( $spec['errors'], $new['errors'] ) );
 		}
 		$status = (int) $s['moderation'] && ! current_user_can( 'sm_moderate' ) ? 'pending' : 'published';
-		if ( $service && 'paused' === $service->status ) {
+		// A page already online (0.3.3): price, area and lead time change at once; texts, service
+		// and image wait for the platform while the published version stays visible.
+		if ( $service && in_array( $service->status, array( 'published', 'paused' ), true ) ) {
+			if ( 'pending' === $status && Services::needs_review( $service, $spec, $photos ) ) {
+				Services::save_revision( $service->id, $user_id, $spec, $photos );
+				Notify::notify_moderators( 'service.revision', array( 'service_id' => $service->id ) );
+				Forms::back( $new['errors'], __( 'Thank you. Your changes will be visible after a quick check by the platform team; meanwhile the current page stays online.', 'sm-services' ), Routes::link( $service->id ) );
+			}
+			$status = $service->status;
+			Services::clear_revision( $service->id );
+		} elseif ( $service && 'paused' === $service->status ) {
 			$status = 'paused';
 		}
 		$sid = Services::save( $id, $company->id, $user_id, $spec, $status, $photos );

@@ -12,6 +12,8 @@
 namespace SM\Products\Admin;
 
 use SM\Core\Accounts\Companies;
+use SM\Core\Content\Media;
+use SM\Core\Content\Translations;
 use SM\Core\Notifications\Notifications;
 use SM\Products\Categories;
 use SM\Products\Markets;
@@ -27,14 +29,14 @@ final class Admin {
 
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'menu' ), 15 );
-		foreach ( array( 'moderate', 'category', 'settings' ) as $a ) {
+		foreach ( array( 'moderate', 'category', 'settings', 'admin_edit' ) as $a ) {
 			add_action( 'admin_post_smp_' . $a, array( __CLASS__, 'handle_' . $a ) );
 		}
 	}
 
 	public static function menu() {
 		global $wpdb;
-		$pending = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}sm_products WHERE status = 'pending'" ); // phpcs:ignore WordPress.DB
+		$pending = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}sm_products WHERE status = 'pending' OR revision_at IS NOT NULL" ); // phpcs:ignore WordPress.DB
 		$label   = __( 'Products', 'sm-products' ) . ( $pending ? ' <span class="awaiting-mod">' . $pending . '</span>' : '' );
 		add_submenu_page( 'sm-core', __( 'Products', 'sm-products' ), $label, 'sm_moderate', self::SLUG, array( __CLASS__, 'page' ) );
 	}
@@ -68,7 +70,11 @@ final class Admin {
 			printf( '<a class="nav-tab%s" href="%s">%s</a>', $k === $tab ? ' nav-tab-active' : '', esc_url( self::url( array( 'tab' => $k ) ) ), esc_html( $l ) );
 		}
 		echo '</nav><div style="margin-top:16px">';
-		if ( 'categories' === $tab ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$edit = absint( $_GET['edit'] ?? 0 );
+		if ( $edit ) {
+			self::edit_screen( $edit );
+		} elseif ( 'categories' === $tab ) {
 			self::tab_categories();
 		} elseif ( 'settings' === $tab ) {
 			self::tab_settings();
@@ -81,6 +87,7 @@ final class Admin {
 	private static function status_labels() {
 		return array(
 			'pending'   => __( 'Waiting for review', 'sm-products' ),
+			'revisions' => __( 'Changes to review', 'sm-products' ),
 			'published' => __( 'Published', 'sm-products' ),
 			'rejected'  => __( 'Changes requested', 'sm-products' ),
 			'draft'     => __( 'Drafts', 'sm-products' ),
@@ -100,7 +107,7 @@ final class Admin {
 		$market = sanitize_key( (string) ( $_GET['market'] ?? '' ) );
 		$market = Markets::exists( $market ) ? $market : '';
 		foreach ( $labels as $k => $l ) {
-			$n       = Products::query( array( 'status' => $k, 'market' => $market, 'per_page' => 1 ) )['total'];
+			$n       = Products::query( 'revisions' === $k ? array( 'status' => 'any', 'revision' => 1, 'market' => $market, 'per_page' => 1 ) : array( 'status' => $k, 'market' => $market, 'per_page' => 1 ) )['total'];
 			$links[] = sprintf( '<li><a href="%s"%s>%s <span class="count">(%d)</span></a></li>', esc_url( self::url( array_filter( array( 'status' => $k, 'market' => $market ) ) ) ), $k === $status ? ' class="current"' : '', esc_html( $l ), $n );
 		}
 		echo implode( ' | ', $links ) . '</ul>'; // phpcs:ignore WordPress.Security.EscapeOutput
@@ -115,7 +122,7 @@ final class Admin {
 		}
 		echo '<br class="clear">';
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$q = Products::query( array( 'status' => $status, 'market' => $market, 'per_page' => 30, 'page' => max( 1, (int) ( $_GET['paged'] ?? 1 ) ), 'sort' => 'updated' ) );
+		$q = Products::query( array( 'status' => 'revisions' === $status ? 'any' : $status, 'revision' => 'revisions' === $status, 'market' => $market, 'per_page' => 30, 'page' => max( 1, (int) ( $_GET['paged'] ?? 1 ) ), 'sort' => 'updated' ) );
 		if ( ! $q['items'] ) {
 			echo '<p>' . esc_html__( 'Nothing here.', 'sm-products' ) . '</p>';
 			return;
@@ -129,6 +136,17 @@ final class Admin {
 			echo '<td>' . esc_html( $p->total_weight ? Presenter::n( $p->total_weight, 1 ) . ' kg (' . $p->weight_source . ')' : Presenter::n( $p->quantity ) . ' ' . Presenter::unit_label( $p->unit ) ) . '</td>';
 			echo '<td>' . esc_html( Presenter::n( $p->price, 2 ) . ' DA / ' . Presenter::unit_label( $p->price_unit ) ) . '<br><small>' . esc_html( Presenter::n( $p->total_price ) . ' DA' ) . '</small></td>';
 			echo '<td>' . esc_html( $p->updated_at ) . '</td><td>';
+			if ( 'revisions' === $status && Products::revision( $p ) ) {
+				echo '<p><strong>' . esc_html__( 'Changed:', 'sm-products' ) . '</strong> ' . esc_html( implode( ', ', self::revision_changes( $p ) ) ) . '</p>';
+				echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
+				wp_nonce_field( 'smp_moderate' );
+				echo '<input type="hidden" name="action" value="smp_moderate"><input type="hidden" name="id" value="' . (int) $p->id . '"><input type="hidden" name="status" value="revisions">';
+				echo '<button class="button button-primary" name="decision" value="approve_revision">' . esc_html__( 'Publish the changes', 'sm-products' ) . '</button> ';
+				echo '<input name="reason" placeholder="' . esc_attr__( 'Reason (sent to the seller)', 'sm-products' ) . '" style="width:180px"> <button class="button" name="decision" value="reject_revision">' . esc_html__( 'Refuse the changes', 'sm-products' ) . '</button></form>';
+				echo '</td></tr>';
+				continue;
+			}
+			echo '<p><a class="button button-small" href="' . esc_url( self::url( array( 'edit' => $p->id ) ) ) . '">' . esc_html__( 'Edit text and photos', 'sm-products' ) . '</a></p>';
 			if ( current_user_can( 'sm_moderate' ) && in_array( $p->status, array( 'pending', 'published', 'rejected' ), true ) ) {
 				echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
 				wp_nonce_field( 'smp_moderate' );
@@ -237,6 +255,19 @@ final class Admin {
 		if ( ! $p ) {
 			self::back( array( 'status' => $from ) );
 		}
+		if ( 'approve_revision' === $decision ) {
+			Products::approve_revision( $id );
+			Notifications::notify_company( $p->company_id, 'product.revision_approved', array( 'product_id' => $id ) );
+			self::back( array( 'status' => $from, 'msg' => __( 'Changes published. The seller was notified.', 'sm-products' ) ) );
+		}
+		if ( 'reject_revision' === $decision ) {
+			if ( '' === trim( $reason ) ) {
+				self::back( array( 'status' => $from, 'msg' => __( 'Give the reason, so the seller knows what to change.', 'sm-products' ) ) );
+			}
+			Products::reject_revision( $id, $reason );
+			Notifications::notify_company( $p->company_id, 'product.revision_rejected', array( 'product_id' => $id, 'reason' => $reason ) );
+			self::back( array( 'status' => $from, 'msg' => __( 'Changes refused. The previous version stays online; the seller was told why.', 'sm-products' ) ) );
+		}
 		if ( 'approve' === $decision ) {
 			Products::set_status( $id, 'published' );
 			Notifications::notify_company( $p->company_id, 'product.approved', array( 'product_id' => $id ) );
@@ -251,6 +282,133 @@ final class Admin {
 			self::back( array( 'status' => $from, 'msg' => __( 'The seller was asked to change the product.', 'sm-products' ) ) );
 		}
 		self::back( array( 'status' => $from ) );
+	}
+
+	/** What a change waiting for review modifies (for the moderator). */
+	private static function revision_changes( $p ) {
+		$rev = Products::revision( $p );
+		$out = array();
+		$t   = Translations::get( 'product', $p->id );
+		if ( (string) ( $t['title']['fr'] ?? '' ) !== (string) ( $rev['title']['fr'] ?? '' ) || (string) ( $t['title']['ar'] ?? '' ) !== (string) ( $rev['title']['ar'] ?? '' ) ) {
+			$out[] = __( 'title', 'sm-products' );
+		}
+		if ( trim( (string) ( $t['description']['fr'] ?? '' ) . (string) ( $t['description']['ar'] ?? '' ) ) !== trim( (string) $rev['description'] ) ) {
+			$out[] = __( 'description', 'sm-products' );
+		}
+		if ( array_map( 'intval', Media::get( 'product', $p->id, 'photo' ) ) !== array_map( 'intval', (array) $rev['photos'] ) ) {
+			$out[] = __( 'photos', 'sm-products' );
+		}
+		if ( array_map( 'intval', Media::get( 'product', $p->id, 'sheet' ) ) !== array_map( 'intval', (array) $rev['sheets'] ) ) {
+			$out[] = __( 'technical sheets', 'sm-products' );
+		}
+		$tech = Products::needs_review( $p, array( 'data' => $rev['data'], 'title' => $t['title'] ?? array(), 'description' => trim( (string) ( $t['description']['fr'] ?? '' ) . (string) ( $t['description']['ar'] ?? '' ) ) ), Media::get( 'product', $p->id, 'photo' ), Media::get( 'product', $p->id, 'sheet' ) );
+		if ( $tech ) {
+			$out[] = __( 'technical data', 'sm-products' );
+		}
+		if ( (float) $p->price !== (float) ( $rev['data']['price'] ?? 0 ) || (string) $p->sale_mode !== (string) ( $rev['data']['sale_mode'] ?? '' ) ) {
+			$out[] = __( 'price', 'sm-products' );
+		}
+		return $out ? $out : array( __( 'quantities', 'sm-products' ) );
+	}
+
+	/** The platform edits the texts and photos of a listing (0.5.0), with a reason sent to the seller. */
+	private static function edit_screen( $id ) {
+		$p = Products::get( $id );
+		if ( ! $p ) {
+			echo '<p>' . esc_html__( 'Nothing here.', 'sm-products' ) . '</p>';
+			return;
+		}
+		$t      = Translations::get( 'product', $p->id );
+		$c      = Companies::get( $p->company_id );
+		$photos = Media::get( 'product', $p->id, 'photo' );
+		$sheets = Media::get( 'product', $p->id, 'sheet' );
+		echo '<h2>' . esc_html( sprintf( /* translators: %s: listing title. */ __( 'Edit "%s"', 'sm-products' ), Presenter::title_text( $p ) ) ) . '</h2>';
+		echo '<p>' . esc_html( sprintf( /* translators: %s: company. */ __( 'Seller: %s. The seller receives a notification and an e-mail with your reason and the list of changes.', 'sm-products' ), $c ? $c->name : '—' ) ) . '</p>';
+		echo '<form method="post" enctype="multipart/form-data" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" class="smp-admin-edit" style="max-width:900px">';
+		wp_nonce_field( 'smp_admin_edit_' . $p->id );
+		echo '<input type="hidden" name="action" value="smp_admin_edit"><input type="hidden" name="id" value="' . (int) $p->id . '">';
+		echo '<table class="form-table"><tbody>';
+		echo '<tr><th><label for="smp-ae-fr">' . esc_html__( 'Title in French', 'sm-products' ) . '</label></th><td><input id="smp-ae-fr" class="large-text" name="title[fr]" value="' . esc_attr( $t['title']['fr'] ?? '' ) . '"></td></tr>';
+		echo '<tr><th><label for="smp-ae-ar">' . esc_html__( 'Title in Arabic', 'sm-products' ) . '</label></th><td><input id="smp-ae-ar" class="large-text" dir="rtl" name="title[ar]" value="' . esc_attr( $t['title']['ar'] ?? '' ) . '"></td></tr>';
+		echo '<tr><th><label for="smp-ae-desc">' . esc_html__( 'Description', 'sm-products' ) . '</label></th><td><textarea id="smp-ae-desc" class="large-text" rows="6" name="description" dir="auto">' . esc_textarea( trim( ( $t['description']['fr'] ?? '' ) . ( $t['description']['ar'] ?? '' ) ) ) . '</textarea></td></tr>';
+		echo '<tr><th>' . esc_html__( 'Photos', 'sm-products' ) . '</th><td><div style="display:flex;flex-wrap:wrap;gap:12px">';
+		foreach ( $photos as $aid ) {
+			echo '<label style="display:grid;gap:4px;justify-items:center">' . wp_get_attachment_image( $aid, 'thumbnail' ) . '<span><input type="checkbox" name="remove_photos[]" value="' . (int) $aid . '"> ' . esc_html__( 'Delete', 'sm-products' ) . '</span></label>';
+		}
+		echo '</div><p><label>' . esc_html__( 'Add photos', 'sm-products' ) . ' <input type="file" name="photos[]" accept="image/jpeg,image/png,image/webp" multiple></label></p></td></tr>';
+		if ( $sheets ) {
+			echo '<tr><th>' . esc_html__( 'Technical sheets', 'sm-products' ) . '</th><td>';
+			foreach ( $sheets as $aid ) {
+				echo '<label style="display:block"><input type="checkbox" name="remove_sheets[]" value="' . (int) $aid . '"> ' . esc_html__( 'Delete', 'sm-products' ) . ' — <a href="' . esc_url( wp_get_attachment_url( $aid ) ) . '" target="_blank">' . esc_html( get_the_title( $aid ) ) . '</a></label>';
+			}
+			echo '</td></tr>';
+		}
+		echo '<tr><th><label for="smp-ae-reason">' . esc_html__( 'Reason (sent to the seller)', 'sm-products' ) . ' *</label></th><td><textarea id="smp-ae-reason" class="large-text" rows="3" name="reason" required></textarea></td></tr>';
+		echo '</tbody></table>';
+		submit_button( __( 'Save and inform the seller', 'sm-products' ), 'primary', 'submit', false );
+		echo ' <a class="button" href="' . esc_url( self::url( array( 'status' => $p->status ) ) ) . '">' . esc_html__( 'Cancel', 'sm-products' ) . '</a></form>';
+	}
+
+	public static function handle_admin_edit() {
+		$id = absint( $_POST['id'] ?? 0 ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		check_admin_referer( 'smp_admin_edit_' . $id );
+		if ( ! current_user_can( 'sm_moderate' ) ) {
+			wp_die( '', 403 );
+		}
+		$p = Products::get( $id );
+		if ( ! $p ) {
+			self::back( array() );
+		}
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
+		$reason = trim( sanitize_textarea_field( wp_unslash( $_POST['reason'] ?? '' ) ) );
+		if ( '' === $reason ) {
+			self::back( array( 'edit' => $id, 'msg' => __( 'Give the reason, so the seller knows why the listing was changed.', 'sm-products' ) ) );
+		}
+		$title = array(
+			'fr' => mb_substr( trim( sanitize_text_field( wp_unslash( $_POST['title']['fr'] ?? '' ) ) ), 0, 140 ),
+			'ar' => mb_substr( trim( sanitize_text_field( wp_unslash( $_POST['title']['ar'] ?? '' ) ) ), 0, 140 ),
+		);
+		$desc    = mb_substr( trim( sanitize_textarea_field( wp_unslash( $_POST['description'] ?? '' ) ) ), 0, 4000 );
+		$rm      = array_map( 'absint', (array) ( $_POST['remove_photos'] ?? array() ) );
+		$rms     = array_map( 'absint', (array) ( $_POST['remove_sheets'] ?? array() ) );
+		// phpcs:enable
+		if ( '' === $title['fr'] && '' === $title['ar'] ) {
+			self::back( array( 'edit' => $id, 'msg' => __( 'Give the product a title (in French or in Arabic).', 'sm-products' ) ) );
+		}
+		$t       = Translations::get( 'product', $p->id );
+		$changes = array();
+		if ( (string) ( $t['title']['fr'] ?? '' ) !== $title['fr'] || (string) ( $t['title']['ar'] ?? '' ) !== $title['ar'] ) {
+			$changes[] = __( 'title', 'sm-products' );
+		}
+		$old_desc = trim( (string) ( $t['description']['fr'] ?? '' ) . (string) ( $t['description']['ar'] ?? '' ) );
+		if ( $old_desc !== $desc ) {
+			$changes[] = __( 'description', 'sm-products' );
+		}
+		$photos = array_values( array_diff( array_map( 'intval', Media::get( 'product', $p->id, 'photo' ) ), $rm ) );
+		$s      = Settings::all();
+		$new    = Media::upload( 'photos', Media::IMAGE_TYPES, max( 0, $s['max_photos'] - count( $photos ) ), $s['photo_mb'] * 1048576 );
+		if ( $rm ) {
+			/* translators: %d: number of photos. */
+			$changes[] = sprintf( _n( '%d photo deleted', '%d photos deleted', count( $rm ), 'sm-products' ), count( $rm ) );
+		}
+		if ( $new['ids'] ) {
+			/* translators: %d: number of photos. */
+			$changes[] = sprintf( _n( '%d photo added', '%d photos added', count( $new['ids'] ), 'sm-products' ), count( $new['ids'] ) );
+		}
+		$sheets = array_values( array_diff( array_map( 'intval', Media::get( 'product', $p->id, 'sheet' ) ), $rms ) );
+		if ( $rms ) {
+			$changes[] = __( 'technical sheet deleted', 'sm-products' );
+		}
+		if ( ! $changes ) {
+			self::back( array( 'edit' => $id, 'msg' => __( 'Nothing was changed.', 'sm-products' ) ) );
+		}
+		Translations::set( 'product', $p->id, array( 'title' => $title, 'description' => \SM\Products\Products::split_lang( $desc ) ) );
+		Media::set( 'product', $p->id, 'photo', array_merge( $photos, $new['ids'] ) );
+		Media::set( 'product', $p->id, 'sheet', $sheets );
+		Products::index( $p->id );
+		\SM\Core\Audit\AuditLog::add( 'product.admin_edited', 'product', $p->id, array( 'reason' => $reason, 'changes' => $changes ), null, $p->company_id );
+		Notifications::notify_company( $p->company_id, 'product.admin_edited', array( 'product_id' => $p->id, 'reason' => $reason, 'changes' => implode( ', ', $changes ) ) );
+		self::back( array( 'status' => $p->status, 'msg' => __( 'Listing changed. The seller was informed with your reason.', 'sm-products' ) ) );
 	}
 
 	public static function handle_category() {

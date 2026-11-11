@@ -98,6 +98,21 @@ final class Form {
 				Forms::back( array( $limit ) );
 			}
 			$status = self::publish_status( $company );
+			// A listing already online (0.5.0): price, sale mode and quantities change at once;
+			// a change of texts, photos, files or technical data waits for the platform while
+			// the published version stays visible.
+			if ( $product && 'published' === $product->status ) {
+				if ( 'pending' === $status && Products::needs_review( $product, $spec, $photos, $sheets ) ) {
+					Products::save_revision( $product->id, $user_id, $spec, $photos, $sheets );
+					foreach ( array_merge( $photos, $sheets ) as $aid ) {
+						update_post_meta( $aid, '_sm_owner', $user_id );
+					}
+					\SM\Core\Notifications\Notifications::notify_moderators( 'product.revision', array( 'product_id' => $product->id, 'company_id' => $company->id ) );
+					Forms::back( $file_errors, __( 'Thank you. Your changes will be visible after a quick check by the platform team; meanwhile the current version stays online.', 'sm-products' ), Routes::url( 'account', array( 'view' => 'listings' ) ) );
+				}
+				$status = 'published';
+				Products::clear_revision( $product->id );
+			}
 		}
 		$pid = Products::save( $id, $company->id, $user_id, $spec, $status, $photos, $sheets );
 		foreach ( array_merge( $photos, $sheets ) as $aid ) {

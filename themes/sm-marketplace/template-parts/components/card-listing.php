@@ -62,9 +62,15 @@ $market  = $item['market'];
 			<?php if ( 'buildings' === $market && 'assembled' === $item['mode'] ) : ?>
 				<strong class="sm-price-main"><?php echo esc_html( sm_money( $item['total_price'] ) ); ?></strong>
 				<span class="sm-price-sub"><?php echo sm_per_unit( $item['price_per_kg'] ); // phpcs:ignore ?> · <?php echo sm_per_unit( $item['price_per_m2'], 'm²' ); // phpcs:ignore ?></span>
+			<?php elseif ( 'lot' === ( $item['sale_mode'] ?? '' ) ) : ?>
+				<strong class="sm-price-main"><?php echo esc_html( sm_money( $item['total_price'] ) ); ?></strong>
+				<span class="sm-price-sub"><?php esc_html_e( 'Whole lot only', 'sm-marketplace' ); ?><?php if ( $item['price_per_kg'] > 0 ) : ?> · <?php echo sm_per_unit( $item['price_per_kg'] ); // phpcs:ignore ?><?php endif; ?></span>
 			<?php else : ?>
 				<strong class="sm-price-main"><?php echo sm_listing_price( $item ); // phpcs:ignore ?></strong>
 				<span class="sm-price-sub"><?php esc_html_e( 'Total', 'sm-marketplace' ); ?> <?php echo esc_html( sm_money( $item['total_price'] ) ); ?></span>
+				<?php if ( 'both' === ( $item['sale_mode'] ?? '' ) && ! empty( $item['lot_price'] ) ) : ?>
+					<span class="sm-price-lot"><?php echo esc_html( sprintf( /* translators: %s: price. */ __( 'or %s for the whole lot', 'sm-marketplace' ), sm_money( $item['lot_price'] ) ) ); ?></span>
+				<?php endif; ?>
 			<?php endif; ?>
 		</div>
 

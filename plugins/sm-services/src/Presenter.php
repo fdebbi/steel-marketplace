@@ -60,6 +60,7 @@ final class Presenter {
 			'kind'         => $s->kind,
 			'kind_label'   => $def['label'] ?? array(),
 			'status'       => $s->status,
+			'revision'     => ! empty( $s->revision_at ),
 			'company'      => $company ? $company->slug : '',
 			'company_id'   => $s->company_id,
 			'title'        => self::title( $s, $texts ),

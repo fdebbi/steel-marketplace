@@ -33,6 +33,34 @@ final class Notifications {
 			'body'    => static fn( $p ) => sprintf( __( 'A provider submitted "%s". Check it before it is published.', 'sm-services' ), $title( $p ) ),
 			'link'    => static fn( $p ) => admin_url( 'admin.php?page=sm-services&status=pending' ),
 		);
+		$types['service.revision']          = array(
+			'email'   => true,
+			'subject' => static fn( $p ) => __( 'Changes of a service page to review', 'sm-services' ),
+			/* translators: %s: service title. */
+			'body'    => static fn( $p ) => sprintf( __( 'A provider changed "%s". The published page stays online until you check the changes.', 'sm-services' ), $title( $p ) ),
+			'link'    => static fn( $p ) => admin_url( 'admin.php?page=sm-services&status=revisions' ),
+		);
+		$types['service.revision_approved'] = array(
+			'email'   => true,
+			'subject' => static fn( $p ) => __( 'Your changes are published', 'sm-services' ),
+			/* translators: %s: service title. */
+			'body'    => static fn( $p ) => sprintf( __( 'The changes of "%s" are now visible to clients.', 'sm-services' ), $title( $p ) ),
+			'link'    => static fn( $p ) => Routes::link( (int) ( $p['service_id'] ?? 0 ) ),
+		);
+		$types['service.revision_rejected'] = array(
+			'email'   => true,
+			'subject' => static fn( $p ) => __( 'Your changes were not accepted', 'sm-services' ),
+			/* translators: 1: service title, 2: reason. */
+			'body'    => static fn( $p ) => sprintf( __( 'The changes of "%1$s" were not published: %2$s The previous version is still online.', 'sm-services' ), $title( $p ), $p['reason'] ?? '' ),
+			'link'    => static fn( $p ) => CoreRoutes::url( 'account', array( 'view' => 'services' ) ),
+		);
+		$types['service.admin_edited']      = array(
+			'email'   => true,
+			'subject' => static fn( $p ) => __( 'The platform changed one of your service pages', 'sm-services' ),
+			/* translators: 1: service title, 2: reason, 3: changes. */
+			'body'    => static fn( $p ) => sprintf( __( 'The platform team changed "%1$s". Reason: %2$s Changes: %3$s', 'sm-services' ), $title( $p ), $p['reason'] ?? '', $p['changes'] ?? '' ),
+			'link'    => static fn( $p ) => Routes::link( (int) ( $p['service_id'] ?? 0 ) ),
+		);
 		$types['service.approved']          = array(
 			'email'   => true,
 			'subject' => static fn( $p ) => __( 'Your service page is published', 'sm-services' ),

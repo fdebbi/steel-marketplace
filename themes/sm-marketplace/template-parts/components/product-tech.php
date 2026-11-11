@@ -32,7 +32,7 @@ $unit_labels = array(
 $field_error = static function ( $key ) use ( $err, $st ) {
 	$msg = sm_theme_field_error( $key );
 	if ( ! $msg && isset( $err[ $key ] ) ) {
-		$filled = array( 'section' => 'section', 'bars' => 'bars', 'total_kg' => 'total_kg', 'actual_weight' => 'actual_weight', 'length' => 'length_custom', 'width' => 'width', 'price' => 'price', 'price_unit' => 'price', 'quantity' => 'quantity' );
+		$filled = array( 'section' => 'section', 'bars' => 'bars', 'total_kg' => 'total_kg', 'actual_weight' => 'actual_weight', 'length' => 'length_custom', 'width' => 'width', 'price' => 'price', 'price_unit' => 'price', 'quantity' => 'quantity', 'lot_price' => 'lot_price' );
 		if ( isset( $filled[ $key ] ) && '' !== (string) ( $st[ $filled[ $key ] ] ?? '' ) && ! is_array( $st[ $filled[ $key ] ] ) ) {
 			$msg = $err[ $key ];
 		}
@@ -437,27 +437,54 @@ $render_grade = static function () use ( $v, $ps ) {
 	<?php endif; ?>
 
 	<?php
-	$units = $cat['units'];
+	$units      = $cat['units'];
 	$has_punit  = 'specs' !== $cat['kind'];
+	$lot_ok     = ! empty( $cat['lot'] ) && ! ( 'building' === $cat['kind'] && 'assembled' === $v( 'mode' ) );
+	$sale       = in_array( $v( 'sale_mode' ), array( 'detail', 'lot', 'both' ), true ) ? $v( 'sale_mode' ) : ( 'lot' === $v( 'price_unit' ) ? 'lot' : 'detail' );
+	if ( $lot_ok ) {
+		$units = (array) ( $cat['detail_units'] ?? array_diff( $units, array( 'lot' ) ) );
+	} else {
+		$sale = 'detail';
+	}
 	$def_unit   = 'building' === $cat['kind'] && 'dismantled' === $v( 'mode' ) && in_array( 'kg', $units, true ) ? 'kg' : $units[0];
 	$price_unit = $has_punit ? ( in_array( $v( 'price_unit' ), $units, true ) ? $v( 'price_unit' ) : $def_unit ) : ( $unit ?? $units[0] );
+	$unit_name  = static fn( $u ) => 'unit' === $u && 'engine' === $cat['kind'] ? ( ! empty( $is_plate ) ? __( 'plate', 'sm-marketplace' ) : __( 'bar', 'sm-marketplace' ) ) : ( 'unit' === $u ? __( 'piece', 'sm-marketplace' ) : ( 'lot' === $u && 'building' === $cat['kind'] ? __( 'the whole building', 'sm-marketplace' ) : ( $unit_labels[ $u ] ?? $u ) ) );
 	?>
-	<div class="sm-field sm-field--row">
-		<div>
-			<label for="smp-price"><?php esc_html_e( 'Price', 'sm-marketplace' ); ?> <small>(<?php echo esc_html( sm_currency_label() ); ?>)</small></label>
-			<input id="smp-price" name="price" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( $v( 'price' ) ); ?>"<?php sm_theme_aria( 'price' ); ?>>
-			<?php $field_error( 'price' ); ?>
+	<?php if ( $lot_ok ) : ?>
+		<fieldset class="sm-field smp-sale">
+			<legend class="sm-field__legend"><?php esc_html_e( 'How do you sell it?', 'sm-marketplace' ); ?></legend>
+			<div class="smp-sale__modes">
+				<label class="smp-sale__mode"><input type="radio" name="sale_mode" value="detail" <?php checked( $sale, 'detail' ); ?>><span><strong><?php esc_html_e( 'By the piece / by the kg', 'sm-marketplace' ); ?></strong><small><?php esc_html_e( 'The buyer takes the quantity he needs.', 'sm-marketplace' ); ?></small></span></label>
+				<label class="smp-sale__mode"><input type="radio" name="sale_mode" value="lot" <?php checked( $sale, 'lot' ); ?>><span><strong><?php esc_html_e( 'Whole lot only', 'sm-marketplace' ); ?></strong><small><?php esc_html_e( 'One price for everything.', 'sm-marketplace' ); ?></small></span></label>
+				<label class="smp-sale__mode"><input type="radio" name="sale_mode" value="both" <?php checked( $sale, 'both' ); ?>><span><strong><?php esc_html_e( 'Both', 'sm-marketplace' ); ?></strong><small><?php esc_html_e( 'A detail price and a price for the whole lot.', 'sm-marketplace' ); ?></small></span></label>
+			</div>
+		</fieldset>
+	<?php endif; ?>
+	<?php if ( 'lot' !== $sale ) : ?>
+		<div class="sm-field sm-field--row">
+			<div>
+				<label for="smp-price"><?php echo esc_html( 'both' === $sale ? __( 'Detail price', 'sm-marketplace' ) : __( 'Price', 'sm-marketplace' ) ); ?> <small>(<?php echo esc_html( sm_currency_label() ); ?>)</small></label>
+				<input id="smp-price" name="price" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( $v( 'price' ) ); ?>"<?php sm_theme_aria( 'price' ); ?>>
+				<?php $field_error( 'price' ); ?>
+			</div>
+			<div>
+				<?php if ( $has_punit ) : ?>
+					<label for="smp-punit"><?php esc_html_e( 'Price per', 'sm-marketplace' ); ?></label>
+					<select id="smp-punit" name="price_unit"><?php foreach ( $units as $u ) : ?><option value="<?php echo esc_attr( $u ); ?>" <?php selected( $price_unit, $u ); ?>><?php echo esc_html( $unit_name( $u ) ); ?></option><?php endforeach; ?></select>
+					<?php $field_error( 'price_unit' ); ?>
+				<?php else : ?>
+					<p class="smp-per"><?php echo esc_html( sprintf( /* translators: %s: unit. */ __( 'per %s', 'sm-marketplace' ), $unit_labels[ $price_unit ] ?? $price_unit ) ); ?></p>
+				<?php endif; ?>
+			</div>
 		</div>
-		<div>
-			<?php if ( $has_punit ) : ?>
-				<label for="smp-punit"><?php esc_html_e( 'Price per', 'sm-marketplace' ); ?></label>
-				<select id="smp-punit" name="price_unit"><?php foreach ( $units as $u ) : ?><option value="<?php echo esc_attr( $u ); ?>" <?php selected( $price_unit, $u ); ?>><?php echo esc_html( 'unit' === $u && 'engine' === $cat['kind'] ? ( ! empty( $is_plate ) ? __( 'plate', 'sm-marketplace' ) : __( 'bar', 'sm-marketplace' ) ) : ( 'lot' === $u && 'building' === $cat['kind'] ? __( 'the whole building', 'sm-marketplace' ) : ( $unit_labels[ $u ] ?? $u ) ) ); ?></option><?php endforeach; ?></select>
-				<?php $field_error( 'price_unit' ); ?>
-			<?php else : ?>
-				<p class="smp-per"><?php echo esc_html( sprintf( /* translators: %s: unit. */ __( 'per %s', 'sm-marketplace' ), $unit_labels[ $price_unit ] ?? $price_unit ) ); ?></p>
-			<?php endif; ?>
+	<?php endif; ?>
+	<?php if ( 'detail' !== $sale ) : ?>
+		<div class="sm-field">
+			<label for="smp-lot"><?php echo esc_html( 'building' === $cat['kind'] ? __( 'Price of the whole building', 'sm-marketplace' ) : __( 'Price of the whole lot', 'sm-marketplace' ) ); ?> <small>(<?php echo esc_html( sm_currency_label() ); ?>)</small></label>
+			<input id="smp-lot" name="lot_price" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( $v( 'lot_price' ) ); ?>"<?php sm_theme_aria( 'lot_price' ); ?>>
+			<?php $field_error( 'lot_price' ); ?>
 		</div>
-	</div>
+	<?php endif; ?>
 
 	<div class="smp-summary" aria-live="polite">
 		<p class="smp-summary__title"><?php esc_html_e( 'Summary shown to buyers', 'sm-marketplace' ); ?></p>
@@ -487,6 +514,9 @@ $render_grade = static function () use ( $v, $ps ) {
 				<div><dt><?php esc_html_e( 'Total area', 'sm-marketplace' ); ?></dt><dd><?php echo $sum && $sum['quantity'] > 0 ? sm_tech( sm_number( $sum['quantity'], fmod( (float) $sum['quantity'], 1 ) ? 1 : 0 ) . ' m²' ) : '—'; // phpcs:ignore WordPress.Security.EscapeOutput ?></dd></div>
 			<?php endif; ?>
 			<div class="is-key"><dt><?php echo esc_html( 'lot' === ( $sum['price_unit'] ?? '' ) ? ( 'building' === $cat['kind'] ? __( 'Asking price', 'sm-marketplace' ) : __( 'Price of the lot', 'sm-marketplace' ) ) : __( 'Total price', 'sm-marketplace' ) ); ?></dt><dd><?php echo $sum && $sum['total_price'] > 0 ? esc_html( sm_money( $sum['total_price'] ) ) : '—'; ?></dd></div>
+			<?php if ( $sum && 'both' === ( $sum['sale_mode'] ?? '' ) && $sum['lot_price'] > 0 ) : ?>
+				<div class="is-key"><dt><?php esc_html_e( 'Price of the whole lot', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( sm_money( $sum['lot_price'] ) ); ?><?php if ( $sum['lot_per_kg'] > 0 ) : ?> <small><?php echo sm_per_unit( $sum['lot_per_kg'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></small><?php endif; ?></dd></div>
+			<?php endif; ?>
 			<?php if ( $sum && $sum['price_per_kg'] > 0 && 'kg' !== $sum['price_unit'] ) : ?>
 				<div><dt><?php esc_html_e( 'Equivalent price per kg', 'sm-marketplace' ); ?></dt><dd><?php echo sm_per_unit( $sum['price_per_kg'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></dd></div>
 			<?php endif; ?>

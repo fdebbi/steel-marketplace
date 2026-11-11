@@ -26,7 +26,7 @@ $assembled = 'buildings' === $item['market'] && 'assembled' === ( $item['mode'] 
 		$per_kg = 'kg' === ( $item['price_unit'] ?? 'kg' );
 		$is_lot = 'lot' === ( $item['price_unit'] ?? '' );
 		?>
-		<p class="sm-priceblock__label"><?php echo esc_html( $per_kg ? __( 'Price per kilogram', 'sm-marketplace' ) : ( $is_lot ? __( 'Price for the whole lot', 'sm-marketplace' ) : __( 'Unit price', 'sm-marketplace' ) ) ); ?></p>
+		<p class="sm-priceblock__label"><?php echo esc_html( $per_kg ? __( 'Price per kilogram', 'sm-marketplace' ) : ( $is_lot ? __( 'Price for the whole lot', 'sm-marketplace' ) : __( 'Unit price', 'sm-marketplace' ) ) ); ?><?php if ( $is_lot && 'lot' === ( $item['sale_mode'] ?? '' ) ) : ?> · <?php esc_html_e( 'sold as a whole lot only', 'sm-marketplace' ); ?><?php endif; ?></p>
 		<p class="sm-priceblock__main"><?php echo $is_lot ? esc_html( sm_money( $item['price'] ) ) : sm_listing_price( $item ); // phpcs:ignore ?></p>
 		<dl class="sm-priceblock__rows">
 			<?php if ( ! empty( $item['weight_kg'] ) ) : ?>
@@ -36,9 +36,12 @@ $assembled = 'buildings' === $item['market'] && 'assembled' === ( $item['mode'] 
 				<div><dt><?php esc_html_e( 'Equivalent price per kg', 'sm-marketplace' ); ?></dt><dd><?php echo sm_per_unit( $item['price_per_kg'] ); // phpcs:ignore ?></dd></div>
 			<?php endif; ?>
 			<?php if ( ! $is_lot ) : ?>
-				<div class="sm-priceblock__total"><dt><?php esc_html_e( 'Total price', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( sm_money( $item['total_price'] ) ); ?></dd></div>
+				<div class="sm-priceblock__total"><dt><?php echo esc_html( 'both' === ( $item['sale_mode'] ?? '' ) ? __( 'Total at the detail price', 'sm-marketplace' ) : __( 'Total price', 'sm-marketplace' ) ); ?></dt><dd><?php echo esc_html( sm_money( $item['total_price'] ) ); ?></dd></div>
 			<?php endif; ?>
 		</dl>
+		<?php if ( 'both' === ( $item['sale_mode'] ?? '' ) && ! empty( $item['lot_price'] ) ) : ?>
+			<p class="sm-priceblock__lot"><?php esc_html_e( 'Or the whole lot', 'sm-marketplace' ); ?> <strong><?php echo esc_html( sm_money( $item['lot_price'] ) ); ?></strong><?php if ( ! empty( $item['lot_per_kg'] ) ) : ?> <small><?php echo sm_per_unit( $item['lot_per_kg'] ); // phpcs:ignore ?></small><?php endif; ?></p>
+		<?php endif; ?>
 	<?php endif; ?>
 
 	<?php if ( in_array( $item['weight_source'], array( 'actual', 'theoretical', 'estimated' ), true ) ) : ?>
