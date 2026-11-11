@@ -179,7 +179,7 @@ $shares  = array(
 								</a>
 								<div class="smc-service__body">
 									<h3><a href="<?php echo esc_url( $s_url ); ?>"><?php sm_e( $s['title'] ); ?></a></h3>
-									<ul class="smc-service__tags" role="list"><?php foreach ( array_slice( (array) $s['tags'], 0, 4 ) as $tag ) : ?><li><?php sm_e( $tag ); ?></li><?php endforeach; ?></ul>
+									<?php if ( sm_service_tags( $s ) ) : ?><ul class="smc-service__tags" role="list"><?php foreach ( array_slice( sm_service_tags( $s ), 0, 4 ) as $tag ) : ?><li><?php sm_e( $tag ); ?></li><?php endforeach; ?></ul><?php endif; ?>
 									<?php if ( $real ) : ?>
 										<p class="smc-service__facts">
 											<span><?php sm_icon( 'map-pin' ); ?><?php echo esc_html( $s['all_algeria'] ? __( 'All of Algeria', 'sm-marketplace' ) : sprintf( /* translators: %d: number of wilayas. */ _n( '%d wilaya served', '%d wilayas served', count( $s['wilayas'] ), 'sm-marketplace' ), count( $s['wilayas'] ) ) ); ?></span>

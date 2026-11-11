@@ -139,3 +139,14 @@
 .smc-types__label { font-size: var(--sm-fs-xs); font-weight: 700; color: var(--sm-primary); text-transform: uppercase; letter-spacing: .04em; }
 .smc-types__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
 .smc-types__list li { display: inline-flex; align-items: center; min-block-size: 30px; padding-inline: 12px; border-radius: 999px; background: var(--sm-surface); border: 1px solid var(--sm-line); color: var(--sm-ink); font-size: var(--sm-fs-sm); font-weight: 600; }
+
+/* Service page: other services of the company, small (0.15.3) */
+.sms-others__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--sm-s2); }
+.sms-mini { display: flex; align-items: center; gap: 12px; padding: 8px; border: 1px solid var(--sm-line); border-radius: 14px; background: var(--sm-surface); color: var(--sm-ink); text-decoration: none; transition: border-color .15s, box-shadow .15s; }
+.sms-mini:hover { border-color: var(--sm-accent); box-shadow: 0 8px 20px -16px rgb(23 43 58 / .6); }
+.sms-mini:focus-visible { outline: 2px solid var(--sm-accent); outline-offset: 2px; }
+.sms-mini img { flex: none; inline-size: 72px; block-size: 56px; object-fit: cover; border-radius: 10px; background: var(--sm-bg); }
+.sms-mini__text { min-inline-size: 0; display: grid; gap: 2px; font-size: var(--sm-fs-sm); }
+.sms-mini__text strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sms-mini__text span { color: var(--sm-muted); font-size: var(--sm-fs-xs); }
+@media (prefers-reduced-motion: reduce) { .sms-mini { transition: none; } }

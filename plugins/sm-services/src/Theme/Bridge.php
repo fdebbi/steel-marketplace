@@ -86,6 +86,9 @@ final class Bridge {
 			'open_request'  => $open,
 			'signed_in'     => (bool) $user,
 		);
+		// Other services of the same company (0.3.2), shown small under the page.
+		$others = Services::query( array( 'company' => $s->company_id, 'status' => 'published', 'kind' => $s->kind, 'per_page' => 7 ) )['items'];
+		$out['others'] = array_slice( array_values( array_map( array( Presenter::class, 'service' ), array_filter( $others, static fn( $o ) => (int) $o->id !== (int) $s->id ) ) ), 0, 6 );
 		return $out;
 	}
 

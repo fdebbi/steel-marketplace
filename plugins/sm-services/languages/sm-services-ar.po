@@ -442,112 +442,118 @@ msgstr "لا يمكنك تعديل هذه الخدمة."
 msgid "You reached the number of service pages allowed. Edit an existing one."
 msgstr "بلغت العدد المسموح به من صفحات الخدمات. عدّل صفحة موجودة."
 
-#: src/Form.php:114
+#: src/Form.php:104
+msgid ""
+"You already have a page for this service: edit it (one page per service, "
+"with its own price)."
+msgstr "لديك صفحة لهذه الخدمة: عدّلها (صفحة واحدة لكل خدمة بسعرها الخاص)."
+
+#: src/Form.php:117
 msgid ""
 "Thank you. Your service page will be visible after a quick check by the "
 "platform team."
 msgstr "شكرًا. ستظهر صفحة خدمتك بعد مراجعة سريعة من فريق المنصة."
 
-#: src/Form.php:114
+#: src/Form.php:117
 msgid "Your service page is saved."
 msgstr "تم حفظ صفحة خدمتك."
 
-#: src/Form.php:122
+#: src/Form.php:125
 msgid "You cannot change this service."
 msgstr "لا يمكنك تغيير هذه الخدمة."
 
-#: src/Form.php:127
+#: src/Form.php:130
 msgid "The service is paused: clients no longer see it."
 msgstr "الخدمة متوقفة مؤقتًا: لم يعد العملاء يرونها."
 
-#: src/Form.php:132
+#: src/Form.php:135
 msgid "The service is visible again."
 msgstr "الخدمة ظاهرة من جديد."
 
-#: src/Form.php:136
+#: src/Form.php:139
 msgid "Service deleted."
 msgstr "تم حذف الخدمة."
 
-#: src/Form.php:139
+#: src/Form.php:142
 msgid "Unknown action."
 msgstr "إجراء غير معروف."
 
-#: src/Form.php:146
+#: src/Form.php:149
 msgid "This service does not exist."
 msgstr "هذه الخدمة غير موجودة."
 
-#: src/Form.php:152
+#: src/Form.php:155
 msgid ""
 "You already have an open request for this service. Follow it in \"My service"
 " requests\"."
 msgstr "لديك طلب مفتوح لهذه الخدمة. تابعه في «طلبات الخدمات الخاصة بي»."
 
-#: src/Form.php:155
+#: src/Form.php:158
 msgid "You sent many requests today. Try again tomorrow."
 msgstr "أرسلت طلبات كثيرة اليوم. أعد المحاولة غدًا."
 
-#: src/Form.php:166
+#: src/Form.php:169
 msgid ""
 "Your request is sent. The provider is notified and will answer with a quote."
 msgstr "تم إرسال طلبك. تم إبلاغ مقدم الخدمة وسيرد بعرض سعر."
 
-#: src/Form.php:173
+#: src/Form.php:176
 msgid "You cannot answer this request."
 msgstr "لا يمكنك الرد على هذا الطلب."
 
-#: src/Form.php:176
+#: src/Form.php:179
 msgid "This request is closed."
 msgstr "هذا الطلب مغلق."
 
-#: src/Form.php:181
+#: src/Form.php:184
 msgid "You declined the request. The client is told."
 msgstr "اعتذرت عن الطلب. تم إبلاغ العميل."
 
-#: src/Form.php:190
+#: src/Form.php:193
 msgid "Your quote is sent. The client is notified."
 msgstr "تم إرسال عرض سعرك. تم إبلاغ العميل."
 
-#: src/Form.php:197
+#: src/Form.php:200
 msgid "You cannot change this request."
 msgstr "لا يمكنك تغيير هذا الطلب."
 
-#: src/Form.php:201
+#: src/Form.php:204
 msgid "Quote accepted. Contact the provider to organise the work."
 msgstr "تم قبول عرض السعر. تواصل مع مقدم الخدمة لتنظيم الأشغال."
 
-#: src/Form.php:202
+#: src/Form.php:205
 msgid "Quote declined. The provider is told."
 msgstr "تم رفض عرض السعر. تم إبلاغ مقدم الخدمة."
 
-#: src/Form.php:203
+#: src/Form.php:206
 msgid "Request cancelled. The provider is told."
 msgstr "تم إلغاء الطلب. تم إبلاغ مقدم الخدمة."
 
-#: src/Form.php:206
+#: src/Form.php:209
 msgid "This request can no longer be changed."
 msgstr "لم يعد بالإمكان تغيير هذا الطلب."
 
-#: src/Form.php:218
+#: src/Form.php:221
 msgid "Only the account owner can edit the references."
 msgstr "صاحب الحساب وحده يمكنه تعديل المراجع."
 
-#: src/Form.php:223
+#: src/Form.php:226
 msgid "You cannot edit this reference."
 msgstr "لا يمكنك تعديل هذا المرجع."
 
-#: src/Form.php:226
+#: src/Form.php:229
 msgid "You reached the number of references allowed."
 msgstr "بلغت العدد المسموح به من المراجع."
 
-#: src/Form.php:236
+#: src/Form.php:239
 msgid "Reference saved."
 msgstr "تم حفظ المرجع."
 
-#: src/Form.php:244
+#: src/Form.php:247
 msgid "You cannot delete this reference."
 msgstr "لا يمكنك حذف هذا المرجع."
 
-#: src/Form.php:247
+#: src/Form.php:250
 msgid "Reference deleted."
 msgstr "تم حذف المرجع."
 
@@ -647,74 +653,70 @@ msgstr "اكتب اسم خدمتك (3 أحرف على الأقل)."
 msgid "Choose the service."
 msgstr "اختر الخدمة."
 
-#: src/Spec.php:70
-msgid "Give the service a title (in French or in Arabic)."
-msgstr "أعطِ الخدمة عنوانًا (بالفرنسية أو بالعربية)."
+#: src/Spec.php:76
+msgid "Describe the service in a few words (15 characters at least)."
+msgstr "صف الخدمة ببضع كلمات (15 حرفا على الأقل)."
 
-#: src/Spec.php:73
-msgid "Describe the service in a few sentences (30 characters at least)."
-msgstr "صِف الخدمة في بضع جمل (30 حرفًا على الأقل)."
-
-#: src/Spec.php:75
+#: src/Spec.php:78
 msgid "The description is too long (4000 characters at most)."
 msgstr "الوصف طويل جدًا (4000 حرف كحد أقصى)."
 
-#: src/Spec.php:81
+#: src/Spec.php:84
 msgid "Too long (2000 characters at most)."
 msgstr "طويل جدًا (2000 حرف كحد أقصى)."
 
-#: src/Spec.php:88
+#: src/Spec.php:91
 msgid "Tick the wilayas you serve, or choose \"All of Algeria\"."
 msgstr "حدّد الولايات التي تتدخل فيها، أو اختر «كامل التراب الجزائري»."
 
-#: src/Spec.php:93
+#: src/Spec.php:96
 msgid "Usual lead time in days (0 to 365)."
 msgstr "الأجل المعتاد بالأيام (من 0 إلى 365)."
 
-#: src/Spec.php:103
+#: src/Spec.php:106
 msgid "Give the starting price, or choose \"On quotation\"."
 msgstr "حدّد السعر الابتدائي، أو اختر «حسب عرض السعر»."
 
-#: src/Spec.php:106
+#: src/Spec.php:109
 msgid "Choose the unit of the price."
 msgstr "اختر وحدة السعر."
 
-#: src/Spec.php:134
+#: src/Spec.php:137
 msgid "Describe your project in a few sentences (20 characters at least)."
 msgstr "صِف مشروعك في بضع جمل (20 حرفًا على الأقل)."
 
-#: src/Spec.php:136 src/Spec.php:172
+#: src/Spec.php:139 src/Spec.php:175
 msgid "The message is too long (3000 characters at most)."
 msgstr "الرسالة طويلة جدًا (3000 حرف كحد أقصى)."
 
-#: src/Spec.php:140
+#: src/Spec.php:143
 msgid "Choose the wilaya of the project."
 msgstr "اختر ولاية المشروع."
 
-#: src/Spec.php:146
+#: src/Spec.php:149
 msgid "The date must be today or later."
 msgstr "يجب أن يكون التاريخ اليوم أو بعده."
 
-#: src/Spec.php:152
+#: src/Spec.php:155
 msgid "This budget is outside the accepted range."
 msgstr "هذه الميزانية خارج المجال المقبول."
 
-#: src/Spec.php:164
+#: src/Spec.php:167
 msgid "Give the amount of your quote."
 msgstr "حدّد مبلغ عرض سعرك."
 
-#: src/Spec.php:168
+#: src/Spec.php:171
 msgid "Give the time needed in days."
 msgstr "حدّد المدة اللازمة بالأيام."
 
-#: src/Spec.php:179
+#: src/Spec.php:182
 msgid "Give the project a title."
 msgstr "أعطِ المشروع عنوانًا."
 
-#: src/Spec.php:182
+#: src/Spec.php:185
 msgid "Too long (1500 characters at most)."
 msgstr "طويل جدًا (1500 حرف كحد أقصى)."
 
-#: src/Spec.php:188
+#: src/Spec.php:191
 msgid "Check the year."
 msgstr "تحقق من السنة."

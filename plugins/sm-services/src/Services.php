@@ -85,6 +85,22 @@ final class Services {
 		return (int) $id;
 	}
 
+	/**
+	 * Another page of the company for the same service (one page per service),
+	 * or null. "Other" pages are compared by their name.
+	 */
+	public static function same_service( $company_id, $code, $custom, $exclude_id = 0 ) {
+		global $wpdb;
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		$rows = $wpdb->get_results( $wpdb->prepare( 'SELECT id, custom_service FROM ' . self::table() . " WHERE company_id = %d AND id <> %d AND status <> 'retired' AND categories LIKE %s", $company_id, $exclude_id, '%"' . $wpdb->esc_like( $code ) . '"%' ) );
+		foreach ( $rows as $r ) {
+			if ( Catalogue::OTHER !== $code || mb_strtolower( trim( $r->custom_service ) ) === mb_strtolower( trim( (string) $custom ) ) ) {
+				return (int) $r->id;
+			}
+		}
+		return null;
+	}
+
 	public static function set_status( $id, $status, $reason = '' ) {
 		global $wpdb;
 		if ( ! in_array( $status, self::STATUSES, true ) ) {

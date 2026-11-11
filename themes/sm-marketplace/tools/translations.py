@@ -1461,3 +1461,10 @@ T.update({
 "Add an image": ("Ajouter une image", "إضافة صورة"),
 'One image (JPG, PNG, WebP, %d MB maximum) that shows this service. Put your other photos in "Completed projects".': ("Une image (JPG, PNG, WebP, %d Mo maximum) qui montre ce service. Mettez vos autres photos dans « Réalisations ».", "صورة واحدة (JPG أو PNG أو WebP، %d ميغابايت كحد أقصى) تُظهر هذه الخدمة. ضع صورك الأخرى في «الإنجازات»."),
 })
+
+# 0.15.3
+T.update({
+"Other services of %s": ("Autres services de %s", "خدمات أخرى لـ %s"),
+"See all the services of the company": ("Voir tous les services de l’entreprise", "عرض كل خدمات المؤسسة"),
+"15 characters at least. Say what you do, the thicknesses or sizes, your lead times and your equipment: clients choose better.": ("15 caractères au moins. Précisez ce que vous faites, les épaisseurs ou dimensions, vos délais et votre matériel : les clients choisissent mieux.", "15 حرفا على الأقل. اذكر ما تقوم به والسماكات أو المقاسات وآجالك ومعدّاتك: يختار الزبائن بشكل أفضل."),
+})

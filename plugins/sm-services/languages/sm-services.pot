@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Services 0.3.1\n"
+"Project-Id-Version: SM Services 0.3.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-services\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-11T17:14:07+00:00\n"
+"POT-Creation-Date: 2026-11-11T17:49:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-services\n"
@@ -399,107 +399,111 @@ msgstr ""
 msgid "You reached the number of service pages allowed. Edit an existing one."
 msgstr ""
 
-#: src/Form.php:114
+#: src/Form.php:104
+msgid "You already have a page for this service: edit it (one page per service, with its own price)."
+msgstr ""
+
+#: src/Form.php:117
 msgid "Thank you. Your service page will be visible after a quick check by the platform team."
 msgstr ""
 
-#: src/Form.php:114
+#: src/Form.php:117
 msgid "Your service page is saved."
 msgstr ""
 
-#: src/Form.php:122
+#: src/Form.php:125
 msgid "You cannot change this service."
 msgstr ""
 
-#: src/Form.php:127
+#: src/Form.php:130
 msgid "The service is paused: clients no longer see it."
 msgstr ""
 
-#: src/Form.php:132
+#: src/Form.php:135
 msgid "The service is visible again."
 msgstr ""
 
-#: src/Form.php:136
+#: src/Form.php:139
 msgid "Service deleted."
 msgstr ""
 
-#: src/Form.php:139
+#: src/Form.php:142
 msgid "Unknown action."
 msgstr ""
 
-#: src/Form.php:146
+#: src/Form.php:149
 msgid "This service does not exist."
 msgstr ""
 
-#: src/Form.php:152
+#: src/Form.php:155
 msgid "You already have an open request for this service. Follow it in \"My service requests\"."
 msgstr ""
 
-#: src/Form.php:155
+#: src/Form.php:158
 msgid "You sent many requests today. Try again tomorrow."
 msgstr ""
 
-#: src/Form.php:166
+#: src/Form.php:169
 msgid "Your request is sent. The provider is notified and will answer with a quote."
 msgstr ""
 
-#: src/Form.php:173
+#: src/Form.php:176
 msgid "You cannot answer this request."
 msgstr ""
 
-#: src/Form.php:176
+#: src/Form.php:179
 msgid "This request is closed."
 msgstr ""
 
-#: src/Form.php:181
+#: src/Form.php:184
 msgid "You declined the request. The client is told."
 msgstr ""
 
-#: src/Form.php:190
+#: src/Form.php:193
 msgid "Your quote is sent. The client is notified."
 msgstr ""
 
-#: src/Form.php:197
+#: src/Form.php:200
 msgid "You cannot change this request."
 msgstr ""
 
-#: src/Form.php:201
+#: src/Form.php:204
 msgid "Quote accepted. Contact the provider to organise the work."
 msgstr ""
 
-#: src/Form.php:202
+#: src/Form.php:205
 msgid "Quote declined. The provider is told."
 msgstr ""
 
-#: src/Form.php:203
+#: src/Form.php:206
 msgid "Request cancelled. The provider is told."
 msgstr ""
 
-#: src/Form.php:206
+#: src/Form.php:209
 msgid "This request can no longer be changed."
 msgstr ""
 
-#: src/Form.php:218
+#: src/Form.php:221
 msgid "Only the account owner can edit the references."
 msgstr ""
 
-#: src/Form.php:223
+#: src/Form.php:226
 msgid "You cannot edit this reference."
 msgstr ""
 
-#: src/Form.php:226
+#: src/Form.php:229
 msgid "You reached the number of references allowed."
 msgstr ""
 
-#: src/Form.php:236
+#: src/Form.php:239
 msgid "Reference saved."
 msgstr ""
 
-#: src/Form.php:244
+#: src/Form.php:247
 msgid "You cannot delete this reference."
 msgstr ""
 
-#: src/Form.php:247
+#: src/Form.php:250
 msgid "Reference deleted."
 msgstr ""
 
@@ -596,75 +600,71 @@ msgstr ""
 msgid "Choose the service."
 msgstr ""
 
-#: src/Spec.php:70
-msgid "Give the service a title (in French or in Arabic)."
+#: src/Spec.php:76
+msgid "Describe the service in a few words (15 characters at least)."
 msgstr ""
 
-#: src/Spec.php:73
-msgid "Describe the service in a few sentences (30 characters at least)."
-msgstr ""
-
-#: src/Spec.php:75
+#: src/Spec.php:78
 msgid "The description is too long (4000 characters at most)."
 msgstr ""
 
-#: src/Spec.php:81
+#: src/Spec.php:84
 msgid "Too long (2000 characters at most)."
 msgstr ""
 
-#: src/Spec.php:88
+#: src/Spec.php:91
 msgid "Tick the wilayas you serve, or choose \"All of Algeria\"."
 msgstr ""
 
-#: src/Spec.php:93
+#: src/Spec.php:96
 msgid "Usual lead time in days (0 to 365)."
 msgstr ""
 
-#: src/Spec.php:103
+#: src/Spec.php:106
 msgid "Give the starting price, or choose \"On quotation\"."
 msgstr ""
 
-#: src/Spec.php:106
+#: src/Spec.php:109
 msgid "Choose the unit of the price."
 msgstr ""
 
-#: src/Spec.php:134
+#: src/Spec.php:137
 msgid "Describe your project in a few sentences (20 characters at least)."
 msgstr ""
 
-#: src/Spec.php:136
-#: src/Spec.php:172
+#: src/Spec.php:139
+#: src/Spec.php:175
 msgid "The message is too long (3000 characters at most)."
 msgstr ""
 
-#: src/Spec.php:140
+#: src/Spec.php:143
 msgid "Choose the wilaya of the project."
 msgstr ""
 
-#: src/Spec.php:146
+#: src/Spec.php:149
 msgid "The date must be today or later."
 msgstr ""
 
-#: src/Spec.php:152
+#: src/Spec.php:155
 msgid "This budget is outside the accepted range."
 msgstr ""
 
-#: src/Spec.php:164
+#: src/Spec.php:167
 msgid "Give the amount of your quote."
 msgstr ""
 
-#: src/Spec.php:168
+#: src/Spec.php:171
 msgid "Give the time needed in days."
 msgstr ""
 
-#: src/Spec.php:179
+#: src/Spec.php:182
 msgid "Give the project a title."
 msgstr ""
 
-#: src/Spec.php:182
+#: src/Spec.php:185
 msgid "Too long (1500 characters at most)."
 msgstr ""
 
-#: src/Spec.php:188
+#: src/Spec.php:191
 msgid "Check the year."
 msgstr ""

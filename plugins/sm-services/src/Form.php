@@ -100,6 +100,9 @@ final class Form {
 		$new    = self::upload( 'photos', Media::IMAGE_TYPES, 1, $s['photo_mb'], $user_id );
 		$photos = $new['ids'] ? array_slice( $new['ids'], 0, 1 ) : $keep;
 		$_POST['keep_photos'] = $photos; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- kept for the form on error.
+		if ( ! $spec['errors'] && Services::same_service( $company->id, $spec['data']['categories'][0], $spec['data']['custom_service'], $id ) ) {
+			$spec['errors']['categories'] = __( 'You already have a page for this service: edit it (one page per service, with its own price).', 'sm-services' );
+		}
 		if ( $spec['errors'] ) {
 			Forms::back( array_merge( $spec['errors'], $new['errors'] ) );
 		}

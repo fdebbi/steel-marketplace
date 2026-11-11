@@ -63,7 +63,7 @@ $status   = array(
 		<aside class="sm-detail__aside">
 			<p class="sm-card__meta"><span class="sm-chip sm-chip--kind"><?php sm_icon( 'wrench' ); ?><?php echo esc_html( sm_t( $item['kind_label'] ) ); ?></span></p>
 			<h1 class="sm-detail__title"><?php sm_e( $item['title'] ); ?></h1>
-			<ul class="sm-tags"><?php foreach ( $item['tags'] as $tag ) : ?><li><?php sm_e( $tag ); ?></li><?php endforeach; ?></ul>
+			<?php if ( sm_service_tags( $item ) ) : ?><ul class="sm-tags"><?php foreach ( sm_service_tags( $item ) as $tag ) : ?><li><?php sm_e( $tag ); ?></li><?php endforeach; ?></ul><?php endif; ?>
 			<dl class="sm-spec sm-spec--compact sms-facts">
 				<div><dt><?php esc_html_e( 'Price', 'sm-marketplace' ); ?></dt><dd><?php echo wp_kses_post( sm_service_price( $item ) ); ?></dd></div>
 				<?php if ( $item['lead_days'] ) : ?><div><dt><?php esc_html_e( 'Usual lead time', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( sprintf( /* translators: %d: days. */ _n( '%d day', '%d days', $item['lead_days'], 'sm-marketplace' ), $item['lead_days'] ) ); ?></dd></div><?php endif; ?>
@@ -135,6 +135,25 @@ $status   = array(
 			</section>
 		<?php endif; ?>
 	</div>
+
+	<?php if ( ! empty( $item['others'] ) && $company ) : ?>
+		<section class="sm-section sms-others" aria-labelledby="sms-others-t">
+			<div class="sm-section__head">
+				<h2 id="sms-others-t"><?php echo esc_html( sprintf( /* translators: %s: company name. */ __( 'Other services of %s', 'sm-marketplace' ), sm_t( $company['name'] ) ) ); ?></h2>
+				<a class="sm-link" href="<?php echo esc_url( sm_page_url( 'company', array( 'c' => $company['slug'] ) ) . '#smc-services' ); ?>"><?php esc_html_e( 'See all the services of the company', 'sm-marketplace' ); ?><?php sm_icon( 'arrow-end' ); ?></a>
+			</div>
+			<ul class="sms-others__list" role="list">
+				<?php foreach ( $item['others'] as $o ) : ?>
+					<li>
+						<a class="sms-mini" href="<?php echo esc_url( sm_page_url( 'service', array( 'id' => $o['id'] ) ) ); ?>">
+							<img src="<?php echo esc_url( sm_image_url( $o['image'] ) ); ?>" alt="" width="96" height="72" loading="lazy" decoding="async">
+							<span class="sms-mini__text"><strong><?php sm_e( $o['title'] ); ?></strong><span><?php echo wp_kses_post( sm_service_price( $o ) ); ?></span></span>
+						</a>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</section>
+	<?php endif; ?>
 
 	<?php if ( $item['portfolio'] ) : ?>
 		<section class="sm-section">

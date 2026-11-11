@@ -71,17 +71,9 @@ foreach ( (array) $def['units'] as $u ) {
 	<section class="sm-panel smp-step">
 		<h2 class="smw-step__title"><span class="smw-step__n">2</span><?php esc_html_e( 'Presentation', 'sm-marketplace' ); ?></h2>
 		<div class="sm-field">
-			<label for="sms-title-fr"><?php esc_html_e( 'Title in French', 'sm-marketplace' ); ?></label>
-			<input id="sms-title-fr" name="title[fr]" lang="fr" dir="ltr" maxlength="140" value="<?php echo esc_attr( (string) ( $state['title']['fr'] ?? '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. Structural steel fabrication and site installation', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'title' ); ?>>
-			<?php sm_theme_error( 'title' ); ?>
-		</div>
-		<div class="sm-field">
-			<label for="sms-title-ar"><?php esc_html_e( 'Title in Arabic', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
-			<input id="sms-title-ar" name="title[ar]" lang="ar" dir="rtl" maxlength="140" value="<?php echo esc_attr( (string) ( $state['title']['ar'] ?? '' ) ); ?>">
-		</div>
-		<div class="sm-field">
 			<label for="sms-desc"><?php esc_html_e( 'Description of the service', 'sm-marketplace' ); ?></label>
 			<textarea id="sms-desc" name="description" rows="5" dir="auto" maxlength="4000"<?php sm_theme_aria( 'description' ); ?>><?php echo esc_textarea( $v( 'description' ) ); ?></textarea>
+			<p class="sm-help"><?php esc_html_e( '15 characters at least. Say what you do, the thicknesses or sizes, your lead times and your equipment: clients choose better.', 'sm-marketplace' ); ?></p>
 			<?php sm_theme_error( 'description' ); ?>
 		</div>
 		<div class="sm-field-grid">

@@ -185,3 +185,9 @@ T.update({
 "Write the name of your service (3 characters at least).": ("Écrivez le nom de votre service (3 caractères au moins).", "اكتب اسم خدمتك (3 أحرف على الأقل)."),
 "Choose the service.": ("Choisissez le service.", "اختر الخدمة."),
 })
+
+# 0.3.2
+T.update({
+"Describe the service in a few words (15 characters at least).": ("Décrivez le service en quelques mots (15 caractères au moins).", "صف الخدمة ببضع كلمات (15 حرفا على الأقل)."),
+"You already have a page for this service: edit it (one page per service, with its own price).": ("Vous avez déjà une page pour ce service : modifiez-la (une page par service, avec son propre prix).", "لديك صفحة لهذه الخدمة: عدّلها (صفحة واحدة لكل خدمة بسعرها الخاص)."),
+})

@@ -1,5 +1,11 @@
 # Changelog — sm-marketplace
 
+## 0.15.3 — 2026-11-11 (avec sm-services 0.3.2)
+
+- Formulaire de service : plus de titre FR/AR à saisir ; le titre de la page est le nom du service choisi (ou le nom écrit dans « Autre »). Aide sous la description (15 caractères minimum).
+- Page de service : « Autres services de l'entreprise » en petites cartes (image, nom, prix), jusqu'à 6, avec « Voir tous les services de l'entreprise ».
+- Les étiquettes de service qui répètent le titre ne sont plus affichées.
+
 ## 0.15.2 — 2026-11-11 (avec sm-services 0.3.1 et sm-core 0.7.1)
 
 - Profil : carré « Informations » supprimé (tout est déjà dans l'en-tête et la Présentation) ; case « Sur la plateforme » supprimée ; types d'entreprise / métiers en étiquettes sous le texte, sans titre visible ni fond.

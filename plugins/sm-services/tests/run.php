@@ -107,7 +107,8 @@ $o = Spec::service( array_merge( $fab, array( 'category' => Catalogue::OTHER, 'c
 sms_assert( ! $o['errors'] && array( Catalogue::OTHER ) === $o['data']['categories'] && 'Pliage de tôles' === $o['data']['custom_service'], '"Other" with its name accepted'  );
 sms_assert( array( '28', '19' ) === $s['data']['wilayas'] && 15 === $s['data']['lead_days'] && 'kg' === $s['data']['price_unit'], 'served wilayas (unknown one dropped), lead time, price from 180 DA/kg' );
 $x = Spec::service( array_merge( $fab, array( 'category' => '', 'title' => array(), 'description' => 'court', 'coverage' => 'list', 'wilayas' => array(), 'price_from' => '' ) ) );
-sms_assert( isset( $x['errors']['categories'], $x['errors']['title'], $x['errors']['description'], $x['errors']['wilayas'], $x['errors']['price_from'] ), 'services, title, description, wilayas and starting price checked' );
+sms_assert( isset( $x['errors']['categories'], $x['errors']['description'], $x['errors']['wilayas'], $x['errors']['price_from'] ) && ! isset( $x['errors']['title'] ), 'service, description (15 characters), wilayas and starting price checked; no title to type' );
+sms_assert( ! isset( Spec::service( array_merge( $fab, array( 'description' => 'Soudure sur site' ) ) )['errors']['description'] ), 'a 16-character description is accepted' );
 $x = Spec::service( array_merge( $fab, array( 'kind' => 'engineering' ) ) );
 sms_assert( ! empty( $x['errors'] ), 'the former engineering catalogue is refused' );
 $q = Spec::service( array_merge( $fab, array( 'price_mode' => 'quote', 'coverage' => 'all' ) ) );
@@ -128,8 +129,12 @@ sms_assert( 'retired' === Services::get( $old )->status && null === Bridge::serv
 Services::delete( $old );
 sms_assert( in_array( $sid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'fabrication', 'wilaya' => '19' ) ), 'id' ), true ) && ! in_array( $sid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'fabrication', 'wilaya' => '31' ) ), 'id' ), true ), 'wilaya filter uses the served wilayas' );
 sms_assert( in_array( $eid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'fabrication', 'wilaya' => '31' ) ), 'id' ), true ), 'a service covering all Algeria is found in every wilaya' );
-$card = Bridge::services( null, array( 'kind' => 'fabrication', 'q' => 'sur mesure' ) )[0];
-sms_assert( 'Charpente métallique sur mesure' === $card['title']['fr'] && 1 === count( $card['tags'] ) && 'Découpe' === $card['tags'][0]['fr'], 'card data: title and its service (search by word)' );
+$card = Bridge::services( null, array( 'kind' => 'fabrication', 'q' => '24 m de portée' ) )[0];
+sms_assert( 'Découpe' === $card['title']['fr'] && 'القص' === $card['title']['ar'] && 'Découpe' === $card['tags'][0]['fr'], 'card data: the title is the name of the service in both languages (search by word)' );
+Catalogue::update_item( 'fabrication', 'cutting', array( 'fr' => 'Découpe de profilés' ) );
+sms_assert( 'Découpe de profilés' === Presenter::service( Services::get( $sid ) )['title']['fr'], 'renaming the service in the list renames its pages' );
+Catalogue::update_item( 'fabrication', 'cutting', array( 'fr' => '' ) );
+sms_assert( Services::same_service( $c_fab, 'cutting', '' ) === $sid && null === Services::same_service( $c_fab, 'cutting', '', $sid ) && null === Services::same_service( $c_fab, 'welding', '' ), 'one page per service and per company' );
 
 echo "\n4. Service page and requests\n";
 wp_set_current_user( $u_buy );

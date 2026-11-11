@@ -67,10 +67,13 @@ final class Spec {
 			$code            = '';
 		}
 		$cats = '' === $code ? array() : array( $code );
-		$title = self::title( $in, $e, $for_save, __( 'Give the service a title (in French or in Arabic).', 'sm-services' ) );
-		$desc  = self::text( $in, 'description', 4000 );
-		if ( $for_save && mb_strlen( $desc ) < 30 ) {
-			$e['description'] = __( 'Describe the service in a few sentences (30 characters at least).', 'sm-services' );
+		// The title of the page is the name of the service (0.3.2): no title to type.
+		$labels = $def['labels'] ?? $def['categories'];
+		$title  = Catalogue::OTHER === $code ? array( 'fr' => $custom, 'ar' => $custom ) : (array) ( $labels[ $code ] ?? array( 'fr' => '', 'ar' => '' ) );
+		$title  = array( 'fr' => (string) ( $title['fr'] ?? '' ), 'ar' => (string) ( $title['ar'] ?? '' ) );
+		$desc   = self::text( $in, 'description', 4000 );
+		if ( $for_save && mb_strlen( $desc ) < 15 ) {
+			$e['description'] = __( 'Describe the service in a few words (15 characters at least).', 'sm-services' );
 		} elseif ( mb_strlen( $desc ) > 4000 ) {
 			$e['description'] = __( 'The description is too long (4000 characters at most).', 'sm-services' );
 		}

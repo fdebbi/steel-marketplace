@@ -1,5 +1,12 @@
 # Changelog — sm-services
 
+## 0.3.2 — 2026-11-11
+
+- Titre d'une page = nom du service dans la liste, en français et en arabe (renommer un service renomme ses pages) ; « Autre » : le nom écrit par l'entreprise.
+- Description : 15 caractères minimum (au lieu de 30).
+- Une page par service et par entreprise : une deuxième page pour le même service est refusée.
+- Page de service : les autres services publiés de l'entreprise (6 au plus).
+
 ## 0.3.1 — 2026-11-11 (base v3)
 
 - Un seul service par page (les anciennes pages gardent leur premier service) et une seule image.

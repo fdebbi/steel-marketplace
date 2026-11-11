@@ -758,7 +758,7 @@ msgstr "ساعة"
 msgid "day"
 msgstr "يوم"
 
-#: inc/template-tags.php:453 template-parts/components/service-form.php:130
+#: inc/template-tags.php:453 template-parts/components/service-form.php:122
 msgid "On quotation"
 msgstr "حسب عرض السعر"
 
@@ -1151,15 +1151,15 @@ msgid "See and answer"
 msgstr "عرض والرد"
 
 #. translators: %d: days.
-#: template-parts/components/card-service.php:32
-#: template-parts/components/service-form.php:107
+#: template-parts/components/card-service.php:34
+#: template-parts/components/service-form.php:99
 #: templates/company-profile.php:56 templates/company-profile.php:185
 #: templates/single-service.php:70
 msgid "All of Algeria"
 msgstr "كامل التراب الجزائري"
 
 #. translators: %d: number of wilayas.
-#: template-parts/components/card-service.php:32
+#: template-parts/components/card-service.php:34
 #: templates/company-profile.php:185
 msgid "%d wilaya served"
 msgid_plural "%d wilayas served"
@@ -1656,7 +1656,6 @@ msgstr "العنوان والوصف"
 
 #: template-parts/components/product-form.php:110
 #: template-parts/components/rfq-form.php:78
-#: template-parts/components/service-form.php:74
 #: template-parts/dashboard/publish.php:145
 msgid "Title in French"
 msgstr "العنوان بالفرنسية"
@@ -1675,7 +1674,6 @@ msgstr "مثلا IPE 200 S275JR جديدة، قضبان 12 م"
 
 #: template-parts/components/product-form.php:115
 #: template-parts/components/rfq-form.php:83
-#: template-parts/components/service-form.php:79
 msgid "Title in Arabic"
 msgstr "العنوان بالعربية"
 
@@ -1696,10 +1694,9 @@ msgstr "العنوان بالعربية"
 #: template-parts/components/rfq-offer-form.php:67
 #: template-parts/components/rfq-offer-form.php:77
 #: template-parts/components/rfq-tech.php:48
-#: template-parts/components/service-form.php:79
-#: template-parts/components/service-form.php:89
-#: template-parts/components/service-form.php:94
-#: template-parts/components/service-form.php:123
+#: template-parts/components/service-form.php:81
+#: template-parts/components/service-form.php:86
+#: template-parts/components/service-form.php:115
 #: template-parts/components/service-request-form.php:34
 #: template-parts/components/service-request-form.php:39
 #: template-parts/components/service-request-form.php:47
@@ -2417,7 +2414,7 @@ msgid "Documents are shown only to signed-in companies."
 msgstr "الوثائق ظاهرة فقط للمؤسسات المسجلة الدخول."
 
 #: template-parts/components/rfq-form.php:139
-#: template-parts/components/service-form.php:164
+#: template-parts/components/service-form.php:156
 #: template-parts/dashboard/portfolio.php:87
 msgid "Cancel"
 msgstr "إلغاء"
@@ -2724,19 +2721,23 @@ msgstr ""
 msgid "Presentation"
 msgstr "التقديم"
 
-#: template-parts/components/service-form.php:75
-msgid "e.g. Structural steel fabrication and site installation"
-msgstr "مثال: تصنيع الهياكل الفولاذية وتركيبها في الموقع"
-
-#: template-parts/components/service-form.php:83
+#: template-parts/components/service-form.php:74
 msgid "Description of the service"
 msgstr "وصف الخدمة"
 
-#: template-parts/components/service-form.php:89
+#: template-parts/components/service-form.php:76
+msgid ""
+"15 characters at least. Say what you do, the thicknesses or sizes, your lead"
+" times and your equipment: clients choose better."
+msgstr ""
+"15 حرفا على الأقل. اذكر ما تقوم به والسماكات أو المقاسات وآجالك ومعدّاتك: "
+"يختار الزبائن بشكل أفضل."
+
+#: template-parts/components/service-form.php:81
 msgid "Technical capabilities (one per line)"
 msgstr "القدرات التقنية (واحدة في كل سطر)"
 
-#: template-parts/components/service-form.php:90
+#: template-parts/components/service-form.php:82
 msgid ""
 "Built-up beams up to 1 200 mm\n"
 "Plates 4 to 40 mm\n"
@@ -2746,11 +2747,11 @@ msgstr ""
 "صفائح من 4 إلى 40 مم\n"
 "بحور حتى 30 م"
 
-#: template-parts/components/service-form.php:94
+#: template-parts/components/service-form.php:86
 msgid "Equipment (one per line)"
 msgstr "التجهيزات (واحد في كل سطر)"
 
-#: template-parts/components/service-form.php:95
+#: template-parts/components/service-form.php:87
 msgid ""
 "Band saw\n"
 "Drilling line\n"
@@ -2760,62 +2761,62 @@ msgstr ""
 "خط ثقب\n"
 "رافعة متنقلة 30 طن"
 
-#: template-parts/components/service-form.php:102
+#: template-parts/components/service-form.php:94
 msgid "Area served, lead time and price"
 msgstr "المنطقة والأجل والسعر"
 
 #. translators: %d: days.
-#: template-parts/components/service-form.php:105
+#: template-parts/components/service-form.php:97
 #: templates/single-service.php:70
 msgid "Area served"
 msgstr "منطقة التدخل"
 
-#: template-parts/components/service-form.php:108
+#: template-parts/components/service-form.php:100
 msgid "Some wilayas"
 msgstr "بعض الولايات"
 
-#: template-parts/components/service-form.php:111
+#: template-parts/components/service-form.php:103
 msgid "Choose the wilayas"
 msgstr "اختيار الولايات"
 
-#: template-parts/components/service-form.php:123
+#: template-parts/components/service-form.php:115
 msgid "Usual lead time (days)"
 msgstr "الأجل المعتاد (أيام)"
 
-#: template-parts/components/service-form.php:128
+#: template-parts/components/service-form.php:120
 msgid "Price shown"
 msgstr "السعر المعروض"
 
-#: template-parts/components/service-form.php:131
+#: template-parts/components/service-form.php:123
 msgid "Starting price"
 msgstr "سعر ابتدائي"
 
-#: template-parts/components/service-form.php:137
+#: template-parts/components/service-form.php:129
 msgid "From"
 msgstr "ابتداءً من"
 
-#: template-parts/components/service-form.php:142
+#: template-parts/components/service-form.php:134
 msgid "Per"
 msgstr "لكل"
 
-#: template-parts/components/service-form.php:147
+#: template-parts/components/service-form.php:139
 msgid "The price is indicative; each client gets your quote."
 msgstr "السعر تقديري؛ يتلقى كل عميل عرض سعرك."
 
-#: template-parts/components/service-form.php:151
+#: template-parts/components/service-form.php:143
 msgid "Image of the service"
 msgstr "صورة الخدمة"
 
-#: template-parts/components/service-form.php:157
+#: template-parts/components/service-form.php:149
 msgid "Replace the image"
 msgstr "استبدال الصورة"
 
-#: template-parts/components/service-form.php:157
+#: template-parts/components/service-form.php:149
 msgid "Add an image"
 msgstr "إضافة صورة"
 
 #. translators: %d: MB.
-#: template-parts/components/service-form.php:158
+#: template-parts/components/service-form.php:150
 msgid ""
 "One image (JPG, PNG, WebP, %d MB maximum) that shows this service. Put your "
 "other photos in \"Completed projects\"."
@@ -2823,11 +2824,11 @@ msgstr ""
 "صورة واحدة (JPG أو PNG أو WebP، %d ميغابايت كحد أقصى) تُظهر هذه الخدمة. ضع "
 "صورك الأخرى في «الإنجازات»."
 
-#: template-parts/components/service-form.php:165
+#: template-parts/components/service-form.php:157
 msgid "Save the service"
 msgstr "حفظ الخدمة"
 
-#: template-parts/components/service-form.php:165
+#: template-parts/components/service-form.php:157
 msgid "Publish the service"
 msgstr "نشر الخدمة"
 
@@ -4832,7 +4833,7 @@ msgstr[4] "%d ولاية"
 msgstr[5] "%d ولاية"
 
 #: templates/company-profile.php:61 templates/company-profile.php:157
-#: templates/dashboard.php:106 templates/single-service.php:141
+#: templates/dashboard.php:106 templates/single-service.php:160
 msgid "Completed projects"
 msgstr "المشاريع المنجزة"
 
@@ -6093,6 +6094,16 @@ msgstr "التجهيزات"
 #: templates/single-service.php:125
 msgid "Follow it in \"My service requests\""
 msgstr "تابعه في «طلبات الخدمات الخاصة بي»"
+
+#. translators: %s: company name.
+#: templates/single-service.php:142
+msgid "Other services of %s"
+msgstr "خدمات أخرى لـ %s"
+
+#. translators: %s: company name.
+#: templates/single-service.php:143
+msgid "See all the services of the company"
+msgstr "عرض كل خدمات المؤسسة"
 
 #. Template Name of the theme
 msgid "SM — Styleguide"

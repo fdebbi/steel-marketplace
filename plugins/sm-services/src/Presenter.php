@@ -21,8 +21,24 @@ final class Presenter {
 	}
 
 	public static function title_text( $s ) {
-		$t = Translations::get( 'service', $s->id );
-		return self::pick( (array) ( $t['title'] ?? array() ) );
+		return self::pick( self::title( $s ) );
+	}
+
+	/**
+	 * Title of a service page (0.3.2): the name of its service in the list (so a
+	 * renamed service renames its pages), or the name the company wrote ("Other").
+	 */
+	public static function title( $s, $texts = null ) {
+		$code = (string) ( $s->categories[0] ?? '' );
+		if ( Catalogue::OTHER === $code && '' !== (string) ( $s->custom_service ?? '' ) ) {
+			return array( 'fr' => $s->custom_service, 'ar' => $s->custom_service );
+		}
+		$def = Catalogue::kind( $s->kind );
+		if ( $def && isset( $def['labels'][ $code ] ) ) {
+			return array_filter( (array) $def['labels'][ $code ] );
+		}
+		$texts = $texts ?? Translations::get( 'service', $s->id );
+		return array_filter( (array) ( $texts['title'] ?? array() ) );
 	}
 
 	/** Card / list shape (compatible with the theme's "services" contract). */
@@ -46,7 +62,7 @@ final class Presenter {
 			'status'       => $s->status,
 			'company'      => $company ? $company->slug : '',
 			'company_id'   => $s->company_id,
-			'title'        => array_filter( (array) ( $texts['title'] ?? array() ) ),
+			'title'        => self::title( $s, $texts ),
 			'description'  => array_filter( (array) ( $texts['description'] ?? array() ) ),
 			'categories'   => $s->categories,
 			'tags'         => $tags,
@@ -85,7 +101,7 @@ final class Presenter {
 			'box'           => $box,
 			'status'        => $r->status,
 			'service_id'    => $r->service_id,
-			'service_title' => $s ? array_filter( (array) ( Translations::get( 'service', $s->id )['title'] ?? array() ) ) : array(),
+			'service_title' => $s ? self::title( $s ) : array(),
 			'service_kind'  => $s ? $s->kind : '',
 			'wilaya'        => $r->wilaya,
 			'needed_by'     => $r->needed_by,

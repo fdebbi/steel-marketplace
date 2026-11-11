@@ -202,4 +202,8 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | « Autre » | Publié aussitôt dans « Autres services » ; alerte à l'administrateur qui ajoute le nom à la liste (avec l'arabe) ou le rattache | Liberté pour l'entreprise sans désordre dans les filtres |
 | Image | Une seule image par service ; les autres photos vont dans « Réalisations » | Cartes homogènes, publication plus simple |
 | Profil | Carré « Informations » supprimé ; types en étiquettes sans titre | Informations en double |
+| Titre d'un service | Le nom du service (FR/AR de la liste), plus de titre à saisir | Demande du client ; titres homogènes et bilingues |
+| Doublons | Une seule page par service et par entreprise | Prix unique par service, recherche claire |
+| Description | 15 caractères minimum, avec une aide pour inviter à détailler | Demande du client |
+| Autres services | Jusqu'à 6 petites cartes en bas de la page de service + lien vers le profil | Demande du client |
 

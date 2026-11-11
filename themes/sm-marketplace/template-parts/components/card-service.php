@@ -24,9 +24,11 @@ $url     = $real ? sm_page_url( 'service', array( 'id' => $service['id'] ) ) : s
 	</a>
 	<div class="sm-card__body">
 		<h3 class="sm-card__title"><a href="<?php echo esc_url( $url ); ?>"><?php sm_e( $service['title'] ); ?></a></h3>
-		<ul class="sm-tags">
-			<?php foreach ( array_slice( (array) $service['tags'], 0, 4 ) as $tag ) : ?><li><?php sm_e( $tag ); ?></li><?php endforeach; ?>
-		</ul>
+		<?php if ( sm_service_tags( $service ) ) : ?>
+			<ul class="sm-tags">
+				<?php foreach ( array_slice( sm_service_tags( $service ), 0, 4 ) as $tag ) : ?><li><?php sm_e( $tag ); ?></li><?php endforeach; ?>
+			</ul>
+		<?php endif; ?>
 		<?php if ( $real ) : ?>
 			<p class="sm-card__facts-inline">
 				<span><?php sm_icon( 'map-pin' ); ?><?php echo esc_html( $service['all_algeria'] ? __( 'All of Algeria', 'sm-marketplace' ) : sprintf( /* translators: %d: number of wilayas. */ _n( '%d wilaya served', '%d wilayas served', count( $service['wilayas'] ), 'sm-marketplace' ), count( $service['wilayas'] ) ) ); ?></span>

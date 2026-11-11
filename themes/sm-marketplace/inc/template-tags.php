@@ -522,3 +522,9 @@ function sm_saved_files( array $args ) {
 	}
 	echo '</ul>';
 }
+
+/** Service tags without the one that is already the title (0.15.3: the title is the service name). */
+function sm_service_tags( array $service ) {
+	$title = sm_t( (array) ( $service['title'] ?? array() ) );
+	return array_values( array_filter( (array) ( $service['tags'] ?? array() ), static fn( $t ) => sm_t( (array) $t ) !== $title ) );
+}
