@@ -1,7 +1,8 @@
 """
-End-to-end browser tests of fabrication and engineering services (sm-services), Phase 8.
+End-to-end browser tests of fabrication and site services (sm-services), Phases 8 and 9.1.
 Usage: python3 tests/e2e-services.py URL WP_PATH OUT
-Uses the client account created by tests/e2e.py (e2e-com…) and the engineer (e2e-eng…);
+Uses the client account created by tests/e2e.py (e2e-com…), the professional (e2e-pro…) and the
+partner engineer of tests/e2e-engineering.py (e2e-eng…);
 creates one fabrication workshop for the run and removes it, its pages and requests at the end.
 """
 import os, sys, re, subprocess, time
@@ -29,11 +30,12 @@ def notified(email, kind):
 
 client = wp('echo get_users(array("search"=>"e2e-com*","search_columns"=>array("user_email"),"orderby"=>"ID","order"=>"DESC"))[0]->user_email;')
 eng = wp('echo get_users(array("search"=>"e2e-eng*","search_columns"=>array("user_email"),"orderby"=>"ID","order"=>"DESC"))[0]->user_email;')
-for u in (client, eng):
+pro = wp('echo get_users(array("search"=>"e2e-pro*","search_columns"=>array("user_email"),"orderby"=>"ID","order"=>"DESC"))[0]->user_email;')
+for u in (client, eng, pro):
     wp('update_user_meta(get_user_by("email","%s")->ID, "sm_locale", "fr");' % u)
 wp('$_SERVER["REMOTE_ADDR"] = "127.0.0.1"; SM\\Core\\Support\\Forms::reset_rate_limit("service_request|" . SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","%s")->ID)->id);' % client)
 fab = 'e2es-fab-%s@example.test' % TAG.lower()
-wp('$u = wp_insert_user(array("user_login"=>"%s","user_email"=>"%s","user_pass"=>"%s","role"=>"sm_member")); update_user_meta($u, "sm_locale", "fr"); $c = SM\\Core\\Accounts\\Companies::create(array("account_class"=>"commercial","name"=>"Atelier %s","wilaya"=>"31","phone"=>"0550 12 34 56"), $u, array("fabrication")); SM\\Core\\Accounts\\Companies::raise_level($c, 2);' % (fab, fab, PWD, TAG))
+wp('$u = wp_insert_user(array("user_login"=>"%s","user_email"=>"%s","user_pass"=>"%s","role"=>"sm_member")); update_user_meta($u, "sm_locale", "fr"); $c = SM\\Core\\Accounts\\Companies::create(array("account_class"=>"company","name"=>"Atelier %s","wilaya"=>"31","phone"=>"0550 12 34 56"), $u, array("manufacturer")); SM\\Core\\Accounts\\Companies::raise_level($c, 2);' % (fab, fab, PWD, TAG))
 
 with sync_playwright() as p:
     b = p.chromium.launch()
@@ -86,8 +88,6 @@ with sync_playwright() as p:
     check(pub.locator(card).count() == 1, 'found for a wilaya it serves (16)')
     pub.goto(BASE + '/services/?wilaya=13&q=' + TAG)
     check(pub.locator(card).count() == 0, 'not shown for a wilaya it does not serve (13)')
-    pub.goto(BASE + '/ingenierie/?q=' + TAG)
-    check(pub.locator(card).count() == 0, 'fabrication services are not mixed with engineering')
     pub.goto(BASE + '/service/%s/' % sid)
     body = txt(pub, '.sms-detail')
     check('Pont roulant 10 t' in body and 'Portées jusqu’à 30 m' in body and 'Soudage' in body, 'service page: capabilities, equipment and services offered')
@@ -95,32 +95,33 @@ with sync_playwright() as p:
     check(pub.locator('.sms-request__form').count() == 0 and pub.locator('.sms-request a[href*="connexion"]').count() == 1, 'visitor is asked to sign in before requesting')
     pub.screenshot(path=os.path.join(OUT, 'service-public-1280.png'), full_page=True)
 
-    print('\nC. Engineer publishes an engineering service and a reference')
-    ep = page(eng)
+    print('\nC. Professional publishes a service and a completed project; engineers publish none')
+    xp = page(eng)
+    xp.goto(BASE + '/compte/services/?new=fabrication')
+    check(xp.locator('.sms-form').count() == 0, 'a partner engineer cannot publish services')
+    ep = page(pro)
     ep.goto(BASE + '/compte/services/?new=fabrication')
-    check(ep.locator('input[name="kind"][value="engineering"]').count() == 1 and ep.locator('input[name="categories[]"][value="welding"]').count() == 0, 'engineering account only gets the engineering catalogue')
-    check(ep.locator('#sms-unit option[value="kg"]').count() == 0, 'no price per kg for engineering')
-    ep.check('input[name="categories[]"][value="calculation"]', force=True)
-    ep.check('input[name="categories[]"][value="assessment"]', force=True)
-    ep.fill('#sms-title-fr', 'Notes de calcul et expertise ' + TAG)
-    ep.fill('#sms-desc', 'Notes de calcul Eurocode 3 et expertise de structures d’occasion avant réemploi.')
-    ep.fill('#sms-caps', 'Eurocode 3\nRobot Structural Analysis')
+    check(ep.locator('input[name="kind"][value="fabrication"]').count() == 1 and ep.locator('input[name="kind"][value="engineering"]').count() == 0, 'professional gets the fabrication catalogue; no engineering catalogue')
+    ep.check('input[name="categories[]"][value="welding"]', force=True)
+    ep.check('input[name="categories[]"][value="installation"]', force=True)
+    ep.fill('#sms-title-fr', 'Soudure et montage sur chantier ' + TAG)
+    ep.fill('#sms-desc', 'Soudeur qualifié : montage de charpentes et réparations sur chantier.')
     ep.click('.sms-form button[type="submit"]'); ep.wait_for_load_state()
-    check('/service/' in ep.url and 'enregistrée' in txt(ep, '.sm-notice--success') and 'Notes de calcul' in txt(ep, '.sms-detail'), 'engineering service published')
+    check('/service/' in ep.url and 'enregistrée' in txt(ep, '.sm-notice--success'), 'professional service published')
     ep.goto(BASE + '/compte/references/')
-    ep.click('.sm-toolbar a:has-text("Ajouter une référence")'); ep.wait_for_load_state()
-    ep.fill('#pf-title-fr', 'Hangar 40 × 20 m ' + TAG); ep.fill('#pf-role', 'Notes de calcul')
+    ep.click('.sm-toolbar a:has-text("Ajouter")'); ep.wait_for_load_state()
+    ep.fill('#pf-title-fr', 'Hangar 40 × 20 m ' + TAG); ep.fill('#pf-role', 'Soudure et montage')
     ep.select_option('#pf-year', '2024'); ep.select_option('#pf-wilaya', '16')
-    ep.fill('#pf-desc', 'Étude complète et plans d’exécution.')
+    ep.fill('#pf-desc', 'Montage complet de la charpente.')
     ep.set_input_files('input[name="photo[]"]', os.path.join(FIX, 'photo.jpg'))
     ep.click('.sms-pform button[type="submit"]'); ep.wait_for_load_state()
-    check('enregistrée' in txt(ep, '.sm-notice--success') and ep.locator('.sms-ref:has-text("%s") img' % TAG).count() == 1, 'reference saved with its photo')
-    slug = wp('echo SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","%s")->ID)->slug;' % eng)
-    pub.goto(BASE + '/ingenierie/?q=' + TAG)
-    check(pub.locator('.sm-card--service:has-text("Notes de calcul et expertise")').count() == 1, 'engineering service on the engineering page')
+    check('enregistrée' in txt(ep, '.sm-notice--success') and ep.locator('.sms-ref:has-text("%s") img' % TAG).count() == 1, 'completed project saved with its photo')
+    slug = wp('echo SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","%s")->ID)->slug;' % pro)
+    pub.goto(BASE + '/services/?q=' + TAG)
+    check(pub.locator('.sm-card--service:has-text("Soudure et montage sur chantier")').count() == 1, 'professional service on the services board')
     pub.goto(BASE + '/entreprise/%s/' % slug)
-    check(pub.locator('#tab-references .sms-ref:has-text("%s")' % TAG).count() == 1 and pub.locator('.sm-tabs a[href="#tab-references"]').count() == 1, 'engineer profile shows the references')
-    pub.screenshot(path=os.path.join(OUT, 'engineer-profile-1280.png'), full_page=True)
+    check(pub.locator('#tab-references .sms-ref:has-text("%s")' % TAG).count() == 1 and pub.locator('.sm-tabs a[href="#tab-references"]').count() == 1, 'professional profile shows the completed projects')
+    pub.screenshot(path=os.path.join(OUT, 'professional-profile-1280.png'), full_page=True)
 
     print('\nD. Client requests a quote (mobile)')
     cp = page(client, 390, 844)
@@ -175,12 +176,15 @@ with sync_playwright() as p:
     check(ar.evaluate('document.documentElement.dir') == 'rtl', 'Arabic engineering page')
     ep.goto(BASE + '/compte/')
     menu = txt(ep, '.sm-dash__side')
-    check('Publier' not in menu and 'Mes annonces' not in menu and 'Mes services' in menu and 'Références' in menu, 'engineer menu: services and references, no trading')
+    check('Publier une annonce' in menu and 'Mes services' in menu and 'Réalisations' in menu, 'professional menu: sells, services and completed projects')
+    xp.goto(BASE + '/compte/')
+    menu = txt(xp, '.sm-dash__side')
+    check('Publier' not in menu and 'Mes services' not in menu and 'Mes missions' in menu, 'partner engineer menu: missions, no trading, no services')
     check(not errors, 'no JavaScript errors' + (': ' + errors[0] if errors else ''))
     b.close()
 
 # Clean up: the workshop, its service and requests; the engineer's service and reference of this run.
-wp('global $wpdb; foreach ($wpdb->get_col("SELECT entity_id FROM {$wpdb->prefix}sm_translations WHERE entity_type = \'service\' AND field = \'title\' AND value LIKE \'%% S%%\' AND (value LIKE \'Charpente métallique et soudage S%%\' OR value LIKE \'Notes de calcul et expertise S%%\')") as $id) { $wpdb->delete($wpdb->prefix."sm_service_requests", array("service_id"=>$id)); SM\\Services\\Services::delete($id); } foreach ($wpdb->get_col("SELECT entity_id FROM {$wpdb->prefix}sm_translations WHERE entity_type = \'portfolio\' AND field = \'title\' AND value LIKE \'Hangar 40 × 20 m S%%\'") as $id) SM\\Services\\Portfolio::delete($id);')
+wp('global $wpdb; foreach ($wpdb->get_col("SELECT entity_id FROM {$wpdb->prefix}sm_translations WHERE entity_type = \'service\' AND field = \'title\' AND value LIKE \'%% S%%\' AND (value LIKE \'Charpente métallique et soudage S%%\' OR value LIKE \'Soudure et montage sur chantier S%%\')") as $id) { $wpdb->delete($wpdb->prefix."sm_service_requests", array("service_id"=>$id)); SM\\Services\\Services::delete($id); } foreach ($wpdb->get_col("SELECT entity_id FROM {$wpdb->prefix}sm_translations WHERE entity_type = \'portfolio\' AND field = \'title\' AND value LIKE \'Hangar 40 × 20 m S%%\'") as $id) SM\\Services\\Portfolio::delete($id);')
 wp('foreach (get_users(array("search"=>"e2es-*-%s@example.test","search_columns"=>array("user_email"))) as $u) { $c = SM\\Core\\Accounts\\Companies::for_user($u->ID); global $wpdb; if ($c) { $wpdb->delete($wpdb->prefix."sm_company_members", array("company_id"=>$c->id)); $wpdb->delete($wpdb->prefix."sm_company_activities", array("company_id"=>$c->id)); $wpdb->delete($wpdb->prefix."sm_companies", array("id"=>$c->id)); } require_once ABSPATH."wp-admin/includes/user.php"; wp_delete_user($u->ID); }' % TAG.lower())
 ok = sum(1 for r in results if r[0])
 print(f'\n{ok}/{len(results)} checks passed')

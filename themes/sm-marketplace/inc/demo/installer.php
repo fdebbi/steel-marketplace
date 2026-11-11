@@ -22,6 +22,8 @@ function sm_theme_page_definitions() {
 		'buildings'   => array( 'batiments', 'Bâtiments métalliques', 'templates/marketplace-buildings.php' ),
 		'services'    => array( 'services', 'Fabrication et montage', 'templates/marketplace-services.php' ),
 		'engineers'   => array( 'ingenierie', 'Ingénierie', 'templates/marketplace-engineers.php' ),
+		'mission-request' => array( 'demander-une-etude', 'Demander une étude', 'templates/mission-request.php' ),
+		'engineer-apply'  => array( 'devenir-ingenieur-partenaire', 'Devenir ingénieur partenaire', 'templates/engineer-apply.php' ),
 		'listing'     => array( 'annonce', 'Annonce', 'templates/single-listing.php' ),
 		'service'     => array( 'service', 'Service', 'templates/single-service.php' ),
 		'companies'   => array( 'entreprises', 'Entreprises', 'templates/companies.php' ),

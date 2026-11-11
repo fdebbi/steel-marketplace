@@ -1,6 +1,6 @@
 <?php
 /**
- * Enquiries received (business: "Enquiries received", engineering: "Client requests").
+ * Enquiries received.
  *
  * @var array $args { account: array }
  * @package SM_Marketplace

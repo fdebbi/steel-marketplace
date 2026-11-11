@@ -2,12 +2,14 @@
 /**
  * Template Name: SM — Dashboard
  *
- * Account dashboard shell. The menu depends on the account class:
- * - commercial: buying area + selling area (one account buys and sells);
- * - engineering: profile, services and client requests only, no trading features.
+ * Account dashboard shell. The menu depends on the account class (0.13.0):
+ * - company, professional, client: buying + selling (+ services for companies
+ *   and professionals, engineering studies requested from the platform);
+ * - engineer (partner engineer): missions, invoicing, files and plans, profile;
+ *   no trading features.
  *
  * Views come from /compte/{view}/ (sm-core) or ?view=. Each view is a part in
- * template-parts/dashboard/: "engineer-{view}" first for engineering accounts,
+ * template-parts/dashboard/: "engineer-{view}" first for partner engineers,
  * then "{view}". Plugins can render other views on the sm_dashboard_view action.
  *
  * Without sm-core the dashboard shows a demo account (?account=engineer).
@@ -42,13 +44,14 @@ if ( ! $account ) {
 	// Signed-in user without a company (e.g. an administrator).
 	get_header();
 	echo '<div class="sm-container sm-section">';
-	sm_component( 'empty-state', array( 'icon' => 'company', 'title' => __( 'This user has no company account', 'sm-marketplace' ), 'text' => __( 'Create a business or engineering account to use the dashboard.', 'sm-marketplace' ), 'action_label' => __( 'Create an account', 'sm-marketplace' ), 'action_url' => sm_page_url( 'register' ) ) );
+	sm_component( 'empty-state', array( 'icon' => 'company', 'title' => __( 'This user has no company account', 'sm-marketplace' ), 'text' => __( 'Create an account to use the dashboard.', 'sm-marketplace' ), 'action_label' => __( 'Create an account', 'sm-marketplace' ), 'action_url' => sm_page_url( 'register' ) ) );
 	echo '</div>';
 	get_footer();
 	return;
 }
 
-$is_eng  = 'engineering' === ( $account['class'] ?? 'commercial' );
+$class   = sm_account_class( $account );
+$is_eng  = 'engineer' === $class;
 $is_demo = empty( $account['real'] );
 $view    = sanitize_key( sm_theme_route( 'view', 'overview' ) );
 $extra   = ( $is_eng && $is_demo ) ? array( 'account' => 'engineer' ) : array();
@@ -56,22 +59,28 @@ $unread  = (int) ( $account['unread'] ?? 0 );
 
 $has_ai = ! $is_demo && is_array( sm_theme_data( 'ai_tools' ) );
 if ( $is_eng ) {
-	$menu = array(
+	// Partner engineer: missions given by the platform, never trading.
+	$approved = $is_demo || 'approved' === ( $account['engineer']['status'] ?? '' );
+	$menu     = array(
 		'' => array(
-			'overview'         => array( 'home', __( 'Overview', 'sm-marketplace' ) ),
-			'ai'               => $has_ai ? array( 'ai', __( 'AI assistant', 'sm-marketplace' ) ) : null,
-			'profile'          => array( 'user', __( 'Professional profile', 'sm-marketplace' ) ),
-			'services'         => array( 'wrench', __( 'My services', 'sm-marketplace' ) ),
-			'service-requests' => array( 'rfq', __( 'Service requests', 'sm-marketplace' ) ),
-			'requests'         => array( 'message', __( 'Messages', 'sm-marketplace' ) ),
-			'portfolio'        => array( 'image', __( 'References', 'sm-marketplace' ) ),
-			'verification'     => array( 'shield', __( 'Qualifications & verification', 'sm-marketplace' ) ),
+			'overview' => array( 'home', __( 'Overview', 'sm-marketplace' ) ),
+			'missions' => $approved ? array( 'hard-hat', __( 'My missions', 'sm-marketplace' ) ) : null,
+			'billing'  => $approved ? array( 'card', __( 'Invoicing', 'sm-marketplace' ) ) : null,
+			'files'    => $approved ? array( 'file', __( 'Files and plans', 'sm-marketplace' ) ) : null,
+			'ai'       => $approved && $has_ai ? array( 'ai', __( 'AI assistant', 'sm-marketplace' ) ) : null,
+			'partner'  => array( 'user', __( 'Partner profile', 'sm-marketplace' ) ),
 		),
 	);
 } else {
-	$svc_set = (array) sm_theme_data( 'services_settings' );
-	$can_fab = ! empty( $svc_set['kinds']['fabrication']['allowed'] );
-	$menu    = array(
+	$svc_set   = (array) sm_theme_data( 'services_settings' );
+	$can_fab   = ! empty( $svc_set['kinds']['fabrication']['allowed'] );
+	$has_eng   = is_array( sm_theme_data( 'engineers' ) );
+	$own_label = array(
+		'company'      => __( 'Company profile', 'sm-marketplace' ),
+		'professional' => __( 'Professional profile', 'sm-marketplace' ),
+		'client'       => __( 'My profile', 'sm-marketplace' ),
+	);
+	$menu      = array(
 		''                                  => array_filter(
 			array(
 				'overview' => array( 'home', __( 'Overview', 'sm-marketplace' ) ),
@@ -81,7 +90,7 @@ if ( $is_eng ) {
 		__( 'Selling', 'sm-marketplace' )   => array(
 			'publish'  => array( 'plus', __( 'Publish a listing', 'sm-marketplace' ) ),
 			'listings' => array( 'package', __( 'My listings', 'sm-marketplace' ) ),
-			'offers'   => array( 'rfq', __( 'Quotations sent', 'sm-marketplace' ) ),
+			'offers'   => 'client' === $class ? null : array( 'rfq', __( 'Quotations sent', 'sm-marketplace' ) ),
 			'messages' => array( 'message', __( 'Enquiries received', 'sm-marketplace' ) ),
 			'stats'    => array( 'chart', __( 'Listing statistics', 'sm-marketplace' ) ),
 		),
@@ -94,13 +103,15 @@ if ( $is_eng ) {
 			$can_fab ? array(
 				'services'         => array( 'wrench', __( 'My services', 'sm-marketplace' ) ),
 				'service-requests' => array( 'rfq', __( 'Service requests received', 'sm-marketplace' ) ),
+				'portfolio'        => array( 'image', __( 'Completed projects', 'sm-marketplace' ) ),
 			) : array(),
-			$svc_set ? array( 'my-service-requests' => array( 'hard-hat', __( 'My service requests', 'sm-marketplace' ) ) ) : array()
+			$svc_set ? array( 'my-service-requests' => array( 'wrench', __( 'My service requests', 'sm-marketplace' ) ) ) : array(),
+			$has_eng ? array( 'studies' => array( 'hard-hat', __( 'Engineering studies', 'sm-marketplace' ) ) ) : array()
 		),
-		__( 'Company', 'sm-marketplace' )   => array(
-			'company'      => array( 'company', __( 'Company profile', 'sm-marketplace' ) ),
+		( 'client' === $class ? __( 'My account', 'sm-marketplace' ) : __( 'Account', 'sm-marketplace' ) ) => array(
+			'company'      => array( 'client' === $class ? 'user' : 'company', $own_label[ $class ] ?? __( 'Company profile', 'sm-marketplace' ) ),
 			'verification' => array( 'shield', __( 'Verification', 'sm-marketplace' ) ),
-			'plan'         => array( 'card', __( 'Plan & AI credits', 'sm-marketplace' ) ),
+			'plan'         => 'client' === $class ? null : array( 'card', __( 'Plan & AI credits', 'sm-marketplace' ) ),
 		),
 	);
 }
@@ -122,10 +133,10 @@ get_header();
 <div class="sm-dash">
 	<aside class="sm-dash__side" id="sm-dash-nav">
 		<div class="sm-dash__who">
-			<div class="sm-avatar sm-avatar--<?php echo esc_attr( $account['class'] ); ?>" aria-hidden="true"><?php echo esc_html( $account['company']['initials'] ); ?></div>
+			<?php sm_avatar( array_merge( $account['company'], array( 'class' => $class ) ) ); ?>
 			<div>
 				<p class="sm-dash__company"><?php sm_e( $account['company']['name'] ); ?></p>
-				<p class="sm-dash__class"><?php echo esc_html( $is_eng ? __( 'Engineering account', 'sm-marketplace' ) : __( 'Business account', 'sm-marketplace' ) ); ?><?php if ( ! empty( $account['plan'] ) ) : ?> · <?php sm_e( $account['plan'] ); ?><?php endif; ?></p>
+				<p class="sm-dash__class"><?php echo esc_html( sm_class_label( $class ) ); ?><?php if ( ! empty( $account['plan'] ) ) : ?> · <?php sm_e( $account['plan'] ); ?><?php endif; ?></p>
 			</div>
 		</div>
 		<nav aria-label="<?php esc_attr_e( 'Dashboard', 'sm-marketplace' ); ?>">
@@ -160,7 +171,7 @@ get_header();
 			</details>
 			<h1 class="sm-dash__title"><?php echo esc_html( $titles[ $view ] ); ?></h1>
 			<?php if ( $is_demo ) : ?>
-				<p class="sm-demo-note"><?php sm_icon( 'info' ); ?><?php echo $is_eng ? esc_html__( 'Demo engineering account.', 'sm-marketplace' ) : esc_html__( 'Demo business account.', 'sm-marketplace' ); ?> <a href="<?php echo esc_url( sm_page_url( 'account', $is_eng ? array() : array( 'account' => 'engineer' ) ) ); ?>"><?php echo $is_eng ? esc_html__( 'Switch to the business dashboard', 'sm-marketplace' ) : esc_html__( 'Switch to the engineer dashboard', 'sm-marketplace' ); ?></a></p>
+				<p class="sm-demo-note"><?php sm_icon( 'info' ); ?><?php echo $is_eng ? esc_html__( 'Demo partner engineer account.', 'sm-marketplace' ) : esc_html__( 'Demo company account.', 'sm-marketplace' ); ?> <a href="<?php echo esc_url( sm_page_url( 'account', $is_eng ? array() : array( 'account' => 'engineer' ) ) ); ?>"><?php echo $is_eng ? esc_html__( 'Switch to the company dashboard', 'sm-marketplace' ) : esc_html__( 'Switch to the engineer dashboard', 'sm-marketplace' ); ?></a></p>
 			<?php endif; ?>
 			<?php sm_theme_notices( true ); ?>
 			<?php if ( ! $is_demo && (int) $account['company']['verification'] < 1 && ! in_array( $view, array( 'verify-phone', 'verification' ), true ) ) : ?>

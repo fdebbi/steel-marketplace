@@ -178,3 +178,14 @@ T.update({
  "{entreprise} ({wilaya}) a soumis une annonce à vérification.\n\n{titre}\nMarché : {marche}\nPrix : {prix}\n\nLa vérifier :\n{lien_admin}",
  "أرسلت {entreprise} ({wilaya}) إعلانًا للمراجعة.\n\n{titre}\nالسوق: {marche}\nالسعر: {prix}\n\nمراجعته:\n{lien_admin}"),
 })
+
+# 0.4.0 — client accounts (private sellers).
+T.update({
+"Always check the listings of client accounts (private sellers), even when moderation is off": ("Toujours vérifier les annonces des comptes client (particuliers), même quand la modération est désactivée", "مراجعة إعلانات حسابات الزبائن (الخواص) دائما، حتى عند إيقاف المراجعة"),
+"Client accounts": ("Comptes client", "حسابات الزبائن"),
+"Listings online per client account (0 = no limit)": ("Annonces en ligne par compte client (0 = sans limite)", "الإعلانات المنشورة لكل حساب زبون (0 = بلا حد)"),
+})
+P[("A client account can have %d listing online at a time. Mark one as sold or withdraw it first, or open a company or professional account.", "A client account can have %d listings online at a time. Mark one as sold or withdraw it first, or open a company or professional account.")] = (
+ ["Un compte client peut avoir %d annonce en ligne à la fois. Marquez-en une comme vendue ou retirez-la d’abord, ou ouvrez un compte entreprise ou professionnel.",
+  "Un compte client peut avoir %d annonces en ligne à la fois. Marquez-en une comme vendue ou retirez-la d’abord, ou ouvrez un compte entreprise ou professionnel."],
+ ["يمكن لحساب الزبون نشر %d إعلان في نفس الوقت. علّم أحدها كمباع أو اسحبه أولا، أو افتح حساب شركة أو مهني."] * 6)

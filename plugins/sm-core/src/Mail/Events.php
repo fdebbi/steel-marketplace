@@ -118,7 +118,7 @@ final class Events {
 			'telephone'             => (string) $c->phone,
 			'email_entreprise'      => (string) $c->email,
 			'wilaya'                => $c->wilaya ? $c->wilaya . ' ' . Wilayas::name( $c->wilaya ) : '',
-			'type'                  => 'engineering' === $c->account_class ? __( 'Engineering account', 'sm-core' ) : __( 'Business account', 'sm-core' ),
+			'type'                  => Companies::class_label( $c->account_class ),
 			'activites'             => implode( ', ', array_intersect_key( Companies::activity_labels(), array_flip( Companies::get_activities( $c->id ) ) ) ),
 			'lien_entreprise'       => Routes::url( 'company', array( 'c' => $c->slug ) ),
 			'lien_admin_entreprise' => admin_url( 'admin.php?page=sm-companies&id=' . (int) $c->id ),
@@ -158,6 +158,8 @@ final class Events {
 				'group'     => 'accounts',
 				'label'     => __( 'New registration', 'sm-core' ),
 				'audit'     => 'account.registered',
+				// Partner engineers get the application e-mails of sm-engineering instead.
+				'when'      => static fn( $e ) => 'engineer' !== ( $e->data['class'] ?? '' ),
 				'admin'     => 'now',
 				'user'      => true,
 				'vars'      => static fn( $e ) => Companies::get( $e->company_id ) ? self::user_vars( $e->user_id ) + self::company_vars( $e->company_id ) + array( 'lien' => Routes::url( 'account' ) ) : array(),

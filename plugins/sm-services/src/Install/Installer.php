@@ -12,7 +12,11 @@ defined( 'ABSPATH' ) || exit;
 final class Installer {
 
 	public static function activate() {
+		$from = (int) get_option( 'sm_services_db_version', 0 );
 		self::migrate();
+		if ( $from && $from < 2 ) {
+			self::retire_engineering();
+		}
 		update_option( 'sm_services_db_version', SM_SERVICES_DB_VERSION, false );
 	}
 
@@ -20,6 +24,16 @@ final class Installer {
 		if ( (int) get_option( 'sm_services_db_version', 0 ) < SM_SERVICES_DB_VERSION ) {
 			self::activate();
 		}
+	}
+
+	/**
+	 * 0.2.0: engineering is no longer published by accounts. Former engineering
+	 * pages are kept (status "retired") but never shown; requests already sent
+	 * stay readable in the dashboards.
+	 */
+	public static function retire_engineering() {
+		global $wpdb;
+		$wpdb->query( "UPDATE {$wpdb->prefix}sm_services SET status = 'retired' WHERE kind = 'engineering'" ); // phpcs:ignore WordPress.DB
 	}
 
 	public static function migrate() {

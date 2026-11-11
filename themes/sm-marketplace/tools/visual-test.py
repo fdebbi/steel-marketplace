@@ -10,8 +10,8 @@ For every page x language (fr, ar) x width (360…1440 px) it:
 Writes report.json and prints a summary. Exit code 1 if any check fails.
 
 Usage: python3 tools/visual-test.py [base_url] [out_dir]
-Dashboard pages need accounts: set SM_VT_COM="email:password" (business account)
-and SM_VT_ENG="email:password" (engineering account); without them those pages
+Dashboard pages need accounts: set SM_VT_COM="email:password" (company account),
+SM_VT_PRO (professional) and SM_VT_ENG (approved partner engineer); without them those pages
 show the sign-in page and are still checked.
 Requires: pip install playwright && playwright install chromium
 """
@@ -32,7 +32,10 @@ PAGES = {
     'building-dismantled': '/annonce/?id=302',
     'building-assembled': '/annonce/?id=301',
     'company': '/entreprise/?c=acier-hodna',
-    'engineer-profile': '/entreprise/?c=bet-structures-acier',
+    'professional-profile': '/entreprise/?c=benali-soudure',
+    'companies': '/entreprises/',
+    'engineer-apply': '/devenir-ingenieur-partenaire/',
+    'mission-request': '/demander-une-etude/',
     'register': '/inscription/',
     'login': '/connexion/',
     'rfq': '/demandes-de-devis/',
@@ -48,20 +51,23 @@ PAGES = {
     'dashboard-publish-profiles': ('/compte/?view=publish&cat=profiles', 'com'),
     'dashboard-publish-roofing': ('/compte/?view=publish&cat=roofing', 'com'),
     'dashboard-engineer': ('/compte/', 'eng'),
-    'dashboard-engineer-requests': ('/compte/?view=requests', 'eng'),
-    'dashboard-services': ('/compte/?view=services', 'com'),
-    'dashboard-service-form': ('/compte/?view=services&new=1', 'com'),
+    'dashboard-engineer-missions': ('/compte/?view=missions', 'eng'),
+    'dashboard-engineer-billing': ('/compte/?view=billing', 'eng'),
+    'dashboard-engineer-files': ('/compte/?view=files', 'eng'),
+    'dashboard-engineer-partner': ('/compte/?view=partner', 'eng'),
+    'dashboard-studies': ('/compte/?view=studies', 'com'),
+    'dashboard-services': ('/compte/?view=services', 'pro'),
+    'dashboard-service-form': ('/compte/?view=services&new=1', 'pro'),
     'dashboard-my-service-requests': ('/compte/?view=my-service-requests', 'com'),
-    'dashboard-engineer-services': ('/compte/?view=services', 'eng'),
-    'dashboard-engineer-service-form': ('/compte/?view=services&new=1', 'eng'),
-    'dashboard-engineer-service-requests': ('/compte/?view=service-requests', 'eng'),
-    'dashboard-engineer-portfolio': ('/compte/?view=portfolio', 'eng'),
-    'dashboard-engineer-portfolio-form': ('/compte/?view=portfolio&new=1', 'eng'),
+    'dashboard-professional': ('/compte/', 'pro'),
+    'dashboard-professional-company': ('/compte/?view=company', 'pro'),
+    'dashboard-portfolio': ('/compte/?view=portfolio', 'pro'),
+    'dashboard-portfolio-form': ('/compte/?view=portfolio&new=1', 'pro'),
     'dashboard-ai': ('/compte/?view=ai', 'com'),
     'dashboard-ai-document': ('/compte/?view=ai&tool=document', 'com'),
-    'dashboard-engineer-ai': ('/compte/?view=ai&tool=listing', 'eng'),
+    'dashboard-engineer-ai': ('/compte/?view=ai&tool=document', 'eng'),
 }
-ACCOUNTS = {k: os.environ.get(v) for k, v in (('com', 'SM_VT_COM'), ('eng', 'SM_VT_ENG'))}
+ACCOUNTS = {k: os.environ.get(v) for k, v in (('com', 'SM_VT_COM'), ('eng', 'SM_VT_ENG'), ('pro', 'SM_VT_PRO'))}
 
 def login(page, who):
     cred = ACCOUNTS.get(who)

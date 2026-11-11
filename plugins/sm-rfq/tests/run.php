@@ -61,11 +61,11 @@ function smq_cleanup() {
 }
 smq_cleanup();
 $suffix = substr( md5( (string) microtime( true ) ), 0, 6 );
-list( $u_buy, $c_buy ) = smq_user( 'b' . $suffix, 'commercial', array( 'project_owner' ) );
-list( $u_s1, $c_s1 )   = smq_user( 's' . $suffix, 'commercial', array( 'supplier' ) );
-list( $u_s2, $c_s2 )   = smq_user( 'm' . $suffix, 'commercial', array( 'manufacturer' ) );
-list( $u_s3, $c_s3 )   = smq_user( 'r' . $suffix, 'commercial', array( 'reuse_dealer' ) );
-list( $u_eng, $c_eng ) = smq_user( 'e' . $suffix, 'engineering', array( 'engineer' ) );
+list( $u_buy, $c_buy ) = smq_user( 'b' . $suffix, 'client', array( 'client' ) );
+list( $u_s1, $c_s1 )   = smq_user( 's' . $suffix, 'company', array( 'supplier' ) );
+list( $u_s2, $c_s2 )   = smq_user( 'm' . $suffix, 'company', array( 'manufacturer' ) );
+list( $u_s3, $c_s3 )   = smq_user( 'r' . $suffix, 'company', array( 'recycler' ) );
+list( $u_eng, $c_eng ) = smq_user( 'e' . $suffix, 'engineer', array( 'engineer' ) );
 $engine = \SM\Core\Modules::service( 'weight' );
 $kgm    = static function ( $family, $section ) use ( $engine ) {
 	$r = $engine->calculate( array( 'family' => $family, 'section' => $section, 'bars' => 1, 'length' => 1000 ) );
@@ -142,7 +142,7 @@ smq_assert( isset( $bad['errors']['weight_kg'], $bad['errors']['delivery_days'],
 wp_set_current_user( $u_buy );
 smq_assert( '' !== Form::offer_block( $r ), 'the buyer cannot answer his own request' );
 wp_set_current_user( $u_eng );
-smq_assert( '' !== Form::offer_block( $r ) && ! sm_can( 'rfq.create' ), 'an engineering account can neither answer nor publish' );
+smq_assert( '' !== Form::offer_block( $r ) && ! sm_can( 'rfq.create' ), 'a partner engineer account can neither answer nor publish' );
 
 echo "\n4. Privacy and comparison\n";
 wp_set_current_user( $u_s2 );

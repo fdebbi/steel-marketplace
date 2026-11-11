@@ -22,18 +22,15 @@ msgstr "https://github.com/fdebbi/steel-marketplace"
 #. Description of the plugin
 #: sm-services.php
 msgid ""
-"Fabrication, site and engineering services: two separate catalogues "
-"(fabrication & site work for business accounts, engineering for engineering "
-"accounts), service pages with photos, capabilities, equipment and coverage, "
-"service requests answered with a quote, engineer profiles with experience "
-"and references. Requires SM Core."
+"Fabrication and site services of companies and professionals: service pages "
+"with photos, capabilities, equipment and coverage, service requests answered"
+" with a quote, portfolio of completed projects. Engineering studies are "
+"handled by SM Engineering. Requires SM Core."
 msgstr ""
-"Services de fabrication, de chantier et d’ingénierie : deux catalogues "
-"séparés (fabrication et chantier pour les comptes entreprise, ingénierie "
-"pour les comptes ingénierie), pages de service avec photos, capacités, "
-"équipements et zone d’intervention, demandes de service avec réponse par "
-"devis, profils d’ingénieurs avec expérience et références. Nécessite SM "
-"Core."
+"Services de fabrication et de chantier des entreprises et des professionnels"
+" : pages de service avec photos, capacités, équipements et zones couvertes, "
+"demandes de service avec devis, réalisations. Les études d’ingénierie "
+"passent par SM Engineering. Nécessite SM Core."
 
 #. Author of the plugin
 #: sm-services.php

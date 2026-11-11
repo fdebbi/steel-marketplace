@@ -1,5 +1,14 @@
 # Changelog — sm-core
 
+## 0.6.0 — 2026-11-11 (Phase 9.1 : modèle de comptes)
+
+- Classes de comptes : société (types), professionnel (métiers), client (non public), ingénieur partenaire (créé par SM Engineering).
+- Page SM → Types de comptes : libellés FR/AR, masquer, ajouter des types et des métiers.
+- Droits : `mission.request`, `mission.work` ; `service.engineering` retiré ; tous les comptes sauf ingénieurs achètent et vendent.
+- Logo / photo pour tous les comptes ; ressource thème `account_types` ; annuaire et pages publiques limités aux sociétés et professionnels.
+- Migration base v5 des anciens comptes ; `Registration::create_account()` réutilisable.
+- Correctif : la langue de la requête est rétablie après un e-mail envoyé dans une autre langue.
+
 ## 0.5.0 — 2026-11-08 (Phase 9)
 
 - `Forms::prefill( $values, $target, $message )` : ouvre un formulaire déjà rempli (suggestions de l'assistant IA), lu par le thème comme des valeurs renvoyées ; rien n'est enregistré avant l'envoi.

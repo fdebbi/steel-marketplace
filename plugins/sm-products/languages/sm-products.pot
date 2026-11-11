@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Products 0.3.0\n"
+"Project-Id-Version: SM Products 0.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-products\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-08T14:06:53+00:00\n"
+"POT-Creation-Date: 2026-11-11T12:21:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-products\n"
@@ -329,51 +329,63 @@ msgstr ""
 msgid "Check every product before it is published"
 msgstr ""
 
-#: src/Admin/Admin.php:202
-msgid "Publication period (days, 0 = no end)"
+#: src/Admin/Admin.php:201
+msgid "Client accounts"
+msgstr ""
+
+#: src/Admin/Admin.php:201
+msgid "Always check the listings of client accounts (private sellers), even when moderation is off"
 msgstr ""
 
 #: src/Admin/Admin.php:203
-msgid "Photos per product"
+msgid "Listings online per client account (0 = no limit)"
 msgstr ""
 
 #: src/Admin/Admin.php:204
-msgid "Largest photo (MB)"
+msgid "Publication period (days, 0 = no end)"
 msgstr ""
 
 #: src/Admin/Admin.php:205
-msgid "Largest technical sheet (MB)"
+msgid "Photos per product"
 msgstr ""
 
 #: src/Admin/Admin.php:206
-msgid "Lowest price accepted (DA)"
+msgid "Largest photo (MB)"
 msgstr ""
 
 #: src/Admin/Admin.php:207
-msgid "Highest price accepted (DA)"
+msgid "Largest technical sheet (MB)"
 msgstr ""
 
 #: src/Admin/Admin.php:208
+msgid "Lowest price accepted (DA)"
+msgstr ""
+
+#: src/Admin/Admin.php:209
+msgid "Highest price accepted (DA)"
+msgstr ""
+
+#: src/Admin/Admin.php:210
 msgid "Steel grades offered (comma separated)"
 msgstr ""
 
-#: src/Admin/Admin.php:241
+#: src/Admin/Admin.php:243
 msgid "Product published. The seller was notified."
 msgstr ""
 
-#: src/Admin/Admin.php:245
+#: src/Admin/Admin.php:247
 msgid "Give the reason, so the seller knows what to change."
 msgstr ""
 
-#: src/Admin/Admin.php:249
+#: src/Admin/Admin.php:251
 msgid "The seller was asked to change the product."
 msgstr ""
 
-#: src/Admin/Admin.php:279
+#: src/Admin/Admin.php:281
 msgid "Category saved."
 msgstr ""
 
-#: src/Admin/Admin.php:289
+#: src/Admin/Admin.php:291
 msgid "Settings saved."
 msgstr ""
 
@@ -398,52 +410,59 @@ msgstr ""
 msgid "Choose a category."
 msgstr ""
 
-#: src/Form.php:106
+#: src/Form.php:110
 msgid "Draft saved. You can finish it later from \"My listings\"."
 msgstr ""
 
-#: src/Form.php:107
+#: src/Form.php:111
 msgid "Thank you. Your product will be visible after a quick check by the platform team."
 msgstr ""
 
-#: src/Form.php:108
-#: src/Form.php:156
+#: src/Form.php:112
+#: src/Form.php:196
 msgid "Your product is published."
 msgstr ""
 
-#: src/Form.php:133
+#. translators: %d: number of listings.
+#: src/Form.php:150
+msgid "A client account can have %d listing online at a time. Mark one as sold or withdraw it first, or open a company or professional account."
+msgid_plural "A client account can have %d listings online at a time. Mark one as sold or withdraw it first, or open a company or professional account."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Form.php:169
 msgid "You cannot change this product."
 msgstr ""
 
-#: src/Form.php:138
+#: src/Form.php:174
 msgid "Only a published product can be marked as sold."
 msgstr ""
 
-#: src/Form.php:141
+#: src/Form.php:177
 msgid "Marked as sold. Buyers no longer see it."
 msgstr ""
 
-#: src/Form.php:145
+#: src/Form.php:181
 msgid "The product is withdrawn and saved as a draft."
 msgstr ""
 
-#: src/Form.php:149
+#: src/Form.php:185
 msgid "This product cannot be published again from here. Edit it instead."
 msgstr ""
 
-#: src/Form.php:156
+#: src/Form.php:196
 msgid "Sent for review again."
 msgstr ""
 
-#: src/Form.php:160
+#: src/Form.php:200
 msgid "Withdraw the product before deleting it."
 msgstr ""
 
-#: src/Form.php:163
+#: src/Form.php:203
 msgid "Product deleted."
 msgstr ""
 
-#: src/Form.php:166
+#: src/Form.php:206
 msgid "Unknown action."
 msgstr ""
 
@@ -483,95 +502,95 @@ msgstr ""
 msgid "\"%s\" is no longer shown. Publish it again from \"My listings\" if it is still available."
 msgstr ""
 
-#: src/Presenter.php:114
+#: src/Presenter.php:117
 msgid "Product type"
 msgstr ""
 
-#: src/Presenter.php:116
-#: src/Presenter.php:144
+#: src/Presenter.php:119
+#: src/Presenter.php:147
 msgid "Designation"
 msgstr ""
 
-#: src/Presenter.php:117
-#: src/Presenter.php:145
+#: src/Presenter.php:120
+#: src/Presenter.php:148
 msgid "Steel grade"
 msgstr ""
 
-#: src/Presenter.php:117
-#: src/Presenter.php:145
+#: src/Presenter.php:120
+#: src/Presenter.php:148
 msgid "Not specified"
 msgstr ""
 
-#: src/Presenter.php:119
+#: src/Presenter.php:122
 msgid "Standard"
 msgstr ""
 
-#: src/Presenter.php:129
+#: src/Presenter.php:132
 msgid "Dimensions"
 msgstr ""
 
-#: src/Presenter.php:132
+#: src/Presenter.php:135
 msgid "Plate size"
 msgstr ""
 
-#: src/Presenter.php:134
+#: src/Presenter.php:137
 msgid "Bar length"
 msgstr ""
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:137
+#: src/Presenter.php:140
 msgid "%s plates"
 msgstr ""
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:137
+#: src/Presenter.php:140
 msgid "%s bars"
 msgstr ""
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:139
-#: src/Presenter.php:147
+#: src/Presenter.php:142
+#: src/Presenter.php:150
 msgid "Quantity"
 msgstr ""
 
-#: src/Presenter.php:141
+#: src/Presenter.php:144
 msgid "Weight per metre"
 msgstr ""
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:147
+#: src/Presenter.php:150
 msgid "%s pieces in the lot"
 msgstr ""
 
-#: src/Presenter.php:150
+#: src/Presenter.php:153
 msgid "Weight of the lot"
 msgstr ""
 
-#: src/Presenter.php:172
+#: src/Presenter.php:175
 msgid "Available quantity"
 msgstr ""
 
-#: src/Presenter.php:178
+#: src/Presenter.php:181
 msgid "Condition"
 msgstr ""
 
-#: src/Presenter.php:186
+#: src/Presenter.php:189
 msgid "Yes"
 msgstr ""
 
-#: src/Presenter.php:186
+#: src/Presenter.php:189
 msgid "No"
 msgstr ""
 
-#: src/Presenter.php:225
+#: src/Presenter.php:228
 msgid "m (linear)"
 msgstr ""
 
-#: src/Presenter.php:226
+#: src/Presenter.php:229
 msgid "pieces"
 msgstr ""
 
-#: src/Presenter.php:227
+#: src/Presenter.php:230
 msgid "lot"
 msgstr ""
 

@@ -51,11 +51,16 @@ final class CompanyForms {
 		}
 
 		$activities = array();
-		if ( 'commercial' === $company->account_class ) {
-			$activities = array_values( array_intersect( (array) Forms::post( 'activities', array() ), Companies::activities( 'commercial' ) ) );
+		if ( Companies::chooses_activities( $company->account_class ) ) {
+			$activities = array_values( array_intersect( (array) Forms::post( 'activities', array() ), Companies::activities( $company->account_class ) ) );
 			if ( ! $activities ) {
-				$errors['activities'] = __( 'Choose at least one business activity.', 'sm-core' );
+				$errors['activities'] = 'company' === $company->account_class ? __( 'Choose at least one type of company.', 'sm-core' ) : __( 'Choose at least one trade.', 'sm-core' );
 			}
+		}
+		// Logo (company) or photo (other accounts).
+		$logo = \SM\Core\Content\Media::upload( 'logo', array( 'jpg|jpeg|jpe' => 'image/jpeg', 'png' => 'image/png', 'webp' => 'image/webp' ), 1, 2 * MB_IN_BYTES );
+		if ( $logo['errors'] ) {
+			$errors['logo'] = $logo['errors'][0];
 		}
 		if ( $errors ) {
 			Forms::back( $errors );
@@ -78,7 +83,14 @@ final class CompanyForms {
 			'nif'      => Forms::post( 'nif' ),
 			'nis'      => Forms::post( 'nis' ),
 		);
-		if ( 'engineering' === $company->account_class ) {
+		if ( $logo['ids'] ) {
+			$data['logo_id'] = $logo['ids'][0];
+		} elseif ( Forms::post( 'logo_remove' ) ) {
+			$data['logo_id'] = 0;
+		}
+		// Professionals present their trade: title, qualifications, specialities, experience.
+		// (Partner engineers have their own profile in SM Engineering.)
+		if ( 'professional' === $company->account_class ) {
 			$data['title_fr'] = Forms::post( 'title_fr' );
 			$data['title_ar'] = Forms::post( 'title_ar' );
 			$data['profile']  = array(

@@ -13,6 +13,7 @@ use SM\Products\Categories;
 use SM\Products\Expiry;
 use SM\Products\Form;
 use SM\Products\Products;
+use SM\Products\Settings;
 use SM\Products\Spec;
 use SM\Products\Theme\Bridge;
 
@@ -61,9 +62,9 @@ function smp_cleanup() {
 }
 smp_cleanup();
 $suffix = substr( md5( (string) microtime( true ) ), 0, 6 );
-list( $u_sel, $c_sel ) = smp_user( 's' . $suffix, 'commercial', array( 'supplier' ) );
-list( $u_oth, $c_oth ) = smp_user( 'o' . $suffix, 'commercial', array( 'fabrication' ) );
-list( $u_eng, $c_eng ) = smp_user( 'e' . $suffix, 'engineering', array( 'engineer' ) );
+list( $u_sel, $c_sel ) = smp_user( 's' . $suffix, 'company', array( 'supplier' ) );
+list( $u_oth, $c_oth ) = smp_user( 'o' . $suffix, 'company', array( 'manufacturer' ) );
+list( $u_eng, $c_eng ) = smp_user( 'e' . $suffix, 'engineer', array( 'engineer' ) );
 
 $base = array( 'wilaya' => '28', 'title' => array( 'fr' => 'Test produit' ), 'price' => '245' );
 
@@ -158,11 +159,29 @@ smp_assert( null === Products::get( $pid ) && null === Index::get( $p->listing_i
 /* ------------------------------------------------------------------ */
 smp_section( '5. Rules' );
 wp_set_current_user( $u_eng );
-smp_assert( ! sm_can( 'listing.products' ), 'an engineering account can never publish products' );
+smp_assert( ! sm_can( 'listing.products' ), 'a partner engineer account can never publish products' );
 wp_set_current_user( $u_oth );
-smp_assert( ! sm_can( 'listing.products' ), 'a fabrication-only company cannot publish new products' );
+smp_assert( sm_can( 'listing.products' ) && sm_can( 'buy' ), 'every company type both buys and sells' );
 wp_set_current_user( $u_sel );
 smp_assert( sm_can( 'listing.products' ), 'a supplier with a verified contact can publish' );
+
+smp_section( '6. Client accounts (private sellers)' );
+$settings_before = get_option( Settings::OPTION, null );
+Settings::save( array_merge( Settings::all(), array( 'moderation' => 0, 'client_moderation' => 1, 'client_max_active' => 1 ) ) );
+list( $u_cli, $c_cli ) = smp_user( 'c' . $suffix, 'client', array() );
+wp_set_current_user( $u_cli );
+smp_assert( sm_can( 'listing.products' ) && sm_can( 'buy' ), 'a client can sell and buy' );
+smp_assert( 'pending' === \SM\Products\Form::publish_status( Companies::get( $c_cli ) ) && 'published' === \SM\Products\Form::publish_status( Companies::get( $c_sel ) ), 'client listings are checked even when moderation is off' );
+smp_assert( '' === \SM\Products\Form::client_limit( Companies::get( $c_cli ) ), 'first client listing allowed' );
+$cid = Products::save( 0, $c_cli, $u_cli, $s, 'pending' );
+smp_assert( '' !== \SM\Products\Form::client_limit( Companies::get( $c_cli ) ) && '' === \SM\Products\Form::client_limit( Companies::get( $c_cli ), Products::get( $cid ) ), 'cap on listings online; editing an online listing stays possible' );
+smp_assert( '' === \SM\Products\Form::client_limit( Companies::get( $c_sel ) ), 'no cap for companies' );
+Products::set_status( $cid, 'published' );
+$card = Bridge::listing( null, array( 'id' => Products::get( $cid )->listing_id ) );
+smp_assert( '' === $card['company'] && false === $card['seller_public'] && 'client' === $card['seller_class'], 'private seller: no public page link' );
+smp_assert( 1 === Bridge::settings( null )['client']['active'] && 1 === Bridge::settings( null )['client']['max'], 'the form knows how many listings are online' );
+Products::delete( $cid );
+null === $settings_before ? delete_option( Settings::OPTION ) : update_option( Settings::OPTION, $settings_before );
 wp_set_current_user( 0 );
 
 smp_cleanup();

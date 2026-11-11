@@ -1,6 +1,8 @@
 <?php
 /**
- * Company profile form (business) / professional profile (engineering).
+ * Profile form of a company, a professional or a client (0.13.0): logo or
+ * photo, types or trades, presentation, contact. Partner engineers edit their
+ * profile in the "partner" view.
  *
  * @var array $args { account: array }
  * @package SM_Marketplace
@@ -9,12 +11,21 @@
 defined( 'ABSPATH' ) || exit;
 
 $account = $args['account'];
-$is_eng  = 'engineering' === $account['class'];
+$class   = sm_account_class( $account );
+$is_pro  = 'professional' === $class;
+$is_cli  = 'client' === $class;
 $e       = (array) ( $account['edit'] ?? array() );
 $old     = static fn( $f ) => sm_theme_old( $f, $e[ $f ] ?? '' );
-$labels  = sm_activity_labels();
-unset( $labels['engineer'] );
+$types   = sm_account_types();
+$labels  = (array) ( $types['classes'][ $class ]['activities'] ?? array() );
 $acts    = (array) sm_theme_old( 'activities', $account['company']['activities'] );
+// A type the administrator hid stays shown for the accounts that have it.
+foreach ( (array) $account['company']['activities'] as $code ) {
+	if ( ! isset( $labels[ $code ] ) && isset( $types['labels'][ $code ] ) && ! in_array( $code, array( 'client', 'engineer' ), true ) ) {
+		$labels[ $code ] = $types['labels'][ $code ];
+	}
+}
+$logo    = (string) ( $account['company']['logo'] ?? '' );
 
 if ( empty( $account['real'] ) ) {
 	sm_component( 'empty-state', array( 'icon' => 'company', 'title' => __( 'Sign in with a real account to edit the company profile.', 'sm-marketplace' ) ) );
@@ -25,28 +36,42 @@ if ( empty( $account['can_manage'] ) ) {
 	return;
 }
 ?>
-<?php sm_theme_form_open( 'company_save', array( 'class' => 'sm-form sm-form--dash' ) ); ?>
+<?php sm_theme_form_open( 'company_save', array( 'class' => 'sm-form sm-form--dash', 'enctype' => 'multipart/form-data' ) ); ?>
 	<section class="sm-panel">
-		<h2 class="sm-panel__title"><?php echo esc_html( $is_eng ? __( 'Identity', 'sm-marketplace' ) : __( 'Company', 'sm-marketplace' ) ); ?></h2>
+		<h2 class="sm-panel__title"><?php echo esc_html( 'company' === $class ? __( 'Company', 'sm-marketplace' ) : __( 'Identity', 'sm-marketplace' ) ); ?></h2>
+		<div class="sme-photo">
+			<?php sm_avatar( array( 'class' => $class, 'logo' => $logo, 'initials' => $account['company']['initials'] ), 'xl' ); ?>
+			<div>
+				<label class="sm-upload sm-upload--small">
+					<input type="file" name="logo[]" accept="image/jpeg,image/png,image/webp" data-sm-filename>
+					<?php sm_icon( 'camera', 'sm-upload__icon' ); ?>
+					<strong><?php echo esc_html( 'company' === $class ? ( $logo ? __( 'Change the logo', 'sm-marketplace' ) : __( 'Add your logo', 'sm-marketplace' ) ) : ( $logo ? __( 'Change the photo', 'sm-marketplace' ) : __( 'Add a photo or a logo', 'sm-marketplace' ) ) ); ?></strong>
+					<small data-sm-filename-label><?php esc_html_e( 'Square image, JPG, PNG or WebP, 2 MB maximum.', 'sm-marketplace' ); ?></small>
+				</label>
+				<?php sm_theme_error( 'logo' ); ?>
+				<?php if ( $logo ) : ?><label class="sm-check"><input type="checkbox" name="logo_remove" value="1"><span><?php esc_html_e( 'Remove the image', 'sm-marketplace' ); ?></span></label><?php endif; ?>
+			</div>
+		</div>
 		<div class="sm-field sm-field--row">
-			<div><label for="c-name"><?php echo esc_html( $is_eng ? __( 'Name or office name', 'sm-marketplace' ) : __( 'Company or trade name', 'sm-marketplace' ) ); ?></label><input id="c-name" name="name" value="<?php echo esc_attr( $old( 'name' ) ); ?>" dir="auto" required<?php sm_theme_aria( 'name' ); ?>><?php sm_theme_error( 'name' ); ?></div>
+			<div><label for="c-name"><?php echo esc_html( 'company' === $class ? __( 'Company or trade name', 'sm-marketplace' ) : ( $is_pro ? __( 'Name or business name', 'sm-marketplace' ) : __( 'Your name', 'sm-marketplace' ) ) ); ?></label><input id="c-name" name="name" value="<?php echo esc_attr( $old( 'name' ) ); ?>" dir="auto" required<?php sm_theme_aria( 'name' ); ?>><?php sm_theme_error( 'name' ); ?></div>
 			<div><label for="c-name-ar"><?php esc_html_e( 'Name in Arabic (optional)', 'sm-marketplace' ); ?></label><input id="c-name-ar" name="name_ar" value="<?php echo esc_attr( $old( 'name_ar' ) ); ?>" lang="ar" dir="rtl"></div>
 		</div>
-		<?php if ( $is_eng ) : ?>
+		<?php if ( $is_pro ) : ?>
 			<div class="sm-field sm-field--row">
-				<div><label for="c-title-fr"><?php esc_html_e( 'Professional title in French', 'sm-marketplace' ); ?></label><input id="c-title-fr" name="title_fr" value="<?php echo esc_attr( $old( 'title_fr' ) ); ?>" lang="fr" dir="ltr" placeholder="Bureau d’études — charpente métallique"></div>
+				<div><label for="c-title-fr"><?php esc_html_e( 'Professional title in French', 'sm-marketplace' ); ?></label><input id="c-title-fr" name="title_fr" value="<?php echo esc_attr( $old( 'title_fr' ) ); ?>" lang="fr" dir="ltr" placeholder="Soudeur qualifié — charpente métallique"></div>
 				<div><label for="c-title-ar"><?php esc_html_e( 'Professional title in Arabic', 'sm-marketplace' ); ?></label><input id="c-title-ar" name="title_ar" value="<?php echo esc_attr( $old( 'title_ar' ) ); ?>" lang="ar" dir="rtl"></div>
 			</div>
-		<?php else : ?>
+		<?php endif; ?>
+		<?php if ( $labels ) : ?>
 			<fieldset class="sm-field">
-				<legend><?php esc_html_e( 'Business activities', 'sm-marketplace' ); ?></legend>
+				<legend><?php echo esc_html( $is_pro ? __( 'Your trades', 'sm-marketplace' ) : __( 'Type of company', 'sm-marketplace' ) ); ?></legend>
 				<div class="sm-checkgrid">
 					<?php foreach ( $labels as $key => $label ) : ?>
 						<label class="sm-check"><input type="checkbox" name="activities[]" value="<?php echo esc_attr( $key ); ?>" <?php checked( in_array( $key, $acts, true ) ); ?>><span><?php echo esc_html( $label ); ?></span></label>
 					<?php endforeach; ?>
 				</div>
 				<?php sm_theme_error( 'activities' ); ?>
-				<p class="sm-help"><?php esc_html_e( 'Your activities decide what you can publish. The account type (business or engineering) cannot be changed.', 'sm-marketplace' ); ?></p>
+				<p class="sm-help"><?php esc_html_e( 'Shown on your public page and used by the directory filters. The kind of account cannot be changed.', 'sm-marketplace' ); ?></p>
 			</fieldset>
 		<?php endif; ?>
 		<div class="sm-field">
@@ -57,7 +82,7 @@ if ( empty( $account['can_manage'] ) ) {
 			<label for="c-about-ar"><?php esc_html_e( 'Presentation in Arabic', 'sm-marketplace' ); ?></label>
 			<textarea id="c-about-ar" name="about_ar" rows="4" lang="ar" dir="rtl"><?php echo esc_textarea( $old( 'about_ar' ) ); ?></textarea>
 		</div>
-		<?php if ( $is_eng ) : ?>
+		<?php if ( $is_pro ) : ?>
 			<div class="sm-field sm-field--row">
 				<div><label for="c-qual"><?php esc_html_e( 'Qualifications (one per line)', 'sm-marketplace' ); ?></label><textarea id="c-qual" name="qualifications" rows="4" dir="auto"><?php echo esc_textarea( $old( 'qualifications' ) ); ?></textarea></div>
 				<div><label for="c-spec"><?php esc_html_e( 'Specialisations (one per line)', 'sm-marketplace' ); ?></label><textarea id="c-spec" name="specialities" rows="4" dir="auto"><?php echo esc_textarea( $old( 'specialities' ) ); ?></textarea></div>
@@ -82,6 +107,7 @@ if ( empty( $account['can_manage'] ) ) {
 			<div><label for="c-commune"><?php esc_html_e( 'Commune', 'sm-marketplace' ); ?></label><input id="c-commune" name="commune" value="<?php echo esc_attr( $old( 'commune' ) ); ?>" dir="auto"></div>
 		</div>
 		<div class="sm-field"><label for="c-address"><?php esc_html_e( 'Address', 'sm-marketplace' ); ?></label><input id="c-address" name="address" value="<?php echo esc_attr( $old( 'address' ) ); ?>" dir="auto"></div>
+		<?php if ( ! $is_cli ) : ?>
 		<?php
 		sm_component(
 			'location-map',
@@ -94,14 +120,15 @@ if ( empty( $account['can_manage'] ) ) {
 			)
 		);
 		?>
+		<?php endif; ?>
 		<div class="sm-field sm-field--row sm-field--row3">
-			<div><label for="c-phone"><?php esc_html_e( 'Public phone', 'sm-marketplace' ); ?></label><input id="c-phone" name="phone" type="tel" value="<?php echo esc_attr( $old( 'phone' ) ); ?>" dir="ltr"<?php sm_theme_aria( 'phone' ); ?>><?php sm_theme_error( 'phone' ); ?></div>
-			<div><label for="c-email"><?php esc_html_e( 'Public e-mail', 'sm-marketplace' ); ?></label><input id="c-email" name="email" type="email" value="<?php echo esc_attr( $old( 'email' ) ); ?>" dir="ltr"<?php sm_theme_aria( 'email' ); ?>><?php sm_theme_error( 'email' ); ?></div>
+			<div><label for="c-phone"><?php echo esc_html( $is_cli ? __( 'Phone', 'sm-marketplace' ) : __( 'Public phone', 'sm-marketplace' ) ); ?></label><input id="c-phone" name="phone" type="tel" value="<?php echo esc_attr( $old( 'phone' ) ); ?>" dir="ltr"<?php sm_theme_aria( 'phone' ); ?>><?php sm_theme_error( 'phone' ); ?></div>
+			<div><label for="c-email"><?php echo esc_html( $is_cli ? __( 'E-mail', 'sm-marketplace' ) : __( 'Public e-mail', 'sm-marketplace' ) ); ?></label><input id="c-email" name="email" type="email" value="<?php echo esc_attr( $old( 'email' ) ); ?>" dir="ltr"<?php sm_theme_aria( 'email' ); ?>><?php sm_theme_error( 'email' ); ?></div>
 			<div><label for="c-web"><?php esc_html_e( 'Website', 'sm-marketplace' ); ?></label><input id="c-web" name="website" type="url" value="<?php echo esc_attr( $old( 'website' ) ); ?>" dir="ltr" placeholder="https://"></div>
 		</div>
 	</section>
 
-	<?php if ( ! $is_eng ) : ?>
+	<?php if ( 'company' === $class ) : ?>
 		<section class="sm-panel">
 			<h2 class="sm-panel__title"><?php esc_html_e( 'Registration numbers', 'sm-marketplace' ); ?></h2>
 			<p class="sm-help"><?php esc_html_e( 'Stored encrypted and never shown publicly. Only the platform team sees them during verification.', 'sm-marketplace' ); ?></p>
@@ -114,7 +141,11 @@ if ( empty( $account['can_manage'] ) ) {
 	<?php endif; ?>
 
 	<div class="sm-stepper__nav">
-		<a class="sm-btn sm-btn--ghost" href="<?php echo esc_url( sm_page_url( 'company', array( 'c' => $account['company']['slug'] ) ) ); ?>" target="_blank" rel="noopener"><?php sm_icon( 'eye' ); ?><?php esc_html_e( 'View public page', 'sm-marketplace' ); ?></a>
+		<?php if ( ! $is_cli ) : ?>
+			<a class="sm-btn sm-btn--ghost" href="<?php echo esc_url( sm_page_url( 'company', array( 'c' => $account['company']['slug'] ) ) ); ?>" target="_blank" rel="noopener"><?php sm_icon( 'eye' ); ?><?php esc_html_e( 'View public page', 'sm-marketplace' ); ?></a>
+		<?php else : ?>
+			<p class="sm-help"><?php sm_icon( 'lock' ); ?> <?php esc_html_e( 'Client accounts have no public page. Your listings show “Private seller”.', 'sm-marketplace' ); ?></p>
+		<?php endif; ?>
 		<button class="sm-btn sm-btn--accent" type="submit"><?php sm_icon( 'check' ); ?><?php esc_html_e( 'Save', 'sm-marketplace' ); ?></button>
 	</div>
 </form>

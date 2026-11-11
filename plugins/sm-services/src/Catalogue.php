@@ -1,6 +1,7 @@
 <?php
 /**
- * The two service catalogues (fabrication & site work, engineering).
+ * The service catalogue (fabrication & site work). Engineering studies are
+ * handled by SM Engineering (requests to the platform).
  *
  * @package SM\Services
  */
@@ -29,7 +30,7 @@ final class Catalogue {
 		return array_keys( self::all() );
 	}
 
-	/** Kinds the company may publish (by permission; engineering never gets fabrication). */
+	/** Kinds the company may publish (by permission). */
 	public static function allowed_kinds( $company_id = null ) {
 		$out = array();
 		foreach ( self::all() as $k => $def ) {

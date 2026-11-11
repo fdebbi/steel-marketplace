@@ -53,48 +53,88 @@ msgstr ""
 "Si un compte correspond, un lien de réinitialisation a été envoyé à son "
 "adresse e-mail."
 
+#: src/Accounts/Companies.php:37 src/Admin/Admin.php:140
+#: src/Admin/MailAdmin.php:657 src/Admin/MailAdmin.php:690
+msgid "Company"
+msgstr "Entreprise"
+
 #: src/Accounts/Companies.php:38
-msgid "Manufacturer"
-msgstr "Fabricant"
+msgid "Professional"
+msgstr "Professionnel"
 
-#: src/Accounts/Companies.php:39 src/Mail/Templates.php:153
-msgid "Supplier / distributor"
-msgstr "Fournisseur / distributeur"
+#: src/Accounts/Companies.php:39 src/Accounts/Companies.php:132
+msgid "Client"
+msgstr "Client"
 
-#: src/Accounts/Companies.php:40
-msgid "Installation company"
-msgstr "Entreprise de montage"
+#: src/Accounts/Companies.php:40 src/Accounts/Companies.php:133
+msgid "Partner engineer"
+msgstr "Ingénieur partenaire"
 
-#: src/Accounts/Companies.php:41
-msgid "Project owner"
-msgstr "Maître d’ouvrage"
+#: src/Accounts/Companies.php:119
+msgid "Steel construction contractor"
+msgstr "Réalisation de constructions métalliques"
 
-#: src/Accounts/Companies.php:42
-msgid "Second-hand dealer / recycler"
-msgstr "Revendeur d’occasion / recycleur"
+#: src/Accounts/Companies.php:120
+msgid "Manufacturing"
+msgstr "Fabrication"
 
-#: src/Accounts/Companies.php:43
-msgid "Fabrication services"
-msgstr "Services de fabrication"
+#: src/Accounts/Companies.php:121
+msgid "Supply and distribution"
+msgstr "Fourniture et distribution"
 
-#: src/Accounts/Companies.php:44
-msgid "Engineer / engineering office"
-msgstr "Ingénieur / bureau d’études"
+#: src/Accounts/Companies.php:122
+msgid "Recycling and scrap"
+msgstr "Recyclage et ferraille"
 
-#: src/Accounts/Companies.php:83 src/Accounts/CompanyForms.php:57
-#: src/Accounts/Registration.php:103
+#: src/Accounts/Companies.php:123
+msgid "Dismantling and second-hand resale"
+msgstr "Démontage et revente d’occasion"
+
+#: src/Accounts/Companies.php:124
+msgid "Structural steel fabricator"
+msgstr "Charpentier métallique"
+
+#: src/Accounts/Companies.php:125
+msgid "Steel structure erector"
+msgstr "Monteur de charpente"
+
+#: src/Accounts/Companies.php:126
+msgid "Roofing and cladding installer"
+msgstr "Poseur couverture et bardage"
+
+#: src/Accounts/Companies.php:127
+msgid "Welder"
+msgstr "Soudeur"
+
+#: src/Accounts/Companies.php:128
+msgid "Boilermaker"
+msgstr "Chaudronnier"
+
+#: src/Accounts/Companies.php:129
+msgid "Metalworker (locksmith)"
+msgstr "Serrurier-métallier"
+
+#: src/Accounts/Companies.php:130
+msgid "Lifting and handling"
+msgstr "Levage et manutention"
+
+#: src/Accounts/Companies.php:131
+msgid "Sandblasting and painting"
+msgstr "Sablage et peinture"
+
+#: src/Accounts/Companies.php:188
 msgid "Choose at least one business activity."
 msgstr "Choisissez au moins une activité."
 
-#: src/Accounts/Companies.php:105
+#: src/Accounts/Companies.php:210
 msgid "The account could not be saved. Please try again."
 msgstr "Le compte n’a pas pu être enregistré. Veuillez réessayer."
 
-#: src/Accounts/Companies.php:238
+#: src/Accounts/Companies.php:344
 msgid "The map position is not valid. Place the marker again."
 msgstr "La position sur la carte n’est pas valide. Replacez le repère."
 
-#: src/Accounts/Companies.php:244
+#: src/Accounts/Companies.php:350
 msgid "The map position must be in Algeria."
 msgstr "La position sur la carte doit se trouver en Algérie."
 
@@ -103,7 +143,7 @@ msgid "Only the account owner or a manager can edit the company."
 msgstr ""
 "Seul le titulaire du compte ou un gestionnaire peut modifier l’entreprise."
 
-#: src/Accounts/CompanyForms.php:34 src/Accounts/Registration.php:108
+#: src/Accounts/CompanyForms.php:34
 msgid "Enter the company or office name (2 to 120 characters)."
 msgstr "Saisissez le nom de l’entreprise ou du bureau (2 à 120 caractères)."
 
@@ -111,32 +151,40 @@ msgstr "Saisissez le nom de l’entreprise ou du bureau (2 à 120 caractères)."
 msgid "Enter a valid phone number."
 msgstr "Saisissez un numéro de téléphone valide."
 
-#: src/Accounts/CompanyForms.php:41 src/Accounts/Registration.php:118
+#: src/Accounts/CompanyForms.php:41 src/Accounts/Registration.php:145
 #: src/Rest/Api.php:196
 msgid "Choose your wilaya."
 msgstr "Choisissez votre wilaya."
 
-#: src/Accounts/CompanyForms.php:45 src/Accounts/Registration.php:130
+#: src/Accounts/CompanyForms.php:45 src/Accounts/Registration.php:157
 msgid "Enter a valid e-mail address."
 msgstr "Saisissez une adresse e-mail valide."
 
-#: src/Accounts/CompanyForms.php:95
+#: src/Accounts/CompanyForms.php:57 src/Accounts/Registration.php:126
+msgid "Choose at least one type of company."
+msgstr "Choisissez au moins un type d’entreprise."
+
+#: src/Accounts/CompanyForms.php:57 src/Accounts/Registration.php:126
+msgid "Choose at least one trade."
+msgstr "Choisissez au moins un métier."
+
+#: src/Accounts/CompanyForms.php:107
 msgid "Company profile saved."
 msgstr "Fiche entreprise enregistrée."
 
-#: src/Accounts/CompanyForms.php:106 src/Accounts/Registration.php:113
+#: src/Accounts/CompanyForms.php:118 src/Accounts/Registration.php:140
 msgid "Enter your full name."
 msgstr "Saisissez votre nom complet."
 
-#: src/Accounts/CompanyForms.php:119
+#: src/Accounts/CompanyForms.php:131
 msgid "Your current password is not correct."
 msgstr "Votre mot de passe actuel est incorrect."
 
-#: src/Accounts/CompanyForms.php:121 src/Accounts/Registration.php:138
+#: src/Accounts/CompanyForms.php:133 src/Accounts/Registration.php:165
 msgid "The password must have at least 10 characters."
 msgstr "Le mot de passe doit comporter au moins 10 caractères."
 
-#: src/Accounts/CompanyForms.php:139
+#: src/Accounts/CompanyForms.php:151
 msgid "Settings saved."
 msgstr "Paramètres enregistrés."
 
@@ -190,9 +238,8 @@ msgid "Wrong code. Check it and try again."
 msgstr "Code incorrect. Vérifiez-le et réessayez."
 
 #: src/Accounts/PhoneVerification.php:158
-msgid "Your account is verified. You can now publish your services."
-msgstr ""
-"Votre compte est vérifié. Vous pouvez maintenant publier vos services."
+msgid "Your account is verified."
+msgstr "Votre compte est vérifié."
 
 #: src/Accounts/PhoneVerification.php:159
 msgid "Your account is verified. You can now publish."
@@ -202,113 +249,105 @@ msgstr "Votre compte est vérifié. Vous pouvez maintenant publier."
 msgid "Too many codes requested. Try again in an hour."
 msgstr "Trop de codes demandés. Réessayez dans une heure."
 
-#: src/Accounts/Registration.php:31
+#: src/Accounts/Registration.php:32
 msgid "Too many sign-ups from this connection. Try again in an hour."
 msgstr "Trop d’inscriptions depuis cette connexion. Réessayez dans une heure."
 
-#: src/Accounts/Registration.php:83
+#: src/Accounts/Registration.php:49
 msgid "Welcome! Your account is created."
 msgstr "Bienvenue ! Votre compte est créé."
 
-#: src/Accounts/Registration.php:123
+#: src/Accounts/Registration.php:136
+msgid "Enter the company name (2 to 120 characters)."
+msgstr "Saisissez le nom de l’entreprise (2 à 120 caractères)."
+
+#: src/Accounts/Registration.php:150
 msgid ""
 "Enter a valid Algerian mobile number (05, 06 or 07 followed by 8 digits)."
 msgstr ""
 "Saisissez un numéro de mobile algérien valide (05, 06 ou 07 suivi de 8 "
 "chiffres)."
 
-#: src/Accounts/Registration.php:125
+#: src/Accounts/Registration.php:152
 msgid "This phone number is already used by another account."
 msgstr "Ce numéro est déjà utilisé par un autre compte."
 
-#: src/Accounts/Registration.php:132
+#: src/Accounts/Registration.php:159
 msgid ""
 "An account already exists with this e-mail. Sign in or reset your password."
 msgstr ""
 "Un compte existe déjà avec cet e-mail. Connectez-vous ou réinitialisez votre"
 " mot de passe."
 
-#: src/Accounts/Registration.php:142
+#: src/Accounts/Registration.php:169
 msgid "Accept the terms of use to continue."
 msgstr "Acceptez les conditions d’utilisation pour continuer."
 
-#: src/Admin/Admin.php:44
+#: src/Admin/Admin.php:45
 msgid "Overview"
 msgstr "Vue d’ensemble"
 
-#: src/Admin/Admin.php:45 src/Admin/Admin.php:127
+#: src/Admin/Admin.php:46 src/Admin/Admin.php:130
 msgid "Companies"
 msgstr "Entreprises"
 
-#: src/Admin/Admin.php:46
+#: src/Admin/Admin.php:47
 msgid "Verifications"
 msgstr "Vérifications"
 
-#: src/Admin/Admin.php:47
+#: src/Admin/Admin.php:48 src/Admin/Admin.php:315
+msgid "Account types"
+msgstr "Types de comptes"
+
+#: src/Admin/Admin.php:49
 msgid "Rights"
 msgstr "Droits"
 
-#: src/Admin/Admin.php:48 src/Admin/Admin.php:301
+#: src/Admin/Admin.php:50 src/Admin/Admin.php:384
 msgid "Wilayas"
 msgstr "Wilayas"
 
-#: src/Admin/Admin.php:49 src/Admin/Admin.php:320
+#: src/Admin/Admin.php:51 src/Admin/Admin.php:403
 msgid "Settings"
 msgstr "Réglages"
 
-#: src/Admin/Admin.php:50 src/Admin/MailAdmin.php:639
+#: src/Admin/Admin.php:52 src/Admin/MailAdmin.php:639
 msgid "Activity journal"
 msgstr "Journal d’activité"
 
-#: src/Admin/Admin.php:64 src/Admin/MailAdmin.php:74
+#: src/Admin/Admin.php:66 src/Admin/MailAdmin.php:74
 msgid "Saved."
 msgstr "Enregistré."
 
-#: src/Admin/Admin.php:80
+#: src/Admin/Admin.php:82
 msgid "0 — E-mail only"
 msgstr "0 — E-mail seulement"
 
-#: src/Admin/Admin.php:81
+#: src/Admin/Admin.php:83
 msgid "1 — Contact verified"
 msgstr "1 — Coordonnées vérifiées"
 
-#: src/Admin/Admin.php:82
+#: src/Admin/Admin.php:84
 msgid "2 — Verified business"
 msgstr "2 — Entreprise vérifiée"
 
-#: src/Admin/Admin.php:83
+#: src/Admin/Admin.php:85
 msgid "3 — Verified engineer"
 msgstr "3 — Ingénieur vérifié"
 
-#: src/Admin/Admin.php:88 src/Admin/Admin.php:130
-msgid "Engineering"
-msgstr "Ingénierie"
-
-#: src/Admin/Admin.php:88 src/Admin/Admin.php:130
-msgid "Business"
-msgstr "Professionnel"
-
-#: src/Admin/Admin.php:97
-msgid "Business accounts"
-msgstr "Comptes professionnels"
-
-#: src/Admin/Admin.php:98
-msgid "Engineering accounts"
-msgstr "Comptes ingénierie"
-
-#: src/Admin/Admin.php:99
+#: src/Admin/Admin.php:102
 msgid "Verified (level 2+)"
 msgstr "Vérifiés (niveau 2+)"
 
-#: src/Admin/Admin.php:100 src/Admin/Admin.php:248
+#: src/Admin/Admin.php:103 src/Admin/Admin.php:255
 msgid "Verifications to review"
 msgstr "Vérifications à examiner"
 
-#: src/Admin/Admin.php:101
+#: src/Admin/Admin.php:104
 msgid "Enquiries (30 days)"
 msgstr "Demandes (30 jours)"
 
-#: src/Admin/Admin.php:104
+#: src/Admin/Admin.php:107
 msgid ""
 "No SMS gateway is configured: verification codes are sent by e-mail. Make "
 "sure the site can send e-mails (Hostinger: create the mailbox and set up "
@@ -318,142 +357,137 @@ msgstr ""
 "envoyés par e-mail. Vérifiez que le site peut envoyer des e-mails (Hostinger"
 " : créez la boîte e-mail et configurez SMTP)."
 
-#: src/Admin/Admin.php:106
+#: src/Admin/Admin.php:109
 msgid "Modules"
 msgstr "Modules"
 
-#: src/Admin/Admin.php:130
+#: src/Admin/Admin.php:133
 msgid "All types"
 msgstr "Tous les types"
 
-#: src/Admin/Admin.php:131
+#: src/Admin/Admin.php:138
 msgid "All statuses"
 msgstr "Tous les statuts"
 
-#: src/Admin/Admin.php:131 src/Admin/Admin.php:148 src/Admin/Admin.php:204
-#: src/Admin/Admin.php:306
+#: src/Admin/Admin.php:138 src/Admin/Admin.php:155 src/Admin/Admin.php:211
+#: src/Admin/Admin.php:326 src/Admin/Admin.php:389
 msgid "Active"
 msgstr "Actif"
 
-#: src/Admin/Admin.php:131 src/Admin/Admin.php:148 src/Admin/Admin.php:204
+#: src/Admin/Admin.php:138 src/Admin/Admin.php:155 src/Admin/Admin.php:211
 msgid "Suspended"
 msgstr "Suspendu"
 
-#: src/Admin/Admin.php:132 src/Admin/MailAdmin.php:349
+#: src/Admin/Admin.php:139 src/Admin/MailAdmin.php:349
 #: src/Admin/MailAdmin.php:651
 msgid "Filter"
 msgstr "Filtrer"
 
-#: src/Admin/Admin.php:133 src/Admin/MailAdmin.php:657
-#: src/Admin/MailAdmin.php:690
-msgid "Company"
-msgstr "Entreprise"
-
-#: src/Admin/Admin.php:133 src/Admin/Admin.php:173 src/Admin/MailAdmin.php:657
+#: src/Admin/Admin.php:140 src/Admin/Admin.php:180 src/Admin/MailAdmin.php:657
 #: src/Admin/MailAdmin.php:690
 msgid "Type"
 msgstr "Type"
 
-#: src/Admin/Admin.php:133 src/Admin/Admin.php:205
+#: src/Admin/Admin.php:140 src/Admin/Admin.php:212
 msgid "Activities"
 msgstr "Activités"
 
-#: src/Admin/Admin.php:133 src/Admin/Admin.php:174
+#: src/Admin/Admin.php:140 src/Admin/Admin.php:181
 msgid "Wilaya"
 msgstr "Wilaya"
 
-#: src/Admin/Admin.php:133 src/Mail/Events.php:46
+#: src/Admin/Admin.php:140 src/Mail/Events.php:46
 msgid "Verification"
 msgstr "Vérification"
 
 #. translators: %d: count.
-#: src/Admin/Admin.php:133 src/Admin/Admin.php:204 src/Admin/MailAdmin.php:350
+#: src/Admin/Admin.php:140 src/Admin/Admin.php:211 src/Admin/MailAdmin.php:350
 msgid "Status"
 msgstr "Statut"
 
-#: src/Admin/Admin.php:133
+#: src/Admin/Admin.php:140
 msgid "Created"
 msgstr "Créé"
 
-#: src/Admin/Admin.php:135
+#: src/Admin/Admin.php:142
 msgid "No company yet."
 msgstr "Aucune entreprise pour l’instant."
 
-#: src/Admin/Admin.php:163 src/Rest/Api.php:160
+#: src/Admin/Admin.php:170 src/Rest/Api.php:160
 msgid "Company not found."
 msgstr "Entreprise introuvable."
 
-#: src/Admin/Admin.php:169
+#: src/Admin/Admin.php:176
 msgid "View public page"
 msgstr "Voir la page publique"
 
-#: src/Admin/Admin.php:173
+#: src/Admin/Admin.php:180
 msgid "fixed at registration"
 msgstr "fixé à l’inscription"
 
-#: src/Admin/Admin.php:175 src/Admin/MailAdmin.php:292
+#: src/Admin/Admin.php:182 src/Admin/MailAdmin.php:292
 msgid "Phone"
 msgstr "Téléphone"
 
-#: src/Admin/Admin.php:176 src/Admin/MailAdmin.php:214
+#: src/Admin/Admin.php:183 src/Admin/MailAdmin.php:214
 #: src/Admin/MailAdmin.php:293 src/Admin/MailAdmin.php:690
 msgid "E-mail"
 msgstr "E-mail"
 
-#: src/Admin/Admin.php:184
+#: src/Admin/Admin.php:191
 msgid "Members"
 msgstr "Membres"
 
-#: src/Admin/Admin.php:193
+#: src/Admin/Admin.php:200
 msgid "Moderation"
 msgstr "Modération"
 
-#: src/Admin/Admin.php:196
+#: src/Admin/Admin.php:203
 msgid "Verification level"
 msgstr "Niveau de vérification"
 
-#: src/Admin/Admin.php:210
+#: src/Admin/Admin.php:217
 msgid "Save"
 msgstr "Enregistrer"
 
-#: src/Admin/Admin.php:214
+#: src/Admin/Admin.php:221
 msgid "Latest verification request"
 msgstr "Dernière demande de vérification"
 
-#: src/Admin/Admin.php:217
+#: src/Admin/Admin.php:224
 msgid "Recent activity"
 msgstr "Activité récente"
 
-#: src/Admin/Admin.php:219
+#: src/Admin/Admin.php:226
 msgid "Full activity of this company"
 msgstr "Toute l’activité de cette entreprise"
 
 #. translators: 1: date, 2: status.
-#: src/Admin/Admin.php:227
+#: src/Admin/Admin.php:234
 msgid "Submitted %1$s — status: %2$s"
 msgstr "Envoyée le %1$s — statut : %2$s"
 
-#: src/Admin/Admin.php:239
+#: src/Admin/Admin.php:246
 msgid "Reason (sent to the company if rejected)"
 msgstr "Motif (envoyé à l’entreprise en cas de refus)"
 
-#: src/Admin/Admin.php:240
+#: src/Admin/Admin.php:247
 msgid "Approve"
 msgstr "Approuver"
 
-#: src/Admin/Admin.php:240
+#: src/Admin/Admin.php:247
 msgid "Reject"
 msgstr "Refuser"
 
-#: src/Admin/Admin.php:252
+#: src/Admin/Admin.php:259
 msgid "Nothing to review."
 msgstr "Rien à examiner."
 
-#: src/Admin/Admin.php:271
+#: src/Admin/Admin.php:278
 msgid "Rights by activity"
 msgstr "Droits par activité"
 
-#: src/Admin/Admin.php:273
+#: src/Admin/Admin.php:280
 msgid ""
 "A company gets a right when at least one of its activities has it, its "
 "verification level is high enough, and its plan allows it."
@@ -461,37 +495,92 @@ msgstr ""
 "Une entreprise obtient un droit si au moins une de ses activités le possède,"
 " si son niveau de vérification est suffisant et si son abonnement le permet."
 
-#: src/Admin/Admin.php:274
+#: src/Admin/Admin.php:281
 msgid ""
-"Engineering accounts can never receive trading rights (buy, listings, "
-"quotations, fabrication). This rule is enforced in code and cannot be "
-"changed here."
+"Partner engineer accounts can never receive trading rights (buy, listings, "
+"quotations, services, mission requests). This rule is enforced in code and "
+"cannot be changed here."
 msgstr ""
-"Les comptes ingénierie ne peuvent jamais recevoir de droits commerciaux "
-"(achat, annonces, devis, fabrication). Cette règle est imposée par le code "
-"et ne se modifie pas ici."
+"Les comptes ingénieur partenaire ne reçoivent jamais de droits commerciaux "
+"(achat, annonces, devis, services, demandes de missions). Cette règle est "
+"appliquée dans le code et ne peut pas être modifiée ici."
 
-#: src/Admin/Admin.php:277
+#: src/Admin/Admin.php:284
 msgid "Right"
 msgstr "Droit"
 
-#: src/Admin/Admin.php:282
+#: src/Admin/Admin.php:289
 msgid "Minimum level"
 msgstr "Niveau minimum"
 
-#: src/Admin/Admin.php:287
+#: src/Admin/Admin.php:294
 msgid "Locked"
 msgstr "Verrouillé"
 
-#: src/Admin/Admin.php:296
+#: src/Admin/Admin.php:303
 msgid "Save rights"
 msgstr "Enregistrer les droits"
 
-#: src/Admin/Admin.php:297
+#: src/Admin/Admin.php:304
 msgid "Restore the default rights"
 msgstr "Rétablir les droits par défaut"
 
-#: src/Admin/Admin.php:303
+#: src/Admin/Admin.php:317
+msgid ""
+"Companies choose one or more types, professionals one or more trades. A "
+"hidden type is no longer offered at registration; accounts that already have"
+" it keep it. New types get the rights of a contracting company (see Rights)."
+msgstr ""
+"Les entreprises choisissent un ou plusieurs types, les professionnels un ou "
+"plusieurs métiers. Un type masqué n’est plus proposé à l’inscription ; les "
+"comptes qui l’ont déjà le gardent. Les nouveaux types reçoivent les droits "
+"d’une entreprise de réalisation (voir Droits)."
+
+#: src/Admin/Admin.php:322
+msgid "Company types"
+msgstr "Types d’entreprise"
+
+#: src/Admin/Admin.php:323
+msgid "Trades of professionals"
+msgstr "Métiers des professionnels"
+
+#: src/Admin/Admin.php:326 src/Admin/Admin.php:389
+msgid "Code"
+msgstr "Code"
+
+#: src/Admin/Admin.php:326 src/Admin/Admin.php:389
+msgid "French"
+msgstr "Français"
+
+#: src/Admin/Admin.php:326 src/Admin/Admin.php:389
+msgid "Arabic"
+msgstr "Arabe"
+
+#: src/Admin/Admin.php:335
+msgid "New"
+msgstr "Nouveau"
+
+#: src/Admin/Admin.php:335
+msgid "French name"
+msgstr "Nom en français"
+
+#: src/Admin/Admin.php:335
+msgid "Arabic name"
+msgstr "Nom en arabe"
+
+#: src/Admin/Admin.php:338
+msgid ""
+"Leave a name empty to use the default wording (translated). Client and "
+"partner engineer accounts have no types."
+msgstr ""
+"Laissez un nom vide pour garder le libellé par défaut (traduit). Les comptes"
+" client et ingénieur partenaire n’ont pas de type."
+
+#: src/Admin/Admin.php:339
+msgid "Save account types"
+msgstr "Enregistrer les types de comptes"
+
+#: src/Admin/Admin.php:386
 msgid ""
 "Official list (69 wilayas: loi n° 26-06 of 4 April 2026 and décret "
 "présidentiel n° 26-206 of 25 May 2026, effective 1 January 2027). Correct a "
@@ -501,23 +590,11 @@ msgstr ""
 "présidentiel n° 26-206 du 25 mai 2026, effectifs au 1er janvier 2027). "
 "Corrigez une orthographe ou masquez une wilaya ici."
 
-#: src/Admin/Admin.php:306
-msgid "Code"
-msgstr "Code"
-
-#: src/Admin/Admin.php:306
-msgid "French"
-msgstr "Français"
-
-#: src/Admin/Admin.php:306
-msgid "Arabic"
-msgstr "Arabe"
-
-#: src/Admin/Admin.php:325
+#: src/Admin/Admin.php:408
 msgid "Default language"
 msgstr "Langue par défaut"
 
-#: src/Admin/Admin.php:329
+#: src/Admin/Admin.php:412
 msgid ""
 "Pages in the default language have no prefix; the other language uses /ar/ "
 "(or its code)."
@@ -525,19 +602,19 @@ msgstr ""
 "Les pages dans la langue par défaut n’ont pas de préfixe ; l’autre langue "
 "utilise /ar/ (ou son code)."
 
-#: src/Admin/Admin.php:330
+#: src/Admin/Admin.php:413
 msgid "Verification code channel"
 msgstr "Canal du code de vérification"
 
-#: src/Admin/Admin.php:330
+#: src/Admin/Admin.php:413
 msgid "SMS"
 msgstr "SMS"
 
-#: src/Admin/Admin.php:330
+#: src/Admin/Admin.php:413
 msgid "E-mail (no SMS gateway configured)"
 msgstr "E-mail (aucune passerelle SMS configurée)"
 
-#: src/Admin/Admin.php:330
+#: src/Admin/Admin.php:413
 msgid ""
 "An SMS gateway is added by a connector plugin through the sm_sms_provider "
 "filter."
@@ -545,23 +622,23 @@ msgstr ""
 "Une passerelle SMS s’ajoute avec une extension de connexion via le filtre "
 "sm_sms_provider."
 
-#: src/Admin/Admin.php:332
+#: src/Admin/Admin.php:415
 msgid "Failed sign-ins before a 15-minute lock"
 msgstr "Échecs de connexion avant un blocage de 15 minutes"
 
-#: src/Admin/Admin.php:333
+#: src/Admin/Admin.php:416
 msgid "Sign-ups per hour from one connection"
 msgstr "Inscriptions par heure depuis une connexion"
 
-#: src/Admin/Admin.php:334
+#: src/Admin/Admin.php:417
 msgid "Enquiries per hour per account"
 msgstr "Demandes par heure et par compte"
 
-#: src/Admin/Admin.php:339
+#: src/Admin/Admin.php:422
 msgid "Uninstall"
 msgstr "Désinstallation"
 
-#: src/Admin/Admin.php:339
+#: src/Admin/Admin.php:422
 msgid ""
 "Delete all platform data (companies, enquiries, logs) when the plugin is "
 "deleted"
@@ -570,18 +647,18 @@ msgstr ""
 "journaux) lors de la suppression de l’extension"
 
 #. translators: %d: count.
-#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:350
+#: src/Admin/Admin.php:429 src/Admin/MailAdmin.php:350
 #: src/Admin/MailAdmin.php:384 src/Admin/MailAdmin.php:657
 #: src/Admin/MailAdmin.php:690
 msgid "Date"
 msgstr "Date"
 
-#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:657
+#: src/Admin/Admin.php:429 src/Admin/MailAdmin.php:657
 #: src/Admin/MailAdmin.php:690
 msgid "Activity"
 msgstr "Activité"
 
-#: src/Admin/Admin.php:346 src/Admin/MailAdmin.php:191
+#: src/Admin/Admin.php:429 src/Admin/MailAdmin.php:191
 msgid "User"
 msgstr "Utilisateur"
 
@@ -1304,28 +1381,20 @@ msgstr "Messages"
 msgid "Security"
 msgstr "Sécurité"
 
-#: src/Mail/Events.php:121
-msgid "Engineering account"
-msgstr "Compte ingénierie"
-
-#: src/Mail/Events.php:121 src/Mail/Templates.php:152
-msgid "Business account"
-msgstr "Compte entreprise"
-
 #: src/Mail/Events.php:159
 msgid "New registration"
 msgstr "Nouvelle inscription"
 
 #. translators: 1: person, 2: company, 3: wilaya.
-#: src/Mail/Events.php:167
+#: src/Mail/Events.php:169
 msgid "%1$s registered (%2$s, %3$s)"
 msgstr "%1$s s’est inscrit (%2$s, %3$s)"
 
-#: src/Mail/Events.php:170
+#: src/Mail/Events.php:172
 msgid "New registration: {entreprise}"
 msgstr "Nouvelle inscription : {entreprise}"
 
-#: src/Mail/Events.php:171
+#: src/Mail/Events.php:173
 msgid ""
 "A new account was created on {site}.\n"
 "\n"
@@ -1353,11 +1422,11 @@ msgstr ""
 "Ouvrir l’entreprise dans l’administration :\n"
 "{lien_admin_entreprise}"
 
-#: src/Mail/Events.php:174
+#: src/Mail/Events.php:176
 msgid "Welcome to {site}"
 msgstr "Bienvenue sur {site}"
 
-#: src/Mail/Events.php:175
+#: src/Mail/Events.php:177
 msgid ""
 "Thank you for registering on {site}, the steel marketplace of Algeria.\n"
 "\n"
@@ -1379,20 +1448,20 @@ msgstr ""
 "Nous restons à votre disposition pour toute question.\n"
 "L’équipe {site}"
 
-#: src/Mail/Events.php:181
+#: src/Mail/Events.php:183
 msgid "Documents sent for verification"
 msgstr "Documents envoyés pour vérification"
 
 #. translators: %s: company.
-#: src/Mail/Events.php:188
+#: src/Mail/Events.php:190
 msgid "%s sent documents for verification"
 msgstr "%s a envoyé ses documents pour vérification"
 
-#: src/Mail/Events.php:191
+#: src/Mail/Events.php:193
 msgid "Verification to review: {entreprise}"
 msgstr "Vérification à traiter : {entreprise}"
 
-#: src/Mail/Events.php:192
+#: src/Mail/Events.php:194
 msgid ""
 "{entreprise} ({wilaya}) sent its documents for verification.\n"
 "\n"
@@ -1408,11 +1477,11 @@ msgstr ""
 "Examiner les documents :\n"
 "{lien_admin}"
 
-#: src/Mail/Events.php:195
+#: src/Mail/Events.php:197
 msgid "We received your documents"
 msgstr "Nous avons bien reçu vos documents"
 
-#: src/Mail/Events.php:196
+#: src/Mail/Events.php:198
 msgid ""
 "We received the documents of {entreprise}. The platform team checks them and you will be told of the result.\n"
 "\n"
@@ -1428,20 +1497,20 @@ msgstr ""
 "\n"
 "L’équipe {site}"
 
-#: src/Mail/Events.php:202
+#: src/Mail/Events.php:204
 msgid "Phone or e-mail confirmed"
 msgstr "Téléphone ou e-mail confirmé"
 
 #. translators: %s: company.
-#: src/Mail/Events.php:208
+#: src/Mail/Events.php:210
 msgid "%s confirmed its phone or e-mail"
 msgstr "%s a confirmé son téléphone ou son e-mail"
 
-#: src/Mail/Events.php:211
+#: src/Mail/Events.php:213
 msgid "Contact confirmed: {entreprise}"
 msgstr "Contact confirmé : {entreprise}"
 
-#: src/Mail/Events.php:212
+#: src/Mail/Events.php:214
 msgid ""
 "{entreprise} ({wilaya}) confirmed its phone or e-mail.\n"
 "\n"
@@ -1455,20 +1524,20 @@ msgstr ""
 "\n"
 "{lien_admin_entreprise}"
 
-#: src/Mail/Events.php:218
+#: src/Mail/Events.php:220
 msgid "Enquiry sent to a company"
 msgstr "Demande envoyée à une entreprise"
 
 #. translators: 1: sender, 2: company.
-#: src/Mail/Events.php:226
+#: src/Mail/Events.php:228
 msgid "%1$s sent an enquiry to %2$s"
 msgstr "%1$s a envoyé une demande à %2$s"
 
-#: src/Mail/Events.php:229
+#: src/Mail/Events.php:231
 msgid "Enquiry to {destinataire}"
 msgstr "Demande à {destinataire}"
 
-#: src/Mail/Events.php:230
+#: src/Mail/Events.php:232
 msgid ""
 "{nom} ({email}, {telephone}) sent an enquiry to {destinataire}.\n"
 "\n"
@@ -1482,11 +1551,11 @@ msgstr ""
 "\n"
 "{message}"
 
-#: src/Mail/Events.php:233
+#: src/Mail/Events.php:235
 msgid "Your enquiry was sent to {destinataire}"
 msgstr "Votre demande a été envoyée à {destinataire}"
 
-#: src/Mail/Events.php:234
+#: src/Mail/Events.php:236
 msgid ""
 "Your enquiry \"{sujet}\" was sent to {destinataire}. The company answers you directly by phone or e-mail.\n"
 "\n"
@@ -1496,20 +1565,20 @@ msgstr ""
 "\n"
 "L’équipe {site}"
 
-#: src/Mail/Events.php:240
+#: src/Mail/Events.php:242
 msgid "Contact form message"
 msgstr "Message du formulaire de contact"
 
 #. translators: 1: person, 2: subject.
-#: src/Mail/Events.php:254
+#: src/Mail/Events.php:256
 msgid "%1$s wrote through the contact form: %2$s"
 msgstr "%1$s a écrit via le formulaire de contact : %2$s"
 
-#: src/Mail/Events.php:257
+#: src/Mail/Events.php:259
 msgid "Contact: {sujet}"
 msgstr "Contact : {sujet}"
 
-#: src/Mail/Events.php:258
+#: src/Mail/Events.php:260
 msgid ""
 "Message from the contact form of {site}.\n"
 "\n"
@@ -1533,11 +1602,11 @@ msgstr ""
 "\n"
 "Répondez à cet e-mail pour répondre à {nom}."
 
-#: src/Mail/Events.php:261
+#: src/Mail/Events.php:263
 msgid "We received your message"
 msgstr "Nous avons bien reçu votre message"
 
-#: src/Mail/Events.php:262
+#: src/Mail/Events.php:264
 msgid ""
 "Thank you for your message \"{sujet}\". The {site} team answers you as soon as possible.\n"
 "\n"
@@ -1547,20 +1616,20 @@ msgstr ""
 "\n"
 "L’équipe {site}"
 
-#: src/Mail/Events.php:268
+#: src/Mail/Events.php:270
 msgid "Sign-in blocked after failed attempts"
 msgstr "Connexion bloquée après des échecs"
 
 #. translators: 1: login, 2: IP.
-#: src/Mail/Events.php:274
+#: src/Mail/Events.php:276
 msgid "Sign-in blocked for %1$s (IP %2$s)"
 msgstr "Connexion bloquée pour %1$s (IP %2$s)"
 
-#: src/Mail/Events.php:277
+#: src/Mail/Events.php:279
 msgid "Security: sign-in blocked"
 msgstr "Sécurité : connexion bloquée"
 
-#: src/Mail/Events.php:278
+#: src/Mail/Events.php:280
 msgid ""
 "Too many failed sign-ins: the account \"{identifiant}\" is blocked for a while.\n"
 "\n"
@@ -1582,6 +1651,14 @@ msgstr "Vous recevez cet e-mail suite à votre activité sur la plateforme."
 #: src/Mail/Mailer.php:79
 msgid "Hello %s,"
 msgstr "Bonjour %s,"
+
+#: src/Mail/Templates.php:152
+msgid "Business account"
+msgstr "Compte entreprise"
+
+#: src/Mail/Templates.php:153
+msgid "Supplier / distributor"
+msgstr "Fournisseur / distributeur"
 
 #: src/Mail/Templates.php:155
 msgid "Hello, we need 40 bars delivered to Rouiba next month."
@@ -1676,23 +1753,26 @@ msgid "Offer fabrication, installation and dismantling"
 msgstr "Proposer fabrication, montage et démontage"
 
 #: src/Permissions/Permissions.php:37
-msgid "Publish engineering services"
-msgstr "Publier des services d’ingénierie"
+msgid "Request a fabrication or installation service"
+msgstr "Demander un service de fabrication ou de montage"
 
 #: src/Permissions/Permissions.php:38
-msgid "Request an engineering or fabrication service"
-msgstr "Demander une prestation d’ingénierie ou de fabrication"
+msgid "Request an engineering study or inspection from the platform"
+msgstr "Demander une étude ou une inspection à la plateforme"
 
-#: src/Permissions/Permissions.php:102
-msgid "Sign in with a business or engineering account to do this."
-msgstr ""
-"Connectez-vous avec un compte professionnel ou ingénierie pour faire cela."
+#: src/Permissions/Permissions.php:39
+msgid "Carry out engineering missions for the platform"
+msgstr "Réaliser des missions d’ingénierie pour la plateforme"
 
-#: src/Permissions/Permissions.php:105
+#: src/Permissions/Permissions.php:115
+msgid "Sign in with your account to do this."
+msgstr "Connectez-vous à votre compte pour faire cela."
+
+#: src/Permissions/Permissions.php:118
 msgid "This account is suspended. Contact the platform team."
 msgstr "Ce compte est suspendu. Contactez l’équipe de la plateforme."
 
-#: src/Permissions/Permissions.php:110
+#: src/Permissions/Permissions.php:123
 msgid ""
 "Engineering accounts offer services only. To trade steel, open a separate "
 "business account."
@@ -1700,7 +1780,7 @@ msgstr ""
 "Les comptes ingénierie proposent uniquement des services. Pour commercer de "
 "l’acier, ouvrez un compte professionnel séparé."
 
-#: src/Permissions/Permissions.php:122
+#: src/Permissions/Permissions.php:135
 msgid ""
 "None of your business activities allows this action. Add the activity in "
 "your company settings."
@@ -1708,15 +1788,15 @@ msgstr ""
 "Aucune de vos activités ne permet cette action. Ajoutez l’activité dans la "
 "fiche entreprise."
 
-#: src/Permissions/Permissions.php:127
+#: src/Permissions/Permissions.php:140
 msgid "Verify your account to do this."
 msgstr "Vérifiez votre compte pour faire cela."
 
-#: src/Permissions/Permissions.php:140
+#: src/Permissions/Permissions.php:153
 msgid "Your plan does not include this action."
 msgstr "Votre abonnement n’inclut pas cette action."
 
-#: src/Permissions/Permissions.php:145
+#: src/Permissions/Permissions.php:158
 msgid "Engineering accounts offer services only."
 msgstr "Les comptes ingénierie proposent uniquement des services."
 
@@ -1740,48 +1820,56 @@ msgstr "Agrément ou enregistrement du bureau d’études (le cas échéant)"
 msgid "Identity document of the engineer"
 msgstr "Pièce d’identité de l’ingénieur"
 
-#: src/Verification/Verifications.php:44
+#: src/Verification/Verifications.php:45
+msgid "Craftsman card or auto-entrepreneur card"
+msgstr "Carte d’artisan ou carte d’auto-entrepreneur"
+
+#: src/Verification/Verifications.php:46 src/Verification/Verifications.php:51
+msgid "Identity document"
+msgstr "Pièce d’identité"
+
+#: src/Verification/Verifications.php:55
 msgid "Commercial register (RC)"
 msgstr "Registre du commerce (RC)"
 
-#: src/Verification/Verifications.php:45
+#: src/Verification/Verifications.php:56
 msgid "Tax identification number (NIF)"
 msgstr "Numéro d’identification fiscale (NIF)"
 
-#: src/Verification/Verifications.php:46
+#: src/Verification/Verifications.php:57
 msgid "Statistical identification number (NIS)"
 msgstr "Numéro d’identification statistique (NIS)"
 
-#: src/Verification/Verifications.php:121
+#: src/Verification/Verifications.php:132
 msgid "Only the account owner or a manager can request verification."
 msgstr ""
 "Seul le titulaire du compte ou un gestionnaire peut demander la "
 "vérification."
 
-#: src/Verification/Verifications.php:124
+#: src/Verification/Verifications.php:135
 msgid "Verify your contact details first."
 msgstr "Vérifiez d’abord vos coordonnées."
 
-#: src/Verification/Verifications.php:128
+#: src/Verification/Verifications.php:139
 msgid "A verification request is already being reviewed."
 msgstr "Une demande de vérification est déjà en cours d’examen."
 
 #. translators: %s: document name.
-#: src/Verification/Verifications.php:145
-#: src/Verification/Verifications.php:151
+#: src/Verification/Verifications.php:156
+#: src/Verification/Verifications.php:162
 msgid "%s: the file must be a PDF, JPG or PNG under 5 MB."
 msgstr "%s : le fichier doit être un PDF, JPG ou PNG de moins de 5 Mo."
 
-#: src/Verification/Verifications.php:159
+#: src/Verification/Verifications.php:170
 msgid "The file could not be saved. Try again."
 msgstr "Le fichier n’a pas pu être enregistré. Réessayez."
 
 #. translators: %s: document name.
-#: src/Verification/Verifications.php:173
+#: src/Verification/Verifications.php:184
 msgid "%s is required."
 msgstr "%s est obligatoire."
 
-#: src/Verification/Verifications.php:210
+#: src/Verification/Verifications.php:221
 msgid ""
 "Documents received. The platform team will review them, usually within 2 "
 "working days."
@@ -1789,19 +1877,19 @@ msgstr ""
 "Documents reçus. L’équipe de la plateforme les examinera, en général sous 2 "
 "jours ouvrés."
 
-#: src/Verification/Verifications.php:225
+#: src/Verification/Verifications.php:236
 msgid "This request was already reviewed."
 msgstr "Cette demande a déjà été examinée."
 
-#: src/Verification/Verifications.php:259
+#: src/Verification/Verifications.php:270
 msgid "Link expired."
 msgstr "Lien expiré."
 
-#: src/Verification/Verifications.php:263
-#: src/Verification/Verifications.php:272
+#: src/Verification/Verifications.php:274
+#: src/Verification/Verifications.php:283
 msgid "Document not found."
 msgstr "Document introuvable."
 
-#: src/Verification/Verifications.php:266
+#: src/Verification/Verifications.php:277
 msgid "You are not allowed to view this document."
 msgstr "Vous n’êtes pas autorisé à consulter ce document."

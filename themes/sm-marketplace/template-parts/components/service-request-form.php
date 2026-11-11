@@ -18,7 +18,7 @@ $val  = static fn( $k, $d = '' ) => isset( $old[ $k ] ) && ! is_array( $old[ $k 
 	<input type="hidden" name="service_id" value="<?php echo esc_attr( $item['id'] ); ?>">
 	<div class="sm-field">
 		<label for="sms-msg"><?php esc_html_e( 'Your project', 'sm-marketplace' ); ?></label>
-		<textarea id="sms-msg" name="message" rows="5" dir="auto" maxlength="3000" placeholder="<?php echo esc_attr( 'engineering' === $item['kind'] ? __( 'Type of structure, dimensions, site, what you need (study, drawings, inspection report…)', 'sm-marketplace' ) : __( 'What must be made or installed: profiles, quantities, dimensions, site, finish…', 'sm-marketplace' ) ); ?>"<?php sm_theme_aria( 'message' ); ?>><?php echo esc_textarea( $val( 'message' ) ); ?></textarea>
+		<textarea id="sms-msg" name="message" rows="5" dir="auto" maxlength="3000" placeholder="<?php esc_attr_e( 'What must be made or installed: profiles, quantities, dimensions, site, finish…', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'message' ); ?>><?php echo esc_textarea( $val( 'message' ) ); ?></textarea>
 		<?php sm_theme_error( 'message' ); ?>
 	</div>
 	<div class="sm-field sm-field--row sm-field--row3">

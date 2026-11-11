@@ -75,6 +75,8 @@ $market  = $item['market'];
 					<?php echo esc_html( sm_t( $company['name'] ) ); ?>
 					<?php if ( $company['verification'] >= 2 ) : ?><?php sm_icon( 'verified', 'sm-verified', sm_verification_label( $company['verification'] ) ); ?><?php endif; ?>
 				</a>
+			<?php elseif ( isset( $item['seller_public'] ) && ! $item['seller_public'] ) : ?>
+				<span class="sm-card__seller sm-card__seller--private"><?php esc_html_e( 'Private seller', 'sm-marketplace' ); ?></span>
 			<?php endif; ?>
 		</footer>
 	</div>

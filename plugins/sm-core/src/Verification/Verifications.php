@@ -33,11 +33,22 @@ final class Verifications {
 
 	/** Documents expected per account class: key => label. */
 	public static function document_types( $class ) {
-		if ( 'engineering' === $class ) {
+		if ( 'engineer' === $class ) {
 			return array(
 				'diploma'  => __( 'Engineering diploma', 'sm-core' ),
 				'approval' => __( 'Approval or registration of the engineering office (if any)', 'sm-core' ),
 				'id'       => __( 'Identity document of the engineer', 'sm-core' ),
+			);
+		}
+		if ( 'professional' === $class ) {
+			return array(
+				'card' => __( 'Craftsman card or auto-entrepreneur card', 'sm-core' ),
+				'id'   => __( 'Identity document', 'sm-core' ),
+			);
+		}
+		if ( 'client' === $class ) {
+			return array(
+				'id' => __( 'Identity document', 'sm-core' ),
 			);
 		}
 		return array(
@@ -49,7 +60,7 @@ final class Verifications {
 
 	/** Level granted on approval. */
 	public static function target_level( $class ) {
-		return 'engineering' === $class ? 3 : 2;
+		return 'engineer' === $class ? 3 : 2;
 	}
 
 	/**

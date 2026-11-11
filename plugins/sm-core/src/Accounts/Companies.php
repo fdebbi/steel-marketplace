@@ -3,7 +3,7 @@
  * Companies repository (sm_companies, sm_company_members, sm_company_activities).
  *
  * A company is the business account. One account_class per company, fixed at
- * creation: "commercial" (buys and sells) or "engineering" (services only).
+ * creation: company, professional, client or partner engineer (see CLASSES).
  * Users belong to a company with a company role: owner, manager, member.
  *
  * @package SM\Core
@@ -17,32 +17,137 @@ defined( 'ABSPATH' ) || exit;
 
 final class Companies {
 
-	const CLASSES = array( 'commercial', 'engineering' );
+	/**
+	 * Account classes (Phase 9.1):
+	 *  - company      : company with one or more company types; public page; buys and sells.
+	 *  - professional : craftsman / independent with one or more trades; public page; buys, sells, offers services.
+	 *  - client       : private account (no public page); buys, sells, requests services and quotations.
+	 *  - engineer     : partner engineer of the platform, on application only (sm-engineering); never trades.
+	 */
+	const CLASSES = array( 'company', 'professional', 'client', 'engineer' );
+
+	/** Option holding the administrator's changes to company types and trades. */
+	const TYPES_OPTION = 'sm_account_types';
 
 	/** @var array<int,object|null> */
 	private static $cache = array();
 
-	/** Activity codes by account class. */
-	public static function activities( $class = null ) {
-		$all = array(
-			'commercial'  => array( 'manufacturer', 'supplier', 'installer', 'project_owner', 'reuse_dealer', 'fabrication' ),
-			'engineering' => array( 'engineer' ),
+	public static function class_labels() {
+		return array(
+			'company'      => __( 'Company', 'sm-core' ),
+			'professional' => __( 'Professional', 'sm-core' ),
+			'client'       => __( 'Client', 'sm-core' ),
+			'engineer'     => __( 'Partner engineer', 'sm-core' ),
 		);
-		$all = apply_filters( 'sm_activities', $all );
-		return $class ? ( $all[ $class ] ?? array() ) : $all;
 	}
 
-	/** Translated activity labels. */
-	public static function activity_labels() {
+	public static function class_label( $class ) {
+		return self::class_labels()[ $class ] ?? $class;
+	}
+
+	/** URL of the logo / photo of an account ('' when none). */
+	public static function logo_url( $company, $size = 'thumbnail' ) {
+		$id = (int) ( $company->logo_id ?? 0 );
+		if ( ! $id ) {
+			return '';
+		}
+		$src = wp_get_attachment_image_src( $id, $size );
+		return $src ? (string) $src[0] : '';
+	}
+
+	/** Classes with a public page, shown in directories. */
+	public static function is_public_class( $class ) {
+		return in_array( $class, array( 'company', 'professional' ), true );
+	}
+
+	/** Classes where the user chooses types / trades. */
+	public static function chooses_activities( $class ) {
+		return in_array( $class, array( 'company', 'professional' ), true );
+	}
+
+	/** Built-in activity codes by class. */
+	public static function default_activities() {
 		return array(
-			'manufacturer'  => __( 'Manufacturer', 'sm-core' ),
-			'supplier'      => __( 'Supplier / distributor', 'sm-core' ),
-			'installer'     => __( 'Installation company', 'sm-core' ),
-			'project_owner' => __( 'Project owner', 'sm-core' ),
-			'reuse_dealer'  => __( 'Second-hand dealer / recycler', 'sm-core' ),
-			'fabrication'   => __( 'Fabrication services', 'sm-core' ),
-			'engineer'      => __( 'Engineer / engineering office', 'sm-core' ),
+			'company'      => array( 'construction', 'manufacturer', 'supplier', 'recycler', 'dismantler' ),
+			'professional' => array( 'trade_fabricator', 'trade_erector', 'trade_roofing', 'trade_welder', 'trade_boilermaker', 'trade_metalworker', 'trade_lifting', 'trade_painting' ),
+			'client'       => array( 'client' ),
+			'engineer'     => array( 'engineer' ),
 		);
+	}
+
+	/** Administrator's changes: labels, disabled codes, added codes. */
+	public static function type_settings() {
+		return wp_parse_args( (array) get_option( self::TYPES_OPTION, array() ), array( 'labels' => array(), 'disabled' => array(), 'custom' => array() ) );
+	}
+
+	/**
+	 * Activity codes by class.
+	 *
+	 * @param string|null $class      One class, or all.
+	 * @param bool        $all        Include the codes the administrator disabled (to read existing accounts).
+	 */
+	public static function activities( $class = null, $all = false ) {
+		$t   = self::type_settings();
+		$out = self::default_activities();
+		foreach ( (array) $t['custom'] as $c => $codes ) {
+			if ( isset( $out[ $c ] ) ) {
+				$out[ $c ] = array_values( array_unique( array_merge( $out[ $c ], (array) $codes ) ) );
+			}
+		}
+		if ( ! $all ) {
+			foreach ( $out as $c => $codes ) {
+				$out[ $c ] = array_values( array_diff( $codes, (array) $t['disabled'] ) );
+			}
+		}
+		$out = apply_filters( 'sm_activities', $out );
+		return $class ? ( $out[ $class ] ?? array() ) : $out;
+	}
+
+	/** Class of an activity code ('' when unknown). */
+	public static function activity_class( $code ) {
+		foreach ( self::activities( null, true ) as $class => $codes ) {
+			if ( in_array( $code, $codes, true ) ) {
+				return $class;
+			}
+		}
+		return '';
+	}
+
+	/** Translated labels (the administrator's wording first, in the current language). */
+	public static function activity_labels() {
+		$labels = array(
+			'construction'      => __( 'Steel construction contractor', 'sm-core' ),
+			'manufacturer'      => __( 'Manufacturing', 'sm-core' ),
+			'supplier'          => __( 'Supply and distribution', 'sm-core' ),
+			'recycler'          => __( 'Recycling and scrap', 'sm-core' ),
+			'dismantler'        => __( 'Dismantling and second-hand resale', 'sm-core' ),
+			'trade_fabricator'  => __( 'Structural steel fabricator', 'sm-core' ),
+			'trade_erector'     => __( 'Steel structure erector', 'sm-core' ),
+			'trade_roofing'     => __( 'Roofing and cladding installer', 'sm-core' ),
+			'trade_welder'      => __( 'Welder', 'sm-core' ),
+			'trade_boilermaker' => __( 'Boilermaker', 'sm-core' ),
+			'trade_metalworker' => __( 'Metalworker (locksmith)', 'sm-core' ),
+			'trade_lifting'     => __( 'Lifting and handling', 'sm-core' ),
+			'trade_painting'    => __( 'Sandblasting and painting', 'sm-core' ),
+			'client'            => __( 'Client', 'sm-core' ),
+			'engineer'          => __( 'Partner engineer', 'sm-core' ),
+		);
+		$lang = function_exists( 'sm_current_language' ) ? sm_current_language() : 'fr';
+		foreach ( (array) self::type_settings()['labels'] as $code => $l ) {
+			$text = trim( (string) ( $l[ $lang ] ?? '' ) );
+			if ( '' === $text && ! isset( $labels[ $code ] ) ) { // An added type without an Arabic name shows its French name.
+				$text = trim( (string) ( $l['fr'] ?? '' ) );
+			}
+			if ( '' !== $text ) {
+				$labels[ $code ] = $text;
+			}
+		}
+		return $labels;
+	}
+
+	/** Save the administrator's changes (labels, disabled, new codes). */
+	public static function save_type_settings( array $labels, array $disabled, array $custom ) {
+		update_option( self::TYPES_OPTION, array( 'labels' => $labels, 'disabled' => array_values( $disabled ), 'custom' => $custom ), false );
 	}
 
 	private static function now() {
@@ -73,11 +178,11 @@ final class Companies {
 	 */
 	public static function create( array $data, $owner_id, array $activities ) {
 		global $wpdb;
-		$class = in_array( $data['account_class'] ?? '', self::CLASSES, true ) ? $data['account_class'] : 'commercial';
+		$class = in_array( $data['account_class'] ?? '', self::CLASSES, true ) ? $data['account_class'] : 'company';
 		$allowed_activities = self::activities( $class );
 		$activities = array_values( array_intersect( $activities, $allowed_activities ) );
-		if ( 'engineering' === $class ) {
-			$activities = array( 'engineer' );
+		if ( ! self::chooses_activities( $class ) ) {
+			$activities = self::activities( $class, true );
 		}
 		if ( ! $activities ) {
 			return new \WP_Error( 'sm_no_activity', __( 'Choose at least one business activity.', 'sm-core' ) );
@@ -130,7 +235,8 @@ final class Companies {
 		if ( ! $company ) {
 			return;
 		}
-		$allowed    = self::activities( $company->account_class );
+		// Types the administrator hid stay allowed for accounts that already have them.
+		$allowed    = array_merge( self::activities( $company->account_class ), array_intersect( (array) $company->activities, self::activities( $company->account_class, true ) ) );
 		$activities = array_values( array_unique( array_intersect( $activities, $allowed ) ) );
 		if ( ! $activities ) {
 			return;
@@ -375,7 +481,9 @@ final class Companies {
 			$where[] = "$t.status = %s";
 			$vals[]  = $args['status'];
 		}
-		if ( $args['class'] ) {
+		if ( 'public' === $args['class'] ) {
+			$where[] = "$t.account_class IN ('company','professional')";
+		} elseif ( $args['class'] ) {
 			$where[] = "$t.account_class = %s";
 			$vals[]  = $args['class'];
 		}

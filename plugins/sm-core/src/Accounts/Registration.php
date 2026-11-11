@@ -1,6 +1,7 @@
 <?php
 /**
- * Registration: business account or engineering account, in one step.
+ * Registration: company, professional or client account, in one step.
+ * Partner engineers apply on their own page (sm-engineering).
  *
  * Creates the WordPress user (role sm_member, login = e-mail), the company,
  * its owner membership and activities, signs the user in, sends the
@@ -37,6 +38,28 @@ final class Registration {
 			Forms::back( $errors );
 		}
 
+		$ids = self::create_account( $data );
+		if ( is_wp_error( $ids ) ) {
+			Forms::back( array( $ids->get_error_code() => $ids->get_error_message() ) );
+		}
+		list( $user_id, $company_id ) = $ids;
+		self::sign_in( $user_id, $data );
+
+		$sent = PhoneVerification::send_code( $user_id );
+		$msg  = __( 'Welcome! Your account is created.', 'sm-core' );
+		if ( true === $sent ) {
+			$msg .= ' ' . PhoneVerification::sent_message( $user_id );
+		}
+		Forms::back( array(), $msg, Routes::url( 'account', array( 'view' => 'verify-phone' ) ) );
+	}
+
+	/**
+	 * Create the user and its account from validated data (also used by the
+	 * partner engineer application of sm-engineering).
+	 *
+	 * @return array|\WP_Error [ user_id, company_id ].
+	 */
+	public static function create_account( array $data ) {
 		$user_id = wp_insert_user(
 			array(
 				'user_login'   => $data['email'],
@@ -49,7 +72,7 @@ final class Registration {
 			)
 		);
 		if ( is_wp_error( $user_id ) ) {
-			Forms::back( array( 'email' => $user_id->get_error_message() ) );
+			return new \WP_Error( 'email', $user_id->get_error_message() );
 		}
 		update_user_meta( $user_id, 'sm_phone', $data['phone'] );
 		update_user_meta( $user_id, \SM\Core\I18n\Language::META, sm_current_language() );
@@ -68,47 +91,51 @@ final class Registration {
 		if ( is_wp_error( $company_id ) ) {
 			require_once ABSPATH . 'wp-admin/includes/user.php';
 			wp_delete_user( $user_id );
-			Forms::back( array( $company_id->get_error_message() ) );
+			return $company_id;
 		}
-
 		AuditLog::add( 'account.registered', 'company', $company_id, array( 'class' => $data['class'], 'activities' => $data['activities'] ), $user_id, $company_id );
+		return array( $user_id, $company_id );
+	}
 
+	/** Sign the new user in and announce the registration (welcome e-mail, admin alert). */
+	public static function sign_in( $user_id, array $data ) {
+		$company = Companies::for_user( $user_id );
 		wp_set_current_user( $user_id );
 		wp_set_auth_cookie( $user_id, true, is_ssl() );
 		do_action( 'wp_login', $data['email'], get_user_by( 'id', $user_id ) );
-
-		sm_event( 'account.registered', array( 'user_id' => $user_id, 'company_id' => $company_id ) );
-
-		$sent = PhoneVerification::send_code( $user_id );
-		$msg  = __( 'Welcome! Your account is created.', 'sm-core' );
-		if ( true === $sent ) {
-			$msg .= ' ' . PhoneVerification::sent_message( $user_id );
-		}
-		Forms::back( array(), $msg, Routes::url( 'account', array( 'view' => 'verify-phone' ) ) );
+		sm_event( 'account.registered', array( 'user_id' => $user_id, 'company_id' => $company ? (int) $company->id : 0 ) );
 	}
 
 	/**
 	 * Validate the posted form.
 	 *
+	 * @param string $force_class Account class decided by the caller (the engineer application).
 	 * @return array Clean data + 'errors' (field => message).
 	 */
-	public static function validate() {
+	public static function validate( $force_class = '' ) {
 		$errors = array();
-		$class  = Forms::post( 'account_class' ) === 'engineering' ? 'engineering' : 'commercial';
-
-		$activities = array_values( array_intersect( (array) Forms::post( 'activities', array() ), Companies::activities( 'commercial' ) ) );
-		if ( 'engineering' === $class ) {
-			$activities = array( 'engineer' );
-		} elseif ( ! $activities ) {
-			$errors['activities'] = __( 'Choose at least one business activity.', 'sm-core' );
+		$class  = in_array( Forms::post( 'account_class' ), array( 'company', 'professional', 'client' ), true ) ? Forms::post( 'account_class' ) : 'company';
+		if ( in_array( $force_class, Companies::CLASSES, true ) ) {
+			$class = $force_class;
 		}
 
-		$company = trim( Forms::post( 'company' ) );
-		if ( mb_strlen( $company ) < 2 || mb_strlen( $company ) > 120 ) {
-			$errors['company'] = __( 'Enter the company or office name (2 to 120 characters).', 'sm-core' );
+		$activities = array_values( array_intersect( (array) Forms::post( 'activities', array() ), Companies::activities( $class ) ) );
+		if ( ! Companies::chooses_activities( $class ) ) {
+			$activities = Companies::activities( $class, true );
+		} elseif ( ! $activities ) {
+			$errors['activities'] = 'company' === $class ? __( 'Choose at least one type of company.', 'sm-core' ) : __( 'Choose at least one trade.', 'sm-core' );
 		}
 
 		$full_name = trim( Forms::post( 'name' ) );
+		// A client or a professional is known by their own name when no business name is given.
+		$company = trim( Forms::post( 'company' ) );
+		if ( 'company' !== $class && '' === $company ) {
+			$company = $full_name;
+		}
+		if ( mb_strlen( $company ) < 2 || mb_strlen( $company ) > 120 ) {
+			$errors['company'] = __( 'Enter the company name (2 to 120 characters).', 'sm-core' );
+		}
+
 		if ( mb_strlen( $full_name ) < 3 ) {
 			$errors['name'] = __( 'Enter your full name.', 'sm-core' );
 		}

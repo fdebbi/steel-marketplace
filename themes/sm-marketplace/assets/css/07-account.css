@@ -26,7 +26,8 @@
 .sm-header__bell { position: relative; }
 .sm-dot { position: absolute; inset-block-start: 4px; inset-inline-end: 2px; min-inline-size: 18px; block-size: 18px; padding-inline: 4px; border-radius: 999px; background: #DC2626; color: #fff; font-size: 11px; font-weight: 700; display: grid; place-items: center; line-height: 1; }
 .sm-avatar--xs { inline-size: 26px; block-size: 26px; border-radius: 6px; font-size: 11px; background: var(--sm-accent); }
-.sm-avatar--xs.sm-avatar--engineering { background: color-mix(in srgb, var(--sm-accent) 50%, var(--sm-info)); }
+.sm-avatar--xs.sm-avatar--engineering, .sm-avatar--xs.sm-avatar--engineer { background: color-mix(in srgb, var(--sm-accent) 50%, var(--sm-info)); }
+.sm-avatar--xs.sm-avatar--img { background: var(--sm-surface); }
 
 /* Verification steps */
 .sm-vsteps { list-style: none; display: grid; gap: var(--sm-s2); margin-block-end: var(--sm-s4); }

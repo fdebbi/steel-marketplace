@@ -329,6 +329,12 @@ final class Language {
 				restore_previous_locale();
 			}
 			self::$current = $previous;
+			// WordPress keeps translations per locale: when the request's language
+			// differs from the restored WordPress locale (admin-post.php, REST),
+			// switch to it again so the rest of the request stays translated.
+			if ( null !== $previous && self::locale( $previous ) !== determine_locale() && did_action( 'init' ) ) {
+				switch_to_locale( self::locale( $previous ) );
+			}
 			self::reload_textdomains();
 		}
 	}

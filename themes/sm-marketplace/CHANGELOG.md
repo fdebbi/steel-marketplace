@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.13.0 — 2026-11-11 (Phase 9.1, avec sm-core 0.6.0 et sm-engineering 0.1.0)
+
+- Inscription : trois cartes (Société / Professionnel / Client), types ou métiers selon le choix, lien « Devenir ingénieur partenaire » ; logo et texte du panneau alignés en haut avec « Créez votre compte ».
+- Nouvelles pages : Devenir ingénieur partenaire, Demander une étude ; page Ingénierie refaite (fonctionnement + liste des ingénieurs partenaires sans coordonnées).
+- Tableau de bord ingénieur : vue d'ensemble, missions, facturation, dossiers et plans, profil partenaire ; vue « Études d'ingénierie » pour les autres comptes.
+- Logo / photo dans l'en-tête, les cartes, les profils ; annuaire filtrable sociétés / professionnels ; « Particulier » pour les annonces des clients.
+- Barre mobile adaptée aux ingénieurs ; nom des fichiers choisis affiché dans les champs de téléversement.
+
 ## 0.12.0 — 2026-11-08 (Phase 9, avec sm-ai 0.1.0)
 
 - Tableau de bord « Assistant IA » (entreprises et ingénieurs) :

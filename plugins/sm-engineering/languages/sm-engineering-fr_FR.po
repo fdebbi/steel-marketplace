@@ -1,0 +1,1605 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Engineering 0.1.0\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: sm-engineering\n"
+
+#. Plugin Name of the plugin
+#: sm-engineering.php
+msgid "SM Engineering"
+msgstr "SM Engineering"
+
+#. Plugin URI of the plugin
+#: sm-engineering.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-engineering.php
+msgid ""
+"Partner engineers and engineering missions. Engineers apply on their own "
+"page and are approved by the platform; every study or inspection request "
+"goes to the platform, which sends a quote to the client and gives the "
+"mission to an approved engineer as a subcontractor. Clients never deal with "
+"engineers directly. Requires SM Core."
+msgstr ""
+"Ingénieurs partenaires et missions d’ingénierie. Les ingénieurs postulent "
+"sur leur propre page et sont validés par la plateforme ; chaque demande "
+"d’étude ou d’inspection va à la plateforme, qui envoie un devis au client et"
+" confie la mission à un ingénieur validé en sous-traitance. Les clients ne "
+"traitent jamais directement avec les ingénieurs. Nécessite SM Core."
+
+#. Author of the plugin
+#: sm-engineering.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-engineering.php:47
+msgid "SM Engineering needs the SM Core plugin. Activate it first."
+msgstr "SM Engineering a besoin de l’extension SM Core. Activez-la d’abord."
+
+#: src/Activity.php:20
+msgid "Engineering"
+msgstr "Ingénierie"
+
+#: src/Activity.php:73 src/Activity.php:185 src/Apply.php:121
+msgid "Partner engineer application"
+msgstr "Candidature d’ingénieur partenaire"
+
+#. translators: 1: engineer, 2: title.
+#: src/Activity.php:81
+msgid "%1$s applied as a partner engineer (%2$s)"
+msgstr "%1$s a postulé comme ingénieur partenaire (%2$s)"
+
+#: src/Activity.php:84
+msgid "Partner engineer application: {nom}"
+msgstr "Candidature d’ingénieur partenaire : {nom}"
+
+#: src/Activity.php:85
+msgid ""
+"{nom} applied to become a partner engineer.\n"
+"\n"
+"Title: {titre}\n"
+"Diploma: {diplome}\n"
+"Experience: {experience} years\n"
+"Specialties: {specialites}\n"
+"Wilaya: {wilaya}\n"
+"\n"
+"{email} — {telephone}\n"
+"\n"
+"Check the documents and decide:\n"
+"{lien_admin}"
+msgstr ""
+"{nom} a postulé pour devenir ingénieur partenaire.\n"
+"\n"
+"Titre : {titre}\n"
+"Diplôme : {diplome}\n"
+"Expérience : {experience} ans\n"
+"Spécialités : {specialites}\n"
+"Wilaya : {wilaya}\n"
+"\n"
+"{email} — {telephone}\n"
+"\n"
+"Vérifiez les documents et décidez :\n"
+"{lien_admin}"
+
+#: src/Activity.php:88
+msgid "Your partner engineer application is received"
+msgstr "Votre candidature d’ingénieur partenaire est reçue"
+
+#: src/Activity.php:89
+msgid ""
+"Hello {nom},\n"
+"\n"
+"Thank you for applying to become a partner engineer of {site}. The platform team checks your diploma and your documents, usually within 3 working days, and tells you the decision by e-mail.\n"
+"\n"
+"Once approved, you appear on the list of partner engineers (without your contact details) and the platform offers you missions matching your specialties: {specialites}.\n"
+"\n"
+"Follow your application:\n"
+"{lien}\n"
+"\n"
+"The {site} team"
+msgstr ""
+"Bonjour {nom},\n"
+"\n"
+"Merci pour votre candidature d’ingénieur partenaire de {site}. L’équipe de la plateforme vérifie votre diplôme et vos documents, en général sous 3 jours ouvrés, et vous informe de la décision par e-mail.\n"
+"\n"
+"Une fois validé, vous apparaissez sur la liste des ingénieurs partenaires (sans vos coordonnées) et la plateforme vous propose des missions selon vos spécialités : {specialites}.\n"
+"\n"
+"Suivez votre candidature :\n"
+"{lien}\n"
+"\n"
+"L’équipe {site}"
+
+#: src/Activity.php:95 src/Activity.php:190
+msgid "Study request"
+msgstr "Demande d’étude"
+
+#. translators: 1: client, 2: reference, 3: type of study.
+#: src/Activity.php:103
+msgid "%1$s asked for a study %2$s (%3$s)"
+msgstr "%1$s a demandé une étude %2$s (%3$s)"
+
+#: src/Activity.php:106
+msgid "Study request {reference}: {type_etude}"
+msgstr "Demande d’étude {reference} : {type_etude}"
+
+#: src/Activity.php:107
+msgid ""
+"{client} ({wilaya}) asks for a study.\n"
+"\n"
+"{reference} — {titre}\n"
+"Type: {type_etude}\n"
+"\n"
+"{message}\n"
+"\n"
+"Contact: {nom} — {email} — {telephone}\n"
+"\n"
+"Prepare the quote:\n"
+"{lien_admin}"
+msgstr ""
+"{client} ({wilaya}) demande une étude.\n"
+"\n"
+"{reference} — {titre}\n"
+"Type : {type_etude}\n"
+"\n"
+"{message}\n"
+"\n"
+"Contact : {nom} — {email} — {telephone}\n"
+"\n"
+"Préparez le devis :\n"
+"{lien_admin}"
+
+#: src/Activity.php:110
+msgid "Your study request {reference} is received"
+msgstr "Votre demande d’étude {reference} est reçue"
+
+#: src/Activity.php:111
+msgid ""
+"Hello {nom},\n"
+"\n"
+"Your request \"{titre}\" ({type_etude}) is received under the reference {reference}.\n"
+"\n"
+"The platform studies it and sends you a quote, usually within 2 working days. Once you accept it, a partner engineer of the platform carries out the study and the platform delivers the documents in your account.\n"
+"\n"
+"Follow your request:\n"
+"{lien}\n"
+"\n"
+"The {site} team"
+msgstr ""
+"Bonjour {nom},\n"
+"\n"
+"Votre demande « {titre} » ({type_etude}) est reçue sous la référence {reference}.\n"
+"\n"
+"La plateforme l’étudie et vous envoie un devis, en général sous 2 jours ouvrés. Une fois accepté, un ingénieur partenaire de la plateforme réalise l’étude et la plateforme livre les documents dans votre compte.\n"
+"\n"
+"Suivez votre demande :\n"
+"{lien}\n"
+"\n"
+"L’équipe {site}"
+
+#: src/Activity.php:117
+msgid "Study quote accepted"
+msgstr "Devis d’étude accepté"
+
+#. translators: 1: client, 2: reference, 3: amount.
+#: src/Activity.php:123
+msgid "%1$s accepted the quote of %2$s (%3$s)"
+msgstr "%1$s a accepté le devis de %2$s (%3$s)"
+
+#: src/Activity.php:126
+msgid "Quote accepted: {reference} ({montant})"
+msgstr "Devis accepté : {reference} ({montant})"
+
+#: src/Activity.php:127
+msgid ""
+"{client} accepted the quote of {reference} — {titre}.\n"
+"\n"
+"Amount: {montant}\n"
+"\n"
+"Assign a partner engineer:\n"
+"{lien_admin}"
+msgstr ""
+"{client} a accepté le devis de {reference} — {titre}.\n"
+"\n"
+"Montant : {montant}\n"
+"\n"
+"Désignez un ingénieur partenaire :\n"
+"{lien_admin}"
+
+#: src/Activity.php:133 src/Activity.php:199
+msgid "Mission declined by the engineer"
+msgstr "Mission refusée par l’ingénieur"
+
+#. translators: %s: reference.
+#: src/Activity.php:139
+msgid "The engineer declined %s"
+msgstr "L’ingénieur a refusé %s"
+
+#: src/Activity.php:142
+msgid "Engineer to replace: {reference}"
+msgstr "Ingénieur à remplacer : {reference}"
+
+#: src/Activity.php:143
+msgid ""
+"The engineer declined {reference} — {titre}. Choose another partner engineer:\n"
+"{lien_admin}"
+msgstr ""
+"L’ingénieur a refusé {reference} — {titre}. Choisissez un autre ingénieur partenaire :\n"
+"{lien_admin}"
+
+#: src/Activity.php:149 src/Activity.php:200
+msgid "Deliverables sent by the engineer"
+msgstr "Livrables envoyés par l’ingénieur"
+
+#. translators: 1: engineer, 2: reference.
+#: src/Activity.php:155
+msgid "%1$s sent the deliverables of %2$s"
+msgstr "%1$s a envoyé les livrables de %2$s"
+
+#: src/Activity.php:158
+msgid "Deliverables to check: {reference}"
+msgstr "Livrables à vérifier : {reference}"
+
+#: src/Activity.php:159
+msgid ""
+"{ingenieur} sent the deliverables of {reference} — {titre}.\n"
+"\n"
+"Check them, then deliver them to the client or ask for changes:\n"
+"{lien_admin}"
+msgstr ""
+"{ingenieur} a envoyé les livrables de {reference} — {titre}.\n"
+"\n"
+"Vérifiez-les, puis livrez-les au client ou demandez des corrections :\n"
+"{lien_admin}"
+
+#: src/Activity.php:165 src/Activity.php:207
+msgid "Message on a mission"
+msgstr "Message sur une mission"
+
+#. translators: %s: reference.
+#: src/Activity.php:172
+msgid "New message on %s"
+msgstr "Nouveau message sur %s"
+
+#: src/Activity.php:175
+msgid "Message on {reference}"
+msgstr "Message sur {reference}"
+
+#: src/Activity.php:176
+msgid ""
+"New message on {reference} — {titre}.\n"
+"\n"
+"Answer from the mission page:\n"
+"{lien_admin}"
+msgstr ""
+"Nouveau message sur {reference} — {titre}.\n"
+"\n"
+"Répondez depuis la page de la mission :\n"
+"{lien_admin}"
+
+#: src/Activity.php:186
+msgid "Partner engineer approved"
+msgstr "Ingénieur partenaire validé"
+
+#: src/Activity.php:187
+msgid "Partner engineer application refused"
+msgstr "Candidature d’ingénieur partenaire refusée"
+
+#: src/Activity.php:188
+msgid "Partner engineer suspended"
+msgstr "Ingénieur partenaire suspendu"
+
+#: src/Activity.php:189
+msgid "Engineer profile saved"
+msgstr "Profil d’ingénieur enregistré"
+
+#: src/Activity.php:191
+msgid "Quote sent to the client"
+msgstr "Devis envoyé au client"
+
+#: src/Activity.php:192
+msgid "Study request declined by the platform"
+msgstr "Demande d’étude refusée par la plateforme"
+
+#: src/Activity.php:193
+msgid "Quote accepted by the client"
+msgstr "Devis accepté par le client"
+
+#: src/Activity.php:194 src/Notifications.php:69
+msgid "Quote refused by the client"
+msgstr "Devis refusé par le client"
+
+#: src/Activity.php:195 src/Notifications.php:76
+msgid "Study request cancelled"
+msgstr "Demande d’étude annulée"
+
+#: src/Activity.php:196
+msgid "Mission offered to an engineer"
+msgstr "Mission proposée à un ingénieur"
+
+#: src/Activity.php:197
+msgid "Mission withdrawn from the engineer"
+msgstr "Mission retirée à l’ingénieur"
+
+#: src/Activity.php:198
+msgid "Mission accepted by the engineer"
+msgstr "Mission acceptée par l’ingénieur"
+
+#: src/Activity.php:201
+msgid "Changes asked to the engineer"
+msgstr "Corrections demandées à l’ingénieur"
+
+#: src/Activity.php:202
+msgid "Study delivered to the client"
+msgstr "Étude livrée au client"
+
+#: src/Activity.php:203
+msgid "Mission closed"
+msgstr "Mission clôturée"
+
+#: src/Activity.php:204
+msgid "Engineer fee paid"
+msgstr "Honoraires de l’ingénieur payés"
+
+#: src/Activity.php:205
+msgid "Client payment recorded"
+msgstr "Paiement du client enregistré"
+
+#: src/Activity.php:206
+msgid "Client payment cancelled"
+msgstr "Paiement du client annulé"
+
+#: src/Activity.php:208
+msgid "Mission file downloaded"
+msgstr "Fichier de mission téléchargé"
+
+#: src/Activity.php:209 src/Admin/Admin.php:293
+msgid "Mission"
+msgstr "Mission"
+
+#: src/Activity.php:210
+msgid "Partner engineer"
+msgstr "Ingénieur partenaire"
+
+#: src/Admin/Admin.php:43 src/Admin/Admin.php:275 src/Admin/Admin.php:363
+msgid "Engineering missions"
+msgstr "Missions d’ingénierie"
+
+#: src/Admin/Admin.php:44 src/Admin/Admin.php:127 src/Admin/Admin.php:163
+msgid "Partner engineers"
+msgstr "Ingénieurs partenaires"
+
+#: src/Admin/Admin.php:45 src/Admin/Admin.php:571
+msgid "Engineering settings"
+msgstr "Réglages ingénierie"
+
+#: src/Admin/Admin.php:55
+msgid "Saved."
+msgstr "Enregistré."
+
+#: src/Admin/Admin.php:100
+msgid "To review"
+msgstr "À examiner"
+
+#: src/Admin/Admin.php:101
+msgid "Approved"
+msgstr "Validé"
+
+#: src/Admin/Admin.php:102
+msgid "Refused"
+msgstr "Refusé"
+
+#: src/Admin/Admin.php:103
+msgid "Suspended"
+msgstr "Suspendu"
+
+#: src/Admin/Admin.php:129
+msgid ""
+"Engineers apply on the page “Become a partner engineer”. Check the diploma "
+"and the documents, then approve or refuse. Approved engineers appear on the "
+"public list, without their contact details, and can receive missions."
+msgstr ""
+"Les ingénieurs postulent sur la page « Devenir ingénieur partenaire ». "
+"Vérifiez le diplôme et les documents, puis validez ou refusez. Les "
+"ingénieurs validés apparaissent sur la liste publique, sans leurs "
+"coordonnées, et peuvent recevoir des missions."
+
+#: src/Admin/Admin.php:137
+msgid "Nobody here."
+msgstr "Personne ici."
+
+#: src/Admin/Admin.php:141 src/Admin/Admin.php:293 src/Admin/Admin.php:400
+msgid "Engineer"
+msgstr "Ingénieur"
+
+#: src/Admin/Admin.php:141 src/Admin/Admin.php:173
+msgid "Specialties"
+msgstr "Spécialités"
+
+#. translators: %d: years.
+#: src/Admin/Admin.php:141 src/Admin/Admin.php:172
+msgid "Experience"
+msgstr "Expérience"
+
+#: src/Admin/Admin.php:141 src/Admin/Admin.php:174 src/Admin/Admin.php:373
+msgid "Wilaya"
+msgstr "Wilaya"
+
+#: src/Admin/Admin.php:141 src/Admin/Admin.php:228
+msgid "Missions"
+msgstr "Missions"
+
+#: src/Admin/Admin.php:141 src/Admin/Admin.php:176
+msgid "Applied"
+msgstr "Candidature"
+
+#. translators: %d: years.
+#: src/Admin/Admin.php:148 src/Admin/Admin.php:172
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] "%d an"
+msgstr[1] "%d ans"
+
+#: src/Admin/Admin.php:157
+msgid "Engineer not found"
+msgstr "Ingénieur introuvable"
+
+#: src/Admin/Admin.php:166
+msgid "Profile"
+msgstr "Profil"
+
+#: src/Admin/Admin.php:168
+msgid "Title"
+msgstr "Titre"
+
+#: src/Admin/Admin.php:169
+msgid "Diploma"
+msgstr "Diplôme"
+
+#: src/Admin/Admin.php:170
+msgid "School"
+msgstr "École"
+
+#: src/Admin/Admin.php:175
+msgid "Available"
+msgstr "Disponible"
+
+#: src/Admin/Admin.php:175
+msgid "Yes"
+msgstr "Oui"
+
+#: src/Admin/Admin.php:175
+msgid "No"
+msgstr "Non"
+
+#: src/Admin/Admin.php:183
+msgid "Contact (platform only)"
+msgstr "Contact (plateforme uniquement)"
+
+#: src/Admin/Admin.php:184
+msgid "E-mail"
+msgstr "E-mail"
+
+#: src/Admin/Admin.php:185 src/Admin/Admin.php:385
+msgid "Phone"
+msgstr "Téléphone"
+
+#: src/Admin/Admin.php:186
+msgid "Verification"
+msgstr "Vérification"
+
+#: src/Admin/Admin.php:188
+msgid "Documents"
+msgstr "Documents"
+
+#: src/Admin/Admin.php:197
+msgid "No documents."
+msgstr "Aucun document."
+
+#: src/Admin/Admin.php:201
+msgid "Decision"
+msgstr "Décision"
+
+#: src/Admin/Admin.php:207
+msgid "Reason (required to refuse or suspend; the engineer reads it)"
+msgstr "Motif (obligatoire pour refuser ou suspendre ; l’ingénieur le lit)"
+
+#: src/Admin/Admin.php:209
+msgid "Approve"
+msgstr "Valider"
+
+#: src/Admin/Admin.php:209
+msgid "Refuse"
+msgstr "Refuser"
+
+#: src/Admin/Admin.php:210
+msgid "Suspend"
+msgstr "Suspendre"
+
+#: src/Admin/Admin.php:211
+msgid "Restore"
+msgstr "Rétablir"
+
+#: src/Admin/Admin.php:212
+msgid "Approve anyway"
+msgstr "Valider quand même"
+
+#: src/Admin/Admin.php:228
+msgid "Fees due"
+msgstr "Honoraires dus"
+
+#: src/Admin/Admin.php:228
+msgid "Fees paid"
+msgstr "Honoraires payés"
+
+#: src/Admin/Admin.php:245
+msgid "Give the reason: the engineer reads it."
+msgstr "Indiquez le motif : l’ingénieur le lit."
+
+#: src/Admin/Admin.php:277
+msgid ""
+"Every study or inspection request comes here. Send the quote to the client, "
+"then give the mission to a partner engineer with the fee you agree with him."
+" Check the deliverables before they reach the client. The client and the "
+"engineer never see each other."
+msgstr ""
+"Chaque demande d’étude ou d’inspection arrive ici. Envoyez le devis au "
+"client, puis confiez la mission à un ingénieur partenaire avec les "
+"honoraires convenus avec lui. Vérifiez les livrables avant qu’ils n’arrivent"
+" au client. Le client et l’ingénieur ne se voient jamais."
+
+#: src/Admin/Admin.php:280
+msgid "Open"
+msgstr "En cours"
+
+#: src/Admin/Admin.php:287
+msgid "Search"
+msgstr "Rechercher"
+
+#: src/Admin/Admin.php:290
+msgid "No mission here."
+msgstr "Aucune mission ici."
+
+#: src/Admin/Admin.php:293
+msgid "Client"
+msgstr "Client"
+
+#: src/Admin/Admin.php:293
+msgid "Status"
+msgstr "Statut"
+
+#: src/Admin/Admin.php:293 src/Admin/Admin.php:394
+msgid "Client price"
+msgstr "Prix client"
+
+#: src/Admin/Admin.php:293 src/Admin/Admin.php:401
+msgid "Engineer fee"
+msgstr "Honoraires de l’ingénieur"
+
+#: src/Admin/Admin.php:293
+msgid "Margin"
+msgstr "Marge"
+
+#: src/Admin/Admin.php:293
+msgid "Updated"
+msgstr "Mis à jour"
+
+#: src/Admin/Admin.php:307
+msgid "Client documents"
+msgstr "Documents du client"
+
+#: src/Admin/Admin.php:308
+msgid "Deliverables of the engineer"
+msgstr "Livrables de l’ingénieur"
+
+#: src/Admin/Admin.php:309
+msgid "Platform documents"
+msgstr "Documents de la plateforme"
+
+#: src/Admin/Admin.php:310
+msgid "Engineer invoices"
+msgstr "Factures de l’ingénieur"
+
+#: src/Admin/Admin.php:312
+msgid "Files"
+msgstr "Fichiers"
+
+#. translators: 1: client or engineer, 2: mission reference and title.
+#: src/Admin/Admin.php:322 src/Notifications.php:106
+msgid "client"
+msgstr "client"
+
+#. translators: 1: client or engineer, 2: mission reference and title.
+#: src/Admin/Admin.php:325 src/Notifications.php:106
+msgid "engineer"
+msgstr "ingénieur"
+
+#. translators: %s: who sees the file.
+#: src/Admin/Admin.php:327
+msgid "seen by: %s"
+msgstr "vu par : %s"
+
+#. translators: %s: who sees the file.
+#: src/Admin/Admin.php:327
+msgid "platform only"
+msgstr "plateforme uniquement"
+
+#: src/Admin/Admin.php:332
+msgid "Visible to the client"
+msgstr "Visible par le client"
+
+#: src/Admin/Admin.php:332
+msgid "Visible to the engineer"
+msgstr "Visible par l’ingénieur"
+
+#: src/Admin/Admin.php:332
+msgid "Add platform documents"
+msgstr "Ajouter des documents de la plateforme"
+
+#: src/Admin/Admin.php:336
+msgid "Messages with the client"
+msgstr "Messages avec le client"
+
+#: src/Admin/Admin.php:336
+msgid "Messages with the engineer"
+msgstr "Messages avec l’ingénieur"
+
+#: src/Admin/Admin.php:340
+msgid "No message yet."
+msgstr "Aucun message pour l’instant."
+
+#: src/Admin/Admin.php:344
+msgid "Platform"
+msgstr "Plateforme"
+
+#: src/Admin/Admin.php:349
+msgid "Send"
+msgstr "Envoyer"
+
+#: src/Admin/Admin.php:357
+msgid "Mission not found"
+msgstr "Mission introuvable"
+
+#: src/Admin/Admin.php:369
+msgid "Request"
+msgstr "Demande"
+
+#: src/Admin/Admin.php:372
+msgid "Type of study"
+msgstr "Type d’étude"
+
+#: src/Admin/Admin.php:374
+msgid "Wanted for"
+msgstr "Souhaité pour le"
+
+#: src/Admin/Admin.php:375
+msgid "Indicative budget"
+msgstr "Budget indicatif"
+
+#: src/Admin/Admin.php:376
+msgid "Preferred engineer"
+msgstr "Ingénieur souhaité"
+
+#: src/Admin/Admin.php:377
+msgid "Sent"
+msgstr "Envoyée"
+
+#: src/Admin/Admin.php:383
+msgid "Client (never shown to the engineer)"
+msgstr "Client (jamais montré à l’ingénieur)"
+
+#: src/Admin/Admin.php:384
+msgid "Account"
+msgstr "Compte"
+
+#: src/Admin/Admin.php:385
+msgid "Contact"
+msgstr "Contact"
+
+#: src/Admin/Admin.php:387
+msgid "Reason given:"
+msgstr "Motif indiqué :"
+
+#: src/Admin/Admin.php:392
+msgid "Quote, engineer and fee"
+msgstr "Devis, ingénieur et honoraires"
+
+#. translators: %d: days.
+#: src/Admin/Admin.php:394
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d jour"
+msgstr[1] "%d jours"
+
+#: src/Admin/Admin.php:396
+msgid "Valid until"
+msgstr "Valable jusqu’au"
+
+#: src/Admin/Admin.php:401
+msgid "not started"
+msgstr "non commencée"
+
+#: src/Admin/Admin.php:401
+msgid "planned"
+msgstr "prévus"
+
+#: src/Admin/Admin.php:401
+msgid "due"
+msgstr "dus"
+
+#: src/Admin/Admin.php:401
+msgid "paid"
+msgstr "payés"
+
+#: src/Admin/Admin.php:402
+msgid "Platform margin"
+msgstr "Marge de la plateforme"
+
+#: src/Admin/Admin.php:404
+msgid "Client payment"
+msgstr "Paiement du client"
+
+#: src/Admin/Admin.php:404
+msgid "received"
+msgstr "reçu"
+
+#: src/Admin/Admin.php:404
+msgid "not recorded"
+msgstr "non enregistré"
+
+#: src/Admin/Admin.php:410
+msgid "Change the quote"
+msgstr "Modifier le devis"
+
+#: src/Admin/Admin.php:410
+msgid "Send the quote to the client"
+msgstr "Envoyer le devis au client"
+
+#: src/Admin/Admin.php:412
+msgid "Price for the client (DA, taxes included)"
+msgstr "Prix pour le client (DA, TTC)"
+
+#: src/Admin/Admin.php:412 src/Admin/Admin.php:449
+msgid "Time (days)"
+msgstr "Délai (jours)"
+
+#: src/Admin/Admin.php:413
+msgid "Message to the client (what is included, conditions)"
+msgstr "Message au client (ce qui est inclus, conditions)"
+
+#: src/Admin/Admin.php:414
+msgid "Reason, if you decline the request"
+msgstr "Motif, si vous refusez la demande"
+
+#: src/Admin/Admin.php:415
+msgid "Send the quote"
+msgstr "Envoyer le devis"
+
+#: src/Admin/Admin.php:416
+msgid "Decline the request"
+msgstr "Refuser la demande"
+
+#: src/Admin/Admin.php:416
+msgid "Decline this request? The client is told."
+msgstr "Refuser cette demande ? Le client est prévenu."
+
+#: src/Admin/Admin.php:420
+msgid "Give the mission to another engineer"
+msgstr "Confier la mission à un autre ingénieur"
+
+#: src/Admin/Admin.php:420
+msgid "Give the mission to an engineer"
+msgstr "Confier la mission à un ingénieur"
+
+#: src/Admin/Admin.php:431
+msgid "No approved engineer yet."
+msgstr "Aucun ingénieur validé pour l’instant."
+
+#: src/Admin/Admin.php:439
+msgid "chosen by the client"
+msgstr "choisi par le client"
+
+#: src/Admin/Admin.php:442
+msgid "specialty"
+msgstr "spécialité"
+
+#: src/Admin/Admin.php:445
+msgid "not available"
+msgstr "indisponible"
+
+#: src/Admin/Admin.php:449
+msgid "Engineer fee (DA)"
+msgstr "Honoraires de l’ingénieur (DA)"
+
+#: src/Admin/Admin.php:450
+msgid ""
+"Instructions for the engineer (he does not see the client’s name nor price)"
+msgstr ""
+"Consignes pour l’ingénieur (il ne voit ni le nom ni le prix du client)"
+
+#: src/Admin/Admin.php:451
+msgid "Offer the mission"
+msgstr "Proposer la mission"
+
+#: src/Admin/Admin.php:458
+msgid "Withdraw the mission from the engineer"
+msgstr "Retirer la mission à l’ingénieur"
+
+#: src/Admin/Admin.php:458
+msgid "Withdraw the mission? The engineer is told."
+msgstr "Retirer la mission ? L’ingénieur est prévenu."
+
+#: src/Admin/Admin.php:462
+msgid "Check the deliverables"
+msgstr "Vérifier les livrables"
+
+#: src/Admin/Admin.php:464
+msgid "Changes to ask the engineer"
+msgstr "Corrections à demander à l’ingénieur"
+
+#: src/Admin/Admin.php:465
+msgid "Validate and deliver to the client"
+msgstr "Valider et livrer au client"
+
+#: src/Admin/Admin.php:465
+msgid "The client will see the deliverables. Continue?"
+msgstr "Le client verra les livrables. Continuer ?"
+
+#: src/Admin/Admin.php:466
+msgid "Ask for changes"
+msgstr "Demander des corrections"
+
+#: src/Admin/Admin.php:472
+msgid "Close the mission"
+msgstr "Clôturer la mission"
+
+#: src/Admin/Admin.php:476
+msgid "Pay the engineer"
+msgstr "Payer l’ingénieur"
+
+#: src/Admin/Admin.php:478
+msgid "Payment reference (transfer, cheque…)"
+msgstr "Référence du paiement (virement, chèque…)"
+
+#: src/Admin/Admin.php:479
+msgid "Record the payment of the fee"
+msgstr "Enregistrer le paiement des honoraires"
+
+#: src/Admin/Admin.php:482
+msgid "Fee paid"
+msgstr "Honoraires payés"
+
+#: src/Admin/Admin.php:487
+msgid "Cancel the client payment"
+msgstr "Annuler le paiement du client"
+
+#: src/Admin/Admin.php:487
+msgid "Record the client payment"
+msgstr "Enregistrer le paiement du client"
+
+#: src/Admin/Admin.php:506 src/Admin/Admin.php:560
+msgid "Mission not found."
+msgstr "Mission introuvable."
+
+#: src/Admin/Admin.php:527
+msgid "Write the changes you ask for."
+msgstr "Écrivez les corrections demandées."
+
+#: src/Admin/Admin.php:549
+msgid "Write the message."
+msgstr "Écrivez le message."
+
+#: src/Admin/Admin.php:576
+msgid "Accept new partner engineer applications"
+msgstr "Accepter les nouvelles candidatures d’ingénieurs partenaires"
+
+#: src/Admin/Admin.php:577
+msgid "Show the list of partner engineers to visitors"
+msgstr "Afficher la liste des ingénieurs partenaires aux visiteurs"
+
+#: src/Admin/Admin.php:578
+msgid "Show the number of completed missions on the list"
+msgstr "Afficher le nombre de missions réalisées sur la liste"
+
+#: src/Admin/Admin.php:584
+msgid "Quote valid for (days)"
+msgstr "Validité du devis (jours)"
+
+#: src/Admin/Admin.php:585
+msgid "Study requests a client may send per day"
+msgstr "Demandes d’étude par client et par jour"
+
+#: src/Admin/Admin.php:586
+msgid "Files per sending"
+msgstr "Fichiers par envoi"
+
+#: src/Admin/Admin.php:587
+msgid "Size of one file (MB)"
+msgstr "Taille d’un fichier (Mo)"
+
+#: src/Admin/Admin.php:592
+msgid "Accepted file types"
+msgstr "Types de fichiers acceptés"
+
+#: src/Admin/Admin.php:592
+msgid ""
+"Extensions separated by commas. Program and web files are always refused."
+msgstr ""
+"Extensions séparées par des virgules. Les fichiers de programme et web sont "
+"toujours refusés."
+
+#: src/Admin/Admin.php:593
+msgid "Types of study"
+msgstr "Types d’étude"
+
+#: src/Admin/Admin.php:593
+msgid "Code"
+msgstr "Code"
+
+#: src/Admin/Admin.php:593
+msgid "French"
+msgstr "Français"
+
+#: src/Admin/Admin.php:593
+msgid "Arabic"
+msgstr "Arabe"
+
+#: src/Admin/Admin.php:593
+msgid "Active"
+msgstr "Actif"
+
+#: src/Admin/Admin.php:599
+msgid "New"
+msgstr "Nouveau"
+
+#: src/Apply.php:40
+msgid "Engineering diploma"
+msgstr "Diplôme d’ingénieur"
+
+#: src/Apply.php:41
+msgid "Identity card or passport"
+msgstr "Carte d’identité ou passeport"
+
+#: src/Apply.php:42
+msgid "Approval or registration of the engineering office (if any)"
+msgstr "Agrément ou inscription du bureau d’études (le cas échéant)"
+
+#: src/Apply.php:43
+msgid "CV or list of references"
+msgstr "CV ou liste de références"
+
+#: src/Apply.php:65
+msgid ""
+"Enter your professional title, for example “Civil engineer — steel "
+"structures”."
+msgstr ""
+"Saisissez votre titre professionnel, par exemple « Ingénieur génie civil — "
+"charpente métallique »."
+
+#: src/Apply.php:69
+msgid "Enter your diploma."
+msgstr "Saisissez votre diplôme."
+
+#: src/Apply.php:72
+msgid "Enter the university or school."
+msgstr "Saisissez l’université ou l’école."
+
+#: src/Apply.php:75
+msgid "Enter the year of the diploma."
+msgstr "Saisissez l’année du diplôme."
+
+#: src/Apply.php:79
+msgid "Choose at least one specialty."
+msgstr "Choisissez au moins une spécialité."
+
+#: src/Apply.php:82
+msgid "Describe your experience in a few lines (40 characters at least)."
+msgstr ""
+"Décrivez votre expérience en quelques lignes (40 caractères au moins)."
+
+#. translators: %s: document name.
+#: src/Apply.php:101
+msgid "%s is required."
+msgstr "%s est obligatoire."
+
+#: src/Apply.php:142
+msgid "Applications are closed for the moment."
+msgstr "Les candidatures sont fermées pour le moment."
+
+#: src/Apply.php:150
+msgid "Too many sign-ups from this connection. Try again in an hour."
+msgstr "Trop d’inscriptions depuis cette connexion. Réessayez dans une heure."
+
+#: src/Apply.php:179
+msgid ""
+"Thank you, your application is sent. The platform team checks your documents"
+" and answers by e-mail."
+msgstr ""
+"Merci, votre candidature est envoyée. L’équipe de la plateforme vérifie vos "
+"documents et vous répond par e-mail."
+
+#: src/Apply.php:186
+msgid ""
+"Partner engineers have their own account. Sign out, then apply with another "
+"e-mail address."
+msgstr ""
+"Les ingénieurs partenaires ont leur propre compte. Déconnectez-vous, puis "
+"postulez avec une autre adresse e-mail."
+
+#: src/Apply.php:189
+msgid "Your application is already being reviewed or approved."
+msgstr "Votre candidature est déjà en cours d’examen ou validée."
+
+#: src/Apply.php:204
+msgid "Your application is sent again. The platform team will review it."
+msgstr ""
+"Votre candidature est renvoyée. L’équipe de la plateforme va l’examiner."
+
+#: src/Apply.php:221
+msgid "This page is for partner engineers."
+msgstr "Cette page est réservée aux ingénieurs partenaires."
+
+#: src/Apply.php:241
+msgid "Your profile is saved."
+msgstr "Votre profil est enregistré."
+
+#: src/Engineers.php:97
+msgid "Unknown engineer."
+msgstr "Ingénieur inconnu."
+
+#: src/Engineers.php:100
+msgid "Give the reason of the refusal: the engineer reads it."
+msgstr "Indiquez le motif du refus : l’ingénieur le lit."
+
+#. translators: %d: number of files.
+#: src/Files.php:111
+msgid "Send at most %d file."
+msgid_plural "Send at most %d files."
+msgstr[0] "Envoyez au maximum %d fichier."
+msgstr[1] "Envoyez au maximum %d fichiers."
+
+#. translators: %s: file name.
+#: src/Files.php:121
+msgid "%s could not be received. Try again."
+msgstr "%s n’a pas pu être reçu. Réessayez."
+
+#. translators: 1: file name, 2: size in MB.
+#: src/Files.php:126
+msgid "%1$s is too large (%2$d MB at most)."
+msgstr "%1$s est trop lourd (%2$d Mo au maximum)."
+
+#. translators: 1: file name, 2: list of extensions.
+#: src/Files.php:131
+msgid "%1$s: this type of file is not accepted (%2$s)."
+msgstr "%1$s : ce type de fichier n’est pas accepté (%2$s)."
+
+#. translators: %s: file name.
+#: src/Files.php:140
+msgid "%s could not be saved. Try again."
+msgstr "%s n’a pas pu être enregistré. Réessayez."
+
+#: src/Files.php:275
+msgid "Link expired. Open the mission again."
+msgstr "Lien expiré. Rouvrez la mission."
+
+#: src/Files.php:279
+msgid "You are not allowed to open this file."
+msgstr "Vous n’êtes pas autorisé à ouvrir ce fichier."
+
+#: src/Files.php:284
+msgid "File not found."
+msgstr "Fichier introuvable."
+
+#: src/Form.php:36
+msgid "Sign in or create an account to ask for a study."
+msgstr "Connectez-vous ou créez un compte pour demander une étude."
+
+#: src/Form.php:40
+msgid "Your account has no company."
+msgstr "Votre compte n’a pas d’entreprise."
+
+#: src/Form.php:43
+msgid ""
+"Partner engineers receive missions from the platform; they cannot request "
+"them."
+msgstr ""
+"Les ingénieurs partenaires reçoivent les missions de la plateforme ; ils ne "
+"peuvent pas en demander."
+
+#: src/Form.php:55
+msgid "Choose the type of study."
+msgstr "Choisissez le type d’étude."
+
+#: src/Form.php:59
+msgid "Give a short title, for example “Hangar 20 × 40 m in Sétif”."
+msgstr "Donnez un titre court, par exemple « Hangar 20 × 40 m à Sétif »."
+
+#: src/Form.php:63
+msgid ""
+"Describe the project: dimensions, use, loads, what you expect (30 characters"
+" at least)."
+msgstr ""
+"Décrivez le projet : dimensions, usage, charges, ce que vous attendez (30 "
+"caractères au moins)."
+
+#: src/Form.php:67
+msgid "Choose the wilaya of the project."
+msgstr "Choisissez la wilaya du projet."
+
+#: src/Form.php:71
+msgid "Choose a date in the future, or leave it empty."
+msgstr "Choisissez une date future, ou laissez vide."
+
+#: src/Form.php:101
+msgid ""
+"You sent many study requests today. Try again tomorrow or write to the "
+"platform."
+msgstr ""
+"Vous avez envoyé beaucoup de demandes d’étude aujourd’hui. Réessayez demain "
+"ou écrivez à la plateforme."
+
+#: src/Form.php:111
+msgid ""
+"Your request is sent to the platform. You receive a quote, usually within 2 "
+"working days."
+msgstr ""
+"Votre demande est envoyée à la plateforme. Vous recevrez un devis, en "
+"général sous 2 jours ouvrés."
+
+#: src/Form.php:131
+msgid "You cannot change this request."
+msgstr "Vous ne pouvez pas modifier cette demande."
+
+#: src/Form.php:136
+msgid "This request is closed."
+msgstr "Cette demande est close."
+
+#. translators: %d: number of files.
+#: src/Form.php:140
+msgid "%d document added."
+msgid_plural "%d documents added."
+msgstr[0] "%d document ajouté."
+msgstr[1] "%d documents ajoutés."
+
+#: src/Form.php:143
+msgid "Documents added. The platform is told."
+msgstr "Documents ajoutés. La plateforme est prévenue."
+
+#: src/Form.php:146
+msgid ""
+"Quote accepted. The platform appoints a partner engineer and you are told "
+"when the study starts."
+msgstr ""
+"Devis accepté. La plateforme désigne un ingénieur partenaire et vous "
+"prévient quand l’étude commence."
+
+#: src/Form.php:147
+msgid "You declined the quote. The platform is told."
+msgstr "Vous avez refusé le devis. La plateforme est prévenue."
+
+#: src/Form.php:148
+msgid "Your request is cancelled."
+msgstr "Votre demande est annulée."
+
+#: src/Form.php:149
+msgid "Thank you. The mission is closed."
+msgstr "Merci. La mission est clôturée."
+
+#: src/Form.php:152 src/Form.php:215 src/Missions.php:119 src/Missions.php:177
+msgid "Unknown action."
+msgstr "Action inconnue."
+
+#: src/Form.php:166
+msgid "This mission is not assigned to you."
+msgstr "Cette mission ne vous est pas confiée."
+
+#: src/Form.php:169
+msgid "Your partner account is not active."
+msgstr "Votre compte partenaire n’est pas actif."
+
+#: src/Form.php:175
+msgid "Mission accepted. You can start; send the deliverables from this page."
+msgstr ""
+"Mission acceptée. Vous pouvez commencer ; envoyez les livrables depuis cette"
+" page."
+
+#: src/Form.php:179
+msgid "You declined the mission. The platform is told."
+msgstr "Vous avez refusé la mission. La plateforme est prévenue."
+
+#: src/Form.php:184
+msgid "Deliverables can be added while the mission is in progress."
+msgstr "Les livrables s’ajoutent pendant que la mission est en cours."
+
+#: src/Form.php:187
+msgid "Files added. Send the work to the platform when everything is there."
+msgstr ""
+"Fichiers ajoutés. Envoyez le travail à la plateforme quand tout est là."
+
+#: src/Form.php:192
+msgid "This file cannot be removed."
+msgstr "Ce fichier ne peut pas être retiré."
+
+#: src/Form.php:195
+msgid "File removed."
+msgstr "Fichier retiré."
+
+#: src/Form.php:199
+msgid "An invoice can be sent once the mission is accepted."
+msgstr "Une facture peut être envoyée une fois la mission acceptée."
+
+#: src/Form.php:208
+msgid "Invoice sent to the platform."
+msgstr "Facture envoyée à la plateforme."
+
+#: src/Form.php:212
+msgid "Work sent. The platform checks it and delivers it to the client."
+msgstr "Travail envoyé. La plateforme le vérifie et le livre au client."
+
+#: src/Form.php:235
+msgid "You cannot write on this mission."
+msgstr "Vous ne pouvez pas écrire sur cette mission."
+
+#: src/Form.php:239
+msgid "Write your message."
+msgstr "Écrivez votre message."
+
+#: src/Form.php:242
+msgid "Too many messages. Try again later."
+msgstr "Trop de messages. Réessayez plus tard."
+
+#: src/Form.php:246
+msgid "Message sent to the platform."
+msgstr "Message envoyé à la plateforme."
+
+#: src/Missions.php:122
+msgid ""
+"This step is no longer possible: the mission has moved on. Reload the page."
+msgstr ""
+"Cette étape n’est plus possible : la mission a avancé. Rechargez la page."
+
+#: src/Missions.php:128
+msgid "Enter the price of the study for the client."
+msgstr "Saisissez le prix de l’étude pour le client."
+
+#: src/Missions.php:135
+msgid "Give the reason: the client reads it."
+msgstr "Indiquez le motif : le client le lit."
+
+#: src/Missions.php:140
+msgid "This quote has expired. Write to the platform to get an updated one."
+msgstr ""
+"Ce devis a expiré. Écrivez à la plateforme pour en obtenir un nouveau."
+
+#: src/Missions.php:151
+msgid "Choose an approved engineer."
+msgstr "Choisissez un ingénieur validé."
+
+#: src/Missions.php:154
+msgid "Enter the fee paid to the engineer."
+msgstr "Saisissez les honoraires versés à l’ingénieur."
+
+#: src/Missions.php:165
+msgid ""
+"Add the deliverables (plans, calculation notes, report) before sending."
+msgstr ""
+"Ajoutez les livrables (plans, notes de calcul, rapport) avant d’envoyer."
+
+#: src/Missions.php:183
+msgid "The fee of this mission is not due."
+msgstr "Les honoraires de cette mission ne sont pas dus."
+
+#: src/Missions.php:255
+msgid "Being studied by the platform"
+msgstr "À l’étude par la plateforme"
+
+#: src/Missions.php:256
+msgid "Quote to accept"
+msgstr "Devis à accepter"
+
+#: src/Missions.php:257 src/Missions.php:258
+msgid "Accepted — engineer being appointed"
+msgstr "Accepté — ingénieur en cours de désignation"
+
+#: src/Missions.php:259 src/Missions.php:260 src/Theme/Bridge.php:202
+msgid "Study in progress"
+msgstr "Étude en cours"
+
+#: src/Missions.php:261 src/Missions.php:291 src/Theme/Bridge.php:202
+msgid "Delivered"
+msgstr "Livrée"
+
+#: src/Missions.php:262 src/Missions.php:277 src/Missions.php:292
+msgid "Closed"
+msgstr "Clôturée"
+
+#: src/Missions.php:263
+msgid "Not taken by the platform"
+msgstr "Non retenue par la plateforme"
+
+#: src/Missions.php:264
+msgid "Quote declined"
+msgstr "Devis refusé"
+
+#: src/Missions.php:265 src/Missions.php:295
+msgid "Cancelled"
+msgstr "Annulée"
+
+#: src/Missions.php:273
+msgid "Offered to you"
+msgstr "Proposée"
+
+#: src/Missions.php:274 src/Missions.php:289
+msgid "In progress"
+msgstr "En cours"
+
+#: src/Missions.php:275
+msgid "Sent, being checked by the platform"
+msgstr "Envoyée, en vérification par la plateforme"
+
+#: src/Missions.php:276
+msgid "Delivered to the client"
+msgstr "Livrée au client"
+
+#: src/Missions.php:279
+msgid "No longer assigned to you"
+msgstr "Ne vous est plus confiée"
+
+#: src/Missions.php:285
+msgid "New request"
+msgstr "Nouvelle demande"
+
+#: src/Missions.php:286
+msgid "Quote sent"
+msgstr "Devis envoyé"
+
+#: src/Missions.php:287
+msgid "Accepted, to assign"
+msgstr "Acceptée, à attribuer"
+
+#: src/Missions.php:288
+msgid "Offered to an engineer"
+msgstr "Proposée à un ingénieur"
+
+#: src/Missions.php:290 src/Notifications.php:97
+msgid "Deliverables to check"
+msgstr "Livrables à vérifier"
+
+#: src/Missions.php:293
+msgid "Declined"
+msgstr "Refusée"
+
+#: src/Missions.php:294
+msgid "Quote refused"
+msgstr "Devis refusé"
+
+#: src/Notifications.php:48
+msgid "New partner engineer application"
+msgstr "Nouvelle candidature d’ingénieur partenaire"
+
+#. translators: %s: engineer name.
+#: src/Notifications.php:50
+msgid ""
+"%s applied to become a partner engineer. Check the diploma and the "
+"documents."
+msgstr ""
+"%s a postulé pour devenir ingénieur partenaire. Vérifiez le diplôme et les "
+"documents."
+
+#: src/Notifications.php:55
+msgid "New study request"
+msgstr "Nouvelle demande d’étude"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:57
+msgid "New request %s. Prepare the quote for the client."
+msgstr "Nouvelle demande %s. Préparez le devis pour le client."
+
+#: src/Notifications.php:62
+msgid "Quote accepted: assign an engineer"
+msgstr "Devis accepté : désignez un ingénieur"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:64
+msgid "The client accepted the quote of %s. Choose the engineer."
+msgstr "Le client a accepté le devis de %s. Choisissez l’ingénieur."
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:71
+msgid "The client did not accept the quote of %s."
+msgstr "Le client n’a pas accepté le devis de %s."
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:78
+msgid "The client cancelled %s."
+msgstr "Le client a annulé %s."
+
+#: src/Notifications.php:83
+msgid "The engineer accepted the mission"
+msgstr "L’ingénieur a accepté la mission"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:85
+msgid "The engineer started %s."
+msgstr "L’ingénieur a commencé %s."
+
+#: src/Notifications.php:90
+msgid "The engineer declined the mission"
+msgstr "L’ingénieur a refusé la mission"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:92
+msgid "The engineer cannot take %s. Choose another engineer."
+msgstr "L’ingénieur ne peut pas prendre %s. Choisissez un autre ingénieur."
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:99
+msgid ""
+"The engineer sent the deliverables of %s. Check them before delivering them "
+"to the client."
+msgstr ""
+"L’ingénieur a envoyé les livrables de %s. Vérifiez-les avant de les livrer "
+"au client."
+
+#: src/Notifications.php:104
+msgid "New message on a mission"
+msgstr "Nouveau message sur une mission"
+
+#. translators: 1: client or engineer, 2: mission reference and title.
+#: src/Notifications.php:106
+msgid "New message from the %1$s on %2$s."
+msgstr "Nouveau message du %1$s sur %2$s."
+
+#: src/Notifications.php:113
+msgid "Your quote for the study is ready"
+msgstr "Votre devis d’étude est prêt"
+
+#. translators: 1: mission reference and title, 2: amount.
+#: src/Notifications.php:115
+msgid "The quote for %1$s is ready: %2$s. Accept it to start the study."
+msgstr "Le devis de %1$s est prêt : %2$s. Acceptez-le pour lancer l’étude."
+
+#: src/Notifications.php:119
+msgid "Your study request was not taken"
+msgstr "Votre demande d’étude n’est pas retenue"
+
+#. translators: 1: mission reference and title, 2: reason.
+#: src/Notifications.php:121
+msgid "The platform cannot take %1$s: %2$s"
+msgstr "La plateforme ne peut pas prendre %1$s : %2$s"
+
+#: src/Notifications.php:125
+msgid "Your study has started"
+msgstr "Votre étude a commencé"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:127
+msgid "A partner engineer of the platform is working on %s."
+msgstr "Un ingénieur partenaire de la plateforme travaille sur %s."
+
+#: src/Notifications.php:132
+msgid "Your study is delivered"
+msgstr "Votre étude est livrée"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:134
+msgid "The documents of %s are available in your account."
+msgstr "Les documents de %s sont disponibles dans votre compte."
+
+#: src/Notifications.php:138
+msgid "The platform answered about your study"
+msgstr "La plateforme a répondu à propos de votre étude"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:140 src/Notifications.php:195
+msgid "New message about %s."
+msgstr "Nouveau message à propos de %s."
+
+#: src/Notifications.php:146
+msgid "You are a partner engineer"
+msgstr "Vous êtes ingénieur partenaire"
+
+#: src/Notifications.php:147
+msgid ""
+"Your application is approved. You appear on the list of partner engineers "
+"and the platform can offer you missions."
+msgstr ""
+"Votre candidature est validée. Vous apparaissez sur la liste des ingénieurs "
+"partenaires et la plateforme peut vous proposer des missions."
+
+#: src/Notifications.php:151
+msgid "Your application needs changes"
+msgstr "Votre candidature doit être corrigée"
+
+#. translators: %s: reason.
+#: src/Notifications.php:153
+msgid ""
+"Your partner engineer application was not approved: %s. You can correct it "
+"and send it again."
+msgstr ""
+"Votre candidature d’ingénieur partenaire n’est pas validée : %s. Vous pouvez"
+" la corriger et la renvoyer."
+
+#: src/Notifications.php:157
+msgid "Your partner account is suspended"
+msgstr "Votre compte partenaire est suspendu"
+
+#. translators: %s: reason.
+#: src/Notifications.php:159
+msgid "You no longer receive missions: %s. Write to the platform for details."
+msgstr ""
+"Vous ne recevez plus de missions : %s. Écrivez à la plateforme pour plus de "
+"détails."
+
+#: src/Notifications.php:163
+msgid "A mission is offered to you"
+msgstr "Une mission vous est proposée"
+
+#. translators: 1: mission reference and title, 2: fee.
+#: src/Notifications.php:165
+msgid ""
+"The platform offers you %1$s. Fee: %2$s. Accept or decline it from your "
+"dashboard."
+msgstr ""
+"La plateforme vous propose %1$s. Honoraires : %2$s. Acceptez ou refusez "
+"depuis votre tableau de bord."
+
+#: src/Notifications.php:169
+msgid "A mission is no longer assigned to you"
+msgstr "Une mission ne vous est plus confiée"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:171
+msgid "The platform withdrew %s from you."
+msgstr "La plateforme vous a retiré %s."
+
+#: src/Notifications.php:175
+msgid "Changes asked on your deliverables"
+msgstr "Corrections demandées sur vos livrables"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:177
+msgid "The platform asks for changes on %s. Read the message in the mission."
+msgstr ""
+"La plateforme demande des corrections sur %s. Lisez le message dans la "
+"mission."
+
+#: src/Notifications.php:181
+msgid "Your deliverables are validated"
+msgstr "Vos livrables sont validés"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:183
+msgid "The platform validated and delivered %s. Your fee is due."
+msgstr "La plateforme a validé et livré %s. Vos honoraires sont dus."
+
+#: src/Notifications.php:187
+msgid "Your fee is paid"
+msgstr "Vos honoraires sont payés"
+
+#. translators: 1: amount, 2: mission reference and title.
+#: src/Notifications.php:189
+msgid "The platform paid your fee of %1$s for %2$s."
+msgstr "La plateforme a payé vos honoraires de %1$s pour %2$s."
+
+#: src/Notifications.php:193
+msgid "The platform wrote about a mission"
+msgstr "La plateforme a écrit à propos d’une mission"
+
+#: src/Theme/Bridge.php:202
+msgid "Request sent"
+msgstr "Demande envoyée"
+
+#: src/Theme/Bridge.php:202
+msgid "Quote"
+msgstr "Devis"
+
+#: src/Theme/Bridge.php:202
+msgid "Accepted"
+msgstr "Acceptée"

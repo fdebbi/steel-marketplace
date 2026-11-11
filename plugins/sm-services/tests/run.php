@@ -65,11 +65,12 @@ function sms_cleanup() {
 }
 sms_cleanup();
 $suffix = substr( md5( (string) microtime( true ) ), 0, 6 );
-list( $u_fab, $c_fab ) = sms_user( 'f' . $suffix, 'commercial', array( 'fabrication' ) );
-list( $u_ins, $c_ins ) = sms_user( 'i' . $suffix, 'commercial', array( 'installer' ) );
-list( $u_buy, $c_buy ) = sms_user( 'b' . $suffix, 'commercial', array( 'project_owner' ) );
-list( $u_sup, $c_sup ) = sms_user( 's' . $suffix, 'commercial', array( 'supplier' ) );
-list( $u_eng, $c_eng ) = sms_user( 'e' . $suffix, 'engineering', array( 'engineer' ) );
+list( $u_fab, $c_fab ) = sms_user( 'f' . $suffix, 'company', array( 'manufacturer' ) );
+list( $u_ins, $c_ins ) = sms_user( 'i' . $suffix, 'company', array( 'construction' ) );
+list( $u_buy, $c_buy ) = sms_user( 'b' . $suffix, 'client', array() );
+list( $u_sup, $c_sup ) = sms_user( 's' . $suffix, 'company', array( 'supplier' ) );
+list( $u_pro, $c_pro ) = sms_user( 'p' . $suffix, 'professional', array( 'trade_welder', 'trade_erector' ) );
+list( $u_eng, $c_eng ) = sms_user( 'e' . $suffix, 'engineer', array( 'engineer' ) );
 global $wpdb;
 $notes = static fn( $uid, $type ) => (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}sm_notifications WHERE user_id = %d AND type = %s", $uid, $type ) );
 $fab   = array(
@@ -89,10 +90,11 @@ $fab   = array(
 
 echo "\n1. Catalogues and permissions\n";
 $cat = Catalogue::all();
-sms_assert( 13 === count( $cat['fabrication']['categories'] ) && 9 === count( $cat['engineering']['categories'] ), 'two catalogues: 13 fabrication and site services, 9 engineering services' );
-sms_assert( array( 'fabrication' ) === Catalogue::allowed_kinds( $c_fab ) && array( 'fabrication' ) === Catalogue::allowed_kinds( $c_ins ), 'workshops and installers publish fabrication and site services' );
-sms_assert( array( 'engineering' ) === Catalogue::allowed_kinds( $c_eng ), 'an engineering account publishes engineering services only' );
-sms_assert( array() === Catalogue::allowed_kinds( $c_sup ) && array() === Catalogue::allowed_kinds( $c_buy ), 'a supplier or a project owner publishes no service' );
+sms_assert( 13 === count( $cat['fabrication']['categories'] ) && ! isset( $cat['engineering'] ), 'one catalogue: 13 fabrication and site services (engineering goes through the platform)' );
+sms_assert( array( 'fabrication' ) === Catalogue::allowed_kinds( $c_fab ) && array( 'fabrication' ) === Catalogue::allowed_kinds( $c_ins ), 'manufacturers and contractors publish fabrication and site services' );
+sms_assert( array( 'fabrication' ) === Catalogue::allowed_kinds( $c_pro ), 'a professional publishes his services' );
+sms_assert( array() === Catalogue::allowed_kinds( $c_eng ), 'a partner engineer publishes no service' );
+sms_assert( array() === Catalogue::allowed_kinds( $c_sup ) && array() === Catalogue::allowed_kinds( $c_buy ), 'a supplier or a client publishes no service' );
 
 echo "\n2. Service page checks\n";
 $s = Spec::service( $fab );
@@ -100,21 +102,27 @@ sms_assert( ! $s['errors'] && array( 'cutting', 'welding', 'structural' ) === $s
 sms_assert( array( '28', '19' ) === $s['data']['wilayas'] && 15 === $s['data']['lead_days'] && 'kg' === $s['data']['price_unit'], 'served wilayas (unknown one dropped), lead time, price from 180 DA/kg' );
 $x = Spec::service( array_merge( $fab, array( 'categories' => array(), 'title' => array(), 'description' => 'court', 'coverage' => 'list', 'wilayas' => array(), 'price_from' => '' ) ) );
 sms_assert( isset( $x['errors']['categories'], $x['errors']['title'], $x['errors']['description'], $x['errors']['wilayas'], $x['errors']['price_from'] ), 'services, title, description, wilayas and starting price checked' );
-$x = Spec::service( array_merge( $fab, array( 'kind' => 'engineering', 'categories' => array( 'calculation' ), 'price_unit' => 'kg' ) ) );
-sms_assert( isset( $x['errors']['price_unit'] ), 'no price per kg for an engineering service' );
+$x = Spec::service( array_merge( $fab, array( 'kind' => 'engineering' ) ) );
+sms_assert( ! empty( $x['errors'] ), 'the former engineering catalogue is refused' );
 $q = Spec::service( array_merge( $fab, array( 'price_mode' => 'quote', 'coverage' => 'all' ) ) );
 sms_assert( ! $q['errors'] && array() === $q['data']['wilayas'] && 0.0 === $q['data']['price_from'], '"on quotation" and "all of Algeria"' );
 
 echo "\n3. Publication and lists\n";
 $sid = Services::save( 0, $c_fab, $u_fab, $s, 'published' );
-$es  = Spec::service( array( 'kind' => 'engineering', 'categories' => array( 'calculation', 'assessment' ), 'title' => array( 'fr' => 'Expertise de hangars d’occasion' ), 'description' => 'Inspection sur site, relevé des profils, rapport et note de calcul avant remontage.', 'coverage' => 'all', 'price_mode' => 'quote' ) );
-$eid = Services::save( 0, $c_eng, $u_eng, $es, 'published' );
+$es  = Spec::service( array( 'kind' => 'fabrication', 'categories' => array( 'welding', 'installation' ), 'title' => array( 'fr' => 'Soudure et montage sur chantier' ), 'description' => 'Soudeur qualifié, montage de charpentes et réparations sur site dans toute l’Algérie.', 'coverage' => 'all', 'price_mode' => 'quote' ) );
+$eid = Services::save( 0, $c_pro, $u_pro, $es, 'published' );
 $list = Bridge::services( null, array( 'kind' => 'fabrication' ) );
-sms_assert( in_array( $sid, wp_list_pluck( (array) $list, 'id' ), true ) && ! in_array( $eid, wp_list_pluck( (array) $list, 'id' ), true ), 'fabrication list does not mix engineering services' );
-sms_assert( in_array( $eid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'engineering', 'category' => 'assessment' ) ), 'id' ), true ), 'engineering list, category filter' );
+sms_assert( in_array( $sid, wp_list_pluck( (array) $list, 'id' ), true ) && in_array( $eid, wp_list_pluck( (array) $list, 'id' ), true ), 'company and professional services in the same list' );
+sms_assert( in_array( $eid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'fabrication', 'category' => 'installation' ) ), 'id' ), true ) && ! in_array( $sid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'fabrication', 'category' => 'installation' ) ), 'id' ), true ), 'category filter' );
+global $wpdb;
+$wpdb->insert( $wpdb->prefix . 'sm_services', array( 'company_id' => $c_fab, 'user_id' => $u_fab, 'kind' => 'engineering', 'status' => 'published', 'created_at' => current_time( 'mysql', true ), 'updated_at' => current_time( 'mysql', true ) ) );
+$old = (int) $wpdb->insert_id;
+\SM\Services\Install\Installer::retire_engineering();
+sms_assert( 'retired' === Services::get( $old )->status && null === Bridge::service( null, array( 'id' => $old ) ), 'former engineering pages are retired and never shown' );
+Services::delete( $old );
 sms_assert( in_array( $sid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'fabrication', 'wilaya' => '19' ) ), 'id' ), true ) && ! in_array( $sid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'fabrication', 'wilaya' => '31' ) ), 'id' ), true ), 'wilaya filter uses the served wilayas' );
-sms_assert( in_array( $eid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'engineering', 'wilaya' => '31' ) ), 'id' ), true ), 'a service covering all Algeria is found in every wilaya' );
-$card = Bridge::services( null, array( 'kind' => 'fabrication', 'q' => 'Charpente' ) )[0];
+sms_assert( in_array( $eid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'fabrication', 'wilaya' => '31' ) ), 'id' ), true ), 'a service covering all Algeria is found in every wilaya' );
+$card = Bridge::services( null, array( 'kind' => 'fabrication', 'q' => 'sur mesure' ) )[0];
 sms_assert( 'Charpente métallique sur mesure' === $card['title']['fr'] && 3 === count( $card['tags'] ) && 'Découpe' === $card['tags'][0]['fr'], 'card data: title and service tags (search by word)' );
 
 echo "\n4. Service page and requests\n";
@@ -146,21 +154,23 @@ sms_assert( 'accepted' === Requests::get( $rid )->status && Bridge::service( nul
 $types = \SM\Core\Notifications\Notifications::types();
 sms_assert( isset( $types['service.quote_received'], $types['service.quote_accepted'], $types['service.request_declined'], $types['service.request_cancelled'] ), 'notification texts for every step' );
 
-echo "\n5. Engineer profile and separation\n";
+echo "\n5. Professional profile, portfolio and separation\n";
 wp_set_current_user( $u_eng );
-sms_assert( ! sm_can( 'listing.products' ) && ! sm_can( 'rfq.offer' ) && ! sm_can( 'service.fabrication' ) && sm_can( 'service.engineering' ), 'engineering account: no trading, no fabrication; engineering services only' );
-\SM\Core\Accounts\Companies::update_profile( $c_eng, array( 'title_fr' => 'Ingénieur en génie civil', 'profile' => array( 'qualifications' => array( 'Agrément CTC' ), 'specialities' => array( 'Charpente métallique' ), 'experience_years' => 12 ) ) );
-$co = \SM\Core\Theme\Bridge::shape_company( \SM\Core\Accounts\Companies::get( $c_eng ) );
-sms_assert( 12 === $co['experience'] && 'Agrément CTC' === $co['qualifications'][0]['fr'], 'profile: title, qualifications, specialities, years of experience' );
+sms_assert( ! sm_can( 'listing.products' ) && ! sm_can( 'rfq.offer' ) && ! sm_can( 'service.fabrication' ) && ! sm_can( 'service.request' ), 'partner engineer: no trading, no services' );
+wp_set_current_user( $u_pro );
+sms_assert( sm_can( 'service.fabrication' ) && sm_can( 'listing.products' ) && sm_can( 'buy' ), 'professional: services, selling and buying' );
+\SM\Core\Accounts\Companies::update_profile( $c_pro, array( 'title_fr' => 'Soudeur qualifié', 'profile' => array( 'qualifications' => array( 'Certificat soudeur EN 9606' ), 'specialities' => array( 'Soudure MIG' ), 'experience_years' => 12 ) ) );
+$co = \SM\Core\Theme\Bridge::shape_company( \SM\Core\Accounts\Companies::get( $c_pro ) );
+sms_assert( 12 === $co['experience'] && 'Certificat soudeur EN 9606' === $co['qualifications'][0]['fr'] && 'professional' === $co['class'], 'profile: title, qualifications, specialities, years of experience' );
 $ref = Spec::reference( array( 'title' => array( 'fr' => 'Hangar de stockage 40 × 20 m' ), 'description' => 'Étude complète et plans d’exécution.', 'role' => 'Bureau d’études', 'year' => '2024', 'wilaya' => '28' ) );
 sms_assert( ! $ref['errors'], 'reference accepted' );
 sms_assert( isset( Spec::reference( array( 'title' => array(), 'year' => '1800' ) )['errors']['year'] ), 'reference title and year checked' );
-Portfolio::save( 0, $c_eng, $ref['data'] );
-$co_slug = \SM\Core\Accounts\Companies::get( $c_eng )->slug;
+Portfolio::save( 0, $c_pro, $ref['data'] );
+$co_slug = \SM\Core\Accounts\Companies::get( $c_pro )->slug;
 $pf = Bridge::portfolio( null, array( 'company' => $co_slug ) );
-sms_assert( 1 === count( $pf ) && 2024 === $pf[0]['year'] && 'Bureau d’études' === $pf[0]['role']['fr'], 'references shown on the profile' );
+sms_assert( 1 === count( $pf ) && 2024 === $pf[0]['year'] && 'Bureau d’études' === $pf[0]['role']['fr'], 'portfolio of completed projects shown on the profile' );
 $page = Bridge::service( null, array( 'id' => $eid ) );
-sms_assert( $page['viewer']['is_owner'] && 1 === count( $page['portfolio'] ) && 'quote' === $page['price_mode'], 'engineering service page with the references, no price per kg' );
+sms_assert( $page['viewer']['is_owner'] && 1 === count( $page['portfolio'] ) && 'quote' === $page['price_mode'], 'professional service page with the portfolio' );
 
 wp_set_current_user( 0 );
 sms_cleanup();

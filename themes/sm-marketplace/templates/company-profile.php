@@ -2,8 +2,10 @@
 /**
  * Template Name: SM — Company profile
  *
- * Commercial company or engineering office (?c=slug). Engineering profiles show
- * qualifications and services only: no commercial tabs.
+ * Public page of a company or a professional (?c=slug): listings, services,
+ * completed projects, presentation. Professionals also show their title,
+ * qualifications and experience. Clients and partner engineers have no public
+ * page (0.13.0).
  *
  * @package SM_Marketplace
  */
@@ -21,18 +23,16 @@ if ( ! $company ) {
 	return;
 }
 
-$is_eng     = 'engineering' === $company['class'];
+$is_pro     = 'professional' === sm_account_class( $company );
 $wilayas    = sm_theme_wilayas();
 $activities = sm_activity_labels();
-$listings   = $is_eng ? array() : sm_theme_listings( array( 'company' => $company['slug'], 'per_page' => 24 ) )['items'];
+$listings   = sm_theme_listings( array( 'company' => $company['slug'], 'per_page' => 24 ) )['items'];
 $services   = sm_theme_services( array( 'company' => $company['slug'] ) );
 $tabs       = array();
-if ( ! $is_eng ) {
-	foreach ( array( 'products', 'reuse', 'buildings' ) as $m ) {
-		$count = count( array_filter( $listings, static fn( $l ) => $l['market'] === $m ) );
-		if ( $count ) {
-			$tabs[ $m ] = array( sm_market_labels()[ $m ], $count );
-		}
+foreach ( array( 'products', 'reuse', 'buildings' ) as $m ) {
+	$count = count( array_filter( $listings, static fn( $l ) => $l['market'] === $m ) );
+	if ( $count ) {
+		$tabs[ $m ] = array( sm_market_labels()[ $m ], $count );
 	}
 }
 if ( $services ) {
@@ -40,15 +40,15 @@ if ( $services ) {
 }
 $references = array_filter( (array) sm_theme_data( 'portfolio', array( 'company' => $company['slug'] ) ), 'is_array' );
 if ( $references ) {
-	$tabs['references'] = array( __( 'References', 'sm-marketplace' ), count( $references ) );
+	$tabs['references'] = array( __( 'Completed projects', 'sm-marketplace' ), count( $references ) );
 }
 $tabs['about'] = array( __( 'About', 'sm-marketplace' ), 0 );
 ?>
-<section class="sm-company-head<?php echo $is_eng ? ' sm-company-head--eng' : ''; ?>">
+<section class="sm-company-head<?php echo $is_pro ? ' sm-company-head--pro' : ''; ?>">
 	<div class="sm-container">
-		<?php sm_breadcrumb( array( array( $is_eng ? __( 'Engineering', 'sm-marketplace' ) : __( 'Company directory', 'sm-marketplace' ), sm_page_url( $is_eng ? 'engineers' : 'companies' ) ), array( sm_t( $company['name'] ), '' ) ) ); ?>
+		<?php sm_breadcrumb( array( array( __( 'Company directory', 'sm-marketplace' ), sm_page_url( 'companies' ) ), array( sm_t( $company['name'] ), '' ) ) ); ?>
 		<div class="sm-company-head__row">
-			<div class="sm-avatar sm-avatar--xl sm-avatar--<?php echo esc_attr( $company['class'] ); ?>" aria-hidden="true"><?php echo esc_html( $company['initials'] ); ?></div>
+			<?php sm_avatar( $company, 'xl' ); ?>
 			<div class="sm-company-head__id">
 				<h1><?php sm_e( $company['name'] ); ?></h1>
 				<?php if ( ! empty( $company['title'] ) ) : ?><p class="sm-company-head__title"><?php sm_e( $company['title'] ); ?></p><?php endif; ?>
@@ -66,11 +66,12 @@ $tabs['about'] = array( __( 'About', 'sm-marketplace' ), 0 );
 					</span>
 				</p>
 				<ul class="sm-tags">
+					<li class="sm-tags__class"><?php echo esc_html( sm_class_label( sm_account_class( $company ) ) ); ?></li>
 					<?php foreach ( $company['activities'] as $a ) : ?><li><?php echo esc_html( $activities[ $a ] ?? $a ); ?></li><?php endforeach; ?>
 				</ul>
 			</div>
 			<div class="sm-company-head__actions">
-				<a class="sm-btn sm-btn--accent" href="#sm-contact"><?php sm_icon( 'message' ); ?><?php echo esc_html( $is_eng ? __( 'Request a service', 'sm-marketplace' ) : __( 'Contact', 'sm-marketplace' ) ); ?></a>
+				<a class="sm-btn sm-btn--accent" href="#sm-contact"><?php sm_icon( 'message' ); ?><?php echo esc_html( $is_pro ? __( 'Request a service', 'sm-marketplace' ) : __( 'Contact', 'sm-marketplace' ) ); ?></a>
 <?php if ( ! empty( $company['phone'] ) ) : ?>
 				<a class="sm-btn sm-btn--ghost-light" href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $company['phone'] ) ); ?>"><?php sm_icon( 'phone' ); ?><bdi dir="ltr"><?php echo esc_html( $company['phone'] ); ?></bdi></a>
 				<?php endif; ?>
@@ -109,7 +110,7 @@ $tabs['about'] = array( __( 'About', 'sm-marketplace' ), 0 );
 
 	<?php if ( $references ) : ?>
 		<section id="tab-references" class="sm-section">
-			<div class="sm-section__head"><h2><?php esc_html_e( 'References', 'sm-marketplace' ); ?></h2></div>
+			<div class="sm-section__head"><h2><?php esc_html_e( 'Completed projects', 'sm-marketplace' ); ?></h2></div>
 			<?php sm_component( 'portfolio-grid', array( 'items' => $references ) ); ?>
 		</section>
 	<?php endif; ?>
@@ -123,7 +124,7 @@ $tabs['about'] = array( __( 'About', 'sm-marketplace' ), 0 );
 				<p class="sm-muted"><?php esc_html_e( 'This company has not written its presentation yet.', 'sm-marketplace' ); ?></p>
 			<?php endif; ?>
 		</div>
-		<?php if ( $is_eng ) : ?>
+		<?php if ( $is_pro ) : ?>
 			<?php $quals = array_filter( (array) ( $company['qualifications'] ?? array() ) ); ?>
 			<?php $specs = array_filter( (array) ( $company['specialities'] ?? array() ) ); ?>
 			<?php if ( $quals || $specs ) : ?>
@@ -169,11 +170,11 @@ $tabs['about'] = array( __( 'About', 'sm-marketplace' ), 0 );
 	sm_component(
 		'enquiry-form',
 		array(
-			'kind'    => $is_eng ? 'service' : 'listing',
+			'kind'    => $is_pro ? 'service' : 'listing',
 			'module'  => 'company',
 			'company' => $company['slug'],
-			'subject' => $is_eng ? __( 'Service request', 'sm-marketplace' ) : __( 'Contact from the company page', 'sm-marketplace' ),
-			'title'   => $is_eng ? __( 'Request a service', 'sm-marketplace' ) : __( 'Contact this company', 'sm-marketplace' ),
+			'subject' => $is_pro ? __( 'Service request', 'sm-marketplace' ) : __( 'Contact from the company page', 'sm-marketplace' ),
+			'title'   => $is_pro ? __( 'Contact this professional', 'sm-marketplace' ) : __( 'Contact this company', 'sm-marketplace' ),
 			'id'      => 'sm-contact',
 		)
 	);

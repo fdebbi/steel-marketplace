@@ -368,51 +368,65 @@ msgstr "المراجعة"
 msgid "Check every product before it is published"
 msgstr "مراجعة كل منتج قبل نشره"
 
-#: src/Admin/Admin.php:202
+#: src/Admin/Admin.php:201
+msgid "Client accounts"
+msgstr "حسابات الزبائن"
+
+#: src/Admin/Admin.php:201
+msgid ""
+"Always check the listings of client accounts (private sellers), even when "
+"moderation is off"
+msgstr "مراجعة إعلانات حسابات الزبائن (الخواص) دائما، حتى عند إيقاف المراجعة"
+
+#: src/Admin/Admin.php:203
+msgid "Listings online per client account (0 = no limit)"
+msgstr "الإعلانات المنشورة لكل حساب زبون (0 = بلا حد)"
+
+#: src/Admin/Admin.php:204
 msgid "Publication period (days, 0 = no end)"
 msgstr "مدة النشر (أيام، 0 = بلا نهاية)"
 
-#: src/Admin/Admin.php:203
+#: src/Admin/Admin.php:205
 msgid "Photos per product"
 msgstr "عدد الصور لكل منتج"
 
-#: src/Admin/Admin.php:204
+#: src/Admin/Admin.php:206
 msgid "Largest photo (MB)"
 msgstr "أقصى حجم للصورة (MB)"
 
-#: src/Admin/Admin.php:205
+#: src/Admin/Admin.php:207
 msgid "Largest technical sheet (MB)"
 msgstr "أقصى حجم للبطاقة التقنية (MB)"
 
-#: src/Admin/Admin.php:206
+#: src/Admin/Admin.php:208
 msgid "Lowest price accepted (DA)"
 msgstr "أدنى سعر مقبول (دج)"
 
-#: src/Admin/Admin.php:207
+#: src/Admin/Admin.php:209
 msgid "Highest price accepted (DA)"
 msgstr "أعلى سعر مقبول (دج)"
 
-#: src/Admin/Admin.php:208
+#: src/Admin/Admin.php:210
 msgid "Steel grades offered (comma separated)"
 msgstr "درجات الفولاذ المقترحة (مفصولة بفواصل)"
 
-#: src/Admin/Admin.php:241
+#: src/Admin/Admin.php:243
 msgid "Product published. The seller was notified."
 msgstr "تم نشر المنتج. أُبلغ البائع."
 
-#: src/Admin/Admin.php:245
+#: src/Admin/Admin.php:247
 msgid "Give the reason, so the seller knows what to change."
 msgstr "اذكر السبب ليعرف البائع ما يجب تعديله."
 
-#: src/Admin/Admin.php:249
+#: src/Admin/Admin.php:251
 msgid "The seller was asked to change the product."
 msgstr "طُلب من البائع تعديل المنتج."
 
-#: src/Admin/Admin.php:279
+#: src/Admin/Admin.php:281
 msgid "Category saved."
 msgstr "تم حفظ الفئة."
 
-#: src/Admin/Admin.php:289
+#: src/Admin/Admin.php:291
 msgid "Settings saved."
 msgstr "تم حفظ الإعدادات."
 
@@ -436,53 +450,80 @@ msgstr "أضف صورة واحدة على الأقل للمنتج."
 msgid "Choose a category."
 msgstr "اختر فئة."
 
-#: src/Form.php:106
+#: src/Form.php:110
 msgid "Draft saved. You can finish it later from \"My listings\"."
 msgstr "تم حفظ المسودة. يمكنك إكمالها لاحقا من «إعلاناتي»."
 
-#: src/Form.php:107
+#: src/Form.php:111
 msgid ""
 "Thank you. Your product will be visible after a quick check by the platform "
 "team."
 msgstr "شكرا. سيظهر منتجك بعد مراجعة سريعة من فريق المنصة."
 
-#: src/Form.php:108 src/Form.php:156
+#: src/Form.php:112 src/Form.php:196
 msgid "Your product is published."
 msgstr "تم نشر منتجك."
 
-#: src/Form.php:133
+#. translators: %d: number of listings.
+#: src/Form.php:150
+msgid ""
+"A client account can have %d listing online at a time. Mark one as sold or "
+"withdraw it first, or open a company or professional account."
+msgid_plural ""
+"A client account can have %d listings online at a time. Mark one as sold or "
+"withdraw it first, or open a company or professional account."
+msgstr[0] ""
+"يمكن لحساب الزبون نشر %d إعلان في نفس الوقت. علّم أحدها كمباع أو اسحبه أولا،"
+" أو افتح حساب شركة أو مهني."
+msgstr[1] ""
+"يمكن لحساب الزبون نشر %d إعلان في نفس الوقت. علّم أحدها كمباع أو اسحبه أولا،"
+" أو افتح حساب شركة أو مهني."
+msgstr[2] ""
+"يمكن لحساب الزبون نشر %d إعلان في نفس الوقت. علّم أحدها كمباع أو اسحبه أولا،"
+" أو افتح حساب شركة أو مهني."
+msgstr[3] ""
+"يمكن لحساب الزبون نشر %d إعلان في نفس الوقت. علّم أحدها كمباع أو اسحبه أولا،"
+" أو افتح حساب شركة أو مهني."
+msgstr[4] ""
+"يمكن لحساب الزبون نشر %d إعلان في نفس الوقت. علّم أحدها كمباع أو اسحبه أولا،"
+" أو افتح حساب شركة أو مهني."
+msgstr[5] ""
+"يمكن لحساب الزبون نشر %d إعلان في نفس الوقت. علّم أحدها كمباع أو اسحبه أولا،"
+" أو افتح حساب شركة أو مهني."
+
+#: src/Form.php:169
 msgid "You cannot change this product."
 msgstr "لا يمكنك تغيير هذا المنتج."
 
-#: src/Form.php:138
+#: src/Form.php:174
 msgid "Only a published product can be marked as sold."
 msgstr "لا يمكن وضع علامة «مباع» إلا على منتج منشور."
 
-#: src/Form.php:141
+#: src/Form.php:177
 msgid "Marked as sold. Buyers no longer see it."
 msgstr "تم وضع علامة «مباع». لم يعد المشترون يرونه."
 
-#: src/Form.php:145
+#: src/Form.php:181
 msgid "The product is withdrawn and saved as a draft."
 msgstr "تم سحب المنتج وحفظه كمسودة."
 
-#: src/Form.php:149
+#: src/Form.php:185
 msgid "This product cannot be published again from here. Edit it instead."
 msgstr "لا يمكن إعادة نشر هذا المنتج من هنا. عدّله بدلا من ذلك."
 
-#: src/Form.php:156
+#: src/Form.php:196
 msgid "Sent for review again."
 msgstr "أُعيد إرساله للمراجعة."
 
-#: src/Form.php:160
+#: src/Form.php:200
 msgid "Withdraw the product before deleting it."
 msgstr "اسحب المنتج قبل حذفه."
 
-#: src/Form.php:163
+#: src/Form.php:203
 msgid "Product deleted."
 msgstr "تم حذف المنتج."
 
-#: src/Form.php:166
+#: src/Form.php:206
 msgid "Unknown action."
 msgstr "إجراء غير معروف."
 
@@ -524,91 +565,91 @@ msgid ""
 "still available."
 msgstr "لم يعد «%s» معروضا. أعد نشره من «إعلاناتي» إن كان لا يزال متوفرا."
 
-#: src/Presenter.php:114
+#: src/Presenter.php:117
 msgid "Product type"
 msgstr "نوع المنتج"
 
-#: src/Presenter.php:116 src/Presenter.php:144
+#: src/Presenter.php:119 src/Presenter.php:147
 msgid "Designation"
 msgstr "التسمية"
 
-#: src/Presenter.php:117 src/Presenter.php:145
+#: src/Presenter.php:120 src/Presenter.php:148
 msgid "Steel grade"
 msgstr "درجة الفولاذ"
 
-#: src/Presenter.php:117 src/Presenter.php:145
+#: src/Presenter.php:120 src/Presenter.php:148
 msgid "Not specified"
 msgstr "غير محددة"
 
-#: src/Presenter.php:119
+#: src/Presenter.php:122
 msgid "Standard"
 msgstr "المعيار"
 
-#: src/Presenter.php:129
+#: src/Presenter.php:132
 msgid "Dimensions"
 msgstr "الأبعاد"
 
-#: src/Presenter.php:132
+#: src/Presenter.php:135
 msgid "Plate size"
 msgstr "مقاس الصفيحة"
 
-#: src/Presenter.php:134
+#: src/Presenter.php:137
 msgid "Bar length"
 msgstr "طول القضبان"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:137
+#: src/Presenter.php:140
 msgid "%s plates"
 msgstr "%s صفائح"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:137
+#: src/Presenter.php:140
 msgid "%s bars"
 msgstr "%s قضبان"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:139 src/Presenter.php:147
+#: src/Presenter.php:142 src/Presenter.php:150
 msgid "Quantity"
 msgstr "الكمية"
 
-#: src/Presenter.php:141
+#: src/Presenter.php:144
 msgid "Weight per metre"
 msgstr "الوزن لكل متر"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:147
+#: src/Presenter.php:150
 msgid "%s pieces in the lot"
 msgstr "%s قطعة في الدفعة"
 
-#: src/Presenter.php:150
+#: src/Presenter.php:153
 msgid "Weight of the lot"
 msgstr "وزن الدفعة"
 
-#: src/Presenter.php:172
+#: src/Presenter.php:175
 msgid "Available quantity"
 msgstr "الكمية المتوفرة"
 
-#: src/Presenter.php:178
+#: src/Presenter.php:181
 msgid "Condition"
 msgstr "الحالة"
 
-#: src/Presenter.php:186
+#: src/Presenter.php:189
 msgid "Yes"
 msgstr "نعم"
 
-#: src/Presenter.php:186
+#: src/Presenter.php:189
 msgid "No"
 msgstr "لا"
 
-#: src/Presenter.php:225
+#: src/Presenter.php:228
 msgid "m (linear)"
 msgstr "م.ط"
 
-#: src/Presenter.php:226
+#: src/Presenter.php:229
 msgid "pieces"
 msgstr "قطع"
 
-#: src/Presenter.php:227
+#: src/Presenter.php:230
 msgid "lot"
 msgstr "دفعة"
 

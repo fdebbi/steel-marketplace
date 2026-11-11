@@ -54,7 +54,7 @@ final class Presenter {
 			'price_mode'   => $s->price_mode,
 			'price_from'   => $s->price_from,
 			'price_unit'   => $s->price_unit,
-			'image'        => $photos ? (int) $photos[0] : 'demo:' . ( 'engineering' === $s->kind ? 'engineering' : 'welding' ),
+			'image'        => $photos ? (int) $photos[0] : 'demo:welding',
 			'photos'       => array_map( 'intval', $photos ),
 			'views'        => $s->views,
 			'date'         => $s->published_at ? $s->published_at : $s->updated_at,

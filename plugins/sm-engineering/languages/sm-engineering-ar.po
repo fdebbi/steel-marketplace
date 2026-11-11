@@ -1,0 +1,1584 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Engineering 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-engineering\n"
+
+#. Plugin Name of the plugin
+#: sm-engineering.php
+msgid "SM Engineering"
+msgstr "SM Engineering"
+
+#. Plugin URI of the plugin
+#: sm-engineering.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-engineering.php
+msgid ""
+"Partner engineers and engineering missions. Engineers apply on their own "
+"page and are approved by the platform; every study or inspection request "
+"goes to the platform, which sends a quote to the client and gives the "
+"mission to an approved engineer as a subcontractor. Clients never deal with "
+"engineers directly. Requires SM Core."
+msgstr ""
+"المهندسون الشركاء والمهام الهندسية. يترشح المهندسون من صفحتهم الخاصة "
+"وتعتمدهم المنصة؛ كل طلب دراسة أو معاينة يذهب إلى المنصة التي ترسل عرض سعر "
+"للزبون وتسند المهمة إلى مهندس معتمد كمناول. لا يتعامل الزبائن مباشرة مع "
+"المهندسين. يتطلب SM Core."
+
+#. Author of the plugin
+#: sm-engineering.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-engineering.php:47
+msgid "SM Engineering needs the SM Core plugin. Activate it first."
+msgstr "تحتاج SM Engineering إلى إضافة SM Core. فعّلها أولا."
+
+#: src/Activity.php:20
+msgid "Engineering"
+msgstr "الهندسة"
+
+#: src/Activity.php:73 src/Activity.php:185 src/Apply.php:121
+msgid "Partner engineer application"
+msgstr "ترشح مهندس شريك"
+
+#. translators: 1: engineer, 2: title.
+#: src/Activity.php:81
+msgid "%1$s applied as a partner engineer (%2$s)"
+msgstr "%1$s ترشح كمهندس شريك (%2$s)"
+
+#: src/Activity.php:84
+msgid "Partner engineer application: {nom}"
+msgstr "ترشح مهندس شريك: {nom}"
+
+#: src/Activity.php:85
+msgid ""
+"{nom} applied to become a partner engineer.\n"
+"\n"
+"Title: {titre}\n"
+"Diploma: {diplome}\n"
+"Experience: {experience} years\n"
+"Specialties: {specialites}\n"
+"Wilaya: {wilaya}\n"
+"\n"
+"{email} — {telephone}\n"
+"\n"
+"Check the documents and decide:\n"
+"{lien_admin}"
+msgstr ""
+"ترشح {nom} ليصبح مهندسا شريكا.\n"
+"\n"
+"الصفة: {titre}\n"
+"الشهادة: {diplome}\n"
+"الخبرة: {experience} سنة\n"
+"التخصصات: {specialites}\n"
+"الولاية: {wilaya}\n"
+"\n"
+"{email} — {telephone}\n"
+"\n"
+"راجع الوثائق واتخذ القرار:\n"
+"{lien_admin}"
+
+#: src/Activity.php:88
+msgid "Your partner engineer application is received"
+msgstr "تم استلام ترشحك كمهندس شريك"
+
+#: src/Activity.php:89
+msgid ""
+"Hello {nom},\n"
+"\n"
+"Thank you for applying to become a partner engineer of {site}. The platform team checks your diploma and your documents, usually within 3 working days, and tells you the decision by e-mail.\n"
+"\n"
+"Once approved, you appear on the list of partner engineers (without your contact details) and the platform offers you missions matching your specialties: {specialites}.\n"
+"\n"
+"Follow your application:\n"
+"{lien}\n"
+"\n"
+"The {site} team"
+msgstr ""
+"مرحبا {nom}،\n"
+"\n"
+"شكرا على ترشحك لتصبح مهندسا شريكا في {site}. يتحقق فريق المنصة من شهادتك ووثائقك خلال 3 أيام عمل عادة، ويبلغك بالقرار عبر البريد الإلكتروني.\n"
+"\n"
+"بعد القبول، تظهر في قائمة المهندسين الشركاء (دون بيانات اتصالك) وتعرض عليك المنصة مهاما حسب تخصصاتك: {specialites}.\n"
+"\n"
+"تابع ترشحك:\n"
+"{lien}\n"
+"\n"
+"فريق {site}"
+
+#: src/Activity.php:95 src/Activity.php:190
+msgid "Study request"
+msgstr "طلب دراسة"
+
+#. translators: 1: client, 2: reference, 3: type of study.
+#: src/Activity.php:103
+msgid "%1$s asked for a study %2$s (%3$s)"
+msgstr "%1$s طلب دراسة %2$s (%3$s)"
+
+#: src/Activity.php:106
+msgid "Study request {reference}: {type_etude}"
+msgstr "طلب دراسة {reference}: {type_etude}"
+
+#: src/Activity.php:107
+msgid ""
+"{client} ({wilaya}) asks for a study.\n"
+"\n"
+"{reference} — {titre}\n"
+"Type: {type_etude}\n"
+"\n"
+"{message}\n"
+"\n"
+"Contact: {nom} — {email} — {telephone}\n"
+"\n"
+"Prepare the quote:\n"
+"{lien_admin}"
+msgstr ""
+"{client} ({wilaya}) يطلب دراسة.\n"
+"\n"
+"{reference} — {titre}\n"
+"النوع: {type_etude}\n"
+"\n"
+"{message}\n"
+"\n"
+"الاتصال: {nom} — {email} — {telephone}\n"
+"\n"
+"حضّر عرض السعر:\n"
+"{lien_admin}"
+
+#: src/Activity.php:110
+msgid "Your study request {reference} is received"
+msgstr "تم استلام طلب الدراسة {reference}"
+
+#: src/Activity.php:111
+msgid ""
+"Hello {nom},\n"
+"\n"
+"Your request \"{titre}\" ({type_etude}) is received under the reference {reference}.\n"
+"\n"
+"The platform studies it and sends you a quote, usually within 2 working days. Once you accept it, a partner engineer of the platform carries out the study and the platform delivers the documents in your account.\n"
+"\n"
+"Follow your request:\n"
+"{lien}\n"
+"\n"
+"The {site} team"
+msgstr ""
+"مرحبا {nom}،\n"
+"\n"
+"تم استلام طلبك «{titre}» ({type_etude}) تحت المرجع {reference}.\n"
+"\n"
+"تدرسه المنصة وترسل لك عرض سعر خلال يومي عمل عادة. بعد قبوله، ينجز مهندس شريك للمنصة الدراسة وتسلّم المنصة الوثائق في حسابك.\n"
+"\n"
+"تابع طلبك:\n"
+"{lien}\n"
+"\n"
+"فريق {site}"
+
+#: src/Activity.php:117
+msgid "Study quote accepted"
+msgstr "قبول عرض سعر دراسة"
+
+#. translators: 1: client, 2: reference, 3: amount.
+#: src/Activity.php:123
+msgid "%1$s accepted the quote of %2$s (%3$s)"
+msgstr "%1$s قبل عرض سعر %2$s (%3$s)"
+
+#: src/Activity.php:126
+msgid "Quote accepted: {reference} ({montant})"
+msgstr "قبول عرض السعر: {reference} ({montant})"
+
+#: src/Activity.php:127
+msgid ""
+"{client} accepted the quote of {reference} — {titre}.\n"
+"\n"
+"Amount: {montant}\n"
+"\n"
+"Assign a partner engineer:\n"
+"{lien_admin}"
+msgstr ""
+"قبل {client} عرض سعر {reference} — {titre}.\n"
+"\n"
+"المبلغ: {montant}\n"
+"\n"
+"عيّن مهندسا شريكا:\n"
+"{lien_admin}"
+
+#: src/Activity.php:133 src/Activity.php:199
+msgid "Mission declined by the engineer"
+msgstr "المهندس رفض المهمة"
+
+#. translators: %s: reference.
+#: src/Activity.php:139
+msgid "The engineer declined %s"
+msgstr "رفض المهندس %s"
+
+#: src/Activity.php:142
+msgid "Engineer to replace: {reference}"
+msgstr "مهندس يجب تعويضه: {reference}"
+
+#: src/Activity.php:143
+msgid ""
+"The engineer declined {reference} — {titre}. Choose another partner engineer:\n"
+"{lien_admin}"
+msgstr ""
+"رفض المهندس {reference} — {titre}. اختر مهندسا شريكا آخر:\n"
+"{lien_admin}"
+
+#: src/Activity.php:149 src/Activity.php:200
+msgid "Deliverables sent by the engineer"
+msgstr "المهندس أرسل المخرجات"
+
+#. translators: 1: engineer, 2: reference.
+#: src/Activity.php:155
+msgid "%1$s sent the deliverables of %2$s"
+msgstr "%1$s أرسل مخرجات %2$s"
+
+#: src/Activity.php:158
+msgid "Deliverables to check: {reference}"
+msgstr "مخرجات للمراجعة: {reference}"
+
+#: src/Activity.php:159
+msgid ""
+"{ingenieur} sent the deliverables of {reference} — {titre}.\n"
+"\n"
+"Check them, then deliver them to the client or ask for changes:\n"
+"{lien_admin}"
+msgstr ""
+"أرسل {ingenieur} مخرجات {reference} — {titre}.\n"
+"\n"
+"راجعها ثم سلّمها للزبون أو اطلب تعديلات:\n"
+"{lien_admin}"
+
+#: src/Activity.php:165 src/Activity.php:207
+msgid "Message on a mission"
+msgstr "رسالة حول مهمة"
+
+#. translators: %s: reference.
+#: src/Activity.php:172
+msgid "New message on %s"
+msgstr "رسالة جديدة حول %s"
+
+#: src/Activity.php:175
+msgid "Message on {reference}"
+msgstr "رسالة حول {reference}"
+
+#: src/Activity.php:176
+msgid ""
+"New message on {reference} — {titre}.\n"
+"\n"
+"Answer from the mission page:\n"
+"{lien_admin}"
+msgstr ""
+"رسالة جديدة حول {reference} — {titre}.\n"
+"\n"
+"أجب من صفحة المهمة:\n"
+"{lien_admin}"
+
+#: src/Activity.php:186
+msgid "Partner engineer approved"
+msgstr "اعتماد مهندس شريك"
+
+#: src/Activity.php:187
+msgid "Partner engineer application refused"
+msgstr "رفض ترشح مهندس شريك"
+
+#: src/Activity.php:188
+msgid "Partner engineer suspended"
+msgstr "إيقاف مهندس شريك"
+
+#: src/Activity.php:189
+msgid "Engineer profile saved"
+msgstr "حفظ ملف المهندس"
+
+#: src/Activity.php:191
+msgid "Quote sent to the client"
+msgstr "إرسال عرض السعر للزبون"
+
+#: src/Activity.php:192
+msgid "Study request declined by the platform"
+msgstr "المنصة رفضت طلب الدراسة"
+
+#: src/Activity.php:193
+msgid "Quote accepted by the client"
+msgstr "الزبون قبل عرض السعر"
+
+#: src/Activity.php:194 src/Notifications.php:69
+msgid "Quote refused by the client"
+msgstr "الزبون رفض عرض السعر"
+
+#: src/Activity.php:195 src/Notifications.php:76
+msgid "Study request cancelled"
+msgstr "إلغاء طلب دراسة"
+
+#: src/Activity.php:196
+msgid "Mission offered to an engineer"
+msgstr "عرض المهمة على مهندس"
+
+#: src/Activity.php:197
+msgid "Mission withdrawn from the engineer"
+msgstr "سحب المهمة من المهندس"
+
+#: src/Activity.php:198
+msgid "Mission accepted by the engineer"
+msgstr "المهندس قبل المهمة"
+
+#: src/Activity.php:201
+msgid "Changes asked to the engineer"
+msgstr "طلب تعديلات من المهندس"
+
+#: src/Activity.php:202
+msgid "Study delivered to the client"
+msgstr "تسليم الدراسة للزبون"
+
+#: src/Activity.php:203
+msgid "Mission closed"
+msgstr "إغلاق المهمة"
+
+#: src/Activity.php:204
+msgid "Engineer fee paid"
+msgstr "دفع أتعاب المهندس"
+
+#: src/Activity.php:205
+msgid "Client payment recorded"
+msgstr "تسجيل دفع الزبون"
+
+#: src/Activity.php:206
+msgid "Client payment cancelled"
+msgstr "إلغاء دفع الزبون"
+
+#: src/Activity.php:208
+msgid "Mission file downloaded"
+msgstr "تنزيل ملف مهمة"
+
+#: src/Activity.php:209 src/Admin/Admin.php:293
+msgid "Mission"
+msgstr "المهمة"
+
+#: src/Activity.php:210
+msgid "Partner engineer"
+msgstr "مهندس شريك"
+
+#: src/Admin/Admin.php:43 src/Admin/Admin.php:275 src/Admin/Admin.php:363
+msgid "Engineering missions"
+msgstr "المهام الهندسية"
+
+#: src/Admin/Admin.php:44 src/Admin/Admin.php:127 src/Admin/Admin.php:163
+msgid "Partner engineers"
+msgstr "المهندسون الشركاء"
+
+#: src/Admin/Admin.php:45 src/Admin/Admin.php:571
+msgid "Engineering settings"
+msgstr "إعدادات الهندسة"
+
+#: src/Admin/Admin.php:55
+msgid "Saved."
+msgstr "تم الحفظ."
+
+#: src/Admin/Admin.php:100
+msgid "To review"
+msgstr "للدراسة"
+
+#: src/Admin/Admin.php:101
+msgid "Approved"
+msgstr "معتمد"
+
+#: src/Admin/Admin.php:102
+msgid "Refused"
+msgstr "مرفوض"
+
+#: src/Admin/Admin.php:103
+msgid "Suspended"
+msgstr "موقوف"
+
+#: src/Admin/Admin.php:129
+msgid ""
+"Engineers apply on the page “Become a partner engineer”. Check the diploma "
+"and the documents, then approve or refuse. Approved engineers appear on the "
+"public list, without their contact details, and can receive missions."
+msgstr ""
+"يترشح المهندسون من صفحة «كن مهندسا شريكا». راجع الشهادة والوثائق ثم اقبل أو "
+"ارفض. يظهر المهندسون المعتمدون في القائمة العمومية دون بيانات اتصالهم "
+"ويمكنهم تلقي المهام."
+
+#: src/Admin/Admin.php:137
+msgid "Nobody here."
+msgstr "لا أحد هنا."
+
+#: src/Admin/Admin.php:141 src/Admin/Admin.php:293 src/Admin/Admin.php:400
+msgid "Engineer"
+msgstr "المهندس"
+
+#: src/Admin/Admin.php:141 src/Admin/Admin.php:173
+msgid "Specialties"
+msgstr "التخصصات"
+
+#. translators: %d: years.
+#: src/Admin/Admin.php:141 src/Admin/Admin.php:172
+msgid "Experience"
+msgstr "الخبرة"
+
+#: src/Admin/Admin.php:141 src/Admin/Admin.php:174 src/Admin/Admin.php:373
+msgid "Wilaya"
+msgstr "الولاية"
+
+#: src/Admin/Admin.php:141 src/Admin/Admin.php:228
+msgid "Missions"
+msgstr "المهام"
+
+#: src/Admin/Admin.php:141 src/Admin/Admin.php:176
+msgid "Applied"
+msgstr "تاريخ الترشح"
+
+#. translators: %d: years.
+#: src/Admin/Admin.php:148 src/Admin/Admin.php:172
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] "%d سنة"
+msgstr[1] "سنة واحدة"
+msgstr[2] "سنتان"
+msgstr[3] "%d سنوات"
+msgstr[4] "%d سنة"
+msgstr[5] "%d سنة"
+
+#: src/Admin/Admin.php:157
+msgid "Engineer not found"
+msgstr "المهندس غير موجود"
+
+#: src/Admin/Admin.php:166
+msgid "Profile"
+msgstr "الملف"
+
+#: src/Admin/Admin.php:168
+msgid "Title"
+msgstr "الصفة"
+
+#: src/Admin/Admin.php:169
+msgid "Diploma"
+msgstr "الشهادة"
+
+#: src/Admin/Admin.php:170
+msgid "School"
+msgstr "المدرسة"
+
+#: src/Admin/Admin.php:175
+msgid "Available"
+msgstr "متاح"
+
+#: src/Admin/Admin.php:175
+msgid "Yes"
+msgstr "نعم"
+
+#: src/Admin/Admin.php:175
+msgid "No"
+msgstr "لا"
+
+#: src/Admin/Admin.php:183
+msgid "Contact (platform only)"
+msgstr "الاتصال (للمنصة فقط)"
+
+#: src/Admin/Admin.php:184
+msgid "E-mail"
+msgstr "البريد الإلكتروني"
+
+#: src/Admin/Admin.php:185 src/Admin/Admin.php:385
+msgid "Phone"
+msgstr "الهاتف"
+
+#: src/Admin/Admin.php:186
+msgid "Verification"
+msgstr "التوثيق"
+
+#: src/Admin/Admin.php:188
+msgid "Documents"
+msgstr "الوثائق"
+
+#: src/Admin/Admin.php:197
+msgid "No documents."
+msgstr "لا توجد وثائق."
+
+#: src/Admin/Admin.php:201
+msgid "Decision"
+msgstr "القرار"
+
+#: src/Admin/Admin.php:207
+msgid "Reason (required to refuse or suspend; the engineer reads it)"
+msgstr "السبب (إجباري للرفض أو الإيقاف؛ يقرؤه المهندس)"
+
+#: src/Admin/Admin.php:209
+msgid "Approve"
+msgstr "اعتماد"
+
+#: src/Admin/Admin.php:209
+msgid "Refuse"
+msgstr "رفض"
+
+#: src/Admin/Admin.php:210
+msgid "Suspend"
+msgstr "إيقاف"
+
+#: src/Admin/Admin.php:211
+msgid "Restore"
+msgstr "إعادة التفعيل"
+
+#: src/Admin/Admin.php:212
+msgid "Approve anyway"
+msgstr "اعتماد رغم ذلك"
+
+#: src/Admin/Admin.php:228
+msgid "Fees due"
+msgstr "الأتعاب المستحقة"
+
+#: src/Admin/Admin.php:228
+msgid "Fees paid"
+msgstr "الأتعاب المدفوعة"
+
+#: src/Admin/Admin.php:245
+msgid "Give the reason: the engineer reads it."
+msgstr "اذكر السبب: يقرؤه المهندس."
+
+#: src/Admin/Admin.php:277
+msgid ""
+"Every study or inspection request comes here. Send the quote to the client, "
+"then give the mission to a partner engineer with the fee you agree with him."
+" Check the deliverables before they reach the client. The client and the "
+"engineer never see each other."
+msgstr ""
+"يصل هنا كل طلب دراسة أو معاينة. أرسل عرض السعر للزبون، ثم أسند المهمة إلى "
+"مهندس شريك بالأتعاب المتفق عليها معه. راجع المخرجات قبل وصولها إلى الزبون. "
+"لا يرى الزبون والمهندس بعضهما أبدا."
+
+#: src/Admin/Admin.php:280
+msgid "Open"
+msgstr "مفتوحة"
+
+#: src/Admin/Admin.php:287
+msgid "Search"
+msgstr "بحث"
+
+#: src/Admin/Admin.php:290
+msgid "No mission here."
+msgstr "لا توجد مهام هنا."
+
+#: src/Admin/Admin.php:293
+msgid "Client"
+msgstr "الزبون"
+
+#: src/Admin/Admin.php:293
+msgid "Status"
+msgstr "الحالة"
+
+#: src/Admin/Admin.php:293 src/Admin/Admin.php:394
+msgid "Client price"
+msgstr "سعر الزبون"
+
+#: src/Admin/Admin.php:293 src/Admin/Admin.php:401
+msgid "Engineer fee"
+msgstr "أتعاب المهندس"
+
+#: src/Admin/Admin.php:293
+msgid "Margin"
+msgstr "الهامش"
+
+#: src/Admin/Admin.php:293
+msgid "Updated"
+msgstr "آخر تحديث"
+
+#: src/Admin/Admin.php:307
+msgid "Client documents"
+msgstr "وثائق الزبون"
+
+#: src/Admin/Admin.php:308
+msgid "Deliverables of the engineer"
+msgstr "مخرجات المهندس"
+
+#: src/Admin/Admin.php:309
+msgid "Platform documents"
+msgstr "وثائق المنصة"
+
+#: src/Admin/Admin.php:310
+msgid "Engineer invoices"
+msgstr "فواتير المهندس"
+
+#: src/Admin/Admin.php:312
+msgid "Files"
+msgstr "الملفات"
+
+#. translators: 1: client or engineer, 2: mission reference and title.
+#: src/Admin/Admin.php:322 src/Notifications.php:106
+msgid "client"
+msgstr "الزبون"
+
+#. translators: 1: client or engineer, 2: mission reference and title.
+#: src/Admin/Admin.php:325 src/Notifications.php:106
+msgid "engineer"
+msgstr "المهندس"
+
+#. translators: %s: who sees the file.
+#: src/Admin/Admin.php:327
+msgid "seen by: %s"
+msgstr "يراه: %s"
+
+#. translators: %s: who sees the file.
+#: src/Admin/Admin.php:327
+msgid "platform only"
+msgstr "المنصة فقط"
+
+#: src/Admin/Admin.php:332
+msgid "Visible to the client"
+msgstr "مرئي للزبون"
+
+#: src/Admin/Admin.php:332
+msgid "Visible to the engineer"
+msgstr "مرئي للمهندس"
+
+#: src/Admin/Admin.php:332
+msgid "Add platform documents"
+msgstr "إضافة وثائق المنصة"
+
+#: src/Admin/Admin.php:336
+msgid "Messages with the client"
+msgstr "الرسائل مع الزبون"
+
+#: src/Admin/Admin.php:336
+msgid "Messages with the engineer"
+msgstr "الرسائل مع المهندس"
+
+#: src/Admin/Admin.php:340
+msgid "No message yet."
+msgstr "لا توجد رسائل بعد."
+
+#: src/Admin/Admin.php:344
+msgid "Platform"
+msgstr "المنصة"
+
+#: src/Admin/Admin.php:349
+msgid "Send"
+msgstr "إرسال"
+
+#: src/Admin/Admin.php:357
+msgid "Mission not found"
+msgstr "المهمة غير موجودة"
+
+#: src/Admin/Admin.php:369
+msgid "Request"
+msgstr "الطلب"
+
+#: src/Admin/Admin.php:372
+msgid "Type of study"
+msgstr "نوع الدراسة"
+
+#: src/Admin/Admin.php:374
+msgid "Wanted for"
+msgstr "مطلوب قبل"
+
+#: src/Admin/Admin.php:375
+msgid "Indicative budget"
+msgstr "الميزانية التقديرية"
+
+#: src/Admin/Admin.php:376
+msgid "Preferred engineer"
+msgstr "المهندس المفضّل"
+
+#: src/Admin/Admin.php:377
+msgid "Sent"
+msgstr "أُرسل"
+
+#: src/Admin/Admin.php:383
+msgid "Client (never shown to the engineer)"
+msgstr "الزبون (لا يُعرض أبدا على المهندس)"
+
+#: src/Admin/Admin.php:384
+msgid "Account"
+msgstr "الحساب"
+
+#: src/Admin/Admin.php:385
+msgid "Contact"
+msgstr "الاتصال"
+
+#: src/Admin/Admin.php:387
+msgid "Reason given:"
+msgstr "السبب المذكور:"
+
+#: src/Admin/Admin.php:392
+msgid "Quote, engineer and fee"
+msgstr "عرض السعر والمهندس والأتعاب"
+
+#. translators: %d: days.
+#: src/Admin/Admin.php:394
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d يوم"
+msgstr[1] "يوم واحد"
+msgstr[2] "يومان"
+msgstr[3] "%d أيام"
+msgstr[4] "%d يوما"
+msgstr[5] "%d يوم"
+
+#: src/Admin/Admin.php:396
+msgid "Valid until"
+msgstr "صالح إلى غاية"
+
+#: src/Admin/Admin.php:401
+msgid "not started"
+msgstr "لم تبدأ"
+
+#: src/Admin/Admin.php:401
+msgid "planned"
+msgstr "مبرمجة"
+
+#: src/Admin/Admin.php:401
+msgid "due"
+msgstr "مستحقة"
+
+#: src/Admin/Admin.php:401
+msgid "paid"
+msgstr "مدفوعة"
+
+#: src/Admin/Admin.php:402
+msgid "Platform margin"
+msgstr "هامش المنصة"
+
+#: src/Admin/Admin.php:404
+msgid "Client payment"
+msgstr "دفع الزبون"
+
+#: src/Admin/Admin.php:404
+msgid "received"
+msgstr "مستلم"
+
+#: src/Admin/Admin.php:404
+msgid "not recorded"
+msgstr "غير مسجل"
+
+#: src/Admin/Admin.php:410
+msgid "Change the quote"
+msgstr "تعديل عرض السعر"
+
+#: src/Admin/Admin.php:410
+msgid "Send the quote to the client"
+msgstr "إرسال عرض السعر للزبون"
+
+#: src/Admin/Admin.php:412
+msgid "Price for the client (DA, taxes included)"
+msgstr "السعر للزبون (دج، شامل الرسوم)"
+
+#: src/Admin/Admin.php:412 src/Admin/Admin.php:449
+msgid "Time (days)"
+msgstr "الأجل (أيام)"
+
+#: src/Admin/Admin.php:413
+msgid "Message to the client (what is included, conditions)"
+msgstr "رسالة للزبون (ما يشمله العرض والشروط)"
+
+#: src/Admin/Admin.php:414
+msgid "Reason, if you decline the request"
+msgstr "السبب إذا رفضت الطلب"
+
+#: src/Admin/Admin.php:415
+msgid "Send the quote"
+msgstr "إرسال عرض السعر"
+
+#: src/Admin/Admin.php:416
+msgid "Decline the request"
+msgstr "رفض الطلب"
+
+#: src/Admin/Admin.php:416
+msgid "Decline this request? The client is told."
+msgstr "رفض هذا الطلب؟ سيتم إعلام الزبون."
+
+#: src/Admin/Admin.php:420
+msgid "Give the mission to another engineer"
+msgstr "إسناد المهمة إلى مهندس آخر"
+
+#: src/Admin/Admin.php:420
+msgid "Give the mission to an engineer"
+msgstr "إسناد المهمة إلى مهندس"
+
+#: src/Admin/Admin.php:431
+msgid "No approved engineer yet."
+msgstr "لا يوجد مهندس معتمد بعد."
+
+#: src/Admin/Admin.php:439
+msgid "chosen by the client"
+msgstr "اختاره الزبون"
+
+#: src/Admin/Admin.php:442
+msgid "specialty"
+msgstr "تخصص"
+
+#: src/Admin/Admin.php:445
+msgid "not available"
+msgstr "غير متاح"
+
+#: src/Admin/Admin.php:449
+msgid "Engineer fee (DA)"
+msgstr "أتعاب المهندس (دج)"
+
+#: src/Admin/Admin.php:450
+msgid ""
+"Instructions for the engineer (he does not see the client’s name nor price)"
+msgstr "تعليمات للمهندس (لا يرى اسم الزبون ولا السعر)"
+
+#: src/Admin/Admin.php:451
+msgid "Offer the mission"
+msgstr "عرض المهمة"
+
+#: src/Admin/Admin.php:458
+msgid "Withdraw the mission from the engineer"
+msgstr "سحب المهمة من المهندس"
+
+#: src/Admin/Admin.php:458
+msgid "Withdraw the mission? The engineer is told."
+msgstr "سحب المهمة؟ سيتم إعلام المهندس."
+
+#: src/Admin/Admin.php:462
+msgid "Check the deliverables"
+msgstr "مراجعة المخرجات"
+
+#: src/Admin/Admin.php:464
+msgid "Changes to ask the engineer"
+msgstr "التعديلات المطلوبة من المهندس"
+
+#: src/Admin/Admin.php:465
+msgid "Validate and deliver to the client"
+msgstr "اعتماد وتسليم للزبون"
+
+#: src/Admin/Admin.php:465
+msgid "The client will see the deliverables. Continue?"
+msgstr "سيرى الزبون المخرجات. متابعة؟"
+
+#: src/Admin/Admin.php:466
+msgid "Ask for changes"
+msgstr "طلب تعديلات"
+
+#: src/Admin/Admin.php:472
+msgid "Close the mission"
+msgstr "إغلاق المهمة"
+
+#: src/Admin/Admin.php:476
+msgid "Pay the engineer"
+msgstr "دفع أتعاب المهندس"
+
+#: src/Admin/Admin.php:478
+msgid "Payment reference (transfer, cheque…)"
+msgstr "مرجع الدفع (تحويل، صك…)"
+
+#: src/Admin/Admin.php:479
+msgid "Record the payment of the fee"
+msgstr "تسجيل دفع الأتعاب"
+
+#: src/Admin/Admin.php:482
+msgid "Fee paid"
+msgstr "تم دفع الأتعاب"
+
+#: src/Admin/Admin.php:487
+msgid "Cancel the client payment"
+msgstr "إلغاء دفع الزبون"
+
+#: src/Admin/Admin.php:487
+msgid "Record the client payment"
+msgstr "تسجيل دفع الزبون"
+
+#: src/Admin/Admin.php:506 src/Admin/Admin.php:560
+msgid "Mission not found."
+msgstr "المهمة غير موجودة."
+
+#: src/Admin/Admin.php:527
+msgid "Write the changes you ask for."
+msgstr "اكتب التعديلات المطلوبة."
+
+#: src/Admin/Admin.php:549
+msgid "Write the message."
+msgstr "اكتب الرسالة."
+
+#: src/Admin/Admin.php:576
+msgid "Accept new partner engineer applications"
+msgstr "قبول ترشحات المهندسين الشركاء الجديدة"
+
+#: src/Admin/Admin.php:577
+msgid "Show the list of partner engineers to visitors"
+msgstr "عرض قائمة المهندسين الشركاء للزوار"
+
+#: src/Admin/Admin.php:578
+msgid "Show the number of completed missions on the list"
+msgstr "عرض عدد المهام المنجزة في القائمة"
+
+#: src/Admin/Admin.php:584
+msgid "Quote valid for (days)"
+msgstr "صلاحية عرض السعر (أيام)"
+
+#: src/Admin/Admin.php:585
+msgid "Study requests a client may send per day"
+msgstr "طلبات الدراسة المسموحة لكل زبون يوميا"
+
+#: src/Admin/Admin.php:586
+msgid "Files per sending"
+msgstr "الملفات في كل إرسال"
+
+#: src/Admin/Admin.php:587
+msgid "Size of one file (MB)"
+msgstr "حجم الملف (ميغابايت)"
+
+#: src/Admin/Admin.php:592
+msgid "Accepted file types"
+msgstr "أنواع الملفات المقبولة"
+
+#: src/Admin/Admin.php:592
+msgid ""
+"Extensions separated by commas. Program and web files are always refused."
+msgstr "امتدادات مفصولة بفواصل. ملفات البرامج والويب مرفوضة دائما."
+
+#: src/Admin/Admin.php:593
+msgid "Types of study"
+msgstr "أنواع الدراسات"
+
+#: src/Admin/Admin.php:593
+msgid "Code"
+msgstr "الرمز"
+
+#: src/Admin/Admin.php:593
+msgid "French"
+msgstr "الفرنسية"
+
+#: src/Admin/Admin.php:593
+msgid "Arabic"
+msgstr "العربية"
+
+#: src/Admin/Admin.php:593
+msgid "Active"
+msgstr "مفعّل"
+
+#: src/Admin/Admin.php:599
+msgid "New"
+msgstr "جديد"
+
+#: src/Apply.php:40
+msgid "Engineering diploma"
+msgstr "شهادة مهندس"
+
+#: src/Apply.php:41
+msgid "Identity card or passport"
+msgstr "بطاقة التعريف أو جواز السفر"
+
+#: src/Apply.php:42
+msgid "Approval or registration of the engineering office (if any)"
+msgstr "اعتماد أو تسجيل مكتب الدراسات (إن وجد)"
+
+#: src/Apply.php:43
+msgid "CV or list of references"
+msgstr "السيرة الذاتية أو قائمة المراجع"
+
+#: src/Apply.php:65
+msgid ""
+"Enter your professional title, for example “Civil engineer — steel "
+"structures”."
+msgstr "أدخل صفتك المهنية، مثلا «مهندس هندسة مدنية — هياكل معدنية»."
+
+#: src/Apply.php:69
+msgid "Enter your diploma."
+msgstr "أدخل شهادتك."
+
+#: src/Apply.php:72
+msgid "Enter the university or school."
+msgstr "أدخل الجامعة أو المدرسة."
+
+#: src/Apply.php:75
+msgid "Enter the year of the diploma."
+msgstr "أدخل سنة الحصول على الشهادة."
+
+#: src/Apply.php:79
+msgid "Choose at least one specialty."
+msgstr "اختر تخصصا واحدا على الأقل."
+
+#: src/Apply.php:82
+msgid "Describe your experience in a few lines (40 characters at least)."
+msgstr "صف خبرتك في بضعة أسطر (40 حرفا على الأقل)."
+
+#. translators: %s: document name.
+#: src/Apply.php:101
+msgid "%s is required."
+msgstr "%s إجباري."
+
+#: src/Apply.php:142
+msgid "Applications are closed for the moment."
+msgstr "الترشحات مغلقة حاليا."
+
+#: src/Apply.php:150
+msgid "Too many sign-ups from this connection. Try again in an hour."
+msgstr "تسجيلات كثيرة من هذا الاتصال. أعد المحاولة بعد ساعة."
+
+#: src/Apply.php:179
+msgid ""
+"Thank you, your application is sent. The platform team checks your documents"
+" and answers by e-mail."
+msgstr ""
+"شكرا، تم إرسال ترشحك. يتحقق فريق المنصة من وثائقك ويرد عليك عبر البريد "
+"الإلكتروني."
+
+#: src/Apply.php:186
+msgid ""
+"Partner engineers have their own account. Sign out, then apply with another "
+"e-mail address."
+msgstr ""
+"للمهندسين الشركاء حسابهم الخاص. سجّل الخروج ثم ترشح ببريد إلكتروني آخر."
+
+#: src/Apply.php:189
+msgid "Your application is already being reviewed or approved."
+msgstr "ترشحك قيد الدراسة أو مقبول بالفعل."
+
+#: src/Apply.php:204
+msgid "Your application is sent again. The platform team will review it."
+msgstr "تم إرسال ترشحك من جديد. سيدرسه فريق المنصة."
+
+#: src/Apply.php:221
+msgid "This page is for partner engineers."
+msgstr "هذه الصفحة خاصة بالمهندسين الشركاء."
+
+#: src/Apply.php:241
+msgid "Your profile is saved."
+msgstr "تم حفظ ملفك."
+
+#: src/Engineers.php:97
+msgid "Unknown engineer."
+msgstr "مهندس غير معروف."
+
+#: src/Engineers.php:100
+msgid "Give the reason of the refusal: the engineer reads it."
+msgstr "اذكر سبب الرفض: يقرؤه المهندس."
+
+#. translators: %d: number of files.
+#: src/Files.php:111
+msgid "Send at most %d file."
+msgid_plural "Send at most %d files."
+msgstr[0] "أرسل %d ملف كحد أقصى."
+msgstr[1] "أرسل %d ملف كحد أقصى."
+msgstr[2] "أرسل %d ملف كحد أقصى."
+msgstr[3] "أرسل %d ملف كحد أقصى."
+msgstr[4] "أرسل %d ملف كحد أقصى."
+msgstr[5] "أرسل %d ملف كحد أقصى."
+
+#. translators: %s: file name.
+#: src/Files.php:121
+msgid "%s could not be received. Try again."
+msgstr "تعذر استلام %s. أعد المحاولة."
+
+#. translators: 1: file name, 2: size in MB.
+#: src/Files.php:126
+msgid "%1$s is too large (%2$d MB at most)."
+msgstr "%1$s كبير جدا (%2$d ميغابايت كحد أقصى)."
+
+#. translators: 1: file name, 2: list of extensions.
+#: src/Files.php:131
+msgid "%1$s: this type of file is not accepted (%2$s)."
+msgstr "%1$s: نوع الملف غير مقبول (%2$s)."
+
+#. translators: %s: file name.
+#: src/Files.php:140
+msgid "%s could not be saved. Try again."
+msgstr "تعذر حفظ %s. أعد المحاولة."
+
+#: src/Files.php:275
+msgid "Link expired. Open the mission again."
+msgstr "انتهت صلاحية الرابط. افتح المهمة من جديد."
+
+#: src/Files.php:279
+msgid "You are not allowed to open this file."
+msgstr "غير مسموح لك بفتح هذا الملف."
+
+#: src/Files.php:284
+msgid "File not found."
+msgstr "الملف غير موجود."
+
+#: src/Form.php:36
+msgid "Sign in or create an account to ask for a study."
+msgstr "سجّل الدخول أو أنشئ حسابا لطلب دراسة."
+
+#: src/Form.php:40
+msgid "Your account has no company."
+msgstr "حسابك غير مرتبط بمؤسسة."
+
+#: src/Form.php:43
+msgid ""
+"Partner engineers receive missions from the platform; they cannot request "
+"them."
+msgstr "يتلقى المهندسون الشركاء المهام من المنصة ولا يمكنهم طلبها."
+
+#: src/Form.php:55
+msgid "Choose the type of study."
+msgstr "اختر نوع الدراسة."
+
+#: src/Form.php:59
+msgid "Give a short title, for example “Hangar 20 × 40 m in Sétif”."
+msgstr "أعط عنوانا قصيرا، مثلا «هنغار 20 × 40 م في سطيف»."
+
+#: src/Form.php:63
+msgid ""
+"Describe the project: dimensions, use, loads, what you expect (30 characters"
+" at least)."
+msgstr ""
+"صف المشروع: الأبعاد، الاستعمال، الأحمال، وما تنتظره (30 حرفا على الأقل)."
+
+#: src/Form.php:67
+msgid "Choose the wilaya of the project."
+msgstr "اختر ولاية المشروع."
+
+#: src/Form.php:71
+msgid "Choose a date in the future, or leave it empty."
+msgstr "اختر تاريخا مستقبليا أو اتركه فارغا."
+
+#: src/Form.php:101
+msgid ""
+"You sent many study requests today. Try again tomorrow or write to the "
+"platform."
+msgstr "أرسلت طلبات دراسة كثيرة اليوم. أعد المحاولة غدا أو راسل المنصة."
+
+#: src/Form.php:111
+msgid ""
+"Your request is sent to the platform. You receive a quote, usually within 2 "
+"working days."
+msgstr "تم إرسال طلبك إلى المنصة. ستتلقى عرض سعر خلال يومي عمل عادة."
+
+#: src/Form.php:131
+msgid "You cannot change this request."
+msgstr "لا يمكنك تعديل هذا الطلب."
+
+#: src/Form.php:136
+msgid "This request is closed."
+msgstr "هذا الطلب مغلق."
+
+#. translators: %d: number of files.
+#: src/Form.php:140
+msgid "%d document added."
+msgid_plural "%d documents added."
+msgstr[0] "أُضيفت %d وثيقة."
+msgstr[1] "أُضيفت %d وثيقة."
+msgstr[2] "أُضيفت %d وثيقة."
+msgstr[3] "أُضيفت %d وثيقة."
+msgstr[4] "أُضيفت %d وثيقة."
+msgstr[5] "أُضيفت %d وثيقة."
+
+#: src/Form.php:143
+msgid "Documents added. The platform is told."
+msgstr "تمت إضافة الوثائق وإعلام المنصة."
+
+#: src/Form.php:146
+msgid ""
+"Quote accepted. The platform appoints a partner engineer and you are told "
+"when the study starts."
+msgstr "تم قبول عرض السعر. تعيّن المنصة مهندسا شريكا وتعلمك عند بدء الدراسة."
+
+#: src/Form.php:147
+msgid "You declined the quote. The platform is told."
+msgstr "رفضت عرض السعر. تم إعلام المنصة."
+
+#: src/Form.php:148
+msgid "Your request is cancelled."
+msgstr "تم إلغاء طلبك."
+
+#: src/Form.php:149
+msgid "Thank you. The mission is closed."
+msgstr "شكرا. تم إغلاق المهمة."
+
+#: src/Form.php:152 src/Form.php:215 src/Missions.php:119 src/Missions.php:177
+msgid "Unknown action."
+msgstr "إجراء غير معروف."
+
+#: src/Form.php:166
+msgid "This mission is not assigned to you."
+msgstr "هذه المهمة ليست مسندة إليك."
+
+#: src/Form.php:169
+msgid "Your partner account is not active."
+msgstr "حساب الشريك غير مفعّل."
+
+#: src/Form.php:175
+msgid "Mission accepted. You can start; send the deliverables from this page."
+msgstr "تم قبول المهمة. يمكنك البدء؛ أرسل المخرجات من هذه الصفحة."
+
+#: src/Form.php:179
+msgid "You declined the mission. The platform is told."
+msgstr "رفضت المهمة. تم إعلام المنصة."
+
+#: src/Form.php:184
+msgid "Deliverables can be added while the mission is in progress."
+msgstr "تُضاف المخرجات أثناء إنجاز المهمة."
+
+#: src/Form.php:187
+msgid "Files added. Send the work to the platform when everything is there."
+msgstr "تمت إضافة الملفات. أرسل العمل إلى المنصة عند اكتماله."
+
+#: src/Form.php:192
+msgid "This file cannot be removed."
+msgstr "لا يمكن حذف هذا الملف."
+
+#: src/Form.php:195
+msgid "File removed."
+msgstr "تم حذف الملف."
+
+#: src/Form.php:199
+msgid "An invoice can be sent once the mission is accepted."
+msgstr "يمكن إرسال الفاتورة بعد قبول المهمة."
+
+#: src/Form.php:208
+msgid "Invoice sent to the platform."
+msgstr "تم إرسال الفاتورة إلى المنصة."
+
+#: src/Form.php:212
+msgid "Work sent. The platform checks it and delivers it to the client."
+msgstr "تم إرسال العمل. تراجعه المنصة وتسلّمه للزبون."
+
+#: src/Form.php:235
+msgid "You cannot write on this mission."
+msgstr "لا يمكنك الكتابة حول هذه المهمة."
+
+#: src/Form.php:239
+msgid "Write your message."
+msgstr "اكتب رسالتك."
+
+#: src/Form.php:242
+msgid "Too many messages. Try again later."
+msgstr "رسائل كثيرة. أعد المحاولة لاحقا."
+
+#: src/Form.php:246
+msgid "Message sent to the platform."
+msgstr "تم إرسال الرسالة إلى المنصة."
+
+#: src/Missions.php:122
+msgid ""
+"This step is no longer possible: the mission has moved on. Reload the page."
+msgstr "هذه الخطوة لم تعد ممكنة: تقدمت المهمة. أعد تحميل الصفحة."
+
+#: src/Missions.php:128
+msgid "Enter the price of the study for the client."
+msgstr "أدخل سعر الدراسة للزبون."
+
+#: src/Missions.php:135
+msgid "Give the reason: the client reads it."
+msgstr "اذكر السبب: يقرؤه الزبون."
+
+#: src/Missions.php:140
+msgid "This quote has expired. Write to the platform to get an updated one."
+msgstr "انتهت صلاحية عرض السعر. راسل المنصة للحصول على عرض محدّث."
+
+#: src/Missions.php:151
+msgid "Choose an approved engineer."
+msgstr "اختر مهندسا معتمدا."
+
+#: src/Missions.php:154
+msgid "Enter the fee paid to the engineer."
+msgstr "أدخل الأتعاب المدفوعة للمهندس."
+
+#: src/Missions.php:165
+msgid ""
+"Add the deliverables (plans, calculation notes, report) before sending."
+msgstr "أضف المخرجات (مخططات، مذكرات حساب، تقرير) قبل الإرسال."
+
+#: src/Missions.php:183
+msgid "The fee of this mission is not due."
+msgstr "أتعاب هذه المهمة غير مستحقة."
+
+#: src/Missions.php:255
+msgid "Being studied by the platform"
+msgstr "قيد الدراسة لدى المنصة"
+
+#: src/Missions.php:256
+msgid "Quote to accept"
+msgstr "عرض سعر للقبول"
+
+#: src/Missions.php:257 src/Missions.php:258
+msgid "Accepted — engineer being appointed"
+msgstr "مقبول — جارٍ تعيين المهندس"
+
+#: src/Missions.php:259 src/Missions.php:260 src/Theme/Bridge.php:202
+msgid "Study in progress"
+msgstr "الدراسة قيد الإنجاز"
+
+#: src/Missions.php:261 src/Missions.php:291 src/Theme/Bridge.php:202
+msgid "Delivered"
+msgstr "تم التسليم"
+
+#: src/Missions.php:262 src/Missions.php:277 src/Missions.php:292
+msgid "Closed"
+msgstr "مغلقة"
+
+#: src/Missions.php:263
+msgid "Not taken by the platform"
+msgstr "لم تقبلها المنصة"
+
+#: src/Missions.php:264
+msgid "Quote declined"
+msgstr "عرض سعر مرفوض"
+
+#: src/Missions.php:265 src/Missions.php:295
+msgid "Cancelled"
+msgstr "ملغاة"
+
+#: src/Missions.php:273
+msgid "Offered to you"
+msgstr "معروضة عليك"
+
+#: src/Missions.php:274 src/Missions.php:289
+msgid "In progress"
+msgstr "قيد الإنجاز"
+
+#: src/Missions.php:275
+msgid "Sent, being checked by the platform"
+msgstr "مُرسلة، قيد المراجعة لدى المنصة"
+
+#: src/Missions.php:276
+msgid "Delivered to the client"
+msgstr "سُلّمت للزبون"
+
+#: src/Missions.php:279
+msgid "No longer assigned to you"
+msgstr "لم تعد مسندة إليك"
+
+#: src/Missions.php:285
+msgid "New request"
+msgstr "طلب جديد"
+
+#: src/Missions.php:286
+msgid "Quote sent"
+msgstr "عرض السعر مُرسل"
+
+#: src/Missions.php:287
+msgid "Accepted, to assign"
+msgstr "مقبولة، للإسناد"
+
+#: src/Missions.php:288
+msgid "Offered to an engineer"
+msgstr "معروضة على مهندس"
+
+#: src/Missions.php:290 src/Notifications.php:97
+msgid "Deliverables to check"
+msgstr "مخرجات للمراجعة"
+
+#: src/Missions.php:293
+msgid "Declined"
+msgstr "مرفوضة"
+
+#: src/Missions.php:294
+msgid "Quote refused"
+msgstr "عرض سعر مرفوض"
+
+#: src/Notifications.php:48
+msgid "New partner engineer application"
+msgstr "ترشح جديد لمهندس شريك"
+
+#. translators: %s: engineer name.
+#: src/Notifications.php:50
+msgid ""
+"%s applied to become a partner engineer. Check the diploma and the "
+"documents."
+msgstr "ترشح %s ليصبح مهندسا شريكا. راجع الشهادة والوثائق."
+
+#: src/Notifications.php:55
+msgid "New study request"
+msgstr "طلب دراسة جديد"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:57
+msgid "New request %s. Prepare the quote for the client."
+msgstr "طلب جديد %s. حضّر عرض السعر للزبون."
+
+#: src/Notifications.php:62
+msgid "Quote accepted: assign an engineer"
+msgstr "قبول عرض السعر: عيّن مهندسا"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:64
+msgid "The client accepted the quote of %s. Choose the engineer."
+msgstr "قبل الزبون عرض سعر %s. اختر المهندس."
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:71
+msgid "The client did not accept the quote of %s."
+msgstr "لم يقبل الزبون عرض سعر %s."
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:78
+msgid "The client cancelled %s."
+msgstr "ألغى الزبون %s."
+
+#: src/Notifications.php:83
+msgid "The engineer accepted the mission"
+msgstr "قبل المهندس المهمة"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:85
+msgid "The engineer started %s."
+msgstr "بدأ المهندس %s."
+
+#: src/Notifications.php:90
+msgid "The engineer declined the mission"
+msgstr "رفض المهندس المهمة"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:92
+msgid "The engineer cannot take %s. Choose another engineer."
+msgstr "لا يستطيع المهندس أخذ %s. اختر مهندسا آخر."
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:99
+msgid ""
+"The engineer sent the deliverables of %s. Check them before delivering them "
+"to the client."
+msgstr "أرسل المهندس مخرجات %s. راجعها قبل تسليمها للزبون."
+
+#: src/Notifications.php:104
+msgid "New message on a mission"
+msgstr "رسالة جديدة حول مهمة"
+
+#. translators: 1: client or engineer, 2: mission reference and title.
+#: src/Notifications.php:106
+msgid "New message from the %1$s on %2$s."
+msgstr "رسالة جديدة من %1$s حول %2$s."
+
+#: src/Notifications.php:113
+msgid "Your quote for the study is ready"
+msgstr "عرض سعر دراستك جاهز"
+
+#. translators: 1: mission reference and title, 2: amount.
+#: src/Notifications.php:115
+msgid "The quote for %1$s is ready: %2$s. Accept it to start the study."
+msgstr "عرض سعر %1$s جاهز: %2$s. اقبله لبدء الدراسة."
+
+#: src/Notifications.php:119
+msgid "Your study request was not taken"
+msgstr "لم يُقبل طلب دراستك"
+
+#. translators: 1: mission reference and title, 2: reason.
+#: src/Notifications.php:121
+msgid "The platform cannot take %1$s: %2$s"
+msgstr "لا يمكن للمنصة قبول %1$s: %2$s"
+
+#: src/Notifications.php:125
+msgid "Your study has started"
+msgstr "بدأت دراستك"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:127
+msgid "A partner engineer of the platform is working on %s."
+msgstr "مهندس شريك للمنصة يعمل على %s."
+
+#: src/Notifications.php:132
+msgid "Your study is delivered"
+msgstr "تم تسليم دراستك"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:134
+msgid "The documents of %s are available in your account."
+msgstr "وثائق %s متاحة في حسابك."
+
+#: src/Notifications.php:138
+msgid "The platform answered about your study"
+msgstr "ردت المنصة حول دراستك"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:140 src/Notifications.php:195
+msgid "New message about %s."
+msgstr "رسالة جديدة حول %s."
+
+#: src/Notifications.php:146
+msgid "You are a partner engineer"
+msgstr "أنت مهندس شريك"
+
+#: src/Notifications.php:147
+msgid ""
+"Your application is approved. You appear on the list of partner engineers "
+"and the platform can offer you missions."
+msgstr ""
+"تم قبول ترشحك. تظهر في قائمة المهندسين الشركاء ويمكن للمنصة أن تعرض عليك "
+"مهاما."
+
+#: src/Notifications.php:151
+msgid "Your application needs changes"
+msgstr "ترشحك يحتاج إلى تصحيح"
+
+#. translators: %s: reason.
+#: src/Notifications.php:153
+msgid ""
+"Your partner engineer application was not approved: %s. You can correct it "
+"and send it again."
+msgstr "لم يُقبل ترشحك كمهندس شريك: %s. يمكنك تصحيحه وإعادة إرساله."
+
+#: src/Notifications.php:157
+msgid "Your partner account is suspended"
+msgstr "حساب الشريك موقوف"
+
+#. translators: %s: reason.
+#: src/Notifications.php:159
+msgid "You no longer receive missions: %s. Write to the platform for details."
+msgstr "لم تعد تتلقى مهاما: %s. راسل المنصة للتفاصيل."
+
+#: src/Notifications.php:163
+msgid "A mission is offered to you"
+msgstr "عُرضت عليك مهمة"
+
+#. translators: 1: mission reference and title, 2: fee.
+#: src/Notifications.php:165
+msgid ""
+"The platform offers you %1$s. Fee: %2$s. Accept or decline it from your "
+"dashboard."
+msgstr ""
+"تعرض عليك المنصة %1$s. الأتعاب: %2$s. اقبلها أو ارفضها من لوحة التحكم."
+
+#: src/Notifications.php:169
+msgid "A mission is no longer assigned to you"
+msgstr "لم تعد مهمة مسندة إليك"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:171
+msgid "The platform withdrew %s from you."
+msgstr "سحبت المنصة منك %s."
+
+#: src/Notifications.php:175
+msgid "Changes asked on your deliverables"
+msgstr "تعديلات مطلوبة على مخرجاتك"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:177
+msgid "The platform asks for changes on %s. Read the message in the mission."
+msgstr "تطلب المنصة تعديلات على %s. اقرأ الرسالة في المهمة."
+
+#: src/Notifications.php:181
+msgid "Your deliverables are validated"
+msgstr "تم اعتماد مخرجاتك"
+
+#. translators: %s: mission reference and title.
+#: src/Notifications.php:183
+msgid "The platform validated and delivered %s. Your fee is due."
+msgstr "اعتمدت المنصة %s وسلّمتها. أتعابك مستحقة."
+
+#: src/Notifications.php:187
+msgid "Your fee is paid"
+msgstr "تم دفع أتعابك"
+
+#. translators: 1: amount, 2: mission reference and title.
+#: src/Notifications.php:189
+msgid "The platform paid your fee of %1$s for %2$s."
+msgstr "دفعت المنصة أتعابك بقيمة %1$s عن %2$s."
+
+#: src/Notifications.php:193
+msgid "The platform wrote about a mission"
+msgstr "كتبت المنصة حول مهمة"
+
+#: src/Theme/Bridge.php:202
+msgid "Request sent"
+msgstr "تم إرسال الطلب"
+
+#: src/Theme/Bridge.php:202
+msgid "Quote"
+msgstr "عرض السعر"
+
+#: src/Theme/Bridge.php:202
+msgid "Accepted"
+msgstr "مقبولة"

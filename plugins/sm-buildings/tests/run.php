@@ -61,9 +61,9 @@ function smb_cleanup() {
 smb_cleanup();
 add_filter( 'sm_theme_demo_enabled', '__return_false', 99 );
 $suffix = substr( md5( (string) microtime( true ) ), 0, 6 );
-list( $u_sel, $c_sel ) = smb_user( 's' . $suffix, 'commercial', array( 'manufacturer' ) );
-list( $u_fab, $c_fab ) = smb_user( 'f' . $suffix, 'commercial', array( 'fabrication' ) );
-list( $u_eng, $c_eng ) = smb_user( 'e' . $suffix, 'engineering', array( 'engineer' ) );
+list( $u_sel, $c_sel ) = smb_user( 's' . $suffix, 'company', array( 'manufacturer' ) );
+list( $u_fab, $c_fab ) = smb_user( 'f' . $suffix, 'company', array( 'manufacturer' ) );
+list( $u_eng, $c_eng ) = smb_user( 'e' . $suffix, 'engineer', array( 'engineer' ) );
 $engine = \SM\Core\Modules::service( 'weight' );
 $kgm    = static function ( $family, $section ) use ( $engine ) {
 	$r = $engine->calculate( array( 'family' => $family, 'section' => $section, 'bars' => 1, 'length' => 1000 ) );
@@ -152,9 +152,9 @@ smb_assert( 'dismantled' === $form['values']['mode'] && 3 === count( $form['valu
 echo "\n5. Rules\n";
 smb_assert( Bridge::product_markets( null )['buildings']['allowed'], 'a manufacturer may publish buildings' );
 wp_set_current_user( $u_fab );
-smb_assert( ! sm_can( 'listing.buildings' ), 'a fabrication-only workshop cannot (default rights)' );
+smb_assert( sm_can( 'listing.buildings' ), 'every company type may sell a building (new model)' );
 wp_set_current_user( $u_eng );
-smb_assert( ! sm_can( 'listing.buildings' ) && ! Bridge::product_markets( null )['buildings']['allowed'], 'an engineering account never publishes buildings' );
+smb_assert( ! sm_can( 'listing.buildings' ) && ! Bridge::product_markets( null )['buildings']['allowed'], 'a partner engineer account never publishes buildings' );
 wp_set_current_user( 0 );
 
 smb_cleanup();

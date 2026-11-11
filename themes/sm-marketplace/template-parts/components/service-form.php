@@ -36,7 +36,6 @@ $units = array();
 foreach ( (array) $def['units'] as $u ) {
 	$units[ $u ] = sm_service_unit_label( $u );
 }
-$is_eng = 'engineering' === $kind;
 ?>
 <?php sm_theme_form_open( 'service_save', array( 'class' => 'sm-form sms-form', 'enctype' => 'multipart/form-data' ) ); ?>
 	<input type="hidden" name="service_id" value="<?php echo esc_attr( $v( 'service_id' ) ); ?>">
@@ -62,7 +61,7 @@ $is_eng = 'engineering' === $kind;
 		<h2 class="smw-step__title"><span class="smw-step__n">2</span><?php esc_html_e( 'Presentation', 'sm-marketplace' ); ?></h2>
 		<div class="sm-field">
 			<label for="sms-title-fr"><?php esc_html_e( 'Title in French', 'sm-marketplace' ); ?></label>
-			<input id="sms-title-fr" name="title[fr]" lang="fr" dir="ltr" maxlength="140" value="<?php echo esc_attr( (string) ( $state['title']['fr'] ?? '' ) ); ?>" placeholder="<?php echo esc_attr( $is_eng ? __( 'e.g. Steel building design and calculation notes', 'sm-marketplace' ) : __( 'e.g. Structural steel fabrication and site installation', 'sm-marketplace' ) ); ?>"<?php sm_theme_aria( 'title' ); ?>>
+			<input id="sms-title-fr" name="title[fr]" lang="fr" dir="ltr" maxlength="140" value="<?php echo esc_attr( (string) ( $state['title']['fr'] ?? '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. Structural steel fabrication and site installation', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'title' ); ?>>
 			<?php sm_theme_error( 'title' ); ?>
 		</div>
 		<div class="sm-field">
@@ -77,12 +76,12 @@ $is_eng = 'engineering' === $kind;
 		<div class="sm-field-grid">
 			<div class="sm-field">
 				<label for="sms-caps"><?php esc_html_e( 'Technical capabilities (one per line)', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
-				<textarea id="sms-caps" name="capabilities" rows="5" dir="auto" maxlength="2000" placeholder="<?php echo esc_attr( $is_eng ? __( "Eurocode 3 calculations\nSoftware used\nCertified inspections", 'sm-marketplace' ) : __( "Built-up beams up to 1 200 mm\nPlates 4 to 40 mm\nSpans up to 30 m", 'sm-marketplace' ) ); ?>"><?php echo esc_textarea( $v( 'capabilities' ) ); ?></textarea>
+				<textarea id="sms-caps" name="capabilities" rows="5" dir="auto" maxlength="2000" placeholder="<?php echo esc_attr( __( "Built-up beams up to 1 200 mm\nPlates 4 to 40 mm\nSpans up to 30 m", 'sm-marketplace' ) ); ?>"><?php echo esc_textarea( $v( 'capabilities' ) ); ?></textarea>
 				<?php sm_theme_error( 'capabilities' ); ?>
 			</div>
 			<div class="sm-field">
 				<label for="sms-equip"><?php esc_html_e( 'Equipment (one per line)', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
-				<textarea id="sms-equip" name="equipment" rows="5" dir="auto" maxlength="2000" placeholder="<?php echo esc_attr( $is_eng ? __( "Ultrasonic thickness gauge\nTotal station", 'sm-marketplace' ) : __( "Band saw\nDrilling line\nMobile crane 30 t", 'sm-marketplace' ) ); ?>"><?php echo esc_textarea( $v( 'equipment' ) ); ?></textarea>
+				<textarea id="sms-equip" name="equipment" rows="5" dir="auto" maxlength="2000" placeholder="<?php echo esc_attr( __( "Band saw\nDrilling line\nMobile crane 30 t", 'sm-marketplace' ) ); ?>"><?php echo esc_textarea( $v( 'equipment' ) ); ?></textarea>
 				<?php sm_theme_error( 'equipment' ); ?>
 			</div>
 		</div>
@@ -134,7 +133,7 @@ $is_eng = 'engineering' === $kind;
 				<?php sm_theme_error( 'price_unit' ); ?>
 			</div>
 		</div>
-		<p class="sm-help"><?php echo esc_html( $is_eng ? __( 'Engineering services show no price per kg: give a price per project, per m² or per day, or "On quotation".', 'sm-marketplace' ) : __( 'The price is indicative; each client gets your quote.', 'sm-marketplace' ) ); ?></p>
+		<p class="sm-help"><?php esc_html_e( 'The price is indicative; each client gets your quote.', 'sm-marketplace' ); ?></p>
 	</section>
 
 	<section class="sm-panel smp-step">

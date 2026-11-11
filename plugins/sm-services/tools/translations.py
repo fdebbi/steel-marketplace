@@ -148,3 +148,8 @@ T.update({
  "{entreprise} ({wilaya}) a publié une page de service.\n\n{titre}\nCatalogue : {catalogue}\n\nPar {nom} — {email} — {telephone}\n\n{lien}",
  "نشرت {entreprise} ({wilaya}) صفحة خدمة.\n\n{titre}\nالكتالوج: {catalogue}\n\nبواسطة {nom} — {email} — {telephone}\n\n{lien}"),
 })
+
+# 0.2.0 — engineering moved to SM Engineering.
+T["Fabrication and site services of companies and professionals: service pages with photos, capabilities, equipment and coverage, service requests answered with a quote, portfolio of completed projects. Engineering studies are handled by SM Engineering. Requires SM Core."] = (
+ "Services de fabrication et de chantier des entreprises et des professionnels : pages de service avec photos, capacités, équipements et zones couvertes, demandes de service avec devis, réalisations. Les études d’ingénierie passent par SM Engineering. Nécessite SM Core.",
+ "خدمات التصنيع والورشات للشركات والمهنيين: صفحات خدمات بالصور والقدرات والتجهيزات والمناطق، طلبات خدمات بعروض أسعار، والمشاريع المنجزة. الدراسات الهندسية تمر عبر SM Engineering. يتطلب SM Core.")

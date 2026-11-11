@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.4.0 — 2026-11-11 (Phase 9.1)
+
+- Comptes client : annonces toujours vérifiées (réglable), nombre d'annonces en ligne limité (5 par défaut, réglable), vendeur affiché « Particulier » sans lien public.
+
 ## 0.3.1 — 2026-11-08 (Phase 8.1)
 
 - E-mails (avec sm-core 0.4.0) : événements « nouvelle annonce publiée » et « nouvelle annonce en attente de vérification » (alerte aux administrateurs, confirmation au vendeur, modèles FR/AR), phrases et liens du journal d'activité.

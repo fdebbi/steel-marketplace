@@ -153,3 +153,20 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Crédits | Filtre `sm_ai_can_use` prévu pour la Phase 10 | Brancher les crédits sans modifier sm-ai |
 | Fichiers | Lus, réduits (1568 px) et transmis, jamais stockés | Confidentialité et place disque |
 | Tests | Fournisseur « Simulation » (SM_AI_SIMULATION) et réponses enregistrées aux formats réels ; pas d'appel réel depuis l'environnement de développement | Les API externes ne sont pas joignables depuis l'environnement de test |
+
+## 9–11 novembre 2026 — Phase 9.1 : modèle de comptes et ingénieurs partenaires
+
+| Sujet | Décision | Raison |
+| --- | --- | --- |
+| Types de comptes | Quatre classes : **société** (types : réalisation de constructions métalliques, fabrication, fourniture et distribution, recyclage et ferraille, démontage et revente d'occasion), **professionnel** (métiers : charpentier métallique, monteur de charpente, poseur couverture et bardage, soudeur, chaudronnier, serrurier-métallier, levage, sablage et peinture), **client**, **ingénieur partenaire** | Demande du porteur de projet ; « maître d'ouvrage et promoteur » supprimé |
+| Types et métiers éditables | Page SM → Types de comptes : libellés FR/AR, masquer, ajouter. Les codes restent fixes ; un type masqué reste sur les comptes qui l'ont | Pas de liste codée en dur ; pas de comptes cassés par un renommage |
+| Achat / vente | Société, professionnel et client achètent et vendent ; les nouveaux types de société reçoivent les droits d'une entreprise de réalisation | Réponse 1 du porteur de projet |
+| Comptes client | Non publics : pas de page entreprise, annonces affichées « Particulier » ; annonces toujours vérifiées (réglable) et au plus 5 annonces en ligne (réglable) | Éviter qu'un particulier se transforme en revendeur non déclaré ; limiter les abus |
+| Ingénieurs | Plus de « compte ingénierie » à l'inscription : candidature séparée (« Devenir ingénieur partenaire ») avec diplôme et pièces, compte totalement distinct, validation par l'administrateur | Réponse 4 du porteur de projet |
+| Missions | Toute demande d'étude ou d'inspection va à la plateforme : l'administrateur fixe le prix (devis au client), confie la mission à un ingénieur validé avec des honoraires internes ; la marge = devis − honoraires | Réponse 2 : la plateforme reste l'unique interlocuteur et fixe les prix |
+| Confidentialité | Le client ne voit ni l'ingénieur ni ses honoraires ; l'ingénieur ne voit ni le nom ni le prix du client ; deux fils de messages séparés ; liste publique sans coordonnées | Le client ne contacte jamais l'ingénieur directement |
+| Fichiers des missions | Dossier privé (hors des téléversements publics), liens signés, droits vérifiés à chaque ouverture ; les livrables ne sont visibles du client qu'après validation par la plateforme | Plans et notes de calcul sont des documents sensibles ; contrôle qualité avant livraison |
+| Services d'ingénierie | Le catalogue « ingénierie » de sm-services est retiré ; les anciennes pages passent au statut « retired » (conservées, jamais affichées) | Une seule voie pour l'ingénierie : la plateforme |
+| Migration | Base v5 : `commercial` → société (installer → réalisation, reuse_dealer → recyclage, fabrication → fabrication), comptes « maître d'ouvrage » seuls → client, `engineering` → ingénieur partenaire (à valider) ; matrice des droits remise aux valeurs par défaut | Les colonnes de la matrice ont changé |
+| Photo / logo | Tous les comptes : logo ou photo (2 Mo), affiché dans l'en-tête, les cartes, les profils et la liste des ingénieurs | Demande 3 |
+| Correctif langue | Après un e-mail envoyé dans une autre langue, la langue de la requête est rétablie explicitement | Un texte de domaine non chargé remettait les messages en anglais |

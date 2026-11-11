@@ -1,5 +1,7 @@
 """
-End-to-end browser tests of Phase 2 (sm-core + theme) on a LOCAL test site.
+End-to-end browser tests of accounts (sm-core + theme) on a LOCAL test site:
+registration of a company (French, mobile) and a professional (Arabic,
+desktop), verification, profile and photo, moderation, language and sign-in.
 
 Requires: WordPress with sm-core + sm-marketplace, WP_ENVIRONMENT_TYPE=local
 (verification codes are then readable in user meta "sm_otp_dev"), WP-CLI,
@@ -42,13 +44,13 @@ def notice(page):
 wp('''require_once ABSPATH."wp-admin/includes/user.php"; global $wpdb;
 foreach(get_users(array("search"=>"e2e-*","search_columns"=>array("user_email"))) as $u){
   $c=SM\\Core\\Accounts\\Companies::for_user($u->ID);
-  if($c){ foreach(array("company_members","company_activities","verifications") as $t){$wpdb->delete($wpdb->prefix."sm_".$t,array("company_id"=>$c->id));} $wpdb->delete($wpdb->prefix."sm_companies",array("id"=>$c->id)); $wpdb->delete($wpdb->prefix."sm_enquiries",array("to_company_id"=>$c->id)); }
+  if($c){ $wpdb->delete($wpdb->prefix."sm_engineers",array("company_id"=>$c->id)); foreach(array("company_members","company_activities","verifications") as $t){$wpdb->delete($wpdb->prefix."sm_".$t,array("company_id"=>$c->id));} $wpdb->delete($wpdb->prefix."sm_companies",array("id"=>$c->id)); $wpdb->delete($wpdb->prefix."sm_enquiries",array("to_company_id"=>$c->id)); }
   $wpdb->delete($wpdb->prefix."sm_enquiries",array("from_user_id"=>$u->ID)); $wpdb->delete($wpdb->prefix."sm_notifications",array("user_id"=>$u->ID)); wp_delete_user($u->ID); }
 foreach($wpdb->get_col("SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE \\"_transient_sm_rl_%\\"") as $o){ delete_option($o); }''')
 
 stamp = str(int(time.time()))[-6:]
 COM = f'e2e-com{stamp}@example.test'
-ENG = f'e2e-eng{stamp}@example.test'
+ENG = f'e2e-pro{stamp}@example.test'  # professional (partner engineers: tests/e2e-engineering.py)
 PASS = 'Acier-2026-test!'
 
 with sync_playwright() as p:
@@ -84,12 +86,12 @@ with sync_playwright() as p:
     c.check('input[name="terms"]')
     c.click('form[data-sm-register] button[type="submit"]')
     c.wait_for_load_state()
-    check('mobile' in notice(c).lower() and 'activité' in notice(c).lower(), 'validation errors shown in French (phone, activity)')
+    check('mobile' in notice(c).lower() and 'type d’entreprise' in notice(c).lower(), 'validation errors shown in French (phone, type of company)')
     check(c.input_value('#g-company') == 'E2E Acier Test' and c.input_value('#g-email') == COM, 'form refilled after an error (except password)')
     check(c.input_value('#g-pass') == '', 'password is never refilled')
     shot(c, 'register-errors-fr-390')
     c.check('input[name="activities[]"][value="manufacturer"]')
-    c.check('input[name="activities[]"][value="reuse_dealer"]')
+    c.check('input[name="activities[]"][value="recycler"]')
     c.fill('#g-phone', '06 61 ' + stamp[:2] + ' ' + stamp[2:4] + ' ' + stamp[4:6])
     c.fill('#g-pass', PASS)
     c.check('input[name="terms"]')
@@ -207,13 +209,18 @@ with sync_playwright() as p:
     check((c.locator('.sm-stepper').count() == 1 or c.locator('.smp-cats').count() == 1) and c.locator('.sm-notice--warn').count() == 0, 'verified business account can open the publish form')
 
     # ------------------------------------------------------------------
-    print('\nC. Engineering account (Arabic, desktop)')
+    print('\nC. Professional account (Arabic, desktop)')
     ctx2 = browser.new_context(viewport={'width': 1280, 'height': 900})
     e = ctx2.new_page()
     e.goto(BASE + '/ar/inscription/')
-    e.click('input[value="engineering"] + .sm-choice__card')
-    check(not e.is_visible('[data-sm-show-for="commercial"] .sm-checkgrid'), 'activities hidden for an engineering account')
-    e.fill('#g-company', 'مكتب دراسات E2E')
+    check(e.locator('input[name="account_class"]').count() == 3 and e.locator('input[value="engineering"]').count() == 0, 'three kinds of account: company, professional, client (no engineer account here)')
+    check(e.locator('a[href*="devenir-ingenieur-partenaire"]').count() == 1, 'link to the partner engineer application')
+    e.click('input[value="professional"] + .sm-choice__card')
+    check(not e.is_visible('[data-sm-show-for="company"] .sm-checkgrid') and e.is_visible('[data-sm-show-for="professional"] .sm-checkgrid'), 'trades shown instead of company types')
+    check(e.locator('[data-sm-show-for="professional"] input[name="activities[]"]').count() == 8, 'eight trades offered')
+    e.check('[data-sm-show-for="professional"] input[value="trade_welder"]')
+    e.check('[data-sm-show-for="professional"] input[value="trade_erector"]')
+    e.fill('#g-company', 'ورشة E2E للحام')
     e.fill('#g-name', 'كريم اختبار')
     e.select_option('#g-wilaya', '25')
     e.fill('#g-phone', '07 71 ' + stamp[:2] + ' ' + stamp[2:4] + ' ' + stamp[4:6])
@@ -227,34 +234,39 @@ with sync_playwright() as p:
     mails = [json.loads(l) for l in open(os.path.join(WP, 'wp-content', 'sm-mails.jsonl'), encoding='utf-8')] if os.path.exists(os.path.join(WP, 'wp-content', 'sm-mails.jsonl')) else []
     m = [x for x in mails if x['to'] == ENG]
     check(m and 'dir="rtl"' in m[-1]['message'] and 'رمز' in m[-1]['subject'], 'verification e-mail sent in Arabic, right-to-left')
+    check(wp(f'$c = SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","{ENG}")->ID); echo $c->account_class, ":", implode(",", $c->activities);') == 'professional:trade_erector,trade_welder', 'professional account with its two trades')
     e.fill('#otp', otp(ENG))
     e.click('.sm-otp__form button')
     e.wait_for_load_state()
-    check(path(e).endswith('/ar/compte') and 'توثيق' in notice(e), 'engineer verified, Arabic dashboard and message')
+    check(path(e).endswith('/ar/compte') and 'توثيق' in notice(e), 'professional verified, Arabic dashboard and message')
     nav = ' '.join(e.locator('.sm-dash__side nav').all_inner_texts())
-    check('نشر إعلان' not in nav and 'طلبات الخدمات' in nav and 'المراجع' in nav, 'engineer menu: no "publish a listing", has "service requests" and "references"')
-    shot(e, 'dashboard-engineer-ar-1280')
+    check('نشر إعلان' in nav and 'خدماتي' in nav and 'المشاريع المنجزة' in nav, 'professional menu: publish a listing (sells), services, completed projects')
+    shot(e, 'dashboard-professional-ar-1280')
     e.goto(BASE + '/ar/compte/publier/')
-    check(e.locator('.sm-stepper').count() == 0, 'publish form not available to engineers')
-    e.goto(BASE + '/ar/annonce/101/')
-    check(e.locator('#sm-enquiry form').count() == 0 and e.locator('#sm-enquiry .sm-notice--warn').count() == 1, 'engineer cannot contact a seller (no trading)')
-    e.goto(BASE + '/ar/compte/profil/')
+    check(e.locator('.sm-notice--warn:has-text("مهندس")').count() == 0, 'publish form open to professionals (they sell)')
+    e.goto(BASE + '/ar/compte/entreprise/')
+    check(e.locator('input[name="logo[]"]').count() == 1 and e.locator('#c-title-fr').count() == 1, 'profile form: photo / logo and professional title')
     e.wait_for_function('window.L && document.querySelector("[data-sm-map=picker].leaflet-container")')
-    check(e.get_attribute('[data-sm-map="picker"]', 'dir') == 'ltr' and ('خريطة' in e.inner_text('[data-sm-map-picker]') or 'الخريطة' in e.inner_text('[data-sm-map-picker]')), 'Arabic company form: map shown, labels in Arabic, map canvas kept LTR')
+    check(e.get_attribute('[data-sm-map="picker"]', 'dir') == 'ltr' and ('خريطة' in e.inner_text('[data-sm-map-picker]') or 'الخريطة' in e.inner_text('[data-sm-map-picker]')), 'Arabic profile form: map shown, labels in Arabic, map canvas kept LTR')
+    e.set_input_files('input[name="logo[]"]', os.path.join(os.path.dirname(PDF), 'photo.jpg'))
+    e.click('.sm-form--dash button[type="submit"]')
+    e.wait_for_load_state()
+    check(e.locator('.sm-dash__who .sm-avatar--img img').count() == 1, 'photo uploaded and shown as the account avatar')
     shot(e, 'company-map-ar-1280')
     eslug = wp(f'echo SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","{ENG}")->ID)->slug;')
 
-    # Business client requests a service from the engineer.
+    # The company contacts the professional from his public page.
     c.goto(BASE + '/entreprise/' + eslug + '/')
-    c.fill('#sm-contact-msg', 'Bonjour, nous voulons une expertise de hangar 40 x 20 m avant achat.')
+    check(c.locator('.sm-company-head .sm-avatar--img').count() == 1, 'public page shows the photo of the professional')
+    c.fill('#sm-contact-msg', 'Bonjour, nous cherchons un soudeur pour le montage d’un hangar 40 x 20 m.')
     c.click('#sm-contact button[type="submit"]')
     c.wait_for_load_state()
-    check('envoyée' in notice(c), 'service request sent to the engineer')
-    e.goto(BASE + '/ar/compte/demandes-clients/')
-    check(e.locator('.sm-enquiry').count() == 1 and 'expertise' in e.inner_text('.sm-enquiry'), 'engineer sees the request in Arabic dashboard')
-    shot(e, 'engineer-requests-ar-1280')
+    check('envoyée' in notice(c), 'service request sent to the professional')
+    e.goto(BASE + '/ar/compte/demandes/')
+    check(e.locator('.sm-enquiry').count() == 1 and 'soudeur' in e.inner_text('.sm-enquiry'), 'professional sees the request in the Arabic dashboard')
+    shot(e, 'professional-requests-ar-1280')
     e.goto(BASE + '/ar/compte/')
-    check(e.locator('.sm-dot').count() == 1 or e.locator('#sm-notifications .is-unread').count() >= 1, 'engineer has an unread notification')
+    check(e.locator('.sm-dot').count() == 1 or e.locator('#sm-notifications .is-unread').count() >= 1, 'professional has an unread notification')
 
     # ------------------------------------------------------------------
     print('\nD. Moderator approves the business documents')

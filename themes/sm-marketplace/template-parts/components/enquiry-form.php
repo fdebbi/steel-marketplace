@@ -3,7 +3,7 @@
  * Enquiry form (listing contact or service request), processed by sm-core.
  *
  * Contact requires an account (Phase 0): guests see sign-in links; accounts
- * without the right (e.g. engineering accounts on a listing) see the reason.
+ * without the right (e.g. partner engineers on a listing) see the reason.
  *
  * @var array $args { kind: listing|service, module, entity_id, company, subject, title, id }
  * @package SM_Marketplace

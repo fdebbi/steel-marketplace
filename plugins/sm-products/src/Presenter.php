@@ -46,8 +46,11 @@ final class Presenter {
 			'price_per_kg'   => $p->price_per_kg,
 			'total_price'    => $p->total_price,
 			'wilaya'         => $p->wilaya,
-			'company'        => $company ? $company->slug : '',
+			// Clients (private sellers) have no public page: no link, "Private seller" on the card.
+			'company'        => $company && Companies::is_public_class( $company->account_class ) ? $company->slug : '',
 			'company_id'     => $p->company_id,
+			'seller_public'  => $company ? Companies::is_public_class( $company->account_class ) : false,
+			'seller_class'   => $company ? $company->account_class : '',
 			'date'           => $p->published_at ? $p->published_at : $p->updated_at,
 			'image'          => $photos ? (int) $photos[0] : 'demo:placeholder',
 			'photos'         => array_map( 'intval', $photos ),

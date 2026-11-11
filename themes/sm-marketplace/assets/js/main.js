@@ -145,11 +145,16 @@
 	$$( '[data-sm-register]' ).forEach( function ( form ) {
 		function sync() {
 			var checked = $( 'input[name="account_class"]:checked', form );
-			var cls = checked ? checked.value : 'commercial';
+			var cls = checked ? checked.value : 'company';
 			$$( '[data-sm-show-for]', form ).forEach( function ( el ) {
-				var on = el.getAttribute( 'data-sm-show-for' ) === cls;
+				// One or more classes, separated by spaces.
+				var on = el.getAttribute( 'data-sm-show-for' ).split( ' ' ).indexOf( cls ) !== -1;
 				el.hidden = ! on;
-				$$( 'input,select', el ).forEach( function ( i ) { i.disabled = ! on; } );
+				$$( 'input,select', el ).forEach( function ( i ) {
+					// A field inside a visible block that is itself hidden for this class stays disabled.
+					var own = i.closest( '[data-sm-show-for]' );
+					i.disabled = ! on || ( own && own !== el && own.getAttribute( 'data-sm-show-for' ).split( ' ' ).indexOf( cls ) === -1 );
+				} );
 			} );
 		}
 		$$( 'input[name="account_class"]', form ).forEach( function ( r ) { r.addEventListener( 'change', sync ); } );
@@ -242,6 +247,19 @@
 				li.appendChild( img );
 				list.appendChild( li );
 			} );
+		} );
+	} );
+
+	/* ---- File fields: show the chosen file names (data-sm-filename) ------- */
+	$$( 'input[type="file"][data-sm-filename]' ).forEach( function ( input ) {
+		var box = input.closest( 'label' );
+		var label = box && $( '[data-sm-filename-label]', box );
+		if ( ! label ) { return; }
+		var initial = label.textContent;
+		input.addEventListener( 'change', function () {
+			var names = Array.prototype.map.call( input.files, function ( f ) { return f.name; } );
+			label.textContent = names.length ? names.join( ', ' ) : initial;
+			box.classList.toggle( 'has-file', names.length > 0 );
 		} );
 	} );
 

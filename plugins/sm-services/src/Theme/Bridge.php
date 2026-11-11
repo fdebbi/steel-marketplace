@@ -64,7 +64,7 @@ final class Bridge {
 			return $result;
 		}
 		$s = Services::get( (int) ( $args['id'] ?? 0 ) );
-		if ( ! $s ) {
+		if ( ! $s || ! Catalogue::kind( $s->kind ) ) { // Retired engineering pages (0.2.0) are not shown.
 			return null;
 		}
 		$user   = get_current_user_id();
@@ -128,7 +128,7 @@ final class Bridge {
 		if ( ! $co ) {
 			return array( 'items' => array() );
 		}
-		$q = Services::query( array( 'company' => $co->id, 'status' => 'any', 'per_page' => 60 ) );
+		$q = Services::query( array( 'company' => $co->id, 'status' => array( 'published', 'pending', 'paused', 'rejected' ), 'per_page' => 60 ) );
 		return array( 'items' => array_map( array( Presenter::class, 'service' ), $q['items'] ) );
 	}
 

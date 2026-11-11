@@ -183,10 +183,15 @@
 .sm-auth { display: grid; min-block-size: calc(100vh - 200px); }
 @media (min-width: 1024px) { .sm-auth { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); } }
 .sm-auth__side { display: none; }
-@media (min-width: 1024px) { .sm-auth__side { display: grid; gap: var(--sm-s5); align-content: center; padding: var(--sm-s7); background: var(--sm-primary); color: var(--sm-on-dark); } }
+/* The brand panel starts at the top, level with the title of the form card (0.13.0). */
+@media (min-width: 1024px) { .sm-auth__side { display: grid; gap: var(--sm-s5); align-content: start; padding: calc(var(--sm-s7) + var(--sm-s6)) var(--sm-s7) var(--sm-s7); background: var(--sm-primary); color: var(--sm-on-dark); } .sm-auth__side > * { max-inline-size: 30rem; } }
 .sm-auth__claim { font-size: var(--sm-fs-2xl); font-weight: 700; line-height: 1.3; color: var(--sm-on-dark); margin: 0; max-inline-size: 22ch; }
 .sm-auth__main { display: grid; place-items: start center; padding: var(--sm-s5) var(--sm-gutter) var(--sm-s7); }
 @media (min-width: 768px) { .sm-auth__main { place-items: center; } }
+@media (min-width: 1024px) { .sm-auth__main { place-items: start center; padding-block-start: var(--sm-s7); } }
+.sm-auth__alt { display: flex; align-items: center; gap: var(--sm-s3); padding: var(--sm-s3) var(--sm-s4); margin-block: var(--sm-s3) 0; border: 1px dashed var(--sm-line); border-radius: var(--sm-radius); background: var(--sm-bg); font-size: var(--sm-fs-sm); }
+.sm-auth__alt .sm-icon { flex: none; color: var(--sm-primary); }
+.sm-auth__alt p { margin: 0; }
 .sm-auth__card { inline-size: 100%; max-inline-size: 560px; padding: var(--sm-s5) var(--sm-s4); background: var(--sm-surface); border: 1px solid var(--sm-line); border-radius: var(--sm-radius-lg); box-shadow: var(--sm-shadow); }
 @media (min-width: 768px) { .sm-auth__card { padding: var(--sm-s6); } }
 .sm-auth__title { font-size: var(--sm-fs-2xl); margin-block-end: var(--sm-s2); }

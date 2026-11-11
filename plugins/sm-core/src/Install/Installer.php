@@ -47,7 +47,7 @@ final class Installer {
 			"CREATE TABLE {$p}companies (
 				id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 				slug varchar(190) NOT NULL,
-				account_class varchar(20) NOT NULL DEFAULT 'commercial',
+				account_class varchar(20) NOT NULL DEFAULT 'company',
 				name varchar(190) NOT NULL,
 				name_ar varchar(190) NOT NULL DEFAULT '',
 				wilaya char(2) NOT NULL DEFAULT '',
@@ -236,7 +236,63 @@ final class Installer {
 		}
 
 		self::seed_wilayas();
+		$from = (int) get_option( 'sm_core_db_version', 0 );
+		if ( $from && $from < 5 ) {
+			self::migrate_account_classes();
+		}
 		update_option( 'sm_core_db_version', SM_CORE_DB_VERSION, false );
+	}
+
+	/**
+	 * DB v5 (0.6.0): account model company / professional / client / partner engineer.
+	 * commercial -> company (activities mapped), accounts that were only "project
+	 * owner" -> client, engineering -> engineer. The saved rights matrix is reset
+	 * to the new defaults because its activity columns changed.
+	 */
+	public static function migrate_account_classes() {
+		global $wpdb;
+		$c   = $wpdb->prefix . 'sm_companies';
+		$a   = $wpdb->prefix . 'sm_company_activities';
+		$map = array(
+			'installer'    => 'construction',
+			'reuse_dealer' => 'recycler',
+			'fabrication'  => 'manufacturer',
+		);
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$ids = $wpdb->get_col( "SELECT id FROM $c WHERE account_class IN ('commercial','engineering')" );
+		foreach ( $ids as $id ) {
+			$id    = (int) $id;
+			$class = $wpdb->get_var( $wpdb->prepare( "SELECT account_class FROM $c WHERE id = %d", $id ) );
+			$codes = $wpdb->get_col( $wpdb->prepare( "SELECT activity_code FROM $a WHERE company_id = %d", $id ) );
+			if ( 'engineering' === $class ) {
+				$new_class = 'engineer';
+				$new_codes = array( 'engineer' );
+			} else {
+				$new_codes = array();
+				foreach ( $codes as $code ) {
+					$code = $map[ $code ] ?? $code;
+					if ( in_array( $code, array( 'construction', 'manufacturer', 'supplier', 'recycler', 'dismantler' ), true ) ) {
+						$new_codes[] = $code;
+					}
+				}
+				$new_codes = array_values( array_unique( $new_codes ) );
+				$new_class = $new_codes ? 'company' : 'client';
+				if ( ! $new_codes ) {
+					$new_codes = array( 'client' );
+				}
+			}
+			$wpdb->update( $c, array( 'account_class' => $new_class ), array( 'id' => $id ) );
+			$wpdb->delete( $a, array( 'company_id' => $id ) );
+			foreach ( $new_codes as $code ) {
+				$wpdb->insert( $a, array( 'company_id' => $id, 'activity_code' => $code, 'enabled_at' => current_time( 'mysql', true ) ) );
+			}
+		}
+		// phpcs:enable
+		$settings = get_option( 'sm_core_settings', array() );
+		if ( is_array( $settings ) && isset( $settings['rights'] ) ) {
+			unset( $settings['rights'] );
+			update_option( 'sm_core_settings', $settings );
+		}
 	}
 
 	/**

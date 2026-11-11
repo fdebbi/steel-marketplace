@@ -22,8 +22,7 @@ if ( ! $item ) {
 	get_footer();
 	return;
 }
-$is_eng   = 'engineering' === $item['kind'];
-$page_key = $is_eng ? 'engineers' : 'services';
+$page_key = 'services';
 $company  = sm_theme_company( $item['company'] );
 $wilayas  = sm_theme_wilayas();
 $v        = (array) $item['viewer'];
@@ -42,7 +41,7 @@ $status   = array(
 	<?php if ( isset( $status[ $item['status'] ] ) ) : ?>
 		<div class="sm-notice sm-notice--warn"><?php sm_icon( 'info' ); ?><p><?php echo esc_html( $status[ $item['status'] ] ); ?> <?php echo esc_html( 'rejected' === $item['status'] ? $item['reject_reason'] : '' ); ?></p></div>
 	<?php endif; ?>
-	<?php sm_breadcrumb( array( array( $is_eng ? __( 'Engineering', 'sm-marketplace' ) : __( 'Fabrication & installation', 'sm-marketplace' ), sm_page_url( $page_key ) ), array( sm_t( $item['title'] ), '' ) ) ); ?>
+	<?php sm_breadcrumb( array( array( __( 'Fabrication & installation', 'sm-marketplace' ), sm_page_url( $page_key ) ), array( sm_t( $item['title'] ), '' ) ) ); ?>
 
 	<div class="sm-detail__top">
 		<div class="sm-gallery" data-sm-gallery>
@@ -62,7 +61,7 @@ $status   = array(
 		</div>
 
 		<aside class="sm-detail__aside">
-			<p class="sm-card__meta"><span class="sm-chip sm-chip--kind"><?php sm_icon( $is_eng ? 'hard-hat' : 'wrench' ); ?><?php echo esc_html( sm_t( $item['kind_label'] ) ); ?></span></p>
+			<p class="sm-card__meta"><span class="sm-chip sm-chip--kind"><?php sm_icon( 'wrench' ); ?><?php echo esc_html( sm_t( $item['kind_label'] ) ); ?></span></p>
 			<h1 class="sm-detail__title"><?php sm_e( $item['title'] ); ?></h1>
 			<ul class="sm-tags"><?php foreach ( $item['tags'] as $tag ) : ?><li><?php sm_e( $tag ); ?></li><?php endforeach; ?></ul>
 			<dl class="sm-spec sm-spec--compact sms-facts">
@@ -72,7 +71,7 @@ $status   = array(
 			</dl>
 			<?php if ( $company ) : ?>
 				<a class="sms-provider" href="<?php echo esc_url( sm_page_url( 'company', array( 'c' => $company['slug'] ) ) ); ?>">
-					<span class="sm-avatar sm-avatar--<?php echo esc_attr( $company['class'] ?? 'commercial' ); ?>" aria-hidden="true"><?php echo esc_html( $company['initials'] ?? 'SM' ); ?></span>
+					<?php sm_avatar( $company ); ?>
 					<span class="sms-provider__text">
 						<strong><?php sm_e( $company['name'] ); ?><?php if ( $company['verification'] >= 2 ) : ?><?php sm_icon( 'verified', 'sm-verified', sm_verification_label( $company['verification'] ) ); ?><?php endif; ?></strong>
 						<small>
@@ -139,12 +138,9 @@ $status   = array(
 
 	<?php if ( $item['portfolio'] ) : ?>
 		<section class="sm-section">
-			<div class="sm-section__head"><h2><?php esc_html_e( 'References', 'sm-marketplace' ); ?></h2></div>
+			<div class="sm-section__head"><h2><?php esc_html_e( 'Completed projects', 'sm-marketplace' ); ?></h2></div>
 			<?php sm_component( 'portfolio-grid', array( 'items' => $item['portfolio'] ) ); ?>
 		</section>
-	<?php endif; ?>
-	<?php if ( $is_eng ) : ?>
-		<p class="sm-callout"><?php sm_icon( 'info' ); ?><span><?php esc_html_e( 'AI tools on this platform never replace a structural calculation or an engineer’s signature.', 'sm-marketplace' ); ?></span></p>
 	<?php endif; ?>
 </div>
 <?php

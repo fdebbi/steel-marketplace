@@ -54,8 +54,14 @@ defined( 'ABSPATH' ) || exit;
 <nav class="sm-tabbar" aria-label="<?php esc_attr_e( 'Quick navigation', 'sm-marketplace' ); ?>">
 	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" <?php echo is_front_page() ? 'aria-current="page"' : ''; ?>><?php sm_icon( 'home' ); ?><span><?php esc_html_e( 'Home', 'sm-marketplace' ); ?></span></a>
 	<a href="<?php echo esc_url( sm_page_url( 'search' ) ); ?>"><?php sm_icon( 'search' ); ?><span><?php esc_html_e( 'Search', 'sm-marketplace' ); ?></span></a>
-	<a class="sm-tabbar__publish" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'publish' ) ) ); ?>"><?php sm_icon( 'plus' ); ?><span><?php esc_html_e( 'Publish', 'sm-marketplace' ); ?></span></a>
-	<a href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'messages' ) ) ); ?>"><?php sm_icon( 'message' ); ?><span><?php esc_html_e( 'Enquiries', 'sm-marketplace' ); ?></span></a>
+	<?php $sm_tab_eng = is_user_logged_in() && 'engineer' === sm_account_class( (array) sm_theme_account() ); ?>
+	<?php if ( $sm_tab_eng ) : // Partner engineers never publish listings: missions and invoicing instead. ?>
+		<a class="sm-tabbar__publish" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'missions' ) ) ); ?>"><?php sm_icon( 'hard-hat' ); ?><span><?php esc_html_e( 'My missions', 'sm-marketplace' ); ?></span></a>
+		<a href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'billing' ) ) ); ?>"><?php sm_icon( 'card' ); ?><span><?php esc_html_e( 'Invoicing', 'sm-marketplace' ); ?></span></a>
+	<?php else : ?>
+		<a class="sm-tabbar__publish" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'publish' ) ) ); ?>"><?php sm_icon( 'plus' ); ?><span><?php esc_html_e( 'Publish', 'sm-marketplace' ); ?></span></a>
+		<a href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'messages' ) ) ); ?>"><?php sm_icon( 'message' ); ?><span><?php esc_html_e( 'Enquiries', 'sm-marketplace' ); ?></span></a>
+	<?php endif; ?>
 	<a href="<?php echo esc_url( sm_page_url( 'account' ) ); ?>"><?php sm_icon( 'user' ); ?><span><?php esc_html_e( 'Account', 'sm-marketplace' ); ?></span></a>
 </nav>
 

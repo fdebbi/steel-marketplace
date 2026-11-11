@@ -154,8 +154,8 @@ final class PhoneVerification {
 			Forms::back( array( 'code' => $result->get_error_message() ) );
 		}
 		$company = Companies::for_user( get_current_user_id() );
-		$message = ( $company && 'engineering' === $company->account_class )
-			? __( 'Your account is verified. You can now publish your services.', 'sm-core' )
+		$message = ( $company && 'engineer' === $company->account_class )
+			? __( 'Your account is verified.', 'sm-core' )
 			: __( 'Your account is verified. You can now publish.', 'sm-core' );
 		Forms::back( array(), $message, Routes::url( 'account' ) );
 	}

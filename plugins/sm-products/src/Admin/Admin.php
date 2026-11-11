@@ -198,7 +198,9 @@ final class Admin {
 		wp_nonce_field( 'smp_settings' );
 		echo '<input type="hidden" name="action" value="smp_settings"><table class="form-table" role="presentation">';
 		echo '<tr><th>' . esc_html__( 'Moderation', 'sm-products' ) . '</th><td><label><input type="checkbox" name="moderation" value="1"' . checked( $s['moderation'], 1, false ) . '> ' . esc_html__( 'Check every product before it is published', 'sm-products' ) . '</label></td></tr>';
+		echo '<tr><th>' . esc_html__( 'Client accounts', 'sm-products' ) . '</th><td><label><input type="checkbox" name="client_moderation" value="1"' . checked( $s['client_moderation'], 1, false ) . '> ' . esc_html__( 'Always check the listings of client accounts (private sellers), even when moderation is off', 'sm-products' ) . '</label></td></tr>';
 		$rows = array(
+			'client_max_active' => __( 'Listings online per client account (0 = no limit)', 'sm-products' ),
 			'expiry_days' => __( 'Publication period (days, 0 = no end)', 'sm-products' ),
 			'max_photos'  => __( 'Photos per product', 'sm-products' ),
 			'photo_mb'    => __( 'Largest photo (MB)', 'sm-products' ),

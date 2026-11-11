@@ -45,7 +45,7 @@ final class Api {
 			'callback'            => array( __CLASS__, 'companies' ),
 			'permission_callback' => '__return_true',
 			'args'                => array(
-				'class'    => array( 'type' => 'string', 'enum' => array( '', 'commercial', 'engineering' ), 'default' => '' ),
+				'class'    => array( 'type' => 'string', 'enum' => array( '', 'company', 'professional' ), 'default' => '' ),
 				'activity' => array( 'type' => 'string', 'default' => '', 'sanitize_callback' => 'sanitize_key' ),
 				'wilaya'   => array( 'type' => 'string', 'default' => '', 'pattern' => '^([0-9]{2})?$' ),
 				'search'   => array( 'type' => 'string', 'default' => '', 'sanitize_callback' => 'sanitize_text_field' ),
@@ -140,7 +140,7 @@ final class Api {
 	public static function companies( \WP_REST_Request $r ) {
 		$result = Companies::query(
 			array(
-				'class'    => $r['class'],
+				'class'    => $r['class'] ? $r['class'] : 'public',
 				'activity' => $r['activity'],
 				'wilaya'   => $r['wilaya'],
 				'search'   => $r['search'],
@@ -206,7 +206,7 @@ final class Api {
 			$saved->add_data( array( 'status' => 400 ) );
 			return $saved;
 		}
-		if ( isset( $params['activities'] ) && 'commercial' === $company->account_class ) {
+		if ( isset( $params['activities'] ) && Companies::chooses_activities( $company->account_class ) ) {
 			Companies::set_activities( $company->id, (array) $params['activities'] );
 		}
 		\SM\Core\Audit\AuditLog::add( 'company.updated', 'company', $company->id, array( 'via' => 'rest' ), null, $company->id );

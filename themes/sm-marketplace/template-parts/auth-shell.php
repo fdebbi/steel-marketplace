@@ -2,7 +2,7 @@
 /**
  * Shared authentication layout: brand side panel + form card.
  *
- * @var array $args { title: string, lead: string, content: callable }
+ * @var array $args { title: string, lead: string, content: callable, claim?: string, points?: string[] }
  * @package SM_Marketplace
  */
 
@@ -11,11 +11,16 @@ defined( 'ABSPATH' ) || exit;
 <div class="sm-auth">
 	<aside class="sm-auth__side">
 		<?php sm_brand(); ?>
-		<p class="sm-auth__claim"><?php esc_html_e( 'One business account to buy and sell steel, structures and services.', 'sm-marketplace' ); ?></p>
+		<p class="sm-auth__claim"><?php echo esc_html( $args['claim'] ?? __( 'One account to buy and sell steel, structures and services.', 'sm-marketplace' ) ); ?></p>
+		<?php
+		$sm_points = $args['points'] ?? array(
+			__( 'Prices per kg with automatic totals', 'sm-marketplace' ),
+			__( 'Verified companies, professionals and partner engineers', 'sm-marketplace' ),
+			__( 'Requests for quotation compared side by side', 'sm-marketplace' ),
+		);
+		?>
 		<ul class="sm-checklist sm-checklist--light">
-			<li><?php sm_icon( 'check' ); ?><?php esc_html_e( 'Prices per kg with automatic totals', 'sm-marketplace' ); ?></li>
-			<li><?php sm_icon( 'check' ); ?><?php esc_html_e( 'Verified companies and engineers', 'sm-marketplace' ); ?></li>
-			<li><?php sm_icon( 'check' ); ?><?php esc_html_e( 'Requests for quotation compared side by side', 'sm-marketplace' ); ?></li>
+			<?php foreach ( $sm_points as $sm_point ) : ?><li><?php sm_icon( 'check' ); ?><?php echo esc_html( $sm_point ); ?></li><?php endforeach; ?>
 		</ul>
 	</aside>
 	<div class="sm-auth__main">

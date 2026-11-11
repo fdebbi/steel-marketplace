@@ -27,6 +27,7 @@ final class Bridge {
 		add_filter( 'sm_theme_data_company', array( __CLASS__, 'company' ), 10, 2 );
 		add_filter( 'sm_theme_data_companies', array( __CLASS__, 'companies' ), 10, 2 );
 		add_filter( 'sm_theme_data_wilayas', array( __CLASS__, 'wilayas' ) );
+		add_filter( 'sm_theme_data_account_types', array( __CLASS__, 'account_types' ) );
 		add_filter( 'sm_theme_data_wilaya_centres', static fn( $r ) => null !== $r ? $r : Wilayas::centres() );
 		add_filter( 'sm_theme_data_map', array( __CLASS__, 'map' ) );
 		add_filter( 'sm_theme_data_contact_info', static fn( $r ) => null !== $r ? $r : array( 'email' => (string) \SM\Core\Mail\Settings::get( 'from_email' ), 'form' => true ) );
@@ -41,6 +42,31 @@ final class Bridge {
 		add_action( 'sm_form_fields', array( __CLASS__, 'form_fields' ) );
 		add_filter( 'sm_form_old_all', array( __CLASS__, 'old_all' ) );
 		add_filter( 'sm_theme_demo_account', '__return_false' );
+	}
+
+	/**
+	 * Account classes and their types / trades, in the current language:
+	 * { classes: { company: { label, public, activities: { code: label } } } }.
+	 */
+	public static function account_types( $res ) {
+		if ( null !== $res ) {
+			return $res;
+		}
+		$labels = Companies::activity_labels();
+		$out    = array();
+		foreach ( Companies::class_labels() as $class => $label ) {
+			$acts = array();
+			foreach ( Companies::activities( $class ) as $code ) {
+				$acts[ $code ] = $labels[ $code ] ?? $code;
+			}
+			$out[ $class ] = array(
+				'label'      => $label,
+				'public'     => Companies::is_public_class( $class ),
+				'chooses'    => Companies::chooses_activities( $class ),
+				'activities' => $acts,
+			);
+		}
+		return array( 'classes' => $out, 'labels' => $labels );
 	}
 
 	/** Company row -> theme shape. */
@@ -58,7 +84,9 @@ final class Bridge {
 			'real'           => true,
 			'name'           => array( 'fr' => $c->name, 'ar' => $name_ar ),
 			'class'          => $c->account_class,
+			'class_label'    => Companies::class_label( $c->account_class ),
 			'activities'     => $c->activities,
+			'logo'           => Companies::logo_url( $c, 'medium' ),
 			'wilaya'         => $c->wilaya,
 			'verification'   => (int) $c->verification_level,
 			'since'          => substr( $c->created_at, 0, 4 ),
@@ -81,7 +109,8 @@ final class Bridge {
 			return $result;
 		}
 		$c = Companies::get_by_slug( (string) ( $args['slug'] ?? '' ) );
-		return ( $c && 'active' === $c->status ) ? self::shape_company( $c ) : null;
+		// Clients and partner engineers have no public company page.
+		return ( $c && 'active' === $c->status && Companies::is_public_class( $c->account_class ) ) ? self::shape_company( $c ) : null;
 	}
 
 	/** Real directory once at least one company exists; demo otherwise. */
@@ -89,9 +118,10 @@ final class Bridge {
 		if ( null !== $result ) {
 			return $result;
 		}
-		$query = Companies::query( array( 'class' => $args['class'] ?? '', 'per_page' => 60 ) );
-		if ( ! $query['total'] ) {
-			return null;
+		$class = (string) ( $args['class'] ?? '' );
+		$query = Companies::query( array( 'class' => Companies::is_public_class( $class ) ? $class : 'public', 'activity' => (string) ( $args['activity'] ?? '' ), 'per_page' => 60 ) );
+		if ( ! $query['total'] && ! Companies::query( array( 'class' => 'public', 'per_page' => 1 ) )['total'] ) {
+			return null; // No account yet: the theme may show its demo directory.
 		}
 		return array_map( array( __CLASS__, 'shape_company' ), $query['items'] );
 	}
@@ -138,7 +168,7 @@ final class Bridge {
 		global $wpdb;
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		$active = \SM\Core\Listings\Index::count_published( $company->id );
-		$is_eng = 'engineering' === $company->account_class;
+		$is_eng = 'engineer' === $company->account_class;
 		$can_manage = Companies::can_manage( $company->id, $user->ID );
 
 		return array(

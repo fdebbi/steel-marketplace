@@ -10,10 +10,17 @@ defined( 'ABSPATH' ) || exit;
 
 $account = $args['account'];
 $level   = (int) $account['company']['verification'];
-$target  = 'engineering' === $account['class'] ? 3 : 2;
+$class   = sm_account_class( $account );
+$target  = 'engineer' === $class ? 3 : 2;
+$second  = array(
+	'company'      => array( __( 'Verified business', 'sm-marketplace' ), __( 'RC, NIF and NIS checked', 'sm-marketplace' ) ),
+	'professional' => array( __( 'Verified professional', 'sm-marketplace' ), __( 'Craftsman or auto-entrepreneur card checked', 'sm-marketplace' ) ),
+	'client'       => array( __( 'Verified identity', 'sm-marketplace' ), __( 'Identity document checked', 'sm-marketplace' ) ),
+	'engineer'     => array( __( 'Verified engineer', 'sm-marketplace' ), __( 'Diploma and approval checked', 'sm-marketplace' ) ),
+);
 $steps   = array(
 	array( 1, __( 'Contact verified', 'sm-marketplace' ), __( '6-digit code', 'sm-marketplace' ), 'verify-phone' ),
-	array( $target, 'engineering' === $account['class'] ? __( 'Verified engineer', 'sm-marketplace' ) : __( 'Verified business', 'sm-marketplace' ), 'engineering' === $account['class'] ? __( 'Diploma and approval checked', 'sm-marketplace' ) : __( 'RC, NIF and NIS checked', 'sm-marketplace' ), 'verification' ),
+	array( $target, $second[ $class ][0] ?? $second['company'][0], $second[ $class ][1] ?? $second['company'][1], 'verification' ),
 );
 ?>
 <ol class="sm-vsteps">

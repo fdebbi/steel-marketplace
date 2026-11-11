@@ -1,6 +1,6 @@
 <?php
 /**
- * Service card (fabrication & site work / engineering).
+ * Service card (fabrication & site work of companies and professionals).
  *
  * @var array $args { service: array }
  * @package SM_Marketplace
@@ -16,12 +16,11 @@ $company = sm_theme_company( $service['company'] );
 $wilayas = sm_theme_wilayas();
 $real    = isset( $service['status'] );
 $url     = $real ? sm_page_url( 'service', array( 'id' => $service['id'] ) ) : sm_page_url( 'company', array( 'c' => $service['company'] ) );
-$is_eng  = 'engineering' === $service['kind'];
 ?>
 <article class="sm-card sm-card--service sm-card--<?php echo esc_attr( $service['kind'] ); ?>">
 	<a class="sm-card__media" href="<?php echo esc_url( $url ); ?>" tabindex="-1" aria-hidden="true">
 		<img src="<?php echo esc_url( sm_image_url( $service['image'] ) ); ?>" alt="" loading="lazy" decoding="async" width="640" height="480">
-		<span class="sm-chip sm-chip--kind"><?php sm_icon( $is_eng ? 'hard-hat' : 'wrench' ); ?><?php echo esc_html( $is_eng ? __( 'Engineering', 'sm-marketplace' ) : __( 'Fabrication & installation', 'sm-marketplace' ) ); ?></span>
+		<span class="sm-chip sm-chip--kind"><?php sm_icon( 'wrench' ); ?><?php esc_html_e( 'Fabrication & installation', 'sm-marketplace' ); ?></span>
 	</a>
 	<div class="sm-card__body">
 		<h3 class="sm-card__title"><a href="<?php echo esc_url( $url ); ?>"><?php sm_e( $service['title'] ); ?></a></h3>

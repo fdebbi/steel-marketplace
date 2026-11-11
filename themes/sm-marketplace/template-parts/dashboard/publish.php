@@ -17,8 +17,8 @@ if ( ! in_array( $market, array( 'products', 'reuse', 'buildings' ), true ) ) {
 	$market = 'products';
 }
 $account = $args['account'];
-if ( 'engineering' === $account['class'] ) {
-	echo '<div class="sm-notice sm-notice--warn">' . sm_get_icon( 'lock' ) . '<p>' . esc_html__( 'Engineering accounts offer services only. To trade steel, open a separate business account.', 'sm-marketplace' ) . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput
+if ( 'engineer' === sm_account_class( $account ) ) {
+	echo '<div class="sm-notice sm-notice--warn">' . sm_get_icon( 'lock' ) . '<p>' . esc_html__( 'Partner engineers work on the missions of the platform and never trade. To sell or buy steel, open a separate company, professional or client account.', 'sm-marketplace' ) . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput
 	return;
 }
 // Markets served by the listing engine (sm-products: new steel; sm-reuse: reuse lots).

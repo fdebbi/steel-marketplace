@@ -65,7 +65,7 @@ $sm_unread  = $sm_account ? (int) ( $sm_account['unread'] ?? 0 ) : 0;
 						<span class="screen-reader-text"><?php esc_html_e( 'Notifications', 'sm-marketplace' ); ?></span>
 					</a>
 					<a class="sm-header__account sm-hide-mobile" href="<?php echo esc_url( sm_page_url( 'account' ) ); ?>">
-						<span class="sm-avatar sm-avatar--xs sm-avatar--<?php echo esc_attr( $sm_account['class'] ); ?>" aria-hidden="true"><?php echo esc_html( $sm_account['company']['initials'] ); ?></span>
+						<?php sm_avatar( array_merge( $sm_account['company'], array( 'class' => sm_account_class( $sm_account ) ) ), 'xs' ); ?>
 						<span><?php esc_html_e( 'My account', 'sm-marketplace' ); ?></span>
 					</a>
 				<?php elseif ( is_user_logged_in() ) : ?>
@@ -73,10 +73,10 @@ $sm_unread  = $sm_account ? (int) ( $sm_account['unread'] ?? 0 ) : 0;
 				<?php else : ?>
 					<a class="sm-header__account sm-hide-mobile" href="<?php echo esc_url( sm_page_url( 'login' ) ); ?>"><?php sm_icon( 'user' ); ?><span><?php esc_html_e( 'Sign in', 'sm-marketplace' ); ?></span></a>
 				<?php endif; ?>
-				<?php if ( ! $sm_account || 'engineering' !== $sm_account['class'] ) : ?>
+				<?php if ( ! $sm_account || 'engineer' !== sm_account_class( $sm_account ) ) : ?>
 					<a class="sm-btn sm-btn--accent sm-header__publish" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'publish' ) ) ); ?>"><?php sm_icon( 'plus' ); ?><span><?php esc_html_e( 'Publish', 'sm-marketplace' ); ?></span></a>
 				<?php else : ?>
-					<a class="sm-btn sm-btn--accent sm-header__publish" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'services' ) ) ); ?>"><?php sm_icon( 'plus' ); ?><span><?php esc_html_e( 'My services', 'sm-marketplace' ); ?></span></a>
+					<a class="sm-btn sm-btn--accent sm-header__publish" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'missions' ) ) ); ?>"><?php sm_icon( 'hard-hat' ); ?><span><?php esc_html_e( 'My missions', 'sm-marketplace' ); ?></span></a>
 				<?php endif; ?>
 			</div>
 		</div>

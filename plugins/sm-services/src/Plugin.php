@@ -17,9 +17,9 @@ final class Plugin {
 			'sm-services',
 			array(
 				'version'       => SM_SERVICES_VERSION,
-				'requires_core' => '0.3.3',
+				'requires_core' => '0.6.0',
 				'label'         => 'SM Services',
-				'capabilities'  => array( 'service.fabrication', 'service.engineering', 'service.request' ),
+				'capabilities'  => array( 'service.fabrication', 'service.request' ),
 			)
 		);
 		if ( ! $ok ) {

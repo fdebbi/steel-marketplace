@@ -16,6 +16,8 @@ final class Settings {
 	public static function defaults() {
 		return array(
 			'moderation'   => 1,
+			'client_moderation' => 1, // Listings of client accounts (private sellers) are always checked.
+			'client_max_active' => 5, // Published or waiting listings of a client account (0 = no limit).
 			'expiry_days'  => 90,
 			'max_photos'   => 10,
 			'photo_mb'     => 8,
@@ -39,6 +41,8 @@ final class Settings {
 		$d   = self::defaults();
 		$out = array(
 			'moderation'  => empty( $in['moderation'] ) ? 0 : 1,
+			'client_moderation' => empty( $in['client_moderation'] ) ? 0 : 1,
+			'client_max_active' => min( 1000, max( 0, (int) ( $in['client_max_active'] ?? $d['client_max_active'] ) ) ),
 			'expiry_days' => max( 0, (int) ( $in['expiry_days'] ?? $d['expiry_days'] ) ),
 			'max_photos'  => min( 30, max( 1, (int) ( $in['max_photos'] ?? $d['max_photos'] ) ) ),
 			'photo_mb'    => min( 50, max( 1, (int) ( $in['photo_mb'] ?? $d['photo_mb'] ) ) ),

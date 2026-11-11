@@ -125,8 +125,8 @@ smai_assert( null === Gateway::decode( 'no json here' ) && array( 'x' => 2 ) ===
 
 /* ------------------------------------------------------------------ */
 smai_section( '3. Gateway: rights, quotas, budget, usage log' );
-list( $u_seller, $c_seller ) = smai_user( 'seller', 'commercial', array( 'supplier' ) );
-list( $u_eng, $c_eng )       = smai_user( 'eng', 'engineering', array( 'engineer' ) );
+list( $u_seller, $c_seller ) = smai_user( 'seller', 'company', array( 'supplier' ) );
+list( $u_eng, $c_eng )       = smai_user( 'eng', 'engineer', array( 'engineer' ) );
 wp_set_current_user( $u_seller );
 $GLOBALS['smai_http'] = array( 'headers' => array(), 'body' => wp_json_encode( array( 'content' => array( array( 'type' => 'text', 'text' => wp_json_encode( array( 'market' => 'products', 'category' => 'profiles', 'family' => 'IPE', 'designation' => 'IPE 200', 'grade' => 'S275JR', 'title_fr' => 'IPE 200 S275JR', 'title_ar' => 'IPE 200', 'description_fr' => '<b>Barres</b> neuves', 'description_ar' => '', 'missing' => array( 'Longueur ?' ), 'warnings' => array(), 'confidence' => 1.7, 'weight' => 999 ) ) ) ), 'usage' => array( 'input_tokens' => 2000, 'output_tokens' => 400 ) ) ), 'response' => array( 'code' => 200, 'message' => 'OK' ), 'cookies' => array() );
 $in = get_option( Settings::OPTION );

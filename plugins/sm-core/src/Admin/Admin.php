@@ -34,6 +34,7 @@ final class Admin {
 		add_action( 'admin_post_sm_admin_rights', array( __CLASS__, 'save_rights' ) );
 		add_action( 'admin_post_sm_admin_settings', array( __CLASS__, 'save_settings' ) );
 		add_action( 'admin_post_sm_admin_wilayas', array( __CLASS__, 'save_wilayas' ) );
+		add_action( 'admin_post_sm_admin_types', array( __CLASS__, 'save_types' ) );
 		add_action( 'admin_head', array( __CLASS__, 'styles' ) );
 	}
 
@@ -44,6 +45,7 @@ final class Admin {
 		add_submenu_page( 'sm-core', __( 'Overview', 'sm-core' ), __( 'Overview', 'sm-core' ), 'sm_moderate', 'sm-core', array( __CLASS__, 'page_overview' ) );
 		add_submenu_page( 'sm-core', __( 'Companies', 'sm-core' ), __( 'Companies', 'sm-core' ), 'sm_moderate', 'sm-companies', array( __CLASS__, 'page_companies' ) );
 		add_submenu_page( 'sm-core', __( 'Verifications', 'sm-core' ), __( 'Verifications', 'sm-core' ) . $badge, 'sm_moderate', 'sm-verifications', array( __CLASS__, 'page_verifications' ) );
+		add_submenu_page( 'sm-core', __( 'Account types', 'sm-core' ), __( 'Account types', 'sm-core' ), 'sm_manage_settings', 'sm-types', array( __CLASS__, 'page_types' ) );
 		add_submenu_page( 'sm-core', __( 'Rights', 'sm-core' ), __( 'Rights', 'sm-core' ), 'sm_manage_settings', 'sm-rights', array( __CLASS__, 'page_rights' ) );
 		add_submenu_page( 'sm-core', __( 'Wilayas', 'sm-core' ), __( 'Wilayas', 'sm-core' ), 'sm_manage_settings', 'sm-wilayas', array( __CLASS__, 'page_wilayas' ) );
 		add_submenu_page( 'sm-core', __( 'Settings', 'sm-core' ), __( 'Settings', 'sm-core' ), 'sm_manage_settings', 'sm-settings', array( __CLASS__, 'page_settings' ) );
@@ -85,7 +87,7 @@ final class Admin {
 	}
 
 	private static function class_label( $class ) {
-		return 'engineering' === $class ? __( 'Engineering', 'sm-core' ) : __( 'Business', 'sm-core' );
+		return Companies::class_label( $class );
 	}
 
 	public static function page_overview() {
@@ -94,8 +96,9 @@ final class Admin {
 		$c     = sm_table( 'companies' );
 		echo '<div class="wrap sm-admin"><h1>' . esc_html( sm_brand_name() ) . '</h1>';
 		echo '<div class="sm-cards">';
-		printf( '<div><span>%s</span><strong>%d</strong></div>', esc_html__( 'Business accounts', 'sm-core' ), $count( "SELECT COUNT(*) FROM $c WHERE account_class='commercial' AND deleted_at IS NULL" ) ); // phpcs:ignore
-		printf( '<div><span>%s</span><strong>%d</strong></div>', esc_html__( 'Engineering accounts', 'sm-core' ), $count( "SELECT COUNT(*) FROM $c WHERE account_class='engineering' AND deleted_at IS NULL" ) ); // phpcs:ignore
+		foreach ( Companies::class_labels() as $k => $l ) {
+			printf( '<div><span>%s</span><strong>%d</strong></div>', esc_html( $l ), $count( $wpdb->prepare( "SELECT COUNT(*) FROM $c WHERE account_class=%s AND deleted_at IS NULL", $k ) ) ); // phpcs:ignore
+		}
 		printf( '<div><span>%s</span><strong>%d</strong></div>', esc_html__( 'Verified (level 2+)', 'sm-core' ), $count( "SELECT COUNT(*) FROM $c WHERE verification_level>=2 AND deleted_at IS NULL" ) ); // phpcs:ignore
 		printf( '<div><span>%s</span><strong>%d</strong></div>', esc_html__( 'Verifications to review', 'sm-core' ), count( Verifications::pending() ) );
 		printf( '<div><span>%s</span><strong>%d</strong></div>', esc_html__( 'Enquiries (30 days)', 'sm-core' ), $count( $wpdb->prepare( 'SELECT COUNT(*) FROM ' . sm_table( 'enquiries' ) . ' WHERE created_at > %s', gmdate( 'Y-m-d H:i:s', time() - 30 * DAY_IN_SECONDS ) ) ) ); // phpcs:ignore
@@ -127,7 +130,11 @@ final class Admin {
 		echo '<div class="wrap sm-admin"><h1>' . esc_html__( 'Companies', 'sm-core' ) . '</h1>';
 		self::notice();
 		echo '<form method="get"><input type="hidden" name="page" value="sm-companies"><p class="search-box">';
-		echo '<select name="class"><option value="">' . esc_html__( 'All types', 'sm-core' ) . '</option><option value="commercial"' . selected( $class, 'commercial', false ) . '>' . esc_html__( 'Business', 'sm-core' ) . '</option><option value="engineering"' . selected( $class, 'engineering', false ) . '>' . esc_html__( 'Engineering', 'sm-core' ) . '</option></select> ';
+		echo '<select name="class"><option value="">' . esc_html__( 'All types', 'sm-core' ) . '</option>';
+		foreach ( Companies::class_labels() as $k => $l ) {
+			echo '<option value="' . esc_attr( $k ) . '"' . selected( $class, $k, false ) . '>' . esc_html( $l ) . '</option>';
+		}
+		echo '</select> ';
 		echo '<select name="status"><option value="">' . esc_html__( 'All statuses', 'sm-core' ) . '</option><option value="active"' . selected( $status, 'active', false ) . '>' . esc_html__( 'Active', 'sm-core' ) . '</option><option value="suspended"' . selected( $status, 'suspended', false ) . '>' . esc_html__( 'Suspended', 'sm-core' ) . '</option></select> ';
 		echo '<input type="search" name="s" value="' . esc_attr( $search ) . '"> <button class="button">' . esc_html__( 'Filter', 'sm-core' ) . '</button></p></form>';
 		echo '<table class="widefat striped"><thead><tr><th>' . esc_html__( 'Company', 'sm-core' ) . '</th><th>' . esc_html__( 'Type', 'sm-core' ) . '</th><th>' . esc_html__( 'Activities', 'sm-core' ) . '</th><th>' . esc_html__( 'Wilaya', 'sm-core' ) . '</th><th>' . esc_html__( 'Verification', 'sm-core' ) . '</th><th>' . esc_html__( 'Status', 'sm-core' ) . '</th><th>' . esc_html__( 'Created', 'sm-core' ) . '</th></tr></thead><tbody>';
@@ -195,7 +202,7 @@ final class Admin {
 		echo '<input type="hidden" name="action" value="sm_admin_company"><input type="hidden" name="company" value="' . (int) $c->id . '"><table class="form-table"><tbody>';
 		echo '<tr><th>' . esc_html__( 'Verification level', 'sm-core' ) . '</th><td><select name="verification_level">';
 		foreach ( self::level_labels() as $lvl => $label ) {
-			if ( 3 === $lvl && 'engineering' !== $c->account_class ) {
+			if ( 3 === $lvl && 'engineer' !== $c->account_class ) {
 				continue;
 			}
 			echo '<option value="' . (int) $lvl . '"' . selected( (int) $c->verification_level, $lvl, false ) . '>' . esc_html( $label ) . '</option>';
@@ -271,7 +278,7 @@ final class Admin {
 		echo '<div class="wrap sm-admin"><h1>' . esc_html__( 'Rights by activity', 'sm-core' ) . '</h1>';
 		self::notice();
 		echo '<p>' . esc_html__( 'A company gets a right when at least one of its activities has it, its verification level is high enough, and its plan allows it.', 'sm-core' ) . '</p>';
-		echo '<p class="sm-lock">🔒 ' . esc_html__( 'Engineering accounts can never receive trading rights (buy, listings, quotations, fabrication). This rule is enforced in code and cannot be changed here.', 'sm-core' ) . '</p>';
+		echo '<p class="sm-lock">🔒 ' . esc_html__( 'Partner engineer accounts can never receive trading rights (buy, listings, quotations, services, mission requests). This rule is enforced in code and cannot be changed here.', 'sm-core' ) . '</p>';
 		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
 		wp_nonce_field( 'sm_admin_rights' );
 		echo '<input type="hidden" name="action" value="sm_admin_rights"><table class="widefat striped sm-matrix"><thead><tr><th>' . esc_html__( 'Right', 'sm-core' ) . '</th>';
@@ -295,6 +302,82 @@ final class Admin {
 		echo '</tbody></table>';
 		submit_button( __( 'Save rights', 'sm-core' ) );
 		echo '<p><button class="button-link" name="reset" value="1">' . esc_html__( 'Restore the default rights', 'sm-core' ) . '</button></p></form></div>';
+	}
+
+	/**
+	 * Company types and trades: wording in French and Arabic, active or not,
+	 * and new types / trades. Codes stay fixed so that existing accounts keep
+	 * their type when it is renamed or hidden.
+	 */
+	public static function page_types() {
+		$t      = Companies::type_settings();
+		$labels = Companies::activity_labels();
+		echo '<div class="wrap sm-admin"><h1>' . esc_html__( 'Account types', 'sm-core' ) . '</h1>';
+		self::notice();
+		echo '<p>' . esc_html__( 'Companies choose one or more types, professionals one or more trades. A hidden type is no longer offered at registration; accounts that already have it keep it. New types get the rights of a contracting company (see Rights).', 'sm-core' ) . '</p>';
+		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
+		wp_nonce_field( 'sm_admin_types' );
+		echo '<input type="hidden" name="action" value="sm_admin_types">';
+		$titles = array(
+			'company'      => __( 'Company types', 'sm-core' ),
+			'professional' => __( 'Trades of professionals', 'sm-core' ),
+		);
+		foreach ( $titles as $class => $title ) {
+			echo '<h2>' . esc_html( $title ) . '</h2><table class="widefat striped" style="max-width:920px"><thead><tr><th>' . esc_html__( 'Code', 'sm-core' ) . '</th><th>' . esc_html__( 'French', 'sm-core' ) . '</th><th>' . esc_html__( 'Arabic', 'sm-core' ) . '</th><th>' . esc_html__( 'Active', 'sm-core' ) . '</th></tr></thead><tbody>';
+			foreach ( Companies::activities( $class, true ) as $code ) {
+				$l = (array) ( $t['labels'][ $code ] ?? array() );
+				$c = esc_attr( $code );
+				echo '<tr><td><code>' . esc_html( $code ) . '</code></td>';
+				echo '<td><input class="regular-text" name="labels[' . $c . '][fr]" value="' . esc_attr( $l['fr'] ?? '' ) . '" placeholder="' . esc_attr( $labels[ $code ] ?? $code ) . '"></td>'; // phpcs:ignore WordPress.Security.EscapeOutput
+				echo '<td><input class="regular-text" dir="rtl" name="labels[' . $c . '][ar]" value="' . esc_attr( $l['ar'] ?? '' ) . '"></td>'; // phpcs:ignore WordPress.Security.EscapeOutput
+				echo '<td><input type="checkbox" name="active[]" value="' . $c . '"' . checked( ! in_array( $code, (array) $t['disabled'], true ), true, false ) . '></td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
+			}
+			echo '<tr><td><em>' . esc_html__( 'New', 'sm-core' ) . '</em></td><td><input class="regular-text" name="new[' . esc_attr( $class ) . '][fr]" placeholder="' . esc_attr__( 'French name', 'sm-core' ) . '"></td><td><input class="regular-text" dir="rtl" name="new[' . esc_attr( $class ) . '][ar]" placeholder="' . esc_attr__( 'Arabic name', 'sm-core' ) . '"></td><td></td></tr>';
+			echo '</tbody></table>';
+		}
+		echo '<p class="description">' . esc_html__( 'Leave a name empty to use the default wording (translated). Client and partner engineer accounts have no types.', 'sm-core' ) . '</p>';
+		submit_button( __( 'Save account types', 'sm-core' ) );
+		echo '</form></div>';
+	}
+
+	public static function save_types() {
+		check_admin_referer( 'sm_admin_types' );
+		if ( ! current_user_can( 'sm_manage_settings' ) ) {
+			wp_die( '', 403 );
+		}
+		$t      = Companies::type_settings();
+		$posted = isset( $_POST['labels'] ) ? map_deep( wp_unslash( $_POST['labels'] ), 'sanitize_text_field' ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		$active = isset( $_POST['active'] ) ? array_map( 'sanitize_key', (array) wp_unslash( $_POST['active'] ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		$new    = isset( $_POST['new'] ) ? map_deep( wp_unslash( $_POST['new'] ), 'sanitize_text_field' ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		$labels   = array();
+		$disabled = array();
+		$custom   = (array) $t['custom'];
+		foreach ( array( 'company', 'professional' ) as $class ) {
+			foreach ( Companies::activities( $class, true ) as $code ) {
+				$fr = mb_substr( trim( (string) ( $posted[ $code ]['fr'] ?? '' ) ), 0, 80 );
+				$ar = mb_substr( trim( (string) ( $posted[ $code ]['ar'] ?? '' ) ), 0, 80 );
+				if ( '' !== $fr || '' !== $ar ) {
+					$labels[ $code ] = array( 'fr' => $fr, 'ar' => $ar );
+				}
+				if ( ! in_array( $code, $active, true ) ) {
+					$disabled[] = $code;
+				}
+			}
+			$fr = mb_substr( trim( (string) ( $new[ $class ]['fr'] ?? '' ) ), 0, 80 );
+			if ( '' !== $fr ) {
+				$base = ( 'professional' === $class ? 'trade_' : 'type_' ) . substr( str_replace( '-', '_', sanitize_title( $fr ) ), 0, 32 );
+				$code = $base;
+				for ( $i = 2; '' !== Companies::activity_class( $code ) || in_array( $code, array( 'client', 'engineer' ), true ); $i++ ) {
+					$code = $base . '_' . $i;
+				}
+				$custom[ $class ][] = $code;
+				$labels[ $code ]    = array( 'fr' => $fr, 'ar' => mb_substr( trim( (string) ( $new[ $class ]['ar'] ?? '' ) ), 0, 80 ) );
+				Companies::save_type_settings( $labels, $disabled, $custom ); // So activity_class() sees it for the next one.
+			}
+		}
+		Companies::save_type_settings( $labels, $disabled, $custom );
+		AuditLog::add( 'admin.types_updated', 'settings', 0, array( 'disabled' => $disabled ) );
+		self::back( 'sm-types' );
 	}
 
 	public static function page_wilayas() {

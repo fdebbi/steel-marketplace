@@ -10,7 +10,8 @@ defined( 'ABSPATH' ) || exit;
 
 $account = $args['account'];
 $state   = sm_theme_data( 'verification' );
-$is_eng  = 'engineering' === $account['class'];
+$class   = sm_account_class( $account );
+$is_eng  = 'engineer' === $class;
 $level   = (int) $account['company']['verification'];
 ?>
 <section class="sm-panel">
@@ -25,7 +26,7 @@ $level   = (int) $account['company']['verification'];
 
 <?php $request = $state['request']; ?>
 <?php if ( $level >= $state['target_level'] ) : ?>
-	<div class="sm-notice sm-notice--success"><?php sm_icon( 'verified' ); ?><p><?php echo esc_html( $is_eng ? __( 'Your engineering credentials are verified.', 'sm-marketplace' ) : __( 'Your business is verified.', 'sm-marketplace' ) ); ?></p></div>
+	<div class="sm-notice sm-notice--success"><?php sm_icon( 'verified' ); ?><p><?php echo esc_html( $is_eng ? __( 'Your engineering credentials are verified.', 'sm-marketplace' ) : ( 'company' === $class ? __( 'Your business is verified.', 'sm-marketplace' ) : __( 'Your account is verified.', 'sm-marketplace' ) ) ); ?></p></div>
 <?php elseif ( $request && 'pending' === $request['status'] ) : ?>
 	<div class="sm-notice sm-notice--info"><?php sm_icon( 'calendar' ); ?><p><?php esc_html_e( 'Your documents are being reviewed by the platform team, usually within 2 working days.', 'sm-marketplace' ); ?></p></div>
 <?php elseif ( $level < 1 ) : ?>
@@ -35,8 +36,8 @@ $level   = (int) $account['company']['verification'];
 		<div class="sm-notice sm-notice--error"><?php sm_icon( 'alert' ); ?><p><?php esc_html_e( 'Your previous request was not validated.', 'sm-marketplace' ); ?> <?php echo esc_html( $request['note'] ); ?></p></div>
 	<?php endif; ?>
 	<?php sm_theme_form_open( 'verification_submit', array( 'class' => 'sm-form sm-panel', 'enctype' => 'multipart/form-data' ) ); ?>
-		<h2 class="sm-panel__title"><?php echo esc_html( $is_eng ? __( 'Send your engineering credentials', 'sm-marketplace' ) : __( 'Send your company documents', 'sm-marketplace' ) ); ?></h2>
-		<?php if ( ! $is_eng ) : ?>
+		<h2 class="sm-panel__title"><?php echo esc_html( $is_eng ? __( 'Send your engineering credentials', 'sm-marketplace' ) : ( 'company' === $class ? __( 'Send your company documents', 'sm-marketplace' ) : __( 'Send your documents', 'sm-marketplace' ) ) ); ?></h2>
+		<?php if ( 'company' === $class ) : ?>
 			<div class="sm-field sm-field--row sm-field--row3">
 				<div><label for="v-rc"><?php esc_html_e( 'RC number', 'sm-marketplace' ); ?></label><input id="v-rc" name="rc_number" value="<?php echo esc_attr( sm_theme_old( 'rc_number', $state['legal']['rc_number'] ) ); ?>" dir="ltr" autocomplete="off"></div>
 				<div><label for="v-nif">NIF</label><input id="v-nif" name="nif" value="<?php echo esc_attr( sm_theme_old( 'nif', $state['legal']['nif'] ) ); ?>" dir="ltr" inputmode="numeric" autocomplete="off"></div>

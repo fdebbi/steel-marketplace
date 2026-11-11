@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Services 0.1.0\n"
+"Project-Id-Version: SM Services 0.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-services\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-08T14:06:54+00:00\n"
+"POT-Creation-Date: 2026-11-11T12:21:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-services\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: sm-services.php
-msgid "Fabrication, site and engineering services: two separate catalogues (fabrication & site work for business accounts, engineering for engineering accounts), service pages with photos, capabilities, equipment and coverage, service requests answered with a quote, engineer profiles with experience and references. Requires SM Core."
+msgid "Fabrication and site services of companies and professionals: service pages with photos, capabilities, equipment and coverage, service requests answered with a quote, portfolio of completed projects. Engineering studies are handled by SM Engineering. Requires SM Core."
 msgstr ""
 
 #. Author of the plugin

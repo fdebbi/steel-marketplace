@@ -2,9 +2,13 @@
 /**
  * Template Name: SM — Register
  *
- * Two-step registration: account class (commercial or engineering), then details.
- * The account class cannot be mixed: engineers get a services-only account.
- * Account creation itself is handled by sm-core (Phase 2).
+ * Registration in one step. Three kinds of account (0.13.0):
+ * - company: chooses one or more types (contractor, manufacturer, supplier…);
+ * - professional: chooses one or more trades (welder, erector…), publishes
+ *   services and a portfolio, buys and sells;
+ * - client: private account, buys, sells and requests services and studies.
+ * Partner engineers apply on their own page ("Become a partner engineer").
+ * Types and trades come from SM Core (editable by the administrator).
  *
  * @package SM_Marketplace
  */
@@ -16,48 +20,54 @@ get_template_part(
 	null,
 	array(
 		'title'   => __( 'Create your account', 'sm-marketplace' ),
-		'lead'    => __( 'Choose the type of account. You can enable several business activities later.', 'sm-marketplace' ),
+		'lead'    => __( 'Choose the kind of account that describes you. Every account can buy and sell.', 'sm-marketplace' ),
 		'content' => static function () {
-			$type       = 'engineering' === sm_theme_old( 'account_class', sm_theme_query_arg( 'type' ) ) ? 'engineering' : 'commercial';
-			$old_acts   = (array) sm_theme_old( 'activities', array() );
-			$activities = sm_activity_labels();
-			unset( $activities['engineer'] );
+			$types    = sm_account_types();
+			$asked    = sm_theme_old( 'account_class', sm_theme_query_arg( 'type' ) );
+			$type     = in_array( $asked, array( 'company', 'professional', 'client' ), true ) ? $asked : 'company';
+			$old_acts = (array) sm_theme_old( 'activities', array() );
+			$cards    = array(
+				'company'      => array( 'company', __( 'Company', 'sm-marketplace' ), __( 'Steel construction, manufacturing, supply, recycling, dismantling. A public company page.', 'sm-marketplace' ) ),
+				'professional' => array( 'wrench', __( 'Professional', 'sm-marketplace' ), __( 'Welder, erector, roofer, boilermaker… Publish your services and your completed projects.', 'sm-marketplace' ) ),
+				'client'       => array( 'user', __( 'Client', 'sm-marketplace' ), __( 'Private account: buy, sell, ask for quotes, services and engineering studies.', 'sm-marketplace' ) ),
+			);
 			?>
 			<?php sm_theme_notices( true ); ?>
 			<?php sm_theme_form_open( 'register', array( 'data-sm-register' => '' ) ); ?>
-				<fieldset class="sm-choice" data-sm-choice>
+				<fieldset class="sm-choice sm-choice--3" data-sm-choice>
 					<legend class="screen-reader-text"><?php esc_html_e( 'Account type', 'sm-marketplace' ); ?></legend>
-					<label class="sm-choice__item">
-						<input type="radio" name="account_class" value="commercial" <?php checked( $type, 'commercial' ); ?>>
-						<span class="sm-choice__card">
-							<?php sm_icon( 'company' ); ?>
-							<strong><?php esc_html_e( 'Business account', 'sm-marketplace' ); ?></strong>
-							<small><?php esc_html_e( 'Buy and sell steel, reuse lots and buildings, answer quotations, offer fabrication.', 'sm-marketplace' ); ?></small>
-						</span>
-					</label>
-					<label class="sm-choice__item">
-						<input type="radio" name="account_class" value="engineering" <?php checked( $type, 'engineering' ); ?>>
-						<span class="sm-choice__card">
-							<?php sm_icon( 'hard-hat' ); ?>
-							<strong><?php esc_html_e( 'Engineer / engineering office', 'sm-marketplace' ); ?></strong>
-							<small><?php esc_html_e( 'Publish engineering services and receive client requests. No product trading.', 'sm-marketplace' ); ?></small>
-						</span>
-					</label>
+					<?php foreach ( $cards as $key => list( $icon, $title, $text ) ) : ?>
+						<label class="sm-choice__item">
+							<input type="radio" name="account_class" value="<?php echo esc_attr( $key ); ?>" <?php checked( $type, $key ); ?>>
+							<span class="sm-choice__card">
+								<?php sm_icon( $icon ); ?>
+								<strong><?php echo esc_html( $title ); ?></strong>
+								<small><?php echo esc_html( $text ); ?></small>
+							</span>
+						</label>
+					<?php endforeach; ?>
 				</fieldset>
+				<div class="sm-auth__alt">
+					<?php sm_icon( 'hard-hat' ); ?>
+					<p><?php esc_html_e( 'Are you an engineer?', 'sm-marketplace' ); ?> <a href="<?php echo esc_url( sm_page_url( 'engineer-apply' ) ); ?>"><?php esc_html_e( 'Become a partner engineer of the platform', 'sm-marketplace' ); ?></a></p>
+				</div>
 
-				<fieldset class="sm-field" data-sm-show-for="commercial">
-					<legend><?php esc_html_e( 'Business activities', 'sm-marketplace' ); ?></legend>
-					<div class="sm-checkgrid">
-						<?php foreach ( $activities as $key => $label ) : ?>
-							<label class="sm-check"><input type="checkbox" name="activities[]" value="<?php echo esc_attr( $key ); ?>" <?php checked( in_array( $key, $old_acts, true ) ); ?>><span><?php echo esc_html( $label ); ?></span></label>
-						<?php endforeach; ?>
-					</div>
-					<?php sm_theme_error( 'activities' ); ?>
-				</fieldset>
+				<?php foreach ( array( 'company' => __( 'Type of company', 'sm-marketplace' ), 'professional' => __( 'Your trades', 'sm-marketplace' ) ) as $class => $legend ) : ?>
+					<fieldset class="sm-field" data-sm-show-for="<?php echo esc_attr( $class ); ?>">
+						<legend><?php echo esc_html( $legend ); ?></legend>
+						<div class="sm-checkgrid">
+							<?php foreach ( (array) ( $types['classes'][ $class ]['activities'] ?? array() ) as $key => $label ) : ?>
+								<label class="sm-check"><input type="checkbox" name="activities[]" value="<?php echo esc_attr( $key ); ?>" <?php checked( in_array( $key, $old_acts, true ) ); ?>><span><?php echo esc_html( $label ); ?></span></label>
+							<?php endforeach; ?>
+						</div>
+						<p class="sm-help"><?php echo esc_html( 'company' === $class ? __( 'Choose one or more. You can change them later in your company profile.', 'sm-marketplace' ) : __( 'Choose one or more trades.', 'sm-marketplace' ) ); ?></p>
+						<?php sm_theme_error( 'activities' ); ?>
+					</fieldset>
+				<?php endforeach; ?>
 
-				<div class="sm-field">
-					<label for="g-company"><span data-sm-show-for="commercial"><?php esc_html_e( 'Company or trade name', 'sm-marketplace' ); ?></span><span data-sm-show-for="engineering" hidden><?php esc_html_e( 'Name or office name', 'sm-marketplace' ); ?></span></label>
-					<input id="g-company" name="company" autocomplete="organization" dir="auto" required value="<?php echo esc_attr( sm_theme_old( 'company' ) ); ?>"<?php sm_theme_aria( 'company' ); ?>>
+				<div class="sm-field" data-sm-show-for="company professional">
+					<label for="g-company"><span data-sm-show-for="company"><?php esc_html_e( 'Company or trade name', 'sm-marketplace' ); ?></span><span data-sm-show-for="professional" hidden><?php esc_html_e( 'Business name (optional)', 'sm-marketplace' ); ?></span></label>
+					<input id="g-company" name="company" autocomplete="organization" dir="auto" value="<?php echo esc_attr( sm_theme_old( 'company' ) ); ?>"<?php sm_theme_aria( 'company' ); ?>>
 					<?php sm_theme_error( 'company' ); ?>
 				</div>
 				<div class="sm-field sm-field--row">
@@ -87,7 +97,7 @@ get_template_part(
 				<label class="sm-check"><input type="checkbox" name="terms" required><span><?php esc_html_e( 'I accept the terms of use and the listing rules.', 'sm-marketplace' ); ?></span></label>
 				<?php sm_theme_error( 'terms' ); ?>
 				<button class="sm-btn sm-btn--accent sm-btn--block sm-btn--lg" type="submit"><?php esc_html_e( 'Create my account', 'sm-marketplace' ); ?></button>
-				<p class="sm-help"><?php esc_html_e( 'You will receive a 6-digit code to verify your account. Business verification (RC, NIF, NIS) unlocks the verified badge.', 'sm-marketplace' ); ?></p>
+				<p class="sm-help"><?php esc_html_e( 'You will receive a 6-digit code to verify your account. Sending your documents later unlocks the verified badge.', 'sm-marketplace' ); ?></p>
 				<p class="sm-form__alt"><?php esc_html_e( 'Already registered?', 'sm-marketplace' ); ?> <a href="<?php echo esc_url( sm_page_url( 'login' ) ); ?>"><?php esc_html_e( 'Sign in', 'sm-marketplace' ); ?></a></p>
 			</form>
 			<?php

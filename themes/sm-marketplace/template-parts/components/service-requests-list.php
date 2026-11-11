@@ -20,7 +20,7 @@ $labels = sm_service_request_labels();
 $tabs   = array( '' => __( 'All', 'sm-marketplace' ), 'new' => $labels['new'], 'quoted' => $labels['quoted'], 'accepted' => $labels['accepted'] );
 ?>
 <div class="sm-toolbar">
-	<p class="sm-muted"><?php echo esc_html( 'sent' === $box ? __( 'The requests you sent to workshops and engineering offices, and their quotes.', 'sm-marketplace' ) : __( 'Clients who asked you for a quote. Answer quickly: the client compares providers.', 'sm-marketplace' ) ); ?></p>
+	<p class="sm-muted"><?php echo esc_html( 'sent' === $box ? __( 'The requests you sent to workshops and professionals, and their quotes.', 'sm-marketplace' ) : __( 'Clients who asked you for a quote. Answer quickly: the client compares providers.', 'sm-marketplace' ) ); ?></p>
 	<?php if ( 'sent' === $box ) : ?>
 		<a class="sm-btn sm-btn--primary-outline" href="<?php echo esc_url( sm_page_url( 'services' ) ); ?>"><?php sm_icon( 'search' ); ?><?php esc_html_e( 'Find a provider', 'sm-marketplace' ); ?></a>
 	<?php endif; ?>

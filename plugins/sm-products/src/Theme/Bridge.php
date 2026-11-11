@@ -285,6 +285,22 @@ final class Bridge {
 			'photo_mb'   => $s['photo_mb'],
 			'sheet_mb'   => $s['sheet_mb'],
 			'moderation' => (int) $s['moderation'],
+			'client'     => self::client_status(),
+		);
+	}
+
+	/** For a client account: will the listing be checked, how many listings may be online. */
+	public static function client_status() {
+		$co = is_user_logged_in() ? \SM\Core\Accounts\Companies::for_user( get_current_user_id() ) : null;
+		if ( ! $co || 'client' !== $co->account_class ) {
+			return null;
+		}
+		$s = Settings::all();
+		$n = \SM\Products\Products::count_by_status( $co->id );
+		return array(
+			'moderation' => (int) $s['moderation'] || (int) $s['client_moderation'],
+			'max'        => (int) $s['client_max_active'],
+			'active'     => (int) ( $n['published'] ?? 0 ) + (int) ( $n['pending'] ?? 0 ),
 		);
 	}
 }

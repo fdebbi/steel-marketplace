@@ -93,7 +93,11 @@ final class Form {
 
 		$status = 'draft';
 		if ( 'draft' !== $intent ) {
-			$status = (int) $s['moderation'] && ! current_user_can( 'sm_moderate' ) ? 'pending' : 'published';
+			$limit = self::client_limit( $company, $product );
+			if ( $limit ) {
+				Forms::back( array( $limit ) );
+			}
+			$status = self::publish_status( $company );
 		}
 		$pid = Products::save( $id, $company->id, $user_id, $spec, $status, $photos, $sheets );
 		foreach ( array_merge( $photos, $sheets ) as $aid ) {
@@ -112,6 +116,38 @@ final class Form {
 			Forms::back( $file_errors, $messages[ $status ], $target );
 		}
 		Forms::back( array(), $messages[ $status ], $target );
+	}
+
+	/**
+	 * Status of a listing sent for publication: checked by the platform when
+	 * moderation is on, and always for client accounts (private sellers) when
+	 * "client_moderation" is on.
+	 */
+	public static function publish_status( $company ) {
+		if ( current_user_can( 'sm_moderate' ) ) {
+			return 'published';
+		}
+		$s      = Settings::all();
+		$client = $company && 'client' === $company->account_class;
+		return ( (int) $s['moderation'] || ( $client && (int) $s['client_moderation'] ) ) ? 'pending' : 'published';
+	}
+
+	/** Message when a client account reached its number of active listings ('' = can publish). */
+	public static function client_limit( $company, $product = null ) {
+		$max = (int) Settings::get( 'client_max_active' );
+		if ( ! $max || ! $company || 'client' !== $company->account_class ) {
+			return '';
+		}
+		if ( $product && in_array( $product->status, array( 'published', 'pending' ), true ) ) {
+			return ''; // Editing a listing that already counts.
+		}
+		$n      = Products::count_by_status( $company->id );
+		$active = (int) ( $n['published'] ?? 0 ) + (int) ( $n['pending'] ?? 0 );
+		if ( $active < $max ) {
+			return '';
+		}
+		/* translators: %d: number of listings. */
+		return sprintf( _n( 'A client account can have %d listing online at a time. Mark one as sold or withdraw it first, or open a company or professional account.', 'A client account can have %d listings online at a time. Mark one as sold or withdraw it first, or open a company or professional account.', $max, 'sm-products' ), $max );
 	}
 
 	/** An attachment uploaded by this user, or already linked to the product. */
@@ -148,7 +184,11 @@ final class Form {
 				if ( ! in_array( $p->status, array( 'sold', 'expired' ), true ) ) {
 					Forms::back( array( __( 'This product cannot be published again from here. Edit it instead.', 'sm-products' ) ) );
 				}
-				$status = (int) Settings::get( 'moderation' ) && ! current_user_can( 'sm_moderate' ) ? 'pending' : 'published';
+				$limit = self::client_limit( Companies::get( $p->company_id ), $p );
+				if ( $limit ) {
+					Forms::back( array( $limit ) );
+				}
+				$status = self::publish_status( Companies::get( $p->company_id ) );
 				Products::set_status( $p->id, $status );
 				if ( 'pending' === $status ) {
 					\SM\Core\Notifications\Notifications::notify_moderators( 'product.submitted', array( 'product_id' => $p->id, 'company_id' => $p->company_id ) );

@@ -93,25 +93,27 @@ sm_assert( get_role( 'administrator' )->has_cap( 'sm_moderate' ), 'administrator
 
 /* ------------------------------------------------------------------ */
 sm_section( '2. Permission matrix (default rights)' );
-list( $u_man, $c_man )   = sm_test_company( 'manufacturer', 'commercial', array( 'manufacturer' ), 1 );
-list( $u_sup, $c_sup )   = sm_test_company( 'supplier', 'commercial', array( 'supplier' ), 1 );
-list( $u_ins, $c_ins )   = sm_test_company( 'installer', 'commercial', array( 'installer' ), 1 );
-list( $u_own, $c_own )   = sm_test_company( 'owner', 'commercial', array( 'project_owner' ), 1 );
-list( $u_rec, $c_rec )   = sm_test_company( 'recycler', 'commercial', array( 'reuse_dealer' ), 1 );
-list( $u_eng, $c_eng )   = sm_test_company( 'engineer', 'engineering', array( 'engineer' ), 3 );
-list( $u_new, $c_new )   = sm_test_company( 'unverified', 'commercial', array( 'supplier' ), 0 );
+list( $u_man, $c_man )   = sm_test_company( 'manufacturer', 'company', array( 'manufacturer' ), 1 );
+list( $u_sup, $c_sup )   = sm_test_company( 'supplier', 'company', array( 'supplier' ), 1 );
+list( $u_ins, $c_ins )   = sm_test_company( 'installer', 'company', array( 'construction' ), 1 );
+list( $u_own, $c_own )   = sm_test_company( 'owner', 'client', array(), 1 );
+list( $u_rec, $c_rec )   = sm_test_company( 'recycler', 'company', array( 'recycler' ), 1 );
+list( $u_pro, $c_pro )   = sm_test_company( 'welder', 'professional', array( 'trade_welder' ), 1 );
+list( $u_eng, $c_eng )   = sm_test_company( 'engineer', 'engineer', array( 'engineer' ), 3 );
+list( $u_new, $c_new )   = sm_test_company( 'unverified', 'company', array( 'supplier' ), 0 );
 
 $expected = array(
-	//                       buy  prod reuse build rfqC rfqO fab  eng  req
-	$c_man => array( 1, 1, 1, 1, 1, 1, 1, 0, 1 ),
-	$c_sup => array( 1, 1, 1, 1, 1, 1, 0, 0, 1 ),
-	$c_ins => array( 1, 1, 1, 1, 1, 1, 1, 0, 1 ),
-	$c_own => array( 1, 1, 1, 1, 1, 0, 0, 0, 1 ),
-	$c_rec => array( 1, 1, 1, 1, 1, 1, 1, 0, 1 ),
-	$c_eng => array( 0, 0, 0, 0, 0, 0, 0, 1, 1 ),
+	//                       buy  prod reuse build rfqC rfqO fab  req  misR misW
+	$c_man => array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ),
+	$c_sup => array( 1, 1, 1, 1, 1, 1, 0, 1, 1, 0 ),
+	$c_ins => array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ),
+	$c_own => array( 1, 1, 1, 1, 1, 0, 0, 1, 1, 0 ),
+	$c_rec => array( 1, 1, 1, 1, 1, 1, 0, 1, 1, 0 ),
+	$c_pro => array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ),
+	$c_eng => array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 ),
 );
-$caps  = array( 'buy', 'listing.products', 'listing.reuse', 'listing.buildings', 'rfq.create', 'rfq.offer', 'service.fabrication', 'service.engineering', 'service.request' );
-$names = array( $c_man => 'manufacturer', $c_sup => 'supplier', $c_ins => 'installer', $c_own => 'project owner', $c_rec => 'recycler', $c_eng => 'engineer' );
+$caps  = array( 'buy', 'listing.products', 'listing.reuse', 'listing.buildings', 'rfq.create', 'rfq.offer', 'service.fabrication', 'service.request', 'mission.request', 'mission.work' );
+$names = array( $c_man => 'manufacturer', $c_sup => 'supplier', $c_ins => 'construction company', $c_own => 'client', $c_rec => 'recycler', $c_pro => 'professional welder', $c_eng => 'partner engineer' );
 foreach ( $expected as $cid => $row ) {
 	$ok = true;
 	foreach ( $caps as $i => $cap ) {
@@ -120,12 +122,13 @@ foreach ( $expected as $cid => $row ) {
 			echo "      mismatch: {$names[$cid]} / {$cap}\n";
 		}
 	}
-	sm_assert( $ok, "{$names[$cid]}: all 9 rights as in the architecture matrix" );
+	sm_assert( $ok, "{$names[$cid]}: all 10 rights as in the architecture matrix" );
 }
-sm_assert( sm_can( 'buy', $c_man ) && sm_can( 'listing.products', $c_man ), 'one commercial account both buys and sells' );
+sm_assert( sm_can( 'buy', $c_man ) && sm_can( 'listing.products', $c_man ), 'one company account both buys and sells' );
+sm_assert( sm_can( 'buy', $c_pro ) && sm_can( 'listing.products', $c_pro ), 'a professional both buys and sells' );
 
-sm_section( '3. Engineering hard rule' );
-foreach ( array( 'buy', 'listing.products', 'listing.reuse', 'listing.buildings', 'rfq.create', 'rfq.offer', 'service.fabrication', 'order.create' ) as $cap ) {
+sm_section( '3. Partner engineer hard rule' );
+foreach ( array( 'buy', 'listing.products', 'listing.reuse', 'listing.buildings', 'rfq.create', 'rfq.offer', 'service.fabrication', 'service.request', 'mission.request', 'order.create' ) as $cap ) {
 	$r = sm_can_explain( $cap, $c_eng );
 	sm_assert( is_wp_error( $r ) && 'sm_class_forbidden' === $r->get_error_code(), "engineering account refused: {$cap}" );
 }
@@ -143,9 +146,10 @@ $grant_all = static fn() => true;
 add_filter( 'sm_entitlement', $grant_all, 99 );
 sm_assert( ! sm_can( 'rfq.offer', $c_eng ), 'plan filter cannot grant trading to engineers' );
 remove_filter( 'sm_entitlement', $grant_all, 99 );
-sm_assert( Companies::activities( 'engineering' ) === array( 'engineer' ), 'engineering accounts can only have the engineer activity' );
+sm_assert( Companies::activities( 'engineer' ) === array( 'engineer' ), 'partner engineer accounts can only have the engineer activity' );
+sm_assert( Companies::activities( 'client' ) === array( 'client' ) && Companies::get( $c_own )->activities === array( 'client' ), 'client accounts get the client activity' );
 Companies::set_activities( $c_eng, array( 'engineer', 'manufacturer', 'supplier' ) );
-sm_assert( Companies::get( $c_eng )->activities === array( 'engineer' ), 'commercial activities cannot be added to an engineering account' );
+sm_assert( Companies::get( $c_eng )->activities === array( 'engineer' ), 'company types cannot be added to a partner engineer account' );
 
 sm_section( '4. Verification levels, suspension, plan' );
 $r = sm_can_explain( 'listing.products', $c_new );
@@ -167,21 +171,27 @@ sm_assert( 3 === (int) Companies::get( $c_eng )->verification_level, 'raise_leve
 sm_section( '5. Companies' );
 $c = Companies::get( $c_man );
 sm_assert( 'smtest-manufacturer' === $c->slug, 'slug generated from the name' );
-list( , $c_dup ) = sm_test_company( 'dup', 'commercial', array( 'supplier' ) );
-$dup2            = Companies::create( array( 'account_class' => 'commercial', 'name' => 'SMTEST dup', 'wilaya' => '16' ), $u_man, array( 'supplier' ) );
+list( , $c_dup ) = sm_test_company( 'dup', 'company', array( 'supplier' ) );
+$dup2            = Companies::create( array( 'account_class' => 'company', 'name' => 'SMTEST dup', 'wilaya' => '16' ), $u_man, array( 'supplier' ) );
 sm_assert( 'smtest-dup-2' === Companies::get( $dup2 )->slug, 'duplicate names get unique slugs' );
-sm_assert( is_wp_error( Companies::create( array( 'account_class' => 'commercial', 'name' => 'SMTEST none' ), $u_man, array() ) ), 'a business account needs at least one activity' );
-Companies::update_profile( $c_man, array( 'rc_number' => '28/00-1234567B19', 'nif' => '001928012345678', 'account_class' => 'engineering', 'verification_level' => 3 ) );
+sm_assert( is_wp_error( Companies::create( array( 'account_class' => 'company', 'name' => 'SMTEST none' ), $u_man, array() ) ), 'a business account needs at least one activity' );
+Companies::update_profile( $c_man, array( 'rc_number' => '28/00-1234567B19', 'nif' => '001928012345678', 'account_class' => 'engineer', 'verification_level' => 3 ) );
 $c     = Companies::get( $c_man );
 $legal = Companies::legal_numbers( $c );
 sm_assert( '28/00-1234567B19' === $legal['rc_number'] && '001928012345678' === $legal['nif'], 'RC and NIF stored and read back' );
 sm_assert( false === strpos( (string) $c->nif, '001928012345678' ), 'NIF is encrypted in the database' );
-sm_assert( 'commercial' === $c->account_class && 1 === (int) $c->verification_level, 'profile update cannot change class or verification level' );
+sm_assert( 'company' === $c->account_class && 1 === (int) $c->verification_level, 'profile update cannot change class or verification level' );
 sm_assert( 'x' === Crypto::decrypt( Crypto::encrypt( 'x' ) ), 'encryption round trip' );
 sm_assert( Companies::can_manage( $c_man, $u_man ) && ! Companies::can_manage( $c_man, $u_sup ), 'only members (owner/manager) manage their company' );
-$q = Companies::query( array( 'class' => 'engineering', 'search' => 'SMTEST' ) );
-sm_assert( 1 === $q['total'], 'directory query filters by class' );
-$q = Companies::query( array( 'activity' => 'reuse_dealer', 'search' => 'SMTEST' ) );
+$q = Companies::query( array( 'class' => 'professional', 'search' => 'SMTEST' ) );
+sm_assert( 1 === $q['total'] && (int) $q['items'][0]->id === $c_pro, 'directory query filters by class' );
+$q   = Companies::query( array( 'class' => 'public', 'search' => 'SMTEST', 'per_page' => 100 ) );
+$ids = array_map( static fn( $x ) => (int) $x->id, $q['items'] );
+sm_assert( in_array( $c_pro, $ids, true ) && in_array( $c_man, $ids, true ) && ! in_array( $c_own, $ids, true ) && ! in_array( $c_eng, $ids, true ), 'public directory lists companies and professionals, never clients or engineers' );
+sm_assert( null === SM\Core\Theme\Bridge::company( null, array( 'slug' => Companies::get( $c_own )->slug ) ) && null === SM\Core\Theme\Bridge::company( null, array( 'slug' => Companies::get( $c_eng )->slug ) ) && is_array( SM\Core\Theme\Bridge::company( null, array( 'slug' => Companies::get( $c_pro )->slug ) ) ), 'clients and engineers have no public page' );
+$types = SM\Core\Theme\Bridge::account_types( null );
+sm_assert( isset( $types['classes']['professional']['activities']['trade_welder'] ) && ! isset( $types['classes']['company']['activities']['project_owner'] ) && false === $types['classes']['client']['public'], 'account types resource for the theme' );
+$q = Companies::query( array( 'activity' => 'recycler', 'search' => 'SMTEST' ) );
 sm_assert( 1 === $q['total'] && (int) $q['items'][0]->id === $c_rec, 'directory query filters by activity' );
 
 /* ------------------------------------------------------------------ */
@@ -252,9 +262,9 @@ $res = rest_do_request( new WP_REST_Request( 'GET', '/sm/v1/reference/wilayas' )
 sm_assert( 200 === $res->get_status() && 69 === count( $res->get_data() ), 'GET /reference/wilayas (public)' );
 $req = new WP_REST_Request( 'GET', '/sm/v1/companies' );
 $req->set_param( 'search', 'SMTEST' );
-$req->set_param( 'class', 'engineering' );
+$req->set_param( 'class', 'professional' );
 $res = rest_do_request( $req );
-sm_assert( 200 === $res->get_status() && 1 === count( $res->get_data() ), 'GET /companies?class=engineering' );
+sm_assert( 200 === $res->get_status() && 1 === count( $res->get_data() ), 'GET /companies?class=professional' );
 $data = $res->get_data()[0];
 sm_assert( ! isset( $data['nif'] ) && ! isset( $data['rc_number'] ) && ! isset( $data['email'] ), 'public company data has no private fields' );
 $res = rest_do_request( new WP_REST_Request( 'GET', '/sm/v1/me' ) );
@@ -262,16 +272,16 @@ sm_assert( 401 === $res->get_status(), 'GET /me requires authentication' );
 wp_set_current_user( $u_eng );
 $res = rest_do_request( new WP_REST_Request( 'GET', '/sm/v1/me' ) );
 $me  = $res->get_data();
-sm_assert( 200 === $res->get_status() && false === $me['capabilities']['buy'] && true === $me['capabilities']['service.engineering'], 'GET /me returns the rights map' );
+sm_assert( 200 === $res->get_status() && false === $me['capabilities']['buy'] && true === $me['capabilities']['mission.work'], 'GET /me returns the rights map' );
 $res = rest_do_request( new WP_REST_Request( 'GET', '/sm/v1/me/can/listing.products' ) );
 sm_assert( false === $res->get_data()['allowed'] && 'sm_class_forbidden' === $res->get_data()['reason'], 'GET /me/can explains a refusal' );
 wp_set_current_user( $u_sup );
 $req = new WP_REST_Request( 'PATCH', '/sm/v1/me/company' );
 $req->set_header( 'content-type', 'application/json' );
-$req->set_body( wp_json_encode( array( 'about_fr' => 'Distributeur test', 'account_class' => 'engineering', 'verification_level' => 3 ) ) );
+$req->set_body( wp_json_encode( array( 'about_fr' => 'Distributeur test', 'account_class' => 'engineer', 'verification_level' => 3 ) ) );
 $res = rest_do_request( $req );
 $cs  = Companies::get( $c_sup );
-sm_assert( 200 === $res->get_status() && 'Distributeur test' === $cs->about_fr && 'commercial' === $cs->account_class && 1 === (int) $cs->verification_level, 'PATCH /me/company updates the profile only' );
+sm_assert( 200 === $res->get_status() && 'Distributeur test' === $cs->about_fr && 'company' === $cs->account_class && 1 === (int) $cs->verification_level, 'PATCH /me/company updates the profile only' );
 wp_set_current_user( $u_man );
 $req = new WP_REST_Request( 'PATCH', '/sm/v1/me/company' );
 $req->set_header( 'content-type', 'application/json' );
@@ -426,7 +436,7 @@ Mailer::send( 'otp.smtest@example.test', 'fr', 'Code', '<p>123456</p>', array( '
 sm_assert( '' === (string) Mailer::get( Mailer::query( array( 'q' => 'otp.smtest' ) )['items'][0]->id )->body, 'verification codes are never kept in the log' );
 
 // Notification e-mails: switch and rewritten template.
-list( $u_n, $c_n ) = sm_test_company( 'mail', 'commercial', array( 'supplier' ) );
+list( $u_n, $c_n ) = sm_test_company( 'mail', 'company', array( 'supplier' ) );
 update_user_meta( $u_n, 'sm_locale', 'fr' );
 $mails();
 Templates::save( 'notice:verification.approved', 'fr', 'Bravo {nom} !', "{message}\n\nL’équipe {site}" );
@@ -489,6 +499,50 @@ foreach ( array( MailSettings::OPTION => $mail_settings_before, Templates::OPTIO
 	null === $val ? delete_option( $opt ) : update_option( $opt, $val, false );
 }
 remove_filter( 'pre_wp_mail', $sm_catch, 99 );
+
+/* ------------------------------------------------------------------ */
+sm_section( '14. Account types and migration to the 0.6.0 model' );
+$types_before = get_option( Companies::TYPES_OPTION, null );
+Companies::save_type_settings( array( 'trade_welder' => array( 'fr' => 'Soudeur qualifié', 'ar' => '' ), 'type_test' => array( 'fr' => 'Galvanisation', 'ar' => 'غلفنة' ) ), array( 'dismantler' ), array( 'company' => array( 'type_test' ) ) );
+$labels = Companies::activity_labels();
+sm_assert( 'Soudeur qualifié' === $labels['trade_welder'] && 'Galvanisation' === $labels['type_test'], 'administrator renames a trade and adds a company type' );
+sm_assert( in_array( 'type_test', Companies::activities( 'company' ), true ) && ! in_array( 'dismantler', Companies::activities( 'company' ), true ) && in_array( 'dismantler', Companies::activities( 'company', true ), true ), 'hidden type no longer offered, still known' );
+sm_assert( 'company' === Companies::activity_class( 'type_test' ) && sm_can( 'service.fabrication', ( static function () { list( , $id ) = sm_test_company( 'galva', 'company', array( 'type_test' ), 1 ); return $id; } )() ), 'an added company type gets the rights of a contracting company' );
+list( , $c_dis ) = sm_test_company( 'dis', 'company', array( 'supplier' ), 1 );
+$wpdb->insert( "{$wpdb->prefix}sm_company_activities", array( 'company_id' => $c_dis, 'activity_code' => 'dismantler', 'enabled_at' => current_time( 'mysql', true ) ) );
+Companies::flush( $c_dis );
+Companies::set_activities( $c_dis, array( 'supplier', 'dismantler' ) );
+sm_assert( array( 'dismantler', 'supplier' ) === array_values( array_intersect( array( 'dismantler', 'supplier' ), Companies::get( $c_dis )->activities ) ) && 2 === count( Companies::get( $c_dis )->activities ), 'an account keeps a type the administrator hid' );
+null === $types_before ? delete_option( Companies::TYPES_OPTION ) : update_option( Companies::TYPES_OPTION, $types_before, false );
+
+// Old accounts (0.5.0 model) are converted.
+list( , $m1 ) = sm_test_company( 'old1', 'company', array( 'supplier' ) );
+list( , $m2 ) = sm_test_company( 'old2', 'company', array( 'supplier' ) );
+list( , $m3 ) = sm_test_company( 'old3', 'company', array( 'supplier' ) );
+$ct = "{$wpdb->prefix}sm_companies";
+$at = "{$wpdb->prefix}sm_company_activities";
+$wpdb->update( $ct, array( 'account_class' => 'commercial' ), array( 'id' => $m1 ) );
+$wpdb->update( $ct, array( 'account_class' => 'commercial' ), array( 'id' => $m2 ) );
+$wpdb->update( $ct, array( 'account_class' => 'engineering' ), array( 'id' => $m3 ) );
+$wpdb->delete( $at, array( 'company_id' => $m1 ) );
+$wpdb->delete( $at, array( 'company_id' => $m2 ) );
+foreach ( array( 'installer', 'reuse_dealer', 'project_owner' ) as $code ) {
+	$wpdb->insert( $at, array( 'company_id' => $m1, 'activity_code' => $code, 'enabled_at' => current_time( 'mysql', true ) ) );
+}
+$wpdb->insert( $at, array( 'company_id' => $m2, 'activity_code' => 'project_owner', 'enabled_at' => current_time( 'mysql', true ) ) );
+$core_settings = get_option( 'sm_core_settings' );
+update_option( 'sm_core_settings', array_merge( (array) $core_settings, array( 'rights' => array( 'installer' => array( 'buy' ) ) ) ) );
+SM\Core\Install\Installer::migrate_account_classes();
+foreach ( array( $m1, $m2, $m3 ) as $m ) {
+	Companies::flush( $m );
+}
+$a1 = Companies::get( $m1 )->activities;
+sort( $a1 );
+sm_assert( 'company' === Companies::get( $m1 )->account_class && array( 'construction', 'recycler' ) === $a1, 'commercial account -> company, activities mapped, project owner dropped' );
+sm_assert( 'client' === Companies::get( $m2 )->account_class && array( 'client' ) === Companies::get( $m2 )->activities, 'project-owner-only account -> client' );
+sm_assert( 'engineer' === Companies::get( $m3 )->account_class && array( 'engineer' ) === Companies::get( $m3 )->activities, 'engineering account -> partner engineer' );
+sm_assert( ! isset( get_option( 'sm_core_settings' )['rights'] ) && sm_can( 'buy', $c_man ), 'old rights matrix reset to the new defaults' );
+update_option( 'sm_core_settings', $core_settings );
 
 sm_test_cleanup();
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Services board (fabrication & site work, or engineering): category pills,
+ * Services board (fabrication & site work of companies and professionals): category pills,
  * filters, service cards. Data from sm-services; demo cards until a service exists.
  *
  * @var array $args { kind: string, page: string }
@@ -38,7 +38,7 @@ $wilayas  = sm_theme_wilayas();
 	<?php if ( $current ) : ?><input type="hidden" name="category" value="<?php echo esc_attr( $current ); ?>"><?php endif; ?>
 	<div class="sm-field">
 		<label for="sms-q"><?php esc_html_e( 'Keyword', 'sm-marketplace' ); ?></label>
-		<input id="sms-q" name="q" type="search" value="<?php echo esc_attr( sm_theme_query_arg( 'q' ) ); ?>" placeholder="<?php echo esc_attr( 'engineering' === $kind ? __( 'e.g. calculation note, inspection', 'sm-marketplace' ) : __( 'e.g. welding, galvanizing, hangar', 'sm-marketplace' ) ); ?>">
+		<input id="sms-q" name="q" type="search" value="<?php echo esc_attr( sm_theme_query_arg( 'q' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. welding, galvanizing, hangar', 'sm-marketplace' ); ?>">
 	</div>
 	<div class="sm-field">
 		<label for="sms-wilaya"><?php esc_html_e( 'Wilaya of the project', 'sm-marketplace' ); ?></label>
@@ -47,7 +47,7 @@ $wilayas  = sm_theme_wilayas();
 	<button class="sm-btn sm-btn--primary" type="submit"><?php sm_icon( 'search' ); ?><?php esc_html_e( 'Filter', 'sm-marketplace' ); ?></button>
 </form>
 <?php if ( ! $services ) : ?>
-	<?php sm_component( 'empty-state', array( 'icon' => 'engineering' === $kind ? 'hard-hat' : 'wrench', 'title' => __( 'No service matches these filters', 'sm-marketplace' ), 'text' => __( 'Widen the search, or publish a request for quotation.', 'sm-marketplace' ), 'action_label' => __( 'See all services', 'sm-marketplace' ), 'action_url' => $base ) ); ?>
+	<?php sm_component( 'empty-state', array( 'icon' => 'wrench', 'title' => __( 'No service matches these filters', 'sm-marketplace' ), 'text' => __( 'Widen the search, or publish a request for quotation.', 'sm-marketplace' ), 'action_label' => __( 'See all services', 'sm-marketplace' ), 'action_url' => $base ) ); ?>
 <?php else : ?>
 	<div class="sm-grid sm-grid--grid sm-grid--3">
 		<?php foreach ( $services as $service ) : ?>

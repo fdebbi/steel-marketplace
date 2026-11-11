@@ -34,13 +34,19 @@ class SM_Theme_Demo_Data {
 				return null;
 			case 'companies':
 				$companies = self::companies();
+				// Only companies and professionals are public (0.13.0).
+				$companies = array_filter( $companies, static fn( $c ) => in_array( $c['class'], array( 'company', 'professional' ), true ) );
 				if ( ! empty( $args['class'] ) ) {
 					$companies = array_filter( $companies, static fn( $c ) => $c['class'] === $args['class'] );
+				}
+				if ( ! empty( $args['activity'] ) ) {
+					$companies = array_filter( $companies, static fn( $c ) => in_array( $args['activity'], $c['activities'], true ) );
 				}
 				return array_values( $companies );
 			case 'company':
 				$companies = self::companies();
-				return $companies[ $args['slug'] ?? '' ] ?? null;
+				$found     = $companies[ $args['slug'] ?? '' ] ?? null;
+				return $found && in_array( $found['class'], array( 'company', 'professional' ), true ) ? $found : null;
 			case 'services':
 				$services = self::services();
 				if ( ! empty( $args['kind'] ) ) {
@@ -116,8 +122,8 @@ class SM_Theme_Demo_Data {
 			'acier-hodna'          => array(
 				'slug'         => 'acier-hodna',
 				'name'         => array( 'fr' => 'Acier du Hodna', 'ar' => 'فولاذ الحضنة' ),
-				'class'        => 'commercial',
-				'activities'   => array( 'manufacturer', 'supplier', 'fabrication', 'reuse_dealer' ),
+				'class'        => 'company',
+				'activities'   => array( 'manufacturer', 'supplier', 'recycler' ),
 				'wilaya'       => '28',
 				'verification' => 2,
 				'since'        => '2011',
@@ -131,7 +137,7 @@ class SM_Theme_Demo_Data {
 			'setif-metal'          => array(
 				'slug'         => 'setif-metal',
 				'name'         => array( 'fr' => 'Sétif Métal Distribution', 'ar' => 'سطيف لتوزيع المعادن' ),
-				'class'        => 'commercial',
+				'class'        => 'company',
 				'activities'   => array( 'supplier' ),
 				'wilaya'       => '19',
 				'verification' => 2,
@@ -146,8 +152,8 @@ class SM_Theme_Demo_Data {
 			'oran-montage'         => array(
 				'slug'         => 'oran-montage',
 				'name'         => array( 'fr' => 'Oran Montage Charpente', 'ar' => 'وهران لتركيب الهياكل' ),
-				'class'        => 'commercial',
-				'activities'   => array( 'installer', 'fabrication' ),
+				'class'        => 'company',
+				'activities'   => array( 'construction', 'dismantler' ),
 				'wilaya'       => '31',
 				'verification' => 1,
 				'since'        => '2015',
@@ -161,8 +167,8 @@ class SM_Theme_Demo_Data {
 			'recup-acier-blida'    => array(
 				'slug'         => 'recup-acier-blida',
 				'name'         => array( 'fr' => 'Récup’Acier Blida', 'ar' => 'استرجاع الفولاذ البليدة' ),
-				'class'        => 'commercial',
-				'activities'   => array( 'reuse_dealer' ),
+				'class'        => 'company',
+				'activities'   => array( 'recycler', 'dismantler' ),
 				'wilaya'       => '09',
 				'verification' => 2,
 				'since'        => '2017',
@@ -173,11 +179,28 @@ class SM_Theme_Demo_Data {
 					'ar' => 'شراء وإعادة بيع الهياكل المفككة والمقاطع المستعملة والخردة المفرزة.',
 				),
 			),
+			'benali-soudure'       => array(
+				'slug'         => 'benali-soudure',
+				'name'         => array( 'fr' => 'Benali Soudure', 'ar' => 'بن علي للحام' ),
+				'class'        => 'professional',
+				'activities'   => array( 'trade_welder', 'trade_erector' ),
+				'wilaya'       => '16',
+				'verification' => 1,
+				'since'        => '2020',
+				'phone'        => '0550 00 00 00',
+				'initials'     => 'BS',
+				'experience'   => 14,
+				'title'        => array( 'fr' => 'Soudeur qualifié — montage de charpentes', 'ar' => 'لحام مؤهل — تركيب الهياكل' ),
+				'about'        => array(
+					'fr' => 'Soudure MIG et à l’arc, montage de charpentes et réparations sur chantier dans le centre du pays.',
+					'ar' => 'لحام MIG وبالقوس، تركيب الهياكل والإصلاحات في الورشات بوسط البلاد.',
+				),
+			),
 			'ferme-el-amel'        => array(
 				'slug'         => 'ferme-el-amel',
 				'name'         => array( 'fr' => 'Ferme avicole El Amel', 'ar' => 'مزرعة الأمل للدواجن' ),
-				'class'        => 'commercial',
-				'activities'   => array( 'project_owner' ),
+				'class'        => 'client',
+				'activities'   => array( 'client' ),
 				'wilaya'       => '34',
 				'verification' => 1,
 				'since'        => '2019',
@@ -191,7 +214,7 @@ class SM_Theme_Demo_Data {
 			'bet-structures-acier' => array(
 				'slug'         => 'bet-structures-acier',
 				'name'         => array( 'fr' => 'BET Structures Acier', 'ar' => 'مكتب دراسات الهياكل الفولاذية' ),
-				'class'        => 'engineering',
+				'class'        => 'engineer',
 				'activities'   => array( 'engineer' ),
 				'wilaya'       => '25',
 				'verification' => 3,
@@ -372,14 +395,9 @@ class SM_Theme_Demo_Data {
 				'tags' => array( array( 'fr' => 'Montage', 'ar' => 'تركيب' ), array( 'fr' => 'Démontage', 'ar' => 'تفكيك' ), array( 'fr' => 'Transport', 'ar' => 'نقل' ) ),
 			),
 			array(
-				'id' => 501, 'kind' => 'engineering', 'company' => 'bet-structures-acier', 'image' => 'demo:engineering',
-				'title' => array( 'fr' => 'Étude et note de calcul de hangar métallique', 'ar' => 'دراسة ومذكرة حساب هنغار معدني' ),
-				'tags' => array( array( 'fr' => 'Note de calcul', 'ar' => 'مذكرة حساب' ), array( 'fr' => 'Plans d’exécution', 'ar' => 'مخططات التنفيذ' ) ),
-			),
-			array(
-				'id' => 502, 'kind' => 'engineering', 'company' => 'bet-structures-acier', 'image' => 'demo:inspection',
-				'title' => array( 'fr' => 'Expertise d’une structure d’occasion avant achat', 'ar' => 'خبرة هيكل مستعمل قبل الشراء' ),
-				'tags' => array( array( 'fr' => 'Inspection', 'ar' => 'فحص' ), array( 'fr' => 'Rapport', 'ar' => 'تقرير' ) ),
+				'id' => 403, 'kind' => 'fabrication', 'company' => 'benali-soudure', 'image' => 'demo:welding',
+				'title' => array( 'fr' => 'Soudure et montage de charpente sur chantier', 'ar' => 'لحام وتركيب الهياكل في الورشة' ),
+				'tags' => array( array( 'fr' => 'Soudage', 'ar' => 'لحام' ), array( 'fr' => 'Montage', 'ar' => 'تركيب' ) ),
 			),
 		);
 	}
@@ -387,10 +405,10 @@ class SM_Theme_Demo_Data {
 	/** Demo dashboard account: ?account=engineer shows the engineering dashboard. */
 	public static function account( $args ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$type = isset( $_GET['account'] ) ? sanitize_key( wp_unslash( $_GET['account'] ) ) : ( $args['type'] ?? 'commercial' );
+		$type = isset( $_GET['account'] ) ? sanitize_key( wp_unslash( $_GET['account'] ) ) : ( $args['type'] ?? 'company' );
 		if ( 'engineer' === $type ) {
 			return array(
-				'class'    => 'engineering',
+				'class'    => 'engineer',
 				'company'  => self::companies()['bet-structures-acier'],
 				'user'     => 'Karim B.',
 				'plan'     => array( 'fr' => 'Pro', 'ar' => 'احترافي' ),
@@ -399,7 +417,7 @@ class SM_Theme_Demo_Data {
 			);
 		}
 		return array(
-			'class'   => 'commercial',
+			'class'   => 'company',
 			'company' => self::companies()['acier-hodna'],
 			'user'    => 'Samir H.',
 			'plan'    => array( 'fr' => 'Business', 'ar' => 'أعمال' ),

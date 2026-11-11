@@ -61,8 +61,8 @@ function smr_cleanup() {
 smr_cleanup();
 add_filter( 'sm_theme_demo_enabled', '__return_false', 99 );
 $suffix = substr( md5( (string) microtime( true ) ), 0, 6 );
-list( $u_sel, $c_sel ) = smr_user( 's' . $suffix, 'commercial', array( 'fabrication' ) );
-list( $u_eng, $c_eng ) = smr_user( 'e' . $suffix, 'engineering', array( 'engineer' ) );
+list( $u_sel, $c_sel ) = smr_user( 's' . $suffix, 'company', array( 'manufacturer' ) );
+list( $u_eng, $c_eng ) = smr_user( 'e' . $suffix, 'engineer', array( 'engineer' ) );
 $engine = \SM\Core\Modules::service( 'weight' );
 $kgm    = static function ( $family, $section ) use ( $engine ) {
 	$r = $engine->calculate( array( 'family' => $family, 'section' => $section, 'bars' => 1, 'length' => 1000 ) );
@@ -153,11 +153,11 @@ wp_set_current_user( $u_sel );
 $form = Bridge::product_form( null, array( 'id' => $pid ) );
 smr_assert( 'reuse' === $form['values']['market'] && 'good' === $form['values']['condition'] && 2 === count( $form['values']['lines'] ) && '2.5' === $form['values']['lines'][0]['length'] && '1' === $form['values']['attrs']['cut'], 'edit form gets back the market, condition, inventory rows and market fields' );
 $mk = Bridge::product_markets( null );
-smr_assert( $mk['reuse']['allowed'] && $mk['products']['allowed'] === false && 6 === $mk['reuse']['count'], 'a fabrication company may publish reuse lots but not new products' );
+smr_assert( $mk['reuse']['allowed'] && $mk['products']['allowed'] && 6 === $mk['reuse']['count'], 'a manufacturer may publish reuse lots and new products' );
 
 echo "\n5. Rules\n";
 wp_set_current_user( $u_eng );
-smr_assert( ! sm_can( 'listing.reuse' ), 'an engineering account can never publish reuse lots' );
+smr_assert( ! sm_can( 'listing.reuse' ), 'a partner engineer account can never publish reuse lots' );
 $mk = Bridge::product_markets( null );
 smr_assert( ! $mk['reuse']['allowed'] && '' !== $mk['reuse']['reason'], '…and is told why' );
 wp_set_current_user( 0 );

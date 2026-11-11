@@ -83,7 +83,7 @@ with sync_playwright() as p:
     admin = [x for x in m if x['to'] == 'contact@reusteel.com' and TAG in x['subject']]
     welcome = [x for x in m if x['to'] == EMAIL and 'Bienvenue Yacine Test chez ReuSteel' in x['subject']]
     check('/compte/' in c.url and len([x for x in m if TAG in x['subject']]) == 2, 'registration done; both administrators alerted (%d e-mails)' % len(m))
-    check(admin and all(s in admin[0]['message'] for s in ('Yacine Test', EMAIL, 'Oran', 'Compte entreprise')) and 'Reply-To: ' + EMAIL in hdr(admin[0]), 'alert: name, e-mail, phone, wilaya, account type; reply goes to the new member')
+    check(admin and all(s in admin[0]['message'] for s in ('Yacine Test', EMAIL, 'Oran', 'Entreprise')) and 'Reply-To: ' + EMAIL in hdr(admin[0]), 'alert: name, e-mail, phone, wilaya, account type; reply goes to the new member')
     check(welcome and 'Atelier Mail ' + TAG in welcome[0]['message'] and 'From: "ReuSteel" <contact@reusteel.com>' in hdr(welcome[0]), 'welcome e-mail with the edited subject, sent in the name of the platform')
     c.context.close()
 

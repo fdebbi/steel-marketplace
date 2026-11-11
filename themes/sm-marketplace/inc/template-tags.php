@@ -217,17 +217,84 @@ function sm_market_labels() {
 	);
 }
 
-/** Activity labels. */
-function sm_activity_labels() {
-	return array(
-		'manufacturer'  => __( 'Manufacturer', 'sm-marketplace' ),
-		'supplier'      => __( 'Supplier / distributor', 'sm-marketplace' ),
-		'installer'     => __( 'Installation company', 'sm-marketplace' ),
-		'project_owner' => __( 'Project owner', 'sm-marketplace' ),
-		'reuse_dealer'  => __( 'Second-hand dealer / recycler', 'sm-marketplace' ),
-		'fabrication'   => __( 'Fabrication services', 'sm-marketplace' ),
-		'engineer'      => __( 'Engineer / engineering office', 'sm-marketplace' ),
+/**
+ * Account classes with their types (companies) and trades (professionals), as
+ * set by the administrator in SM Core. Fallback for the demo without plugins.
+ *
+ * @return array{classes: array, labels: array}
+ */
+function sm_account_types() {
+	static $types = null;
+	if ( null !== $types ) {
+		return $types;
+	}
+	$data = sm_theme_data( 'account_types' );
+	if ( is_array( $data ) && ! empty( $data['classes'] ) ) {
+		$types = $data;
+		return $types;
+	}
+	$company = array(
+		'construction' => __( 'Steel construction contractor', 'sm-marketplace' ),
+		'manufacturer' => __( 'Manufacturing', 'sm-marketplace' ),
+		'supplier'     => __( 'Supply and distribution', 'sm-marketplace' ),
+		'recycler'     => __( 'Recycling and scrap', 'sm-marketplace' ),
+		'dismantler'   => __( 'Dismantling and second-hand resale', 'sm-marketplace' ),
 	);
+	$trades  = array(
+		'trade_fabricator'  => __( 'Structural steel fabricator', 'sm-marketplace' ),
+		'trade_erector'     => __( 'Steel structure erector', 'sm-marketplace' ),
+		'trade_roofing'     => __( 'Roofing and cladding installer', 'sm-marketplace' ),
+		'trade_welder'      => __( 'Welder', 'sm-marketplace' ),
+		'trade_boilermaker' => __( 'Boilermaker', 'sm-marketplace' ),
+		'trade_metalworker' => __( 'Metalworker (locksmith)', 'sm-marketplace' ),
+		'trade_lifting'     => __( 'Lifting and handling', 'sm-marketplace' ),
+		'trade_painting'    => __( 'Sandblasting and painting', 'sm-marketplace' ),
+	);
+	$types = array(
+		'classes' => array(
+			'company'      => array( 'label' => __( 'Company', 'sm-marketplace' ), 'public' => true, 'chooses' => true, 'activities' => $company ),
+			'professional' => array( 'label' => __( 'Professional', 'sm-marketplace' ), 'public' => true, 'chooses' => true, 'activities' => $trades ),
+			'client'       => array( 'label' => __( 'Client', 'sm-marketplace' ), 'public' => false, 'chooses' => false, 'activities' => array() ),
+			'engineer'     => array( 'label' => __( 'Partner engineer', 'sm-marketplace' ), 'public' => false, 'chooses' => false, 'activities' => array() ),
+		),
+		'labels'  => $company + $trades + array( 'client' => __( 'Client', 'sm-marketplace' ), 'engineer' => __( 'Partner engineer', 'sm-marketplace' ) ),
+	);
+	return $types;
+}
+
+/** Account class of an account or company array ('company', 'professional', 'client', 'engineer'); maps the demo's former names. */
+function sm_account_class( $data ) {
+	$class = (string) ( $data['class'] ?? 'company' );
+	$map   = array( 'commercial' => 'company', 'engineering' => 'engineer' );
+	return $map[ $class ] ?? $class;
+}
+
+/** Label of an account class. */
+function sm_class_label( $class ) {
+	$types = sm_account_types();
+	return $types['classes'][ $class ]['label'] ?? $class;
+}
+
+/** Labels of the types and trades (code => label), in the current language. */
+function sm_activity_labels() {
+	return sm_account_types()['labels'];
+}
+
+/**
+ * Avatar of an account: its logo / photo, or its initials.
+ *
+ * @param array  $company Company (theme shape: logo, initials, class).
+ * @param string $size    sm (32), md (48, default), lg (88).
+ */
+function sm_avatar( $company, $size = 'md' ) {
+	$class = sm_account_class( $company );
+	$logo  = (string) ( $company['logo'] ?? ( $company['photo'] ?? '' ) );
+	$cls   = 'sm-avatar sm-avatar--' . $class . ( 'md' !== $size ? ' sm-avatar--' . $size : '' ) . ( $logo ? ' sm-avatar--img' : '' );
+	if ( $logo ) {
+		printf( '<span class="%s" aria-hidden="true"><img src="%s" alt="" loading="lazy" decoding="async"></span>', esc_attr( $cls ), esc_url( $logo ) );
+		return;
+	}
+	printf( '<span class="%s" aria-hidden="true">%s</span>', esc_attr( $cls ), esc_html( (string) ( $company['initials'] ?? 'SM' ) ) );
 }
 
 /** Verification level labels. */
@@ -396,4 +463,10 @@ function sm_service_request_labels() {
 /** Lines of a free text as a list ("one per line" fields). */
 function sm_lines( $text ) {
 	return array_values( array_filter( array_map( 'trim', preg_split( '/\r\n|\n/', (string) $text ) ) ) );
+}
+
+/** Status pill of a mission (tone from SM Engineering: action, progress, review, done, off). */
+function sm_mission_status( array $mission ) {
+	$tones = array( 'action' => 'warn', 'progress' => 'info', 'review' => 'info', 'done' => 'ok', 'off' => 'muted' );
+	printf( '<span class="sm-status sm-status--%s">%s</span>', esc_attr( $tones[ $mission['tone'] ?? 'off' ] ?? 'muted' ), esc_html( (string) ( $mission['label'] ?? '' ) ) );
 }
