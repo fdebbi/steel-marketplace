@@ -138,7 +138,7 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 					<?php sm_avatar( $company ); ?>
 					<div>
 						<p class="sm-seller__name"><a href="<?php echo esc_url( sm_page_url( 'company', array( 'c' => $company['slug'] ) ) ); ?>"><?php sm_e( $company['name'] ); ?></a></p>
-						<p class="sm-seller__badge<?php echo $company['verification'] >= 2 ? ' is-verified' : ''; ?>"><?php sm_icon( $company['verification'] >= 2 ? 'verified' : 'shield' ); ?><?php echo esc_html( sm_verification_label( $company['verification'] ) ); ?></p>
+						<p class="sm-seller__badge<?php echo $company['verification'] >= 2 ? ' is-verified' : ''; ?>"><?php sm_icon( $company['verification'] >= 2 ? 'verified' : 'shield' ); ?><?php echo esc_html( sm_verification_label( $company['verification'], $company['class'] ?? '' ) ); ?></p>
 						<p class="sm-seller__since">
 							<?php
 							/* translators: %s: year. */

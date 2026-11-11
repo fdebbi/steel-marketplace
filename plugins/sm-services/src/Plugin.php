@@ -39,6 +39,7 @@ final class Plugin {
 		);
 		Theme\Bridge::init();
 		Rest\Api::init();
+		add_filter( 'sm_term_lists', array( Catalogue::class, 'term_lists' ) );
 		if ( is_admin() ) {
 			Admin\Admin::init();
 		}

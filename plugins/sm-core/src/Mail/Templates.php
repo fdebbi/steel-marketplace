@@ -107,6 +107,10 @@ final class Templates {
 		$paras = preg_split( '/\n{2,}/', trim( $text ) );
 		$out   = '';
 		foreach ( $paras as $p ) {
+			if ( preg_match( '/^\d{6}$/', trim( $p ) ) ) { // A verification code: shown large.
+				$out .= '<p style="margin:0 0 14px;text-align:center"><span style="display:inline-block;background:#E7F6EF;border:1px dashed #16A36A;border-radius:10px;padding:10px 22px;font-size:30px;font-weight:700;letter-spacing:6px;color:#0B5A3A">' . esc_html( trim( $p ) ) . '</span></p>';
+				continue;
+			}
 			$p = esc_html( $p );
 			$p = preg_replace_callback(
 				'#\bhttps?://[^\s<]+#u',
@@ -164,6 +168,7 @@ final class Templates {
 			'prestataire'           => 'Atelier Oran Charpente',
 			'client'                => 'BTP Rouiba',
 			'statut'                => __( 'Published', 'sm-core' ),
+			'code'                  => '482913',
 		);
 		$out = array();
 		foreach ( array_diff( $names, array_keys( self::common_vars() ) ) as $n ) {

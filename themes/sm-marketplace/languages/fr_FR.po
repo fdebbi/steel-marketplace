@@ -60,17 +60,17 @@ msgid "Marketplaces"
 msgstr "Marchés"
 
 #: footer.php:22 inc/menus.php:16 inc/template-tags.php:212
-#: templates/front-page-template.php:67 templates/marketplace-products.php:15
+#: templates/front-page-template.php:66 templates/marketplace-products.php:15
 msgid "Steel products"
 msgstr "Produits sidérurgiques"
 
 #: footer.php:23 inc/menus.php:24 inc/template-tags.php:213
-#: templates/front-page-template.php:68 templates/marketplace-reuse.php:15
+#: templates/front-page-template.php:67 templates/marketplace-reuse.php:15
 msgid "Steel reuse"
 msgstr "Réemploi de l’acier"
 
 #: footer.php:24 inc/menus.php:32 inc/template-tags.php:214
-#: templates/front-page-template.php:69 templates/marketplace-buildings.php:15
+#: templates/front-page-template.php:68 templates/marketplace-buildings.php:15
 msgid "Steel buildings"
 msgstr "Bâtiments métalliques"
 
@@ -88,91 +88,96 @@ msgstr "Services"
 
 #: footer.php:31 inc/menus.php:62 inc/template-tags.php:215
 #: template-parts/components/card-service.php:23
-#: templates/front-page-template.php:70 templates/marketplace-services.php:17
+#: templates/front-page-template.php:69 templates/marketplace-services.php:17
 #: templates/marketplace-services.php:20 templates/single-service.php:44
 msgid "Fabrication & installation"
 msgstr "Fabrication et montage"
 
 #: footer.php:32 header.php:100 header.php:130 inc/menus.php:63
-#: inc/template-tags.php:216 templates/front-page-template.php:71
+#: inc/template-tags.php:216 templates/front-page-template.php:70
 #: templates/marketplace-engineers.php:30 templates/mission-request.php:19
 msgid "Engineering"
 msgstr "Ingénierie"
 
-#: footer.php:33 header.php:131 inc/menus.php:64 templates/companies.php:26
+#: footer.php:33 header.php:131 inc/menus.php:64
+#: template-parts/directory.php:35 template-parts/directory.php:36
 #: templates/company-profile.php:26 templates/company-profile.php:82
-#: templates/front-page-template.php:148
 msgid "Company directory"
 msgstr "Annuaire des entreprises"
 
-#: footer.php:34 header.php:29 header.php:132
+#: footer.php:34 inc/menus.php:65 template-parts/directory.php:35
+#: template-parts/directory.php:36
+msgid "Professionals directory"
+msgstr "Annuaire des professionnels"
+
+#: footer.php:35 header.php:29 header.php:132
 #: templates/weight-calculator.php:37
 msgid "Weight calculator"
 msgstr "Calculateur de poids"
 
-#: footer.php:35 header.php:30 header.php:133 templates/price-index.php:16
+#: footer.php:36 header.php:30 header.php:133 templates/price-index.php:16
 msgid "Price index"
 msgstr "Indice des prix"
 
-#: footer.php:39 template-parts/dashboard/engineer-files.php:23
+#: footer.php:40 template-parts/dashboard/engineer-files.php:23
 msgid "Platform"
 msgstr "Plateforme"
 
-#: footer.php:41 header.php:31 templates/pricing.php:25
+#: footer.php:42 header.php:31 templates/pricing.php:25
 #: templates/pricing.php:26
 msgid "Plans"
 msgstr "Abonnements"
 
-#: footer.php:42 header.php:142 template-parts/components/enquiry-form.php:27
+#: footer.php:43 header.php:142 template-parts/components/enquiry-form.php:27
 #: template-parts/components/rfq-single.php:158 templates/auth-login.php:40
 #: templates/company-profile.php:332 templates/dashboard.php:47
 #: templates/mission-request.php:41 templates/single-service.php:131
 msgid "Create an account"
 msgstr "Créer un compte"
 
-#: footer.php:43 header.php:32 templates/contact.php:23
+#: footer.php:44 header.php:32 templates/contact.php:23
 #: templates/contact.php:32 templates/single-listing.php:301
 msgid "Contact"
 msgstr "Contact"
 
-#: footer.php:49
+#: footer.php:50
 msgid ""
 "Advertised prices are set by sellers and are not official market prices."
 msgstr ""
 "Les prix affichés sont fixés par les vendeurs et ne sont pas des prix "
 "officiels du marché."
 
-#: footer.php:54
+#: footer.php:55
 msgid "Quick navigation"
 msgstr "Navigation rapide"
 
-#: footer.php:55 inc/template-tags.php:349
+#: footer.php:56 inc/template-tags.php:357
 msgid "Home"
 msgstr "Accueil"
 
-#: footer.php:56 header.php:55 header.php:59
-#: templates/front-page-template.php:48 templates/marketplace-engineers.php:68
+#: footer.php:57 header.php:55 header.php:59 template-parts/directory.php:53
+#: templates/front-page-template.php:47 templates/marketplace-engineers.php:68
 msgid "Search"
 msgstr "Rechercher"
 
-#: footer.php:59 header.php:79 templates/dashboard.php:67
+#: footer.php:60 header.php:79 templates/dashboard.php:67
 msgid "My missions"
 msgstr "Mes missions"
 
-#: footer.php:60 templates/dashboard.php:68
+#: footer.php:61 templates/dashboard.php:68
 msgid "Invoicing"
 msgstr "Facturation"
 
-#: footer.php:62 header.php:77 template-parts/components/product-form.php:191
+#: footer.php:63 header.php:77 template-parts/components/product-form.php:174
 #: template-parts/dashboard/publish.php:211 templates/styleguide.php:34
 msgid "Publish"
 msgstr "Publier"
 
-#: footer.php:63
+#: footer.php:64
 msgid "Enquiries"
 msgstr "Demandes"
 
-#: footer.php:65 templates/company-profile.php:219 templates/dashboard.php:111
+#: footer.php:66 templates/company-profile.php:219 templates/dashboard.php:111
 msgid "Account"
 msgstr "Compte"
 
@@ -200,12 +205,12 @@ msgstr "Ouvrir le menu"
 #: template-parts/dashboard/listings.php:46
 #: template-parts/dashboard/publish.php:35
 #: template-parts/dashboard/publish.php:51
-#: templates/front-page-template.php:31 templates/rfq-board.php:72
+#: templates/front-page-template.php:30 templates/rfq-board.php:72
 msgid "Market"
 msgstr "Marché"
 
 #: header.php:49 template-parts/components/filter-panel.php:36
-#: templates/front-page-template.php:33 templates/rfq-board.php:73
+#: templates/front-page-template.php:32 templates/rfq-board.php:73
 msgid "All markets"
 msgstr "Tous les marchés"
 
@@ -246,7 +251,7 @@ msgstr "Menu"
 msgid "Close menu"
 msgstr "Fermer le menu"
 
-#: header.php:120 inc/menus.php:75
+#: header.php:120 inc/menus.php:76
 msgid "View all listings"
 msgstr "Voir toutes les annonces"
 
@@ -271,7 +276,7 @@ msgstr "Afficher"
 msgid "Hide"
 msgstr "Masquer"
 
-#: inc/assets.php:37
+#: inc/assets.php:37 inc/template-tags.php:510
 msgid "Saved"
 msgstr "Enregistrée"
 
@@ -279,41 +284,96 @@ msgstr "Enregistrée"
 msgid "Removed from saved listings"
 msgstr "Retirée des annonces enregistrées"
 
-#: inc/assets.php:85
+#: inc/assets.php:39
+msgid "Uploaded"
+msgstr "Téléchargé"
+
+#. translators: %s: file name.
+#: inc/assets.php:41
+msgid "Remove %s"
+msgstr "Retirer %s"
+
+#: inc/assets.php:42
+msgid "Add other files"
+msgstr "Ajouter d’autres fichiers"
+
+#: inc/assets.php:43
+msgid "Too many files: the extra ones were not added."
+msgstr "Trop de fichiers : les fichiers en trop n’ont pas été ajoutés."
+
+#: inc/assets.php:44
+msgid "Will be deleted when you save"
+msgstr "Sera supprimé à l’enregistrement"
+
+#: inc/assets.php:45
+msgid "Will be replaced when you save"
+msgstr "Sera remplacé à l’enregistrement"
+
+#: inc/assets.php:46
+msgid "Undo"
+msgstr "Annuler"
+
+#: inc/assets.php:47 inc/template-tags.php:514 inc/template-tags.php:520
+#: template-parts/components/my-products.php:86
+#: template-parts/components/portfolio-grid.php:30
+#: template-parts/components/rfq-single.php:138
+#: template-parts/dashboard/listings.php:54
+#: template-parts/dashboard/services.php:64
+msgid "Delete"
+msgstr "Supprimer"
+
+#: inc/assets.php:48 templates/company-profile.php:290
+#: templates/company-profile.php:344
+msgid "Close"
+msgstr "Fermer"
+
+#: inc/assets.php:49
+msgid "Previous photo"
+msgstr "Photo précédente"
+
+#: inc/assets.php:50
+msgid "Next photo"
+msgstr "Photo suivante"
+
+#: inc/assets.php:51
+msgid "Original size"
+msgstr "Taille originale"
+
+#: inc/assets.php:98
 msgid "Company position. Drag it, or use the arrow keys."
 msgstr ""
 "Position de l’entreprise. Faites-la glisser ou utilisez les flèches du "
 "clavier."
 
-#: inc/assets.php:86 template-parts/components/location-map.php:59
+#: inc/assets.php:99 template-parts/components/location-map.php:59
 msgid "No position yet."
 msgstr "Aucune position pour le moment."
 
-#: inc/assets.php:87
+#: inc/assets.php:100
 msgid "Drag the marker to your exact address, or click the map."
 msgstr ""
 "Faites glisser le repère jusqu’à votre adresse exacte, ou cliquez sur la "
 "carte."
 
-#: inc/assets.php:88
+#: inc/assets.php:101
 msgid "Position placed:"
 msgstr "Position placée :"
 
-#: inc/assets.php:89
+#: inc/assets.php:102
 msgid "Current location found:"
 msgstr "Position actuelle trouvée :"
 
 #. translators: %d: accuracy in metres.
-#: inc/assets.php:91
+#: inc/assets.php:104
 msgid "Approximate (about %d m): drag the marker to correct it."
 msgstr ""
 "Approximative (environ %d m) : faites glisser le repère pour la corriger."
 
-#: inc/assets.php:92
+#: inc/assets.php:105
 msgid "Looking for your location…"
 msgstr "Recherche de votre position…"
 
-#: inc/assets.php:93
+#: inc/assets.php:106
 msgid ""
 "Location access was refused. Allow it in your browser, or place the marker "
 "by hand."
@@ -321,18 +381,18 @@ msgstr ""
 "L’accès à la position a été refusé. Autorisez-le dans votre navigateur, ou "
 "placez le repère à la main."
 
-#: inc/assets.php:94
+#: inc/assets.php:107
 msgid "Your location could not be found. Place the marker by hand."
 msgstr "Votre position est introuvable. Placez le repère à la main."
 
-#: inc/assets.php:95
+#: inc/assets.php:108
 msgid ""
 "Finding your location took too long. Try again or place the marker by hand."
 msgstr ""
 "La recherche de votre position a pris trop de temps. Réessayez ou placez le "
 "repère à la main."
 
-#: inc/assets.php:96
+#: inc/assets.php:109
 msgid ""
 "Your browser only shares your location on a secure (https) site. Place the "
 "marker by hand."
@@ -340,16 +400,16 @@ msgstr ""
 "Votre navigateur ne partage la position que sur un site sécurisé (https). "
 "Placez le repère à la main."
 
-#: inc/assets.php:97
+#: inc/assets.php:110
 msgid "This position is outside Algeria. Place the marker on your address."
 msgstr ""
 "Cette position est hors d’Algérie. Placez le repère sur votre adresse."
 
-#: inc/assets.php:98
+#: inc/assets.php:111
 msgid "Wilaya changed: place the marker again on your address."
 msgstr "Wilaya modifiée : replacez le repère sur votre adresse."
 
-#: inc/assets.php:99
+#: inc/assets.php:112
 msgid "Position removed. It will be deleted when you save."
 msgstr "Position retirée. Elle sera supprimée à l’enregistrement."
 
@@ -408,23 +468,23 @@ msgstr ""
 "Afficher les annonces de démonstration tant qu’aucune extension ne fournit "
 "de données"
 
-#: inc/demo/installer.php:106 inc/demo/installer.php:107
-#: inc/demo/installer.php:121
+#: inc/demo/installer.php:107 inc/demo/installer.php:108
+#: inc/demo/installer.php:122
 msgid "SM Pages"
 msgstr "Pages SM"
 
-#: inc/demo/installer.php:118
+#: inc/demo/installer.php:119
 msgid "Missing pages were created."
 msgstr "Les pages manquantes ont été créées."
 
-#: inc/demo/installer.php:122
+#: inc/demo/installer.php:123
 msgid ""
 "Pages used by the theme templates. Existing pages are never overwritten."
 msgstr ""
 "Pages utilisées par les gabarits du thème. Les pages existantes ne sont "
 "jamais écrasées."
 
-#: inc/demo/installer.php:130
+#: inc/demo/installer.php:131
 msgid "Create missing pages"
 msgstr "Créer les pages manquantes"
 
@@ -440,7 +500,7 @@ msgstr "Chutes, surplus, profilés d’occasion et ferraille."
 msgid "New and used warehouses, assembled or dismantled."
 msgstr "Hangars neufs et d’occasion, montés ou démontés."
 
-#: inc/menus.php:62 templates/front-page-template.php:70
+#: inc/menus.php:62 templates/front-page-template.php:69
 msgid "Cutting, welding, assembly, installation and dismantling."
 msgstr "Découpe, soudage, assemblage, montage et démontage."
 
@@ -452,7 +512,11 @@ msgstr "Conception, calculs et expertise de structures d’occasion."
 msgid "Manufacturers, suppliers, installers and recyclers."
 msgstr "Fabricants, fournisseurs, monteurs et recycleurs."
 
-#: inc/menus.php:89
+#: inc/menus.php:65
+msgid "Welders, steel erectors, boilermakers and other trades."
+msgstr "Soudeurs, monteurs de charpente, chaudronniers et autres métiers."
+
+#: inc/menus.php:90
 msgid "Language"
 msgstr "Langue"
 
@@ -468,14 +532,14 @@ msgstr "Menu du pied de page"
 msgid "Top utility menu"
 msgstr "Menu utilitaire supérieur"
 
-#: inc/template-tags.php:119 inc/template-tags.php:375
-#: inc/template-tags.php:435 template-parts/components/product-tech.php:26
+#: inc/template-tags.php:119 inc/template-tags.php:383
+#: inc/template-tags.php:443 template-parts/components/product-tech.php:26
 msgid "piece"
 msgid_plural "pieces"
 msgstr[0] "pièce"
 msgstr[1] "pièces"
 
-#: inc/template-tags.php:120 inc/template-tags.php:380
+#: inc/template-tags.php:120 inc/template-tags.php:388
 msgid "lot"
 msgstr "lot"
 
@@ -600,132 +664,144 @@ msgstr "Ingénieur partenaire"
 msgid "Not verified"
 msgstr "Non vérifié"
 
-#: inc/template-tags.php:304
-#: template-parts/components/verification-steps.php:22
-msgid "Contact verified"
-msgstr "Coordonnées vérifiées"
-
-#: inc/template-tags.php:305
-#: template-parts/components/verification-steps.php:16
-msgid "Verified business"
-msgstr "Entreprise vérifiée"
+#: inc/template-tags.php:304 template-parts/components/card-featured.php:35
+#: template-parts/directory.php:107 templates/company-profile.php:95
+msgid "Account verified"
+msgstr "Compte vérifié"
 
 #: inc/template-tags.php:306
 #: template-parts/components/verification-steps.php:19
 msgid "Verified engineer"
 msgstr "Ingénieur vérifié"
 
-#: inc/template-tags.php:315
+#: inc/template-tags.php:316
+#: template-parts/components/verification-steps.php:17
+msgid "Verified professional"
+msgstr "Professionnel vérifié"
+
+#: inc/template-tags.php:316
+msgid "Verified company"
+msgstr "Entreprise vérifiée"
+
+#: inc/template-tags.php:323
 msgid "just now"
 msgstr "à l’instant"
 
 #. translators: %s: number of hours.
-#: inc/template-tags.php:320
+#: inc/template-tags.php:328
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] "il y a %s heure"
 msgstr[1] "il y a %s heures"
 
 #. translators: %s: number of days.
-#: inc/template-tags.php:324
+#: inc/template-tags.php:332
 msgid "%s day ago"
 msgid_plural "%s days ago"
 msgstr[0] "il y a %s jour"
 msgstr[1] "il y a %s jours"
 
-#: inc/template-tags.php:348
+#: inc/template-tags.php:356
 msgid "Breadcrumb"
 msgstr "Fil d’Ariane"
 
-#: inc/template-tags.php:388 template-parts/components/my-products.php:18
+#: inc/template-tags.php:396 template-parts/components/my-products.php:18
 #: template-parts/components/my-products.php:26
 #: template-parts/dashboard/services.php:24
 msgid "Waiting for review"
 msgstr "En attente de vérification"
 
-#: inc/template-tags.php:389
+#: inc/template-tags.php:397
 msgid "Open for offers"
 msgstr "Ouverte aux offres"
 
-#: inc/template-tags.php:390
+#: inc/template-tags.php:398
 msgid "Awarded"
 msgstr "Attribuée"
 
-#: inc/template-tags.php:391
+#: inc/template-tags.php:399
 msgid "Closed"
 msgstr "Clôturée"
 
-#: inc/template-tags.php:392
+#: inc/template-tags.php:400
 msgid "Deadline passed"
 msgstr "Délai dépassé"
 
-#: inc/template-tags.php:393 template-parts/components/my-products.php:19
+#: inc/template-tags.php:401 template-parts/components/my-products.php:19
 #: template-parts/components/my-products.php:27
 #: template-parts/dashboard/services.php:26
 msgid "Changes requested"
 msgstr "Modifications demandées"
 
-#: inc/template-tags.php:400
+#: inc/template-tags.php:408
 msgid "Sent"
 msgstr "Envoyée"
 
-#: inc/template-tags.php:401
+#: inc/template-tags.php:409
 msgid "Shortlisted"
 msgstr "Présélectionnée"
 
-#: inc/template-tags.php:402 inc/template-tags.php:456
+#: inc/template-tags.php:410 inc/template-tags.php:464
 msgid "Accepted"
 msgstr "Acceptée"
 
-#: inc/template-tags.php:403
+#: inc/template-tags.php:411
 msgid "Not retained"
 msgstr "Non retenue"
 
-#: inc/template-tags.php:404
+#: inc/template-tags.php:412
 msgid "Withdrawn"
 msgstr "Retirée"
 
-#: inc/template-tags.php:430
+#: inc/template-tags.php:438
 msgid "project"
 msgstr "projet"
 
-#: inc/template-tags.php:436
+#: inc/template-tags.php:444
 msgid "hour"
 msgstr "heure"
 
-#: inc/template-tags.php:437
+#: inc/template-tags.php:445
 msgid "day"
 msgstr "jour"
 
-#: inc/template-tags.php:445 template-parts/components/service-form.php:119
+#: inc/template-tags.php:453 template-parts/components/service-form.php:119
 msgid "On quotation"
 msgstr "Sur devis"
 
 #. translators: %s: price with unit.
-#: inc/template-tags.php:448
+#: inc/template-tags.php:456
 msgid "From %s"
 msgstr "À partir de %s"
 
-#: inc/template-tags.php:454 template-parts/dashboard/messages.php:14
+#: inc/template-tags.php:462 template-parts/dashboard/messages.php:14
 #: templates/styleguide.php:49
 msgid "New"
 msgstr "Nouvelle"
 
-#: inc/template-tags.php:455 templates/styleguide.php:48
+#: inc/template-tags.php:463 templates/styleguide.php:48
 msgid "Quote sent"
 msgstr "Devis envoyé"
 
-#: inc/template-tags.php:457
+#: inc/template-tags.php:465
 msgid "Quote declined"
 msgstr "Devis refusé"
 
-#: inc/template-tags.php:458
+#: inc/template-tags.php:466
 msgid "Declined by the provider"
 msgstr "Déclinée par le prestataire"
 
-#: inc/template-tags.php:459
+#: inc/template-tags.php:467
 msgid "Cancelled"
 msgstr "Annulée"
+
+#: inc/template-tags.php:512
+msgid "Keep"
+msgstr "Garder"
+
+#: inc/template-tags.php:518
+msgid "Replace"
+msgstr "Remplacer"
 
 #: index.php:21
 msgid "Nothing here yet"
@@ -964,6 +1040,7 @@ msgstr "Ingénieur partenaire vérifié par la plateforme"
 
 #. translators: %d: years.
 #: template-parts/components/card-engineer.php:26
+#: template-parts/components/card-featured.php:40
 #: templates/company-profile.php:107 templates/single-service.php:80
 msgid "%d year of experience"
 msgid_plural "%d years of experience"
@@ -989,7 +1066,21 @@ msgstr "Indisponible pour le moment"
 msgid "Ask for a study"
 msgstr "Demander une étude"
 
+#. translators: %d: years.
+#: template-parts/components/card-featured.php:41
+#: template-parts/directory.php:115 templates/company-profile.php:187
+#: templates/company-profile.php:263 templates/company-profile.php:287
+msgid "Request a quote"
+msgstr "Demander un devis"
+
+#. translators: %d: years.
+#: template-parts/components/card-featured.php:41
+#: template-parts/directory.php:114
+msgid "See the profile"
+msgstr "Voir le profil"
+
 #: template-parts/components/card-listing.php:24
+#: templates/front-page-template.php:159
 msgid "Featured"
 msgstr "À la une"
 
@@ -1187,7 +1278,7 @@ msgstr ""
 
 #: template-parts/components/filter-panel.php:16
 #: template-parts/components/filter-panel.php:20
-#: template-parts/marketplace-archive.php:81
+#: template-parts/directory.php:59 template-parts/marketplace-archive.php:81
 msgid "Filters"
 msgstr "Filtres"
 
@@ -1230,8 +1321,8 @@ msgstr "État du bâtiment"
 #: template-parts/components/service-requests-list.php:20
 #: template-parts/components/services-board.php:31
 #: template-parts/dashboard/listings.php:20
-#: template-parts/dashboard/rfq.php:29
-#: template-parts/marketplace-archive.php:56 templates/companies.php:30
+#: template-parts/dashboard/rfq.php:29 template-parts/directory.php:62
+#: template-parts/marketplace-archive.php:56
 #: templates/marketplace-engineers.php:56
 msgid "All"
 msgstr "Tous"
@@ -1249,15 +1340,16 @@ msgstr "Hauteur min. (m)"
 #: template-parts/dashboard/engineer-missions.php:126
 #: template-parts/dashboard/engineer-missions.php:131
 #: template-parts/dashboard/portfolio.php:66
-#: template-parts/dashboard/publish.php:184 templates/auth-register.php:76
-#: templates/engineer-apply.php:66 templates/front-page-template.php:40
-#: templates/marketplace-engineers.php:61
+#: template-parts/dashboard/publish.php:184 template-parts/directory.php:47
+#: templates/auth-register.php:76 templates/engineer-apply.php:66
+#: templates/front-page-template.php:39 templates/marketplace-engineers.php:61
 msgid "Wilaya"
 msgstr "Wilaya"
 
 #: template-parts/components/filter-panel.php:80
 #: template-parts/components/services-board.php:45
-#: templates/front-page-template.php:42 templates/rfq-board.php:78
+#: template-parts/directory.php:49 templates/front-page-template.php:41
+#: templates/rfq-board.php:78
 msgid "All wilayas"
 msgstr "Toutes les wilayas"
 
@@ -1417,16 +1509,13 @@ msgid "Publish again"
 msgstr "Republier"
 
 #: template-parts/components/my-products.php:86
-#: template-parts/components/portfolio-grid.php:30
-#: template-parts/components/rfq-single.php:138
-#: template-parts/dashboard/listings.php:54
-#: template-parts/dashboard/services.php:64
-msgid "Delete"
-msgstr "Supprimer"
-
-#: template-parts/components/my-products.php:86
 msgid "Delete this product for good?"
 msgstr "Supprimer définitivement ce produit ?"
+
+#. translators: %s: project title.
+#: template-parts/components/portfolio-grid.php:16
+msgid "Enlarge the photo: %s"
+msgstr "Agrandir la photo : %s"
 
 #: template-parts/components/portfolio-grid.php:30
 msgid "Delete this reference?"
@@ -1592,7 +1681,7 @@ msgstr "Titre en arabe"
 
 #: template-parts/components/product-form.php:115
 #: template-parts/components/product-form.php:119
-#: template-parts/components/product-form.php:166
+#: template-parts/components/product-form.php:149
 #: template-parts/components/product-tech.php:63
 #: template-parts/components/product-tech.php:131
 #: template-parts/components/product-tech.php:372
@@ -1601,7 +1690,7 @@ msgstr "Titre en arabe"
 #: template-parts/components/rfq-form.php:92
 #: template-parts/components/rfq-form.php:110
 #: template-parts/components/rfq-form.php:114
-#: template-parts/components/rfq-form.php:134
+#: template-parts/components/rfq-form.php:132
 #: template-parts/components/rfq-offer-form.php:44
 #: template-parts/components/rfq-offer-form.php:63
 #: template-parts/components/rfq-offer-form.php:67
@@ -1635,18 +1724,13 @@ msgstr "Description et notes techniques"
 msgid "Photos and technical sheet"
 msgstr "Photos et fiche technique"
 
-#: template-parts/components/product-form.php:134
-#: template-parts/components/service-form.php:145
-msgid "Keep"
-msgstr "Garder"
-
-#: template-parts/components/product-form.php:143
+#: template-parts/components/product-form.php:132
 #: template-parts/dashboard/publish.php:163
 msgid "Take or add photos"
 msgstr "Prendre ou ajouter des photos"
 
 #. translators: 1: number of photos, 2: size in MB.
-#: template-parts/components/product-form.php:147
+#: template-parts/components/product-form.php:136
 msgid ""
 "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole building, "
 "the frames, the connections and the roof."
@@ -1655,7 +1739,7 @@ msgstr ""
 "entier, les portiques, les assemblages et la toiture."
 
 #. translators: 1: number of photos, 2: size in MB.
-#: template-parts/components/product-form.php:147
+#: template-parts/components/product-form.php:136
 msgid ""
 "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole lot, the "
 "condition of the surfaces and the ends."
@@ -1664,7 +1748,7 @@ msgstr ""
 "entier, l’état des surfaces et les extrémités."
 
 #. translators: 1: number of photos, 2: size in MB.
-#: template-parts/components/product-form.php:147
+#: template-parts/components/product-form.php:136
 msgid ""
 "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the section, the "
 "markings and the stock."
@@ -1672,12 +1756,12 @@ msgstr ""
 "Jusqu’à %1$d photos (JPG, PNG, WebP, %2$d Mo chacune). Montrez la section, "
 "les marquages et le stock."
 
-#: template-parts/components/product-form.php:166
+#: template-parts/components/product-form.php:149
 msgid "Add the technical sheet (PDF)"
 msgstr "Ajouter la fiche technique (PDF)"
 
 #. translators: %d: size in MB.
-#: template-parts/components/product-form.php:170
+#: template-parts/components/product-form.php:153
 msgid ""
 "Manufacturer data sheet, certificate of inspection (up to 3 PDF, %d MB "
 "each). Buyers can download it."
@@ -1685,16 +1769,16 @@ msgstr ""
 "Fiche du fabricant, certificat de réception (jusqu’à 3 PDF de %d Mo). Les "
 "acheteurs pourront la télécharger."
 
-#: template-parts/components/product-form.php:177
+#: template-parts/components/product-form.php:160
 #: templates/company-profile.php:227 templates/single-listing.php:67
 msgid "Location"
 msgstr "Localisation"
 
-#: template-parts/components/product-form.php:180
+#: template-parts/components/product-form.php:163
 msgid "Wilaya where the product is"
 msgstr "Wilaya où se trouve le produit"
 
-#: template-parts/components/product-form.php:182
+#: template-parts/components/product-form.php:165
 #: template-parts/components/product-lines.php:67
 #: template-parts/components/product-lines.php:81
 #: template-parts/components/product-tech.php:67
@@ -1708,16 +1792,16 @@ msgstr "Wilaya où se trouve le produit"
 msgid "Choose…"
 msgstr "Choisir…"
 
-#: template-parts/components/product-form.php:190
+#: template-parts/components/product-form.php:173
 #: template-parts/dashboard/publish.php:209
 msgid "Save draft"
 msgstr "Enregistrer le brouillon"
 
-#: template-parts/components/product-form.php:191
+#: template-parts/components/product-form.php:174
 msgid "Send for publication"
 msgstr "Envoyer pour publication"
 
-#: template-parts/components/product-form.php:194
+#: template-parts/components/product-form.php:177
 msgid ""
 "The platform team checks each product (usually within a working day) before "
 "it is shown to buyers."
@@ -2323,37 +2407,37 @@ msgstr "Offres acceptées jusqu’au"
 msgid "Drawings and documents"
 msgstr "Plans et documents"
 
-#: template-parts/components/rfq-form.php:134
+#: template-parts/components/rfq-form.php:132
 msgid "Attach drawings, a bill of materials or photos"
 msgstr "Joindre des plans, une nomenclature ou des photos"
 
 #. translators: 1: files, 2: MB.
-#: template-parts/components/rfq-form.php:135
+#: template-parts/components/rfq-form.php:133
 msgid ""
 "PDF or images, up to %1$d files of %2$d MB. Export DWG/DXF drawings to PDF."
 msgstr ""
 "PDF ou images, jusqu’à %1$d fichiers de %2$d Mo. Exportez les plans DWG/DXF "
 "en PDF."
 
-#: template-parts/components/rfq-form.php:137
+#: template-parts/components/rfq-form.php:135
 msgid "Documents are shown only to signed-in companies."
 msgstr "Les documents ne sont visibles que par les entreprises connectées."
 
-#: template-parts/components/rfq-form.php:141
-#: template-parts/components/service-form.php:159
-#: template-parts/dashboard/portfolio.php:86
+#: template-parts/components/rfq-form.php:139
+#: template-parts/components/service-form.php:153
+#: template-parts/dashboard/portfolio.php:87
 msgid "Cancel"
 msgstr "Annuler"
 
-#: template-parts/components/rfq-form.php:142
+#: template-parts/components/rfq-form.php:140
 msgid "Save the request"
 msgstr "Enregistrer la demande"
 
-#: template-parts/components/rfq-form.php:142
+#: template-parts/components/rfq-form.php:140
 msgid "Publish my request"
 msgstr "Publier ma demande"
 
-#: template-parts/components/rfq-form.php:145
+#: template-parts/components/rfq-form.php:143
 msgid "The platform team checks each request before it is shown to suppliers."
 msgstr ""
 "L’équipe de la plateforme vérifie chaque demande avant de la montrer aux "
@@ -2704,12 +2788,12 @@ msgstr "Le prix est indicatif ; chaque client reçoit votre devis."
 msgid "Photos"
 msgstr "Photos"
 
-#: template-parts/components/service-form.php:152
+#: template-parts/components/service-form.php:146
 msgid "Add photos of your work"
 msgstr "Ajoutez des photos de vos réalisations"
 
 #. translators: 1: photos, 2: MB.
-#: template-parts/components/service-form.php:153
+#: template-parts/components/service-form.php:147
 msgid ""
 "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each): workshop, machines, "
 "finished work."
@@ -2717,11 +2801,11 @@ msgstr ""
 "Jusqu’à %1$d photos (JPG, PNG, WebP, %2$d Mo chacune) : atelier, machines, "
 "réalisations."
 
-#: template-parts/components/service-form.php:160
+#: template-parts/components/service-form.php:154
 msgid "Save the service"
 msgstr "Enregistrer le service"
 
-#: template-parts/components/service-form.php:160
+#: template-parts/components/service-form.php:154
 msgid "Publish the service"
 msgstr "Publier le service"
 
@@ -2942,12 +3026,12 @@ msgid "See all services"
 msgstr "Voir tous les services"
 
 #: template-parts/components/verification-steps.php:16
+msgid "Verified business"
+msgstr "Entreprise vérifiée"
+
+#: template-parts/components/verification-steps.php:16
 msgid "RC, NIF and NIS checked"
 msgstr "RC, NIF et NIS contrôlés"
-
-#: template-parts/components/verification-steps.php:17
-msgid "Verified professional"
-msgstr "Professionnel vérifié"
 
 #: template-parts/components/verification-steps.php:17
 msgid "Craftsman or auto-entrepreneur card checked"
@@ -2964,6 +3048,10 @@ msgstr "Pièce d’identité vérifiée"
 #: template-parts/components/verification-steps.php:19
 msgid "Diploma and approval checked"
 msgstr "Diplôme et agrément contrôlés"
+
+#: template-parts/components/verification-steps.php:22
+msgid "Contact verified"
+msgstr "Coordonnées vérifiées"
 
 #: template-parts/components/verification-steps.php:22
 msgid "6-digit code"
@@ -3274,7 +3362,8 @@ msgstr "Titre professionnel en arabe"
 msgid "Your trades"
 msgstr "Vos métiers"
 
-#: template-parts/dashboard/company.php:67 templates/auth-register.php:55
+#: template-parts/dashboard/company.php:67 template-parts/directory.php:60
+#: templates/auth-register.php:55
 msgid "Type of company"
 msgstr "Type d’entreprise"
 
@@ -3957,23 +4046,23 @@ msgstr "—"
 msgid "Short description"
 msgstr "Courte description"
 
-#: template-parts/dashboard/portfolio.php:81
+#: template-parts/dashboard/portfolio.php:82
 msgid "Replace the photo"
 msgstr "Remplacer la photo"
 
-#: template-parts/dashboard/portfolio.php:81
+#: template-parts/dashboard/portfolio.php:82
 msgid "Add a photo"
 msgstr "Ajouter une photo"
 
-#: template-parts/dashboard/portfolio.php:82
+#: template-parts/dashboard/portfolio.php:83
 msgid "One photo of the finished project (JPG, PNG, WebP)."
 msgstr "Une photo du projet terminé (JPG, PNG, WebP)."
 
-#: template-parts/dashboard/portfolio.php:87
+#: template-parts/dashboard/portfolio.php:88
 msgid "Save the reference"
 msgstr "Enregistrer la référence"
 
-#: template-parts/dashboard/portfolio.php:96
+#: template-parts/dashboard/portfolio.php:97
 msgid ""
 "Completed projects shown on your public page. Clients trust what they can "
 "see."
@@ -3981,16 +4070,16 @@ msgstr ""
 "Projets réalisés affichés sur votre page publique. Les clients font "
 "confiance à ce qu’ils voient."
 
-#: template-parts/dashboard/portfolio.php:97
-#: template-parts/dashboard/portfolio.php:100
+#: template-parts/dashboard/portfolio.php:98
+#: template-parts/dashboard/portfolio.php:101
 msgid "Add a reference"
 msgstr "Ajouter une référence"
 
-#: template-parts/dashboard/portfolio.php:100
+#: template-parts/dashboard/portfolio.php:101
 msgid "No reference yet"
 msgstr "Aucune référence pour l’instant"
 
-#: template-parts/dashboard/portfolio.php:100
+#: template-parts/dashboard/portfolio.php:101
 msgid "Add your completed projects with a photo, the year and your role."
 msgstr "Ajoutez vos projets réalisés avec une photo, l’année et votre rôle."
 
@@ -4431,6 +4520,106 @@ msgstr "Pas de code reçu ?"
 msgid "Send a new code"
 msgstr "Envoyer un nouveau code"
 
+#: template-parts/directory.php:37
+msgid ""
+"Welders, steel erectors, boilermakers and other professionals who buy, sell "
+"and offer their services."
+msgstr ""
+"Soudeurs, monteurs de charpente, chaudronniers et autres professionnels qui "
+"achètent, vendent et proposent leurs services."
+
+#: template-parts/directory.php:37
+msgid ""
+"Manufacturers, distributors, recyclers and steel construction companies "
+"registered on the platform."
+msgstr ""
+"Fabricants, distributeurs, recycleurs et entreprises de construction "
+"métallique inscrits sur la plateforme."
+
+#: template-parts/directory.php:43
+msgid "Name or trade"
+msgstr "Nom ou métier"
+
+#: template-parts/directory.php:43
+msgid "Company name"
+msgstr "Nom de l’entreprise"
+
+#: template-parts/directory.php:60
+msgid "Trade"
+msgstr "Métier"
+
+#: template-parts/directory.php:67 templates/dashboard.php:113
+msgid "Verification"
+msgstr "Vérification"
+
+#: template-parts/directory.php:68
+msgid "Verified professionals only"
+msgstr "Professionnels vérifiés seulement"
+
+#: template-parts/directory.php:68
+msgid "Verified companies only"
+msgstr "Entreprises vérifiées seulement"
+
+#: template-parts/directory.php:69
+msgid "See the company directory"
+msgstr "Voir l’annuaire des entreprises"
+
+#: template-parts/directory.php:69
+msgid "See the professionals directory"
+msgstr "Voir l’annuaire des professionnels"
+
+#. translators: %d: number of accounts.
+#: template-parts/directory.php:80
+msgid "%d professional"
+msgid_plural "%d professionals"
+msgstr[0] "%d professionnel"
+msgstr[1] "%d professionnels"
+
+#. translators: %d: number of accounts.
+#: template-parts/directory.php:80
+msgid "%d company"
+msgid_plural "%d companies"
+msgstr[0] "%d entreprise"
+msgstr[1] "%d entreprises"
+
+#: template-parts/directory.php:84 template-parts/marketplace-archive.php:86
+#: templates/rfq-board.php:81
+msgid "Sort by"
+msgstr "Trier par"
+
+#: template-parts/directory.php:86
+msgid "Featured first"
+msgstr "À la une d’abord"
+
+#: template-parts/directory.php:87
+msgid "Newest"
+msgstr "Plus récents"
+
+#: template-parts/directory.php:88
+msgid "Name A → Z"
+msgstr "Nom A → Z"
+
+#: template-parts/directory.php:90
+msgid "Apply"
+msgstr "Appliquer"
+
+#: template-parts/directory.php:122 template-parts/marketplace-archive.php:108
+#: templates/rfq-board.php:101
+msgid "Pagination"
+msgstr "Pagination"
+
+#: template-parts/directory.php:129
+msgid "Nobody here yet"
+msgstr "Personne ici pour l’instant"
+
+#: template-parts/directory.php:129
+msgid "Change or remove a filter."
+msgstr "Modifiez ou retirez un filtre."
+
+#: template-parts/directory.php:129
+msgid "See the whole directory"
+msgstr "Voir tout l’annuaire"
+
 #: template-parts/marketplace-archive.php:51
 msgid "Publish here"
 msgstr "Publier ici"
@@ -4445,10 +4634,6 @@ msgid "<strong>%s</strong> listing"
 msgid_plural "<strong>%s</strong> listings"
 msgstr[0] "<strong>%s</strong> annonce"
 msgstr[1] "<strong>%s</strong> annonces"
-
-#: template-parts/marketplace-archive.php:86 templates/rfq-board.php:81
-msgid "Sort by"
-msgstr "Trier par"
 
 #: template-parts/marketplace-archive.php:89 templates/rfq-board.php:82
 msgid "Most recent"
@@ -4474,10 +4659,6 @@ msgstr "Grille"
 msgid "List"
 msgstr "Liste"
 
-#: template-parts/marketplace-archive.php:108 templates/rfq-board.php:101
-msgid "Pagination"
-msgstr "Pagination"
-
 #: template-parts/marketplace-archive.php:119
 msgid "No listing matches these filters"
 msgstr "Aucune annonce ne correspond à ces filtres"
@@ -4491,7 +4672,7 @@ msgstr ""
 "fournisseurs viendront à vous."
 
 #: template-parts/marketplace-archive.php:121
-#: templates/front-page-template.php:122 templates/single-listing.php:128
+#: templates/front-page-template.php:121 templates/single-listing.php:128
 #: templates/single-service.php:92 templates/single-service.php:121
 #: templates/styleguide.php:36
 msgid "Request a quotation"
@@ -4652,34 +4833,6 @@ msgstr "Déjà inscrit ?"
 msgid "SM — Company directory"
 msgstr "SM — Annuaire"
 
-#: templates/companies.php:27
-msgid "Companies and professionals"
-msgstr "Entreprises et professionnels"
-
-#: templates/companies.php:28
-msgid ""
-"Steel construction companies, manufacturers, distributors, recyclers and "
-"professionals of steel structures."
-msgstr ""
-"Entreprises de construction métallique, fabricants, distributeurs, "
-"recycleurs et professionnels de la charpente."
-
-#: templates/companies.php:31
-msgid "Companies"
-msgstr "Entreprises"
-
-#: templates/companies.php:32
-msgid "Professionals"
-msgstr "Professionnels"
-
-#: templates/companies.php:51
-msgid "Nobody here yet"
-msgstr "Personne ici pour l’instant"
-
-#: templates/companies.php:51
-msgid "See the whole directory"
-msgstr "Voir tout l’annuaire"
-
 #. Template Name of the theme
 msgid "SM — Company profile"
 msgstr "SM — Fiche entreprise"
@@ -4708,14 +4861,6 @@ msgstr "Produits à vendre"
 #: templates/company-profile.php:86
 msgid "Logo of %s"
 msgstr "Logo de %s"
-
-#: templates/company-profile.php:95
-msgid "Account verified"
-msgstr "Compte vérifié"
-
-#: templates/company-profile.php:98
-msgid "Quality verified"
-msgstr "Qualité vérifiée"
 
 #. translators: %s: year.
 #: templates/company-profile.php:105
@@ -4762,11 +4907,6 @@ msgstr "Spécialités"
 #: templates/company-profile.php:163
 msgid "Choose a service to ask this company for a quote."
 msgstr "Choisissez un service pour demander un devis à cette entreprise."
-
-#: templates/company-profile.php:187 templates/company-profile.php:263
-#: templates/company-profile.php:287
-msgid "Request a quote"
-msgstr "Demander un devis"
 
 #: templates/company-profile.php:189
 msgid "See the service"
@@ -4842,10 +4982,6 @@ msgstr "Copier le lien"
 #: templates/company-profile.php:288
 msgid "to %s · the answer arrives in your dashboard"
 msgstr "à %s · la réponse arrive dans votre tableau de bord"
-
-#: templates/company-profile.php:290 templates/company-profile.php:344
-msgid "Close"
-msgstr "Fermer"
 
 #: templates/company-profile.php:296
 msgid "Service"
@@ -5018,10 +5154,6 @@ msgstr "Mes demandes de service"
 #: templates/dashboard.php:109
 msgid "Engineering studies"
 msgstr "Études d’ingénierie"
-
-#: templates/dashboard.php:113
-msgid "Verification"
-msgstr "Vérification"
 
 #: templates/dashboard.php:114
 msgid "Plan & AI credits"
@@ -5237,15 +5369,15 @@ msgstr "Déjà partenaire ?"
 msgid "SM — Home"
 msgstr "SM — Accueil"
 
-#: templates/front-page-template.php:20
+#: templates/front-page-template.php:19
 msgid "Steel · Reuse · Buildings · Services"
 msgstr "Acier · Réemploi · Bâtiments · Services"
 
-#: templates/front-page-template.php:21
+#: templates/front-page-template.php:20
 msgid "Buy and sell steel by the kilogram, from beams to complete warehouses"
 msgstr "Achetez et vendez l’acier au kilo, de la poutrelle au hangar complet"
 
-#: templates/front-page-template.php:22
+#: templates/front-page-template.php:21
 msgid ""
 "Compare prices per kg, find offcuts and used structures near you, and work "
 "with verified suppliers, fabricators and engineers."
@@ -5254,51 +5386,51 @@ msgstr ""
 "chez vous et travaillez avec des fournisseurs, fabricants et ingénieurs "
 "vérifiés."
 
-#: templates/front-page-template.php:27
+#: templates/front-page-template.php:26
 msgid "Profile or product"
 msgstr "Profilé ou produit"
 
-#: templates/front-page-template.php:52
+#: templates/front-page-template.php:51
 msgid "active listings"
 msgstr "annonces actives"
 
-#: templates/front-page-template.php:53
+#: templates/front-page-template.php:52
 msgid "companies"
 msgstr "entreprises"
 
-#: templates/front-page-template.php:54
+#: templates/front-page-template.php:53
 msgid "of steel offered for reuse"
 msgstr "d’acier proposées au réemploi"
 
-#: templates/front-page-template.php:67
+#: templates/front-page-template.php:66
 msgid "Beams, channels, tubes, plates and bolts, new and certified."
 msgstr "Poutrelles, UPN, tubes, tôles et boulonnerie, neufs et certifiés."
 
-#: templates/front-page-template.php:68
+#: templates/front-page-template.php:67
 msgid "Offcuts and surplus at a lower price per kg, graded on 5 levels."
 msgstr "Chutes et surplus moins chers au kg, classés sur 5 niveaux."
 
-#: templates/front-page-template.php:69
+#: templates/front-page-template.php:68
 msgid "Warehouses and hangars, assembled or dismantled with inventory."
 msgstr "Entrepôts et hangars, montés ou démontés avec inventaire."
 
-#: templates/front-page-template.php:71
+#: templates/front-page-template.php:70
 msgid "Design, calculation notes and inspection by verified engineers."
 msgstr "Conception, notes de calcul et expertise par des ingénieurs vérifiés."
 
-#: templates/front-page-template.php:89
+#: templates/front-page-template.php:88
 msgid "Featured listings"
 msgstr "Annonces à la une"
 
-#: templates/front-page-template.php:90
+#: templates/front-page-template.php:89
 msgid "See all"
 msgstr "Tout voir"
 
-#: templates/front-page-template.php:103
+#: templates/front-page-template.php:102
 msgid "Latest reuse lots"
 msgstr "Derniers lots de réemploi"
 
-#: templates/front-page-template.php:104
+#: templates/front-page-template.php:103
 msgid ""
 "Every lot shows its condition, its weight source and an automatic total "
 "price."
@@ -5306,15 +5438,15 @@ msgstr ""
 "Chaque lot indique son état, l’origine de son poids et un prix total "
 "automatique."
 
-#: templates/front-page-template.php:106
+#: templates/front-page-template.php:105
 msgid "Browse reuse"
 msgstr "Parcourir le réemploi"
 
-#: templates/front-page-template.php:120
+#: templates/front-page-template.php:119
 msgid "Publish one request, receive several offers"
 msgstr "Une demande publiée, plusieurs offres reçues"
 
-#: templates/front-page-template.php:121
+#: templates/front-page-template.php:120
 msgid ""
 "Describe profiles, quantities and delivery wilaya. Suppliers answer with a "
 "price per kg and a delivery time you can compare side by side."
@@ -5322,11 +5454,11 @@ msgstr ""
 "Décrivez profilés, quantités et wilaya de livraison. Les fournisseurs "
 "répondent avec un prix au kg et un délai, à comparer côte à côte."
 
-#: templates/front-page-template.php:126 templates/price-index.php:17
+#: templates/front-page-template.php:125 templates/price-index.php:17
 msgid "Steel price index"
 msgstr "Indice des prix de l’acier"
 
-#: templates/front-page-template.php:127
+#: templates/front-page-template.php:126
 msgid ""
 "Average advertised prices per kg by profile, condition and wilaya, updated "
 "from live listings. Asking prices, not official market prices."
@@ -5334,27 +5466,63 @@ msgstr ""
 "Prix moyens affichés au kg par profilé, état et wilaya, mis à jour à partir "
 "des annonces. Prix demandés, non officiels."
 
-#: templates/front-page-template.php:128
+#: templates/front-page-template.php:127
 msgid "Open the index"
 msgstr "Ouvrir l’indice"
 
-#: templates/front-page-template.php:135
+#: templates/front-page-template.php:134
 msgid "Fabricators and engineers"
 msgstr "Fabricants et ingénieurs"
 
-#: templates/front-page-template.php:136
+#: templates/front-page-template.php:135
 msgid "All services"
 msgstr "Tous les services"
 
-#: templates/front-page-template.php:147
-msgid "Verified companies"
-msgstr "Entreprises vérifiées"
+#: templates/front-page-template.php:146
+msgid "Featured companies"
+msgstr "Entreprises à la une"
 
-#: templates/front-page-template.php:160
+#: templates/front-page-template.php:146
+msgid "Latest companies"
+msgstr "Dernières entreprises inscrites"
+
+#: templates/front-page-template.php:146
+msgid ""
+"Manufacturers, distributors, recyclers and steel construction companies."
+msgstr ""
+"Fabricants, distributeurs, recycleurs et entreprises de construction "
+"métallique."
+
+#: templates/front-page-template.php:146
+msgid "See all companies"
+msgstr "Voir toutes les entreprises"
+
+#: templates/front-page-template.php:147
+msgid "Featured professionals"
+msgstr "Professionnels à la une"
+
+#: templates/front-page-template.php:147
+msgid "Latest professionals"
+msgstr "Derniers professionnels inscrits"
+
+#: templates/front-page-template.php:147
+msgid "Welders, steel erectors, boilermakers and the other steel trades."
+msgstr ""
+"Soudeurs, monteurs de charpente, chaudronniers et autres métiers de l’acier."
+
+#: templates/front-page-template.php:147
+msgid "See all professionals"
+msgstr "Voir tous les professionnels"
+
+#: templates/front-page-template.php:159
+msgid "New on the platform"
+msgstr "Nouveaux sur la plateforme"
+
+#: templates/front-page-template.php:177
 msgid "Sell your stock, surplus or used building"
 msgstr "Vendez votre stock, vos surplus ou votre bâtiment d’occasion"
 
-#: templates/front-page-template.php:161
+#: templates/front-page-template.php:178
 msgid ""
 "One business account to buy and sell. Engineers get a dedicated services "
 "account."
@@ -5362,11 +5530,11 @@ msgstr ""
 "Un seul compte professionnel pour acheter et vendre. Les ingénieurs "
 "disposent d’un compte de services dédié."
 
-#: templates/front-page-template.php:164
+#: templates/front-page-template.php:181
 msgid "Create a free account"
 msgstr "Créer un compte gratuit"
 
-#: templates/front-page-template.php:165
+#: templates/front-page-template.php:182
 msgid "See the plans"
 msgstr "Voir les abonnements"
 
@@ -5734,6 +5902,10 @@ msgstr "Tarif fixé par l’administrateur"
 #: templates/pricing.php:37
 msgid "Choose"
 msgstr "Choisir"
+
+#. Template Name of the theme
+msgid "SM — Professionals directory"
+msgstr "SM — Annuaire des professionnels"
 
 #. Template Name of the theme
 msgid "SM — Requests for quotation"

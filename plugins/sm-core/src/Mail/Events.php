@@ -162,10 +162,14 @@ final class Events {
 				'when'      => static fn( $e ) => 'engineer' !== ( $e->data['class'] ?? '' ),
 				'admin'     => 'now',
 				'user'      => true,
-				'vars'      => static fn( $e ) => Companies::get( $e->company_id ) ? self::user_vars( $e->user_id ) + self::company_vars( $e->company_id ) + array( 'lien' => Routes::url( 'account' ) ) : array(),
+				'vars'      => static fn( $e ) => Companies::get( $e->company_id ) ? self::user_vars( $e->user_id ) + self::company_vars( $e->company_id ) + array(
+					'lien'      => Routes::url( 'account' ),
+					'lien_code' => Routes::url( 'account', array( 'view' => 'verify-phone' ) ),
+					'code'      => '' !== \SM\Core\Accounts\Registration::welcome_code( $e->user_id ) ? \SM\Core\Accounts\Registration::welcome_code( $e->user_id ) : __( '(sent to you by SMS)', 'sm-core' ),
+				) : array(),
 				'to'        => array( __CLASS__, 'author' ),
 				'reply_to'  => 'email',
-				'variables' => array( 'nom', 'email', 'telephone', 'entreprise', 'wilaya', 'type', 'activites', 'lien', 'lien_admin_entreprise' ),
+				'variables' => array( 'nom', 'email', 'telephone', 'entreprise', 'wilaya', 'type', 'activites', 'lien', 'lien_admin_entreprise', 'code', 'lien_code' ),
 				'describe'  => static fn( $v ) => sprintf( /* translators: 1: person, 2: company, 3: wilaya. */ __( '%1$s registered (%2$s, %3$s)', 'sm-core' ), $v['nom'], $v['entreprise'], $v['wilaya'] ),
 				'templates' => array(
 					'admin' => array(
@@ -173,8 +177,8 @@ final class Events {
 						static fn() => __( "A new account was created on {site}.\n\nName: {nom}\nE-mail: {email}\nPhone: {telephone}\nCompany: {entreprise}\nWilaya: {wilaya}\nAccount: {type}\nActivities: {activites}\n\nOpen the company in the administration:\n{lien_admin_entreprise}", 'sm-core' ),
 					),
 					'user'  => array(
-						static fn() => __( 'Welcome to {site}', 'sm-core' ),
-						static fn() => __( "Thank you for registering on {site}, the steel marketplace of Algeria.\n\nYour account for {entreprise} is ready. Complete your company page and send your documents for verification: verified companies get more enquiries.\n\nYour dashboard:\n{lien}\n\nWe are at your disposal for any question.\nThe {site} team", 'sm-core' ),
+						static fn() => __( 'Welcome to {site} — your verification code', 'sm-core' ),
+						static fn() => __( "Welcome to {site}, the steel marketplace of Algeria!\n\nYour account for {entreprise} is created. To activate it, enter this verification code (valid 10 minutes):\n\n{code}\n\nVerify my account:\n{lien_code}\n\nNext, complete your page (logo, presentation, location), publish your listings and services, and send your documents to get the \"verified\" badge.\n\nYou did not create an account? Ignore this message.\nThe {site} team", 'sm-core' ),
 					),
 				),
 			),

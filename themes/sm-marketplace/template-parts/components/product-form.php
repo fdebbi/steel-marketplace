@@ -125,18 +125,7 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 	<section class="sm-panel smp-step">
 		<h2 class="smw-step__title"><span class="smw-step__n">4</span><?php esc_html_e( 'Photos and technical sheet', 'sm-marketplace' ); ?></h2>
 		<?php $kept = array_filter( array_map( 'absint', (array) ( $state['keep_photos'] ?? array() ) ) ); ?>
-		<?php if ( $kept ) : ?>
-			<ul class="smp-kept" role="list">
-				<?php foreach ( $kept as $aid ) : ?>
-					<li>
-						<label class="smp-kept__item">
-							<?php echo wp_get_attachment_image( $aid, 'thumbnail', false, array( 'alt' => '' ) ); ?>
-							<span><input type="checkbox" name="keep_photos[]" value="<?php echo esc_attr( $aid ); ?>" checked> <?php esc_html_e( 'Keep', 'sm-marketplace' ); ?></span>
-						</label>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-		<?php endif; ?>
+		<?php sm_saved_files( array( 'ids' => $kept, 'field' => 'photos[]', 'keep' => 'keep_photos[]' ) ); ?>
 		<label class="sm-upload" data-sm-upload>
 			<input type="file" name="photos[]" accept="image/jpeg,image/png,image/webp" capture="environment" multiple>
 			<?php sm_icon( 'camera', 'sm-upload__icon' ); ?>
@@ -153,13 +142,7 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 		<?php sm_theme_error( 'photos' ); ?>
 
 		<?php $sheets = array_filter( array_map( 'absint', (array) ( $state['keep_sheets'] ?? array() ) ) ); ?>
-		<?php if ( $sheets ) : ?>
-			<ul class="smp-sheets" role="list">
-				<?php foreach ( $sheets as $aid ) : ?>
-					<li><label><input type="checkbox" name="keep_sheets[]" value="<?php echo esc_attr( $aid ); ?>" checked> <?php sm_icon( 'file' ); ?><?php echo esc_html( get_the_title( $aid ) ); ?></label></li>
-				<?php endforeach; ?>
-			</ul>
-		<?php endif; ?>
+		<?php sm_saved_files( array( 'ids' => $sheets, 'field' => 'sheets[]', 'keep' => 'keep_sheets[]' ) ); ?>
 		<label class="sm-upload sm-upload--small">
 			<input type="file" name="sheets[]" accept="application/pdf" multiple>
 			<?php sm_icon( 'file', 'sm-upload__icon' ); ?>

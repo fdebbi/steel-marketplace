@@ -31,6 +31,7 @@ defined( 'ABSPATH' ) || exit;
 				<li><a href="<?php echo esc_url( sm_page_url( 'services' ) ); ?>"><?php esc_html_e( 'Fabrication & installation', 'sm-marketplace' ); ?></a></li>
 				<li><a href="<?php echo esc_url( sm_page_url( 'engineers' ) ); ?>"><?php esc_html_e( 'Engineering', 'sm-marketplace' ); ?></a></li>
 				<li><a href="<?php echo esc_url( sm_page_url( 'companies' ) ); ?>"><?php esc_html_e( 'Company directory', 'sm-marketplace' ); ?></a></li>
+				<li><a href="<?php echo esc_url( sm_page_url( 'professionals' ) ); ?>"><?php esc_html_e( 'Professionals directory', 'sm-marketplace' ); ?></a></li>
 				<li><a href="<?php echo esc_url( sm_page_url( 'weight' ) ); ?>"><?php esc_html_e( 'Weight calculator', 'sm-marketplace' ); ?></a></li>
 				<li><a href="<?php echo esc_url( sm_page_url( 'price-index' ) ); ?>"><?php esc_html_e( 'Price index', 'sm-marketplace' ); ?></a></li>
 			</ul>

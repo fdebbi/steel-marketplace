@@ -153,3 +153,11 @@ T.update({
 T["Fabrication and site services of companies and professionals: service pages with photos, capabilities, equipment and coverage, service requests answered with a quote, portfolio of completed projects. Engineering studies are handled by SM Engineering. Requires SM Core."] = (
  "Services de fabrication et de chantier des entreprises et des professionnels : pages de service avec photos, capacités, équipements et zones couvertes, demandes de service avec devis, réalisations. Les études d’ingénierie passent par SM Engineering. Nécessite SM Core.",
  "خدمات التصنيع والورشات للشركات والمهنيين: صفحات خدمات بالصور والقدرات والتجهيزات والمناطق، طلبات خدمات بعروض أسعار، والمشاريع المنجزة. الدراسات الهندسية تمر عبر SM Engineering. يتطلب SM Core.")
+
+# 0.3.0 — services editable in SM → Types and categories.
+T.update({
+"Unknown service.": ("Service inconnu.", "خدمة غير معروفة."),
+"Choose the service that replaces it on the pages that use it.": ("Choisissez le service qui le remplace sur les pages qui l’utilisent.", "اختر الخدمة التي تعوّضه في الصفحات التي تستعمله."),
+"Services that workshops and professionals tick on their service pages, and that clients filter on.": ("Services que les ateliers et les professionnels cochent sur leurs pages de services, et que les clients utilisent comme filtres.", "الخدمات التي تختارها الورشات والمهنيون في صفحات خدماتهم ويستعملها الزبائن للتصفية."),
+"Enter the French name.": ("Saisissez le nom en français.", "أدخل الاسم بالفرنسية."),
+})

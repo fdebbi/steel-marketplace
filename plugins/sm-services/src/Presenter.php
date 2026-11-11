@@ -33,8 +33,8 @@ final class Presenter {
 		$photos  = null === $photo ? Media::get( 'service', $s->id, 'photo' ) : array_filter( array( $photo ) );
 		$tags    = array();
 		foreach ( $s->categories as $c ) {
-			if ( isset( $def['categories'][ $c ] ) ) {
-				$tags[] = $def['categories'][ $c ];
+			if ( isset( $def['labels'][ $c ] ) ) {
+				$tags[] = $def['labels'][ $c ];
 			}
 		}
 		return array(

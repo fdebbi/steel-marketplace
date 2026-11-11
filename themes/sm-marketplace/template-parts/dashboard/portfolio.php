@@ -75,6 +75,7 @@ if ( $adding ) :
 			<textarea id="pf-desc" name="description" rows="4" dir="auto" maxlength="1500"<?php sm_theme_aria( 'description' ); ?>><?php echo esc_textarea( $val( 'description' ) ); ?></textarea>
 			<?php sm_theme_error( 'description' ); ?>
 		</div>
+		<?php if ( ! empty( $current['image'] ) ) : ?><?php sm_saved_files( array( 'ids' => array( (int) $current['image'] ), 'field' => 'photo[]', 'remove' => 'photo_remove' ) ); ?><?php endif; ?>
 		<label class="sm-upload" data-sm-upload>
 			<input type="file" name="photo[]" accept="image/jpeg,image/png,image/webp">
 			<?php sm_icon( 'camera', 'sm-upload__icon' ); ?>

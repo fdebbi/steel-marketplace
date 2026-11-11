@@ -125,9 +125,7 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 
 	<section class="sm-panel smp-step">
 		<h2 class="smw-step__title"><span class="smw-step__n">5</span><?php esc_html_e( 'Drawings and documents', 'sm-marketplace' ); ?></h2>
-		<?php foreach ( array_filter( array_map( 'absint', (array) ( $state['keep_files'] ?? array() ) ) ) as $aid ) : ?>
-			<label class="sm-check"><input type="checkbox" name="keep_files[]" value="<?php echo esc_attr( $aid ); ?>" checked><span><?php sm_icon( 'file' ); ?><?php echo esc_html( get_the_title( $aid ) ); ?></span></label>
-		<?php endforeach; ?>
+		<?php sm_saved_files( array( 'ids' => (array) ( $state['keep_files'] ?? array() ), 'field' => 'files[]', 'keep' => 'keep_files[]' ) ); ?>
 		<label class="sm-upload">
 			<input type="file" name="files[]" accept="application/pdf,image/jpeg,image/png,image/webp" multiple>
 			<?php sm_icon( 'upload', 'sm-upload__icon' ); ?>

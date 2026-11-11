@@ -4,7 +4,7 @@
  *
  * Public page of a company or a professional (?c=slug), 0.14.0 layout:
  * - header: logo, status (company / professional), badges "Account verified"
- *   (contact e-mail confirmed, level 1) and "Quality verified" (registration
+ *   (contact e-mail confirmed, level 1) and "Verified company / professional" (registration
  *   documents checked by the platform, level 2), name, activities;
  * - main column: presentation, completed projects, services (each with its own
  *   "Request a quote" button opening the request form with that service
@@ -95,7 +95,7 @@ $shares  = array(
 						<li class="smc-badge smc-badge--account"><?php sm_icon( 'check' ); ?><?php esc_html_e( 'Account verified', 'sm-marketplace' ); ?></li>
 					<?php endif; ?>
 					<?php if ( $level >= 2 ) : ?>
-						<li class="smc-badge smc-badge--quality"><?php sm_icon( 'verified' ); ?><?php esc_html_e( 'Quality verified', 'sm-marketplace' ); ?></li>
+						<li class="smc-badge smc-badge--quality"><?php sm_icon( 'verified' ); ?><?php echo esc_html( sm_verified_label( $class ) ); ?></li>
 					<?php endif; ?>
 				</ul>
 				<h1 class="smc-head__name"><?php echo esc_html( $name ); ?></h1>

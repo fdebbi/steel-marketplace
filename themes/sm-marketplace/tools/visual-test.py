@@ -34,6 +34,7 @@ PAGES = {
     'company': '/entreprise/?c=acier-hodna',
     'professional-profile': '/entreprise/?c=benali-soudure',
     'companies': '/entreprises/',
+    'professionals': '/professionnels/',
     'engineer-apply': '/devenir-ingenieur-partenaire/',
     'mission-request': '/demander-une-etude/',
     'register': '/inscription/',

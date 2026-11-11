@@ -513,7 +513,25 @@ $wpdb->insert( "{$wpdb->prefix}sm_company_activities", array( 'company_id' => $c
 Companies::flush( $c_dis );
 Companies::set_activities( $c_dis, array( 'supplier', 'dismantler' ) );
 sm_assert( array( 'dismantler', 'supplier' ) === array_values( array_intersect( array( 'dismantler', 'supplier' ), Companies::get( $c_dis )->activities ) ) && 2 === count( Companies::get( $c_dis )->activities ), 'an account keeps a type the administrator hid' );
+// 0.7.0: description, image, order; deletion with a replacement.
+Companies::update_type_settings( array( 'desc' => array( 'type_test' => array( 'fr' => 'Protection à chaud', 'ar' => 'حماية' ) ), 'order' => array( 'type_test' => -1 ) ) );
+sm_assert( 'type_test' === Companies::activities( 'company' )[0] && 'Protection à chaud' === Companies::activity_meta( 'company' )['type_test']['desc'], 'type description and order saved' );
+list( , $c_galva2 ) = sm_test_company( 'galva2', 'company', array( 'type_test', 'supplier' ), 1 );
+sm_assert( is_wp_error( Companies::delete_activity( 'type_test', '' ) ) && is_wp_error( Companies::delete_activity( 'type_test', 'trade_welder' ) ), 'a used type cannot be deleted without a replacement of the same kind' );
+sm_assert( true === Companies::delete_activity( 'type_test', 'supplier' ), 'used type deleted with a replacement' );
+Companies::flush( $c_galva2 );
+sm_assert( array( 'supplier' ) === array_values( Companies::get( $c_galva2 )->activities ) && ! in_array( 'type_test', Companies::activities( 'company', true ), true ) && 0 === Companies::activity_usage( 'type_test' ), 'accounts moved to the replacement, no duplicate, type gone' );
 null === $types_before ? delete_option( Companies::TYPES_OPTION ) : update_option( Companies::TYPES_OPTION, $types_before, false );
+
+// Featured accounts (home page).
+list( , $f1 ) = sm_test_company( 'feat1', 'company', array( 'supplier' ), 1 );
+Companies::set_admin_fields( $f1, array( 'featured_until' => gmdate( 'Y-m-d', time() + DAY_IN_SECONDS ), 'featured_label' => 'vip', 'featured_priority' => 0 ) );
+list( $feat, $feat_ids ) = Companies::featured( 'company', 4 );
+sm_assert( (int) $feat[0]->id === $f1 && in_array( $f1, $feat_ids, true ) && 'VIP' === Companies::featured_label( Companies::get( $f1 ) ), 'admin-featured company comes first with its label' );
+Companies::set_admin_fields( $f1, array( 'featured_until' => '' ) );
+sm_assert( '' === Companies::featured_label( Companies::get( $f1 ) ) && ! in_array( $f1, Companies::featured( 'company', 4 )[1], true ), 'featured switched off' );
+$fq = Companies::query( array( 'class' => 'company', 'has_logo' => true, 'per_page' => 100 ) );
+sm_assert( ! array_filter( $fq['items'], static fn( $c ) => ! $c->logo_id ), 'fill-in accounts all have a logo' );
 
 // Old accounts (0.5.0 model) are converted.
 list( , $m1 ) = sm_test_company( 'old1', 'company', array( 'supplier' ) );

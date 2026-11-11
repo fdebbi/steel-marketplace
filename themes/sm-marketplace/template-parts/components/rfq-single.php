@@ -52,7 +52,7 @@ if ( $r['deadline'] ) {
 		<p class="sm-pagehead__intro smq-buyer">
 			<?php sm_icon( 'company' ); ?>
 			<?php if ( $r['company'] ) : ?><a href="<?php echo esc_url( sm_page_url( 'company', array( 'c' => $r['company'] ) ) ); ?>"><?php echo esc_html( sm_t( $r['company_name'] ) ); ?></a><?php endif; ?>
-			<?php if ( $r['verification'] >= 2 ) : ?><?php sm_icon( 'verified', 'sm-verified', sm_verification_label( $r['verification'] ) ); ?><?php endif; ?>
+			<?php if ( $r['verification'] >= 2 ) : ?><?php sm_icon( 'verified', 'sm-verified', sm_verification_label( $r['verification'], $r['class'] ?? '' ) ); ?><?php endif; ?>
 			<span>· <?php echo esc_html( sm_t( $wilayas[ $r['wilaya'] ] ?? '' ) ); ?></span>
 			<?php if ( $r['is_open'] && null !== $r['days_left'] ) : ?>
 				<span class="smq-left">· <?php echo esc_html( 0 >= $r['days_left'] ? __( 'Last day for offers', 'sm-marketplace' ) : sprintf( /* translators: %d: days. */ _n( '%d day left for offers', '%d days left for offers', $r['days_left'], 'sm-marketplace' ), $r['days_left'] ) ); ?></span>

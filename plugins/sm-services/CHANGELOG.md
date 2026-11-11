@@ -1,5 +1,10 @@
 # Changelog — sm-services
 
+## 0.3.0 — 2026-11-11 (Phase 9.2)
+
+- Services modifiables dans SM → Types et catégories (nom FR/AR, description, image, ordre, masquer, ajouter, supprimer avec remplacement sur les pages qui les utilisent).
+- Réalisations : la photo enregistrée peut être supprimée.
+
 ## 0.2.0 — 2026-11-11 (Phase 9.1)
 
 - Catalogue d'ingénierie retiré (les études passent par SM Engineering) ; anciennes pages d'ingénierie au statut « retired ».

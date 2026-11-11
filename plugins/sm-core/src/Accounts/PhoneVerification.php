@@ -55,21 +55,9 @@ final class PhoneVerification {
 		if ( ! empty( $state['sent_at'] ) && time() - (int) $state['sent_at'] < self::RESEND ) {
 			return new \WP_Error( 'sm_wait', __( 'Wait one minute before asking for a new code.', 'sm-core' ) );
 		}
-		$code    = (string) random_int( 100000, 999999 );
+		$code    = self::issue( $user_id );
 		$channel = self::channel();
-		update_user_meta(
-			$user_id,
-			self::META,
-			array(
-				'hash'     => self::hash( $code ),
-				'expires'  => time() + self::TTL,
-				'attempts' => 0,
-				'sent_at'  => time(),
-				'channel'  => $channel,
-			)
-		);
-
-		$lang = \SM\Core\I18n\Language::user_language( $user_id );
+		$lang    = \SM\Core\I18n\Language::user_language( $user_id );
 		if ( 'sms' === $channel ) {
 			$phone = get_user_meta( $user_id, 'sm_phone', true );
 			$text  = \SM\Core\I18n\Language::with_language(
@@ -93,13 +81,31 @@ final class PhoneVerification {
 			);
 		}
 
-		/**
-		 * Development helper: the code is exposed to tests in a "local" environment only.
-		 */
+		return true;
+	}
+
+	/**
+	 * Create and store a new code without sending it (the welcome e-mail of a
+	 * new account carries it). Returns the 6-digit code.
+	 */
+	public static function issue( $user_id ) {
+		$code = (string) random_int( 100000, 999999 );
+		update_user_meta(
+			$user_id,
+			self::META,
+			array(
+				'hash'     => self::hash( $code ),
+				'expires'  => time() + self::TTL,
+				'attempts' => 0,
+				'sent_at'  => time(),
+				'channel'  => self::channel(),
+			)
+		);
+		// Development helper: the code is exposed to tests in a "local" environment only.
 		if ( 'local' === wp_get_environment_type() ) {
 			update_user_meta( $user_id, 'sm_otp_dev', $code );
 		}
-		return true;
+		return $code;
 	}
 
 	/** Translated "code sent to …" message. */

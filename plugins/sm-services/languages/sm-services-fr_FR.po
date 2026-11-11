@@ -192,7 +192,7 @@ msgstr "Demande de service annulée"
 msgid "Service"
 msgstr "Service"
 
-#: src/Admin/Admin.php:29 src/Admin/Admin.php:47
+#: src/Admin/Admin.php:29 src/Admin/Admin.php:47 src/Catalogue.php:128
 msgid "Services"
 msgstr "Services"
 
@@ -307,6 +307,26 @@ msgstr "Vous ne pouvez pas modifier ces réglages."
 #: src/Admin/Admin.php:123
 msgid "You cannot moderate services."
 msgstr "Vous ne pouvez pas modérer les services."
+
+#: src/Catalogue.php:99
+msgid "Unknown service."
+msgstr "Service inconnu."
+
+#: src/Catalogue.php:103
+msgid "Choose the service that replaces it on the pages that use it."
+msgstr "Choisissez le service qui le remplace sur les pages qui l’utilisent."
+
+#: src/Catalogue.php:129
+msgid ""
+"Services that workshops and professionals tick on their service pages, and "
+"that clients filter on."
+msgstr ""
+"Services que les ateliers et les professionnels cochent sur leurs pages de "
+"services, et que les clients utilisent comme filtres."
+
+#: src/Catalogue.php:154
+msgid "Enter the French name."
+msgstr "Saisissez le nom en français."
 
 #: src/Form.php:36
 msgid "Sign in to send a request."

@@ -34,7 +34,6 @@ final class Admin {
 		add_action( 'admin_post_sm_admin_rights', array( __CLASS__, 'save_rights' ) );
 		add_action( 'admin_post_sm_admin_settings', array( __CLASS__, 'save_settings' ) );
 		add_action( 'admin_post_sm_admin_wilayas', array( __CLASS__, 'save_wilayas' ) );
-		add_action( 'admin_post_sm_admin_types', array( __CLASS__, 'save_types' ) );
 		add_action( 'admin_head', array( __CLASS__, 'styles' ) );
 	}
 
@@ -45,7 +44,7 @@ final class Admin {
 		add_submenu_page( 'sm-core', __( 'Overview', 'sm-core' ), __( 'Overview', 'sm-core' ), 'sm_moderate', 'sm-core', array( __CLASS__, 'page_overview' ) );
 		add_submenu_page( 'sm-core', __( 'Companies', 'sm-core' ), __( 'Companies', 'sm-core' ), 'sm_moderate', 'sm-companies', array( __CLASS__, 'page_companies' ) );
 		add_submenu_page( 'sm-core', __( 'Verifications', 'sm-core' ), __( 'Verifications', 'sm-core' ) . $badge, 'sm_moderate', 'sm-verifications', array( __CLASS__, 'page_verifications' ) );
-		add_submenu_page( 'sm-core', __( 'Account types', 'sm-core' ), __( 'Account types', 'sm-core' ), 'sm_manage_settings', 'sm-types', array( __CLASS__, 'page_types' ) );
+		add_submenu_page( 'sm-core', __( 'Types and categories', 'sm-core' ), __( 'Types and categories', 'sm-core' ), 'sm_manage_settings', Terms::PAGE, array( Terms::class, 'page' ) );
 		add_submenu_page( 'sm-core', __( 'Rights', 'sm-core' ), __( 'Rights', 'sm-core' ), 'sm_manage_settings', 'sm-rights', array( __CLASS__, 'page_rights' ) );
 		add_submenu_page( 'sm-core', __( 'Wilayas', 'sm-core' ), __( 'Wilayas', 'sm-core' ), 'sm_manage_settings', 'sm-wilayas', array( __CLASS__, 'page_wilayas' ) );
 		add_submenu_page( 'sm-core', __( 'Settings', 'sm-core' ), __( 'Settings', 'sm-core' ), 'sm_manage_settings', 'sm-settings', array( __CLASS__, 'page_settings' ) );
@@ -210,10 +209,23 @@ final class Admin {
 		echo '</select></td></tr>';
 		echo '<tr><th>' . esc_html__( 'Status', 'sm-core' ) . '</th><td><select name="status"><option value="active"' . selected( $c->status, 'active', false ) . '>' . esc_html__( 'Active', 'sm-core' ) . '</option><option value="suspended"' . selected( $c->status, 'suspended', false ) . '>' . esc_html__( 'Suspended', 'sm-core' ) . '</option></select></td></tr>';
 		echo '<tr><th>' . esc_html__( 'Activities', 'sm-core' ) . '</th><td>';
-		foreach ( Companies::activities( $c->account_class ) as $a ) {
+		foreach ( Companies::activities( $c->account_class, true ) as $a ) {
 			echo '<label style="display:block"><input type="checkbox" name="activities[]" value="' . esc_attr( $a ) . '"' . checked( in_array( $a, $c->activities, true ), true, false ) . '> ' . esc_html( $labels[ $a ] ?? $a ) . '</label>';
 		}
-		echo '</td></tr></tbody></table>';
+		echo '</td></tr>';
+		if ( Companies::is_public_class( $c->account_class ) ) {
+			$until = $c->featured_until ? substr( (string) $c->featured_until, 0, 10 ) : '';
+			echo '<tr><th>' . esc_html__( 'Featured on the home page', 'sm-core' ) . '</th><td><fieldset class="sm-featured">';
+			echo '<label><input type="checkbox" name="featured" value="1"' . checked( '' !== Companies::featured_label( $c ), true, false ) . '> ' . esc_html__( 'Featured', 'sm-core' ) . '</label> &nbsp; ';
+			echo '<label>' . esc_html__( 'Label', 'sm-core' ) . ' <select name="featured_label">';
+			foreach ( Companies::featured_labels() as $k => $l ) {
+				echo '<option value="' . esc_attr( $k ) . '"' . selected( $c->featured_label ? $c->featured_label : 'sponsored', $k, false ) . '>' . esc_html( $l ) . '</option>';
+			}
+			echo '</select></label> &nbsp; <label>' . esc_html__( 'Until', 'sm-core' ) . ' <input type="date" name="featured_until" value="' . esc_attr( $until ) . '"></label> &nbsp; ';
+			echo '<label>' . esc_html__( 'Priority', 'sm-core' ) . ' <input type="number" class="small-text" min="0" max="999" name="featured_priority" value="' . (int) $c->featured_priority . '"></label>';
+			echo '<p class="description">' . esc_html__( 'Shown first on the home page and in the directory until the end date (1 = first). Later, a subscription that includes it will set this automatically. Without any featured account, the home page shows the latest verified accounts with a logo.', 'sm-core' ) . '</p></fieldset></td></tr>';
+		}
+		echo '</tbody></table>';
 		submit_button( __( 'Save', 'sm-core' ) );
 		echo '</form>';
 
@@ -309,77 +321,6 @@ final class Admin {
 	 * and new types / trades. Codes stay fixed so that existing accounts keep
 	 * their type when it is renamed or hidden.
 	 */
-	public static function page_types() {
-		$t      = Companies::type_settings();
-		$labels = Companies::activity_labels();
-		echo '<div class="wrap sm-admin"><h1>' . esc_html__( 'Account types', 'sm-core' ) . '</h1>';
-		self::notice();
-		echo '<p>' . esc_html__( 'Companies choose one or more types, professionals one or more trades. A hidden type is no longer offered at registration; accounts that already have it keep it. New types get the rights of a contracting company (see Rights).', 'sm-core' ) . '</p>';
-		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
-		wp_nonce_field( 'sm_admin_types' );
-		echo '<input type="hidden" name="action" value="sm_admin_types">';
-		$titles = array(
-			'company'      => __( 'Company types', 'sm-core' ),
-			'professional' => __( 'Trades of professionals', 'sm-core' ),
-		);
-		foreach ( $titles as $class => $title ) {
-			echo '<h2>' . esc_html( $title ) . '</h2><table class="widefat striped" style="max-width:920px"><thead><tr><th>' . esc_html__( 'Code', 'sm-core' ) . '</th><th>' . esc_html__( 'French', 'sm-core' ) . '</th><th>' . esc_html__( 'Arabic', 'sm-core' ) . '</th><th>' . esc_html__( 'Active', 'sm-core' ) . '</th></tr></thead><tbody>';
-			foreach ( Companies::activities( $class, true ) as $code ) {
-				$l = (array) ( $t['labels'][ $code ] ?? array() );
-				$c = esc_attr( $code );
-				echo '<tr><td><code>' . esc_html( $code ) . '</code></td>';
-				echo '<td><input class="regular-text" name="labels[' . $c . '][fr]" value="' . esc_attr( $l['fr'] ?? '' ) . '" placeholder="' . esc_attr( $labels[ $code ] ?? $code ) . '"></td>'; // phpcs:ignore WordPress.Security.EscapeOutput
-				echo '<td><input class="regular-text" dir="rtl" name="labels[' . $c . '][ar]" value="' . esc_attr( $l['ar'] ?? '' ) . '"></td>'; // phpcs:ignore WordPress.Security.EscapeOutput
-				echo '<td><input type="checkbox" name="active[]" value="' . $c . '"' . checked( ! in_array( $code, (array) $t['disabled'], true ), true, false ) . '></td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
-			}
-			echo '<tr><td><em>' . esc_html__( 'New', 'sm-core' ) . '</em></td><td><input class="regular-text" name="new[' . esc_attr( $class ) . '][fr]" placeholder="' . esc_attr__( 'French name', 'sm-core' ) . '"></td><td><input class="regular-text" dir="rtl" name="new[' . esc_attr( $class ) . '][ar]" placeholder="' . esc_attr__( 'Arabic name', 'sm-core' ) . '"></td><td></td></tr>';
-			echo '</tbody></table>';
-		}
-		echo '<p class="description">' . esc_html__( 'Leave a name empty to use the default wording (translated). Client and partner engineer accounts have no types.', 'sm-core' ) . '</p>';
-		submit_button( __( 'Save account types', 'sm-core' ) );
-		echo '</form></div>';
-	}
-
-	public static function save_types() {
-		check_admin_referer( 'sm_admin_types' );
-		if ( ! current_user_can( 'sm_manage_settings' ) ) {
-			wp_die( '', 403 );
-		}
-		$t      = Companies::type_settings();
-		$posted = isset( $_POST['labels'] ) ? map_deep( wp_unslash( $_POST['labels'] ), 'sanitize_text_field' ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
-		$active = isset( $_POST['active'] ) ? array_map( 'sanitize_key', (array) wp_unslash( $_POST['active'] ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
-		$new    = isset( $_POST['new'] ) ? map_deep( wp_unslash( $_POST['new'] ), 'sanitize_text_field' ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
-		$labels   = array();
-		$disabled = array();
-		$custom   = (array) $t['custom'];
-		foreach ( array( 'company', 'professional' ) as $class ) {
-			foreach ( Companies::activities( $class, true ) as $code ) {
-				$fr = mb_substr( trim( (string) ( $posted[ $code ]['fr'] ?? '' ) ), 0, 80 );
-				$ar = mb_substr( trim( (string) ( $posted[ $code ]['ar'] ?? '' ) ), 0, 80 );
-				if ( '' !== $fr || '' !== $ar ) {
-					$labels[ $code ] = array( 'fr' => $fr, 'ar' => $ar );
-				}
-				if ( ! in_array( $code, $active, true ) ) {
-					$disabled[] = $code;
-				}
-			}
-			$fr = mb_substr( trim( (string) ( $new[ $class ]['fr'] ?? '' ) ), 0, 80 );
-			if ( '' !== $fr ) {
-				$base = ( 'professional' === $class ? 'trade_' : 'type_' ) . substr( str_replace( '-', '_', sanitize_title( $fr ) ), 0, 32 );
-				$code = $base;
-				for ( $i = 2; '' !== Companies::activity_class( $code ) || in_array( $code, array( 'client', 'engineer' ), true ); $i++ ) {
-					$code = $base . '_' . $i;
-				}
-				$custom[ $class ][] = $code;
-				$labels[ $code ]    = array( 'fr' => $fr, 'ar' => mb_substr( trim( (string) ( $new[ $class ]['ar'] ?? '' ) ), 0, 80 ) );
-				Companies::save_type_settings( $labels, $disabled, $custom ); // So activity_class() sees it for the next one.
-			}
-		}
-		Companies::save_type_settings( $labels, $disabled, $custom );
-		AuditLog::add( 'admin.types_updated', 'settings', 0, array( 'disabled' => $disabled ) );
-		self::back( 'sm-types' );
-	}
-
 	public static function page_wilayas() {
 		echo '<div class="wrap sm-admin"><h1>' . esc_html__( 'Wilayas', 'sm-core' ) . '</h1>';
 		self::notice();
@@ -464,7 +405,11 @@ final class Admin {
 			array(
 				'verification_level' => isset( $_POST['verification_level'] ) ? absint( $_POST['verification_level'] ) : 0,
 				'status'             => isset( $_POST['status'] ) ? sanitize_key( wp_unslash( $_POST['status'] ) ) : 'active',
-			)
+			) + ( isset( $_POST['featured_label'] ) ? array(
+				'featured_until'    => ! empty( $_POST['featured'] ) ? ( sanitize_text_field( wp_unslash( $_POST['featured_until'] ?? '' ) ) ?: gmdate( 'Y-m-d', time() + 30 * DAY_IN_SECONDS ) ) : '',
+				'featured_label'    => sanitize_key( wp_unslash( $_POST['featured_label'] ) ),
+				'featured_priority' => absint( $_POST['featured_priority'] ?? 0 ),
+			) : array() )
 		);
 		$activities = isset( $_POST['activities'] ) ? array_map( 'sanitize_key', (array) wp_unslash( $_POST['activities'] ) ) : array();
 		Companies::set_activities( $id, $activities );

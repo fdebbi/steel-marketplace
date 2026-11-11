@@ -1,5 +1,12 @@
 # Changelog — sm-core
 
+## 0.7.0 — 2026-11-11 (Phase 9.2, base v6)
+
+- SM → **Types et catégories** (remplace « Types de comptes ») : types d'entreprise, métiers et listes des autres modules (filtre `sm_term_lists`) avec nom FR/AR, description FR/AR, image, ordre ; masquer ; supprimer avec un élément de remplacement quand des comptes l'utilisent.
+- À la une : colonnes `featured_until`, `featured_label` (À la une / Sponsorisé / VIP), `featured_priority` ; réglage dans la fiche entreprise ; filtre `sm_company_featured` pour le futur module d'abonnements ; ressources thème `featured_companies` et `directory`.
+- E-mail de bienvenue unique avec le code de vérification (canal e-mail) ; le code est masqué dans le journal des e-mails.
+- Fiche admin : les types masqués restent cochables pour un compte qui les a.
+
 ## 0.6.1 — 2026-11-11
 
 - Ressource thème `company` : adresse et commune exposées pour le bloc Localisation du profil public.

@@ -26,6 +26,8 @@ final class Bridge {
 	public static function init() {
 		add_filter( 'sm_theme_data_company', array( __CLASS__, 'company' ), 10, 2 );
 		add_filter( 'sm_theme_data_companies', array( __CLASS__, 'companies' ), 10, 2 );
+		add_filter( 'sm_theme_data_directory', array( __CLASS__, 'directory' ), 10, 2 );
+		add_filter( 'sm_theme_data_featured_companies', array( __CLASS__, 'featured_companies' ), 10, 2 );
 		add_filter( 'sm_theme_data_wilayas', array( __CLASS__, 'wilayas' ) );
 		add_filter( 'sm_theme_data_account_types', array( __CLASS__, 'account_types' ) );
 		add_filter( 'sm_theme_data_wilaya_centres', static fn( $r ) => null !== $r ? $r : Wilayas::centres() );
@@ -66,7 +68,7 @@ final class Bridge {
 				'activities' => $acts,
 			);
 		}
-		return array( 'classes' => $out, 'labels' => $labels );
+		return array( 'classes' => $out, 'labels' => $labels, 'meta' => Companies::activity_meta() );
 	}
 
 	/** Company row -> theme shape. */
@@ -87,8 +89,10 @@ final class Bridge {
 			'class_label'    => Companies::class_label( $c->account_class ),
 			'activities'     => $c->activities,
 			'logo'           => Companies::logo_url( $c, 'medium' ),
+			'logo_id'        => (int) $c->logo_id,
 			'wilaya'         => $c->wilaya,
 			'verification'   => (int) $c->verification_level,
+			'featured'       => Companies::featured_label( $c ),
 			'since'          => substr( $c->created_at, 0, 4 ),
 			'phone'          => $c->phone,
 			'email'          => $c->email,
@@ -126,6 +130,47 @@ final class Bridge {
 			return null; // No account yet: the theme may show its demo directory.
 		}
 		return array_map( array( __CLASS__, 'shape_company' ), $query['items'] );
+	}
+
+	/**
+	 * Directory page: { items, total, pages }. Args: class (company|professional),
+	 * activity, wilaya, search, verified (1 = verified business), orderby
+	 * (featured|newest|name), page.
+	 */
+	public static function directory( $result, $args ) {
+		if ( null !== $result ) {
+			return $result;
+		}
+		$class    = Companies::is_public_class( (string) ( $args['class'] ?? '' ) ) ? (string) $args['class'] : 'company';
+		$per_page = max( 1, min( 60, (int) ( $args['per_page'] ?? 24 ) ) );
+		$orderby  = in_array( $args['orderby'] ?? '', array( 'featured', 'newest', 'name' ), true ) ? $args['orderby'] : 'featured';
+		$q        = Companies::query(
+			array(
+				'class'     => $class,
+				'activity'  => sanitize_key( (string) ( $args['activity'] ?? '' ) ),
+				'wilaya'    => preg_replace( '/[^0-9]/', '', (string) ( $args['wilaya'] ?? '' ) ),
+				'search'    => mb_substr( trim( (string) ( $args['search'] ?? '' ) ), 0, 80 ),
+				'min_level' => ! empty( $args['verified'] ) ? 2 : 0,
+				'orderby'   => $orderby,
+				'per_page'  => $per_page,
+				'page'      => max( 1, (int) ( $args['page'] ?? 1 ) ),
+			)
+		);
+		return array(
+			'items' => array_map( array( __CLASS__, 'shape_company' ), $q['items'] ),
+			'total' => $q['total'],
+			'pages' => (int) ceil( $q['total'] / $per_page ),
+		);
+	}
+
+	/** Home page: featured accounts of one class, filled with the latest verified ones with a logo. */
+	public static function featured_companies( $result, $args ) {
+		if ( null !== $result ) {
+			return $result;
+		}
+		$class = Companies::is_public_class( (string) ( $args['class'] ?? '' ) ) ? (string) $args['class'] : 'company';
+		list( $items ) = Companies::featured( $class, max( 1, min( 12, (int) ( $args['limit'] ?? 4 ) ) ) );
+		return array_map( array( __CLASS__, 'shape_company' ), $items );
 	}
 
 	public static function wilayas() {

@@ -36,7 +36,7 @@ $url     = $real ? sm_page_url( 'service', array( 'id' => $service['id'] ) ) : s
 		<footer class="sm-card__foot">
 			<span class="sm-card__place"><?php sm_icon( 'company' ); ?><?php echo esc_html( sm_t( $wilayas[ $company['wilaya'] ?? '' ] ?? '' ) ); ?></span>
 			<?php if ( $company ) : ?>
-				<span class="sm-card__seller"><?php sm_e( $company['name'] ); ?><?php if ( $company['verification'] >= 2 ) : ?><?php sm_icon( 'verified', 'sm-verified', sm_verification_label( $company['verification'] ) ); ?><?php endif; ?></span>
+				<span class="sm-card__seller"><?php sm_e( $company['name'] ); ?><?php if ( $company['verification'] >= 2 ) : ?><?php sm_icon( 'verified', 'sm-verified', sm_verification_label( $company['verification'], $company['class'] ?? '' ) ); ?><?php endif; ?></span>
 			<?php endif; ?>
 		</footer>
 	</div>

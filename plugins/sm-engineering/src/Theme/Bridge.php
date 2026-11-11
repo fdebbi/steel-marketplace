@@ -286,6 +286,7 @@ final class Bridge {
 			'public'    => Engineers::public_shape( $e ),
 			'types'     => self::type_options(),
 			'photo'     => $c ? Companies::logo_url( $c, 'medium' ) : '',
+			'photo_id'  => $c ? (int) $c->logo_id : 0,
 			'apply_url' => CoreRoutes::url( 'engineer-apply' ),
 		);
 		$section = sanitize_key( (string) ( $args['section'] ?? 'missions' ) );

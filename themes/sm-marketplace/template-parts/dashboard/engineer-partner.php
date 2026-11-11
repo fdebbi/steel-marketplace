@@ -32,7 +32,7 @@ $locked = in_array( $d['status'], array( 'approved', 'suspended' ), true );
 						<strong><?php echo esc_html( $d['photo'] ? __( 'Change the photo', 'sm-marketplace' ) : __( 'Add your photo', 'sm-marketplace' ) ); ?></strong>
 						<small data-sm-filename-label><?php esc_html_e( 'JPG, PNG or WebP, 4 MB maximum.', 'sm-marketplace' ); ?></small>
 					</label>
-					<?php if ( $d['photo'] ) : ?><label class="sm-check"><input type="checkbox" name="photo_remove" value="1"><span><?php esc_html_e( 'Remove the photo', 'sm-marketplace' ); ?></span></label><?php endif; ?>
+					<?php if ( $d['photo'] ) : ?><?php if ( ! empty( $d['photo_id'] ) ) : ?><?php sm_saved_files( array( 'ids' => array( $d['photo_id'] ), 'field' => 'photo[]', 'remove' => 'photo_remove' ) ); ?><?php else : ?><label class="sm-check"><input type="checkbox" name="photo_remove" value="1"><span><?php esc_html_e( 'Remove the photo', 'sm-marketplace' ); ?></span></label><?php endif; ?><?php endif; ?>
 				</div>
 			</div>
 			<?php sm_component( 'engineer-fields', array( 'values' => $d['profile'], 'types' => $d['types'], 'locked' => $locked ) ); ?>

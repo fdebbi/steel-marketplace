@@ -77,7 +77,7 @@ final class Companies {
 
 	/** Administrator's changes: labels, disabled codes, added codes. */
 	public static function type_settings() {
-		return wp_parse_args( (array) get_option( self::TYPES_OPTION, array() ), array( 'labels' => array(), 'disabled' => array(), 'custom' => array() ) );
+		return wp_parse_args( (array) get_option( self::TYPES_OPTION, array() ), array( 'labels' => array(), 'disabled' => array(), 'custom' => array(), 'desc' => array(), 'image' => array(), 'order' => array(), 'deleted' => array() ) );
 	}
 
 	/**
@@ -94,10 +94,15 @@ final class Companies {
 				$out[ $c ] = array_values( array_unique( array_merge( $out[ $c ], (array) $codes ) ) );
 			}
 		}
-		if ( ! $all ) {
-			foreach ( $out as $c => $codes ) {
-				$out[ $c ] = array_values( array_diff( $codes, (array) $t['disabled'] ) );
+		$order = (array) $t['order'];
+		foreach ( $out as $c => $codes ) {
+			$codes = array_values( array_diff( $codes, (array) $t['deleted'] ) );
+			if ( ! $all ) {
+				$codes = array_values( array_diff( $codes, (array) $t['disabled'] ) );
 			}
+			$pos = array_flip( $codes );
+			usort( $codes, static fn( $a, $b ) => array( (int) ( $order[ $a ] ?? 0 ), $pos[ $a ] ) <=> array( (int) ( $order[ $b ] ?? 0 ), $pos[ $b ] ) );
+			$out[ $c ] = $codes;
 		}
 		$out = apply_filters( 'sm_activities', $out );
 		return $class ? ( $out[ $class ] ?? array() ) : $out;
@@ -145,9 +150,138 @@ final class Companies {
 		return $labels;
 	}
 
-	/** Save the administrator's changes (labels, disabled, new codes). */
+	/** Save the administrator's changes (labels, disabled, new codes); descriptions, images and order are kept. */
 	public static function save_type_settings( array $labels, array $disabled, array $custom ) {
-		update_option( self::TYPES_OPTION, array( 'labels' => $labels, 'disabled' => array_values( $disabled ), 'custom' => $custom ), false );
+		self::update_type_settings( array( 'labels' => $labels, 'disabled' => array_values( $disabled ), 'custom' => $custom ) );
+	}
+
+	/** Change some keys of the administrator's settings, keep the others. */
+	public static function update_type_settings( array $patch ) {
+		update_option( self::TYPES_OPTION, array_merge( self::type_settings(), $patch ), false );
+	}
+
+	/**
+	 * Description and image of each type / trade, in the current language:
+	 * code => { label, desc, image (URL or ''), image_id, hidden }.
+	 */
+	public static function activity_meta( $class = null ) {
+		$t      = self::type_settings();
+		$labels = self::activity_labels();
+		$lang   = function_exists( 'sm_current_language' ) ? sm_current_language() : 'fr';
+		$out    = array();
+		foreach ( self::activities( $class, true ) as $c => $codes ) {
+			foreach ( $class ? array( $codes ) : $codes as $code ) {
+				$d   = (array) ( $t['desc'][ $code ] ?? array() );
+				$img = (int) ( $t['image'][ $code ] ?? 0 );
+				$src = $img ? wp_get_attachment_image_src( $img, 'medium' ) : false;
+				$out[ $code ] = array(
+					'label'    => $labels[ $code ] ?? $code,
+					'desc'     => trim( (string) ( $d[ $lang ] ?? '' ) ) ?: trim( (string) ( $d['fr'] ?? '' ) ),
+					'image'    => $src ? (string) $src[0] : '',
+					'image_id' => $img,
+					'hidden'   => in_array( $code, (array) $t['disabled'], true ),
+				);
+			}
+		}
+		return $out;
+	}
+
+	/** Number of accounts that have a type / trade. */
+	public static function activity_usage( $code ) {
+		global $wpdb;
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		return (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM ' . sm_table( 'company_activities' ) . ' WHERE activity_code = %s', $code ) );
+	}
+
+	/**
+	 * Delete a type / trade. Accounts that have it get $replacement instead
+	 * (required when the code is used). Returns true or a WP_Error.
+	 */
+	public static function delete_activity( $code, $replacement = '' ) {
+		global $wpdb;
+		$class = self::activity_class( $code );
+		if ( ! in_array( $class, array( 'company', 'professional' ), true ) ) {
+			return new \WP_Error( 'sm_unknown', __( 'Unknown type.', 'sm-core' ) );
+		}
+		$used = self::activity_usage( $code );
+		if ( $used && ( $replacement === $code || self::activity_class( $replacement ) !== $class ) ) {
+			return new \WP_Error( 'sm_replacement', __( 'Choose a replacement of the same kind for the accounts that use it.', 'sm-core' ) );
+		}
+		$a = sm_table( 'company_activities' );
+		if ( $used ) {
+			// phpcs:disable WordPress.DB.DirectDatabaseQuery
+			$ids = $wpdb->get_col( $wpdb->prepare( "SELECT company_id FROM $a WHERE activity_code = %s", $code ) );
+			foreach ( $ids as $cid ) {
+				$has = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM $a WHERE company_id = %d AND activity_code = %s", $cid, $replacement ) );
+				if ( $has ) {
+					$wpdb->delete( $a, array( 'company_id' => $cid, 'activity_code' => $code ) );
+				} else {
+					$wpdb->update( $a, array( 'activity_code' => $replacement ), array( 'company_id' => $cid, 'activity_code' => $code ) );
+				}
+				self::flush( $cid );
+			}
+			// phpcs:enable
+		}
+		$t = self::type_settings();
+		$t['deleted'][] = $code;
+		foreach ( (array) $t['custom'] as $c => $codes ) {
+			$t['custom'][ $c ] = array_values( array_diff( (array) $codes, array( $code ) ) );
+		}
+		foreach ( array( 'labels', 'desc', 'image', 'order' ) as $k ) {
+			unset( $t[ $k ][ $code ] );
+		}
+		$t['disabled'] = array_values( array_diff( (array) $t['disabled'], array( $code ) ) );
+		$t['deleted']  = array_values( array_unique( $t['deleted'] ) );
+		update_option( self::TYPES_OPTION, $t, false );
+		return true;
+	}
+
+	/**
+	 * Accounts shown "featured" on the home page: those the administrator (or,
+	 * later, a subscription through the sm_company_featured filter) put forward,
+	 * then the latest verified accounts with a logo to fill the row.
+	 *
+	 * @return array{0:object[],1:int[]} Companies, and the ids that are really featured.
+	 */
+	public static function featured( $class, $limit = 4 ) {
+		global $wpdb;
+		$t   = sm_table( 'companies' );
+		$now = self::now();
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery
+		$ids = array_map( 'intval', $wpdb->get_col( $wpdb->prepare( "SELECT id FROM $t WHERE deleted_at IS NULL AND status = 'active' AND account_class = %s AND featured_until IS NOT NULL AND featured_until >= %s ORDER BY featured_priority ASC, featured_until DESC LIMIT 24", $class, $now ) ) );
+		// phpcs:enable
+		$ids = array_values( array_unique( array_map( 'intval', (array) apply_filters( 'sm_company_featured', $ids, $class ) ) ) );
+		$featured = array_slice( $ids, 0, $limit );
+		$out      = array_values( array_filter( array_map( array( __CLASS__, 'get' ), $featured ) ) );
+		if ( count( $out ) < $limit ) {
+			$fill = self::query( array( 'class' => $class, 'min_level' => 1, 'has_logo' => true, 'per_page' => $limit + count( $out ), 'orderby' => 'newest' ) )['items'];
+			foreach ( $fill as $c ) {
+				if ( count( $out ) >= $limit ) {
+					break;
+				}
+				if ( ! in_array( (int) $c->id, $featured, true ) ) {
+					$out[] = $c;
+				}
+			}
+		}
+		return array( $out, $featured );
+	}
+
+	/** Label shown on a featured account ('' when it is not featured now). */
+	public static function featured_label( $company ) {
+		if ( empty( $company->featured_until ) || $company->featured_until < self::now() ) {
+			return '';
+		}
+		$labels = self::featured_labels();
+		return $labels[ $company->featured_label ] ?? $labels['featured'];
+	}
+
+	public static function featured_labels() {
+		return array(
+			'featured'  => __( 'Featured', 'sm-core' ),
+			'sponsored' => __( 'Sponsored', 'sm-core' ),
+			'vip'       => 'VIP',
+		);
 	}
 
 	private static function now() {
@@ -446,6 +580,16 @@ final class Companies {
 		if ( isset( $fields['status'] ) && in_array( $fields['status'], array( 'active', 'suspended' ), true ) ) {
 			$clean['status'] = $fields['status'];
 		}
+		if ( array_key_exists( 'featured_until', $fields ) ) {
+			$d = (string) $fields['featured_until'];
+			$clean['featured_until'] = preg_match( '/^\d{4}-\d{2}-\d{2}$/', $d ) ? $d . ' 23:59:59' : null;
+		}
+		if ( isset( $fields['featured_label'] ) ) {
+			$clean['featured_label'] = isset( self::featured_labels()[ $fields['featured_label'] ] ) ? $fields['featured_label'] : 'featured';
+		}
+		if ( isset( $fields['featured_priority'] ) ) {
+			$clean['featured_priority'] = max( 0, min( 999, (int) $fields['featured_priority'] ) );
+		}
 		if ( ! $clean ) {
 			return false;
 		}
@@ -473,7 +617,7 @@ final class Companies {
 	 */
 	public static function query( array $args = array() ) {
 		global $wpdb;
-		$args  = wp_parse_args( $args, array( 'class' => '', 'activity' => '', 'wilaya' => '', 'status' => 'active', 'search' => '', 'per_page' => 20, 'page' => 1, 'min_level' => 0, 'orderby' => 'created_at' ) );
+		$args  = wp_parse_args( $args, array( 'class' => '', 'activity' => '', 'wilaya' => '', 'status' => 'active', 'search' => '', 'per_page' => 20, 'page' => 1, 'min_level' => 0, 'orderby' => 'created_at', 'has_logo' => false ) );
 		$t     = sm_table( 'companies' );
 		$where = array( "$t.deleted_at IS NULL" );
 		$vals  = array();
@@ -495,8 +639,13 @@ final class Companies {
 			$where[] = "$t.verification_level >= %d";
 			$vals[]  = (int) $args['min_level'];
 		}
+		if ( $args['has_logo'] ) {
+			$where[] = "$t.logo_id > 0";
+		}
 		if ( $args['search'] ) {
-			$where[] = "($t.name LIKE %s OR $t.name_ar LIKE %s)";
+			$where[] = "($t.name LIKE %s OR $t.name_ar LIKE %s OR $t.title_fr LIKE %s OR $t.title_ar LIKE %s)";
+			$vals[]  = '%' . $wpdb->esc_like( $args['search'] ) . '%';
+			$vals[]  = '%' . $wpdb->esc_like( $args['search'] ) . '%';
 			$like    = '%' . $wpdb->esc_like( $args['search'] ) . '%';
 			$vals[]  = $like;
 			$vals[]  = $like;
@@ -508,7 +657,14 @@ final class Companies {
 			$where[] = "$a.activity_code = %s";
 			$vals[]  = $args['activity'];
 		}
-		$order    = 'name' === $args['orderby'] ? "$t.name ASC" : "$t.verification_level DESC, $t.created_at DESC";
+		$now   = self::now();
+		$feat  = "(CASE WHEN $t.featured_until IS NOT NULL AND $t.featured_until >= '" . esc_sql( $now ) . "' THEN 0 ELSE 1 END)";
+		$orders = array(
+			'name'     => "$t.name ASC",
+			'newest'   => "$t.created_at DESC, $t.id DESC",
+			'featured' => "$feat ASC, $t.featured_priority ASC, $t.verification_level DESC, $t.created_at DESC",
+		);
+		$order    = $orders[ $args['orderby'] ] ?? "$t.verification_level DESC, $t.created_at DESC";
 		$per_page = max( 1, min( 100, (int) $args['per_page'] ) );
 		$offset   = ( max( 1, (int) $args['page'] ) - 1 ) * $per_page;
 		$w        = implode( ' AND ', $where );

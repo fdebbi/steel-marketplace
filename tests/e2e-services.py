@@ -122,6 +122,11 @@ with sync_playwright() as p:
     pub.goto(BASE + '/entreprise/%s/' % slug)
     check(pub.locator('#smc-references .sms-ref:has-text("%s")' % TAG).count() == 1 and pub.locator('.smc-tabs a[href="#smc-references"]').count() == 1, 'professional profile shows the completed projects')
     pub.screenshot(path=os.path.join(OUT, 'professional-profile-1280.png'), full_page=True)
+    pub.click('#smc-references .sms-ref__zoom')
+    check(pub.locator('dialog.sm-lightbox[open] img[src$=".jpg"]').count() == 1, 'clicking a completed-project photo opens it large')
+    pub.screenshot(path=os.path.join(OUT, 'project-photo-1280.png'))
+    pub.keyboard.press('Escape')
+    check(pub.locator('dialog.sm-lightbox[open]').count() == 0, 'Escape closes the photo viewer')
 
     print('\nD. Client requests a quote (mobile)')
     cp = page(client, 390, 844)

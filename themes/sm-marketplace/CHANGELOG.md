@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.15.0 — 2026-11-11 (Phase 9.2, avec sm-core 0.7.0 et sm-services 0.3.0)
+
+- Badges : « Entreprise vérifiée » / « Professionnel vérifié » (registre ou documents contrôlés) à la place de « Qualité vérifiée » ; « Compte vérifié » dès que l'e-mail est confirmé.
+- Accueil : sections « Entreprises à la une » et « Professionnels à la une » avec « Voir tous » ; sans compte à la une, « Dernières entreprises / derniers professionnels inscrits » (vérifiés, avec logo). Le bandeau « Créer un compte gratuit » n'est affiché qu'aux visiteurs non connectés.
+- Deux annuaires : /entreprises/ et /professionnels/ (recherche, wilaya, type ou métier avec sa description et son image, « vérifiés seulement », tri, pagination). L'ancien lien « ?class=professional » redirige vers /professionnels/.
+- Fichiers : chaque fichier choisi s'affiche avec son nom, sa taille et « Téléchargé ✓ » ; on peut le retirer ou en ajouter d'autres avant d'enregistrer. Les fichiers enregistrés restent visibles dans le formulaire avec Remplacer / Supprimer (annulable).
+- Profil : clic sur la photo d'une réalisation → visionneuse en grand (flèches, clavier, glisser sur mobile, « Taille originale »).
+
 ## 0.14.0 — 2026-11-11 (profil public des entreprises, avec sm-core 0.6.1)
 
 - Page profil entreprise / professionnel refaite (préfixe `smc-`) d'après le design validé.

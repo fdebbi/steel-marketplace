@@ -62,6 +62,7 @@ function sm_theme_mega_panel( $item ) {
 			array( 'services', 'wrench', __( 'Fabrication & installation', 'sm-marketplace' ), __( 'Cutting, welding, assembly, installation and dismantling.', 'sm-marketplace' ) ),
 			array( 'engineers', 'hard-hat', __( 'Engineering', 'sm-marketplace' ), __( 'Structural design, calculations and inspection of used structures.', 'sm-marketplace' ) ),
 			array( 'companies', 'company', __( 'Company directory', 'sm-marketplace' ), __( 'Manufacturers, suppliers, installers and recyclers.', 'sm-marketplace' ) ),
+			array( 'professionals', 'user', __( 'Professionals directory', 'sm-marketplace' ), __( 'Welders, steel erectors, boilermakers and other trades.', 'sm-marketplace' ) ),
 		);
 		echo '<ul class="sm-mega__cards">';
 		foreach ( $columns as list( $key, $icon, $label, $desc ) ) {

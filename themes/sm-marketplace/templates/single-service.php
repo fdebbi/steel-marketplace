@@ -73,13 +73,13 @@ $status   = array(
 				<a class="sms-provider" href="<?php echo esc_url( sm_page_url( 'company', array( 'c' => $company['slug'] ) ) ); ?>">
 					<?php sm_avatar( $company ); ?>
 					<span class="sms-provider__text">
-						<strong><?php sm_e( $company['name'] ); ?><?php if ( $company['verification'] >= 2 ) : ?><?php sm_icon( 'verified', 'sm-verified', sm_verification_label( $company['verification'] ) ); ?><?php endif; ?></strong>
+						<strong><?php sm_e( $company['name'] ); ?><?php if ( $company['verification'] >= 2 ) : ?><?php sm_icon( 'verified', 'sm-verified', sm_verification_label( $company['verification'], $company['class'] ?? '' ) ); ?><?php endif; ?></strong>
 						<small>
 							<?php if ( ! empty( $company['title'] ) ) : ?><?php sm_e( $company['title'] ); ?> · <?php endif; ?>
 							<?php echo esc_html( sm_t( $wilayas[ $company['wilaya'] ] ?? '' ) ); ?>
 							<?php if ( ! empty( $company['experience'] ) ) : ?> · <?php echo esc_html( sprintf( /* translators: %d: years. */ _n( '%d year of experience', '%d years of experience', (int) $company['experience'], 'sm-marketplace' ), (int) $company['experience'] ) ); ?><?php endif; ?>
 						</small>
-						<small><?php echo esc_html( sm_verification_label( $company['verification'] ) ); ?></small>
+						<small><?php echo esc_html( sm_verification_label( $company['verification'], $company['class'] ?? '' ) ); ?></small>
 					</span>
 				</a>
 			<?php endif; ?>

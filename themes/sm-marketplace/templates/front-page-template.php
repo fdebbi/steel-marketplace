@@ -12,7 +12,6 @@ $stats    = sm_theme_stats();
 $featured = sm_theme_listings( array( 'market' => array( 'products', 'buildings' ), 'featured' => true, 'per_page' => 4 ) )['items'];
 $reuse    = sm_theme_listings( array( 'market' => 'reuse', 'per_page' => 4 ) )['items'];
 $services = sm_theme_services();
-$companies = array_slice( sm_theme_companies(), 0, 4 );
 ?>
 <section class="sm-hero">
 	<div class="sm-container sm-hero__inner">
@@ -142,18 +141,36 @@ $companies = array_slice( sm_theme_companies(), 0, 4 );
 	</div>
 </section>
 
-<section class="sm-container sm-section">
-	<div class="sm-section__head">
-		<h2><?php esc_html_e( 'Verified companies', 'sm-marketplace' ); ?></h2>
-		<a class="sm-link" href="<?php echo esc_url( sm_page_url( 'companies' ) ); ?>"><?php esc_html_e( 'Company directory', 'sm-marketplace' ); ?><?php sm_icon( 'arrow-end' ); ?></a>
+<?php
+$smf_rows = array(
+	'company'      => array( 'companies', __( 'Featured companies', 'sm-marketplace' ), __( 'Latest companies', 'sm-marketplace' ), __( 'Manufacturers, distributors, recyclers and steel construction companies.', 'sm-marketplace' ), __( 'See all companies', 'sm-marketplace' ) ),
+	'professional' => array( 'professionals', __( 'Featured professionals', 'sm-marketplace' ), __( 'Latest professionals', 'sm-marketplace' ), __( 'Welders, steel erectors, boilermakers and the other steel trades.', 'sm-marketplace' ), __( 'See all professionals', 'sm-marketplace' ) ),
+);
+foreach ( $smf_rows as $smf_class => list( $smf_page, $smf_title, $smf_latest, $smf_intro, $smf_all ) ) :
+	$smf_items = (array) sm_theme_data( 'featured_companies', array( 'class' => $smf_class, 'limit' => 4 ) );
+	if ( ! $smf_items ) {
+		continue;
+	}
+	$smf_has = (bool) array_filter( $smf_items, static fn( $c ) => ! empty( $c['featured'] ) );
+	?>
+<section class="sm-container sm-section smf-section smf-section--<?php echo esc_attr( $smf_class ); ?>" aria-labelledby="smf-<?php echo esc_attr( $smf_class ); ?>">
+	<div class="smf-head">
+		<div>
+			<p class="smf-eyebrow"><?php sm_icon( 'star' ); ?><?php echo esc_html( $smf_has ? __( 'Featured', 'sm-marketplace' ) : __( 'New on the platform', 'sm-marketplace' ) ); ?></p>
+			<h2 id="smf-<?php echo esc_attr( $smf_class ); ?>"><?php echo esc_html( $smf_has ? $smf_title : $smf_latest ); ?></h2>
+			<p><?php echo esc_html( $smf_intro ); ?></p>
+		</div>
+		<a class="sm-btn sm-btn--primary-outline" href="<?php echo esc_url( sm_page_url( $smf_page ) ); ?>"><?php echo esc_html( $smf_all ); ?><?php sm_icon( 'arrow-end' ); ?></a>
 	</div>
-	<div class="sm-grid sm-grid--companies">
-		<?php foreach ( $companies as $company ) : ?>
-			<?php sm_component( 'card-company', array( 'company' => $company ) ); ?>
+	<div class="smf-grid">
+		<?php foreach ( $smf_items as $company ) : ?>
+			<?php sm_component( 'card-featured', array( 'company' => $company ) ); ?>
 		<?php endforeach; ?>
 	</div>
 </section>
+<?php endforeach; ?>
 
+<?php if ( ! is_user_logged_in() ) : ?>
 <section class="sm-cta">
 	<div class="sm-container sm-cta__inner">
 		<div>
@@ -166,5 +183,6 @@ $companies = array_slice( sm_theme_companies(), 0, 4 );
 		</div>
 	</div>
 </section>
+<?php endif; ?>
 <?php
 get_footer();

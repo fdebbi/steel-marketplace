@@ -1,5 +1,9 @@
 # Changelog — sm-engineering
 
+## 0.1.1 — 2026-11-11
+
+- Profil partenaire : la photo enregistrée s'affiche avec Remplacer / Supprimer.
+
 ## 0.1.0 — 2026-11-11 (Phase 9.1)
 
 - Candidature d'ingénieur partenaire (compte séparé) : profil, diplôme, spécialités, expérience, photo, documents privés ; validation, refus motivé, suspension par l'administrateur.

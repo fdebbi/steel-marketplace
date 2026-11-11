@@ -181,3 +181,15 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Partage | Liens de partage simples (aucun script tiers chargé) | Vie privée et performance |
 | Mobile | La barre d'actions fixe du design mobile n'est pas ajoutée : la barre d'onglets mobile du thème occupe déjà le bas de l'écran | Éviter deux barres superposées |
 
+## 11 novembre 2026 — Phase 9.2 : annuaires, à la une, listes éditables, fichiers
+
+| Sujet | Décision | Raison |
+|---|---|---|
+| Badges | « Entreprise vérifiée » / « Professionnel vérifié » remplacent « Qualité vérifiée » | Demande du client |
+| Bandeau d'inscription | Affiché aux visiteurs non connectés seulement | Demande du client |
+| À la une | Réglé par l'administrateur (libellé, date de fin, priorité) ; le futur module d'abonnements passera par le filtre `sm_company_featured` | Pas encore de module d'abonnements |
+| Remplissage | Sans compte à la une (ou pas assez), derniers comptes vérifiés **avec logo** | Choix du client |
+| Suppression d'un type / métier / service utilisé | L'administrateur choisit un remplaçant ; les comptes ou pages basculent, puis l'élément est supprimé | Choix du client ; aucun compte sans type |
+| Fichiers enregistrés | Gérés dans chaque formulaire (annonce, service, réalisation, devis, logo) | Choix du client |
+| Code dans l'e-mail de bienvenue | Un seul e-mail ; le code est masqué (••••••) dans le journal des e-mails | Ne jamais conserver un code |
+

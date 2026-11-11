@@ -36,6 +36,19 @@ function sm_theme_enqueue_assets() {
 				'hide'      => __( 'Hide', 'sm-marketplace' ),
 				'saved'     => __( 'Saved', 'sm-marketplace' ),
 				'removed'   => __( 'Removed from saved listings', 'sm-marketplace' ),
+				'uploaded'  => __( 'Uploaded', 'sm-marketplace' ),
+				/* translators: %s: file name. */
+				'removeFile' => __( 'Remove %s', 'sm-marketplace' ),
+				'addMore'   => __( 'Add other files', 'sm-marketplace' ),
+				'tooMany'   => __( 'Too many files: the extra ones were not added.', 'sm-marketplace' ),
+				'toDelete'  => __( 'Will be deleted when you save', 'sm-marketplace' ),
+				'toReplace' => __( 'Will be replaced when you save', 'sm-marketplace' ),
+				'undo'      => __( 'Undo', 'sm-marketplace' ),
+				'delete'    => __( 'Delete', 'sm-marketplace' ),
+				'close'     => __( 'Close', 'sm-marketplace' ),
+				'prev'      => __( 'Previous photo', 'sm-marketplace' ),
+				'next'      => __( 'Next photo', 'sm-marketplace' ),
+				'original'  => __( 'Original size', 'sm-marketplace' ),
 			),
 		)
 	);

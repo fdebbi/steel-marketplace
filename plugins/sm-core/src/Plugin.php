@@ -36,6 +36,7 @@ final class Plugin {
 
 		if ( is_admin() ) {
 			Admin\Admin::init();
+			Admin\Terms::init();
 			Admin\MailAdmin::init();
 		}
 

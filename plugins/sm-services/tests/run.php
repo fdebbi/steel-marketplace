@@ -172,6 +172,21 @@ sms_assert( 1 === count( $pf ) && 2024 === $pf[0]['year'] && 'Bureau d’études
 $page = Bridge::service( null, array( 'id' => $eid ) );
 sms_assert( $page['viewer']['is_owner'] && 1 === count( $page['portfolio'] ) && 'quote' === $page['price_mode'], 'professional service page with the portfolio' );
 
+// 0.3.0: services editable by the administrator; deletion with a replacement.
+$cat_before = get_option( Catalogue::OPTION, null );
+Catalogue::update_item( 'fabrication', 'welding', array( 'fr' => 'Soudure TIG / MIG', 'desc_fr' => 'Atelier ou chantier', 'order' => -5 ) );
+Catalogue::update_item( 'fabrication', 'drilling', array( 'hidden' => true ) );
+$def = Catalogue::kind( 'fabrication' );
+sms_assert( 'Soudure TIG / MIG' === $def['labels']['welding']['fr'] && 'welding' === array_key_first( $def['categories'] ) && ! isset( $def['categories']['drilling'] ) && isset( $def['labels']['drilling'] ), 'service renamed, ordered first, hidden one still known' );
+$lists = Catalogue::term_lists( array() );
+$new   = call_user_func( $lists['services_fabrication']['save'], '', array( 'fr' => 'Pliage de tôles', 'ar' => 'ثني الصفائح', 'desc_fr' => '', 'desc_ar' => '', 'order' => 0, 'image_id' => 0 ) );
+sms_assert( is_string( $new ) && isset( Catalogue::kind( 'fabrication' )['categories'][ $new ] ), 'service added by the administrator is offered' );
+$used = Catalogue::usage( 'installation' );
+sms_assert( $used > 0 && is_wp_error( Catalogue::delete_item( 'fabrication', 'installation', '' ) ), 'a used service needs a replacement' );
+sms_assert( true === Catalogue::delete_item( 'fabrication', 'installation', 'assembly' ) && 0 === Catalogue::usage( 'installation' ) && ! isset( Catalogue::kind( 'fabrication' )['labels']['installation'] ), 'service deleted, pages moved to the replacement' );
+null === $cat_before ? delete_option( Catalogue::OPTION ) : update_option( Catalogue::OPTION, $cat_before, false );
+Catalogue::reset();
+
 wp_set_current_user( 0 );
 sms_cleanup();
 $t = $GLOBALS['sms_t'];

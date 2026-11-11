@@ -99,7 +99,7 @@ final class Mailer {
 				'recipient'  => substr( $to, 0, 190 ),
 				'reply_to'   => substr( (string) $reply_to, 0, 190 ),
 				'subject'    => mb_substr( $subject, 0, 255 ),
-				'body'       => Settings::get( 'log_bodies' ) && 'otp' !== $event ? $html : '', // Verification codes are never kept.
+				'body'       => Settings::get( 'log_bodies' ) && 'otp' !== $event ? ( 'account.registered:user' === $event ? preg_replace( '/>\s*\d{6}\s*</', '>••••••<', $html ) : $html ) : '', // Verification codes are never kept.
 				'status'     => $ok ? 'sent' : 'failed',
 				'error'      => mb_substr( (string) $error, 0, 255 ),
 				'created_at' => current_time( 'mysql', true ),

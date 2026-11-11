@@ -54,7 +54,7 @@ final class Spec {
 		if ( ! $def ) {
 			return array( 'errors' => array( 'kind' => __( 'Choose the type of service.', 'sm-services' ) ), 'data' => array(), 'texts' => array() );
 		}
-		$cats = array_values( array_intersect( array_map( 'sanitize_key', (array) ( $in['categories'] ?? array() ) ), array_keys( $def['categories'] ) ) );
+		$cats = array_values( array_intersect( array_map( 'sanitize_key', (array) ( $in['categories'] ?? array() ) ), array_keys( $def['labels'] ?? $def['categories'] ) ) );
 		if ( ! $cats ) {
 			$e['categories'] = __( 'Tick at least one service.', 'sm-services' );
 		} elseif ( count( $cats ) > 6 ) {

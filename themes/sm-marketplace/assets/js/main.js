@@ -234,22 +234,6 @@
 	} );
 
 	/* ---- Photo previews --------------------------------------------------- */
-	$$( '[data-sm-upload] input[type="file"]' ).forEach( function ( input ) {
-		var list = input.closest( 'form' ) && $( '[data-sm-previews]', input.closest( 'form' ) );
-		input.addEventListener( 'change', function () {
-			if ( ! list ) { return; }
-			list.innerHTML = '';
-			Array.prototype.slice.call( input.files, 0, 10 ).forEach( function ( f ) {
-				var li = document.createElement( 'li' );
-				var img = document.createElement( 'img' );
-				img.alt = '';
-				img.src = URL.createObjectURL( f );
-				li.appendChild( img );
-				list.appendChild( li );
-			} );
-		} );
-	} );
-
 	/* ---- Company page (0.14.0): request dialogs, phone, copy link -------- */
 	$$( '[data-smc-open]' ).forEach( function ( btn ) {
 		btn.addEventListener( 'click', function () {
@@ -283,18 +267,189 @@
 		} );
 	} );
 
-	/* ---- File fields: show the chosen file names (data-sm-filename) ------- */
-	$$( 'input[type="file"][data-sm-filename]' ).forEach( function ( input ) {
-		var box = input.closest( 'label' );
-		var label = box && $( '[data-sm-filename-label]', box );
-		if ( ! label ) { return; }
-		var initial = label.textContent;
+	/* ---- File fields (0.15.0): every chosen file is listed with its name,
+	   size and "Uploaded ✓"; it can be removed, and more can be added before
+	   the form is saved (the input keeps the whole list). ------------------- */
+	function fmtSize( b ) {
+		var mb = b >= 1048576;
+		var v = String( mb ? ( b / 1048576 ).toFixed( 1 ) : Math.max( 1, Math.round( b / 1024 ) ) );
+		if ( 'ar' !== cfg.lang ) { v = v.replace( '.', ',' ); }
+		return v + ( 'ar' === cfg.lang ? ( mb ? ' MB' : ' KB' ) : ( mb ? ' Mo' : ' Ko' ) );
+	}
+	var canSet = ( function () { try { return !! new DataTransfer(); } catch ( e ) { return false; } } )();
+	$$( 'input[type="file"]' ).forEach( function ( input ) {
+		if ( input.hasAttribute( 'data-sm-files-off' ) ) { return; }
+		var box = input.closest( 'label' ) || input;
+		var list = document.createElement( 'ul' );
+		list.className = 'sm-files';
+		list.setAttribute( 'role', 'list' );
+		list.setAttribute( 'aria-live', 'polite' );
+		box.insertAdjacentElement( 'afterend', list );
+		var old = input.form && $( '[data-sm-previews]', input.form );
+		if ( old ) { old.hidden = true; }
+		var store = [];
+		var label = box.querySelector && $( '[data-sm-filename-label]', box );
+		var initial = label ? label.textContent : '';
+		var max = parseInt( input.getAttribute( 'data-sm-max' ) || '0', 10 );
+		function sync() {
+			if ( canSet ) {
+				var dt = new DataTransfer();
+				store.forEach( function ( f ) { dt.items.add( f ); } );
+				input.files = dt.files;
+			}
+			render();
+		}
+		function render() {
+			list.innerHTML = '';
+			store.forEach( function ( f, i ) {
+				var li = document.createElement( 'li' );
+				li.className = 'sm-files__item';
+				var th = document.createElement( 'span' );
+				th.className = 'sm-files__thumb';
+				if ( /^image\//.test( f.type ) ) {
+					var img = document.createElement( 'img' );
+					img.alt = '';
+					img.src = URL.createObjectURL( f );
+					th.appendChild( img );
+				} else {
+					th.textContent = ( f.name.split( '.' ).pop() || '' ).toUpperCase().slice( 0, 4 );
+				}
+				var info = document.createElement( 'span' );
+				info.className = 'sm-files__info';
+				var nm = document.createElement( 'span' );
+				nm.className = 'sm-files__name';
+				nm.textContent = f.name;
+				var meta = document.createElement( 'span' );
+				meta.className = 'sm-files__meta';
+				meta.textContent = fmtSize( f.size ) + ' · ';
+				var ok = document.createElement( 'strong' );
+				ok.textContent = ( cfg.i18n.uploaded || 'Uploaded' ) + ' ✓';
+				meta.appendChild( ok );
+				info.appendChild( nm );
+				info.appendChild( meta );
+				li.appendChild( th );
+				li.appendChild( info );
+				if ( canSet ) {
+					var rm = document.createElement( 'button' );
+					rm.type = 'button';
+					rm.className = 'sm-files__remove';
+					rm.setAttribute( 'aria-label', ( cfg.i18n.removeFile || 'Remove %s' ).replace( '%s', f.name ) );
+					rm.textContent = '×';
+					rm.addEventListener( 'click', function () { store.splice( i, 1 ); sync(); input.focus(); } );
+					li.appendChild( rm );
+				}
+				list.appendChild( li );
+			} );
+			if ( label ) { label.textContent = store.length ? store.map( function ( f ) { return f.name; } ).join( ', ' ) : initial; }
+			if ( box.classList ) { box.classList.toggle( 'has-file', store.length > 0 ); }
+			var more = box.querySelector && $( 'strong', box );
+			if ( more && input.multiple ) {
+				if ( ! more.hasAttribute( 'data-sm-initial' ) ) { more.setAttribute( 'data-sm-initial', more.innerHTML ); }
+				if ( store.length ) { more.textContent = cfg.i18n.addMore || 'Add other files'; } else { more.innerHTML = more.getAttribute( 'data-sm-initial' ); }
+			}
+		}
 		input.addEventListener( 'change', function () {
-			var names = Array.prototype.map.call( input.files, function ( f ) { return f.name; } );
-			label.textContent = names.length ? names.join( ', ' ) : initial;
-			box.classList.toggle( 'has-file', names.length > 0 );
+			var picked = Array.prototype.slice.call( input.files || [] );
+			if ( ! input.multiple || ! canSet ) {
+				store = picked;
+			} else {
+				picked.forEach( function ( f ) {
+					var dup = store.some( function ( g ) { return g.name === f.name && g.size === f.size; } );
+					if ( ! dup ) { store.push( f ); }
+				} );
+				if ( max && store.length > max ) { store = store.slice( 0, max ); toast( cfg.i18n.tooMany ); }
+			}
+			sync();
 		} );
 	} );
+
+	/* Files already saved: Replace / Delete (undo until the form is saved). */
+	$$( '[data-sm-saved]' ).forEach( function ( list ) {
+		var mode = list.getAttribute( 'data-sm-saved-mode' );
+		var field = list.getAttribute( 'data-sm-saved-field' );
+		list.classList.add( 'is-enhanced' );
+		$$( '.sm-saved__item', list ).forEach( function ( li ) {
+			var cb = $( 'input[type="checkbox"]', li );
+			var actions = $( '[data-sm-saved-actions]', li );
+			var state = $( '[data-sm-saved-state]', li );
+			var initialState = state ? state.textContent : '';
+			var del = $( '[data-sm-saved-delete]', li );
+			var rep = $( '[data-sm-saved-replace]', li );
+			if ( actions ) { actions.hidden = false; }
+			function set( deleted, text ) {
+				cb.checked = 'keep' === mode ? ! deleted : deleted;
+				li.classList.toggle( 'is-deleted', deleted );
+				if ( state ) { state.textContent = deleted ? text : initialState; }
+				if ( del ) { $( 'span', del ).textContent = deleted ? cfg.i18n.undo : cfg.i18n.delete; }
+			}
+			if ( del ) { del.addEventListener( 'click', function () { set( ! li.classList.contains( 'is-deleted' ), cfg.i18n.toDelete ); } ); }
+			if ( rep ) {
+				rep.addEventListener( 'click', function () {
+					var input = li.closest( 'form' ) && li.closest( 'form' ).querySelector( 'input[type="file"][name="' + field + '"]' );
+					if ( ! input ) { return; }
+					set( true, cfg.i18n.toReplace );
+					input.click();
+				} );
+			}
+		} );
+	} );
+
+	/* ---- Photo viewer (data-sm-lightbox="group"): click a photo to see it large. */
+	( function () {
+		var links = $$( 'a[data-sm-lightbox]' );
+		if ( ! links.length ) { return; }
+		var dlg = document.createElement( 'dialog' );
+		dlg.className = 'sm-lightbox';
+		dlg.innerHTML = '<div class="sm-lightbox__bar"><p class="sm-lightbox__cap"></p><span class="sm-lightbox__pos"></span><a class="sm-lightbox__orig" target="_blank" rel="noopener"></a><button type="button" class="sm-lightbox__close">×</button></div>' +
+			'<div class="sm-lightbox__stage"><button type="button" class="sm-lightbox__nav sm-lightbox__nav--prev">‹</button><img alt=""><button type="button" class="sm-lightbox__nav sm-lightbox__nav--next">›</button></div>';
+		document.body.appendChild( dlg );
+		var img = $( 'img', dlg ), cap = $( '.sm-lightbox__cap', dlg ), pos = $( '.sm-lightbox__pos', dlg ), orig = $( '.sm-lightbox__orig', dlg );
+		var prev = $( '.sm-lightbox__nav--prev', dlg ), next = $( '.sm-lightbox__nav--next', dlg ), close = $( '.sm-lightbox__close', dlg );
+		close.setAttribute( 'aria-label', cfg.i18n.close || 'Close' );
+		prev.setAttribute( 'aria-label', cfg.i18n.prev || 'Previous' );
+		next.setAttribute( 'aria-label', cfg.i18n.next || 'Next' );
+		orig.textContent = ( cfg.i18n.original || 'Original size' ) + ' ↗';
+		var group = [], idx = 0, opener = null;
+		function show( i ) {
+			idx = ( i + group.length ) % group.length;
+			var a = group[ idx ];
+			img.src = a.href;
+			img.alt = a.getAttribute( 'data-sm-caption' ) || '';
+			cap.textContent = a.getAttribute( 'data-sm-caption' ) || '';
+			pos.textContent = group.length > 1 ? ( idx + 1 ) + ' / ' + group.length : '';
+			orig.href = a.href;
+			prev.hidden = next.hidden = group.length < 2;
+		}
+		links.forEach( function ( a ) {
+			a.addEventListener( 'click', function ( e ) {
+				if ( typeof dlg.showModal !== 'function' || e.ctrlKey || e.metaKey ) { return; }
+				e.preventDefault();
+				opener = a;
+				group = links.filter( function ( l ) { return l.getAttribute( 'data-sm-lightbox' ) === a.getAttribute( 'data-sm-lightbox' ); } );
+				show( group.indexOf( a ) );
+				dlg.showModal();
+				close.focus();
+			} );
+		} );
+		var rtl = document.documentElement.dir === 'rtl';
+		prev.addEventListener( 'click', function () { show( idx - 1 ); } );
+		next.addEventListener( 'click', function () { show( idx + 1 ); } );
+		close.addEventListener( 'click', function () { dlg.close(); } );
+		dlg.addEventListener( 'close', function () { if ( opener ) { opener.focus(); } } );
+		dlg.addEventListener( 'click', function ( e ) { if ( e.target === dlg || e.target.classList.contains( 'sm-lightbox__stage' ) ) { dlg.close(); } } );
+		dlg.addEventListener( 'keydown', function ( e ) {
+			if ( 'ArrowLeft' === e.key ) { show( idx + ( rtl ? 1 : -1 ) ); }
+			if ( 'ArrowRight' === e.key ) { show( idx + ( rtl ? -1 : 1 ) ); }
+		} );
+		var x0 = null;
+		dlg.addEventListener( 'touchstart', function ( e ) { x0 = e.touches[0].clientX; }, { passive: true } );
+		dlg.addEventListener( 'touchend', function ( e ) {
+			if ( null === x0 ) { return; }
+			var dx = e.changedTouches[0].clientX - x0;
+			if ( Math.abs( dx ) > 50 ) { show( idx + ( ( dx < 0 ) !== rtl ? 1 : -1 ) ); }
+			x0 = null;
+		} );
+	} )();
 
 	/* ---- Demo forms: no submission until the plugins handle them ---------- */
 	$$( '[data-sm-demo-form]' ).forEach( function ( form ) {

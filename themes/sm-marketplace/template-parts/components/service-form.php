@@ -139,13 +139,7 @@ foreach ( (array) $def['units'] as $u ) {
 	<section class="sm-panel smp-step">
 		<h2 class="smw-step__title"><span class="smw-step__n">4</span><?php esc_html_e( 'Photos', 'sm-marketplace' ); ?></h2>
 		<?php $kept = array_filter( array_map( 'absint', (array) ( $state['keep_photos'] ?? array() ) ) ); ?>
-		<?php if ( $kept ) : ?>
-			<ul class="smp-kept" role="list">
-				<?php foreach ( $kept as $aid ) : ?>
-					<li><label class="smp-kept__item"><?php echo wp_get_attachment_image( $aid, 'thumbnail', false, array( 'alt' => '' ) ); ?><span><input type="checkbox" name="keep_photos[]" value="<?php echo esc_attr( $aid ); ?>" checked> <?php esc_html_e( 'Keep', 'sm-marketplace' ); ?></span></label></li>
-				<?php endforeach; ?>
-			</ul>
-		<?php endif; ?>
+		<?php sm_saved_files( array( 'ids' => $kept, 'field' => 'photos[]', 'keep' => 'keep_photos[]' ) ); ?>
 		<label class="sm-upload" data-sm-upload>
 			<input type="file" name="photos[]" accept="image/jpeg,image/png,image/webp" multiple>
 			<?php sm_icon( 'camera', 'sm-upload__icon' ); ?>

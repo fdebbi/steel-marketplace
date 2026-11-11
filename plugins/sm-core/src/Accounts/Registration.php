@@ -45,7 +45,7 @@ final class Registration {
 		list( $user_id, $company_id ) = $ids;
 		self::sign_in( $user_id, $data );
 
-		$sent = PhoneVerification::send_code( $user_id );
+		$sent = '' !== self::welcome_code( $user_id ) ? true : PhoneVerification::send_code( $user_id );
 		$msg  = __( 'Welcome! Your account is created.', 'sm-core' );
 		if ( true === $sent ) {
 			$msg .= ' ' . PhoneVerification::sent_message( $user_id );
@@ -93,8 +93,20 @@ final class Registration {
 			wp_delete_user( $user_id );
 			return $company_id;
 		}
+		// The welcome e-mail carries the verification code (e-mail channel).
+		if ( 'engineer' !== $data['class'] && 'email' === PhoneVerification::channel() && \SM\Core\Mail\Settings::user_on( 'account.registered' ) ) {
+			self::$welcome_codes[ $user_id ] = PhoneVerification::issue( $user_id );
+		}
 		AuditLog::add( 'account.registered', 'company', $company_id, array( 'class' => $data['class'], 'activities' => $data['activities'] ), $user_id, $company_id );
 		return array( $user_id, $company_id );
+	}
+
+	/** Codes issued for the welcome e-mail of this request (never stored in clear). */
+	private static $welcome_codes = array();
+
+	/** Code to put in the welcome e-mail of a user registered in this request ('' when none). */
+	public static function welcome_code( $user_id ) {
+		return (string) ( self::$welcome_codes[ (int) $user_id ] ?? '' );
 	}
 
 	/** Sign the new user in and announce the registration (welcome e-mail, admin alert). */

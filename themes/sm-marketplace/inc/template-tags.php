@@ -298,14 +298,22 @@ function sm_avatar( $company, $size = 'md' ) {
 }
 
 /** Verification level labels. */
-function sm_verification_label( $level ) {
+function sm_verification_label( $level, $class = '' ) {
 	$labels = array(
 		0 => __( 'Not verified', 'sm-marketplace' ),
-		1 => __( 'Contact verified', 'sm-marketplace' ),
-		2 => __( 'Verified business', 'sm-marketplace' ),
+		1 => __( 'Account verified', 'sm-marketplace' ),
+		2 => sm_verified_label( $class ),
 		3 => __( 'Verified engineer', 'sm-marketplace' ),
 	);
 	return $labels[ (int) $level ] ?? $labels[0];
+}
+
+/**
+ * Badge of an account whose registry / documents the platform checked:
+ * "Verified company" or "Verified professional".
+ */
+function sm_verified_label( $class = '' ) {
+	return 'professional' === $class ? __( 'Verified professional', 'sm-marketplace' ) : __( 'Verified company', 'sm-marketplace' );
 }
 
 /** Relative date ("3 days ago"), translated by the theme itself. */
@@ -469,4 +477,48 @@ function sm_lines( $text ) {
 function sm_mission_status( array $mission ) {
 	$tones = array( 'action' => 'warn', 'progress' => 'info', 'review' => 'info', 'done' => 'ok', 'off' => 'muted' );
 	printf( '<span class="sm-status sm-status--%s">%s</span>', esc_attr( $tones[ $mission['tone'] ?? 'off' ] ?? 'muted' ), esc_html( (string) ( $mission['label'] ?? '' ) ) );
+}
+
+/**
+ * Files already saved on a form (0.15.0): thumbnail or file icon, name, and —
+ * with JavaScript — "Replace" and "Delete" buttons (delete can be undone until
+ * the form is saved). Without JavaScript the plain checkbox stays usable.
+ *
+ * @param array $args {
+ *     @type int[]  $ids    Attachment ids.
+ *     @type string $field  Name of the file input of the form (e.g. "photos[]"), used by "Replace".
+ *     @type string $keep   Name of the "keep" checkboxes (checked = kept), e.g. "keep_photos[]".
+ *     @type string $remove Or: name of a single "remove" checkbox (checked = deleted), e.g. "logo_remove".
+ * }
+ */
+function sm_saved_files( array $args ) {
+	$args = wp_parse_args( $args, array( 'ids' => array(), 'field' => '', 'keep' => '', 'remove' => '' ) );
+	$ids  = array_values( array_filter( array_map( 'absint', (array) $args['ids'] ) ) );
+	if ( ! $ids ) {
+		return;
+	}
+	$mode = $args['remove'] ? 'remove' : 'keep';
+	echo '<ul class="sm-saved" role="list" data-sm-saved data-sm-saved-field="' . esc_attr( $args['field'] ) . '" data-sm-saved-mode="' . esc_attr( $mode ) . '">';
+	foreach ( $ids as $aid ) {
+		$file  = (string) get_attached_file( $aid );
+		$name  = $file ? wp_basename( $file ) : get_the_title( $aid );
+		$ext   = strtoupper( (string) pathinfo( $name, PATHINFO_EXTENSION ) );
+		$image = wp_attachment_is_image( $aid ) ? wp_get_attachment_image_src( $aid, 'thumbnail' ) : false;
+		echo '<li class="sm-saved__item">';
+		echo '<span class="sm-saved__thumb">' . ( $image ? '<img src="' . esc_url( $image[0] ) . '" alt="" loading="lazy">' : sm_get_icon( 'file' ) . '<small>' . esc_html( $ext ) . '</small>' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		echo '<span class="sm-saved__info"><span class="sm-saved__name">' . esc_html( $name ) . '</span>';
+		echo '<span class="sm-saved__state" data-sm-saved-state>' . esc_html__( 'Saved', 'sm-marketplace' ) . '</span></span>';
+		if ( 'keep' === $mode ) {
+			echo '<label class="sm-check sm-saved__check"><input type="checkbox" name="' . esc_attr( $args['keep'] ) . '" value="' . esc_attr( $aid ) . '" checked><span>' . esc_html__( 'Keep', 'sm-marketplace' ) . '</span></label>';
+		} else {
+			echo '<label class="sm-check sm-saved__check"><input type="checkbox" name="' . esc_attr( $args['remove'] ) . '" value="1"><span>' . esc_html__( 'Delete', 'sm-marketplace' ) . '</span></label>';
+		}
+		echo '<span class="sm-saved__actions" data-sm-saved-actions hidden>';
+		if ( $args['field'] ) {
+			echo '<button type="button" class="sm-btn sm-btn--ghost sm-btn--sm" data-sm-saved-replace>' . sm_get_icon( 'upload' ) . esc_html__( 'Replace', 'sm-marketplace' ) . '</button>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		}
+		echo '<button type="button" class="sm-btn sm-btn--ghost sm-btn--sm sm-saved__del" data-sm-saved-delete>' . sm_get_icon( 'trash' ) . '<span>' . esc_html__( 'Delete', 'sm-marketplace' ) . '</span></button>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		echo '</span></li>';
+	}
+	echo '</ul>';
 }

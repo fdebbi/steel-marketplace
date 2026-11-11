@@ -231,7 +231,7 @@ final class Form {
 		if ( $spec['errors'] ) {
 			Forms::back( array_merge( $spec['errors'], $photo['errors'] ) );
 		}
-		Portfolio::save( $id, $company->id, $spec['data'], $photo['ids'] ? $photo['ids'][0] : null );
+		Portfolio::save( $id, $company->id, $spec['data'], $photo['ids'] ? $photo['ids'][0] : ( ! empty( $_POST['photo_remove'] ) ? 0 : null ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified in Forms::begin().
 		Forms::back( $photo['errors'], __( 'Reference saved.', 'sm-services' ), CoreRoutes::url( 'account', array( 'view' => 'portfolio' ) ) );
 	}
 

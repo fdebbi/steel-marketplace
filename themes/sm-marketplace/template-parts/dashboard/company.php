@@ -49,7 +49,7 @@ if ( empty( $account['can_manage'] ) ) {
 					<small data-sm-filename-label><?php esc_html_e( 'Square image, JPG, PNG or WebP, 2 MB maximum.', 'sm-marketplace' ); ?></small>
 				</label>
 				<?php sm_theme_error( 'logo' ); ?>
-				<?php if ( $logo ) : ?><label class="sm-check"><input type="checkbox" name="logo_remove" value="1"><span><?php esc_html_e( 'Remove the image', 'sm-marketplace' ); ?></span></label><?php endif; ?>
+				<?php if ( $logo ) : ?><?php sm_saved_files( array( 'ids' => array( (int) ( $account['company']['logo_id'] ?? 0 ) ), 'field' => 'logo[]', 'remove' => 'logo_remove' ) ); ?><?php if ( empty( $account['company']['logo_id'] ) ) : ?><label class="sm-check"><input type="checkbox" name="logo_remove" value="1"><span><?php esc_html_e( 'Remove the image', 'sm-marketplace' ); ?></span></label><?php endif; ?><?php endif; ?>
 			</div>
 		</div>
 		<div class="sm-field sm-field--row">

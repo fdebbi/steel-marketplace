@@ -20,7 +20,7 @@ $activities = sm_activity_labels();
 	<div class="sm-card__body">
 		<h3 class="sm-card__title">
 			<a href="<?php echo esc_url( sm_page_url( 'company', array( 'c' => $company['slug'] ) ) ); ?>"><?php sm_e( $company['name'] ); ?></a>
-			<?php if ( $company['verification'] >= 2 ) : ?><?php sm_icon( 'verified', 'sm-verified', sm_verification_label( $company['verification'] ) ); ?><?php endif; ?>
+			<?php if ( $company['verification'] >= 2 ) : ?><?php sm_icon( 'verified', 'sm-verified', sm_verification_label( $company['verification'], $company['class'] ?? '' ) ); ?><?php endif; ?>
 		</h3>
 		<p class="sm-card__place"><?php sm_icon( 'map-pin' ); ?><?php echo esc_html( sm_t( $wilayas[ $company['wilaya'] ] ?? '' ) ); ?><?php if ( 'professional' === sm_account_class( $company ) ) : ?> · <?php echo esc_html( sm_class_label( 'professional' ) ); ?><?php endif; ?></p>
 		<ul class="sm-tags">
