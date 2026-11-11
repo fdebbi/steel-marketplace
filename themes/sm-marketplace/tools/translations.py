@@ -1442,3 +1442,8 @@ T.update({
 })
 P[("%d professional", "%d professionals")] = (["%d professionnel", "%d professionnels"], ["لا مهنيين", "مهني واحد", "مهنيان", "%d مهنيين", "%d مهنيا", "%d مهني"])
 P[("%d company", "%d companies")] = (["%d entreprise", "%d entreprises"], ["لا مؤسسات", "مؤسسة واحدة", "مؤسستان", "%d مؤسسات", "%d مؤسسة", "%d مؤسسة"])
+
+# 0.15.1
+T.update({
+"Types of company": ("Types d’entreprise", "أنواع المؤسسة"),
+})

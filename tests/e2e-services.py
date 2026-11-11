@@ -127,6 +127,9 @@ with sync_playwright() as p:
     pub.screenshot(path=os.path.join(OUT, 'project-photo-1280.png'))
     pub.keyboard.press('Escape')
     check(pub.locator('dialog.sm-lightbox[open]').count() == 0, 'Escape closes the photo viewer')
+    pub.click('#smc-references .sms-ref__zoom'); pub.click('dialog.sm-lightbox .sm-lightbox__close')
+    check(pub.locator('dialog.sm-lightbox[open]').count() == 0, 'the × button closes it too')
+    check('Soudeur' not in pub.inner_text('.smc-head') and pub.locator('#smc-about .smc-types li').count() >= 1, 'trades shown in the presentation, not in the header')
 
     print('\nD. Client requests a quote (mobile)')
     cp = page(client, 390, 844)

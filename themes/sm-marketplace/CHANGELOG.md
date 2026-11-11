@@ -1,5 +1,10 @@
 # Changelog — sm-marketplace
 
+## 0.15.1 — 2026-11-11
+
+- Profil : les types d'entreprise (ou métiers) ne sont plus dans l'en-tête ; ils s'affichent sur une ligne pleine largeur dans la carte « Présentation ».
+- Photo d'une réalisation : s'ouvre dans une fenêtre (popup) au-dessus de la page ; Échap, le bouton × ou un clic à côté la ferment.
+
 ## 0.15.0 — 2026-11-11 (Phase 9.2, avec sm-core 0.7.0 et sm-services 0.3.0)
 
 - Badges : « Entreprise vérifiée » / « Professionnel vérifié » (registre ou documents contrôlés) à la place de « Qualité vérifiée » ; « Compte vérifié » dès que l'e-mail est confirmé.

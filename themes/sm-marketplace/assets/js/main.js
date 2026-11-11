@@ -438,6 +438,7 @@
 		dlg.addEventListener( 'close', function () { if ( opener ) { opener.focus(); } } );
 		dlg.addEventListener( 'click', function ( e ) { if ( e.target === dlg || e.target.classList.contains( 'sm-lightbox__stage' ) ) { dlg.close(); } } );
 		dlg.addEventListener( 'keydown', function ( e ) {
+			if ( 'Escape' === e.key ) { e.preventDefault(); dlg.close(); return; }
 			if ( 'ArrowLeft' === e.key ) { show( idx + ( rtl ? 1 : -1 ) ); }
 			if ( 'ArrowRight' === e.key ) { show( idx + ( rtl ? -1 : 1 ) ); }
 		} );

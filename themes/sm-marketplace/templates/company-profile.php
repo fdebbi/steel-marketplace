@@ -99,7 +99,7 @@ $shares  = array(
 					<?php endif; ?>
 				</ul>
 				<h1 class="smc-head__name"><?php echo esc_html( $name ); ?></h1>
-				<p class="smc-head__sub"><?php echo esc_html( ! empty( $company['title'] ) && sm_t( $company['title'] ) ? sm_t( $company['title'] ) : implode( ' · ', $acts ) ); ?></p>
+				<?php if ( $is_pro && ! empty( $company['title'] ) && sm_t( $company['title'] ) ) : ?><p class="smc-head__sub"><?php echo esc_html( sm_t( $company['title'] ) ); ?></p><?php endif; ?>
 				<p class="smc-head__meta">
 					<span><?php sm_icon( 'map-pin' ); ?><?php echo esc_html( $place ); ?></span>
 					<span><?php sm_icon( 'calendar' ); ?><?php echo esc_html( sprintf( /* translators: %s: year. */ __( 'Member since %s', 'sm-marketplace' ), $company['since'] ) ); ?></span>
@@ -129,8 +129,13 @@ $shares  = array(
 				<?php else : ?>
 					<p class="sm-muted"><?php esc_html_e( 'This company has not written its presentation yet.', 'sm-marketplace' ); ?></p>
 				<?php endif; ?>
+				<?php if ( $acts ) : ?>
+					<div class="smc-types">
+						<span class="smc-types__label"><?php echo esc_html( $is_pro ? __( 'Trades', 'sm-marketplace' ) : __( 'Types of company', 'sm-marketplace' ) ); ?></span>
+						<ul class="smc-types__list" role="list"><?php foreach ( $acts as $act ) : ?><li><?php echo esc_html( $act ); ?></li><?php endforeach; ?></ul>
+					</div>
+				<?php endif; ?>
 				<dl class="smc-facts">
-					<?php if ( $acts ) : ?><div><dt><?php echo esc_html( $is_pro ? __( 'Trades', 'sm-marketplace' ) : __( 'Activities', 'sm-marketplace' ) ); ?></dt><dd><?php echo esc_html( implode( ' · ', $acts ) ); ?></dd></div><?php endif; ?>
 					<?php if ( $zone ) : ?><div><dt><?php esc_html_e( 'Area covered', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( $zone ); ?></dd></div><?php endif; ?>
 					<div><dt><?php esc_html_e( 'On the platform', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( sprintf( /* translators: %s: year. */ __( 'Since %s', 'sm-marketplace' ), $company['since'] ) ); ?></dd></div>
 				</dl>
