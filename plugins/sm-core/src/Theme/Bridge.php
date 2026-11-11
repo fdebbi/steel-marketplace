@@ -93,6 +93,8 @@ final class Bridge {
 			'phone'          => $c->phone,
 			'email'          => $c->email,
 			'website'        => $c->website,
+			'address'        => (string) ( $c->address ?? '' ),
+			'commune'        => (string) ( $c->commune ?? '' ),
 			'initials'       => $initials ? $initials : 'SM',
 			'about'          => array( 'fr' => (string) $c->about_fr, 'ar' => (string) $c->about_ar ),
 			'title'          => ( $c->title_fr || $c->title_ar ) ? array( 'fr' => $c->title_fr, 'ar' => $c->title_ar ) : null,

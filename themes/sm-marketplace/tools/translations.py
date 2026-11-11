@@ -1359,3 +1359,39 @@ T.update({
 "SM — Become a partner engineer": ("SM — Devenir ingénieur partenaire", "SM — كن مهندسا شريكا"),
 })
 P[("%d mission completed", "%d missions completed")] = (["%d mission réalisée", "%d missions réalisées"], ["لا مهام منجزة", "مهمة واحدة منجزة", "مهمتان منجزتان", "%d مهام منجزة", "%d مهمة منجزة", "%d مهمة منجزة"])
+
+# 0.14.0 — public company profile redesign.
+T.update({
+"Account verified": ("Compte vérifié", "حساب موثّق"),
+"Quality verified": ("Qualité vérifiée", "جودة موثّقة"),
+"Activities": ("Activités", "الأنشطة"),
+"Trades": ("Métiers", "الحرف"),
+"Add plans or photos": ("Joindre des plans ou des photos", "أرفق مخططات أو صورا"),
+"Area covered": ("Zone couverte", "المنطقة المغطاة"),
+"Choose a service to ask this company for a quote.": ("Choisissez un service pour demander un devis à cette entreprise.", "اختر خدمة لطلب عرض سعر من هذه المؤسسة."),
+"Close": ("Fermer", "إغلاق"),
+"Contact details": ("Coordonnées", "معلومات الاتصال"),
+"Copy the link": ("Copier le lien", "نسخ الرابط"),
+"E-mail verified": ("E-mail vérifié", "البريد الإلكتروني مؤكَّد"),
+"Information": ("Informations", "معلومات"),
+"Link copied": ("Lien copié", "تم نسخ الرابط"),
+"Listings published by this company on the marketplace.": ("Annonces publiées par cette entreprise sur le marché.", "الإعلانات التي نشرتها هذه المؤسسة في السوق."),
+"Logo of %s": ("Logo de %s", "شعار %s"),
+"Member since": ("Membre depuis", "عضو منذ"),
+"Member since %s": ("Membre depuis %s", "عضو منذ %s"),
+"Not verified yet": ("Pas encore vérifié", "لم يتم التحقق بعد"),
+"On the platform": ("Sur la plateforme", "على المنصة"),
+"PDF, JPG or PNG": ("PDF, JPG ou PNG", "PDF أو JPG أو PNG"),
+"Products for sale": ("Produits à vendre", "منتجات للبيع"),
+"Professional documents": ("Documents professionnels", "الوثائق المهنية"),
+"Request a quote": ("Demander un devis", "طلب عرض سعر"),
+"See the service": ("Voir le service", "عرض الخدمة"),
+"Send a message": ("Envoyer un message", "إرسال رسالة"),
+"Service": ("Service", "الخدمة"),
+"Share on %s": ("Partager sur %s", "المشاركة على %s"),
+"Share this page": ("Partager cette page", "شارك هذه الصفحة"),
+"Since %s": ("Depuis %s", "منذ %s"),
+"Your contact details are sent to the company with the request. It answers with a quote.": ("Vos coordonnées sont transmises à l’entreprise avec la demande. Elle vous répond par un devis.", "تُرسَل معلومات اتصالك إلى المؤسسة مع الطلب، وتردّ عليك بعرض سعر."),
+"to %s · the answer arrives in your dashboard": ("à %s · la réponse arrive dans votre tableau de bord", "إلى %s · يصلك الرد في لوحة التحكم"),
+})
+P[("%d wilaya", "%d wilayas")] = (["%d wilaya", "%d wilayas"], ["%d ولاية", "ولاية واحدة", "ولايتان", "%d ولايات", "%d ولاية", "%d ولاية"])

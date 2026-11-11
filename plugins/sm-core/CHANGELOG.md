@@ -1,5 +1,9 @@
 # Changelog — sm-core
 
+## 0.6.1 — 2026-11-11
+
+- Ressource thème `company` : adresse et commune exposées pour le bloc Localisation du profil public.
+
 ## 0.6.0 — 2026-11-11 (Phase 9.1 : modèle de comptes)
 
 - Classes de comptes : société (types), professionnel (métiers), client (non public), ingénieur partenaire (créé par SM Engineering).

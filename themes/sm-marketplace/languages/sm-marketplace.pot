@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-11T12:21:03+00:00\n"
+"POT-Creation-Date: 2026-11-11T13:39:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -94,8 +94,7 @@ msgstr ""
 #: footer.php:29
 #: inc/menus.php:40
 #: template-parts/components/services-board.php:30
-#: templates/company-profile.php:39
-#: templates/company-profile.php:104
+#: templates/company-profile.php:64
 #: templates/dashboard.php:102
 msgid "Services"
 msgstr ""
@@ -126,8 +125,8 @@ msgstr ""
 #: header.php:131
 #: inc/menus.php:64
 #: templates/companies.php:26
-#: templates/company-profile.php:20
-#: templates/company-profile.php:49
+#: templates/company-profile.php:26
+#: templates/company-profile.php:82
 #: templates/front-page-template.php:148
 msgid "Company directory"
 msgstr ""
@@ -163,6 +162,7 @@ msgstr ""
 #: template-parts/components/enquiry-form.php:27
 #: template-parts/components/rfq-single.php:158
 #: templates/auth-login.php:40
+#: templates/company-profile.php:332
 #: templates/dashboard.php:47
 #: templates/mission-request.php:41
 #: templates/single-service.php:131
@@ -171,7 +171,6 @@ msgstr ""
 
 #: footer.php:43
 #: header.php:32
-#: templates/company-profile.php:74
 #: templates/contact.php:23
 #: templates/contact.php:32
 #: templates/single-listing.php:301
@@ -223,6 +222,7 @@ msgid "Enquiries"
 msgstr ""
 
 #: footer.php:65
+#: templates/company-profile.php:219
 #: templates/dashboard.php:111
 msgid "Account"
 msgstr ""
@@ -298,6 +298,7 @@ msgstr ""
 #: templates/auth-login.php:17
 #: templates/auth-login.php:39
 #: templates/auth-register.php:101
+#: templates/company-profile.php:331
 #: templates/engineer-apply.php:118
 #: templates/mission-request.php:36
 #: templates/single-service.php:130
@@ -336,6 +337,7 @@ msgstr ""
 #: inc/assets.php:35
 #: templates/auth-login.php:32
 #: templates/auth-register.php:92
+#: templates/company-profile.php:244
 #: templates/engineer-apply.php:82
 msgid "Show"
 msgstr ""
@@ -1013,7 +1015,7 @@ msgstr ""
 
 #. translators: %d: years.
 #: template-parts/components/card-engineer.php:26
-#: templates/company-profile.php:59
+#: templates/company-profile.php:107
 #: templates/single-service.php:80
 msgid "%d year of experience"
 msgid_plural "%d years of experience"
@@ -1112,12 +1114,15 @@ msgstr ""
 #. translators: %d: days.
 #: template-parts/components/card-service.php:32
 #: template-parts/components/service-form.php:96
+#: templates/company-profile.php:56
+#: templates/company-profile.php:181
 #: templates/single-service.php:70
 msgid "All of Algeria"
 msgstr ""
 
 #. translators: %d: number of wilayas.
 #: template-parts/components/card-service.php:32
+#: templates/company-profile.php:181
 msgid "%d wilaya served"
 msgid_plural "%d wilayas served"
 msgstr[0] ""
@@ -1197,7 +1202,7 @@ msgstr ""
 
 #: template-parts/components/enquiry-form.php:42
 #: template-parts/dashboard/company.php:125
-#: templates/company-profile.php:148
+#: templates/company-profile.php:240
 #: templates/contact.php:56
 msgid "Phone"
 msgstr ""
@@ -1213,6 +1218,7 @@ msgid "Message"
 msgstr ""
 
 #: template-parts/components/enquiry-form.php:48
+#: templates/company-profile.php:324
 msgid "Send the request"
 msgstr ""
 
@@ -1291,7 +1297,6 @@ msgstr ""
 #: template-parts/dashboard/portfolio.php:66
 #: template-parts/dashboard/publish.php:184
 #: templates/auth-register.php:76
-#: templates/company-profile.php:146
 #: templates/engineer-apply.php:66
 #: templates/front-page-template.php:40
 #: templates/marketplace-engineers.php:61
@@ -1651,6 +1656,8 @@ msgstr ""
 #: template-parts/dashboard/portfolio.php:48
 #: template-parts/dashboard/portfolio.php:54
 #: template-parts/dashboard/portfolio.php:74
+#: templates/company-profile.php:314
+#: templates/company-profile.php:321
 #: templates/contact.php:56
 #: templates/engineer-apply.php:94
 #: templates/mission-request.php:76
@@ -1704,7 +1711,7 @@ msgid "Manufacturer data sheet, certificate of inspection (up to 3 PDF, %d MB ea
 msgstr ""
 
 #: template-parts/components/product-form.php:177
-#: templates/company-profile.php:154
+#: templates/company-profile.php:227
 #: templates/single-listing.php:67
 msgid "Location"
 msgstr ""
@@ -1723,6 +1730,7 @@ msgstr ""
 #: template-parts/components/rfq-form.php:104
 #: template-parts/components/service-request-form.php:28
 #: template-parts/components/weight-calculator.php:139
+#: templates/company-profile.php:309
 msgid "Choose…"
 msgstr ""
 
@@ -2181,6 +2189,7 @@ msgstr ""
 #. translators: %d: request number.
 #: template-parts/components/rfq-compare.php:86
 #: template-parts/dashboard/company.php:126
+#: templates/company-profile.php:250
 #: templates/contact.php:49
 msgid "E-mail"
 msgstr ""
@@ -2563,10 +2572,13 @@ msgid "Services offered — %s"
 msgstr ""
 
 #: template-parts/components/service-form.php:50
+#: templates/company-profile.php:162
 msgid "Services offered"
 msgstr ""
 
 #: template-parts/components/service-form.php:61
+#: templates/company-profile.php:59
+#: templates/company-profile.php:126
 msgid "Presentation"
 msgstr ""
 
@@ -2665,20 +2677,24 @@ msgid "Publish the service"
 msgstr ""
 
 #: template-parts/components/service-request-form.php:20
+#: templates/company-profile.php:302
 msgid "Your project"
 msgstr ""
 
 #: template-parts/components/service-request-form.php:21
+#: templates/company-profile.php:303
 msgid "What must be made or installed: profiles, quantities, dimensions, site, finish…"
 msgstr ""
 
 #: template-parts/components/service-request-form.php:26
 #: template-parts/components/services-board.php:44
+#: templates/company-profile.php:307
 #: templates/mission-request.php:68
 msgid "Wilaya of the project"
 msgstr ""
 
 #: template-parts/components/service-request-form.php:34
+#: templates/company-profile.php:314
 msgid "Wanted by"
 msgstr ""
 
@@ -3216,6 +3232,7 @@ msgid "Public e-mail"
 msgstr ""
 
 #: template-parts/dashboard/company.php:127
+#: templates/company-profile.php:256
 msgid "Website"
 msgstr ""
 
@@ -3297,6 +3314,7 @@ msgstr ""
 #: template-parts/dashboard/listings.php:50
 #: template-parts/dashboard/studies.php:140
 #: template-parts/dashboard/studies.php:147
+#: templates/company-profile.php:217
 msgid "Status"
 msgstr ""
 
@@ -4461,77 +4479,208 @@ msgstr ""
 msgid "SM — Company profile"
 msgstr ""
 
-#: templates/company-profile.php:20
+#: templates/company-profile.php:26
 msgid "Company not found"
 msgstr ""
 
-#: templates/company-profile.php:43
-#: templates/company-profile.php:113
+#. translators: %d: number of wilayas.
+#: templates/company-profile.php:56
+msgid "%d wilaya"
+msgid_plural "%d wilayas"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/company-profile.php:61
+#: templates/company-profile.php:153
 #: templates/dashboard.php:106
 #: templates/single-service.php:141
 msgid "Completed projects"
 msgstr ""
 
-#: templates/company-profile.php:45
-#: templates/company-profile.php:120
-msgid "About"
+#: templates/company-profile.php:67
+#: templates/company-profile.php:202
+msgid "Products for sale"
+msgstr ""
+
+#. translators: %s: company name.
+#: templates/company-profile.php:86
+msgid "Logo of %s"
+msgstr ""
+
+#: templates/company-profile.php:95
+msgid "Account verified"
+msgstr ""
+
+#: templates/company-profile.php:98
+msgid "Quality verified"
 msgstr ""
 
 #. translators: %s: year.
-#: templates/company-profile.php:64
-#: templates/single-listing.php:145
-msgid "Active since %s"
+#: templates/company-profile.php:105
+msgid "Member since %s"
 msgstr ""
 
-#: templates/company-profile.php:74
-msgid "Request a service"
-msgstr ""
-
-#: templates/company-profile.php:80
+#: templates/company-profile.php:119
 msgid "Company sections"
 msgstr ""
 
-#: templates/company-profile.php:124
+#: templates/company-profile.php:130
 msgid "This company has not written its presentation yet."
 msgstr ""
 
 #: templates/company-profile.php:133
+#: templates/company-profile.php:218
+msgid "Trades"
+msgstr ""
+
+#: templates/company-profile.php:133
+#: templates/company-profile.php:218
+msgid "Activities"
+msgstr ""
+
+#: templates/company-profile.php:134
+#: templates/company-profile.php:221
+msgid "Area covered"
+msgstr ""
+
+#: templates/company-profile.php:135
+msgid "On the platform"
+msgstr ""
+
+#. translators: %s: year.
+#: templates/company-profile.php:135
+msgid "Since %s"
+msgstr ""
+
+#: templates/company-profile.php:141
 msgid "Qualifications"
 msgstr ""
 
-#: templates/company-profile.php:137
+#: templates/company-profile.php:145
 msgid "Specialisations"
 msgstr ""
 
-#: templates/company-profile.php:144
+#: templates/company-profile.php:163
+msgid "Choose a service to ask this company for a quote."
+msgstr ""
+
+#: templates/company-profile.php:187
+#: templates/company-profile.php:263
+#: templates/company-profile.php:287
+msgid "Request a quote"
+msgstr ""
+
+#: templates/company-profile.php:189
+msgid "See the service"
+msgstr ""
+
+#: templates/company-profile.php:203
+msgid "Listings published by this company on the marketplace."
+msgstr ""
+
+#: templates/company-profile.php:213
 msgid "Company details"
 msgstr ""
 
-#: templates/company-profile.php:147
+#: templates/company-profile.php:215
+msgid "Information"
+msgstr ""
+
+#: templates/company-profile.php:219
+msgid "E-mail verified"
+msgstr ""
+
+#: templates/company-profile.php:219
+msgid "Not verified yet"
+msgstr ""
+
+#: templates/company-profile.php:220
+msgid "Professional documents"
+msgstr ""
+
+#: templates/company-profile.php:220
 msgid "Commercial register"
 msgstr ""
 
-#: templates/company-profile.php:147
+#: templates/company-profile.php:220
 msgid "Checked by the platform"
 msgstr ""
 
-#: templates/company-profile.php:147
+#: templates/company-profile.php:220
 msgid "Not yet checked"
 msgstr ""
 
-#: templates/company-profile.php:176
-msgid "Service request"
+#: templates/company-profile.php:222
+msgid "Member since"
 msgstr ""
 
-#: templates/company-profile.php:176
+#: templates/company-profile.php:235
+msgid "Contact details"
+msgstr ""
+
+#: templates/company-profile.php:265
+#: templates/company-profile.php:341
+#: templates/company-profile.php:343
+msgid "Send a message"
+msgstr ""
+
+#: templates/company-profile.php:271
+msgid "Share this page"
+msgstr ""
+
+#. translators: %s: social network.
+#: templates/company-profile.php:274
+msgid "Share on %s"
+msgstr ""
+
+#: templates/company-profile.php:276
+msgid "Link copied"
+msgstr ""
+
+#: templates/company-profile.php:276
+msgid "Copy the link"
+msgstr ""
+
+#. translators: %s: company name.
+#: templates/company-profile.php:288
+msgid "to %s · the answer arrives in your dashboard"
+msgstr ""
+
+#: templates/company-profile.php:290
+#: templates/company-profile.php:344
+msgid "Close"
+msgstr ""
+
+#: templates/company-profile.php:296
+msgid "Service"
+msgstr ""
+
+#: templates/company-profile.php:321
+msgid "Add plans or photos"
+msgstr ""
+
+#: templates/company-profile.php:322
+msgid "PDF, JPG or PNG"
+msgstr ""
+
+#: templates/company-profile.php:325
+msgid "Your contact details are sent to the company with the request. It answers with a quote."
+msgstr ""
+
+#: templates/company-profile.php:328
+#: templates/single-service.php:125
+msgid "You already sent a request for this service."
+msgstr ""
+
+#: templates/company-profile.php:354
 msgid "Contact from the company page"
 msgstr ""
 
-#: templates/company-profile.php:177
+#: templates/company-profile.php:355
 msgid "Contact this professional"
 msgstr ""
 
-#: templates/company-profile.php:177
+#: templates/company-profile.php:355
 msgid "Contact this company"
 msgstr ""
 
@@ -5396,6 +5545,11 @@ msgstr ""
 msgid "Share"
 msgstr ""
 
+#. translators: %s: year.
+#: templates/single-listing.php:145
+msgid "Active since %s"
+msgstr ""
+
 #: templates/single-listing.php:155
 msgid "Listing checked by the platform. Contact the seller with the form; your details are shared only when you write."
 msgstr ""
@@ -5503,10 +5657,6 @@ msgstr ""
 
 #: templates/single-service.php:112
 msgid "Equipment"
-msgstr ""
-
-#: templates/single-service.php:125
-msgid "You already sent a request for this service."
 msgstr ""
 
 #: templates/single-service.php:125

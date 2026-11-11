@@ -1,5 +1,14 @@
 # Changelog — sm-marketplace
 
+## 0.14.0 — 2026-11-11 (profil public des entreprises, avec sm-core 0.6.1)
+
+- Page profil entreprise / professionnel refaite (préfixe `smc-`) d'après le design validé.
+- En-tête : logo, nom à côté, statut et badges au-dessus du nom : « Compte vérifié » dès que l'e-mail est vérifié, « Qualité vérifiée » après contrôle du registre par l'administrateur.
+- Colonne principale : Présentation → Réalisations → Services proposés → Produits à vendre, avec onglets d'ancrage.
+- Chaque service ouvre une fenêtre « Demander un devis » avec ce service présélectionné ; la demande arrive dans le tableau de bord du prestataire.
+- Colonne latérale : Informations → Localisation (adresse + carte) → Coordonnées (téléphone masqué, « Afficher ») → Partager cette page (Facebook, WhatsApp, LinkedIn, X, Telegram, copier le lien).
+- « Envoyer un message » ouvre le formulaire de contact dans une fenêtre ; nouvelles icônes réseaux sociaux et lien.
+
 ## 0.13.0 — 2026-11-11 (Phase 9.1, avec sm-core 0.6.0 et sm-engineering 0.1.0)
 
 - Inscription : trois cartes (Société / Professionnel / Client), types ou métiers selon le choix, lien « Devenir ingénieur partenaire » ; logo et texte du panneau alignés en haut avec « Créez votre compte ».

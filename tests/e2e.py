@@ -257,7 +257,9 @@ with sync_playwright() as p:
 
     # The company contacts the professional from his public page.
     c.goto(BASE + '/entreprise/' + eslug + '/')
-    check(c.locator('.sm-company-head .sm-avatar--img').count() == 1, 'public page shows the photo of the professional')
+    check(c.locator('.smc-head__logo img').count() == 1, 'public page shows the photo of the professional')
+    check(c.locator('.smc-badge--account').count() == 1, 'account-verified badge once the e-mail is verified')
+    c.click('.smc-side [data-smc-open="smc-message"]')
     c.fill('#sm-contact-msg', 'Bonjour, nous cherchons un soudeur pour le montage d’un hangar 40 x 20 m.')
     c.click('#sm-contact button[type="submit"]')
     c.wait_for_load_state()
@@ -290,7 +292,9 @@ with sync_playwright() as p:
     a.context.close()
 
     c.goto(BASE + '/entreprise/' + slug + '/')
-    check(c.locator('.sm-company-head .is-verified').count() == 1, 'verified badge on the public company page')
+    check(c.locator('.smc-head .smc-badge--quality').count() == 1, 'quality-verified badge on the public company page')
+    share = c.locator('.smc-share a[href*="facebook.com/sharer"]').get_attribute('href') or ''
+    check(slug in share and c.locator('.smc-share a').count() >= 5, 'share links point to the company page')
     shot(c, 'company-verified-fr-390')
 
     # ------------------------------------------------------------------

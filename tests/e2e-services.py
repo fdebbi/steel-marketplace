@@ -120,7 +120,7 @@ with sync_playwright() as p:
     pub.goto(BASE + '/services/?q=' + TAG)
     check(pub.locator('.sm-card--service:has-text("Soudure et montage sur chantier")').count() == 1, 'professional service on the services board')
     pub.goto(BASE + '/entreprise/%s/' % slug)
-    check(pub.locator('#tab-references .sms-ref:has-text("%s")' % TAG).count() == 1 and pub.locator('.sm-tabs a[href="#tab-references"]').count() == 1, 'professional profile shows the completed projects')
+    check(pub.locator('#smc-references .sms-ref:has-text("%s")' % TAG).count() == 1 and pub.locator('.smc-tabs a[href="#smc-references"]').count() == 1, 'professional profile shows the completed projects')
     pub.screenshot(path=os.path.join(OUT, 'professional-profile-1280.png'), full_page=True)
 
     print('\nD. Client requests a quote (mobile)')
@@ -142,6 +142,19 @@ with sync_playwright() as p:
     cp.goto(BASE + '/compte/mes-demandes-de-service/')
     check(TAG in txt(cp, '.sms-reqs') and 'Nouvelle' in txt(cp, '.sms-reqs'), '"My service requests" lists it as new')
     check(notified(fab, 'service.request_received'), 'workshop notified')
+
+    print('\nD2. Client asks a quote from the company profile')
+    cp.goto(BASE + '/entreprise/%s/' % slug)
+    btn = '.smc-services [data-smc-open="smc-request"]'
+    psid = cp.get_attribute(btn, 'data-smc-service')
+    cp.click(btn)
+    check(cp.locator('#smc-request[open]').count() == 1 and cp.input_value('[data-smc-service-select]') == psid, 'quote dialog opens with the clicked service preselected')
+    cp.fill('#smc-msg', 'Montage d’une charpente de hangar 20 × 12 m à Rouiba, soudure sur site comprise.')
+    cp.select_option('#smc-w', '16')
+    cp.click('#smc-request button[type="submit"]'); cp.wait_for_load_state()
+    check('envoyée' in txt(cp, '.sm-notice--success') and '/entreprise/' in cp.url, 'request sent from the profile page, back on the profile')
+    check(notified(pro, 'service.request_received'), 'professional notified')
+    cp.screenshot(path=os.path.join(OUT, 'profile-request-390.png'), full_page=True)
 
     print('\nE. Workshop answers with a quote')
     fp.goto(BASE + '/compte/demandes-de-service/')

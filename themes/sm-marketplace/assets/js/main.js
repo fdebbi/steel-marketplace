@@ -250,6 +250,39 @@
 		} );
 	} );
 
+	/* ---- Company page (0.14.0): request dialogs, phone, copy link -------- */
+	$$( '[data-smc-open]' ).forEach( function ( btn ) {
+		btn.addEventListener( 'click', function () {
+			var dlg = document.getElementById( btn.getAttribute( 'data-smc-open' ) );
+			if ( ! dlg || typeof dlg.showModal !== 'function' ) { return; }
+			var sel = $( '[data-smc-service-select]', dlg );
+			if ( sel && btn.hasAttribute( 'data-smc-service' ) ) { sel.value = btn.getAttribute( 'data-smc-service' ); }
+			dlg.showModal();
+			var first = $( 'textarea, input:not([type=hidden]), select', dlg );
+			if ( first ) { first.focus(); }
+		} );
+	} );
+	$$( 'dialog.smc-dialog' ).forEach( function ( dlg ) {
+		$$( '[data-smc-close]', dlg ).forEach( function ( b ) { b.addEventListener( 'click', function () { dlg.close(); } ); } );
+		dlg.addEventListener( 'click', function ( e ) { if ( e.target === dlg ) { dlg.close(); } } );
+	} );
+	$$( '[data-smc-reveal]' ).forEach( function ( btn ) {
+		btn.addEventListener( 'click', function () {
+			var li = btn.closest( 'li' );
+			var link = $( '[data-smc-phone]', li );
+			var mask = $( '[data-smc-phone-mask]', li );
+			if ( link ) { link.hidden = false; link.focus(); }
+			if ( mask ) { mask.hidden = true; }
+			btn.hidden = true;
+		} );
+	} );
+	$$( '[data-smc-copy]' ).forEach( function ( btn ) {
+		btn.addEventListener( 'click', function () {
+			var url = btn.getAttribute( 'data-smc-copy' );
+			if ( navigator.clipboard ) { navigator.clipboard.writeText( url ).then( function () { toast( btn.getAttribute( 'data-smc-copied' ) || url ); } ); }
+		} );
+	} );
+
 	/* ---- File fields: show the chosen file names (data-sm-filename) ------- */
 	$$( 'input[type="file"][data-sm-filename]' ).forEach( function ( input ) {
 		var box = input.closest( 'label' );

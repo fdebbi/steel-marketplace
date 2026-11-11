@@ -170,3 +170,14 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Migration | Base v5 : `commercial` → société (installer → réalisation, reuse_dealer → recyclage, fabrication → fabrication), comptes « maître d'ouvrage » seuls → client, `engineering` → ingénieur partenaire (à valider) ; matrice des droits remise aux valeurs par défaut | Les colonnes de la matrice ont changé |
 | Photo / logo | Tous les comptes : logo ou photo (2 Mo), affiché dans l'en-tête, les cartes, les profils et la liste des ingénieurs | Demande 3 |
 | Correctif langue | Après un e-mail envoyé dans une autre langue, la langue de la requête est rétablie explicitement | Un texte de domaine non chargé remettait les messages en anglais |
+
+## 11 novembre 2026 — Profil public des entreprises
+
+| Sujet | Décision | Raison |
+|---|---|---|
+| Badges | « Compte vérifié » = niveau 1 (e-mail confirmé par code) ; « Qualité vérifiée » = niveau 2 (registre / documents contrôlés par l'administrateur) | Demande du client |
+| Ordre des blocs | Principal : Présentation, Réalisations, Services, Produits ; latéral : Informations, Localisation, Coordonnées, Partage | Design validé |
+| Demande de devis | Un seul formulaire dans une fenêtre, le service cliqué est présélectionné ; même traitement serveur que la page service | Pas de logique dupliquée |
+| Partage | Liens de partage simples (aucun script tiers chargé) | Vie privée et performance |
+| Mobile | La barre d'actions fixe du design mobile n'est pas ajoutée : la barre d'onglets mobile du thème occupe déjà le bas de l'écran | Éviter deux barres superposées |
+
