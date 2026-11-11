@@ -24,8 +24,15 @@ Architecture : un thème WordPress sur mesure (présentation uniquement) + des e
 | 1 | Thème `sm-marketplace` | Validée le 7 nov. 2026 |
 | 2 | Extension `sm-core` + thème (0.2.0), puis carte de l'entreprise (sm-core 0.2.0, thème 0.3.0) | Validée le 7 nov. 2026 |
 | 3 | Moteur de poids `sm-weight-engine` 0.1.0 + calculateur (thème 0.4.0) | Validée le 7 nov. 2026 |
-| 4 | Produits neufs `sm-products` 0.1.0 (sm-core 0.3.0, thème 0.5.0) | Livrée le 7 nov. 2026 — en attente de validation |
-| 5–12 | Marchés, devis, services, IA, abonnements, QA, applications mobiles | À venir |
+| 4 | Produits neufs `sm-products` | Livrée le 7 nov. 2026 |
+| 5 | Réemploi `sm-reuse` | Livrée le 7 nov. 2026 |
+| 6 | Bâtiments `sm-buildings` | Livrée le 7 nov. 2026 |
+| 7 | Demandes de devis `sm-rfq` | Livrée le 8 nov. 2026 |
+| 8 – 8.1 | Services `sm-services`, e-mails et activité | Livrée le 8 nov. 2026 |
+| 9 – 9.3 | Assistant IA `sm-ai`, types de comptes et ingénieurs partenaires `sm-engineering`, annuaires, à la une, vente au lot, modifications vérifiées | Livrée le 11 nov. 2026 |
+| 10 | Abonnements et crédits IA (`sm-subscriptions`) | À venir |
+| 11 | Statistiques (`sm-analytics`) et recette complète (QA) avant ouverture | À venir |
+| 12 | Applications mobiles (API REST existante) | À venir |
 
 ## Installer
 
