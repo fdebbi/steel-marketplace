@@ -131,14 +131,13 @@ $shares  = array(
 				<?php endif; ?>
 				<?php if ( $acts ) : ?>
 					<div class="smc-types">
-						<span class="smc-types__label"><?php echo esc_html( $is_pro ? __( 'Trades', 'sm-marketplace' ) : __( 'Types of company', 'sm-marketplace' ) ); ?></span>
+						<span class="screen-reader-text"><?php echo esc_html( $is_pro ? __( 'Trades', 'sm-marketplace' ) : __( 'Types of company', 'sm-marketplace' ) ); ?></span>
 						<ul class="smc-types__list" role="list"><?php foreach ( $acts as $act ) : ?><li><?php echo esc_html( $act ); ?></li><?php endforeach; ?></ul>
 					</div>
 				<?php endif; ?>
-				<dl class="smc-facts">
-					<?php if ( $zone ) : ?><div><dt><?php esc_html_e( 'Area covered', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( $zone ); ?></dd></div><?php endif; ?>
-					<div><dt><?php esc_html_e( 'On the platform', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( sprintf( /* translators: %s: year. */ __( 'Since %s', 'sm-marketplace' ), $company['since'] ) ); ?></dd></div>
-				</dl>
+				<?php if ( $zone ) : ?>
+					<dl class="smc-facts"><div><dt><?php esc_html_e( 'Area covered', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( $zone ); ?></dd></div></dl>
+				<?php endif; ?>
 				<?php if ( $is_pro ) : ?>
 					<?php $quals = array_filter( (array) ( $company['qualifications'] ?? array() ) ); ?>
 					<?php $specs = array_filter( (array) ( $company['specialities'] ?? array() ) ); ?>
@@ -216,18 +215,6 @@ $shares  = array(
 		</div>
 
 		<aside class="smc-side" aria-label="<?php esc_attr_e( 'Company details', 'sm-marketplace' ); ?>">
-			<section class="smc-card" aria-labelledby="smc-info-t">
-				<h2 id="smc-info-t"><?php esc_html_e( 'Information', 'sm-marketplace' ); ?></h2>
-				<dl class="smc-rows">
-					<div><dt><?php esc_html_e( 'Status', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( sm_class_label( $class ) ); ?></dd></div>
-					<?php if ( $acts ) : ?><div><dt><?php echo esc_html( $is_pro ? __( 'Trades', 'sm-marketplace' ) : __( 'Activities', 'sm-marketplace' ) ); ?></dt><dd><?php echo esc_html( implode( ', ', $acts ) ); ?></dd></div><?php endif; ?>
-					<div><dt><?php esc_html_e( 'Account', 'sm-marketplace' ); ?></dt><dd class="<?php echo $level >= 1 ? 'is-ok' : 'is-wait'; ?>"><?php echo esc_html( $level >= 1 ? __( 'E-mail verified', 'sm-marketplace' ) : __( 'Not verified yet', 'sm-marketplace' ) ); ?></dd></div>
-					<div><dt><?php echo esc_html( $is_pro ? __( 'Professional documents', 'sm-marketplace' ) : __( 'Commercial register', 'sm-marketplace' ) ); ?></dt><dd class="<?php echo $level >= 2 ? 'is-ok' : 'is-wait'; ?>"><?php echo esc_html( $level >= 2 ? __( 'Checked by the platform', 'sm-marketplace' ) : __( 'Not yet checked', 'sm-marketplace' ) ); ?></dd></div>
-					<?php if ( $zone ) : ?><div><dt><?php esc_html_e( 'Area covered', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( $zone ); ?></dd></div><?php endif; ?>
-					<div><dt><?php esc_html_e( 'Member since', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( (string) $company['since'] ); ?></dd></div>
-				</dl>
-			</section>
-
 			<section class="smc-card smc-location" aria-labelledby="smc-loc-t">
 				<h2 id="smc-loc-t"><?php esc_html_e( 'Location', 'sm-marketplace' ); ?></h2>
 				<p class="smc-address"><?php sm_icon( 'map-pin' ); ?><span dir="auto"><?php echo esc_html( $address ? $address : $place ); ?></span></p>

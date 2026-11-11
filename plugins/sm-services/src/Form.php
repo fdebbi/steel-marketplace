@@ -95,9 +95,10 @@ final class Form {
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified in Forms::begin().
 		$spec   = Spec::service( (array) wp_unslash( $_POST ), true );
 		$s      = Settings::all();
-		$keep   = self::kept( 'keep_photos', $user_id, 'service', $id );
-		$new    = self::upload( 'photos', Media::IMAGE_TYPES, max( 0, $s['max_photos'] - count( $keep ) ), $s['photo_mb'], $user_id );
-		$photos = array_merge( $keep, $new['ids'] );
+		// One image per service (0.3.1): a new image replaces the saved one.
+		$keep   = array_slice( self::kept( 'keep_photos', $user_id, 'service', $id ), 0, 1 );
+		$new    = self::upload( 'photos', Media::IMAGE_TYPES, 1, $s['photo_mb'], $user_id );
+		$photos = $new['ids'] ? array_slice( $new['ids'], 0, 1 ) : $keep;
 		$_POST['keep_photos'] = $photos; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- kept for the form on error.
 		if ( $spec['errors'] ) {
 			Forms::back( array_merge( $spec['errors'], $new['errors'] ) );

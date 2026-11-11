@@ -42,11 +42,13 @@ final class Services {
 	public static function save( $id, $company_id, $user_id, array $spec, $status, $photos = null ) {
 		$is_new = ! $id;
 		global $wpdb;
+		$prev = $id ? (string) $wpdb->get_var( $wpdb->prepare( 'SELECT custom_service FROM ' . self::table() . ' WHERE id = %d', $id ) ) : ''; // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		$now = current_time( 'mysql', true );
 		$d   = $spec['data'];
 		$row = array(
 			'kind'       => $d['kind'],
 			'categories' => wp_json_encode( $d['categories'] ),
+			'custom_service' => (string) ( $d['custom_service'] ?? '' ),
 			'wilayas'    => wp_json_encode( $d['wilayas'] ),
 			'lead_days'  => $d['lead_days'],
 			'price_mode' => $d['price_mode'],
@@ -70,6 +72,16 @@ final class Services {
 			Media::set( 'service', $id, 'photo', $photos );
 		}
 		AuditLog::add( 'service.saved', 'service', $id, array( 'status' => $status, 'new' => $is_new ), $user_id, $company_id );
+		// A service name that is not in the list yet: the administrator files it (SM → Types and categories).
+		$custom = (string) ( $d['custom_service'] ?? '' );
+		if ( '' !== $custom && 'draft' !== $status ) {
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$names = $wpdb->get_col( $wpdb->prepare( 'SELECT custom_service FROM ' . self::table() . " WHERE id <> %d AND status <> 'retired' AND custom_service <> ''", $id ) );
+			$same  = in_array( mb_strtolower( $custom ), array_map( 'mb_strtolower', $names ), true );
+			if ( ! $same && 0 !== strcasecmp( $custom, $prev ) ) {
+				AuditLog::add( 'service.custom_proposed', 'service', $id, array( 'name' => $custom ), $user_id, $company_id );
+			}
+		}
 		return (int) $id;
 	}
 
@@ -140,7 +152,8 @@ final class Services {
 			$args[]  = $a['wilaya'];
 		}
 		if ( ! empty( $a['q'] ) ) {
-			$where[] = "id IN (SELECT entity_id FROM {$wpdb->prefix}sm_translations WHERE entity_type = 'service' AND value LIKE %s)";
+			$where[] = "(id IN (SELECT entity_id FROM {$wpdb->prefix}sm_translations WHERE entity_type = 'service' AND value LIKE %s) OR custom_service LIKE %s)";
+			$args[]  = '%' . $wpdb->esc_like( (string) $a['q'] ) . '%';
 			$args[]  = '%' . $wpdb->esc_like( (string) $a['q'] ) . '%';
 		}
 		$per   = max( 1, min( 60, (int) $a['per_page'] ) );

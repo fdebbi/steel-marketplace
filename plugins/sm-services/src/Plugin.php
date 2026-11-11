@@ -40,6 +40,7 @@ final class Plugin {
 		Theme\Bridge::init();
 		Rest\Api::init();
 		add_filter( 'sm_term_lists', array( Catalogue::class, 'term_lists' ) );
+		add_action( 'admin_post_sm_service_proposal', array( Catalogue::class, 'handle_proposal' ) );
 		if ( is_admin() ) {
 			Admin\Admin::init();
 		}

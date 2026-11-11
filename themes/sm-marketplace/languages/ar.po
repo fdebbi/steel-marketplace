@@ -129,7 +129,7 @@ msgstr "الاشتراكات"
 
 #: footer.php:43 header.php:142 template-parts/components/enquiry-form.php:27
 #: template-parts/components/rfq-single.php:158 templates/auth-login.php:40
-#: templates/company-profile.php:337 templates/dashboard.php:47
+#: templates/company-profile.php:324 templates/dashboard.php:47
 #: templates/mission-request.php:41 templates/single-service.php:131
 msgid "Create an account"
 msgstr "إنشاء حساب"
@@ -174,7 +174,7 @@ msgstr "نشر"
 msgid "Enquiries"
 msgstr "الاستفسارات"
 
-#: footer.php:66 templates/company-profile.php:224 templates/dashboard.php:111
+#: footer.php:66 templates/dashboard.php:111
 msgid "Account"
 msgstr "الحساب"
 
@@ -235,7 +235,7 @@ msgstr "الإدارة"
 #: header.php:74 header.php:141 template-parts/components/enquiry-form.php:26
 #: template-parts/components/rfq-single.php:157 templates/auth-login.php:17
 #: templates/auth-login.php:39 templates/auth-register.php:101
-#: templates/company-profile.php:336 templates/engineer-apply.php:118
+#: templates/company-profile.php:323 templates/engineer-apply.php:118
 #: templates/mission-request.php:36 templates/single-service.php:130
 msgid "Sign in"
 msgstr "تسجيل الدخول"
@@ -264,7 +264,7 @@ msgid "Sign out"
 msgstr "تسجيل الخروج"
 
 #: inc/assets.php:35 templates/auth-login.php:32
-#: templates/auth-register.php:92 templates/company-profile.php:249
+#: templates/auth-register.php:92 templates/company-profile.php:236
 #: templates/engineer-apply.php:82
 msgid "Show"
 msgstr "إظهار"
@@ -319,8 +319,8 @@ msgstr "تراجع"
 msgid "Delete"
 msgstr "حذف"
 
-#: inc/assets.php:48 templates/company-profile.php:295
-#: templates/company-profile.php:349
+#: inc/assets.php:48 templates/company-profile.php:282
+#: templates/company-profile.php:336
 msgid "Close"
 msgstr "إغلاق"
 
@@ -758,7 +758,7 @@ msgstr "ساعة"
 msgid "day"
 msgstr "يوم"
 
-#: inc/template-tags.php:453 template-parts/components/service-form.php:119
+#: inc/template-tags.php:453 template-parts/components/service-form.php:130
 msgid "On quotation"
 msgstr "حسب عرض السعر"
 
@@ -1063,8 +1063,8 @@ msgstr "اطلب دراسة"
 
 #. translators: %d: years.
 #: template-parts/components/card-featured.php:41
-#: template-parts/directory.php:115 templates/company-profile.php:192
-#: templates/company-profile.php:268 templates/company-profile.php:292
+#: template-parts/directory.php:115 templates/company-profile.php:191
+#: templates/company-profile.php:255 templates/company-profile.php:279
 msgid "Request a quote"
 msgstr "طلب عرض سعر"
 
@@ -1152,15 +1152,15 @@ msgstr "عرض والرد"
 
 #. translators: %d: days.
 #: template-parts/components/card-service.php:32
-#: template-parts/components/service-form.php:96
-#: templates/company-profile.php:56 templates/company-profile.php:186
+#: template-parts/components/service-form.php:107
+#: templates/company-profile.php:56 templates/company-profile.php:185
 #: templates/single-service.php:70
 msgid "All of Algeria"
 msgstr "كامل التراب الجزائري"
 
 #. translators: %d: number of wilayas.
 #: template-parts/components/card-service.php:32
-#: templates/company-profile.php:186
+#: templates/company-profile.php:185
 msgid "%d wilaya served"
 msgid_plural "%d wilayas served"
 msgstr[0] "%d ولاية"
@@ -1249,7 +1249,7 @@ msgid "Full name"
 msgstr "الاسم الكامل"
 
 #: template-parts/components/enquiry-form.php:42
-#: template-parts/dashboard/company.php:125 templates/company-profile.php:245
+#: template-parts/dashboard/company.php:125 templates/company-profile.php:232
 #: templates/contact.php:56
 msgid "Phone"
 msgstr "الهاتف"
@@ -1264,7 +1264,7 @@ msgid "Message"
 msgstr "الرسالة"
 
 #: template-parts/components/enquiry-form.php:48
-#: templates/company-profile.php:329
+#: templates/company-profile.php:316
 msgid "Send the request"
 msgstr "إرسال الطلب"
 
@@ -1609,7 +1609,7 @@ msgstr "لا يمكن تعديل هذا المنتج من حسابك."
 
 #: template-parts/components/product-form.php:52
 #: template-parts/components/rfq-single.php:67
-#: template-parts/components/service-form.php:44
+#: template-parts/components/service-form.php:46
 #: templates/single-service.php:36
 msgid "Changes requested by the platform team:"
 msgstr "تعديلات طلبها فريق المنصة:"
@@ -1656,7 +1656,7 @@ msgstr "العنوان والوصف"
 
 #: template-parts/components/product-form.php:110
 #: template-parts/components/rfq-form.php:78
-#: template-parts/components/service-form.php:63
+#: template-parts/components/service-form.php:74
 #: template-parts/dashboard/publish.php:145
 msgid "Title in French"
 msgstr "العنوان بالفرنسية"
@@ -1675,7 +1675,7 @@ msgstr "مثلا IPE 200 S275JR جديدة، قضبان 12 م"
 
 #: template-parts/components/product-form.php:115
 #: template-parts/components/rfq-form.php:83
-#: template-parts/components/service-form.php:68
+#: template-parts/components/service-form.php:79
 msgid "Title in Arabic"
 msgstr "العنوان بالعربية"
 
@@ -1696,10 +1696,10 @@ msgstr "العنوان بالعربية"
 #: template-parts/components/rfq-offer-form.php:67
 #: template-parts/components/rfq-offer-form.php:77
 #: template-parts/components/rfq-tech.php:48
-#: template-parts/components/service-form.php:68
-#: template-parts/components/service-form.php:78
-#: template-parts/components/service-form.php:83
-#: template-parts/components/service-form.php:112
+#: template-parts/components/service-form.php:79
+#: template-parts/components/service-form.php:89
+#: template-parts/components/service-form.php:94
+#: template-parts/components/service-form.php:123
 #: template-parts/components/service-request-form.php:34
 #: template-parts/components/service-request-form.php:39
 #: template-parts/components/service-request-form.php:47
@@ -1707,8 +1707,8 @@ msgstr "العنوان بالعربية"
 #: template-parts/dashboard/ai.php:66 template-parts/dashboard/ai.php:92
 #: template-parts/dashboard/portfolio.php:48
 #: template-parts/dashboard/portfolio.php:54
-#: template-parts/dashboard/portfolio.php:74 templates/company-profile.php:319
-#: templates/company-profile.php:326 templates/contact.php:56
+#: template-parts/dashboard/portfolio.php:74 templates/company-profile.php:306
+#: templates/company-profile.php:313 templates/contact.php:56
 #: templates/engineer-apply.php:94 templates/mission-request.php:76
 #: templates/mission-request.php:83 templates/mission-request.php:87
 #: templates/mission-request.php:97
@@ -1770,7 +1770,7 @@ msgstr ""
 "للمشترين تنزيلها."
 
 #: template-parts/components/product-form.php:160
-#: templates/company-profile.php:232 templates/single-listing.php:67
+#: templates/company-profile.php:219 templates/single-listing.php:67
 msgid "Location"
 msgstr "الموقع"
 
@@ -1786,9 +1786,10 @@ msgstr "الولاية التي يوجد فيها المنتج"
 #: template-parts/components/product-tech.php:227
 #: template-parts/components/rfq-form.php:50
 #: template-parts/components/rfq-form.php:104
+#: template-parts/components/service-form.php:55
 #: template-parts/components/service-request-form.php:28
 #: template-parts/components/weight-calculator.php:139
-#: templates/company-profile.php:314
+#: templates/company-profile.php:301
 msgid "Choose…"
 msgstr "اختر…"
 
@@ -2275,7 +2276,7 @@ msgstr "طلب عرض أسعار رقم %d"
 
 #. translators: %d: request number.
 #: template-parts/components/rfq-compare.php:86
-#: template-parts/dashboard/company.php:126 templates/company-profile.php:255
+#: template-parts/dashboard/company.php:126 templates/company-profile.php:242
 #: templates/contact.php:49
 msgid "E-mail"
 msgstr "البريد الإلكتروني"
@@ -2416,7 +2417,7 @@ msgid "Documents are shown only to signed-in companies."
 msgstr "الوثائق ظاهرة فقط للمؤسسات المسجلة الدخول."
 
 #: template-parts/components/rfq-form.php:139
-#: template-parts/components/service-form.php:153
+#: template-parts/components/service-form.php:164
 #: template-parts/dashboard/portfolio.php:87
 msgid "Cancel"
 msgstr "إلغاء"
@@ -2683,34 +2684,59 @@ msgstr "لا يمكن تعديل هذه الخدمة من حسابك."
 msgid "Your account cannot publish services."
 msgstr "لا يمكن لحسابك نشر خدمات."
 
-#. translators: %s: catalogue.
-#: template-parts/components/service-form.php:48
-msgid "Services offered — %s"
-msgstr "الخدمات المقدمة — %s"
-
 #: template-parts/components/service-form.php:50
-#: templates/company-profile.php:167
-msgid "Services offered"
-msgstr "الخدمات المقدمة"
+#: templates/company-profile.php:288
+msgid "Service"
+msgstr "الخدمة"
 
-#: template-parts/components/service-form.php:61
+#: template-parts/components/service-form.php:51
+msgid ""
+"One service per page, with its own price. Offer several services? Create one"
+" page for each."
+msgstr ""
+"خدمة واحدة في كل صفحة بسعرها الخاص. تقدّم عدة خدمات؟ أنشئ صفحة لكل خدمة."
+
+#: template-parts/components/service-form.php:53
+msgid "Choose the service"
+msgstr "اختر الخدمة"
+
+#: template-parts/components/service-form.php:59
+msgid "Other (write the name of your service)"
+msgstr "أخرى (اكتب اسم خدمتك)"
+
+#: template-parts/components/service-form.php:64
+msgid "Name of your service"
+msgstr "اسم خدمتك"
+
+#: template-parts/components/service-form.php:65
+msgid "e.g. Bending of steel sheets"
+msgstr "مثال: ثني الصفائح"
+
+#: template-parts/components/service-form.php:66
+msgid ""
+"Your page is published under \"Other services\"; the platform team may add "
+"this name to the list."
+msgstr ""
+"تُنشر صفحتك ضمن «خدمات أخرى»، وقد يضيف فريق المنصة هذا الاسم إلى القائمة."
+
+#: template-parts/components/service-form.php:72
 #: templates/company-profile.php:59 templates/company-profile.php:126
 msgid "Presentation"
 msgstr "التقديم"
 
-#: template-parts/components/service-form.php:64
+#: template-parts/components/service-form.php:75
 msgid "e.g. Structural steel fabrication and site installation"
 msgstr "مثال: تصنيع الهياكل الفولاذية وتركيبها في الموقع"
 
-#: template-parts/components/service-form.php:72
+#: template-parts/components/service-form.php:83
 msgid "Description of the service"
 msgstr "وصف الخدمة"
 
-#: template-parts/components/service-form.php:78
+#: template-parts/components/service-form.php:89
 msgid "Technical capabilities (one per line)"
 msgstr "القدرات التقنية (واحدة في كل سطر)"
 
-#: template-parts/components/service-form.php:79
+#: template-parts/components/service-form.php:90
 msgid ""
 "Built-up beams up to 1 200 mm\n"
 "Plates 4 to 40 mm\n"
@@ -2720,11 +2746,11 @@ msgstr ""
 "صفائح من 4 إلى 40 مم\n"
 "بحور حتى 30 م"
 
-#: template-parts/components/service-form.php:83
+#: template-parts/components/service-form.php:94
 msgid "Equipment (one per line)"
 msgstr "التجهيزات (واحد في كل سطر)"
 
-#: template-parts/components/service-form.php:84
+#: template-parts/components/service-form.php:95
 msgid ""
 "Band saw\n"
 "Drilling line\n"
@@ -2734,81 +2760,84 @@ msgstr ""
 "خط ثقب\n"
 "رافعة متنقلة 30 طن"
 
-#: template-parts/components/service-form.php:91
+#: template-parts/components/service-form.php:102
 msgid "Area served, lead time and price"
 msgstr "المنطقة والأجل والسعر"
 
 #. translators: %d: days.
-#: template-parts/components/service-form.php:94
+#: template-parts/components/service-form.php:105
 #: templates/single-service.php:70
 msgid "Area served"
 msgstr "منطقة التدخل"
 
-#: template-parts/components/service-form.php:97
+#: template-parts/components/service-form.php:108
 msgid "Some wilayas"
 msgstr "بعض الولايات"
 
-#: template-parts/components/service-form.php:100
+#: template-parts/components/service-form.php:111
 msgid "Choose the wilayas"
 msgstr "اختيار الولايات"
 
-#: template-parts/components/service-form.php:112
+#: template-parts/components/service-form.php:123
 msgid "Usual lead time (days)"
 msgstr "الأجل المعتاد (أيام)"
 
-#: template-parts/components/service-form.php:117
+#: template-parts/components/service-form.php:128
 msgid "Price shown"
 msgstr "السعر المعروض"
 
-#: template-parts/components/service-form.php:120
+#: template-parts/components/service-form.php:131
 msgid "Starting price"
 msgstr "سعر ابتدائي"
 
-#: template-parts/components/service-form.php:126
+#: template-parts/components/service-form.php:137
 msgid "From"
 msgstr "ابتداءً من"
 
-#: template-parts/components/service-form.php:131
+#: template-parts/components/service-form.php:142
 msgid "Per"
 msgstr "لكل"
 
-#: template-parts/components/service-form.php:136
+#: template-parts/components/service-form.php:147
 msgid "The price is indicative; each client gets your quote."
 msgstr "السعر تقديري؛ يتلقى كل عميل عرض سعرك."
 
-#: template-parts/components/service-form.php:140
-#: template-parts/dashboard/publish.php:37
-msgid "Photos"
-msgstr "الصور"
+#: template-parts/components/service-form.php:151
+msgid "Image of the service"
+msgstr "صورة الخدمة"
 
-#: template-parts/components/service-form.php:146
-msgid "Add photos of your work"
-msgstr "أضف صورًا لأعمالك"
+#: template-parts/components/service-form.php:157
+msgid "Replace the image"
+msgstr "استبدال الصورة"
 
-#. translators: 1: photos, 2: MB.
-#: template-parts/components/service-form.php:147
+#: template-parts/components/service-form.php:157
+msgid "Add an image"
+msgstr "إضافة صورة"
+
+#. translators: %d: MB.
+#: template-parts/components/service-form.php:158
 msgid ""
-"Up to %1$d photos (JPG, PNG, WebP, %2$d MB each): workshop, machines, "
-"finished work."
+"One image (JPG, PNG, WebP, %d MB maximum) that shows this service. Put your "
+"other photos in \"Completed projects\"."
 msgstr ""
-"حتى %1$d صور (JPG، PNG، WebP، %2$d ميغابايت لكل صورة): الورشة، الآلات، "
-"الأعمال المنجزة."
+"صورة واحدة (JPG أو PNG أو WebP، %d ميغابايت كحد أقصى) تُظهر هذه الخدمة. ضع "
+"صورك الأخرى في «الإنجازات»."
 
-#: template-parts/components/service-form.php:154
+#: template-parts/components/service-form.php:165
 msgid "Save the service"
 msgstr "حفظ الخدمة"
 
-#: template-parts/components/service-form.php:154
+#: template-parts/components/service-form.php:165
 msgid "Publish the service"
 msgstr "نشر الخدمة"
 
 #: template-parts/components/service-request-form.php:20
-#: templates/company-profile.php:307
+#: templates/company-profile.php:294
 msgid "Your project"
 msgstr "مشروعك"
 
 #: template-parts/components/service-request-form.php:21
-#: templates/company-profile.php:308
+#: templates/company-profile.php:295
 msgid ""
 "What must be made or installed: profiles, quantities, dimensions, site, "
 "finish…"
@@ -2816,12 +2845,12 @@ msgstr "ما يجب تصنيعه أو تركيبه: المقاطع، الكمي�
 
 #: template-parts/components/service-request-form.php:26
 #: template-parts/components/services-board.php:44
-#: templates/company-profile.php:312 templates/mission-request.php:68
+#: templates/company-profile.php:299 templates/mission-request.php:68
 msgid "Wilaya of the project"
 msgstr "ولاية المشروع"
 
 #: template-parts/components/service-request-form.php:34
-#: templates/company-profile.php:319
+#: templates/company-profile.php:306
 msgid "Wanted by"
 msgstr "مطلوب قبل"
 
@@ -3397,7 +3426,7 @@ msgstr "الهاتف العمومي"
 msgid "Public e-mail"
 msgstr "البريد الإلكتروني العمومي"
 
-#: template-parts/dashboard/company.php:127 templates/company-profile.php:261
+#: template-parts/dashboard/company.php:127 templates/company-profile.php:248
 msgid "Website"
 msgstr "الموقع الإلكتروني"
 
@@ -3482,7 +3511,7 @@ msgstr "الأتعاب"
 #: template-parts/dashboard/listings.php:36
 #: template-parts/dashboard/listings.php:50
 #: template-parts/dashboard/studies.php:140
-#: template-parts/dashboard/studies.php:147 templates/company-profile.php:222
+#: template-parts/dashboard/studies.php:147
 msgid "Status"
 msgstr "الحالة"
 
@@ -4060,6 +4089,10 @@ msgstr ""
 #: template-parts/dashboard/publish.php:77
 msgid "Technical details"
 msgstr "التفاصيل التقنية"
+
+#: template-parts/dashboard/publish.php:37
+msgid "Photos"
+msgstr "الصور"
 
 #: template-parts/dashboard/publish.php:38
 #: template-parts/dashboard/publish.php:177
@@ -4798,12 +4831,12 @@ msgstr[3] "%d ولايات"
 msgstr[4] "%d ولاية"
 msgstr[5] "%d ولاية"
 
-#: templates/company-profile.php:61 templates/company-profile.php:158
+#: templates/company-profile.php:61 templates/company-profile.php:157
 #: templates/dashboard.php:106 templates/single-service.php:141
 msgid "Completed projects"
 msgstr "المشاريع المنجزة"
 
-#: templates/company-profile.php:67 templates/company-profile.php:207
+#: templates/company-profile.php:67 templates/company-profile.php:206
 msgid "Products for sale"
 msgstr "منتجات للبيع"
 
@@ -4825,7 +4858,7 @@ msgstr "أقسام المؤسسة"
 msgid "This company has not written its presentation yet."
 msgstr "لم تكتب هذه المؤسسة تقديمها بعد."
 
-#: templates/company-profile.php:134 templates/company-profile.php:223
+#: templates/company-profile.php:134
 msgid "Trades"
 msgstr "الحرف"
 
@@ -4833,141 +4866,96 @@ msgstr "الحرف"
 msgid "Types of company"
 msgstr "أنواع المؤسسة"
 
-#: templates/company-profile.php:139 templates/company-profile.php:226
+#: templates/company-profile.php:139
 msgid "Area covered"
 msgstr "المنطقة المغطاة"
 
-#: templates/company-profile.php:140
-msgid "On the platform"
-msgstr "على المنصة"
-
-#. translators: %s: year.
-#: templates/company-profile.php:140
-msgid "Since %s"
-msgstr "منذ %s"
-
-#: templates/company-profile.php:146
+#: templates/company-profile.php:145
 msgid "Qualifications"
 msgstr "المؤهلات"
 
-#: templates/company-profile.php:150
+#: templates/company-profile.php:149
 msgid "Specialisations"
 msgstr "التخصصات"
 
-#: templates/company-profile.php:168
+#: templates/company-profile.php:166
+msgid "Services offered"
+msgstr "الخدمات المقدمة"
+
+#: templates/company-profile.php:167
 msgid "Choose a service to ask this company for a quote."
 msgstr "اختر خدمة لطلب عرض سعر من هذه المؤسسة."
 
-#: templates/company-profile.php:194
+#: templates/company-profile.php:193
 msgid "See the service"
 msgstr "عرض الخدمة"
 
-#: templates/company-profile.php:208
+#: templates/company-profile.php:207
 msgid "Listings published by this company on the marketplace."
 msgstr "الإعلانات التي نشرتها هذه المؤسسة في السوق."
 
-#: templates/company-profile.php:218
+#: templates/company-profile.php:217
 msgid "Company details"
 msgstr "معلومات المؤسسة"
 
-#: templates/company-profile.php:220
-msgid "Information"
-msgstr "معلومات"
-
-#: templates/company-profile.php:223
-msgid "Activities"
-msgstr "الأنشطة"
-
-#: templates/company-profile.php:224
-msgid "E-mail verified"
-msgstr "البريد الإلكتروني مؤكَّد"
-
-#: templates/company-profile.php:224
-msgid "Not verified yet"
-msgstr "لم يتم التحقق بعد"
-
-#: templates/company-profile.php:225
-msgid "Professional documents"
-msgstr "الوثائق المهنية"
-
-#: templates/company-profile.php:225
-msgid "Commercial register"
-msgstr "السجل التجاري"
-
-#: templates/company-profile.php:225
-msgid "Checked by the platform"
-msgstr "مراقب من طرف المنصة"
-
-#: templates/company-profile.php:225
-msgid "Not yet checked"
-msgstr "لم يراقب بعد"
-
 #: templates/company-profile.php:227
-msgid "Member since"
-msgstr "عضو منذ"
-
-#: templates/company-profile.php:240
 msgid "Contact details"
 msgstr "معلومات الاتصال"
 
-#: templates/company-profile.php:270 templates/company-profile.php:346
-#: templates/company-profile.php:348
+#: templates/company-profile.php:257 templates/company-profile.php:333
+#: templates/company-profile.php:335
 msgid "Send a message"
 msgstr "إرسال رسالة"
 
-#: templates/company-profile.php:276
+#: templates/company-profile.php:263
 msgid "Share this page"
 msgstr "شارك هذه الصفحة"
 
 #. translators: %s: social network.
-#: templates/company-profile.php:279
+#: templates/company-profile.php:266
 msgid "Share on %s"
 msgstr "المشاركة على %s"
 
-#: templates/company-profile.php:281
+#: templates/company-profile.php:268
 msgid "Link copied"
 msgstr "تم نسخ الرابط"
 
-#: templates/company-profile.php:281
+#: templates/company-profile.php:268
 msgid "Copy the link"
 msgstr "نسخ الرابط"
 
 #. translators: %s: company name.
-#: templates/company-profile.php:293
+#: templates/company-profile.php:280
 msgid "to %s · the answer arrives in your dashboard"
 msgstr "إلى %s · يصلك الرد في لوحة التحكم"
 
-#: templates/company-profile.php:301
-msgid "Service"
-msgstr "الخدمة"
-
-#: templates/company-profile.php:326
+#: templates/company-profile.php:313
 msgid "Add plans or photos"
 msgstr "أرفق مخططات أو صورا"
 
-#: templates/company-profile.php:327
+#: templates/company-profile.php:314
 msgid "PDF, JPG or PNG"
 msgstr "PDF أو JPG أو PNG"
 
-#: templates/company-profile.php:330
+#: templates/company-profile.php:317
 msgid ""
 "Your contact details are sent to the company with the request. It answers "
 "with a quote."
 msgstr "تُرسَل معلومات اتصالك إلى المؤسسة مع الطلب، وتردّ عليك بعرض سعر."
 
-#: templates/company-profile.php:333 templates/single-service.php:125
+#: templates/company-profile.php:320 templates/single-service.php:125
 msgid "You already sent a request for this service."
 msgstr "لقد أرسلت طلبًا لهذه الخدمة من قبل."
 
-#: templates/company-profile.php:359
+#: templates/company-profile.php:346
 msgid "Contact from the company page"
 msgstr "تواصل من صفحة المؤسسة"
 
-#: templates/company-profile.php:360
+#: templates/company-profile.php:347
 msgid "Contact this professional"
 msgstr "تواصل مع هذا المهني"
 
-#: templates/company-profile.php:360
+#: templates/company-profile.php:347
 msgid "Contact this company"
 msgstr "التواصل مع هذه المؤسسة"
 

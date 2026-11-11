@@ -59,6 +59,23 @@ final class Activity {
 	}
 
 	public static function events( array $events ) {
+		$events['service.custom'] = array(
+			'group'     => 'services',
+			'label'     => __( 'New service name proposed ("Other")', 'sm-services' ),
+			'audit'     => 'service.custom_proposed',
+			'admin'     => 'now',
+			'user'      => null,
+			'vars'      => static fn( $e ) => self::vars( $e ) + array( 'service' => (string) ( $e->data['name'] ?? '' ), 'lien_admin' => admin_url( 'admin.php?page=sm-types&tab=services_fabrication' ) ),
+			'to'        => array( Events::class, 'author' ),
+			'variables' => array( 'service', 'titre', 'entreprise', 'nom', 'email', 'telephone', 'wilaya', 'lien', 'lien_admin' ),
+			'describe'  => static fn( $v ) => sprintf( /* translators: 1: company, 2: service name. */ __( '%1$s proposed the service "%2$s"', 'sm-services' ), $v['entreprise'], $v['service'] ?? '' ),
+			'templates' => array(
+				'admin' => array(
+					static fn() => __( 'Service to file: {service}', 'sm-services' ),
+					static fn() => __( "{entreprise} ({wilaya}) published a service under \"Other\" with its own name:\n\n{service}\n\nThe page is visible under \"Other services\". Add the name to the list (with its Arabic translation) or attach it to an existing service:\n{lien_admin}\n\nThe page: {lien}", 'sm-services' ),
+				),
+			),
+		);
 		$events['service.new'] = array(
 			'group'     => 'services',
 			'label'     => __( 'New service page', 'sm-services' ),

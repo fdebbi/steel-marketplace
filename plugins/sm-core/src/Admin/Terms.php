@@ -197,7 +197,11 @@ final class Terms {
 			echo '<span class="trash"><a class="sm-term-delete" href="' . esc_url( self::url( array( 'tab' => $tab, 'delete' => $code ) ) ) . '">' . esc_html__( 'Delete', 'sm-core' ) . '</a></span></div></td>';
 			echo '<td style="color:#50575e">' . esc_html( $it['desc_fr'] ) . '</td><td>' . (int) $it['usage'] . '</td></tr>';
 		}
-		echo '</tbody></table></div></div>';
+		echo '</tbody></table></div>';
+		if ( ! empty( $list['after'] ) ) {
+			call_user_func( $list['after'], $tab );
+		}
+		echo '</div>';
 	}
 
 	private static function delete_screen( $tab, $code, array $items ) {

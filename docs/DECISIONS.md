@@ -193,3 +193,13 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Fichiers enregistrés | Gérés dans chaque formulaire (annonce, service, réalisation, devis, logo) | Choix du client |
 | Code dans l'e-mail de bienvenue | Un seul e-mail ; le code est masqué (••••••) dans le journal des e-mails | Ne jamais conserver un code |
 
+## 11 novembre 2026 — Services : un service et une image par page
+
+| Sujet | Décision | Raison |
+|---|---|---|
+| Règle de travail | Chaque remarque du client est d'abord analysée (bonne idée / à éviter) et validée avant le code | Demande du client |
+| Un service par page | Liste déroulante ; anciennes pages : premier service gardé, sans avertissement (comptes de test) | Prix par service, filtres et recherche exacts |
+| « Autre » | Publié aussitôt dans « Autres services » ; alerte à l'administrateur qui ajoute le nom à la liste (avec l'arabe) ou le rattache | Liberté pour l'entreprise sans désordre dans les filtres |
+| Image | Une seule image par service ; les autres photos vont dans « Réalisations » | Cartes homogènes, publication plus simple |
+| Profil | Carré « Informations » supprimé ; types en étiquettes sans titre | Informations en double |
+

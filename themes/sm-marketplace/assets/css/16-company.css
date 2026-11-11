@@ -135,7 +135,7 @@
 .smc-chosen select { background: var(--sm-accent-soft); border-color: color-mix(in srgb, var(--sm-accent) 40%, var(--sm-line)); font-weight: 700; }
 
 /* Types of company / trades: one line across the presentation card (0.15.1) */
-.smc-types { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-block-start: var(--sm-s4); padding: 10px 14px; border-radius: 12px; background: var(--sm-primary-soft); }
+.smc-types { margin-block-start: var(--sm-s3); }
 .smc-types__label { font-size: var(--sm-fs-xs); font-weight: 700; color: var(--sm-primary); text-transform: uppercase; letter-spacing: .04em; }
 .smc-types__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
 .smc-types__list li { display: inline-flex; align-items: center; min-block-size: 30px; padding-inline: 12px; border-radius: 999px; background: var(--sm-surface); border: 1px solid var(--sm-line); color: var(--sm-ink); font-size: var(--sm-fs-sm); font-weight: 600; }

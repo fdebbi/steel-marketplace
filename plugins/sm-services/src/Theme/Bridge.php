@@ -104,6 +104,8 @@ final class Bridge {
 				'service_id'   => $s->id,
 				'kind'         => $s->kind,
 				'categories'   => $s->categories,
+				'category'     => (string) ( $s->categories[0] ?? '' ),
+				'custom_service' => (string) ( $s->custom_service ?? '' ),
 				'title'        => array( 'fr' => $t['title']['fr'] ?? '', 'ar' => $t['title']['ar'] ?? '' ),
 				'description'  => trim( implode( '', (array) ( $t['description'] ?? array() ) ) ),
 				'capabilities' => trim( implode( '', (array) ( $t['capabilities'] ?? array() ) ) ),
@@ -114,7 +116,7 @@ final class Bridge {
 				'price_mode'   => $s->price_mode,
 				'price_from'   => $s->price_from > 0 ? (string) ( 0 + $s->price_from ) : '',
 				'price_unit'   => $s->price_unit,
-				'keep_photos'  => Media::get( 'service', $s->id, 'photo' ),
+				'keep_photos'  => array_slice( Media::get( 'service', $s->id, 'photo' ), 0, 1 ),
 			),
 			'reject_reason' => (string) $s->reject_reason,
 		);
@@ -175,7 +177,9 @@ final class Bridge {
 		}
 		return array(
 			'kinds'      => $kinds,
-			'max_photos' => (int) $s['max_photos'],
+			'max_photos' => 1,
+			'other'      => Catalogue::OTHER,
+			'other_label' => Catalogue::other_label(),
 			'photo_mb'   => (int) $s['photo_mb'],
 			'max_files'  => (int) $s['max_files'],
 			'file_mb'    => (int) $s['file_mb'],

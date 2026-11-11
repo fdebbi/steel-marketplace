@@ -17,6 +17,9 @@ final class Installer {
 		if ( $from && $from < 2 ) {
 			self::retire_engineering();
 		}
+		if ( $from && $from < 3 ) {
+			self::one_service_per_page();
+		}
 		update_option( 'sm_services_db_version', SM_SERVICES_DB_VERSION, false );
 	}
 
@@ -24,6 +27,18 @@ final class Installer {
 		if ( (int) get_option( 'sm_services_db_version', 0 ) < SM_SERVICES_DB_VERSION ) {
 			self::activate();
 		}
+	}
+
+	/** 0.3.1: one service per page; pages with several keep the first one. */
+	public static function one_service_per_page() {
+		global $wpdb;
+		$t = $wpdb->prefix . 'sm_services';
+		// phpcs:disable WordPress.DB
+		foreach ( $wpdb->get_results( "SELECT id, categories FROM $t WHERE categories LIKE '%,%'" ) as $r ) {
+			$cats = (array) json_decode( (string) $r->categories, true );
+			$wpdb->update( $t, array( 'categories' => wp_json_encode( array_slice( array_values( $cats ), 0, 1 ) ) ), array( 'id' => $r->id ) );
+		}
+		// phpcs:enable
 	}
 
 	/**
@@ -49,6 +64,7 @@ final class Installer {
 				kind varchar(20) NOT NULL,
 				status varchar(20) NOT NULL DEFAULT 'published',
 				categories text,
+				custom_service varchar(120) NOT NULL DEFAULT '',
 				wilayas text,
 				lead_days int(11) NOT NULL DEFAULT 0,
 				price_mode varchar(10) NOT NULL DEFAULT 'quote',

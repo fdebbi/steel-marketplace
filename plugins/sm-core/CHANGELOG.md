@@ -1,5 +1,9 @@
 # Changelog — sm-core
 
+## 0.7.1 — 2026-11-11
+
+- Types et catégories : une liste peut afficher un bloc sous son tableau (utilisé pour les services proposés).
+
 ## 0.7.0 — 2026-11-11 (Phase 9.2, base v6)
 
 - SM → **Types et catégories** (remplace « Types de comptes ») : types d'entreprise, métiers et listes des autres modules (filtre `sm_term_lists`) avec nom FR/AR, description FR/AR, image, ordre ; masquer ; supprimer avec un élément de remplacement quand des comptes l'utilisent.

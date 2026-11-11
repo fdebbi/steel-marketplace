@@ -234,6 +234,21 @@
 	} );
 
 	/* ---- Photo previews --------------------------------------------------- */
+	/* ---- Service form (0.15.2): "Other" shows the name field. ---------- */
+	$$( '[data-sms-category]' ).forEach( function ( sel ) {
+		var box = sel.form && $( '[data-sms-custom]', sel.form );
+		if ( ! box ) { return; }
+		var other = sel.options[ sel.options.length - 1 ].value;
+		function upd() {
+			var on = sel.value === other;
+			box.hidden = ! on;
+			var input = $( 'input', box );
+			if ( input ) { input.required = on; if ( on && document.activeElement === sel ) { input.focus(); } }
+		}
+		sel.addEventListener( 'change', upd );
+		upd();
+	} );
+
 	/* ---- Company page (0.14.0): request dialogs, phone, copy link -------- */
 	$$( '[data-smc-open]' ).forEach( function ( btn ) {
 		btn.addEventListener( 'click', function () {

@@ -42,19 +42,52 @@ msgid "SM Services needs the SM Core plugin. Activate it first."
 msgstr "SM Services nécessite l’extension SM Core. Activez-la d’abord."
 
 #: src/Activity.php:64
+msgid "New service name proposed (\"Other\")"
+msgstr "Nouveau nom de service proposé (« Autre »)"
+
+#. translators: 1: company, 2: service name.
+#: src/Activity.php:71
+msgid "%1$s proposed the service \"%2$s\""
+msgstr "%1$s a proposé le service « %2$s »"
+
+#: src/Activity.php:74
+msgid "Service to file: {service}"
+msgstr "Service à classer : {service}"
+
+#: src/Activity.php:75
+msgid ""
+"{entreprise} ({wilaya}) published a service under \"Other\" with its own name:\n"
+"\n"
+"{service}\n"
+"\n"
+"The page is visible under \"Other services\". Add the name to the list (with its Arabic translation) or attach it to an existing service:\n"
+"{lien_admin}\n"
+"\n"
+"The page: {lien}"
+msgstr ""
+"{entreprise} ({wilaya}) a publié un service dans « Autre » avec son propre nom :\n"
+"\n"
+"{service}\n"
+"\n"
+"La page est visible dans « Autres services ». Ajoutez ce nom à la liste (avec sa traduction en arabe) ou rattachez-le à un service existant :\n"
+"{lien_admin}\n"
+"\n"
+"La page : {lien}"
+
+#: src/Activity.php:81
 msgid "New service page"
 msgstr "Nouvelle page de service"
 
 #. translators: 1: company, 2: service.
-#: src/Activity.php:72
+#: src/Activity.php:89
 msgid "%1$s published the service \"%2$s\""
 msgstr "%1$s a publié le service « %2$s »"
 
-#: src/Activity.php:75
+#: src/Activity.php:92
 msgid "New service: {titre}"
 msgstr "Nouveau service : {titre}"
 
-#: src/Activity.php:76
+#: src/Activity.php:93
 msgid ""
 "{entreprise} ({wilaya}) published a service page.\n"
 "\n"
@@ -74,11 +107,11 @@ msgstr ""
 "\n"
 "{lien}"
 
-#: src/Activity.php:79
+#: src/Activity.php:96
 msgid "Your service page is saved: {titre}"
 msgstr "Votre page de service est enregistrée : {titre}"
 
-#: src/Activity.php:80
+#: src/Activity.php:97
 msgid ""
 "Your service page \"{titre}\" is saved on {site}. Clients find it by service and wilaya and send you their requests, which you answer with a quote.\n"
 "\n"
@@ -98,20 +131,20 @@ msgstr ""
 "\n"
 "L’équipe {site}"
 
-#: src/Activity.php:87
+#: src/Activity.php:104
 msgid "Service request sent"
 msgstr "Demande de service envoyée"
 
 #. translators: 1: client, 2: provider, 3: service.
-#: src/Activity.php:94
+#: src/Activity.php:111
 msgid "%1$s asked %2$s for a quote (\"%3$s\")"
 msgstr "%1$s a demandé un devis à %2$s (« %3$s »)"
 
-#: src/Activity.php:97
+#: src/Activity.php:114
 msgid "Service request: {client} → {prestataire}"
 msgstr "Demande de service : {client} → {prestataire}"
 
-#: src/Activity.php:98
+#: src/Activity.php:115
 msgid ""
 "{client} ({wilaya}) asked {prestataire} for a quote about \"{titre}\".\n"
 "\n"
@@ -125,11 +158,11 @@ msgstr ""
 "\n"
 "Client : {nom} — {email} — {telephone}"
 
-#: src/Activity.php:101
+#: src/Activity.php:118
 msgid "Your request is sent to {prestataire}"
 msgstr "Votre demande est envoyée à {prestataire}"
 
-#: src/Activity.php:102
+#: src/Activity.php:119
 msgid ""
 "Your request about \"{titre}\" was sent to {prestataire}. You are told by e-mail when the quote arrives.\n"
 "\n"
@@ -139,20 +172,20 @@ msgstr ""
 "\n"
 "L’équipe {site}"
 
-#: src/Activity.php:108
+#: src/Activity.php:125
 msgid "Service quote accepted"
 msgstr "Devis de service accepté"
 
 #. translators: 1: client, 2: provider, 3: amount.
-#: src/Activity.php:114
+#: src/Activity.php:131
 msgid "%1$s accepted the quote of %2$s (%3$s)"
 msgstr "%1$s a accepté le devis de %2$s (%3$s)"
 
-#: src/Activity.php:117
+#: src/Activity.php:134
 msgid "Deal: {client} accepted the quote of {prestataire}"
 msgstr "Affaire conclue : {client} a accepté le devis de {prestataire}"
 
-#: src/Activity.php:118
+#: src/Activity.php:135
 msgid ""
 "{client} accepted the quote of {prestataire} for \"{titre}\".\n"
 "\n"
@@ -164,35 +197,35 @@ msgstr ""
 "Montant : {montant}\n"
 "Délai : {delai} jours"
 
-#: src/Activity.php:127
+#: src/Activity.php:144
 msgid "Service page saved"
 msgstr "Page de service enregistrée"
 
-#: src/Activity.php:128
+#: src/Activity.php:145
 msgid "Service page status changed"
 msgstr "Statut de la page de service modifié"
 
-#: src/Activity.php:129
+#: src/Activity.php:146
 msgid "Quote sent for a service request"
 msgstr "Devis envoyé pour une demande de service"
 
-#: src/Activity.php:130
+#: src/Activity.php:147
 msgid "Quote declined by the client"
 msgstr "Devis refusé par le client"
 
-#: src/Activity.php:131
+#: src/Activity.php:148
 msgid "Service request declined by the provider"
 msgstr "Demande de service déclinée par le prestataire"
 
-#: src/Activity.php:132
+#: src/Activity.php:149
 msgid "Service request cancelled"
 msgstr "Demande de service annulée"
 
-#: src/Activity.php:133 src/Admin/Admin.php:69
+#: src/Activity.php:150 src/Admin/Admin.php:69
 msgid "Service"
 msgstr "Service"
 
-#: src/Admin/Admin.php:29 src/Admin/Admin.php:47 src/Catalogue.php:128
+#: src/Admin/Admin.php:29 src/Admin/Admin.php:47 src/Catalogue.php:232
 msgid "Services"
 msgstr "Services"
 
@@ -308,15 +341,71 @@ msgstr "Vous ne pouvez pas modifier ces réglages."
 msgid "You cannot moderate services."
 msgstr "Vous ne pouvez pas modérer les services."
 
-#: src/Catalogue.php:99
+#: src/Catalogue.php:107
 msgid "Unknown service."
 msgstr "Service inconnu."
 
-#: src/Catalogue.php:103
+#: src/Catalogue.php:111
 msgid "Choose the service that replaces it on the pages that use it."
 msgstr "Choisissez le service qui le remplace sur les pages qui l’utilisent."
 
-#: src/Catalogue.php:129
+#: src/Catalogue.php:171
+msgid "Services proposed by companies (\"Other\")"
+msgstr "Services proposés par les entreprises (« Autre »)"
+
+#: src/Catalogue.php:173
+msgid ""
+"No proposal for now. When a company writes its own service name, it appears "
+"here."
+msgstr ""
+"Aucune proposition pour l’instant. Quand une entreprise écrit son propre nom"
+" de service, il apparaît ici."
+
+#: src/Catalogue.php:176
+msgid ""
+"These pages are published under \"Other services\". Add the name to the list"
+" (the pages move to it), or attach it to an existing service."
+msgstr ""
+"Ces pages sont publiées dans « Autres services ». Ajoutez le nom à la liste "
+"(les pages y passent) ou rattachez-le à un service existant."
+
+#: src/Catalogue.php:177
+msgid "Name written"
+msgstr "Nom écrit"
+
+#: src/Catalogue.php:177
+msgid "Pages"
+msgstr "Pages"
+
+#: src/Catalogue.php:177
+msgid "Action"
+msgstr "Action"
+
+#: src/Catalogue.php:183
+msgid "Arabic name"
+msgstr "Nom en arabe"
+
+#: src/Catalogue.php:184
+msgid "Add to the list"
+msgstr "Ajouter à la liste"
+
+#: src/Catalogue.php:185
+msgid "or"
+msgstr "ou"
+
+#: src/Catalogue.php:185
+msgid "— attach to —"
+msgstr "— rattacher à —"
+
+#: src/Catalogue.php:189
+msgid "Attach"
+msgstr "Rattacher"
+
+#: src/Catalogue.php:217
+msgid "Choose the service to attach it to."
+msgstr "Choisissez le service auquel le rattacher."
+
+#: src/Catalogue.php:233
 msgid ""
 "Services that workshops and professionals tick on their service pages, and "
 "that clients filter on."
@@ -324,7 +413,7 @@ msgstr ""
 "Services que les ateliers et les professionnels cochent sur leurs pages de "
 "services, et que les clients utilisent comme filtres."
 
-#: src/Catalogue.php:154
+#: src/Catalogue.php:258
 msgid "Enter the French name."
 msgstr "Saisissez le nom en français."
 
@@ -358,7 +447,7 @@ msgstr ""
 "Vous avez atteint le nombre de pages de service autorisé. Modifiez une page "
 "existante."
 
-#: src/Form.php:113
+#: src/Form.php:114
 msgid ""
 "Thank you. Your service page will be visible after a quick check by the "
 "platform team."
@@ -366,35 +455,35 @@ msgstr ""
 "Merci. Votre page de service sera visible après une rapide vérification par "
 "l’équipe de la plateforme."
 
-#: src/Form.php:113
+#: src/Form.php:114
 msgid "Your service page is saved."
 msgstr "Votre page de service est enregistrée."
 
-#: src/Form.php:121
+#: src/Form.php:122
 msgid "You cannot change this service."
 msgstr "Vous ne pouvez pas modifier ce service."
 
-#: src/Form.php:126
+#: src/Form.php:127
 msgid "The service is paused: clients no longer see it."
 msgstr "Le service est en pause : les clients ne le voient plus."
 
-#: src/Form.php:131
+#: src/Form.php:132
 msgid "The service is visible again."
 msgstr "Le service est de nouveau visible."
 
-#: src/Form.php:135
+#: src/Form.php:136
 msgid "Service deleted."
 msgstr "Service supprimé."
 
-#: src/Form.php:138
+#: src/Form.php:139
 msgid "Unknown action."
 msgstr "Action inconnue."
 
-#: src/Form.php:145
+#: src/Form.php:146
 msgid "This service does not exist."
 msgstr "Ce service n’existe pas."
 
-#: src/Form.php:151
+#: src/Form.php:152
 msgid ""
 "You already have an open request for this service. Follow it in \"My service"
 " requests\"."
@@ -402,74 +491,74 @@ msgstr ""
 "Vous avez déjà une demande en cours pour ce service. Suivez-la dans « Mes "
 "demandes de service »."
 
-#: src/Form.php:154
+#: src/Form.php:155
 msgid "You sent many requests today. Try again tomorrow."
 msgstr "Vous avez envoyé beaucoup de demandes aujourd’hui. Réessayez demain."
 
-#: src/Form.php:165
+#: src/Form.php:166
 msgid ""
 "Your request is sent. The provider is notified and will answer with a quote."
 msgstr ""
 "Votre demande est envoyée. Le prestataire est prévenu et répondra par un "
 "devis."
 
-#: src/Form.php:172
+#: src/Form.php:173
 msgid "You cannot answer this request."
 msgstr "Vous ne pouvez pas répondre à cette demande."
 
-#: src/Form.php:175
+#: src/Form.php:176
 msgid "This request is closed."
 msgstr "Cette demande est clôturée."
 
-#: src/Form.php:180
+#: src/Form.php:181
 msgid "You declined the request. The client is told."
 msgstr "Vous avez décliné la demande. Le client est prévenu."
 
-#: src/Form.php:189
+#: src/Form.php:190
 msgid "Your quote is sent. The client is notified."
 msgstr "Votre devis est envoyé. Le client est prévenu."
 
-#: src/Form.php:196
+#: src/Form.php:197
 msgid "You cannot change this request."
 msgstr "Vous ne pouvez pas modifier cette demande."
 
-#: src/Form.php:200
+#: src/Form.php:201
 msgid "Quote accepted. Contact the provider to organise the work."
 msgstr "Devis accepté. Contactez le prestataire pour organiser les travaux."
 
-#: src/Form.php:201
+#: src/Form.php:202
 msgid "Quote declined. The provider is told."
 msgstr "Devis refusé. Le prestataire est prévenu."
 
-#: src/Form.php:202
+#: src/Form.php:203
 msgid "Request cancelled. The provider is told."
 msgstr "Demande annulée. Le prestataire est prévenu."
 
-#: src/Form.php:205
+#: src/Form.php:206
 msgid "This request can no longer be changed."
 msgstr "Cette demande ne peut plus être modifiée."
 
-#: src/Form.php:217
+#: src/Form.php:218
 msgid "Only the account owner can edit the references."
 msgstr "Seul le titulaire du compte peut modifier les références."
 
-#: src/Form.php:222
+#: src/Form.php:223
 msgid "You cannot edit this reference."
 msgstr "Vous ne pouvez pas modifier cette référence."
 
-#: src/Form.php:225
+#: src/Form.php:226
 msgid "You reached the number of references allowed."
 msgstr "Vous avez atteint le nombre de références autorisé."
 
-#: src/Form.php:235
+#: src/Form.php:236
 msgid "Reference saved."
 msgstr "Référence enregistrée."
 
-#: src/Form.php:243
+#: src/Form.php:244
 msgid "You cannot delete this reference."
 msgstr "Vous ne pouvez pas supprimer cette référence."
 
-#: src/Form.php:246
+#: src/Form.php:247
 msgid "Reference deleted."
 msgstr "Référence supprimée."
 
@@ -567,84 +656,83 @@ msgstr "%1$s a annulé sa demande concernant « %2$s »."
 msgid "This service is not available."
 msgstr "Ce service n’est pas disponible."
 
-#: src/Spec.php:59
-msgid "Tick at least one service."
-msgstr "Cochez au moins un service."
-
-#: src/Spec.php:61
-msgid "Six services at most per page: create another page for the others."
-msgstr ""
-"Six services au maximum par page : créez une autre page pour les autres."
-
 #: src/Spec.php:63
+msgid "Write the name of your service (3 characters at least)."
+msgstr "Écrivez le nom de votre service (3 caractères au moins)."
+
+#: src/Spec.php:66
+msgid "Choose the service."
+msgstr "Choisissez le service."
+
+#: src/Spec.php:70
 msgid "Give the service a title (in French or in Arabic)."
 msgstr "Donnez un titre au service (en français ou en arabe)."
 
-#: src/Spec.php:66
+#: src/Spec.php:73
 msgid "Describe the service in a few sentences (30 characters at least)."
 msgstr "Décrivez le service en quelques phrases (30 caractères au moins)."
 
-#: src/Spec.php:68
+#: src/Spec.php:75
 msgid "The description is too long (4000 characters at most)."
 msgstr "La description est trop longue (4000 caractères au maximum)."
 
-#: src/Spec.php:74
+#: src/Spec.php:81
 msgid "Too long (2000 characters at most)."
 msgstr "Trop long (2000 caractères au maximum)."
 
-#: src/Spec.php:81
+#: src/Spec.php:88
 msgid "Tick the wilayas you serve, or choose \"All of Algeria\"."
 msgstr ""
 "Cochez les wilayas où vous intervenez, ou choisissez « Toute l’Algérie »."
 
-#: src/Spec.php:86
+#: src/Spec.php:93
 msgid "Usual lead time in days (0 to 365)."
 msgstr "Délai habituel en jours (0 à 365)."
 
-#: src/Spec.php:96
+#: src/Spec.php:103
 msgid "Give the starting price, or choose \"On quotation\"."
 msgstr "Indiquez le prix de départ, ou choisissez « Sur devis »."
 
-#: src/Spec.php:99
+#: src/Spec.php:106
 msgid "Choose the unit of the price."
 msgstr "Choisissez l’unité du prix."
 
-#: src/Spec.php:126
+#: src/Spec.php:134
 msgid "Describe your project in a few sentences (20 characters at least)."
 msgstr "Décrivez votre projet en quelques phrases (20 caractères au moins)."
 
-#: src/Spec.php:128 src/Spec.php:164
+#: src/Spec.php:136 src/Spec.php:172
 msgid "The message is too long (3000 characters at most)."
 msgstr "Le message est trop long (3000 caractères au maximum)."
 
-#: src/Spec.php:132
+#: src/Spec.php:140
 msgid "Choose the wilaya of the project."
 msgstr "Choisissez la wilaya du projet."
 
-#: src/Spec.php:138
+#: src/Spec.php:146
 msgid "The date must be today or later."
 msgstr "La date doit être aujourd’hui ou plus tard."
 
-#: src/Spec.php:144
+#: src/Spec.php:152
 msgid "This budget is outside the accepted range."
 msgstr "Ce budget est hors de la plage acceptée."
 
-#: src/Spec.php:156
+#: src/Spec.php:164
 msgid "Give the amount of your quote."
 msgstr "Indiquez le montant de votre devis."
 
-#: src/Spec.php:160
+#: src/Spec.php:168
 msgid "Give the time needed in days."
 msgstr "Indiquez le délai nécessaire en jours."
 
-#: src/Spec.php:171
+#: src/Spec.php:179
 msgid "Give the project a title."
 msgstr "Donnez un titre au projet."
 
-#: src/Spec.php:174
+#: src/Spec.php:182
 msgid "Too long (1500 characters at most)."
 msgstr "Trop long (1500 caractères au maximum)."
 
-#: src/Spec.php:180
+#: src/Spec.php:188
 msgid "Check the year."
 msgstr "Vérifiez l’année."

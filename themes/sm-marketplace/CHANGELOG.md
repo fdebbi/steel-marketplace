@@ -1,5 +1,11 @@
 # Changelog — sm-marketplace
 
+## 0.15.2 — 2026-11-11 (avec sm-services 0.3.1 et sm-core 0.7.1)
+
+- Profil : carré « Informations » supprimé (tout est déjà dans l'en-tête et la Présentation) ; case « Sur la plateforme » supprimée ; types d'entreprise / métiers en étiquettes sous le texte, sans titre visible ni fond.
+- Formulaire de service : un seul service par page, choisi dans une liste déroulante, ou « Autre » avec le nom écrit par l'entreprise ; une seule image par service (remplaçable).
+- Page Services : filtre « Autres services ».
+
 ## 0.15.1 — 2026-11-11
 
 - Profil : les types d'entreprise (ou métiers) ne sont plus dans l'en-tête ; ils s'affichent sur une ligne pleine largeur dans la carte « Présentation ».

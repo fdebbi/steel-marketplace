@@ -161,3 +161,27 @@ T.update({
 "Services that workshops and professionals tick on their service pages, and that clients filter on.": ("Services que les ateliers et les professionnels cochent sur leurs pages de services, et que les clients utilisent comme filtres.", "الخدمات التي تختارها الورشات والمهنيون في صفحات خدماتهم ويستعملها الزبائن للتصفية."),
 "Enter the French name.": ("Saisissez le nom en français.", "أدخل الاسم بالفرنسية."),
 })
+
+# 0.3.1 — one service per page, "Other" names filed by the administrator.
+T.update({
+'New service name proposed ("Other")': ("Nouveau nom de service proposé (« Autre »)", "اسم خدمة جديد مقترح («أخرى»)"),
+'%1$s proposed the service "%2$s"': ("%1$s a proposé le service « %2$s »", "اقترح %1$s الخدمة «%2$s»"),
+"Service to file: {service}": ("Service à classer : {service}", "خدمة للتصنيف: {service}"),
+'{entreprise} ({wilaya}) published a service under "Other" with its own name:\n\n{service}\n\nThe page is visible under "Other services". Add the name to the list (with its Arabic translation) or attach it to an existing service:\n{lien_admin}\n\nThe page: {lien}': (
+ "{entreprise} ({wilaya}) a publié un service dans « Autre » avec son propre nom :\n\n{service}\n\nLa page est visible dans « Autres services ». Ajoutez ce nom à la liste (avec sa traduction en arabe) ou rattachez-le à un service existant :\n{lien_admin}\n\nLa page : {lien}",
+ "نشرت {entreprise} ({wilaya}) خدمة ضمن «أخرى» باسمها الخاص:\n\n{service}\n\nالصفحة ظاهرة ضمن «خدمات أخرى». أضف هذا الاسم إلى القائمة (مع ترجمته بالعربية) أو اربطه بخدمة موجودة:\n{lien_admin}\n\nالصفحة: {lien}"),
+'Services proposed by companies ("Other")': ("Services proposés par les entreprises (« Autre »)", "خدمات اقترحتها المؤسسات («أخرى»)"),
+"No proposal for now. When a company writes its own service name, it appears here.": ("Aucune proposition pour l’instant. Quand une entreprise écrit son propre nom de service, il apparaît ici.", "لا توجد اقتراحات حاليا. عندما تكتب مؤسسة اسم خدمتها يظهر هنا."),
+'These pages are published under "Other services". Add the name to the list (the pages move to it), or attach it to an existing service.': ("Ces pages sont publiées dans « Autres services ». Ajoutez le nom à la liste (les pages y passent) ou rattachez-le à un service existant.", "هذه الصفحات منشورة ضمن «خدمات أخرى». أضف الاسم إلى القائمة (تنتقل إليه الصفحات) أو اربطه بخدمة موجودة."),
+"Name written": ("Nom écrit", "الاسم المكتوب"),
+"Pages": ("Pages", "الصفحات"),
+"Action": ("Action", "الإجراء"),
+"Arabic name": ("Nom en arabe", "الاسم بالعربية"),
+"Add to the list": ("Ajouter à la liste", "إضافة إلى القائمة"),
+"or": ("ou", "أو"),
+"— attach to —": ("— rattacher à —", "— ربط بـ —"),
+"Attach": ("Rattacher", "ربط"),
+"Choose the service to attach it to.": ("Choisissez le service auquel le rattacher.", "اختر الخدمة لربطه بها."),
+"Write the name of your service (3 characters at least).": ("Écrivez le nom de votre service (3 caractères au moins).", "اكتب اسم خدمتك (3 أحرف على الأقل)."),
+"Choose the service.": ("Choisissez le service.", "اختر الخدمة."),
+})

@@ -1447,3 +1447,17 @@ P[("%d company", "%d companies")] = (["%d entreprise", "%d entreprises"], ["لا
 T.update({
 "Types of company": ("Types d’entreprise", "أنواع المؤسسة"),
 })
+
+# 0.15.2 — one service and one image per service page.
+T.update({
+"One service per page, with its own price. Offer several services? Create one page for each.": ("Un service par page, avec son propre prix. Vous proposez plusieurs services ? Créez une page pour chacun.", "خدمة واحدة في كل صفحة بسعرها الخاص. تقدّم عدة خدمات؟ أنشئ صفحة لكل خدمة."),
+"Choose the service": ("Choisissez le service", "اختر الخدمة"),
+"Other (write the name of your service)": ("Autre (écrivez le nom de votre service)", "أخرى (اكتب اسم خدمتك)"),
+"Name of your service": ("Nom de votre service", "اسم خدمتك"),
+"e.g. Bending of steel sheets": ("ex. Pliage de tôles", "مثال: ثني الصفائح"),
+'Your page is published under "Other services"; the platform team may add this name to the list.': ("Votre page est publiée dans « Autres services » ; l’équipe de la plateforme pourra ajouter ce nom à la liste.", "تُنشر صفحتك ضمن «خدمات أخرى»، وقد يضيف فريق المنصة هذا الاسم إلى القائمة."),
+"Image of the service": ("Image du service", "صورة الخدمة"),
+"Replace the image": ("Remplacer l’image", "استبدال الصورة"),
+"Add an image": ("Ajouter une image", "إضافة صورة"),
+'One image (JPG, PNG, WebP, %d MB maximum) that shows this service. Put your other photos in "Completed projects".': ("Une image (JPG, PNG, WebP, %d Mo maximum) qui montre ce service. Mettez vos autres photos dans « Réalisations ».", "صورة واحدة (JPG أو PNG أو WebP، %d ميغابايت كحد أقصى) تُظهر هذه الخدمة. ضع صورك الأخرى في «الإنجازات»."),
+})

@@ -13,6 +13,7 @@ use SM\Core\Accounts\Companies;
 use SM\Services\Catalogue;
 use SM\Services\Form;
 use SM\Services\Portfolio;
+use SM\Services\Presenter;
 use SM\Services\Requests;
 use SM\Services\Services;
 use SM\Services\Settings;
@@ -75,7 +76,7 @@ global $wpdb;
 $notes = static fn( $uid, $type ) => (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}sm_notifications WHERE user_id = %d AND type = %s", $uid, $type ) );
 $fab   = array(
 	'kind'         => 'fabrication',
-	'categories'   => array( 'cutting', 'welding', 'structural', 'nope' ),
+	'category'     => 'cutting',
 	'title'        => array( 'fr' => 'Charpente métallique sur mesure' ),
 	'description'  => 'Découpe, perçage, soudage et assemblage de charpentes jusqu’à 24 m de portée.',
 	'capabilities' => "Poutres PRS jusqu'à 1 200 mm\nÉpaisseurs 4 à 40 mm",
@@ -98,9 +99,14 @@ sms_assert( array() === Catalogue::allowed_kinds( $c_sup ) && array() === Catalo
 
 echo "\n2. Service page checks\n";
 $s = Spec::service( $fab );
-sms_assert( ! $s['errors'] && array( 'cutting', 'welding', 'structural' ) === $s['data']['categories'], 'complete page accepted; unknown category dropped' );
+sms_assert( ! $s['errors'] && array( 'cutting' ) === $s['data']['categories'], 'complete page accepted: one service per page' );
+sms_assert( isset( Spec::service( array_merge( $fab, array( 'category' => 'nope' ) ) )['errors']['categories'] ), 'unknown service refused' );
+$o = Spec::service( array_merge( $fab, array( 'category' => Catalogue::OTHER, 'custom_service' => 'x' ) ) );
+sms_assert( isset( $o['errors']['custom_service'] ), '"Other" needs the name of the service' );
+$o = Spec::service( array_merge( $fab, array( 'category' => Catalogue::OTHER, 'custom_service' => '  Pliage   de tôles ' ) ) );
+sms_assert( ! $o['errors'] && array( Catalogue::OTHER ) === $o['data']['categories'] && 'Pliage de tôles' === $o['data']['custom_service'], '"Other" with its name accepted'  );
 sms_assert( array( '28', '19' ) === $s['data']['wilayas'] && 15 === $s['data']['lead_days'] && 'kg' === $s['data']['price_unit'], 'served wilayas (unknown one dropped), lead time, price from 180 DA/kg' );
-$x = Spec::service( array_merge( $fab, array( 'categories' => array(), 'title' => array(), 'description' => 'court', 'coverage' => 'list', 'wilayas' => array(), 'price_from' => '' ) ) );
+$x = Spec::service( array_merge( $fab, array( 'category' => '', 'title' => array(), 'description' => 'court', 'coverage' => 'list', 'wilayas' => array(), 'price_from' => '' ) ) );
 sms_assert( isset( $x['errors']['categories'], $x['errors']['title'], $x['errors']['description'], $x['errors']['wilayas'], $x['errors']['price_from'] ), 'services, title, description, wilayas and starting price checked' );
 $x = Spec::service( array_merge( $fab, array( 'kind' => 'engineering' ) ) );
 sms_assert( ! empty( $x['errors'] ), 'the former engineering catalogue is refused' );
@@ -109,7 +115,7 @@ sms_assert( ! $q['errors'] && array() === $q['data']['wilayas'] && 0.0 === $q['d
 
 echo "\n3. Publication and lists\n";
 $sid = Services::save( 0, $c_fab, $u_fab, $s, 'published' );
-$es  = Spec::service( array( 'kind' => 'fabrication', 'categories' => array( 'welding', 'installation' ), 'title' => array( 'fr' => 'Soudure et montage sur chantier' ), 'description' => 'Soudeur qualifié, montage de charpentes et réparations sur site dans toute l’Algérie.', 'coverage' => 'all', 'price_mode' => 'quote' ) );
+$es  = Spec::service( array( 'kind' => 'fabrication', 'category' => 'installation', 'title' => array( 'fr' => 'Soudure et montage sur chantier' ), 'description' => 'Soudeur qualifié, montage de charpentes et réparations sur site dans toute l’Algérie.', 'coverage' => 'all', 'price_mode' => 'quote' ) );
 $eid = Services::save( 0, $c_pro, $u_pro, $es, 'published' );
 $list = Bridge::services( null, array( 'kind' => 'fabrication' ) );
 sms_assert( in_array( $sid, wp_list_pluck( (array) $list, 'id' ), true ) && in_array( $eid, wp_list_pluck( (array) $list, 'id' ), true ), 'company and professional services in the same list' );
@@ -123,7 +129,7 @@ Services::delete( $old );
 sms_assert( in_array( $sid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'fabrication', 'wilaya' => '19' ) ), 'id' ), true ) && ! in_array( $sid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'fabrication', 'wilaya' => '31' ) ), 'id' ), true ), 'wilaya filter uses the served wilayas' );
 sms_assert( in_array( $eid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'fabrication', 'wilaya' => '31' ) ), 'id' ), true ), 'a service covering all Algeria is found in every wilaya' );
 $card = Bridge::services( null, array( 'kind' => 'fabrication', 'q' => 'sur mesure' ) )[0];
-sms_assert( 'Charpente métallique sur mesure' === $card['title']['fr'] && 3 === count( $card['tags'] ) && 'Découpe' === $card['tags'][0]['fr'], 'card data: title and service tags (search by word)' );
+sms_assert( 'Charpente métallique sur mesure' === $card['title']['fr'] && 1 === count( $card['tags'] ) && 'Découpe' === $card['tags'][0]['fr'], 'card data: title and its service (search by word)' );
 
 echo "\n4. Service page and requests\n";
 wp_set_current_user( $u_buy );
@@ -184,6 +190,13 @@ sms_assert( is_string( $new ) && isset( Catalogue::kind( 'fabrication' )['catego
 $used = Catalogue::usage( 'installation' );
 sms_assert( $used > 0 && is_wp_error( Catalogue::delete_item( 'fabrication', 'installation', '' ) ), 'a used service needs a replacement' );
 sms_assert( true === Catalogue::delete_item( 'fabrication', 'installation', 'assembly' ) && 0 === Catalogue::usage( 'installation' ) && ! isset( Catalogue::kind( 'fabrication' )['labels']['installation'] ), 'service deleted, pages moved to the replacement' );
+// "Other": published under other services, filed by the administrator.
+$oid = Services::save( 0, $c_pro, $u_pro, $o, 'published' );
+$card = Presenter::service( Services::get( $oid ) );
+sms_assert( 'Pliage de tôles' === $card['tags'][0]['fr'] && in_array( $oid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'fabrication', 'category' => Catalogue::OTHER ) ), 'id' ), true ) && in_array( $oid, wp_list_pluck( (array) Bridge::services( null, array( 'kind' => 'fabrication', 'q' => 'pliage' ) ), 'id' ), true ), '"Other" page shows its name, under "Other services", found by search' );
+sms_assert( in_array( 'pliage de tôles', array_map( static fn( $p ) => mb_strtolower( $p['name'] ), Catalogue::proposals( 'fabrication' ) ), true ), 'proposed name listed for the administrator' );
+sms_assert( 1 === Catalogue::file_proposal( 'fabrication', 'PLIAGE DE TÔLES', 'cutting' ) && array( 'cutting' ) === Services::get( $oid )->categories && '' === Services::get( $oid )->custom_service, 'administrator attaches it to an existing service' );
+Services::delete( $oid );
 null === $cat_before ? delete_option( Catalogue::OPTION ) : update_option( Catalogue::OPTION, $cat_before, false );
 Catalogue::reset();
 

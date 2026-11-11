@@ -54,12 +54,19 @@ final class Spec {
 		if ( ! $def ) {
 			return array( 'errors' => array( 'kind' => __( 'Choose the type of service.', 'sm-services' ) ), 'data' => array(), 'texts' => array() );
 		}
-		$cats = array_values( array_intersect( array_map( 'sanitize_key', (array) ( $in['categories'] ?? array() ) ), array_keys( $def['labels'] ?? $def['categories'] ) ) );
-		if ( ! $cats ) {
-			$e['categories'] = __( 'Tick at least one service.', 'sm-services' );
-		} elseif ( count( $cats ) > 6 ) {
-			$e['categories'] = __( 'Six services at most per page: create another page for the others.', 'sm-services' );
+		// One service per page (0.3.1): a code of the list, or "other" with the name the company writes.
+		$code = sanitize_key( (string) ( $in['category'] ?? ( array_values( (array) ( $in['categories'] ?? array() ) )[0] ?? '' ) ) );
+		$custom = '';
+		if ( Catalogue::OTHER === $code ) {
+			$custom = mb_substr( trim( preg_replace( '/\s+/u', ' ', sanitize_text_field( (string) ( $in['custom_service'] ?? '' ) ) ) ), 0, 80 );
+			if ( mb_strlen( $custom ) < 3 ) {
+				$e['custom_service'] = __( 'Write the name of your service (3 characters at least).', 'sm-services' );
+			}
+		} elseif ( ! isset( ( $def['labels'] ?? $def['categories'] )[ $code ] ) ) {
+			$e['categories'] = __( 'Choose the service.', 'sm-services' );
+			$code            = '';
 		}
+		$cats = '' === $code ? array() : array( $code );
 		$title = self::title( $in, $e, $for_save, __( 'Give the service a title (in French or in Arabic).', 'sm-services' ) );
 		$desc  = self::text( $in, 'description', 4000 );
 		if ( $for_save && mb_strlen( $desc ) < 30 ) {
@@ -104,6 +111,7 @@ final class Spec {
 			'data'   => array(
 				'kind'       => $kind,
 				'categories' => $cats,
+				'custom_service' => $custom,
 				'wilayas'    => $wilayas,
 				'lead_days'  => (int) $lead,
 				'price_mode' => $mode,

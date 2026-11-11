@@ -31,6 +31,8 @@ if ( $old ) {
 }
 $v     = static fn( $k, $d = '' ) => isset( $state[ $k ] ) && ! is_array( $state[ $k ] ) ? (string) $state[ $k ] : $d;
 $cats  = (array) ( $state['categories'] ?? array() );
+$cat   = (string) ( $state['category'] ?? ( $cats[0] ?? '' ) );
+$other = (string) ( $set['other'] ?? 'other' );
 $wsel  = array_map( 'strval', (array) ( $state['wilayas'] ?? array() ) );
 $units = array();
 foreach ( (array) $def['units'] as $u ) {
@@ -45,16 +47,25 @@ foreach ( (array) $def['units'] as $u ) {
 	<?php endif; ?>
 
 	<section class="sm-panel smp-step">
-		<h2 class="smw-step__title"><span class="smw-step__n">1</span><?php echo esc_html( sprintf( /* translators: %s: catalogue. */ __( 'Services offered — %s', 'sm-marketplace' ), sm_t( $def['label'] ) ) ); ?></h2>
-		<fieldset class="sm-field">
-			<legend class="screen-reader-text"><?php esc_html_e( 'Services offered', 'sm-marketplace' ); ?></legend>
-			<div class="smp-includes__list sms-cats">
+		<h2 class="smw-step__title"><span class="smw-step__n">1</span><?php esc_html_e( 'Service', 'sm-marketplace' ); ?></h2>
+		<p class="sm-help"><?php esc_html_e( 'One service per page, with its own price. Offer several services? Create one page for each.', 'sm-marketplace' ); ?></p>
+		<div class="sm-field">
+			<label for="sms-cat"><?php esc_html_e( 'Choose the service', 'sm-marketplace' ); ?></label>
+			<select id="sms-cat" name="category" required data-sms-category<?php sm_theme_aria( 'categories' ); ?>>
+				<option value=""><?php esc_html_e( 'Choose…', 'sm-marketplace' ); ?></option>
 				<?php foreach ( $def['categories'] as $code => $label ) : ?>
-					<label class="smp-include"><input type="checkbox" name="categories[]" value="<?php echo esc_attr( $code ); ?>" <?php checked( in_array( $code, $cats, true ) ); ?>><span><?php sm_icon( 'check' ); ?><?php echo esc_html( sm_t( $label ) ); ?></span></label>
+					<option value="<?php echo esc_attr( $code ); ?>" <?php selected( $cat, $code ); ?>><?php echo esc_html( sm_t( $label ) ); ?></option>
 				<?php endforeach; ?>
-			</div>
+				<option value="<?php echo esc_attr( $other ); ?>" <?php selected( $cat, $other ); ?>><?php esc_html_e( 'Other (write the name of your service)', 'sm-marketplace' ); ?></option>
+			</select>
 			<?php sm_theme_error( 'categories' ); ?>
-		</fieldset>
+		</div>
+		<div class="sm-field" data-sms-custom<?php echo $other === $cat ? '' : ' hidden'; ?>>
+			<label for="sms-custom"><?php esc_html_e( 'Name of your service', 'sm-marketplace' ); ?></label>
+			<input id="sms-custom" name="custom_service" maxlength="80" dir="auto" value="<?php echo esc_attr( $v( 'custom_service' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. Bending of steel sheets', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'custom_service' ); ?>>
+			<p class="sm-help"><?php esc_html_e( 'Your page is published under "Other services"; the platform team may add this name to the list.', 'sm-marketplace' ); ?></p>
+			<?php sm_theme_error( 'custom_service' ); ?>
+		</div>
 	</section>
 
 	<section class="sm-panel smp-step">
@@ -137,14 +148,14 @@ foreach ( (array) $def['units'] as $u ) {
 	</section>
 
 	<section class="sm-panel smp-step">
-		<h2 class="smw-step__title"><span class="smw-step__n">4</span><?php esc_html_e( 'Photos', 'sm-marketplace' ); ?></h2>
+		<h2 class="smw-step__title"><span class="smw-step__n">4</span><?php esc_html_e( 'Image of the service', 'sm-marketplace' ); ?></h2>
 		<?php $kept = array_filter( array_map( 'absint', (array) ( $state['keep_photos'] ?? array() ) ) ); ?>
 		<?php sm_saved_files( array( 'ids' => $kept, 'field' => 'photos[]', 'keep' => 'keep_photos[]' ) ); ?>
 		<label class="sm-upload" data-sm-upload>
-			<input type="file" name="photos[]" accept="image/jpeg,image/png,image/webp" multiple>
+			<input type="file" name="photos[]" accept="image/jpeg,image/png,image/webp">
 			<?php sm_icon( 'camera', 'sm-upload__icon' ); ?>
-			<strong><?php esc_html_e( 'Add photos of your work', 'sm-marketplace' ); ?></strong>
-			<small><?php echo esc_html( sprintf( /* translators: 1: photos, 2: MB. */ __( 'Up to %1$d photos (JPG, PNG, WebP, %2$d MB each): workshop, machines, finished work.', 'sm-marketplace' ), (int) ( $set['max_photos'] ?? 8 ), (int) ( $set['photo_mb'] ?? 8 ) ) ); ?></small>
+			<strong><?php echo esc_html( $kept ? __( 'Replace the image', 'sm-marketplace' ) : __( 'Add an image', 'sm-marketplace' ) ); ?></strong>
+			<small><?php echo esc_html( sprintf( /* translators: %d: MB. */ __( 'One image (JPG, PNG, WebP, %d MB maximum) that shows this service. Put your other photos in "Completed projects".', 'sm-marketplace' ), (int) ( $set['photo_mb'] ?? 8 ) ) ); ?></small>
 		</label>
 		<ul class="sm-upload__previews" data-sm-previews></ul>
 	</section>

@@ -29,7 +29,7 @@ $wilayas  = sm_theme_wilayas();
 <?php if ( $cats ) : ?>
 	<ul class="sm-catpills" aria-label="<?php esc_attr_e( 'Services', 'sm-marketplace' ); ?>">
 		<li><a href="<?php echo esc_url( $base ); ?>"<?php echo '' === $current ? ' aria-current="true"' : ''; ?>><?php esc_html_e( 'All', 'sm-marketplace' ); ?></a></li>
-		<?php foreach ( $cats as $code => $label ) : ?>
+		<?php foreach ( $cats + ( ! empty( $set['other'] ) ? array( $set['other'] => $set['other_label'] ) : array() ) as $code => $label ) : ?>
 			<li><a href="<?php echo esc_url( add_query_arg( 'category', $code, $base ) ); ?>"<?php echo $code === $current ? ' aria-current="true"' : ''; ?>><?php echo esc_html( sm_t( $label ) ); ?></a></li>
 		<?php endforeach; ?>
 	</ul>

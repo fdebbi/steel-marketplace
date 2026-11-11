@@ -33,7 +33,9 @@ final class Presenter {
 		$photos  = null === $photo ? Media::get( 'service', $s->id, 'photo' ) : array_filter( array( $photo ) );
 		$tags    = array();
 		foreach ( $s->categories as $c ) {
-			if ( isset( $def['labels'][ $c ] ) ) {
+			if ( Catalogue::OTHER === $c && '' !== (string) ( $s->custom_service ?? '' ) ) {
+				$tags[] = array( 'fr' => $s->custom_service, 'ar' => $s->custom_service );
+			} elseif ( isset( $def['labels'][ $c ] ) ) {
 				$tags[] = $def['labels'][ $c ];
 			}
 		}
