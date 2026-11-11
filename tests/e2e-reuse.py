@@ -70,7 +70,7 @@ with sync_playwright() as p:
     check(pg.locator('[data-smp-line].is-done').count() == 3, 'a third row added')
     pg.click('[data-smp-line]:nth-child(3) [data-smp-line-remove]'); settle(pg)
     check(pg.locator('[data-smp-line].is-done').count() == 2 and pg.locator('[data-smp-line]').count() == 3, 'row removed with its button')
-    pg.check('input[name="sale_mode"][value="lot"]', force=True); settle(pg); pg.fill('#smp-lot', '250000'); settle(pg)
+    pg.click('label.smp-sale__mode:has(input[value="lot"])'); settle(pg); pg.fill('#smp-lot', '250000'); settle(pg)
     summ = txt(pg, '.smp-summary')
     check('Prix du lot' in summ and '250 000' in summ and 'kg' in summ, 'price for the whole lot, with its per-kg equivalent')
     check(pg.locator('.smp-advice-note').count() == 1, 'seller told that buyers will see the engineer advice')

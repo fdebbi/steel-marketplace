@@ -68,7 +68,7 @@ final class Activity {
 			'vars'      => static fn( $e ) => self::vars( $e ) + array( 'service' => (string) ( $e->data['name'] ?? '' ), 'lien_admin' => admin_url( 'admin.php?page=sm-types&tab=services_fabrication' ) ),
 			'to'        => array( Events::class, 'author' ),
 			'variables' => array( 'service', 'titre', 'entreprise', 'nom', 'email', 'telephone', 'wilaya', 'lien', 'lien_admin' ),
-			'describe'  => static fn( $v ) => sprintf( /* translators: 1: company, 2: service name. */ __( '%1$s proposed the service "%2$s"', 'sm-services' ), $v['entreprise'], $v['service'] ?? '' ),
+			'describe'  => static fn( $v ) => sprintf( /* translators: 1: company, 2: service name. */ __( '%1$s proposed the service "%2$s"', 'sm-services' ), $v['entreprise'] ?? '', $v['service'] ?? '' ),
 			'templates' => array(
 				'admin' => array(
 					static fn() => __( 'Service to file: {service}', 'sm-services' ),
