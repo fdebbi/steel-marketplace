@@ -71,7 +71,7 @@ final class Orders {
 			return new \WP_Error( 'pack', __( 'This credit pack does not exist.', 'sm-subscriptions' ) );
 		}
 		if ( 'option' === $kind ) {
-			$p = class_exists( '\\SM\\Products\\Products' ) ? \SM\Products\Products::get( (int) $target ) : null;
+			$p = Compat::ready( 'products' ) ? \SM\Products\Products::get( (int) $target ) : null;
 			if ( ! $p || (int) $p->company_id !== (int) $company->id || 'published' !== $p->status ) {
 				return new \WP_Error( 'option', __( 'Options are for your listings online.', 'sm-subscriptions' ) );
 			}
@@ -111,7 +111,7 @@ final class Orders {
 					return sprintf( __( '%d AI credits', 'sm-subscriptions' ), $p['credits'] );
 				}
 			}
-		} elseif ( 'option' === $order->kind && class_exists( '\\SM\\Products\\Products' ) ) {
+		} elseif ( 'option' === $order->kind && Compat::ready( 'products' ) ) {
 			$p = \SM\Products\Products::get( (int) $order->target_id );
 			if ( $p ) {
 				$title = \SM\Products\Presenter::title_text( $p );
@@ -245,7 +245,7 @@ final class Orders {
 			Subscriptions::activate( (int) $company->id, $order->item, 'month' === $order->period ? 1 : 12, array( 'period' => $order->period, 'price' => $order->amount_ttc, 'order_id' => $order->id ) );
 		} elseif ( 'pack' === $order->kind && ! is_wp_error( $q ) ) {
 			Credits::add( (int) $company->id, (int) $q['credits'], 'pack', (int) $order->id );
-		} elseif ( 'option' === $order->kind && class_exists( '\\SM\\Products\\Products' ) ) {
+		} elseif ( 'option' === $order->kind && Compat::ready( 'products' ) ) {
 			$days = 'urgent' === $order->item ? (int) Settings::get( 'opt_urgent_days' ) : (int) Settings::get( 'opt_featured_days' );
 			\SM\Products\Products::boost( (int) $order->target_id, $order->item, $days );
 		}

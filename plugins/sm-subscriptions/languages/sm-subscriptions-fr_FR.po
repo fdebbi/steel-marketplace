@@ -404,6 +404,23 @@ msgstr "Annonce à la une (jours)"
 msgid "Reminder before the end of a plan (days)"
 msgstr "Rappel avant la fin d’une formule (jours)"
 
+#: src/Compat.php:59
+msgid "SM Subscriptions: update these plugins."
+msgstr "SM Abonnements : mettez à jour ces extensions."
+
+#: src/Compat.php:59
+msgid ""
+"Until then, the figures that depend on them are left out of the plan pages "
+"and the limits they control are not applied."
+msgstr ""
+"En attendant, les chiffres qui en dépendent n’apparaissent pas sur les pages"
+" d’abonnement et les limites qu’elles contrôlent ne sont pas appliquées."
+
+#. translators: 1: plugin name, 2: installed version, 3: version needed.
+#: src/Compat.php:62
+msgid "%1$s: version %2$s installed, %3$s or later needed."
+msgstr "%1$s : version %2$s installée, %3$s ou plus récente nécessaire."
+
 #: src/Form.php:58
 msgid "Only the owner or a manager of the account can order."
 msgstr "Seul le propriétaire ou un gestionnaire du compte peut commander."
@@ -558,7 +575,7 @@ msgid "Your payment for %s is confirmed. Your invoice is in your account."
 msgstr ""
 "Votre paiement pour %s est confirmé. Votre facture est dans votre compte."
 
-#: src/Notifications.php:60 src/Orders.php:250
+#: src/Notifications.php:60 src/Orders.php:290
 msgid "Payment not accepted"
 msgstr "Paiement non accepté"
 
@@ -612,22 +629,22 @@ msgid "This plan cannot be ordered."
 msgstr "Cette formule ne peut pas être commandée."
 
 #. translators: 1: plan name, 2: "1 month" or "1 year".
-#: src/Orders.php:59
+#: src/Orders.php:59 src/Orders.php:105
 msgid "Plan %1$s — %2$s"
 msgstr "Formule %1$s — %2$s"
 
 #. translators: 1: plan name, 2: "1 month" or "1 year".
-#: src/Orders.php:59
+#: src/Orders.php:59 src/Orders.php:105
 msgid "1 month"
 msgstr "1 mois"
 
 #. translators: 1: plan name, 2: "1 month" or "1 year".
-#: src/Orders.php:59
+#: src/Orders.php:59 src/Orders.php:105
 msgid "1 year"
 msgstr "1 an"
 
 #. translators: %d: number of AI credits.
-#: src/Orders.php:68
+#: src/Orders.php:68 src/Orders.php:111
 msgid "%d AI credits"
 msgstr "%d crédits IA"
 
@@ -640,17 +657,17 @@ msgid "Options are for your listings online."
 msgstr "Les options concernent vos annonces en ligne."
 
 #. translators: %s: listing title.
-#: src/Orders.php:81
+#: src/Orders.php:81 src/Orders.php:121
 msgid "Back to the top: %s"
 msgstr "Remontée en tête : %s"
 
 #. translators: 1: listing title, 2: number of days.
-#: src/Orders.php:83
+#: src/Orders.php:83 src/Orders.php:123
 msgid "\"Urgent\" badge, %2$d days: %1$s"
 msgstr "Badge « Urgent », %2$d jours : %1$s"
 
 #. translators: 1: listing title, 2: number of days.
-#: src/Orders.php:85
+#: src/Orders.php:85 src/Orders.php:125
 msgid "Featured listing, %2$d days: %1$s"
 msgstr "Annonce à la une, %2$d jours : %1$s"
 
@@ -662,27 +679,27 @@ msgstr "Cette option n’est pas proposée."
 msgid "Unknown order."
 msgstr "Commande inconnue."
 
-#: src/Orders.php:166
+#: src/Orders.php:206
 msgid "This order is already closed."
 msgstr "Cette commande est déjà close."
 
-#: src/Orders.php:170
+#: src/Orders.php:210
 msgid "The account of this order no longer exists."
 msgstr "Le compte de cette commande n’existe plus."
 
-#: src/Orders.php:247
+#: src/Orders.php:287
 msgid "Waiting for payment"
 msgstr "En attente de paiement"
 
-#: src/Orders.php:248
+#: src/Orders.php:288
 msgid "Payment being checked"
 msgstr "Paiement en vérification"
 
-#: src/Orders.php:249
+#: src/Orders.php:289
 msgid "Paid"
 msgstr "Payée"
 
-#: src/Orders.php:251
+#: src/Orders.php:291
 msgid "Cancelled"
 msgstr "Annulée"
 

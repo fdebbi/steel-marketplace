@@ -4,7 +4,8 @@
  *
  * Tabs: products (moderation queue: approve / reject with a reason; all
  * products by status), categories (names, units, fields of each category,
- * order, visibility), settings.
+ * order, visibility), price index (automatic average or reference prices,
+ * 0.9.0), settings.
  *
  * @package SM\Products
  */
@@ -18,6 +19,7 @@ use SM\Core\Notifications\Notifications;
 use SM\Products\Categories;
 use SM\Products\Markets;
 use SM\Products\Presenter;
+use SM\Products\PriceTrend;
 use SM\Products\Products;
 use SM\Products\Settings;
 
@@ -29,7 +31,7 @@ final class Admin {
 
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'menu' ), 15 );
-		foreach ( array( 'moderate', 'category', 'settings', 'admin_edit' ) as $a ) {
+		foreach ( array( 'moderate', 'category', 'settings', 'admin_edit', 'price_index', 'price_ref' ) as $a ) {
 			add_action( 'admin_post_smp_' . $a, array( __CLASS__, 'handle_' . $a ) );
 		}
 	}
@@ -60,9 +62,15 @@ final class Admin {
 		if ( $msg ) {
 			echo '<div class="notice notice-success is-dismissible"><p>' . esc_html( $msg ) . '</p></div>';
 		}
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$err = sanitize_text_field( wp_unslash( $_GET['err'] ?? '' ) );
+		if ( $err ) {
+			echo '<div class="notice notice-error"><p>' . esc_html( $err ) . '</p></div>';
+		}
 		$tabs = array(
 			'products'   => __( 'Products', 'sm-products' ),
 			'categories' => __( 'Categories', 'sm-products' ),
+			'prices'     => __( 'Price index', 'sm-products' ),
 			'settings'   => __( 'Settings', 'sm-products' ),
 		);
 		echo '<nav class="nav-tab-wrapper">';
@@ -78,6 +86,8 @@ final class Admin {
 			self::tab_categories();
 		} elseif ( 'settings' === $tab ) {
 			self::tab_settings();
+		} elseif ( 'prices' === $tab ) {
+			self::tab_prices();
 		} else {
 			self::tab_products( $status );
 		}
@@ -238,7 +248,123 @@ final class Admin {
 		echo '</form>';
 	}
 
+	/* ---- Price index (0.9.0) ------------------------------------------ */
+
+	private static function tab_prices() {
+		$s    = PriceTrend::settings();
+		$sum  = PriceTrend::summary();
+		$can  = current_user_can( 'sm_manage_settings' );
+		$refs = array_reverse( PriceTrend::refs() );
+		echo '<p>' . esc_html__( 'The price shown under the picture of the home page and on the price index page. It is either the average asking price of new hot-rolled sections (IPE, HEA, HEB, HEM, IPN, UPN, UPE, angles) published on the platform, or the reference prices you enter below.', 'sm-products' ) . '</p>';
+
+		// What visitors see now.
+		echo '<div class="notice notice-info inline" style="margin:12px 0;padding:10px 12px"><strong>' . esc_html__( 'Shown now:', 'sm-products' ) . '</strong> ';
+		if ( 'auto' === $sum['mode'] ) {
+			/* translators: 1: price per kg, 2: number of weeks. */
+			echo esc_html( sprintf( __( 'average of the listings, %1$s DA/kg (curve over %2$d weeks).', 'sm-products' ), number_format_i18n( $sum['last'], 2 ), count( $sum['points'] ) ) );
+		} elseif ( 'manual' === $sum['mode'] ) {
+			/* translators: 1: price per kg, 2: date. */
+			echo esc_html( sprintf( __( 'your reference price, %1$s DA/kg of %2$s.', 'sm-products' ), number_format_i18n( $sum['last'], 2 ), date_i18n( get_option( 'date_format' ), strtotime( $sum['last_date'] ) ) ) );
+			if ( $s['auto'] ) {
+				echo ' ' . esc_html__( 'The automatic average does not have enough listings yet.', 'sm-products' );
+			}
+		} else {
+			echo esc_html__( 'no price yet: the home page says "Price coming soon".', 'sm-products' );
+		}
+		echo '</div>';
+
+		echo '<h2>' . esc_html__( 'Source of the price', 'sm-products' ) . '</h2>';
+		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
+		wp_nonce_field( 'smp_price_index' );
+		echo '<input type="hidden" name="action" value="smp_price_index"><table class="form-table" role="presentation">';
+		echo '<tr><th>' . esc_html__( 'Automatic average', 'sm-products' ) . '</th><td><label><input type="checkbox" name="auto" value="1"' . checked( $s['auto'], 1, false ) . '> ' . esc_html__( 'Compute the average of the listings week by week', 'sm-products' ) . '</label><p class="description">' . esc_html__( 'Off: your reference prices are shown. On: the average is shown when the thresholds below are reached, otherwise your reference prices.', 'sm-products' ) . '</p></td></tr>';
+		echo '<tr><th><label for="smp-min-listings">' . esc_html__( 'Listings needed in a week', 'sm-products' ) . '</label></th><td><input id="smp-min-listings" name="min_listings" type="number" min="1" max="100" value="' . esc_attr( (string) $s['min_listings'] ) . '" class="small-text"><p class="description">' . esc_html__( 'A week with fewer listings is left out of the curve. With few listings, one wrong price moves the average a lot.', 'sm-products' ) . '</p></td></tr>';
+		/* translators: %d: number of weeks of the curve. */
+		echo '<tr><th><label for="smp-min-weeks">' . esc_html__( 'Weeks needed', 'sm-products' ) . '</label></th><td><input id="smp-min-weeks" name="min_weeks" type="number" min="1" max="' . (int) PriceTrend::WEEKS . '" value="' . esc_attr( (string) $s['min_weeks'] ) . '" class="small-text"><p class="description">' . esc_html( sprintf( __( 'Number of such weeks, over the last %d, before the average replaces your reference prices.', 'sm-products' ), PriceTrend::WEEKS ) ) . '</p></td></tr>';
+		echo '</table>';
+		if ( $can ) {
+			submit_button( __( 'Save', 'sm-products' ), 'primary', 'submit', false );
+		}
+		echo '</form>';
+
+		// Weeks of the automatic average, to help choose the thresholds.
+		$weeks = PriceTrend::weekly( 'products', PriceTrend::WEEKS, null, 1 );
+		echo '<h2>' . esc_html__( 'Listings of the last weeks', 'sm-products' ) . '</h2>';
+		if ( ! $weeks ) {
+			echo '<p>' . esc_html__( 'No new section listing with a price per kg in the last 12 weeks.', 'sm-products' ) . '</p>';
+		} else {
+			echo '<table class="widefat striped" style="max-width:520px"><thead><tr><th>' . esc_html__( 'Week of', 'sm-products' ) . '</th><th>' . esc_html__( 'Listings', 'sm-products' ) . '</th><th>' . esc_html__( 'Average DA/kg', 'sm-products' ) . '</th></tr></thead><tbody>';
+			foreach ( array_reverse( $weeks ) as $w ) {
+				$ok = $w['count'] >= $s['min_listings'];
+				echo '<tr><td>' . esc_html( date_i18n( get_option( 'date_format' ), strtotime( $w['start'] ) ) ) . '</td><td>' . (int) $w['count'] . ( $ok ? '' : ' <span style="color:#996800">(' . esc_html__( 'below the threshold', 'sm-products' ) . ')</span>' ) . '</td><td>' . esc_html( number_format_i18n( $w['value'], 2 ) ) . '</td></tr>';
+			}
+			echo '</tbody></table>';
+		}
+
+		echo '<h2>' . esc_html__( 'Reference prices', 'sm-products' ) . '</h2>';
+		echo '<p>' . esc_html__( 'A price per kg of new sections that you checked yourself (suppliers, traders). Each date adds a point to the curve; a price entered again for the same date replaces it. Visitors see "ReuSteel reference price" and the date.', 'sm-products' ) . '</p>';
+		if ( $can ) {
+			echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin-bottom:12px">';
+			wp_nonce_field( 'smp_price_ref' );
+			echo '<input type="hidden" name="action" value="smp_price_ref"><input type="hidden" name="do" value="add">';
+			echo '<p style="margin:0"><label for="smp-ref-date">' . esc_html__( 'Date', 'sm-products' ) . '</label><br><input id="smp-ref-date" type="date" name="date" required max="' . esc_attr( current_time( 'Y-m-d' ) ) . '" value="' . esc_attr( current_time( 'Y-m-d' ) ) . '"></p>';
+			echo '<p style="margin:0"><label for="smp-ref-price">' . esc_html__( 'Price (DA per kg)', 'sm-products' ) . '</label><br><input id="smp-ref-price" type="text" inputmode="decimal" name="price" required class="small-text" style="width:7em"></p>';
+			echo '<p style="margin:0;flex:1;min-width:220px"><label for="smp-ref-source">' . esc_html__( 'Source (optional, shown to visitors)', 'sm-products' ) . '</label><br><input id="smp-ref-source" type="text" name="source" maxlength="160" class="regular-text" style="width:100%"></p>';
+			submit_button( __( 'Add the price', 'sm-products' ), 'secondary', 'submit', false );
+			echo '</form>';
+		}
+		if ( ! $refs ) {
+			echo '<p><em>' . esc_html__( 'No reference price yet.', 'sm-products' ) . '</em></p>';
+			return;
+		}
+		echo '<table class="widefat striped" style="max-width:760px"><thead><tr><th>' . esc_html__( 'Date', 'sm-products' ) . '</th><th>' . esc_html__( 'DA/kg', 'sm-products' ) . '</th><th>' . esc_html__( 'Source', 'sm-products' ) . '</th><th></th></tr></thead><tbody>';
+		foreach ( $refs as $r ) {
+			echo '<tr><td>' . esc_html( date_i18n( get_option( 'date_format' ), strtotime( $r['date'] ) ) ) . '</td><td>' . esc_html( number_format_i18n( $r['price'], 2 ) ) . '</td><td>' . esc_html( $r['source'] ) . '</td><td>';
+			if ( $can ) {
+				echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" style="margin:0">';
+				wp_nonce_field( 'smp_price_ref' );
+				echo '<input type="hidden" name="action" value="smp_price_ref"><input type="hidden" name="do" value="delete"><input type="hidden" name="date" value="' . esc_attr( $r['date'] ) . '"><button type="submit" class="button-link button-link-delete">' . esc_html__( 'Delete', 'sm-products' ) . '</button></form>';
+			}
+			echo '</td></tr>';
+		}
+		echo '</tbody></table>';
+	}
+
 	/* ---- Handlers ------------------------------------------------------ */
+
+	public static function handle_price_index() {
+		if ( ! current_user_can( 'sm_manage_settings' ) ) {
+			wp_die( '', 403 );
+		}
+		check_admin_referer( 'smp_price_index' );
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$s = PriceTrend::save_settings( array_map( 'sanitize_text_field', wp_unslash( $_POST ) ) );
+		\SM\Core\Audit\AuditLog::add( 'price_index.settings', 'price_index', 0, $s );
+		self::back( array( 'tab' => 'prices', 'msg' => __( 'Settings saved.', 'sm-products' ) ) );
+	}
+
+	public static function handle_price_ref() {
+		if ( ! current_user_can( 'sm_manage_settings' ) ) {
+			wp_die( '', 403 );
+		}
+		check_admin_referer( 'smp_price_ref' );
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
+		$date = sanitize_text_field( wp_unslash( $_POST['date'] ?? '' ) );
+		if ( 'delete' === ( $_POST['do'] ?? '' ) ) {
+			PriceTrend::delete_ref( $date );
+			\SM\Core\Audit\AuditLog::add( 'price_index.ref_deleted', 'price_index', 0, array( 'date' => $date ) );
+			self::back( array( 'tab' => 'prices', 'msg' => __( 'Reference price deleted.', 'sm-products' ) ) );
+		}
+		$price  = sanitize_text_field( wp_unslash( $_POST['price'] ?? '' ) );
+		$source = sanitize_text_field( wp_unslash( $_POST['source'] ?? '' ) );
+		// phpcs:enable
+		$res = PriceTrend::add_ref( $date, $price, $source );
+		if ( is_wp_error( $res ) ) {
+			self::back( array( 'tab' => 'prices', 'err' => $res->get_error_message() ) );
+		}
+		\SM\Core\Audit\AuditLog::add( 'price_index.ref_saved', 'price_index', 0, array( 'date' => $date, 'price' => $price, 'source' => $source ) );
+		self::back( array( 'tab' => 'prices', 'msg' => __( 'Reference price saved.', 'sm-products' ) ) );
+	}
 
 	public static function handle_moderate() {
 		if ( ! current_user_can( 'sm_moderate' ) ) {

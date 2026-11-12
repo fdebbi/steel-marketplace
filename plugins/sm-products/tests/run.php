@@ -225,6 +225,42 @@ smp_assert( null === \SM\Products\PriceTrend::recent_average( 'zz-none', 30, $pt
 foreach ( $pt_ids as $id ) { $wpdb->delete( $wpdb->prefix . 'sm_products', array( 'id' => $id ) ); }
 \SM\Products\PriceTrend::flush();
 
+// ---- Price index: automatic average or reference prices (0.9.0) ----
+$pi_set  = get_option( \SM\Products\PriceTrend::OPTION, null );
+$pi_refs = get_option( \SM\Products\PriceTrend::REFS, null );
+delete_option( \SM\Products\PriceTrend::REFS );
+delete_option( \SM\Products\PriceTrend::OPTION );
+$st = \SM\Products\PriceTrend::settings();
+smp_assert( 1 === $st['auto'] && 5 === $st['min_listings'] && 4 === $st['min_weeks'], 'price index: automatic by default, 5 listings and 4 weeks' );
+foreach ( array( 2, 3, 4 ) as $i ) { $pt_add( 1, 300, 'published', 'IPE', 'zz-th' ); }
+smp_assert( array() === \SM\Products\PriceTrend::weekly( 'zz-th', 12, $pt_now ) && 1 === count( \SM\Products\PriceTrend::weekly( 'zz-th', 12, $pt_now, 3 ) ), 'threshold of listings per week can be lowered' );
+\SM\Products\PriceTrend::save_settings( array( 'auto' => '', 'min_listings' => '3', 'min_weeks' => '99' ) );
+$st = \SM\Products\PriceTrend::settings();
+smp_assert( 0 === $st['auto'] && 3 === $st['min_listings'] && 12 === $st['min_weeks'], 'settings saved, weeks capped at 12' );
+$sum = \SM\Products\PriceTrend::summary();
+smp_assert( 'none' === $sum['mode'] && array() === $sum['points'] && null === $sum['last'], 'manual mode without reference price: nothing to show, no invented price' );
+smp_assert( is_wp_error( \SM\Products\PriceTrend::add_ref( '2026-13-01', 120 ) ) && is_wp_error( \SM\Products\PriceTrend::add_ref( gmdate( 'Y-m-d', time() + 5 * DAY_IN_SECONDS ), 120 ) ) && is_wp_error( \SM\Products\PriceTrend::add_ref( '2026-11-01', 0 ) ), 'reference price: bad date, future date and zero price refused' );
+\SM\Products\PriceTrend::add_ref( '2026-11-09', '125', 'Relevé 3 négociants' );
+$sum = \SM\Products\PriceTrend::summary();
+smp_assert( 'manual' === $sum['mode'] && 1 === count( $sum['points'] ) && 125.0 === $sum['last'] && '2026-11-09' === $sum['last_date'] && 0.0 === $sum['change'] && 'Relevé 3 négociants' === $sum['source'], 'one reference price: shown with its date and source' );
+\SM\Products\PriceTrend::add_ref( '2026-11-02', '118,5' );
+\SM\Products\PriceTrend::add_ref( '2026-11-09', '130' );
+$sum = \SM\Products\PriceTrend::summary();
+smp_assert( 2 === count( $sum['points'] ) && 118.5 === $sum['points'][0]['value'] && 130.0 === $sum['last'] && 9.7 === $sum['change'] && '' === $sum['source'], 'second date adds a point, same date replaces (correction), comma accepted' );
+for ( $i = 1; $i <= 14; $i++ ) { \SM\Products\PriceTrend::add_ref( gmdate( 'Y-m-d', strtotime( '2026-06-01' ) + $i * WEEK_IN_SECONDS ), 100 + $i ); }
+smp_assert( 12 === count( \SM\Products\PriceTrend::summary()['points'] ) && 130.0 === \SM\Products\PriceTrend::summary()['last'], 'at most the 12 latest reference prices on the curve' );
+\SM\Products\PriceTrend::save_settings( array( 'auto' => '1', 'min_listings' => '100', 'min_weeks' => '12' ) );
+smp_assert( 'manual' === \SM\Products\PriceTrend::summary()['mode'], 'automatic on but not enough listings: reference prices are shown' );
+\SM\Products\PriceTrend::save_settings( array( 'auto' => '1', 'min_listings' => '1', 'min_weeks' => '1' ) );
+$sum = \SM\Products\PriceTrend::summary();
+smp_assert( 'auto' === $sum['mode'] || 'manual' === $sum['mode'], 'automatic on with low thresholds: average used when listings exist' );
+\SM\Products\PriceTrend::delete_ref( '2026-11-09' );
+smp_assert( ! in_array( '2026-11-09', array_column( \SM\Products\PriceTrend::refs(), 'date' ), true ), 'reference price deleted' );
+foreach ( $pt_ids as $id ) { $wpdb->delete( $wpdb->prefix . 'sm_products', array( 'id' => $id ) ); }
+null === $pi_set ? delete_option( \SM\Products\PriceTrend::OPTION ) : update_option( \SM\Products\PriceTrend::OPTION, $pi_set );
+null === $pi_refs ? delete_option( \SM\Products\PriceTrend::REFS ) : update_option( \SM\Products\PriceTrend::REFS, $pi_refs );
+\SM\Products\PriceTrend::flush();
+
 smp_cleanup();
 $t = $GLOBALS['smp_t'];
 printf( "\n%d passed, %d failed\n", $t['pass'], $t['fail'] );

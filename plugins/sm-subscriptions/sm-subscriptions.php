@@ -3,7 +3,7 @@
  * Plugin Name:       SM Subscriptions
  * Plugin URI:        https://github.com/fdebbi/steel-marketplace
  * Description:       Plans of companies and professionals (limits on listings, tonnage, buildings, service pages, completed projects, quotation answers, AI credits, visible contacts, featured), AI credit packs and paid listing options. Payment outside the site (transfer, CCP, BaridiMob, cheque) with proof of payment, activated by the platform team, with an invoice. Founding members offer. Requires SM Core.
- * Version:           0.1.0
+ * Version:           0.1.1
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Requires Plugins:  sm-core
@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_SUBSCRIPTIONS_VERSION', '0.1.0' );
+define( 'SM_SUBSCRIPTIONS_VERSION', '0.1.1' );
 define( 'SM_SUBSCRIPTIONS_DB_VERSION', 2 );
 define( 'SM_SUBSCRIPTIONS_FILE', __FILE__ );
 define( 'SM_SUBSCRIPTIONS_DIR', __DIR__ );

@@ -397,6 +397,23 @@ msgstr "إعلان مميز (أيام)"
 msgid "Reminder before the end of a plan (days)"
 msgstr "تذكير قبل نهاية الاشتراك (أيام)"
 
+#: src/Compat.php:59
+msgid "SM Subscriptions: update these plugins."
+msgstr "SM الاشتراكات: حدّث هذه الإضافات."
+
+#: src/Compat.php:59
+msgid ""
+"Until then, the figures that depend on them are left out of the plan pages "
+"and the limits they control are not applied."
+msgstr ""
+"إلى ذلك الحين، لا تظهر الأرقام المرتبطة بها في صفحات الاشتراك ولا تُطبّق "
+"الحدود التي تتحكم فيها."
+
+#. translators: 1: plugin name, 2: installed version, 3: version needed.
+#: src/Compat.php:62
+msgid "%1$s: version %2$s installed, %3$s or later needed."
+msgstr "%1$s: الإصدار %2$s مثبت، والمطلوب %3$s أو أحدث."
+
 #: src/Form.php:58
 msgid "Only the owner or a manager of the account can order."
 msgstr "يمكن لمالك الحساب أو مسيّره فقط تقديم الطلب."
@@ -569,7 +586,7 @@ msgstr "تم تأكيد الدفع"
 msgid "Your payment for %s is confirmed. Your invoice is in your account."
 msgstr "تم تأكيد دفعك لـ %s. فاتورتك في حسابك."
 
-#: src/Notifications.php:60 src/Orders.php:250
+#: src/Notifications.php:60 src/Orders.php:290
 msgid "Payment not accepted"
 msgstr "لم يُقبل الدفع"
 
@@ -622,22 +639,22 @@ msgid "This plan cannot be ordered."
 msgstr "لا يمكن طلب هذا الاشتراك."
 
 #. translators: 1: plan name, 2: "1 month" or "1 year".
-#: src/Orders.php:59
+#: src/Orders.php:59 src/Orders.php:105
 msgid "Plan %1$s — %2$s"
 msgstr "اشتراك %1$s — %2$s"
 
 #. translators: 1: plan name, 2: "1 month" or "1 year".
-#: src/Orders.php:59
+#: src/Orders.php:59 src/Orders.php:105
 msgid "1 month"
 msgstr "شهر واحد"
 
 #. translators: 1: plan name, 2: "1 month" or "1 year".
-#: src/Orders.php:59
+#: src/Orders.php:59 src/Orders.php:105
 msgid "1 year"
 msgstr "سنة واحدة"
 
 #. translators: %d: number of AI credits.
-#: src/Orders.php:68
+#: src/Orders.php:68 src/Orders.php:111
 msgid "%d AI credits"
 msgstr "%d رصيد ذكاء اصطناعي"
 
@@ -650,17 +667,17 @@ msgid "Options are for your listings online."
 msgstr "الخيارات مخصصة لإعلاناتك المنشورة."
 
 #. translators: %s: listing title.
-#: src/Orders.php:81
+#: src/Orders.php:81 src/Orders.php:121
 msgid "Back to the top: %s"
 msgstr "الرجوع إلى الأعلى: %s"
 
 #. translators: 1: listing title, 2: number of days.
-#: src/Orders.php:83
+#: src/Orders.php:83 src/Orders.php:123
 msgid "\"Urgent\" badge, %2$d days: %1$s"
 msgstr "شارة «عاجل»، %2$d أيام: %1$s"
 
 #. translators: 1: listing title, 2: number of days.
-#: src/Orders.php:85
+#: src/Orders.php:85 src/Orders.php:125
 msgid "Featured listing, %2$d days: %1$s"
 msgstr "إعلان مميز، %2$d أيام: %1$s"
 
@@ -672,27 +689,27 @@ msgstr "هذا الخيار غير متاح."
 msgid "Unknown order."
 msgstr "طلب غير معروف."
 
-#: src/Orders.php:166
+#: src/Orders.php:206
 msgid "This order is already closed."
 msgstr "هذا الطلب مغلق بالفعل."
 
-#: src/Orders.php:170
+#: src/Orders.php:210
 msgid "The account of this order no longer exists."
 msgstr "حساب هذا الطلب لم يعد موجودا."
 
-#: src/Orders.php:247
+#: src/Orders.php:287
 msgid "Waiting for payment"
 msgstr "في انتظار الدفع"
 
-#: src/Orders.php:248
+#: src/Orders.php:288
 msgid "Payment being checked"
 msgstr "الدفع قيد التحقق"
 
-#: src/Orders.php:249
+#: src/Orders.php:289
 msgid "Paid"
 msgstr "مدفوع"
 
-#: src/Orders.php:251
+#: src/Orders.php:291
 msgid "Cancelled"
 msgstr "ملغى"
 

@@ -12,6 +12,7 @@ namespace SM\Subscriptions\Theme;
 
 use SM\Core\Accounts\Companies;
 use SM\Core\Routing\Routes as CoreRoutes;
+use SM\Subscriptions\Compat;
 use SM\Subscriptions\Credits;
 use SM\Subscriptions\Founders;
 use SM\Subscriptions\Form;
@@ -69,10 +70,27 @@ final class Bridge {
 	}
 
 	public static function plans( $result ) {
+		$viewer  = null;
+		$current = array( 'company' => '', 'professional' => '' );
+		$user_id = get_current_user_id();
+		$company = $user_id ? Companies::for_user( $user_id ) : null;
+		if ( $company ) {
+			$plan   = Subscriptions::plan_of( $company );
+			$viewer = array(
+				'class'     => (string) $company->account_class,
+				'has_plans' => (bool) $plan['has_plans'],
+				'plan'      => (string) $plan['code'],
+				'plan_name' => (string) $plan['name'],
+			);
+			if ( $plan['has_plans'] && isset( $current[ $company->account_class ] ) ) {
+				$current[ $company->account_class ] = (string) $plan['code'];
+			}
+		}
 		return array(
+			'viewer'   => $viewer,
 			'classes'  => array(
-				'company'      => self::shape_plans( 'company' ),
-				'professional' => self::shape_plans( 'professional' ),
+				'company'      => self::shape_plans( 'company', $current['company'] ),
+				'professional' => self::shape_plans( 'professional', $current['professional'] ),
 			),
 			'labels'   => Plans::limit_labels(),
 			'packs'    => array_values( (array) Settings::get( 'packs' ) ),
@@ -84,14 +102,14 @@ final class Bridge {
 
 	/** What the company uses of each limit. */
 	public static function usage( $company ) {
-		$online = class_exists( '\\SM\\Products\\Products' ) ? \SM\Products\Products::online_totals( (int) $company->id ) : array( 'listings' => 0, 'weight' => 0, 'buildings' => 0 );
+		$online = Compat::ready( 'products' ) ? \SM\Products\Products::online_totals( (int) $company->id ) : array( 'listings' => 0, 'weight' => 0, 'buildings' => 0 );
 		return array(
 			'listings'   => $online['listings'],
 			'weight_t'   => round( $online['weight'] / 1000, 2 ),
 			'buildings'  => $online['buildings'],
-			'services'   => class_exists( '\\SM\\Services\\Services' ) ? \SM\Services\Services::count_for_company( (int) $company->id ) : 0,
-			'portfolio'  => class_exists( '\\SM\\Services\\Portfolio' ) ? \SM\Services\Portfolio::count( (int) $company->id ) : 0,
-			'rfq_offers' => class_exists( '\\SM\\Rfq\\Offers' ) ? \SM\Rfq\Offers::count_month( (int) $company->id ) : 0,
+			'services'   => Compat::ready( 'services' ) ? \SM\Services\Services::count_for_company( (int) $company->id ) : 0,
+			'portfolio'  => Compat::ready( 'services' ) ? \SM\Services\Portfolio::count( (int) $company->id ) : 0,
+			'rfq_offers' => Compat::ready( 'rfq' ) ? \SM\Rfq\Offers::count_month( (int) $company->id ) : 0,
 		);
 	}
 

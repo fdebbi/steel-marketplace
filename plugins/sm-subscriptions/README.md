@@ -2,6 +2,8 @@
 
 Formules des entreprises et des professionnels, packs de crédits IA et options d'annonce, avec paiement hors du site et facture. Nécessite SM Core 0.8.1 ; utilise SM Products 0.8.0, SM Services 0.3.6, SM RFQ 0.1.3 et SM AI 0.1.3 quand ils sont actifs.
 
+Si l'une de ces extensions est active dans une version plus ancienne, les pages restent affichées sans les chiffres qui en dépendent, les limites qu'elle contrôle ne sont pas appliquées, et l'administration affiche un avis rouge « mettez à jour ces extensions » (0.1.1).
+
 ## Formules (valeurs par défaut, modifiables)
 
 | Classe | Formule | Prix (DA TTC) | Annonces | Tonnage | Bâtiments | Services | Réalisations | Réponses devis / mois | IA / mois | Coordonnées | À la une |

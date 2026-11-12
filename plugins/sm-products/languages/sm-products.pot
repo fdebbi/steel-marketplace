@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-12T13:35:25+00:00\n"
+"POT-Creation-Date: 2026-11-12T18:32:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-products\n"
@@ -153,384 +153,523 @@ msgstr ""
 msgid "Product category changed"
 msgstr ""
 
-#: src/Admin/Admin.php:40
-#: src/Admin/Admin.php:41
-#: src/Admin/Admin.php:59
-#: src/Admin/Admin.php:64
+#: src/Admin/Admin.php:42
+#: src/Admin/Admin.php:43
+#: src/Admin/Admin.php:61
+#: src/Admin/Admin.php:71
 msgid "Products"
 msgstr ""
 
-#: src/Admin/Admin.php:65
+#: src/Admin/Admin.php:72
 msgid "Categories"
 msgstr ""
 
-#: src/Admin/Admin.php:66
+#: src/Admin/Admin.php:73
+msgid "Price index"
+msgstr ""
+
+#: src/Admin/Admin.php:74
 msgid "Settings"
 msgstr ""
 
-#: src/Admin/Admin.php:89
+#: src/Admin/Admin.php:99
 msgid "Waiting for review"
 msgstr ""
 
-#: src/Admin/Admin.php:90
+#: src/Admin/Admin.php:100
 msgid "Changes to review"
 msgstr ""
 
-#: src/Admin/Admin.php:91
+#: src/Admin/Admin.php:101
 msgid "Published"
 msgstr ""
 
-#: src/Admin/Admin.php:92
+#: src/Admin/Admin.php:102
 msgid "Changes requested"
 msgstr ""
 
-#: src/Admin/Admin.php:93
+#: src/Admin/Admin.php:103
 msgid "Drafts"
 msgstr ""
 
-#: src/Admin/Admin.php:94
+#: src/Admin/Admin.php:104
 msgid "Sold"
 msgstr ""
 
-#: src/Admin/Admin.php:95
+#: src/Admin/Admin.php:105
 msgid "Expired"
 msgstr ""
 
-#: src/Admin/Admin.php:116
+#: src/Admin/Admin.php:126
 msgid "Market:"
 msgstr ""
 
-#: src/Admin/Admin.php:117
+#: src/Admin/Admin.php:127
 msgid "All"
 msgstr ""
 
-#: src/Admin/Admin.php:127
-#: src/Admin/Admin.php:318
+#: src/Admin/Admin.php:137
+#: src/Admin/Admin.php:444
 msgid "Nothing here."
 msgstr ""
 
-#: src/Admin/Admin.php:130
+#: src/Admin/Admin.php:140
 msgid "Product"
 msgstr ""
 
-#: src/Admin/Admin.php:130
+#: src/Admin/Admin.php:140
 msgid "Company"
 msgstr ""
 
-#: src/Admin/Admin.php:130
+#: src/Admin/Admin.php:140
 msgid "Weight / quantity"
 msgstr ""
 
-#: src/Admin/Admin.php:130
+#: src/Admin/Admin.php:140
 msgid "Price"
 msgstr ""
 
-#: src/Admin/Admin.php:130
+#: src/Admin/Admin.php:140
 msgid "Updated (UTC)"
 msgstr ""
 
-#: src/Admin/Admin.php:130
+#: src/Admin/Admin.php:140
 msgid "Decision"
 msgstr ""
 
 #. translators: %d: level.
-#: src/Admin/Admin.php:135
+#: src/Admin/Admin.php:145
 msgid "Verification level %d"
 msgstr ""
 
-#: src/Admin/Admin.php:140
+#: src/Admin/Admin.php:150
 msgid "Changed:"
 msgstr ""
 
-#: src/Admin/Admin.php:144
+#: src/Admin/Admin.php:154
 msgid "Publish the changes"
 msgstr ""
 
-#: src/Admin/Admin.php:145
-#: src/Admin/Admin.php:157
-#: src/Admin/Admin.php:346
+#: src/Admin/Admin.php:155
+#: src/Admin/Admin.php:167
+#: src/Admin/Admin.php:472
 msgid "Reason (sent to the seller)"
 msgstr ""
 
-#: src/Admin/Admin.php:145
+#: src/Admin/Admin.php:155
 msgid "Refuse the changes"
 msgstr ""
 
-#: src/Admin/Admin.php:149
+#: src/Admin/Admin.php:159
 msgid "Edit text and photos"
 msgstr ""
 
-#: src/Admin/Admin.php:155
+#: src/Admin/Admin.php:165
 msgid "Publish"
 msgstr ""
 
-#: src/Admin/Admin.php:157
+#: src/Admin/Admin.php:167
 msgid "Unpublish"
 msgstr ""
 
-#: src/Admin/Admin.php:157
+#: src/Admin/Admin.php:167
 msgid "Request changes"
 msgstr ""
 
-#: src/Admin/Admin.php:170
+#: src/Admin/Admin.php:180
 msgid "Profiles, tubes, plates and bars take their technical data and weight from the weight engine. For the other categories, the fields below are the form shown to sellers. Select options: one per line, \"value|Français|عربي\"."
 msgstr ""
 
-#: src/Admin/Admin.php:183
+#: src/Admin/Admin.php:193
 msgid "hidden"
 msgstr ""
 
-#: src/Admin/Admin.php:184
+#: src/Admin/Admin.php:194
 msgid "Name (French)"
 msgstr ""
 
-#: src/Admin/Admin.php:184
+#: src/Admin/Admin.php:194
 msgid "Name (Arabic)"
 msgstr ""
 
-#: src/Admin/Admin.php:184
+#: src/Admin/Admin.php:194
 msgid "Order"
 msgstr ""
 
-#: src/Admin/Admin.php:184
+#: src/Admin/Admin.php:194
 msgid "Visible"
 msgstr ""
 
-#: src/Admin/Admin.php:185
+#: src/Admin/Admin.php:195
 msgid "Units:"
 msgstr ""
 
-#: src/Admin/Admin.php:191
+#: src/Admin/Admin.php:201
 msgid "Weight engine families:"
 msgstr ""
 
-#: src/Admin/Admin.php:193
+#: src/Admin/Admin.php:203
 msgid "Key"
 msgstr ""
 
-#: src/Admin/Admin.php:193
+#: src/Admin/Admin.php:203
 msgid "Type"
 msgstr ""
 
-#: src/Admin/Admin.php:193
+#: src/Admin/Admin.php:203
 msgid "Label (French)"
 msgstr ""
 
-#: src/Admin/Admin.php:193
+#: src/Admin/Admin.php:203
 msgid "Label (Arabic)"
 msgstr ""
 
-#: src/Admin/Admin.php:193
+#: src/Admin/Admin.php:203
 msgid "Unit"
 msgstr ""
 
-#: src/Admin/Admin.php:193
+#: src/Admin/Admin.php:203
 msgid "Required"
 msgstr ""
 
-#: src/Admin/Admin.php:193
+#: src/Admin/Admin.php:203
 msgid "Options (lists)"
 msgstr ""
 
-#: src/Admin/Admin.php:198
+#: src/Admin/Admin.php:208
 msgid "new_field"
 msgstr ""
 
-#: src/Admin/Admin.php:204
+#: src/Admin/Admin.php:214
 msgid "To remove a field, empty its key. The last row adds a field."
 msgstr ""
 
-#: src/Admin/Admin.php:207
+#: src/Admin/Admin.php:217
 msgid "Save the category"
 msgstr ""
 
-#: src/Admin/Admin.php:218
+#: src/Admin/Admin.php:228
 msgid "Moderation"
 msgstr ""
 
-#: src/Admin/Admin.php:218
+#: src/Admin/Admin.php:228
 msgid "Check every product before it is published"
 msgstr ""
 
-#: src/Admin/Admin.php:219
+#: src/Admin/Admin.php:229
 msgid "Client accounts"
 msgstr ""
 
-#: src/Admin/Admin.php:219
+#: src/Admin/Admin.php:229
 msgid "Always check the listings of client accounts (private sellers), even when moderation is off"
 msgstr ""
 
-#: src/Admin/Admin.php:221
+#: src/Admin/Admin.php:231
 msgid "Listings online per client account (0 = no limit)"
 msgstr ""
 
-#: src/Admin/Admin.php:222
+#: src/Admin/Admin.php:232
 msgid "Publication period (days, 0 = no end)"
 msgstr ""
 
-#: src/Admin/Admin.php:223
+#: src/Admin/Admin.php:233
 msgid "Photos per product"
 msgstr ""
 
-#: src/Admin/Admin.php:224
+#: src/Admin/Admin.php:234
 msgid "Largest photo (MB)"
 msgstr ""
 
-#: src/Admin/Admin.php:225
+#: src/Admin/Admin.php:235
 msgid "Largest technical sheet (MB)"
 msgstr ""
 
-#: src/Admin/Admin.php:226
+#: src/Admin/Admin.php:236
 msgid "Lowest price accepted (DA)"
 msgstr ""
 
-#: src/Admin/Admin.php:227
+#: src/Admin/Admin.php:237
 msgid "Highest price accepted (DA)"
 msgstr ""
 
-#: src/Admin/Admin.php:228
+#: src/Admin/Admin.php:238
 msgid "Steel grades offered (comma separated)"
 msgstr ""
 
-#: src/Admin/Admin.php:261
-msgid "Changes published. The seller was notified."
+#: src/Admin/Admin.php:258
+msgid "The price shown under the picture of the home page and on the price index page. It is either the average asking price of new hot-rolled sections (IPE, HEA, HEB, HEM, IPN, UPN, UPE, angles) published on the platform, or the reference prices you enter below."
 msgstr ""
 
-#: src/Admin/Admin.php:265
-#: src/Admin/Admin.php:278
-msgid "Give the reason, so the seller knows what to change."
+#: src/Admin/Admin.php:261
+msgid "Shown now:"
+msgstr ""
+
+#. translators: 1: price per kg, 2: number of weeks.
+#: src/Admin/Admin.php:264
+msgid "average of the listings, %1$s DA/kg (curve over %2$d weeks)."
+msgstr ""
+
+#. translators: 1: price per kg, 2: date.
+#: src/Admin/Admin.php:267
+msgid "your reference price, %1$s DA/kg of %2$s."
 msgstr ""
 
 #: src/Admin/Admin.php:269
-msgid "Changes refused. The previous version stays online; the seller was told why."
+msgid "The automatic average does not have enough listings yet."
 msgstr ""
 
-#: src/Admin/Admin.php:274
-msgid "Product published. The seller was notified."
+#: src/Admin/Admin.php:272
+msgid "no price yet: the home page says \"Price coming soon\"."
 msgstr ""
 
-#: src/Admin/Admin.php:282
-msgid "The seller was asked to change the product."
+#: src/Admin/Admin.php:276
+msgid "Source of the price"
 msgstr ""
 
-#: src/Admin/Admin.php:293
-#: src/Admin/Admin.php:381
-msgid "title"
+#: src/Admin/Admin.php:280
+msgid "Automatic average"
+msgstr ""
+
+#: src/Admin/Admin.php:280
+msgid "Compute the average of the listings week by week"
+msgstr ""
+
+#: src/Admin/Admin.php:280
+msgid "Off: your reference prices are shown. On: the average is shown when the thresholds below are reached, otherwise your reference prices."
+msgstr ""
+
+#: src/Admin/Admin.php:281
+msgid "Listings needed in a week"
+msgstr ""
+
+#: src/Admin/Admin.php:281
+msgid "A week with fewer listings is left out of the curve. With few listings, one wrong price moves the average a lot."
+msgstr ""
+
+#. translators: %d: number of weeks of the curve.
+#: src/Admin/Admin.php:283
+msgid "Weeks needed"
+msgstr ""
+
+#. translators: %d: number of weeks of the curve.
+#: src/Admin/Admin.php:283
+msgid "Number of such weeks, over the last %d, before the average replaces your reference prices."
+msgstr ""
+
+#: src/Admin/Admin.php:286
+msgid "Save"
+msgstr ""
+
+#: src/Admin/Admin.php:292
+msgid "Listings of the last weeks"
+msgstr ""
+
+#: src/Admin/Admin.php:294
+msgid "No new section listing with a price per kg in the last 12 weeks."
 msgstr ""
 
 #: src/Admin/Admin.php:296
-#: src/Admin/Admin.php:385
-msgid "description"
+msgid "Week of"
+msgstr ""
+
+#: src/Admin/Admin.php:296
+msgid "Listings"
+msgstr ""
+
+#: src/Admin/Admin.php:296
+msgid "Average DA/kg"
 msgstr ""
 
 #: src/Admin/Admin.php:299
-msgid "photos"
+msgid "below the threshold"
 msgstr ""
 
-#: src/Admin/Admin.php:302
-msgid "technical sheets"
+#: src/Admin/Admin.php:304
+msgid "Reference prices"
 msgstr ""
 
-#: src/Admin/Admin.php:306
-msgid "technical data"
+#: src/Admin/Admin.php:305
+msgid "A price per kg of new sections that you checked yourself (suppliers, traders). Each date adds a point to the curve; a price entered again for the same date replaces it. Visitors see \"ReuSteel reference price\" and the date."
 msgstr ""
 
-#: src/Admin/Admin.php:309
-msgid "price"
+#: src/Admin/Admin.php:310
+#: src/Admin/Admin.php:320
+msgid "Date"
 msgstr ""
 
 #: src/Admin/Admin.php:311
+msgid "Price (DA per kg)"
+msgstr ""
+
+#: src/Admin/Admin.php:312
+msgid "Source (optional, shown to visitors)"
+msgstr ""
+
+#: src/Admin/Admin.php:313
+msgid "Add the price"
+msgstr ""
+
+#: src/Admin/Admin.php:317
+msgid "No reference price yet."
+msgstr ""
+
+#: src/Admin/Admin.php:320
+msgid "DA/kg"
+msgstr ""
+
+#: src/Admin/Admin.php:320
+msgid "Source"
+msgstr ""
+
+#: src/Admin/Admin.php:326
+#: src/Admin/Admin.php:462
+#: src/Admin/Admin.php:468
+msgid "Delete"
+msgstr ""
+
+#: src/Admin/Admin.php:343
+#: src/Admin/Admin.php:575
+msgid "Settings saved."
+msgstr ""
+
+#: src/Admin/Admin.php:356
+msgid "Reference price deleted."
+msgstr ""
+
+#: src/Admin/Admin.php:366
+msgid "Reference price saved."
+msgstr ""
+
+#: src/Admin/Admin.php:387
+msgid "Changes published. The seller was notified."
+msgstr ""
+
+#: src/Admin/Admin.php:391
+#: src/Admin/Admin.php:404
+msgid "Give the reason, so the seller knows what to change."
+msgstr ""
+
+#: src/Admin/Admin.php:395
+msgid "Changes refused. The previous version stays online; the seller was told why."
+msgstr ""
+
+#: src/Admin/Admin.php:400
+msgid "Product published. The seller was notified."
+msgstr ""
+
+#: src/Admin/Admin.php:408
+msgid "The seller was asked to change the product."
+msgstr ""
+
+#: src/Admin/Admin.php:419
+#: src/Admin/Admin.php:507
+msgid "title"
+msgstr ""
+
+#: src/Admin/Admin.php:422
+#: src/Admin/Admin.php:511
+msgid "description"
+msgstr ""
+
+#: src/Admin/Admin.php:425
+msgid "photos"
+msgstr ""
+
+#: src/Admin/Admin.php:428
+msgid "technical sheets"
+msgstr ""
+
+#: src/Admin/Admin.php:432
+msgid "technical data"
+msgstr ""
+
+#: src/Admin/Admin.php:435
+msgid "price"
+msgstr ""
+
+#: src/Admin/Admin.php:437
 msgid "quantities"
 msgstr ""
 
 #. translators: %s: listing title.
-#: src/Admin/Admin.php:325
+#: src/Admin/Admin.php:451
 msgid "Edit \"%s\""
 msgstr ""
 
 #. translators: %s: company.
-#: src/Admin/Admin.php:326
+#: src/Admin/Admin.php:452
 msgid "Seller: %s. The seller receives a notification and an e-mail with your reason and the list of changes."
 msgstr ""
 
-#: src/Admin/Admin.php:331
+#: src/Admin/Admin.php:457
 msgid "Title in French"
 msgstr ""
 
-#: src/Admin/Admin.php:332
+#: src/Admin/Admin.php:458
 msgid "Title in Arabic"
 msgstr ""
 
-#: src/Admin/Admin.php:333
+#: src/Admin/Admin.php:459
 msgid "Description"
 msgstr ""
 
-#: src/Admin/Admin.php:334
+#: src/Admin/Admin.php:460
 msgid "Photos"
 msgstr ""
 
-#: src/Admin/Admin.php:336
-#: src/Admin/Admin.php:342
-msgid "Delete"
-msgstr ""
-
-#: src/Admin/Admin.php:338
+#: src/Admin/Admin.php:464
 msgid "Add photos"
 msgstr ""
 
-#: src/Admin/Admin.php:340
+#: src/Admin/Admin.php:466
 msgid "Technical sheets"
 msgstr ""
 
-#: src/Admin/Admin.php:348
+#: src/Admin/Admin.php:474
 msgid "Save and inform the seller"
 msgstr ""
 
-#: src/Admin/Admin.php:349
+#: src/Admin/Admin.php:475
 msgid "Cancel"
 msgstr ""
 
-#: src/Admin/Admin.php:365
+#: src/Admin/Admin.php:491
 msgid "Give the reason, so the seller knows why the listing was changed."
 msgstr ""
 
-#: src/Admin/Admin.php:376
+#: src/Admin/Admin.php:502
 #: src/Spec.php:154
 msgid "Give the product a title (in French or in Arabic)."
 msgstr ""
 
 #. translators: %d: number of photos.
-#: src/Admin/Admin.php:392
+#: src/Admin/Admin.php:518
 msgid "%d photo deleted"
 msgid_plural "%d photos deleted"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d: number of photos.
-#: src/Admin/Admin.php:396
+#: src/Admin/Admin.php:522
 msgid "%d photo added"
 msgid_plural "%d photos added"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Admin/Admin.php:400
+#: src/Admin/Admin.php:526
 msgid "technical sheet deleted"
 msgstr ""
 
-#: src/Admin/Admin.php:403
+#: src/Admin/Admin.php:529
 msgid "Nothing was changed."
 msgstr ""
 
-#: src/Admin/Admin.php:411
+#: src/Admin/Admin.php:537
 msgid "Listing changed. The seller was informed with your reason."
 msgstr ""
 
-#: src/Admin/Admin.php:439
+#: src/Admin/Admin.php:565
 msgid "Category saved."
-msgstr ""
-
-#: src/Admin/Admin.php:449
-msgid "Settings saved."
 msgstr ""
 
 #: src/Form.php:47
@@ -776,6 +915,18 @@ msgstr ""
 
 #: src/Presenter.php:244
 msgid "lot"
+msgstr ""
+
+#: src/PriceTrend.php:74
+msgid "Enter a valid date."
+msgstr ""
+
+#: src/PriceTrend.php:77
+msgid "The date cannot be in the future."
+msgstr ""
+
+#: src/PriceTrend.php:81
+msgid "Enter a price per kg greater than 0."
 msgstr ""
 
 #: src/Rest/Api.php:35

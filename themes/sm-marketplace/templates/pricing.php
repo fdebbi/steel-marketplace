@@ -19,8 +19,15 @@ $classes = array(
 	'company'      => __( 'Companies', 'sm-marketplace' ),
 	'professional' => __( 'Professionals and craftsmen', 'sm-marketplace' ),
 );
+$viewer = $has && is_array( $data['viewer'] ?? null ) ? $data['viewer'] : null;
+// Signed in: the tab of the visitor's kind of account opens first (0.23.0).
 $tab = sm_theme_query_arg( 'for' );
-$tab = isset( $classes[ $tab ] ) ? $tab : 'company';
+if ( ! isset( $classes[ $tab ] ) ) {
+	$tab = $viewer && isset( $classes[ $viewer['class'] ] ) ? $viewer['class'] : 'company';
+}
+// Clients and partner engineers have no plan: the AI credit packs come first.
+$packs_first = $viewer && empty( $viewer['has_plans'] ) && ! empty( $data['packs'] );
+$packs_url   = is_user_logged_in() ? sm_page_url( 'account', array( 'view' => 'ai-credits' ) ) : sm_page_url( 'register' );
 ?>
 <section class="sm-pagehead">
 	<div class="sm-container">
@@ -52,31 +59,31 @@ $tab = isset( $classes[ $tab ] ) ? $tab : 'company';
 			</section>
 		<?php endif; ?>
 
+		<?php if ( $packs_first ) : ?>
+			<section class="sm-pricing__mine">
+				<p class="sm-callout"><?php sm_icon( 'ai' ); ?><span><?php esc_html_e( 'Your account (client or partner engineer) has no plan to pay: the platform is free for you. Buy AI credits when you need more than the monthly ones.', 'sm-marketplace' ); ?></span></p>
+				<?php sm_component( 'pricing-packs', array( 'packs' => $data['packs'], 'url' => $packs_url, 'lead' => true ) ); ?>
+				<h2 class="sm-pricing__others"><?php esc_html_e( 'Plans of companies and professionals', 'sm-marketplace' ); ?></h2>
+			</section>
+		<?php endif; ?>
+
 		<div class="sm-pricing__tabs" role="tablist" aria-label="<?php esc_attr_e( 'Type of account', 'sm-marketplace' ); ?>">
 			<?php foreach ( $classes as $key => $label ) : ?>
-				<button type="button" role="tab" id="tab-<?php echo esc_attr( $key ); ?>" aria-controls="plans-<?php echo esc_attr( $key ); ?>" aria-selected="<?php echo $tab === $key ? 'true' : 'false'; ?>" data-sm-tab="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $label ); ?></button>
+				<button type="button" role="tab" id="tab-<?php echo esc_attr( $key ); ?>" aria-controls="plans-<?php echo esc_attr( $key ); ?>" aria-selected="<?php echo $tab === $key ? 'true' : 'false'; ?>" data-sm-tab="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $label ); ?><?php if ( $viewer && $viewer['class'] === $key ) : ?> <span class="sm-pricing__you"><?php esc_html_e( 'your account', 'sm-marketplace' ); ?></span><?php endif; ?></button>
 			<?php endforeach; ?>
 		</div>
 		<?php foreach ( $classes as $key => $label ) : ?>
 			<div class="sm-plans" role="tabpanel" id="plans-<?php echo esc_attr( $key ); ?>" aria-labelledby="tab-<?php echo esc_attr( $key ); ?>"<?php echo $tab === $key ? '' : ' hidden'; ?>>
 				<?php foreach ( (array) ( $data['classes'][ $key ] ?? array() ) as $i => $p ) : ?>
-					<?php sm_component( 'plan-card', array( 'plan' => $p, 'labels' => $data['labels'], 'class' => $key, 'mode' => 'public', 'highlight' => 1 === $i ) ); ?>
+					<?php sm_component( 'plan-card', array( 'plan' => $p, 'labels' => $data['labels'], 'class' => $key, 'mode' => 'public', 'highlight' => 1 === $i, 'viewer' => $viewer ) ); ?>
 				<?php endforeach; ?>
 			</div>
 		<?php endforeach; ?>
 		<p class="sm-help sm-pricing__note"><?php esc_html_e( 'Prices include TVA. Buildings are counted by number, apart from the tonnage. When a paid period ends, what goes beyond the free plan is paused, the oldest first; nothing is deleted.', 'sm-marketplace' ); ?></p>
 
 		<div class="sm-pricing__extras">
-			<?php if ( ! empty( $data['packs'] ) ) : ?>
-				<section class="sm-panel">
-					<h2 class="sm-panel__title"><?php esc_html_e( 'AI credit packs', 'sm-marketplace' ); ?></h2>
-					<p class="sm-muted"><?php esc_html_e( 'For every account, clients and partner engineers included. Bought credits do not expire.', 'sm-marketplace' ); ?></p>
-					<ul class="sm-pricelist">
-						<?php foreach ( $data['packs'] as $pack ) : ?>
-							<li><span><?php /* translators: %s: number of credits. */ echo esc_html( sprintf( __( '%s AI credits', 'sm-marketplace' ), sm_number( $pack['credits'] ) ) ); ?></span><strong><?php echo esc_html( sm_money( $pack['price'] ) ); ?></strong></li>
-						<?php endforeach; ?>
-					</ul>
-				</section>
+			<?php if ( ! empty( $data['packs'] ) && ! $packs_first ) : ?>
+				<?php sm_component( 'pricing-packs', array( 'packs' => $data['packs'], 'url' => $packs_url ) ); ?>
 			<?php endif; ?>
 			<?php $opts = array_filter( (array) $data['options'], static fn( $o ) => $o['price'] > 0 ); ?>
 			<?php if ( $opts ) : ?>

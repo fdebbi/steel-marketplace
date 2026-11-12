@@ -1,5 +1,12 @@
 # Changelog — sm-products
 
+## 0.9.0 — 2026-11-12
+
+- Indice des prix (SM → Produits → Indice des prix) : calcul automatique de la moyenne activable ou non, seuils réglables (annonces par semaine, semaines nécessaires), tableau des dernières semaines pour choisir les seuils.
+- Prix de référence saisis par l'administrateur (date, prix au kg, source facultative) : chaque date ajoute un point, une nouvelle saisie à la même date la corrige, suppression possible ; journalisé. Affichés quand le calcul automatique est désactivé ou n'a pas encore assez d'annonces.
+- `PriceTrend::summary()` renvoie `mode` (auto / manual / none), `points` { date, value }, `last`, `last_date`, `change`, `source`, `reuse`.
+- 11 tests PHP de plus.
+
 ## 0.8.0 — 2026-11-12 (Phase 10, base v6)
 
 - Colonnes `bumped_at`, `featured_until`, `urgent_until` ; statut `paused` (mis en pause par la formule, republiable).

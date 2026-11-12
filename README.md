@@ -8,17 +8,17 @@ Architecture : un thème WordPress sur mesure (présentation uniquement) + des e
 
 | Dossier | Contenu | État |
 | --- | --- | --- |
-| `themes/sm-marketplace/` | Thème de présentation (FR / AR / EN) | 0.22.0 |
+| `themes/sm-marketplace/` | Thème de présentation (FR / AR / EN) | 0.23.0 |
 | `plugins/sm-core/` | Socle : comptes, permissions, vérification, langues, notifications, demandes, API | 0.8.1 |
 | `plugins/sm-weight-engine/` | Catalogue acier vérifié, schémas exacts, calcul des poids | 0.2.1 |
-| `plugins/sm-products/` | Produits neufs (et base des annonces réemploi / bâtiments) | 0.8.0 |
+| `plugins/sm-products/` | Produits neufs (et base des annonces réemploi / bâtiments), indice des prix | 0.9.0 |
 | `plugins/sm-reuse/` | Réemploi de l'acier | 0.1.0 |
 | `plugins/sm-buildings/` | Bâtiments métalliques | 0.1.0 |
 | `plugins/sm-rfq/` | Demandes de devis | 0.1.3 |
 | `plugins/sm-services/` | Services (fabrication, montage…), réalisations | 0.3.6 |
 | `plugins/sm-ai/` | Assistant IA | 0.1.3 |
 | `plugins/sm-engineering/` | Ingénieurs partenaires et missions | 0.1.1 |
-| `plugins/sm-subscriptions/` | Formules, commandes, paiement hors ligne, factures, crédits IA, options | 0.1.0 — Phase 10 |
+| `plugins/sm-subscriptions/` | Formules, commandes, paiement hors ligne, factures, crédits IA, options | 0.1.1 — Phase 10 |
 | `tests/` | Tests de bout en bout (navigateur) | |
 | `docs/` | Décisions, rapports de phase | |
 

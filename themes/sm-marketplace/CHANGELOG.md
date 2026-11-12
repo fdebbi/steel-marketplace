@@ -1,5 +1,12 @@
 # Changelog — sm-marketplace
 
+## 0.23.0 — 2026-11-12 (avec sm-products 0.9.0 et sm-subscriptions 0.1.1)
+
+- Courbe du prix de l'acier sous l'image de l'accueil, refaite : courbe lissée en SVG sans bibliothèque (sans pic ni creux inventés entre deux points), tracée de gauche à droite quand elle entre dans l'écran, lueur légère, points qui apparaissent l'un après l'autre, carte « verre métallique » accrochée au dernier point avec le prix au kg, la date et l'évolution. Hauteur réservée : rien ne bouge sur la page. Immobile avec « réduire les animations » ou sans JavaScript.
+- Toujours affichée : avec un seul prix, le passé est une ligne en pointillés (décor, pas des données) qui finit sur le prix de la semaine ; sans aucun prix, la carte indique « Prix bientôt disponible ». Le libellé dit d'où vient le prix : « Prix moyen demandé » (annonces) ou « Prix de référence ReuSteel » (saisi par l'équipe), jamais « prix officiel ».
+- La même courbe en tête de la page Indice des prix.
+- Page Abonnements selon le compte connecté : l'onglet de son type de compte s'ouvre en premier avec la mention « votre compte », la formule en cours est marquée (« Gérer ma formule »), les formules de l'autre type restent visibles sans bouton de commande. Clients et ingénieurs partenaires : packs de crédits IA en tête avec « Acheter des crédits IA ».
+
 ## 0.22.0 — 2026-11-12 (Phase 10, avec sm-subscriptions 0.1.0)
 
 - Page publique « Abonnements » (/tarifs/) : onglets Entreprises / Professionnels et artisans, 3 formules chacune avec prix mensuel et annuel (économie affichée), limites, packs de crédits IA, options d'annonce, moyens de paiement, offre membres fondateurs. Tout vient des réglages ; rien n'est écrit en dur.

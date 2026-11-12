@@ -1,5 +1,11 @@
 # Changelog — sm-subscriptions
 
+## 0.1.1 — 2026-11-12
+
+- Versions des autres extensions vérifiées (`Compat`) : si SM Core, SM Products, SM Services, SM RFQ ou SM AI est actif dans une version trop ancienne, la page Abonnement s'affiche quand même (sans le chiffre concerné) au lieu d'une erreur critique, et l'administration affiche quelle extension mettre à jour.
+- Ressource `plans` : compte du visiteur (`viewer` : type de compte, formule en cours) pour la page Abonnements.
+- 4 tests PHP de plus.
+
 ## 0.1.0 — 2026-11-12 (Phase 10, base v2)
 
 - Formules entreprises (Découverte, Pro, Business) et professionnels (Gratuit, Artisan Pro, Artisan Premium), prix et limites modifiables dans l'administration.

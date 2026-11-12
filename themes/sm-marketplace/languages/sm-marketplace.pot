@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.21.0\n"
+"Project-Id-Version: SM Marketplace 0.22.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-12T13:35:26+00:00\n"
+"POT-Creation-Date: 2026-11-12T18:32:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -147,7 +147,7 @@ msgstr ""
 #: footer.php:36
 #: header.php:30
 #: header.php:136
-#: templates/price-index.php:16
+#: templates/price-index.php:17
 msgid "Price index"
 msgstr ""
 
@@ -159,8 +159,8 @@ msgstr ""
 #: footer.php:42
 #: header.php:31
 #: template-parts/dashboard/plan.php:137
-#: templates/pricing.php:27
-#: templates/pricing.php:28
+#: templates/pricing.php:34
+#: templates/pricing.php:35
 msgid "Plans"
 msgstr ""
 
@@ -1474,32 +1474,84 @@ msgid_plural "Show %s results"
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: 1: average price per kg, 2: number of weeks shown.
-#: template-parts/components/hero-trend.php:42
-msgid "Average asking price of new steel sections: %1$s DA per kg, curve over %2$d weeks."
+#: template-parts/components/hero-trend.php:111
+msgid "ReuSteel reference price"
 msgstr ""
 
-#: template-parts/components/hero-trend.php:49
-msgid "Average price of new sections"
+#: template-parts/components/hero-trend.php:111
+msgid "Average asking price"
 msgstr ""
 
-#. translators: %d: number of weeks.
-#: template-parts/components/hero-trend.php:64
-msgid "average, last %d week"
-msgid_plural "averages, last %d weeks"
-msgstr[0] ""
-msgstr[1] ""
+#: template-parts/components/hero-trend.php:111
+msgid "Price of steel"
+msgstr ""
 
-#: template-parts/components/hero-trend.php:67
+#: template-parts/components/hero-trend.php:112
+msgid "Reference price"
+msgstr ""
+
+#: template-parts/components/hero-trend.php:112
+msgid "Current average"
+msgstr ""
+
+#: template-parts/components/hero-trend.php:112
+msgid "Price of the week"
+msgstr ""
+
+#. translators: %s: date of the Monday of the week.
+#: template-parts/components/hero-trend.php:115
+msgid "Week of %s"
+msgstr ""
+
+#. translators: %s: date of the reference price.
+#: template-parts/components/hero-trend.php:118
+msgid "Checked on %s"
+msgstr ""
+
+#: template-parts/components/hero-trend.php:123
+msgid "Average of the prices asked by sellers on the platform, not an official price."
+msgstr ""
+
+#. translators: %s: where the administrator checked the price.
+#: template-parts/components/hero-trend.php:127
+msgid "Price checked by the ReuSteel team (%s), not an official price."
+msgstr ""
+
+#: template-parts/components/hero-trend.php:128
+msgid "Price checked by the ReuSteel team, not an official price."
+msgstr ""
+
+#: template-parts/components/hero-trend.php:130
+msgid "The price of the week will be shown here."
+msgstr ""
+
+#: template-parts/components/hero-trend.php:133
+msgid "Price of new steel sections: coming soon."
+msgstr ""
+
+#. translators: 1: kind of price, 2: price per kg, 3: date.
+#: template-parts/components/hero-trend.php:136
+msgid "%1$s of new steel sections: %2$s DA per kg, %3$s."
+msgstr ""
+
+#: template-parts/components/hero-trend.php:144
+msgid "New sections · IPE, HEA, UPN…"
+msgstr ""
+
+#: template-parts/components/hero-trend.php:178
+msgid "Price coming soon"
+msgstr ""
+
+#: template-parts/components/hero-trend.php:184
+msgid "The curve builds up with every new price."
+msgstr ""
+
+#: template-parts/components/hero-trend.php:187
 msgid "Reused sections"
 msgstr ""
 
-#: template-parts/components/hero-trend.php:67
+#: template-parts/components/hero-trend.php:187
 msgid "(last 30 days)"
-msgstr ""
-
-#: template-parts/components/hero-trend.php:69
-msgid "Prices asked by sellers on the platform, not an official price."
 msgstr ""
 
 #: template-parts/components/location-map.php:38
@@ -1740,65 +1792,78 @@ msgstr ""
 msgid "Continue"
 msgstr ""
 
-#: template-parts/components/plan-card.php:34
+#: template-parts/components/plan-card.php:37
 #: template-parts/dashboard/plan.php:16
 #: template-parts/dashboard/plan.php:22
 #: template-parts/dashboard/plan.php:89
 msgid "Your plan"
 msgstr ""
 
-#: template-parts/components/plan-card.php:40
+#: template-parts/components/plan-card.php:43
 msgid "/ month"
 msgstr ""
 
 #. translators: %s: yearly price.
-#: template-parts/components/plan-card.php:47
+#: template-parts/components/plan-card.php:50
 msgid "or %s per year"
 msgstr ""
 
 #. translators: %s: amount saved.
-#: template-parts/components/plan-card.php:50
+#: template-parts/components/plan-card.php:53
 msgid "%s saved"
 msgstr ""
 
-#: template-parts/components/plan-card.php:73
-msgid "Start free"
+#: template-parts/components/plan-card.php:75
+msgid "Manage my plan"
 msgstr ""
 
-#: template-parts/components/plan-card.php:73
-msgid "Choose"
+#: template-parts/components/plan-card.php:77
+msgid "For professional and craftsman accounts."
 msgstr ""
 
-#: template-parts/components/plan-card.php:76
-msgid "Free, without time limit."
+#: template-parts/components/plan-card.php:77
+msgid "For company accounts."
 msgstr ""
 
-#: template-parts/components/plan-card.php:76
+#: template-parts/components/plan-card.php:79
+#: template-parts/components/plan-card.php:85
 msgid "Your account comes back to this plan when a paid period ends."
 msgstr ""
 
-#: template-parts/components/plan-card.php:78
+#: template-parts/components/plan-card.php:82
+msgid "Start free"
+msgstr ""
+
+#: template-parts/components/plan-card.php:82
+msgid "Choose"
+msgstr ""
+
+#: template-parts/components/plan-card.php:85
+msgid "Free, without time limit."
+msgstr ""
+
+#: template-parts/components/plan-card.php:87
 #: template-parts/dashboard/ai-credits.php:68
 msgid "Only the owner or a manager of the account can order."
 msgstr ""
 
 #. translators: %s: price.
-#: template-parts/components/plan-card.php:90
+#: template-parts/components/plan-card.php:99
 msgid "Renew for 1 year · %s"
 msgstr ""
 
 #. translators: %s: price.
-#: template-parts/components/plan-card.php:90
+#: template-parts/components/plan-card.php:99
 msgid "Renew for 1 month · %s"
 msgstr ""
 
 #. translators: %s: price.
-#: template-parts/components/plan-card.php:93
+#: template-parts/components/plan-card.php:102
 msgid "Pay 1 year · %s"
 msgstr ""
 
 #. translators: %s: price.
-#: template-parts/components/plan-card.php:93
+#: template-parts/components/plan-card.php:102
 msgid "Pay 1 month · %s"
 msgstr ""
 
@@ -1899,6 +1964,24 @@ msgstr ""
 
 #: template-parts/components/price-block.php:64
 msgid "Demo listing: values are illustrative and will be computed by the weight engine."
+msgstr ""
+
+#: template-parts/components/pricing-packs.php:14
+msgid "AI credit packs"
+msgstr ""
+
+#: template-parts/components/pricing-packs.php:15
+msgid "For every account, clients and partner engineers included. Bought credits do not expire."
+msgstr ""
+
+#. translators: %s: number of credits.
+#: template-parts/components/pricing-packs.php:18
+msgid "%s AI credits"
+msgstr ""
+
+#: template-parts/components/pricing-packs.php:22
+#: template-parts/dashboard/ai-credits.php:51
+msgid "Buy AI credits"
 msgstr ""
 
 #: template-parts/components/product-form.php:46
@@ -3530,10 +3613,6 @@ msgstr[1] ""
 msgid "One use of an AI tool takes one credit. The credits of the month start again on the 1st."
 msgstr ""
 
-#: template-parts/dashboard/ai-credits.php:51
-msgid "Buy AI credits"
-msgstr ""
-
 #: template-parts/dashboard/ai-credits.php:61
 msgid "Buy"
 msgstr ""
@@ -4478,7 +4557,7 @@ msgid "See the order"
 msgstr ""
 
 #: template-parts/dashboard/plan.php:69
-#: templates/pricing.php:40
+#: templates/pricing.php:47
 msgid "Founding members offer"
 msgstr ""
 
@@ -5924,7 +6003,7 @@ msgid "Describe profiles, quantities and delivery wilaya. Suppliers answer with 
 msgstr ""
 
 #: templates/front-page-template.php:155
-#: templates/price-index.php:17
+#: templates/price-index.php:18
 msgid "Steel price index"
 msgstr ""
 
@@ -6247,19 +6326,19 @@ msgstr ""
 msgid "SM — Price index"
 msgstr ""
 
-#: templates/price-index.php:18
+#: templates/price-index.php:19
 msgid "Average advertised prices per kg by profile, condition, wilaya and period."
 msgstr ""
 
-#: templates/price-index.php:22
+#: templates/price-index.php:24
 msgid "These are asking prices published by sellers on the platform, not official market prices and not completed transaction prices."
 msgstr ""
 
-#: templates/price-index.php:34
+#: templates/price-index.php:36
 msgid "The index will appear once enough listings are published"
 msgstr ""
 
-#: templates/price-index.php:35
+#: templates/price-index.php:37
 msgid "Charts by profile, condition and wilaya are provided by the analytics module."
 msgstr ""
 
@@ -6275,73 +6354,72 @@ msgstr ""
 msgid "Professionals and craftsmen"
 msgstr ""
 
-#: templates/pricing.php:29
+#: templates/pricing.php:36
 msgid "Start free. Upgrade when you need more listings, more tonnage online, visible contacts and more AI credits. Clients and partner engineers use the platform free."
 msgstr ""
 
-#: templates/pricing.php:34
+#: templates/pricing.php:41
 msgid "Free during the launch"
 msgstr ""
 
-#: templates/pricing.php:34
+#: templates/pricing.php:41
 msgid "All the features of the platform are open. The plans will be published here."
 msgstr ""
 
 #. translators: 1: number of months, 2: places left.
-#: templates/pricing.php:45
+#: templates/pricing.php:52
 msgid "The first verified accounts get a paid plan free for %1$d months, then keep its price. %2$d place left."
 msgid_plural "The first verified accounts get a paid plan free for %1$d months, then keep its price. %2$d places left."
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/pricing.php:55
+#: templates/pricing.php:64
+msgid "Your account (client or partner engineer) has no plan to pay: the platform is free for you. Buy AI credits when you need more than the monthly ones."
+msgstr ""
+
+#: templates/pricing.php:66
+msgid "Plans of companies and professionals"
+msgstr ""
+
+#: templates/pricing.php:70
 msgid "Type of account"
 msgstr ""
 
-#: templates/pricing.php:67
+#: templates/pricing.php:72
+msgid "your account"
+msgstr ""
+
+#: templates/pricing.php:82
 msgid "Prices include TVA. Buildings are counted by number, apart from the tonnage. When a paid period ends, what goes beyond the free plan is paused, the oldest first; nothing is deleted."
 msgstr ""
 
-#: templates/pricing.php:72
-msgid "AI credit packs"
-msgstr ""
-
-#: templates/pricing.php:73
-msgid "For every account, clients and partner engineers included. Bought credits do not expire."
-msgstr ""
-
-#. translators: %s: number of credits.
-#: templates/pricing.php:76
-msgid "%s AI credits"
-msgstr ""
-
-#: templates/pricing.php:84
+#: templates/pricing.php:91
 msgid "Options for one listing"
 msgstr ""
 
-#: templates/pricing.php:85
+#: templates/pricing.php:92
 msgid "With any plan, from My listings."
 msgstr ""
 
-#: templates/pricing.php:88
+#: templates/pricing.php:95
 msgid "Back to the top of the list"
 msgstr ""
 
 #. translators: %d: days.
-#: templates/pricing.php:91
+#: templates/pricing.php:98
 msgid "\"Urgent\" badge, %d days"
 msgstr ""
 
 #. translators: %d: days.
-#: templates/pricing.php:94
+#: templates/pricing.php:101
 msgid "Featured listing, first in the results, %d days"
 msgstr ""
 
-#: templates/pricing.php:101
+#: templates/pricing.php:108
 msgid "How to pay"
 msgstr ""
 
-#: templates/pricing.php:103
+#: templates/pricing.php:110
 msgid "Order from your account, pay, then send the proof of payment. The plan starts when our team has checked it, usually within one working day. Online card payment will come later."
 msgstr ""
 

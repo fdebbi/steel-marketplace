@@ -142,26 +142,62 @@
 
 /* Price curve under the beam (0.19.0) ---------------------------------------- */
 .sm-hero__side { display: grid; gap: var(--sm-s3); min-inline-size: 0; }
-.sm-trend { position: relative; z-index: 1; display: grid; gap: 6px; inline-size: min(100%, 380px); justify-self: center; padding: var(--sm-s4); border-radius: var(--sm-radius-lg); border: 1px solid rgb(198 205 210 / .16); background: rgb(17 24 32 / .78); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: var(--sm-silver); text-decoration: none; transition: border-color .25s, transform .25s; }
-@media (min-width: 1024px) { .sm-trend { margin-block-start: -36px; } }
-.sm-trend:hover { color: var(--sm-silver); border-color: rgb(6 206 119 / .55); transform: translateY(-2px); }
-.sm-trend__head { display: flex; align-items: center; justify-content: space-between; gap: var(--sm-s2); font-size: var(--sm-fs-sm); font-weight: 600; color: var(--sm-white); }
-.sm-trend__change { padding: 2px 8px; border-radius: 999px; font-size: var(--sm-fs-xs); font-weight: 700; }
+/* Steel price curve (0.23.0): drawn when it enters the screen, card on the last point. */
+.sm-trend { --t-line: 1.6s; --t-start: .3s; position: relative; z-index: 1; display: grid; gap: var(--sm-s2); inline-size: min(100%, 420px); justify-self: center; padding: var(--sm-s4); border-radius: var(--sm-radius-lg); border: 1px solid rgb(198 205 210 / .16); background: linear-gradient(160deg, rgb(32 42 52 / .92) 0%, rgb(14 20 26 / .94) 55%, rgb(24 32 40 / .92) 100%); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 24px 48px -24px rgb(0 0 0 / .7), inset 0 1px 0 rgb(255 255 255 / .07); color: var(--sm-silver); text-decoration: none; transition: border-color .25s, transform .25s, box-shadow .25s; }
+@media (min-width: 1024px) { .sm-trend--hero { margin-block-start: -36px; } }
+a.sm-trend:hover { color: var(--sm-silver); border-color: rgb(6 206 119 / .5); transform: translateY(-2px); box-shadow: 0 28px 52px -24px rgb(0 0 0 / .75), 0 0 0 1px rgb(6 206 119 / .12), inset 0 1px 0 rgb(255 255 255 / .08); }
+a.sm-trend:focus-visible { outline: 2px solid var(--sm-accent); outline-offset: 3px; }
+.sm-trend--page { inline-size: 100%; max-inline-size: 760px; justify-self: start; margin: 0 0 var(--sm-s5); }
+.sm-trend__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sm-s2); }
+.sm-trend__title { display: grid; gap: 2px; font-size: var(--sm-fs-sm); font-weight: 700; color: var(--sm-white); }
+.sm-trend__title small { font-size: var(--sm-fs-xs); font-weight: 500; color: var(--sm-steel); }
+.sm-trend__change { flex: none; padding: 2px 8px; border-radius: 999px; font-size: var(--sm-fs-xs); font-weight: 700; }
 .sm-trend__change--up { background: rgb(6 206 119 / .14); color: #8EF3C4; }
 .sm-trend__change--down { background: rgb(242 184 75 / .16); color: #F2C66B; }
-.sm-trend__chart { inline-size: 100%; block-size: 84px; overflow: visible; }
-.sm-trend__line { fill: none; stroke: var(--sm-accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; animation: sm-trend-draw 2.2s .4s cubic-bezier(.4, 0, .2, 1) forwards; filter: drop-shadow(0 0 6px rgb(6 206 119 / .55)); }
-.sm-trend__area { opacity: 0; animation: sm-trend-fade .8s 2.2s forwards; }
-.sm-trend__dot { fill: var(--sm-accent); stroke: var(--sm-deep); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; animation: sm-trend-pop .5s 2.5s forwards; }
-.sm-trend__value { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; opacity: 0; animation: sm-trend-fade .6s 2.6s forwards; }
-.sm-trend__value strong { font-family: var(--sm-font-display); font-size: 1.75rem; line-height: 1; color: var(--sm-white); }
-[dir="rtl"] .sm-trend__value strong { font-family: var(--sm-font); }
-.sm-trend__value > span, .sm-trend__reuse span { font-size: var(--sm-fs-xs); color: var(--sm-steel); }
-.sm-trend__reuse { font-size: var(--sm-fs-sm); color: var(--sm-silver); }
+.sm-trend__plot { position: relative; display: block; aspect-ratio: 400 / 190; }
+.sm-trend__chart { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; overflow: visible; }
+.sm-trend__grid { stroke: rgb(198 205 210 / .08); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.sm-trend__line { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.sm-trend__glow { fill: none; stroke: #06CE77; stroke-width: 8; stroke-linecap: round; opacity: .22; vector-effect: non-scaling-stroke; filter: blur(5px); }
+.sm-trend__guide { fill: none; stroke: rgb(198 205 210 / .35); stroke-width: 1.5; stroke-dasharray: 3 7; stroke-linecap: round; vector-effect: non-scaling-stroke; transform-box: fill-box; transform-origin: left center; }
+/* The plot is left to right in every language (time axis): no RTL flip below. */
+/*rtl:begin:ignore*/
+.sm-trend__pt { position: absolute; left: var(--x); top: var(--y); inline-size: 7px; block-size: 7px; margin: -3.5px; border-radius: 50%; background: #06CE77; box-shadow: 0 0 0 2px #0E141A, 0 0 8px rgb(6 206 119 / .55); }
+.sm-trend__pt--last { inline-size: 12px; block-size: 12px; margin: -6px; background: #9BF5CC; box-shadow: 0 0 0 3px #0E141A, 0 0 0 4px rgb(6 206 119 / .7), 0 0 16px rgb(6 206 119 / .8); }
+.sm-trend__pt--ghost { inline-size: 12px; block-size: 12px; margin: -6px; background: transparent; border: 1.5px dashed rgb(198 205 210 / .6); box-shadow: none; }
+.sm-trend__tag { position: absolute; left: var(--x); top: var(--y); transform: translate(calc(-100% + 14px), calc(-100% - 16px)); display: grid; gap: 2px; min-inline-size: 150px; max-inline-size: 78%; padding: 8px 12px 9px; border-radius: 12px; border: 1px solid rgb(255 255 255 / .16); background: linear-gradient(135deg, rgb(255 255 255 / .14), rgb(255 255 255 / .04) 60%, rgb(6 206 119 / .08)); -webkit-backdrop-filter: blur(12px) saturate(140%); backdrop-filter: blur(12px) saturate(140%); box-shadow: 0 12px 28px -10px rgb(0 0 0 / .6), inset 0 1px 0 rgb(255 255 255 / .2); text-align: start; white-space: nowrap; }
+.sm-trend__tag::after { content: ""; position: absolute; right: 9px; bottom: -6px; inline-size: 10px; block-size: 10px; transform: rotate(45deg); background: rgb(30 40 48 / .95); border-right: 1px solid rgb(255 255 255 / .16); border-bottom: 1px solid rgb(255 255 255 / .16); }
+/*rtl:end:ignore*/
+.sm-trend__taglabel { font-size: 11px; font-weight: 600; letter-spacing: .02em; color: #9BF5CC; }
+.sm-trend__price { font-family: var(--sm-font-display); font-size: 1.6rem; line-height: 1.05; color: var(--sm-white); }
+.sm-trend__price small { font-size: .55em; font-weight: 600; color: var(--sm-silver); }
+.sm-trend__price--soon { font-family: var(--sm-font); font-size: 1rem; }
+[dir="rtl"] .sm-trend__price { font-family: var(--sm-font); }
+.sm-trend__when { font-size: 11px; color: var(--sm-steel); }
+.sm-trend__foot { display: grid; gap: 4px; }
+.sm-trend__build, .sm-trend__reuse { font-size: var(--sm-fs-xs); color: var(--sm-silver); }
+.sm-trend__reuse span { color: var(--sm-steel); }
 .sm-trend__note { font-size: 11px; color: var(--sm-steel); }
+@media (max-width: 420px) { .sm-trend { padding: var(--sm-s3); } .sm-trend__price { font-size: 1.35rem; } .sm-trend__tag { min-inline-size: 132px; } }
+
+/*rtl:begin:ignore*/
+/* Entrance: set to "wait" by the inline script before the first paint, "go" once visible. */
+.sm-trend[data-anim="wait"] :is(.sm-trend__line, .sm-trend__glow) { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.sm-trend[data-anim="wait"] :is(.sm-trend__area, .sm-trend__pt, .sm-trend__tag, .sm-trend__guide) { opacity: 0; }
+.sm-trend[data-anim="go"] :is(.sm-trend__line, .sm-trend__glow) { stroke-dasharray: 1; stroke-dashoffset: 1; animation: sm-trend-draw var(--t-line) var(--t-start) linear forwards; }
+.sm-trend[data-anim="go"] .sm-trend__area { opacity: 0; animation: sm-trend-fade .9s calc(var(--t-start) + var(--t-line) * .55) forwards; }
+.sm-trend[data-anim="go"] .sm-trend__guide { opacity: 0; transform: scaleX(0); animation: sm-trend-guide var(--t-line) var(--t-start) linear forwards; }
+.sm-trend[data-anim="go"] .sm-trend__pt { opacity: 0; scale: 0; animation: sm-trend-pop .45s calc(var(--t-start) + var(--t-line) * var(--i) / max(var(--n) - 1, 1)) forwards; }
+.sm-trend[data-anim="go"] .sm-trend__pt--last, .sm-trend[data-anim="go"] .sm-trend__pt--ghost { animation: sm-trend-pop .5s calc(var(--t-start) + var(--t-line)) forwards, sm-trend-pulse 2.6s calc(var(--t-start) + var(--t-line) + .6s) 3; }
+.sm-trend[data-anim="go"] .sm-trend__tag { opacity: 0; scale: .92; transform-origin: 92% 100%; animation: sm-trend-tag .5s calc(var(--t-start) + var(--t-line) + .15s) cubic-bezier(.2, .8, .3, 1.2) forwards; }
 @keyframes sm-trend-draw { to { stroke-dashoffset: 0; } }
 @keyframes sm-trend-fade { to { opacity: 1; } }
-@keyframes sm-trend-pop { 0% { opacity: 0; transform: scale(0); } 70% { transform: scale(1.4); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes sm-trend-guide { to { opacity: 1; transform: scaleX(1); } }
+@keyframes sm-trend-pop { 0% { opacity: 0; scale: 0; } 70% { opacity: 1; scale: 1.35; } 100% { opacity: 1; scale: 1; } }
+@keyframes sm-trend-tag { to { opacity: 1; scale: 1; } }
+@keyframes sm-trend-pulse { 0%, 100% { opacity: 1; scale: 1; } 50% { opacity: 1; scale: 1.25; } }
 @media (prefers-reduced-motion: reduce) {
-	.sm-trend__line, .sm-trend__area, .sm-trend__dot, .sm-trend__value { animation: none; opacity: 1; stroke-dashoffset: 0; }
+	.sm-trend[data-anim] :is(.sm-trend__line, .sm-trend__glow, .sm-trend__area, .sm-trend__pt, .sm-trend__tag, .sm-trend__guide) { animation: none !important; opacity: 1 !important; stroke-dashoffset: 0 !important; transform: none; scale: 1; }
+	.sm-trend[data-anim] .sm-trend__tag { transform: translate(calc(-100% + 14px), calc(-100% - 16px)); }
 }
+/*rtl:end:ignore*/

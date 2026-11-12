@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-12T13:34:07+00:00\n"
+"POT-Creation-Date: 2026-11-12T18:32:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-subscriptions\n"
@@ -382,6 +382,19 @@ msgstr ""
 msgid "Reminder before the end of a plan (days)"
 msgstr ""
 
+#: src/Compat.php:59
+msgid "SM Subscriptions: update these plugins."
+msgstr ""
+
+#: src/Compat.php:59
+msgid "Until then, the figures that depend on them are left out of the plan pages and the limits they control are not applied."
+msgstr ""
+
+#. translators: 1: plugin name, 2: installed version, 3: version needed.
+#: src/Compat.php:62
+msgid "%1$s: version %2$s installed, %3$s or later needed."
+msgstr ""
+
 #: src/Form.php:58
 msgid "Only the owner or a manager of the account can order."
 msgstr ""
@@ -500,7 +513,7 @@ msgid "Your payment for %s is confirmed. Your invoice is in your account."
 msgstr ""
 
 #: src/Notifications.php:60
-#: src/Orders.php:250
+#: src/Orders.php:290
 msgid "Payment not accepted"
 msgstr ""
 
@@ -546,21 +559,25 @@ msgstr ""
 
 #. translators: 1: plan name, 2: "1 month" or "1 year".
 #: src/Orders.php:59
+#: src/Orders.php:105
 msgid "Plan %1$s — %2$s"
 msgstr ""
 
 #. translators: 1: plan name, 2: "1 month" or "1 year".
 #: src/Orders.php:59
+#: src/Orders.php:105
 msgid "1 month"
 msgstr ""
 
 #. translators: 1: plan name, 2: "1 month" or "1 year".
 #: src/Orders.php:59
+#: src/Orders.php:105
 msgid "1 year"
 msgstr ""
 
 #. translators: %d: number of AI credits.
 #: src/Orders.php:68
+#: src/Orders.php:111
 msgid "%d AI credits"
 msgstr ""
 
@@ -574,16 +591,19 @@ msgstr ""
 
 #. translators: %s: listing title.
 #: src/Orders.php:81
+#: src/Orders.php:121
 msgid "Back to the top: %s"
 msgstr ""
 
 #. translators: 1: listing title, 2: number of days.
 #: src/Orders.php:83
+#: src/Orders.php:123
 msgid "\"Urgent\" badge, %2$d days: %1$s"
 msgstr ""
 
 #. translators: 1: listing title, 2: number of days.
 #: src/Orders.php:85
+#: src/Orders.php:125
 msgid "Featured listing, %2$d days: %1$s"
 msgstr ""
 
@@ -595,27 +615,27 @@ msgstr ""
 msgid "Unknown order."
 msgstr ""
 
-#: src/Orders.php:166
+#: src/Orders.php:206
 msgid "This order is already closed."
 msgstr ""
 
-#: src/Orders.php:170
+#: src/Orders.php:210
 msgid "The account of this order no longer exists."
 msgstr ""
 
-#: src/Orders.php:247
+#: src/Orders.php:287
 msgid "Waiting for payment"
 msgstr ""
 
-#: src/Orders.php:248
+#: src/Orders.php:288
 msgid "Payment being checked"
 msgstr ""
 
-#: src/Orders.php:249
+#: src/Orders.php:289
 msgid "Paid"
 msgstr ""
 
-#: src/Orders.php:251
+#: src/Orders.php:291
 msgid "Cancelled"
 msgstr ""
 

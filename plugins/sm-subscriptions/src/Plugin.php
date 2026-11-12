@@ -29,6 +29,7 @@ final class Plugin {
 		add_action( 'sm_language_switched', array( __CLASS__, 'reload_textdomain' ), 10, 2 );
 
 		Install\Installer::maybe_upgrade();
+		Compat::init();
 		Limits::init();
 		Founders::init();
 		Notifications::init();

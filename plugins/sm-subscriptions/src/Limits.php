@@ -157,7 +157,7 @@ final class Limits {
 		}
 		$d      = $plan['data'];
 		$paused = 0;
-		if ( class_exists( '\\SM\\Products\\Products' ) ) {
+		if ( Compat::ready( 'products' ) ) {
 			$rows = array_reverse( \SM\Products\Products::online_oldest_first( (int) $company_id ) ); // Newest first: they are kept.
 			$keep = array( 'listings' => 0, 'weight' => 0.0, 'buildings' => 0 );
 			foreach ( $rows as $r ) {
@@ -177,7 +177,7 @@ final class Limits {
 				}
 			}
 		}
-		if ( class_exists( '\\SM\\Services\\Services' ) && Plans::UNLIMITED !== (int) $d['services'] ) {
+		if ( Compat::ready( 'services' ) && Plans::UNLIMITED !== (int) $d['services'] ) {
 			$services = \SM\Services\Services::query( array( 'company' => (int) $company_id, 'status' => 'published', 'per_page' => 200 ) );
 			$items    = $services['items'] ?? $services;
 			$items    = array_values( (array) $items );

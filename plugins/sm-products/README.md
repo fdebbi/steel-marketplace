@@ -18,6 +18,15 @@ Depuis la version 0.2.0, cette extension est le **moteur d’annonces** commun :
 - Tableau de bord vendeur : « Mes annonces » par statut, modifier, marquer vendu, retirer, republier, supprimer.
 - Règles : seules les entreprises commerciales ayant une activité de vente et un contact vérifié publient ; un compte ingénierie ne publie jamais.
 
+## Indice des prix (0.9.0)
+
+SM → Produits → Indice des prix. Le prix affiché sous l'image de l'accueil et sur la page Indice des prix vient :
+
+- **du calcul automatique** (activé par défaut) : moyenne au kg des annonces de profilés laminés neufs (IPE, HEA, HEB, HEM, IPN, UPN, UPE, cornières) mises en ligne chaque semaine. Une semaine compte avec au moins 5 annonces, la courbe s'affiche avec au moins 4 semaines sur 12 ; les deux seuils sont réglables ;
+- **sinon, des prix de référence** saisis par l'administrateur (date, prix au kg, source facultative). Ils sont affichés quand le calcul est désactivé ou n'a pas encore assez d'annonces, avec la mention « Prix de référence ReuSteel » et la date. Les 12 derniers forment la courbe.
+
+Sans calcul possible ni prix saisi, l'accueil affiche « Prix bientôt disponible » : aucun prix n'est inventé.
+
 ## Installation
 
 1. Activer SM Core 0.3.0 et SM Weight Engine 0.1.0, puis téléverser et activer `sm-products.zip`.

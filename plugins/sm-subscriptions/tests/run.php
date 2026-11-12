@@ -164,6 +164,17 @@ smsub_assert( 'artisan_pro' === $fp['code'] && $fp['sub']->founder && abs( strto
 smsub_assert( 15000.0 === Founders::locked_price( $c_f, 'artisan_pro', 'year' ) && 0 === Founders::maybe_grant( $c_f ), 'price kept for later; the offer is given once' );
 smsub_assert( 3 === count( (array) apply_filters( 'sm_theme_data_plans', null )['classes']['professional'] ), 'public plans for the pricing page' );
 
+// ---- Plans page by kind of account, versions of the other plugins (0.1.1) ----
+wp_set_current_user( 0 );
+smsub_assert( null === apply_filters( 'sm_theme_data_plans', null )['viewer'], 'visitor not signed in: no account on the plans page' );
+list( $u_v ) = smsub_account( 'viewer', 'professional', array( 'trade_welder' ) );
+wp_set_current_user( $u_v );
+$pd  = apply_filters( 'sm_theme_data_plans', null );
+smsub_assert( 'professional' === $pd['viewer']['class'] && $pd['viewer']['has_plans'] && 'free' === $pd['viewer']['plan'] && true === $pd['classes']['professional'][0]['current'] && ! in_array( true, array_column( $pd['classes']['company'], 'current' ), true ), 'signed in: kind of account and plan in force marked on its own tab only' );
+wp_set_current_user( 0 );
+smsub_assert( SM\Subscriptions\Compat::ready( 'products' ) && SM\Subscriptions\Compat::ready( 'core' ) && array() === SM\Subscriptions\Compat::outdated(), 'plugins in the needed versions' );
+smsub_assert( ! SM\Subscriptions\Compat::ready( 'nothing' ), 'unknown plugin is not ready' );
+
 smsub_cleanup();
 null === $settings_before ? delete_option( Settings::OPTION ) : update_option( Settings::OPTION, $settings_before, false );
 $t = $GLOBALS['smsub_t'];

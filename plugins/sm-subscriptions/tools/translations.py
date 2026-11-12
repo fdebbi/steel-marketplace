@@ -197,3 +197,9 @@ P = {
    "%d annonces ou pages de services dépassaient votre formule et ont été mises en pause. Rien n’a été supprimé : choisissez une formule ou republiez-les quand il y a de la place."],
   ["تجاوز %d إعلان أو صفحة خدمات حدود اشتراكك فعُلّق. لم يُحذف شيء: اختر اشتراكا أو أعد النشر عند توفر المجال."] * 6),
 }
+# 0.1.1: versions of the other plugins.
+T.update({
+"SM Subscriptions: update these plugins.": ("SM Abonnements : mettez à jour ces extensions.", "SM الاشتراكات: حدّث هذه الإضافات."),
+"Until then, the figures that depend on them are left out of the plan pages and the limits they control are not applied.": ("En attendant, les chiffres qui en dépendent n’apparaissent pas sur les pages d’abonnement et les limites qu’elles contrôlent ne sont pas appliquées.", "إلى ذلك الحين، لا تظهر الأرقام المرتبطة بها في صفحات الاشتراك ولا تُطبّق الحدود التي تتحكم فيها."),
+"%1$s: version %2$s installed, %3$s or later needed.": ("%1$s : version %2$s installée, %3$s ou plus récente nécessaire.", "%1$s: الإصدار %2$s مثبت، والمطلوب %3$s أو أحدث."),
+})

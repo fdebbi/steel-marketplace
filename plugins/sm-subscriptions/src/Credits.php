@@ -46,7 +46,7 @@ final class Credits {
 
 	/** Credits used since the 1st of the month (all AI services). */
 	public static function used_month( $company_id ) {
-		return class_exists( '\\SM\\Ai\\Usage' ) ? \SM\Ai\Usage::company_month_total( (int) $company_id ) : 0;
+		return Compat::ready( 'ai' ) ? \SM\Ai\Usage::company_month_total( (int) $company_id ) : 0;
 	}
 
 	/** { monthly, used, monthly_left, bought, total_left } */

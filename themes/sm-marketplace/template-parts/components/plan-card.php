@@ -10,7 +10,7 @@
  *     mode:      string public|account
  *     can_order: bool   (account) the user may order for the company
  *     highlight: bool
- *     current:   string (account) code of the plan in force
+ *     viewer:    array|null (public) { class, has_plans, plan } of the visitor's account (0.23.0)
  * }
  * @package SM_Marketplace
  */
@@ -20,7 +20,10 @@ defined( 'ABSPATH' ) || exit;
 $plan      = $args['plan'];
 $labels    = (array) ( $args['labels'] ?? array() );
 $mode      = $args['mode'] ?? 'public';
-$is_cur    = 'account' === $mode && ! empty( $plan['current'] );
+$is_cur    = ! empty( $plan['current'] );
+$viewer    = $args['viewer'] ?? null;
+// Public page, signed in with an account of another kind: no order button for these plans.
+$other     = 'public' === $mode && is_array( $viewer ) && ( $viewer['class'] ?? '' ) !== ( $args['class'] ?? '' );
 $highlight = ! empty( $args['highlight'] );
 $limits    = (array) $plan['limits'];
 if ( 'professional' === ( $args['class'] ?? '' ) ) {
@@ -68,7 +71,13 @@ $saving = sm_plan_saving( $plan );
 		<?php endforeach; ?>
 	</ul>
 	<div class="sm-plan__actions">
-		<?php if ( 'public' === $mode ) : ?>
+		<?php if ( 'public' === $mode && $is_cur ) : ?>
+			<a class="sm-btn sm-btn--primary-outline sm-btn--block" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'plan' ) ) ); ?>"><?php esc_html_e( 'Manage my plan', 'sm-marketplace' ); ?></a>
+		<?php elseif ( $other ) : ?>
+			<p class="sm-help"><?php 'professional' === ( $args['class'] ?? '' ) ? esc_html_e( 'For professional and craftsman accounts.', 'sm-marketplace' ) : esc_html_e( 'For company accounts.', 'sm-marketplace' ); ?></p>
+		<?php elseif ( 'public' === $mode && $plan['free'] && is_array( $viewer ) ) : ?>
+			<p class="sm-help"><?php esc_html_e( 'Your account comes back to this plan when a paid period ends.', 'sm-marketplace' ); ?></p>
+		<?php elseif ( 'public' === $mode ) : ?>
 			<a class="sm-btn <?php echo $highlight ? 'sm-btn--accent' : 'sm-btn--primary-outline'; ?> sm-btn--block" href="<?php echo esc_url( is_user_logged_in() ? sm_page_url( 'account', array( 'view' => 'plan' ) ) : sm_page_url( 'register' ) ); ?>">
 				<?php $plan['free'] ? esc_html_e( 'Start free', 'sm-marketplace' ) : esc_html_e( 'Choose', 'sm-marketplace' ); ?>
 			</a>

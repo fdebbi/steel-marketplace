@@ -4,6 +4,7 @@
  *
  * Layout for the steel price index (sm-analytics, Phase 10). The charts and tables are
  * injected through the 'price-index.body' slot; until then an explanatory state is shown.
+ * The price curve of the home page is shown at the top (same source, 0.23.0).
  *
  * @package SM_Marketplace
  */
@@ -19,6 +20,7 @@ get_header();
 	</div>
 </section>
 <div class="sm-container sm-section">
+	<?php sm_component( 'hero-trend', array( 'variant' => 'page' ) ); ?>
 	<p class="sm-callout sm-callout--warn"><?php sm_icon( 'alert' ); ?><span><?php esc_html_e( 'These are asking prices published by sellers on the platform, not official market prices and not completed transaction prices.', 'sm-marketplace' ); ?></span></p>
 	<?php
 	ob_start();
