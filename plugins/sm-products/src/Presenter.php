@@ -243,6 +243,9 @@ final class Presenter {
 	}
 
 	public static function pick( array $values ) {
+		if ( function_exists( 'sm_pick' ) ) {
+			return sm_pick( $values ); // Includes the English of default data (sm-core 0.8.0).
+		}
 		$lang = function_exists( 'sm_current_language' ) ? sm_current_language() : 'fr';
 		return (string) ( $values[ $lang ] ?? '' ) !== '' ? $values[ $lang ] : (string) ( array_values( array_filter( $values ) )[0] ?? '' );
 	}

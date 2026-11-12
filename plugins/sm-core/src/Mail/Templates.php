@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 final class Templates {
 
 	const OPTION = 'sm_mail_templates';
-	const LANGS  = array( 'fr', 'ar' );
+	const LANGS  = array( 'fr', 'ar', 'en' );
 
 	/** Variables available in every template. */
 	public static function common_vars() {

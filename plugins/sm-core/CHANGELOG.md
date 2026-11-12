@@ -1,5 +1,11 @@
 # Changelog — sm-core
 
+## 0.8.0 — 2026-11-12
+
+- Troisième langue : anglais (`/en/…`, locale en_US). Les chaînes sources étant en anglais, aucun fichier de traduction n'est nécessaire.
+- E-mails : modèles, signature et adresse modifiables aussi en anglais.
+- `sm_pick()` et `sm_en()` : les données par défaut (catégories, champs, options, catalogue) s'affichent en anglais grâce à `data/en-content.php` (filtre `sm_en_dictionary`) ; un texte écrit par l'administrateur sans version anglaise reste en français.
+
 ## 0.7.3 — 2026-11-12
 
 - Ressource `account` : `badges` (page du tableau de bord => éléments en attente), complétée par le filtre `sm_dashboard_badges` (demandes reçues non lues pour sm-core).

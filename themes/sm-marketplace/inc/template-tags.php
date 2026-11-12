@@ -53,6 +53,10 @@ function sm_field( $field ) {
 	if ( ! empty( $field[ $lang ] ) ) {
 		return array( 'text' => $field[ $lang ], 'lang' => $lang, 'fallback' => false );
 	}
+	// English: the platform's default data is translated from its French text (sm-core 0.8.0).
+	if ( 'en' === $lang && ! empty( $field['fr'] ) && function_exists( 'sm_en' ) && sm_en( $field['fr'] ) !== $field['fr'] ) {
+		return array( 'text' => sm_en( $field['fr'] ), 'lang' => 'en', 'fallback' => false );
+	}
 	foreach ( $field as $code => $text ) {
 		if ( '' !== $text ) {
 			return array( 'text' => $text, 'lang' => $code, 'fallback' => true );

@@ -43,6 +43,8 @@ final class Language {
 			array(
 				'fr' => array( 'locale' => 'fr_FR', 'label' => 'Français', 'short' => 'FR', 'dir' => 'ltr' ),
 				'ar' => array( 'locale' => 'ar', 'label' => 'العربية', 'short' => 'ع', 'dir' => 'rtl' ),
+				// English (0.8.0): the source language of every string, so it needs no .mo file.
+				'en' => array( 'locale' => 'en_US', 'label' => 'English', 'short' => 'EN', 'dir' => 'ltr' ),
 			)
 		);
 	}
@@ -283,7 +285,8 @@ final class Language {
 		if ( self::current() === self::default_language() || is_admin() || 'rest' === $scheme ) {
 			return $url;
 		}
-		if ( $path && preg_match( '#^/?(wp-|xmlrpc|ar/)#', $path ) ) {
+		$codes = implode( '|', array_map( static fn( $c ) => preg_quote( $c, '#' ), array_keys( self::languages() ) ) );
+		if ( $path && preg_match( '#^/?(wp-|xmlrpc|(' . $codes . ')/)#', $path ) ) {
 			return $url;
 		}
 		if ( doing_filter( 'rest_url' ) || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {

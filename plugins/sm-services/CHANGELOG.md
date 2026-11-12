@@ -1,5 +1,9 @@
 # Changelog — sm-services
 
+## 0.3.5 — 2026-11-12
+
+- Catalogue en anglais (via `sm_pick`, sm-core 0.8.0).
+
 ## 0.3.4 — 2026-11-12
 
 - Badge du tableau de bord : nouvelles demandes de service reçues (filtre `sm_dashboard_badges`).

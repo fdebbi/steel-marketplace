@@ -92,3 +92,39 @@ function sm_brand_name() {
 	$name = trim( (string) get_theme_mod( 'sm_brand_name', '' ) );
 	return '' !== $name ? $name : 'ReuSteel';
 }
+
+/**
+ * English text of a French platform value (0.8.0), from data/en-content.php and
+ * the `sm_en_dictionary` filter. Returns the French text when it has no entry.
+ */
+function sm_en( $fr ) {
+	static $dict = null;
+	if ( null === $dict ) {
+		$dict = (array) apply_filters( 'sm_en_dictionary', require SM_CORE_DIR . '/data/en-content.php' );
+	}
+	$fr = (string) $fr;
+	return $dict[ $fr ] ?? $fr;
+}
+
+/**
+ * Text of a multilingual value ({fr, ar, en?}) in a language: its own text, then
+ * (English) the English of its French text, then the first text it has.
+ */
+function sm_pick( $values, $lang = null ) {
+	if ( ! is_array( $values ) ) {
+		return (string) $values;
+	}
+	$lang = $lang ?? \SM\Core\I18n\Language::current();
+	if ( '' !== trim( (string) ( $values[ $lang ] ?? '' ) ) ) {
+		return (string) $values[ $lang ];
+	}
+	if ( 'en' === $lang && '' !== trim( (string) ( $values['fr'] ?? '' ) ) ) {
+		return sm_en( $values['fr'] );
+	}
+	foreach ( $values as $text ) {
+		if ( '' !== trim( (string) $text ) ) {
+			return (string) $text;
+		}
+	}
+	return '';
+}

@@ -242,7 +242,7 @@ msgstr "الإدارة"
 msgid "Sign in"
 msgstr "تسجيل الدخول"
 
-#: header.php:111 templates/dashboard.php:239
+#: header.php:111 templates/dashboard.php:240
 msgid "Menu"
 msgstr "القائمة"
 
@@ -257,12 +257,12 @@ msgstr "عرض كل الإعلانات"
 #: header.php:139 template-parts/components/my-products.php:47
 #: template-parts/components/my-products.php:51
 #: template-parts/dashboard/listings.php:25 templates/dashboard.php:149
-#: templates/dashboard.php:212 templates/dashboard.php:242
+#: templates/dashboard.php:212 templates/dashboard.php:243
 #: templates/front-page-template.php:27
 msgid "Publish a listing"
 msgstr "نشر إعلان"
 
-#: header.php:142 templates/dashboard.php:231 templates/dashboard.php:251
+#: header.php:142 templates/dashboard.php:232 templates/dashboard.php:252
 #: templates/engineer-apply.php:43
 msgid "Sign out"
 msgstr "تسجيل الخروج"
@@ -4587,7 +4587,7 @@ msgstr "وثائقك قيد المراجعة من طرف فريق المنصة،
 msgid "Verify your contact details first."
 msgstr "تحقق من معلومات الاتصال أولا."
 
-#: template-parts/dashboard/verification.php:33 templates/dashboard.php:267
+#: template-parts/dashboard/verification.php:33 templates/dashboard.php:268
 msgid "Enter the code"
 msgstr "أدخل الرمز"
 
@@ -5278,33 +5278,37 @@ msgstr "توثيق حسابك"
 msgid "Dashboard"
 msgstr "لوحة التحكم"
 
-#: templates/dashboard.php:263
+#: templates/dashboard.php:231
+msgid "Dark mode"
+msgstr "الوضع الداكن"
+
+#: templates/dashboard.php:264
 msgid "Demo partner engineer account."
 msgstr "حساب مهندس شريك تجريبي."
 
-#: templates/dashboard.php:263
+#: templates/dashboard.php:264
 msgid "Demo company account."
 msgstr "حساب شركة تجريبي."
 
-#: templates/dashboard.php:263
+#: templates/dashboard.php:264
 msgid "Switch to the company dashboard"
 msgstr "الانتقال إلى لوحة الشركة"
 
-#: templates/dashboard.php:263
+#: templates/dashboard.php:264
 msgid "Switch to the engineer dashboard"
 msgstr "الانتقال إلى لوحة المهندس"
 
-#: templates/dashboard.php:267
+#: templates/dashboard.php:268
 msgid ""
 "Verify your account with the 6-digit code to publish and answer requests."
 msgstr ""
 "وثّق حسابك بالرمز المكون من 6 أرقام لتتمكن من النشر والرد على الطلبات."
 
-#: templates/dashboard.php:298
+#: templates/dashboard.php:299
 msgid "This section arrives with its plugin"
 msgstr "يُفعّل هذا القسم مع إضافته"
 
-#: templates/dashboard.php:299
+#: templates/dashboard.php:300
 msgid ""
 "The layout is ready; the content will be provided by the corresponding "
 "marketplace plugin."

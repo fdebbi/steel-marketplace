@@ -104,7 +104,7 @@ def main():
     results, failures = [], 0
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        for lang in ('fr', 'ar'):
+        for lang in ('fr', 'ar', 'en'):
             for width in WIDTHS:
                 pages_by_account = {}
                 for name, spec in PAGES.items():

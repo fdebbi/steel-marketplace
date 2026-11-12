@@ -1,5 +1,14 @@
 # Changelog — sm-marketplace
 
+## 0.18.0 — 2026-11-12 (refonte du design, avec sm-core 0.8.0)
+
+- Charte ReuSteel : vert #06CE77 (texte noir dessus, choisi automatiquement selon le contraste), vert texte #047A47 (5,4:1), graphite #111820, fond #F5F7F8 ; anciennes couleurs par défaut migrées, couleurs choisies par l'administrateur conservées.
+- Titres en Space Grotesk (auto-hébergée, licence OFL) ; l'arabe garde IBM Plex Sans Arabic.
+- Accueil sombre « galaxie » : bannière avec poutre IPE 200 en 3D (Three.js r160 auto-hébergé, chargé après la page, ordinateur seulement, coupé si « réduire les animations ») sur une image SVG de secours ; marchés, économie circulaire, « Pourquoi ReuSteel ? », bandeau d'inscription ; barre du bas sombre sur mobile.
+- Catalogue : cartes qui se soulèvent avec bord vert, fond acier pour les images absentes, prix en police de titre, puces de catégories.
+- Compte : mode sombre (bouton dans le menu, mémorisé dans le navigateur, appliqué avant l'affichage).
+- Anglais : sélecteur Français · العربية · English ; toutes les chaînes du thème sont déjà en anglais.
+
 ## 0.17.1 — 2026-11-12 (avec sm-ai 0.1.1)
 
 - Menu du compte : « Études d'ingénierie » et « Abonnement » deviennent des entrées du menu ; « Assistant IA » regroupe l'assistant et la nouvelle page « Crédits IA » (utilisations du mois par outil).

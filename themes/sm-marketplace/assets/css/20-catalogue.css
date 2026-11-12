@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Catalogue refresh (0.18.0): light, fast, industrial. Cards lift with a green
+   edge, pictures sit on brushed-steel ground, prices use the display font.
+   ========================================================================== */
+
+.sm-card { border-radius: var(--sm-radius-lg); transition: transform .25s, box-shadow .25s, border-color .25s; }
+.sm-card:hover { transform: translateY(-3px); border-color: var(--sm-accent); box-shadow: 0 18px 36px -22px rgb(8 11 14 / .45); }
+.sm-card--rfq:hover, .sm-card--company:hover { transform: none; }
+@media (prefers-reduced-motion: reduce) { .sm-card, .sm-card:hover { transition: none; transform: none; } }
+
+/* Missing or loading pictures: steel ground instead of a blank box */
+.sm-card__media { background: radial-gradient(ellipse 60% 80% at 70% 30%, rgb(6 206 119 / .14), transparent 70%), linear-gradient(150deg, #1A232C, #0B1015); }
+.sm-card__media img { color: transparent; }
+.sm-card__save { background: rgb(255 255 255 / .94); }
+
+.sm-price-main { font-family: var(--sm-font-display); letter-spacing: -.01em; color: var(--sm-text); }
+[dir="rtl"] .sm-price-main { font-family: var(--sm-font); }
+.sm-card__seller .sm-verified { color: var(--sm-accent-ink); }
+
+/* Page head and category pills */
+.sm-pagehead { background: linear-gradient(180deg, var(--sm-surface), var(--sm-bg)); }
+.sm-catpills a { border-color: var(--sm-line); font-weight: 600; transition: border-color .2s, background .2s; }
+.sm-catpills a:hover { border-color: var(--sm-accent); color: var(--sm-text); }
+.sm-catpills a[aria-current] { background: var(--sm-graphite); border-color: var(--sm-graphite); color: var(--sm-white); }
+
+/* Filters panel */
+.sm-filters { border-radius: var(--sm-radius-lg); }

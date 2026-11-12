@@ -104,7 +104,7 @@ final class Gateway {
 			return $ok;
 		}
 		list( $provider, $model ) = Settings::route( $id );
-		$lang             = in_array( Language::current(), array( 'fr', 'ar' ), true ) ? Language::current() : 'fr';
+		$lang             = in_array( Language::current(), array( 'fr', 'ar', 'en' ), true ) ? Language::current() : 'fr';
 		$input['company'] = $company;
 		$p                = Providers\Provider::for( $provider );
 		$req              = array(

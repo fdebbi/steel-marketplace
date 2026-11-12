@@ -19,11 +19,15 @@ defined( 'ABSPATH' ) || exit;
  * @return array<string,array{locale:string,label:string,short:string,dir:string}>
  */
 function sm_theme_languages() {
+	if ( class_exists( '\\SM\\Core\\I18n\\Language' ) ) {
+		return \SM\Core\I18n\Language::languages();
+	}
 	return apply_filters(
 		'sm_languages',
 		array(
 			'fr' => array( 'locale' => 'fr_FR', 'label' => 'Français', 'short' => 'FR', 'dir' => 'ltr' ),
 			'ar' => array( 'locale' => 'ar', 'label' => 'العربية', 'short' => 'ع', 'dir' => 'rtl' ),
+			'en' => array( 'locale' => 'en_US', 'label' => 'English', 'short' => 'EN', 'dir' => 'ltr' ),
 		)
 	);
 }

@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Account area (0.18.0): refined panels, and an optional dark mode kept in the
+   browser (html[data-sm-theme="dark"], set before paint by sm_theme_account_theme_boot).
+   Only the page body changes: header, footer and tab bar stay as they are.
+   ========================================================================== */
+
+.sm-is-account .sm-header { background: var(--sm-deep); }
+.sm-dash__side { border-radius: var(--sm-radius-lg); }
+.sm-dash__title { font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); }
+.sm-dash__side .sm-dash__theme { display: flex; align-items: center; gap: var(--sm-s3); inline-size: 100%; min-block-size: 42px; padding-inline: var(--sm-s3); border: 0; border-radius: var(--sm-radius-sm); background: transparent; font-size: var(--sm-fs-sm); font-weight: 500; color: var(--sm-text); text-align: start; }
+.sm-dash__side .sm-dash__theme .sm-icon { color: var(--sm-muted); }
+.sm-dash__side .sm-dash__theme:hover { background: var(--sm-bg); }
+.sm-dash__side .sm-dash__theme[aria-pressed="true"] .sm-icon { color: var(--sm-accent); }
+
+html[data-sm-theme="dark"] .sm-is-account .sm-main {
+	--sm-surface: #111820;
+	--sm-bg: #0B1015;
+	--sm-text: #F5F7F8;
+	--sm-primary: #F5F7F8;
+	--sm-primary-hover: #C6CDD2;
+	--sm-primary-soft: #1A2430;
+	--sm-secondary: #A3AEB6;
+	--sm-muted: #A3AEB6;
+	--sm-line: #243039;
+	--sm-line-strong: #34424D;
+	--sm-on-dark: #080B0E;
+	--sm-on-dark-muted: #243039;
+	--sm-accent-ink: #06CE77;
+	--sm-accent-soft: rgb(6 206 119 / .14);
+	--sm-warn: #F2C66B;
+	--sm-warn-soft: rgb(242 184 75 / .16);
+	--sm-info: #8DB4FF;
+	--sm-info-soft: rgb(141 180 255 / .14);
+	--sm-danger: #FF8A80;
+	--sm-shadow-sm: none;
+	--sm-shadow: 0 12px 30px -18px rgb(0 0 0 / .8);
+	background: var(--sm-bg);
+	color: var(--sm-text);
+	color-scheme: dark;
+}
+html[data-sm-theme="dark"] .sm-is-account { background: #0B1015; }
+html[data-sm-theme="dark"] .sm-is-account .sm-dash__side a[aria-current]:not(.sm-dash__publish) { background: #1A2430; color: #F5F7F8; }
+html[data-sm-theme="dark"] .sm-is-account .sm-dash__side a.sm-dash__publish { color: var(--sm-on-accent); }
+html[data-sm-theme="dark"] .sm-is-account .sm-btn--primary { background: #F5F7F8; color: #080B0E; }
+html[data-sm-theme="dark"] .sm-is-account select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A3AEB6' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); }
+html[data-sm-theme="dark"] .sm-is-account img { opacity: .94; }

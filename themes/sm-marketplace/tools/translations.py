@@ -8,6 +8,7 @@ Run tools/compile-translations.py to rebuild the .po/.mo files.
 """
 
 T = {
+"Dark mode": ("Mode sombre", "الوضع الداكن"),
 "The industrial steel marketplace in Algeria": ("La marketplace industrielle de l’acier en Algérie", "سوق الحديد الصناعي في الجزائر"),
 "The future of steel commerce": ("Le futur du commerce de l’acier", "مستقبل تجارة وإعادة تدوير الفولاذ"),
 "starts here.": ("commence ici.", "يبدأ من هنا."),

@@ -294,7 +294,7 @@ final class MailAdmin {
 		echo '<tr><th><label for="smm-b-web">' . esc_html__( 'Website', 'sm-core' ) . '</label></th><td><input id="smm-b-web" class="regular-text" type="url" name="brand[website]" dir="ltr" value="' . esc_attr( $b['website'] ) . '" placeholder="https://reusteel.com"></td></tr>';
 		echo '</tbody></table></div></div>';
 		echo '<div class="smm-grid">';
-		foreach ( array( 'fr' => 'Français', 'ar' => 'العربية' ) as $l => $ll ) {
+		foreach ( array( 'fr' => 'Français', 'ar' => 'العربية', 'en' => 'English' ) as $l => $ll ) {
 			echo '<div class="smm-card smm-lang" dir="' . ( 'ar' === $l ? 'rtl' : 'ltr' ) . '" lang="' . esc_attr( $l ) . '"><h2>' . esc_html( $ll ) . '</h2>';
 			echo '<p><label>' . esc_html__( 'Closing words (before the name)', 'sm-core' ) . '<br><textarea name="brand[closing][' . esc_attr( $l ) . ']" style="min-height:70px">' . esc_textarea( $b['closing'][ $l ] ) . '</textarea></label></p>';
 			echo '<p><label>' . esc_html__( 'Address', 'sm-core' ) . '<br><textarea name="brand[address][' . esc_attr( $l ) . ']" style="min-height:70px">' . esc_textarea( $b['address'][ $l ] ) . '</textarea></label></p></div>';
@@ -308,7 +308,7 @@ final class MailAdmin {
 		submit_button();
 		echo '</form>';
 		echo '<h2>' . esc_html__( 'Preview', 'sm-core' ) . '</h2><div class="smm-grid">';
-		foreach ( array( 'fr', 'ar' ) as $l ) {
+		foreach ( array( 'fr', 'ar', 'en' ) as $l ) {
 			$html = Language::with_language( $l, static fn() => Mailer::layout( $l, Templates::body_html( __( "This is how your e-mails look.\n\nThe text of each message comes here, then the signature and the social links.", 'sm-core' ), array() ), 'Karim Benali' ) );
 			echo '<iframe class="smm-preview" sandbox="" title="' . esc_attr( $l ) . '" srcdoc="' . esc_attr( $html ) . '"></iframe>';
 		}

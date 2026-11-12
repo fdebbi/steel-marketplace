@@ -36,11 +36,11 @@ final class Branding {
 			'header_align' => 'center',
 			'logo'         => 0,
 			'name'         => '',
-			'address'      => array( 'fr' => '', 'ar' => '' ),
+			'address'      => array( 'fr' => '', 'ar' => '', 'en' => '' ),
 			'phone'        => '',
 			'email'        => '',
 			'website'      => '',
-			'closing'      => array( 'fr' => '', 'ar' => '' ),
+			'closing'      => array( 'fr' => '', 'ar' => '', 'en' => '' ),
 			'signature'    => 1,
 			'social'       => array(),
 		);
@@ -49,7 +49,7 @@ final class Branding {
 	public static function get() {
 		$b = wp_parse_args( (array) ( Settings::all()['brand'] ?? array() ), self::defaults() );
 		foreach ( array( 'address', 'closing' ) as $k ) {
-			$b[ $k ] = wp_parse_args( (array) $b[ $k ], array( 'fr' => '', 'ar' => '' ) );
+			$b[ $k ] = wp_parse_args( (array) $b[ $k ], array( 'fr' => '', 'ar' => '', 'en' => '' ) );
 		}
 		$b['social'] = (array) $b['social'];
 		return $b;
@@ -71,7 +71,7 @@ final class Branding {
 		$out['website']      = esc_url_raw( (string) ( $in['website'] ?? '' ), array( 'http', 'https' ) );
 		$out['signature']    = empty( $in['signature'] ) ? 0 : 1;
 		foreach ( array( 'address', 'closing' ) as $k ) {
-			foreach ( array( 'fr', 'ar' ) as $l ) {
+			foreach ( array( 'fr', 'ar', 'en' ) as $l ) {
 				$out[ $k ][ $l ] = mb_substr( sanitize_textarea_field( (string) ( $in[ $k ][ $l ] ?? '' ) ), 0, 400 );
 			}
 		}

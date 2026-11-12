@@ -1,5 +1,9 @@
 # Changelog — sm-ai
 
+## 0.1.2 — 2026-11-12
+
+- Réponses en anglais quand la page est en anglais ; libellés des marchés en anglais.
+
 ## 0.1.1 — 2026-11-12
 
 - Ressource `ai_tools` : `quota` (limite mensuelle de l'entreprise) et `used` (utilisations du mois) pour chaque outil ; page « Crédits IA » du tableau de bord (`/compte/credits-ia/`).

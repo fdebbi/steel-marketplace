@@ -228,6 +228,7 @@ get_header();
 				<?php endforeach; ?>
 			</ul>
 			<ul class="sm-dash__end">
+				<li><button type="button" class="sm-dash__theme" data-sm-theme-toggle aria-pressed="false"><?php sm_icon( 'moon' ); ?><span><?php esc_html_e( 'Dark mode', 'sm-marketplace' ); ?></span></button></li>
 				<li><a href="<?php echo esc_url( wp_logout_url() ); ?>"><?php sm_icon( 'logout' ); ?><span><?php esc_html_e( 'Sign out', 'sm-marketplace' ); ?></span></a></li>
 			</ul>
 		</nav>

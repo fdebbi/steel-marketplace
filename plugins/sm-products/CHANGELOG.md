@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.5.1 — 2026-11-12
+
+- Données en anglais (via `sm_pick`, sm-core 0.8.0).
+
 ## 0.5.0 — 2026-11-11 (base v4)
 
 - Mode de vente : détail (kg / pièce), lot complet ou les deux ; prix du lot vérifié (pas au-dessus du total au détail) ; hangars démontés vendables aussi à la pièce. Les anciennes annonces « prix du lot » passent en « lot complet ».

@@ -1,5 +1,9 @@
 # Changelog — sm-rfq
 
+## 0.1.2 — 2026-11-12
+
+- Données de demande en anglais (via `sm_pick`, sm-core 0.8.0).
+
 ## 0.1.1 — 2026-11-08 (Phase 8.1)
 
 - E-mails (avec sm-core 0.4.0) : événements « nouvelle demande de devis », « offre envoyée », « offre acceptée » (alerte aux administrateurs, confirmations, modèles FR/AR), phrases et liens du journal d'activité.

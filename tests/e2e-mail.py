@@ -67,7 +67,7 @@ with sync_playwright() as p:
     mails()
     a.click('#do_test'); a.wait_for_load_state()
     m = mails()
-    check(len(m) == 2 and all(x['subject'].startswith('[TEST]') for x in m) and 'admin@' in m[0]['to'], 'test e-mail sent to me in both languages')
+    check(len(m) == 3 and all(x['subject'].startswith('[TEST]') for x in m) and 'admin@' in m[0]['to'], 'test e-mail sent to me in every language (fr, ar, en)')
 
     print('\nB. Registration: administrator alert and welcome e-mail')
     mails()

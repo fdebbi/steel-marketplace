@@ -176,7 +176,7 @@ final class Companies {
 				$src = $img ? wp_get_attachment_image_src( $img, 'medium' ) : false;
 				$out[ $code ] = array(
 					'label'    => $labels[ $code ] ?? $code,
-					'desc'     => trim( (string) ( $d[ $lang ] ?? '' ) ) ?: trim( (string) ( $d['fr'] ?? '' ) ),
+					'desc'     => trim( sm_pick( $d, $lang ) ),
 					'image'    => $src ? (string) $src[0] : '',
 					'image_id' => $img,
 					'hidden'   => in_array( $code, (array) $t['disabled'], true ),

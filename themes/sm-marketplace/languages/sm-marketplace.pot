@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-12T09:45:01+00:00\n"
+"POT-Creation-Date: 2026-11-12T09:59:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -317,7 +317,7 @@ msgid "Sign in"
 msgstr ""
 
 #: header.php:111
-#: templates/dashboard.php:239
+#: templates/dashboard.php:240
 msgid "Menu"
 msgstr ""
 
@@ -337,14 +337,14 @@ msgstr ""
 #: template-parts/dashboard/listings.php:25
 #: templates/dashboard.php:149
 #: templates/dashboard.php:212
-#: templates/dashboard.php:242
+#: templates/dashboard.php:243
 #: templates/front-page-template.php:27
 msgid "Publish a listing"
 msgstr ""
 
 #: header.php:142
-#: templates/dashboard.php:231
-#: templates/dashboard.php:251
+#: templates/dashboard.php:232
+#: templates/dashboard.php:252
 #: templates/engineer-apply.php:43
 msgid "Sign out"
 msgstr ""
@@ -4443,7 +4443,7 @@ msgid "Verify your contact details first."
 msgstr ""
 
 #: template-parts/dashboard/verification.php:33
-#: templates/dashboard.php:267
+#: templates/dashboard.php:268
 msgid "Enter the code"
 msgstr ""
 
@@ -5100,31 +5100,35 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: templates/dashboard.php:263
+#: templates/dashboard.php:231
+msgid "Dark mode"
+msgstr ""
+
+#: templates/dashboard.php:264
 msgid "Demo partner engineer account."
 msgstr ""
 
-#: templates/dashboard.php:263
+#: templates/dashboard.php:264
 msgid "Demo company account."
 msgstr ""
 
-#: templates/dashboard.php:263
+#: templates/dashboard.php:264
 msgid "Switch to the company dashboard"
 msgstr ""
 
-#: templates/dashboard.php:263
+#: templates/dashboard.php:264
 msgid "Switch to the engineer dashboard"
 msgstr ""
 
-#: templates/dashboard.php:267
+#: templates/dashboard.php:268
 msgid "Verify your account with the 6-digit code to publish and answer requests."
 msgstr ""
 
-#: templates/dashboard.php:298
+#: templates/dashboard.php:299
 msgid "This section arrives with its plugin"
 msgstr ""
 
-#: templates/dashboard.php:299
+#: templates/dashboard.php:300
 msgid "The layout is ready; the content will be provided by the corresponding marketplace plugin."
 msgstr ""
 

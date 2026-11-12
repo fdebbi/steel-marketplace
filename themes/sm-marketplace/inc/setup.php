@@ -46,6 +46,9 @@ function sm_theme_body_class( $classes ) {
 	if ( sm_theme_is_home() ) {
 		$classes[] = 'sm-is-home'; // Dark showcase header and footer (0.18.0).
 	}
+	if ( is_page_template( 'templates/dashboard.php' ) ) {
+		$classes[] = 'sm-is-account'; // Light or dark account area (0.18.0).
+	}
 	return $classes;
 }
 
@@ -80,3 +83,15 @@ add_action( 'wp_head', 'sm_theme_hreflang', 2 );
 /** Lightweight front end: remove emoji scripts. */
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+/**
+ * Account dark mode (0.18.0): the choice is kept in the browser and applied
+ * before the page paints, so the account never flashes white.
+ */
+function sm_theme_account_theme_boot() {
+	if ( ! is_page_template( 'templates/dashboard.php' ) ) {
+		return;
+	}
+	echo "<script>try{if(localStorage.getItem('sm-theme')==='dark'){document.documentElement.setAttribute('data-sm-theme','dark');}}catch(e){}</script>\n";
+}
+add_action( 'wp_head', 'sm_theme_account_theme_boot', 1 );

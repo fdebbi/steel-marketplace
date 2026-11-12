@@ -18,6 +18,28 @@
 		t._timer = setTimeout( function () { t.hidden = true; }, 2600 );
 	}
 
+	/* ---- A card picture that fails to load leaves the steel ground, not a broken icon */
+	document.addEventListener( 'error', function ( e ) {
+		var img = e.target;
+		if ( img && img.tagName === 'IMG' && img.closest && img.closest( '.sm-card__media' ) ) { img.style.visibility = 'hidden'; }
+	}, true );
+	$$( '.sm-card__media img' ).forEach( function ( img ) {
+		if ( img.complete && ! img.naturalWidth ) { img.style.visibility = 'hidden'; }
+	} );
+
+	/* ---- Account dark mode: remembered in this browser ------------------ */
+	$$( '[data-sm-theme-toggle]' ).forEach( function ( btn ) {
+		var root = document.documentElement;
+		function sync() { btn.setAttribute( 'aria-pressed', root.getAttribute( 'data-sm-theme' ) === 'dark' ? 'true' : 'false' ); }
+		sync();
+		btn.addEventListener( 'click', function () {
+			var dark = root.getAttribute( 'data-sm-theme' ) !== 'dark';
+			if ( dark ) { root.setAttribute( 'data-sm-theme', 'dark' ); } else { root.removeAttribute( 'data-sm-theme' ); }
+			try { localStorage.setItem( 'sm-theme', dark ? 'dark' : 'light' ); } catch ( e ) {}
+			sync();
+		} );
+	} );
+
 	/* ---- Dashboard tabs: keep the current tab in view on small screens --- */
 	$$( '.sm-dash__tabs' ).forEach( function ( bar ) {
 		var cur = $( '[aria-current]', bar );

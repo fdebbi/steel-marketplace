@@ -93,7 +93,7 @@ final class Search extends Feature {
 		$lang = sm_current_language();
 		if ( ! empty( $f['market'] ) ) {
 			$m     = class_exists( '\SM\Products\Markets' ) ? \SM\Products\Markets::get( $f['market'] ) : null;
-			$out[] = $m ? (string) ( $m['label'][ $lang ] ?? $m['label']['fr'] ) : $f['market'];
+			$out[] = $m ? (string) ( function_exists( 'sm_pick' ) ? sm_pick( $m['label'], $lang ) : ( $m['label'][ $lang ] ?? $m['label']['fr'] ) ) : $f['market'];
 		}
 		if ( ! empty( $f['category'] ) ) {
 			$c     = Catalog::categories()[ $f['category'] ] ?? null;
