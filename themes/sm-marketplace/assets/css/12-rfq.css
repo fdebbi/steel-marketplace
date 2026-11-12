@@ -64,7 +64,7 @@
 .smq-o__figs dd { margin: 2px 0 0; font-weight: 800; font-size: var(--sm-fs-md, 1rem); }
 .smq-o__figs .is-best { background: var(--sm-accent-soft); box-shadow: 0 0 0 1px color-mix(in srgb, var(--sm-accent) 40%, transparent) inset; }
 .smq-o__figs .is-best dd { color: var(--sm-accent-ink); }
-.smq-best { position: absolute; inset-block-start: 6px; inset-inline-end: 6px; padding: 1px 6px; border-radius: 999px; background: var(--sm-accent); color: var(--sm-on-accent, #fff); font-size: 10px; font-weight: 800; letter-spacing: .02em; }
+.smq-best { position: absolute; inset-block-start: 6px; inset-inline-end: 6px; padding: 1px 6px; border-radius: 999px; background: var(--sm-accent); color: var(--sm-on-accent); font-size: 10px; font-weight: 800; letter-spacing: .02em; }
 .smq-o__facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: var(--sm-fs-sm); }
 .smq-o__facts li { display: flex; gap: var(--sm-s2); align-items: center; }
 .smq-o__facts .sm-icon { flex: none; inline-size: 16px; block-size: 16px; color: var(--sm-muted); }

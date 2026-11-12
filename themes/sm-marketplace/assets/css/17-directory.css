@@ -75,7 +75,7 @@
 .smd-toggle { display: flex; align-items: center; gap: 10px; min-block-size: 44px; color: var(--sm-text); text-decoration: none; font-size: var(--sm-fs-sm); }
 .smd-toggle__box { display: grid; place-items: center; inline-size: 22px; block-size: 22px; border: 2px solid var(--sm-line-strong, #94A3B8); border-radius: 6px; color: transparent; }
 .smd-toggle__box .sm-icon { inline-size: 14px; block-size: 14px; }
-.smd-toggle[aria-pressed="true"] .smd-toggle__box { background: var(--sm-accent); border-color: var(--sm-accent); color: #fff; }
+.smd-toggle[aria-pressed="true"] .smd-toggle__box { background: var(--sm-accent); border-color: var(--sm-accent); color: var(--sm-on-accent); }
 .smd-filters__other { margin: var(--sm-s2) 0 0; font-size: var(--sm-fs-sm); }
 
 .smd-main { flex: 999 1 560px; min-inline-size: 0; display: grid; gap: var(--sm-s4); }

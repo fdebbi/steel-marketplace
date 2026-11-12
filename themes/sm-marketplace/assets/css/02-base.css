@@ -23,7 +23,8 @@ a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; 
 a:hover { color: var(--sm-accent-ink); }
 button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
-h1, h2, h3, h4 { margin: 0 0 var(--sm-s3); line-height: 1.25; color: var(--sm-primary); font-weight: 700; letter-spacing: -.01em; }
+h1, h2, h3, h4 { margin: 0 0 var(--sm-s3); line-height: 1.2; color: var(--sm-primary); font-weight: 700; letter-spacing: -.01em; }
+h1, h2, .sm-display { font-family: var(--sm-font-display); letter-spacing: -.02em; }
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 { letter-spacing: 0; line-height: 1.4; }
 p { margin: 0 0 var(--sm-s3); }
 ul, ol { margin: 0; padding: 0; }

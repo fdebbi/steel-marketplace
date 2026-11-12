@@ -59,17 +59,17 @@ msgid "Marketplaces"
 msgstr "الأسواق"
 
 #: footer.php:22 inc/menus.php:16 inc/template-tags.php:212
-#: templates/front-page-template.php:66 templates/marketplace-products.php:15
+#: templates/front-page-template.php:77 templates/marketplace-products.php:15
 msgid "Steel products"
 msgstr "المنتجات الفولاذية"
 
 #: footer.php:23 inc/menus.php:24 inc/template-tags.php:213
-#: templates/front-page-template.php:67 templates/marketplace-reuse.php:15
+#: templates/front-page-template.php:78 templates/marketplace-reuse.php:15
 msgid "Steel reuse"
 msgstr "إعادة استعمال الفولاذ"
 
 #: footer.php:24 inc/menus.php:32 inc/template-tags.php:214
-#: templates/front-page-template.php:68 templates/marketplace-buildings.php:15
+#: templates/front-page-template.php:79 templates/marketplace-buildings.php:15
 msgid "Steel buildings"
 msgstr "المباني الفولاذية"
 
@@ -87,13 +87,13 @@ msgstr "الخدمات"
 
 #: footer.php:31 inc/menus.php:62 inc/template-tags.php:215
 #: template-parts/components/card-service.php:23
-#: templates/front-page-template.php:69 templates/marketplace-services.php:17
+#: templates/front-page-template.php:80 templates/marketplace-services.php:17
 #: templates/marketplace-services.php:20 templates/single-service.php:44
 msgid "Fabrication & installation"
 msgstr "التصنيع والتركيب"
 
 #: footer.php:32 header.php:103 header.php:133 inc/menus.php:63
-#: inc/template-tags.php:216 templates/front-page-template.php:70
+#: inc/template-tags.php:216 templates/front-page-template.php:81
 #: templates/marketplace-engineers.php:30 templates/mission-request.php:19
 msgid "Engineering"
 msgstr "الهندسة"
@@ -153,7 +153,7 @@ msgid "Home"
 msgstr "الرئيسية"
 
 #: footer.php:57 header.php:55 header.php:59 template-parts/directory.php:53
-#: templates/front-page-template.php:47 templates/marketplace-engineers.php:68
+#: templates/front-page-template.php:57 templates/marketplace-engineers.php:68
 msgid "Search"
 msgstr "بحث"
 
@@ -190,7 +190,7 @@ msgstr "السوق الصناعية للفولاذ في الجزائر"
 msgid "Utility"
 msgstr "روابط مفيدة"
 
-#: header.php:41 inc/assets.php:33
+#: header.php:41 inc/assets.php:37
 msgid "Open menu"
 msgstr "فتح القائمة"
 
@@ -202,12 +202,12 @@ msgstr "فتح القائمة"
 #: template-parts/dashboard/listings.php:46
 #: template-parts/dashboard/publish.php:35
 #: template-parts/dashboard/publish.php:51
-#: templates/front-page-template.php:30 templates/rfq-board.php:72
+#: templates/front-page-template.php:40 templates/rfq-board.php:72
 msgid "Market"
 msgstr "السوق"
 
 #: header.php:49 template-parts/components/filter-panel.php:36
-#: templates/front-page-template.php:32 templates/rfq-board.php:73
+#: templates/front-page-template.php:42 templates/rfq-board.php:73
 msgid "All markets"
 msgstr "كل الأسواق"
 
@@ -246,7 +246,7 @@ msgstr "تسجيل الدخول"
 msgid "Menu"
 msgstr "القائمة"
 
-#: header.php:114 inc/assets.php:34
+#: header.php:114 inc/assets.php:38
 msgid "Close menu"
 msgstr "إغلاق القائمة"
 
@@ -258,6 +258,7 @@ msgstr "عرض كل الإعلانات"
 #: template-parts/components/my-products.php:51
 #: template-parts/dashboard/listings.php:25 templates/dashboard.php:149
 #: templates/dashboard.php:212 templates/dashboard.php:242
+#: templates/front-page-template.php:27
 msgid "Publish a listing"
 msgstr "نشر إعلان"
 
@@ -266,54 +267,54 @@ msgstr "نشر إعلان"
 msgid "Sign out"
 msgstr "تسجيل الخروج"
 
-#: inc/assets.php:35 templates/auth-login.php:32
+#: inc/assets.php:39 templates/auth-login.php:32
 #: templates/auth-register.php:92 templates/company-profile.php:236
 #: templates/engineer-apply.php:82
 msgid "Show"
 msgstr "إظهار"
 
-#: inc/assets.php:36
+#: inc/assets.php:40
 msgid "Hide"
 msgstr "إخفاء"
 
-#: inc/assets.php:37 inc/template-tags.php:510
+#: inc/assets.php:41 inc/template-tags.php:510
 msgid "Saved"
 msgstr "تم الحفظ"
 
-#: inc/assets.php:38
+#: inc/assets.php:42
 msgid "Removed from saved listings"
 msgstr "أزيل من الإعلانات المحفوظة"
 
-#: inc/assets.php:39
+#: inc/assets.php:43
 msgid "Uploaded"
 msgstr "تم الرفع"
 
 #. translators: %s: file name.
-#: inc/assets.php:41
+#: inc/assets.php:45
 msgid "Remove %s"
 msgstr "إزالة %s"
 
-#: inc/assets.php:42
+#: inc/assets.php:46
 msgid "Add other files"
 msgstr "إضافة ملفات أخرى"
 
-#: inc/assets.php:43
+#: inc/assets.php:47
 msgid "Too many files: the extra ones were not added."
 msgstr "عدد الملفات كبير: لم تُضف الملفات الزائدة."
 
-#: inc/assets.php:44
+#: inc/assets.php:48
 msgid "Will be deleted when you save"
 msgstr "سيُحذف عند الحفظ"
 
-#: inc/assets.php:45
+#: inc/assets.php:49
 msgid "Will be replaced when you save"
 msgstr "سيُستبدل عند الحفظ"
 
-#: inc/assets.php:46
+#: inc/assets.php:50
 msgid "Undo"
 msgstr "تراجع"
 
-#: inc/assets.php:47 inc/template-tags.php:514 inc/template-tags.php:520
+#: inc/assets.php:51 inc/template-tags.php:514 inc/template-tags.php:520
 #: template-parts/components/my-products.php:87
 #: template-parts/components/portfolio-grid.php:30
 #: template-parts/components/rfq-single.php:138
@@ -322,82 +323,82 @@ msgstr "تراجع"
 msgid "Delete"
 msgstr "حذف"
 
-#: inc/assets.php:48 templates/company-profile.php:282
+#: inc/assets.php:52 templates/company-profile.php:282
 #: templates/company-profile.php:336
 msgid "Close"
 msgstr "إغلاق"
 
-#: inc/assets.php:49
+#: inc/assets.php:53
 msgid "Previous photo"
 msgstr "الصورة السابقة"
 
-#: inc/assets.php:50
+#: inc/assets.php:54
 msgid "Next photo"
 msgstr "الصورة التالية"
 
-#: inc/assets.php:51
+#: inc/assets.php:55
 msgid "Original size"
 msgstr "الحجم الأصلي"
 
-#: inc/assets.php:98
+#: inc/assets.php:102
 msgid "Company position. Drag it, or use the arrow keys."
 msgstr "موقع المؤسسة. اسحبه أو استعمل أسهم لوحة المفاتيح."
 
-#: inc/assets.php:99 template-parts/components/location-map.php:59
+#: inc/assets.php:103 template-parts/components/location-map.php:59
 msgid "No position yet."
 msgstr "لم يُحدَّد أي موقع بعد."
 
-#: inc/assets.php:100
+#: inc/assets.php:104
 msgid "Drag the marker to your exact address, or click the map."
 msgstr "اسحب العلامة إلى عنوانك بالضبط، أو انقر على الخريطة."
 
-#: inc/assets.php:101
+#: inc/assets.php:105
 msgid "Position placed:"
 msgstr "تم تحديد الموقع:"
 
-#: inc/assets.php:102
+#: inc/assets.php:106
 msgid "Current location found:"
 msgstr "تم العثور على موقعك الحالي:"
 
 #. translators: %d: accuracy in metres.
-#: inc/assets.php:104
+#: inc/assets.php:108
 msgid "Approximate (about %d m): drag the marker to correct it."
 msgstr "تقريبي (حوالي %d م): اسحب العلامة لتصحيحه."
 
-#: inc/assets.php:105
+#: inc/assets.php:109
 msgid "Looking for your location…"
 msgstr "جارٍ البحث عن موقعك…"
 
-#: inc/assets.php:106
+#: inc/assets.php:110
 msgid ""
 "Location access was refused. Allow it in your browser, or place the marker "
 "by hand."
 msgstr "تم رفض الوصول إلى الموقع. اسمح به في متصفحك، أو ضع العلامة يدويا."
 
-#: inc/assets.php:107
+#: inc/assets.php:111
 msgid "Your location could not be found. Place the marker by hand."
 msgstr "تعذّر العثور على موقعك. ضع العلامة يدويا."
 
-#: inc/assets.php:108
+#: inc/assets.php:112
 msgid ""
 "Finding your location took too long. Try again or place the marker by hand."
 msgstr "استغرق البحث عن موقعك وقتا طويلا. أعد المحاولة أو ضع العلامة يدويا."
 
-#: inc/assets.php:109
+#: inc/assets.php:113
 msgid ""
 "Your browser only shares your location on a secure (https) site. Place the "
 "marker by hand."
 msgstr "لا يشارك متصفحك الموقع إلا على موقع آمن (https). ضع العلامة يدويا."
 
-#: inc/assets.php:110
+#: inc/assets.php:114
 msgid "This position is outside Algeria. Place the marker on your address."
 msgstr "هذا الموقع خارج الجزائر. ضع العلامة على عنوانك."
 
-#: inc/assets.php:111
+#: inc/assets.php:115
 msgid "Wilaya changed: place the marker again on your address."
 msgstr "تم تغيير الولاية: ضع العلامة من جديد على عنوانك."
 
-#: inc/assets.php:112
+#: inc/assets.php:116
 msgid "Position removed. It will be deleted when you save."
 msgstr "تمت إزالة الموقع. سيُحذف عند الحفظ."
 
@@ -484,7 +485,7 @@ msgstr "بقايا وفائض ومقاطع مستعملة وخردة."
 msgid "New and used warehouses, assembled or dismantled."
 msgstr "هناجر جديدة ومستعملة، مركبة أو مفككة."
 
-#: inc/menus.php:62 templates/front-page-template.php:69
+#: inc/menus.php:62 templates/front-page-template.php:80
 msgid "Cutting, welding, assembly, installation and dismantling."
 msgstr "القص واللحام والتجميع والتركيب والتفكيك."
 
@@ -1079,7 +1080,7 @@ msgid "See the profile"
 msgstr "عرض الملف"
 
 #: template-parts/components/card-listing.php:24
-#: templates/front-page-template.php:159
+#: templates/front-page-template.php:186
 msgid "Featured"
 msgstr "مميز"
 
@@ -1356,13 +1357,13 @@ msgstr "الارتفاع الأدنى (m)"
 #: template-parts/dashboard/portfolio.php:66
 #: template-parts/dashboard/publish.php:184 template-parts/directory.php:47
 #: templates/auth-register.php:76 templates/engineer-apply.php:66
-#: templates/front-page-template.php:39 templates/marketplace-engineers.php:61
+#: templates/front-page-template.php:49 templates/marketplace-engineers.php:61
 msgid "Wilaya"
 msgstr "الولاية"
 
 #: template-parts/components/filter-panel.php:80
 #: template-parts/components/services-board.php:45
-#: template-parts/directory.php:49 templates/front-page-template.php:41
+#: template-parts/directory.php:49 templates/front-page-template.php:51
 #: templates/rfq-board.php:78
 msgid "All wilayas"
 msgstr "كل الولايات"
@@ -4807,7 +4808,7 @@ msgid ""
 msgstr "وسّع بحثك أو انشر طلب عرض سعر ليأتيك الموردون."
 
 #: template-parts/marketplace-archive.php:121
-#: templates/front-page-template.php:121 templates/single-listing.php:128
+#: templates/front-page-template.php:148 templates/single-listing.php:128
 #: templates/single-service.php:92 templates/single-service.php:121
 #: templates/styleguide.php:36
 msgid "Request a quotation"
@@ -5457,81 +5458,142 @@ msgstr "شريك بالفعل؟"
 msgid "SM — Home"
 msgstr "SM — الرئيسية"
 
-#: templates/front-page-template.php:19
-msgid "Steel · Reuse · Buildings · Services"
-msgstr "فولاذ · إعادة استعمال · مبانٍ · خدمات"
-
-#: templates/front-page-template.php:20
-msgid "Buy and sell steel by the kilogram, from beams to complete warehouses"
-msgstr "اشترِ وبِع الفولاذ بالكيلوغرام، من الرافدة إلى الهنغار الكامل"
-
 #: templates/front-page-template.php:21
-msgid ""
-"Compare prices per kg, find offcuts and used structures near you, and work "
-"with verified suppliers, fabricators and engineers."
-msgstr ""
-"قارن الأسعار بالكيلوغرام، وجد البقايا والهياكل المستعملة قربك، واعمل مع "
-"موردين ومصنّعين ومهندسين موثقين."
+msgid "The industrial steel marketplace in Algeria"
+msgstr "سوق الحديد الصناعي في الجزائر"
 
-#: templates/front-page-template.php:26
+#: templates/front-page-template.php:22
+msgid "The future of steel commerce"
+msgstr "مستقبل تجارة وإعادة تدوير الفولاذ"
+
+#: templates/front-page-template.php:22
+msgid "starts here."
+msgstr "يبدأ من هنا."
+
+#: templates/front-page-template.php:23
+msgid ""
+"Buy, sell, reuse and recycle steel. Verified companies, weights calculated "
+"automatically, partner engineers."
+msgstr ""
+"اشترِ، بِع، أعد استعمال الحديد وأعد تدويره. مؤسسات موثَّقة، وزن محسوب "
+"تلقائيًا، ومهندسون شركاء."
+
+#: templates/front-page-template.php:25
+msgid "Explore the marketplace"
+msgstr "استكشف السوق"
+
+#. translators: %s: platform name.
+#: templates/front-page-template.php:29
+msgid "Join %s"
+msgstr "انضم إلى %s"
+
+#: templates/front-page-template.php:36
 msgid "Profile or product"
 msgstr "المقطع أو المنتج"
 
-#: templates/front-page-template.php:51
+#: templates/front-page-template.php:61
 msgid "active listings"
 msgstr "إعلان نشط"
 
-#: templates/front-page-template.php:52
+#: templates/front-page-template.php:62
 msgid "companies"
 msgstr "مؤسسة"
 
-#: templates/front-page-template.php:53
+#: templates/front-page-template.php:63
 msgid "of steel offered for reuse"
 msgstr "من الفولاذ معروضة لإعادة الاستعمال"
 
-#: templates/front-page-template.php:66
+#: templates/front-page-template.php:72
+msgid "Markets"
+msgstr "الأسواق"
+
+#: templates/front-page-template.php:73
+msgid "All the steel, in one place"
+msgstr "كل الحديد في مكان واحد"
+
+#: templates/front-page-template.php:77
 msgid "Beams, channels, tubes, plates and bolts, new and certified."
 msgstr "روافد ومقاطع U وأنابيب وصفائح وبراغ، جديدة ومعتمدة."
 
-#: templates/front-page-template.php:67
+#: templates/front-page-template.php:78
 msgid "Offcuts and surplus at a lower price per kg, graded on 5 levels."
 msgstr "بقايا وفائض بسعر أقل للكيلوغرام، مصنفة على 5 مستويات."
 
-#: templates/front-page-template.php:68
+#: templates/front-page-template.php:79
 msgid "Warehouses and hangars, assembled or dismantled with inventory."
 msgstr "مستودعات وهناجر، مركبة أو مفككة مع الجرد."
 
-#: templates/front-page-template.php:70
+#: templates/front-page-template.php:81
 msgid "Design, calculation notes and inspection by verified engineers."
 msgstr "تصميم ومذكرات حساب وفحص من طرف مهندسين موثقين."
 
-#: templates/front-page-template.php:88
+#: templates/front-page-template.php:100
 msgid "Featured listings"
 msgstr "إعلانات مميزة"
 
-#: templates/front-page-template.php:89
+#: templates/front-page-template.php:101
 msgid "See all"
 msgstr "عرض الكل"
 
-#: templates/front-page-template.php:102
+#: templates/front-page-template.php:114
 msgid "Latest reuse lots"
 msgstr "أحدث مجموعات إعادة الاستعمال"
 
-#: templates/front-page-template.php:103
+#: templates/front-page-template.php:115
 msgid ""
 "Every lot shows its condition, its weight source and an automatic total "
 "price."
 msgstr "كل مجموعة تبين حالتها ومصدر وزنها وسعرا إجماليا تلقائيا."
 
-#: templates/front-page-template.php:105
+#: templates/front-page-template.php:117
 msgid "Browse reuse"
 msgstr "تصفح إعادة الاستعمال"
 
-#: templates/front-page-template.php:119
+#: templates/front-page-template.php:130
+msgid "Circular economy"
+msgstr "الاقتصاد الدائري"
+
+#: templates/front-page-template.php:131
+msgid "Dismantled steel still has a life"
+msgstr "للحديد المفكك حياة ثانية"
+
+#: templates/front-page-template.php:132
+msgid ""
+"Every reuse lot shows its condition, its origin and its inventory. Buyers "
+"are invited to have the structure checked by a partner engineer."
+msgstr ""
+"تُظهر كل دفعة لإعادة الاستعمال حالتها ومصدرها وجردها. ويُنصح المشتري بفحص "
+"الهيكل من طرف مهندس شريك."
+
+#: templates/front-page-template.php:135
+msgid "Dismantle"
+msgstr "التفكيك"
+
+#: templates/front-page-template.php:135
+msgid "Inventory by profile, weight calculated"
+msgstr "جرد حسب المقطع ووزن محسوب"
+
+#: templates/front-page-template.php:136
+msgid "Check"
+msgstr "الفحص"
+
+#: templates/front-page-template.php:136
+msgid "Five condition classes, engineer advice"
+msgstr "خمس درجات للحالة ورأي مهندس"
+
+#: templates/front-page-template.php:137
+msgid "Resell"
+msgstr "إعادة البيع"
+
+#: templates/front-page-template.php:137
+msgid "By the piece, by the kg or the whole lot"
+msgstr "بالقطعة أو بالكيلوغرام أو الدفعة كاملة"
+
+#: templates/front-page-template.php:146
 msgid "Publish one request, receive several offers"
 msgstr "طلب واحد، عروض متعددة"
 
-#: templates/front-page-template.php:120
+#: templates/front-page-template.php:147
 msgid ""
 "Describe profiles, quantities and delivery wilaya. Suppliers answer with a "
 "price per kg and a delivery time you can compare side by side."
@@ -5539,11 +5601,11 @@ msgstr ""
 "صف المقاطع والكميات وولاية التسليم. يجيب الموردون بسعر للكيلوغرام وأجل تسليم"
 " تقارنها جنبا إلى جنب."
 
-#: templates/front-page-template.php:125 templates/price-index.php:17
+#: templates/front-page-template.php:152 templates/price-index.php:17
 msgid "Steel price index"
 msgstr "مؤشر أسعار الفولاذ"
 
-#: templates/front-page-template.php:126
+#: templates/front-page-template.php:153
 msgid ""
 "Average advertised prices per kg by profile, condition and wilaya, updated "
 "from live listings. Asking prices, not official market prices."
@@ -5551,70 +5613,109 @@ msgstr ""
 "متوسط الأسعار المعروضة للكيلوغرام حسب المقطع والحالة والولاية، محدّثة من "
 "الإعلانات. أسعار مطلوبة وليست رسمية."
 
-#: templates/front-page-template.php:127
+#: templates/front-page-template.php:154
 msgid "Open the index"
 msgstr "فتح المؤشر"
 
-#: templates/front-page-template.php:134
+#: templates/front-page-template.php:161
 msgid "Fabricators and engineers"
 msgstr "المصنّعون والمهندسون"
 
-#: templates/front-page-template.php:135
+#: templates/front-page-template.php:162
 msgid "All services"
 msgstr "كل الخدمات"
 
-#: templates/front-page-template.php:146
+#: templates/front-page-template.php:173
 msgid "Featured companies"
 msgstr "مؤسسات مميّزة"
 
-#: templates/front-page-template.php:146
+#: templates/front-page-template.php:173
 msgid "Latest companies"
 msgstr "آخر المؤسسات المسجّلة"
 
-#: templates/front-page-template.php:146
+#: templates/front-page-template.php:173
 msgid ""
 "Manufacturers, distributors, recyclers and steel construction companies."
 msgstr "المصنّعون والموزّعون ومؤسسات الرسكلة والبناء المعدني."
 
-#: templates/front-page-template.php:146
+#: templates/front-page-template.php:173
 msgid "See all companies"
 msgstr "عرض كل المؤسسات"
 
-#: templates/front-page-template.php:147
+#: templates/front-page-template.php:174
 msgid "Featured professionals"
 msgstr "مهنيون مميّزون"
 
-#: templates/front-page-template.php:147
+#: templates/front-page-template.php:174
 msgid "Latest professionals"
 msgstr "آخر المهنيين المسجّلين"
 
-#: templates/front-page-template.php:147
+#: templates/front-page-template.php:174
 msgid "Welders, steel erectors, boilermakers and the other steel trades."
 msgstr "لحّامون ومركّبو هياكل وصانعو غلايات وباقي حرف الفولاذ."
 
-#: templates/front-page-template.php:147
+#: templates/front-page-template.php:174
 msgid "See all professionals"
 msgstr "عرض كل المهنيين"
 
-#: templates/front-page-template.php:159
+#: templates/front-page-template.php:186
 msgid "New on the platform"
 msgstr "جديد على المنصة"
 
-#: templates/front-page-template.php:177
+#. translators: %s: platform name.
+#: templates/front-page-template.php:202
+msgid "Why %s?"
+msgstr "لماذا %s؟"
+
+#: templates/front-page-template.php:204
+msgid "Weight calculated"
+msgstr "وزن محسوب"
+
+#: templates/front-page-template.php:204
+msgid ""
+"European section tables: the weight of every lot is calculated, never "
+"guessed by hand."
+msgstr "جداول المقاطع الأوروبية: يُحسب وزن كل دفعة ولا يُقدَّر يدويًا."
+
+#: templates/front-page-template.php:205
+msgid "Verified accounts"
+msgstr "حسابات موثَّقة"
+
+#: templates/front-page-template.php:205
+msgid "Every account is verified before it receives its badge."
+msgstr "يُتحقق من كل حساب قبل منحه الشارة."
+
+#: templates/front-page-template.php:206
+msgid "Partner engineers"
+msgstr "مهندسون شركاء"
+
+#: templates/front-page-template.php:206
+msgid "Studies, calculation notes and inspections given by the platform."
+msgstr "دراسات ومذكرات حساب وخبرات تُسندها المنصة."
+
+#: templates/front-page-template.php:207
+msgid "French, Arabic, English"
+msgstr "الفرنسية والعربية والإنجليزية"
+
+#: templates/front-page-template.php:207
+msgid "The whole platform and its e-mails in your language."
+msgstr "المنصة كلها ورسائلها الإلكترونية بلغتك."
+
+#: templates/front-page-template.php:216
 msgid "Sell your stock, surplus or used building"
 msgstr "بِع مخزونك أو فائضك أو مبناك المستعمل"
 
-#: templates/front-page-template.php:178
+#: templates/front-page-template.php:217
 msgid ""
 "One business account to buy and sell. Engineers get a dedicated services "
 "account."
 msgstr "حساب مهني واحد للشراء والبيع. وللمهندسين حساب خدمات خاص."
 
-#: templates/front-page-template.php:181
+#: templates/front-page-template.php:220
 msgid "Create a free account"
 msgstr "إنشاء حساب مجاني"
 
-#: templates/front-page-template.php:182
+#: templates/front-page-template.php:221
 msgid "See the plans"
 msgstr "عرض الاشتراكات"
 

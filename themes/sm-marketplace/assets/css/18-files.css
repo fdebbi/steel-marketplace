@@ -72,14 +72,14 @@
 .sm-notif__panel::before { content: ""; position: absolute; inset-block-start: -7px; inset-inline-end: 22px; inline-size: 12px; block-size: 12px; background: var(--sm-surface); border-inline-start: 1px solid var(--sm-line); border-block-start: 1px solid var(--sm-line); transform: rotate(45deg); }
 .sm-notif__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 8px 10px; border-block-end: 1px solid var(--sm-line); }
 .sm-notif__title { margin: 0; font-weight: 800; }
-.sm-notif__count { display: inline-block; margin-inline-start: 4px; padding: 1px 8px; border-radius: 999px; background: var(--sm-accent); color: #fff; font-size: 11px; font-weight: 700; vertical-align: middle; }
+.sm-notif__count { display: inline-block; margin-inline-start: 4px; padding: 1px 8px; border-radius: 999px; background: var(--sm-accent); color: var(--sm-on-accent); font-size: 11px; font-weight: 700; vertical-align: middle; }
 .sm-notif__all-read { font-size: var(--sm-fs-xs); }
 .sm-notif__list { list-style: none; margin: 4px 0; padding: 0; display: grid; gap: 2px; }
 .sm-notif__item a { display: flex; gap: 10px; padding: 10px 8px; border-radius: 10px; color: var(--sm-text); text-decoration: none; }
 .sm-notif__item a:hover, .sm-notif__item a:focus-visible { background: var(--sm-bg); outline: none; }
 .sm-notif__item.is-unread a { background: color-mix(in srgb, var(--sm-accent) 7%, var(--sm-surface)); }
 .sm-notif__icon { flex: none; display: grid; place-items: center; inline-size: 34px; block-size: 34px; border-radius: 50%; background: var(--sm-bg); color: var(--sm-primary); }
-.sm-notif__item.is-unread .sm-notif__icon { background: var(--sm-accent); color: #fff; }
+.sm-notif__item.is-unread .sm-notif__icon { background: var(--sm-accent); color: var(--sm-on-accent); }
 .sm-notif__icon .sm-icon { inline-size: 16px; block-size: 16px; }
 .sm-notif__text { min-inline-size: 0; display: grid; gap: 2px; font-size: var(--sm-fs-sm); }
 .sm-notif__text strong { font-weight: 700; }

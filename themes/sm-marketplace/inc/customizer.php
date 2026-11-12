@@ -21,25 +21,25 @@ function sm_theme_color_tokens() {
 		'primary'    => array(
 			'label'       => __( 'Primary colour', 'sm-marketplace' ),
 			'description' => __( 'Header, headings, dark surfaces.', 'sm-marketplace' ),
-			'default'     => '#172B3A',
+			'default'     => '#111820',
 			'var'         => '--sm-primary',
 		),
 		'accent'     => array(
 			'label'       => __( 'Accent colour', 'sm-marketplace' ),
 			'description' => __( 'Main buttons, price per kg, verified badges.', 'sm-marketplace' ),
-			'default'     => '#16A36A',
+			'default'     => '#06CE77',
 			'var'         => '--sm-accent',
 		),
 		'secondary'  => array(
 			'label'       => __( 'Secondary colour', 'sm-marketplace' ),
 			'description' => __( 'Secondary text, icons and borders.', 'sm-marketplace' ),
-			'default'     => '#64748B',
+			'default'     => '#5B6670',
 			'var'         => '--sm-secondary',
 		),
 		'background' => array(
 			'label'       => __( 'Page background', 'sm-marketplace' ),
 			'description' => __( 'Light background behind cards.', 'sm-marketplace' ),
-			'default'     => '#F1F5F9',
+			'default'     => '#F5F7F8',
 			'var'         => '--sm-bg',
 		),
 	);
@@ -126,8 +126,47 @@ function sm_theme_brand_css() {
 	foreach ( sm_theme_color_tokens() as $key => $token ) {
 		$css .= $token['var'] . ':' . sm_theme_color( $key ) . ';';
 	}
-	return $css . '}';
+	return $css . '--sm-on-accent:' . sm_theme_on_color( sm_theme_color( 'accent' ) ) . ';}';
 }
+
+/** Relative luminance of a #rrggbb colour (WCAG). */
+function sm_theme_luminance( $hex ) {
+	$hex = ltrim( (string) $hex, '#' );
+	if ( 3 === strlen( $hex ) ) {
+		$hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+	}
+	$lum = 0;
+	foreach ( array( 0.2126, 0.7152, 0.0722 ) as $i => $w ) {
+		$c    = hexdec( substr( $hex, $i * 2, 2 ) ) / 255;
+		$lum += $w * ( $c <= 0.03928 ? $c / 12.92 : ( ( $c + 0.055 ) / 1.055 ) ** 2.4 );
+	}
+	return $lum;
+}
+
+/** Text colour with the better contrast on a background: near-black or white. */
+function sm_theme_on_color( $hex ) {
+	$l = sm_theme_luminance( $hex );
+	return ( $l + 0.05 ) / 0.0535 >= 1.05 / ( $l + 0.05 ) ? '#080B0E' : '#FFFFFF';
+}
+
+/**
+ * 0.18.0: the brand moves to the ReuSteel palette. Colours still equal to the
+ * old defaults (never chosen by the administrator) are dropped so the new
+ * defaults apply; colours chosen on purpose are kept.
+ */
+function sm_theme_migrate_palette() {
+	if ( get_option( 'sm_theme_palette' ) === '0.18' ) {
+		return;
+	}
+	$old = array( 'primary' => '#172b3a', 'accent' => '#16a36a', 'secondary' => '#64748b', 'background' => '#f1f5f9' );
+	foreach ( $old as $key => $hex ) {
+		if ( strtolower( (string) get_theme_mod( 'sm_color_' . $key, '' ) ) === $hex ) {
+			remove_theme_mod( 'sm_color_' . $key );
+		}
+	}
+	update_option( 'sm_theme_palette', '0.18', false );
+}
+add_action( 'after_setup_theme', 'sm_theme_migrate_palette' );
 
 function sm_theme_enqueue_brand_css() {
 	wp_add_inline_style( 'sm-main', sm_theme_brand_css() );

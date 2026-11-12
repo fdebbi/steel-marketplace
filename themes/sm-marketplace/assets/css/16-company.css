@@ -32,7 +32,7 @@
 .smc-badge { display: inline-flex; align-items: center; gap: 6px; block-size: 28px; padding-inline: 12px; border-radius: 999px; font-size: var(--sm-fs-xs); font-weight: 700; }
 .smc-badge .sm-icon { inline-size: 14px; block-size: 14px; }
 .smc-badge--class { background: #fff; color: var(--sm-primary); }
-.smc-badge--account { background: var(--sm-accent); color: #fff; }
+.smc-badge--account { background: var(--sm-accent); color: var(--sm-on-accent); }
 .smc-badge--quality { background: #F2C14E; color: #3B2A00; }
 
 /* Layout */
@@ -48,7 +48,7 @@
 .smc-tabs a:hover { background: var(--sm-bg); }
 .smc-tabs a[aria-current="true"] { background: var(--sm-primary); color: var(--sm-on-dark); }
 .smc-tabs a span { display: inline-grid; place-items: center; min-inline-size: 22px; block-size: 22px; padding-inline: 6px; border-radius: 999px; background: var(--sm-bg); color: var(--sm-text); font-size: 12px; }
-.smc-tabs a[aria-current="true"] span { background: var(--sm-accent); color: #fff; }
+.smc-tabs a[aria-current="true"] span { background: var(--sm-accent); color: var(--sm-on-accent); }
 
 /* Cards */
 .smc-card { background: var(--sm-surface); border: 1px solid var(--sm-line); border-radius: 18px; padding: var(--sm-s4) var(--sm-s5); scroll-margin-block-start: 96px; }

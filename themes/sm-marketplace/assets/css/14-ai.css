@@ -74,7 +74,7 @@
 /* Callout on the forms */
 .smai-callout { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sm-s2) var(--sm-s3); padding: var(--sm-s3) var(--sm-s4); margin-block-end: var(--sm-s4); border: 1px solid color-mix(in srgb, var(--sm-accent) 35%, var(--sm-line)); border-radius: var(--sm-radius-lg); background: linear-gradient(135deg, var(--sm-accent-soft), var(--sm-surface) 70%); }
 .smai-callout p { margin: 0; flex: 1 1 240px; font-size: var(--sm-fs-sm); }
-.smai-callout__icon { display: grid; place-items: center; inline-size: 36px; block-size: 36px; border-radius: 10px; background: var(--sm-accent); color: #fff; flex: none; }
+.smai-callout__icon { display: grid; place-items: center; inline-size: 36px; block-size: 36px; border-radius: 10px; background: var(--sm-accent); color: var(--sm-on-accent); flex: none; }
 
 /* Smart search */
 .smai-search { display: grid; gap: var(--sm-s3); margin-block: var(--sm-s4) 0; }

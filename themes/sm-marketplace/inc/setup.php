@@ -43,7 +43,15 @@ add_action( 'after_setup_theme', 'sm_theme_setup' );
 function sm_theme_body_class( $classes ) {
 	$classes[] = 'sm-lang-' . sm_theme_current_language();
 	$classes[] = 'sm-dir-' . sm_theme_dir();
+	if ( sm_theme_is_home() ) {
+		$classes[] = 'sm-is-home'; // Dark showcase header and footer (0.18.0).
+	}
 	return $classes;
+}
+
+/** True on the home page (front page or a page using the "SM — Home" template). */
+function sm_theme_is_home() {
+	return is_front_page() || is_page_template( 'templates/front-page-template.php' );
 }
 add_filter( 'body_class', 'sm_theme_body_class' );
 

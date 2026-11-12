@@ -12,8 +12,8 @@
 .sm-btn .sm-icon { inline-size: 1.15em; block-size: 1.15em; }
 .sm-btn--lg { min-block-size: 52px; padding-inline: 24px; font-size: var(--sm-fs-md); }
 .sm-btn--block { inline-size: 100%; }
-.sm-btn--accent { background: var(--sm-accent); color: #fff; }
-.sm-btn--accent:hover { background: var(--sm-accent-hover); color: #fff; }
+.sm-btn--accent { background: var(--sm-accent); color: var(--sm-on-accent); font-weight: 700; }
+.sm-btn--accent:hover { background: var(--sm-accent-hover); color: var(--sm-on-accent); }
 .sm-btn--primary { background: var(--sm-primary); color: var(--sm-on-dark); }
 .sm-btn--primary:hover { background: var(--sm-primary-hover); color: var(--sm-on-dark); }
 .sm-btn--primary-outline { background: var(--sm-surface); color: var(--sm-primary); border-color: var(--sm-primary); }

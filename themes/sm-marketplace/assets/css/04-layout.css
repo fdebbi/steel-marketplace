@@ -22,7 +22,7 @@
 
 .sm-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; flex: none; }
 .sm-brand:hover { color: inherit; }
-.sm-brand__mark { display: grid; place-items: center; inline-size: 34px; block-size: 34px; border-radius: 8px; background: var(--sm-accent); color: #fff; }
+.sm-brand__mark { display: grid; place-items: center; inline-size: 34px; block-size: 34px; border-radius: 8px; background: var(--sm-accent); color: var(--sm-on-accent); }
 .sm-brand__mark svg { inline-size: 22px; block-size: 22px; }
 .sm-brand__name { font-weight: 700; font-size: 1.05rem; letter-spacing: -.01em; white-space: nowrap; }
 .sm-brand__logo { max-block-size: 40px; inline-size: auto; }
@@ -32,7 +32,7 @@
 @media (min-width: 768px) { .sm-search { display: flex; } }
 .sm-search__market { inline-size: auto; max-inline-size: 170px; border: 0 !important; border-inline-end: 1px solid var(--sm-line) !important; border-radius: 0 !important; background-color: var(--sm-bg); font-size: var(--sm-fs-sm) !important; min-block-size: 44px !important; }
 .sm-search__input { border: 0 !important; border-radius: 0 !important; min-block-size: 44px !important; box-shadow: none !important; }
-.sm-search__submit { display: grid; place-items: center; inline-size: 52px; border: 0; background: var(--sm-accent); color: #fff; }
+.sm-search__submit { display: grid; place-items: center; inline-size: 52px; border: 0; background: var(--sm-accent); color: var(--sm-on-accent); }
 .sm-search__submit:hover { background: var(--sm-accent-hover); }
 @media (max-width: 1023px) { .sm-search__market { display: none; } }
 
@@ -105,7 +105,7 @@ body.sm-no-scroll { overflow: hidden; }
 [dir="rtl"] .sm-tabbar a { font-size: 12px; }
 .sm-tabbar a[aria-current] { color: var(--sm-accent-ink); }
 .sm-tabbar .sm-icon { inline-size: 22px; block-size: 22px; }
-.sm-tabbar__publish .sm-icon { inline-size: 40px; block-size: 40px; padding: 8px; margin-block-start: -14px; border-radius: 50%; background: var(--sm-accent); color: #fff; box-shadow: 0 6px 14px -4px color-mix(in srgb, var(--sm-accent) 60%, transparent); }
+.sm-tabbar__publish .sm-icon { inline-size: 40px; block-size: 40px; padding: 8px; margin-block-start: -14px; border-radius: 50%; background: var(--sm-accent); color: var(--sm-on-accent); box-shadow: 0 6px 14px -4px color-mix(in srgb, var(--sm-accent) 60%, transparent); }
 body { padding-block-end: var(--sm-tabbar-h); }
 @media (min-width: 768px) { .sm-tabbar { display: none; } body { padding-block-end: 0; } }
 

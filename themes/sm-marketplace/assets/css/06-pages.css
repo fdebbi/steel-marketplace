@@ -136,9 +136,9 @@
 .sm-dash__side a:hover { background: var(--sm-bg); }
 .sm-dash__side a[aria-current] { background: var(--sm-primary); color: var(--sm-on-dark); }
 .sm-dash__side a[aria-current] .sm-icon { color: var(--sm-accent); }
-.sm-dash__side a.sm-dash__publish { justify-content: center; gap: var(--sm-s2); min-block-size: 44px; margin-block-end: var(--sm-s3); background: var(--sm-accent); color: #fff; font-weight: 700; }
+.sm-dash__side a.sm-dash__publish { justify-content: center; gap: var(--sm-s2); min-block-size: 44px; margin-block-end: var(--sm-s3); background: var(--sm-accent); color: var(--sm-on-accent); font-weight: 700; }
 .sm-dash__side a.sm-dash__publish .sm-icon { color: currentColor; }
-.sm-dash__side a.sm-dash__publish:hover, .sm-dash__side a.sm-dash__publish[aria-current] { background: var(--sm-accent-hover); color: #fff; box-shadow: 0 0 0 3px var(--sm-accent-soft); }
+.sm-dash__side a.sm-dash__publish:hover, .sm-dash__side a.sm-dash__publish[aria-current] { background: var(--sm-accent-hover); color: var(--sm-on-accent); box-shadow: 0 0 0 3px var(--sm-accent-soft); }
 .sm-dash__side a .sm-count { margin-inline-start: auto; }
 .sm-dash__shortcuts { display: grid; gap: 6px; margin-block-end: var(--sm-s3); }
 .sm-dash__side a.sm-dash__shortcut { justify-content: center; gap: var(--sm-s2); min-block-size: 38px; border: 1px solid var(--sm-line); font-weight: 600; color: var(--sm-primary); }
@@ -183,7 +183,7 @@
 .sm-stepper li:last-child::after { display: none; }
 .sm-stepper__num { display: grid; place-items: center; inline-size: 32px; block-size: 32px; border-radius: 50%; border: 2px solid var(--sm-line-strong); background: var(--sm-surface); font-weight: 700; }
 .sm-stepper li[aria-current] { color: var(--sm-primary); font-weight: 700; }
-.sm-stepper li[aria-current] .sm-stepper__num { border-color: var(--sm-accent); background: var(--sm-accent); color: #fff; }
+.sm-stepper li[aria-current] .sm-stepper__num { border-color: var(--sm-accent); background: var(--sm-accent); color: var(--sm-on-accent); }
 .sm-stepper li.is-done .sm-stepper__num { border-color: var(--sm-accent); color: var(--sm-accent-ink); }
 .sm-stepper li.is-done::after { background: var(--sm-accent); }
 @media (max-width: 480px) { .sm-stepper__label { display: none; } .sm-stepper li[aria-current] .sm-stepper__label { display: block; position: absolute; inset-block-start: 38px; white-space: nowrap; } .sm-stepper { margin-block-end: var(--sm-s4); } }

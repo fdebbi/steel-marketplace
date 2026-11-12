@@ -9,6 +9,8 @@
 @font-face { font-family: "Inter"; src: url("../assets/fonts/inter-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "Inter"; src: url("../assets/fonts/inter-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 @font-face { font-family: "Inter"; src: url("../assets/fonts/inter-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Space Grotesk"; src: url("../assets/fonts/space-grotesk-600.woff2") format("woff2"); font-weight: 600; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Space Grotesk"; src: url("../assets/fonts/space-grotesk-700.woff2") format("woff2"); font-weight: 700; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: "IBM Plex Sans Arabic"; src: url("../assets/fonts/plex-arabic-400.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF; }
 @font-face { font-family: "IBM Plex Sans Arabic"; src: url("../assets/fonts/plex-arabic-500.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF; }
 @font-face { font-family: "IBM Plex Sans Arabic"; src: url("../assets/fonts/plex-arabic-600.woff2") format("woff2"); font-weight: 600; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF; }
@@ -16,10 +18,22 @@
 
 :root {
 	/* Brand defaults (overridden by the Customizer output). */
-	--sm-primary: #172B3A;
-	--sm-accent: #16A36A;
-	--sm-secondary: #64748B;
-	--sm-bg: #F1F5F9;
+	--sm-primary: #111820;
+	--sm-accent: #06CE77;
+	--sm-secondary: #5B6670;
+	--sm-bg: #F5F7F8;
+	/* Text on the accent colour: dark on a light green, white on a dark one
+	   (printed by the Customizer from the accent's contrast). */
+	--sm-on-accent: #080B0E;
+
+	/* Showcase palette (dark home page and marketing sections, 0.18.0). */
+	--sm-deep: #080B0E;
+	--sm-graphite: #111820;
+	--sm-graphite-2: #0B1015;
+	--sm-steel: #87939C;
+	--sm-silver: #C6CDD2;
+	--sm-white: #F5F7F8;
+	--sm-metal: linear-gradient(145deg, #F5F7F8, #C6CDD2 45%, #6E7A83);
 
 	/* Derived palette */
 	--sm-surface: #FFFFFF;
@@ -30,7 +44,7 @@
 	--sm-primary-hover: color-mix(in srgb, var(--sm-primary) 85%, #fff);
 	--sm-primary-soft: color-mix(in srgb, var(--sm-primary) 7%, #fff);
 	--sm-accent-hover: color-mix(in srgb, var(--sm-accent) 85%, #000);
-	--sm-accent-ink: color-mix(in srgb, var(--sm-accent) 72%, #000);
+	--sm-accent-ink: color-mix(in srgb, var(--sm-accent) 55%, #000);
 	--sm-accent-soft: color-mix(in srgb, var(--sm-accent) 12%, #fff);
 	--sm-on-dark: #FFFFFF;
 	--sm-on-dark-muted: color-mix(in srgb, #fff 72%, var(--sm-primary));
@@ -50,6 +64,7 @@
 	/* Type */
 	--sm-font: "Inter", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 	--sm-font-ar: "IBM Plex Sans Arabic", "Inter", system-ui, "Segoe UI", Tahoma, sans-serif;
+	--sm-font-display: "Space Grotesk", "Inter", "IBM Plex Sans Arabic", system-ui, sans-serif;
 	--sm-fs-xs: .75rem;
 	--sm-fs-sm: .875rem;
 	--sm-fs-md: 1rem;
@@ -62,7 +77,7 @@
 	/* Space, radius, shadow */
 	--sm-s1: 4px; --sm-s2: 8px; --sm-s3: 12px; --sm-s4: 16px; --sm-s5: 24px; --sm-s6: 32px; --sm-s7: 48px; --sm-s8: 64px;
 	--sm-radius-sm: 6px;
-	--sm-radius: 10px;
+	--sm-radius: 12px;
 	--sm-radius-lg: 16px;
 	--sm-shadow-sm: 0 1px 2px rgb(15 23 42 / .06);
 	--sm-shadow: 0 1px 3px rgb(15 23 42 / .08), 0 8px 24px -12px rgb(15 23 42 / .18);
@@ -76,6 +91,7 @@
 
 [dir="rtl"] {
 	--sm-font: var(--sm-font-ar);
+	--sm-font-display: var(--sm-font-ar);
 	--sm-lh: 1.7;
 }
 
