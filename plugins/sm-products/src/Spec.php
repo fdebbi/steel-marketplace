@@ -35,7 +35,7 @@ final class Spec {
 		$d['market'] = $cat->market;
 		switch ( $cat->kind ) {
 			case 'engine':
-				self::engine( $cat, $in, $d, $e, $out );
+				self::engine( $cat, $in, $d, $e, $out, $for_save );
 				break;
 			case 'lines':
 				self::lines( $cat, $in, $d, $e );
@@ -146,7 +146,11 @@ final class Spec {
 			'fr' => mb_substr( trim( sanitize_text_field( $in['title']['fr'] ?? '' ) ), 0, 140 ),
 			'ar' => mb_substr( trim( sanitize_text_field( $in['title']['ar'] ?? '' ) ), 0, 140 ),
 		);
-		if ( $for_save && '' === $title['fr'] && '' === $title['ar'] ) {
+		// New calculated products (0.7.0): the title is the product itself, never typed.
+		if ( self::auto_title( $cat ) ) {
+			$title = self::make_title( $d );
+		}
+		if ( $for_save && '' === $title['fr'] && '' === $title['ar'] && ! self::auto_title( $cat ) ) {
 			$e['title'] = __( 'Give the product a title (in French or in Arabic).', 'sm-products' );
 		}
 		$desc = trim( sanitize_textarea_field( $in['description'] ?? '' ) );
@@ -168,7 +172,7 @@ final class Spec {
 	}
 
 	/** Profiles, tubes, plates, bars: technical data and weight from SM Weight Engine. */
-	private static function engine( $cat, array $in, array &$d, array &$e, array &$out ) {
+	private static function engine( $cat, array $in, array &$d, array &$e, array &$out, $for_save = true ) {
 		$engine = \SM\Core\Modules::service( 'weight' );
 		$family = strtoupper( sanitize_text_field( $in['family'] ?? '' ) );
 		if ( 1 === count( $cat->families ) ) {
@@ -232,6 +236,13 @@ final class Spec {
 		}
 		$out['calc'] = $r;
 		self::describe( $r, $d );
+		// Standard picture of the section (0.7.0): used when the listing has no photo.
+		if ( $for_save && self::auto_title( $cat ) && ! empty( $r['shape'] ) && class_exists( '\\SM\\WeightEngine\\Drawing' ) ) {
+			$key = sanitize_title( $family . '-' . $r['designation'] );
+			if ( \SM\WeightEngine\Drawing::files( $r['shape'], (array) $r['dims'], $key, $r['designation'] ) ) {
+				$d['drawing'] = $key;
+			}
+		}
 		$d['length_mm']   = (int) round( $r['length_mm'] );
 		$d['width_mm']    = (int) round( $r['width_mm'] ?? 0 );
 		$d['unit_weight'] = $r['per_piece_kg'];
@@ -257,6 +268,42 @@ final class Spec {
 			}
 		}
 		$d['weight_source'] = $source;
+	}
+
+	/**
+	 * New products whose weight is calculated (sections, tubes, flats, bars, plates):
+	 * the title is generated and photos are optional (0.7.0).
+	 */
+	public static function auto_title( $cat ) {
+		return $cat && 'products' === $cat->market && 'engine' === $cat->kind;
+	}
+
+	/**
+	 * Title of a calculated product: type and size, grade, length.
+	 * "IPE 200 · S275JR · 12 m", plates "Tôle 10 · S235 · 1,5 × 6 m"; in Arabic the length reads "الطول 12 م".
+	 * Without a length (sold by weight) the title stops at the grade.
+	 */
+	public static function make_title( array $d ) {
+		$name = trim( (string) ( $d['designation'] ?? '' ) );
+		if ( '' === $name ) {
+			return array( 'fr' => '', 'ar' => '' );
+		}
+		$m     = static fn( $mm ) => rtrim( rtrim( number_format( $mm / 1000, 2, ',', '' ), '0' ), ',' );
+		$parts = array( $name );
+		if ( ! empty( $d['grade'] ) ) {
+			$parts[] = $d['grade'];
+		}
+		$len = array( 'fr' => '', 'ar' => '' );
+		if ( 'PLATE' === ( $d['family'] ?? '' ) && ! empty( $d['width_mm'] ) && ! empty( $d['length_mm'] ) ) {
+			$len = array( 'fr' => $m( $d['width_mm'] ) . ' × ' . $m( $d['length_mm'] ) . ' m', 'ar' => 'المقاس ' . $m( $d['width_mm'] ) . ' × ' . $m( $d['length_mm'] ) . ' م' );
+		} elseif ( 'bars' === ( $d['qty_mode'] ?? '' ) && ! empty( $d['length_mm'] ) ) {
+			$len = array( 'fr' => $m( $d['length_mm'] ) . ' m', 'ar' => 'الطول ' . $m( $d['length_mm'] ) . ' م' ); // An Arabic word first keeps "12 م" together in right-to-left text.
+		}
+		$base = implode( ' · ', $parts );
+		return array(
+			'fr' => mb_substr( $base . ( $len['fr'] ? ' · ' . $len['fr'] : '' ), 0, 140 ),
+			'ar' => mb_substr( $base . ( $len['ar'] ? ' · ' . $len['ar'] : '' ), 0, 140 ),
+		);
 	}
 
 	/** Copy designation and dimensions of the engine result. */

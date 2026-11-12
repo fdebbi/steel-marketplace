@@ -1,5 +1,10 @@
 # Changelog — sm-products
 
+## 0.7.0 — 2026-11-12 (base v5)
+
+- Produits neufs calculés (catégories de type « engine » du marché des produits) : titre généré « type et dimension · nuance · longueur » en français et en arabe (« IPE 200 · S275JR · 12 m » / « … · 12 م ») ; sans longueur quand le produit est vendu au poids ; un titre saisi est ignoré. Les annonces existantes gardent leur titre jusqu'à leur prochaine modification.
+- Photos facultatives pour ces produits : la colonne `drawing` (base v5) garde la clé du dessin de la section ; l'annonce affiche `image` = dessin SVG, `image_drawing`, `share_image` = PNG.
+
 ## 0.6.0 — 2026-11-12
 
 - `PriceTrend` : prix moyen demandé au kg des profilés laminés (IPE, HEA, HEB, HEM, IPN, UPN, UPE, cornières), semaine par semaine, à partir des annonces mises en ligne (vendues, en pause ou expirées comprises ; brouillons, en attente et refusées exclues). Une semaine compte avec au moins 5 annonces ; la courbe exige au moins 4 semaines. Mis en cache une heure, vidé à chaque enregistrement ou changement de statut.

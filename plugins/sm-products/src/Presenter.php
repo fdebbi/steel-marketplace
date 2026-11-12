@@ -55,7 +55,10 @@ final class Presenter {
 			'seller_public'  => $company ? Companies::is_public_class( $company->account_class ) : false,
 			'seller_class'   => $company ? $company->account_class : '',
 			'date'           => $p->published_at ? $p->published_at : $p->updated_at,
-			'image'          => $photos ? (int) $photos[0] : 'demo:placeholder',
+			// No photo on a calculated new product (0.7.0): the standard drawing of its section.
+			'image'          => $photos ? (int) $photos[0] : ( self::drawing_url( $p ) ?: 'demo:placeholder' ),
+			'image_drawing'  => ! $photos && '' !== self::drawing_url( $p ),
+			'share_image'    => $photos ? '' : self::drawing_url( $p, 'png' ),
 			'photos'         => array_map( 'intval', $photos ),
 			'status'         => $p->status,
 			'revision'       => ! empty( $p->revision_at ),
@@ -240,6 +243,16 @@ final class Presenter {
 	public static function title_text( $p ) {
 		$t = Translations::get( 'product', $p->id );
 		return self::pick( (array) ( $t['title'] ?? array() ) ) ?: trim( $p->designation . ' ' . $p->grade );
+	}
+
+	/** URL of the stored section drawing of a listing ('svg' or 'png'), or ''. */
+	public static function drawing_url( $p, $ext = 'svg' ) {
+		$key = (string) ( $p->drawing ?? '' );
+		if ( '' === $key ) {
+			return '';
+		}
+		$up = wp_upload_dir();
+		return file_exists( trailingslashit( $up['basedir'] ) . 'sm-drawings/' . $key . '.' . $ext ) ? trailingslashit( $up['baseurl'] ) . 'sm-drawings/' . $key . '.' . $ext : '';
 	}
 
 	public static function pick( array $values ) {

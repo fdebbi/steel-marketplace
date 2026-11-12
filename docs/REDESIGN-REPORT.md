@@ -86,3 +86,22 @@ Tests :
 
 - La lecture du menu par les tests utilise maintenant le texte brut, car sur téléphone le menu est un volet caché.
 - Trois suites ont eu un échec isolé lors de la série complète et ont réussi en relançant seules : e2e (glisser le repère sur la carte), e2e-rfq et e2e-services.
+
+## 6. Complément : titres automatiques, dessin standard, poids en tonnes (thème 0.20.0, sm-products 0.7.0, sm-weight-engine 0.2.0)
+
+Choix validés : nuance d'acier incluse dans le titre ; tous les produits neufs calculés ; tonnes partout.
+
+- **Titre automatique** des produits neufs calculés (profilés, tubes, fers plats et ronds, tôles) : « type et dimension · nuance · longueur ».
+  - Français : « IPE 300 · S275JR · 12 m ». Arabe : « IPE 300 · S275JR · الطول 12 م ». Le mot « الطول » placé avant garde « 12 م » groupé dans le texte arabe.
+  - Sans longueur quand le produit est vendu au poids ; sans nuance quand le vendeur n'en a pas choisi.
+  - Les champs de titre ne sont plus affichés pour ces produits. Les annonces existantes gardent leur titre jusqu'à leur prochaine modification.
+- **Photos facultatives** pour ces produits. Sans photo, la carte et la fiche montrent le dessin exact de la section, à l'échelle, avec « Image indicative ».
+  - Pour les aperçus WhatsApp et Facebook, une image PNG du dessin (1200 × 630) est créée une fois par section.
+  - Les balises og:title et og:image ont été ajoutées aux fiches d'annonce.
+- **Poids :** sous 1 000 kg en kg ; à partir de 1 000 kg en tonnes (« 20,28 t », « 20,28 طن ») avec les kg en petit. Partout sur le site ; la saisie et les calculs restent en kg.
+
+Tests :
+- PHP : sm-products 59/59 (dont 5 nouveaux), toutes les autres extensions réussies.
+- e2e : products 50/50, ai 30/30, weight 22/22, rfq 25/25, services 57/57 et toutes les autres suites réussies.
+- Tests visuels FR, AR et EN : 924/924.
+- Les tests de publication, de l'IA et du calculateur ont été mis à jour pour le titre automatique et le poids en tonnes.

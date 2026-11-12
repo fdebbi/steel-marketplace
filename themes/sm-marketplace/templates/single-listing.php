@@ -12,6 +12,19 @@ defined( 'ABSPATH' ) || exit;
 $item = sm_theme_listing( sm_theme_route( 'id' ) );
 if ( ! $item ) {
 	status_header( 404 );
+} else {
+	// Link previews (WhatsApp, Facebook): title, and the first photo or the PNG drawing of the section.
+	add_action(
+		'wp_head',
+		static function () use ( $item ) {
+			$img = ! empty( $item['photos'] ) ? sm_image_url( $item['photos'][0] ) : (string) ( $item['share_image'] ?? '' );
+			printf( '<meta property="og:type" content="product">' . "\n" . '<meta property="og:title" content="%s">' . "\n", esc_attr( sm_t( $item['title'] ) ) );
+			if ( $img ) {
+				printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $img ) );
+			}
+		},
+		5
+	);
 }
 get_header();
 
@@ -88,8 +101,9 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 
 	<div class="sm-detail__top">
 		<div class="sm-gallery" data-sm-gallery>
-			<figure class="sm-gallery__main">
+			<figure class="sm-gallery__main<?php echo ! empty( $item['image_drawing'] ) ? ' is-drawing' : ''; ?>">
 				<img src="<?php echo esc_url( sm_image_url( $item['image'] ) ); ?>" alt="<?php echo esc_attr( sm_t( $item['title'] ) ); ?>" width="1280" height="960" data-sm-gallery-main>
+				<?php if ( ! empty( $item['image_drawing'] ) ) : ?><figcaption class="sm-drawing-note"><?php esc_html_e( 'Standard section drawing (illustration)', 'sm-marketplace' ); ?></figcaption><?php endif; ?>
 			</figure>
 			<div class="sm-gallery__thumbs">
 				<?php $gallery = ! empty( $item['photos'] ) ? $item['photos'] : ( ! empty( $item['demo'] ) ? array( $item['image'], 'demo:detail-section', 'demo:detail-stack' ) : array( $item['image'] ) ); ?>

@@ -75,7 +75,7 @@ final class Form {
 		$file_errors = array_merge( $new['errors'], $snew['errors'] );
 
 		$errors = $spec['errors'];
-		if ( 'draft' !== $intent && ! $photos ) {
+		if ( 'draft' !== $intent && ! $photos && ! Spec::auto_title( $spec['category'] ) ) { // Calculated new products show the section drawing (0.7.0).
 			$errors['photos'] = __( 'Add at least one photo of the product.', 'sm-products' );
 		}
 		if ( 'draft' === $intent && empty( $spec['category'] ) ) {

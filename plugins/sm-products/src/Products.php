@@ -71,7 +71,7 @@ final class Products {
 		global $wpdb;
 		$now  = current_time( 'mysql', true );
 		$was  = $id ? self::get( $id ) : null;
-		$cols = array( 'market', 'item_condition', 'variant', 'category', 'family', 'section_id', 'designation', 'grade', 'qty_mode', 'length_mm', 'width_mm', 'pieces', 'quantity', 'unit', 'unit_weight', 'total_weight', 'weight_source', 'engine_version', 'ref_version', 'price', 'price_unit', 'total_price', 'price_per_kg', 'wilaya', 'sale_mode', 'lot_price' );
+		$cols = array( 'market', 'item_condition', 'variant', 'category', 'family', 'section_id', 'designation', 'grade', 'qty_mode', 'length_mm', 'width_mm', 'pieces', 'quantity', 'unit', 'unit_weight', 'total_weight', 'weight_source', 'engine_version', 'ref_version', 'price', 'price_unit', 'total_price', 'price_per_kg', 'wilaya', 'sale_mode', 'lot_price', 'drawing' );
 		$row  = array();
 		foreach ( $cols as $c ) {
 			if ( array_key_exists( $c, $spec['data'] ) ) {

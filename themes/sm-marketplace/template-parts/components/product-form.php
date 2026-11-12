@@ -107,7 +107,11 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 	</section>
 
 	<section class="sm-panel smp-step">
-		<h2 class="smw-step__title"><span class="smw-step__n">3</span><?php esc_html_e( 'Title and description', 'sm-marketplace' ); ?></h2>
+		<?php $auto_title = 'products' === $market && 'engine' === ( $cat['kind'] ?? '' ); // Calculated new products: generated title (0.20.0). ?>
+		<h2 class="smw-step__title"><span class="smw-step__n">3</span><?php echo $auto_title ? esc_html__( 'Description', 'sm-marketplace' ) : esc_html__( 'Title and description', 'sm-marketplace' ); ?></h2>
+		<?php if ( $auto_title ) : ?>
+			<p class="sm-notice sm-notice--info smp-autotitle"><?php sm_icon( 'info' ); ?><span><?php esc_html_e( 'The title is created automatically from the product: type and size, steel grade and length (for example "IPE 200 · S275JR · 12 m"), in French and in Arabic.', 'sm-marketplace' ); ?></span></p>
+		<?php else : ?>
 		<div class="sm-field">
 			<label for="smp-title-fr"><?php esc_html_e( 'Title in French', 'sm-marketplace' ); ?></label>
 			<input id="smp-title-fr" name="title[fr]" lang="fr" dir="ltr" maxlength="140" value="<?php echo esc_attr( (string) ( $state['title']['fr'] ?? '' ) ); ?>" placeholder="<?php echo esc_attr( $is_build ? __( 'e.g. Industrial hangar 40 × 20 m, assembled', 'sm-marketplace' ) : ( $is_reuse ? __( 'e.g. IPE and HEA offcuts, 2 to 4 m, good condition', 'sm-marketplace' ) : __( 'e.g. IPE 200 S275JR new, 12 m bars', 'sm-marketplace' ) ) ); ?>"<?php sm_theme_aria( 'title' ); ?>>
@@ -117,6 +121,7 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 			<label for="smp-title-ar"><?php esc_html_e( 'Title in Arabic', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
 			<input id="smp-title-ar" name="title[ar]" lang="ar" dir="rtl" maxlength="140" value="<?php echo esc_attr( (string) ( $state['title']['ar'] ?? '' ) ); ?>">
 		</div>
+		<?php endif; ?>
 		<div class="sm-field">
 			<label for="smp-desc"><?php esc_html_e( 'Description and technical notes', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
 			<textarea id="smp-desc" name="description" rows="5" dir="auto" maxlength="4000"><?php echo esc_textarea( (string) ( $state['description'] ?? '' ) ); ?></textarea>
@@ -126,6 +131,9 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 
 	<section class="sm-panel smp-step">
 		<h2 class="smw-step__title"><span class="smw-step__n">4</span><?php esc_html_e( 'Photos and technical sheet', 'sm-marketplace' ); ?></h2>
+		<?php if ( $auto_title ) : ?>
+			<p class="sm-muted smp-photo-optional"><?php esc_html_e( 'Photos are optional: without a photo, the listing shows the standard drawing of the section. A real photo of your stock is still recommended, buyers trust it more.', 'sm-marketplace' ); ?></p>
+		<?php endif; ?>
 		<?php $kept = array_filter( array_map( 'absint', (array) ( $state['keep_photos'] ?? array() ) ) ); ?>
 		<?php sm_saved_files( array( 'ids' => $kept, 'field' => 'photos[]', 'keep' => 'keep_photos[]' ) ); ?>
 		<label class="sm-upload" data-sm-upload>

@@ -81,6 +81,7 @@ final class Installer {
 				total_price decimal(16,2) NOT NULL DEFAULT 0,
 				sale_mode varchar(8) NOT NULL DEFAULT 'detail',
 				lot_price decimal(16,2) NOT NULL DEFAULT 0,
+				drawing varchar(80) NOT NULL DEFAULT '',
 				revision longtext,
 				revision_at datetime DEFAULT NULL,
 				price_per_kg decimal(14,2) NOT NULL DEFAULT 0,

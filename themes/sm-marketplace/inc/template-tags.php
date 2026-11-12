@@ -152,9 +152,26 @@ function sm_tech( $text ) {
 	return '<bdi dir="ltr" class="sm-tech">' . esc_html( $text ) . '</bdi>';
 }
 
-/** Weight with unit, e.g. "3 230 kg". */
+/**
+ * Weight with unit (0.20.0): under 1 000 kg in kg ("850 kg"); from 1 000 kg in
+ * tonnes, with the kilograms in small ("1,25 t" + "1 250 kg"). Tonnes keep at
+ * most two decimals, without trailing zeros. Display only: inputs and
+ * calculations stay in kg.
+ */
 function sm_kg( $value, $decimals = 0 ) {
-	return sm_tech( sm_number( $value, $decimals ) . "\u{00A0}kg" );
+	$value = (float) $value;
+	if ( abs( $value ) < 1000 ) {
+		return sm_tech( sm_number( $value, $decimals ) . "\u{00A0}kg" );
+	}
+	return '<span class="sm-weight">' . sm_tech( sm_tonnes( $value ) ) . ' <small class="sm-weight__kg">' . sm_tech( sm_number( $value, $decimals ) . "\u{00A0}kg" ) . '</small></span>';
+}
+
+/** Tonnes as text, e.g. "1,25 t" ("1,25 طن" in Arabic). */
+function sm_tonnes( $kg ) {
+	$t    = round( (float) $kg / 1000, 2 );
+	$text = sm_number( $t, 2 );
+	$text = preg_replace( '/,?0+$/', '', $text ); // 12,50 -> 12,5 ; 32,00 -> 32
+	return $text . "\u{00A0}" . ( 'ar' === sm_theme_current_language() ? 'طن' : 't' );
 }
 
 /**

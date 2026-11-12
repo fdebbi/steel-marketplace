@@ -82,7 +82,7 @@ smp_assert( 1 === count( $clean ) && 'galva' === $clean[0]['options'][0]['value'
 smp_section( '2. Server-side checks and calculations (Spec)' );
 $s = Spec::build( $base + array( 'category' => 'profiles', 'family' => 'IPE', 'section' => 'IPE 200', 'bars' => '10', 'price_unit' => 'kg' ) );
 smp_assert( ! $s['errors'] && smp_near( $s['data']['total_weight'], 2683.202, 0.001 ) && smp_near( $s['data']['total_price'], 657384.49 ), 'IPE 200 × 10 bars of 12 m at 245 DA/kg = 2 683,2 kg, 657 384,49 DA' );
-smp_assert( 'theoretical' === $s['data']['weight_source'] && '0.1.0' === $s['data']['engine_version'] && $s['data']['section_id'] > 0, 'weight marked theoretical, engine version and section stored' );
+smp_assert( 'theoretical' === $s['data']['weight_source'] && SM_WEIGHT_VERSION === $s['data']['engine_version'] && $s['data']['section_id'] > 0, 'weight marked theoretical, engine version and section stored' );
 $w = Spec::build( $base + array( 'category' => 'profiles', 'family' => 'IPE', 'section' => 'IPE 200', 'qty_mode' => 'weight', 'total_kg' => '5000' ) );
 smp_assert( smp_near( $w['data']['pieces'], 18.63 ) && smp_near( $w['data']['total_price'], 1225000 ), 'by total weight: 5 000 kg ≈ 18,63 bars, total 1 225 000 DA' );
 $a = Spec::build( $base + array( 'category' => 'profiles', 'family' => 'IPE', 'section' => 'IPE 200', 'bars' => '10', 'weight_source' => 'actual', 'actual_weight' => '2700' ) );
@@ -108,7 +108,9 @@ smp_assert( ! $r['errors'] && smp_near( $r['data']['total_price'], 1450000 ) && 
 $r2 = Spec::build( array_merge( $base, array( 'category' => 'roofing', 'specs' => array( 'roof_type' => 'tile', 'width_mm' => '-3' ), 'quantity' => '0' ) ) );
 smp_assert( isset( $r2['errors']['specs_roof_type'], $r2['errors']['specs_maker_type'], $r2['errors']['specs_width_mm'], $r2['errors']['specs_sheet_mm'], $r2['errors']['quantity'] ), 'roofing: unknown type, missing fields, negative width and zero quantity refused' );
 $bad = Spec::build( array( 'category' => 'profiles', 'family' => 'XYZ' ) );
-smp_assert( isset( $bad['errors']['family'], $bad['errors']['title'], $bad['errors']['wilaya'], $bad['errors']['price'] ), 'missing type, title, wilaya and price reported' );
+smp_assert( isset( $bad['errors']['family'], $bad['errors']['wilaya'], $bad['errors']['price'] ) && ! isset( $bad['errors']['title'] ), 'missing type, wilaya and price reported (no title to type for a new profile)' );
+$badr = Spec::build( array( 'category' => 'roofing' ) );
+smp_assert( isset( $badr['errors']['title'] ), 'other categories still need a title' );
 $hea = Spec::build( $base + array( 'category' => 'tubes', 'family' => 'HEA', 'section' => 'HEA 200', 'bars' => '1' ) );
 smp_assert( isset( $hea['errors']['family'] ), 'a family outside the category is refused' );
 
@@ -118,7 +120,7 @@ $pid = Products::save( 0, $c_sel, $u_sel, $s, 'pending' );
 $p   = Products::get( $pid );
 $idx = Index::get( $p->listing_id );
 smp_assert( $p->listing_id > 0 && $idx && 'products' === $idx->module && 'pending' === $idx->status && smp_near( $idx->total_weight, 2683.202, 0.001 ), 'saved product indexed in the cross-market index (public listing number)' );
-smp_assert( 'Test produit' === ( Translations::get( 'product', $pid )['title']['fr'] ?? '' ), 'title stored in the translations table' );
+smp_assert( $s['title']['fr'] === ( Translations::get( 'product', $pid )['title']['fr'] ?? '' ) && 0 === strpos( $s['title']['fr'], 'IPE 200' ), 'generated title stored in the translations table' );
 smp_assert( $c_sel === (int) apply_filters( 'sm_listing_owner', 0, 'products', $p->listing_id ), 'enquiries reach the seller company (sm_listing_owner)' );
 wp_set_current_user( $u_oth );
 smp_assert( null === Bridge::listing( null, array( 'id' => $p->listing_id ) ), 'a product waiting for review is hidden from other users' );
@@ -191,6 +193,18 @@ smp_assert( 1 === Bridge::settings( null )['client']['active'] && 1 === Bridge::
 Products::delete( $cid );
 null === $settings_before ? delete_option( Settings::OPTION ) : update_option( Settings::OPTION, $settings_before );
 wp_set_current_user( 0 );
+
+// ---- Generated title and section drawing (0.7.0) ----
+$auto = Spec::build( array( 'category' => 'profiles', 'family' => 'IPE', 'section' => 'IPE 200', 'grade' => 'S275JR', 'bars' => '10', 'length' => '12000', 'price' => '230', 'wilaya' => '28', 'title' => array( 'fr' => 'ignoré' ) ) );
+smp_assert( ! $auto['errors'] && 'IPE 200 · S275JR · 12 m' === $auto['title']['fr'] && 'IPE 200 · S275JR · الطول 12 م' === $auto['title']['ar'], 'new profile: title generated (type, grade, length), typed title ignored' );
+smp_assert( '' !== ( $auto['data']['drawing'] ?? '' ) && file_exists( wp_upload_dir()['basedir'] . '/sm-drawings/' . $auto['data']['drawing'] . '.svg' ) && file_exists( wp_upload_dir()['basedir'] . '/sm-drawings/' . $auto['data']['drawing'] . '.png' ), 'standard drawing stored as SVG and PNG' );
+$byw = Spec::build( array( 'category' => 'profiles', 'family' => 'IPE', 'section' => 'IPE 200', 'grade' => 'S235JR', 'qty_mode' => 'weight', 'total_kg' => '3000', 'price' => '230', 'wilaya' => '28' ) );
+smp_assert( 'IPE 200 · S235JR' === $byw['title']['fr'], 'sold by weight: no length in the title' );
+smp_assert( Spec::make_title( array( 'designation' => 'IPE 200', 'grade' => '', 'qty_mode' => 'bars', 'length_mm' => 6500 ) )['fr'] === 'IPE 200 · 6,5 m', 'decimal length' );
+$apid = Products::save( 0, $c_sel, $u_sel, $auto, 'published', array(), array() );
+$card = Bridge::listing( null, array( 'id' => Products::get( $apid )->listing_id ) );
+smp_assert( $card && ! empty( $card['image_drawing'] ) && false !== strpos( (string) $card['image'], '/sm-drawings/' ) && false !== strpos( (string) $card['share_image'], '.png' ), 'without photo the listing shows the drawing (PNG for link previews)' );
+Products::delete( $apid );
 
 // ---- Price curve of the home page (0.6.0) ----
 global $wpdb;

@@ -25,3 +25,10 @@
 
 /* Filters panel */
 .sm-filters { border-radius: var(--sm-radius-lg); }
+.sm-weight { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 2px 6px; }
+.sm-weight__kg { font-size: .78em; font-weight: 500; color: var(--sm-muted); }
+
+/* Section drawing used as picture (0.20.0) */
+.sm-card__media.is-drawing img, .sm-gallery__main.is-drawing img { object-fit: contain; padding: 14%; box-sizing: border-box; }
+.sm-gallery__main.is-drawing { position: relative; background: radial-gradient(ellipse 60% 70% at 50% 55%, rgb(6 206 119 / .14), transparent 70%), linear-gradient(150deg, #1A232C, #0B1015); }
+.sm-drawing-note { position: absolute; inset-block-end: 8px; inset-inline-start: 8px; padding: 2px 8px; border-radius: 999px; background: rgb(8 11 14 / .7); color: var(--sm-silver); font-size: 11px; font-weight: 600; }

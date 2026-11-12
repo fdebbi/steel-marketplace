@@ -72,7 +72,7 @@ with sync_playwright() as p:
     check('kg/m (catalogue)' in res and s.locator('.smai-text[lang="ar"]').count() == 1, 'mass per metre from the catalogue, texts in French and Arabic')
     s.screenshot(path=os.path.join(OUT, 'ai-listing-1280.png'), full_page=True)
     s.click('.smai-use button'); s.wait_for_load_state()
-    check('/compte/publier/' in s.url and s.input_value('input[name="title[fr]"]') == 'HEA 160 S355JR' and 'pré-rempli' in s.inner_text('.sm-notice--success'), 'listing form opened pre-filled, with the warning')
+    check('/compte/publier/' in s.url and s.locator('input[name="title[fr]"]').count() == 0 and s.locator('.smp-autotitle').count() == 1 and 'pré-rempli' in s.inner_text('.sm-notice--success'), 'listing form opened pre-filled, with the warning (title generated for a new profile)')
     check(s.locator('select[name="grade"]').input_value() == 'S355JR' and 'HEA 160' in s.inner_text('select[name="section"] option:checked'), 'grade and size selected; the engine weighs on the form')
     s.screenshot(path=os.path.join(OUT, 'ai-prefilled-listing.png'), full_page=True)
 

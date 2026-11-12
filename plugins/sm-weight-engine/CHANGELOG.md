@@ -1,5 +1,9 @@
 # Changelog — sm-weight-engine
 
+## 0.2.0 — 2026-11-12
+
+- `Drawing::files()` : dessin d'une section enregistré une fois dans uploads/sm-drawings/ en SVG (acier clair) et en PNG 1200 × 630 (fond acier, bord vert) pour les aperçus de liens ; `Drawing::polygons()` (arcs aplatis) et `Drawing::png()` (GD).
+
 ## 0.1.0 — 2026-11-07 (Phase 3)
 
 - Catalogue de référence `2026.11.1` : 224 profilés laminés (IPE 18, HEA 24, HEB 24, HEM 24, IPN 21, UPN 18, UPE 14, cornières égales 66, inégales 15) vérifiés trois fois avant import ; 417 tailles courantes de tubes (carrés 224, ronds 193).

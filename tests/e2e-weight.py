@@ -12,7 +12,10 @@ results = []
 def check(cond, label):
     results.append((bool(cond), label)); print(('  ✓ ' if cond else '  ✗ ') + label)
 def num(text):
-    """'2 683,2 kg' -> 2683.2"""
+    """'2 683,2 kg' -> 2683.2 ; '2,68 t 2 683,2 kg' (theme 0.20.0, tonnes from 1 000 kg) -> 2683.2"""
+    kg = re.findall(r'(\d[\d \u202f\xa0]*(?:,\d+)?)\s?kg', text)
+    if kg:
+        text = kg[-1]
     t = re.sub(r'[^\d,.-]', '', text.replace(' ', '').replace(' ', '')).replace(',', '.')
     return float(t) if t else None
 def pick(pg, prefix):

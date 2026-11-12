@@ -1,5 +1,12 @@
 # Changelog — sm-marketplace
 
+## 0.20.0 — 2026-11-12 (avec sm-products 0.7.0, sm-weight-engine 0.2.0)
+
+- Produits neufs calculés (profilés, tubes, fers plats et ronds, tôles) : plus de champs de titre ; un encadré explique le titre automatique ; les photos sont facultatives.
+- Sans photo, la carte et la fiche montrent le dessin standard de la section sur fond acier, avec « Image indicative ».
+- Aperçu des liens partagés (WhatsApp, Facebook) : balises og:title et og:image (photo, ou image PNG du dessin).
+- Poids : sous 1 000 kg en kg ; à partir de 1 000 kg en tonnes (« 1,25 t », « 1,25 طن » en arabe) avec les kg en petit, partout sur le site. La saisie et les calculs restent en kg.
+
 ## 0.19.0 — 2026-11-12 (avec sm-products 0.6.0)
 
 - Accueil : sous la poutre, courbe du prix moyen demandé au kg des profilés neufs (12 semaines), qui se trace puis affiche le dernier prix, la variation et le prix moyen du réemploi (30 jours). Masquée tant qu'il n'y a pas assez d'annonces. Lien vers l'indice des prix.
