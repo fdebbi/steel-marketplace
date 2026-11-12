@@ -30,7 +30,7 @@ final class Plugin {
 
 		Install\Installer::maybe_upgrade();
 		Form::init();
-		add_filter( 'sm_dashboard_view_slugs', static fn( $slugs ) => array_merge( $slugs, array( 'ai' => 'assistant-ia' ) ) );
+		add_filter( 'sm_dashboard_view_slugs', static fn( $slugs ) => array_merge( $slugs, array( 'ai' => 'assistant-ia', 'ai-credits' => 'credits-ia' ) ) );
 		add_filter( 'sm_activity_labels', array( __CLASS__, 'labels' ) );
 		add_filter( 'sm_activity_group_prefixes', static fn( $g ) => $g + array( 'ai' => array( 'ai.' ) ) );
 		add_filter( 'sm_mail_event_groups', static fn( $g ) => $g + array( 'ai' => __( 'AI assistant', 'sm-ai' ) ) );

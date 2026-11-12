@@ -140,6 +140,11 @@
 .sm-dash__side a.sm-dash__publish .sm-icon { color: currentColor; }
 .sm-dash__side a.sm-dash__publish:hover, .sm-dash__side a.sm-dash__publish[aria-current] { background: var(--sm-accent-hover); color: #fff; box-shadow: 0 0 0 3px var(--sm-accent-soft); }
 .sm-dash__side a .sm-count { margin-inline-start: auto; }
+.sm-dash__shortcuts { display: grid; gap: 6px; margin-block-end: var(--sm-s3); }
+.sm-dash__side a.sm-dash__shortcut { justify-content: center; gap: var(--sm-s2); min-block-size: 38px; border: 1px solid var(--sm-line); font-weight: 600; color: var(--sm-primary); }
+.sm-dash__side a.sm-dash__shortcut .sm-icon { color: var(--sm-accent); }
+.sm-dash__side a.sm-dash__shortcut:hover { border-color: var(--sm-accent); background: var(--sm-accent-soft); }
+.sm-dash__publish + .sm-dash__shortcuts { margin-block-start: calc(-1 * var(--sm-s2)); }
 /* Pages of a group: tabs under the title (0.17.0). */
 .sm-dash__tabs { display: flex; gap: var(--sm-s1); margin-block-start: var(--sm-s3); border-block-end: 1px solid var(--sm-line); overflow-x: auto; scrollbar-width: none; }
 .sm-dash__tabs::-webkit-scrollbar { display: none; }

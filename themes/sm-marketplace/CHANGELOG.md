@@ -1,5 +1,11 @@
 # Changelog — sm-marketplace
 
+## 0.17.1 — 2026-11-12 (avec sm-ai 0.1.1)
+
+- Menu du compte : « Études d'ingénierie » et « Abonnement » deviennent des entrées du menu ; « Assistant IA » regroupe l'assistant et la nouvelle page « Crédits IA » (utilisations du mois par outil).
+- Sous « Publier une annonce » : raccourcis « Ajouter un service » (comptes qui proposent des services) et « Demander une étude ».
+- Page « Abonnement » : formule de l'entreprise, ou « Gratuit pendant le lancement » en attendant les abonnements.
+
 ## 0.17.0 — 2026-11-12 (avec sm-core 0.7.3, sm-services 0.3.4)
 
 - Menu du compte regroupé : Vue d'ensemble, Vente, Achat, Services, Assistant IA, Compte (6 entrées au lieu de 19). Un clic sur un groupe ouvre sa première page ; les pages du groupe sont des onglets sous le titre. Chaque page garde son adresse.

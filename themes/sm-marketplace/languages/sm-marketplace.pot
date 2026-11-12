@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-12T07:27:31+00:00\n"
+"POT-Creation-Date: 2026-11-12T08:04:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -95,7 +95,7 @@ msgstr ""
 #: inc/menus.php:40
 #: template-parts/components/services-board.php:30
 #: templates/company-profile.php:64
-#: templates/dashboard.php:120
+#: templates/dashboard.php:121
 msgid "Services"
 msgstr ""
 
@@ -231,7 +231,7 @@ msgstr ""
 
 #: footer.php:66
 #: templates/dashboard.php:80
-#: templates/dashboard.php:132
+#: templates/dashboard.php:141
 msgid "Account"
 msgstr ""
 
@@ -279,7 +279,7 @@ msgid "IPE 200, HEA, tube 100×50, hangar…"
 msgstr ""
 
 #: header.php:60
-#: templates/dashboard.php:113
+#: templates/dashboard.php:114
 msgid "Saved listings"
 msgstr ""
 
@@ -287,14 +287,14 @@ msgstr ""
 #: template-parts/dashboard/notifications.php:19
 #: template-parts/notif-panel.php:15
 #: template-parts/notif-panel.php:17
-#: templates/dashboard.php:144
+#: templates/dashboard.php:159
 msgid "Notifications"
 msgstr ""
 
 #: header.php:72
 #: header.php:141
 #: templates/contact.php:64
-#: templates/dashboard.php:132
+#: templates/dashboard.php:141
 msgid "My account"
 msgstr ""
 
@@ -317,6 +317,7 @@ msgid "Sign in"
 msgstr ""
 
 #: header.php:111
+#: templates/dashboard.php:239
 msgid "Menu"
 msgstr ""
 
@@ -334,15 +335,15 @@ msgstr ""
 #: template-parts/components/my-products.php:47
 #: template-parts/components/my-products.php:51
 #: template-parts/dashboard/listings.php:25
-#: templates/dashboard.php:141
-#: templates/dashboard.php:197
-#: templates/dashboard.php:220
+#: templates/dashboard.php:149
+#: templates/dashboard.php:212
+#: templates/dashboard.php:242
 msgid "Publish a listing"
 msgstr ""
 
 #: header.php:142
-#: templates/dashboard.php:209
-#: templates/dashboard.php:226
+#: templates/dashboard.php:231
+#: templates/dashboard.php:251
 #: templates/engineer-apply.php:43
 msgid "Sign out"
 msgstr ""
@@ -1128,6 +1129,7 @@ msgstr ""
 #: template-parts/components/card-engineer.php:39
 #: template-parts/components/card-engineer.php:41
 #: template-parts/dashboard/studies.php:132
+#: templates/dashboard.php:154
 #: templates/marketplace-engineers.php:36
 #: templates/marketplace-engineers.php:80
 #: templates/mission-request.php:19
@@ -2989,6 +2991,7 @@ msgid "Service requests"
 msgstr ""
 
 #: template-parts/components/service-requests-list.php:16
+#: template-parts/dashboard/ai-credits.php:15
 #: template-parts/dashboard/ai.php:16
 #: template-parts/dashboard/offers.php:13
 #: template-parts/dashboard/portfolio.php:13
@@ -3032,7 +3035,7 @@ msgstr ""
 
 #: template-parts/components/service-requests-list.php:38
 #: template-parts/dashboard/services.php:19
-#: templates/dashboard.php:122
+#: templates/dashboard.php:123
 msgid "My services"
 msgstr ""
 
@@ -3219,9 +3222,33 @@ msgstr ""
 msgid "Enter the number of pieces to see the total weight."
 msgstr ""
 
+#: template-parts/dashboard/ai-credits.php:15
+#: templates/dashboard.php:135
+msgid "AI credits"
+msgstr ""
+
+#: template-parts/dashboard/ai-credits.php:20
+msgid "This month"
+msgstr ""
+
+#. translators: %d: uses this month.
+#: template-parts/dashboard/ai-credits.php:31
+msgid "%d use, no monthly limit"
+msgid_plural "%d uses, no monthly limit"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/dashboard/ai-credits.php:35
+msgid "The counters start again on the 1st of each month. Packs of AI credits will be offered with the subscriptions."
+msgstr ""
+
+#: template-parts/dashboard/ai-credits.php:36
+msgid "Open the assistant"
+msgstr ""
+
 #: template-parts/dashboard/ai.php:16
 #: templates/dashboard.php:77
-#: templates/dashboard.php:129
+#: templates/dashboard.php:132
 msgid "AI assistant"
 msgstr ""
 
@@ -3819,7 +3846,7 @@ msgid "Visitors see this card once you are approved. Your phone number, e-mail a
 msgstr ""
 
 #: template-parts/dashboard/listings.php:27
-#: templates/dashboard.php:103
+#: templates/dashboard.php:104
 msgid "My listings"
 msgstr ""
 
@@ -3885,7 +3912,7 @@ msgid "No notification yet."
 msgstr ""
 
 #: template-parts/dashboard/offers.php:13
-#: templates/dashboard.php:104
+#: templates/dashboard.php:105
 msgid "Quotations sent"
 msgstr ""
 
@@ -3981,6 +4008,22 @@ msgstr ""
 
 #: template-parts/dashboard/overview.php:79
 msgid "Complete the company profile"
+msgstr ""
+
+#: template-parts/dashboard/plan.php:16
+msgid "Your plan"
+msgstr ""
+
+#: template-parts/dashboard/plan.php:20
+msgid "Free during the launch"
+msgstr ""
+
+#: template-parts/dashboard/plan.php:21
+msgid "All the features of the platform are open to your account. The subscription plans will arrive soon: you will be told before anything changes."
+msgstr ""
+
+#: template-parts/dashboard/plan.php:24
+msgid "See my AI credits"
 msgstr ""
 
 #: template-parts/dashboard/portfolio.php:13
@@ -4399,7 +4442,7 @@ msgid "Verify your contact details first."
 msgstr ""
 
 #: template-parts/dashboard/verification.php:33
-#: templates/dashboard.php:242
+#: templates/dashboard.php:267
 msgid "Enter the code"
 msgstr ""
 
@@ -4480,7 +4523,7 @@ msgid "Trade"
 msgstr ""
 
 #: template-parts/directory.php:67
-#: templates/dashboard.php:135
+#: templates/dashboard.php:144
 msgid "Verification"
 msgstr ""
 
@@ -4775,7 +4818,7 @@ msgstr[1] ""
 
 #: templates/company-profile.php:61
 #: templates/company-profile.php:157
-#: templates/dashboard.php:124
+#: templates/dashboard.php:125
 #: templates/single-service.php:160
 msgid "Completed projects"
 msgstr ""
@@ -4973,7 +5016,7 @@ msgid "Create an account to use the dashboard."
 msgstr ""
 
 #: templates/dashboard.php:73
-#: templates/dashboard.php:98
+#: templates/dashboard.php:99
 msgid "Overview"
 msgstr ""
 
@@ -4982,97 +5025,105 @@ msgid "Files and plans"
 msgstr ""
 
 #: templates/dashboard.php:83
-#: templates/dashboard.php:137
+#: templates/dashboard.php:145
 msgid "Settings"
 msgstr ""
 
-#: templates/dashboard.php:93
-#: templates/dashboard.php:134
+#: templates/dashboard.php:94
+#: templates/dashboard.php:143
 msgid "Company profile"
 msgstr ""
 
-#: templates/dashboard.php:94
+#: templates/dashboard.php:95
 msgid "Professional profile"
 msgstr ""
 
-#: templates/dashboard.php:95
+#: templates/dashboard.php:96
 msgid "My profile"
 msgstr ""
 
-#: templates/dashboard.php:101
+#: templates/dashboard.php:102
 msgid "Selling"
 msgstr ""
 
-#: templates/dashboard.php:105
+#: templates/dashboard.php:106
 msgid "Enquiries received"
 msgstr ""
 
-#: templates/dashboard.php:106
+#: templates/dashboard.php:107
 msgid "Statistics"
 msgstr ""
 
-#: templates/dashboard.php:111
+#: templates/dashboard.php:112
 msgid "Buying"
 msgstr ""
 
-#: templates/dashboard.php:114
+#: templates/dashboard.php:115
 msgid "My requests for quotation"
 msgstr ""
 
-#: templates/dashboard.php:115
+#: templates/dashboard.php:116
 msgid "Purchase history"
 msgstr ""
 
-#: templates/dashboard.php:123
+#: templates/dashboard.php:124
 #: templates/single-service.php:89
 msgid "Requests received"
 msgstr ""
 
-#: templates/dashboard.php:125
+#: templates/dashboard.php:126
 msgid "My service requests"
 msgstr ""
 
-#: templates/dashboard.php:126
+#: templates/dashboard.php:129
 msgid "Engineering studies"
 msgstr ""
 
-#: templates/dashboard.php:136
-msgid "Plan & AI credits"
+#: templates/dashboard.php:134
+msgid "Assistant"
 msgstr ""
 
-#: templates/dashboard.php:143
+#: templates/dashboard.php:138
+msgid "Plan"
+msgstr ""
+
+#: templates/dashboard.php:153
+msgid "Add a service"
+msgstr ""
+
+#: templates/dashboard.php:158
 msgid "Verify your account"
 msgstr ""
 
-#: templates/dashboard.php:199
+#: templates/dashboard.php:221
 msgid "Dashboard"
 msgstr ""
 
-#: templates/dashboard.php:238
+#: templates/dashboard.php:263
 msgid "Demo partner engineer account."
 msgstr ""
 
-#: templates/dashboard.php:238
+#: templates/dashboard.php:263
 msgid "Demo company account."
 msgstr ""
 
-#: templates/dashboard.php:238
+#: templates/dashboard.php:263
 msgid "Switch to the company dashboard"
 msgstr ""
 
-#: templates/dashboard.php:238
+#: templates/dashboard.php:263
 msgid "Switch to the engineer dashboard"
 msgstr ""
 
-#: templates/dashboard.php:242
+#: templates/dashboard.php:267
 msgid "Verify your account with the 6-digit code to publish and answer requests."
 msgstr ""
 
-#: templates/dashboard.php:273
+#: templates/dashboard.php:298
 msgid "This section arrives with its plugin"
 msgstr ""
 
-#: templates/dashboard.php:274
+#: templates/dashboard.php:299
 msgid "The layout is ready; the content will be provided by the corresponding marketplace plugin."
 msgstr ""
 

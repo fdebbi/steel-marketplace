@@ -8,6 +8,16 @@ Run tools/compile-translations.py to rebuild the .po/.mo files.
 """
 
 T = {
+"Assistant": ("Assistant", "المساعد"),
+"AI credits": ("Crédits IA", "رصيد الذكاء الاصطناعي"),
+"Plan": ("Abonnement", "الاشتراك"),
+"This month": ("Ce mois-ci", "هذا الشهر"),
+"Open the assistant": ("Ouvrir l’assistant", "فتح المساعد"),
+"Your plan": ("Votre formule", "صيغتك"),
+"Free during the launch": ("Gratuit pendant le lancement", "مجاني خلال فترة الإطلاق"),
+"All the features of the platform are open to your account. The subscription plans will arrive soon: you will be told before anything changes.": ("Toutes les fonctions de la plateforme sont ouvertes à votre compte. Les formules d’abonnement arriveront bientôt : vous serez prévenu avant tout changement.", "جميع وظائف المنصة مفتوحة لحسابك. ستتوفر صيغ الاشتراك قريبًا، وسيتم إعلامك قبل أي تغيير."),
+"See my AI credits": ("Voir mes crédits IA", "عرض رصيدي من الذكاء الاصطناعي"),
+"The counters start again on the 1st of each month. Packs of AI credits will be offered with the subscriptions.": ("Les compteurs repartent à zéro le 1er de chaque mois. Des packs de crédits IA seront proposés avec les abonnements.", "تُصفَّر العدادات في الأول من كل شهر. ستُقترح باقات رصيد الذكاء الاصطناعي مع الاشتراكات."),
 "SM Marketplace": ("SM Marketplace", "SM Marketplace"),
 "Steel Marketplace": ("Steel Marketplace", "Steel Marketplace"),
 "Custom bilingual (Arabic RTL / French LTR) presentation theme for the Steel Marketplace industrial platform. Presentation layer only: all business data and logic live in the sm-* plugins.":
@@ -462,6 +472,7 @@ T = {
 }
 
 P = {
+("%d use, no monthly limit", "%d uses, no monthly limit"): (["%d utilisation, sans limite mensuelle", "%d utilisations, sans limite mensuelle"], ["%d استعمال، دون حد شهري", "استعمال واحد، دون حد شهري", "استعمالان، دون حد شهري", "%d استعمالات، دون حد شهري", "%d استعمالًا، دون حد شهري", "%d استعمال، دون حد شهري"]),
 ("Show %s result", "Show %s results"): (["Afficher %s résultat", "Afficher %s résultats"],
     ["عرض %s نتيجة", "عرض نتيجة واحدة", "عرض نتيجتين", "عرض %s نتائج", "عرض %s نتيجة", "عرض %s نتيجة"]),
 ("<strong>%s</strong> listing", "<strong>%s</strong> listings"): (["<strong>%s</strong> annonce", "<strong>%s</strong> annonces"],

@@ -44,6 +44,8 @@ final class Bridge {
 				'available'  => true === $ok,
 				'reason'     => is_wp_error( $ok ) ? $ok->get_error_message() : '',
 				'remaining'  => Gateway::remaining( $id, $company ),
+				'quota'      => ( $f = Settings::feature( $id ) ) && $f['per_company_month'] > 0 ? (int) $f['per_company_month'] : null,
+				'used'       => $company ? \SM\Ai\Usage::company_month( (int) $company->id, $id ) : 0,
 				'simulation' => 'simulation' === $provider,
 			);
 		}

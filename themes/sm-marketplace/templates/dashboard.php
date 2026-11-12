@@ -85,6 +85,7 @@ if ( $is_eng ) {
 		),
 	);
 	$hidden   = array();
+	$shortcuts = array();
 } else {
 	$svc_set   = (array) sm_theme_data( 'services_settings' );
 	$can_fab   = ! empty( $svc_set['kinds']['fabrication']['allowed'] );
@@ -123,22 +124,36 @@ if ( $is_eng ) {
 				'service-requests'    => $can_fab ? __( 'Requests received', 'sm-marketplace' ) : null,
 				'portfolio'           => $can_fab ? __( 'Completed projects', 'sm-marketplace' ) : null,
 				'my-service-requests' => $svc_set ? __( 'My service requests', 'sm-marketplace' ) : null,
-				'studies'             => $has_eng ? __( 'Engineering studies', 'sm-marketplace' ) : null,
 			),
 		),
-		'ai'       => $has_ai ? array( 'ai', __( 'AI assistant', 'sm-marketplace' ), array( 'ai' => __( 'AI assistant', 'sm-marketplace' ) ) ) : null,
+		'studies'  => $has_eng ? array( 'hard-hat', __( 'Engineering studies', 'sm-marketplace' ), array( 'studies' => __( 'Engineering studies', 'sm-marketplace' ) ) ) : null,
+		'ai'       => $has_ai ? array(
+			'ai',
+			__( 'AI assistant', 'sm-marketplace' ),
+			array(
+				'ai'         => __( 'Assistant', 'sm-marketplace' ),
+				'ai-credits' => __( 'AI credits', 'sm-marketplace' ),
+			),
+		) : null,
+		'plan'     => 'client' === $class ? null : array( 'card', __( 'Plan', 'sm-marketplace' ), array( 'plan' => __( 'Plan', 'sm-marketplace' ) ) ),
 		'account'  => array(
 			'client' === $class ? 'user' : 'company',
 			'client' === $class ? __( 'My account', 'sm-marketplace' ) : __( 'Account', 'sm-marketplace' ),
 			array(
 				'company'      => $own_label[ $class ] ?? __( 'Company profile', 'sm-marketplace' ),
 				'verification' => __( 'Verification', 'sm-marketplace' ),
-				'plan'         => 'client' === $class ? null : __( 'Plan & AI credits', 'sm-marketplace' ),
 				'settings'     => __( 'Settings', 'sm-marketplace' ),
 			),
 		),
 	);
 	$hidden    = array( 'publish' => array( 'selling', __( 'Publish a listing', 'sm-marketplace' ) ) );
+	// Shortcuts under the "Publish a listing" button (0.17.1).
+	$shortcuts = array_filter(
+		array(
+			$can_fab ? array( 'wrench', __( 'Add a service', 'sm-marketplace' ), sm_page_url( 'account', array( 'view' => 'services', 'new' => 1 ) ) ) : null,
+			$has_eng ? array( 'hard-hat', __( 'Ask for a study', 'sm-marketplace' ), sm_page_url( 'mission-request' ) ) : null,
+		)
+	);
 }
 $hidden['verify-phone']               = array( 'account', __( 'Verify your account', 'sm-marketplace' ) );
 $hidden['notifications']              = array( '', __( 'Notifications', 'sm-marketplace' ) );
@@ -196,6 +211,13 @@ get_header();
 		<?php if ( isset( $titles['publish'] ) ) : ?>
 			<a class="sm-btn sm-btn--accent sm-btn--block sm-dash__publish" href="<?php echo esc_url( $link( 'publish' ) ); ?>" <?php echo 'publish' === $view ? 'aria-current="page"' : ''; ?>><?php sm_icon( 'plus' ); ?><span><?php esc_html_e( 'Publish a listing', 'sm-marketplace' ); ?></span></a>
 		<?php endif; ?>
+		<?php if ( $shortcuts ) : ?>
+			<div class="sm-dash__shortcuts">
+				<?php foreach ( $shortcuts as list( $icon, $label, $url ) ) : ?>
+					<a class="sm-dash__shortcut" href="<?php echo esc_url( $url ); ?>"><?php sm_icon( $icon ); ?><span><?php echo esc_html( $label ); ?></span></a>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
 		<nav aria-label="<?php esc_attr_e( 'Dashboard', 'sm-marketplace' ); ?>">
 			<ul>
 				<?php foreach ( $groups as $gkey => list( $icon, $label, $pages ) ) : ?>
@@ -219,6 +241,9 @@ get_header();
 					<?php if ( isset( $titles['publish'] ) ) : ?>
 						<li><a href="<?php echo esc_url( $link( 'publish' ) ); ?>" <?php echo 'publish' === $view ? 'aria-current="page"' : ''; ?>><?php esc_html_e( 'Publish a listing', 'sm-marketplace' ); ?></a></li>
 					<?php endif; ?>
+					<?php foreach ( $shortcuts as list( $icon, $label, $url ) ) : ?>
+						<li><a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?></a></li>
+					<?php endforeach; ?>
 					<?php foreach ( $groups as $gkey => list( $icon, $label, $pages ) ) : ?>
 						<?php $cnt = $group_cnt( $gkey ); ?>
 						<li><a href="<?php echo esc_url( $link( array_key_first( $pages ) ) ); ?>" <?php echo $gkey === $group_key && 'publish' !== $view ? 'aria-current="page"' : ''; ?>><?php echo esc_html( $label ); ?><?php if ( $cnt ) : ?> <span class="sm-count"><?php echo esc_html( $cnt ); ?></span><?php endif; ?></a></li>
