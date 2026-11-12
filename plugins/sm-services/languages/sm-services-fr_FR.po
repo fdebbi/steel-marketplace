@@ -529,7 +529,7 @@ msgstr ""
 "Vous avez atteint le nombre de pages de service autorisé. Modifiez une page "
 "existante."
 
-#: src/Form.php:104
+#: src/Form.php:115
 msgid ""
 "You already have a page for this service: edit it (one page per service, "
 "with its own price)."
@@ -537,7 +537,7 @@ msgstr ""
 "Vous avez déjà une page pour ce service : modifiez-la (une page par service,"
 " avec son propre prix)."
 
-#: src/Form.php:116
+#: src/Form.php:127
 msgid ""
 "Thank you. Your changes will be visible after a quick check by the platform "
 "team; meanwhile the current page stays online."
@@ -545,7 +545,7 @@ msgstr ""
 "Merci. Vos modifications seront visibles après une vérification rapide par "
 "l’équipe de la plateforme ; en attendant, la page actuelle reste en ligne."
 
-#: src/Form.php:127
+#: src/Form.php:138
 msgid ""
 "Thank you. Your service page will be visible after a quick check by the "
 "platform team."
@@ -553,35 +553,35 @@ msgstr ""
 "Merci. Votre page de service sera visible après une rapide vérification par "
 "l’équipe de la plateforme."
 
-#: src/Form.php:127
+#: src/Form.php:138
 msgid "Your service page is saved."
 msgstr "Votre page de service est enregistrée."
 
-#: src/Form.php:135
+#: src/Form.php:146
 msgid "You cannot change this service."
 msgstr "Vous ne pouvez pas modifier ce service."
 
-#: src/Form.php:140
+#: src/Form.php:151
 msgid "The service is paused: clients no longer see it."
 msgstr "Le service est en pause : les clients ne le voient plus."
 
-#: src/Form.php:145
+#: src/Form.php:156
 msgid "The service is visible again."
 msgstr "Le service est de nouveau visible."
 
-#: src/Form.php:149
+#: src/Form.php:160
 msgid "Service deleted."
 msgstr "Service supprimé."
 
-#: src/Form.php:152
+#: src/Form.php:163
 msgid "Unknown action."
 msgstr "Action inconnue."
 
-#: src/Form.php:159
+#: src/Form.php:170
 msgid "This service does not exist."
 msgstr "Ce service n’existe pas."
 
-#: src/Form.php:165
+#: src/Form.php:176
 msgid ""
 "You already have an open request for this service. Follow it in \"My service"
 " requests\"."
@@ -589,74 +589,74 @@ msgstr ""
 "Vous avez déjà une demande en cours pour ce service. Suivez-la dans « Mes "
 "demandes de service »."
 
-#: src/Form.php:168
+#: src/Form.php:179
 msgid "You sent many requests today. Try again tomorrow."
 msgstr "Vous avez envoyé beaucoup de demandes aujourd’hui. Réessayez demain."
 
-#: src/Form.php:179
+#: src/Form.php:190
 msgid ""
 "Your request is sent. The provider is notified and will answer with a quote."
 msgstr ""
 "Votre demande est envoyée. Le prestataire est prévenu et répondra par un "
 "devis."
 
-#: src/Form.php:186
+#: src/Form.php:197
 msgid "You cannot answer this request."
 msgstr "Vous ne pouvez pas répondre à cette demande."
 
-#: src/Form.php:189
+#: src/Form.php:200
 msgid "This request is closed."
 msgstr "Cette demande est clôturée."
 
-#: src/Form.php:194
+#: src/Form.php:205
 msgid "You declined the request. The client is told."
 msgstr "Vous avez décliné la demande. Le client est prévenu."
 
-#: src/Form.php:203
+#: src/Form.php:214
 msgid "Your quote is sent. The client is notified."
 msgstr "Votre devis est envoyé. Le client est prévenu."
 
-#: src/Form.php:210
+#: src/Form.php:221
 msgid "You cannot change this request."
 msgstr "Vous ne pouvez pas modifier cette demande."
 
-#: src/Form.php:214
+#: src/Form.php:225
 msgid "Quote accepted. Contact the provider to organise the work."
 msgstr "Devis accepté. Contactez le prestataire pour organiser les travaux."
 
-#: src/Form.php:215
+#: src/Form.php:226
 msgid "Quote declined. The provider is told."
 msgstr "Devis refusé. Le prestataire est prévenu."
 
-#: src/Form.php:216
+#: src/Form.php:227
 msgid "Request cancelled. The provider is told."
 msgstr "Demande annulée. Le prestataire est prévenu."
 
-#: src/Form.php:219
+#: src/Form.php:230
 msgid "This request can no longer be changed."
 msgstr "Cette demande ne peut plus être modifiée."
 
-#: src/Form.php:231
+#: src/Form.php:242
 msgid "Only the account owner can edit the references."
 msgstr "Seul le titulaire du compte peut modifier les références."
 
-#: src/Form.php:236
+#: src/Form.php:247
 msgid "You cannot edit this reference."
 msgstr "Vous ne pouvez pas modifier cette référence."
 
-#: src/Form.php:239
+#: src/Form.php:250
 msgid "You reached the number of references allowed."
 msgstr "Vous avez atteint le nombre de références autorisé."
 
-#: src/Form.php:249
+#: src/Form.php:264
 msgid "Reference saved."
 msgstr "Référence enregistrée."
 
-#: src/Form.php:257
+#: src/Form.php:272
 msgid "You cannot delete this reference."
 msgstr "Vous ne pouvez pas supprimer cette référence."
 
-#: src/Form.php:260
+#: src/Form.php:275
 msgid "Reference deleted."
 msgstr "Référence supprimée."
 

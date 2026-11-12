@@ -47,6 +47,9 @@ $real_services = array_values( array_filter( $services, static fn( $s ) => isset
 $viewer        = $real_services ? (array) ( ( sm_theme_data( 'service', array( 'id' => $real_services[0]['id'] ) ) ?? array() )['viewer'] ?? array() ) : array();
 $can_request   = ! empty( $viewer['can_request'] ) || ( ! empty( $viewer['open_request'] ) && count( $real_services ) > 1 );
 $is_owner      = ! empty( $viewer['is_owner'] );
+// Owner on a plan that hides the contacts (Phase 10): say so on the page.
+$own_sub       = $is_owner ? sm_theme_data( 'subscription' ) : null;
+$own_hidden    = is_array( $own_sub ) && ! empty( $own_sub['has_plans'] ) && empty( $own_sub['current']['limits']['contacts'] );
 
 // Zone covered by the services.
 $zone = '';
@@ -249,6 +252,11 @@ $shares  = array(
 						</li>
 					<?php endif; ?>
 				</ul>
+				<?php if ( ! empty( $company['contacts_hidden'] ) ) : ?>
+					<p class="smc-contact__hidden"><?php sm_icon( 'lock' ); ?><span><?php esc_html_e( 'This account shares its phone and e-mail in answer to your message. Use the form to contact it.', 'sm-marketplace' ); ?></span></p>
+				<?php elseif ( $own_hidden ) : ?>
+					<p class="smc-contact__hidden"><?php sm_icon( 'lock' ); ?><span><?php esc_html_e( 'Visitors do not see your phone, e-mail and website with the free plan; they write to you through the form.', 'sm-marketplace' ); ?> <a href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'plan' ) ) ); ?>"><?php esc_html_e( 'See the plans', 'sm-marketplace' ); ?></a></span></p>
+				<?php endif; ?>
 				<?php if ( ! $is_owner ) : ?>
 					<div class="smc-contact__actions">
 						<?php if ( $real_services ) : ?>

@@ -1,5 +1,9 @@
 # Changelog — sm-rfq
 
+## 0.1.3 — 2026-11-12 (Phase 10)
+
+- `Offers::count_month()` ; filtre `sm_rfq_offer_limit` sur la première réponse d'un compte à une demande.
+
 ## 0.1.2 — 2026-11-12
 
 - Données de demande en anglais (via `sm_pick`, sm-core 0.8.0).

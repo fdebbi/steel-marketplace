@@ -92,6 +92,46 @@ final class Orders {
 		return new \WP_Error( 'kind', __( 'Unknown order.', 'sm-subscriptions' ) );
 	}
 
+	/**
+	 * Label of an order in the language of the current page (the stored label
+	 * keeps the language of the person who ordered; the invoice uses it as issued).
+	 */
+	public static function display_label( $order ) {
+		$s = Settings::all();
+		if ( 'plan' === $order->kind ) {
+			$company = Companies::get( (int) $order->company_id );
+			if ( $company && in_array( $order->period, array( 'month', 'year' ), true ) ) {
+				/* translators: 1: plan name, 2: "1 month" or "1 year". */
+				return sprintf( __( 'Plan %1$s — %2$s', 'sm-subscriptions' ), Plans::name( $order->item, $company->account_class ), 'month' === $order->period ? __( '1 month', 'sm-subscriptions' ) : __( '1 year', 'sm-subscriptions' ) );
+			}
+		} elseif ( 'pack' === $order->kind ) {
+			foreach ( (array) $s['packs'] as $p ) {
+				if ( $p['code'] === $order->item ) {
+					/* translators: %d: number of AI credits. */
+					return sprintf( __( '%d AI credits', 'sm-subscriptions' ), $p['credits'] );
+				}
+			}
+		} elseif ( 'option' === $order->kind && class_exists( '\\SM\\Products\\Products' ) ) {
+			$p = \SM\Products\Products::get( (int) $order->target_id );
+			if ( $p ) {
+				$title = \SM\Products\Presenter::title_text( $p );
+				$days  = 'urgent' === $order->item ? (int) $s['opt_urgent_days'] : (int) $s['opt_featured_days'];
+				$map   = array(
+					/* translators: %s: listing title. */
+					'bump'     => sprintf( __( 'Back to the top: %s', 'sm-subscriptions' ), $title ),
+					/* translators: 1: listing title, 2: number of days. */
+					'urgent'   => sprintf( __( '"Urgent" badge, %2$d days: %1$s', 'sm-subscriptions' ), $title, $days ),
+					/* translators: 1: listing title, 2: number of days. */
+					'featured' => sprintf( __( 'Featured listing, %2$d days: %1$s', 'sm-subscriptions' ), $title, $days ),
+				);
+				if ( isset( $map[ $order->item ] ) ) {
+					return $map[ $order->item ];
+				}
+			}
+		}
+		return (string) $order->label;
+	}
+
 	/** Create an order (status awaiting). @return int|\WP_Error */
 	public static function create( $company, $user_id, $kind, $item, $period = '', $target = 0 ) {
 		global $wpdb;
@@ -122,14 +162,17 @@ final class Orders {
 		return $id;
 	}
 
-	/** The customer sent the proof of payment. */
-	public static function send_proof( $order, $attachment_id, $method, $note ) {
+	/**
+	 * The customer sent the proof of payment. $file: private file stored by
+	 * Proofs::store() { path, type, original }, or an empty array (tests).
+	 */
+	public static function send_proof( $order, $file, $method, $note ) {
 		global $wpdb;
 		$wpdb->update(
 			self::table(),
 			array(
 				'status'     => 'review',
-				'proof_id'   => (int) $attachment_id,
+				'proof_file' => $file ? wp_json_encode( $file ) : '',
 				'method'     => sanitize_key( $method ),
 				'payer_note' => mb_substr( (string) $note, 0, 1000 ),
 				'proof_at'   => self::now(),

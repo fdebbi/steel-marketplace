@@ -1,5 +1,17 @@
 # Changelog — sm-marketplace
 
+## 0.22.0 — 2026-11-12 (Phase 10, avec sm-subscriptions 0.1.0)
+
+- Page publique « Abonnements » (/tarifs/) : onglets Entreprises / Professionnels et artisans, 3 formules chacune avec prix mensuel et annuel (économie affichée), limites, packs de crédits IA, options d'annonce, moyens de paiement, offre membres fondateurs. Tout vient des réglages ; rien n'est écrit en dur.
+- Compte → Abonnement : formule en cours, jauges d'utilisation (annonces, tonnage, bâtiments, services, réalisations, réponses aux devis du mois, crédits IA), coordonnées visibles ou masquées, bandeau fondateurs, cartes des formules avec « Payer 1 mois / 1 an » ou « Renouveler », historique des commandes.
+- Nouvelle page Commande (/compte/commande/) : référence, montant TTC, coordonnées de paiement de la plateforme, envoi de la preuve (moyen + fichier + note), annulation tant que rien n'est payé.
+- Nouvelle page Facture (/compte/facture/) imprimable : vendeur, client, HT, TVA, TTC.
+- Crédits IA : solde (crédits du mois + crédits achetés), packs à acheter ; l'onglet existe aussi pour les ingénieurs partenaires.
+- Mes annonces : statut « En pause (formule) » avec republication, options « Remonter en tête », « Badge Urgent », « À la une » sur les annonces en ligne ; dates de fin affichées.
+- Cartes d'annonce : badge « Urgent » (et « À la une » pour les annonces payées).
+- Page entreprise : message quand les coordonnées sont masquées (compte gratuit) ; rappel au propriétaire.
+- Traductions FR / AR des nouveaux textes.
+
 ## 0.21.0 — 2026-11-12 (avec sm-products 0.7.1, sm-weight-engine 0.2.1)
 
 - Dessin de section sans mention sur l'image (cartes et fiche) ; cotes réelles sur le dessin (« 160 mm », « 82 mm ») au lieu de h et b.

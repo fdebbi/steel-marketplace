@@ -12,7 +12,6 @@
 namespace SM\Subscriptions;
 
 use SM\Core\Accounts\Companies;
-use SM\Core\Content\Media;
 use SM\Core\Routing\Routes as CoreRoutes;
 use SM\Core\Support\Forms;
 
@@ -40,8 +39,16 @@ final class Form {
 		return $company && $order && (int) $order->company_id === (int) $company->id ? $order : null;
 	}
 
+	/** Page of the plan (accounts with plans) or of the AI credits (the others). */
 	private static function plan_url( array $args = array() ) {
-		return CoreRoutes::url( 'account', array_merge( array( 'view' => 'plan' ), $args ) );
+		$company = self::company();
+		$view    = $company && ! Plans::for_class( $company->account_class ) ? 'ai-credits' : 'plan';
+		return CoreRoutes::url( 'account', array_merge( array( 'view' => $view ), $args ) );
+	}
+
+	/** Page of one order: what to pay, how, and the proof form. */
+	private static function order_url( $id ) {
+		return CoreRoutes::url( 'account', array( 'view' => 'order', 'order' => (int) $id ) );
 	}
 
 	public static function handle_sub_order() {
@@ -57,14 +64,14 @@ final class Form {
 		// One open order of the same thing at a time.
 		foreach ( Orders::query( array( 'company' => $company->id, 'status' => array( 'awaiting', 'review' ) ) ) as $o ) {
 			if ( $o->kind === $kind && $o->item === sanitize_key( Forms::post( 'item' ) ) && (int) $o->target_id === absint( Forms::post( 'target' ) ) ) {
-				Forms::back( array(), '', self::plan_url( array( 'order' => $o->id ) ) );
+				Forms::back( array(), '', self::order_url( $o->id ) );
 			}
 		}
 		$id = Orders::create( $company, get_current_user_id(), $kind, sanitize_key( Forms::post( 'item' ) ), sanitize_key( Forms::post( 'period' ) ), absint( Forms::post( 'target' ) ) );
 		if ( is_wp_error( $id ) ) {
 			Forms::back( array( $id->get_error_message() ) );
 		}
-		Forms::back( array(), __( 'Order created. Pay with one of the methods below, then send the proof of payment.', 'sm-subscriptions' ), self::plan_url( array( 'order' => $id ) ) );
+		Forms::back( array(), __( 'Order created. Pay with one of the methods below, then send the proof of payment.', 'sm-subscriptions' ), self::order_url( $id ) );
 	}
 
 	public static function handle_sub_proof() {
@@ -78,16 +85,15 @@ final class Form {
 		if ( ! isset( Settings::methods()[ $method ] ) ) {
 			$errors['method'] = __( 'Choose how you paid.', 'sm-subscriptions' );
 		}
-		$up = Media::upload( 'proof', array_merge( Media::IMAGE_TYPES, Media::PDF_TYPES ), 1, 10 * 1048576 );
-		if ( ! $up['ids'] ) {
-			$errors['proof'] = $up['errors'] ? implode( ' ', $up['errors'] ) : __( 'Add the receipt, the transfer slip or a screenshot of the payment.', 'sm-subscriptions' );
-		}
 		if ( $errors ) {
 			Forms::back( $errors );
 		}
-		update_post_meta( $up['ids'][0], '_sm_owner', get_current_user_id() );
-		Orders::send_proof( $order, $up['ids'][0], $method, Forms::post_textarea( 'note' ) );
-		Forms::back( array(), __( 'Thank you. The platform team checks your payment, usually within one working day, and you are told by e-mail.', 'sm-subscriptions' ), self::plan_url( array( 'order' => $order->id ) ) );
+		$file = Proofs::store( 'proof' );
+		if ( is_wp_error( $file ) ) {
+			Forms::back( array( 'proof' => $file->get_error_message() ) );
+		}
+		Orders::send_proof( $order, $file, $method, Forms::post_textarea( 'note' ) );
+		Forms::back( array(), __( 'Thank you. The platform team checks your payment, usually within one working day, and you are told by e-mail.', 'sm-subscriptions' ), self::order_url( $order->id ) );
 	}
 
 	public static function handle_sub_cancel() {

@@ -102,7 +102,7 @@ $oid = Orders::create( $co, $u_co, 'plan', 'pro', 'year' );
 $o   = Orders::get( $oid );
 smsub_assert( 'awaiting' === $o->status && 35000.0 === (float) $o->amount_ttc && abs( (float) $o->amount_ht - 29411.76 ) < 0.01 && preg_match( '/^CMD-\d{4}-\d{5}$/', $o->ref ), 'order of Pro for a year: 35 000 DA tax included, 29 411,76 DA before 19 % TVA' );
 smsub_assert( is_wp_error( Orders::create( $co, $u_co, 'plan', 'pro', 'week' ) ) && is_wp_error( Orders::create( Companies::get( $c_cli ), $u_cli, 'plan', 'pro', 'year' ) ), 'unknown period or a client ordering a plan: refused' );
-Orders::send_proof( $o, 0, 'transfer', 'Virement du 12/11' );
+Orders::send_proof( $o, array(), 'transfer', 'Virement du 12/11' );
 smsub_assert( 'review' === Orders::get( $oid )->status, 'proof sent: payment being checked' );
 $r = Orders::approve( Orders::get( $oid ) );
 $o = Orders::get( $oid );

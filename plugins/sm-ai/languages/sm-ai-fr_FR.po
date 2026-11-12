@@ -454,26 +454,26 @@ msgid "You used the AI assistant many times today. Try again tomorrow."
 msgstr ""
 "Vous avez beaucoup utilisé l’assistant IA aujourd’hui. Réessayez demain."
 
-#: src/Gateway.php:74
+#: src/Gateway.php:75
 msgid "Your company used all its requests of this month for this AI service."
 msgstr ""
 "Votre entreprise a utilisé toutes ses demandes du mois pour ce service IA."
 
-#: src/Gateway.php:77
+#: src/Gateway.php:78
 msgid "Create a free account to keep using the smart search today."
 msgstr ""
 "Créez un compte gratuit pour continuer à utiliser la recherche intelligente "
 "aujourd’hui."
 
-#: src/Gateway.php:132
+#: src/Gateway.php:136
 msgid "The AI service did not answer. Try again in a moment."
 msgstr "Le service IA n’a pas répondu. Réessayez dans un instant."
 
-#: src/Gateway.php:137
+#: src/Gateway.php:141
 msgid "The AI answer could not be read. Try again."
 msgstr "La réponse de l’IA n’a pas pu être lue. Réessayez."
 
-#: src/Gateway.php:165
+#: src/Gateway.php:171
 msgid "Give the model name first."
 msgstr "Indiquez d’abord le nom du modèle."
 

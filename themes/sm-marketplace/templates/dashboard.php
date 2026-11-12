@@ -74,7 +74,14 @@ if ( $is_eng ) {
 		'missions' => $approved ? array( 'hard-hat', __( 'My missions', 'sm-marketplace' ), array( 'missions' => __( 'My missions', 'sm-marketplace' ) ) ) : null,
 		'billing'  => $approved ? array( 'card', __( 'Invoicing', 'sm-marketplace' ), array( 'billing' => __( 'Invoicing', 'sm-marketplace' ) ) ) : null,
 		'files'    => $approved ? array( 'file', __( 'Files and plans', 'sm-marketplace' ), array( 'files' => __( 'Files and plans', 'sm-marketplace' ) ) ) : null,
-		'ai'       => $approved && $has_ai ? array( 'ai', __( 'AI assistant', 'sm-marketplace' ), array( 'ai' => __( 'AI assistant', 'sm-marketplace' ) ) ) : null,
+		'ai'       => $approved && $has_ai ? array(
+			'ai',
+			__( 'AI assistant', 'sm-marketplace' ),
+			array(
+				'ai'         => __( 'Assistant', 'sm-marketplace' ),
+				'ai-credits' => __( 'AI credits', 'sm-marketplace' ),
+			),
+		) : null,
 		'account'  => array(
 			'user',
 			__( 'Account', 'sm-marketplace' ),
@@ -157,6 +164,8 @@ if ( $is_eng ) {
 }
 $hidden['verify-phone']               = array( 'account', __( 'Verify your account', 'sm-marketplace' ) );
 $hidden['notifications']              = array( '', __( 'Notifications', 'sm-marketplace' ) );
+$hidden['order']                      = array( '', __( 'Order', 'sm-marketplace' ) );
+$hidden['invoice']                    = array( '', __( 'Invoice', 'sm-marketplace' ) );
 
 // Drop empty pages and empty groups; find the current page and its group.
 $titles = array();

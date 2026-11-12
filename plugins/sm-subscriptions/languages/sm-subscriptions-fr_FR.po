@@ -1,0 +1,788 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Subscriptions 0.1.0\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: sm-subscriptions\n"
+
+#. Plugin Name of the plugin
+#: sm-subscriptions.php
+msgid "SM Subscriptions"
+msgstr "SM Subscriptions"
+
+#. Plugin URI of the plugin
+#: sm-subscriptions.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-subscriptions.php
+msgid ""
+"Plans of companies and professionals (limits on listings, tonnage, "
+"buildings, service pages, completed projects, quotation answers, AI credits,"
+" visible contacts, featured), AI credit packs and paid listing options. "
+"Payment outside the site (transfer, CCP, BaridiMob, cheque) with proof of "
+"payment, activated by the platform team, with an invoice. Founding members "
+"offer. Requires SM Core."
+msgstr ""
+"Formules des entreprises et des professionnels (limites d’annonces, de "
+"tonnage, de bâtiments, de pages de services, de réalisations, de réponses "
+"aux devis, de crédits IA, coordonnées visibles, mise en avant), packs de "
+"crédits IA et options payantes d’annonce. Paiement hors du site (virement, "
+"CCP, BaridiMob, chèque) avec preuve de paiement, activé par l’équipe de la "
+"plateforme, avec facture. Offre membres fondateurs. Nécessite SM Core."
+
+#. Author of the plugin
+#: sm-subscriptions.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-subscriptions.php:48
+msgid "SM Subscriptions needs the SM Core plugin. Activate it first."
+msgstr "SM Subscriptions a besoin de l’extension SM Core. Activez-la d’abord."
+
+#: src/Admin/Admin.php:36 src/Admin/Admin.php:83
+msgid "Subscriptions"
+msgstr "Abonnements"
+
+#: src/Admin/Admin.php:78
+msgid "Orders and payments"
+msgstr "Commandes et paiements"
+
+#: src/Admin/Admin.php:79
+msgid "Plans in force"
+msgstr "Formules en cours"
+
+#: src/Admin/Admin.php:80
+msgid "Prices and limits"
+msgstr "Prix et limites"
+
+#: src/Admin/Admin.php:81
+msgid "Settings"
+msgstr "Réglages"
+
+#: src/Admin/Admin.php:86
+msgid "Saved."
+msgstr "Enregistré."
+
+#: src/Admin/Admin.php:120
+msgid "All"
+msgstr "Toutes"
+
+#: src/Admin/Admin.php:123
+msgid "Order"
+msgstr "Commande"
+
+#. translators: 1: founding members, 2: places left.
+#: src/Admin/Admin.php:123 src/Admin/Admin.php:154 src/Admin/Admin.php:215
+msgid "Account"
+msgstr "Compte"
+
+#: src/Admin/Admin.php:123 src/Admin/Admin.php:155
+msgid "Item"
+msgstr "Article"
+
+#: src/Admin/Admin.php:123
+msgid "Amount"
+msgstr "Montant"
+
+#: src/Admin/Admin.php:123
+msgid "Status"
+msgstr "Statut"
+
+#: src/Admin/Admin.php:123
+msgid "Date"
+msgstr "Date"
+
+#: src/Admin/Admin.php:139
+msgid "No order yet."
+msgstr "Aucune commande pour l’instant."
+
+#: src/Admin/Admin.php:147 src/Admin/Admin.php:192
+msgid "Order not found."
+msgstr "Commande introuvable."
+
+#: src/Admin/Admin.php:151
+msgid "All orders"
+msgstr "Toutes les commandes"
+
+#: src/Admin/Admin.php:156
+msgid "Amount, tax included"
+msgstr "Montant TTC"
+
+#: src/Admin/Admin.php:157 src/Admin/Admin.php:176
+msgid "Payment method"
+msgstr "Moyen de paiement"
+
+#: src/Admin/Admin.php:158
+msgid "Ordered on"
+msgstr "Commandé le"
+
+#: src/Admin/Admin.php:159
+msgid "Proof sent on"
+msgstr "Preuve envoyée le"
+
+#: src/Admin/Admin.php:160
+msgid "Note of the customer"
+msgstr "Note du client"
+
+#: src/Admin/Admin.php:161
+msgid "Invoice"
+msgstr "Facture"
+
+#: src/Admin/Admin.php:168
+msgid "Open the proof of payment"
+msgstr "Ouvrir la preuve de paiement"
+
+#: src/Admin/Admin.php:172
+msgid "Decision"
+msgstr "Décision"
+
+#: src/Admin/Admin.php:175
+msgid ""
+"Check that the amount reached the account of the platform before confirming."
+" Confirming gives the plan, the credits or the option at once and issues the"
+" invoice."
+msgstr ""
+"Vérifiez que le montant est arrivé sur le compte de la plateforme avant de "
+"confirmer. La confirmation donne aussitôt la formule, les crédits ou "
+"l’option et émet la facture."
+
+#: src/Admin/Admin.php:181
+msgid "Payment received: confirm"
+msgstr "Paiement reçu : confirmer"
+
+#: src/Admin/Admin.php:182
+msgid "Reason (sent to the customer)"
+msgstr "Motif (envoyé au client)"
+
+#: src/Admin/Admin.php:183
+msgid "Payment not received: refuse"
+msgstr "Paiement non reçu : refuser"
+
+#: src/Admin/Admin.php:204
+msgid "Give the reason of the refusal."
+msgstr "Indiquez le motif du refus."
+
+#. translators: 1: founding members, 2: places left.
+#: src/Admin/Admin.php:214
+msgid "Founding members: %1$d (places left: %2$d)."
+msgstr "Membres fondateurs : %1$d (places restantes : %2$d)."
+
+#. translators: 1: founding members, 2: places left.
+#: src/Admin/Admin.php:215 src/Admin/Admin.php:228
+msgid "Plan"
+msgstr "Formule"
+
+#. translators: 1: founding members, 2: places left.
+#: src/Admin/Admin.php:215
+msgid "Until"
+msgstr "Jusqu’au"
+
+#. translators: 1: founding members, 2: places left.
+#: src/Admin/Admin.php:215 src/Admin/Admin.php:234
+msgid "Note"
+msgstr "Note"
+
+#: src/Admin/Admin.php:219
+msgid "founding member"
+msgstr "membre fondateur"
+
+#: src/Admin/Admin.php:221
+msgid "Stop this plan now? What goes beyond the free plan will be paused."
+msgstr ""
+"Arrêter cette formule maintenant ? Ce qui dépasse la formule gratuite sera "
+"mis en pause."
+
+#: src/Admin/Admin.php:221
+msgid "Stop"
+msgstr "Arrêter"
+
+#: src/Admin/Admin.php:224
+msgid "No paid plan in force."
+msgstr "Aucune formule payante en cours."
+
+#: src/Admin/Admin.php:226
+msgid "Give a plan by hand"
+msgstr "Attribuer une formule à la main"
+
+#: src/Admin/Admin.php:226
+msgid ""
+"For a payment received outside an order, a partner or a gift. The months are"
+" added to the plan in force when it is the same plan."
+msgstr ""
+"Pour un paiement reçu hors commande, un partenaire ou un cadeau. Les mois "
+"s’ajoutent à la formule en cours quand c’est la même formule."
+
+#: src/Admin/Admin.php:228
+msgid "Account number or e-mail of a member"
+msgstr "Numéro du compte ou e-mail d’un membre"
+
+#: src/Admin/Admin.php:234
+msgid "Months"
+msgstr "Mois"
+
+#: src/Admin/Admin.php:235
+msgid "Give the plan"
+msgstr "Attribuer la formule"
+
+#: src/Admin/Admin.php:245
+msgid "Account not found, or this plan is not for its type of account."
+msgstr ""
+"Compte introuvable, ou cette formule ne correspond pas à son type de compte."
+
+#: src/Admin/Admin.php:265
+msgid "Price per month (DA, tax incl.)"
+msgstr "Prix par mois (DA TTC)"
+
+#: src/Admin/Admin.php:266
+msgid "Price per year (DA, tax incl.)"
+msgstr "Prix par an (DA TTC)"
+
+#: src/Admin/Admin.php:270
+msgid ""
+"Empty or -1 = no limit. Changes apply at once to every account of the plan; "
+"accounts over a lowered limit keep what is online but cannot add more."
+msgstr ""
+"Vide ou -1 = sans limite. Les changements s’appliquent aussitôt à tous les "
+"comptes de la formule ; les comptes au-dessus d’une limite abaissée gardent "
+"ce qui est en ligne mais ne peuvent plus rien ajouter."
+
+#: src/Admin/Admin.php:284
+msgid "Yes, in rotation"
+msgstr "Oui, en rotation"
+
+#: src/Admin/Admin.php:312
+msgid "Invoicing identity of the platform"
+msgstr "Identité de facturation de la plateforme"
+
+#: src/Admin/Admin.php:313
+msgid "Legal name"
+msgstr "Raison sociale"
+
+#: src/Admin/Admin.php:314
+msgid "Trade register (RC)"
+msgstr "Registre du commerce (RC)"
+
+#: src/Admin/Admin.php:315
+msgid "Tax number (NIF)"
+msgstr "Numéro d’identification fiscale (NIF)"
+
+#: src/Admin/Admin.php:316
+msgid "Statistical number (NIS)"
+msgstr "Numéro d’identification statistique (NIS)"
+
+#: src/Admin/Admin.php:317
+msgid "Tax article (AI)"
+msgstr "Article d’imposition (AI)"
+
+#: src/Admin/Admin.php:318
+msgid "Address"
+msgstr "Adresse"
+
+#: src/Admin/Admin.php:319
+msgid "TVA rate (%)"
+msgstr "Taux de TVA (%)"
+
+#: src/Admin/Admin.php:319
+msgid ""
+"Prices are tax included; the invoice shows the amount before tax and the "
+"TVA. 0 = no TVA on the invoice."
+msgstr ""
+"Les prix sont TTC ; la facture montre le montant HT et la TVA. 0 = pas de "
+"TVA sur la facture."
+
+#: src/Admin/Admin.php:320
+msgid "Payment details shown to customers"
+msgstr "Coordonnées de paiement montrées aux clients"
+
+#: src/Admin/Admin.php:320
+msgid "Methods offered"
+msgstr "Moyens proposés"
+
+#: src/Admin/Admin.php:325
+msgid "Bank"
+msgstr "Banque"
+
+#: src/Admin/Admin.php:326
+msgid "RIB (bank transfer)"
+msgstr "RIB (virement bancaire)"
+
+#: src/Admin/Admin.php:327
+msgid "CCP account and key"
+msgstr "Compte CCP et clé"
+
+#: src/Admin/Admin.php:328
+msgid "RIP for BaridiMob"
+msgstr "RIP pour BaridiMob"
+
+#: src/Admin/Admin.php:329
+msgid "Cheque to the order of"
+msgstr "Chèque à l’ordre de"
+
+#: src/Admin/Admin.php:330
+msgid "Instructions"
+msgstr "Instructions"
+
+#: src/Admin/Admin.php:330
+msgid "For example: write the order number in the reason of the transfer."
+msgstr ""
+"Par exemple : indiquez le numéro de commande dans le motif du virement."
+
+#: src/Admin/Admin.php:331
+msgid "Founding members"
+msgstr "Membres fondateurs"
+
+#: src/Admin/Admin.php:332
+msgid "Offer active"
+msgstr "Offre active"
+
+#: src/Admin/Admin.php:332
+msgid "Give a paid plan free to the first verified accounts"
+msgstr "Offrir une formule payante aux premiers comptes vérifiés"
+
+#: src/Admin/Admin.php:333
+msgid "Places"
+msgstr "Places"
+
+#: src/Admin/Admin.php:334
+msgid "Free months"
+msgstr "Mois offerts"
+
+#: src/Admin/Admin.php:335
+msgid "Verification level required"
+msgstr "Niveau de vérification requis"
+
+#: src/Admin/Admin.php:335
+msgid "1 = code confirmed, 2 = documents checked."
+msgstr "1 = code confirmé, 2 = documents vérifiés."
+
+#. translators: %s: type of account.
+#: src/Admin/Admin.php:337
+msgid "Plan given (%s)"
+msgstr "Formule offerte (%s)"
+
+#: src/Admin/Admin.php:343
+msgid "AI credit packs and listing options"
+msgstr "Packs de crédits IA et options d’annonce"
+
+#. translators: %d: pack number.
+#: src/Admin/Admin.php:347
+msgid "Pack %d"
+msgstr "Pack %d"
+
+#. translators: %d: pack number.
+#: src/Admin/Admin.php:347
+msgid "credits for"
+msgstr "crédits pour"
+
+#: src/Admin/Admin.php:349
+msgid "Back to the top (DA)"
+msgstr "Remontée en tête (DA)"
+
+#: src/Admin/Admin.php:350
+msgid "\"Urgent\" badge (DA)"
+msgstr "Badge « Urgent » (DA)"
+
+#: src/Admin/Admin.php:351
+msgid "\"Urgent\" badge (days)"
+msgstr "Badge « Urgent » (jours)"
+
+#: src/Admin/Admin.php:352
+msgid "Featured listing (DA)"
+msgstr "Annonce à la une (DA)"
+
+#: src/Admin/Admin.php:353
+msgid "Featured listing (days)"
+msgstr "Annonce à la une (jours)"
+
+#: src/Admin/Admin.php:354
+msgid "Reminder before the end of a plan (days)"
+msgstr "Rappel avant la fin d’une formule (jours)"
+
+#: src/Form.php:58
+msgid "Only the owner or a manager of the account can order."
+msgstr "Seul le propriétaire ou un gestionnaire du compte peut commander."
+
+#: src/Form.php:62
+msgid "Your type of account has no plan. You can buy AI credits."
+msgstr ""
+"Votre type de compte n’a pas de formule. Vous pouvez acheter des crédits IA."
+
+#: src/Form.php:74
+msgid ""
+"Order created. Pay with one of the methods below, then send the proof of "
+"payment."
+msgstr ""
+"Commande créée. Payez avec l’un des moyens ci-dessous, puis envoyez la "
+"preuve de paiement."
+
+#: src/Form.php:81
+msgid "This order cannot receive a proof of payment."
+msgstr "Cette commande ne peut pas recevoir de preuve de paiement."
+
+#: src/Form.php:86
+msgid "Choose how you paid."
+msgstr "Indiquez comment vous avez payé."
+
+#: src/Form.php:96
+msgid ""
+"Thank you. The platform team checks your payment, usually within one working"
+" day, and you are told by e-mail."
+msgstr ""
+"Merci. L’équipe de la plateforme vérifie votre paiement, en général sous un "
+"jour ouvré, et vous êtes prévenu par e-mail."
+
+#: src/Form.php:103
+msgid "This order cannot be cancelled."
+msgstr "Cette commande ne peut pas être annulée."
+
+#: src/Form.php:106
+msgid "Order cancelled."
+msgstr "Commande annulée."
+
+#: src/Limits.php:47
+msgid "Choose a higher plan in your account (Plan) or take a listing offline."
+msgstr ""
+"Choisissez une formule supérieure dans votre compte (Abonnement) ou retirez "
+"une annonce."
+
+#. translators: 1: plan name, 2: number of buildings, 3: hint.
+#: src/Limits.php:62
+msgid "Your plan %1$s allows %2$d building online. %3$s"
+msgid_plural "Your plan %1$s allows %2$d buildings online. %3$s"
+msgstr[0] "Votre formule %1$s permet %2$d bâtiment en ligne. %3$s"
+msgstr[1] "Votre formule %1$s permet %2$d bâtiments en ligne. %3$s"
+
+#. translators: 1: plan name, 2: number of listings, 3: hint.
+#: src/Limits.php:68
+msgid "Your plan %1$s allows %2$d listing online. %3$s"
+msgid_plural "Your plan %1$s allows %2$d listings online. %3$s"
+msgstr[0] "Votre formule %1$s permet %2$d annonce en ligne. %3$s"
+msgstr[1] "Votre formule %1$s permet %2$d annonces en ligne. %3$s"
+
+#. translators: 1: plan name, 2: tonnes allowed, 3: tonnes already online, 4:
+#. hint.
+#: src/Limits.php:73
+msgid ""
+"Your plan %1$s allows %2$s t of steel online in total; you already have %3$s"
+" t online. %4$s"
+msgstr ""
+"Votre formule %1$s permet %2$s t d’acier en ligne au total ; vous avez déjà "
+"%3$s t en ligne. %4$s"
+
+#. translators: 1: number of pages, 2: hint.
+#: src/Limits.php:87
+msgid "Your plan allows %1$d service page. %2$s"
+msgid_plural "Your plan allows %1$d service pages. %2$s"
+msgstr[0] "Votre formule permet %1$d page de services. %2$s"
+msgstr[1] "Votre formule permet %1$d pages de services. %2$s"
+
+#. translators: 1: number of pages, 2: hint.
+#. translators: 1: number of projects, 2: hint.
+#: src/Limits.php:87 src/Limits.php:96
+msgid "Choose a higher plan in your account (Plan)."
+msgstr "Choisissez une formule supérieure dans votre compte (Abonnement)."
+
+#. translators: 1: number of projects, 2: hint.
+#: src/Limits.php:96
+msgid "Your plan allows %1$d completed project. %2$s"
+msgid_plural "Your plan allows %1$d completed projects. %2$s"
+msgstr[0] "Votre formule permet %1$d réalisation. %2$s"
+msgstr[1] "Votre formule permet %1$d réalisations. %2$s"
+
+#. translators: 1: number of answers, 2: hint.
+#: src/Limits.php:105
+msgid "Your plan allows %1$d answer to requests for quotation per month. %2$s"
+msgid_plural ""
+"Your plan allows %1$d answers to requests for quotation per month. %2$s"
+msgstr[0] ""
+"Votre formule permet %1$d réponse aux demandes de devis par mois. %2$s"
+msgstr[1] ""
+"Votre formule permet %1$d réponses aux demandes de devis par mois. %2$s"
+
+#. translators: 1: number of answers, 2: hint.
+#: src/Limits.php:105
+msgid "Choose a higher plan in your account (Plan) to answer without limit."
+msgstr ""
+"Choisissez une formule supérieure dans votre compte (Abonnement) pour "
+"répondre sans limite."
+
+#: src/Limits.php:116
+msgid ""
+"You used all your AI credits. Buy a pack of credits in AI assistant → AI "
+"credits."
+msgstr ""
+"Vous avez utilisé tous vos crédits IA. Achetez un pack dans Assistant IA → "
+"Crédits IA."
+
+#. translators: %d: number of listings or service pages.
+#: src/Notifications.php:31
+msgid ""
+"%d listing or service page went beyond your plan and was paused. Nothing was"
+" deleted: choose a plan or publish it again when there is room."
+msgid_plural ""
+"%d listings or service pages went beyond your plan and were paused. Nothing "
+"was deleted: choose a plan or publish them again when there is room."
+msgstr[0] ""
+"%d annonce ou page de services dépassait votre formule et a été mise en "
+"pause. Rien n’a été supprimé : choisissez une formule ou republiez-la quand "
+"il y a de la place."
+msgstr[1] ""
+"%d annonces ou pages de services dépassaient votre formule et ont été mises "
+"en pause. Rien n’a été supprimé : choisissez une formule ou republiez-les "
+"quand il y a de la place."
+
+#: src/Notifications.php:47
+msgid "Proof of payment to check"
+msgstr "Preuve de paiement à vérifier"
+
+#. translators: %s: order reference and label.
+#: src/Notifications.php:49
+msgid "A proof of payment was sent for %s. Check it and confirm the payment."
+msgstr ""
+"Une preuve de paiement a été envoyée pour %s. Vérifiez-la et confirmez le "
+"paiement."
+
+#: src/Notifications.php:54
+msgid "Payment confirmed"
+msgstr "Paiement confirmé"
+
+#. translators: %s: order reference and label.
+#: src/Notifications.php:56
+msgid "Your payment for %s is confirmed. Your invoice is in your account."
+msgstr ""
+"Votre paiement pour %s est confirmé. Votre facture est dans votre compte."
+
+#: src/Notifications.php:60 src/Orders.php:250
+msgid "Payment not accepted"
+msgstr "Paiement non accepté"
+
+#. translators: 1: order reference and label, 2: reason.
+#: src/Notifications.php:62
+msgid "Your payment for %1$s could not be confirmed. Reason: %2$s"
+msgstr "Votre paiement pour %1$s n’a pas pu être confirmé. Motif : %2$s"
+
+#: src/Notifications.php:66
+msgid "Your plan ends soon"
+msgstr "Votre formule se termine bientôt"
+
+#. translators: 1: plan name, 2: date.
+#: src/Notifications.php:68
+msgid ""
+"Your plan %1$s ends on %2$s. Renew it to keep your limits; otherwise what "
+"goes beyond the free plan will be paused."
+msgstr ""
+"Votre formule %1$s se termine le %2$s. Renouvelez-la pour garder vos limites"
+" ; sinon ce qui dépasse la formule gratuite sera mis en pause."
+
+#: src/Notifications.php:72
+msgid "Your plan has ended"
+msgstr "Votre formule est terminée"
+
+#. translators: %s: plan name.
+#: src/Notifications.php:74
+msgid "Your plan %s has ended. Your account is back on the free plan."
+msgstr ""
+"Votre formule %s est terminée. Votre compte revient à la formule gratuite."
+
+#: src/Notifications.php:78
+msgid "Some listings were paused"
+msgstr "Des annonces ont été mises en pause"
+
+#: src/Notifications.php:83
+msgid "Welcome, founding member"
+msgstr "Bienvenue, membre fondateur"
+
+#. translators: 1: plan name, 2: number of months.
+#: src/Notifications.php:85
+msgid ""
+"Thank you for joining early: your account gets the plan %1$s free for %2$d "
+"months, and you will keep its price afterwards."
+msgstr ""
+"Merci d’être arrivé tôt : votre compte reçoit la formule %1$s gratuite "
+"pendant %2$d mois, et vous garderez son prix ensuite."
+
+#: src/Orders.php:50
+msgid "This plan cannot be ordered."
+msgstr "Cette formule ne peut pas être commandée."
+
+#. translators: 1: plan name, 2: "1 month" or "1 year".
+#: src/Orders.php:59
+msgid "Plan %1$s — %2$s"
+msgstr "Formule %1$s — %2$s"
+
+#. translators: 1: plan name, 2: "1 month" or "1 year".
+#: src/Orders.php:59
+msgid "1 month"
+msgstr "1 mois"
+
+#. translators: 1: plan name, 2: "1 month" or "1 year".
+#: src/Orders.php:59
+msgid "1 year"
+msgstr "1 an"
+
+#. translators: %d: number of AI credits.
+#: src/Orders.php:68
+msgid "%d AI credits"
+msgstr "%d crédits IA"
+
+#: src/Orders.php:71
+msgid "This credit pack does not exist."
+msgstr "Ce pack de crédits n’existe pas."
+
+#: src/Orders.php:76
+msgid "Options are for your listings online."
+msgstr "Les options concernent vos annonces en ligne."
+
+#. translators: %s: listing title.
+#: src/Orders.php:81
+msgid "Back to the top: %s"
+msgstr "Remontée en tête : %s"
+
+#. translators: 1: listing title, 2: number of days.
+#: src/Orders.php:83
+msgid "\"Urgent\" badge, %2$d days: %1$s"
+msgstr "Badge « Urgent », %2$d jours : %1$s"
+
+#. translators: 1: listing title, 2: number of days.
+#: src/Orders.php:85
+msgid "Featured listing, %2$d days: %1$s"
+msgstr "Annonce à la une, %2$d jours : %1$s"
+
+#: src/Orders.php:88
+msgid "This option is not offered."
+msgstr "Cette option n’est pas proposée."
+
+#: src/Orders.php:92
+msgid "Unknown order."
+msgstr "Commande inconnue."
+
+#: src/Orders.php:166
+msgid "This order is already closed."
+msgstr "Cette commande est déjà close."
+
+#: src/Orders.php:170
+msgid "The account of this order no longer exists."
+msgstr "Le compte de cette commande n’existe plus."
+
+#: src/Orders.php:247
+msgid "Waiting for payment"
+msgstr "En attente de paiement"
+
+#: src/Orders.php:248
+msgid "Payment being checked"
+msgstr "Paiement en vérification"
+
+#: src/Orders.php:249
+msgid "Paid"
+msgstr "Payée"
+
+#: src/Orders.php:251
+msgid "Cancelled"
+msgstr "Annulée"
+
+#: src/Plans.php:48
+msgid "Discovery"
+msgstr "Découverte"
+
+#: src/Plans.php:49
+msgid "Pro"
+msgstr "Pro"
+
+#: src/Plans.php:50
+msgid "Business"
+msgstr "Business"
+
+#: src/Plans.php:51
+msgid "Artisan Pro"
+msgstr "Artisan Pro"
+
+#: src/Plans.php:52
+msgid "Artisan Premium"
+msgstr "Artisan Premium"
+
+#: src/Plans.php:58
+msgid "Free"
+msgstr "Gratuit"
+
+#: src/Plans.php:121
+msgid "Listings online"
+msgstr "Annonces en ligne"
+
+#: src/Plans.php:122
+msgid "Total weight online"
+msgstr "Poids total en ligne"
+
+#: src/Plans.php:123
+msgid "Buildings online"
+msgstr "Bâtiments en ligne"
+
+#: src/Plans.php:124
+msgid "Service pages"
+msgstr "Pages de services"
+
+#: src/Plans.php:125
+msgid "Completed projects"
+msgstr "Réalisations"
+
+#: src/Plans.php:126
+msgid "Answers to requests for quotation per month"
+msgstr "Réponses aux demandes de devis par mois"
+
+#: src/Plans.php:127
+msgid "AI credits per month"
+msgstr "Crédits IA par mois"
+
+#: src/Plans.php:128
+msgid "Phone, e-mail, WhatsApp and website visible"
+msgstr "Téléphone, e-mail, WhatsApp et site visibles"
+
+#: src/Plans.php:129
+msgid "Featured on the home page"
+msgstr "Mise en avant sur l’accueil"
+
+#: src/Proofs.php:52
+msgid "Add the receipt, the transfer slip or a screenshot of the payment."
+msgstr "Ajoutez le reçu, l’ordre de virement ou une capture du paiement."
+
+#: src/Proofs.php:54
+msgid "The proof must be a PDF, JPG, PNG or WebP file under 10 MB."
+msgstr ""
+"La preuve doit être un fichier PDF, JPG, PNG ou WebP de moins de 10 Mo."
+
+#: src/Proofs.php:68
+msgid "The file could not be saved. Try again."
+msgstr "Le fichier n’a pas pu être enregistré. Réessayez."
+
+#: src/Proofs.php:94
+msgid "Link expired."
+msgstr "Lien expiré."
+
+#: src/Proofs.php:99 src/Proofs.php:107
+msgid "Document not found."
+msgstr "Document introuvable."
+
+#: src/Proofs.php:102
+msgid "You are not allowed to view this document."
+msgstr "Vous n’êtes pas autorisé à voir ce document."
+
+#: src/Settings.php:66
+msgid "Bank transfer"
+msgstr "Virement bancaire"
+
+#: src/Settings.php:67
+msgid "CCP payment"
+msgstr "Versement CCP"
+
+#: src/Settings.php:68
+msgid "BaridiMob"
+msgstr "BaridiMob"
+
+#: src/Settings.php:69
+msgid "Cheque"
+msgstr "Chèque"

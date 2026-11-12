@@ -8,11 +8,17 @@ Architecture : un thème WordPress sur mesure (présentation uniquement) + des e
 
 | Dossier | Contenu | État |
 | --- | --- | --- |
-| `themes/sm-marketplace/` | Thème de présentation | 0.6.0 |
-| `plugins/sm-products/` | Marché des produits neufs : publication par catégorie, modération, annonces | 0.1.0 — Phase 4 |
-| `plugins/sm-weight-engine/` | Catalogue acier vérifié, schémas exacts, calcul des poids | 0.1.0 — Phase 3 |
-| `plugins/sm-core/` | Socle : comptes, permissions, vérification, langues, notifications, demandes, API | 0.2.0 — Phase 2 |
-| `plugins/` (à venir) | `sm-reuse`, `sm-buildings`, `sm-rfq`, `sm-fabrication`, `sm-engineer-services`, `sm-ai`, `sm-subscriptions`, `sm-analytics` | Phases 3 à 10 |
+| `themes/sm-marketplace/` | Thème de présentation (FR / AR / EN) | 0.22.0 |
+| `plugins/sm-core/` | Socle : comptes, permissions, vérification, langues, notifications, demandes, API | 0.8.1 |
+| `plugins/sm-weight-engine/` | Catalogue acier vérifié, schémas exacts, calcul des poids | 0.2.1 |
+| `plugins/sm-products/` | Produits neufs (et base des annonces réemploi / bâtiments) | 0.8.0 |
+| `plugins/sm-reuse/` | Réemploi de l'acier | 0.1.0 |
+| `plugins/sm-buildings/` | Bâtiments métalliques | 0.1.0 |
+| `plugins/sm-rfq/` | Demandes de devis | 0.1.3 |
+| `plugins/sm-services/` | Services (fabrication, montage…), réalisations | 0.3.6 |
+| `plugins/sm-ai/` | Assistant IA | 0.1.3 |
+| `plugins/sm-engineering/` | Ingénieurs partenaires et missions | 0.1.1 |
+| `plugins/sm-subscriptions/` | Formules, commandes, paiement hors ligne, factures, crédits IA, options | 0.1.0 — Phase 10 |
 | `tests/` | Tests de bout en bout (navigateur) | |
 | `docs/` | Décisions, rapports de phase | |
 
@@ -30,7 +36,7 @@ Architecture : un thème WordPress sur mesure (présentation uniquement) + des e
 | 7 | Demandes de devis `sm-rfq` | Livrée le 8 nov. 2026 |
 | 8 – 8.1 | Services `sm-services`, e-mails et activité | Livrée le 8 nov. 2026 |
 | 9 – 9.3 | Assistant IA `sm-ai`, types de comptes et ingénieurs partenaires `sm-engineering`, annuaires, à la une, vente au lot, modifications vérifiées | Livrée le 11 nov. 2026 |
-| 10 | Abonnements et crédits IA (`sm-subscriptions`) | À venir |
+| 10 | Abonnements, paiement hors ligne, factures, crédits IA et options (`sm-subscriptions`) | Livrée le 12 nov. 2026 |
 | 11 | Statistiques (`sm-analytics`) et recette complète (QA) avant ouverture | À venir |
 | 12 | Applications mobiles (API REST existante) | À venir |
 

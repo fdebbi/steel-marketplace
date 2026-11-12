@@ -1,5 +1,9 @@
 # Changelog — sm-services
 
+## 0.3.6 — 2026-11-12 (Phase 10)
+
+- Filtres `sm_services_limit` (pages de services) et `sm_portfolio_limit` (réalisations) à l'enregistrement.
+
 ## 0.3.5 — 2026-11-12
 
 - Catalogue en anglais (via `sm_pick`, sm-core 0.8.0).

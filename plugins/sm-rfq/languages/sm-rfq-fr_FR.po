@@ -354,22 +354,22 @@ msgstr "C’est votre propre demande."
 msgid "This request no longer accepts offers."
 msgstr "Cette demande n’accepte plus d’offres."
 
-#: src/Form.php:89 src/Form.php:149
+#: src/Form.php:102 src/Form.php:162
 msgid "Your account has no company."
 msgstr "Votre compte n’a pas d’entreprise."
 
-#: src/Form.php:94
+#: src/Form.php:107
 msgid ""
 "This request can no longer be edited: it already has offers or is closed."
 msgstr ""
 "Cette demande ne peut plus être modifiée : elle a déjà des offres ou elle "
 "est clôturée."
 
-#: src/Form.php:97
+#: src/Form.php:110
 msgid "You published many requests today. Try again tomorrow."
 msgstr "Vous avez publié beaucoup de demandes aujourd’hui. Réessayez demain."
 
-#: src/Form.php:110
+#: src/Form.php:123
 msgid ""
 "Thank you. Your request will be visible after a quick check by the platform "
 "team."
@@ -377,85 +377,85 @@ msgstr ""
 "Merci. Votre demande sera visible après une vérification rapide par l’équipe"
 " de la plateforme."
 
-#: src/Form.php:110
+#: src/Form.php:123
 msgid "Your request is published. Suppliers can now send their offers."
 msgstr ""
 "Votre demande est publiée. Les fournisseurs peuvent maintenant envoyer leurs"
 " offres."
 
-#: src/Form.php:118
+#: src/Form.php:131
 msgid "You cannot change this request."
 msgstr "Vous ne pouvez pas modifier cette demande."
 
-#: src/Form.php:123
+#: src/Form.php:136
 msgid "This request is already closed."
 msgstr "Cette demande est déjà clôturée."
 
-#: src/Form.php:129
+#: src/Form.php:142
 msgid "The request is closed. Suppliers were told."
 msgstr "La demande est clôturée. Les fournisseurs ont été prévenus."
 
-#: src/Form.php:133
+#: src/Form.php:146
 msgid "A request with offers is kept for your records: close it instead."
 msgstr "Une demande qui a reçu des offres est conservée : clôturez-la plutôt."
 
-#: src/Form.php:136
+#: src/Form.php:149
 msgid "Request deleted."
 msgstr "Demande supprimée."
 
-#: src/Form.php:139 src/Form.php:212
+#: src/Form.php:152 src/Form.php:225
 msgid "Unknown action."
 msgstr "Action inconnue."
 
-#: src/Form.php:147
+#: src/Form.php:160
 msgid "This request does not exist."
 msgstr "Cette demande n’existe pas."
 
-#: src/Form.php:153
+#: src/Form.php:166
 msgid "The buyer already decided on your offer."
 msgstr "L’acheteur a déjà décidé de votre offre."
 
-#: src/Form.php:163
+#: src/Form.php:176
 msgid "Your offer was sent. The buyer is notified."
 msgstr "Votre offre est envoyée. L’acheteur est prévenu."
 
-#: src/Form.php:163
+#: src/Form.php:176
 msgid "Your offer is updated. The buyer is notified."
 msgstr "Votre offre est mise à jour. L’acheteur est prévenu."
 
-#: src/Form.php:173
+#: src/Form.php:186
 msgid "This offer does not exist."
 msgstr "Cette offre n’existe pas."
 
-#: src/Form.php:177
+#: src/Form.php:190
 msgid "You cannot withdraw this offer."
 msgstr "Vous ne pouvez pas retirer cette offre."
 
-#: src/Form.php:181
+#: src/Form.php:194
 msgid "Your offer is withdrawn."
 msgstr "Votre offre est retirée."
 
-#: src/Form.php:184
+#: src/Form.php:197
 msgid "Only the buyer can decide on an offer."
 msgstr "Seul l’acheteur peut décider d’une offre."
 
-#: src/Form.php:187
+#: src/Form.php:200
 msgid "This offer can no longer be changed."
 msgstr "Cette offre ne peut plus être modifiée."
 
-#: src/Form.php:192
+#: src/Form.php:205
 msgid "Offer shortlisted."
 msgstr "Offre retenue dans la présélection."
 
-#: src/Form.php:192
+#: src/Form.php:205
 msgid "Offer removed from the shortlist."
 msgstr "Offre retirée de la présélection."
 
-#: src/Form.php:197
+#: src/Form.php:210
 msgid "Offer declined. The supplier is told."
 msgstr "Offre refusée. Le fournisseur est prévenu."
 
-#: src/Form.php:209
+#: src/Form.php:222
 msgid ""
 "Offer accepted. The supplier is notified; contact him to confirm the order. "
 "The other suppliers were told."

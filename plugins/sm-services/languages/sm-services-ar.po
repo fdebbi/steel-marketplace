@@ -523,13 +523,13 @@ msgstr "لا يمكنك تعديل هذه الخدمة."
 msgid "You reached the number of service pages allowed. Edit an existing one."
 msgstr "بلغت العدد المسموح به من صفحات الخدمات. عدّل صفحة موجودة."
 
-#: src/Form.php:104
+#: src/Form.php:115
 msgid ""
 "You already have a page for this service: edit it (one page per service, "
 "with its own price)."
 msgstr "لديك صفحة لهذه الخدمة: عدّلها (صفحة واحدة لكل خدمة بسعرها الخاص)."
 
-#: src/Form.php:116
+#: src/Form.php:127
 msgid ""
 "Thank you. Your changes will be visible after a quick check by the platform "
 "team; meanwhile the current page stays online."
@@ -537,112 +537,112 @@ msgstr ""
 "شكرا. ستظهر تعديلاتك بعد مراجعة سريعة من فريق المنصة، وتبقى الصفحة الحالية "
 "منشورة في الأثناء."
 
-#: src/Form.php:127
+#: src/Form.php:138
 msgid ""
 "Thank you. Your service page will be visible after a quick check by the "
 "platform team."
 msgstr "شكرًا. ستظهر صفحة خدمتك بعد مراجعة سريعة من فريق المنصة."
 
-#: src/Form.php:127
+#: src/Form.php:138
 msgid "Your service page is saved."
 msgstr "تم حفظ صفحة خدمتك."
 
-#: src/Form.php:135
+#: src/Form.php:146
 msgid "You cannot change this service."
 msgstr "لا يمكنك تغيير هذه الخدمة."
 
-#: src/Form.php:140
+#: src/Form.php:151
 msgid "The service is paused: clients no longer see it."
 msgstr "الخدمة متوقفة مؤقتًا: لم يعد العملاء يرونها."
 
-#: src/Form.php:145
+#: src/Form.php:156
 msgid "The service is visible again."
 msgstr "الخدمة ظاهرة من جديد."
 
-#: src/Form.php:149
+#: src/Form.php:160
 msgid "Service deleted."
 msgstr "تم حذف الخدمة."
 
-#: src/Form.php:152
+#: src/Form.php:163
 msgid "Unknown action."
 msgstr "إجراء غير معروف."
 
-#: src/Form.php:159
+#: src/Form.php:170
 msgid "This service does not exist."
 msgstr "هذه الخدمة غير موجودة."
 
-#: src/Form.php:165
+#: src/Form.php:176
 msgid ""
 "You already have an open request for this service. Follow it in \"My service"
 " requests\"."
 msgstr "لديك طلب مفتوح لهذه الخدمة. تابعه في «طلبات الخدمات الخاصة بي»."
 
-#: src/Form.php:168
+#: src/Form.php:179
 msgid "You sent many requests today. Try again tomorrow."
 msgstr "أرسلت طلبات كثيرة اليوم. أعد المحاولة غدًا."
 
-#: src/Form.php:179
+#: src/Form.php:190
 msgid ""
 "Your request is sent. The provider is notified and will answer with a quote."
 msgstr "تم إرسال طلبك. تم إبلاغ مقدم الخدمة وسيرد بعرض سعر."
 
-#: src/Form.php:186
+#: src/Form.php:197
 msgid "You cannot answer this request."
 msgstr "لا يمكنك الرد على هذا الطلب."
 
-#: src/Form.php:189
+#: src/Form.php:200
 msgid "This request is closed."
 msgstr "هذا الطلب مغلق."
 
-#: src/Form.php:194
+#: src/Form.php:205
 msgid "You declined the request. The client is told."
 msgstr "اعتذرت عن الطلب. تم إبلاغ العميل."
 
-#: src/Form.php:203
+#: src/Form.php:214
 msgid "Your quote is sent. The client is notified."
 msgstr "تم إرسال عرض سعرك. تم إبلاغ العميل."
 
-#: src/Form.php:210
+#: src/Form.php:221
 msgid "You cannot change this request."
 msgstr "لا يمكنك تغيير هذا الطلب."
 
-#: src/Form.php:214
+#: src/Form.php:225
 msgid "Quote accepted. Contact the provider to organise the work."
 msgstr "تم قبول عرض السعر. تواصل مع مقدم الخدمة لتنظيم الأشغال."
 
-#: src/Form.php:215
+#: src/Form.php:226
 msgid "Quote declined. The provider is told."
 msgstr "تم رفض عرض السعر. تم إبلاغ مقدم الخدمة."
 
-#: src/Form.php:216
+#: src/Form.php:227
 msgid "Request cancelled. The provider is told."
 msgstr "تم إلغاء الطلب. تم إبلاغ مقدم الخدمة."
 
-#: src/Form.php:219
+#: src/Form.php:230
 msgid "This request can no longer be changed."
 msgstr "لم يعد بالإمكان تغيير هذا الطلب."
 
-#: src/Form.php:231
+#: src/Form.php:242
 msgid "Only the account owner can edit the references."
 msgstr "صاحب الحساب وحده يمكنه تعديل المراجع."
 
-#: src/Form.php:236
+#: src/Form.php:247
 msgid "You cannot edit this reference."
 msgstr "لا يمكنك تعديل هذا المرجع."
 
-#: src/Form.php:239
+#: src/Form.php:250
 msgid "You reached the number of references allowed."
 msgstr "بلغت العدد المسموح به من المراجع."
 
-#: src/Form.php:249
+#: src/Form.php:264
 msgid "Reference saved."
 msgstr "تم حفظ المرجع."
 
-#: src/Form.php:257
+#: src/Form.php:272
 msgid "You cannot delete this reference."
 msgstr "لا يمكنك حذف هذا المرجع."
 
-#: src/Form.php:260
+#: src/Form.php:275
 msgid "Reference deleted."
 msgstr "تم حذف المرجع."
 

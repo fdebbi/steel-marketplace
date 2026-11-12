@@ -26,6 +26,12 @@ final class Notifications {
 		add_action( 'sm_sub_paused', array( __CLASS__, 'on_paused' ), 10, 2 );
 	}
 
+	private static function paused_text( $count ) {
+		/* translators: %d: number of listings or service pages. */
+		$text = _n( '%d listing or service page went beyond your plan and was paused. Nothing was deleted: choose a plan or publish it again when there is room.', '%d listings or service pages went beyond your plan and were paused. Nothing was deleted: choose a plan or publish them again when there is room.', $count, 'sm-subscriptions' );
+		return sprintf( $text, $count );
+	}
+
 	public static function plan_link() {
 		return CoreRoutes::url( 'account', array( 'view' => 'plan' ) );
 	}
@@ -35,6 +41,7 @@ final class Notifications {
 		$label = static fn( $p ) => ( $o = Orders::get( (int) ( $p['order_id'] ?? 0 ) ) ) ? $o->ref . ' — ' . $o->label : '';
 		$def   = static fn( $subject, $body, $link, $email = true ) => array( 'email' => $email, 'subject' => $subject, 'body' => $body, 'link' => $link );
 		$plan  = static fn( $p ) => self::plan_link();
+		$view  = static fn( $p ) => CoreRoutes::url( 'account', array( 'view' => 'order', 'order' => (int) ( $p['order_id'] ?? 0 ) ) );
 
 		$types['sub.review']   = $def(
 			static fn( $p ) => __( 'Proof of payment to check', 'sm-subscriptions' ),
@@ -47,13 +54,13 @@ final class Notifications {
 			static fn( $p ) => __( 'Payment confirmed', 'sm-subscriptions' ),
 			/* translators: %s: order reference and label. */
 			static fn( $p ) => sprintf( __( 'Your payment for %s is confirmed. Your invoice is in your account.', 'sm-subscriptions' ), $label( $p ) ),
-			$plan
+			$view
 		);
 		$types['sub.rejected'] = $def(
 			static fn( $p ) => __( 'Payment not accepted', 'sm-subscriptions' ),
 			/* translators: 1: order reference and label, 2: reason. */
 			static fn( $p ) => sprintf( __( 'Your payment for %1$s could not be confirmed. Reason: %2$s', 'sm-subscriptions' ), $label( $p ), ( $o = $order( $p ) ) ? $o->reject_reason : '' ),
-			$plan
+			$view
 		);
 		$types['sub.ending']   = $def(
 			static fn( $p ) => __( 'Your plan ends soon', 'sm-subscriptions' ),
@@ -69,8 +76,7 @@ final class Notifications {
 		);
 		$types['sub.paused']   = $def(
 			static fn( $p ) => __( 'Some listings were paused', 'sm-subscriptions' ),
-			/* translators: %d: number of listings or service pages. */
-			static fn( $p ) => sprintf( _n( '%d listing or service page went beyond your plan and was paused. Nothing was deleted: choose a plan or publish it again when there is room.', '%d listings or service pages went beyond your plan and were paused. Nothing was deleted: choose a plan or publish them again when there is room.', (int) ( $p['count'] ?? 0 ), 'sm-subscriptions' ), (int) ( $p['count'] ?? 0 ) ),
+			static fn( $p ) => self::paused_text( (int) ( $p['count'] ?? 0 ) ),
 			$plan
 		);
 		$types['sub.founder']  = $def(

@@ -584,4 +584,39 @@
 		} );
 	} );
 
+	/* Simple tabs (pricing page): buttons [data-sm-tab] show the panel #plans-{key}. */
+	document.querySelectorAll( '[role="tablist"]' ).forEach( function ( list ) {
+		var tabs = list.querySelectorAll( '[data-sm-tab]' );
+		if ( ! tabs.length ) {
+			return;
+		}
+		function show( tab ) {
+			tabs.forEach( function ( t ) {
+				var on = t === tab;
+				t.setAttribute( 'aria-selected', on ? 'true' : 'false' );
+				t.tabIndex = on ? 0 : -1;
+				var panel = document.getElementById( t.getAttribute( 'aria-controls' ) );
+				if ( panel ) {
+					panel.hidden = ! on;
+				}
+			} );
+		}
+		tabs.forEach( function ( t, i ) {
+			t.tabIndex = 'true' === t.getAttribute( 'aria-selected' ) ? 0 : -1;
+			t.addEventListener( 'click', function () {
+				show( t );
+			} );
+			t.addEventListener( 'keydown', function ( e ) {
+				var rtl = 'rtl' === document.documentElement.dir;
+				var next = { ArrowRight: rtl ? -1 : 1, ArrowLeft: rtl ? 1 : -1 }[ e.key ];
+				if ( next ) {
+					var n = tabs[ ( i + next + tabs.length ) % tabs.length ];
+					n.focus();
+					show( n );
+					e.preventDefault();
+				}
+			} );
+		} );
+	} );
+
 }() );

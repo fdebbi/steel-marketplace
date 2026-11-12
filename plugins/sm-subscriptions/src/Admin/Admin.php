@@ -13,6 +13,7 @@ use SM\Core\Accounts\Companies;
 use SM\Subscriptions\Founders;
 use SM\Subscriptions\Orders;
 use SM\Subscriptions\Plans;
+use SM\Subscriptions\Proofs;
 use SM\Subscriptions\Settings;
 use SM\Subscriptions\Subscriptions;
 
@@ -163,8 +164,8 @@ final class Admin {
 			echo '<dt><strong>' . esc_html( $k ) . '</strong></dt><dd>' . $v . '</dd>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 		echo '</dl>';
-		if ( $o->proof_id ) {
-			echo '<p><a class="button" target="_blank" rel="noopener" href="' . esc_url( (string) wp_get_attachment_url( (int) $o->proof_id ) ) . '">' . esc_html__( 'Open the proof of payment', 'sm-subscriptions' ) . '</a></p>';
+		if ( Proofs::url( $o ) ) {
+			echo '<p><a class="button" target="_blank" rel="noopener" href="' . esc_url( Proofs::url( $o ) ) . '">' . esc_html__( 'Open the proof of payment', 'sm-subscriptions' ) . '</a></p>';
 		}
 		echo '</div>';
 		if ( in_array( $o->status, array( 'awaiting', 'review' ), true ) ) {

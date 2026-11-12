@@ -356,102 +356,102 @@ msgstr "هذا طلبك أنت."
 msgid "This request no longer accepts offers."
 msgstr "لم يعد هذا الطلب يقبل العروض."
 
-#: src/Form.php:89 src/Form.php:149
+#: src/Form.php:102 src/Form.php:162
 msgid "Your account has no company."
 msgstr "حسابك غير مرتبط بمؤسسة."
 
-#: src/Form.php:94
+#: src/Form.php:107
 msgid ""
 "This request can no longer be edited: it already has offers or is closed."
 msgstr "لم يعد بالإمكان تعديل هذا الطلب: لديه عروض أو أنه مغلق."
 
-#: src/Form.php:97
+#: src/Form.php:110
 msgid "You published many requests today. Try again tomorrow."
 msgstr "نشرت عدة طلبات اليوم. أعد المحاولة غدًا."
 
-#: src/Form.php:110
+#: src/Form.php:123
 msgid ""
 "Thank you. Your request will be visible after a quick check by the platform "
 "team."
 msgstr "شكرًا. سيظهر طلبك بعد مراجعة سريعة من فريق المنصة."
 
-#: src/Form.php:110
+#: src/Form.php:123
 msgid "Your request is published. Suppliers can now send their offers."
 msgstr "تم نشر طلبك. يمكن للموردين الآن إرسال عروضهم."
 
-#: src/Form.php:118
+#: src/Form.php:131
 msgid "You cannot change this request."
 msgstr "لا يمكنك تعديل هذا الطلب."
 
-#: src/Form.php:123
+#: src/Form.php:136
 msgid "This request is already closed."
 msgstr "هذا الطلب مغلق أصلًا."
 
-#: src/Form.php:129
+#: src/Form.php:142
 msgid "The request is closed. Suppliers were told."
 msgstr "تم إغلاق الطلب وإبلاغ الموردين."
 
-#: src/Form.php:133
+#: src/Form.php:146
 msgid "A request with offers is kept for your records: close it instead."
 msgstr "يُحتفظ بالطلب الذي تلقى عروضًا: أغلقه بدلًا من ذلك."
 
-#: src/Form.php:136
+#: src/Form.php:149
 msgid "Request deleted."
 msgstr "تم حذف الطلب."
 
-#: src/Form.php:139 src/Form.php:212
+#: src/Form.php:152 src/Form.php:225
 msgid "Unknown action."
 msgstr "إجراء غير معروف."
 
-#: src/Form.php:147
+#: src/Form.php:160
 msgid "This request does not exist."
 msgstr "هذا الطلب غير موجود."
 
-#: src/Form.php:153
+#: src/Form.php:166
 msgid "The buyer already decided on your offer."
 msgstr "اتخذ المشتري قراره بشأن عرضك."
 
-#: src/Form.php:163
+#: src/Form.php:176
 msgid "Your offer was sent. The buyer is notified."
 msgstr "تم إرسال عرضك وإشعار المشتري."
 
-#: src/Form.php:163
+#: src/Form.php:176
 msgid "Your offer is updated. The buyer is notified."
 msgstr "تم تحديث عرضك وإشعار المشتري."
 
-#: src/Form.php:173
+#: src/Form.php:186
 msgid "This offer does not exist."
 msgstr "هذا العرض غير موجود."
 
-#: src/Form.php:177
+#: src/Form.php:190
 msgid "You cannot withdraw this offer."
 msgstr "لا يمكنك سحب هذا العرض."
 
-#: src/Form.php:181
+#: src/Form.php:194
 msgid "Your offer is withdrawn."
 msgstr "تم سحب عرضك."
 
-#: src/Form.php:184
+#: src/Form.php:197
 msgid "Only the buyer can decide on an offer."
 msgstr "المشتري وحده يقرر بشأن العرض."
 
-#: src/Form.php:187
+#: src/Form.php:200
 msgid "This offer can no longer be changed."
 msgstr "لم يعد بالإمكان تغيير هذا العرض."
 
-#: src/Form.php:192
+#: src/Form.php:205
 msgid "Offer shortlisted."
 msgstr "تمت إضافة العرض إلى القائمة المختصرة."
 
-#: src/Form.php:192
+#: src/Form.php:205
 msgid "Offer removed from the shortlist."
 msgstr "تمت إزالة العرض من القائمة المختصرة."
 
-#: src/Form.php:197
+#: src/Form.php:210
 msgid "Offer declined. The supplier is told."
 msgstr "تم رفض العرض وإبلاغ المورد."
 
-#: src/Form.php:209
+#: src/Form.php:222
 msgid ""
 "Offer accepted. The supplier is notified; contact him to confirm the order. "
 "The other suppliers were told."

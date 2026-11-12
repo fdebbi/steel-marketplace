@@ -20,9 +20,14 @@ $market  = $item['market'];
 <article class="sm-card sm-card--listing sm-card--<?php echo esc_attr( $market ); ?>">
 	<a class="sm-card__media<?php echo ! empty( $item['image_drawing'] ) ? ' is-drawing' : ''; ?>" href="<?php echo esc_url( $url ); ?>" tabindex="-1" aria-hidden="true">
 		<img src="<?php echo esc_url( sm_image_url( $item['image'] ?? '' ) ); ?>" alt="" loading="lazy" decoding="async" width="640" height="480">
-		<?php if ( ! empty( $item['featured'] ) ) : ?>
-			<span class="sm-chip sm-chip--featured"><?php sm_icon( 'star' ); ?><?php esc_html_e( 'Featured', 'sm-marketplace' ); ?></span>
-		<?php endif; ?>
+		<span class="sm-card__chips">
+			<?php if ( ! empty( $item['featured'] ) || ! empty( $item['is_featured'] ) ) : ?>
+				<span class="sm-chip sm-chip--featured"><?php sm_icon( 'star' ); ?><?php esc_html_e( 'Featured', 'sm-marketplace' ); ?></span>
+			<?php endif; ?>
+			<?php if ( ! empty( $item['is_urgent'] ) ) : ?>
+				<span class="sm-chip sm-chip--urgent"><?php sm_icon( 'alert' ); ?><?php esc_html_e( 'Urgent', 'sm-marketplace' ); ?></span>
+			<?php endif; ?>
+		</span>
 	</a>
 	<button class="sm-card__save" type="button" aria-pressed="false" data-sm-save="<?php echo esc_attr( $item['id'] ); ?>">
 		<?php sm_icon( 'heart' ); ?><span class="screen-reader-text"><?php esc_html_e( 'Save listing', 'sm-marketplace' ); ?></span>
@@ -40,7 +45,7 @@ $market  = $item['market'];
 			<?php endif; ?>
 		</div>
 
-		<h3 class="sm-card__title"><a href="<?php echo esc_url( $url ); ?>"><?php sm_e( $item['title'] ); ?></a></h3>
+		<h3 class="sm-card__title"><a href="<?php echo esc_url( $url ); ?>"><?php sm_e( $item['title'] ); ?><?php if ( ! empty( $item['is_urgent'] ) ) : ?><span class="screen-reader-text"> (<?php esc_html_e( 'Urgent', 'sm-marketplace' ); ?>)</span><?php endif; ?></a></h3>
 
 		<ul class="sm-card__facts">
 			<?php if ( 'buildings' === $market ) : ?>

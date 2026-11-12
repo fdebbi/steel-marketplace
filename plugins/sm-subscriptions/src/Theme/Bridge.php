@@ -17,6 +17,7 @@ use SM\Subscriptions\Founders;
 use SM\Subscriptions\Form;
 use SM\Subscriptions\Orders;
 use SM\Subscriptions\Plans;
+use SM\Subscriptions\Proofs;
 use SM\Subscriptions\Settings;
 use SM\Subscriptions\Subscriptions;
 
@@ -101,16 +102,17 @@ final class Bridge {
 			'ref'        => $o->ref,
 			'kind'       => $o->kind,
 			'item'       => $o->item,
-			'label'      => $o->label,
+			'label'      => Orders::display_label( $o ),
 			'amount'     => (float) $o->amount_ttc,
 			'status'     => $o->status,
 			'status_label' => $labels[ $o->status ] ?? $o->status,
 			'date'       => $o->created_at,
 			'paid_at'    => $o->paid_at,
 			'method'     => Settings::method_labels()[ $o->method ] ?? '',
-			'proof'      => $o->proof_id ? (string) wp_get_attachment_url( (int) $o->proof_id ) : '',
+			'proof'      => Proofs::url( $o ),
 			'reason'     => (string) $o->reject_reason,
 			'invoice_no' => $o->invoice_no,
+			'url'        => CoreRoutes::url( 'account', array( 'view' => 'order', 'order' => (int) $o->id ) ),
 			'invoice'    => 'paid' === $o->status ? CoreRoutes::url( 'account', array( 'view' => 'invoice', 'id' => (int) $o->id ) ) : '',
 		);
 	}

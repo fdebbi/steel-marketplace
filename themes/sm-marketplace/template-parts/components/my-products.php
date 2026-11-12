@@ -20,6 +20,7 @@ $labels  = array(
 	'draft'     => __( 'Drafts', 'sm-marketplace' ),
 	'sold'      => __( 'Sold', 'sm-marketplace' ),
 	'expired'   => __( 'Expired', 'sm-marketplace' ),
+	'paused'    => __( 'Paused (plan)', 'sm-marketplace' ),
 );
 $one = array(
 	'published' => __( 'Published', 'sm-marketplace' ),
@@ -28,7 +29,11 @@ $one = array(
 	'draft'     => __( 'Draft', 'sm-marketplace' ),
 	'sold'      => __( 'Sold', 'sm-marketplace' ),
 	'expired'   => __( 'Expired', 'sm-marketplace' ),
+	'paused'    => __( 'Paused (plan)', 'sm-marketplace' ),
 );
+// Paid options (sm-subscriptions): back to the top, "Urgent" badge, featured listing.
+$sub     = sm_theme_data( 'subscription' );
+$options = is_array( $sub ) && ! empty( $sub['can_order'] ) ? array_filter( (array) ( $sub['options'] ?? array() ), static fn( $o ) => $o['price'] > 0 ) : array();
 $wilayas = sm_theme_wilayas();
 $action  = static function ( $item, $do, $label, $style = 'ghost', $confirm = '' ) {
 	sm_theme_form_open( 'product_action', array( 'class' => 'smp-act' ) );
@@ -67,6 +72,12 @@ $action  = static function ( $item, $do, $label, $style = 'ghost', $confirm = ''
 					<span><?php echo sm_listing_price( $item ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
 					<?php if ( $item['total_price'] ) : ?><span><?php echo esc_html( sm_money( $item['total_price'] ) ); ?></span><?php endif; ?>
 					<span><?php echo esc_html( sm_t( $wilayas[ $item['wilaya'] ] ?? '' ) ); ?></span>
+					<?php if ( ! empty( $item['is_featured'] ) ) : ?>
+						<span class="smp-status smp-status--featured"><?php /* translators: %s: date. */ echo esc_html( sprintf( __( 'Featured until %s', 'sm-marketplace' ), sm_date( $item['featured_until'] ) ) ); ?></span>
+					<?php endif; ?>
+					<?php if ( ! empty( $item['is_urgent'] ) ) : ?>
+						<span class="smp-status smp-status--urgent"><?php /* translators: %s: date. */ echo esc_html( sprintf( __( 'Urgent until %s', 'sm-marketplace' ), sm_date( $item['urgent_until'] ) ) ); ?></span>
+					<?php endif; ?>
 					<?php if ( 'published' === $item['status'] ) : ?>
 						<span><?php sm_icon( 'eye' ); ?> <?php echo esc_html( sm_number( $item['views'] ) ); ?></span>
 					<?php endif; ?>
@@ -78,16 +89,41 @@ $action  = static function ( $item, $do, $label, $style = 'ghost', $confirm = ''
 				if ( 'published' === $item['status'] ) {
 					$action( $item, 'sold', __( 'Mark as sold', 'sm-marketplace' ) );
 					$action( $item, 'withdraw', __( 'Withdraw', 'sm-marketplace' ) );
-				} elseif ( in_array( $item['status'], array( 'sold', 'expired' ), true ) ) {
+				} elseif ( in_array( $item['status'], array( 'sold', 'expired', 'paused' ), true ) ) {
 					$action( $item, 'republish', __( 'Publish again', 'sm-marketplace' ) );
 				} elseif ( 'pending' === $item['status'] ) {
 					$action( $item, 'withdraw', __( 'Withdraw', 'sm-marketplace' ) );
 				}
-				if ( in_array( $item['status'], array( 'draft', 'rejected', 'sold', 'expired' ), true ) ) {
+				if ( in_array( $item['status'], array( 'draft', 'rejected', 'sold', 'expired', 'paused' ), true ) ) {
 					$action( $item, 'delete', __( 'Delete', 'sm-marketplace' ), 'ghost', __( 'Delete this product for good?', 'sm-marketplace' ) );
 				}
 				?>
 			</div>
+			<?php if ( 'published' === $item['status'] && $options ) : ?>
+				<div class="smp-row__boost">
+					<span class="smp-row__boost-label"><?php esc_html_e( 'More visibility:', 'sm-marketplace' ); ?></span>
+					<?php
+					$names = array(
+						'bump'     => array( 'sort', __( 'Back to the top', 'sm-marketplace' ) ),
+						/* translators: %d: days. */
+						'urgent'   => array( 'alert', __( 'Urgent badge, %d days', 'sm-marketplace' ) ),
+						/* translators: %d: days. */
+						'featured' => array( 'star', __( 'Featured, %d days', 'sm-marketplace' ) ),
+					);
+					foreach ( $options as $key => $opt ) {
+						if ( ! isset( $names[ $key ] ) || ( 'urgent' === $key && ! empty( $item['is_urgent'] ) ) || ( 'featured' === $key && ! empty( $item['is_featured'] ) ) ) {
+							continue;
+						}
+						sm_theme_form_open( 'sub_order', array( 'class' => 'smp-act' ) );
+						echo '<input type="hidden" name="kind" value="option"><input type="hidden" name="item" value="' . esc_attr( $key ) . '"><input type="hidden" name="target" value="' . esc_attr( $item['product_id'] ) . '">';
+						echo '<button type="submit" class="sm-btn sm-btn--ghost sm-btn--sm">' . sm_get_icon( $names[ $key ][0] ) . '<span>' . esc_html( sprintf( $names[ $key ][1], (int) $opt['days'] ) . ' · ' . sm_money( $opt['price'] ) ) . '</span></button></form>'; // phpcs:ignore WordPress.Security.EscapeOutput
+					}
+					?>
+				</div>
+			<?php endif; ?>
+			<?php if ( 'paused' === $item['status'] ) : ?>
+				<p class="smp-row__reason sm-notice sm-notice--info"><?php sm_icon( 'info' ); ?><span><?php esc_html_e( 'Paused because it went beyond your plan. Nothing was deleted: publish it again when there is room, or choose a higher plan.', 'sm-marketplace' ); ?> <a href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'plan' ) ) ); ?>"><?php esc_html_e( 'See the plans', 'sm-marketplace' ); ?></a></span></p>
+			<?php endif; ?>
 			<?php if ( 'rejected' === $item['status'] && $item['reject_reason'] ) : ?>
 				<p class="smp-row__reason sm-notice sm-notice--warn"><?php sm_icon( 'alert' ); ?><span><?php echo esc_html( $item['reject_reason'] ); ?></span></p>
 			<?php endif; ?>

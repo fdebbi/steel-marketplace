@@ -1,5 +1,12 @@
 # Changelog — sm-products
 
+## 0.8.0 — 2026-11-12 (Phase 10, base v6)
+
+- Colonnes `bumped_at`, `featured_until`, `urgent_until` ; statut `paused` (mis en pause par la formule, republiable).
+- Tri : annonces à la une d'abord, puis date de remontée ou de publication.
+- `Products::online_totals()`, `online_oldest_first()`, `boost()` ; filtre `sm_products_publish_limit` appelé à la publication et à la republication.
+- Presenter : `is_featured`, `is_urgent`, `featured_until`, `urgent_until`.
+
 ## 0.7.1 — 2026-11-12
 
 - `section_sheet` (dimensions, aire, poids au mètre, norme) dans les données d'une annonce sans photo ; fichiers du dessin refaits automatiquement quand la version des fichiers change.

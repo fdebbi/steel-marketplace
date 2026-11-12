@@ -33,9 +33,10 @@ final class Plugin {
 		Founders::init();
 		Notifications::init();
 		Form::init();
+		Proofs::init();
 		Cron::init();
 		Theme\Bridge::init();
-		add_filter( 'sm_dashboard_view_slugs', static fn( $slugs ) => array_merge( $slugs, array( 'plan' => 'abonnement', 'invoice' => 'facture' ) ) );
+		add_filter( 'sm_dashboard_view_slugs', static fn( $slugs ) => array_merge( $slugs, array( 'plan' => 'abonnement', 'invoice' => 'facture', 'order' => 'commande' ) ) );
 		if ( is_admin() ) {
 			Admin\Admin::init();
 		}

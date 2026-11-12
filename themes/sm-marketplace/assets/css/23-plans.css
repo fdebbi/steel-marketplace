@@ -1,0 +1,123 @@
+/* ==========================================================================
+   Plans and payments (Phase 10): plan cards, the plan in force with its use,
+   founding members offer, order and payment details, invoice (printable),
+   AI credit packs, listing options and card badges.
+   ========================================================================== */
+
+/* Plan cards (pricing page and account) */
+.sm-plan { position: relative; }
+.sm-plan__head { display: flex; align-items: center; justify-content: space-between; gap: var(--sm-s2); }
+.sm-plan__tag { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 999px; font-size: var(--sm-fs-xs); font-weight: 700; background: var(--sm-accent-soft); color: var(--sm-accent-ink); vertical-align: middle; }
+.sm-plan.is-current { border-color: var(--sm-accent); }
+.sm-plan .sm-plan__price { display: flex; align-items: baseline; gap: 6px; margin: 0; color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+.sm-plan__price strong { font-family: var(--sm-font-display, inherit); font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.1rem); line-height: 1.1; color: var(--sm-text); font-variant-numeric: tabular-nums; }
+.sm-plan__year { margin: 0; font-size: var(--sm-fs-sm); color: var(--sm-muted); }
+.sm-plan__save { color: var(--sm-accent-ink); font-weight: 700; }
+.sm-plan__limits { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-block-start: 1px solid var(--sm-line); }
+.sm-plan__limits li { display: flex; align-items: center; justify-content: space-between; gap: var(--sm-s2); padding-block: 9px; border-block-end: 1px solid var(--sm-line); font-size: var(--sm-fs-sm); }
+.sm-plan__limits li strong { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sm-plan__limits li .sm-icon { flex: none; color: var(--sm-accent-ink); }
+.sm-plan__limits li:has(> .sm-icon) { justify-content: flex-start; }
+.sm-plan__limits li.is-off { color: var(--sm-muted); }
+.sm-plan__limits li.is-off .sm-icon { color: var(--sm-muted); }
+.sm-plan__actions { display: grid; gap: var(--sm-s2); margin-block-start: auto; }
+.sm-plan__order { margin: 0; }
+.sm-plan { grid-template-rows: auto auto auto 1fr auto; }
+
+/* Pricing page */
+.sm-pricing { display: grid; gap: var(--sm-s5); }
+.sm-pricing__tabs { display: inline-flex; justify-self: center; padding: 4px; gap: 4px; border-radius: 999px; background: var(--sm-surface); border: 1px solid var(--sm-line); }
+.sm-pricing__tabs button { min-block-size: 44px; padding-inline: var(--sm-s4); border: 0; border-radius: 999px; background: transparent; color: var(--sm-muted); font: inherit; font-weight: 600; cursor: pointer; }
+.sm-pricing__tabs button[aria-selected="true"] { background: var(--sm-primary); color: var(--sm-on-dark); }
+.sm-pricing__tabs button:focus-visible { outline: 2px solid var(--sm-accent); outline-offset: 2px; }
+.sm-pricing__note { text-align: center; margin: 0; }
+.sm-pricing__extras { display: grid; gap: var(--sm-s4); }
+@media (min-width: 900px) { .sm-pricing__extras { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; } }
+.sm-pricelist { list-style: none; margin: 0; padding: 0; }
+.sm-pricelist li { display: flex; justify-content: space-between; gap: var(--sm-s3); padding-block: 10px; border-block-end: 1px solid var(--sm-line); font-size: var(--sm-fs-sm); }
+.sm-pricelist li strong { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* Founding members */
+.sm-founders { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--sm-s3); align-items: center; padding: var(--sm-s4); margin-block-end: var(--sm-s4); border-radius: var(--sm-radius-lg); background: linear-gradient(120deg, var(--sm-primary), color-mix(in srgb, var(--sm-primary) 70%, var(--sm-accent))); color: var(--sm-on-dark); }
+.sm-founders > .sm-icon { inline-size: 32px; block-size: 32px; color: var(--sm-accent); }
+.sm-founders h2 { margin: 0 0 4px; font-size: var(--sm-fs-lg); color: inherit; }
+.sm-founders p { margin: 0; color: var(--sm-on-dark-muted); }
+.sm-founders p strong { color: var(--sm-on-dark); }
+.sm-founders .sm-btn { grid-column: 1 / -1; justify-self: start; }
+@media (min-width: 768px) { .sm-founders { grid-template-columns: auto minmax(0, 1fr) auto; } .sm-founders .sm-btn { grid-column: auto; } }
+
+/* Plan in force */
+.sm-subnow__head, .sm-order__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--sm-s3); margin-block-end: var(--sm-s4); }
+.sm-subnow__kicker { margin: 0; font-size: var(--sm-fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--sm-muted); }
+[dir="rtl"] .sm-subnow__kicker { text-transform: none; letter-spacing: 0; }
+.sm-subnow__name { margin: 2px 0 0; font-size: var(--sm-fs-xl); display: flex; flex-wrap: wrap; align-items: center; gap: var(--sm-s2); }
+.sm-subnow__end { margin: 0; color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+.sm-subnow__meters { display: grid; gap: 0 var(--sm-s5); }
+@media (min-width: 768px) { .sm-subnow__meters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.sm-meter.is-full .sm-meter__bar span { background: var(--sm-warn); }
+.sm-subnow__facts { list-style: none; margin: 0 0 var(--sm-s2); padding: 0; display: grid; gap: var(--sm-s2); font-size: var(--sm-fs-sm); }
+.sm-subnow__facts li { display: flex; gap: var(--sm-s2); align-items: flex-start; }
+.sm-subnow__facts .sm-icon { flex: none; margin-block-start: 2px; }
+.sm-section-block { margin-block: var(--sm-s5); }
+
+/* Order and payment */
+.sm-order__amount { text-align: end; }
+.sm-order__amount strong { display: block; font-size: var(--sm-fs-xl); font-variant-numeric: tabular-nums; }
+.sm-order__amount small { color: var(--sm-muted); }
+.sm-paydetails { display: grid; gap: var(--sm-s2); margin: var(--sm-s3) 0; }
+@media (min-width: 768px) { .sm-paydetails { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.sm-paydetails > div { padding: var(--sm-s3); border: 1px solid var(--sm-line); border-radius: var(--sm-radius); background: var(--sm-bg); }
+.sm-paydetails dt { font-size: var(--sm-fs-xs); font-weight: 700; color: var(--sm-muted); margin-block-end: 4px; }
+.sm-paydetails dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+.sm-copy { font-family: var(--sm-font-mono, ui-monospace, monospace); user-select: all; }
+.sm-order__cancel { margin-block-start: var(--sm-s3); }
+
+/* AI credits */
+.sm-credits__total { display: flex; align-items: baseline; gap: var(--sm-s2); margin-block-end: var(--sm-s3); }
+.sm-credits__total strong { font-size: clamp(2rem, 1.6rem + 1.4vw, 2.8rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.sm-credits__total span { color: var(--sm-muted); }
+.sm-packs { display: grid; gap: var(--sm-s3); grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+.sm-pack { display: grid; gap: var(--sm-s2); padding: var(--sm-s4); border: 1px solid var(--sm-line); border-radius: var(--sm-radius-lg); background: var(--sm-surface); }
+.sm-pack p { margin: 0; }
+.sm-pack__credits strong { font-size: var(--sm-fs-xl); }
+.sm-pack__price { color: var(--sm-muted); font-weight: 600; }
+.sm-pack form { margin: 0; }
+
+/* Listing options and badges */
+.smp-row__boost { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: var(--sm-s2); padding-block-start: var(--sm-s2); border-block-start: 1px dashed var(--sm-line); }
+.smp-row__boost-label { font-size: var(--sm-fs-sm); color: var(--sm-muted); }
+.smp-row__boost form { margin: 0; }
+.smp-status--paused { background: var(--sm-warn-soft); color: #78350F; }
+.smp-status--featured { background: #FEF3C7; color: #92400E; }
+.smp-status--urgent { background: #FEE2E2; color: #991B1B; }
+.sm-card__chips { position: absolute; inset-block-start: var(--sm-s3); inset-inline-start: var(--sm-s3); display: flex; flex-wrap: wrap; gap: 6px; }
+.sm-card__chips:empty { display: none; }
+.sm-card__chips .sm-chip--featured { position: static; }
+.sm-chip--urgent { background: #DC2626; color: #fff; }
+
+/* Contacts hidden on the public page */
+.smc-contact__hidden { display: flex; gap: var(--sm-s2); align-items: flex-start; margin: 0 0 var(--sm-s3); padding: var(--sm-s2) var(--sm-s3); border-radius: var(--sm-radius); background: var(--sm-bg); color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+.smc-contact__hidden .sm-icon { flex: none; margin-block-start: 2px; }
+
+/* Invoice */
+.sm-invoice-tools { display: flex; justify-content: space-between; align-items: center; gap: var(--sm-s3); margin-block-end: var(--sm-s4); }
+.sm-invoice { max-inline-size: 820px; padding: clamp(20px, 4vw, 48px); background: #fff; color: #111820; border: 1px solid var(--sm-line); border-radius: var(--sm-radius-lg); }
+.sm-invoice p { margin: 0 0 2px; }
+.sm-invoice__head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--sm-s4); padding-block-end: var(--sm-s4); border-block-end: 2px solid #111820; }
+.sm-invoice__brand { font-family: var(--sm-font-display, inherit); font-size: var(--sm-fs-xl); font-weight: 700; }
+.sm-invoice__legal { font-size: var(--sm-fs-xs); color: #5B6670; }
+.sm-invoice__meta h2 { margin: 0 0 var(--sm-s2); font-size: var(--sm-fs-xl); text-transform: uppercase; letter-spacing: .08em; }
+[dir="rtl"] .sm-invoice__meta h2 { text-transform: none; letter-spacing: 0; }
+.sm-invoice__meta p { display: flex; justify-content: space-between; gap: var(--sm-s4); font-size: var(--sm-fs-sm); }
+.sm-invoice__meta span { color: #5B6670; }
+.sm-invoice__buyer { margin-block: var(--sm-s4); }
+.sm-invoice__buyer h3 { margin: 0 0 4px; font-size: var(--sm-fs-xs); text-transform: uppercase; letter-spacing: .06em; color: #5B6670; }
+.sm-invoice .sm-table { color: inherit; }
+.sm-invoice__total th, .sm-invoice__total td { font-size: var(--sm-fs-lg); }
+.sm-invoice__foot { margin-block-start: var(--sm-s4); font-size: var(--sm-fs-sm); color: #5B6670; }
+
+@media print {
+	.sm-dash__side, .sm-dash__top, .sm-dash__head, .sm-dash__tabs, .sm-invoice-tools, .sm-header, .sm-footer, .sm-tabbar, .sm-toast, .sm-notice, .sm-dash__scrim { display: none !important; }
+	.sm-is-account .sm-main, .sm-dash, .sm-dash__main, .sm-dash__view { background: #fff !important; padding: 0 !important; margin: 0 !important; display: block !important; }
+	.sm-invoice { border: 0; max-inline-size: none; padding: 0; }
+}

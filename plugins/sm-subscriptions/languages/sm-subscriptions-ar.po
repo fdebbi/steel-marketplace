@@ -1,0 +1,797 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Subscriptions 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-subscriptions\n"
+
+#. Plugin Name of the plugin
+#: sm-subscriptions.php
+msgid "SM Subscriptions"
+msgstr "SM Subscriptions"
+
+#. Plugin URI of the plugin
+#: sm-subscriptions.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-subscriptions.php
+msgid ""
+"Plans of companies and professionals (limits on listings, tonnage, "
+"buildings, service pages, completed projects, quotation answers, AI credits,"
+" visible contacts, featured), AI credit packs and paid listing options. "
+"Payment outside the site (transfer, CCP, BaridiMob, cheque) with proof of "
+"payment, activated by the platform team, with an invoice. Founding members "
+"offer. Requires SM Core."
+msgstr ""
+"اشتراكات المؤسسات والمهنيين (حدود الإعلانات والحمولة والبنايات وصفحات "
+"الخدمات والإنجازات والردود على طلبات الأسعار ورصيد الذكاء الاصطناعي وظهور "
+"بيانات الاتصال والإبراز)، وباقات رصيد الذكاء الاصطناعي وخيارات الإعلانات "
+"المدفوعة. الدفع خارج الموقع (تحويل، CCP، بريدي موب، صك) مع إثبات الدفع، "
+"يفعّله فريق المنصة مع فاتورة. عرض الأعضاء المؤسسين. يتطلب SM Core."
+
+#. Author of the plugin
+#: sm-subscriptions.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-subscriptions.php:48
+msgid "SM Subscriptions needs the SM Core plugin. Activate it first."
+msgstr "تحتاج SM Subscriptions إلى إضافة SM Core. فعّلها أولا."
+
+#: src/Admin/Admin.php:36 src/Admin/Admin.php:83
+msgid "Subscriptions"
+msgstr "الاشتراكات"
+
+#: src/Admin/Admin.php:78
+msgid "Orders and payments"
+msgstr "الطلبات والمدفوعات"
+
+#: src/Admin/Admin.php:79
+msgid "Plans in force"
+msgstr "الاشتراكات السارية"
+
+#: src/Admin/Admin.php:80
+msgid "Prices and limits"
+msgstr "الأسعار والحدود"
+
+#: src/Admin/Admin.php:81
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: src/Admin/Admin.php:86
+msgid "Saved."
+msgstr "تم الحفظ."
+
+#: src/Admin/Admin.php:120
+msgid "All"
+msgstr "الكل"
+
+#: src/Admin/Admin.php:123
+msgid "Order"
+msgstr "الطلب"
+
+#. translators: 1: founding members, 2: places left.
+#: src/Admin/Admin.php:123 src/Admin/Admin.php:154 src/Admin/Admin.php:215
+msgid "Account"
+msgstr "الحساب"
+
+#: src/Admin/Admin.php:123 src/Admin/Admin.php:155
+msgid "Item"
+msgstr "البند"
+
+#: src/Admin/Admin.php:123
+msgid "Amount"
+msgstr "المبلغ"
+
+#: src/Admin/Admin.php:123
+msgid "Status"
+msgstr "الحالة"
+
+#: src/Admin/Admin.php:123
+msgid "Date"
+msgstr "التاريخ"
+
+#: src/Admin/Admin.php:139
+msgid "No order yet."
+msgstr "لا توجد طلبات بعد."
+
+#: src/Admin/Admin.php:147 src/Admin/Admin.php:192
+msgid "Order not found."
+msgstr "الطلب غير موجود."
+
+#: src/Admin/Admin.php:151
+msgid "All orders"
+msgstr "كل الطلبات"
+
+#: src/Admin/Admin.php:156
+msgid "Amount, tax included"
+msgstr "المبلغ شامل الرسوم"
+
+#: src/Admin/Admin.php:157 src/Admin/Admin.php:176
+msgid "Payment method"
+msgstr "طريقة الدفع"
+
+#: src/Admin/Admin.php:158
+msgid "Ordered on"
+msgstr "تاريخ الطلب"
+
+#: src/Admin/Admin.php:159
+msgid "Proof sent on"
+msgstr "تاريخ إرسال الإثبات"
+
+#: src/Admin/Admin.php:160
+msgid "Note of the customer"
+msgstr "ملاحظة الزبون"
+
+#: src/Admin/Admin.php:161
+msgid "Invoice"
+msgstr "الفاتورة"
+
+#: src/Admin/Admin.php:168
+msgid "Open the proof of payment"
+msgstr "فتح إثبات الدفع"
+
+#: src/Admin/Admin.php:172
+msgid "Decision"
+msgstr "القرار"
+
+#: src/Admin/Admin.php:175
+msgid ""
+"Check that the amount reached the account of the platform before confirming."
+" Confirming gives the plan, the credits or the option at once and issues the"
+" invoice."
+msgstr ""
+"تحقق من وصول المبلغ إلى حساب المنصة قبل التأكيد. التأكيد يمنح الاشتراك أو "
+"الرصيد أو الخيار فورا ويصدر الفاتورة."
+
+#: src/Admin/Admin.php:181
+msgid "Payment received: confirm"
+msgstr "تم استلام الدفع: تأكيد"
+
+#: src/Admin/Admin.php:182
+msgid "Reason (sent to the customer)"
+msgstr "السبب (يُرسل إلى الزبون)"
+
+#: src/Admin/Admin.php:183
+msgid "Payment not received: refuse"
+msgstr "لم يصل الدفع: رفض"
+
+#: src/Admin/Admin.php:204
+msgid "Give the reason of the refusal."
+msgstr "اذكر سبب الرفض."
+
+#. translators: 1: founding members, 2: places left.
+#: src/Admin/Admin.php:214
+msgid "Founding members: %1$d (places left: %2$d)."
+msgstr "الأعضاء المؤسسون: %1$d (الأماكن المتبقية: %2$d)."
+
+#. translators: 1: founding members, 2: places left.
+#: src/Admin/Admin.php:215 src/Admin/Admin.php:228
+msgid "Plan"
+msgstr "الاشتراك"
+
+#. translators: 1: founding members, 2: places left.
+#: src/Admin/Admin.php:215
+msgid "Until"
+msgstr "إلى غاية"
+
+#. translators: 1: founding members, 2: places left.
+#: src/Admin/Admin.php:215 src/Admin/Admin.php:234
+msgid "Note"
+msgstr "ملاحظة"
+
+#: src/Admin/Admin.php:219
+msgid "founding member"
+msgstr "عضو مؤسس"
+
+#: src/Admin/Admin.php:221
+msgid "Stop this plan now? What goes beyond the free plan will be paused."
+msgstr "إيقاف هذا الاشتراك الآن؟ ما يتجاوز الاشتراك المجاني سيُعلّق."
+
+#: src/Admin/Admin.php:221
+msgid "Stop"
+msgstr "إيقاف"
+
+#: src/Admin/Admin.php:224
+msgid "No paid plan in force."
+msgstr "لا يوجد اشتراك مدفوع ساري."
+
+#: src/Admin/Admin.php:226
+msgid "Give a plan by hand"
+msgstr "منح اشتراك يدويا"
+
+#: src/Admin/Admin.php:226
+msgid ""
+"For a payment received outside an order, a partner or a gift. The months are"
+" added to the plan in force when it is the same plan."
+msgstr ""
+"لدفع استُلم خارج طلب، أو لشريك أو هدية. تُضاف الأشهر إلى الاشتراك الساري إن "
+"كان الاشتراك نفسه."
+
+#: src/Admin/Admin.php:228
+msgid "Account number or e-mail of a member"
+msgstr "رقم الحساب أو البريد الإلكتروني لأحد الأعضاء"
+
+#: src/Admin/Admin.php:234
+msgid "Months"
+msgstr "الأشهر"
+
+#: src/Admin/Admin.php:235
+msgid "Give the plan"
+msgstr "منح الاشتراك"
+
+#: src/Admin/Admin.php:245
+msgid "Account not found, or this plan is not for its type of account."
+msgstr "الحساب غير موجود، أو هذا الاشتراك لا يناسب نوع حسابه."
+
+#: src/Admin/Admin.php:265
+msgid "Price per month (DA, tax incl.)"
+msgstr "السعر الشهري (دج شامل الرسوم)"
+
+#: src/Admin/Admin.php:266
+msgid "Price per year (DA, tax incl.)"
+msgstr "السعر السنوي (دج شامل الرسوم)"
+
+#: src/Admin/Admin.php:270
+msgid ""
+"Empty or -1 = no limit. Changes apply at once to every account of the plan; "
+"accounts over a lowered limit keep what is online but cannot add more."
+msgstr ""
+"فارغ أو ‎-1 = بلا حد. تطبّق التغييرات فورا على كل حسابات الاشتراك؛ الحسابات "
+"التي تتجاوز حدا مخفّضا تحتفظ بما هو منشور لكن لا يمكنها إضافة المزيد."
+
+#: src/Admin/Admin.php:284
+msgid "Yes, in rotation"
+msgstr "نعم، بالتناوب"
+
+#: src/Admin/Admin.php:312
+msgid "Invoicing identity of the platform"
+msgstr "هوية الفوترة للمنصة"
+
+#: src/Admin/Admin.php:313
+msgid "Legal name"
+msgstr "الاسم القانوني"
+
+#: src/Admin/Admin.php:314
+msgid "Trade register (RC)"
+msgstr "السجل التجاري (RC)"
+
+#: src/Admin/Admin.php:315
+msgid "Tax number (NIF)"
+msgstr "رقم التعريف الجبائي (NIF)"
+
+#: src/Admin/Admin.php:316
+msgid "Statistical number (NIS)"
+msgstr "رقم التعريف الإحصائي (NIS)"
+
+#: src/Admin/Admin.php:317
+msgid "Tax article (AI)"
+msgstr "مادة الضريبة (AI)"
+
+#: src/Admin/Admin.php:318
+msgid "Address"
+msgstr "العنوان"
+
+#: src/Admin/Admin.php:319
+msgid "TVA rate (%)"
+msgstr "نسبة الرسم على القيمة المضافة (%)"
+
+#: src/Admin/Admin.php:319
+msgid ""
+"Prices are tax included; the invoice shows the amount before tax and the "
+"TVA. 0 = no TVA on the invoice."
+msgstr ""
+"الأسعار شاملة الرسوم؛ تبيّن الفاتورة المبلغ دون رسوم والرسم على القيمة "
+"المضافة. 0 = بلا رسم في الفاتورة."
+
+#: src/Admin/Admin.php:320
+msgid "Payment details shown to customers"
+msgstr "بيانات الدفع المعروضة على الزبائن"
+
+#: src/Admin/Admin.php:320
+msgid "Methods offered"
+msgstr "الطرق المقترحة"
+
+#: src/Admin/Admin.php:325
+msgid "Bank"
+msgstr "البنك"
+
+#: src/Admin/Admin.php:326
+msgid "RIB (bank transfer)"
+msgstr "RIB (تحويل بنكي)"
+
+#: src/Admin/Admin.php:327
+msgid "CCP account and key"
+msgstr "حساب CCP والمفتاح"
+
+#: src/Admin/Admin.php:328
+msgid "RIP for BaridiMob"
+msgstr "RIP لبريدي موب"
+
+#: src/Admin/Admin.php:329
+msgid "Cheque to the order of"
+msgstr "صك لأمر"
+
+#: src/Admin/Admin.php:330
+msgid "Instructions"
+msgstr "التعليمات"
+
+#: src/Admin/Admin.php:330
+msgid "For example: write the order number in the reason of the transfer."
+msgstr "مثلا: اكتب رقم الطلب في سبب التحويل."
+
+#: src/Admin/Admin.php:331
+msgid "Founding members"
+msgstr "الأعضاء المؤسسون"
+
+#: src/Admin/Admin.php:332
+msgid "Offer active"
+msgstr "العرض مفعّل"
+
+#: src/Admin/Admin.php:332
+msgid "Give a paid plan free to the first verified accounts"
+msgstr "منح اشتراك مدفوع مجانا لأوائل الحسابات الموثقة"
+
+#: src/Admin/Admin.php:333
+msgid "Places"
+msgstr "الأماكن"
+
+#: src/Admin/Admin.php:334
+msgid "Free months"
+msgstr "الأشهر المجانية"
+
+#: src/Admin/Admin.php:335
+msgid "Verification level required"
+msgstr "مستوى التوثيق المطلوب"
+
+#: src/Admin/Admin.php:335
+msgid "1 = code confirmed, 2 = documents checked."
+msgstr "1 = تأكيد الرمز، 2 = التحقق من الوثائق."
+
+#. translators: %s: type of account.
+#: src/Admin/Admin.php:337
+msgid "Plan given (%s)"
+msgstr "الاشتراك الممنوح (%s)"
+
+#: src/Admin/Admin.php:343
+msgid "AI credit packs and listing options"
+msgstr "باقات رصيد الذكاء الاصطناعي وخيارات الإعلانات"
+
+#. translators: %d: pack number.
+#: src/Admin/Admin.php:347
+msgid "Pack %d"
+msgstr "الباقة %d"
+
+#. translators: %d: pack number.
+#: src/Admin/Admin.php:347
+msgid "credits for"
+msgstr "رصيد مقابل"
+
+#: src/Admin/Admin.php:349
+msgid "Back to the top (DA)"
+msgstr "الرجوع إلى الأعلى (دج)"
+
+#: src/Admin/Admin.php:350
+msgid "\"Urgent\" badge (DA)"
+msgstr "شارة «عاجل» (دج)"
+
+#: src/Admin/Admin.php:351
+msgid "\"Urgent\" badge (days)"
+msgstr "شارة «عاجل» (أيام)"
+
+#: src/Admin/Admin.php:352
+msgid "Featured listing (DA)"
+msgstr "إعلان مميز (دج)"
+
+#: src/Admin/Admin.php:353
+msgid "Featured listing (days)"
+msgstr "إعلان مميز (أيام)"
+
+#: src/Admin/Admin.php:354
+msgid "Reminder before the end of a plan (days)"
+msgstr "تذكير قبل نهاية الاشتراك (أيام)"
+
+#: src/Form.php:58
+msgid "Only the owner or a manager of the account can order."
+msgstr "يمكن لمالك الحساب أو مسيّره فقط تقديم الطلب."
+
+#: src/Form.php:62
+msgid "Your type of account has no plan. You can buy AI credits."
+msgstr "نوع حسابك ليس له اشتراك. يمكنك شراء رصيد الذكاء الاصطناعي."
+
+#: src/Form.php:74
+msgid ""
+"Order created. Pay with one of the methods below, then send the proof of "
+"payment."
+msgstr "تم إنشاء الطلب. ادفع بإحدى الطرق أدناه، ثم أرسل إثبات الدفع."
+
+#: src/Form.php:81
+msgid "This order cannot receive a proof of payment."
+msgstr "لا يمكن إرسال إثبات دفع لهذا الطلب."
+
+#: src/Form.php:86
+msgid "Choose how you paid."
+msgstr "اختر طريقة دفعك."
+
+#: src/Form.php:96
+msgid ""
+"Thank you. The platform team checks your payment, usually within one working"
+" day, and you are told by e-mail."
+msgstr ""
+"شكرا. يتحقق فريق المنصة من دفعك خلال يوم عمل عادة، ويتم إعلامك بالبريد "
+"الإلكتروني."
+
+#: src/Form.php:103
+msgid "This order cannot be cancelled."
+msgstr "لا يمكن إلغاء هذا الطلب."
+
+#: src/Form.php:106
+msgid "Order cancelled."
+msgstr "تم إلغاء الطلب."
+
+#: src/Limits.php:47
+msgid "Choose a higher plan in your account (Plan) or take a listing offline."
+msgstr "اختر اشتراكا أعلى من حسابك (الاشتراك) أو اسحب إعلانا."
+
+#. translators: 1: plan name, 2: number of buildings, 3: hint.
+#: src/Limits.php:62
+msgid "Your plan %1$s allows %2$d building online. %3$s"
+msgid_plural "Your plan %1$s allows %2$d buildings online. %3$s"
+msgstr[0] "يسمح اشتراكك %1$s بـ %2$d بناية منشورة. %3$s"
+msgstr[1] "يسمح اشتراكك %1$s بـ %2$d بناية منشورة. %3$s"
+msgstr[2] "يسمح اشتراكك %1$s بـ %2$d بناية منشورة. %3$s"
+msgstr[3] "يسمح اشتراكك %1$s بـ %2$d بناية منشورة. %3$s"
+msgstr[4] "يسمح اشتراكك %1$s بـ %2$d بناية منشورة. %3$s"
+msgstr[5] "يسمح اشتراكك %1$s بـ %2$d بناية منشورة. %3$s"
+
+#. translators: 1: plan name, 2: number of listings, 3: hint.
+#: src/Limits.php:68
+msgid "Your plan %1$s allows %2$d listing online. %3$s"
+msgid_plural "Your plan %1$s allows %2$d listings online. %3$s"
+msgstr[0] "يسمح اشتراكك %1$s بـ %2$d إعلان منشور. %3$s"
+msgstr[1] "يسمح اشتراكك %1$s بـ %2$d إعلان منشور. %3$s"
+msgstr[2] "يسمح اشتراكك %1$s بـ %2$d إعلان منشور. %3$s"
+msgstr[3] "يسمح اشتراكك %1$s بـ %2$d إعلان منشور. %3$s"
+msgstr[4] "يسمح اشتراكك %1$s بـ %2$d إعلان منشور. %3$s"
+msgstr[5] "يسمح اشتراكك %1$s بـ %2$d إعلان منشور. %3$s"
+
+#. translators: 1: plan name, 2: tonnes allowed, 3: tonnes already online, 4:
+#. hint.
+#: src/Limits.php:73
+msgid ""
+"Your plan %1$s allows %2$s t of steel online in total; you already have %3$s"
+" t online. %4$s"
+msgstr ""
+"يسمح اشتراكك %1$s بـ %2$s طن من الفولاذ منشورة إجمالا؛ لديك %3$s طن منشورة. "
+"%4$s"
+
+#. translators: 1: number of pages, 2: hint.
+#: src/Limits.php:87
+msgid "Your plan allows %1$d service page. %2$s"
+msgid_plural "Your plan allows %1$d service pages. %2$s"
+msgstr[0] "يسمح اشتراكك بـ %1$d صفحة خدمات. %2$s"
+msgstr[1] "يسمح اشتراكك بـ %1$d صفحة خدمات. %2$s"
+msgstr[2] "يسمح اشتراكك بـ %1$d صفحة خدمات. %2$s"
+msgstr[3] "يسمح اشتراكك بـ %1$d صفحة خدمات. %2$s"
+msgstr[4] "يسمح اشتراكك بـ %1$d صفحة خدمات. %2$s"
+msgstr[5] "يسمح اشتراكك بـ %1$d صفحة خدمات. %2$s"
+
+#. translators: 1: number of pages, 2: hint.
+#. translators: 1: number of projects, 2: hint.
+#: src/Limits.php:87 src/Limits.php:96
+msgid "Choose a higher plan in your account (Plan)."
+msgstr "اختر اشتراكا أعلى من حسابك (الاشتراك)."
+
+#. translators: 1: number of projects, 2: hint.
+#: src/Limits.php:96
+msgid "Your plan allows %1$d completed project. %2$s"
+msgid_plural "Your plan allows %1$d completed projects. %2$s"
+msgstr[0] "يسمح اشتراكك بـ %1$d إنجاز. %2$s"
+msgstr[1] "يسمح اشتراكك بـ %1$d إنجاز. %2$s"
+msgstr[2] "يسمح اشتراكك بـ %1$d إنجاز. %2$s"
+msgstr[3] "يسمح اشتراكك بـ %1$d إنجاز. %2$s"
+msgstr[4] "يسمح اشتراكك بـ %1$d إنجاز. %2$s"
+msgstr[5] "يسمح اشتراكك بـ %1$d إنجاز. %2$s"
+
+#. translators: 1: number of answers, 2: hint.
+#: src/Limits.php:105
+msgid "Your plan allows %1$d answer to requests for quotation per month. %2$s"
+msgid_plural ""
+"Your plan allows %1$d answers to requests for quotation per month. %2$s"
+msgstr[0] "يسمح اشتراكك بـ %1$d رد على طلبات الأسعار شهريا. %2$s"
+msgstr[1] "يسمح اشتراكك بـ %1$d رد على طلبات الأسعار شهريا. %2$s"
+msgstr[2] "يسمح اشتراكك بـ %1$d رد على طلبات الأسعار شهريا. %2$s"
+msgstr[3] "يسمح اشتراكك بـ %1$d رد على طلبات الأسعار شهريا. %2$s"
+msgstr[4] "يسمح اشتراكك بـ %1$d رد على طلبات الأسعار شهريا. %2$s"
+msgstr[5] "يسمح اشتراكك بـ %1$d رد على طلبات الأسعار شهريا. %2$s"
+
+#. translators: 1: number of answers, 2: hint.
+#: src/Limits.php:105
+msgid "Choose a higher plan in your account (Plan) to answer without limit."
+msgstr "اختر اشتراكا أعلى من حسابك (الاشتراك) للرد بلا حدود."
+
+#: src/Limits.php:116
+msgid ""
+"You used all your AI credits. Buy a pack of credits in AI assistant → AI "
+"credits."
+msgstr ""
+"استهلكت كل رصيد الذكاء الاصطناعي. اشترِ باقة من المساعد الذكي ← رصيد الذكاء "
+"الاصطناعي."
+
+#. translators: %d: number of listings or service pages.
+#: src/Notifications.php:31
+msgid ""
+"%d listing or service page went beyond your plan and was paused. Nothing was"
+" deleted: choose a plan or publish it again when there is room."
+msgid_plural ""
+"%d listings or service pages went beyond your plan and were paused. Nothing "
+"was deleted: choose a plan or publish them again when there is room."
+msgstr[0] ""
+"تجاوز %d إعلان أو صفحة خدمات حدود اشتراكك فعُلّق. لم يُحذف شيء: اختر اشتراكا"
+" أو أعد النشر عند توفر المجال."
+msgstr[1] ""
+"تجاوز %d إعلان أو صفحة خدمات حدود اشتراكك فعُلّق. لم يُحذف شيء: اختر اشتراكا"
+" أو أعد النشر عند توفر المجال."
+msgstr[2] ""
+"تجاوز %d إعلان أو صفحة خدمات حدود اشتراكك فعُلّق. لم يُحذف شيء: اختر اشتراكا"
+" أو أعد النشر عند توفر المجال."
+msgstr[3] ""
+"تجاوز %d إعلان أو صفحة خدمات حدود اشتراكك فعُلّق. لم يُحذف شيء: اختر اشتراكا"
+" أو أعد النشر عند توفر المجال."
+msgstr[4] ""
+"تجاوز %d إعلان أو صفحة خدمات حدود اشتراكك فعُلّق. لم يُحذف شيء: اختر اشتراكا"
+" أو أعد النشر عند توفر المجال."
+msgstr[5] ""
+"تجاوز %d إعلان أو صفحة خدمات حدود اشتراكك فعُلّق. لم يُحذف شيء: اختر اشتراكا"
+" أو أعد النشر عند توفر المجال."
+
+#: src/Notifications.php:47
+msgid "Proof of payment to check"
+msgstr "إثبات دفع للتحقق"
+
+#. translators: %s: order reference and label.
+#: src/Notifications.php:49
+msgid "A proof of payment was sent for %s. Check it and confirm the payment."
+msgstr "أُرسل إثبات دفع لـ %s. تحقق منه وأكّد الدفع."
+
+#: src/Notifications.php:54
+msgid "Payment confirmed"
+msgstr "تم تأكيد الدفع"
+
+#. translators: %s: order reference and label.
+#: src/Notifications.php:56
+msgid "Your payment for %s is confirmed. Your invoice is in your account."
+msgstr "تم تأكيد دفعك لـ %s. فاتورتك في حسابك."
+
+#: src/Notifications.php:60 src/Orders.php:250
+msgid "Payment not accepted"
+msgstr "لم يُقبل الدفع"
+
+#. translators: 1: order reference and label, 2: reason.
+#: src/Notifications.php:62
+msgid "Your payment for %1$s could not be confirmed. Reason: %2$s"
+msgstr "تعذر تأكيد دفعك لـ %1$s. السبب: %2$s"
+
+#: src/Notifications.php:66
+msgid "Your plan ends soon"
+msgstr "اشتراكك ينتهي قريبا"
+
+#. translators: 1: plan name, 2: date.
+#: src/Notifications.php:68
+msgid ""
+"Your plan %1$s ends on %2$s. Renew it to keep your limits; otherwise what "
+"goes beyond the free plan will be paused."
+msgstr ""
+"ينتهي اشتراكك %1$s في %2$s. جدّده للاحتفاظ بحدودك؛ وإلا سيُعلّق ما يتجاوز "
+"الاشتراك المجاني."
+
+#: src/Notifications.php:72
+msgid "Your plan has ended"
+msgstr "انتهى اشتراكك"
+
+#. translators: %s: plan name.
+#: src/Notifications.php:74
+msgid "Your plan %s has ended. Your account is back on the free plan."
+msgstr "انتهى اشتراكك %s. عاد حسابك إلى الاشتراك المجاني."
+
+#: src/Notifications.php:78
+msgid "Some listings were paused"
+msgstr "تم تعليق بعض الإعلانات"
+
+#: src/Notifications.php:83
+msgid "Welcome, founding member"
+msgstr "مرحبا بك، أيها العضو المؤسس"
+
+#. translators: 1: plan name, 2: number of months.
+#: src/Notifications.php:85
+msgid ""
+"Thank you for joining early: your account gets the plan %1$s free for %2$d "
+"months, and you will keep its price afterwards."
+msgstr ""
+"شكرا لانضمامك مبكرا: يحصل حسابك على اشتراك %1$s مجانا لمدة %2$d أشهر، "
+"وستحتفظ بسعره بعد ذلك."
+
+#: src/Orders.php:50
+msgid "This plan cannot be ordered."
+msgstr "لا يمكن طلب هذا الاشتراك."
+
+#. translators: 1: plan name, 2: "1 month" or "1 year".
+#: src/Orders.php:59
+msgid "Plan %1$s — %2$s"
+msgstr "اشتراك %1$s — %2$s"
+
+#. translators: 1: plan name, 2: "1 month" or "1 year".
+#: src/Orders.php:59
+msgid "1 month"
+msgstr "شهر واحد"
+
+#. translators: 1: plan name, 2: "1 month" or "1 year".
+#: src/Orders.php:59
+msgid "1 year"
+msgstr "سنة واحدة"
+
+#. translators: %d: number of AI credits.
+#: src/Orders.php:68
+msgid "%d AI credits"
+msgstr "%d رصيد ذكاء اصطناعي"
+
+#: src/Orders.php:71
+msgid "This credit pack does not exist."
+msgstr "باقة الرصيد هذه غير موجودة."
+
+#: src/Orders.php:76
+msgid "Options are for your listings online."
+msgstr "الخيارات مخصصة لإعلاناتك المنشورة."
+
+#. translators: %s: listing title.
+#: src/Orders.php:81
+msgid "Back to the top: %s"
+msgstr "الرجوع إلى الأعلى: %s"
+
+#. translators: 1: listing title, 2: number of days.
+#: src/Orders.php:83
+msgid "\"Urgent\" badge, %2$d days: %1$s"
+msgstr "شارة «عاجل»، %2$d أيام: %1$s"
+
+#. translators: 1: listing title, 2: number of days.
+#: src/Orders.php:85
+msgid "Featured listing, %2$d days: %1$s"
+msgstr "إعلان مميز، %2$d أيام: %1$s"
+
+#: src/Orders.php:88
+msgid "This option is not offered."
+msgstr "هذا الخيار غير متاح."
+
+#: src/Orders.php:92
+msgid "Unknown order."
+msgstr "طلب غير معروف."
+
+#: src/Orders.php:166
+msgid "This order is already closed."
+msgstr "هذا الطلب مغلق بالفعل."
+
+#: src/Orders.php:170
+msgid "The account of this order no longer exists."
+msgstr "حساب هذا الطلب لم يعد موجودا."
+
+#: src/Orders.php:247
+msgid "Waiting for payment"
+msgstr "في انتظار الدفع"
+
+#: src/Orders.php:248
+msgid "Payment being checked"
+msgstr "الدفع قيد التحقق"
+
+#: src/Orders.php:249
+msgid "Paid"
+msgstr "مدفوع"
+
+#: src/Orders.php:251
+msgid "Cancelled"
+msgstr "ملغى"
+
+#: src/Plans.php:48
+msgid "Discovery"
+msgstr "اكتشاف"
+
+#: src/Plans.php:49
+msgid "Pro"
+msgstr "احترافي"
+
+#: src/Plans.php:50
+msgid "Business"
+msgstr "أعمال"
+
+#: src/Plans.php:51
+msgid "Artisan Pro"
+msgstr "حرفي احترافي"
+
+#: src/Plans.php:52
+msgid "Artisan Premium"
+msgstr "حرفي مميز"
+
+#: src/Plans.php:58
+msgid "Free"
+msgstr "مجاني"
+
+#: src/Plans.php:121
+msgid "Listings online"
+msgstr "الإعلانات المنشورة"
+
+#: src/Plans.php:122
+msgid "Total weight online"
+msgstr "الوزن الإجمالي المنشور"
+
+#: src/Plans.php:123
+msgid "Buildings online"
+msgstr "البنايات المنشورة"
+
+#: src/Plans.php:124
+msgid "Service pages"
+msgstr "صفحات الخدمات"
+
+#: src/Plans.php:125
+msgid "Completed projects"
+msgstr "الإنجازات"
+
+#: src/Plans.php:126
+msgid "Answers to requests for quotation per month"
+msgstr "الردود على طلبات الأسعار شهريا"
+
+#: src/Plans.php:127
+msgid "AI credits per month"
+msgstr "رصيد الذكاء الاصطناعي شهريا"
+
+#: src/Plans.php:128
+msgid "Phone, e-mail, WhatsApp and website visible"
+msgstr "الهاتف والبريد وواتساب والموقع ظاهرة"
+
+#: src/Plans.php:129
+msgid "Featured on the home page"
+msgstr "الإبراز في الصفحة الرئيسية"
+
+#: src/Proofs.php:52
+msgid "Add the receipt, the transfer slip or a screenshot of the payment."
+msgstr "أضف الوصل أو أمر التحويل أو لقطة شاشة للدفع."
+
+#: src/Proofs.php:54
+msgid "The proof must be a PDF, JPG, PNG or WebP file under 10 MB."
+msgstr "يجب أن يكون الإثبات ملف PDF أو JPG أو PNG أو WebP أقل من 10 ميغابايت."
+
+#: src/Proofs.php:68
+msgid "The file could not be saved. Try again."
+msgstr "تعذر حفظ الملف. أعد المحاولة."
+
+#: src/Proofs.php:94
+msgid "Link expired."
+msgstr "انتهت صلاحية الرابط."
+
+#: src/Proofs.php:99 src/Proofs.php:107
+msgid "Document not found."
+msgstr "الوثيقة غير موجودة."
+
+#: src/Proofs.php:102
+msgid "You are not allowed to view this document."
+msgstr "لا يحق لك الاطلاع على هذه الوثيقة."
+
+#: src/Settings.php:66
+msgid "Bank transfer"
+msgstr "تحويل بنكي"
+
+#: src/Settings.php:67
+msgid "CCP payment"
+msgstr "دفع عبر CCP"
+
+#: src/Settings.php:68
+msgid "BaridiMob"
+msgstr "بريدي موب"
+
+#: src/Settings.php:69
+msgid "Cheque"
+msgstr "صك"

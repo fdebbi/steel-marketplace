@@ -75,14 +75,14 @@ msgid "Steel buildings"
 msgstr "Bâtiments métalliques"
 
 #: footer.php:25 inc/menus.php:47 template-parts/components/rfq-single.php:45
-#: template-parts/dashboard/rfq.php:19 templates/pricing.php:17
-#: templates/rfq-board.php:54 templates/rfq-board.php:57
+#: template-parts/dashboard/rfq.php:19 templates/rfq-board.php:54
+#: templates/rfq-board.php:57
 msgid "Requests for quotation"
 msgstr "Demandes de devis"
 
 #: footer.php:29 inc/menus.php:40
 #: template-parts/components/services-board.php:30
-#: templates/company-profile.php:64 templates/dashboard.php:121
+#: templates/company-profile.php:67 templates/dashboard.php:128
 msgid "Services"
 msgstr "Services"
 
@@ -101,7 +101,7 @@ msgstr "Ingénierie"
 
 #: footer.php:33 header.php:134 inc/menus.php:64
 #: template-parts/directory.php:35 template-parts/directory.php:36
-#: templates/company-profile.php:26 templates/company-profile.php:82
+#: templates/company-profile.php:26 templates/company-profile.php:85
 msgid "Company directory"
 msgstr "Annuaire des entreprises"
 
@@ -123,14 +123,14 @@ msgstr "Indice des prix"
 msgid "Platform"
 msgstr "Plateforme"
 
-#: footer.php:42 header.php:31 templates/pricing.php:25
-#: templates/pricing.php:26
+#: footer.php:42 header.php:31 template-parts/dashboard/plan.php:137
+#: templates/pricing.php:27 templates/pricing.php:28
 msgid "Plans"
 msgstr "Abonnements"
 
 #: footer.php:43 header.php:145 template-parts/components/enquiry-form.php:27
 #: template-parts/components/rfq-single.php:158 templates/auth-login.php:40
-#: templates/company-profile.php:324 templates/dashboard.php:47
+#: templates/company-profile.php:332 templates/dashboard.php:47
 #: templates/mission-request.php:41 templates/single-service.php:131
 msgid "Create an account"
 msgstr "Créer un compte"
@@ -177,7 +177,7 @@ msgstr "Publier"
 msgid "Enquiries"
 msgstr "Demandes"
 
-#: footer.php:66 templates/dashboard.php:80 templates/dashboard.php:141
+#: footer.php:66 templates/dashboard.php:87 templates/dashboard.php:148
 msgid "Account"
 msgstr "Compte"
 
@@ -218,18 +218,18 @@ msgstr "Tous les marchés"
 msgid "IPE 200, HEA, tube 100×50, hangar…"
 msgstr "IPE 200, HEA, tube 100×50, hangar…"
 
-#: header.php:60 templates/dashboard.php:114
+#: header.php:60 templates/dashboard.php:121
 msgid "Saved listings"
 msgstr "Annonces enregistrées"
 
 #: header.php:66 template-parts/dashboard/notifications.php:19
 #: template-parts/notif-panel.php:15 template-parts/notif-panel.php:17
-#: templates/dashboard.php:159
+#: templates/dashboard.php:166
 msgid "Notifications"
 msgstr "Notifications"
 
 #: header.php:72 header.php:141 templates/contact.php:64
-#: templates/dashboard.php:141
+#: templates/dashboard.php:148
 msgid "My account"
 msgstr "Mon compte"
 
@@ -240,16 +240,16 @@ msgstr "Administration"
 #: header.php:77 header.php:144 template-parts/components/enquiry-form.php:26
 #: template-parts/components/rfq-single.php:157 templates/auth-login.php:17
 #: templates/auth-login.php:39 templates/auth-register.php:101
-#: templates/company-profile.php:323 templates/engineer-apply.php:118
+#: templates/company-profile.php:331 templates/engineer-apply.php:118
 #: templates/mission-request.php:36 templates/single-service.php:130
 msgid "Sign in"
 msgstr "Se connecter"
 
-#: header.php:111 templates/dashboard.php:259
+#: header.php:111 templates/dashboard.php:268
 msgid "Menu"
 msgstr "Menu"
 
-#: header.php:114 inc/assets.php:38 templates/dashboard.php:228
+#: header.php:114 inc/assets.php:38 templates/dashboard.php:237
 msgid "Close menu"
 msgstr "Fermer le menu"
 
@@ -257,19 +257,19 @@ msgstr "Fermer le menu"
 msgid "View all listings"
 msgstr "Voir toutes les annonces"
 
-#: header.php:139 template-parts/components/my-products.php:47
-#: template-parts/components/my-products.php:51
-#: template-parts/dashboard/listings.php:25 templates/dashboard.php:149
-#: templates/dashboard.php:231 templates/front-page-template.php:27
+#: header.php:139 template-parts/components/my-products.php:52
+#: template-parts/components/my-products.php:56
+#: template-parts/dashboard/listings.php:25 templates/dashboard.php:156
+#: templates/dashboard.php:240 templates/front-page-template.php:27
 msgid "Publish a listing"
 msgstr "Publier une annonce"
 
-#: header.php:142 templates/dashboard.php:251 templates/engineer-apply.php:43
+#: header.php:142 templates/dashboard.php:260 templates/engineer-apply.php:43
 msgid "Sign out"
 msgstr "Se déconnecter"
 
 #: inc/assets.php:39 templates/auth-login.php:32
-#: templates/auth-register.php:92 templates/company-profile.php:236
+#: templates/auth-register.php:92 templates/company-profile.php:239
 #: templates/engineer-apply.php:82
 msgid "Show"
 msgstr "Afficher"
@@ -316,7 +316,7 @@ msgid "Undo"
 msgstr "Annuler"
 
 #: inc/assets.php:51 inc/template-tags.php:535 inc/template-tags.php:541
-#: template-parts/components/my-products.php:87
+#: template-parts/components/my-products.php:98
 #: template-parts/components/portfolio-grid.php:30
 #: template-parts/components/rfq-single.php:138
 #: template-parts/dashboard/listings.php:54
@@ -324,8 +324,8 @@ msgstr "Annuler"
 msgid "Delete"
 msgstr "Supprimer"
 
-#: inc/assets.php:52 templates/company-profile.php:282
-#: templates/company-profile.php:336
+#: inc/assets.php:52 templates/company-profile.php:290
+#: templates/company-profile.php:344
 msgid "Close"
 msgstr "Fermer"
 
@@ -668,7 +668,7 @@ msgid "Not verified"
 msgstr "Non vérifié"
 
 #: inc/template-tags.php:325 template-parts/components/card-featured.php:35
-#: template-parts/directory.php:107 templates/company-profile.php:95
+#: template-parts/directory.php:107 templates/company-profile.php:98
 msgid "Account verified"
 msgstr "Compte vérifié"
 
@@ -709,7 +709,7 @@ msgid "Breadcrumb"
 msgstr "Fil d’Ariane"
 
 #: inc/template-tags.php:417 template-parts/components/my-products.php:18
-#: template-parts/components/my-products.php:26
+#: template-parts/components/my-products.php:27
 #: template-parts/dashboard/services.php:24
 msgid "Waiting for review"
 msgstr "En attente de vérification"
@@ -731,7 +731,7 @@ msgid "Deadline passed"
 msgstr "Délai dépassé"
 
 #: inc/template-tags.php:422 template-parts/components/my-products.php:19
-#: template-parts/components/my-products.php:27
+#: template-parts/components/my-products.php:28
 #: template-parts/dashboard/services.php:26
 msgid "Changes requested"
 msgstr "Modifications demandées"
@@ -805,6 +805,18 @@ msgstr "Garder"
 #: inc/template-tags.php:539
 msgid "Replace"
 msgstr "Remplacer"
+
+#: inc/template-tags.php:559
+msgid "Yes"
+msgstr "Oui"
+
+#: inc/template-tags.php:559
+msgid "No"
+msgstr "Non"
+
+#: inc/template-tags.php:562
+msgid "Unlimited"
+msgstr "Illimité"
 
 #: index.php:21
 msgid "Nothing here yet"
@@ -1044,7 +1056,7 @@ msgstr "Ingénieur partenaire vérifié par la plateforme"
 #. translators: %d: years.
 #: template-parts/components/card-engineer.php:26
 #: template-parts/components/card-featured.php:40
-#: templates/company-profile.php:107 templates/single-service.php:80
+#: templates/company-profile.php:110 templates/single-service.php:80
 msgid "%d year of experience"
 msgid_plural "%d years of experience"
 msgstr[0] "%d an d’expérience"
@@ -1063,7 +1075,7 @@ msgstr "Indisponible pour le moment"
 
 #: template-parts/components/card-engineer.php:39
 #: template-parts/components/card-engineer.php:41
-#: template-parts/dashboard/studies.php:132 templates/dashboard.php:154
+#: template-parts/dashboard/studies.php:132 templates/dashboard.php:161
 #: templates/marketplace-engineers.php:36
 #: templates/marketplace-engineers.php:80 templates/mission-request.php:19
 msgid "Ask for a study"
@@ -1071,8 +1083,8 @@ msgstr "Demander une étude"
 
 #. translators: %d: years.
 #: template-parts/components/card-featured.php:41
-#: template-parts/directory.php:115 templates/company-profile.php:191
-#: templates/company-profile.php:255 templates/company-profile.php:279
+#: template-parts/directory.php:115 templates/company-profile.php:194
+#: templates/company-profile.php:263 templates/company-profile.php:287
 msgid "Request a quote"
 msgstr "Demander un devis"
 
@@ -1082,16 +1094,21 @@ msgstr "Demander un devis"
 msgid "See the profile"
 msgstr "Voir le profil"
 
-#: template-parts/components/card-listing.php:24
+#: template-parts/components/card-listing.php:25
 #: templates/front-page-template.php:189
 msgid "Featured"
 msgstr "À la une"
 
 #: template-parts/components/card-listing.php:28
+#: template-parts/components/card-listing.php:48
+msgid "Urgent"
+msgstr "Urgent"
+
+#: template-parts/components/card-listing.php:33
 msgid "Save listing"
 msgstr "Enregistrer l’annonce"
 
-#: template-parts/components/card-listing.php:34
+#: template-parts/components/card-listing.php:39
 #: template-parts/components/filter-panel.php:68
 #: template-parts/components/product-tech.php:354
 #: template-parts/dashboard/publish.php:112 templates/single-listing.php:49
@@ -1099,7 +1116,7 @@ msgstr "Enregistrer l’annonce"
 msgid "Assembled"
 msgstr "Monté"
 
-#: template-parts/components/card-listing.php:34
+#: template-parts/components/card-listing.php:39
 #: template-parts/components/filter-panel.php:69
 #: template-parts/components/product-tech.php:355
 #: template-parts/dashboard/publish.php:113 templates/single-listing.php:49
@@ -1108,26 +1125,26 @@ msgid "Dismantled"
 msgstr "Démonté"
 
 #. translators: 1: number of pieces, 2: longest length in metres.
-#: template-parts/components/card-listing.php:51
+#: template-parts/components/card-listing.php:56
 msgid "%1$s pcs · up to %2$s m"
 msgstr "%1$s pcs · jusqu’à %2$s m"
 
-#: template-parts/components/card-listing.php:67
+#: template-parts/components/card-listing.php:72
 #: template-parts/components/product-tech.php:458
 msgid "Whole lot only"
 msgstr "Lot complet uniquement"
 
-#: template-parts/components/card-listing.php:70
+#: template-parts/components/card-listing.php:75
 #: template-parts/components/rfq-compare.php:64
 msgid "Total"
 msgstr "Total"
 
 #. translators: %s: price.
-#: template-parts/components/card-listing.php:72
+#: template-parts/components/card-listing.php:77
 msgid "or %s for the whole lot"
 msgstr "ou %s le lot complet"
 
-#: template-parts/components/card-listing.php:85
+#: template-parts/components/card-listing.php:90
 #: templates/single-listing.php:171
 msgid "Private seller"
 msgstr "Particulier"
@@ -1163,14 +1180,14 @@ msgstr "Voir et répondre"
 #. translators: %d: days.
 #: template-parts/components/card-service.php:34
 #: template-parts/components/service-form.php:101
-#: templates/company-profile.php:56 templates/company-profile.php:185
+#: templates/company-profile.php:59 templates/company-profile.php:188
 #: templates/single-service.php:70
 msgid "All of Algeria"
 msgstr "Toute l’Algérie"
 
 #. translators: %d: number of wilayas.
 #: template-parts/components/card-service.php:34
-#: templates/company-profile.php:185
+#: templates/company-profile.php:188
 msgid "%d wilaya served"
 msgid_plural "%d wilayas served"
 msgstr[0] "%d wilaya desservie"
@@ -1260,7 +1277,7 @@ msgid "Full name"
 msgstr "Nom complet"
 
 #: template-parts/components/enquiry-form.php:42
-#: template-parts/dashboard/company.php:125 templates/company-profile.php:232
+#: template-parts/dashboard/company.php:125 templates/company-profile.php:235
 #: templates/contact.php:56
 msgid "Phone"
 msgstr "Téléphone"
@@ -1275,7 +1292,7 @@ msgid "Message"
 msgstr "Message"
 
 #: template-parts/components/enquiry-form.php:48
-#: templates/company-profile.php:316
+#: templates/company-profile.php:324
 msgid "Send the request"
 msgstr "Envoyer la demande"
 
@@ -1330,7 +1347,7 @@ msgid "State"
 msgstr "État du bâtiment"
 
 #: template-parts/components/filter-panel.php:67
-#: template-parts/components/my-products.php:41
+#: template-parts/components/my-products.php:46
 #: template-parts/components/service-requests-list.php:20
 #: template-parts/components/services-board.php:31
 #: template-parts/dashboard/listings.php:20
@@ -1489,7 +1506,7 @@ msgid "Send"
 msgstr "Envoyer"
 
 #: template-parts/components/my-products.php:17
-#: template-parts/components/my-products.php:25
+#: template-parts/components/my-products.php:26
 #: template-parts/dashboard/listings.php:21
 #: template-parts/dashboard/listings.php:50
 #: template-parts/dashboard/services.php:23 templates/styleguide.php:47
@@ -1502,42 +1519,57 @@ msgid "Drafts"
 msgstr "Brouillons"
 
 #: template-parts/components/my-products.php:21
-#: template-parts/components/my-products.php:29
+#: template-parts/components/my-products.php:30
 #: template-parts/dashboard/listings.php:23
 msgid "Sold"
 msgstr "Vendues"
 
 #. translators: %d: days.
 #: template-parts/components/my-products.php:22
-#: template-parts/components/my-products.php:30
+#: template-parts/components/my-products.php:31
 #: template-parts/dashboard/studies.php:57
 msgid "Expired"
 msgstr "Expirés"
 
-#: template-parts/components/my-products.php:28
+#: template-parts/components/my-products.php:23
+#: template-parts/components/my-products.php:32
+msgid "Paused (plan)"
+msgstr "En pause (formule)"
+
+#: template-parts/components/my-products.php:29
 msgid "Draft"
 msgstr "Brouillon"
 
-#: template-parts/components/my-products.php:40
+#: template-parts/components/my-products.php:45
 #: template-parts/components/service-requests-list.php:28
 #: template-parts/dashboard/rfq.php:28
 msgid "Filter by status"
 msgstr "Filtrer par statut"
 
-#: template-parts/components/my-products.php:51
+#: template-parts/components/my-products.php:56
 msgid "No product here yet"
 msgstr "Aucun produit pour le moment"
 
-#: template-parts/components/my-products.php:51
+#: template-parts/components/my-products.php:56
 msgid "Publish your first product: profiles, tubes, plates, roofing…"
 msgstr "Publiez votre premier produit : profilés, tubes, tôles, toiture…"
 
-#: template-parts/components/my-products.php:64
+#: template-parts/components/my-products.php:69
 #: template-parts/dashboard/services.php:51
 msgid "Changes being checked"
 msgstr "Modification en vérification"
 
+#. translators: %s: date.
 #: template-parts/components/my-products.php:76
+msgid "Featured until %s"
+msgstr "À la une jusqu’au %s"
+
+#. translators: %s: date.
+#: template-parts/components/my-products.php:79
+msgid "Urgent until %s"
+msgstr "Urgent jusqu’au %s"
+
+#: template-parts/components/my-products.php:87
 #: template-parts/components/portfolio-grid.php:27
 #: template-parts/components/rfq-single.php:127
 #: template-parts/dashboard/listings.php:52
@@ -1546,22 +1578,168 @@ msgstr "Modification en vérification"
 msgid "Edit"
 msgstr "Modifier"
 
-#: template-parts/components/my-products.php:79
+#: template-parts/components/my-products.php:90
 msgid "Mark as sold"
 msgstr "Marquer vendu"
 
-#: template-parts/components/my-products.php:80
-#: template-parts/components/my-products.php:84
+#: template-parts/components/my-products.php:91
+#: template-parts/components/my-products.php:95
 msgid "Withdraw"
 msgstr "Retirer"
 
-#: template-parts/components/my-products.php:82
+#: template-parts/components/my-products.php:93
 msgid "Publish again"
 msgstr "Republier"
 
-#: template-parts/components/my-products.php:87
+#: template-parts/components/my-products.php:98
 msgid "Delete this product for good?"
 msgstr "Supprimer définitivement ce produit ?"
+
+#: template-parts/components/my-products.php:104
+msgid "More visibility:"
+msgstr "Plus de visibilité :"
+
+#: template-parts/components/my-products.php:107
+msgid "Back to the top"
+msgstr "Remonter en tête"
+
+#. translators: %d: days.
+#: template-parts/components/my-products.php:109
+msgid "Urgent badge, %d days"
+msgstr "Badge Urgent, %d jours"
+
+#. translators: %d: days.
+#: template-parts/components/my-products.php:111
+msgid "Featured, %d days"
+msgstr "À la une, %d jours"
+
+#: template-parts/components/my-products.php:125
+msgid ""
+"Paused because it went beyond your plan. Nothing was deleted: publish it "
+"again when there is room, or choose a higher plan."
+msgstr ""
+"En pause car il dépassait votre formule. Rien n’a été supprimé : republiez-"
+"le quand il y a de la place, ou choisissez une formule supérieure."
+
+#: template-parts/components/my-products.php:125
+#: templates/company-profile.php:258 templates/front-page-template.php:224
+msgid "See the plans"
+msgstr "Voir les abonnements"
+
+#: template-parts/components/order-history.php:18
+#: template-parts/components/order-history.php:19
+msgid "My orders"
+msgstr "Mes commandes"
+
+#: template-parts/components/order-history.php:23
+#: template-parts/components/order-history.php:33
+#: template-parts/dashboard/invoice.php:50 templates/dashboard.php:167
+msgid "Order"
+msgstr "Commande"
+
+#: template-parts/components/order-history.php:24
+#: template-parts/components/order-history.php:34
+#: template-parts/dashboard/invoice.php:49
+msgid "Date"
+msgstr "Date"
+
+#: template-parts/components/order-history.php:25
+#: template-parts/components/order-history.php:35
+msgid "Amount"
+msgstr "Montant"
+
+#: template-parts/components/order-history.php:26
+#: template-parts/components/order-history.php:36
+#: template-parts/dashboard/engineer-billing.php:34
+#: template-parts/dashboard/engineer-billing.php:40
+#: template-parts/dashboard/engineer-missions.php:126
+#: template-parts/dashboard/engineer-missions.php:133
+#: template-parts/dashboard/listings.php:36
+#: template-parts/dashboard/listings.php:50
+#: template-parts/dashboard/studies.php:140
+#: template-parts/dashboard/studies.php:147
+msgid "Status"
+msgstr "Statut"
+
+#: template-parts/components/order-history.php:27
+#: template-parts/dashboard/listings.php:37
+msgid "Actions"
+msgstr "Actions"
+
+#: template-parts/components/order-history.php:39
+#: template-parts/dashboard/engineer-files.php:25
+#: template-parts/dashboard/invoice.php:38
+#: template-parts/dashboard/invoice.php:47 templates/dashboard.php:168
+msgid "Invoice"
+msgstr "Facture"
+
+#: template-parts/components/order-history.php:41
+#: template-parts/components/weight-calculator.php:127
+#: template-parts/components/weight-calculator.php:166
+#: template-parts/dashboard/publish.php:210 templates/styleguide.php:35
+msgid "Continue"
+msgstr "Continuer"
+
+#: template-parts/components/plan-card.php:34
+#: template-parts/dashboard/plan.php:16 template-parts/dashboard/plan.php:22
+#: template-parts/dashboard/plan.php:89
+msgid "Your plan"
+msgstr "Votre formule"
+
+#: template-parts/components/plan-card.php:40
+msgid "/ month"
+msgstr "/ mois"
+
+#. translators: %s: yearly price.
+#: template-parts/components/plan-card.php:47
+msgid "or %s per year"
+msgstr "ou %s par an"
+
+#. translators: %s: amount saved.
+#: template-parts/components/plan-card.php:50
+msgid "%s saved"
+msgstr "%s d’économie"
+
+#: template-parts/components/plan-card.php:73
+msgid "Start free"
+msgstr "Commencer gratuitement"
+
+#: template-parts/components/plan-card.php:73
+msgid "Choose"
+msgstr "Choisir"
+
+#: template-parts/components/plan-card.php:76
+msgid "Free, without time limit."
+msgstr "Gratuit, sans limite de durée."
+
+#: template-parts/components/plan-card.php:76
+msgid "Your account comes back to this plan when a paid period ends."
+msgstr "Votre compte revient à cette formule à la fin d’une période payée."
+
+#: template-parts/components/plan-card.php:78
+#: template-parts/dashboard/ai-credits.php:68
+msgid "Only the owner or a manager of the account can order."
+msgstr "Seul le propriétaire ou un gestionnaire du compte peut commander."
+
+#. translators: %s: price.
+#: template-parts/components/plan-card.php:90
+msgid "Renew for 1 year · %s"
+msgstr "Renouveler 1 an · %s"
+
+#. translators: %s: price.
+#: template-parts/components/plan-card.php:90
+msgid "Renew for 1 month · %s"
+msgstr "Renouveler 1 mois · %s"
+
+#. translators: %s: price.
+#: template-parts/components/plan-card.php:93
+msgid "Pay 1 year · %s"
+msgstr "Payer 1 an · %s"
+
+#. translators: %s: price.
+#: template-parts/components/plan-card.php:93
+msgid "Pay 1 month · %s"
+msgstr "Payer 1 mois · %s"
 
 #. translators: %s: project title.
 #: template-parts/components/portfolio-grid.php:16
@@ -1726,8 +1904,8 @@ msgid "technical data, quantity and price"
 msgstr "données techniques, quantité et prix"
 
 #: template-parts/components/product-form.php:111
-#: templates/mission-request.php:62 templates/single-listing.php:267
-#: templates/single-service.php:99
+#: template-parts/dashboard/invoice.php:65 templates/mission-request.php:62
+#: templates/single-listing.php:267 templates/single-service.php:99
 msgid "Description"
 msgstr "Description"
 
@@ -1796,8 +1974,8 @@ msgstr "Titre en arabe"
 #: template-parts/dashboard/ai.php:66 template-parts/dashboard/ai.php:92
 #: template-parts/dashboard/portfolio.php:48
 #: template-parts/dashboard/portfolio.php:54
-#: template-parts/dashboard/portfolio.php:74 templates/company-profile.php:306
-#: templates/company-profile.php:313 templates/contact.php:56
+#: template-parts/dashboard/portfolio.php:74 templates/company-profile.php:314
+#: templates/company-profile.php:321 templates/contact.php:56
 #: templates/engineer-apply.php:94 templates/mission-request.php:76
 #: templates/mission-request.php:83 templates/mission-request.php:87
 #: templates/mission-request.php:97
@@ -1869,7 +2047,7 @@ msgstr ""
 "acheteurs pourront la télécharger."
 
 #: template-parts/components/product-form.php:170
-#: templates/company-profile.php:219 templates/single-listing.php:80
+#: templates/company-profile.php:222 templates/single-listing.php:80
 msgid "Location"
 msgstr "Localisation"
 
@@ -1888,7 +2066,7 @@ msgstr "Wilaya où se trouve le produit"
 #: template-parts/components/service-form.php:57
 #: template-parts/components/service-request-form.php:28
 #: template-parts/components/weight-calculator.php:139
-#: templates/company-profile.php:301
+#: templates/company-profile.php:309
 msgid "Choose…"
 msgstr "Choisir…"
 
@@ -2415,7 +2593,7 @@ msgstr "Demande de devis n° %d"
 
 #. translators: %d: request number.
 #: template-parts/components/rfq-compare.php:86
-#: template-parts/dashboard/company.php:126 templates/company-profile.php:242
+#: template-parts/dashboard/company.php:126 templates/company-profile.php:245
 #: templates/contact.php:49
 msgid "E-mail"
 msgstr "E-mail"
@@ -2890,7 +3068,7 @@ msgid "Your account cannot publish services."
 msgstr "Votre compte ne peut pas publier de services."
 
 #: template-parts/components/service-form.php:52
-#: templates/company-profile.php:288
+#: templates/company-profile.php:296
 msgid "Service"
 msgstr "Service"
 
@@ -2927,7 +3105,7 @@ msgstr ""
 "pourra ajouter ce nom à la liste."
 
 #: template-parts/components/service-form.php:74
-#: templates/company-profile.php:59 templates/company-profile.php:126
+#: templates/company-profile.php:62 templates/company-profile.php:129
 msgid "Presentation"
 msgstr "Présentation"
 
@@ -3043,12 +3221,12 @@ msgid "Publish the service"
 msgstr "Publier le service"
 
 #: template-parts/components/service-request-form.php:20
-#: templates/company-profile.php:294
+#: templates/company-profile.php:302
 msgid "Your project"
 msgstr "Votre projet"
 
 #: template-parts/components/service-request-form.php:21
-#: templates/company-profile.php:295
+#: templates/company-profile.php:303
 msgid ""
 "What must be made or installed: profiles, quantities, dimensions, site, "
 "finish…"
@@ -3058,12 +3236,12 @@ msgstr ""
 
 #: template-parts/components/service-request-form.php:26
 #: template-parts/components/services-board.php:44
-#: templates/company-profile.php:299 templates/mission-request.php:68
+#: templates/company-profile.php:307 templates/mission-request.php:68
 msgid "Wilaya of the project"
 msgstr "Wilaya du projet"
 
 #: template-parts/components/service-request-form.php:34
-#: templates/company-profile.php:306
+#: templates/company-profile.php:314
 msgid "Wanted by"
 msgstr "Souhaité pour le"
 
@@ -3170,7 +3348,7 @@ msgid "Service requests"
 msgstr "Demandes de service"
 
 #: template-parts/components/service-requests-list.php:16
-#: template-parts/dashboard/ai-credits.php:15
+#: template-parts/dashboard/ai-credits.php:16
 #: template-parts/dashboard/ai.php:16 template-parts/dashboard/offers.php:13
 #: template-parts/dashboard/portfolio.php:13
 #: template-parts/dashboard/rfq.php:19
@@ -3226,7 +3404,7 @@ msgstr ""
 " photos en reçoit davantage."
 
 #: template-parts/components/service-requests-list.php:38
-#: template-parts/dashboard/services.php:19 templates/dashboard.php:123
+#: template-parts/dashboard/services.php:19 templates/dashboard.php:130
 msgid "My services"
 msgstr "Mes services"
 
@@ -3343,12 +3521,6 @@ msgstr "Rayon de congé r1"
 msgid "Toe radius r2"
 msgstr "Rayon d’aile r2"
 
-#: template-parts/components/weight-calculator.php:127
-#: template-parts/components/weight-calculator.php:166
-#: template-parts/dashboard/publish.php:210 templates/styleguide.php:35
-msgid "Continue"
-msgstr "Continuer"
-
 #: template-parts/components/weight-calculator.php:181
 msgid "Area"
 msgstr "Aire"
@@ -3407,35 +3579,92 @@ msgstr "Saisissez le poids total pour voir le nombre de pièces."
 msgid "Enter the number of pieces to see the total weight."
 msgstr "Saisissez le nombre de pièces pour voir le poids total."
 
-#: template-parts/dashboard/ai-credits.php:15 templates/dashboard.php:135
+#: template-parts/dashboard/ai-credits.php:16
+#: template-parts/dashboard/ai-credits.php:55
+#: template-parts/dashboard/plan.php:24 templates/dashboard.php:82
+#: templates/dashboard.php:142
 msgid "AI credits"
 msgstr "Crédits IA"
 
-#: template-parts/dashboard/ai-credits.php:20
+#: template-parts/dashboard/ai-credits.php:26
+msgid "Your AI credits"
+msgstr "Vos crédits IA"
+
+#: template-parts/dashboard/ai-credits.php:28
+msgid "No limit on your account."
+msgstr "Aucune limite sur votre compte."
+
+#: template-parts/dashboard/ai-credits.php:32
+msgid "credit left"
+msgid_plural "credits left"
+msgstr[0] "crédit restant"
+msgstr[1] "crédits restants"
+
+#: template-parts/dashboard/ai-credits.php:36
+#: template-parts/dashboard/ai-credits.php:37
+msgid "Credits of the month"
+msgstr "Crédits du mois"
+
+#. translators: %d: bought credits left.
+#: template-parts/dashboard/ai-credits.php:42
+msgid ""
+"Bought credits left: %d. They are used once the credits of the month are "
+"spent, and they do not expire."
+msgid_plural ""
+"Bought credits left: %d. They are used once the credits of the month are "
+"spent, and they do not expire."
+msgstr[0] ""
+"Crédits achetés restants : %d. Ils servent une fois les crédits du mois "
+"épuisés, et n’expirent pas."
+msgstr[1] ""
+"Crédits achetés restants : %d. Ils servent une fois les crédits du mois "
+"épuisés, et n’expirent pas."
+
+#: template-parts/dashboard/ai-credits.php:45
+msgid ""
+"One use of an AI tool takes one credit. The credits of the month start again"
+" on the 1st."
+msgstr ""
+"Une utilisation d’un outil IA consomme un crédit. Les crédits du mois "
+"repartent le 1er."
+
+#: template-parts/dashboard/ai-credits.php:51
+msgid "Buy AI credits"
+msgstr "Acheter des crédits IA"
+
+#: template-parts/dashboard/ai-credits.php:61
+msgid "Buy"
+msgstr "Acheter"
+
+#: template-parts/dashboard/ai-credits.php:70
+msgid ""
+"Prices include TVA. The credits are added when our team has checked the "
+"payment."
+msgstr ""
+"Prix TTC. Les crédits sont ajoutés quand notre équipe a vérifié le paiement."
+
+#: template-parts/dashboard/ai-credits.php:76
+#: template-parts/dashboard/ai-credits.php:98
+msgid "Open the assistant"
+msgstr "Ouvrir l’assistant"
+
+#: template-parts/dashboard/ai-credits.php:82
 msgid "This month"
 msgstr "Ce mois-ci"
 
 #. translators: %d: uses this month.
-#: template-parts/dashboard/ai-credits.php:31
+#: template-parts/dashboard/ai-credits.php:93
 msgid "%d use, no monthly limit"
 msgid_plural "%d uses, no monthly limit"
 msgstr[0] "%d utilisation, sans limite mensuelle"
 msgstr[1] "%d utilisations, sans limite mensuelle"
 
-#: template-parts/dashboard/ai-credits.php:35
-msgid ""
-"The counters start again on the 1st of each month. Packs of AI credits will "
-"be offered with the subscriptions."
-msgstr ""
-"Les compteurs repartent à zéro le 1er de chaque mois. Des packs de crédits "
-"IA seront proposés avec les abonnements."
+#: template-parts/dashboard/ai-credits.php:97
+msgid "The counters start again on the 1st of each month."
+msgstr "Les compteurs repartent le 1er de chaque mois."
 
-#: template-parts/dashboard/ai-credits.php:36
-msgid "Open the assistant"
-msgstr "Ouvrir l’assistant"
-
-#: template-parts/dashboard/ai.php:16 templates/dashboard.php:77
-#: templates/dashboard.php:132
+#: template-parts/dashboard/ai.php:16 templates/dashboard.php:79
+#: templates/dashboard.php:139
 msgid "AI assistant"
 msgstr "Assistant IA"
 
@@ -3668,7 +3897,7 @@ msgstr "Téléphone public"
 msgid "Public e-mail"
 msgstr "E-mail public"
 
-#: template-parts/dashboard/company.php:127 templates/company-profile.php:248
+#: template-parts/dashboard/company.php:127 templates/company-profile.php:251
 msgid "Website"
 msgstr "Site web"
 
@@ -3749,17 +3978,6 @@ msgid "Fee"
 msgstr "Honoraires"
 
 #: template-parts/dashboard/engineer-billing.php:34
-#: template-parts/dashboard/engineer-billing.php:40
-#: template-parts/dashboard/engineer-missions.php:126
-#: template-parts/dashboard/engineer-missions.php:133
-#: template-parts/dashboard/listings.php:36
-#: template-parts/dashboard/listings.php:50
-#: template-parts/dashboard/studies.php:140
-#: template-parts/dashboard/studies.php:147
-msgid "Status"
-msgstr "Statut"
-
-#: template-parts/dashboard/engineer-billing.php:34
 #: template-parts/dashboard/engineer-billing.php:41
 msgid "Payment"
 msgstr "Paiement"
@@ -3800,10 +4018,6 @@ msgstr "Les plans et documents de vos missions sont réunis ici."
 #: template-parts/dashboard/engineer-files.php:24
 msgid "Deliverable"
 msgstr "Livrable"
-
-#: template-parts/dashboard/engineer-files.php:25
-msgid "Invoice"
-msgstr "Facture"
 
 #: template-parts/dashboard/engineer-files.php:32
 msgid "Open the mission"
@@ -4041,7 +4255,7 @@ msgstr "Vous êtes indiqué comme indisponible."
 msgid "Change"
 msgstr "Modifier"
 
-#: template-parts/dashboard/engineer-partner.php:14 templates/dashboard.php:82
+#: template-parts/dashboard/engineer-partner.php:14 templates/dashboard.php:89
 msgid "Partner profile"
 msgstr "Profil partenaire"
 
@@ -4096,7 +4310,56 @@ msgstr ""
 "Les visiteurs voient cette fiche une fois votre candidature acceptée. Votre "
 "téléphone, votre e-mail et votre adresse ne sont jamais affichés."
 
-#: template-parts/dashboard/listings.php:27 templates/dashboard.php:104
+#: template-parts/dashboard/invoice.php:17
+msgid "Invoice not found"
+msgstr "Facture introuvable"
+
+#: template-parts/dashboard/invoice.php:17
+msgid "This invoice does not exist or belongs to another account."
+msgstr "Cette facture n’existe pas ou appartient à un autre compte."
+
+#: template-parts/dashboard/invoice.php:34
+#: template-parts/dashboard/order.php:25
+#: template-parts/dashboard/publish.php:208
+msgid "Back"
+msgstr "Retour"
+
+#: template-parts/dashboard/invoice.php:35
+msgid "Print or save as PDF"
+msgstr "Imprimer ou enregistrer en PDF"
+
+#: template-parts/dashboard/invoice.php:48
+msgid "Number"
+msgstr "Numéro"
+
+#: template-parts/dashboard/invoice.php:55
+msgid "Billed to"
+msgstr "Facturé à"
+
+#: template-parts/dashboard/invoice.php:65
+msgid "Amount before tax"
+msgstr "Montant HT"
+
+#: template-parts/dashboard/invoice.php:71
+msgid "Total before tax"
+msgstr "Total HT"
+
+#. translators: %s: TVA rate.
+#: template-parts/dashboard/invoice.php:72
+msgid "TVA %s %%"
+msgstr "TVA %s %%"
+
+#. translators: %s: TVA rate.
+#: template-parts/dashboard/invoice.php:73
+msgid "Total including tax"
+msgstr "Total TTC"
+
+#. translators: 1: payment method, 2: date.
+#: template-parts/dashboard/invoice.php:82
+msgid "Paid by %1$s, confirmed on %2$s."
+msgstr "Payé par %1$s, confirmé le %2$s."
+
+#: template-parts/dashboard/listings.php:27 templates/dashboard.php:111
 msgid "My listings"
 msgstr "Mes annonces"
 
@@ -4109,10 +4372,6 @@ msgstr "Annonce"
 #: template-parts/dashboard/listings.php:48
 msgid "DA/kg"
 msgstr "DA/kg"
-
-#: template-parts/dashboard/listings.php:37
-msgid "Actions"
-msgstr "Actions"
 
 #: template-parts/dashboard/listings.php:53
 msgid "Feature"
@@ -4165,7 +4424,7 @@ msgstr "Voir toutes les notifications"
 msgid "No notification yet."
 msgstr "Aucune notification pour l’instant."
 
-#: template-parts/dashboard/offers.php:13 templates/dashboard.php:105
+#: template-parts/dashboard/offers.php:13 templates/dashboard.php:112
 msgid "Quotations sent"
 msgstr "Devis envoyés"
 
@@ -4192,6 +4451,118 @@ msgstr "Voir les demandes de devis"
 #: template-parts/dashboard/offers.php:41 template-parts/dashboard/rfq.php:55
 msgid "View"
 msgstr "Voir"
+
+#: template-parts/dashboard/order.php:17
+msgid "Order not found"
+msgstr "Commande introuvable"
+
+#: template-parts/dashboard/order.php:17
+msgid "This order does not exist or belongs to another account."
+msgstr "Cette commande n’existe pas ou appartient à un autre compte."
+
+#: template-parts/dashboard/order.php:35
+msgid "TVA included"
+msgstr "TTC"
+
+#: template-parts/dashboard/order.php:40
+msgid ""
+"Your proof of payment was received. The platform team checks it, usually "
+"within one working day; you are told by e-mail."
+msgstr ""
+"Votre preuve de paiement est reçue. L’équipe de la plateforme la vérifie, en"
+" général sous un jour ouvré ; vous êtes prévenu par e-mail."
+
+#: template-parts/dashboard/order.php:42
+msgid "Payment confirmed. Thank you."
+msgstr "Paiement confirmé. Merci."
+
+#: template-parts/dashboard/order.php:43
+msgid "See the invoice"
+msgstr "Voir la facture"
+
+#. translators: %s: reason given by the platform team.
+#: template-parts/dashboard/order.php:48
+msgid "The payment could not be confirmed. Reason: %s"
+msgstr "Le paiement n’a pas pu être confirmé. Motif : %s"
+
+#: template-parts/dashboard/order.php:56
+msgid "1. Pay"
+msgstr "1. Payer"
+
+#. translators: 1: amount, 2: order reference.
+#: template-parts/dashboard/order.php:60
+msgid ""
+"Pay %1$s and write the reference %2$s on the payment so we can find it."
+msgstr ""
+"Payez %1$s et indiquez la référence %2$s sur le paiement pour que nous le "
+"retrouvions."
+
+#: template-parts/dashboard/order.php:65
+msgid "Beneficiary"
+msgstr "Bénéficiaire"
+
+#: template-parts/dashboard/order.php:68
+msgid "Bank transfer"
+msgstr "Virement bancaire"
+
+#: template-parts/dashboard/order.php:71
+msgid "CCP payment"
+msgstr "Versement CCP"
+
+#: template-parts/dashboard/order.php:74
+msgid "BaridiMob"
+msgstr "BaridiMob"
+
+#: template-parts/dashboard/order.php:77
+msgid "Cheque"
+msgstr "Chèque"
+
+#: template-parts/dashboard/order.php:81
+msgid ""
+"The payment details are not published yet. Contact the platform team to get "
+"them."
+msgstr ""
+"Les coordonnées de paiement ne sont pas encore publiées. Contactez l’équipe "
+"de la plateforme pour les obtenir."
+
+#: template-parts/dashboard/order.php:89
+msgid "2. Send the proof of payment"
+msgstr "2. Envoyer la preuve de paiement"
+
+#: template-parts/dashboard/order.php:92
+msgid "How did you pay?"
+msgstr "Comment avez-vous payé ?"
+
+#: template-parts/dashboard/order.php:104
+msgid "Receipt, transfer slip or screenshot of the payment"
+msgstr "Reçu, ordre de virement ou capture du paiement"
+
+#: template-parts/dashboard/order.php:105
+msgid "PDF, JPG or PNG, 10 MB maximum"
+msgstr "PDF, JPG ou PNG, 10 Mo maximum"
+
+#: template-parts/dashboard/order.php:109
+#: template-parts/dashboard/verification.php:60
+msgid "Note for the platform team (optional)"
+msgstr "Note pour l’équipe de la plateforme (facultatif)"
+
+#: template-parts/dashboard/order.php:110
+msgid "The proof is stored privately and only seen by the platform team."
+msgstr ""
+"La preuve est conservée en privé et vue seulement par l’équipe de la "
+"plateforme."
+
+#: template-parts/dashboard/order.php:111
+msgid "Send another proof"
+msgstr "Envoyer une autre preuve"
+
+#: template-parts/dashboard/order.php:111
+msgid "Send the proof"
+msgstr "Envoyer la preuve"
+
+#: template-parts/dashboard/order.php:117
+msgid "Cancel this order"
+msgstr "Annuler cette commande"
 
 #: template-parts/dashboard/overview.php:18
 msgid "Active listings"
@@ -4266,25 +4637,118 @@ msgid "Complete the company profile"
 msgstr "Compléter la fiche entreprise"
 
 #: template-parts/dashboard/plan.php:16
-msgid "Your plan"
-msgstr "Votre formule"
-
-#: template-parts/dashboard/plan.php:20
-msgid "Free during the launch"
-msgstr "Gratuit pendant le lancement"
-
-#: template-parts/dashboard/plan.php:21
 msgid ""
-"All the features of the platform are open to your account. The subscription "
-"plans will arrive soon: you will be told before anything changes."
+"All the features of the platform are open to your account during the launch."
 msgstr ""
-"Toutes les fonctions de la plateforme sont ouvertes à votre compte. Les "
-"formules d’abonnement arriveront bientôt : vous serez prévenu avant tout "
-"changement."
+"Toutes les fonctions de la plateforme sont ouvertes à votre compte pendant "
+"le lancement."
 
-#: template-parts/dashboard/plan.php:24
-msgid "See my AI credits"
-msgstr "Voir mes crédits IA"
+#: template-parts/dashboard/plan.php:23
+msgid ""
+"Your type of account has no plan: the platform is free for you. You can buy "
+"packs of AI credits when your monthly credits are used."
+msgstr ""
+"Votre type de compte n’a pas de formule : la plateforme est gratuite pour "
+"vous. Vous pouvez acheter des packs de crédits IA quand vos crédits du mois "
+"sont utilisés."
+
+#. translators: 1: order reference, 2: label.
+#: template-parts/dashboard/plan.php:55
+msgid "Order %1$s (%2$s): your proof of payment is being checked."
+msgstr "Commande %1$s (%2$s) : votre preuve de paiement est en vérification."
+
+#. translators: 1: order reference, 2: label.
+#: template-parts/dashboard/plan.php:57
+msgid "Order %1$s (%2$s) is waiting for your payment."
+msgstr "La commande %1$s (%2$s) attend votre paiement."
+
+#: template-parts/dashboard/plan.php:60
+msgid "See the order"
+msgstr "Voir la commande"
+
+#: template-parts/dashboard/plan.php:69 templates/pricing.php:40
+msgid "Founding members offer"
+msgstr "Offre membres fondateurs"
+
+#. translators: 1: plan name, 2: months, 3: places left.
+#: template-parts/dashboard/plan.php:74
+msgid ""
+"Have your documents checked and get the plan %1$s free for %2$d months, then"
+" keep its price. %3$d place left."
+msgid_plural ""
+"Have your documents checked and get the plan %1$s free for %2$d months, then"
+" keep its price. %3$d places left."
+msgstr[0] ""
+"Faites vérifier vos documents et recevez la formule %1$s gratuite pendant "
+"%2$d mois, puis gardez son prix. %3$d place restante."
+msgstr[1] ""
+"Faites vérifier vos documents et recevez la formule %1$s gratuite pendant "
+"%2$d mois, puis gardez son prix. %3$d places restantes."
+
+#: template-parts/dashboard/plan.php:82
+msgid "Verify my account"
+msgstr "Vérifier mon compte"
+
+#: template-parts/dashboard/plan.php:91
+msgid "Founding member"
+msgstr "Membre fondateur"
+
+#. translators: %s: date.
+#: template-parts/dashboard/plan.php:98
+msgid "Paid until %s"
+msgstr "Payé jusqu’au %s"
+
+#: template-parts/dashboard/plan.php:100
+msgid "Free, without time limit"
+msgstr "Gratuit, sans limite de durée"
+
+#: template-parts/dashboard/plan.php:110
+msgid "unlimited"
+msgstr "illimité"
+
+#. translators: %d: bought credits left.
+#: template-parts/dashboard/plan.php:122
+msgid "+%d bought"
+msgid_plural "+%d bought"
+msgstr[0] "+%d acheté"
+msgstr[1] "+%d achetés"
+
+#: template-parts/dashboard/plan.php:128
+msgid ""
+"Your phone, e-mail, WhatsApp and website are shown on your public page."
+msgstr ""
+"Votre téléphone, e-mail, WhatsApp et site sont affichés sur votre page "
+"publique."
+
+#: template-parts/dashboard/plan.php:128
+msgid ""
+"Your phone, e-mail, WhatsApp and website are hidden on your public page; "
+"buyers reach you through the contact form."
+msgstr ""
+"Votre téléphone, e-mail, WhatsApp et site sont masqués sur votre page "
+"publique ; les acheteurs vous joignent par le formulaire de contact."
+
+#: template-parts/dashboard/plan.php:130
+msgid "Your account takes turns in the featured row of the home page."
+msgstr ""
+"Votre compte apparaît à tour de rôle dans la rangée mise en avant de "
+"l’accueil."
+
+#: template-parts/dashboard/plan.php:133
+msgid ""
+"When a paid period ends, what goes beyond the free plan is paused, the "
+"oldest first. Nothing is deleted."
+msgstr ""
+"À la fin d’une période payée, ce qui dépasse la formule gratuite est mis en "
+"pause, les plus anciens d’abord. Rien n’est supprimé."
+
+#: template-parts/dashboard/plan.php:138
+msgid ""
+"Prices include TVA. Payment by bank transfer, CCP, BaridiMob or cheque; the "
+"plan starts when our team has checked the payment."
+msgstr ""
+"Prix TTC. Paiement par virement, CCP, BaridiMob ou chèque ; la formule "
+"démarre quand notre équipe a vérifié le paiement."
 
 #: template-parts/dashboard/portfolio.php:13
 msgid "References"
@@ -4508,10 +4972,6 @@ msgstr "Prix demandé (DA)"
 msgid "Weight and total price are calculated by the weight engine (Phase 3)."
 msgstr ""
 "Le poids et le prix total sont calculés par le moteur de poids (phase 3)."
-
-#: template-parts/dashboard/publish.php:208
-msgid "Back"
-msgstr "Retour"
 
 #: template-parts/dashboard/rfq.php:35 template-parts/dashboard/rfq.php:38
 #: templates/rfq-board.php:60 templates/rfq-board.php:95
@@ -4747,7 +5207,7 @@ msgstr ""
 msgid "Verify your contact details first."
 msgstr "Vérifiez d’abord vos coordonnées."
 
-#: template-parts/dashboard/verification.php:33 templates/dashboard.php:273
+#: template-parts/dashboard/verification.php:33 templates/dashboard.php:282
 msgid "Enter the code"
 msgstr "Saisir le code"
 
@@ -4770,10 +5230,6 @@ msgstr "Envoyez vos documents"
 #: template-parts/dashboard/verification.php:54
 msgid "PDF, JPG or PNG, 5 MB maximum"
 msgstr "PDF, JPG ou PNG, 5 Mo maximum"
-
-#: template-parts/dashboard/verification.php:60
-msgid "Note for the platform team (optional)"
-msgstr "Note pour l’équipe de la plateforme (facultatif)"
 
 #: template-parts/dashboard/verification.php:61
 msgid "Documents are stored privately and are only seen by the platform team."
@@ -4837,7 +5293,7 @@ msgstr "Nom de l’entreprise"
 msgid "Trade"
 msgstr "Métier"
 
-#: template-parts/directory.php:67 templates/dashboard.php:144
+#: template-parts/directory.php:67 templates/dashboard.php:151
 msgid "Verification"
 msgstr "Vérification"
 
@@ -5142,119 +5598,135 @@ msgid "Company not found"
 msgstr "Entreprise introuvable"
 
 #. translators: %d: number of wilayas.
-#: templates/company-profile.php:56
+#: templates/company-profile.php:59
 msgid "%d wilaya"
 msgid_plural "%d wilayas"
 msgstr[0] "%d wilaya"
 msgstr[1] "%d wilayas"
 
-#: templates/company-profile.php:61 templates/company-profile.php:157
-#: templates/dashboard.php:125 templates/single-service.php:160
+#: templates/company-profile.php:64 templates/company-profile.php:160
+#: templates/dashboard.php:132 templates/single-service.php:160
 msgid "Completed projects"
 msgstr "Réalisations"
 
-#: templates/company-profile.php:67 templates/company-profile.php:206
+#: templates/company-profile.php:70 templates/company-profile.php:209
 msgid "Products for sale"
 msgstr "Produits à vendre"
 
 #. translators: %s: company name.
-#: templates/company-profile.php:86
+#: templates/company-profile.php:89
 msgid "Logo of %s"
 msgstr "Logo de %s"
 
 #. translators: %s: year.
-#: templates/company-profile.php:105
+#: templates/company-profile.php:108
 msgid "Member since %s"
 msgstr "Membre depuis %s"
 
-#: templates/company-profile.php:119
+#: templates/company-profile.php:122
 msgid "Company sections"
 msgstr "Rubriques de l’entreprise"
 
-#: templates/company-profile.php:130
+#: templates/company-profile.php:133
 msgid "This company has not written its presentation yet."
 msgstr "Cette entreprise n’a pas encore rédigé sa présentation."
 
-#: templates/company-profile.php:134
+#: templates/company-profile.php:137
 msgid "Trades"
 msgstr "Métiers"
 
-#: templates/company-profile.php:134
+#: templates/company-profile.php:137
 msgid "Types of company"
 msgstr "Types d’entreprise"
 
-#: templates/company-profile.php:139
+#: templates/company-profile.php:142
 msgid "Area covered"
 msgstr "Zone couverte"
 
-#: templates/company-profile.php:145
+#: templates/company-profile.php:148
 msgid "Qualifications"
 msgstr "Qualifications"
 
-#: templates/company-profile.php:149
+#: templates/company-profile.php:152
 msgid "Specialisations"
 msgstr "Spécialités"
 
-#: templates/company-profile.php:166
+#: templates/company-profile.php:169
 msgid "Services offered"
 msgstr "Services proposés"
 
-#: templates/company-profile.php:167
+#: templates/company-profile.php:170
 msgid "Choose a service to ask this company for a quote."
 msgstr "Choisissez un service pour demander un devis à cette entreprise."
 
-#: templates/company-profile.php:193
+#: templates/company-profile.php:196
 msgid "See the service"
 msgstr "Voir le service"
 
-#: templates/company-profile.php:207
+#: templates/company-profile.php:210
 msgid "Listings published by this company on the marketplace."
 msgstr "Annonces publiées par cette entreprise sur le marché."
 
-#: templates/company-profile.php:217
+#: templates/company-profile.php:220
 msgid "Company details"
 msgstr "Informations"
 
-#: templates/company-profile.php:227
+#: templates/company-profile.php:230
 msgid "Contact details"
 msgstr "Coordonnées"
 
-#: templates/company-profile.php:257 templates/company-profile.php:333
-#: templates/company-profile.php:335
+#: templates/company-profile.php:256
+msgid ""
+"This account shares its phone and e-mail in answer to your message. Use the "
+"form to contact it."
+msgstr ""
+"Ce compte communique son téléphone et son e-mail en réponse à votre message."
+" Utilisez le formulaire pour le contacter."
+
+#: templates/company-profile.php:258
+msgid ""
+"Visitors do not see your phone, e-mail and website with the free plan; they "
+"write to you through the form."
+msgstr ""
+"Avec la formule gratuite, les visiteurs ne voient pas votre téléphone, votre"
+" e-mail ni votre site ; ils vous écrivent par le formulaire."
+
+#: templates/company-profile.php:265 templates/company-profile.php:341
+#: templates/company-profile.php:343
 msgid "Send a message"
 msgstr "Envoyer un message"
 
-#: templates/company-profile.php:263
+#: templates/company-profile.php:271
 msgid "Share this page"
 msgstr "Partager cette page"
 
 #. translators: %s: social network.
-#: templates/company-profile.php:266
+#: templates/company-profile.php:274
 msgid "Share on %s"
 msgstr "Partager sur %s"
 
-#: templates/company-profile.php:268
+#: templates/company-profile.php:276
 msgid "Link copied"
 msgstr "Lien copié"
 
-#: templates/company-profile.php:268
+#: templates/company-profile.php:276
 msgid "Copy the link"
 msgstr "Copier le lien"
 
 #. translators: %s: company name.
-#: templates/company-profile.php:280
+#: templates/company-profile.php:288
 msgid "to %s · the answer arrives in your dashboard"
 msgstr "à %s · la réponse arrive dans votre tableau de bord"
 
-#: templates/company-profile.php:313
+#: templates/company-profile.php:321
 msgid "Add plans or photos"
 msgstr "Joindre des plans ou des photos"
 
-#: templates/company-profile.php:314
+#: templates/company-profile.php:322
 msgid "PDF, JPG or PNG"
 msgstr "PDF, JPG ou PNG"
 
-#: templates/company-profile.php:317
+#: templates/company-profile.php:325
 msgid ""
 "Your contact details are sent to the company with the request. It answers "
 "with a quote."
@@ -5262,19 +5734,19 @@ msgstr ""
 "Vos coordonnées sont transmises à l’entreprise avec la demande. Elle vous "
 "répond par un devis."
 
-#: templates/company-profile.php:320 templates/single-service.php:125
+#: templates/company-profile.php:328 templates/single-service.php:125
 msgid "You already sent a request for this service."
 msgstr "Vous avez déjà envoyé une demande pour ce service."
 
-#: templates/company-profile.php:346
+#: templates/company-profile.php:354
 msgid "Contact from the company page"
 msgstr "Contact depuis la page entreprise"
 
-#: templates/company-profile.php:347
+#: templates/company-profile.php:355
 msgid "Contact this professional"
 msgstr "Contacter ce professionnel"
 
-#: templates/company-profile.php:347
+#: templates/company-profile.php:355
 msgid "Contact this company"
 msgstr "Contacter cette entreprise"
 
@@ -5358,7 +5830,7 @@ msgstr "SM — Tableau de bord"
 msgid "Create an account to use the dashboard."
 msgstr "Créez un compte pour utiliser le tableau de bord."
 
-#: templates/dashboard.php:73 templates/dashboard.php:99
+#: templates/dashboard.php:73 templates/dashboard.php:106
 msgid "Overview"
 msgstr "Vue d’ensemble"
 
@@ -5366,134 +5838,134 @@ msgstr "Vue d’ensemble"
 msgid "Files and plans"
 msgstr "Dossiers et plans"
 
-#: templates/dashboard.php:83 templates/dashboard.php:145
-msgid "Settings"
-msgstr "Paramètres"
-
-#: templates/dashboard.php:94 templates/dashboard.php:143
-msgid "Company profile"
-msgstr "Fiche entreprise"
-
-#: templates/dashboard.php:95
-msgid "Professional profile"
-msgstr "Profil professionnel"
-
-#: templates/dashboard.php:96
-msgid "My profile"
-msgstr "Mon profil"
-
-#: templates/dashboard.php:102
-msgid "Selling"
-msgstr "Vente"
-
-#: templates/dashboard.php:106
-msgid "Enquiries received"
-msgstr "Demandes reçues"
-
-#: templates/dashboard.php:107
-msgid "Statistics"
-msgstr "Statistiques"
-
-#: templates/dashboard.php:112
-msgid "Buying"
-msgstr "Achat"
-
-#: templates/dashboard.php:115
-msgid "My requests for quotation"
-msgstr "Mes demandes de devis"
-
-#: templates/dashboard.php:116
-msgid "Purchase history"
-msgstr "Historique d’achats"
-
-#: templates/dashboard.php:124 templates/single-service.php:89
-msgid "Requests received"
-msgstr "Demandes reçues"
-
-#: templates/dashboard.php:126
-msgid "My service requests"
-msgstr "Mes demandes de service"
-
-#: templates/dashboard.php:129
-msgid "Engineering studies"
-msgstr "Études d’ingénierie"
-
-#: templates/dashboard.php:134
+#: templates/dashboard.php:81 templates/dashboard.php:141
 msgid "Assistant"
 msgstr "Assistant"
 
-#: templates/dashboard.php:138
+#: templates/dashboard.php:90 templates/dashboard.php:152
+msgid "Settings"
+msgstr "Paramètres"
+
+#: templates/dashboard.php:101 templates/dashboard.php:150
+msgid "Company profile"
+msgstr "Fiche entreprise"
+
+#: templates/dashboard.php:102
+msgid "Professional profile"
+msgstr "Profil professionnel"
+
+#: templates/dashboard.php:103
+msgid "My profile"
+msgstr "Mon profil"
+
+#: templates/dashboard.php:109
+msgid "Selling"
+msgstr "Vente"
+
+#: templates/dashboard.php:113
+msgid "Enquiries received"
+msgstr "Demandes reçues"
+
+#: templates/dashboard.php:114
+msgid "Statistics"
+msgstr "Statistiques"
+
+#: templates/dashboard.php:119
+msgid "Buying"
+msgstr "Achat"
+
+#: templates/dashboard.php:122
+msgid "My requests for quotation"
+msgstr "Mes demandes de devis"
+
+#: templates/dashboard.php:123
+msgid "Purchase history"
+msgstr "Historique d’achats"
+
+#: templates/dashboard.php:131 templates/single-service.php:89
+msgid "Requests received"
+msgstr "Demandes reçues"
+
+#: templates/dashboard.php:133
+msgid "My service requests"
+msgstr "Mes demandes de service"
+
+#: templates/dashboard.php:136
+msgid "Engineering studies"
+msgstr "Études d’ingénierie"
+
+#: templates/dashboard.php:145
 msgid "Plan"
 msgstr "Abonnement"
 
-#: templates/dashboard.php:153
+#: templates/dashboard.php:160
 msgid "Add a service"
 msgstr "Ajouter un service"
 
-#: templates/dashboard.php:158
+#: templates/dashboard.php:165
 msgid "Verify your account"
 msgstr "Vérifier votre compte"
 
-#: templates/dashboard.php:207
+#: templates/dashboard.php:216
 msgid "See my partner profile"
 msgstr "Voir mon profil partenaire"
 
-#: templates/dashboard.php:210
+#: templates/dashboard.php:219
 msgid "See my public profile"
 msgstr "Voir mon profil public"
 
-#: templates/dashboard.php:213
+#: templates/dashboard.php:222
 msgid "See my profile"
 msgstr "Voir mon profil"
 
-#: templates/dashboard.php:217
+#: templates/dashboard.php:226
 msgid "Account menu"
 msgstr "Menu du compte"
 
-#: templates/dashboard.php:227
+#: templates/dashboard.php:236
 msgid "Collapse the menu"
 msgstr "Réduire le menu"
 
-#: templates/dashboard.php:227
+#: templates/dashboard.php:236
 msgid "Expand the menu"
 msgstr "Agrandir le menu"
 
-#: templates/dashboard.php:240
+#: templates/dashboard.php:249
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#: templates/dashboard.php:250
+#: templates/dashboard.php:259
 msgid "Dark mode"
 msgstr "Mode sombre"
 
-#: templates/dashboard.php:269
+#: templates/dashboard.php:278
 msgid "Demo partner engineer account."
 msgstr "Compte ingénieur partenaire de démonstration."
 
-#: templates/dashboard.php:269
+#: templates/dashboard.php:278
 msgid "Demo company account."
 msgstr "Compte entreprise de démonstration."
 
-#: templates/dashboard.php:269
+#: templates/dashboard.php:278
 msgid "Switch to the company dashboard"
 msgstr "Voir le tableau de bord entreprise"
 
-#: templates/dashboard.php:269
+#: templates/dashboard.php:278
 msgid "Switch to the engineer dashboard"
 msgstr "Voir le tableau de bord ingénieur"
 
-#: templates/dashboard.php:273
+#: templates/dashboard.php:282
 msgid ""
 "Verify your account with the 6-digit code to publish and answer requests."
 msgstr ""
 "Vérifiez votre compte avec le code à 6 chiffres pour publier et répondre aux"
 " demandes."
 
-#: templates/dashboard.php:304
+#: templates/dashboard.php:313
 msgid "This section arrives with its plugin"
 msgstr "Cette rubrique arrive avec son extension"
 
-#: templates/dashboard.php:305
+#: templates/dashboard.php:314
 msgid ""
 "The layout is ready; the content will be provided by the corresponding "
 "marketplace plugin."
@@ -5931,10 +6403,6 @@ msgstr ""
 msgid "Create a free account"
 msgstr "Créer un compte gratuit"
 
-#: templates/front-page-template.php:224
-msgid "See the plans"
-msgstr "Voir les abonnements"
-
 #. Template Name of the theme
 msgid "SM — Steel buildings"
 msgstr "SM — Bâtiments métalliques"
@@ -6230,74 +6698,117 @@ msgstr ""
 msgid "SM — Plans"
 msgstr "SM — Abonnements"
 
-#: templates/pricing.php:17
-msgid "Free"
-msgstr "Gratuit"
-
-#: templates/pricing.php:17
-msgid "Buy and contact sellers"
-msgstr "Acheter et contacter les vendeurs"
-
-#: templates/pricing.php:17
-msgid "Limited number of listings"
-msgstr "Nombre d’annonces limité"
-
-#: templates/pricing.php:18
-msgid "Business"
-msgstr "Business"
-
-#: templates/pricing.php:18
-msgid "More listings and featured slots"
-msgstr "Plus d’annonces et d’emplacements à la une"
-
-#: templates/pricing.php:18
-msgid "Company page with verified badge"
-msgstr "Page entreprise avec badge vérifié"
-
-#: templates/pricing.php:18
-msgid "Listing statistics"
-msgstr "Statistiques des annonces"
-
-#: templates/pricing.php:18
-msgid "Monthly AI credits"
-msgstr "Crédits IA mensuels"
-
 #: templates/pricing.php:19
-msgid "Pro"
-msgstr "Pro"
+msgid "Companies"
+msgstr "Entreprises"
 
-#: templates/pricing.php:19
-msgid "Highest limits"
-msgstr "Limites les plus élevées"
+#: templates/pricing.php:20
+msgid "Professionals and craftsmen"
+msgstr "Professionnels et artisans"
 
-#: templates/pricing.php:19
-msgid "Premium visibility"
-msgstr "Visibilité premium"
-
-#: templates/pricing.php:19
-msgid "Priority on quotation requests"
-msgstr "Priorité sur les demandes de devis"
-
-#: templates/pricing.php:19
-msgid "Extended AI credits"
-msgstr "Crédits IA étendus"
-
-#: templates/pricing.php:27
+#: templates/pricing.php:29
 msgid ""
-"Start free. Upgrade when you need more listings, visibility and AI credits. "
-"Payment by bank transfer, CCP or BaridiMob, activated by our team."
+"Start free. Upgrade when you need more listings, more tonnage online, "
+"visible contacts and more AI credits. Clients and partner engineers use the "
+"platform free."
 msgstr ""
-"Commencez gratuitement. Passez à l’offre supérieure pour plus d’annonces, de"
-" visibilité et de crédits IA. Paiement par virement, CCP ou BaridiMob, "
-"activé par notre équipe."
+"Commencez gratuitement. Passez à la formule supérieure quand il vous faut "
+"plus d’annonces, plus de tonnage en ligne, des coordonnées visibles et plus "
+"de crédits IA. Les clients et les ingénieurs partenaires utilisent la "
+"plateforme gratuitement."
 
-#: templates/pricing.php:35
-msgid "Price set by the administrator"
-msgstr "Tarif fixé par l’administrateur"
+#: templates/pricing.php:34
+msgid "Free during the launch"
+msgstr "Gratuit pendant le lancement"
 
-#: templates/pricing.php:37
-msgid "Choose"
-msgstr "Choisir"
+#: templates/pricing.php:34
+msgid ""
+"All the features of the platform are open. The plans will be published here."
+msgstr ""
+"Toutes les fonctions de la plateforme sont ouvertes. Les formules seront "
+"publiées ici."
+
+#. translators: 1: number of months, 2: places left.
+#: templates/pricing.php:45
+msgid ""
+"The first verified accounts get a paid plan free for %1$d months, then keep "
+"its price. %2$d place left."
+msgid_plural ""
+"The first verified accounts get a paid plan free for %1$d months, then keep "
+"its price. %2$d places left."
+msgstr[0] ""
+"Les premiers comptes vérifiés reçoivent une formule payante gratuite pendant"
+" %1$d mois, puis gardent son prix. %2$d place restante."
+msgstr[1] ""
+"Les premiers comptes vérifiés reçoivent une formule payante gratuite pendant"
+" %1$d mois, puis gardent son prix. %2$d places restantes."
+
+#: templates/pricing.php:55
+msgid "Type of account"
+msgstr "Type de compte"
+
+#: templates/pricing.php:67
+msgid ""
+"Prices include TVA. Buildings are counted by number, apart from the tonnage."
+" When a paid period ends, what goes beyond the free plan is paused, the "
+"oldest first; nothing is deleted."
+msgstr ""
+"Prix TTC. Les bâtiments sont comptés en nombre, à part du tonnage. À la fin "
+"d’une période payée, ce qui dépasse la formule gratuite est mis en pause, "
+"les plus anciens d’abord ; rien n’est supprimé."
+
+#: templates/pricing.php:72
+msgid "AI credit packs"
+msgstr "Packs de crédits IA"
+
+#: templates/pricing.php:73
+msgid ""
+"For every account, clients and partner engineers included. Bought credits do"
+" not expire."
+msgstr ""
+"Pour tous les comptes, clients et ingénieurs partenaires compris. Les "
+"crédits achetés n’expirent pas."
+
+#. translators: %s: number of credits.
+#: templates/pricing.php:76
+msgid "%s AI credits"
+msgstr "%s crédits IA"
+
+#: templates/pricing.php:84
+msgid "Options for one listing"
+msgstr "Options pour une annonce"
+
+#: templates/pricing.php:85
+msgid "With any plan, from My listings."
+msgstr "Avec toute formule, depuis Mes annonces."
+
+#: templates/pricing.php:88
+msgid "Back to the top of the list"
+msgstr "Remontée en tête de liste"
+
+#. translators: %d: days.
+#: templates/pricing.php:91
+msgid "\"Urgent\" badge, %d days"
+msgstr "Badge « Urgent », %d jours"
+
+#. translators: %d: days.
+#: templates/pricing.php:94
+msgid "Featured listing, first in the results, %d days"
+msgstr "Annonce à la une, en tête des résultats, %d jours"
+
+#: templates/pricing.php:101
+msgid "How to pay"
+msgstr "Comment payer"
+
+#: templates/pricing.php:103
+msgid ""
+"Order from your account, pay, then send the proof of payment. The plan "
+"starts when our team has checked it, usually within one working day. Online "
+"card payment will come later."
+msgstr ""
+"Commandez depuis votre compte, payez, puis envoyez la preuve de paiement. La"
+" formule démarre quand notre équipe l’a vérifiée, en général sous un jour "
+"ouvré. Le paiement en ligne par carte arrivera plus tard."
 
 #. Template Name of the theme
 msgid "SM — Professionals directory"

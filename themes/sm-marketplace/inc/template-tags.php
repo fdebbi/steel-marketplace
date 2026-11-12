@@ -549,3 +549,22 @@ function sm_service_tags( array $service ) {
 	$title = sm_t( (array) ( $service['title'] ?? array() ) );
 	return array_values( array_filter( (array) ( $service['tags'] ?? array() ), static fn( $t ) => sm_t( (array) $t ) !== $title ) );
 }
+
+/**
+ * One limit of a plan for display (Phase 10). -1 = unlimited; contacts and
+ * featured are yes / no. Returns plain text.
+ */
+function sm_plan_value( $key, $value ) {
+	if ( in_array( $key, array( 'contacts', 'featured' ), true ) ) {
+		return $value ? __( 'Yes', 'sm-marketplace' ) : __( 'No', 'sm-marketplace' );
+	}
+	if ( -1 === (int) $value ) {
+		return __( 'Unlimited', 'sm-marketplace' );
+	}
+	return 'weight_t' === $key ? sm_tonnes( (float) $value * 1000 ) : sm_number( $value );
+}
+
+/** Saving of the yearly price against twelve months, or 0. */
+function sm_plan_saving( array $plan ) {
+	return max( 0, (float) $plan['price_month'] * 12 - (float) $plan['price_year'] );
+}

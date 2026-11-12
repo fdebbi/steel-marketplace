@@ -65,6 +65,7 @@ final class Installer {
 				method varchar(20) NOT NULL DEFAULT '',
 				status varchar(20) NOT NULL DEFAULT 'awaiting',
 				proof_id bigint(20) unsigned NOT NULL DEFAULT 0,
+				proof_file text,
 				payer_note text,
 				reject_reason text,
 				invoice_no varchar(30) NOT NULL DEFAULT '',

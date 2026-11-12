@@ -1,5 +1,10 @@
 # Changelog — sm-ai
 
+## 0.1.3 — 2026-11-12 (Phase 10)
+
+- Quand `sm_ai_plan_credits` est vrai (sm-subscriptions), les quotas par outil sont remplacés par les crédits de la formule ; `sm_ai_remaining` donne le solde ; action `sm_ai_used` après chaque appel réussi.
+- `Usage::company_month_total()`.
+
 ## 0.1.2 — 2026-11-12
 
 - Réponses en anglais quand la page est en anglais ; libellés des marchés en anglais.

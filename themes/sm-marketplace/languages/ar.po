@@ -74,14 +74,14 @@ msgid "Steel buildings"
 msgstr "المباني الفولاذية"
 
 #: footer.php:25 inc/menus.php:47 template-parts/components/rfq-single.php:45
-#: template-parts/dashboard/rfq.php:19 templates/pricing.php:17
-#: templates/rfq-board.php:54 templates/rfq-board.php:57
+#: template-parts/dashboard/rfq.php:19 templates/rfq-board.php:54
+#: templates/rfq-board.php:57
 msgid "Requests for quotation"
 msgstr "طلبات عروض الأسعار"
 
 #: footer.php:29 inc/menus.php:40
 #: template-parts/components/services-board.php:30
-#: templates/company-profile.php:64 templates/dashboard.php:121
+#: templates/company-profile.php:67 templates/dashboard.php:128
 msgid "Services"
 msgstr "الخدمات"
 
@@ -100,7 +100,7 @@ msgstr "الهندسة"
 
 #: footer.php:33 header.php:134 inc/menus.php:64
 #: template-parts/directory.php:35 template-parts/directory.php:36
-#: templates/company-profile.php:26 templates/company-profile.php:82
+#: templates/company-profile.php:26 templates/company-profile.php:85
 msgid "Company directory"
 msgstr "دليل المؤسسات"
 
@@ -122,14 +122,14 @@ msgstr "مؤشر الأسعار"
 msgid "Platform"
 msgstr "المنصة"
 
-#: footer.php:42 header.php:31 templates/pricing.php:25
-#: templates/pricing.php:26
+#: footer.php:42 header.php:31 template-parts/dashboard/plan.php:137
+#: templates/pricing.php:27 templates/pricing.php:28
 msgid "Plans"
 msgstr "الاشتراكات"
 
 #: footer.php:43 header.php:145 template-parts/components/enquiry-form.php:27
 #: template-parts/components/rfq-single.php:158 templates/auth-login.php:40
-#: templates/company-profile.php:324 templates/dashboard.php:47
+#: templates/company-profile.php:332 templates/dashboard.php:47
 #: templates/mission-request.php:41 templates/single-service.php:131
 msgid "Create an account"
 msgstr "إنشاء حساب"
@@ -174,7 +174,7 @@ msgstr "نشر"
 msgid "Enquiries"
 msgstr "الاستفسارات"
 
-#: footer.php:66 templates/dashboard.php:80 templates/dashboard.php:141
+#: footer.php:66 templates/dashboard.php:87 templates/dashboard.php:148
 msgid "Account"
 msgstr "الحساب"
 
@@ -215,18 +215,18 @@ msgstr "كل الأسواق"
 msgid "IPE 200, HEA, tube 100×50, hangar…"
 msgstr "IPE 200، HEA، أنبوب 100×50، هنغار…"
 
-#: header.php:60 templates/dashboard.php:114
+#: header.php:60 templates/dashboard.php:121
 msgid "Saved listings"
 msgstr "الإعلانات المحفوظة"
 
 #: header.php:66 template-parts/dashboard/notifications.php:19
 #: template-parts/notif-panel.php:15 template-parts/notif-panel.php:17
-#: templates/dashboard.php:159
+#: templates/dashboard.php:166
 msgid "Notifications"
 msgstr "الإشعارات"
 
 #: header.php:72 header.php:141 templates/contact.php:64
-#: templates/dashboard.php:141
+#: templates/dashboard.php:148
 msgid "My account"
 msgstr "حسابي"
 
@@ -237,16 +237,16 @@ msgstr "الإدارة"
 #: header.php:77 header.php:144 template-parts/components/enquiry-form.php:26
 #: template-parts/components/rfq-single.php:157 templates/auth-login.php:17
 #: templates/auth-login.php:39 templates/auth-register.php:101
-#: templates/company-profile.php:323 templates/engineer-apply.php:118
+#: templates/company-profile.php:331 templates/engineer-apply.php:118
 #: templates/mission-request.php:36 templates/single-service.php:130
 msgid "Sign in"
 msgstr "تسجيل الدخول"
 
-#: header.php:111 templates/dashboard.php:259
+#: header.php:111 templates/dashboard.php:268
 msgid "Menu"
 msgstr "القائمة"
 
-#: header.php:114 inc/assets.php:38 templates/dashboard.php:228
+#: header.php:114 inc/assets.php:38 templates/dashboard.php:237
 msgid "Close menu"
 msgstr "إغلاق القائمة"
 
@@ -254,19 +254,19 @@ msgstr "إغلاق القائمة"
 msgid "View all listings"
 msgstr "عرض كل الإعلانات"
 
-#: header.php:139 template-parts/components/my-products.php:47
-#: template-parts/components/my-products.php:51
-#: template-parts/dashboard/listings.php:25 templates/dashboard.php:149
-#: templates/dashboard.php:231 templates/front-page-template.php:27
+#: header.php:139 template-parts/components/my-products.php:52
+#: template-parts/components/my-products.php:56
+#: template-parts/dashboard/listings.php:25 templates/dashboard.php:156
+#: templates/dashboard.php:240 templates/front-page-template.php:27
 msgid "Publish a listing"
 msgstr "نشر إعلان"
 
-#: header.php:142 templates/dashboard.php:251 templates/engineer-apply.php:43
+#: header.php:142 templates/dashboard.php:260 templates/engineer-apply.php:43
 msgid "Sign out"
 msgstr "تسجيل الخروج"
 
 #: inc/assets.php:39 templates/auth-login.php:32
-#: templates/auth-register.php:92 templates/company-profile.php:236
+#: templates/auth-register.php:92 templates/company-profile.php:239
 #: templates/engineer-apply.php:82
 msgid "Show"
 msgstr "إظهار"
@@ -313,7 +313,7 @@ msgid "Undo"
 msgstr "تراجع"
 
 #: inc/assets.php:51 inc/template-tags.php:535 inc/template-tags.php:541
-#: template-parts/components/my-products.php:87
+#: template-parts/components/my-products.php:98
 #: template-parts/components/portfolio-grid.php:30
 #: template-parts/components/rfq-single.php:138
 #: template-parts/dashboard/listings.php:54
@@ -321,8 +321,8 @@ msgstr "تراجع"
 msgid "Delete"
 msgstr "حذف"
 
-#: inc/assets.php:52 templates/company-profile.php:282
-#: templates/company-profile.php:336
+#: inc/assets.php:52 templates/company-profile.php:290
+#: templates/company-profile.php:344
 msgid "Close"
 msgstr "إغلاق"
 
@@ -653,7 +653,7 @@ msgid "Not verified"
 msgstr "غير موثق"
 
 #: inc/template-tags.php:325 template-parts/components/card-featured.php:35
-#: template-parts/directory.php:107 templates/company-profile.php:95
+#: template-parts/directory.php:107 templates/company-profile.php:98
 msgid "Account verified"
 msgstr "حساب موثّق"
 
@@ -702,7 +702,7 @@ msgid "Breadcrumb"
 msgstr "مسار التنقل"
 
 #: inc/template-tags.php:417 template-parts/components/my-products.php:18
-#: template-parts/components/my-products.php:26
+#: template-parts/components/my-products.php:27
 #: template-parts/dashboard/services.php:24
 msgid "Waiting for review"
 msgstr "في انتظار المراجعة"
@@ -724,7 +724,7 @@ msgid "Deadline passed"
 msgstr "انتهى الأجل"
 
 #: inc/template-tags.php:422 template-parts/components/my-products.php:19
-#: template-parts/components/my-products.php:27
+#: template-parts/components/my-products.php:28
 #: template-parts/dashboard/services.php:26
 msgid "Changes requested"
 msgstr "تعديلات مطلوبة"
@@ -798,6 +798,18 @@ msgstr "الإبقاء"
 #: inc/template-tags.php:539
 msgid "Replace"
 msgstr "استبدال"
+
+#: inc/template-tags.php:559
+msgid "Yes"
+msgstr "نعم"
+
+#: inc/template-tags.php:559
+msgid "No"
+msgstr "لا"
+
+#: inc/template-tags.php:562
+msgid "Unlimited"
+msgstr "غير محدود"
 
 #: index.php:21
 msgid "Nothing here yet"
@@ -1031,7 +1043,7 @@ msgstr "مهندس شريك موثّق من المنصة"
 #. translators: %d: years.
 #: template-parts/components/card-engineer.php:26
 #: template-parts/components/card-featured.php:40
-#: templates/company-profile.php:107 templates/single-service.php:80
+#: templates/company-profile.php:110 templates/single-service.php:80
 msgid "%d year of experience"
 msgid_plural "%d years of experience"
 msgstr[0] "%d سنة خبرة"
@@ -1058,7 +1070,7 @@ msgstr "غير متاح حاليا"
 
 #: template-parts/components/card-engineer.php:39
 #: template-parts/components/card-engineer.php:41
-#: template-parts/dashboard/studies.php:132 templates/dashboard.php:154
+#: template-parts/dashboard/studies.php:132 templates/dashboard.php:161
 #: templates/marketplace-engineers.php:36
 #: templates/marketplace-engineers.php:80 templates/mission-request.php:19
 msgid "Ask for a study"
@@ -1066,8 +1078,8 @@ msgstr "اطلب دراسة"
 
 #. translators: %d: years.
 #: template-parts/components/card-featured.php:41
-#: template-parts/directory.php:115 templates/company-profile.php:191
-#: templates/company-profile.php:255 templates/company-profile.php:279
+#: template-parts/directory.php:115 templates/company-profile.php:194
+#: templates/company-profile.php:263 templates/company-profile.php:287
 msgid "Request a quote"
 msgstr "طلب عرض سعر"
 
@@ -1077,16 +1089,21 @@ msgstr "طلب عرض سعر"
 msgid "See the profile"
 msgstr "عرض الملف"
 
-#: template-parts/components/card-listing.php:24
+#: template-parts/components/card-listing.php:25
 #: templates/front-page-template.php:189
 msgid "Featured"
 msgstr "مميز"
 
 #: template-parts/components/card-listing.php:28
+#: template-parts/components/card-listing.php:48
+msgid "Urgent"
+msgstr "عاجل"
+
+#: template-parts/components/card-listing.php:33
 msgid "Save listing"
 msgstr "حفظ الإعلان"
 
-#: template-parts/components/card-listing.php:34
+#: template-parts/components/card-listing.php:39
 #: template-parts/components/filter-panel.php:68
 #: template-parts/components/product-tech.php:354
 #: template-parts/dashboard/publish.php:112 templates/single-listing.php:49
@@ -1094,7 +1111,7 @@ msgstr "حفظ الإعلان"
 msgid "Assembled"
 msgstr "مركّب"
 
-#: template-parts/components/card-listing.php:34
+#: template-parts/components/card-listing.php:39
 #: template-parts/components/filter-panel.php:69
 #: template-parts/components/product-tech.php:355
 #: template-parts/dashboard/publish.php:113 templates/single-listing.php:49
@@ -1103,26 +1120,26 @@ msgid "Dismantled"
 msgstr "مفكك"
 
 #. translators: 1: number of pieces, 2: longest length in metres.
-#: template-parts/components/card-listing.php:51
+#: template-parts/components/card-listing.php:56
 msgid "%1$s pcs · up to %2$s m"
 msgstr "%1$s قطعة · حتى %2$s م"
 
-#: template-parts/components/card-listing.php:67
+#: template-parts/components/card-listing.php:72
 #: template-parts/components/product-tech.php:458
 msgid "Whole lot only"
 msgstr "الحصة كاملة فقط"
 
-#: template-parts/components/card-listing.php:70
+#: template-parts/components/card-listing.php:75
 #: template-parts/components/rfq-compare.php:64
 msgid "Total"
 msgstr "المجموع"
 
 #. translators: %s: price.
-#: template-parts/components/card-listing.php:72
+#: template-parts/components/card-listing.php:77
 msgid "or %s for the whole lot"
 msgstr "أو %s للحصة كاملة"
 
-#: template-parts/components/card-listing.php:85
+#: template-parts/components/card-listing.php:90
 #: templates/single-listing.php:171
 msgid "Private seller"
 msgstr "بائع خاص"
@@ -1166,14 +1183,14 @@ msgstr "عرض والرد"
 #. translators: %d: days.
 #: template-parts/components/card-service.php:34
 #: template-parts/components/service-form.php:101
-#: templates/company-profile.php:56 templates/company-profile.php:185
+#: templates/company-profile.php:59 templates/company-profile.php:188
 #: templates/single-service.php:70
 msgid "All of Algeria"
 msgstr "كامل التراب الجزائري"
 
 #. translators: %d: number of wilayas.
 #: template-parts/components/card-service.php:34
-#: templates/company-profile.php:185
+#: templates/company-profile.php:188
 msgid "%d wilaya served"
 msgid_plural "%d wilayas served"
 msgstr[0] "%d ولاية"
@@ -1262,7 +1279,7 @@ msgid "Full name"
 msgstr "الاسم الكامل"
 
 #: template-parts/components/enquiry-form.php:42
-#: template-parts/dashboard/company.php:125 templates/company-profile.php:232
+#: template-parts/dashboard/company.php:125 templates/company-profile.php:235
 #: templates/contact.php:56
 msgid "Phone"
 msgstr "الهاتف"
@@ -1277,7 +1294,7 @@ msgid "Message"
 msgstr "الرسالة"
 
 #: template-parts/components/enquiry-form.php:48
-#: templates/company-profile.php:316
+#: templates/company-profile.php:324
 msgid "Send the request"
 msgstr "إرسال الطلب"
 
@@ -1330,7 +1347,7 @@ msgid "State"
 msgstr "حالة المبنى"
 
 #: template-parts/components/filter-panel.php:67
-#: template-parts/components/my-products.php:41
+#: template-parts/components/my-products.php:46
 #: template-parts/components/service-requests-list.php:20
 #: template-parts/components/services-board.php:31
 #: template-parts/dashboard/listings.php:20
@@ -1495,7 +1512,7 @@ msgid "Send"
 msgstr "إرسال"
 
 #: template-parts/components/my-products.php:17
-#: template-parts/components/my-products.php:25
+#: template-parts/components/my-products.php:26
 #: template-parts/dashboard/listings.php:21
 #: template-parts/dashboard/listings.php:50
 #: template-parts/dashboard/services.php:23 templates/styleguide.php:47
@@ -1508,42 +1525,57 @@ msgid "Drafts"
 msgstr "المسودات"
 
 #: template-parts/components/my-products.php:21
-#: template-parts/components/my-products.php:29
+#: template-parts/components/my-products.php:30
 #: template-parts/dashboard/listings.php:23
 msgid "Sold"
 msgstr "مباع"
 
 #. translators: %d: days.
 #: template-parts/components/my-products.php:22
-#: template-parts/components/my-products.php:30
+#: template-parts/components/my-products.php:31
 #: template-parts/dashboard/studies.php:57
 msgid "Expired"
 msgstr "منتهية"
 
-#: template-parts/components/my-products.php:28
+#: template-parts/components/my-products.php:23
+#: template-parts/components/my-products.php:32
+msgid "Paused (plan)"
+msgstr "معلّق (الاشتراك)"
+
+#: template-parts/components/my-products.php:29
 msgid "Draft"
 msgstr "مسودة"
 
-#: template-parts/components/my-products.php:40
+#: template-parts/components/my-products.php:45
 #: template-parts/components/service-requests-list.php:28
 #: template-parts/dashboard/rfq.php:28
 msgid "Filter by status"
 msgstr "التصفية حسب الحالة"
 
-#: template-parts/components/my-products.php:51
+#: template-parts/components/my-products.php:56
 msgid "No product here yet"
 msgstr "لا توجد منتجات بعد"
 
-#: template-parts/components/my-products.php:51
+#: template-parts/components/my-products.php:56
 msgid "Publish your first product: profiles, tubes, plates, roofing…"
 msgstr "انشر منتجك الأول: مقاطع، أنابيب، صفائح، تسقيف…"
 
-#: template-parts/components/my-products.php:64
+#: template-parts/components/my-products.php:69
 #: template-parts/dashboard/services.php:51
 msgid "Changes being checked"
 msgstr "تعديل قيد المراجعة"
 
+#. translators: %s: date.
 #: template-parts/components/my-products.php:76
+msgid "Featured until %s"
+msgstr "مميز إلى غاية %s"
+
+#. translators: %s: date.
+#: template-parts/components/my-products.php:79
+msgid "Urgent until %s"
+msgstr "عاجل إلى غاية %s"
+
+#: template-parts/components/my-products.php:87
 #: template-parts/components/portfolio-grid.php:27
 #: template-parts/components/rfq-single.php:127
 #: template-parts/dashboard/listings.php:52
@@ -1552,22 +1584,168 @@ msgstr "تعديل قيد المراجعة"
 msgid "Edit"
 msgstr "تعديل"
 
-#: template-parts/components/my-products.php:79
+#: template-parts/components/my-products.php:90
 msgid "Mark as sold"
 msgstr "وضع علامة «مباع»"
 
-#: template-parts/components/my-products.php:80
-#: template-parts/components/my-products.php:84
+#: template-parts/components/my-products.php:91
+#: template-parts/components/my-products.php:95
 msgid "Withdraw"
 msgstr "سحب"
 
-#: template-parts/components/my-products.php:82
+#: template-parts/components/my-products.php:93
 msgid "Publish again"
 msgstr "إعادة النشر"
 
-#: template-parts/components/my-products.php:87
+#: template-parts/components/my-products.php:98
 msgid "Delete this product for good?"
 msgstr "حذف هذا المنتج نهائيا؟"
+
+#: template-parts/components/my-products.php:104
+msgid "More visibility:"
+msgstr "ظهور أكبر:"
+
+#: template-parts/components/my-products.php:107
+msgid "Back to the top"
+msgstr "الرجوع إلى الأعلى"
+
+#. translators: %d: days.
+#: template-parts/components/my-products.php:109
+msgid "Urgent badge, %d days"
+msgstr "شارة عاجل، %d أيام"
+
+#. translators: %d: days.
+#: template-parts/components/my-products.php:111
+msgid "Featured, %d days"
+msgstr "مميز، %d أيام"
+
+#: template-parts/components/my-products.php:125
+msgid ""
+"Paused because it went beyond your plan. Nothing was deleted: publish it "
+"again when there is room, or choose a higher plan."
+msgstr ""
+"معلّق لأنه تجاوز حدود اشتراكك. لم يُحذف شيء: أعد نشره عند توفر المجال، أو "
+"اختر اشتراكا أعلى."
+
+#: template-parts/components/my-products.php:125
+#: templates/company-profile.php:258 templates/front-page-template.php:224
+msgid "See the plans"
+msgstr "عرض الاشتراكات"
+
+#: template-parts/components/order-history.php:18
+#: template-parts/components/order-history.php:19
+msgid "My orders"
+msgstr "طلباتي"
+
+#: template-parts/components/order-history.php:23
+#: template-parts/components/order-history.php:33
+#: template-parts/dashboard/invoice.php:50 templates/dashboard.php:167
+msgid "Order"
+msgstr "الطلب"
+
+#: template-parts/components/order-history.php:24
+#: template-parts/components/order-history.php:34
+#: template-parts/dashboard/invoice.php:49
+msgid "Date"
+msgstr "التاريخ"
+
+#: template-parts/components/order-history.php:25
+#: template-parts/components/order-history.php:35
+msgid "Amount"
+msgstr "المبلغ"
+
+#: template-parts/components/order-history.php:26
+#: template-parts/components/order-history.php:36
+#: template-parts/dashboard/engineer-billing.php:34
+#: template-parts/dashboard/engineer-billing.php:40
+#: template-parts/dashboard/engineer-missions.php:126
+#: template-parts/dashboard/engineer-missions.php:133
+#: template-parts/dashboard/listings.php:36
+#: template-parts/dashboard/listings.php:50
+#: template-parts/dashboard/studies.php:140
+#: template-parts/dashboard/studies.php:147
+msgid "Status"
+msgstr "الحالة"
+
+#: template-parts/components/order-history.php:27
+#: template-parts/dashboard/listings.php:37
+msgid "Actions"
+msgstr "إجراءات"
+
+#: template-parts/components/order-history.php:39
+#: template-parts/dashboard/engineer-files.php:25
+#: template-parts/dashboard/invoice.php:38
+#: template-parts/dashboard/invoice.php:47 templates/dashboard.php:168
+msgid "Invoice"
+msgstr "فاتورة"
+
+#: template-parts/components/order-history.php:41
+#: template-parts/components/weight-calculator.php:127
+#: template-parts/components/weight-calculator.php:166
+#: template-parts/dashboard/publish.php:210 templates/styleguide.php:35
+msgid "Continue"
+msgstr "متابعة"
+
+#: template-parts/components/plan-card.php:34
+#: template-parts/dashboard/plan.php:16 template-parts/dashboard/plan.php:22
+#: template-parts/dashboard/plan.php:89
+msgid "Your plan"
+msgstr "صيغتك"
+
+#: template-parts/components/plan-card.php:40
+msgid "/ month"
+msgstr "/ شهريا"
+
+#. translators: %s: yearly price.
+#: template-parts/components/plan-card.php:47
+msgid "or %s per year"
+msgstr "أو %s سنويا"
+
+#. translators: %s: amount saved.
+#: template-parts/components/plan-card.php:50
+msgid "%s saved"
+msgstr "توفير %s"
+
+#: template-parts/components/plan-card.php:73
+msgid "Start free"
+msgstr "ابدأ مجانا"
+
+#: template-parts/components/plan-card.php:73
+msgid "Choose"
+msgstr "اختيار"
+
+#: template-parts/components/plan-card.php:76
+msgid "Free, without time limit."
+msgstr "مجاني، دون حد زمني."
+
+#: template-parts/components/plan-card.php:76
+msgid "Your account comes back to this plan when a paid period ends."
+msgstr "يعود حسابك إلى هذا الاشتراك عند نهاية فترة مدفوعة."
+
+#: template-parts/components/plan-card.php:78
+#: template-parts/dashboard/ai-credits.php:68
+msgid "Only the owner or a manager of the account can order."
+msgstr "يمكن لمالك الحساب أو مسيّره فقط تقديم الطلب."
+
+#. translators: %s: price.
+#: template-parts/components/plan-card.php:90
+msgid "Renew for 1 year · %s"
+msgstr "تجديد سنة واحدة · %s"
+
+#. translators: %s: price.
+#: template-parts/components/plan-card.php:90
+msgid "Renew for 1 month · %s"
+msgstr "تجديد شهر واحد · %s"
+
+#. translators: %s: price.
+#: template-parts/components/plan-card.php:93
+msgid "Pay 1 year · %s"
+msgstr "دفع سنة واحدة · %s"
+
+#. translators: %s: price.
+#: template-parts/components/plan-card.php:93
+msgid "Pay 1 month · %s"
+msgstr "دفع شهر واحد · %s"
 
 #. translators: %s: project title.
 #: template-parts/components/portfolio-grid.php:16
@@ -1728,8 +1906,8 @@ msgid "technical data, quantity and price"
 msgstr "البيانات التقنية والكمية والسعر"
 
 #: template-parts/components/product-form.php:111
-#: templates/mission-request.php:62 templates/single-listing.php:267
-#: templates/single-service.php:99
+#: template-parts/dashboard/invoice.php:65 templates/mission-request.php:62
+#: templates/single-listing.php:267 templates/single-service.php:99
 msgid "Description"
 msgstr "الوصف"
 
@@ -1797,8 +1975,8 @@ msgstr "العنوان بالعربية"
 #: template-parts/dashboard/ai.php:66 template-parts/dashboard/ai.php:92
 #: template-parts/dashboard/portfolio.php:48
 #: template-parts/dashboard/portfolio.php:54
-#: template-parts/dashboard/portfolio.php:74 templates/company-profile.php:306
-#: templates/company-profile.php:313 templates/contact.php:56
+#: template-parts/dashboard/portfolio.php:74 templates/company-profile.php:314
+#: templates/company-profile.php:321 templates/contact.php:56
 #: templates/engineer-apply.php:94 templates/mission-request.php:76
 #: templates/mission-request.php:83 templates/mission-request.php:87
 #: templates/mission-request.php:97
@@ -1869,7 +2047,7 @@ msgstr ""
 "للمشترين تنزيلها."
 
 #: template-parts/components/product-form.php:170
-#: templates/company-profile.php:219 templates/single-listing.php:80
+#: templates/company-profile.php:222 templates/single-listing.php:80
 msgid "Location"
 msgstr "الموقع"
 
@@ -1888,7 +2066,7 @@ msgstr "الولاية التي يوجد فيها المنتج"
 #: template-parts/components/service-form.php:57
 #: template-parts/components/service-request-form.php:28
 #: template-parts/components/weight-calculator.php:139
-#: templates/company-profile.php:301
+#: templates/company-profile.php:309
 msgid "Choose…"
 msgstr "اختر…"
 
@@ -2413,7 +2591,7 @@ msgstr "طلب عرض أسعار رقم %d"
 
 #. translators: %d: request number.
 #: template-parts/components/rfq-compare.php:86
-#: template-parts/dashboard/company.php:126 templates/company-profile.php:242
+#: template-parts/dashboard/company.php:126 templates/company-profile.php:245
 #: templates/contact.php:49
 msgid "E-mail"
 msgstr "البريد الإلكتروني"
@@ -2883,7 +3061,7 @@ msgid "Your account cannot publish services."
 msgstr "لا يمكن لحسابك نشر خدمات."
 
 #: template-parts/components/service-form.php:52
-#: templates/company-profile.php:288
+#: templates/company-profile.php:296
 msgid "Service"
 msgstr "الخدمة"
 
@@ -2918,7 +3096,7 @@ msgstr ""
 "تُنشر صفحتك ضمن «خدمات أخرى»، وقد يضيف فريق المنصة هذا الاسم إلى القائمة."
 
 #: template-parts/components/service-form.php:74
-#: templates/company-profile.php:59 templates/company-profile.php:126
+#: templates/company-profile.php:62 templates/company-profile.php:129
 msgid "Presentation"
 msgstr "التقديم"
 
@@ -3034,12 +3212,12 @@ msgid "Publish the service"
 msgstr "نشر الخدمة"
 
 #: template-parts/components/service-request-form.php:20
-#: templates/company-profile.php:294
+#: templates/company-profile.php:302
 msgid "Your project"
 msgstr "مشروعك"
 
 #: template-parts/components/service-request-form.php:21
-#: templates/company-profile.php:295
+#: templates/company-profile.php:303
 msgid ""
 "What must be made or installed: profiles, quantities, dimensions, site, "
 "finish…"
@@ -3047,12 +3225,12 @@ msgstr "ما يجب تصنيعه أو تركيبه: المقاطع، الكمي�
 
 #: template-parts/components/service-request-form.php:26
 #: template-parts/components/services-board.php:44
-#: templates/company-profile.php:299 templates/mission-request.php:68
+#: templates/company-profile.php:307 templates/mission-request.php:68
 msgid "Wilaya of the project"
 msgstr "ولاية المشروع"
 
 #: template-parts/components/service-request-form.php:34
-#: templates/company-profile.php:306
+#: templates/company-profile.php:314
 msgid "Wanted by"
 msgstr "مطلوب قبل"
 
@@ -3159,7 +3337,7 @@ msgid "Service requests"
 msgstr "طلبات الخدمات"
 
 #: template-parts/components/service-requests-list.php:16
-#: template-parts/dashboard/ai-credits.php:15
+#: template-parts/dashboard/ai-credits.php:16
 #: template-parts/dashboard/ai.php:16 template-parts/dashboard/offers.php:13
 #: template-parts/dashboard/portfolio.php:13
 #: template-parts/dashboard/rfq.php:19
@@ -3209,7 +3387,7 @@ msgid ""
 msgstr "تظهر طلبات العملاء هنا. صفحة خدمة كاملة مع صور تتلقى طلبات أكثر."
 
 #: template-parts/components/service-requests-list.php:38
-#: template-parts/dashboard/services.php:19 templates/dashboard.php:123
+#: template-parts/dashboard/services.php:19 templates/dashboard.php:130
 msgid "My services"
 msgstr "خدماتي"
 
@@ -3326,12 +3504,6 @@ msgstr "نصف قطر الوصلة r1"
 msgid "Toe radius r2"
 msgstr "نصف قطر الحافة r2"
 
-#: template-parts/components/weight-calculator.php:127
-#: template-parts/components/weight-calculator.php:166
-#: template-parts/dashboard/publish.php:210 templates/styleguide.php:35
-msgid "Continue"
-msgstr "متابعة"
-
 #: template-parts/components/weight-calculator.php:181
 msgid "Area"
 msgstr "المساحة"
@@ -3390,16 +3562,90 @@ msgstr "أدخل الوزن الإجمالي لمعرفة عدد القطع."
 msgid "Enter the number of pieces to see the total weight."
 msgstr "أدخل عدد القطع لمعرفة الوزن الإجمالي."
 
-#: template-parts/dashboard/ai-credits.php:15 templates/dashboard.php:135
+#: template-parts/dashboard/ai-credits.php:16
+#: template-parts/dashboard/ai-credits.php:55
+#: template-parts/dashboard/plan.php:24 templates/dashboard.php:82
+#: templates/dashboard.php:142
 msgid "AI credits"
 msgstr "رصيد الذكاء الاصطناعي"
 
-#: template-parts/dashboard/ai-credits.php:20
+#: template-parts/dashboard/ai-credits.php:26
+msgid "Your AI credits"
+msgstr "رصيدك من الذكاء الاصطناعي"
+
+#: template-parts/dashboard/ai-credits.php:28
+msgid "No limit on your account."
+msgstr "لا حد على حسابك."
+
+#: template-parts/dashboard/ai-credits.php:32
+msgid "credit left"
+msgid_plural "credits left"
+msgstr[0] "رصيد متبقٍ"
+msgstr[1] "رصيد متبقٍ"
+msgstr[2] "رصيد متبقٍ"
+msgstr[3] "رصيد متبقٍ"
+msgstr[4] "رصيد متبقٍ"
+msgstr[5] "رصيد متبقٍ"
+
+#: template-parts/dashboard/ai-credits.php:36
+#: template-parts/dashboard/ai-credits.php:37
+msgid "Credits of the month"
+msgstr "رصيد الشهر"
+
+#. translators: %d: bought credits left.
+#: template-parts/dashboard/ai-credits.php:42
+msgid ""
+"Bought credits left: %d. They are used once the credits of the month are "
+"spent, and they do not expire."
+msgid_plural ""
+"Bought credits left: %d. They are used once the credits of the month are "
+"spent, and they do not expire."
+msgstr[0] ""
+"الرصيد المشترى المتبقي: %d. يُستعمل بعد نفاد رصيد الشهر، ولا تنتهي صلاحيته."
+msgstr[1] ""
+"الرصيد المشترى المتبقي: %d. يُستعمل بعد نفاد رصيد الشهر، ولا تنتهي صلاحيته."
+msgstr[2] ""
+"الرصيد المشترى المتبقي: %d. يُستعمل بعد نفاد رصيد الشهر، ولا تنتهي صلاحيته."
+msgstr[3] ""
+"الرصيد المشترى المتبقي: %d. يُستعمل بعد نفاد رصيد الشهر، ولا تنتهي صلاحيته."
+msgstr[4] ""
+"الرصيد المشترى المتبقي: %d. يُستعمل بعد نفاد رصيد الشهر، ولا تنتهي صلاحيته."
+msgstr[5] ""
+"الرصيد المشترى المتبقي: %d. يُستعمل بعد نفاد رصيد الشهر، ولا تنتهي صلاحيته."
+
+#: template-parts/dashboard/ai-credits.php:45
+msgid ""
+"One use of an AI tool takes one credit. The credits of the month start again"
+" on the 1st."
+msgstr ""
+"كل استعمال لأداة ذكاء اصطناعي يستهلك رصيدا واحدا. يتجدد رصيد الشهر في اليوم "
+"الأول."
+
+#: template-parts/dashboard/ai-credits.php:51
+msgid "Buy AI credits"
+msgstr "شراء رصيد الذكاء الاصطناعي"
+
+#: template-parts/dashboard/ai-credits.php:61
+msgid "Buy"
+msgstr "شراء"
+
+#: template-parts/dashboard/ai-credits.php:70
+msgid ""
+"Prices include TVA. The credits are added when our team has checked the "
+"payment."
+msgstr "الأسعار شاملة الرسوم. يُضاف الرصيد بعد تحقق فريقنا من الدفع."
+
+#: template-parts/dashboard/ai-credits.php:76
+#: template-parts/dashboard/ai-credits.php:98
+msgid "Open the assistant"
+msgstr "فتح المساعد"
+
+#: template-parts/dashboard/ai-credits.php:82
 msgid "This month"
 msgstr "هذا الشهر"
 
 #. translators: %d: uses this month.
-#: template-parts/dashboard/ai-credits.php:31
+#: template-parts/dashboard/ai-credits.php:93
 msgid "%d use, no monthly limit"
 msgid_plural "%d uses, no monthly limit"
 msgstr[0] "%d استعمال، دون حد شهري"
@@ -3409,20 +3655,12 @@ msgstr[3] "%d استعمالات، دون حد شهري"
 msgstr[4] "%d استعمالًا، دون حد شهري"
 msgstr[5] "%d استعمال، دون حد شهري"
 
-#: template-parts/dashboard/ai-credits.php:35
-msgid ""
-"The counters start again on the 1st of each month. Packs of AI credits will "
-"be offered with the subscriptions."
-msgstr ""
-"تُصفَّر العدادات في الأول من كل شهر. ستُقترح باقات رصيد الذكاء الاصطناعي مع "
-"الاشتراكات."
+#: template-parts/dashboard/ai-credits.php:97
+msgid "The counters start again on the 1st of each month."
+msgstr "تبدأ العدادات من جديد في اليوم الأول من كل شهر."
 
-#: template-parts/dashboard/ai-credits.php:36
-msgid "Open the assistant"
-msgstr "فتح المساعد"
-
-#: template-parts/dashboard/ai.php:16 templates/dashboard.php:77
-#: templates/dashboard.php:132
+#: template-parts/dashboard/ai.php:16 templates/dashboard.php:79
+#: templates/dashboard.php:139
 msgid "AI assistant"
 msgstr "المساعد الذكي"
 
@@ -3652,7 +3890,7 @@ msgstr "الهاتف العمومي"
 msgid "Public e-mail"
 msgstr "البريد الإلكتروني العمومي"
 
-#: template-parts/dashboard/company.php:127 templates/company-profile.php:248
+#: template-parts/dashboard/company.php:127 templates/company-profile.php:251
 msgid "Website"
 msgstr "الموقع الإلكتروني"
 
@@ -3731,17 +3969,6 @@ msgid "Fee"
 msgstr "الأتعاب"
 
 #: template-parts/dashboard/engineer-billing.php:34
-#: template-parts/dashboard/engineer-billing.php:40
-#: template-parts/dashboard/engineer-missions.php:126
-#: template-parts/dashboard/engineer-missions.php:133
-#: template-parts/dashboard/listings.php:36
-#: template-parts/dashboard/listings.php:50
-#: template-parts/dashboard/studies.php:140
-#: template-parts/dashboard/studies.php:147
-msgid "Status"
-msgstr "الحالة"
-
-#: template-parts/dashboard/engineer-billing.php:34
 #: template-parts/dashboard/engineer-billing.php:41
 msgid "Payment"
 msgstr "الدفع"
@@ -3782,10 +4009,6 @@ msgstr "تُجمع هنا مخططات ووثائق مهامك."
 #: template-parts/dashboard/engineer-files.php:24
 msgid "Deliverable"
 msgstr "مُخرَج"
-
-#: template-parts/dashboard/engineer-files.php:25
-msgid "Invoice"
-msgstr "فاتورة"
 
 #: template-parts/dashboard/engineer-files.php:32
 msgid "Open the mission"
@@ -4012,7 +4235,7 @@ msgstr "أنت مسجّل كغير متاح."
 msgid "Change"
 msgstr "تغيير"
 
-#: template-parts/dashboard/engineer-partner.php:14 templates/dashboard.php:82
+#: template-parts/dashboard/engineer-partner.php:14 templates/dashboard.php:89
 msgid "Partner profile"
 msgstr "ملف الشريك"
 
@@ -4065,7 +4288,56 @@ msgid ""
 msgstr ""
 "يرى الزوار هذه البطاقة بعد قبولك. لا يُعرض هاتفك ولا بريدك ولا عنوانك أبدا."
 
-#: template-parts/dashboard/listings.php:27 templates/dashboard.php:104
+#: template-parts/dashboard/invoice.php:17
+msgid "Invoice not found"
+msgstr "الفاتورة غير موجودة"
+
+#: template-parts/dashboard/invoice.php:17
+msgid "This invoice does not exist or belongs to another account."
+msgstr "هذه الفاتورة غير موجودة أو تخص حسابا آخر."
+
+#: template-parts/dashboard/invoice.php:34
+#: template-parts/dashboard/order.php:25
+#: template-parts/dashboard/publish.php:208
+msgid "Back"
+msgstr "رجوع"
+
+#: template-parts/dashboard/invoice.php:35
+msgid "Print or save as PDF"
+msgstr "طباعة أو حفظ بصيغة PDF"
+
+#: template-parts/dashboard/invoice.php:48
+msgid "Number"
+msgstr "الرقم"
+
+#: template-parts/dashboard/invoice.php:55
+msgid "Billed to"
+msgstr "الفاتورة باسم"
+
+#: template-parts/dashboard/invoice.php:65
+msgid "Amount before tax"
+msgstr "المبلغ دون رسوم"
+
+#: template-parts/dashboard/invoice.php:71
+msgid "Total before tax"
+msgstr "المجموع دون رسوم"
+
+#. translators: %s: TVA rate.
+#: template-parts/dashboard/invoice.php:72
+msgid "TVA %s %%"
+msgstr "الرسم على القيمة المضافة %s %%"
+
+#. translators: %s: TVA rate.
+#: template-parts/dashboard/invoice.php:73
+msgid "Total including tax"
+msgstr "المجموع شامل الرسوم"
+
+#. translators: 1: payment method, 2: date.
+#: template-parts/dashboard/invoice.php:82
+msgid "Paid by %1$s, confirmed on %2$s."
+msgstr "دُفع عبر %1$s، وتأكد في %2$s."
+
+#: template-parts/dashboard/listings.php:27 templates/dashboard.php:111
 msgid "My listings"
 msgstr "إعلاناتي"
 
@@ -4078,10 +4350,6 @@ msgstr "الإعلان"
 #: template-parts/dashboard/listings.php:48
 msgid "DA/kg"
 msgstr "دج/kg"
-
-#: template-parts/dashboard/listings.php:37
-msgid "Actions"
-msgstr "إجراءات"
 
 #: template-parts/dashboard/listings.php:53
 msgid "Feature"
@@ -4134,7 +4402,7 @@ msgstr "عرض كل الإشعارات"
 msgid "No notification yet."
 msgstr "لا توجد إشعارات بعد."
 
-#: template-parts/dashboard/offers.php:13 templates/dashboard.php:105
+#: template-parts/dashboard/offers.php:13 templates/dashboard.php:112
 msgid "Quotations sent"
 msgstr "العروض المرسلة"
 
@@ -4161,6 +4429,112 @@ msgstr "عرض طلبات عروض الأسعار"
 #: template-parts/dashboard/offers.php:41 template-parts/dashboard/rfq.php:55
 msgid "View"
 msgstr "عرض"
+
+#: template-parts/dashboard/order.php:17
+msgid "Order not found"
+msgstr "الطلب غير موجود"
+
+#: template-parts/dashboard/order.php:17
+msgid "This order does not exist or belongs to another account."
+msgstr "هذا الطلب غير موجود أو يخص حسابا آخر."
+
+#: template-parts/dashboard/order.php:35
+msgid "TVA included"
+msgstr "شامل الرسوم"
+
+#: template-parts/dashboard/order.php:40
+msgid ""
+"Your proof of payment was received. The platform team checks it, usually "
+"within one working day; you are told by e-mail."
+msgstr ""
+"تم استلام إثبات دفعك. يتحقق منه فريق المنصة خلال يوم عمل عادة؛ ويتم إعلامك "
+"بالبريد."
+
+#: template-parts/dashboard/order.php:42
+msgid "Payment confirmed. Thank you."
+msgstr "تم تأكيد الدفع. شكرا."
+
+#: template-parts/dashboard/order.php:43
+msgid "See the invoice"
+msgstr "عرض الفاتورة"
+
+#. translators: %s: reason given by the platform team.
+#: template-parts/dashboard/order.php:48
+msgid "The payment could not be confirmed. Reason: %s"
+msgstr "تعذر تأكيد الدفع. السبب: %s"
+
+#: template-parts/dashboard/order.php:56
+msgid "1. Pay"
+msgstr "1. ادفع"
+
+#. translators: 1: amount, 2: order reference.
+#: template-parts/dashboard/order.php:60
+msgid ""
+"Pay %1$s and write the reference %2$s on the payment so we can find it."
+msgstr "ادفع %1$s واكتب المرجع %2$s على الدفع حتى نتعرف عليه."
+
+#: template-parts/dashboard/order.php:65
+msgid "Beneficiary"
+msgstr "المستفيد"
+
+#: template-parts/dashboard/order.php:68
+msgid "Bank transfer"
+msgstr "تحويل بنكي"
+
+#: template-parts/dashboard/order.php:71
+msgid "CCP payment"
+msgstr "دفع عبر CCP"
+
+#: template-parts/dashboard/order.php:74
+msgid "BaridiMob"
+msgstr "بريدي موب"
+
+#: template-parts/dashboard/order.php:77
+msgid "Cheque"
+msgstr "صك"
+
+#: template-parts/dashboard/order.php:81
+msgid ""
+"The payment details are not published yet. Contact the platform team to get "
+"them."
+msgstr "لم تُنشر بيانات الدفع بعد. اتصل بفريق المنصة للحصول عليها."
+
+#: template-parts/dashboard/order.php:89
+msgid "2. Send the proof of payment"
+msgstr "2. أرسل إثبات الدفع"
+
+#: template-parts/dashboard/order.php:92
+msgid "How did you pay?"
+msgstr "كيف دفعت؟"
+
+#: template-parts/dashboard/order.php:104
+msgid "Receipt, transfer slip or screenshot of the payment"
+msgstr "وصل أو أمر تحويل أو لقطة شاشة للدفع"
+
+#: template-parts/dashboard/order.php:105
+msgid "PDF, JPG or PNG, 10 MB maximum"
+msgstr "PDF أو JPG أو PNG، بحد أقصى 10 ميغابايت"
+
+#: template-parts/dashboard/order.php:109
+#: template-parts/dashboard/verification.php:60
+msgid "Note for the platform team (optional)"
+msgstr "ملاحظة لفريق المنصة (اختياري)"
+
+#: template-parts/dashboard/order.php:110
+msgid "The proof is stored privately and only seen by the platform team."
+msgstr "يُحفظ الإثبات بشكل خاص ولا يطلع عليه إلا فريق المنصة."
+
+#: template-parts/dashboard/order.php:111
+msgid "Send another proof"
+msgstr "إرسال إثبات آخر"
+
+#: template-parts/dashboard/order.php:111
+msgid "Send the proof"
+msgstr "إرسال الإثبات"
+
+#: template-parts/dashboard/order.php:117
+msgid "Cancel this order"
+msgstr "إلغاء هذا الطلب"
 
 #: template-parts/dashboard/overview.php:18
 msgid "Active listings"
@@ -4235,24 +4609,127 @@ msgid "Complete the company profile"
 msgstr "استكمال ملف المؤسسة"
 
 #: template-parts/dashboard/plan.php:16
-msgid "Your plan"
-msgstr "صيغتك"
-
-#: template-parts/dashboard/plan.php:20
-msgid "Free during the launch"
-msgstr "مجاني خلال فترة الإطلاق"
-
-#: template-parts/dashboard/plan.php:21
 msgid ""
-"All the features of the platform are open to your account. The subscription "
-"plans will arrive soon: you will be told before anything changes."
-msgstr ""
-"جميع وظائف المنصة مفتوحة لحسابك. ستتوفر صيغ الاشتراك قريبًا، وسيتم إعلامك "
-"قبل أي تغيير."
+"All the features of the platform are open to your account during the launch."
+msgstr "كل وظائف المنصة متاحة لحسابك خلال فترة الإطلاق."
 
-#: template-parts/dashboard/plan.php:24
-msgid "See my AI credits"
-msgstr "عرض رصيدي من الذكاء الاصطناعي"
+#: template-parts/dashboard/plan.php:23
+msgid ""
+"Your type of account has no plan: the platform is free for you. You can buy "
+"packs of AI credits when your monthly credits are used."
+msgstr ""
+"نوع حسابك ليس له اشتراك: المنصة مجانية لك. يمكنك شراء باقات رصيد الذكاء "
+"الاصطناعي عند نفاد رصيدك الشهري."
+
+#. translators: 1: order reference, 2: label.
+#: template-parts/dashboard/plan.php:55
+msgid "Order %1$s (%2$s): your proof of payment is being checked."
+msgstr "الطلب %1$s (%2$s): إثبات دفعك قيد التحقق."
+
+#. translators: 1: order reference, 2: label.
+#: template-parts/dashboard/plan.php:57
+msgid "Order %1$s (%2$s) is waiting for your payment."
+msgstr "الطلب %1$s (%2$s) في انتظار دفعك."
+
+#: template-parts/dashboard/plan.php:60
+msgid "See the order"
+msgstr "عرض الطلب"
+
+#: template-parts/dashboard/plan.php:69 templates/pricing.php:40
+msgid "Founding members offer"
+msgstr "عرض الأعضاء المؤسسين"
+
+#. translators: 1: plan name, 2: months, 3: places left.
+#: template-parts/dashboard/plan.php:74
+msgid ""
+"Have your documents checked and get the plan %1$s free for %2$d months, then"
+" keep its price. %3$d place left."
+msgid_plural ""
+"Have your documents checked and get the plan %1$s free for %2$d months, then"
+" keep its price. %3$d places left."
+msgstr[0] ""
+"وثّق مستنداتك واحصل على اشتراك %1$s مجانا لمدة %2$d أشهر، ثم احتفظ بسعره. "
+"الأماكن المتبقية: %3$d."
+msgstr[1] ""
+"وثّق مستنداتك واحصل على اشتراك %1$s مجانا لمدة %2$d أشهر، ثم احتفظ بسعره. "
+"الأماكن المتبقية: %3$d."
+msgstr[2] ""
+"وثّق مستنداتك واحصل على اشتراك %1$s مجانا لمدة %2$d أشهر، ثم احتفظ بسعره. "
+"الأماكن المتبقية: %3$d."
+msgstr[3] ""
+"وثّق مستنداتك واحصل على اشتراك %1$s مجانا لمدة %2$d أشهر، ثم احتفظ بسعره. "
+"الأماكن المتبقية: %3$d."
+msgstr[4] ""
+"وثّق مستنداتك واحصل على اشتراك %1$s مجانا لمدة %2$d أشهر، ثم احتفظ بسعره. "
+"الأماكن المتبقية: %3$d."
+msgstr[5] ""
+"وثّق مستنداتك واحصل على اشتراك %1$s مجانا لمدة %2$d أشهر، ثم احتفظ بسعره. "
+"الأماكن المتبقية: %3$d."
+
+#: template-parts/dashboard/plan.php:82
+msgid "Verify my account"
+msgstr "توثيق حسابي"
+
+#: template-parts/dashboard/plan.php:91
+msgid "Founding member"
+msgstr "عضو مؤسس"
+
+#. translators: %s: date.
+#: template-parts/dashboard/plan.php:98
+msgid "Paid until %s"
+msgstr "مدفوع إلى غاية %s"
+
+#: template-parts/dashboard/plan.php:100
+msgid "Free, without time limit"
+msgstr "مجاني، دون حد زمني"
+
+#: template-parts/dashboard/plan.php:110
+msgid "unlimited"
+msgstr "غير محدود"
+
+#. translators: %d: bought credits left.
+#: template-parts/dashboard/plan.php:122
+msgid "+%d bought"
+msgid_plural "+%d bought"
+msgstr[0] "+%d مشترى"
+msgstr[1] "+%d مشترى"
+msgstr[2] "+%d مشترى"
+msgstr[3] "+%d مشترى"
+msgstr[4] "+%d مشترى"
+msgstr[5] "+%d مشترى"
+
+#: template-parts/dashboard/plan.php:128
+msgid ""
+"Your phone, e-mail, WhatsApp and website are shown on your public page."
+msgstr "هاتفك وبريدك وواتساب وموقعك ظاهرة في صفحتك العامة."
+
+#: template-parts/dashboard/plan.php:128
+msgid ""
+"Your phone, e-mail, WhatsApp and website are hidden on your public page; "
+"buyers reach you through the contact form."
+msgstr ""
+"هاتفك وبريدك وواتساب وموقعك مخفية في صفحتك العامة؛ يتواصل معك المشترون عبر "
+"استمارة الاتصال."
+
+#: template-parts/dashboard/plan.php:130
+msgid "Your account takes turns in the featured row of the home page."
+msgstr "يظهر حسابك بالتناوب في صف المميزين بالصفحة الرئيسية."
+
+#: template-parts/dashboard/plan.php:133
+msgid ""
+"When a paid period ends, what goes beyond the free plan is paused, the "
+"oldest first. Nothing is deleted."
+msgstr ""
+"عند نهاية فترة مدفوعة، يُعلّق ما يتجاوز الاشتراك المجاني بدءا بالأقدم. لا "
+"يُحذف شيء."
+
+#: template-parts/dashboard/plan.php:138
+msgid ""
+"Prices include TVA. Payment by bank transfer, CCP, BaridiMob or cheque; the "
+"plan starts when our team has checked the payment."
+msgstr ""
+"الأسعار شاملة الرسوم. الدفع بتحويل بنكي أو CCP أو بريدي موب أو صك؛ يبدأ "
+"الاشتراك بعد تحقق فريقنا من الدفع."
 
 #: template-parts/dashboard/portfolio.php:13
 msgid "References"
@@ -4470,10 +4947,6 @@ msgstr "السعر المطلوب (دج)"
 #: template-parts/dashboard/publish.php:202
 msgid "Weight and total price are calculated by the weight engine (Phase 3)."
 msgstr "يحسب محرك الأوزان الوزن والسعر الإجمالي (المرحلة 3)."
-
-#: template-parts/dashboard/publish.php:208
-msgid "Back"
-msgstr "رجوع"
 
 #: template-parts/dashboard/rfq.php:35 template-parts/dashboard/rfq.php:38
 #: templates/rfq-board.php:60 templates/rfq-board.php:95
@@ -4699,7 +5172,7 @@ msgstr "وثائقك قيد المراجعة من طرف فريق المنصة،
 msgid "Verify your contact details first."
 msgstr "تحقق من معلومات الاتصال أولا."
 
-#: template-parts/dashboard/verification.php:33 templates/dashboard.php:273
+#: template-parts/dashboard/verification.php:33 templates/dashboard.php:282
 msgid "Enter the code"
 msgstr "أدخل الرمز"
 
@@ -4722,10 +5195,6 @@ msgstr "أرسل وثائقك"
 #: template-parts/dashboard/verification.php:54
 msgid "PDF, JPG or PNG, 5 MB maximum"
 msgstr "PDF أو JPG أو PNG، بحد أقصى 5 ميغابايت"
-
-#: template-parts/dashboard/verification.php:60
-msgid "Note for the platform team (optional)"
-msgstr "ملاحظة لفريق المنصة (اختياري)"
 
 #: template-parts/dashboard/verification.php:61
 msgid "Documents are stored privately and are only seen by the platform team."
@@ -4786,7 +5255,7 @@ msgstr "اسم المؤسسة"
 msgid "Trade"
 msgstr "الحرفة"
 
-#: template-parts/directory.php:67 templates/dashboard.php:144
+#: template-parts/directory.php:67 templates/dashboard.php:151
 msgid "Verification"
 msgstr "التوثيق"
 
@@ -5093,7 +5562,7 @@ msgid "Company not found"
 msgstr "المؤسسة غير موجودة"
 
 #. translators: %d: number of wilayas.
-#: templates/company-profile.php:56
+#: templates/company-profile.php:59
 msgid "%d wilaya"
 msgid_plural "%d wilayas"
 msgstr[0] "%d ولاية"
@@ -5103,131 +5572,146 @@ msgstr[3] "%d ولايات"
 msgstr[4] "%d ولاية"
 msgstr[5] "%d ولاية"
 
-#: templates/company-profile.php:61 templates/company-profile.php:157
-#: templates/dashboard.php:125 templates/single-service.php:160
+#: templates/company-profile.php:64 templates/company-profile.php:160
+#: templates/dashboard.php:132 templates/single-service.php:160
 msgid "Completed projects"
 msgstr "المشاريع المنجزة"
 
-#: templates/company-profile.php:67 templates/company-profile.php:206
+#: templates/company-profile.php:70 templates/company-profile.php:209
 msgid "Products for sale"
 msgstr "منتجات للبيع"
 
 #. translators: %s: company name.
-#: templates/company-profile.php:86
+#: templates/company-profile.php:89
 msgid "Logo of %s"
 msgstr "شعار %s"
 
 #. translators: %s: year.
-#: templates/company-profile.php:105
+#: templates/company-profile.php:108
 msgid "Member since %s"
 msgstr "عضو منذ %s"
 
-#: templates/company-profile.php:119
+#: templates/company-profile.php:122
 msgid "Company sections"
 msgstr "أقسام المؤسسة"
 
-#: templates/company-profile.php:130
+#: templates/company-profile.php:133
 msgid "This company has not written its presentation yet."
 msgstr "لم تكتب هذه المؤسسة تقديمها بعد."
 
-#: templates/company-profile.php:134
+#: templates/company-profile.php:137
 msgid "Trades"
 msgstr "الحرف"
 
-#: templates/company-profile.php:134
+#: templates/company-profile.php:137
 msgid "Types of company"
 msgstr "أنواع المؤسسة"
 
-#: templates/company-profile.php:139
+#: templates/company-profile.php:142
 msgid "Area covered"
 msgstr "المنطقة المغطاة"
 
-#: templates/company-profile.php:145
+#: templates/company-profile.php:148
 msgid "Qualifications"
 msgstr "المؤهلات"
 
-#: templates/company-profile.php:149
+#: templates/company-profile.php:152
 msgid "Specialisations"
 msgstr "التخصصات"
 
-#: templates/company-profile.php:166
+#: templates/company-profile.php:169
 msgid "Services offered"
 msgstr "الخدمات المقدمة"
 
-#: templates/company-profile.php:167
+#: templates/company-profile.php:170
 msgid "Choose a service to ask this company for a quote."
 msgstr "اختر خدمة لطلب عرض سعر من هذه المؤسسة."
 
-#: templates/company-profile.php:193
+#: templates/company-profile.php:196
 msgid "See the service"
 msgstr "عرض الخدمة"
 
-#: templates/company-profile.php:207
+#: templates/company-profile.php:210
 msgid "Listings published by this company on the marketplace."
 msgstr "الإعلانات التي نشرتها هذه المؤسسة في السوق."
 
-#: templates/company-profile.php:217
+#: templates/company-profile.php:220
 msgid "Company details"
 msgstr "معلومات المؤسسة"
 
-#: templates/company-profile.php:227
+#: templates/company-profile.php:230
 msgid "Contact details"
 msgstr "معلومات الاتصال"
 
-#: templates/company-profile.php:257 templates/company-profile.php:333
-#: templates/company-profile.php:335
+#: templates/company-profile.php:256
+msgid ""
+"This account shares its phone and e-mail in answer to your message. Use the "
+"form to contact it."
+msgstr ""
+"يشارك هذا الحساب هاتفه وبريده ردا على رسالتك. استعمل الاستمارة للتواصل معه."
+
+#: templates/company-profile.php:258
+msgid ""
+"Visitors do not see your phone, e-mail and website with the free plan; they "
+"write to you through the form."
+msgstr ""
+"مع الاشتراك المجاني لا يرى الزوار هاتفك وبريدك وموقعك؛ يراسلونك عبر "
+"الاستمارة."
+
+#: templates/company-profile.php:265 templates/company-profile.php:341
+#: templates/company-profile.php:343
 msgid "Send a message"
 msgstr "إرسال رسالة"
 
-#: templates/company-profile.php:263
+#: templates/company-profile.php:271
 msgid "Share this page"
 msgstr "شارك هذه الصفحة"
 
 #. translators: %s: social network.
-#: templates/company-profile.php:266
+#: templates/company-profile.php:274
 msgid "Share on %s"
 msgstr "المشاركة على %s"
 
-#: templates/company-profile.php:268
+#: templates/company-profile.php:276
 msgid "Link copied"
 msgstr "تم نسخ الرابط"
 
-#: templates/company-profile.php:268
+#: templates/company-profile.php:276
 msgid "Copy the link"
 msgstr "نسخ الرابط"
 
 #. translators: %s: company name.
-#: templates/company-profile.php:280
+#: templates/company-profile.php:288
 msgid "to %s · the answer arrives in your dashboard"
 msgstr "إلى %s · يصلك الرد في لوحة التحكم"
 
-#: templates/company-profile.php:313
+#: templates/company-profile.php:321
 msgid "Add plans or photos"
 msgstr "أرفق مخططات أو صورا"
 
-#: templates/company-profile.php:314
+#: templates/company-profile.php:322
 msgid "PDF, JPG or PNG"
 msgstr "PDF أو JPG أو PNG"
 
-#: templates/company-profile.php:317
+#: templates/company-profile.php:325
 msgid ""
 "Your contact details are sent to the company with the request. It answers "
 "with a quote."
 msgstr "تُرسَل معلومات اتصالك إلى المؤسسة مع الطلب، وتردّ عليك بعرض سعر."
 
-#: templates/company-profile.php:320 templates/single-service.php:125
+#: templates/company-profile.php:328 templates/single-service.php:125
 msgid "You already sent a request for this service."
 msgstr "لقد أرسلت طلبًا لهذه الخدمة من قبل."
 
-#: templates/company-profile.php:346
+#: templates/company-profile.php:354
 msgid "Contact from the company page"
 msgstr "تواصل من صفحة المؤسسة"
 
-#: templates/company-profile.php:347
+#: templates/company-profile.php:355
 msgid "Contact this professional"
 msgstr "تواصل مع هذا المهني"
 
-#: templates/company-profile.php:347
+#: templates/company-profile.php:355
 msgid "Contact this company"
 msgstr "التواصل مع هذه المؤسسة"
 
@@ -5310,7 +5794,7 @@ msgstr "SM — لوحة التحكم"
 msgid "Create an account to use the dashboard."
 msgstr "أنشئ حسابا لاستعمال لوحة التحكم."
 
-#: templates/dashboard.php:73 templates/dashboard.php:99
+#: templates/dashboard.php:73 templates/dashboard.php:106
 msgid "Overview"
 msgstr "نظرة عامة"
 
@@ -5318,133 +5802,133 @@ msgstr "نظرة عامة"
 msgid "Files and plans"
 msgstr "الملفات والمخططات"
 
-#: templates/dashboard.php:83 templates/dashboard.php:145
-msgid "Settings"
-msgstr "الإعدادات"
-
-#: templates/dashboard.php:94 templates/dashboard.php:143
-msgid "Company profile"
-msgstr "ملف المؤسسة"
-
-#: templates/dashboard.php:95
-msgid "Professional profile"
-msgstr "الملف المهني"
-
-#: templates/dashboard.php:96
-msgid "My profile"
-msgstr "ملفي"
-
-#: templates/dashboard.php:102
-msgid "Selling"
-msgstr "البيع"
-
-#: templates/dashboard.php:106
-msgid "Enquiries received"
-msgstr "الاستفسارات الواردة"
-
-#: templates/dashboard.php:107
-msgid "Statistics"
-msgstr "الإحصائيات"
-
-#: templates/dashboard.php:112
-msgid "Buying"
-msgstr "الشراء"
-
-#: templates/dashboard.php:115
-msgid "My requests for quotation"
-msgstr "طلبات عروضي"
-
-#: templates/dashboard.php:116
-msgid "Purchase history"
-msgstr "سجل المشتريات"
-
-#: templates/dashboard.php:124 templates/single-service.php:89
-msgid "Requests received"
-msgstr "الطلبات المستلمة"
-
-#: templates/dashboard.php:126
-msgid "My service requests"
-msgstr "طلبات الخدمات الخاصة بي"
-
-#: templates/dashboard.php:129
-msgid "Engineering studies"
-msgstr "الدراسات الهندسية"
-
-#: templates/dashboard.php:134
+#: templates/dashboard.php:81 templates/dashboard.php:141
 msgid "Assistant"
 msgstr "المساعد"
 
-#: templates/dashboard.php:138
+#: templates/dashboard.php:90 templates/dashboard.php:152
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: templates/dashboard.php:101 templates/dashboard.php:150
+msgid "Company profile"
+msgstr "ملف المؤسسة"
+
+#: templates/dashboard.php:102
+msgid "Professional profile"
+msgstr "الملف المهني"
+
+#: templates/dashboard.php:103
+msgid "My profile"
+msgstr "ملفي"
+
+#: templates/dashboard.php:109
+msgid "Selling"
+msgstr "البيع"
+
+#: templates/dashboard.php:113
+msgid "Enquiries received"
+msgstr "الاستفسارات الواردة"
+
+#: templates/dashboard.php:114
+msgid "Statistics"
+msgstr "الإحصائيات"
+
+#: templates/dashboard.php:119
+msgid "Buying"
+msgstr "الشراء"
+
+#: templates/dashboard.php:122
+msgid "My requests for quotation"
+msgstr "طلبات عروضي"
+
+#: templates/dashboard.php:123
+msgid "Purchase history"
+msgstr "سجل المشتريات"
+
+#: templates/dashboard.php:131 templates/single-service.php:89
+msgid "Requests received"
+msgstr "الطلبات المستلمة"
+
+#: templates/dashboard.php:133
+msgid "My service requests"
+msgstr "طلبات الخدمات الخاصة بي"
+
+#: templates/dashboard.php:136
+msgid "Engineering studies"
+msgstr "الدراسات الهندسية"
+
+#: templates/dashboard.php:145
 msgid "Plan"
 msgstr "الاشتراك"
 
-#: templates/dashboard.php:153
+#: templates/dashboard.php:160
 msgid "Add a service"
 msgstr "إضافة خدمة"
 
-#: templates/dashboard.php:158
+#: templates/dashboard.php:165
 msgid "Verify your account"
 msgstr "توثيق حسابك"
 
-#: templates/dashboard.php:207
+#: templates/dashboard.php:216
 msgid "See my partner profile"
 msgstr "عرض ملفي كشريك"
 
-#: templates/dashboard.php:210
+#: templates/dashboard.php:219
 msgid "See my public profile"
 msgstr "عرض ملفي العام"
 
-#: templates/dashboard.php:213
+#: templates/dashboard.php:222
 msgid "See my profile"
 msgstr "عرض ملفي"
 
-#: templates/dashboard.php:217
+#: templates/dashboard.php:226
 msgid "Account menu"
 msgstr "قائمة الحساب"
 
-#: templates/dashboard.php:227
+#: templates/dashboard.php:236
 msgid "Collapse the menu"
 msgstr "طيّ القائمة"
 
-#: templates/dashboard.php:227
+#: templates/dashboard.php:236
 msgid "Expand the menu"
 msgstr "توسيع القائمة"
 
-#: templates/dashboard.php:240
+#: templates/dashboard.php:249
 msgid "Dashboard"
 msgstr "لوحة التحكم"
 
-#: templates/dashboard.php:250
+#: templates/dashboard.php:259
 msgid "Dark mode"
 msgstr "الوضع الداكن"
 
-#: templates/dashboard.php:269
+#: templates/dashboard.php:278
 msgid "Demo partner engineer account."
 msgstr "حساب مهندس شريك تجريبي."
 
-#: templates/dashboard.php:269
+#: templates/dashboard.php:278
 msgid "Demo company account."
 msgstr "حساب شركة تجريبي."
 
-#: templates/dashboard.php:269
+#: templates/dashboard.php:278
 msgid "Switch to the company dashboard"
 msgstr "الانتقال إلى لوحة الشركة"
 
-#: templates/dashboard.php:269
+#: templates/dashboard.php:278
 msgid "Switch to the engineer dashboard"
 msgstr "الانتقال إلى لوحة المهندس"
 
-#: templates/dashboard.php:273
+#: templates/dashboard.php:282
 msgid ""
 "Verify your account with the 6-digit code to publish and answer requests."
 msgstr ""
 "وثّق حسابك بالرمز المكون من 6 أرقام لتتمكن من النشر والرد على الطلبات."
 
-#: templates/dashboard.php:304
+#: templates/dashboard.php:313
 msgid "This section arrives with its plugin"
 msgstr "يُفعّل هذا القسم مع إضافته"
 
-#: templates/dashboard.php:305
+#: templates/dashboard.php:314
 msgid ""
 "The layout is ready; the content will be provided by the corresponding "
 "marketplace plugin."
@@ -5855,10 +6339,6 @@ msgstr "حساب مهني واحد للشراء والبيع. وللمهندسي
 msgid "Create a free account"
 msgstr "إنشاء حساب مجاني"
 
-#: templates/front-page-template.php:224
-msgid "See the plans"
-msgstr "عرض الاشتراكات"
-
 #. Template Name of the theme
 msgid "SM — Steel buildings"
 msgstr "SM — المباني الفولاذية"
@@ -6143,73 +6623,124 @@ msgstr "يوفر وحدة التحليل الرسوم حسب المقطع وال
 msgid "SM — Plans"
 msgstr "SM — الاشتراكات"
 
-#: templates/pricing.php:17
-msgid "Free"
-msgstr "مجاني"
-
-#: templates/pricing.php:17
-msgid "Buy and contact sellers"
-msgstr "الشراء والتواصل مع البائعين"
-
-#: templates/pricing.php:17
-msgid "Limited number of listings"
-msgstr "عدد محدود من الإعلانات"
-
-#: templates/pricing.php:18
-msgid "Business"
-msgstr "أعمال"
-
-#: templates/pricing.php:18
-msgid "More listings and featured slots"
-msgstr "إعلانات وخانات تمييز أكثر"
-
-#: templates/pricing.php:18
-msgid "Company page with verified badge"
-msgstr "صفحة مؤسسة بشارة التوثيق"
-
-#: templates/pricing.php:18
-msgid "Listing statistics"
-msgstr "إحصائيات الإعلانات"
-
-#: templates/pricing.php:18
-msgid "Monthly AI credits"
-msgstr "أرصدة ذكاء اصطناعي شهرية"
-
 #: templates/pricing.php:19
-msgid "Pro"
-msgstr "احترافي"
+msgid "Companies"
+msgstr "الشركات"
 
-#: templates/pricing.php:19
-msgid "Highest limits"
-msgstr "أعلى الحدود"
+#: templates/pricing.php:20
+msgid "Professionals and craftsmen"
+msgstr "المهنيون والحرفيون"
 
-#: templates/pricing.php:19
-msgid "Premium visibility"
-msgstr "ظهور مميز"
-
-#: templates/pricing.php:19
-msgid "Priority on quotation requests"
-msgstr "أولوية في طلبات العروض"
-
-#: templates/pricing.php:19
-msgid "Extended AI credits"
-msgstr "أرصدة ذكاء اصطناعي موسعة"
-
-#: templates/pricing.php:27
+#: templates/pricing.php:29
 msgid ""
-"Start free. Upgrade when you need more listings, visibility and AI credits. "
-"Payment by bank transfer, CCP or BaridiMob, activated by our team."
+"Start free. Upgrade when you need more listings, more tonnage online, "
+"visible contacts and more AI credits. Clients and partner engineers use the "
+"platform free."
 msgstr ""
-"ابدأ مجانا. رقِّ اشتراكك عند حاجتك لإعلانات وظهور وأرصدة ذكاء اصطناعي أكثر. "
-"الدفع بالتحويل البنكي أو CCP أو BaridiMob، ويفعّله فريقنا."
+"ابدأ مجانا. انتقل إلى اشتراك أعلى عندما تحتاج إلى إعلانات أكثر وحمولة منشورة"
+" أكبر وبيانات اتصال ظاهرة ورصيد ذكاء اصطناعي أكبر. يستعمل الزبائن والمهندسون"
+" الشركاء المنصة مجانا."
 
-#: templates/pricing.php:35
-msgid "Price set by the administrator"
-msgstr "السعر يحدده المسؤول"
+#: templates/pricing.php:34
+msgid "Free during the launch"
+msgstr "مجاني خلال فترة الإطلاق"
 
-#: templates/pricing.php:37
-msgid "Choose"
-msgstr "اختيار"
+#: templates/pricing.php:34
+msgid ""
+"All the features of the platform are open. The plans will be published here."
+msgstr "كل وظائف المنصة متاحة. ستُنشر الاشتراكات هنا."
+
+#. translators: 1: number of months, 2: places left.
+#: templates/pricing.php:45
+msgid ""
+"The first verified accounts get a paid plan free for %1$d months, then keep "
+"its price. %2$d place left."
+msgid_plural ""
+"The first verified accounts get a paid plan free for %1$d months, then keep "
+"its price. %2$d places left."
+msgstr[0] ""
+"تحصل أوائل الحسابات الموثقة على اشتراك مدفوع مجانا لمدة %1$d أشهر، ثم تحتفظ "
+"بسعره. الأماكن المتبقية: %2$d."
+msgstr[1] ""
+"تحصل أوائل الحسابات الموثقة على اشتراك مدفوع مجانا لمدة %1$d أشهر، ثم تحتفظ "
+"بسعره. الأماكن المتبقية: %2$d."
+msgstr[2] ""
+"تحصل أوائل الحسابات الموثقة على اشتراك مدفوع مجانا لمدة %1$d أشهر، ثم تحتفظ "
+"بسعره. الأماكن المتبقية: %2$d."
+msgstr[3] ""
+"تحصل أوائل الحسابات الموثقة على اشتراك مدفوع مجانا لمدة %1$d أشهر، ثم تحتفظ "
+"بسعره. الأماكن المتبقية: %2$d."
+msgstr[4] ""
+"تحصل أوائل الحسابات الموثقة على اشتراك مدفوع مجانا لمدة %1$d أشهر، ثم تحتفظ "
+"بسعره. الأماكن المتبقية: %2$d."
+msgstr[5] ""
+"تحصل أوائل الحسابات الموثقة على اشتراك مدفوع مجانا لمدة %1$d أشهر، ثم تحتفظ "
+"بسعره. الأماكن المتبقية: %2$d."
+
+#: templates/pricing.php:55
+msgid "Type of account"
+msgstr "نوع الحساب"
+
+#: templates/pricing.php:67
+msgid ""
+"Prices include TVA. Buildings are counted by number, apart from the tonnage."
+" When a paid period ends, what goes beyond the free plan is paused, the "
+"oldest first; nothing is deleted."
+msgstr ""
+"الأسعار شاملة الرسوم. تُحسب البنايات بالعدد، منفصلة عن الحمولة. عند نهاية "
+"فترة مدفوعة، يُعلّق ما يتجاوز الاشتراك المجاني بدءا بالأقدم؛ لا يُحذف شيء."
+
+#: templates/pricing.php:72
+msgid "AI credit packs"
+msgstr "باقات رصيد الذكاء الاصطناعي"
+
+#: templates/pricing.php:73
+msgid ""
+"For every account, clients and partner engineers included. Bought credits do"
+" not expire."
+msgstr ""
+"لكل الحسابات، بما فيها الزبائن والمهندسون الشركاء. الرصيد المشترى لا تنتهي "
+"صلاحيته."
+
+#. translators: %s: number of credits.
+#: templates/pricing.php:76
+msgid "%s AI credits"
+msgstr "%s رصيد ذكاء اصطناعي"
+
+#: templates/pricing.php:84
+msgid "Options for one listing"
+msgstr "خيارات لإعلان واحد"
+
+#: templates/pricing.php:85
+msgid "With any plan, from My listings."
+msgstr "مع أي اشتراك، من صفحة إعلاناتي."
+
+#: templates/pricing.php:88
+msgid "Back to the top of the list"
+msgstr "الرجوع إلى أعلى القائمة"
+
+#. translators: %d: days.
+#: templates/pricing.php:91
+msgid "\"Urgent\" badge, %d days"
+msgstr "شارة «عاجل»، %d أيام"
+
+#. translators: %d: days.
+#: templates/pricing.php:94
+msgid "Featured listing, first in the results, %d days"
+msgstr "إعلان مميز في أول النتائج، %d أيام"
+
+#: templates/pricing.php:101
+msgid "How to pay"
+msgstr "طريقة الدفع"
+
+#: templates/pricing.php:103
+msgid ""
+"Order from your account, pay, then send the proof of payment. The plan "
+"starts when our team has checked it, usually within one working day. Online "
+"card payment will come later."
+msgstr ""
+"اطلب من حسابك، ادفع، ثم أرسل إثبات الدفع. يبدأ الاشتراك بعد تحقق فريقنا منه،"
+" خلال يوم عمل عادة. الدفع الإلكتروني بالبطاقة سيأتي لاحقا."
 
 #. Template Name of the theme
 msgid "SM — Professionals directory"

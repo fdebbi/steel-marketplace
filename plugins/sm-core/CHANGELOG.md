@@ -1,5 +1,9 @@
 # Changelog — sm-core
 
+## 0.8.1 — 2026-11-12 (Phase 10)
+
+- `Bridge::shape_company` : filtre `sm_company_contacts_visible` ; quand il renvoie faux, téléphone, e-mail et site sont vides et `contacts_hidden` vaut vrai. Les membres du compte et l'équipe les voient toujours.
+
 ## 0.8.0 — 2026-11-12
 
 - Troisième langue : anglais (`/en/…`, locale en_US). Les chaînes sources étant en anglais, aucun fichier de traduction n'est nécessaire.

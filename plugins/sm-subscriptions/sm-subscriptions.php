@@ -18,7 +18,7 @@
 defined( 'ABSPATH' ) || exit;
 
 define( 'SM_SUBSCRIPTIONS_VERSION', '0.1.0' );
-define( 'SM_SUBSCRIPTIONS_DB_VERSION', 1 );
+define( 'SM_SUBSCRIPTIONS_DB_VERSION', 2 );
 define( 'SM_SUBSCRIPTIONS_FILE', __FILE__ );
 define( 'SM_SUBSCRIPTIONS_DIR', __DIR__ );
 
