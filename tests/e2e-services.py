@@ -33,6 +33,8 @@ def notified(email, kind):
 client = wp('echo get_users(array("search"=>"e2e-com*","search_columns"=>array("user_email"),"orderby"=>"ID","order"=>"DESC"))[0]->user_email;')
 eng = wp('echo get_users(array("search"=>"e2e-eng*","search_columns"=>array("user_email"),"orderby"=>"ID","order"=>"DESC"))[0]->user_email;')
 pro = wp('echo get_users(array("search"=>"e2e-pro*","search_columns"=>array("user_email"),"orderby"=>"ID","order"=>"DESC"))[0]->user_email;')
+# Phase 10: the free plan allows one service page; this account already has one, so it gets Artisan Pro for the test.
+wp('if (class_exists("SM\\Subscriptions\\Subscriptions")) { $c = SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","%s")->ID); if ("free" === SM\\Subscriptions\\Subscriptions::plan_of($c)["code"]) { SM\\Subscriptions\\Subscriptions::activate($c->id, "artisan_pro", 1, array("period"=>"month","note"=>"e2e")); } }' % pro)
 for u in (client, eng, pro):
     wp('update_user_meta(get_user_by("email","%s")->ID, "sm_locale", "fr");' % u)
 wp('$_SERVER["REMOTE_ADDR"] = "127.0.0.1"; SM\\Core\\Support\\Forms::reset_rate_limit("service_request|" . SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","%s")->ID)->id);' % client)

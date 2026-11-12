@@ -129,9 +129,15 @@ with sync_playwright() as p:
     s.screenshot(path=os.path.join(OUT, 'ai-assistant-ar-1280.png'), full_page=True)
 
     print('\nG. Limits and consumption')
-    wp('$s = get_option("sm_ai_settings"); $s["features"]["listing"]["per_company_month"] = 1; update_option("sm_ai_settings", $s);')
-    s.goto(BASE + '/compte/assistant-ia/?tool=listing')
-    check(s.locator('.smai-form').count() == 0 and 'ce mois' in s.inner_text('.smai-tool'), 'monthly quota used: tool locked with the reason')
+    if wp('echo class_exists("SM\\Subscriptions\\Credits") ? "yes" : "no";') == 'yes':
+        # With sm-subscriptions (Phase 10) the credits of the plan replace the quotas per tool: use them all.
+        wp('$c = SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","%s")->ID); $st = SM\\Subscriptions\\Credits::status($c); global $wpdb; for ($i = 0; $i < $st["monthly_left"]; $i++) { $wpdb->insert($wpdb->prefix."sm_ai_usage", array("feature"=>"listing","company_id"=>$c->id,"status"=>"ok","created_at"=>current_time("mysql", true))); } if ($st["bought"]) { SM\\Subscriptions\\Credits::add($c->id, -$st["bought"], "test"); }' % com)
+        s.goto(BASE + '/compte/assistant-ia/?tool=listing')
+        check(s.locator('.smai-form').count() == 0 and 'crédits IA' in s.inner_text('.smai-tool'), 'AI credits used: tool locked with the reason')
+    else:
+        wp('$s = get_option("sm_ai_settings"); $s["features"]["listing"]["per_company_month"] = 1; update_option("sm_ai_settings", $s);')
+        s.goto(BASE + '/compte/assistant-ia/?tool=listing')
+        check(s.locator('.smai-form').count() == 0 and 'ce mois' in s.inner_text('.smai-tool'), 'monthly quota used: tool locked with the reason')
     wp('$s = get_option("sm_ai_settings"); $s["features"]["search"]["visitors_per_ip_day"] = 2; update_option("sm_ai_settings", $s);')
     v.goto(BASE + '/recherche/')
     check(v.locator('.smai-search__form').count() == 0 and v.locator('.sm-filters, #sm-filters').count() >= 1, 'visitor limit reached: smart search box hidden, normal search still there')
