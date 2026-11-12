@@ -12,6 +12,8 @@ Usage: python3 tests/e2e.py http://localhost:8080 /path/to/wordpress out_dir
 import json, os, subprocess, sys, time
 from urllib.parse import urlparse
 from playwright.sync_api import sync_playwright
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from dashmenu import menu
 
 BASE = sys.argv[1] if len(sys.argv) > 1 else 'http://localhost:8080'
 WP = sys.argv[2] if len(sys.argv) > 2 else '.'
@@ -239,7 +241,7 @@ with sync_playwright() as p:
     e.click('.sm-otp__form button')
     e.wait_for_load_state()
     check(path(e).endswith('/ar/compte') and 'توثيق' in notice(e), 'professional verified, Arabic dashboard and message')
-    nav = ' '.join(e.locator('.sm-dash__side nav').all_inner_texts())
+    nav = menu(e)
     check('نشر إعلان' in nav and 'خدماتي' in nav and 'المشاريع المنجزة' in nav, 'professional menu: publish a listing (sells), services, completed projects')
     shot(e, 'dashboard-professional-ar-1280')
     e.goto(BASE + '/ar/compte/publier/')

@@ -11,6 +11,8 @@ Admin: admin / Admin-2026-test! (env SM_ADMIN="user:password").
 """
 import json, os, re, subprocess, sys, time
 from playwright.sync_api import sync_playwright
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from dashmenu import menu
 
 BASE = sys.argv[1] if len(sys.argv) > 1 else 'http://localhost:8080'
 WP = sys.argv[2] if len(sys.argv) > 2 else '.'
@@ -97,7 +99,7 @@ with sync_playwright() as p:
     e.click('.sme-apply button[type="submit"]'); e.wait_for_load_state()
     check(e.url.split('?')[0].rstrip('/').endswith('/compte') and 'candidature est envoyée' in notice(e), 'application sent, signed in, dashboard opened')
     check(e.locator('.sme-status').count() == 1 and 'examen' in e.inner_text('.sme-status'), 'dashboard shows "application being reviewed"')
-    nav = e.inner_text('.sm-dash__side nav')
+    nav = menu(e)
     check('Mes missions' not in nav and 'Profil partenaire' in nav and 'Publier une annonce' not in nav, 'pending engineer: no missions yet, no trading menu')
     shot(e, 'engineer-pending-fr-390')
     row = wp(f'$c = SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","{ENG}")->ID); $e = SM\\Engineering\\Engineers::get($c->id); $v = SM\\Core\\Verification\\Verifications::get($e->verification_id); echo $c->account_class, "|", $e->status, "|", implode(",", array_keys($v->documents)), "|", (int) $c->logo_id, "|", $c->id;')
@@ -122,7 +124,7 @@ with sync_playwright() as p:
     a.click('button[name="status"][value="approved"]'); a.wait_for_load_state()
     check(wp(f'echo SM\\Engineering\\Engineers::get({eng_id})->status, SM\\Core\\Accounts\\Companies::get({eng_id})->verification_level;') == 'approved3', 'engineer approved, verified level 3')
     e.goto(BASE + '/compte/')
-    nav = e.inner_text('.sm-dash__side nav')
+    nav = menu(e)
     check('Mes missions' in nav and 'Facturation' in nav and 'Dossiers et plans' in nav, 'approved engineer: missions, invoicing, files and plans')
     g = ctx()
     g.goto(BASE + '/ingenierie/')
@@ -155,7 +157,7 @@ with sync_playwright() as p:
     c.click('form[data-sm-register] button[type="submit"]'); c.wait_for_load_state()
     c.fill('#otp', otp(CLI)); c.click('.sm-otp__form button'); c.wait_for_load_state()
     check(wp(f'$c = SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","{CLI}")->ID); echo $c->account_class, "|", $c->name;') == 'client|Nadia Cliente', 'client account named after the person')
-    nav = c.inner_text('.sm-dash__side nav')
+    nav = menu(c)
     check('Études d’ingénierie' in nav and 'Devis envoyés' not in nav and 'Publier une annonce' in nav, 'client menu: sells and buys, engineering studies, no quotations sent')
     cslug = wp(f'echo SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","{CLI}")->ID)->slug;')
     g.goto(BASE + '/entreprise/' + cslug + '/')

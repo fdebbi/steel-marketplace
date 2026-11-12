@@ -58,19 +58,33 @@ $extra   = ( $is_eng && $is_demo ) ? array( 'account' => 'engineer' ) : array();
 $unread  = (int) ( $account['unread'] ?? 0 );
 
 $has_ai = ! $is_demo && is_array( sm_theme_data( 'ai_tools' ) );
+$badges = (array) ( $account['badges'] ?? array() );
+
+/*
+ * Menu (0.17.0): a short list of groups. A click on a group opens its first
+ * page; the pages of the group are tabs at the top of the page. Each page keeps
+ * its own address (/compte/{view}/). "hidden" views belong to a group without
+ * having a tab (the publication form belongs to Selling).
+ */
 if ( $is_eng ) {
 	// Partner engineer: missions given by the platform, never trading.
 	$approved = $is_demo || 'approved' === ( $account['engineer']['status'] ?? '' );
-	$menu     = array(
-		'' => array(
-			'overview' => array( 'home', __( 'Overview', 'sm-marketplace' ) ),
-			'missions' => $approved ? array( 'hard-hat', __( 'My missions', 'sm-marketplace' ) ) : null,
-			'billing'  => $approved ? array( 'card', __( 'Invoicing', 'sm-marketplace' ) ) : null,
-			'files'    => $approved ? array( 'file', __( 'Files and plans', 'sm-marketplace' ) ) : null,
-			'ai'       => $approved && $has_ai ? array( 'ai', __( 'AI assistant', 'sm-marketplace' ) ) : null,
-			'partner'  => array( 'user', __( 'Partner profile', 'sm-marketplace' ) ),
+	$groups   = array(
+		'overview' => array( 'home', __( 'Overview', 'sm-marketplace' ), array( 'overview' => __( 'Overview', 'sm-marketplace' ) ) ),
+		'missions' => $approved ? array( 'hard-hat', __( 'My missions', 'sm-marketplace' ), array( 'missions' => __( 'My missions', 'sm-marketplace' ) ) ) : null,
+		'billing'  => $approved ? array( 'card', __( 'Invoicing', 'sm-marketplace' ), array( 'billing' => __( 'Invoicing', 'sm-marketplace' ) ) ) : null,
+		'files'    => $approved ? array( 'file', __( 'Files and plans', 'sm-marketplace' ), array( 'files' => __( 'Files and plans', 'sm-marketplace' ) ) ) : null,
+		'ai'       => $approved && $has_ai ? array( 'ai', __( 'AI assistant', 'sm-marketplace' ), array( 'ai' => __( 'AI assistant', 'sm-marketplace' ) ) ) : null,
+		'account'  => array(
+			'user',
+			__( 'Account', 'sm-marketplace' ),
+			array(
+				'partner'  => __( 'Partner profile', 'sm-marketplace' ),
+				'settings' => __( 'Settings', 'sm-marketplace' ),
+			),
 		),
 	);
+	$hidden   = array();
 } else {
 	$svc_set   = (array) sm_theme_data( 'services_settings' );
 	$can_fab   = ! empty( $svc_set['kinds']['fabrication']['allowed'] );
@@ -80,54 +94,93 @@ if ( $is_eng ) {
 		'professional' => __( 'Professional profile', 'sm-marketplace' ),
 		'client'       => __( 'My profile', 'sm-marketplace' ),
 	);
-	$menu      = array(
-		''                                  => array_filter(
+	$groups    = array(
+		'overview' => array( 'home', __( 'Overview', 'sm-marketplace' ), array( 'overview' => __( 'Overview', 'sm-marketplace' ) ) ),
+		'selling'  => array(
+			'package',
+			__( 'Selling', 'sm-marketplace' ),
 			array(
-				'overview' => array( 'home', __( 'Overview', 'sm-marketplace' ) ),
-				'ai'       => $has_ai ? array( 'ai', __( 'AI assistant', 'sm-marketplace' ) ) : null,
-			)
+				'listings' => __( 'My listings', 'sm-marketplace' ),
+				'offers'   => 'client' === $class ? null : __( 'Quotations sent', 'sm-marketplace' ),
+				'messages' => __( 'Enquiries received', 'sm-marketplace' ),
+				'stats'    => __( 'Statistics', 'sm-marketplace' ),
+			),
 		),
-		__( 'Selling', 'sm-marketplace' )   => array(
-			'publish'  => array( 'plus', __( 'Publish a listing', 'sm-marketplace' ) ),
-			'listings' => array( 'package', __( 'My listings', 'sm-marketplace' ) ),
-			'offers'   => 'client' === $class ? null : array( 'rfq', __( 'Quotations sent', 'sm-marketplace' ) ),
-			'messages' => array( 'message', __( 'Enquiries received', 'sm-marketplace' ) ),
-			'stats'    => array( 'chart', __( 'Listing statistics', 'sm-marketplace' ) ),
+		'buying'   => array(
+			'rfq',
+			__( 'Buying', 'sm-marketplace' ),
+			array(
+				'saved'   => __( 'Saved listings', 'sm-marketplace' ),
+				'rfq'     => __( 'My requests for quotation', 'sm-marketplace' ),
+				'history' => __( 'Purchase history', 'sm-marketplace' ),
+			),
 		),
-		__( 'Buying', 'sm-marketplace' )    => array(
-			'saved'    => array( 'heart', __( 'Saved listings', 'sm-marketplace' ) ),
-			'rfq'      => array( 'file', __( 'My requests for quotation', 'sm-marketplace' ) ),
-			'history'  => array( 'calendar', __( 'Purchase history', 'sm-marketplace' ) ),
+		'services' => array(
+			'wrench',
+			__( 'Services', 'sm-marketplace' ),
+			array(
+				'services'            => $can_fab ? __( 'My services', 'sm-marketplace' ) : null,
+				'service-requests'    => $can_fab ? __( 'Requests received', 'sm-marketplace' ) : null,
+				'portfolio'           => $can_fab ? __( 'Completed projects', 'sm-marketplace' ) : null,
+				'my-service-requests' => $svc_set ? __( 'My service requests', 'sm-marketplace' ) : null,
+				'studies'             => $has_eng ? __( 'Engineering studies', 'sm-marketplace' ) : null,
+			),
 		),
-		__( 'Services', 'sm-marketplace' )  => array_merge(
-			$can_fab ? array(
-				'services'         => array( 'wrench', __( 'My services', 'sm-marketplace' ) ),
-				'service-requests' => array( 'rfq', __( 'Service requests received', 'sm-marketplace' ) ),
-				'portfolio'        => array( 'image', __( 'Completed projects', 'sm-marketplace' ) ),
-			) : array(),
-			$svc_set ? array( 'my-service-requests' => array( 'wrench', __( 'My service requests', 'sm-marketplace' ) ) ) : array(),
-			$has_eng ? array( 'studies' => array( 'hard-hat', __( 'Engineering studies', 'sm-marketplace' ) ) ) : array()
-		),
-		( 'client' === $class ? __( 'My account', 'sm-marketplace' ) : __( 'Account', 'sm-marketplace' ) ) => array(
-			'company'      => array( 'client' === $class ? 'user' : 'company', $own_label[ $class ] ?? __( 'Company profile', 'sm-marketplace' ) ),
-			'verification' => array( 'shield', __( 'Verification', 'sm-marketplace' ) ),
-			'plan'         => 'client' === $class ? null : array( 'card', __( 'Plan & AI credits', 'sm-marketplace' ) ),
+		'ai'       => $has_ai ? array( 'ai', __( 'AI assistant', 'sm-marketplace' ), array( 'ai' => __( 'AI assistant', 'sm-marketplace' ) ) ) : null,
+		'account'  => array(
+			'client' === $class ? 'user' : 'company',
+			'client' === $class ? __( 'My account', 'sm-marketplace' ) : __( 'Account', 'sm-marketplace' ),
+			array(
+				'company'      => $own_label[ $class ] ?? __( 'Company profile', 'sm-marketplace' ),
+				'verification' => __( 'Verification', 'sm-marketplace' ),
+				'plan'         => 'client' === $class ? null : __( 'Plan & AI credits', 'sm-marketplace' ),
+				'settings'     => __( 'Settings', 'sm-marketplace' ),
+			),
 		),
 	);
+	$hidden    = array( 'publish' => array( 'selling', __( 'Publish a listing', 'sm-marketplace' ) ) );
 }
-$menu   = array_filter( array_map( 'array_filter', $menu ) );
+$hidden['verify-phone']               = array( 'account', __( 'Verify your account', 'sm-marketplace' ) );
+$hidden['notifications']              = array( '', __( 'Notifications', 'sm-marketplace' ) );
+
+// Drop empty pages and empty groups; find the current page and its group.
 $titles = array();
-foreach ( $menu as $group ) {
-	foreach ( $group as $key => $entry ) {
-		$titles[ $key ] = $entry[1];
+$owner  = array();
+foreach ( $groups as $gkey => $group ) {
+	if ( ! $group ) {
+		unset( $groups[ $gkey ] );
+		continue;
+	}
+	$groups[ $gkey ][2] = array_filter( $group[2] );
+	if ( ! $groups[ $gkey ][2] ) {
+		unset( $groups[ $gkey ] );
+		continue;
+	}
+	foreach ( $groups[ $gkey ][2] as $key => $label ) {
+		$titles[ $key ] = $label;
+		$owner[ $key ]  = $gkey;
 	}
 }
-$titles['settings']     = __( 'Settings', 'sm-marketplace' );
-$titles['verify-phone'] = __( 'Verify your account', 'sm-marketplace' );
-$titles['notifications'] = __( 'Notifications', 'sm-marketplace' );
+foreach ( $hidden as $key => list( $gkey, $label ) ) {
+	if ( '' === $gkey || isset( $groups[ $gkey ] ) ) {
+		$titles[ $key ] = $label;
+		$owner[ $key ]  = $gkey;
+	}
+}
 if ( ! isset( $titles[ $view ] ) ) {
 	$view = 'overview';
 }
+$group_key = $owner[ $view ] ?? '';
+$tabs      = ( $group_key && count( $groups[ $group_key ][2] ) > 1 ) ? $groups[ $group_key ][2] : array();
+// A page with tabs is headed by its group; a single page by its own name.
+$heading   = ( $tabs && isset( $tabs[ $view ] ) ) ? $groups[ $group_key ][1] : $titles[ $view ];
+$link      = static fn( $key ) => sm_page_url( 'account', array_merge( $extra, array( 'view' => $key ) ) );
+$group_cnt = static function ( $gkey ) use ( $groups, $badges, $unread ) {
+	if ( 'overview' === $gkey ) {
+		return $unread;
+	}
+	return array_sum( array_intersect_key( $badges, $groups[ $gkey ][2] ) );
+};
 
 get_header();
 ?>
@@ -140,19 +193,19 @@ get_header();
 				<p class="sm-dash__class"><?php echo esc_html( sm_class_label( $class ) ); ?><?php if ( ! empty( $account['plan'] ) ) : ?> · <?php sm_e( $account['plan'] ); ?><?php endif; ?></p>
 			</div>
 		</div>
+		<?php if ( isset( $titles['publish'] ) ) : ?>
+			<a class="sm-btn sm-btn--accent sm-btn--block sm-dash__publish" href="<?php echo esc_url( $link( 'publish' ) ); ?>" <?php echo 'publish' === $view ? 'aria-current="page"' : ''; ?>><?php sm_icon( 'plus' ); ?><span><?php esc_html_e( 'Publish a listing', 'sm-marketplace' ); ?></span></a>
+		<?php endif; ?>
 		<nav aria-label="<?php esc_attr_e( 'Dashboard', 'sm-marketplace' ); ?>">
-			<?php foreach ( $menu as $group => $entries ) : ?>
-				<?php if ( $group ) : ?><p class="sm-dash__group"><?php echo esc_html( $group ); ?></p><?php endif; ?>
-				<ul>
-					<?php foreach ( $entries as $key => list( $icon, $label ) ) : ?>
-						<li><a href="<?php echo esc_url( sm_page_url( 'account', array_merge( $extra, array( 'view' => $key ) ) ) ); ?>" <?php echo $key === $view ? 'aria-current="page"' : ''; ?>><?php sm_icon( $icon ); ?><span><?php echo esc_html( $label ); ?></span>
-							<?php if ( 'overview' === $key && $unread ) : ?><span class="sm-count"><?php echo esc_html( $unread ); ?></span><?php endif; ?>
-						</a></li>
-					<?php endforeach; ?>
-				</ul>
-			<?php endforeach; ?>
+			<ul>
+				<?php foreach ( $groups as $gkey => list( $icon, $label, $pages ) ) : ?>
+					<?php $cnt = $group_cnt( $gkey ); ?>
+					<li><a href="<?php echo esc_url( $link( array_key_first( $pages ) ) ); ?>" <?php echo $gkey === $group_key && 'publish' !== $view ? 'aria-current="page"' : ''; ?>><?php sm_icon( $icon ); ?><span><?php echo esc_html( $label ); ?></span>
+						<?php if ( $cnt ) : ?><span class="sm-count"><?php echo esc_html( $cnt ); ?></span><?php endif; ?>
+					</a></li>
+				<?php endforeach; ?>
+			</ul>
 			<ul class="sm-dash__end">
-				<li><a href="<?php echo esc_url( sm_page_url( 'account', array_merge( $extra, array( 'view' => 'settings' ) ) ) ); ?>" <?php echo 'settings' === $view ? 'aria-current="page"' : ''; ?>><?php sm_icon( 'settings' ); ?><span><?php esc_html_e( 'Settings', 'sm-marketplace' ); ?></span></a></li>
 				<li><a href="<?php echo esc_url( wp_logout_url() ); ?>"><?php sm_icon( 'logout' ); ?><span><?php esc_html_e( 'Sign out', 'sm-marketplace' ); ?></span></a></li>
 			</ul>
 		</nav>
@@ -161,16 +214,26 @@ get_header();
 	<div class="sm-dash__main">
 		<div class="sm-dash__head">
 			<details class="sm-dash__mobilenav">
-				<summary><?php sm_icon( 'menu' ); ?><span><?php echo esc_html( $titles[ $view ] ); ?></span><?php sm_icon( 'chevron-down' ); ?></summary>
+				<summary><?php sm_icon( 'menu' ); ?><span><?php esc_html_e( 'Menu', 'sm-marketplace' ); ?></span><?php sm_icon( 'chevron-down' ); ?></summary>
 				<ul>
-					<?php foreach ( $titles as $key => $label ) : ?>
-						<?php if ( 'verify-phone' === $key ) { continue; } ?>
-						<li><a href="<?php echo esc_url( sm_page_url( 'account', array_merge( $extra, array( 'view' => $key ) ) ) ); ?>" <?php echo $key === $view ? 'aria-current="page"' : ''; ?>><?php echo esc_html( $label ); ?></a></li>
+					<?php if ( isset( $titles['publish'] ) ) : ?>
+						<li><a href="<?php echo esc_url( $link( 'publish' ) ); ?>" <?php echo 'publish' === $view ? 'aria-current="page"' : ''; ?>><?php esc_html_e( 'Publish a listing', 'sm-marketplace' ); ?></a></li>
+					<?php endif; ?>
+					<?php foreach ( $groups as $gkey => list( $icon, $label, $pages ) ) : ?>
+						<?php $cnt = $group_cnt( $gkey ); ?>
+						<li><a href="<?php echo esc_url( $link( array_key_first( $pages ) ) ); ?>" <?php echo $gkey === $group_key && 'publish' !== $view ? 'aria-current="page"' : ''; ?>><?php echo esc_html( $label ); ?><?php if ( $cnt ) : ?> <span class="sm-count"><?php echo esc_html( $cnt ); ?></span><?php endif; ?></a></li>
 					<?php endforeach; ?>
 					<li><a href="<?php echo esc_url( wp_logout_url() ); ?>"><?php esc_html_e( 'Sign out', 'sm-marketplace' ); ?></a></li>
 				</ul>
 			</details>
-			<h1 class="sm-dash__title"><?php echo esc_html( $titles[ $view ] ); ?></h1>
+			<h1 class="sm-dash__title"><?php echo esc_html( $heading ); ?></h1>
+			<?php if ( $tabs ) : ?>
+				<nav class="sm-dash__tabs" aria-label="<?php echo esc_attr( $groups[ $group_key ][1] ); ?>">
+					<?php foreach ( $tabs as $key => $label ) : ?>
+						<a href="<?php echo esc_url( $link( $key ) ); ?>" <?php echo $key === $view ? 'aria-current="page"' : ''; ?>><?php echo esc_html( $label ); ?><?php if ( ! empty( $badges[ $key ] ) ) : ?> <span class="sm-count"><?php echo esc_html( $badges[ $key ] ); ?></span><?php endif; ?></a>
+					<?php endforeach; ?>
+				</nav>
+			<?php endif; ?>
 			<?php if ( $is_demo ) : ?>
 				<p class="sm-demo-note"><?php sm_icon( 'info' ); ?><?php echo $is_eng ? esc_html__( 'Demo partner engineer account.', 'sm-marketplace' ) : esc_html__( 'Demo company account.', 'sm-marketplace' ); ?> <a href="<?php echo esc_url( sm_page_url( 'account', $is_eng ? array() : array( 'account' => 'engineer' ) ) ); ?>"><?php echo $is_eng ? esc_html__( 'Switch to the company dashboard', 'sm-marketplace' ) : esc_html__( 'Switch to the engineer dashboard', 'sm-marketplace' ); ?></a></p>
 			<?php endif; ?>

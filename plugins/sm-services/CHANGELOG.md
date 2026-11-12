@@ -1,5 +1,10 @@
 # Changelog — sm-services
 
+## 0.3.4 — 2026-11-12
+
+- Badge du tableau de bord : nouvelles demandes de service reçues (filtre `sm_dashboard_badges`).
+- Correctif : texte de l'alerte « Autre » sans entreprise (avertissement PHP).
+
 ## 0.3.3 — 2026-11-11 (base v4)
 
 - Modification d'une page publiée : prix, zone et délai tout de suite ; service, textes et image en attente de validation, l'ancienne version restant en ligne.

@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.16.0\n"
+"Project-Id-Version: SM Marketplace 0.17.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-11T18:55:15+00:00\n"
+"POT-Creation-Date: 2026-11-12T07:27:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -95,7 +95,7 @@ msgstr ""
 #: inc/menus.php:40
 #: template-parts/components/services-board.php:30
 #: templates/company-profile.php:64
-#: templates/dashboard.php:102
+#: templates/dashboard.php:120
 msgid "Services"
 msgstr ""
 
@@ -208,12 +208,12 @@ msgstr ""
 
 #: footer.php:60
 #: header.php:82
-#: templates/dashboard.php:67
+#: templates/dashboard.php:74
 msgid "My missions"
 msgstr ""
 
 #: footer.php:61
-#: templates/dashboard.php:68
+#: templates/dashboard.php:75
 msgid "Invoicing"
 msgstr ""
 
@@ -230,7 +230,8 @@ msgid "Enquiries"
 msgstr ""
 
 #: footer.php:66
-#: templates/dashboard.php:111
+#: templates/dashboard.php:80
+#: templates/dashboard.php:132
 msgid "Account"
 msgstr ""
 
@@ -278,7 +279,7 @@ msgid "IPE 200, HEA, tube 100×50, hangar…"
 msgstr ""
 
 #: header.php:60
-#: templates/dashboard.php:98
+#: templates/dashboard.php:113
 msgid "Saved listings"
 msgstr ""
 
@@ -286,14 +287,14 @@ msgstr ""
 #: template-parts/dashboard/notifications.php:19
 #: template-parts/notif-panel.php:15
 #: template-parts/notif-panel.php:17
-#: templates/dashboard.php:127
+#: templates/dashboard.php:144
 msgid "Notifications"
 msgstr ""
 
 #: header.php:72
 #: header.php:141
 #: templates/contact.php:64
-#: templates/dashboard.php:111
+#: templates/dashboard.php:132
 msgid "My account"
 msgstr ""
 
@@ -333,13 +334,15 @@ msgstr ""
 #: template-parts/components/my-products.php:47
 #: template-parts/components/my-products.php:51
 #: template-parts/dashboard/listings.php:25
-#: templates/dashboard.php:91
+#: templates/dashboard.php:141
+#: templates/dashboard.php:197
+#: templates/dashboard.php:220
 msgid "Publish a listing"
 msgstr ""
 
 #: header.php:142
-#: templates/dashboard.php:156
-#: templates/dashboard.php:170
+#: templates/dashboard.php:209
+#: templates/dashboard.php:226
 #: templates/engineer-apply.php:43
 msgid "Sign out"
 msgstr ""
@@ -3029,7 +3032,7 @@ msgstr ""
 
 #: template-parts/components/service-requests-list.php:38
 #: template-parts/dashboard/services.php:19
-#: templates/dashboard.php:104
+#: templates/dashboard.php:122
 msgid "My services"
 msgstr ""
 
@@ -3217,8 +3220,8 @@ msgid "Enter the number of pieces to see the total weight."
 msgstr ""
 
 #: template-parts/dashboard/ai.php:16
-#: templates/dashboard.php:70
-#: templates/dashboard.php:87
+#: templates/dashboard.php:77
+#: templates/dashboard.php:129
 msgid "AI assistant"
 msgstr ""
 
@@ -3765,7 +3768,7 @@ msgid "Change"
 msgstr ""
 
 #: template-parts/dashboard/engineer-partner.php:14
-#: templates/dashboard.php:71
+#: templates/dashboard.php:82
 msgid "Partner profile"
 msgstr ""
 
@@ -3816,7 +3819,7 @@ msgid "Visitors see this card once you are approved. Your phone number, e-mail a
 msgstr ""
 
 #: template-parts/dashboard/listings.php:27
-#: templates/dashboard.php:92
+#: templates/dashboard.php:103
 msgid "My listings"
 msgstr ""
 
@@ -3882,7 +3885,7 @@ msgid "No notification yet."
 msgstr ""
 
 #: template-parts/dashboard/offers.php:13
-#: templates/dashboard.php:93
+#: templates/dashboard.php:104
 msgid "Quotations sent"
 msgstr ""
 
@@ -4396,7 +4399,7 @@ msgid "Verify your contact details first."
 msgstr ""
 
 #: template-parts/dashboard/verification.php:33
-#: templates/dashboard.php:179
+#: templates/dashboard.php:242
 msgid "Enter the code"
 msgstr ""
 
@@ -4477,7 +4480,7 @@ msgid "Trade"
 msgstr ""
 
 #: template-parts/directory.php:67
-#: templates/dashboard.php:113
+#: templates/dashboard.php:135
 msgid "Verification"
 msgstr ""
 
@@ -4772,7 +4775,7 @@ msgstr[1] ""
 
 #: templates/company-profile.php:61
 #: templates/company-profile.php:157
-#: templates/dashboard.php:106
+#: templates/dashboard.php:124
 #: templates/single-service.php:160
 msgid "Completed projects"
 msgstr ""
@@ -4969,107 +4972,107 @@ msgstr ""
 msgid "Create an account to use the dashboard."
 msgstr ""
 
-#: templates/dashboard.php:66
-#: templates/dashboard.php:86
+#: templates/dashboard.php:73
+#: templates/dashboard.php:98
 msgid "Overview"
 msgstr ""
 
-#: templates/dashboard.php:69
+#: templates/dashboard.php:76
 msgid "Files and plans"
 msgstr ""
 
-#: templates/dashboard.php:79
-#: templates/dashboard.php:112
-msgid "Company profile"
-msgstr ""
-
-#: templates/dashboard.php:80
-msgid "Professional profile"
-msgstr ""
-
-#: templates/dashboard.php:81
-msgid "My profile"
-msgstr ""
-
-#: templates/dashboard.php:90
-msgid "Selling"
-msgstr ""
-
-#: templates/dashboard.php:94
-msgid "Enquiries received"
-msgstr ""
-
-#: templates/dashboard.php:95
-#: templates/pricing.php:18
-msgid "Listing statistics"
-msgstr ""
-
-#: templates/dashboard.php:97
-msgid "Buying"
-msgstr ""
-
-#: templates/dashboard.php:99
-msgid "My requests for quotation"
-msgstr ""
-
-#: templates/dashboard.php:100
-msgid "Purchase history"
-msgstr ""
-
-#: templates/dashboard.php:105
-msgid "Service requests received"
-msgstr ""
-
-#: templates/dashboard.php:108
-msgid "My service requests"
-msgstr ""
-
-#: templates/dashboard.php:109
-msgid "Engineering studies"
-msgstr ""
-
-#: templates/dashboard.php:114
-msgid "Plan & AI credits"
-msgstr ""
-
-#: templates/dashboard.php:125
-#: templates/dashboard.php:155
+#: templates/dashboard.php:83
+#: templates/dashboard.php:137
 msgid "Settings"
 msgstr ""
 
+#: templates/dashboard.php:93
+#: templates/dashboard.php:134
+msgid "Company profile"
+msgstr ""
+
+#: templates/dashboard.php:94
+msgid "Professional profile"
+msgstr ""
+
+#: templates/dashboard.php:95
+msgid "My profile"
+msgstr ""
+
+#: templates/dashboard.php:101
+msgid "Selling"
+msgstr ""
+
+#: templates/dashboard.php:105
+msgid "Enquiries received"
+msgstr ""
+
+#: templates/dashboard.php:106
+msgid "Statistics"
+msgstr ""
+
+#: templates/dashboard.php:111
+msgid "Buying"
+msgstr ""
+
+#: templates/dashboard.php:114
+msgid "My requests for quotation"
+msgstr ""
+
+#: templates/dashboard.php:115
+msgid "Purchase history"
+msgstr ""
+
+#: templates/dashboard.php:123
+#: templates/single-service.php:89
+msgid "Requests received"
+msgstr ""
+
+#: templates/dashboard.php:125
+msgid "My service requests"
+msgstr ""
+
 #: templates/dashboard.php:126
-msgid "Verify your account"
+msgid "Engineering studies"
+msgstr ""
+
+#: templates/dashboard.php:136
+msgid "Plan & AI credits"
 msgstr ""
 
 #: templates/dashboard.php:143
+msgid "Verify your account"
+msgstr ""
+
+#: templates/dashboard.php:199
 msgid "Dashboard"
 msgstr ""
 
-#: templates/dashboard.php:175
+#: templates/dashboard.php:238
 msgid "Demo partner engineer account."
 msgstr ""
 
-#: templates/dashboard.php:175
+#: templates/dashboard.php:238
 msgid "Demo company account."
 msgstr ""
 
-#: templates/dashboard.php:175
+#: templates/dashboard.php:238
 msgid "Switch to the company dashboard"
 msgstr ""
 
-#: templates/dashboard.php:175
+#: templates/dashboard.php:238
 msgid "Switch to the engineer dashboard"
 msgstr ""
 
-#: templates/dashboard.php:179
+#: templates/dashboard.php:242
 msgid "Verify your account with the 6-digit code to publish and answer requests."
 msgstr ""
 
-#: templates/dashboard.php:210
+#: templates/dashboard.php:273
 msgid "This section arrives with its plugin"
 msgstr ""
 
-#: templates/dashboard.php:211
+#: templates/dashboard.php:274
 msgid "The layout is ready; the content will be provided by the corresponding marketplace plugin."
 msgstr ""
 
@@ -5614,6 +5617,10 @@ msgid "Company page with verified badge"
 msgstr ""
 
 #: templates/pricing.php:18
+msgid "Listing statistics"
+msgstr ""
+
+#: templates/pricing.php:18
 msgid "Monthly AI credits"
 msgstr ""
 
@@ -5894,10 +5901,6 @@ msgstr ""
 
 #: templates/single-service.php:69
 msgid "Usual lead time"
-msgstr ""
-
-#: templates/single-service.php:89
-msgid "Requests received"
 msgstr ""
 
 #: templates/single-service.php:106

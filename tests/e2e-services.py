@@ -7,6 +7,8 @@ creates one fabrication workshop for the run and removes it, its pages and reque
 """
 import os, sys, re, subprocess, time
 from playwright.sync_api import sync_playwright
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from dashmenu import menu
 
 BASE = sys.argv[1] if len(sys.argv) > 1 else 'http://localhost:8080'
 WP = sys.argv[2] if len(sys.argv) > 2 else '.'
@@ -49,7 +51,8 @@ with sync_playwright() as p:
     print('\nA. Workshop publishes a fabrication service')
     fp = page(fab)
     fp.goto(BASE + '/compte/')
-    check(fp.locator('.sm-dash__side a[href*="/compte/services/"]').count() >= 1 and fp.locator('.sm-dash__side a[href*="demandes-de-service"]').count() >= 1, 'business account with fabrication: "My services" and "Service requests" in the menu')
+    m = menu(fp)
+    check('/compte/services/' in m and 'demandes-de-service' in m, 'business account with fabrication: "My services" and "Service requests" in the menu')
     fp.goto(BASE + '/compte/services/')
     fp.click('.sm-toolbar a:has-text("Nouvelle page de service")'); fp.wait_for_load_state()
     check(fp.locator('input[name="kind"][value="fabrication"]').count() == 1 and fp.locator('#sms-cat option').count() == 15 and fp.locator('#sms-cat option[value="other"]').count() == 1, 'form: one service to choose in a list of 13, or "Other"')
@@ -213,11 +216,11 @@ with sync_playwright() as p:
     ar.goto(BASE + '/ar/ingenierie/')
     check(ar.evaluate('document.documentElement.dir') == 'rtl', 'Arabic engineering page')
     ep.goto(BASE + '/compte/')
-    menu = txt(ep, '.sm-dash__side')
-    check('Publier une annonce' in menu and 'Mes services' in menu and 'Réalisations' in menu, 'professional menu: sells, services and completed projects')
+    menu_t = menu(ep)
+    check('Publier une annonce' in menu_t and 'Mes services' in menu_t and 'Réalisations' in menu_t, 'professional menu: sells, services and completed projects')
     xp.goto(BASE + '/compte/')
-    menu = txt(xp, '.sm-dash__side')
-    check('Publier' not in menu and 'Mes services' not in menu and 'Mes missions' in menu, 'partner engineer menu: missions, no trading, no services')
+    menu_t = menu(xp)
+    check('Publier' not in menu_t and 'Mes services' not in menu_t and 'Mes missions' in menu_t, 'partner engineer menu: missions, no trading, no services')
     check(not errors, 'no JavaScript errors' + (': ' + errors[0] if errors else ''))
     b.close()
 

@@ -18,6 +18,15 @@
 		t._timer = setTimeout( function () { t.hidden = true; }, 2600 );
 	}
 
+	/* ---- Dashboard tabs: keep the current tab in view on small screens --- */
+	$$( '.sm-dash__tabs' ).forEach( function ( bar ) {
+		var cur = $( '[aria-current]', bar );
+		if ( cur && bar.scrollWidth > bar.clientWidth ) {
+			var start = document.documentElement.dir === 'rtl' ? bar.getBoundingClientRect().right - cur.getBoundingClientRect().right : cur.getBoundingClientRect().left - bar.getBoundingClientRect().left;
+			bar.scrollLeft += ( document.documentElement.dir === 'rtl' ? -1 : 1 ) * Math.max( 0, start - 24 );
+		}
+	} );
+
 	/* ---- Mobile drawer -------------------------------------------------- */
 	var drawer = $( '[data-sm-drawer]' );
 	var opener = $( '[data-sm-drawer-open]' );

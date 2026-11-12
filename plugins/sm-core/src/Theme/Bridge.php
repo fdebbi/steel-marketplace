@@ -253,6 +253,11 @@ final class Bridge {
 			'caps'          => Permissions::map( $company->id ),
 			'contact_verified' => (bool) get_user_meta( $user->ID, 'sm_contact_verified', true ) || (int) $company->verification_level >= 1,
 			'unread'        => Notifications::unread_count( $user->ID ),
+			/**
+			 * Items waiting in each dashboard view (view => count), shown as badges
+			 * on the menu group and its tab. Plugins add their own views.
+			 */
+			'badges'        => array_filter( array_map( 'intval', (array) apply_filters( 'sm_dashboard_badges', array( 'messages' => Enquiries::count_new( $company->id ) ), (int) $company->id ) ) ),
 			'kpis'          => $is_eng
 				? array( 'requests' => Enquiries::count_new( $company->id ), 'views' => 0, 'quotes' => 0 )
 				: array( 'active' => $active, 'views' => 0, 'enquiries' => Enquiries::count_new( $company->id ), 'offers' => 0 ),

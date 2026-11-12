@@ -27,6 +27,13 @@ final class Bridge {
 		foreach ( array( 'services', 'service', 'service_form', 'my_services', 'service_requests', 'portfolio', 'services_settings' ) as $r ) {
 			add_filter( 'sm_theme_data_' . $r, array( __CLASS__, $r ), 10, 2 );
 		}
+		add_filter( 'sm_dashboard_badges', array( __CLASS__, 'badges' ), 10, 2 );
+	}
+
+	/** New service requests waiting for the provider (dashboard badge). */
+	public static function badges( $badges, $company_id ) {
+		$badges['service-requests'] = Requests::count_new( (int) $company_id );
+		return $badges;
 	}
 
 	/** Published services (list). Args: kind, category, wilaya, q, company (slug), per_page, page. */

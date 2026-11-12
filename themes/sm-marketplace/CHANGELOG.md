@@ -1,5 +1,12 @@
 # Changelog — sm-marketplace
 
+## 0.17.0 — 2026-11-12 (avec sm-core 0.7.3, sm-services 0.3.4)
+
+- Menu du compte regroupé : Vue d'ensemble, Vente, Achat, Services, Assistant IA, Compte (6 entrées au lieu de 19). Un clic sur un groupe ouvre sa première page ; les pages du groupe sont des onglets sous le titre. Chaque page garde son adresse.
+- Bouton « Publier une annonce » en haut du menu. « Paramètres » passe dans le groupe Compte ; « Études d'ingénierie » reste dans Services.
+- Badges : demandes en attente sur le groupe et sur l'onglet concerné (demandes reçues, demandes de service reçues).
+- Mobile : bouton « Menu » avec les groupes ; onglets défilants, l'onglet courant reste visible.
+
 ## 0.16.0 — 2026-11-11 (avec sm-products 0.5.0, sm-services 0.3.3, sm-core 0.7.2)
 
 - Formulaire d'annonce : « Comment le vendez-vous ? » — à la pièce / au kg, lot complet uniquement, ou les deux (profilés, tubes, tôles, lots d'inventaire, chutes et ferraille, hangars démontés). Le prix du lot complet et son prix au kg s'affichent dans le résumé, sur les cartes et sur la page de l'annonce.

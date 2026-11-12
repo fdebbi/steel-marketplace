@@ -1,5 +1,9 @@
 # Changelog — sm-core
 
+## 0.7.3 — 2026-11-12
+
+- Ressource `account` : `badges` (page du tableau de bord => éléments en attente), complétée par le filtre `sm_dashboard_badges` (demandes reçues non lues pour sm-core).
+
 ## 0.7.2 — 2026-11-11
 
 - Notifications : page « Notifications » du tableau de bord, lien d'ouverture qui marque la notification comme lue, nombre réglable dans la ressource thème.

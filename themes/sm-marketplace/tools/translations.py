@@ -300,6 +300,7 @@ T = {
 "Quotations sent": ("Devis envoyés", "العروض المرسلة"),
 "Enquiries received": ("Demandes reçues", "الاستفسارات الواردة"),
 "Listing statistics": ("Statistiques des annonces", "إحصائيات الإعلانات"),
+"Statistics": ("Statistiques", "الإحصائيات"),
 "Buying": ("Achat", "الشراء"),
 "My requests for quotation": ("Mes demandes de devis", "طلبات عروضي"),
 "Purchase history": ("Historique d’achats", "سجل المشتريات"),
