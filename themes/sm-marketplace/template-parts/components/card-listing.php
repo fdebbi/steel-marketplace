@@ -20,7 +20,6 @@ $market  = $item['market'];
 <article class="sm-card sm-card--listing sm-card--<?php echo esc_attr( $market ); ?>">
 	<a class="sm-card__media<?php echo ! empty( $item['image_drawing'] ) ? ' is-drawing' : ''; ?>" href="<?php echo esc_url( $url ); ?>" tabindex="-1" aria-hidden="true">
 		<img src="<?php echo esc_url( sm_image_url( $item['image'] ?? '' ) ); ?>" alt="" loading="lazy" decoding="async" width="640" height="480">
-		<?php if ( ! empty( $item['image_drawing'] ) ) : ?><span class="sm-drawing-note"><?php esc_html_e( 'Illustration', 'sm-marketplace' ); ?></span><?php endif; ?>
 		<?php if ( ! empty( $item['featured'] ) ) : ?>
 			<span class="sm-chip sm-chip--featured"><?php sm_icon( 'star' ); ?><?php esc_html_e( 'Featured', 'sm-marketplace' ); ?></span>
 		<?php endif; ?>

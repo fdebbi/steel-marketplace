@@ -170,6 +170,66 @@ final class Calculator {
 		return $fam->code;
 	}
 
+	/**
+	 * Dimensions of a typed size from its designation ("RHS 120x80x4" -> h, b, t),
+	 * the reverse of designation(). Null when it cannot be read.
+	 */
+	public static function dims_from_designation( $fam, $designation ) {
+		if ( ! preg_match_all( '/\d+(?:[.,]\d+)?/', (string) $designation, $m ) ) {
+			return null;
+		}
+		$n    = array_map( static fn( $v ) => (float) str_replace( ',', '.', $v ), $m[0] );
+		$keys = array( 'rhs' => array( 'h', 'b', 't' ), 'chs' => array( 'd', 't' ), 'flat' => array( 'b', 't' ), 'round' => array( 'd' ), 'square' => array( 'a' ), 'plate' => array( 't' ) )[ $fam->shape ] ?? null;
+		if ( ! $keys || count( $n ) < count( $keys ) ) {
+			return null;
+		}
+		$raw = array_combine( $keys, array_slice( $n, -count( $keys ) ) );
+		if ( 'rhs' === $fam->shape && 'SHS' === $fam->code && count( $n ) >= 3 ) {
+			$raw = array( 'h' => $n[ count( $n ) - 3 ], 'b' => $n[ count( $n ) - 2 ], 't' => $n[ count( $n ) - 1 ] );
+		}
+		$dims = self::read_dims( $fam->shape, $raw );
+		return is_wp_error( $dims ) ? null : $dims;
+	}
+
+	/**
+	 * Section sheet of a listed product (0.2.0): shape, exact dimensions, area,
+	 * mass per metre and standard, from the catalogue (section id) or from the
+	 * designation of a typed size. Null when unknown.
+	 */
+	public static function sheet( $family, $section_id, $designation ) {
+		$fam = Catalogue::family( $family );
+		if ( ! $fam ) {
+			return null;
+		}
+		$in = array( 'family' => $family, 'mode' => 'bars', 'bars' => 1, 'length' => 1000 );
+		if ( 'PLATE' === $family ) {
+			$in['width']  = 1000;
+			$in['length'] = 1000;
+		}
+		if ( $section_id ) {
+			$in['section'] = (int) $section_id;
+		} else {
+			$dims = self::dims_from_designation( $fam, $designation );
+			if ( ! $dims ) {
+				return null;
+			}
+			$in['dims'] = $dims;
+		}
+		$r = self::calculate( $in );
+		if ( is_wp_error( $r ) ) {
+			return null;
+		}
+		return array(
+			'shape'       => $r['shape'],
+			'designation' => $r['designation'],
+			'dims'        => $r['dims'],
+			'area_mm2'    => (float) ( $r['area_mm2'] ?? 0 ),
+			'mass_kg_m'   => 'PLATE' === $family ? null : (float) $r['mass_kg_m'],
+			'mass_kg_m2'  => 'PLATE' === $family ? (float) $r['total_kg'] : null,
+			'standard'    => (string) ( $r['standard'] ?? '' ),
+		);
+	}
+
 	/** Accepts "12,5" as well as "12.5". */
 	public static function number( $v ) {
 		return is_numeric( $v ) ? (float) $v : ( is_string( $v ) && is_numeric( str_replace( array( ',', ' ' ), array( '.', '' ), $v ) ) ? (float) str_replace( array( ',', ' ' ), array( '.', '' ), $v ) : 0.0 );

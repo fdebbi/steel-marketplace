@@ -28,7 +28,22 @@
 .sm-weight { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 2px 6px; }
 .sm-weight__kg { font-size: .78em; font-weight: 500; color: var(--sm-muted); }
 
-/* Section drawing used as picture (0.20.0) */
-.sm-card__media.is-drawing img, .sm-gallery__main.is-drawing img { object-fit: contain; padding: 14%; box-sizing: border-box; }
+/* Section drawing used as picture (0.21.0): exact section, real dimensions, characteristics beside */
+.sm-card__media.is-drawing img, .sm-gallery__main.is-drawing img { object-fit: contain; padding: 10%; box-sizing: border-box; }
 .sm-gallery__main.is-drawing { position: relative; background: radial-gradient(ellipse 60% 70% at 50% 55%, rgb(6 206 119 / .14), transparent 70%), linear-gradient(150deg, #1A232C, #0B1015); }
-.sm-drawing-note { position: absolute; inset-block-end: 8px; inset-inline-start: 8px; padding: 2px 8px; border-radius: 999px; background: rgb(8 11 14 / .7); color: var(--sm-silver); font-size: 11px; font-weight: 600; }
+.sm-gallery__main.has-sheet { display: grid; aspect-ratio: auto; }
+.sm-gallery__main.has-sheet img { aspect-ratio: 1; max-block-size: 420px; inline-size: 100%; }
+@media (min-width: 560px) { .sm-gallery__main.has-sheet { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: center; } }
+.sm-sheet { padding: var(--sm-s4) var(--sm-s5) var(--sm-s5); color: var(--sm-silver); }
+@media (min-width: 560px) { .sm-sheet { padding-inline-start: 0; } }
+.sm-sheet__title { margin: 0; font-size: var(--sm-fs-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--sm-accent); }
+[dir="rtl"] .sm-sheet__title { letter-spacing: 0; }
+.sm-sheet__name { margin: 4px 0 var(--sm-s3); font-family: var(--sm-font-display); font-size: 1.5rem; font-weight: 700; color: var(--sm-white); }
+.sm-sheet__list { margin: 0; display: grid; }
+.sm-sheet__list > div { display: flex; justify-content: space-between; gap: var(--sm-s3); padding-block: 7px; border-block-end: 1px solid rgb(198 205 210 / .1); font-size: var(--sm-fs-sm); }
+.sm-sheet__list dt { color: var(--sm-steel); }
+.sm-sheet__list dd { margin: 0; color: var(--sm-white); font-weight: 600; font-variant-numeric: tabular-nums; }
+.sm-sheet__sym { font-style: italic; color: var(--sm-silver); }
+.sm-sheet__sep { margin-block-start: 4px; }
+.sm-sheet__key dd { color: var(--sm-accent); font-size: 1.1rem; }
+.sm-sheet__std { margin: var(--sm-s3) 0 0; font-size: 11px; color: var(--sm-steel); }

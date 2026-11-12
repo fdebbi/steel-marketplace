@@ -1,5 +1,10 @@
 # Changelog — sm-marketplace
 
+## 0.21.0 — 2026-11-12 (avec sm-products 0.7.1, sm-weight-engine 0.2.1)
+
+- Dessin de section sans mention sur l'image (cartes et fiche) ; cotes réelles sur le dessin (« 160 mm », « 82 mm ») au lieu de h et b.
+- Fiche d'annonce sans photo : panneau « Caractéristiques de la section » dans le cadre du dessin (dimensions exactes, aire en cm², poids en kg/ml ou kg/m², norme) ; sous le dessin sur mobile.
+
 ## 0.20.0 — 2026-11-12 (avec sm-products 0.7.0, sm-weight-engine 0.2.0)
 
 - Produits neufs calculés (profilés, tubes, fers plats et ronds, tôles) : plus de champs de titre ; un encadré explique le titre automatique ; les photos sont facultatives.

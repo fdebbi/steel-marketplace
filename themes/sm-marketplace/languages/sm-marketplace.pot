@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.19.0\n"
+"Project-Id-Version: SM Marketplace 0.20.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-12T11:42:10+00:00\n"
+"POT-Creation-Date: 2026-11-12T12:25:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -180,7 +180,7 @@ msgstr ""
 #: header.php:32
 #: templates/contact.php:23
 #: templates/contact.php:32
-#: templates/single-listing.php:315
+#: templates/single-listing.php:318
 msgid "Contact"
 msgstr ""
 
@@ -966,8 +966,8 @@ msgstr ""
 #: template-parts/components/weight-calculator.php:199
 #: template-parts/dashboard/publish.php:128
 #: template-parts/dashboard/publish.php:133
-#: templates/single-listing.php:232
-#: templates/single-listing.php:243
+#: templates/single-listing.php:235
+#: templates/single-listing.php:246
 msgid "Quantity"
 msgstr ""
 
@@ -1017,8 +1017,8 @@ msgstr ""
 #: template-parts/dashboard/publish.php:128
 #: template-parts/dashboard/publish.php:132
 #: template-parts/dashboard/settings.php:20
-#: templates/single-listing.php:231
-#: templates/single-listing.php:242
+#: templates/single-listing.php:234
+#: templates/single-listing.php:245
 msgid "Profile"
 msgstr ""
 
@@ -1151,59 +1151,55 @@ msgstr ""
 msgid "See the profile"
 msgstr ""
 
-#: template-parts/components/card-listing.php:23
-msgid "Illustration"
-msgstr ""
-
-#: template-parts/components/card-listing.php:25
+#: template-parts/components/card-listing.php:24
 #: templates/front-page-template.php:189
 msgid "Featured"
 msgstr ""
 
-#: template-parts/components/card-listing.php:29
+#: template-parts/components/card-listing.php:28
 msgid "Save listing"
 msgstr ""
 
-#: template-parts/components/card-listing.php:35
+#: template-parts/components/card-listing.php:34
 #: template-parts/components/filter-panel.php:68
 #: template-parts/components/product-tech.php:354
 #: template-parts/dashboard/publish.php:112
 #: templates/single-listing.php:49
-#: templates/single-listing.php:129
+#: templates/single-listing.php:132
 msgid "Assembled"
 msgstr ""
 
-#: template-parts/components/card-listing.php:35
+#: template-parts/components/card-listing.php:34
 #: template-parts/components/filter-panel.php:69
 #: template-parts/components/product-tech.php:355
 #: template-parts/dashboard/publish.php:113
 #: templates/single-listing.php:49
-#: templates/single-listing.php:129
+#: templates/single-listing.php:132
 msgid "Dismantled"
 msgstr ""
 
 #. translators: 1: number of pieces, 2: longest length in metres.
-#: template-parts/components/card-listing.php:52
+#: template-parts/components/card-listing.php:51
 msgid "%1$s pcs · up to %2$s m"
 msgstr ""
 
-#: template-parts/components/card-listing.php:68
+#: template-parts/components/card-listing.php:67
 #: template-parts/components/product-tech.php:458
 msgid "Whole lot only"
 msgstr ""
 
-#: template-parts/components/card-listing.php:71
+#: template-parts/components/card-listing.php:70
 #: template-parts/components/rfq-compare.php:64
 msgid "Total"
 msgstr ""
 
 #. translators: %s: price.
-#: template-parts/components/card-listing.php:73
+#: template-parts/components/card-listing.php:72
 msgid "or %s for the whole lot"
 msgstr ""
 
-#: template-parts/components/card-listing.php:86
-#: templates/single-listing.php:168
+#: template-parts/components/card-listing.php:85
+#: templates/single-listing.php:171
 msgid "Private seller"
 msgstr ""
 
@@ -1772,7 +1768,7 @@ msgstr ""
 
 #: template-parts/components/product-form.php:111
 #: templates/mission-request.php:62
-#: templates/single-listing.php:264
+#: templates/single-listing.php:267
 #: templates/single-service.php:99
 msgid "Description"
 msgstr ""
@@ -1936,8 +1932,8 @@ msgstr ""
 #: template-parts/components/product-lines.php:65
 #: template-parts/dashboard/publish.php:128
 #: template-parts/dashboard/publish.php:131
-#: templates/single-listing.php:230
-#: templates/single-listing.php:241
+#: templates/single-listing.php:233
+#: templates/single-listing.php:244
 msgid "Element"
 msgstr ""
 
@@ -1989,7 +1985,7 @@ msgid "Condition of the steel"
 msgstr ""
 
 #: template-parts/components/product-tech.php:144
-#: templates/single-listing.php:204
+#: templates/single-listing.php:207
 msgid "What the price includes"
 msgstr ""
 
@@ -2019,6 +2015,7 @@ msgid "Height h"
 msgstr ""
 
 #: template-parts/components/product-tech.php:239
+#: template-parts/components/section-sheet.php:23
 #: template-parts/components/weight-calculator.php:157
 msgid "Side"
 msgstr ""
@@ -2193,8 +2190,8 @@ msgstr ""
 #: template-parts/components/product-tech.php:433
 #: template-parts/components/rfq-single.php:82
 #: template-parts/components/rfq-single.php:90
-#: templates/single-listing.php:235
-#: templates/single-listing.php:246
+#: templates/single-listing.php:238
+#: templates/single-listing.php:249
 msgid "Total weight (kg)"
 msgstr ""
 
@@ -2559,7 +2556,7 @@ msgstr ""
 
 #. translators: %d: days.
 #: template-parts/components/rfq-my-offer.php:20
-#: templates/single-listing.php:216
+#: templates/single-listing.php:219
 msgid "included"
 msgstr ""
 
@@ -2694,15 +2691,15 @@ msgstr ""
 #: template-parts/dashboard/publish.php:116
 #: template-parts/dashboard/publish.php:128
 #: template-parts/dashboard/publish.php:134
-#: templates/single-listing.php:233
-#: templates/single-listing.php:244
+#: templates/single-listing.php:236
+#: templates/single-listing.php:247
 msgid "Length (m)"
 msgstr ""
 
 #: template-parts/components/rfq-single.php:82
 #: template-parts/components/rfq-single.php:89
-#: templates/single-listing.php:234
-#: templates/single-listing.php:245
+#: templates/single-listing.php:237
+#: templates/single-listing.php:248
 msgid "Unit weight (kg/m)"
 msgstr ""
 
@@ -2775,6 +2772,67 @@ msgstr ""
 
 #: template-parts/components/rfq-tech.php:64
 msgid "Weight, if known"
+msgstr ""
+
+#: template-parts/components/section-sheet.php:20
+#: template-parts/components/section-sheet.php:21
+msgid "Leg"
+msgstr ""
+
+#: template-parts/components/section-sheet.php:20
+msgid "Height"
+msgstr ""
+
+#: template-parts/components/section-sheet.php:21
+msgid "Width"
+msgstr ""
+
+#: template-parts/components/section-sheet.php:22
+msgid "Outside diameter"
+msgstr ""
+
+#: template-parts/components/section-sheet.php:24
+msgid "Web thickness"
+msgstr ""
+
+#: template-parts/components/section-sheet.php:25
+msgid "Flange thickness"
+msgstr ""
+
+#: template-parts/components/section-sheet.php:26
+#: template-parts/components/weight-calculator.php:132
+msgid "Thickness"
+msgstr ""
+
+#: template-parts/components/section-sheet.php:27
+#: template-parts/components/section-sheet.php:28
+msgid "Root radius"
+msgstr ""
+
+#: template-parts/components/section-sheet.php:29
+msgid "Toe radius"
+msgstr ""
+
+#: template-parts/components/section-sheet.php:34
+msgid "Section characteristics"
+msgstr ""
+
+#: template-parts/components/section-sheet.php:42
+msgid "Cross-section area"
+msgstr ""
+
+#: template-parts/components/section-sheet.php:45
+#: template-parts/components/weight-calculator.php:182
+msgid "Weight per metre"
+msgstr ""
+
+#: template-parts/components/section-sheet.php:47
+msgid "Weight per square metre"
+msgstr ""
+
+#. translators: %s: standard, e.g. EN 10365.
+#: template-parts/components/section-sheet.php:51
+msgid "Standard values: %s"
 msgstr ""
 
 #: template-parts/components/service-form.php:16
@@ -3207,16 +3265,8 @@ msgstr ""
 msgid "Continue"
 msgstr ""
 
-#: template-parts/components/weight-calculator.php:132
-msgid "Thickness"
-msgstr ""
-
 #: template-parts/components/weight-calculator.php:181
 msgid "Area"
-msgstr ""
-
-#: template-parts/components/weight-calculator.php:182
-msgid "Weight per metre"
 msgstr ""
 
 #: template-parts/components/weight-calculator.php:186
@@ -3530,7 +3580,7 @@ msgstr ""
 
 #: template-parts/dashboard/company.php:149
 #: template-parts/dashboard/settings.php:43
-#: templates/single-listing.php:144
+#: templates/single-listing.php:147
 msgid "Save"
 msgstr ""
 
@@ -4694,7 +4744,7 @@ msgstr ""
 
 #: template-parts/marketplace-archive.php:121
 #: templates/front-page-template.php:151
-#: templates/single-listing.php:142
+#: templates/single-listing.php:145
 #: templates/single-service.php:92
 #: templates/single-service.php:121
 #: templates/styleguide.php:36
@@ -6001,95 +6051,91 @@ msgstr ""
 msgid "Preview: changes were requested; not visible to buyers."
 msgstr ""
 
-#: templates/single-listing.php:106
-msgid "Standard section drawing (illustration)"
-msgstr ""
-
 #. translators: %d: photo number.
-#: templates/single-listing.php:116
+#: templates/single-listing.php:119
 #: templates/single-service.php:56
 msgid "Photo %d"
 msgstr ""
 
-#: templates/single-listing.php:141
+#: templates/single-listing.php:144
 msgid "Contact the seller"
 msgstr ""
 
-#: templates/single-listing.php:145
+#: templates/single-listing.php:148
 msgid "Share"
 msgstr ""
 
 #. translators: %s: year.
-#: templates/single-listing.php:159
+#: templates/single-listing.php:162
 msgid "Active since %s"
 msgstr ""
 
-#: templates/single-listing.php:169
+#: templates/single-listing.php:172
 msgid "Listing checked by the platform. Contact the seller with the form; your details are shared only when you write."
 msgstr ""
 
-#: templates/single-listing.php:178
+#: templates/single-listing.php:181
 msgid "Technical specifications"
 msgstr ""
 
-#: templates/single-listing.php:193
+#: templates/single-listing.php:196
 msgid "Technical documents"
 msgstr ""
 
-#: templates/single-listing.php:208
+#: templates/single-listing.php:211
 msgid "Dismantling"
 msgstr ""
 
-#: templates/single-listing.php:209
+#: templates/single-listing.php:212
 msgid "Transport"
 msgstr ""
 
-#: templates/single-listing.php:210
+#: templates/single-listing.php:213
 msgid "Reinstallation"
 msgstr ""
 
-#: templates/single-listing.php:211
+#: templates/single-listing.php:214
 msgid "Foundations and accessories"
 msgstr ""
 
-#: templates/single-listing.php:216
+#: templates/single-listing.php:219
 msgid "not included"
 msgstr ""
 
-#: templates/single-listing.php:224
+#: templates/single-listing.php:227
 msgid "Lot inventory"
 msgstr ""
 
-#: templates/single-listing.php:224
+#: templates/single-listing.php:227
 msgid "Structural element inventory"
 msgstr ""
 
-#: templates/single-listing.php:252
-#: templates/single-listing.php:253
+#: templates/single-listing.php:255
+#: templates/single-listing.php:256
 msgid "Total steel weight"
 msgstr ""
 
-#: templates/single-listing.php:258
+#: templates/single-listing.php:261
 msgid "Unit weights come from the platform’s standard section tables. The theoretical weight excludes bolts, plates and welds."
 msgstr ""
 
-#: templates/single-listing.php:266
+#: templates/single-listing.php:269
 msgid "No description. Ask the seller for details with the form below."
 msgstr ""
 
-#: templates/single-listing.php:270
+#: templates/single-listing.php:273
 msgid "Shown in the language the seller wrote it in."
 msgstr ""
 
-#: templates/single-listing.php:284
+#: templates/single-listing.php:287
 msgid "Planning a structural reuse? Have the elements checked by a verified engineer before installation."
 msgstr ""
 
-#: templates/single-listing.php:284
+#: templates/single-listing.php:287
 msgid "Find an engineer"
 msgstr ""
 
-#: templates/single-listing.php:304
+#: templates/single-listing.php:307
 msgid "Similar listings"
 msgstr ""
 

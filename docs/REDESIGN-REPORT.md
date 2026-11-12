@@ -105,3 +105,13 @@ Tests :
 - e2e : products 50/50, ai 30/30, weight 22/22, rfq 25/25, services 57/57 et toutes les autres suites réussies.
 - Tests visuels FR, AR et EN : 924/924.
 - Les tests de publication, de l'IA et du calculateur ont été mis à jour pour le titre automatique et le poids en tonnes.
+
+## 7. Complément : fiche de la section (thème 0.21.0, sm-products 0.7.1, sm-weight-engine 0.2.1)
+
+- La mention « image indicative » est retirée de l'image, sur les cartes comme sur la fiche.
+- Le dessin exact est centré, avec les cotes réelles à la place de h et b (par exemple 160 mm et 82 mm pour un IPE 160).
+- Le panneau « Caractéristiques de la section » est placé dans le cadre du dessin, et sous le dessin sur mobile. Il donne :
+  - les dimensions exactes (h, b, tw, tf, r ; ailes et rayons pour les cornières ; épaisseur pour les tubes) ;
+  - l'aire de la section en cm² et le poids en kg/ml (kg/m² pour les tôles) ;
+  - la norme (EN 10365, EN 10056-1, EN 10219-2…).
+- Toutes ces valeurs viennent des tables du moteur de poids.

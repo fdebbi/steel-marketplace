@@ -8,6 +8,18 @@ Run tools/compile-translations.py to rebuild the .po/.mo files.
 """
 
 T = {
+"Leg": ("Aile", "الجناح"),
+"Height": ("Hauteur", "الارتفاع"),
+"Width": ("Largeur", "العرض"),
+"Outside diameter": ("Diamètre extérieur", "القطر الخارجي"),
+"Web thickness": ("Épaisseur d’âme", "سمك الجذع"),
+"Flange thickness": ("Épaisseur d’aile", "سمك الجناح"),
+"Root radius": ("Rayon de congé", "نصف قطر الانحناء"),
+"Toe radius": ("Rayon d’extrémité", "نصف قطر الحافة"),
+"Section characteristics": ("Caractéristiques de la section", "خصائص المقطع"),
+"Cross-section area": ("Aire de la section", "مساحة المقطع"),
+"Weight per square metre": ("Poids au mètre carré", "الوزن للمتر المربع"),
+"Standard values: %s": ("Valeurs normalisées : %s", "قيم معيارية: %s"),
 "The title is created automatically from the product: type and size, steel grade and length (for example \"IPE 200 · S275JR · 12 m\"), in French and in Arabic.": ("Le titre est créé automatiquement à partir du produit : type et dimension, nuance d’acier et longueur (par exemple « IPE 200 · S275JR · 12 m »), en français et en arabe.", "يُنشأ العنوان تلقائيًا من المنتج: النوع والمقاس ودرجة الفولاذ والطول (مثلًا «IPE 200 · S275JR · 12 م»)، بالفرنسية والعربية."),
 "Photos are optional: without a photo, the listing shows the standard drawing of the section. A real photo of your stock is still recommended, buyers trust it more.": ("Les photos sont facultatives : sans photo, l’annonce affiche le dessin standard du profilé. Une vraie photo de votre stock reste conseillée, les acheteurs lui font davantage confiance.", "الصور اختيارية: بدون صورة، يعرض الإعلان الرسم القياسي للمقطع. ومع ذلك يُنصح بصورة حقيقية لمخزونك، فالمشترون يثقون بها أكثر."),
 "Standard section drawing (illustration)": ("Dessin standard du profilé (image indicative)", "الرسم القياسي للمقطع (صورة توضيحية)"),

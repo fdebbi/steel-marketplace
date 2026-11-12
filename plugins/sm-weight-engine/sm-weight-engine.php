@@ -3,7 +3,7 @@
  * Plugin Name:       SM Weight Engine
  * Plugin URI:        https://github.com/fdebbi/steel-marketplace
  * Description:       Steel section catalogue (IPE, HEA, HEB, HEM, IPN, UPN, UPE, angles, tubes, flats, bars, plates) with sourced and cross-checked reference data, exact cross-section drawings and theoretical weight calculations (bars <-> total weight). Requires SM Core.
- * Version:           0.2.0
+ * Version:           0.2.1
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Requires Plugins:  sm-core
@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_WEIGHT_VERSION', '0.2.0' );
+define( 'SM_WEIGHT_VERSION', '0.2.1' );
 define( 'SM_WEIGHT_DB_VERSION', 1 );
 /** Version of the bundled reference data (data/sections.php). Stored with every calculation. */
 define( 'SM_WEIGHT_REF_VERSION', '2026.11.1' );

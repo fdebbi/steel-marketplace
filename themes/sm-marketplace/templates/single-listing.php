@@ -101,9 +101,12 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 
 	<div class="sm-detail__top">
 		<div class="sm-gallery" data-sm-gallery>
-			<figure class="sm-gallery__main<?php echo ! empty( $item['image_drawing'] ) ? ' is-drawing' : ''; ?>">
+			<?php $sheet = ! empty( $item['image_drawing'] ) ? ( $item['section_sheet'] ?? null ) : null; ?>
+			<figure class="sm-gallery__main<?php echo ! empty( $item['image_drawing'] ) ? ' is-drawing' : ''; ?><?php echo $sheet ? ' has-sheet' : ''; ?>">
 				<img src="<?php echo esc_url( sm_image_url( $item['image'] ) ); ?>" alt="<?php echo esc_attr( sm_t( $item['title'] ) ); ?>" width="1280" height="960" data-sm-gallery-main>
-				<?php if ( ! empty( $item['image_drawing'] ) ) : ?><figcaption class="sm-drawing-note"><?php esc_html_e( 'Standard section drawing (illustration)', 'sm-marketplace' ); ?></figcaption><?php endif; ?>
+				<?php if ( $sheet ) : ?>
+					<?php sm_component( 'section-sheet', array( 'sheet' => $sheet ) ); ?>
+				<?php endif; ?>
 			</figure>
 			<div class="sm-gallery__thumbs">
 				<?php $gallery = ! empty( $item['photos'] ) ? $item['photos'] : ( ! empty( $item['demo'] ) ? array( $item['image'], 'demo:detail-section', 'demo:detail-stack' ) : array( $item['image'] ) ); ?>

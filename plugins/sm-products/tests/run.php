@@ -197,7 +197,7 @@ wp_set_current_user( 0 );
 // ---- Generated title and section drawing (0.7.0) ----
 $auto = Spec::build( array( 'category' => 'profiles', 'family' => 'IPE', 'section' => 'IPE 200', 'grade' => 'S275JR', 'bars' => '10', 'length' => '12000', 'price' => '230', 'wilaya' => '28', 'title' => array( 'fr' => 'ignoré' ) ) );
 smp_assert( ! $auto['errors'] && 'IPE 200 · S275JR · 12 m' === $auto['title']['fr'] && 'IPE 200 · S275JR · الطول 12 م' === $auto['title']['ar'], 'new profile: title generated (type, grade, length), typed title ignored' );
-smp_assert( '' !== ( $auto['data']['drawing'] ?? '' ) && file_exists( wp_upload_dir()['basedir'] . '/sm-drawings/' . $auto['data']['drawing'] . '.svg' ) && file_exists( wp_upload_dir()['basedir'] . '/sm-drawings/' . $auto['data']['drawing'] . '.png' ), 'standard drawing stored as SVG and PNG' );
+smp_assert( '' !== ( $auto['data']['drawing'] ?? '' ) && file_exists( wp_upload_dir()['basedir'] . '/sm-drawings/' . $auto['data']['drawing'] . '-' . \SM\WeightEngine\Drawing::FILES_VERSION . '.svg' ) && file_exists( wp_upload_dir()['basedir'] . '/sm-drawings/' . $auto['data']['drawing'] . '-' . \SM\WeightEngine\Drawing::FILES_VERSION . '.png' ), 'standard drawing stored as SVG and PNG' );
 $byw = Spec::build( array( 'category' => 'profiles', 'family' => 'IPE', 'section' => 'IPE 200', 'grade' => 'S235JR', 'qty_mode' => 'weight', 'total_kg' => '3000', 'price' => '230', 'wilaya' => '28' ) );
 smp_assert( 'IPE 200 · S235JR' === $byw['title']['fr'], 'sold by weight: no length in the title' );
 smp_assert( Spec::make_title( array( 'designation' => 'IPE 200', 'grade' => '', 'qty_mode' => 'bars', 'length_mm' => 6500 ) )['fr'] === 'IPE 200 · 6,5 m', 'decimal length' );

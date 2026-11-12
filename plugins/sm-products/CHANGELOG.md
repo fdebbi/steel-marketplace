@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.7.1 — 2026-11-12
+
+- `section_sheet` (dimensions, aire, poids au mètre, norme) dans les données d'une annonce sans photo ; fichiers du dessin refaits automatiquement quand la version des fichiers change.
+
 ## 0.7.0 — 2026-11-12 (base v5)
 
 - Produits neufs calculés (catégories de type « engine » du marché des produits) : titre généré « type et dimension · nuance · longueur » en français et en arabe (« IPE 200 · S275JR · 12 m » / « … · 12 م ») ; sans longueur quand le produit est vendu au poids ; un titre saisi est ignoré. Les annonces existantes gardent leur titre jusqu'à leur prochaine modification.

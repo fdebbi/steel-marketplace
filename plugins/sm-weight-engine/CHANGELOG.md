@@ -1,5 +1,10 @@
 # Changelog — sm-weight-engine
 
+## 0.2.1 — 2026-11-12
+
+- Dessins enregistrés (version 2 des fichiers) : valeurs réelles sur les lignes de cote (option `values` de `Drawing::svg()`).
+- `Calculator::sheet()` et `Calculator::dims_from_designation()` : caractéristiques d'une section du catalogue ou d'une dimension saisie.
+
 ## 0.2.0 — 2026-11-12
 
 - `Drawing::files()` : dessin d'une section enregistré une fois dans uploads/sm-drawings/ en SVG (acier clair) et en PNG 1200 × 630 (fond acier, bord vert) pour les aperçus de liens ; `Drawing::polygons()` (arcs aplatis) et `Drawing::png()` (GD).

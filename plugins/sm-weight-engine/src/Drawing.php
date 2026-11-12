@@ -18,13 +18,18 @@ defined( 'ABSPATH' ) || exit;
 
 final class Drawing {
 
+	/** Version of the stored picture files (2: real dimensions on the lines). */
+	const FILES_VERSION = '2';
+
 	/**
 	 * @param string $shape  Geometry shape.
 	 * @param array  $dims   Dimensions in mm.
 	 * @param array  $opts   title (accessible name), dims (bool, dimension lines; default true).
 	 */
 	public static function svg( $shape, array $dims, array $opts = array() ) {
-		$opts = wp_parse_args( $opts, array( 'title' => '', 'dims' => true ) );
+		$opts = wp_parse_args( $opts, array( 'title' => '', 'dims' => true, 'values' => false ) );
+		$real = $dims; // Before the plate stand-in below: the values shown are the real ones.
+		$real_shape = $shape;
 		if ( 'plate' === $shape ) {
 			$dims  = array( 'b' => 120, 't' => max( 4, min( 40, (float) $dims['t'] * 2 ) ) );
 			$shape = 'flat';
@@ -73,7 +78,7 @@ final class Drawing {
 		$out .= '<path class="smw-shape" d="' . $path . '" fill="currentColor" fill-opacity=".14" fill-rule="evenodd" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke"/>';
 
 		if ( $opts['dims'] ) {
-			$labels = self::labels( $shape, $dims );
+			$labels = $opts['values'] ? self::value_labels( $real_shape, $real ) : self::labels( $shape, $dims );
 			// Height, on the left.
 			$x    = -$gap * 1.6;
 			$out .= self::dim_line( $x, 0, $x, $h, $ref );
@@ -84,6 +89,26 @@ final class Drawing {
 			$out .= sprintf( '<text class="smw-label" x="%s" y="%s" font-size="%s" text-anchor="middle" fill="currentColor">%s</text>', self::n( $w / 2 ), self::n( $y + $font * 1.15 ), self::n( $font ), esc_html( $labels['b'] ) );
 		}
 		return $out . '</svg>';
+	}
+
+	/**
+	 * Real values on the two dimension lines (0.2.0): "160 mm" / "82 mm";
+	 * tubes and bars show the diameter or side, plates their thickness.
+	 */
+	private static function value_labels( $shape, array $d ) {
+		$mm = static fn( $v ) => str_replace( '.', ',', rtrim( rtrim( number_format( (float) $v, 1, '.', '' ), '0' ), '.' ) ) . ' mm';
+		switch ( $shape ) {
+			case 'chs':
+			case 'round':
+				return array( 'h' => $mm( $d['d'] ), 'b' => $mm( $d['d'] ) );
+			case 'square':
+				return array( 'h' => $mm( $d['a'] ), 'b' => $mm( $d['a'] ) );
+			case 'flat':
+				return array( 'h' => $mm( $d['t'] ), 'b' => $mm( $d['b'] ) );
+			case 'plate':
+				return array( 'h' => $mm( $d['t'] ), 'b' => '' );
+		}
+		return array( 'h' => $mm( $d['h'] ?? 0 ), 'b' => $mm( $d['b'] ?? 0 ) );
 	}
 
 	/** Labels of the two dimension lines. */
@@ -184,18 +209,19 @@ final class Drawing {
 		$up   = wp_upload_dir();
 		$dir  = trailingslashit( $up['basedir'] ) . 'sm-drawings';
 		$url  = trailingslashit( $up['baseurl'] ) . 'sm-drawings';
+		$key  = $key . '-' . self::FILES_VERSION;
 		$svgf = $dir . '/' . $key . '.svg';
 		$pngf = $dir . '/' . $key . '.png';
 		if ( ! file_exists( $svgf ) || ! file_exists( $pngf ) ) {
 			if ( ! wp_mkdir_p( $dir ) ) {
 				return null;
 			}
-			$svg = self::svg( $shape, $dims, array( 'title' => $title ) );
+			$svg = self::svg( $shape, $dims, array( 'title' => $title, 'values' => true ) );
 			if ( '' === $svg ) {
 				return null;
 			}
 			// Light steel on a transparent ground; the theme puts it on its dark steel card.
-			$svg = preg_replace( '/^<svg /', '<svg style="color:#C6CDD2" ', $svg );
+			$svg = preg_replace( '/^<svg /', '<svg style="color:#C6CDD2;font-family:Arial,Helvetica,sans-serif" ', $svg );
 			file_put_contents( $svgf, $svg ); // phpcs:ignore WordPress.WP.AlternativeFunctions
 			$png = self::png( $shape, $dims );
 			if ( $png ) {

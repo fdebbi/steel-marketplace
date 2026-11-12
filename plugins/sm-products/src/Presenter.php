@@ -59,6 +59,8 @@ final class Presenter {
 			'image'          => $photos ? (int) $photos[0] : ( self::drawing_url( $p ) ?: 'demo:placeholder' ),
 			'image_drawing'  => ! $photos && '' !== self::drawing_url( $p ),
 			'share_image'    => $photos ? '' : self::drawing_url( $p, 'png' ),
+			// Exact characteristics shown beside the drawing (0.7.1).
+			'section_sheet'  => ! $photos && '' !== self::drawing_url( $p ) ? self::section_sheet( $p ) : null,
 			'photos'         => array_map( 'intval', $photos ),
 			'status'         => $p->status,
 			'revision'       => ! empty( $p->revision_at ),
@@ -245,14 +247,32 @@ final class Presenter {
 		return self::pick( (array) ( $t['title'] ?? array() ) ) ?: trim( $p->designation . ' ' . $p->grade );
 	}
 
-	/** URL of the stored section drawing of a listing ('svg' or 'png'), or ''. */
+	/**
+	 * URL of the section drawing of a listing ('svg' or 'png'), or ''. The files
+	 * are made again when missing (new file version, cleaned uploads folder).
+	 */
 	public static function drawing_url( $p, $ext = 'svg' ) {
 		$key = (string) ( $p->drawing ?? '' );
-		if ( '' === $key ) {
+		if ( '' === $key || ! class_exists( '\\SM\\WeightEngine\\Drawing' ) ) {
 			return '';
 		}
-		$up = wp_upload_dir();
-		return file_exists( trailingslashit( $up['basedir'] ) . 'sm-drawings/' . $key . '.' . $ext ) ? trailingslashit( $up['baseurl'] ) . 'sm-drawings/' . $key . '.' . $ext : '';
+		$up   = wp_upload_dir();
+		$name = $key . '-' . \SM\WeightEngine\Drawing::FILES_VERSION . '.' . $ext;
+		if ( ! file_exists( trailingslashit( $up['basedir'] ) . 'sm-drawings/' . $name ) ) {
+			$sheet = self::section_sheet( $p );
+			if ( ! $sheet || ! \SM\WeightEngine\Drawing::files( $sheet['shape'], $sheet['dims'], $key, $sheet['designation'] ) ) {
+				return '';
+			}
+		}
+		return trailingslashit( $up['baseurl'] ) . 'sm-drawings/' . $name;
+	}
+
+	/** Section sheet of a calculated product (dimensions, area, mass per metre), or null. */
+	public static function section_sheet( $p ) {
+		if ( empty( $p->family ) || ! class_exists( '\\SM\\WeightEngine\\Calculator' ) ) {
+			return null;
+		}
+		return \SM\WeightEngine\Calculator::sheet( $p->family, (int) $p->section_id, (string) $p->designation );
 	}
 
 	public static function pick( array $values ) {
