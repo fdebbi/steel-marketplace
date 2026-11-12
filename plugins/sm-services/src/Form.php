@@ -92,6 +92,17 @@ final class Form {
 		if ( ! $id && Services::count_for_company( $company->id ) >= (int) Settings::get( 'max_services' ) ) {
 			Forms::back( array( __( 'You reached the number of service pages allowed. Edit an existing one.', 'sm-services' ) ) );
 		}
+		/**
+		 * Plan limit (sm-subscriptions, 0.3.6): '' to allow a new service page, else the reason.
+		 *
+		 * @param string $reason
+		 * @param object $company
+		 * @param int    $count   Service pages the company has.
+		 */
+		$plan = $id ? '' : (string) apply_filters( 'sm_services_limit', '', $company, Services::count_for_company( $company->id ) );
+		if ( $plan ) {
+			Forms::back( array( $plan ) );
+		}
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified in Forms::begin().
 		$spec   = Spec::service( (array) wp_unslash( $_POST ), true );
 		$s      = Settings::all();
@@ -237,6 +248,10 @@ final class Form {
 		}
 		if ( ! $id && Portfolio::count( $company->id ) >= (int) Settings::get( 'max_portfolio' ) ) {
 			Forms::back( array( __( 'You reached the number of references allowed.', 'sm-services' ) ) );
+		}
+		$plan = $id ? '' : (string) apply_filters( 'sm_portfolio_limit', '', $company, Portfolio::count( $company->id ) ); // Plan limit (0.3.6).
+		if ( $plan ) {
+			Forms::back( array( $plan ) );
 		}
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified in Forms::begin().
 		$spec  = Spec::reference( (array) wp_unslash( $_POST ) );

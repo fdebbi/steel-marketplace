@@ -48,6 +48,19 @@ final class Form {
 		if ( ! Rfqs::is_open( $rfq ) ) {
 			return __( 'This request no longer accepts offers.', 'sm-rfq' );
 		}
+		if ( ! Offers::by_company( $rfq->id, $co->id ) ) { // A first offer on this request (0.1.3).
+			/**
+			 * Plan limit (sm-subscriptions): '' to allow a new offer, else the reason.
+			 *
+			 * @param string $reason
+			 * @param object $company
+			 * @param int    $month_offers Offers sent by the company since the 1st of the month.
+			 */
+			$plan = (string) apply_filters( 'sm_rfq_offer_limit', '', $co, Offers::count_month( (int) $co->id ) );
+			if ( $plan ) {
+				return $plan;
+			}
+		}
 		return '';
 	}
 

@@ -94,6 +94,9 @@ final class Form {
 		$status = 'draft';
 		if ( 'draft' !== $intent ) {
 			$limit = self::client_limit( $company, $product );
+			if ( ! $limit ) {
+				$limit = self::plan_limit( $company, $spec['data'] ?? array(), $product );
+			}
 			if ( $limit ) {
 				Forms::back( array( $limit ) );
 			}
@@ -165,6 +168,25 @@ final class Form {
 		return sprintf( _n( 'A client account can have %d listing online at a time. Mark one as sold or withdraw it first, or open a company or professional account.', 'A client account can have %d listings online at a time. Mark one as sold or withdraw it first, or open a company or professional account.', $max, 'sm-products' ), $max );
 	}
 
+	/**
+	 * Limit of the company's plan (sm-subscriptions, 0.8.0): '' when the listing
+	 * may go online, else the reason. $data: market and total_weight of the listing;
+	 * $product: the listing being edited (it already counts while online).
+	 */
+	public static function plan_limit( $company, array $data, $product = null ) {
+		if ( ! $company ) {
+			return '';
+		}
+		$except = $product && in_array( $product->status, array( 'published', 'pending' ), true ) ? (int) $product->id : 0;
+		/**
+		 * @param string $reason  '' to allow.
+		 * @param object $company Company.
+		 * @param array  $listing { market, weight, new (bool) }.
+		 * @param array  $online  What the company has online without this listing (Products::online_totals).
+		 */
+		return (string) apply_filters( 'sm_products_publish_limit', '', $company, array( 'market' => (string) ( $data['market'] ?? '' ), 'weight' => (float) ( $data['total_weight'] ?? 0 ), 'new' => ! $except ), Products::online_totals( (int) $company->id, $except ) );
+	}
+
 	/** An attachment uploaded by this user, or already linked to the product. */
 	private static function owns_attachment( $aid, $user_id, $product ) {
 		if ( ! $aid || 'attachment' !== get_post_type( $aid ) ) {
@@ -196,10 +218,10 @@ final class Form {
 				Forms::back( array(), __( 'The product is withdrawn and saved as a draft.', 'sm-products' ) );
 				break;
 			case 'republish':
-				if ( ! in_array( $p->status, array( 'sold', 'expired' ), true ) ) {
+				if ( ! in_array( $p->status, array( 'sold', 'expired', 'paused' ), true ) ) {
 					Forms::back( array( __( 'This product cannot be published again from here. Edit it instead.', 'sm-products' ) ) );
 				}
-				$limit = self::client_limit( Companies::get( $p->company_id ), $p );
+				$limit = self::client_limit( Companies::get( $p->company_id ), $p ) ?: self::plan_limit( Companies::get( $p->company_id ), (array) $p, null );
 				if ( $limit ) {
 					Forms::back( array( $limit ) );
 				}
@@ -211,7 +233,7 @@ final class Form {
 				Forms::back( array(), 'pending' === $status ? __( 'Sent for review again.', 'sm-products' ) : __( 'Your product is published.', 'sm-products' ) );
 				break;
 			case 'delete':
-				if ( ! in_array( $p->status, array( 'draft', 'rejected', 'sold', 'expired' ), true ) ) {
+				if ( ! in_array( $p->status, array( 'draft', 'rejected', 'sold', 'expired', 'paused' ), true ) ) {
 					Forms::back( array( __( 'Withdraw the product before deleting it.', 'sm-products' ) ) );
 				}
 				Products::delete( $p->id );

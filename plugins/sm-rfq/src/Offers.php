@@ -47,6 +47,12 @@ final class Offers {
 	}
 
 	/** @return object[] */
+	/** Offers sent by a company since the 1st of the month (0.1.3). */
+	public static function count_month( $company_id ) {
+		global $wpdb;
+		return (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM ' . self::table() . ' WHERE company_id = %d AND created_at >= %s', $company_id, gmdate( 'Y-m-01 00:00:00' ) ) ); // phpcs:ignore WordPress.DB
+	}
+
 	public static function for_rfq( $rfq_id, $include_withdrawn = true ) {
 		global $wpdb;
 		$sql  = 'SELECT * FROM ' . self::table() . ' WHERE rfq_id = %d' . ( $include_withdrawn ? '' : " AND status <> 'withdrawn'" ) . ' ORDER BY total_price ASC, id ASC';

@@ -58,6 +58,11 @@ final class Presenter {
 			// No photo on a calculated new product (0.7.0): the standard drawing of its section.
 			'image'          => $photos ? (int) $photos[0] : ( self::drawing_url( $p ) ?: 'demo:placeholder' ),
 			'image_drawing'  => ! $photos && '' !== self::drawing_url( $p ),
+			// Paid options (0.8.0).
+			'is_featured'    => ! empty( $p->featured_until ) && $p->featured_until > current_time( 'mysql', true ),
+			'is_urgent'      => ! empty( $p->urgent_until ) && $p->urgent_until > current_time( 'mysql', true ),
+			'featured_until' => (string) ( $p->featured_until ?? '' ),
+			'urgent_until'   => (string) ( $p->urgent_until ?? '' ),
 			'share_image'    => $photos ? '' : self::drawing_url( $p, 'png' ),
 			// Exact characteristics shown beside the drawing (0.7.1).
 			'section_sheet'  => ! $photos && '' !== self::drawing_url( $p ) ? self::section_sheet( $p ) : null,

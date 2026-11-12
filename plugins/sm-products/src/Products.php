@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 final class Products {
 
 	const MODULE   = 'products'; // Default market; each product stores its own market.
-	const STATUSES = array( 'draft', 'pending', 'published', 'rejected', 'sold', 'expired' );
+	const STATUSES = array( 'draft', 'pending', 'published', 'rejected', 'sold', 'expired', 'paused' );
 
 	private static function table() {
 		global $wpdb;
@@ -356,12 +356,14 @@ final class Products {
 			$args[]  = (float) $a['max_price'];
 		}
 		$order = array(
-			'recent'      => 'COALESCE(published_at, updated_at) DESC, id DESC',
+			'recent'      => 'COALESCE(bumped_at, published_at, updated_at) DESC, id DESC',
 			'price_asc'   => 'CASE WHEN price_per_kg > 0 THEN 0 ELSE 1 END, price_per_kg ASC, id DESC',
 			'price_desc'  => 'price_per_kg DESC, id DESC',
 			'weight_desc' => 'total_weight DESC, id DESC',
 			'updated'     => 'updated_at DESC, id DESC',
-		)[ $a['sort'] ] ?? 'COALESCE(published_at, updated_at) DESC, id DESC';
+		)[ $a['sort'] ] ?? 'COALESCE(bumped_at, published_at, updated_at) DESC, id DESC';
+		// Listings featured by an option (0.8.0) come first wherever they are listed.
+		$order = $wpdb->prepare( 'CASE WHEN featured_until > %s THEN 0 ELSE 1 END, ', current_time( 'mysql', true ) ) . $order;
 		$per   = max( 1, min( 60, (int) $a['per_page'] ) );
 		$page  = max( 1, (int) $a['page'] );
 		$w     = implode( ' AND ', $where );
@@ -374,6 +376,46 @@ final class Products {
 			'total' => $total,
 			'pages' => (int) ceil( $total / $per ),
 		);
+	}
+
+	/**
+	 * What a company has online (0.8.0): listings online or waiting for review,
+	 * their total weight (products and reuse) and the buildings, counted apart.
+	 * $except: a product id left out (the one being edited).
+	 */
+	public static function online_totals( $company_id, $except = 0 ) {
+		global $wpdb;
+		$row = $wpdb->get_row( $wpdb->prepare( "SELECT SUM(CASE WHEN market <> 'buildings' THEN 1 ELSE 0 END) AS listings, SUM(CASE WHEN market <> 'buildings' THEN total_weight ELSE 0 END) AS weight, SUM(CASE WHEN market = 'buildings' THEN 1 ELSE 0 END) AS buildings FROM " . self::table() . " WHERE company_id = %d AND status IN ('published','pending') AND id <> %d", $company_id, (int) $except ) ); // phpcs:ignore WordPress.DB
+		return array(
+			'listings'  => (int) ( $row->listings ?? 0 ),
+			'weight'    => (float) ( $row->weight ?? 0 ),
+			'buildings' => (int) ( $row->buildings ?? 0 ),
+		);
+	}
+
+	/**
+	 * Paid option on a listing (0.8.0): "bump" puts it back at the top of the
+	 * lists; "featured" and "urgent" last $days (added to a running option).
+	 */
+	public static function boost( $id, $type, $days = 7 ) {
+		global $wpdb;
+		$now = current_time( 'mysql', true );
+		if ( 'bump' === $type ) {
+			return false !== $wpdb->update( self::table(), array( 'bumped_at' => $now ), array( 'id' => (int) $id ) );
+		}
+		$col = array( 'featured' => 'featured_until', 'urgent' => 'urgent_until' )[ $type ] ?? '';
+		if ( ! $col ) {
+			return false;
+		}
+		$p    = self::get( $id );
+		$from = $p && $p->$col && $p->$col > $now ? strtotime( $p->$col . ' UTC' ) : time();
+		return false !== $wpdb->update( self::table(), array( $col => gmdate( 'Y-m-d H:i:s', $from + (int) $days * DAY_IN_SECONDS ) ), array( 'id' => (int) $id ) );
+	}
+
+	/** Listings of a company online, oldest first (for pausing over the plan limits). */
+	public static function online_oldest_first( $company_id ) {
+		global $wpdb;
+		return $wpdb->get_results( $wpdb->prepare( 'SELECT id, market, total_weight FROM ' . self::table() . " WHERE company_id = %d AND status = 'published' ORDER BY COALESCE(published_at, updated_at) ASC, id ASC", $company_id ) ); // phpcs:ignore WordPress.DB
 	}
 
 	public static function count_by_status( $company_id ) {

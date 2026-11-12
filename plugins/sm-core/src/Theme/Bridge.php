@@ -80,7 +80,7 @@ final class Bridge {
 			}
 		}
 		$name_ar = $c->name_ar ? $c->name_ar : $c->name;
-		return array(
+		return array_merge( array(
 			'id'             => (int) $c->id,
 			'slug'           => $c->slug,
 			'real'           => true,
@@ -107,7 +107,24 @@ final class Bridge {
 			'experience'     => (int) ( $c->profile['experience_years'] ?? 0 ),
 			'status'         => $c->status,
 			'location'       => Companies::public_location( $c ),
-		);
+		), self::contacts( $c ) );
+	}
+
+	/**
+	 * Contacts on the public page (0.8.1): a plan may hide them (sm-subscriptions:
+	 * free accounts). The account's own members and the platform team still see
+	 * them; visitors write through the contact form.
+	 */
+	private static function contacts( $c ) {
+		/**
+		 * @param bool   $visible
+		 * @param object $company
+		 */
+		$visible = (bool) apply_filters( 'sm_company_contacts_visible', true, $c );
+		if ( $visible || current_user_can( 'manage_options' ) || ( is_user_logged_in() && Companies::member_role( $c->id, get_current_user_id() ) ) ) {
+			return array( 'contacts_hidden' => false );
+		}
+		return array( 'phone' => '', 'email' => '', 'website' => '', 'contacts_hidden' => true );
 	}
 
 	public static function company( $result, $args ) {

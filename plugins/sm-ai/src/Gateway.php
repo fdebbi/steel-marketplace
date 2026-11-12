@@ -70,7 +70,8 @@ final class Gateway {
 			if ( Usage::user_day( get_current_user_id() ) >= $s['per_user_day'] ) {
 				return new \WP_Error( 'sm_ai_day', __( 'You used the AI assistant many times today. Try again tomorrow.', 'sm-ai' ) );
 			}
-			if ( $company && $f['per_company_month'] > 0 && Usage::company_month( (int) $company->id, $id ) >= $f['per_company_month'] ) {
+			// With sm-subscriptions, the plan's monthly AI credits (all services together) replace the per-service limits (0.1.3).
+			if ( $company && $f['per_company_month'] > 0 && ! apply_filters( 'sm_ai_plan_credits', false ) && Usage::company_month( (int) $company->id, $id ) >= $f['per_company_month'] ) {
 				return new \WP_Error( 'sm_ai_month', __( 'Your company used all its requests of this month for this AI service.', 'sm-ai' ) );
 			}
 		} elseif ( Usage::ip_day( Forms::ip(), $id ) >= (int) ( $f['visitors_per_ip_day'] ?? 0 ) ) {
@@ -82,6 +83,9 @@ final class Gateway {
 	/** Remaining uses this month for the company (null = no limit). */
 	public static function remaining( $id, $company ) {
 		$f = Settings::feature( $id );
+		if ( $company && apply_filters( 'sm_ai_plan_credits', false ) ) {
+			return apply_filters( 'sm_ai_remaining', null, $company ); // Credits of the plan, all services together.
+		}
 		if ( ! $company || ! $f || $f['per_company_month'] <= 0 ) {
 			return null;
 		}
@@ -137,6 +141,8 @@ final class Gateway {
 			return new \WP_Error( 'sm_ai_answer', __( 'The AI answer could not be read. Try again.', 'sm-ai' ) );
 		}
 		Usage::log( $log + array( 'status' => 'ok' ) );
+		/** One AI credit used (sm-subscriptions counts the plan credits and the bought ones). */
+		do_action( 'sm_ai_used', $id, $company ? (int) $company->id : 0 );
 		$out          = $class::clean( $json, $input );
 		$out['_meta'] = array( 'feature' => $id, 'provider' => $provider, 'simulation' => 'simulation' === $provider, 'lang' => $lang, 'at' => time() );
 		return $out;

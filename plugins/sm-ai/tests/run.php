@@ -125,6 +125,10 @@ smai_assert( null === Gateway::decode( 'no json here' ) && array( 'x' => 2 ) ===
 
 /* ------------------------------------------------------------------ */
 smai_section( '3. Gateway: rights, quotas, budget, usage log' );
+// sm-ai on its own: the plan credits of sm-subscriptions (tested there) replace these quotas.
+foreach ( array( 'sm_ai_plan_credits', 'sm_ai_can_use', 'sm_ai_remaining', 'sm_ai_used' ) as $h ) {
+	remove_all_filters( $h );
+}
 list( $u_seller, $c_seller ) = smai_user( 'seller', 'company', array( 'supplier' ) );
 list( $u_eng, $c_eng )       = smai_user( 'eng', 'engineer', array( 'engineer' ) );
 wp_set_current_user( $u_seller );

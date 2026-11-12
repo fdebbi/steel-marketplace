@@ -3,7 +3,7 @@
  * Plugin Name:       SM RFQ
  * Plugin URI:        https://github.com/fdebbi/steel-marketplace
  * Description:       Requests for quotation: buyers describe what they need (profile rows weighed by SM Weight Engine or free description, quantity, delivery place and date, drawings); suppliers and manufacturers answer with a price, a price per kg and a delivery time; the buyer compares the offers, contacts suppliers and accepts one. Notifications in French and Arabic. Requires SM Core, SM Weight Engine and SM Products.
- * Version:           0.1.2
+ * Version:           0.1.3
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Requires Plugins:  sm-core, sm-weight-engine, sm-products
@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_RFQ_VERSION', '0.1.2' );
+define( 'SM_RFQ_VERSION', '0.1.3' );
 define( 'SM_RFQ_DB_VERSION', 1 );
 define( 'SM_RFQ_FILE', __FILE__ );
 define( 'SM_RFQ_DIR', __DIR__ );
