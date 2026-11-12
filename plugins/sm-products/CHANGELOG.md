@@ -1,5 +1,10 @@
 # Changelog — sm-products
 
+## 0.6.0 — 2026-11-12
+
+- `PriceTrend` : prix moyen demandé au kg des profilés laminés (IPE, HEA, HEB, HEM, IPN, UPN, UPE, cornières), semaine par semaine, à partir des annonces mises en ligne (vendues, en pause ou expirées comprises ; brouillons, en attente et refusées exclues). Une semaine compte avec au moins 5 annonces ; la courbe exige au moins 4 semaines. Mis en cache une heure, vidé à chaque enregistrement ou changement de statut.
+- Ressource du thème `price_trend` : `points`, `last`, `change`, `reuse`.
+
 ## 0.5.1 — 2026-11-12
 
 - Données en anglais (via `sm_pick`, sm-core 0.8.0).

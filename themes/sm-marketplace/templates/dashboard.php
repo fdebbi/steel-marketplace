@@ -199,22 +199,41 @@ $group_cnt = static function ( $gkey ) use ( $groups, $badges, $unread ) {
 
 get_header();
 ?>
-<div class="sm-dash">
-	<aside class="sm-dash__side" id="sm-dash-nav">
-		<div class="sm-dash__who">
-			<?php sm_avatar( array_merge( $account['company'], array( 'class' => $class ) ) ); ?>
-			<div>
-				<p class="sm-dash__company"><?php sm_e( $account['company']['name'] ); ?></p>
-				<p class="sm-dash__class"><?php echo esc_html( sm_class_label( $class ) ); ?><?php if ( ! empty( $account['plan'] ) ) : ?> · <?php sm_e( $account['plan'] ); ?><?php endif; ?></p>
-			</div>
+<?php
+// Where the picture in the menu leads (0.19.0): the public page when the account has one.
+$co = (array) $account['company'];
+if ( $is_eng ) {
+	$profile_url   = ! empty( $approved ) && ! $is_demo ? sm_page_url( 'engineers' ) : $link( 'partner' );
+	$profile_label = __( 'See my partner profile', 'sm-marketplace' );
+} elseif ( in_array( $class, array( 'company', 'professional' ), true ) && ! empty( $co['slug'] ) && 'active' === ( $co['status'] ?? 'active' ) ) {
+	$profile_url   = sm_page_url( 'company', array( 'c' => $co['slug'] ) );
+	$profile_label = __( 'See my public profile', 'sm-marketplace' );
+} else {
+	$profile_url   = $link( 'company' );
+	$profile_label = __( 'See my profile', 'sm-marketplace' );
+}
+?>
+<div class="sm-dash" data-sm-dash>
+	<aside class="sm-dash__side" id="sm-dash-nav" aria-label="<?php esc_attr_e( 'Account menu', 'sm-marketplace' ); ?>">
+		<div class="sm-dash__top">
+			<a class="sm-dash__who" href="<?php echo esc_url( $profile_url ); ?>" data-tip="<?php echo esc_attr( $profile_label ); ?>">
+				<?php sm_avatar( array_merge( $co, array( 'class' => $class ) ) ); ?>
+				<span class="sm-dash__whotext">
+					<span class="sm-dash__company"><?php sm_e( $co['name'] ); ?></span>
+					<span class="sm-dash__class"><?php echo esc_html( sm_class_label( $class ) ); ?><?php if ( ! empty( $account['plan'] ) ) : ?> · <?php sm_e( $account['plan'] ); ?><?php endif; ?></span>
+					<span class="sm-dash__view"><?php echo esc_html( $profile_label ); ?><?php sm_icon( 'arrow-end' ); ?></span>
+				</span>
+			</a>
+			<button type="button" class="sm-dash__collapse" data-sm-nav-collapse aria-controls="sm-dash-nav" aria-expanded="true" aria-label="<?php esc_attr_e( 'Collapse the menu', 'sm-marketplace' ); ?>" data-label-collapse="<?php esc_attr_e( 'Collapse the menu', 'sm-marketplace' ); ?>" data-label-expand="<?php esc_attr_e( 'Expand the menu', 'sm-marketplace' ); ?>"><?php sm_icon( 'chevron-start' ); ?></button>
+			<button type="button" class="sm-dash__close" data-sm-nav-close aria-label="<?php esc_attr_e( 'Close menu', 'sm-marketplace' ); ?>"><?php sm_icon( 'close' ); ?></button>
 		</div>
 		<?php if ( isset( $titles['publish'] ) ) : ?>
-			<a class="sm-btn sm-btn--accent sm-btn--block sm-dash__publish" href="<?php echo esc_url( $link( 'publish' ) ); ?>" <?php echo 'publish' === $view ? 'aria-current="page"' : ''; ?>><?php sm_icon( 'plus' ); ?><span><?php esc_html_e( 'Publish a listing', 'sm-marketplace' ); ?></span></a>
+			<a class="sm-btn sm-btn--accent sm-btn--block sm-dash__publish" href="<?php echo esc_url( $link( 'publish' ) ); ?>" data-tip="<?php esc_attr_e( 'Publish a listing', 'sm-marketplace' ); ?>" <?php echo 'publish' === $view ? 'aria-current="page"' : ''; ?>><?php sm_icon( 'plus' ); ?><span class="sm-dash__label"><?php esc_html_e( 'Publish a listing', 'sm-marketplace' ); ?></span></a>
 		<?php endif; ?>
 		<?php if ( $shortcuts ) : ?>
 			<div class="sm-dash__shortcuts">
 				<?php foreach ( $shortcuts as list( $icon, $label, $url ) ) : ?>
-					<a class="sm-dash__shortcut" href="<?php echo esc_url( $url ); ?>"><?php sm_icon( $icon ); ?><span><?php echo esc_html( $label ); ?></span></a>
+					<a class="sm-dash__shortcut" href="<?php echo esc_url( $url ); ?>" data-tip="<?php echo esc_attr( $label ); ?>"><?php sm_icon( $icon ); ?><span class="sm-dash__label"><?php echo esc_html( $label ); ?></span></a>
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
@@ -222,36 +241,22 @@ get_header();
 			<ul>
 				<?php foreach ( $groups as $gkey => list( $icon, $label, $pages ) ) : ?>
 					<?php $cnt = $group_cnt( $gkey ); ?>
-					<li><a href="<?php echo esc_url( $link( array_key_first( $pages ) ) ); ?>" <?php echo $gkey === $group_key && 'publish' !== $view ? 'aria-current="page"' : ''; ?>><?php sm_icon( $icon ); ?><span><?php echo esc_html( $label ); ?></span>
+					<li><a href="<?php echo esc_url( $link( array_key_first( $pages ) ) ); ?>" data-tip="<?php echo esc_attr( $label ); ?>" <?php echo $gkey === $group_key && 'publish' !== $view ? 'aria-current="page"' : ''; ?>><?php sm_icon( $icon ); ?><span class="sm-dash__label"><?php echo esc_html( $label ); ?></span>
 						<?php if ( $cnt ) : ?><span class="sm-count"><?php echo esc_html( $cnt ); ?></span><?php endif; ?>
 					</a></li>
 				<?php endforeach; ?>
 			</ul>
 			<ul class="sm-dash__end">
-				<li><button type="button" class="sm-dash__theme" data-sm-theme-toggle aria-pressed="false"><?php sm_icon( 'moon' ); ?><span><?php esc_html_e( 'Dark mode', 'sm-marketplace' ); ?></span></button></li>
-				<li><a href="<?php echo esc_url( wp_logout_url() ); ?>"><?php sm_icon( 'logout' ); ?><span><?php esc_html_e( 'Sign out', 'sm-marketplace' ); ?></span></a></li>
+				<li><button type="button" class="sm-dash__theme" data-sm-theme-toggle aria-pressed="false" data-tip="<?php esc_attr_e( 'Dark mode', 'sm-marketplace' ); ?>"><?php sm_icon( 'moon' ); ?><span class="sm-dash__label"><?php esc_html_e( 'Dark mode', 'sm-marketplace' ); ?></span></button></li>
+				<li><a href="<?php echo esc_url( wp_logout_url() ); ?>" data-tip="<?php esc_attr_e( 'Sign out', 'sm-marketplace' ); ?>"><?php sm_icon( 'logout' ); ?><span class="sm-dash__label"><?php esc_html_e( 'Sign out', 'sm-marketplace' ); ?></span></a></li>
 			</ul>
 		</nav>
 	</aside>
+	<div class="sm-dash__scrim" data-sm-nav-close hidden></div>
 
 	<div class="sm-dash__main">
 		<div class="sm-dash__head">
-			<details class="sm-dash__mobilenav">
-				<summary><?php sm_icon( 'menu' ); ?><span><?php esc_html_e( 'Menu', 'sm-marketplace' ); ?></span><?php sm_icon( 'chevron-down' ); ?></summary>
-				<ul>
-					<?php if ( isset( $titles['publish'] ) ) : ?>
-						<li><a href="<?php echo esc_url( $link( 'publish' ) ); ?>" <?php echo 'publish' === $view ? 'aria-current="page"' : ''; ?>><?php esc_html_e( 'Publish a listing', 'sm-marketplace' ); ?></a></li>
-					<?php endif; ?>
-					<?php foreach ( $shortcuts as list( $icon, $label, $url ) ) : ?>
-						<li><a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?></a></li>
-					<?php endforeach; ?>
-					<?php foreach ( $groups as $gkey => list( $icon, $label, $pages ) ) : ?>
-						<?php $cnt = $group_cnt( $gkey ); ?>
-						<li><a href="<?php echo esc_url( $link( array_key_first( $pages ) ) ); ?>" <?php echo $gkey === $group_key && 'publish' !== $view ? 'aria-current="page"' : ''; ?>><?php echo esc_html( $label ); ?><?php if ( $cnt ) : ?> <span class="sm-count"><?php echo esc_html( $cnt ); ?></span><?php endif; ?></a></li>
-					<?php endforeach; ?>
-					<li><a href="<?php echo esc_url( wp_logout_url() ); ?>"><?php esc_html_e( 'Sign out', 'sm-marketplace' ); ?></a></li>
-				</ul>
-			</details>
+			<button type="button" class="sm-dash__menubtn" data-sm-nav-open aria-controls="sm-dash-nav" aria-expanded="false"><?php sm_icon( 'menu' ); ?><span><?php esc_html_e( 'Menu', 'sm-marketplace' ); ?></span><?php $total = array_sum( array_map( $group_cnt, array_keys( $groups ) ) ); ?><?php if ( $total ) : ?><span class="sm-count"><?php echo esc_html( $total ); ?></span><?php endif; ?></button>
 			<h1 class="sm-dash__title"><?php echo esc_html( $heading ); ?></h1>
 			<?php if ( $tabs ) : ?>
 				<nav class="sm-dash__tabs" aria-label="<?php echo esc_attr( $groups[ $group_key ][1] ); ?>">

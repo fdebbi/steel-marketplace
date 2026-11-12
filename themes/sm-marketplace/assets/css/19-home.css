@@ -139,3 +139,29 @@
 }
 @media (max-width: 1023px) { .sm-hero3d { block-size: 220px; } }
 .sm-is-home .sm-tabbar a[aria-current] { color: var(--sm-accent); }
+
+/* Price curve under the beam (0.19.0) ---------------------------------------- */
+.sm-hero__side { display: grid; gap: var(--sm-s3); min-inline-size: 0; }
+.sm-trend { position: relative; z-index: 1; display: grid; gap: 6px; inline-size: min(100%, 380px); justify-self: center; padding: var(--sm-s4); border-radius: var(--sm-radius-lg); border: 1px solid rgb(198 205 210 / .16); background: rgb(17 24 32 / .78); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: var(--sm-silver); text-decoration: none; transition: border-color .25s, transform .25s; }
+@media (min-width: 1024px) { .sm-trend { margin-block-start: -36px; } }
+.sm-trend:hover { color: var(--sm-silver); border-color: rgb(6 206 119 / .55); transform: translateY(-2px); }
+.sm-trend__head { display: flex; align-items: center; justify-content: space-between; gap: var(--sm-s2); font-size: var(--sm-fs-sm); font-weight: 600; color: var(--sm-white); }
+.sm-trend__change { padding: 2px 8px; border-radius: 999px; font-size: var(--sm-fs-xs); font-weight: 700; }
+.sm-trend__change--up { background: rgb(6 206 119 / .14); color: #8EF3C4; }
+.sm-trend__change--down { background: rgb(242 184 75 / .16); color: #F2C66B; }
+.sm-trend__chart { inline-size: 100%; block-size: 84px; overflow: visible; }
+.sm-trend__line { fill: none; stroke: var(--sm-accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; animation: sm-trend-draw 2.2s .4s cubic-bezier(.4, 0, .2, 1) forwards; filter: drop-shadow(0 0 6px rgb(6 206 119 / .55)); }
+.sm-trend__area { opacity: 0; animation: sm-trend-fade .8s 2.2s forwards; }
+.sm-trend__dot { fill: var(--sm-accent); stroke: var(--sm-deep); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; animation: sm-trend-pop .5s 2.5s forwards; }
+.sm-trend__value { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; opacity: 0; animation: sm-trend-fade .6s 2.6s forwards; }
+.sm-trend__value strong { font-family: var(--sm-font-display); font-size: 1.75rem; line-height: 1; color: var(--sm-white); }
+[dir="rtl"] .sm-trend__value strong { font-family: var(--sm-font); }
+.sm-trend__value > span, .sm-trend__reuse span { font-size: var(--sm-fs-xs); color: var(--sm-steel); }
+.sm-trend__reuse { font-size: var(--sm-fs-sm); color: var(--sm-silver); }
+.sm-trend__note { font-size: 11px; color: var(--sm-steel); }
+@keyframes sm-trend-draw { to { stroke-dashoffset: 0; } }
+@keyframes sm-trend-fade { to { opacity: 1; } }
+@keyframes sm-trend-pop { 0% { opacity: 0; transform: scale(0); } 70% { transform: scale(1.4); } 100% { opacity: 1; transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+	.sm-trend__line, .sm-trend__area, .sm-trend__dot, .sm-trend__value { animation: none; opacity: 1; stroke-dashoffset: 0; }
+}

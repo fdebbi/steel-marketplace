@@ -63,7 +63,10 @@ $services = sm_theme_services();
 				<li><strong><?php echo sm_tech( sm_number( ( $stats['reuse_kg'] ?? 0 ) / 1000 ) . "\u{00A0}t" ); // phpcs:ignore ?></strong><span><?php esc_html_e( 'of steel offered for reuse', 'sm-marketplace' ); ?></span></li>
 			</ul>
 		</div>
-		<?php sm_component( 'hero-steel' ); ?>
+		<div class="sm-hero__side">
+			<?php sm_component( 'hero-steel' ); ?>
+			<?php sm_component( 'hero-trend' ); ?>
+		</div>
 	</div>
 </section>
 

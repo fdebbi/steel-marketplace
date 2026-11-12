@@ -92,6 +92,6 @@ function sm_theme_account_theme_boot() {
 	if ( ! is_page_template( 'templates/dashboard.php' ) ) {
 		return;
 	}
-	echo "<script>try{if(localStorage.getItem('sm-theme')==='dark'){document.documentElement.setAttribute('data-sm-theme','dark');}}catch(e){}</script>\n";
+	echo "<script>try{var d=document.documentElement;if(localStorage.getItem('sm-theme')==='dark'){d.setAttribute('data-sm-theme','dark');}if(localStorage.getItem('sm-nav')==='mini'){d.setAttribute('data-sm-nav','mini');}}catch(e){}</script>\n";
 }
 add_action( 'wp_head', 'sm_theme_account_theme_boot', 1 );

@@ -1,5 +1,11 @@
 # Changelog — sm-marketplace
 
+## 0.19.0 — 2026-11-12 (avec sm-products 0.6.0)
+
+- Accueil : sous la poutre, courbe du prix moyen demandé au kg des profilés neufs (12 semaines), qui se trace puis affiche le dernier prix, la variation et le prix moyen du réemploi (30 jours). Masquée tant qu'il n'y a pas assez d'annonces. Lien vers l'indice des prix.
+- Menu du compte sombre comme l'accueil ; sur ordinateur il se replie en icônes (noms au survol, point vert pour les éléments en attente, choix mémorisé) ; sur téléphone, volet qui glisse depuis le côté (bouton « Menu », fermeture par ×, fond ou Échap).
+- La photo et le nom en haut du menu mènent à la page publique (entreprise, professionnel), à « Mon profil » (client) ou à la page des ingénieurs (ingénieur agréé).
+
 ## 0.18.0 — 2026-11-12 (refonte du design, avec sm-core 0.8.0)
 
 - Charte ReuSteel : vert #06CE77 (texte noir dessus, choisi automatiquement selon le contraste), vert texte #047A47 (5,4:1), graphite #111820, fond #F5F7F8 ; anciennes couleurs par défaut migrées, couleurs choisies par l'administrateur conservées.

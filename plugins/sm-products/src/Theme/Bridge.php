@@ -32,6 +32,7 @@ final class Bridge {
 		add_filter( 'sm_theme_data_product_preview', array( __CLASS__, 'product_preview' ), 10, 2 );
 		add_filter( 'sm_theme_data_my_products', array( __CLASS__, 'my_products' ), 10, 2 );
 		add_filter( 'sm_theme_data_product_settings', array( __CLASS__, 'settings' ) );
+		add_filter( 'sm_theme_data_price_trend', array( __CLASS__, 'price_trend' ) );
 	}
 
 	/**
@@ -321,5 +322,13 @@ final class Bridge {
 			'max'        => (int) $s['client_max_active'],
 			'active'     => (int) ( $n['published'] ?? 0 ) + (int) ( $n['pending'] ?? 0 ),
 		);
+	}
+
+	/**
+	 * Home page price curve: average asking price per kg of new sections, week by
+	 * week (see PriceTrend). Empty when there are not enough listings.
+	 */
+	public static function price_trend() {
+		return \SM\Products\PriceTrend::summary();
 	}
 }

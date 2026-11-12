@@ -66,6 +66,7 @@ final class Products {
 	 * @return int Product ID.
 	 */
 	public static function save( $id, $company_id, $user_id, array $spec, $status, $photos = null, $sheets = null ) {
+		PriceTrend::flush(); // The home price curve follows every change.
 		$is_new = ! $id;
 		global $wpdb;
 		$now  = current_time( 'mysql', true );
@@ -134,6 +135,7 @@ final class Products {
 	/** Change the status (moderation, sold, withdrawn, expired). */
 	public static function set_status( $id, $status, $reason = '' ) {
 		global $wpdb;
+		PriceTrend::flush(); // The home price curve follows every change.
 		$p = self::get( $id );
 		if ( ! $p || ! in_array( $status, self::STATUSES, true ) ) {
 			return false;

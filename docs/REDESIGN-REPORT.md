@@ -61,3 +61,28 @@ Maquette validée : canevas « ReuSteel — Refonte du design » (12 novembre 20
 
 - Le dictionnaire anglais ne couvre que les données par défaut. Pour un type ou un service ajouté par l'administrateur, l'anglais affiche le français. Si besoin, on ajoutera un champ « nom anglais » dans SM → Types et catégories.
 - Les adresses des pages gardent leurs mots français (/en/produits/) pour ne casser aucun lien existant.
+
+## 5. Complément du 12 novembre (thème 0.19.0, sm-products 0.6.0)
+
+Remarques validées : courbe des profilés neufs ; volet glissant sur mobile ; menu déplié à la première visite.
+
+- **Courbe du prix moyen sous la poutre :**
+  - prix moyen demandé au kg des profilés neufs laminés (IPE, HEA, HEB, HEM, IPN, UPN, UPE, cornières), semaine par semaine sur 12 semaines ;
+  - une semaine compte avec au moins 5 annonces, et la courbe n'apparaît qu'à partir de 4 semaines ;
+  - elle se trace, puis affiche le dernier prix et la variation, avec en petit le prix moyen du réemploi sur 30 jours ;
+  - mention « Prix affichés par les vendeurs sur la plateforme, pas un prix officiel » ; un clic ouvre l'indice des prix.
+- **Menu du compte sombre :**
+  - sur ordinateur, bouton « Réduire le menu » : les icônes restent, le nom s'affiche au survol, un point vert signale ce qui attend, et le choix est mémorisé ;
+  - sur téléphone, bouton « Menu » : le volet glisse depuis le côté (droite en arabe) et se ferme par ×, en touchant le fond ou avec Échap.
+- **Photo du menu :** page publique pour une entreprise ou un professionnel, « Mon profil » pour un client, page Ingénierie pour un ingénieur agréé.
+
+Tests :
+
+| Suite | Résultat |
+| --- | --- |
+| PHP sm-products | 53/53, avec 2 nouveaux tests sur le calcul de la courbe |
+| Toutes les suites e2e | Réussies |
+| Tests visuels FR, AR et EN | 924/924 |
+
+- La lecture du menu par les tests utilise maintenant le texte brut, car sur téléphone le menu est un volet caché.
+- Trois suites ont eu un échec isolé lors de la série complète et ont réussi en relançant seules : e2e (glisser le repère sur la carte), e2e-rfq et e2e-services.

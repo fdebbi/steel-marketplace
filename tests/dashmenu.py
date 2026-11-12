@@ -6,7 +6,8 @@ menu(pg) returns the text and links of the whole menu: the side menu, the
 """
 def menu(pg):
     back = pg.url
-    text = [pg.inner_text('.sm-dash__side')]
+    # textContent: on a phone the menu is a hidden sliding panel (theme 0.19.0).
+    text = [' '.join(pg.locator('.sm-dash__side').text_content().split())]
     links = pg.eval_on_selector_all('.sm-dash__side a', 'as => as.map(a => a.href)')
     for href in [h for h in links if 'action=logout' not in h]:
         pg.goto(href)

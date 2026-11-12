@@ -8,6 +8,17 @@ Run tools/compile-translations.py to rebuild the .po/.mo files.
 """
 
 T = {
+"Account menu": ("Menu du compte", "قائمة الحساب"),
+"Collapse the menu": ("Réduire le menu", "طيّ القائمة"),
+"Expand the menu": ("Agrandir le menu", "توسيع القائمة"),
+"See my public profile": ("Voir mon profil public", "عرض ملفي العام"),
+"See my profile": ("Voir mon profil", "عرض ملفي"),
+"See my partner profile": ("Voir mon profil partenaire", "عرض ملفي كشريك"),
+"Average asking price of new steel sections: %1$s DA per kg, curve over %2$d weeks.": ("Prix moyen demandé pour les profilés neufs : %1$s DA le kg, courbe sur %2$d semaines.", "متوسط السعر المطلوب للمقاطع الجديدة: %1$s دج للكيلوغرام، منحنى على %2$d أسابيع."),
+"Average price of new sections": ("Prix moyen des profilés neufs", "متوسط سعر المقاطع الجديدة"),
+"Reused sections": ("Profilés de réemploi", "مقاطع إعادة الاستعمال"),
+"(last 30 days)": ("(30 derniers jours)", "(آخر 30 يومًا)"),
+"Prices asked by sellers on the platform, not an official price.": ("Prix affichés par les vendeurs sur la plateforme, pas un prix officiel.", "أسعار يعرضها البائعون على المنصة، وليست سعرًا رسميًا."),
 "Dark mode": ("Mode sombre", "الوضع الداكن"),
 "The industrial steel marketplace in Algeria": ("La marketplace industrielle de l’acier en Algérie", "سوق الحديد الصناعي في الجزائر"),
 "The future of steel commerce": ("Le futur du commerce de l’acier", "مستقبل تجارة وإعادة تدوير الفولاذ"),
@@ -499,6 +510,7 @@ T = {
 }
 
 P = {
+("average, last %d week", "averages, last %d weeks"): (["moyenne, dernière semaine", "moyennes, %d dernières semaines"], ["متوسط آخر %d أسبوع", "متوسط آخر أسبوع", "متوسط آخر أسبوعين", "متوسط آخر %d أسابيع", "متوسط آخر %d أسبوعًا", "متوسط آخر %d أسبوع"]),
 ("%d use, no monthly limit", "%d uses, no monthly limit"): (["%d utilisation, sans limite mensuelle", "%d utilisations, sans limite mensuelle"], ["%d استعمال، دون حد شهري", "استعمال واحد، دون حد شهري", "استعمالان، دون حد شهري", "%d استعمالات، دون حد شهري", "%d استعمالًا، دون حد شهري", "%d استعمال، دون حد شهري"]),
 ("Show %s result", "Show %s results"): (["Afficher %s résultat", "Afficher %s résultats"],
     ["عرض %s نتيجة", "عرض نتيجة واحدة", "عرض نتيجتين", "عرض %s نتائج", "عرض %s نتيجة", "عرض %s نتيجة"]),

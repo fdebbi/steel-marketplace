@@ -192,6 +192,25 @@ Products::delete( $cid );
 null === $settings_before ? delete_option( Settings::OPTION ) : update_option( Settings::OPTION, $settings_before );
 wp_set_current_user( 0 );
 
+// ---- Price curve of the home page (0.6.0) ----
+global $wpdb;
+$pt_ids = array();
+$pt_now = strtotime( '2026-11-11 12:00:00 UTC' );
+$pt_add = static function ( $days_ago, $ppk, $status = 'published', $family = 'IPE', $market = 'zz-trend' ) use ( &$pt_ids, $pt_now, $wpdb ) {
+	$d = gmdate( 'Y-m-d H:i:s', $pt_now - $days_ago * DAY_IN_SECONDS );
+	$wpdb->insert( $wpdb->prefix . 'sm_products', array( 'listing_id' => 'T' . wp_generate_password( 6, false ), 'company_id' => 0, 'user_id' => 0, 'market' => $market, 'category' => 'profiles', 'family' => $family, 'status' => $status, 'price_per_kg' => $ppk, 'created_at' => $d, 'updated_at' => $d, 'published_at' => $d ) );
+	$pt_ids[] = (int) $wpdb->insert_id;
+};
+foreach ( array( 2, 3, 4, 5, 6 ) as $i ) { $pt_add( 1, 200 + $i * 2 ); }          // this week: 5 listings, avg 208
+foreach ( array( 1, 2, 3, 4 ) as $i ) { $pt_add( 8, 190 ); }                         // last week: only 4 -> left out
+foreach ( array( 1, 2, 3, 4, 5 ) as $i ) { $pt_add( 15, 180, 'sold' ); }            // sold listings count
+$pt_add( 15, 999, 'pending' ); $pt_add( 15, 999, 'draft' ); $pt_add( 15, 999, 'published', 'SHS' ); // ignored
+$w = \SM\Products\PriceTrend::weekly( 'zz-trend', 12, $pt_now );
+smp_assert( 2 === count( $w ) && 208.0 === $w[1]['value'] && 5 === $w[1]['count'] && 180.0 === $w[0]['value'], 'price curve: weekly averages, weeks under 5 listings left out, drafts, pending and tubes ignored' );
+smp_assert( null === \SM\Products\PriceTrend::recent_average( 'zz-none', 30, $pt_now ) && 192.86 === \SM\Products\PriceTrend::recent_average( 'zz-trend', 30, $pt_now ), 'average of the last 30 days, null without enough listings' );
+foreach ( $pt_ids as $id ) { $wpdb->delete( $wpdb->prefix . 'sm_products', array( 'id' => $id ) ); }
+\SM\Products\PriceTrend::flush();
+
 smp_cleanup();
 $t = $GLOBALS['smp_t'];
 printf( "\n%d passed, %d failed\n", $t['pass'], $t['fail'] );

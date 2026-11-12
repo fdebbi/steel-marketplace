@@ -27,6 +27,48 @@
 		if ( img.complete && ! img.naturalWidth ) { img.style.visibility = 'hidden'; }
 	} );
 
+	/* ---- Account menu: rail on computers, sliding panel on phones -------- */
+	$$( '[data-sm-dash]' ).forEach( function ( dash ) {
+		var root = document.documentElement, side = $( '#sm-dash-nav', dash ), scrim = $( '.sm-dash__scrim', dash );
+		var collapse = $( '[data-sm-nav-collapse]', dash ), opener = $( '[data-sm-nav-open]', dash ), lastFocus = null;
+		function syncCollapse() {
+			if ( ! collapse ) { return; }
+			var mini = root.getAttribute( 'data-sm-nav' ) === 'mini';
+			collapse.setAttribute( 'aria-expanded', mini ? 'false' : 'true' );
+			collapse.setAttribute( 'aria-label', collapse.getAttribute( mini ? 'data-label-expand' : 'data-label-collapse' ) );
+		}
+		syncCollapse();
+		if ( collapse ) {
+			collapse.addEventListener( 'click', function () {
+				var mini = root.getAttribute( 'data-sm-nav' ) !== 'mini';
+				if ( mini ) { root.setAttribute( 'data-sm-nav', 'mini' ); } else { root.removeAttribute( 'data-sm-nav' ); }
+				try { localStorage.setItem( 'sm-nav', mini ? 'mini' : 'full' ); } catch ( e ) {}
+				syncCollapse();
+			} );
+		}
+		function open() {
+			lastFocus = document.activeElement;
+			dash.setAttribute( 'data-nav-open', '' );
+			if ( scrim ) { scrim.hidden = false; }
+			root.classList.add( 'sm-nav-lock' );
+			if ( opener ) { opener.setAttribute( 'aria-expanded', 'true' ); }
+			var first = $( 'a, button', side );
+			if ( first ) { setTimeout( function () { first.focus(); }, 60 ); }
+		}
+		function close() {
+			if ( ! dash.hasAttribute( 'data-nav-open' ) ) { return; }
+			dash.removeAttribute( 'data-nav-open' );
+			if ( scrim ) { scrim.hidden = true; }
+			root.classList.remove( 'sm-nav-lock' );
+			if ( opener ) { opener.setAttribute( 'aria-expanded', 'false' ); }
+			if ( lastFocus && lastFocus.focus ) { lastFocus.focus(); }
+		}
+		if ( opener ) { opener.addEventListener( 'click', open ); }
+		$$( '[data-sm-nav-close]', dash ).forEach( function ( el ) { el.addEventListener( 'click', close ); } );
+		document.addEventListener( 'keydown', function ( e ) { if ( 'Escape' === e.key ) { close(); } } );
+		window.addEventListener( 'resize', function () { if ( window.innerWidth >= 1024 ) { close(); } } );
+	} );
+
 	/* ---- Account dark mode: remembered in this browser ------------------ */
 	$$( '[data-sm-theme-toggle]' ).forEach( function ( btn ) {
 		var root = document.documentElement;
