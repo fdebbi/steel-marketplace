@@ -96,6 +96,13 @@ final class Notifications {
 			static fn( $p ) => admin_url( 'admin.php?page=' . Admin\Admin::ENGINEERS . '&id=' . (int) ( $p['company_id'] ?? 0 ) ),
 			false
 		);
+		$types['engineer.change_requested'] = $def(
+			static fn( $p ) => __( 'Partner engineer: change to approve', 'sm-engineering' ),
+			/* translators: %s: engineer name. */
+			static fn( $p ) => sprintf( __( '%s asks to change his partner profile. Compare and decide.', 'sm-engineering' ), \SM\Core\Accounts\Companies::get( (int) ( $p['company_id'] ?? 0 ) )->name ?? '' ),
+			static fn( $p ) => admin_url( 'admin.php?page=' . Admin\Admin::ENGINEERS . '&id=' . (int) ( $p['company_id'] ?? 0 ) ),
+			false
+		);
 		$types['mission.submitted']      = $def(
 			static fn( $p ) => __( 'New study request', 'sm-engineering' ),
 			/* translators: %s: mission reference and title. */
@@ -254,6 +261,17 @@ final class Notifications {
 			/* translators: %s: reason. */
 			static fn( $p ) => sprintf( __( 'Your partner engineer application was not approved: %s. You can correct it and send it again.', 'sm-engineering' ), $p['reason'] ?? '' ),
 			static fn( $p ) => CoreRoutes::url( 'account' )
+		);
+		$types['engineer.change_approved'] = $def(
+			static fn( $p ) => __( 'Your profile change is approved', 'sm-engineering' ),
+			static fn( $p ) => __( 'The platform approved the change of your partner profile. Your profile is up to date.', 'sm-engineering' ),
+			static fn( $p ) => CoreRoutes::url( 'account', array( 'view' => 'partner' ) )
+		);
+		$types['engineer.change_refused'] = $def(
+			static fn( $p ) => __( 'Your profile change is refused', 'sm-engineering' ),
+			/* translators: %s: reason. */
+			static fn( $p ) => sprintf( __( 'The platform did not approve the change of your partner profile: %s. Your approved profile stays as it was.', 'sm-engineering' ), $p['reason'] ?? '' ),
+			static fn( $p ) => CoreRoutes::url( 'account', array( 'view' => 'partner' ) )
 		);
 		$types['engineer.suspended']     = $def(
 			static fn( $p ) => __( 'Your partner account is suspended', 'sm-engineering' ),

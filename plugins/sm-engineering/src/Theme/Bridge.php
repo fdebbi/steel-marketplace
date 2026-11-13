@@ -22,6 +22,7 @@ use SM\Engineering\Form;
 use SM\Engineering\Messages;
 use SM\Engineering\Missions;
 use SM\Engineering\Payments;
+use SM\Engineering\Changes;
 use SM\Engineering\Lists;
 use SM\Engineering\EmailCode;
 use SM\Engineering\ProjectTypes;
@@ -144,6 +145,7 @@ final class Bridge {
 		}
 		$u = $user ? get_userdata( $user ) : null;
 		return array(
+			'has_photo' => (bool) ( $e && ( $co = Companies::get( $e->company_id ) ) && $co->logo_id ),
 			'sent'      => $e && 'pending' === $e->status && ! empty( $_GET['sent'] ), // phpcs:ignore WordPress.Security.NonceVerification
 			'titles'    => Lists::options( 'titles' ),
 			'specs'     => Lists::options( 'specialities' ),
@@ -352,6 +354,22 @@ final class Bridge {
 			'photo_id'  => $c ? (int) $c->logo_id : 0,
 			'apply_url' => CoreRoutes::url( 'engineer-apply' ),
 		);
+		// 0.5.0: locked while being checked; afterwards a change is a request to the platform.
+		$now     = Changes::current( $e );
+		$pending = Changes::pending( $e );
+		$out['locked']        = 'pending' === $e->status;
+		$out['change']        = Changes::diff( $e );
+		$out['change_at']     = $pending ? (int) ( $pending['at'] ?? 0 ) : 0;
+		$out['change_reason'] = (string) ( $e->change_reason ?? '' );
+		$out['phone']         = $c ? (string) $c->phone : '';
+		$out['summary']       = array();
+		foreach ( Changes::FIELDS as $k ) {
+			$out['summary'][] = array( 'label' => Changes::field_label( $k ), 'value' => Changes::display( $k, $now ) );
+		}
+		// The form shows the values asked (when a request is waiting), else the approved ones.
+		$form                    = array_merge( $now, $pending ? (array) $pending['fields'] : array() );
+		$form['experience']      = (string) $form['experience'];
+		$out['profile']          = array_merge( $out['profile'], $form );
 		$section = sanitize_key( (string) ( $args['section'] ?? 'missions' ) );
 		$id      = absint( $args['id'] ?? 0 );
 		if ( $id ) {

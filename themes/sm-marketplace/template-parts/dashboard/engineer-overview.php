@@ -76,7 +76,7 @@ $money = $d['money'];
 			<?php sm_component( 'card-engineer', array( 'engineer' => $d['public'], 'preview' => true ) ); ?>
 		<?php endif; ?>
 		<p class="sm-help"><?php esc_html_e( 'Clients never see your contact details: their requests go to the platform.', 'sm-marketplace' ); ?></p>
-		<p class="sme-available"><?php sm_icon( $d['available'] ? 'check' : 'info' ); ?><?php echo esc_html( $d['available'] ? __( 'You are available for new missions.', 'sm-marketplace' ) : __( 'You are marked as not available.', 'sm-marketplace' ) ); ?> <a href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'partner' ) ) ); ?>"><?php esc_html_e( 'Change', 'sm-marketplace' ); ?></a></p>
+		<p class="sme-available"><?php sm_icon( $d['available'] ? 'check' : 'info' ); ?><?php echo esc_html( $d['available'] ? __( 'You are available for new missions.', 'sm-marketplace' ) : __( 'You are marked as not available.', 'sm-marketplace' ) ); ?></p>
 	</section>
 </div>
 <?php get_template_part( 'template-parts/dashboard/notifications', null, array( 'account' => $account ) ); ?>

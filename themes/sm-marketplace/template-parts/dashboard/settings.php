@@ -19,7 +19,7 @@ $lang = sm_theme_old( 'language', $account['language'] ?? sm_theme_current_langu
 	<section class="sm-panel">
 		<h2 class="sm-panel__title"><?php esc_html_e( 'Profile', 'sm-marketplace' ); ?></h2>
 		<div class="sm-field sm-field--row">
-			<div><label for="s-name"><?php esc_html_e( 'Full name', 'sm-marketplace' ); ?></label><input id="s-name" name="display_name" value="<?php echo esc_attr( sm_theme_old( 'display_name', $account['user'] ) ); ?>" dir="auto" required<?php sm_theme_aria( 'display_name' ); ?>><?php sm_theme_error( 'display_name' ); ?></div>
+			<div><label for="s-name"><?php esc_html_e( 'Full name', 'sm-marketplace' ); ?></label><input id="s-name" name="display_name" value="<?php echo esc_attr( sm_theme_old( 'display_name', $account['user'] ) ); ?>" dir="auto" required<?php echo 'engineer' === sm_account_class( $account ) ? ' readonly' : ''; ?><?php sm_theme_aria( 'display_name' ); ?>><?php sm_theme_error( 'display_name' ); ?><?php if ( 'engineer' === sm_account_class( $account ) ) : ?><p class="sm-help"><?php esc_html_e( 'To change your name, send a change request from your partner profile.', 'sm-marketplace' ); ?></p><?php endif; ?></div>
 			<div><label for="s-email"><?php esc_html_e( 'Email', 'sm-marketplace' ); ?></label><input id="s-email" value="<?php echo esc_attr( $account['user_email'] ); ?>" dir="ltr" disabled></div>
 		</div>
 		<fieldset class="sm-field">

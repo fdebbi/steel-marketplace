@@ -10,7 +10,7 @@
  *                              title and speciality (lists), years of experience,
  *                              services (multiple choice), presentation
  *   3. documents              diploma, identity, BET approval (MHUV) for a BET,
- *                              photo or logo (optional); photos are made lighter
+ *                              photo or logo (required since 0.30.0); photos are made lighter
  *   4. password and terms
  *   5. check and confirm      summary, 6-digit code sent to the e-mail address
  *
@@ -245,13 +245,14 @@ $cfg   = array(
 					<div class="wz__doc" data-wz-doc>
 						<span class="ic"><?php sm_icon( 'camera' ); ?></span>
 						<div>
-							<strong><?php esc_html_e( 'Photo or logo', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></strong>
+							<strong><?php esc_html_e( 'Photo or logo', 'sm-marketplace' ); ?> <?php echo $req(); // phpcs:ignore WordPress.Security.EscapeOutput ?></strong>
 							<small data-wz-doc-info><?php esc_html_e( 'JPG or PNG — resized automatically', 'sm-marketplace' ); ?></small>
 							<div class="wz__bar" hidden data-wz-doc-bar><i></i></div>
+							<?php sm_theme_error( 'photo' ); ?>
 						</div>
 						<label class="sm-btn sm-btn--ghost sm-btn--sm wz__pick">
 							<?php sm_icon( 'upload' ); ?><span data-wz-doc-btn><?php esc_html_e( 'Choose', 'sm-marketplace' ); ?></span>
-							<input class="screen-reader-text" type="file" name="photo[]" accept="image/jpeg,image/png,image/webp" data-wz-file aria-label="<?php esc_attr_e( 'Photo or logo', 'sm-marketplace' ); ?>">
+							<input class="screen-reader-text" type="file" name="photo[]" accept="image/jpeg,image/png,image/webp" data-wz-file<?php echo $guest || empty( $d['has_photo'] ) ? ' data-required="1"' : ''; ?> aria-label="<?php esc_attr_e( 'Photo or logo', 'sm-marketplace' ); ?>">
 						</label>
 					</div>
 				</div>

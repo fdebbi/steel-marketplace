@@ -94,6 +94,22 @@ final class Activity {
 				),
 			),
 		);
+		$events['engineer.change_requested'] = array(
+			'group'     => 'engineering',
+			'label'     => __( 'Partner engineer: change to approve', 'sm-engineering' ),
+			'audit'     => 'engineer.change_requested',
+			'admin'     => 'now',
+			'user'      => null,
+			'vars'      => array( __CLASS__, 'engineer_vars' ),
+			'variables' => array( 'nom', 'email', 'telephone', 'wilaya', 'titre', 'lien_admin' ),
+			'describe'  => static fn( $v ) => sprintf( /* translators: %s: engineer. */ __( '%s asks to change his partner profile', 'sm-engineering' ), $v['nom'] ),
+			'templates' => array(
+				'admin' => array(
+					static fn() => __( 'Profile change to approve: {nom}', 'sm-engineering' ),
+					static fn() => __( "{nom} asks to change his partner engineer profile. The approved profile stays in use until you decide.\n\nCompare before and after, then approve or refuse:\n{lien_admin}", 'sm-engineering' ),
+				),
+			),
+		);
 		$events['mission.submitted']  = array(
 			'group'     => 'engineering',
 			'label'     => __( 'Study request', 'sm-engineering' ),
@@ -232,6 +248,12 @@ final class Activity {
 			'engineer.rejected'         => __( 'Partner engineer application refused', 'sm-engineering' ),
 			'engineer.suspended'        => __( 'Partner engineer suspended', 'sm-engineering' ),
 			'engineer.profile_saved'    => __( 'Engineer profile saved', 'sm-engineering' ),
+			'engineer.change_requested' => __( 'Partner engineer: change to approve', 'sm-engineering' ),
+			'engineer.change_approved'  => __( 'Engineer profile change approved', 'sm-engineering' ),
+			'engineer.change_refused'   => __( 'Engineer profile change refused', 'sm-engineering' ),
+			'engineer.change_cancelled' => __( 'Engineer profile change cancelled', 'sm-engineering' ),
+			'engineer.availability'     => __( 'Engineer availability changed', 'sm-engineering' ),
+			'engineer.phone'            => __( 'Engineer phone changed', 'sm-engineering' ),
 			'mission.submitted'         => __( 'Study request', 'sm-engineering' ),
 			'mission.quoted'            => __( 'Quote sent to the client', 'sm-engineering' ),
 			'mission.declined'          => __( 'Study request declined by the platform', 'sm-engineering' ),

@@ -259,3 +259,14 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Titre et spécialité | Listes modifiables (FR/AR) avec « Autre (à préciser) » | Profils homogènes, aucun candidat bloqué |
 | Établissement, année, n° d'agrément | Supprimés | Choix du client ; le diplôme suffit à la vérification |
 | Documents | Tous obligatoires ; photos compressées avant l'envoi | Choix du client ; éviter les fichiers trop lourds |
+
+## 13 novembre 2026 — Compte de l'ingénieur partenaire : verrouillage et approbation
+
+| Sujet | Décision | Raison |
+|---|---|---|
+| Pendant la vérification | Profil en lecture seule | L'admin vérifie exactement ce qui a été envoyé |
+| Après validation | Toute modification du profil est une demande approuvée par l'admin ; l'ancien profil reste actif en attendant | Choix du client |
+| Sans approbation | Disponibilité, téléphone, mot de passe, langue | Choix du client ; éviter les demandes inutiles |
+| Photo ou logo | Obligatoire à l'inscription | Choix du client |
+| Bouton « Demander une étude » | Masqué partout pour un ingénieur connecté ; visible pour les visiteurs et les autres comptes | Un partenaire réalise les études |
+| Disponibilité | Bouton en haut de la barre latérale, disponible par défaut, effet immédiat | Choix du client |

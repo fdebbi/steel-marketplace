@@ -35,9 +35,7 @@ $wilayas = sm_theme_wilayas();
 	<?php if ( $e['bio'] ) : ?><p class="sme-card__bio" dir="auto"><?php echo esc_html( wp_trim_words( $e['bio'], 40 ) ); ?></p><?php endif; ?>
 	<footer class="sme-card__foot">
 		<?php if ( ! $e['available'] ) : ?><span class="sm-status sm-status--muted"><?php esc_html_e( 'Not available at the moment', 'sm-marketplace' ); ?></span><?php endif; ?>
-		<?php if ( $preview ) : ?>
-			<span class="sm-btn sm-btn--accent sm-btn--sm" aria-disabled="true"><?php sm_icon( 'hard-hat' ); ?><?php esc_html_e( 'Ask for a study', 'sm-marketplace' ); ?></span>
-		<?php else : ?>
+		<?php if ( ! $preview && ! sm_theme_is_partner_engineer() ) : ?>
 			<a class="sm-btn sm-btn--accent sm-btn--sm" href="<?php echo esc_url( $e['request_url'] ); ?>"><?php sm_icon( 'hard-hat' ); ?><?php esc_html_e( 'Ask for a study', 'sm-marketplace' ); ?></a>
 		<?php endif; ?>
 	</footer>

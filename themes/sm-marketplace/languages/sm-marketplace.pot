@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.29.0\n"
+"Project-Id-Version: SM Marketplace 0.30.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-13T17:49:20+00:00\n"
+"POT-Creation-Date: 2026-11-13T19:35:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -115,7 +115,7 @@ msgstr ""
 #: inc/menus.php:63
 #: inc/template-tags.php:237
 #: templates/front-page-template.php:84
-#: templates/marketplace-engineers.php:34
+#: templates/marketplace-engineers.php:35
 #: templates/mission-request.php:19
 msgid "Engineering"
 msgstr ""
@@ -203,7 +203,7 @@ msgstr ""
 #: header.php:59
 #: template-parts/directory.php:53
 #: templates/front-page-template.php:57
-#: templates/marketplace-engineers.php:99
+#: templates/marketplace-engineers.php:100
 msgid "Search"
 msgstr ""
 
@@ -233,7 +233,7 @@ msgstr ""
 #: footer.php:66
 #: templates/dashboard.php:87
 #: templates/dashboard.php:152
-#: templates/engineer-apply.php:306
+#: templates/engineer-apply.php:307
 msgid "Account"
 msgstr ""
 
@@ -319,7 +319,7 @@ msgid "Sign in"
 msgstr ""
 
 #: header.php:111
-#: templates/dashboard.php:273
+#: templates/dashboard.php:283
 msgid "Menu"
 msgstr ""
 
@@ -339,13 +339,13 @@ msgstr ""
 #: template-parts/components/my-products.php:56
 #: template-parts/dashboard/listings.php:25
 #: templates/dashboard.php:160
-#: templates/dashboard.php:245
+#: templates/dashboard.php:255
 #: templates/front-page-template.php:27
 msgid "Publish a listing"
 msgstr ""
 
 #: header.php:142
-#: templates/dashboard.php:265
+#: templates/dashboard.php:275
 #: templates/engineer-apply.php:75
 msgid "Sign out"
 msgstr ""
@@ -354,7 +354,7 @@ msgstr ""
 #: templates/auth-login.php:32
 #: templates/auth-register.php:92
 #: templates/company-profile.php:239
-#: templates/engineer-apply.php:271
+#: templates/engineer-apply.php:272
 msgid "Show"
 msgstr ""
 
@@ -724,7 +724,7 @@ msgstr ""
 
 #: inc/template-tags.php:277
 #: templates/auth-register.php:31
-#: templates/engineer-apply.php:304
+#: templates/engineer-apply.php:305
 msgid "Professional"
 msgstr ""
 
@@ -1270,11 +1270,10 @@ msgid "Not available at the moment"
 msgstr ""
 
 #: template-parts/components/card-engineer.php:39
-#: template-parts/components/card-engineer.php:41
 #: template-parts/dashboard/studies.php:210
 #: templates/dashboard.php:165
-#: templates/marketplace-engineers.php:40
-#: templates/marketplace-engineers.php:111
+#: templates/marketplace-engineers.php:41
+#: templates/marketplace-engineers.php:112
 #: templates/mission-request.php:19
 msgid "Ask for a study"
 msgstr ""
@@ -1408,7 +1407,7 @@ msgstr[1] ""
 #: template-parts/dashboard/rfq.php:29
 #: template-parts/directory.php:62
 #: template-parts/marketplace-archive.php:44
-#: templates/marketplace-engineers.php:87
+#: templates/marketplace-engineers.php:88
 msgid "All"
 msgstr ""
 
@@ -1420,7 +1419,7 @@ msgstr ""
 
 #: template-parts/components/deal-list.php:26
 #: template-parts/components/services-board.php:47
-#: templates/marketplace-engineers.php:102
+#: templates/marketplace-engineers.php:103
 #: templates/rfq-board.php:84
 msgid "Filter"
 msgstr ""
@@ -1502,8 +1501,8 @@ msgstr ""
 msgid "Professional title"
 msgstr ""
 
-#: template-parts/components/engineer-fields.php:52
-#: template-parts/components/engineer-fields.php:62
+#: template-parts/components/engineer-fields.php:49
+#: template-parts/components/engineer-fields.php:58
 #: templates/auth-register.php:78
 #: templates/engineer-apply.php:171
 #: templates/engineer-apply.php:194
@@ -1513,44 +1512,40 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: template-parts/components/engineer-fields.php:55
+#: template-parts/components/engineer-fields.php:52
 #: templates/engineer-apply.php:197
 msgid "Specify your title"
 msgstr ""
 
-#: template-parts/components/engineer-fields.php:60
+#: template-parts/components/engineer-fields.php:56
 #: templates/engineer-apply.php:201
 msgid "Speciality"
 msgstr ""
 
-#: template-parts/components/engineer-fields.php:65
+#: template-parts/components/engineer-fields.php:61
 #: templates/engineer-apply.php:206
 msgid "Specify your speciality"
 msgstr ""
 
-#: template-parts/components/engineer-fields.php:70
-msgid "Your title was checked by the platform with your diploma. Write to the platform to change it."
-msgstr ""
-
-#: template-parts/components/engineer-fields.php:73
+#: template-parts/components/engineer-fields.php:66
 #: templates/company-profile.php:169
 msgid "Services offered"
 msgstr ""
 
-#: template-parts/components/engineer-fields.php:79
+#: template-parts/components/engineer-fields.php:72
 msgid "Tick the engineering services you can carry out. The platform offers you the missions of these services."
 msgstr ""
 
-#: template-parts/components/engineer-fields.php:83
+#: template-parts/components/engineer-fields.php:76
 msgid "Experience and references"
 msgstr ""
 
-#: template-parts/components/engineer-fields.php:84
+#: template-parts/components/engineer-fields.php:77
 #: templates/engineer-apply.php:222
 msgid "Projects you designed or checked, software, standards (Eurocode 3, RPA, CCM 97)…"
 msgstr ""
 
-#: template-parts/components/engineer-fields.php:85
+#: template-parts/components/engineer-fields.php:78
 msgid "Shown on the list of partner engineers. Do not write your phone number or e-mail: clients contact the platform."
 msgstr ""
 
@@ -1679,13 +1674,14 @@ msgstr ""
 #: template-parts/dashboard/company.php:101
 #: template-parts/dashboard/engineer-missions.php:129
 #: template-parts/dashboard/engineer-missions.php:134
+#: template-parts/dashboard/engineer-partner.php:83
 #: template-parts/dashboard/portfolio.php:66
 #: template-parts/dashboard/publish.php:184
 #: template-parts/directory.php:47
 #: templates/auth-register.php:76
 #: templates/engineer-apply.php:169
 #: templates/front-page-template.php:49
-#: templates/marketplace-engineers.php:92
+#: templates/marketplace-engineers.php:93
 msgid "Wilaya"
 msgstr ""
 
@@ -1933,10 +1929,10 @@ msgstr ""
 #: template-parts/dashboard/listings.php:52
 #: template-parts/dashboard/rfq.php:57
 #: template-parts/dashboard/services.php:58
-#: templates/engineer-apply.php:303
 #: templates/engineer-apply.php:304
 #: templates/engineer-apply.php:305
 #: templates/engineer-apply.php:306
+#: templates/engineer-apply.php:307
 #: templates/single-service.php:88
 msgid "Edit"
 msgstr ""
@@ -2040,7 +2036,7 @@ msgstr ""
 #: template-parts/components/weight-calculator.php:127
 #: template-parts/components/weight-calculator.php:166
 #: template-parts/dashboard/publish.php:210
-#: templates/engineer-apply.php:324
+#: templates/engineer-apply.php:325
 #: templates/styleguide.php:35
 msgid "Continue"
 msgstr ""
@@ -2088,7 +2084,7 @@ msgid "Start free"
 msgstr ""
 
 #: template-parts/components/plan-card.php:82
-#: templates/engineer-apply.php:253
+#: templates/engineer-apply.php:254
 msgid "Choose"
 msgstr ""
 
@@ -2354,7 +2350,6 @@ msgstr ""
 #: templates/company-profile.php:314
 #: templates/company-profile.php:321
 #: templates/contact.php:56
-#: templates/engineer-apply.php:248
 #: templates/mission-request.php:104
 #: templates/mission-request.php:111
 #: templates/mission-request.php:121
@@ -3337,7 +3332,7 @@ msgstr ""
 #: template-parts/dashboard/studies.php:218
 #: template-parts/dashboard/studies.php:223
 #: templates/company-profile.php:296
-#: templates/marketplace-engineers.php:85
+#: templates/marketplace-engineers.php:86
 msgid "Service"
 msgstr ""
 
@@ -3996,7 +3991,6 @@ msgid "Add your logo"
 msgstr ""
 
 #: template-parts/dashboard/company.php:48
-#: template-parts/dashboard/engineer-partner.php:32
 msgid "Change the photo"
 msgstr ""
 
@@ -4142,7 +4136,7 @@ msgstr ""
 #: template-parts/dashboard/invoice.php:34
 #: template-parts/dashboard/order.php:28
 #: template-parts/dashboard/publish.php:208
-#: templates/engineer-apply.php:323
+#: templates/engineer-apply.php:324
 msgid "Back"
 msgstr ""
 
@@ -4224,6 +4218,7 @@ msgid "Reason (optional, sent to the other party)"
 msgstr ""
 
 #: template-parts/dashboard/deal.php:121
+#: template-parts/dashboard/engineer-partner.php:57
 msgid "Cancel my request"
 msgstr ""
 
@@ -4529,54 +4524,91 @@ msgstr ""
 msgid "Change"
 msgstr ""
 
-#: template-parts/dashboard/engineer-partner.php:14
+#: template-parts/dashboard/engineer-partner.php:19
 #: templates/dashboard.php:89
 msgid "Partner profile"
 msgstr ""
 
-#: template-parts/dashboard/engineer-partner.php:14
+#: template-parts/dashboard/engineer-partner.php:19
 #: template-parts/dashboard/studies.php:17
 msgid "This section needs the SM Engineering plugin."
 msgstr ""
 
-#: template-parts/dashboard/engineer-partner.php:21
+#: template-parts/dashboard/engineer-partner.php:38
 msgid "Your profile"
 msgstr ""
 
-#: template-parts/dashboard/engineer-partner.php:23
+#: template-parts/dashboard/engineer-partner.php:40
+msgid "Your application is being checked by the platform: your profile cannot be changed for the moment. You receive the decision by e-mail."
+msgstr ""
+
+#: template-parts/dashboard/engineer-partner.php:43
 msgid "Your application was not approved. Send it again with your documents:"
 msgstr ""
 
-#: template-parts/dashboard/engineer-partner.php:23
+#: template-parts/dashboard/engineer-partner.php:43
 msgid "application page"
 msgstr ""
 
-#: template-parts/dashboard/engineer-partner.php:32
-msgid "Add your photo"
+#: template-parts/dashboard/engineer-partner.php:50
+msgid "Change request waiting for the platform"
 msgstr ""
 
-#: template-parts/dashboard/engineer-partner.php:33
+#: template-parts/dashboard/engineer-partner.php:50
+msgid "your approved profile stays in use until it answers."
+msgstr ""
+
+#: template-parts/dashboard/engineer-partner.php:62
+msgid "Your last change request was refused:"
+msgstr ""
+
+#: template-parts/dashboard/engineer-partner.php:64
+msgid "Your profile was approved by the platform. Any change is sent to the platform, which approves it before it applies."
+msgstr ""
+
+#: template-parts/dashboard/engineer-partner.php:72
+msgid "Change the photo or logo"
+msgstr ""
+
+#: template-parts/dashboard/engineer-partner.php:73
 msgid "JPG, PNG or WebP, 4 MB maximum."
 msgstr ""
 
-#: template-parts/dashboard/engineer-partner.php:35
-msgid "Remove the photo"
+#: template-parts/dashboard/engineer-partner.php:79
+#: templates/engineer-apply.php:165
+msgid "Last name"
 msgstr ""
 
-#: template-parts/dashboard/engineer-partner.php:39
-msgid "Available for new missions"
+#: template-parts/dashboard/engineer-partner.php:80
+#: templates/engineer-apply.php:166
+msgid "First name"
 msgstr ""
 
-#: template-parts/dashboard/engineer-partner.php:40
-msgid "Save my profile"
+#: template-parts/dashboard/engineer-partner.php:90
+msgid "Replace my change request"
 msgstr ""
 
-#: template-parts/dashboard/engineer-partner.php:44
-msgid "Preview"
+#: template-parts/dashboard/engineer-partner.php:90
+msgid "Send the change request"
 msgstr ""
 
-#: template-parts/dashboard/engineer-partner.php:46
-msgid "Visitors see this card once you are approved. Your phone number, e-mail and address are never shown."
+#: template-parts/dashboard/engineer-partner.php:95
+#: template-parts/dashboard/engineer-partner.php:98
+#: templates/auth-register.php:85
+#: templates/engineer-apply.php:167
+msgid "Mobile phone"
+msgstr ""
+
+#: template-parts/dashboard/engineer-partner.php:101
+msgid "Seen only by the platform. Saved at once, without approval."
+msgstr ""
+
+#: template-parts/dashboard/engineer-partner.php:103
+msgid "Save the phone number"
+msgstr ""
+
+#: template-parts/dashboard/engineer-partner.php:105
+msgid "Password and language: in Settings. Availability: the button at the top of the menu."
 msgstr ""
 
 #: template-parts/dashboard/invoice.php:17
@@ -5216,6 +5248,10 @@ msgstr ""
 msgid "Sign in with a real account to change your settings."
 msgstr ""
 
+#: template-parts/dashboard/settings.php:22
+msgid "To change your name, send a change request from your partner profile."
+msgstr ""
+
 #: template-parts/dashboard/settings.php:23
 #: templates/auth-register.php:86
 #: templates/engineer-apply.php:176
@@ -5442,7 +5478,7 @@ msgid "Verify your contact details first."
 msgstr ""
 
 #: template-parts/dashboard/verification.php:33
-#: templates/dashboard.php:287
+#: templates/dashboard.php:297
 msgid "Enter the code"
 msgstr ""
 
@@ -5671,7 +5707,7 @@ msgstr ""
 
 #: templates/auth-login.php:29
 #: templates/auth-register.php:89
-#: templates/engineer-apply.php:268
+#: templates/engineer-apply.php:269
 msgid "Password"
 msgstr ""
 
@@ -5755,14 +5791,9 @@ msgstr ""
 msgid "Business name (optional)"
 msgstr ""
 
-#: templates/auth-register.php:85
-#: templates/engineer-apply.php:167
-msgid "Mobile phone"
-msgstr ""
-
 #: templates/auth-register.php:94
 #: templates/engineer-apply.php:106
-#: templates/engineer-apply.php:274
+#: templates/engineer-apply.php:275
 msgid "At least 10 characters."
 msgstr ""
 
@@ -6117,39 +6148,63 @@ msgstr ""
 msgid "Expand the menu"
 msgstr ""
 
-#: templates/dashboard.php:254
-msgid "Dashboard"
+#: templates/dashboard.php:248
+msgid "Available for new missions"
+msgstr ""
+
+#: templates/dashboard.php:248
+msgid "Unavailable for new missions"
+msgstr ""
+
+#: templates/dashboard.php:250
+msgid "Available"
+msgstr ""
+
+#: templates/dashboard.php:250
+msgid "Unavailable"
+msgstr ""
+
+#: templates/dashboard.php:250
+msgid "New missions can be offered to you"
+msgstr ""
+
+#: templates/dashboard.php:250
+msgid "No new mission is offered to you"
 msgstr ""
 
 #: templates/dashboard.php:264
+msgid "Dashboard"
+msgstr ""
+
+#: templates/dashboard.php:274
 msgid "Dark mode"
 msgstr ""
 
-#: templates/dashboard.php:283
+#: templates/dashboard.php:293
 msgid "Demo partner engineer account."
 msgstr ""
 
-#: templates/dashboard.php:283
+#: templates/dashboard.php:293
 msgid "Demo company account."
 msgstr ""
 
-#: templates/dashboard.php:283
+#: templates/dashboard.php:293
 msgid "Switch to the company dashboard"
 msgstr ""
 
-#: templates/dashboard.php:283
+#: templates/dashboard.php:293
 msgid "Switch to the engineer dashboard"
 msgstr ""
 
-#: templates/dashboard.php:287
+#: templates/dashboard.php:297
 msgid "Verify your account with the 6-digit code to publish and answer requests."
 msgstr ""
 
-#: templates/dashboard.php:318
+#: templates/dashboard.php:328
 msgid "This section arrives with its plugin"
 msgstr ""
 
-#: templates/dashboard.php:319
+#: templates/dashboard.php:329
 msgid "The layout is ready; the content will be provided by the corresponding marketplace plugin."
 msgstr ""
 
@@ -6159,8 +6214,8 @@ msgstr ""
 
 #: templates/engineer-apply.php:37
 #: templates/engineer-apply.php:141
-#: templates/marketplace-engineers.php:81
-#: templates/marketplace-engineers.php:116
+#: templates/marketplace-engineers.php:82
+#: templates/marketplace-engineers.php:117
 msgid "Become a partner engineer"
 msgstr ""
 
@@ -6244,17 +6299,17 @@ msgstr ""
 
 #: templates/engineer-apply.php:91
 #: templates/engineer-apply.php:92
-#: templates/engineer-apply.php:305
+#: templates/engineer-apply.php:306
 msgid "Documents"
 msgstr ""
 
 #: templates/engineer-apply.php:91
-#: templates/engineer-apply.php:263
+#: templates/engineer-apply.php:264
 msgid "Password and terms"
 msgstr ""
 
 #: templates/engineer-apply.php:92
-#: templates/engineer-apply.php:263
+#: templates/engineer-apply.php:264
 msgid "Terms"
 msgstr ""
 
@@ -6399,14 +6454,6 @@ msgstr ""
 msgid "Already a partner?"
 msgstr ""
 
-#: templates/engineer-apply.php:165
-msgid "Last name"
-msgstr ""
-
-#: templates/engineer-apply.php:166
-msgid "First name"
-msgstr ""
-
 #: templates/engineer-apply.php:176
 msgid "A verification code is sent to it at the last step."
 msgstr ""
@@ -6441,7 +6488,7 @@ msgid "Add"
 msgstr ""
 
 #: templates/engineer-apply.php:248
-#: templates/engineer-apply.php:254
+#: templates/engineer-apply.php:255
 msgid "Photo or logo"
 msgstr ""
 
@@ -6449,76 +6496,76 @@ msgstr ""
 msgid "JPG or PNG — resized automatically"
 msgstr ""
 
-#: templates/engineer-apply.php:258
+#: templates/engineer-apply.php:259
 msgid "Your documents are kept in a private space: only the platform team sees them."
 msgstr ""
 
-#: templates/engineer-apply.php:264
+#: templates/engineer-apply.php:265
 msgid "Last step before the check of your e-mail address."
 msgstr ""
 
-#: templates/engineer-apply.php:264
+#: templates/engineer-apply.php:265
 msgid "Accept the rules, then send your application again."
 msgstr ""
 
-#: templates/engineer-apply.php:278
+#: templates/engineer-apply.php:279
 msgid "Confirm the password"
 msgstr ""
 
-#: templates/engineer-apply.php:284
+#: templates/engineer-apply.php:285
 msgid "Rules of partner engineers"
 msgstr ""
 
-#: templates/engineer-apply.php:286
+#: templates/engineer-apply.php:287
 msgid "In short:"
 msgstr ""
 
-#: templates/engineer-apply.php:288
+#: templates/engineer-apply.php:289
 msgid "The platform offers you missions; you are free to accept them."
 msgstr ""
 
-#: templates/engineer-apply.php:289
+#: templates/engineer-apply.php:290
 msgid "You never contact the clients of the platform directly."
 msgstr ""
 
-#: templates/engineer-apply.php:290
+#: templates/engineer-apply.php:291
 msgid "Your fee is set when the mission is given to you and paid by the platform."
 msgstr ""
 
-#: templates/engineer-apply.php:291
+#: templates/engineer-apply.php:292
 msgid "Your documents and studies stay confidential."
 msgstr ""
 
-#: templates/engineer-apply.php:294
+#: templates/engineer-apply.php:295
 msgid "I accept the terms of use and the rules of partner engineers."
 msgstr ""
 
-#: templates/engineer-apply.php:300
+#: templates/engineer-apply.php:301
 msgid "Check and confirm"
 msgstr ""
 
-#: templates/engineer-apply.php:301
+#: templates/engineer-apply.php:302
 msgid "Read your application again, then type the code sent to your e-mail address."
 msgstr ""
 
-#: templates/engineer-apply.php:303
+#: templates/engineer-apply.php:304
 msgid "Personal"
 msgstr ""
 
 #. translators: %d: position.
-#: templates/engineer-apply.php:311
+#: templates/engineer-apply.php:312
 msgid "Digit %d of the code"
 msgstr ""
 
-#: templates/engineer-apply.php:314
+#: templates/engineer-apply.php:315
 msgid "Not received? Check your spam folder."
 msgstr ""
 
-#: templates/engineer-apply.php:325
+#: templates/engineer-apply.php:326
 msgid "Confirm and send"
 msgstr ""
 
-#: templates/engineer-apply.php:325
+#: templates/engineer-apply.php:326
 msgid "Send my application again"
 msgstr ""
 
@@ -6773,89 +6820,89 @@ msgstr ""
 msgid "SM — Engineering"
 msgstr ""
 
-#: templates/marketplace-engineers.php:26
+#: templates/marketplace-engineers.php:27
 msgid "You describe your project"
 msgstr ""
 
-#: templates/marketplace-engineers.php:26
+#: templates/marketplace-engineers.php:27
 msgid "Service, prestations, plans, photos, wilaya."
 msgstr ""
 
-#: templates/marketplace-engineers.php:27
+#: templates/marketplace-engineers.php:28
 msgid "The platform sends you a quote"
 msgstr ""
 
-#: templates/marketplace-engineers.php:27
+#: templates/marketplace-engineers.php:28
 msgid "One price, one time, one contact: the platform."
 msgstr ""
 
-#: templates/marketplace-engineers.php:28
+#: templates/marketplace-engineers.php:29
 msgid "A partner engineer carries out the study"
 msgstr ""
 
-#: templates/marketplace-engineers.php:28
+#: templates/marketplace-engineers.php:29
 msgid "Chosen for your project among the verified engineers."
 msgstr ""
 
-#: templates/marketplace-engineers.php:29
+#: templates/marketplace-engineers.php:30
 msgid "The platform delivers it"
 msgstr ""
 
-#: templates/marketplace-engineers.php:29
+#: templates/marketplace-engineers.php:30
 msgid "Checked documents, in your account."
 msgstr ""
 
-#: templates/marketplace-engineers.php:37
+#: templates/marketplace-engineers.php:38
 msgid "Engineering studies and inspections"
 msgstr ""
 
-#: templates/marketplace-engineers.php:38
+#: templates/marketplace-engineers.php:39
 msgid "Studies, calculation notes, drawings, inspections and site follow-up of steel structures: ask the platform, which works with verified partner engineers."
 msgstr ""
 
-#: templates/marketplace-engineers.php:47
+#: templates/marketplace-engineers.php:48
 msgid "Our engineering services"
 msgstr ""
 
-#: templates/marketplace-engineers.php:62
+#: templates/marketplace-engineers.php:63
 msgid "Ask for this service"
 msgstr ""
 
-#: templates/marketplace-engineers.php:70
+#: templates/marketplace-engineers.php:71
 #: templates/mission-request.php:133
 #: templates/rfq-board.php:110
 msgid "How it works"
 msgstr ""
 
-#: templates/marketplace-engineers.php:80
+#: templates/marketplace-engineers.php:81
 msgid "Partner engineers of the platform"
 msgstr ""
 
-#: templates/marketplace-engineers.php:94
+#: templates/marketplace-engineers.php:95
 msgid "All Algeria"
 msgstr ""
 
-#: templates/marketplace-engineers.php:100
+#: templates/marketplace-engineers.php:101
 msgid "e.g. hangar, Eurocode, expertise"
 msgstr ""
 
-#: templates/marketplace-engineers.php:111
+#: templates/marketplace-engineers.php:112
 msgid "No partner engineer matches these filters"
 msgstr ""
 
-#: templates/marketplace-engineers.php:111
+#: templates/marketplace-engineers.php:112
 msgid "The list of partner engineers opens soon"
 msgstr ""
 
-#: templates/marketplace-engineers.php:111
+#: templates/marketplace-engineers.php:112
 msgid "You can already send your request: the platform finds the right engineer."
 msgstr ""
 
-#: templates/marketplace-engineers.php:114
+#: templates/marketplace-engineers.php:115
 msgid "You deal only with the platform: quote, follow-up and delivery. AI tools on this platform never replace a structural calculation or an engineer’s signature."
 msgstr ""
 
-#: templates/marketplace-engineers.php:116
+#: templates/marketplace-engineers.php:117
 msgid "Are you a structural engineer?"
 msgstr ""
 

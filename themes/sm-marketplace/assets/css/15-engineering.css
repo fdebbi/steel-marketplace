@@ -197,3 +197,25 @@
 .sme-paynow { align-items: flex-start; }
 .sme-paynow p { margin: 0 0 var(--sm-s2); }
 .sme-paynow .sme-actions { margin: 0; }
+
+/* Partner engineer (0.30.0): availability switch at the top of the menu, change request */
+.sm-avail { margin: 0 0 var(--sm-s3); }
+.sm-avail button { display: flex; align-items: center; gap: 10px; inline-size: 100%; padding: 10px 12px; border: 1px solid rgb(255 255 255 / .14); border-radius: var(--sm-radius); background: rgb(255 255 255 / .05); color: inherit; font: inherit; text-align: start; cursor: pointer; }
+.sm-avail button:hover { background: rgb(255 255 255 / .09); }
+.sm-avail button:focus-visible { outline: 2px solid var(--sm-accent); outline-offset: 2px; }
+.sm-avail__track { flex: none; position: relative; inline-size: 38px; block-size: 22px; border-radius: 999px; background: rgb(255 255 255 / .22); transition: background .15s ease; }
+.sm-avail__dot { position: absolute; inset-block-start: 3px; inset-inline-start: 3px; inline-size: 16px; block-size: 16px; border-radius: 999px; background: #fff; transition: inset-inline-start .15s ease; }
+.sm-avail.is-on .sm-avail__track { background: var(--sm-accent); }
+.sm-avail.is-on .sm-avail__dot { inset-inline-start: 19px; }
+.sm-avail .sm-dash__label { display: grid; line-height: 1.25; white-space: normal; min-inline-size: 0; }
+.sm-avail .sm-dash__label small { font-size: 11.5px; opacity: .7; font-weight: 400; }
+@media (prefers-reduced-motion: reduce) { .sm-avail__track, .sm-avail__dot { transition: none; } }
+.sme-change { align-items: flex-start; }
+.sme-change p { margin: 0 0 var(--sm-s2); }
+.sme-change__list { list-style: none; margin: 0 0 var(--sm-s2); padding: 0; display: grid; gap: 4px; font-size: var(--sm-fs-sm); }
+.sme-change__list span { color: var(--sm-muted); margin-inline-end: 6px; }
+.sme-change__list s { color: var(--sm-muted); }
+.sme-facts--list { display: grid; gap: 0; margin: var(--sm-s3) 0 0; }
+.sme-facts--list > div { display: grid; grid-template-columns: minmax(120px, 34%) minmax(0, 1fr); gap: var(--sm-s3); padding: 10px 0; border-block-end: 1px solid var(--sm-line); }
+.sme-facts--list dt { color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+.sme-facts--list dd { margin: 0; overflow-wrap: anywhere; }

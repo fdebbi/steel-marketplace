@@ -22,6 +22,7 @@ $wilaya    = preg_replace( '/\D/', '', (string) sm_theme_query_arg( 'wilaya' ) )
 $q         = sanitize_text_field( (string) sm_theme_query_arg( 'q' ) );
 $data      = sm_theme_data( 'engineers', array( 'specialty' => $specialty, 'wilaya' => $wilaya, 'q' => $q ) );
 $request   = is_array( $data ) ? $data['request_url'] : sm_page_url( 'mission-request' );
+$is_partner = sm_theme_is_partner_engineer(); // 0.30.0: no "Ask for a study" button for a partner engineer.
 $steps     = array(
 	array( 'file', __( 'You describe your project', 'sm-marketplace' ), __( 'Service, prestations, plans, photos, wilaya.', 'sm-marketplace' ) ),
 	array( 'rfq', __( 'The platform sends you a quote', 'sm-marketplace' ), __( 'One price, one time, one contact: the platform.', 'sm-marketplace' ) ),
@@ -37,7 +38,7 @@ $steps     = array(
 				<h1 class="sm-pagehead__title"><?php esc_html_e( 'Engineering studies and inspections', 'sm-marketplace' ); ?></h1>
 				<p class="sm-pagehead__intro"><?php esc_html_e( 'Studies, calculation notes, drawings, inspections and site follow-up of steel structures: ask the platform, which works with verified partner engineers.', 'sm-marketplace' ); ?></p>
 			</div>
-			<a class="sm-btn sm-btn--accent sm-btn--lg" href="<?php echo esc_url( $request ); ?>"><?php sm_icon( 'hard-hat' ); ?><?php esc_html_e( 'Ask for a study', 'sm-marketplace' ); ?></a>
+			<?php if ( ! $is_partner ) : ?><a class="sm-btn sm-btn--accent sm-btn--lg" href="<?php echo esc_url( $request ); ?>"><?php sm_icon( 'hard-hat' ); ?><?php esc_html_e( 'Ask for a study', 'sm-marketplace' ); ?></a><?php endif; ?>
 		</div>
 	</div>
 </section>
@@ -59,7 +60,7 @@ $steps     = array(
 								<?php foreach ( $sv['items'] as $item ) : ?><li><?php sm_icon( 'check' ); ?><span><?php echo esc_html( $item ); ?></span></li><?php endforeach; ?>
 							</ul>
 						<?php endif; ?>
-						<a class="sm-btn sm-btn--primary sme-service__cta" href="<?php echo esc_url( $sv['url'] ); ?>"><?php esc_html_e( 'Ask for this service', 'sm-marketplace' ); ?><?php sm_icon( 'arrow-end' ); ?></a>
+						<?php if ( ! $is_partner ) : ?><a class="sm-btn sm-btn--primary sme-service__cta" href="<?php echo esc_url( $sv['url'] ); ?>"><?php esc_html_e( 'Ask for this service', 'sm-marketplace' ); ?><?php sm_icon( 'arrow-end' ); ?></a><?php endif; ?>
 					</div>
 				</li>
 			<?php endforeach; ?>

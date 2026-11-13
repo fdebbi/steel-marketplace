@@ -19,6 +19,7 @@ use SM\Engineering\Messages;
 use SM\Engineering\Missions;
 use SM\Engineering\Notifications;
 use SM\Engineering\Payments;
+use SM\Engineering\Changes;
 use SM\Engineering\Lists;
 use SM\Engineering\ProjectTypes;
 use SM\Engineering\Services;
@@ -34,7 +35,7 @@ final class Admin {
 
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'menu' ), 25 );
-		foreach ( array( 'engineer_decide', 'mission', 'mission_message', 'mission_file', 'settings' ) as $a ) {
+		foreach ( array( 'engineer_decide', 'engineer_change', 'mission', 'mission_message', 'mission_file', 'settings' ) as $a ) {
 			add_action( 'admin_post_sme_' . $a, array( __CLASS__, 'handle_' . $a ) );
 		}
 	}
@@ -146,7 +147,7 @@ final class Admin {
 		foreach ( $q['items'] as $e ) {
 			$c   = Companies::get( $e->company_id );
 			$url = admin_url( 'admin.php?page=' . self::ENGINEERS . '&id=' . $e->company_id );
-			echo '<tr><td>' . self::photo( $c, 40 ) . '</td><td><a href="' . esc_url( $url ) . '"><strong>' . esc_html( $c ? $c->name : '#' . $e->company_id ) . '</strong></a><br>' . esc_html( $e->title ) . '</td>'; // phpcs:ignore WordPress.Security.EscapeOutput
+			echo '<tr><td>' . self::photo( $c, 40 ) . '</td><td><a href="' . esc_url( $url ) . '"><strong>' . esc_html( $c ? $c->name : '#' . $e->company_id ) . '</strong></a><br>' . esc_html( $e->title ) . ( Changes::pending( $e ) ? '<br>' . self::pill( __( 'Change to approve', 'sm-engineering' ), 'warn' ) : '' ) . '</td>'; // phpcs:ignore WordPress.Security.EscapeOutput
 			echo '<td>' . esc_html( implode( ', ', array_map( static fn( $s ) => $types[ $s ]['fr'] ?? $s, $e->specialties ) ) ) . '</td>';
 			/* translators: %d: years. */
 			echo '<td>' . esc_html( sprintf( _n( '%d year', '%d years', $e->experience, 'sm-engineering' ), $e->experience ) ) . '</td><td>' . esc_html( $c ? Wilayas::name( $c->wilaya ) : '' ) . '</td><td>' . (int) Engineers::missions_done( $e->company_id ) . '</td><td>' . self::date( $e->applied_at ) . '</td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
@@ -203,6 +204,22 @@ final class Admin {
 		}
 		echo '</div>';
 
+		$diff = Changes::diff( $e );
+		if ( $diff ) {
+			echo '<div class="sme-box" style="grid-column:1/-1;border-color:#dba617"><h2>' . esc_html__( 'Change of profile to approve', 'sm-engineering' ) . '</h2>';
+			echo '<p>' . esc_html__( 'The approved profile stays in use until you decide. Approving replaces it with the new values.', 'sm-engineering' ) . '</p>';
+			echo '<table class="widefat striped"><thead><tr><th style="width:22%">' . esc_html__( 'Field', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Today', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Asked', 'sm-engineering' ) . '</th></tr></thead><tbody>';
+			foreach ( $diff as $row ) {
+				$after = ! empty( $row['photo'] ) ? '<img src="' . esc_url( $row['photo'] ) . '" alt="" width="64" height="64" style="border-radius:8px;object-fit:cover">' : '<strong>' . nl2br( esc_html( $row['after'] ) ) . '</strong>';
+				$before = 'photo' === $row['key'] ? self::photo( $c, 64 ) : nl2br( esc_html( $row['before'] ) );
+				echo '<tr><td>' . esc_html( $row['label'] ) . '</td><td>' . $before . '</td><td>' . $after . '</td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above.
+			}
+			echo '</tbody></table>';
+			self::form_open( 'sme_engineer_change' );
+			echo '<input type="hidden" name="company_id" value="' . (int) $id . '">';
+			echo '<p><label>' . esc_html__( 'Reason (required to refuse; the engineer reads it)', 'sm-engineering' ) . '<br><textarea name="reason" rows="2" class="large-text"></textarea></label></p>';
+			echo '<p><button class="button button-primary" name="decision" value="approve">' . esc_html__( 'Approve the change', 'sm-engineering' ) . '</button> <button class="button" name="decision" value="refuse">' . esc_html__( 'Refuse the change', 'sm-engineering' ) . '</button></p></form></div>';
+		}
 		echo '<div class="sme-box"><h2>' . esc_html__( 'Decision', 'sm-engineering' ) . '</h2>';
 		if ( $e->reject_reason ) {
 			echo '<p class="sme-warn">' . esc_html( $e->reject_reason ) . '</p>';
@@ -257,6 +274,15 @@ final class Admin {
 			Notify::notify_company( $id, 'engineer.' . $status, array( 'reason' => $reason ) );
 		}
 		self::back( self::ENGINEERS, array( 'id' => $id ) );
+	}
+
+	public static function handle_engineer_change() {
+		self::guard( 'sme_engineer_change' );
+		$id     = isset( $_POST['company_id'] ) ? absint( $_POST['company_id'] ) : 0;
+		$ok     = isset( $_POST['decision'] ) && 'approve' === sanitize_key( wp_unslash( $_POST['decision'] ) );
+		$reason = isset( $_POST['reason'] ) ? sanitize_textarea_field( wp_unslash( $_POST['reason'] ) ) : '';
+		$r      = Changes::decide( $id, $ok, $reason );
+		self::back( self::ENGINEERS, array( 'id' => $id ), is_wp_error( $r ) ? $r->get_error_message() : '' );
 	}
 
 	/* ---- Missions ----------------------------------------------------- */

@@ -167,6 +167,14 @@ final class Apply {
 		return $id;
 	}
 
+	/** A picture was sent in the field "photo" (required with an application since 0.5.0). */
+	private static function has_photo() {
+		$f    = $_FILES['photo'] ?? array(); // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput
+		$name = is_array( $f['name'] ?? null ) ? (string) ( $f['name'][0] ?? '' ) : (string) ( $f['name'] ?? '' );
+		$err  = is_array( $f['error'] ?? null ) ? (int) ( $f['error'][0] ?? UPLOAD_ERR_NO_FILE ) : (int) ( $f['error'] ?? UPLOAD_ERR_NO_FILE );
+		return '' !== $name && UPLOAD_ERR_OK === $err && (bool) preg_match( '/\.(jpe?g|png|webp)$/i', $name );
+	}
+
 	private static function photo( $company_id ) {
 		$r = Media::upload( 'photo', Media::IMAGE_TYPES, 1, 4 * MB_IN_BYTES );
 		if ( $r['ids'] ) {
@@ -201,6 +209,9 @@ final class Apply {
 		if ( isset( $errors['name'] ) ) {
 			$errors[ '' === $first ? 'first_name' : 'last_name' ] = __( 'Enter your last name and first name.', 'sm-engineering' );
 			unset( $errors['name'] );
+		}
+		if ( ! self::has_photo() ) {
+			$errors['photo'] = __( 'Add your photo or the logo of your office (JPG or PNG).', 'sm-engineering' );
 		}
 		// The e-mail address is confirmed with a code before the account is created.
 		if ( ! isset( $errors['email'] ) && ! EmailCode::confirmed( $account['email'] ) ) {
@@ -249,6 +260,10 @@ final class Apply {
 			Forms::back( array( __( 'Your application is already being reviewed or approved.', 'sm-engineering' ) ), '', CoreRoutes::url( 'account' ) );
 		}
 		$profile = self::validate_profile();
+		$company = Companies::get( $e->company_id );
+		if ( ! self::has_photo() && ! ( $company && $company->logo_id ) ) {
+			$profile['errors']['photo'] = __( 'Add your photo or the logo of your office (JPG or PNG).', 'sm-engineering' );
+		}
 		if ( $profile['errors'] ) {
 			Forms::back( $profile['errors'] );
 		}
@@ -273,6 +288,10 @@ final class Apply {
 		wp_delete_user( $user_id );
 	}
 
+	/**
+	 * Profile of a partner engineer (0.5.0): locked while the application is
+	 * being checked; once approved, a change is a request the platform approves.
+	 */
 	public static function handle_profile() {
 		Forms::begin( 'engineer_profile' );
 		$user_id = get_current_user_id();
@@ -280,27 +299,60 @@ final class Apply {
 		if ( ! $e ) {
 			Forms::back( array( __( 'This page is for partner engineers.', 'sm-engineering' ) ) );
 		}
-		$locked  = in_array( $e->status, array( 'approved', 'suspended' ), true );
-		$profile = self::validate_profile( $locked );
-		if ( $profile['errors'] ) {
-			Forms::back( $profile['errors'] );
+		if ( 'pending' === $e->status ) {
+			Forms::back( array( __( 'Your application is being checked by the platform: your profile cannot be changed for the moment.', 'sm-engineering' ) ) );
+		}
+		if ( 'rejected' === $e->status ) {
+			Forms::back( array( __( 'Your application was not approved: correct it and send it again from the application page.', 'sm-engineering' ) ), '', CoreRoutes::url( 'engineer-apply' ) );
+		}
+		if ( Forms::post( 'cancel_change' ) ) {
+			Changes::cancel( $e );
+			Forms::back( array(), __( 'Your change request is cancelled. Your approved profile stays as it is.', 'sm-engineering' ) );
+		}
+		$profile = self::validate_profile();
+		$errors  = $profile['errors'];
+		$first   = mb_substr( trim( Forms::post( 'first_name' ) ), 0, 60 );
+		$last    = mb_substr( trim( Forms::post( 'last_name' ) ), 0, 60 );
+		$wilaya  = Forms::post( 'wilaya' );
+		if ( '' === $first || '' === $last ) {
+			$errors[ '' === $last ? 'last_name' : 'first_name' ] = __( 'Enter your last name and first name.', 'sm-engineering' );
+		}
+		if ( ! \SM\Core\Accounts\Wilayas::exists( $wilaya ) ) {
+			$errors['wilaya'] = __( 'Choose your wilaya.', 'sm-engineering' );
+		}
+		if ( $errors ) {
+			Forms::back( $errors );
+		}
+		$photo_id = 0;
+		if ( self::has_photo() ) {
+			$up = Media::upload( 'photo', Media::IMAGE_TYPES, 1, 4 * MB_IN_BYTES );
+			if ( $up['errors'] ) {
+				Forms::back( array( 'photo' => $up['errors'][0] ) );
+			}
+			$photo_id = (int) ( $up['ids'][0] ?? 0 );
 		}
 		$d = $profile['data'];
-		if ( $locked ) { // The title was checked by the platform with the diploma: it stays as approved.
-			$d['degree']       = $e->degree;
-			$d['degree_other'] = $e->degree_other;
-			$d['diploma']      = $e->diploma;
-			$d['school']       = $e->school;
-			$d['grad_year']    = $e->grad_year;
-			$d['title']        = mb_substr( trim( ( '' !== $e->degree ? Lists::label( 'titles', $e->degree, $e->degree_other, 'fr' ) : $e->diploma ) . ' — ' . Lists::label( 'specialities', $d['speciality'], $d['speciality_other'], 'fr' ), ' —' ), 0, 160 );
+		$r = Changes::request(
+			$e,
+			array(
+				'last_name'        => $last,
+				'first_name'       => $first,
+				'wilaya'           => $wilaya,
+				'partner_type'     => $d['partner_type'],
+				'bet_name'         => $d['bet_name'],
+				'degree'           => $d['degree'],
+				'degree_other'     => $d['degree_other'],
+				'speciality'       => $d['speciality'],
+				'speciality_other' => $d['speciality_other'],
+				'experience'       => $d['experience'],
+				'specialties'      => $d['specialties'],
+				'bio'              => $d['bio'],
+			),
+			$photo_id
+		);
+		if ( is_wp_error( $r ) ) {
+			Forms::back( array( $r->get_error_message() ) );
 		}
-		Engineers::save( $e->company_id, $user_id, $d );
-		Engineers::set( $e->company_id, array( 'available' => Forms::post( 'available' ) ? 1 : 0 ) );
-		$errors = self::photo( $e->company_id );
-		if ( Forms::post( 'photo_remove' ) ) {
-			Companies::update_profile( $e->company_id, array( 'logo_id' => 0 ) );
-		}
-		AuditLog::add( 'engineer.profile_saved', 'engineer', $e->company_id, array(), $user_id, $e->company_id );
-		Forms::back( $errors, __( 'Your profile is saved.', 'sm-engineering' ) );
+		Forms::back( array(), __( 'Your change request is sent. Your approved profile stays in use until the platform answers; you are told by e-mail.', 'sm-engineering' ) );
 	}
 }

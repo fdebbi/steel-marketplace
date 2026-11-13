@@ -241,6 +241,16 @@ if ( $is_eng ) {
 			<button type="button" class="sm-dash__collapse" data-sm-nav-collapse aria-controls="sm-dash-nav" aria-expanded="true" aria-label="<?php esc_attr_e( 'Collapse the menu', 'sm-marketplace' ); ?>" data-label-collapse="<?php esc_attr_e( 'Collapse the menu', 'sm-marketplace' ); ?>" data-label-expand="<?php esc_attr_e( 'Expand the menu', 'sm-marketplace' ); ?>"><?php sm_icon( 'chevron-start' ); ?></button>
 			<button type="button" class="sm-dash__close" data-sm-nav-close aria-label="<?php esc_attr_e( 'Close menu', 'sm-marketplace' ); ?>"><?php sm_icon( 'close' ); ?></button>
 		</div>
+		<?php if ( $is_eng && ! $is_demo && 'approved' === ( $account['engineer']['status'] ?? '' ) ) : ?>
+			<?php $avail = ! empty( $account['engineer']['available'] ); ?>
+			<?php sm_theme_form_open( 'engineer_available', array( 'class' => 'sm-avail' . ( $avail ? ' is-on' : '' ) ) ); ?>
+				<?php if ( ! $avail ) : ?><input type="hidden" name="available" value="1"><?php endif; ?>
+				<button type="submit" role="switch" aria-checked="<?php echo $avail ? 'true' : 'false'; ?>" data-tip="<?php echo esc_attr( $avail ? __( 'Available for new missions', 'sm-marketplace' ) : __( 'Unavailable for new missions', 'sm-marketplace' ) ); ?>">
+					<span class="sm-avail__track" aria-hidden="true"><span class="sm-avail__dot"></span></span>
+					<span class="sm-dash__label"><strong><?php echo esc_html( $avail ? __( 'Available', 'sm-marketplace' ) : __( 'Unavailable', 'sm-marketplace' ) ); ?></strong><small><?php echo esc_html( $avail ? __( 'New missions can be offered to you', 'sm-marketplace' ) : __( 'No new mission is offered to you', 'sm-marketplace' ) ); ?></small></span>
+				</button>
+			</form>
+		<?php endif; ?>
 		<?php if ( isset( $titles['publish'] ) ) : ?>
 			<a class="sm-btn sm-btn--accent sm-btn--block sm-dash__publish" href="<?php echo esc_url( $link( 'publish' ) ); ?>" data-tip="<?php esc_attr_e( 'Publish a listing', 'sm-marketplace' ); ?>" <?php echo 'publish' === $view ? 'aria-current="page"' : ''; ?>><?php sm_icon( 'plus' ); ?><span class="sm-dash__label"><?php esc_html_e( 'Publish a listing', 'sm-marketplace' ); ?></span></a>
 		<?php endif; ?>

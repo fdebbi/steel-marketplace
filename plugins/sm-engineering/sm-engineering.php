@@ -3,7 +3,7 @@
  * Plugin Name:       SM Engineering
  * Plugin URI:        https://github.com/fdebbi/steel-marketplace
  * Description:       Partner engineers and engineering missions. Engineers apply on their own page and are approved by the platform; every study or inspection request goes to the platform, which sends a quote to the client and gives the mission to an approved engineer as a subcontractor. Clients never deal with engineers directly. Requires SM Core.
- * Version:           0.4.0
+ * Version:           0.5.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Requires Plugins:  sm-core
@@ -17,8 +17,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_ENGINEERING_VERSION', '0.4.0' );
-define( 'SM_ENGINEERING_DB_VERSION', 4 );
+define( 'SM_ENGINEERING_VERSION', '0.5.0' );
+define( 'SM_ENGINEERING_DB_VERSION', 5 );
 define( 'SM_ENGINEERING_FILE', __FILE__ );
 define( 'SM_ENGINEERING_DIR', __DIR__ );
 

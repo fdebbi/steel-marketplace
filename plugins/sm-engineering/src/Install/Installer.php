@@ -65,6 +65,8 @@ final class Installer {
 				available tinyint(1) NOT NULL DEFAULT 1,
 				verification_id bigint(20) unsigned NOT NULL DEFAULT 0,
 				reject_reason text,
+				pending_change longtext,
+				change_reason text,
 				applied_at datetime NOT NULL,
 				decided_at datetime DEFAULT NULL,
 				PRIMARY KEY  (company_id),

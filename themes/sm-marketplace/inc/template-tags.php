@@ -659,3 +659,15 @@ function sm_theme_tab_url( $action, $category ) {
 	}
 	return add_query_arg( $keep, $action );
 }
+
+/**
+ * True when the visitor is signed in as a partner engineer (0.30.0): a partner
+ * carries out the studies, so the "Ask for a study" buttons are not shown to him.
+ */
+function sm_theme_is_partner_engineer() {
+	static $is = null;
+	if ( null === $is ) {
+		$is = is_user_logged_in() && 'engineer' === sm_account_class( (array) sm_theme_account() );
+	}
+	return $is;
+}

@@ -1,5 +1,12 @@
 # Changelog — sm-marketplace
 
+## 0.30.0 — 2026-11-13 (avec sm-engineering 0.5.0)
+
+- Compte ingénieur : bouton Disponible / Indisponible en haut de la barre latérale (ingénieurs validés).
+- Profil partenaire : lecture seule pendant la vérification ; ensuite formulaire « Envoyer la demande de modification », bandeau de la demande en attente (avant → après, annulation), motif du dernier refus ; téléphone enregistré tout de suite.
+- Boutons « Demander une étude » et « Demander ce service » masqués pour un ingénieur partenaire connecté (visibles pour les visiteurs et les autres comptes).
+- Candidature : photo ou logo obligatoire. Paramètres : nom en lecture seule pour un ingénieur.
+
 ## 0.29.0 — 2026-11-13 (avec sm-engineering 0.4.0)
 
 - « Devenir ingénieur partenaire » : assistant en 5 étapes dans une fenêtre de taille fixe (plein écran sur téléphone) — informations personnelles, professionnelles, documents, mot de passe et conditions, vérification (récapitulatif + code e-mail).

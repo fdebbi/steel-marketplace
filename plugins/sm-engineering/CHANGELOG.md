@@ -1,5 +1,15 @@
 # Changelog — sm-engineering
 
+## 0.5.0 — 2026-11-13 (avec le thème 0.30.0)
+
+- Profil verrouillé pendant la vérification de la candidature par la plateforme.
+- Après validation, toute modification du profil (nom, prénom, wilaya, type, nom du BET, titre, spécialité, expérience, services, présentation, photo) est une demande : le profil validé reste utilisé jusqu'à la décision. L'administrateur voit la comparaison avant / après, approuve ou refuse avec un motif ; l'ingénieur est prévenu. Une demande à la fois, annulable.
+- Libres, sans approbation : disponibilité, téléphone mobile, mot de passe, langue.
+- Disponibilité : action immédiate `sm_engineer_available` (ingénieurs validés).
+- Photo ou logo obligatoire à la candidature.
+- E-mail à l'administrateur pour chaque demande de modification ; journal d'audit.
+- Base v5 (demande en attente, motif du dernier refus). 141 tests PHP, 98 vérifications de bout en bout.
+
 ## 0.4.0 — 2026-11-13 (avec le thème 0.29.0)
 
 - Candidature d'ingénieur partenaire en 5 étapes : nom et prénom séparés ; « Ingénieur indépendant » ou « Bureau d'études (BET) » (même compte, nom du bureau) ; titre professionnel et spécialité en listes (avec « Autre (à préciser) ») ; années d'expérience ; services ; présentation. Établissement et année du diplôme supprimés.
