@@ -13,6 +13,9 @@ defined( 'ABSPATH' ) || exit;
 $sub   = sm_theme_data( 'subscription' );
 $order = is_array( $sub ) && ! empty( $sub['order'] ) ? $sub['order'] : null;
 $back  = sm_page_url( 'account', array( 'view' => ! empty( $sub['has_plans'] ) ? 'plan' : 'ai-credits' ) );
+if ( $order && ! empty( $order['back'] ) ) {
+	$back = $order['back']; // An order of another extension (e.g. the advance of an engineering study).
+}
 if ( ! $order ) {
 	sm_component( 'empty-state', array( 'icon' => 'card', 'title' => __( 'Order not found', 'sm-marketplace' ), 'text' => __( 'This order does not exist or belongs to another account.', 'sm-marketplace' ) ) );
 	return;
@@ -32,7 +35,7 @@ $open    = in_array( $order['status'], array( 'awaiting', 'review' ), true );
 		</div>
 		<div class="sm-order__amount">
 			<strong><?php echo esc_html( sm_money( $order['amount'] ) ); ?></strong>
-			<small><?php esc_html_e( 'TVA included', 'sm-marketplace' ); ?></small>
+			<?php if ( ! isset( $order['tva_rate'] ) || $order['tva_rate'] > 0 ) : ?><small><?php esc_html_e( 'TVA included', 'sm-marketplace' ); ?></small><?php endif; ?>
 		</div>
 	</div>
 	<p><span class="sm-status sm-status--<?php echo esc_attr( $tone[ $order['status'] ] ?? 'muted' ); ?>"><?php echo esc_html( $order['status_label'] ); ?></span></p>

@@ -1,5 +1,17 @@
 # Changelog — sm-engineering
 
+## 0.3.0 — 2026-11-13 (avec sm-subscriptions 0.2.0 et le thème 0.28.0)
+
+- Demande d'étude : plusieurs services d'ingénierie dans une seule demande ; toutes les prestations d'un service coché sont cochées par défaut. Type de projet obligatoire (industriel, hangar de stockage, agricole, élevage, commercial, bureaux, équipement public, habitation, autre), liste modifiable FR/AR dans les réglages. Champ « Budget indicatif » supprimé.
+- Offre : un prix HT par service ; TVA selon le taux des réglages de paiement (TTC si TVA, sinon HT) ; total et avance calculés automatiquement (30 % par défaut, réglable, modifiable sur chaque offre).
+- Offre détaillée envoyée au client (services, prestations, montants, total, avance, solde, délai) ; valable 15 jours ; rappel la veille de l'expiration.
+- Acceptation : le client est dirigé vers le paiement de l'avance (commande SM Subscriptions : virement, CCP, BaridiMob, preuve, vérification, facture). « Complétez votre paiement pour lancer les services demandés » tant qu'elle n'est pas reçue ; pas d'ingénieur avant l'avance.
+- Tâche quotidienne : rappel au client et e-mail à l'administrateur si l'avance n'est pas payée 3 jours après l'acceptation ; annulation automatique (client et administrateur prévenus) si elle n'est pas payée à la fin de l'offre.
+- Solde demandé à la livraison : les documents ne sont téléchargeables qu'une fois le solde reçu.
+- Administration : tableau des montants, commandes liées, boutons « Enregistrer l'avance reçue » / « Enregistrer le solde reçu » (espèces…). Réglages : avance (%), rappel après (jours), types de projet.
+- Base v3 (services, type de projet, HT, TVA, avance, dates de paiement et de rappel) ; les offres envoyées avant 0.3.0 gardent l'ancien fonctionnement.
+- 116 tests PHP, 75 vérifications de bout en bout.
+
 ## 0.2.0 — 2026-11-13
 
 - Services d'ingénierie : 6 services par défaut (Études et Conception, Note de Calcul, Dessin et Modélisation 2D/3D, Expertise et Inspection Technique, CCTP/DQE/BPU, Suivi et Assistance Technique) avec leurs prestations en français et en arabe.

@@ -1,6 +1,7 @@
 <?php
 /**
- * Orders: a plan, an AI credit pack or a listing option, paid outside the site.
+ * Orders: a plan, an AI credit pack, a listing option or (0.2.0) what another
+ * extension sells through the filter sm_sub_order_quote, paid outside the site.
  *
  * Steps: awaiting (payment details shown) → review (proof of payment sent)
  * → paid (checked by the platform team: invoice number, the plan / credits /
@@ -89,6 +90,15 @@ final class Orders {
 			}
 			return array( 'label' => mb_substr( $map[ $item ][0], 0, 200 ), 'amount' => (float) $map[ $item ][1], 'days' => (int) $map[ $item ][2] );
 		}
+		/**
+		 * Orders of other extensions (0.2.0), e.g. the advance and the balance of an
+		 * engineering study (sm-engineering). Return { label, amount (tax included),
+		 * tva_rate (optional: the rate of that sale) } or a WP_Error.
+		 */
+		$ext = apply_filters( 'sm_sub_order_quote', null, $company, $kind, $item, $period, $target );
+		if ( is_array( $ext ) || is_wp_error( $ext ) ) {
+			return $ext;
+		}
 		return new \WP_Error( 'kind', __( 'Unknown order.', 'sm-subscriptions' ) );
 	}
 
@@ -129,7 +139,7 @@ final class Orders {
 				}
 			}
 		}
-		return (string) $order->label;
+		return (string) apply_filters( 'sm_sub_order_label', (string) $order->label, $order );
 	}
 
 	/** Create an order (status awaiting). @return int|\WP_Error */
@@ -139,7 +149,7 @@ final class Orders {
 		if ( is_wp_error( $q ) ) {
 			return $q;
 		}
-		$rate = (float) Settings::get( 'tva_rate' );
+		$rate = isset( $q['tva_rate'] ) ? max( 0, (float) $q['tva_rate'] ) : (float) Settings::get( 'tva_rate' );
 		$wpdb->insert(
 			self::table(),
 			array(

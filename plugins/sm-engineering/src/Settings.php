@@ -23,7 +23,9 @@ final class Settings {
 			'max_files'         => 10,      // Files per upload (brief, deliverables).
 			'file_mb'           => 25,      // Size of one file.
 			'extensions'        => 'pdf, jpg, jpeg, png, webp, dwg, dxf, ifc, zip, xlsx, xls, docx, doc',
-			'quote_valid_days'  => 30,      // Validity of the platform quote.
+			'quote_valid_days'  => 15,      // Validity of the platform quote (a reminder goes the day before).
+			'advance_pct'       => 30,      // Advance asked when the client accepts the quote (% of the total).
+			'pay_reminder_days' => 3,       // Reminder when the advance is still unpaid this many days after acceptance.
 			'requests_per_day'  => 5,       // Mission requests a client may send per day.
 			'public_list'       => 0,       // Also show the list of approved engineers under the services (off since 0.2.0).
 			'show_missions'     => 1,       // Show the number of completed missions on the list.
@@ -92,6 +94,19 @@ final class Settings {
 		return 'ar' === sm_current_language() ? $t['ar'] : $t['fr'];
 	}
 
+	/** TVA rate of the platform (SM Subscriptions → payment settings), 0 without it. */
+	public static function tva_rate() {
+		if ( class_exists( '\\SM\\Subscriptions\\Settings' ) ) {
+			return max( 0, (float) \SM\Subscriptions\Settings::get( 'tva_rate' ) );
+		}
+		return 0.0;
+	}
+
+	/** Payments through the orders of SM Subscriptions (payment page, proof, invoice). */
+	public static function payments_ready() {
+		return class_exists( '\\SM\\Subscriptions\\Orders' ) && method_exists( '\\SM\\Subscriptions\\Orders', 'create' );
+	}
+
 	/** Allowed file extensions (lower case). */
 	public static function extensions() {
 		$list = array_filter( array_map( static fn( $e ) => strtolower( trim( $e, " .\t\n" ) ), explode( ',', (string) self::get( 'extensions' ) ) ) );
@@ -106,7 +121,7 @@ final class Settings {
 		foreach ( array( 'public_list', 'show_missions', 'applications_open' ) as $k ) {
 			$out[ $k ] = empty( $in[ $k ] ) ? 0 : 1;
 		}
-		foreach ( array( 'max_files' => array( 1, 50 ), 'file_mb' => array( 1, 200 ), 'quote_valid_days' => array( 1, 365 ), 'requests_per_day' => array( 1, 200 ) ) as $k => $r ) {
+		foreach ( array( 'max_files' => array( 1, 50 ), 'file_mb' => array( 1, 200 ), 'quote_valid_days' => array( 1, 365 ), 'requests_per_day' => array( 1, 200 ), 'advance_pct' => array( 0, 100 ), 'pay_reminder_days' => array( 1, 60 ) ) as $k => $r ) {
 			$out[ $k ] = max( $r[0], min( $r[1], (int) ( $in[ $k ] ?? $d[ $k ] ) ) );
 		}
 		$ext               = sanitize_text_field( (string) ( $in['extensions'] ?? $d['extensions'] ) );
@@ -114,6 +129,9 @@ final class Settings {
 
 		// Former mission types (before 0.2.0) are kept as they were: they name old missions.
 		$out['types'] = (array) $cur['types'];
+		if ( isset( $in['project_types'] ) && is_array( $in['project_types'] ) ) {
+			ProjectTypes::save( $in['project_types'], (array) ( $in['new_project_type'] ?? array() ) );
+		}
 		if ( isset( $in['services'] ) && is_array( $in['services'] ) ) {
 			Services::save( $in['services'], (array) ( $in['new_service'] ?? array() ) );
 		}

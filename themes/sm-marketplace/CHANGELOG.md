@@ -1,5 +1,11 @@
 # Changelog — sm-marketplace
 
+## 0.28.0 — 2026-11-13 (avec sm-engineering 0.3.0)
+
+- Demander une étude : cartes à cocher pour un ou plusieurs services, prestations cochées par défaut ; type de projet ; plus de budget.
+- Page de l'étude (client) : offre détaillée (services, prestations, montants HT, TVA, TTC, avance, solde, délai, validité 15 jours), « Accepter l'offre » vers le paiement de l'avance, bandeau « Complétez votre paiement… » avec bouton de paiement, suivi Avance / Solde, solde à payer avant les documents.
+- Page de commande : retour vers l'étude ; « TVA incluse » seulement si la commande a une TVA.
+
 ## 0.27.0 — 2026-11-13 (avec sm-engineering 0.2.0)
 
 - Page Ingénierie : cartes des services d'ingénierie (image, titre, prestations, bouton « Demander ce service »), puis « Comment ça marche » ; plus d'annuaire des ingénieurs partenaires (sauf si l'administrateur le réactive) ; lien discret « Devenir ingénieur partenaire » en bas.

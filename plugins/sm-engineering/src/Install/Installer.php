@@ -22,6 +22,14 @@ final class Installer {
 			$s['public_list'] = 0;
 			update_option( \SM\Engineering\Settings::OPTION, $s );
 		}
+		// 0.3.0: quotes are valid 15 days (unless the administrator chose another length).
+		if ( $from > 0 && $from < 3 ) {
+			$s = get_option( \SM\Engineering\Settings::OPTION, array() );
+			if ( is_array( $s ) && 30 === (int) ( $s['quote_valid_days'] ?? 0 ) ) {
+				$s['quote_valid_days'] = 15;
+				update_option( \SM\Engineering\Settings::OPTION, $s );
+			}
+		}
 		update_option( 'sm_engineering_db_version', SM_ENGINEERING_DB_VERSION, false );
 	}
 
@@ -67,6 +75,8 @@ final class Installer {
 				title varchar(200) NOT NULL DEFAULT '',
 				description text,
 				prestations text,
+				services longtext,
+				project_type varchar(40) NOT NULL DEFAULT '',
 				wilaya char(2) NOT NULL DEFAULT '',
 				needed_by date DEFAULT NULL,
 				budget decimal(14,2) NOT NULL DEFAULT 0,
@@ -77,6 +87,13 @@ final class Installer {
 				quote_days int(11) NOT NULL DEFAULT 0,
 				quote_message text,
 				quote_valid_until date DEFAULT NULL,
+				amount_ht decimal(14,2) NOT NULL DEFAULT 0,
+				tva_rate decimal(5,2) NOT NULL DEFAULT 0,
+				advance_pct decimal(5,2) NOT NULL DEFAULT 0,
+				advance_amount decimal(14,2) NOT NULL DEFAULT 0,
+				advance_paid_at datetime DEFAULT NULL,
+				quote_reminded_at datetime DEFAULT NULL,
+				pay_reminded_at datetime DEFAULT NULL,
 				engineer_fee decimal(14,2) NOT NULL DEFAULT 0,
 				engineer_days int(11) NOT NULL DEFAULT 0,
 				engineer_note text,

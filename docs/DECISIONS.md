@@ -232,3 +232,18 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Prix | Aucun prix par service : la plateforme envoie un devis | Pas de prix inventé |
 | Lien partenaires | Lien discret « Devenir ingénieur partenaire » en bas de page | Choix du client |
 | Arabe | Traduction des services et prestations à relire par un ingénieur arabophone | Termes techniques |
+
+## 13 novembre 2026 — Ingénierie : plusieurs services, offre détaillée, avance
+
+| Sujet | Décision | Raison |
+|---|---|---|
+| Plusieurs services | Une seule demande, une référence, un seul ingénieur pour toute la mission ; prestations cochées par défaut | Choix du client |
+| Type de projet | Liste obligatoire modifiable (FR/AR), « Autre » en dernier | Évaluer la demande ; aucun client bloqué |
+| Budget indicatif | Supprimé du formulaire (gardé pour les anciennes demandes) | La plateforme fait l'offre |
+| Prix | Un prix HT par service ; TVA du réglage de paiement figée sur l'offre ; TTC si TVA, sinon HT | Choix du client |
+| Avance | 30 % par défaut, réglable et modifiable par offre, calculée sur le total | Choix du client |
+| Validité | 15 jours ; rappel la veille | Choix du client |
+| Avance non payée | Rappel client + e-mail admin après 3 jours ; annulation à la fin de l'offre (sauf preuve en vérification) | Choix du client |
+| Paiement | Commandes de SM Subscriptions (virement, CCP, BaridiMob, preuve, facture) ; pas d'ingénieur avant l'avance | Un seul circuit de paiement |
+| Solde | Payé à la livraison ; documents téléchargeables après le solde | Protège la plateforme |
+| Tâche quotidienne | WP-Cron ; une tâche planifiée chez l'hébergeur est conseillée | WP-Cron ne tourne qu'avec des visites |

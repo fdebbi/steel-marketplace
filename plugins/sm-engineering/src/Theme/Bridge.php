@@ -21,6 +21,8 @@ use SM\Engineering\Files;
 use SM\Engineering\Form;
 use SM\Engineering\Messages;
 use SM\Engineering\Missions;
+use SM\Engineering\Payments;
+use SM\Engineering\ProjectTypes;
 use SM\Engineering\Services;
 use SM\Engineering\Settings;
 
@@ -162,6 +164,7 @@ final class Bridge {
 			'block'      => Form::request_block(),
 			'types'      => self::type_options(),
 			'services'   => self::services(),
+			'projects'   => ProjectTypes::options(),
 			'type'       => sanitize_key( (string) ( $args['type'] ?? '' ) ),
 			'preferred'  => ( $pe && 'approved' === $pe->status ) ? Engineers::public_shape( $pe ) : null,
 			// The list of partner engineers is offered only when it is public (setting).
@@ -179,12 +182,20 @@ final class Bridge {
 
 	/** A mission as the client sees it (no engineer, no fee). */
 	public static function client_shape( $m, $detail = false ) {
-		list( $tone, $label ) = Missions::client_status( $m->status );
+		$totals = Missions::totals( $m );
+		$key    = $m->status;
+		if ( 'accepted' === $m->status && $totals['advance_due'] ) {
+			$key = 'accepted_pay';
+		} elseif ( 'delivered' === $m->status && $totals['balance_due'] ) {
+			$key = 'delivered_pay';
+		}
+		list( $tone, $label ) = Missions::client_status( $key );
 		$out = array(
 			'id'          => $m->id,
 			'ref'         => $m->ref,
 			'title'       => $m->title,
-			'type'        => Settings::type_label( $m->type ),
+			'type'        => Missions::services_label( $m ),
+			'project'     => ProjectTypes::label( $m->project_type ),
 			'prestations' => Missions::prestations( $m ),
 			'status'      => $m->status,
 			'tone'        => $tone,
@@ -203,7 +214,9 @@ final class Bridge {
 			'description' => (string) $m->description,
 			'needed_by'   => $m->needed_by,
 			'budget'      => $m->budget,
-			'quote'       => $m->quote_amount > 0 ? array( 'amount' => $m->quote_amount, 'days' => $m->quote_days, 'message' => (string) $m->quote_message, 'valid_until' => $m->quote_valid_until, 'expired' => $expired ) : null,
+			'quote'       => $m->quote_amount > 0 ? array( 'amount' => $m->quote_amount, 'days' => $m->quote_days, 'message' => (string) $m->quote_message, 'valid_until' => $m->quote_valid_until, 'expired' => $expired, 'totals' => $totals, 'valid_days' => (int) Settings::get( 'quote_valid_days' ) ) : null,
+			'lines'       => array_map( static fn( $l ) => array( 'title' => $l['title'], 'items' => $l['labels'], 'amount' => $l['amount'] ), Missions::lines( $m ) ),
+			'payments'    => in_array( $m->status, array( 'accepted', 'assigned', 'in_progress', 'review', 'delivered', 'closed' ), true ) && ! $totals['legacy'] ? Payments::state( $m ) : null,
 			'reason'      => in_array( $m->status, array( 'declined' ), true ) ? (string) $m->reason : '',
 			'paid'        => (bool) $m->client_paid_at,
 			'brief'       => self::files( $m, 'client', 'brief' ),
@@ -212,9 +225,10 @@ final class Bridge {
 			'messages'    => Messages::shape( Messages::for_mission( $m->id, 'client' ), get_current_user_id() ),
 			'can'         => array(
 				'accept'  => 'quoted' === $m->status && ! $expired,
+				'pay'     => $totals['advance_due'] ? 'advance' : ( $totals['balance_due'] ? 'balance' : '' ),
 				'refuse'  => 'quoted' === $m->status,
 				'cancel'  => in_array( $m->status, array( 'submitted', 'quoted' ), true ),
-				'confirm' => 'delivered' === $m->status,
+				'confirm' => 'delivered' === $m->status && $totals['balance_paid'],
 				'files'   => in_array( $m->status, Missions::OPEN, true ),
 				'write'   => true,
 			),
@@ -262,8 +276,11 @@ final class Bridge {
 			'id'      => $m->id,
 			'ref'     => $m->ref,
 			'title'   => $m->title,
-			'type'    => Settings::type_label( $m->type ),
+			'type'    => Missions::services_label( $m ),
+			'project' => ProjectTypes::label( $m->project_type ),
 			'prestations' => Missions::prestations( $m ),
+			// Services and prestations, without the client's prices.
+			'lines'   => array_map( static fn( $l ) => array( 'title' => $l['title'], 'items' => $l['labels'] ), Missions::lines( $m ) ),
 			'status'  => $m->status,
 			'tone'    => $tone,
 			'label'   => $label,

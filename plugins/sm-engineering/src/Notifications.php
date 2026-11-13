@@ -18,7 +18,7 @@ final class Notifications {
 
 	public static function init() {
 		add_filter( 'sm_notification_types', array( __CLASS__, 'types' ) );
-		$steps = array( 'quoted', 'declined', 'accepted', 'quote_declined', 'cancelled', 'assigned', 'unassigned', 'started', 'engineer_declined', 'review', 'rework', 'delivered', 'closed', 'fee_paid' );
+		$steps = array( 'quoted', 'declined', 'accepted', 'quote_declined', 'cancelled', 'assigned', 'unassigned', 'started', 'engineer_declined', 'review', 'rework', 'delivered', 'closed', 'fee_paid', 'quote_reminder', 'payment_reminder', 'expired_unpaid', 'advance_paid', 'balance_paid' );
 		foreach ( $steps as $step ) {
 			add_action( 'sm_mission_' . $step, array( __CLASS__, 'on_' . $step ), 10, 2 );
 		}
@@ -27,6 +27,51 @@ final class Notifications {
 	/** Dashboard link of a mission for the client or the engineer. */
 	public static function link( $side, $mission_id ) {
 		return CoreRoutes::url( 'account', array( 'view' => 'client' === $side ? 'studies' : 'missions', 'id' => (int) $mission_id ) );
+	}
+
+	/** Amount in dinars: 180 000 DA. */
+	public static function money( $v ) {
+		return number_format( (float) $v, 0, ',', ' ' ) . ' DA';
+	}
+
+	/**
+	 * The quote in plain text (e-mail and notification): each service with its
+	 * prestations and price, totals, advance, balance, time and validity.
+	 */
+	public static function quote_text( $m ) {
+		$t     = Missions::totals( $m );
+		$lines = array();
+		foreach ( Missions::lines( $m ) as $l ) {
+			$lines[] = '• ' . $l['title'] . ' : ' . self::money( $l['amount'] ) . ( $l['labels'] ? "\n   " . implode( "\n   ", array_map( static fn( $p ) => '- ' . $p, $l['labels'] ) ) : '' );
+		}
+		if ( $t['tva_rate'] > 0 ) {
+			/* translators: %s: amount. */
+			$lines[] = "\n" . sprintf( __( 'Total before tax: %s', 'sm-engineering' ), self::money( $t['ht'] ) );
+			/* translators: 1: TVA rate, 2: amount. */
+			$lines[] = sprintf( __( 'TVA %1$s %%: %2$s', 'sm-engineering' ), rtrim( rtrim( number_format( $t['tva_rate'], 2, '.', '' ), '0' ), '.' ), self::money( $t['tva'] ) );
+			/* translators: %s: amount. */
+			$lines[] = sprintf( __( 'Total including tax: %s', 'sm-engineering' ), self::money( $t['ttc'] ) );
+		} else {
+			/* translators: %s: amount. */
+			$lines[] = "\n" . sprintf( __( 'Total (no TVA): %s', 'sm-engineering' ), self::money( $t['ttc'] ) );
+		}
+		if ( $t['advance'] > 0 ) {
+			/* translators: 1: percentage, 2: amount. */
+			$lines[] = sprintf( __( 'Advance to pay on acceptance (%1$s %%): %2$s', 'sm-engineering' ), rtrim( rtrim( number_format( $t['advance_pct'], 2, '.', '' ), '0' ), '.' ), self::money( $t['advance'] ) );
+			if ( $t['balance'] > 0 ) {
+				/* translators: %s: amount. */
+				$lines[] = sprintf( __( 'Balance, before the documents are released: %s', 'sm-engineering' ), self::money( $t['balance'] ) );
+			}
+		}
+		if ( $m->quote_days ) {
+			/* translators: %d: days. */
+			$lines[] = sprintf( _n( 'Time: %d day', 'Time: %d days', (int) $m->quote_days, 'sm-engineering' ), (int) $m->quote_days );
+		}
+		if ( $m->quote_valid_until ) {
+			/* translators: 1: date, 2: number of days. */
+			$lines[] = sprintf( __( 'This offer is valid until %1$s (%2$d days).', 'sm-engineering' ), wp_date( 'd/m/Y', strtotime( $m->quote_valid_until . ' 12:00:00 UTC' ) ), (int) Settings::get( 'quote_valid_days' ) );
+		}
+		return implode( "\n", $lines );
 	}
 
 	public static function admin_link( $mission_id ) {
@@ -59,9 +104,30 @@ final class Notifications {
 			false
 		);
 		$types['mission.client_accepted'] = $def(
-			static fn( $p ) => __( 'Quote accepted: assign an engineer', 'sm-engineering' ),
+			static fn( $p ) => __( 'Quote accepted by the client', 'sm-engineering' ),
 			/* translators: %s: mission reference and title. */
-			static fn( $p ) => sprintf( __( 'The client accepted the quote of %s. Choose the engineer.', 'sm-engineering' ), $ref( $p ) ),
+			static fn( $p ) => ( ( $x = $m( $p ) ) && Missions::totals( $x )['advance_due'] ) ? sprintf( __( 'The client accepted the quote of %s. The mission starts once the advance is received.', 'sm-engineering' ), $ref( $p ) ) : sprintf( __( 'The client accepted the quote of %s. Choose the engineer.', 'sm-engineering' ), $ref( $p ) ),
+			$admin,
+			false
+		);
+		$types['mission.unpaid']         = $def(
+			static fn( $p ) => __( 'Advance not paid yet', 'sm-engineering' ),
+			/* translators: %s: mission reference and title. */
+			static fn( $p ) => sprintf( __( 'The client accepted the quote of %s but has not paid the advance yet. A reminder was sent.', 'sm-engineering' ), $ref( $p ) ),
+			$admin,
+			false
+		);
+		$types['mission.cancelled_unpaid'] = $def(
+			static fn( $p ) => __( 'Quote cancelled: advance not paid', 'sm-engineering' ),
+			/* translators: %s: mission reference and title. */
+			static fn( $p ) => sprintf( __( 'The advance of %s was not paid before the end of the quote: the request is cancelled.', 'sm-engineering' ), $ref( $p ) ),
+			$admin,
+			false
+		);
+		$types['mission.advance_in']     = $def(
+			static fn( $p ) => __( 'Advance received: assign an engineer', 'sm-engineering' ),
+			/* translators: %s: mission reference and title. */
+			static fn( $p ) => sprintf( __( 'The advance of %s is received. Choose the engineer.', 'sm-engineering' ), $ref( $p ) ),
 			$admin,
 			false
 		);
@@ -111,8 +177,44 @@ final class Notifications {
 		// Client.
 		$types['mission.quote']          = $def(
 			static fn( $p ) => __( 'Your quote for the study is ready', 'sm-engineering' ),
+			/* translators: 1: mission reference and title, 2: detail of the quote. */
+			static fn( $p ) => sprintf( __( "The quote for %1\$s is ready:\n\n%2\$s\n\nAccept or decline it from your account.", 'sm-engineering' ), $ref( $p ), ( $x = $m( $p ) ) ? self::quote_text( $x ) : '' ),
+			$client
+		);
+		$types['mission.quote_reminder'] = $def(
+			static fn( $p ) => __( 'Your quote ends tomorrow', 'sm-engineering' ),
+			/* translators: 1: mission reference and title, 2: date. */
+			static fn( $p ) => sprintf( __( 'The quote for %1$s is valid until %2$s. Accept it or decline it from your account before it ends.', 'sm-engineering' ), $ref( $p ), ( $x = $m( $p ) ) && $x->quote_valid_until ? wp_date( 'd/m/Y', strtotime( $x->quote_valid_until . ' 12:00:00 UTC' ) ) : '' ),
+			$client
+		);
+		$types['mission.pay_reminder']   = $def(
+			static fn( $p ) => __( 'Complete your payment to start the study', 'sm-engineering' ),
+			/* translators: 1: mission reference and title, 2: amount, 3: date. */
+			static fn( $p ) => sprintf( __( 'You accepted the quote for %1$s. Pay the advance of %2$s before %3$s to start the requested services; after that date the quote is cancelled.', 'sm-engineering' ), $ref( $p ), ( $x = $m( $p ) ) ? $money( $x->advance_amount ) : '', ( $x = $m( $p ) ) && $x->quote_valid_until ? wp_date( 'd/m/Y', strtotime( $x->quote_valid_until . ' 12:00:00 UTC' ) ) : '' ),
+			$client
+		);
+		$types['mission.expired_unpaid'] = $def(
+			static fn( $p ) => __( 'Your study request is cancelled', 'sm-engineering' ),
+			/* translators: %s: mission reference and title. */
+			static fn( $p ) => sprintf( __( 'The advance for %s was not paid before the end of the quote: the request is cancelled. Send a new request when you are ready.', 'sm-engineering' ), $ref( $p ) ),
+			$client
+		);
+		$types['mission.advance_received'] = $def(
+			static fn( $p ) => __( 'Advance received: your study starts', 'sm-engineering' ),
+			/* translators: %s: mission reference and title. */
+			static fn( $p ) => sprintf( __( 'Your advance for %s is received. The platform appoints a partner engineer; you are told when the study starts.', 'sm-engineering' ), $ref( $p ) ),
+			$client
+		);
+		$types['mission.ready_pay']      = $def(
+			static fn( $p ) => __( 'Your study is ready', 'sm-engineering' ),
 			/* translators: 1: mission reference and title, 2: amount. */
-			static fn( $p ) => sprintf( __( 'The quote for %1$s is ready: %2$s. Accept it to start the study.', 'sm-engineering' ), $ref( $p ), ( $x = $m( $p ) ) ? $money( $x->quote_amount ) : '' ),
+			static fn( $p ) => sprintf( __( 'The documents of %1$s are ready and checked by the platform. Pay the balance of %2$s to download them.', 'sm-engineering' ), $ref( $p ), ( $x = $m( $p ) ) ? $money( Missions::totals( $x )['balance'] ) : '' ),
+			$client
+		);
+		$types['mission.balance_received'] = $def(
+			static fn( $p ) => __( 'Payment received: your documents are available', 'sm-engineering' ),
+			/* translators: %s: mission reference and title. */
+			static fn( $p ) => sprintf( __( 'Your payment for %s is received. The documents are available in your account once the study is delivered.', 'sm-engineering' ), $ref( $p ) ),
 			$client
 		);
 		$types['mission.not_taken']      = $def(
@@ -260,8 +362,35 @@ final class Notifications {
 		self::to_engineer( $m->engineer_id, $m, 'mission.rework' );
 	}
 
+	public static function on_quote_reminder( $m ) {
+		self::to_client( $m, 'mission.quote_reminder' );
+	}
+
+	public static function on_payment_reminder( $m ) {
+		self::to_client( $m, 'mission.pay_reminder' );
+		self::to_team( $m, 'mission.unpaid' );
+	}
+
+	public static function on_expired_unpaid( $m ) {
+		self::to_client( $m, 'mission.expired_unpaid' );
+		self::to_team( $m, 'mission.cancelled_unpaid' );
+	}
+
+	public static function on_advance_paid( $m ) {
+		self::to_client( $m, 'mission.advance_received' );
+		self::to_team( $m, 'mission.advance_in' );
+	}
+
+	public static function on_balance_paid( $m ) {
+		if ( in_array( $m->status, array( 'delivered', 'closed' ), true ) ) {
+			self::to_client( $m, 'mission.delivered' );
+		} elseif ( ! Missions::totals( $m )['advance_due'] ) {
+			self::to_client( $m, 'mission.balance_received' );
+		}
+	}
+
 	public static function on_delivered( $m ) {
-		self::to_client( $m, 'mission.delivered' );
+		self::to_client( $m, Missions::totals( $m )['balance_paid'] ? 'mission.delivered' : 'mission.ready_pay' );
 		self::to_engineer( $m->engineer_id, $m, 'mission.validated' );
 	}
 

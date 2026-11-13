@@ -50,13 +50,32 @@ final class Form {
 	public static function validate_request( array $in ) {
 		$errors = array();
 		$types  = Settings::types();
-		$type   = sanitize_key( (string) ( $in['type'] ?? '' ) );
-		if ( ! isset( $types[ $type ] ) ) {
-			$errors['type'] = __( 'Choose the engineering service.', 'sm-engineering' );
+		// One or more services (0.3.0); "type" (one service) is still read for old links and tests.
+		$codes = array_map( 'sanitize_key', (array) ( $in['services'] ?? array() ) );
+		if ( ! $codes && ! empty( $in['type'] ) ) {
+			$codes = array( sanitize_key( (string) $in['type'] ) );
 		}
-		$picked = isset( $types[ $type ] ) ? Services::pick( $type, array_map( 'absint', (array) ( ( (array) ( $in['prestations'] ?? array() ) )[ $type ] ?? array() ) ) ) : array();
-		if ( isset( $types[ $type ] ) && ! $picked && ( Services::get( $type )['items'] ?? array() ) ) {
-			$errors['prestations'] = __( 'Tick at least one prestation of the service.', 'sm-engineering' );
+		$codes = array_values( array_unique( array_filter( $codes, static fn( $c ) => isset( $types[ $c ] ) ) ) );
+		if ( ! $codes ) {
+			$errors['services'] = __( 'Choose at least one engineering service.', 'sm-engineering' );
+		}
+		$ticked   = (array) ( $in['prestations'] ?? array() );
+		$services = array();
+		$picked   = array();
+		foreach ( $codes as $code ) {
+			$sv   = Services::get( $code );
+			$pick = Services::pick( $code, array_map( 'absint', (array) ( $ticked[ $code ] ?? array() ) ) );
+			if ( $sv && $sv['items'] && ! $pick ) {
+				/* translators: %s: engineering service. */
+				$errors['prestations'] = sprintf( __( 'Tick at least one prestation of the service “%s”.', 'sm-engineering' ), Services::text( $sv ) );
+			}
+			$services[] = array( 'code' => $code, 'fr' => $sv ? $sv['fr'] : $types[ $code ]['fr'], 'ar' => $sv ? $sv['ar'] : $types[ $code ]['ar'], 'items' => $pick, 'amount' => 0 );
+			$picked     = array_merge( $picked, $pick );
+		}
+		$ptypes  = ProjectTypes::all();
+		$project = sanitize_key( (string) ( $in['project_type'] ?? '' ) );
+		if ( ! isset( $ptypes[ $project ] ) ) {
+			$errors['project_type'] = __( 'Choose the type of project.', 'sm-engineering' );
 		}
 		$title = mb_substr( sanitize_text_field( (string) ( $in['title'] ?? '' ) ), 0, 200 );
 		if ( mb_strlen( $title ) < 5 ) {
@@ -74,7 +93,6 @@ final class Form {
 		if ( '' !== $needed && ( ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', $needed ) || $needed < gmdate( 'Y-m-d' ) ) ) {
 			$errors['needed_by'] = __( 'Choose a date in the future, or leave it empty.', 'sm-engineering' );
 		}
-		$budget = (float) str_replace( array( ' ', ',' ), array( '', '.' ), (string) ( $in['budget'] ?? '' ) );
 		$pref   = absint( $in['engineer'] ?? 0 );
 		if ( $pref && ! Engineers::is_approved( $pref ) ) {
 			$pref = 0;
@@ -82,13 +100,14 @@ final class Form {
 		return array(
 			'errors' => $errors,
 			'data'   => array(
-				'type'         => $type,
+				'type'         => $codes[0] ?? '',
+				'services'     => $services,
+				'project_type' => $project,
 				'title'        => $title,
 				'description'  => $desc,
 				'prestations'  => $picked,
 				'wilaya'       => $wilaya,
 				'needed_by'    => '' !== $needed ? $needed : null,
-				'budget'       => max( 0, min( 1e10, $budget ) ),
 				'preferred_id' => $pref,
 			),
 		);
@@ -147,6 +166,18 @@ final class Form {
 			}
 			Forms::back( $r['errors'], $r['files'] ? __( 'Documents added. The platform is told.', 'sm-engineering' ) : '' );
 		}
+		if ( 'pay' === $do ) {
+			$t    = Missions::totals( $m );
+			$item = $t['advance_due'] ? 'advance' : ( $t['balance_due'] ? 'balance' : '' );
+			if ( '' === $item ) {
+				Forms::back( array( __( 'Nothing is to pay for this study now.', 'sm-engineering' ) ) );
+			}
+			$order = Payments::order_for( $m, $item, $user_id );
+			if ( is_wp_error( $order ) ) {
+				Forms::back( array( $order->get_error_message() ) );
+			}
+			Forms::back( array(), __( 'Pay with one of the methods below, then send the proof of payment.', 'sm-engineering' ), Payments::order_url( $order ) );
+		}
 		$map = array(
 			'accept'  => array( 'accept', __( 'Quote accepted. The platform appoints a partner engineer and you are told when the study starts.', 'sm-engineering' ) ),
 			'refuse'  => array( 'refuse', __( 'You declined the quote. The platform is told.', 'sm-engineering' ) ),
@@ -159,6 +190,14 @@ final class Form {
 		$r = Missions::transition( $m, $map[ $do ][0], array( 'reason' => Forms::post_textarea( 'reason' ) ) );
 		if ( is_wp_error( $r ) ) {
 			Forms::back( array( $r->get_error_message() ) );
+		}
+		// Quote accepted: the client goes to the payment of the advance.
+		if ( 'accept' === $do && Missions::totals( $r )['advance_due'] ) {
+			$order = Payments::order_for( $r, 'advance', $user_id );
+			if ( ! is_wp_error( $order ) ) {
+				Forms::back( array(), __( 'Quote accepted. Pay the advance to start the requested services: pay with one of the methods below, then send the proof of payment.', 'sm-engineering' ), Payments::order_url( $order ) );
+			}
+			Forms::back( array(), __( 'Quote accepted. The platform sends you how to pay the advance; the services start once it is received.', 'sm-engineering' ) );
 		}
 		Forms::back( array(), $map[ $do ][1] );
 	}

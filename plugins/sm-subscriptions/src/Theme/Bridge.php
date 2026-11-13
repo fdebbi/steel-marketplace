@@ -132,6 +132,9 @@ final class Bridge {
 			'invoice_no' => $o->invoice_no,
 			'url'        => CoreRoutes::url( 'account', array( 'view' => 'order', 'order' => (int) $o->id ) ),
 			'invoice'    => 'paid' === $o->status ? CoreRoutes::url( 'account', array( 'view' => 'invoice', 'id' => (int) $o->id ) ) : '',
+			'tva_rate'   => (float) $o->tva_rate,
+			// Page to go back to (orders of other extensions, e.g. an engineering study).
+			'back'       => (string) apply_filters( 'sm_sub_order_back', '', $o ),
 		);
 	}
 

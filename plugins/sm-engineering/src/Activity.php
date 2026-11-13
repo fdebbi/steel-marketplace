@@ -55,8 +55,11 @@ final class Activity {
 		return Events::user_vars( $m->client_user ) + $c + array(
 			'reference'  => $m->ref,
 			'titre'      => $m->title,
-			'type_etude' => Settings::type_label( $m->type ),
-			'prestations' => implode( ', ', Missions::prestations( $m ) ),
+			'type_etude' => Missions::services_label( $m ),
+			'prestations' => implode( "\n", array_map( static fn( $l ) => '• ' . $l['title'] . ( $l['labels'] ? ' : ' . implode( ', ', $l['labels'] ) : '' ), Missions::lines( $m ) ) ),
+			'type_projet' => ProjectTypes::label( $m->project_type ),
+			'avance'     => $m->advance_amount > 0 ? number_format( $m->advance_amount, 0, ',', ' ' ) . ' DA' : '',
+			'offre'      => $m->quote_amount > 0 ? Notifications::quote_text( $m ) : '',
 			'client'     => $c['entreprise'],
 			'ingenieur'  => $e['entreprise'],
 			'message'    => (string) $m->description,
@@ -68,7 +71,7 @@ final class Activity {
 	}
 
 	public static function events( array $events ) {
-		$mvars = array( 'reference', 'titre', 'type_etude', 'prestations', 'client', 'ingenieur', 'nom', 'email', 'telephone', 'wilaya', 'message', 'montant', 'honoraires', 'lien', 'lien_admin' );
+		$mvars = array( 'reference', 'titre', 'type_etude', 'prestations', 'type_projet', 'avance', 'offre', 'client', 'ingenieur', 'nom', 'email', 'telephone', 'wilaya', 'message', 'montant', 'honoraires', 'lien', 'lien_admin' );
 		$events['engineer.applied']   = array(
 			'group'     => 'engineering',
 			'label'     => __( 'Partner engineer application', 'sm-engineering' ),
@@ -105,7 +108,7 @@ final class Activity {
 			'templates' => array(
 				'admin' => array(
 					static fn() => __( 'Study request {reference}: {type_etude}', 'sm-engineering' ),
-					static fn() => __( "{client} ({wilaya}) asks for a study.\n\n{reference} — {titre}\nType: {type_etude}\nPrestations: {prestations}\n\n{message}\n\nContact: {nom} — {email} — {telephone}\n\nPrepare the quote:\n{lien_admin}", 'sm-engineering' ),
+					static fn() => __( "{client} ({wilaya}) asks for a study.\n\n{reference} — {titre}\nProject: {type_projet}\nServices:\n{prestations}\n\n{message}\n\nContact: {nom} — {email} — {telephone}\n\nPrepare the quote:\n{lien_admin}", 'sm-engineering' ),
 				),
 				'user'  => array(
 					static fn() => __( 'Your study request {reference} is received', 'sm-engineering' ),
@@ -125,9 +128,50 @@ final class Activity {
 			'templates' => array(
 				'admin' => array(
 					static fn() => __( 'Quote accepted: {reference} ({montant})', 'sm-engineering' ),
-					static fn() => __( "{client} accepted the quote of {reference} — {titre}.\n\nAmount: {montant}\n\nAssign a partner engineer:\n{lien_admin}", 'sm-engineering' ),
+					static fn() => __( "{client} accepted the quote of {reference} — {titre}.\n\nAmount: {montant}\nAdvance to receive: {avance}\n\nThe mission is given to a partner engineer once the advance is received (orders to check in SM → Orders):\n{lien_admin}", 'sm-engineering' ),
 				),
 			),
+		);
+		$simple = static function ( $key, $label, $describe, $subject, $body ) use ( $mvars ) {
+			return array(
+				'group'     => 'engineering',
+				'label'     => $label,
+				'audit'     => $key,
+				'admin'     => 'now',
+				'user'      => null,
+				'vars'      => array( __CLASS__, 'mission_vars' ),
+				'variables' => $mvars,
+				'describe'  => $describe,
+				'templates' => array( 'admin' => array( $subject, $body ) ),
+			);
+		};
+		$events['mission.advance_paid']     = $simple(
+			'mission.advance_paid',
+			__( 'Advance of a study received', 'sm-engineering' ),
+			static fn( $v ) => sprintf( /* translators: 1: reference, 2: amount. */ __( 'Advance of %1$s received (%2$s)', 'sm-engineering' ), $v['reference'], $v['avance'] ),
+			static fn() => __( 'Advance received: {reference}', 'sm-engineering' ),
+			static fn() => __( "The advance of {reference} — {titre} is received ({avance}).\n\nGive the mission to a partner engineer:\n{lien_admin}", 'sm-engineering' )
+		);
+		$events['mission.payment_reminder'] = $simple(
+			'mission.payment_reminder',
+			__( 'Advance of a study not paid', 'sm-engineering' ),
+			static fn( $v ) => sprintf( /* translators: %s: reference. */ __( 'Advance of %s not paid yet: reminder sent to the client', 'sm-engineering' ), $v['reference'] ),
+			static fn() => __( 'Advance not paid: {reference}', 'sm-engineering' ),
+			static fn() => __( "{client} accepted the quote of {reference} — {titre} but has not paid the advance ({avance}) yet. A reminder was sent to the client.\n\nContact: {nom} — {email} — {telephone}\n\n{lien_admin}", 'sm-engineering' )
+		);
+		$events['mission.expired_unpaid']   = $simple(
+			'mission.expired_unpaid',
+			__( 'Study cancelled: advance not paid', 'sm-engineering' ),
+			static fn( $v ) => sprintf( /* translators: %s: reference. */ __( '%s cancelled: advance not paid before the end of the quote', 'sm-engineering' ), $v['reference'] ),
+			static fn() => __( 'Cancelled, advance not paid: {reference}', 'sm-engineering' ),
+			static fn() => __( "The advance of {reference} — {titre} ({client}) was not paid before the end of the quote. The request is cancelled and the client is told.\n\n{lien_admin}", 'sm-engineering' )
+		);
+		$events['mission.balance_paid']     = $simple(
+			'mission.balance_paid',
+			__( 'Balance of a study received', 'sm-engineering' ),
+			static fn( $v ) => sprintf( /* translators: %s: reference. */ __( 'Balance of %s received', 'sm-engineering' ), $v['reference'] ),
+			static fn() => __( 'Balance received: {reference}', 'sm-engineering' ),
+			static fn() => __( "The balance of {reference} — {titre} is received. The documents are available to the client once the study is delivered.\n\n{lien_admin}", 'sm-engineering' )
 		);
 		$events['mission.engineer_declined'] = array(
 			'group'     => 'engineering',
@@ -205,6 +249,11 @@ final class Activity {
 			'mission.fee_paid'          => __( 'Engineer fee paid', 'sm-engineering' ),
 			'mission.client_paid'       => __( 'Client payment recorded', 'sm-engineering' ),
 			'mission.client_unpaid'     => __( 'Client payment cancelled', 'sm-engineering' ),
+			'mission.advance_paid'      => __( 'Advance of a study received', 'sm-engineering' ),
+			'mission.balance_paid'      => __( 'Balance of a study received', 'sm-engineering' ),
+			'mission.quote_reminder'    => __( 'Reminder: quote ending', 'sm-engineering' ),
+			'mission.payment_reminder'  => __( 'Reminder: advance not paid', 'sm-engineering' ),
+			'mission.expired_unpaid'    => __( 'Study cancelled: advance not paid', 'sm-engineering' ),
 			'mission.message'           => __( 'Message on a mission', 'sm-engineering' ),
 			'mission.file_downloaded'   => __( 'Mission file downloaded', 'sm-engineering' ),
 			'mission.'                  => __( 'Mission', 'sm-engineering' ),

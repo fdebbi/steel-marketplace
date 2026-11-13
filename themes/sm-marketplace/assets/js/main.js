@@ -214,18 +214,20 @@
 		narrow();
 	} );
 
-	/* Study request (0.27.0): show the prestations of the chosen engineering service. */
-	$$( '[data-sm-service]' ).forEach( function ( sel ) {
-		var form = sel.form;
-		function show() {
-			$$( '[data-sm-prest]', form ).forEach( function ( fs ) {
-				var on = fs.getAttribute( 'data-sm-prest' ) === sel.value;
-				fs.hidden = ! on;
-				fs.disabled = ! on;
+	/* Study request (0.28.0): one or more services; ticking a service ticks all its prestations. */
+	$$( '[data-sm-svc]' ).forEach( function ( box ) {
+		var toggle = box.querySelector( '[data-sm-svc-toggle]' ), items = box.querySelector( '[data-sm-svc-items]' );
+		function show( fresh ) {
+			box.classList.toggle( 'is-on', toggle.checked );
+			if ( ! items ) { return; }
+			items.hidden = ! toggle.checked;
+			$$( 'input', items ).forEach( function ( i ) {
+				i.disabled = ! toggle.checked;
+				if ( fresh && toggle.checked ) { i.checked = true; }
 			} );
 		}
-		sel.addEventListener( 'change', show );
-		show();
+		toggle.addEventListener( 'change', function () { show( true ); } );
+		show( false );
 	} );
 
 	/* Buy / make an offer on a listing (0.24.0). */

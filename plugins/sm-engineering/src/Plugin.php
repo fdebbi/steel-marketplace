@@ -34,6 +34,12 @@ final class Plugin {
 		Apply::init();
 		Form::init();
 		Files::init();
+		Payments::init();
+		// Daily task (0.3.0): quote and payment reminders, unpaid advances.
+		add_action( 'sm_engineering_daily', array( Missions::class, 'daily' ) );
+		if ( ! wp_next_scheduled( 'sm_engineering_daily' ) ) {
+			wp_schedule_event( time() + HOUR_IN_SECONDS, 'daily', 'sm_engineering_daily' );
+		}
 		add_filter(
 			'sm_dashboard_view_slugs',
 			static fn( $slugs ) => array_merge(

@@ -18,6 +18,8 @@ use SM\Engineering\Files;
 use SM\Engineering\Messages;
 use SM\Engineering\Missions;
 use SM\Engineering\Notifications;
+use SM\Engineering\Payments;
+use SM\Engineering\ProjectTypes;
 use SM\Engineering\Services;
 use SM\Engineering\Settings;
 
@@ -296,7 +298,7 @@ final class Admin {
 		foreach ( $res['items'] as $m ) {
 			$cl = Companies::get( $m->client_id );
 			$en = $m->engineer_id ? Companies::get( $m->engineer_id ) : null;
-			echo '<tr><td><a href="' . esc_url( $base . '&id=' . $m->id ) . '"><strong>' . esc_html( $m->ref ) . '</strong></a><br>' . esc_html( $m->title ) . '<br><small>' . esc_html( Settings::type_label( $m->type ) ) . '</small></td>';
+			echo '<tr><td><a href="' . esc_url( $base . '&id=' . $m->id ) . '"><strong>' . esc_html( $m->ref ) . '</strong></a><br>' . esc_html( $m->title ) . '<br><small>' . esc_html( Missions::services_label( $m ) ) . '</small></td>';
 			echo '<td>' . esc_html( $cl ? $cl->name : '—' ) . '</td><td>' . esc_html( $en ? $en->name : '—' ) . '</td><td>' . self::pill( $labels[ $m->status ] ?? $m->status, $tones[ $m->status ] ?? '' ) . '</td>'; // phpcs:ignore WordPress.Security.EscapeOutput
 			echo '<td>' . ( $m->quote_amount ? esc_html( self::money( $m->quote_amount ) ) : '—' ) . '</td><td>' . ( $m->engineer_fee && $m->engineer_id ? esc_html( self::money( $m->engineer_fee ) ) : '—' ) . '</td><td>' . ( $m->quote_amount && $m->engineer_fee && $m->engineer_id ? esc_html( self::money( $m->quote_amount - $m->engineer_fee ) ) : '—' ) . '</td><td>' . self::date( $m->updated_at ) . '</td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		}
@@ -370,24 +372,32 @@ final class Admin {
 		echo '<div class="sme-box"><h2>' . esc_html__( 'Request', 'sm-engineering' ) . '</h2><dl>';
 		$pref = $m->preferred_id ? Companies::get( $m->preferred_id ) : null;
 		$rows = array(
-			__( 'Engineering service', 'sm-engineering' ) => Settings::type_label( $m->type ),
+			__( 'Type of project', 'sm-engineering' ) => ProjectTypes::label( $m->project_type ) ?: '—',
 			__( 'Wilaya', 'sm-engineering' )          => $m->wilaya . ' ' . Wilayas::name( $m->wilaya ),
 			__( 'Wanted for', 'sm-engineering' )      => $m->needed_by ? wp_date( get_option( 'date_format' ), strtotime( $m->needed_by ) ) : '—',
-			__( 'Indicative budget', 'sm-engineering' ) => $m->budget > 0 ? self::money( $m->budget ) : '—',
-			__( 'Preferred engineer', 'sm-engineering' ) => $pref ? $pref->name : '—',
 			__( 'Sent', 'sm-engineering' )            => wp_strip_all_tags( self::date( $m->created_at ) ),
 		);
+		// Requests sent before 0.3.0 may have a budget or a preferred engineer.
+		if ( $m->budget > 0 ) {
+			$rows[ __( 'Indicative budget', 'sm-engineering' ) ] = self::money( $m->budget );
+		}
+		if ( $pref ) {
+			$rows[ __( 'Preferred engineer', 'sm-engineering' ) ] = $pref->name;
+		}
 		foreach ( $rows as $k => $v ) {
 			echo '<dt>' . esc_html( $k ) . '</dt><dd>' . esc_html( $v ) . '</dd>';
 		}
 		echo '</dl>';
-		$pre = Missions::prestations( $m );
-		if ( $pre ) {
-			echo '<h3>' . esc_html__( 'Prestations wanted', 'sm-engineering' ) . '</h3><ul style="list-style:disc;padding-inline-start:20px">';
-			foreach ( $pre as $p ) {
-				echo '<li>' . esc_html( $p ) . '</li>';
+		echo '<h3>' . esc_html__( 'Services and prestations wanted', 'sm-engineering' ) . '</h3>';
+		foreach ( Missions::lines( $m ) as $l ) {
+			echo '<p style="margin:.6em 0 .2em"><strong>' . esc_html( $l['title'] ) . '</strong></p>';
+			if ( $l['labels'] ) {
+				echo '<ul style="list-style:disc;margin-top:0;padding-inline-start:20px">';
+				foreach ( $l['labels'] as $p ) {
+					echo '<li>' . esc_html( $p ) . '</li>';
+				}
+				echo '</ul>';
 			}
-			echo '</ul>';
 		}
 		echo '<p>' . nl2br( esc_html( (string) $m->description ) ) . '</p>';
 		echo '<h2>' . esc_html__( 'Client (never shown to the engineer)', 'sm-engineering' ) . '</h2><dl>';
@@ -400,7 +410,25 @@ final class Admin {
 
 		// Money and steps.
 		echo '<div class="sme-box"><h2>' . esc_html__( 'Quote, engineer and fee', 'sm-engineering' ) . '</h2>';
+		$tot = Missions::totals( $m );
 		if ( $m->quote_amount > 0 ) {
+			if ( ! $tot['legacy'] ) {
+				echo '<table class="widefat striped" style="margin-bottom:10px"><tbody>';
+				foreach ( Missions::lines( $m ) as $l ) {
+					echo '<tr><td>' . esc_html( $l['title'] ) . '</td><td style="text-align:end">' . esc_html( self::money( $l['amount'] ) ) . '</td></tr>';
+				}
+				if ( $tot['tva_rate'] > 0 ) {
+					echo '<tr><td>' . esc_html__( 'Total before tax', 'sm-engineering' ) . '</td><td style="text-align:end">' . esc_html( self::money( $tot['ht'] ) ) . '</td></tr>';
+					echo '<tr><td>' . esc_html( sprintf( /* translators: %s: rate. */ __( 'TVA %s %%', 'sm-engineering' ), rtrim( rtrim( number_format( $tot['tva_rate'], 2, '.', '' ), '0' ), '.' ) ) ) . '</td><td style="text-align:end">' . esc_html( self::money( $tot['tva'] ) ) . '</td></tr>';
+				}
+				echo '<tr><th>' . esc_html( $tot['tva_rate'] > 0 ? __( 'Total including tax', 'sm-engineering' ) : __( 'Total (no TVA)', 'sm-engineering' ) ) . '</th><th style="text-align:end">' . esc_html( self::money( $tot['ttc'] ) ) . '</th></tr>';
+				echo '<tr><td>' . esc_html( sprintf( /* translators: %s: percentage. */ __( 'Advance %s %%', 'sm-engineering' ), rtrim( rtrim( number_format( $tot['advance_pct'], 2, '.', '' ), '0' ), '.' ) ) ) . '</td><td style="text-align:end">' . esc_html( self::money( $tot['advance'] ) ) . ' — ' . ( $tot['advance_paid'] && $tot['advance'] > 0 ? '<strong style="color:#008a20">' . esc_html__( 'received', 'sm-engineering' ) . '</strong>' : esc_html__( 'not received', 'sm-engineering' ) ) . '</td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
+				echo '<tr><td>' . esc_html__( 'Balance', 'sm-engineering' ) . '</td><td style="text-align:end">' . esc_html( self::money( $tot['balance'] ) ) . ' — ' . ( $tot['balance_paid'] && $tot['balance'] > 0 && $m->client_paid_at ? '<strong style="color:#008a20">' . esc_html__( 'received', 'sm-engineering' ) . '</strong>' : esc_html__( 'not received', 'sm-engineering' ) ) . '</td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
+				echo '</tbody></table>';
+				foreach ( Payments::orders( $m ) as $item => $o ) {
+					echo '<p class="description">' . esc_html( 'advance' === $item ? __( 'Order of the advance', 'sm-engineering' ) : __( 'Order of the balance', 'sm-engineering' ) ) . ' : <a href="' . esc_url( admin_url( 'admin.php?page=sm-subscriptions&order=' . (int) $o->id ) ) . '">' . esc_html( $o->ref ) . '</a> — ' . esc_html( \SM\Subscriptions\Orders::status_labels()[ $o->status ] ?? $o->status ) . '</p>';
+				}
+			}
 			echo '<dl><dt>' . esc_html__( 'Client price', 'sm-engineering' ) . '</dt><dd>' . esc_html( self::money( $m->quote_amount ) ) . ( $m->quote_days ? ' · ' . esc_html( sprintf( /* translators: %d: days. */ _n( '%d day', '%d days', $m->quote_days, 'sm-engineering' ), $m->quote_days ) ) : '' ) . '</dd>';
 			if ( $m->quote_valid_until ) {
 				echo '<dt>' . esc_html__( 'Valid until', 'sm-engineering' ) . '</dt><dd>' . esc_html( wp_date( get_option( 'date_format' ), strtotime( $m->quote_valid_until ) ) ) . '</dd>';
@@ -409,31 +437,66 @@ final class Admin {
 				$eng = Companies::get( $m->engineer_id );
 				echo '<dt>' . esc_html__( 'Engineer', 'sm-engineering' ) . '</dt><dd><a href="' . esc_url( admin_url( 'admin.php?page=' . self::ENGINEERS . '&id=' . $m->engineer_id ) ) . '">' . esc_html( $eng ? $eng->name : '' ) . '</a></dd>';
 				echo '<dt>' . esc_html__( 'Engineer fee', 'sm-engineering' ) . '</dt><dd>' . esc_html( self::money( $m->engineer_fee ) ) . ' · ' . esc_html( array( 'none' => __( 'not started', 'sm-engineering' ), 'planned' => __( 'planned', 'sm-engineering' ), 'due' => __( 'due', 'sm-engineering' ), 'paid' => __( 'paid', 'sm-engineering' ) )[ $m->fee_status ] ?? $m->fee_status ) . '</dd>';
-				echo '<dt>' . esc_html__( 'Platform margin', 'sm-engineering' ) . '</dt><dd class="sme-margin">' . esc_html( self::money( $m->quote_amount - $m->engineer_fee ) ) . '</dd>';
+				echo '<dt>' . esc_html__( 'Platform margin', 'sm-engineering' ) . '</dt><dd class="sme-margin">' . esc_html( self::money( ( $tot['legacy'] ? $m->quote_amount : $tot['ht'] ) - $m->engineer_fee ) ) . '</dd>';
 			}
-			echo '<dt>' . esc_html__( 'Client payment', 'sm-engineering' ) . '</dt><dd>' . ( $m->client_paid_at ? esc_html__( 'received', 'sm-engineering' ) . ' — ' . self::date( $m->client_paid_at ) : esc_html__( 'not recorded', 'sm-engineering' ) ) . '</dd></dl>'; // phpcs:ignore WordPress.Security.EscapeOutput
+			echo '<dt>' . esc_html__( 'Client payment', 'sm-engineering' ) . '</dt><dd>' . ( $m->client_paid_at ? esc_html__( 'received', 'sm-engineering' ) . ' — ' . self::date( $m->client_paid_at ) : ( $m->advance_paid_at ? esc_html__( 'advance received', 'sm-engineering' ) . ' — ' . self::date( $m->advance_paid_at ) : esc_html__( 'not recorded', 'sm-engineering' ) ) ) . '</dd></dl>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 		$act = static function ( $do, $label, $primary = false, $confirm = '' ) use ( $m ) {
 			echo '<button class="button' . ( $primary ? ' button-primary' : '' ) . '" name="do" value="' . esc_attr( $do ) . '"' . ( $confirm ? ' onclick="return confirm(\'' . esc_js( $confirm ) . '\')"' : '' ) . '>' . esc_html( $label ) . '</button> ';
 		};
 		if ( in_array( $m->status, array( 'submitted', 'quoted' ), true ) ) {
 			echo '<h3>' . esc_html( 'quoted' === $m->status ? __( 'Change the quote', 'sm-engineering' ) : __( 'Send the quote to the client', 'sm-engineering' ) ) . '</h3>';
-			self::form_open( 'sme_mission' );
-			echo '<input type="hidden" name="mission_id" value="' . (int) $m->id . '"><p><label>' . esc_html__( 'Price for the client (DA, taxes included)', 'sm-engineering' ) . '<br><input type="number" min="1" step="1" name="amount" value="' . esc_attr( $m->quote_amount ? (string) (int) $m->quote_amount : '' ) . '"></label> <label>' . esc_html__( 'Time (days)', 'sm-engineering' ) . '<br><input type="number" min="0" step="1" name="days" value="' . esc_attr( $m->quote_days ? (string) $m->quote_days : '' ) . '"></label></p>';
+			self::form_open( 'sme_mission', ' class="sme-quote-form"' );
+			$rate = $tot['legacy'] || 'submitted' === $m->status ? Settings::tva_rate() : $tot['tva_rate'];
+			$pct  = 'quoted' === $m->status && ! $tot['legacy'] ? $tot['advance_pct'] : (float) Settings::get( 'advance_pct' );
+			echo '<input type="hidden" name="mission_id" value="' . (int) $m->id . '"><input type="hidden" name="tva_rate" value="' . esc_attr( (string) $rate ) . '">';
+			echo '<table class="widefat striped" style="margin:8px 0"><thead><tr><th>' . esc_html__( 'Service', 'sm-engineering' ) . '</th><th style="width:170px">' . esc_html( $rate > 0 ? __( 'Price before tax (DA)', 'sm-engineering' ) : __( 'Price (DA)', 'sm-engineering' ) ) . '</th></tr></thead><tbody>';
+			foreach ( Missions::lines( $m ) as $i => $l ) {
+				$val = $l['amount'] > 0 && ! $tot['legacy'] ? (string) (int) $l['amount'] : '';
+				echo '<tr><td><strong>' . esc_html( $l['title'] ) . '</strong>' . ( $l['labels'] ? '<br><small>' . esc_html( implode( ' · ', $l['labels'] ) ) . '</small>' : '' ) . '</td><td><input type="number" min="1" step="1" name="lines[' . (int) $i . ']" value="' . esc_attr( $val ) . '" class="sme-line" required style="width:150px"></td></tr>';
+			}
+			echo '</tbody></table>';
+			echo '<p><label>' . esc_html__( 'Advance (%)', 'sm-engineering' ) . '<br><input type="number" min="0" max="100" step="1" name="advance_pct" class="sme-pct" value="' . esc_attr( rtrim( rtrim( number_format( $pct, 2, '.', '' ), '0' ), '.' ) ) . '" style="width:90px"></label> <label>' . esc_html__( 'Time (days)', 'sm-engineering' ) . '<br><input type="number" min="0" step="1" name="days" value="' . esc_attr( $m->quote_days ? (string) $m->quote_days : '' ) . '" style="width:90px"></label></p>';
+			echo '<p class="sme-sum" data-rate="' . esc_attr( (string) $rate ) . '" data-l-ht="' . esc_attr__( 'Total before tax', 'sm-engineering' ) . '" data-l-tva="' . esc_attr( sprintf( /* translators: %s: rate. */ __( 'TVA %s %%', 'sm-engineering' ), rtrim( rtrim( number_format( $rate, 2, '.', '' ), '0' ), '.' ) ) ) . '" data-l-ttc="' . esc_attr( $rate > 0 ? __( 'Total including tax', 'sm-engineering' ) : __( 'Total (no TVA)', 'sm-engineering' ) ) . '" data-l-adv="' . esc_attr__( 'Advance', 'sm-engineering' ) . '" data-l-bal="' . esc_attr__( 'Balance', 'sm-engineering' ) . '" style="font-size:14px;background:#f6f7f7;padding:8px 10px;border-radius:4px"></p>';
+			/* translators: %d: number of days. */
+			echo '<p class="description">' . esc_html( sprintf( __( 'The quote is valid %d days; the client is reminded the day before it ends. The TVA rate comes from the payment settings.', 'sm-engineering' ), (int) Settings::get( 'quote_valid_days' ) ) ) . '</p>';
+			?>
+			<script>
+			( function () {
+				var f = document.querySelector( '.sme-quote-form' ), out = f && f.querySelector( '.sme-sum' );
+				if ( ! out ) { return; }
+				var rate = parseFloat( out.dataset.rate ) || 0, fmt = function ( v ) { return Math.round( v ).toLocaleString( 'fr-FR' ) + ' DA'; };
+				function sum() {
+					var ht = 0;
+					f.querySelectorAll( '.sme-line' ).forEach( function ( i ) { ht += parseFloat( i.value ) || 0; } );
+					var ttc = Math.round( ht * ( 1 + rate / 100 ) ), pct = Math.min( 100, Math.max( 0, parseFloat( f.querySelector( '.sme-pct' ).value ) || 0 ) ), adv = Math.round( ttc * pct / 100 );
+					var parts = [];
+					if ( rate > 0 ) { parts.push( out.dataset.lHt + ' : ' + fmt( ht ), out.dataset.lTva + ' : ' + fmt( ttc - ht ) ); }
+					parts.push( '<strong>' + out.dataset.lTtc + ' : ' + fmt( ttc ) + '</strong>', out.dataset.lAdv + ' (' + pct + ' %) : <strong>' + fmt( adv ) + '</strong>', out.dataset.lBal + ' : ' + fmt( ttc - adv ) );
+					out.innerHTML = parts.join( ' · ' );
+				}
+				f.addEventListener( 'input', sum );
+				sum();
+			} )();
+			</script>
+			<?php
 			echo '<p><label>' . esc_html__( 'Message to the client (what is included, conditions)', 'sm-engineering' ) . '<br><textarea name="message" rows="4" class="large-text">' . esc_textarea( (string) $m->quote_message ) . '</textarea></label></p>';
 			echo '<p><label>' . esc_html__( 'Reason, if you decline the request', 'sm-engineering' ) . '<br><textarea name="reason" rows="2" class="large-text"></textarea></label></p><p>';
 			$act( 'quote', __( 'Send the quote', 'sm-engineering' ), true );
 			$act( 'decline', __( 'Decline the request', 'sm-engineering' ), false, __( 'Decline this request? The client is told.', 'sm-engineering' ) );
 			echo '</p></form>';
 		}
-		if ( in_array( $m->status, array( 'accepted', 'assigned' ), true ) ) {
+		if ( 'accepted' === $m->status && $tot['advance_due'] ) {
+			echo '<h3>' . esc_html__( 'Waiting for the advance', 'sm-engineering' ) . '</h3><p class="sme-warn">' . esc_html__( 'The mission can be given to an engineer once the advance is received (order checked in SM → Orders, or recorded below).', 'sm-engineering' ) . '</p>';
+		} elseif ( in_array( $m->status, array( 'accepted', 'assigned' ), true ) ) {
 			echo '<h3>' . esc_html( 'assigned' === $m->status ? __( 'Give the mission to another engineer', 'sm-engineering' ) : __( 'Give the mission to an engineer', 'sm-engineering' ) ) . '</h3>';
 			$list = Engineers::query( array( 'status' => 'approved', 'per_page' => 200 ) )['items'];
 			usort(
 				$list,
 				static function ( $a, $b ) use ( $m ) {
-					$sa = ( $a->company_id === $m->preferred_id ? 4 : 0 ) + ( in_array( $m->type, $a->specialties, true ) ? 2 : 0 ) + $a->available;
-					$sb = ( $b->company_id === $m->preferred_id ? 4 : 0 ) + ( in_array( $m->type, $b->specialties, true ) ? 2 : 0 ) + $b->available;
+					$codes = Missions::codes( $m );
+					$sa    = ( $a->company_id === $m->preferred_id ? 40 : 0 ) + 2 * count( array_intersect( $codes, $a->specialties ) ) + $a->available;
+					$sb    = ( $b->company_id === $m->preferred_id ? 40 : 0 ) + 2 * count( array_intersect( $codes, $b->specialties ) ) + $b->available;
 					return $sb <=> $sa;
 				}
 			);
@@ -448,7 +511,7 @@ final class Admin {
 					if ( $e->company_id === $m->preferred_id ) {
 						$tags[] = __( 'chosen by the client', 'sm-engineering' );
 					}
-					if ( in_array( $m->type, $e->specialties, true ) ) {
+					if ( array_intersect( Missions::codes( $m ), $e->specialties ) ) {
 						$tags[] = __( 'service', 'sm-engineering' );
 					}
 					if ( ! $e->available ) {
@@ -494,7 +557,13 @@ final class Admin {
 		if ( in_array( $m->status, array( 'accepted', 'assigned', 'in_progress', 'review', 'delivered', 'closed' ), true ) ) {
 			self::form_open( 'sme_mission' );
 			echo '<input type="hidden" name="mission_id" value="' . (int) $m->id . '"><p>';
-			$act( $m->client_paid_at ? 'client_unpaid' : 'client_paid', $m->client_paid_at ? __( 'Cancel the client payment', 'sm-engineering' ) : __( 'Record the client payment', 'sm-engineering' ) );
+			if ( $tot['advance_due'] ) {
+				$act( 'advance_paid', __( 'Record the advance received (cash, transfer…)', 'sm-engineering' ), true, __( 'Record the advance as received? The client is told and the mission can start.', 'sm-engineering' ) );
+			} elseif ( $tot['balance_due'] ) {
+				$act( 'client_paid', __( 'Record the balance received', 'sm-engineering' ), false, __( 'Record the balance as received? The client can download the delivered documents.', 'sm-engineering' ) );
+			} elseif ( $tot['legacy'] ) {
+				$act( $m->client_paid_at ? 'client_unpaid' : 'client_paid', $m->client_paid_at ? __( 'Cancel the client payment', 'sm-engineering' ) : __( 'Record the client payment', 'sm-engineering' ) );
+			}
 			echo '</p></form>';
 		}
 		echo '</div>';
@@ -515,7 +584,13 @@ final class Admin {
 		if ( ! $m ) {
 			self::back( self::MISSIONS, array(), __( 'Mission not found.', 'sm-engineering' ) );
 		}
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- checked in guard().
+		$lines = isset( $_POST['lines'] ) && is_array( $_POST['lines'] ) ? array_map( static fn( $v ) => (float) str_replace( array( ' ', ',' ), array( '', '.' ), sanitize_text_field( wp_unslash( $v ) ) ), wp_unslash( $_POST['lines'] ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		ksort( $lines );
 		$args = array(
+			'lines'       => array_values( $lines ),
+			'advance_pct' => $in( 'advance_pct' ),
+			'tva_rate'    => '' !== $in( 'tva_rate' ) ? (float) $in( 'tva_rate' ) : Settings::tva_rate(),
 			'amount'      => (float) $in( 'amount' ),
 			'days'        => (int) $in( 'days' ),
 			'message'     => $in( 'message' ),
@@ -528,8 +603,15 @@ final class Admin {
 			case 'fee_paid':
 				$r = Missions::fee_paid( $m, $in( 'reference' ) );
 				break;
+			case 'advance_paid':
+				Payments::cancel_open( $m );
+				$r = Missions::payment_received( $m, 'advance' );
+				break;
 			case 'client_paid':
 			case 'client_unpaid':
+				if ( 'client_paid' === $do ) {
+					Payments::cancel_open( $m );
+				}
 				$r = Missions::client_paid( $m, 'client_paid' === $do );
 				break;
 			case 'rework':
@@ -592,18 +674,31 @@ final class Admin {
 		}
 		$nums = array(
 			'quote_valid_days' => __( 'Quote valid for (days)', 'sm-engineering' ),
+			'advance_pct'      => __( 'Advance asked on acceptance (% of the total)', 'sm-engineering' ),
+			'pay_reminder_days' => __( 'Reminder of an unpaid advance after (days)', 'sm-engineering' ),
 			'requests_per_day' => __( 'Study requests a client may send per day', 'sm-engineering' ),
 			'max_files'        => __( 'Files per sending', 'sm-engineering' ),
 			'file_mb'          => __( 'Size of one file (MB)', 'sm-engineering' ),
 		);
 		foreach ( $nums as $k => $label ) {
-			echo '<tr><th>' . esc_html( $label ) . '</th><td><input type="number" min="1" name="' . esc_attr( $k ) . '" value="' . (int) $s[ $k ] . '" class="small-text"></td></tr>';
+			echo '<tr><th>' . esc_html( $label ) . '</th><td><input type="number" min="' . ( 'advance_pct' === $k ? 0 : 1 ) . '" ' . ( 'advance_pct' === $k ? 'max="100" ' : '' ) . 'name="' . esc_attr( $k ) . '" value="' . (int) $s[ $k ] . '" class="small-text"></td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 		echo '<tr><th>' . esc_html__( 'Accepted file types', 'sm-engineering' ) . '</th><td><input type="text" class="large-text" name="extensions" value="' . esc_attr( $s['extensions'] ) . '"><p class="description">' . esc_html__( 'Extensions separated by commas. Program and web files are always refused.', 'sm-engineering' ) . '</p></td></tr>';
 		echo '</tbody></table>';
 		self::services_editor();
+		self::project_types_editor();
 		submit_button();
 		echo '</form></div>';
+	}
+
+	/** Types of project of the request form (FR / AR, shown, order). */
+	private static function project_types_editor() {
+		echo '<h2>' . esc_html__( 'Types of project', 'sm-engineering' ) . '</h2><table class="widefat striped" style="max-width:900px"><thead><tr><th>' . esc_html__( 'French', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Arabic', 'sm-engineering' ) . '</th><th style="width:80px">' . esc_html__( 'Order', 'sm-engineering' ) . '</th><th style="width:60px">' . esc_html__( 'Active', 'sm-engineering' ) . '</th></tr></thead><tbody>';
+		foreach ( ProjectTypes::all( true ) as $code => $t ) {
+			$n = 'project_types[' . esc_attr( $code ) . ']';
+			echo '<tr><td><input class="large-text" name="' . $n . '[fr]" value="' . esc_attr( $t['fr'] ) . '" aria-label="' . esc_attr__( 'Title in French', 'sm-engineering' ) . '"></td><td><input class="large-text" dir="rtl" name="' . $n . '[ar]" value="' . esc_attr( $t['ar'] ) . '" aria-label="' . esc_attr__( 'Title in Arabic', 'sm-engineering' ) . '"></td><td><input type="number" min="0" max="999" class="small-text" name="' . $n . '[order]" value="' . (int) $t['order'] . '"></td><td><input type="checkbox" name="' . $n . '[on]" value="1"' . checked( $t['off'], 0, false ) . '></td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		}
+		echo '<tr><td><input class="large-text" name="new_project_type[fr]" placeholder="' . esc_attr__( 'New type of project', 'sm-engineering' ) . '"></td><td><input class="large-text" dir="rtl" name="new_project_type[ar]"></td><td></td><td></td></tr></tbody></table>';
 	}
 
 	/** Engineering services: title, image, prestations (FR / AR), shown, order. */

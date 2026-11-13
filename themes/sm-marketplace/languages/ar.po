@@ -1207,7 +1207,7 @@ msgstr "غير متاح حاليا"
 
 #: template-parts/components/card-engineer.php:39
 #: template-parts/components/card-engineer.php:41
-#: template-parts/dashboard/studies.php:135 templates/dashboard.php:165
+#: template-parts/dashboard/studies.php:210 templates/dashboard.php:165
 #: templates/marketplace-engineers.php:40
 #: templates/marketplace-engineers.php:111 templates/mission-request.php:19
 msgid "Ask for a study"
@@ -1268,6 +1268,7 @@ msgstr "الحصة كاملة فقط"
 
 #: template-parts/components/card-listing.php:78
 #: template-parts/components/rfq-compare.php:64
+#: template-parts/dashboard/studies.php:95
 msgid "Total"
 msgstr "المجموع"
 
@@ -1796,10 +1797,9 @@ msgstr "المسودات"
 msgid "Sold"
 msgstr "مباع"
 
-#. translators: %d: days.
 #: template-parts/components/my-products.php:22
 #: template-parts/components/my-products.php:31
-#: template-parts/dashboard/studies.php:60
+#: template-parts/dashboard/studies.php:115
 msgid "Expired"
 msgstr "منتهية"
 
@@ -1917,6 +1917,7 @@ msgstr "التاريخ"
 
 #: template-parts/components/order-history.php:25
 #: template-parts/components/order-history.php:35
+#: template-parts/dashboard/studies.php:84
 msgid "Amount"
 msgstr "المبلغ"
 
@@ -1928,8 +1929,8 @@ msgstr "المبلغ"
 #: template-parts/dashboard/engineer-missions.php:136
 #: template-parts/dashboard/listings.php:36
 #: template-parts/dashboard/listings.php:50
-#: template-parts/dashboard/studies.php:143
-#: template-parts/dashboard/studies.php:150
+#: template-parts/dashboard/studies.php:218
+#: template-parts/dashboard/studies.php:225
 msgid "Status"
 msgstr "الحالة"
 
@@ -2038,7 +2039,7 @@ msgstr "حذف هذا المرجع؟"
 #: template-parts/components/price-block.php:15
 #: template-parts/components/product-tech.php:466
 #: template-parts/components/rfq-offer-form.php:39
-#: template-parts/dashboard/studies.php:58 templates/single-service.php:68
+#: template-parts/dashboard/studies.php:106 templates/single-service.php:68
 msgid "Price"
 msgstr "السعر"
 
@@ -2207,7 +2208,7 @@ msgid "technical data, quantity and price"
 msgstr "البيانات التقنية والكمية والسعر"
 
 #: template-parts/components/product-form.php:111
-#: template-parts/dashboard/invoice.php:65 templates/mission-request.php:85
+#: template-parts/dashboard/invoice.php:65 templates/mission-request.php:90
 #: templates/single-listing.php:282 templates/single-service.php:99
 msgid "Description"
 msgstr "الوصف"
@@ -2278,9 +2279,8 @@ msgstr "العنوان بالعربية"
 #: template-parts/dashboard/portfolio.php:54
 #: template-parts/dashboard/portfolio.php:74 templates/company-profile.php:314
 #: templates/company-profile.php:321 templates/contact.php:56
-#: templates/engineer-apply.php:94 templates/mission-request.php:99
-#: templates/mission-request.php:106 templates/mission-request.php:111
-#: templates/mission-request.php:122
+#: templates/engineer-apply.php:94 templates/mission-request.php:104
+#: templates/mission-request.php:111 templates/mission-request.php:121
 msgid "optional"
 msgstr "اختياري"
 
@@ -2832,7 +2832,7 @@ msgstr "التسليم"
 #: template-parts/components/service-request-row.php:46
 #: template-parts/dashboard/engineer-missions.php:43
 #: template-parts/dashboard/offers.php:36
-#: template-parts/dashboard/studies.php:59 templates/single-service.php:69
+#: template-parts/dashboard/studies.php:107 templates/single-service.php:69
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d يوم"
@@ -2850,7 +2850,6 @@ msgstr "الأسرع"
 #. translators: %d: days.
 #: template-parts/components/rfq-compare.php:67
 #: template-parts/components/rfq-my-offer.php:21
-#: template-parts/dashboard/studies.php:60
 msgid "Valid until"
 msgstr "صالح حتى"
 
@@ -2891,7 +2890,7 @@ msgstr "إضافة إلى القائمة المختصرة"
 
 #: template-parts/components/rfq-compare.php:91
 #: template-parts/dashboard/engineer-missions.php:51
-#: template-parts/dashboard/studies.php:68
+#: template-parts/dashboard/studies.php:123
 msgid "Decline"
 msgstr "رفض"
 
@@ -3209,7 +3208,7 @@ msgstr[4] "%d مخطط أو وثيقة: سجّل الدخول بحساب مؤس�
 msgstr[5] "%d مخطط أو وثيقة: سجّل الدخول بحساب مؤسسة لتحميلها."
 
 #: template-parts/components/rfq-single.php:123
-#: template-parts/dashboard/studies.php:94
+#: template-parts/dashboard/studies.php:170
 msgid "Your request"
 msgstr "طلبك"
 
@@ -3337,8 +3336,9 @@ msgid "Your account cannot publish services."
 msgstr "لا يمكن لحسابك نشر خدمات."
 
 #: template-parts/components/service-form.php:52
-#: template-parts/dashboard/studies.php:143
-#: template-parts/dashboard/studies.php:148 templates/company-profile.php:296
+#: template-parts/dashboard/studies.php:84
+#: template-parts/dashboard/studies.php:218
+#: template-parts/dashboard/studies.php:223 templates/company-profile.php:296
 #: templates/marketplace-engineers.php:85
 msgid "Service"
 msgstr "الخدمة"
@@ -3503,7 +3503,7 @@ msgstr "ما يجب تصنيعه أو تركيبه: المقاطع، الكمي�
 
 #: template-parts/components/service-request-form.php:26
 #: template-parts/components/services-board.php:44
-#: templates/company-profile.php:307 templates/mission-request.php:91
+#: templates/company-profile.php:307 templates/mission-request.php:96
 msgid "Wilaya of the project"
 msgstr "ولاية المشروع"
 
@@ -3537,13 +3537,12 @@ msgid "Service removed"
 msgstr "خدمة محذوفة"
 
 #: template-parts/components/service-request-row.php:44
-#: template-parts/dashboard/studies.php:98
 msgid "Indicative budget"
 msgstr "ميزانية تقديرية"
 
 #: template-parts/components/service-request-row.php:46
-#: template-parts/dashboard/studies.php:143
-#: template-parts/dashboard/studies.php:149
+#: template-parts/dashboard/studies.php:218
+#: template-parts/dashboard/studies.php:224
 msgid "Quote"
 msgstr "عرض السعر"
 
@@ -3592,17 +3591,15 @@ msgid "Decline the request"
 msgstr "الاعتذار عن الطلب"
 
 #: template-parts/components/service-request-row.php:106
-#: template-parts/dashboard/studies.php:66
 msgid "Accept the quote"
 msgstr "قبول عرض السعر"
 
 #: template-parts/components/service-request-row.php:107
-#: template-parts/dashboard/studies.php:71
 msgid "Decline the quote"
 msgstr "رفض عرض السعر"
 
 #: template-parts/components/service-request-row.php:109
-#: template-parts/dashboard/studies.php:117
+#: template-parts/dashboard/studies.php:192
 msgid "Cancel the request"
 msgstr "إلغاء الطلب"
 
@@ -4218,7 +4215,7 @@ msgstr "حسابات الزبائن ليس لها صفحة عمومية. تظه�
 msgid "Save"
 msgstr "حفظ"
 
-#: template-parts/dashboard/deal.php:15 template-parts/dashboard/order.php:17
+#: template-parts/dashboard/deal.php:15 template-parts/dashboard/order.php:20
 msgid "Order not found"
 msgstr "الطلب غير موجود"
 
@@ -4232,7 +4229,7 @@ msgstr "الحصة كاملة"
 
 #: template-parts/dashboard/deal.php:25
 #: template-parts/dashboard/invoice.php:34
-#: template-parts/dashboard/order.php:25
+#: template-parts/dashboard/order.php:28
 #: template-parts/dashboard/publish.php:208
 msgid "Back"
 msgstr "رجوع"
@@ -4446,7 +4443,7 @@ msgid "All my missions"
 msgstr "كل مهامي"
 
 #: template-parts/dashboard/engineer-missions.php:36
-#: template-parts/dashboard/studies.php:37 templates/mission-request.php:70
+#: template-parts/dashboard/studies.php:39
 msgid "Prestations wanted"
 msgstr "الخدمات الفرعية المطلوبة"
 
@@ -4455,13 +4452,13 @@ msgid "Your fee"
 msgstr "أتعابك"
 
 #: template-parts/dashboard/engineer-missions.php:43
-#: template-parts/dashboard/studies.php:59
+#: template-parts/dashboard/studies.php:107
 msgid "Time"
 msgstr "الأجل"
 
 #. translators: %d: days.
 #: template-parts/dashboard/engineer-missions.php:44
-#: template-parts/dashboard/studies.php:97 templates/mission-request.php:99
+#: template-parts/dashboard/studies.php:173 templates/mission-request.php:104
 msgid "Wanted for"
 msgstr "مطلوب قبل"
 
@@ -4490,7 +4487,7 @@ msgid "Documents of the client"
 msgstr "وثائق الزبون"
 
 #: template-parts/dashboard/engineer-missions.php:68
-#: template-parts/dashboard/studies.php:101
+#: template-parts/dashboard/studies.php:176
 msgid "Documents of the platform"
 msgstr "وثائق المنصة"
 
@@ -4724,20 +4721,24 @@ msgid "Billed to"
 msgstr "الفاتورة باسم"
 
 #: template-parts/dashboard/invoice.php:65
+#: template-parts/dashboard/studies.php:84
 msgid "Amount before tax"
 msgstr "المبلغ دون رسوم"
 
 #: template-parts/dashboard/invoice.php:71
+#: template-parts/dashboard/studies.php:92
 msgid "Total before tax"
 msgstr "المجموع دون رسوم"
 
 #. translators: %s: TVA rate.
 #: template-parts/dashboard/invoice.php:72
+#: template-parts/dashboard/studies.php:93
 msgid "TVA %s %%"
 msgstr "الرسم على القيمة المضافة %s %%"
 
 #. translators: %s: TVA rate.
 #: template-parts/dashboard/invoice.php:73
+#: template-parts/dashboard/studies.php:95
 msgid "Total including tax"
 msgstr "المجموع شامل الرسوم"
 
@@ -4835,15 +4836,15 @@ msgstr "عرض طلبات عروض الأسعار"
 msgid "View"
 msgstr "عرض"
 
-#: template-parts/dashboard/order.php:17
+#: template-parts/dashboard/order.php:20
 msgid "This order does not exist or belongs to another account."
 msgstr "هذا الطلب غير موجود أو يخص حسابا آخر."
 
-#: template-parts/dashboard/order.php:35
+#: template-parts/dashboard/order.php:38
 msgid "TVA included"
 msgstr "شامل الرسوم"
 
-#: template-parts/dashboard/order.php:40
+#: template-parts/dashboard/order.php:43
 msgid ""
 "Your proof of payment was received. The platform team checks it, usually "
 "within one working day; you are told by e-mail."
@@ -4851,89 +4852,89 @@ msgstr ""
 "تم استلام إثبات دفعك. يتحقق منه فريق المنصة خلال يوم عمل عادة؛ ويتم إعلامك "
 "بالبريد."
 
-#: template-parts/dashboard/order.php:42
+#: template-parts/dashboard/order.php:45
 msgid "Payment confirmed. Thank you."
 msgstr "تم تأكيد الدفع. شكرا."
 
-#: template-parts/dashboard/order.php:43
+#: template-parts/dashboard/order.php:46
 msgid "See the invoice"
 msgstr "عرض الفاتورة"
 
 #. translators: %s: reason given by the platform team.
-#: template-parts/dashboard/order.php:48
+#: template-parts/dashboard/order.php:51
 msgid "The payment could not be confirmed. Reason: %s"
 msgstr "تعذر تأكيد الدفع. السبب: %s"
 
-#: template-parts/dashboard/order.php:56
+#: template-parts/dashboard/order.php:59
 msgid "1. Pay"
 msgstr "1. ادفع"
 
 #. translators: 1: amount, 2: order reference.
-#: template-parts/dashboard/order.php:60
+#: template-parts/dashboard/order.php:63
 msgid ""
 "Pay %1$s and write the reference %2$s on the payment so we can find it."
 msgstr "ادفع %1$s واكتب المرجع %2$s على الدفع حتى نتعرف عليه."
 
-#: template-parts/dashboard/order.php:65
+#: template-parts/dashboard/order.php:68
 msgid "Beneficiary"
 msgstr "المستفيد"
 
-#: template-parts/dashboard/order.php:68
+#: template-parts/dashboard/order.php:71
 msgid "Bank transfer"
 msgstr "تحويل بنكي"
 
-#: template-parts/dashboard/order.php:71
+#: template-parts/dashboard/order.php:74
 msgid "CCP payment"
 msgstr "دفع عبر CCP"
 
-#: template-parts/dashboard/order.php:74
+#: template-parts/dashboard/order.php:77
 msgid "BaridiMob"
 msgstr "بريدي موب"
 
-#: template-parts/dashboard/order.php:77
+#: template-parts/dashboard/order.php:80
 msgid "Cheque"
 msgstr "صك"
 
-#: template-parts/dashboard/order.php:81
+#: template-parts/dashboard/order.php:84
 msgid ""
 "The payment details are not published yet. Contact the platform team to get "
 "them."
 msgstr "لم تُنشر بيانات الدفع بعد. اتصل بفريق المنصة للحصول عليها."
 
-#: template-parts/dashboard/order.php:89
+#: template-parts/dashboard/order.php:92
 msgid "2. Send the proof of payment"
 msgstr "2. أرسل إثبات الدفع"
 
-#: template-parts/dashboard/order.php:92
+#: template-parts/dashboard/order.php:95
 msgid "How did you pay?"
 msgstr "كيف دفعت؟"
 
-#: template-parts/dashboard/order.php:104
+#: template-parts/dashboard/order.php:107
 msgid "Receipt, transfer slip or screenshot of the payment"
 msgstr "وصل أو أمر تحويل أو لقطة شاشة للدفع"
 
-#: template-parts/dashboard/order.php:105
+#: template-parts/dashboard/order.php:108
 msgid "PDF, JPG or PNG, 10 MB maximum"
 msgstr "PDF أو JPG أو PNG، بحد أقصى 10 ميغابايت"
 
-#: template-parts/dashboard/order.php:109
+#: template-parts/dashboard/order.php:112
 #: template-parts/dashboard/verification.php:60
 msgid "Note for the platform team (optional)"
 msgstr "ملاحظة لفريق المنصة (اختياري)"
 
-#: template-parts/dashboard/order.php:110
+#: template-parts/dashboard/order.php:113
 msgid "The proof is stored privately and only seen by the platform team."
 msgstr "يُحفظ الإثبات بشكل خاص ولا يطلع عليه إلا فريق المنصة."
 
-#: template-parts/dashboard/order.php:111
+#: template-parts/dashboard/order.php:114
 msgid "Send another proof"
 msgstr "إرسال إثبات آخر"
 
-#: template-parts/dashboard/order.php:111
+#: template-parts/dashboard/order.php:114
 msgid "Send the proof"
 msgstr "إرسال الإثبات"
 
-#: template-parts/dashboard/order.php:117
+#: template-parts/dashboard/order.php:120
 msgid "Cancel this order"
 msgstr "إلغاء هذا الطلب"
 
@@ -5445,19 +5446,77 @@ msgstr "العودة إلى دراساتي"
 msgid "All my studies"
 msgstr "كل دراساتي"
 
-#: template-parts/dashboard/studies.php:50
+#: template-parts/dashboard/studies.php:53
 msgid "The platform cannot take this request:"
 msgstr "لا يمكن للمنصة قبول هذا الطلب:"
 
-#: template-parts/dashboard/studies.php:56
-msgid "Quote of the platform"
-msgstr "عرض سعر المنصة"
+#: template-parts/dashboard/studies.php:65
+msgid "Complete your payment to start the requested services."
+msgstr "أكمل الدفع لبدء الخدمات المطلوبة."
 
-#: template-parts/dashboard/studies.php:69
+#: template-parts/dashboard/studies.php:65
+msgid "Your study is ready: pay the balance to download the documents."
+msgstr "دراستك جاهزة: ادفع الرصيد المتبقي لتحميل الوثائق."
+
+#: template-parts/dashboard/studies.php:67
+msgid "Your proof of payment is being checked by the platform."
+msgstr "إثبات الدفع قيد التحقق من طرف المنصة."
+
+#: template-parts/dashboard/studies.php:67
+msgid "See the payment"
+msgstr "عرض الدفع"
+
+#. translators: %s: amount.
+#: template-parts/dashboard/studies.php:71
+msgid "Pay the advance: %s"
+msgstr "ادفع التسبيق: %s"
+
+#. translators: %s: amount.
+#: template-parts/dashboard/studies.php:71
+msgid "Pay the balance: %s"
+msgstr "ادفع الرصيد المتبقي: %s"
+
+#: template-parts/dashboard/studies.php:81
+msgid "Offer of the platform"
+msgstr "عرض المنصة"
+
+#. translators: %s: percentage.
+#: template-parts/dashboard/studies.php:97
+msgid "Advance on acceptance (%s %%)"
+msgstr "التسبيق عند القبول (%s %%)"
+
+#: template-parts/dashboard/studies.php:100
+msgid "Balance, before the documents are released"
+msgstr "الرصيد المتبقي، قبل تسليم الوثائق"
+
+#. translators: 1: number of days, 2: date.
+#: template-parts/dashboard/studies.php:113
+msgid ""
+"This offer is valid %1$d days, until %2$s. You receive a reminder the day "
+"before."
+msgstr "هذا العرض صالح %1$d يوما، حتى %2$s. تتلقى تذكيرا في اليوم السابق."
+
+#: template-parts/dashboard/studies.php:121
+msgid "Accept the offer"
+msgstr "قبول العرض"
+
+#: template-parts/dashboard/studies.php:124
 msgid "Why? (optional, it helps the platform)"
 msgstr "لماذا؟ (اختياري، يساعد المنصة)"
 
-#: template-parts/dashboard/studies.php:74
+#: template-parts/dashboard/studies.php:126
+msgid "Decline the offer"
+msgstr "رفض العرض"
+
+#: template-parts/dashboard/studies.php:129
+msgid ""
+"Once you accept, you pay the advance; the platform then appoints one of its "
+"partner engineers. The study is delivered in this page."
+msgstr ""
+"بعد القبول تدفع التسبيق، ثم تعيّن المنصة أحد مهندسيها الشركاء. تُسلَّم "
+"الدراسة في هذه الصفحة."
+
+#: template-parts/dashboard/studies.php:129
 msgid ""
 "Once you accept, the platform appoints one of its partner engineers. The "
 "study is delivered in this page."
@@ -5465,45 +5524,73 @@ msgstr ""
 "بمجرد موافقتك تعيّن المنصة أحد مهندسيها الشركاء. تُسلّم الدراسة في هذه "
 "الصفحة."
 
-#: template-parts/dashboard/studies.php:81
+#: template-parts/dashboard/studies.php:133
+msgid "Payments"
+msgstr "المدفوعات"
+
+#: template-parts/dashboard/studies.php:135
+msgid "Advance"
+msgstr "التسبيق"
+
+#: template-parts/dashboard/studies.php:135
+msgid "Balance"
+msgstr "الرصيد المتبقي"
+
+#: template-parts/dashboard/studies.php:141
+msgid "Payment received"
+msgstr "تم استلام الدفع"
+
+#: template-parts/dashboard/studies.php:141
+msgid "To pay"
+msgstr "للدفع"
+
+#: template-parts/dashboard/studies.php:141
+msgid "Later"
+msgstr "لاحقا"
+
+#: template-parts/dashboard/studies.php:146
+msgid "Details"
+msgstr "التفاصيل"
+
+#: template-parts/dashboard/studies.php:157
 msgid "Your study is delivered"
 msgstr "تم تسليم دراستك"
 
-#: template-parts/dashboard/studies.php:86
+#: template-parts/dashboard/studies.php:162
 msgid "I received the study — close the request"
 msgstr "استلمت الدراسة — أغلق الطلب"
 
-#: template-parts/dashboard/studies.php:100
+#: template-parts/dashboard/studies.php:175
 msgid "Your documents"
 msgstr "وثائقك"
 
-#: template-parts/dashboard/studies.php:108
+#: template-parts/dashboard/studies.php:183
 msgid "Add documents"
 msgstr "أضف وثائق"
 
-#: template-parts/dashboard/studies.php:109
+#: template-parts/dashboard/studies.php:184
 msgid "Plans, photos, soil report…"
 msgstr "مخططات، صور، تقرير التربة…"
 
-#: template-parts/dashboard/studies.php:111
+#: template-parts/dashboard/studies.php:186
 msgid "Send the documents"
 msgstr "أرسل الوثائق"
 
-#: template-parts/dashboard/studies.php:117
+#: template-parts/dashboard/studies.php:192
 msgid "Cancel this request?"
 msgstr "إلغاء هذا الطلب؟"
 
-#: template-parts/dashboard/studies.php:121
+#: template-parts/dashboard/studies.php:196
 msgid ""
 "Questions, details, documents: the platform answers here and coordinates the"
 " engineer."
 msgstr "أسئلة، توضيحات، وثائق: المنصة تجيب هنا وتنسق مع المهندس."
 
-#: template-parts/dashboard/studies.php:131
+#: template-parts/dashboard/studies.php:206
 msgid "Studies and inspections by the platform"
 msgstr "دراسات ومعاينات عبر المنصة"
 
-#: template-parts/dashboard/studies.php:132
+#: template-parts/dashboard/studies.php:207
 msgid ""
 "Design, calculation notes, drawings, inspection of a used structure: send "
 "your request, receive a quote from the platform, and get the study done by a"
@@ -5512,21 +5599,21 @@ msgstr ""
 "تصميم، مذكرات حساب، مخططات، خبرة هيكل مستعمل: أرسل طلبك، استلم عرض سعر "
 "المنصة، وأنجز دراستك مع مهندس شريك موثّق."
 
-#: template-parts/dashboard/studies.php:139
+#: template-parts/dashboard/studies.php:214
 msgid "No study request yet"
 msgstr "لا توجد طلبات دراسة بعد"
 
-#: template-parts/dashboard/studies.php:139
+#: template-parts/dashboard/studies.php:214
 msgid "Your requests and their quotes appear here."
 msgstr "تظهر هنا طلباتك وعروض أسعارها."
 
-#: template-parts/dashboard/studies.php:143
-#: template-parts/dashboard/studies.php:147
+#: template-parts/dashboard/studies.php:218
+#: template-parts/dashboard/studies.php:222
 msgid "Request"
 msgstr "الطلب"
 
-#: template-parts/dashboard/studies.php:143
-#: template-parts/dashboard/studies.php:151
+#: template-parts/dashboard/studies.php:218
+#: template-parts/dashboard/studies.php:226
 msgid "Updated"
 msgstr "آخر تحديث"
 
@@ -5905,7 +5992,7 @@ msgid "Business name (optional)"
 msgstr "الاسم التجاري (اختياري)"
 
 #: templates/auth-register.php:78 templates/engineer-apply.php:68
-#: templates/mission-request.php:56 templates/mission-request.php:93
+#: templates/mission-request.php:79 templates/mission-request.php:98
 msgid "Select"
 msgstr "اختر"
 
@@ -6800,7 +6887,7 @@ msgstr "خدماتنا الهندسية"
 msgid "Ask for this service"
 msgstr "اطلب هذه الخدمة"
 
-#: templates/marketplace-engineers.php:70 templates/mission-request.php:134
+#: templates/marketplace-engineers.php:70 templates/mission-request.php:133
 #: templates/rfq-board.php:110
 msgid "How it works"
 msgstr "كيف يعمل"
@@ -6921,29 +7008,35 @@ msgid ""
 msgstr ""
 "يمكن للزبائن والشركات والمهنيين طلب الدراسات. إنشاء حساب يستغرق دقيقة واحدة."
 
-#: templates/mission-request.php:54
-msgid "Engineering service"
-msgstr "الخدمة الهندسية"
+#: templates/mission-request.php:55
+msgid "Engineering services wanted"
+msgstr "الخدمات الهندسية المطلوبة"
 
-#: templates/mission-request.php:80
+#: templates/mission-request.php:56
+msgid ""
+"Tick one or more services. All their prestations are ticked: untick those "
+"you do not need."
+msgstr "اختر خدمة أو أكثر. كل خدماتها الفرعية محددة: ألغِ تحديد ما لا تحتاجه."
+
+#: templates/mission-request.php:77
+msgid "Type of project"
+msgstr "نوع المشروع"
+
+#: templates/mission-request.php:85
 msgid "Project"
 msgstr "المشروع"
 
-#: templates/mission-request.php:81
+#: templates/mission-request.php:86
 msgid "e.g. Storage hangar 20 × 40 m"
 msgstr "مثال: هنغار تخزين 20 × 40 م"
 
-#: templates/mission-request.php:86
+#: templates/mission-request.php:91
 msgid ""
 "Dimensions, use, loads (crane, snow, wind), soil, what you expect from the "
 "study, existing documents…"
 msgstr ""
 "الأبعاد، الاستعمال، الأحمال (رافعة، ثلج، رياح)، التربة، ما تنتظره من "
 "الدراسة، الوثائق المتوفرة…"
-
-#: templates/mission-request.php:106
-msgid "Indicative budget (DA)"
-msgstr "الميزانية التقديرية (دج)"
 
 #: templates/mission-request.php:111
 msgid "Preferred engineer"
@@ -6953,44 +7046,44 @@ msgstr "المهندس المفضّل"
 msgid "Let the platform choose"
 msgstr "دع المنصة تختار"
 
-#: templates/mission-request.php:122
+#: templates/mission-request.php:121
 msgid "Plans, photos, documents"
 msgstr "مخططات، صور، وثائق"
 
 #. translators: 1: number of files, 2: MB, 3: extensions.
-#: templates/mission-request.php:123
+#: templates/mission-request.php:122
 msgid "Up to %1$d files of %2$d MB (%3$s)."
 msgstr "حتى %1$d ملفات بحجم %2$d ميغابايت (%3$s)."
 
-#: templates/mission-request.php:125
+#: templates/mission-request.php:124
 msgid "Send my request to the platform"
 msgstr "أرسل طلبي إلى المنصة"
 
-#: templates/mission-request.php:129
+#: templates/mission-request.php:128
 msgid "Engineer you chose"
 msgstr "المهندس الذي اخترته"
 
-#: templates/mission-request.php:131
+#: templates/mission-request.php:130
 msgid "The platform offers the mission to this engineer first, if available."
 msgstr "تعرض المنصة المهمة على هذا المهندس أولا إن كان متاحا."
 
-#: templates/mission-request.php:136
+#: templates/mission-request.php:135
 msgid "The platform studies your request and sends you a quote."
 msgstr "تدرس المنصة طلبك وترسل لك عرض سعر."
 
-#: templates/mission-request.php:137
+#: templates/mission-request.php:136
 msgid "You accept it from your account."
 msgstr "تقبله من حسابك."
 
-#: templates/mission-request.php:138
+#: templates/mission-request.php:137
 msgid "A verified partner engineer carries out the study."
 msgstr "مهندس شريك موثّق ينجز الدراسة."
 
-#: templates/mission-request.php:139
+#: templates/mission-request.php:138
 msgid "The platform checks it and delivers the documents in your account."
 msgstr "تراجعها المنصة وتسلّم الوثائق في حسابك."
 
-#: templates/mission-request.php:141
+#: templates/mission-request.php:140
 msgid ""
 "Your documents are private: only the platform and the engineer of your study"
 " see them."

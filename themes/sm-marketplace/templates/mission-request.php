@@ -47,35 +47,40 @@ $d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'type
 				<?php sm_theme_notices( true ); ?>
 				<?php
 				$services = (array) ( $d['services'] ?? array() );
-				$chosen   = (string) sm_theme_old( 'type', $d['type'] );
+				$sent     = null !== sm_theme_old( 'title', null ); // The form comes back after an error.
+				$chosen   = array_map( 'strval', (array) sm_theme_old( 'services', '' !== (string) $d['type'] ? array( $d['type'] ) : array() ) );
 				$ticked   = (array) sm_theme_old( 'prestations', array() );
 				?>
-				<div class="sm-field">
-					<label for="m-type"><?php esc_html_e( 'Engineering service', 'sm-marketplace' ); ?></label>
-					<select id="m-type" name="type" required data-sm-service<?php sm_theme_aria( 'type' ); ?>>
-						<option value=""><?php esc_html_e( 'Select', 'sm-marketplace' ); ?></option>
-						<?php foreach ( $services as $sv ) : ?><option value="<?php echo esc_attr( $sv['code'] ); ?>" <?php selected( $chosen, $sv['code'] ); ?>><?php echo esc_html( $sv['title'] ); ?></option><?php endforeach; ?>
-					</select>
-					<?php sm_theme_error( 'type' ); ?>
-				</div>
-				<?php foreach ( $services as $sv ) : ?>
-					<?php
-					if ( ! $sv['items'] ) {
-						continue;
-					}
-					$on   = $chosen === $sv['code'];
-					$mine = array_map( 'intval', (array) ( $ticked[ $sv['code'] ] ?? array() ) );
-					?>
-					<fieldset class="sme-prest" data-sm-prest="<?php echo esc_attr( $sv['code'] ); ?>"<?php echo $on ? '' : ' hidden disabled'; ?>>
-						<legend><?php esc_html_e( 'Prestations wanted', 'sm-marketplace' ); ?></legend>
-						<div class="sme-prest__group">
-							<?php foreach ( $sv['items'] as $i => $item ) : ?>
-								<label><input type="checkbox" name="prestations[<?php echo esc_attr( $sv['code'] ); ?>][]" value="<?php echo (int) $i; ?>" <?php checked( in_array( (int) $i, $mine, true ) ); ?>><span><?php echo esc_html( $item ); ?></span></label>
-							<?php endforeach; ?>
+				<fieldset class="sm-field sme-svc">
+					<legend><?php esc_html_e( 'Engineering services wanted', 'sm-marketplace' ); ?></legend>
+					<p class="sm-help"><?php esc_html_e( 'Tick one or more services. All their prestations are ticked: untick those you do not need.', 'sm-marketplace' ); ?></p>
+					<?php foreach ( $services as $sv ) : ?>
+						<?php
+						$on   = in_array( $sv['code'], $chosen, true );
+						$mine = $sent ? array_map( 'intval', (array) ( $ticked[ $sv['code'] ] ?? array() ) ) : array_keys( $sv['items'] );
+						?>
+						<div class="sme-svc__item<?php echo $on ? ' is-on' : ''; ?>" data-sm-svc>
+							<label class="sme-svc__head"><input type="checkbox" name="services[]" value="<?php echo esc_attr( $sv['code'] ); ?>" <?php checked( $on ); ?> data-sm-svc-toggle><strong><?php echo esc_html( $sv['title'] ); ?></strong></label>
+							<?php if ( $sv['items'] ) : ?>
+								<div class="sme-prest__group" data-sm-svc-items>
+									<?php foreach ( $sv['items'] as $i => $item ) : ?>
+										<label><input type="checkbox" name="prestations[<?php echo esc_attr( $sv['code'] ); ?>][]" value="<?php echo (int) $i; ?>" <?php checked( in_array( (int) $i, $mine, true ) ); ?>><span><?php echo esc_html( $item ); ?></span></label>
+									<?php endforeach; ?>
+								</div>
+							<?php endif; ?>
 						</div>
-						<?php if ( $on ) : ?><?php sm_theme_error( 'prestations' ); ?><?php endif; ?>
-					</fieldset>
-				<?php endforeach; ?>
+					<?php endforeach; ?>
+					<?php sm_theme_error( 'services' ); ?>
+					<?php sm_theme_error( 'prestations' ); ?>
+				</fieldset>
+				<div class="sm-field">
+					<label for="m-project"><?php esc_html_e( 'Type of project', 'sm-marketplace' ); ?></label>
+					<select id="m-project" name="project_type" required<?php sm_theme_aria( 'project_type' ); ?>>
+						<option value=""><?php esc_html_e( 'Select', 'sm-marketplace' ); ?></option>
+						<?php foreach ( (array) ( $d['projects'] ?? array() ) as $code => $label ) : ?><option value="<?php echo esc_attr( $code ); ?>" <?php selected( (string) sm_theme_old( 'project_type' ), (string) $code ); ?>><?php echo esc_html( $label ); ?></option><?php endforeach; ?>
+					</select>
+					<?php sm_theme_error( 'project_type' ); ?>
+				</div>
 				<div class="sm-field">
 					<label for="m-title"><?php esc_html_e( 'Project', 'sm-marketplace' ); ?></label>
 					<input id="m-title" name="title" dir="auto" maxlength="200" required value="<?php echo esc_attr( sm_theme_old( 'title' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. Storage hangar 20 × 40 m', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'title' ); ?>>
@@ -101,21 +106,15 @@ $d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'type
 						<?php sm_theme_error( 'needed_by' ); ?>
 					</div>
 				</div>
-				<div class="sm-field<?php echo $d['engineers'] ? ' sm-field--row' : ''; ?>">
-					<div>
-						<label for="m-budget"><?php esc_html_e( 'Indicative budget (DA)', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
-						<input id="m-budget" name="budget" inputmode="numeric" dir="ltr" value="<?php echo esc_attr( sm_theme_old( 'budget' ) ); ?>">
-					</div>
-					<?php if ( $d['engineers'] ) : ?>
-					<div>
+				<?php if ( $d['engineers'] ) : ?>
+					<div class="sm-field">
 						<label for="m-eng"><?php esc_html_e( 'Preferred engineer', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
 						<select id="m-eng" name="engineer">
 							<option value=""><?php esc_html_e( 'Let the platform choose', 'sm-marketplace' ); ?></option>
 							<?php foreach ( $d['engineers'] as $eid => $label ) : ?><option value="<?php echo (int) $eid; ?>" <?php selected( (int) sm_theme_old( 'engineer', $engineer ), (int) $eid ); ?>><?php echo esc_html( $label ); ?></option><?php endforeach; ?>
 						</select>
 					</div>
-					<?php endif; ?>
-				</div>
+				<?php endif; ?>
 				<label class="sm-upload sm-upload--small">
 					<input type="file" name="files[]" multiple data-sm-filename>
 					<?php sm_icon( 'upload', 'sm-upload__icon' ); ?>

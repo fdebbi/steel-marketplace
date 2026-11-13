@@ -4,12 +4,21 @@
  *
  *   submitted ──quote──▶ quoted ──accept (client)──▶ accepted ──assign──▶ assigned
  *       │                  │ └─refuse (client)─▶ quote_declined          │ └─refuse (engineer)─▶ accepted
- *       └─decline──▶ declined                                            ▼ take (engineer)
+ *       └─decline──▶ declined                   (advance paid first)     ▼ take (engineer)
  *   cancel (client, before acceptance) ─▶ cancelled                 in_progress ◀─rework─┐
  *                                                                        ▼ submit        │
  *                                                                      review ───────────┘
  *                                                                        ▼ deliver
  *                                                                    delivered ─confirm / close─▶ closed
+ *
+ * 0.3.0: a request covers one or more engineering services (with their ticked
+ * prestations) and a type of project. The quote gives a price per service (before
+ * tax), the TVA of the platform settings, the total and an advance (30 % by
+ * default). Once the client accepts, the advance is paid (order of SM
+ * Subscriptions) before the mission is given to an engineer; the deliverables are
+ * shown to the client once the balance is paid. Quotes are valid 15 days; a daily
+ * task reminds the client the day before, reminds an unpaid advance after 3 days
+ * and cancels an accepted quote whose advance is still unpaid at its end.
  *
  * The platform sets the client's price (quote) and the engineer's fee
  * separately; the client never sees the fee nor the engineer, the engineer
@@ -38,7 +47,10 @@ final class Missions {
 		foreach ( array( 'id', 'client_id', 'client_user', 'preferred_id', 'engineer_id', 'quote_days', 'engineer_days' ) as $k ) {
 			$r->$k = (int) $r->$k;
 		}
-		foreach ( array( 'budget', 'quote_amount', 'engineer_fee' ) as $k ) {
+		foreach ( array( 'budget', 'quote_amount', 'engineer_fee', 'amount_ht', 'tva_rate', 'advance_pct', 'advance_amount' ) as $k ) {
+			if ( ! isset( $r->$k ) ) {
+				$r->$k = 0;
+			}
 			$r->$k = (float) $r->$k;
 		}
 		$r->ref = self::ref( $r );
@@ -68,9 +80,11 @@ final class Missions {
 				'title'        => $d['title'],
 				'description'  => $d['description'],
 				'prestations'  => wp_json_encode( array_values( (array) ( $d['prestations'] ?? array() ) ), JSON_UNESCAPED_UNICODE ),
+				'services'     => wp_json_encode( array_values( (array) ( $d['services'] ?? array() ) ), JSON_UNESCAPED_UNICODE ),
+				'project_type' => (string) ( $d['project_type'] ?? '' ),
 				'wilaya'       => $d['wilaya'],
 				'needed_by'    => $d['needed_by'],
-				'budget'       => $d['budget'],
+				'budget'       => (float) ( $d['budget'] ?? 0 ),
 				'preferred_id' => (int) $d['preferred_id'],
 				'status'       => 'submitted',
 				'created_at'   => $now,
@@ -84,12 +98,176 @@ final class Missions {
 
 	/** Prestations ticked by the client, in the visitor's language (copy kept with the request). */
 	public static function prestations( $m ) {
-		$list = json_decode( (string) ( $m->prestations ?? '' ), true );
-		if ( ! is_array( $list ) ) {
-			return array();
+		$out = array();
+		foreach ( self::lines( $m ) as $l ) {
+			$out = array_merge( $out, $l['labels'] );
 		}
-		$ar = 'ar' === sm_current_language();
-		return array_values( array_filter( array_map( static fn( $p ) => is_array( $p ) ? (string) ( $ar && '' !== (string) ( $p['ar'] ?? '' ) ? $p['ar'] : ( $p['fr'] ?? '' ) ) : '', $list ) ) );
+		return $out;
+	}
+
+	/**
+	 * Services of a request with their prestations and their price before tax.
+	 * Requests made before 0.3.0 have one service (type + prestations).
+	 *
+	 * @return array list of { code, fr, ar, title, items: list of {fr, ar}, labels: string[], amount }
+	 */
+	public static function lines( $m ) {
+		$ar   = 'ar' === sm_current_language();
+		$list = json_decode( (string) ( $m->services ?? '' ), true );
+		if ( ! is_array( $list ) || ! $list ) {
+			$types = Settings::types( true );
+			$t     = $types[ $m->type ] ?? array( 'fr' => (string) $m->type, 'ar' => (string) $m->type );
+			$items = json_decode( (string) ( $m->prestations ?? '' ), true );
+			$list  = array(
+				array(
+					'code'   => (string) $m->type,
+					'fr'     => $t['fr'],
+					'ar'     => $t['ar'],
+					'items'  => is_array( $items ) ? $items : array(),
+					'amount' => (float) ( $m->amount_ht > 0 ? $m->amount_ht : $m->quote_amount ),
+				),
+			);
+		}
+		$out = array();
+		foreach ( $list as $l ) {
+			if ( ! is_array( $l ) ) {
+				continue;
+			}
+			$items = array_values( array_filter( (array) ( $l['items'] ?? array() ), 'is_array' ) );
+			$out[] = array(
+				'code'   => (string) ( $l['code'] ?? '' ),
+				'fr'     => (string) ( $l['fr'] ?? '' ),
+				'ar'     => (string) ( $l['ar'] ?? '' ),
+				'title'  => $ar && '' !== (string) ( $l['ar'] ?? '' ) ? (string) $l['ar'] : (string) ( $l['fr'] ?? '' ),
+				'items'  => $items,
+				'labels' => array_values( array_filter( array_map( static fn( $p ) => (string) ( $ar && '' !== (string) ( $p['ar'] ?? '' ) ? $p['ar'] : ( $p['fr'] ?? '' ) ), $items ) ) ),
+				'amount' => (float) ( $l['amount'] ?? 0 ),
+			);
+		}
+		return $out;
+	}
+
+	/** Codes of the services of a request. */
+	public static function codes( $m ) {
+		return array_values( array_filter( array_column( self::lines( $m ), 'code' ) ) );
+	}
+
+	/** Names of the services, for lists and e-mails ("Note de Calcul + Expertise…"). */
+	public static function services_label( $m ) {
+		return implode( ' + ', array_column( self::lines( $m ), 'title' ) );
+	}
+
+	/**
+	 * Money of the quote: before tax, TVA, total, advance and balance, and what is paid.
+	 */
+	public static function totals( $m ) {
+		$ttc     = (float) $m->quote_amount;
+		$ht      = $m->amount_ht > 0 ? (float) $m->amount_ht : $ttc;
+		$rate    = (float) $m->tva_rate;
+		$advance = (float) $m->advance_amount;
+		$paid_a  = $advance <= 0 || ! empty( $m->advance_paid_at );
+		$paid_b  = ! empty( $m->client_paid_at );
+		// Quotes sent before 0.3.0 have no price before tax: their payment is recorded by hand, as before.
+		$legacy  = $m->amount_ht <= 0 && $ttc > 0;
+		if ( $legacy ) {
+			return array( 'ht' => $ttc, 'tva_rate' => 0.0, 'tva' => 0.0, 'ttc' => $ttc, 'advance_pct' => 0.0, 'advance' => 0.0, 'balance' => $ttc, 'advance_paid' => true, 'balance_paid' => true, 'advance_due' => false, 'balance_due' => false, 'legacy' => true );
+		}
+		$started = in_array( $m->status, array( 'accepted', 'assigned', 'in_progress', 'review', 'delivered', 'closed' ), true );
+		return array(
+			'ht'           => $ht,
+			'tva_rate'     => $rate,
+			'tva'          => max( 0, $ttc - $ht ),
+			'ttc'          => $ttc,
+			'advance_pct'  => (float) $m->advance_pct,
+			'advance'      => $advance,
+			'balance'      => max( 0, $ttc - $advance ),
+			'advance_paid' => $paid_a,
+			'balance_paid' => $paid_b || $ttc - $advance <= 0,
+			'advance_due'  => $started && ! $paid_a && ! $paid_b,
+			// The balance is asked once the study is delivered (documents released after it).
+			'balance_due'  => in_array( $m->status, array( 'delivered', 'closed' ), true ) && $paid_a && ! $paid_b && $ttc - $advance > 0,
+			'legacy'       => false,
+		);
+	}
+
+	/** Amounts of a quote from the prices of the services (before tax). */
+	public static function compute( array $amounts, $rate, $pct ) {
+		$ht  = round( array_sum( array_map( 'floatval', $amounts ) ), 2 );
+		$ttc = round( $ht * ( 1 + max( 0, (float) $rate ) / 100 ) );
+		$pct = max( 0, min( 100, (float) $pct ) );
+		return array(
+			'ht'      => $ht,
+			'ttc'     => (float) $ttc,
+			'advance' => (float) round( $ttc * $pct / 100 ),
+			'pct'     => $pct,
+		);
+	}
+
+	/**
+	 * A payment of the client is confirmed (order paid, or recorded by the platform).
+	 *
+	 * @param string $what advance|balance
+	 */
+	public static function payment_received( $m, $what ) {
+		if ( ! $m ) {
+			return new \WP_Error( 'mission', __( 'Mission not found.', 'sm-engineering' ) );
+		}
+		$now = current_time( 'mysql', true );
+		$t   = self::totals( $m );
+		if ( 'advance' === $what ) {
+			if ( ! empty( $m->advance_paid_at ) ) {
+				return $m;
+			}
+			$row = array( 'advance_paid_at' => $now );
+			if ( $t['balance'] <= 0 ) {
+				$row['client_paid_at'] = $now; // The advance was the whole price.
+			}
+			return self::update( $m->id, $row, 'advance_paid', array( 'amount' => $t['advance'] ) );
+		}
+		if ( ! empty( $m->client_paid_at ) ) {
+			return $m;
+		}
+		$row = array( 'client_paid_at' => $now );
+		if ( empty( $m->advance_paid_at ) ) {
+			$row['advance_paid_at'] = $now;
+		}
+		if ( in_array( $m->status, array( 'delivered', 'closed' ), true ) ) {
+			Files::set_visibility( $m->id, 'deliverable', true );
+		}
+		return self::update( $m->id, $row, 'balance_paid', array( 'amount' => $t['balance'] ) );
+	}
+
+	/**
+	 * Daily task: reminder the day before a quote ends, reminder of an unpaid
+	 * advance, cancellation of an accepted quote whose advance is unpaid at its end.
+	 */
+	public static function daily() {
+		global $wpdb;
+		$t        = self::table();
+		$today    = gmdate( 'Y-m-d' );
+		$tomorrow = gmdate( 'Y-m-d', time() + DAY_IN_SECONDS );
+		$now      = current_time( 'mysql', true );
+		// 1. Quotes ending tomorrow (or today), not yet reminded.
+		foreach ( (array) $wpdb->get_col( $wpdb->prepare( "SELECT id FROM {$t} WHERE status = 'quoted' AND quote_reminded_at IS NULL AND quote_valid_until IS NOT NULL AND quote_valid_until >= %s AND quote_valid_until <= %s", $today, $tomorrow ) ) as $id ) { // phpcs:ignore WordPress.DB
+			self::update( (int) $id, array( 'quote_reminded_at' => $now ), 'quote_reminder' );
+		}
+		// 2. and 3. Accepted quotes whose advance is not paid.
+		$days = max( 1, (int) Settings::get( 'pay_reminder_days' ) );
+		$rows = $wpdb->get_results( "SELECT * FROM {$t} WHERE status = 'accepted' AND advance_amount > 0 AND advance_paid_at IS NULL AND client_paid_at IS NULL" ); // phpcs:ignore WordPress.DB
+		foreach ( (array) $rows as $r ) {
+			$m = self::hydrate( $r );
+			if ( $m->quote_valid_until && $m->quote_valid_until < $today ) {
+				if ( Payments::has_proof( $m ) ) {
+					continue; // A proof of payment is being checked by the team: not cancelled.
+				}
+				Payments::cancel_open( $m );
+				self::update( $m->id, array( 'status' => 'cancelled', 'reason' => __( 'The advance was not paid before the end of the quote.', 'sm-engineering' ), 'closed_at' => $now ), 'expired_unpaid' );
+				continue;
+			}
+			if ( ! $m->pay_reminded_at && $m->accepted_at && strtotime( $m->accepted_at . ' UTC' ) <= time() - $days * DAY_IN_SECONDS ) {
+				self::update( $m->id, array( 'pay_reminded_at' => $now ), 'payment_reminder' );
+			}
+		}
 	}
 
 	private static function update( $id, array $row, $action, array $log = array() ) {
@@ -134,13 +312,43 @@ final class Missions {
 		}
 		switch ( $action ) {
 			case 'quote':
-				$amount = (float) ( $a['amount'] ?? 0 );
-				if ( $amount <= 0 ) {
-					return new \WP_Error( 'amount', __( 'Enter the price of the study for the client.', 'sm-engineering' ) );
+				$lines   = self::lines( $m );
+				$amounts = array_values( (array) ( $a['lines'] ?? array() ) );
+				if ( ! $amounts && isset( $a['amount'] ) ) {
+					$amounts = array( (float) $a['amount'] ); // One price for the whole request.
 				}
+				foreach ( $lines as $i => $l ) {
+					$v = (float) ( $amounts[ $i ] ?? 0 );
+					if ( $v <= 0 ) {
+						return new \WP_Error( 'amount', __( 'Enter the price of each service for the client.', 'sm-engineering' ) );
+					}
+					$lines[ $i ]['amount'] = round( $v, 2 );
+				}
+				$rate  = isset( $a['tva_rate'] ) ? (float) $a['tva_rate'] : Settings::tva_rate();
+				$pct   = isset( $a['advance_pct'] ) && '' !== (string) $a['advance_pct'] ? (float) $a['advance_pct'] : (float) Settings::get( 'advance_pct' );
+				$c     = self::compute( array_column( $lines, 'amount' ), $rate, $pct );
 				$days  = max( 0, (int) ( $a['days'] ?? 0 ) );
 				$valid = gmdate( 'Y-m-d', time() + DAY_IN_SECONDS * (int) Settings::get( 'quote_valid_days' ) );
-				return self::update( $m->id, array( 'status' => 'quoted', 'quote_amount' => $amount, 'quote_days' => $days, 'quote_message' => (string) ( $a['message'] ?? '' ), 'quote_valid_until' => $valid, 'quoted_at' => $now ), 'quoted', array( 'amount' => $amount, 'days' => $days ) );
+				$store = array_map( static fn( $l ) => array( 'code' => $l['code'], 'fr' => $l['fr'], 'ar' => $l['ar'], 'items' => $l['items'], 'amount' => $l['amount'] ), $lines );
+				return self::update(
+					$m->id,
+					array(
+						'status'            => 'quoted',
+						'services'          => wp_json_encode( $store, JSON_UNESCAPED_UNICODE ),
+						'amount_ht'         => $c['ht'],
+						'tva_rate'          => $rate,
+						'quote_amount'      => $c['ttc'],
+						'advance_pct'       => $c['pct'],
+						'advance_amount'    => $c['advance'],
+						'quote_days'        => $days,
+						'quote_message'     => (string) ( $a['message'] ?? '' ),
+						'quote_valid_until' => $valid,
+						'quoted_at'         => $now,
+						'quote_reminded_at' => null,
+					),
+					'quoted',
+					array( 'amount' => $c['ttc'], 'advance' => $c['advance'], 'days' => $days )
+				);
 			case 'decline':
 				if ( '' === trim( (string) ( $a['reason'] ?? '' ) ) ) {
 					return new \WP_Error( 'reason', __( 'Give the reason: the client reads it.', 'sm-engineering' ) );
@@ -150,7 +358,7 @@ final class Missions {
 				if ( $m->quote_valid_until && $m->quote_valid_until < gmdate( 'Y-m-d' ) ) {
 					return new \WP_Error( 'expired', __( 'This quote has expired. Write to the platform to get an updated one.', 'sm-engineering' ) );
 				}
-				return self::update( $m->id, array( 'status' => 'accepted', 'accepted_at' => $now ), 'accepted', array( 'amount' => $m->quote_amount ) );
+				return self::update( $m->id, array( 'status' => 'accepted', 'accepted_at' => $now, 'pay_reminded_at' => null ), 'accepted', array( 'amount' => $m->quote_amount, 'advance' => $m->advance_amount ) );
 			case 'refuse':
 				return self::update( $m->id, array( 'status' => 'quote_declined', 'reason' => (string) ( $a['reason'] ?? '' ), 'closed_at' => $now ), 'quote_declined' );
 			case 'cancel':
@@ -158,6 +366,9 @@ final class Missions {
 			case 'assign':
 				$eng = (int) ( $a['engineer_id'] ?? 0 );
 				$fee = (float) ( $a['fee'] ?? 0 );
+				if ( self::totals( $m )['advance_due'] ) {
+					return new \WP_Error( 'advance', __( 'The advance of the client is not paid yet: the mission can be given to an engineer once it is received.', 'sm-engineering' ) );
+				}
 				if ( ! Engineers::is_approved( $eng ) ) {
 					return new \WP_Error( 'engineer', __( 'Choose an approved engineer.', 'sm-engineering' ) );
 				}
@@ -179,7 +390,10 @@ final class Missions {
 			case 'rework':
 				return self::update( $m->id, array( 'status' => 'in_progress' ), 'rework', array( 'note' => (string) ( $a['note'] ?? '' ) ) );
 			case 'deliver':
-				Files::set_visibility( $m->id, 'deliverable', true );
+				// The client sees the deliverables once the balance is paid.
+				if ( self::totals( $m )['balance_paid'] ) {
+					Files::set_visibility( $m->id, 'deliverable', true );
+				}
 				return self::update( $m->id, array( 'status' => 'delivered', 'delivered_at' => $now, 'fee_status' => 'due' ), 'delivered', array( 'engineer_id' => $m->engineer_id ) );
 			case 'confirm':
 			case 'close':
@@ -198,6 +412,9 @@ final class Missions {
 
 	/** Record the client's payment (platform). */
 	public static function client_paid( $m, $paid ) {
+		if ( $paid && ! self::totals( $m )['legacy'] ) {
+			return self::payment_received( $m, 'balance' );
+		}
 		return self::update( $m->id, array( 'client_paid_at' => $paid ? current_time( 'mysql', true ) : null ), $paid ? 'client_paid' : 'client_unpaid' );
 	}
 
@@ -266,6 +483,8 @@ final class Missions {
 			'submitted'      => array( 'review', __( 'Being studied by the platform', 'sm-engineering' ) ),
 			'quoted'         => array( 'action', __( 'Quote to accept', 'sm-engineering' ) ),
 			'accepted'       => array( 'progress', __( 'Accepted — engineer being appointed', 'sm-engineering' ) ),
+			'accepted_pay'   => array( 'action', __( 'Accepted — advance to pay', 'sm-engineering' ) ),
+			'delivered_pay'  => array( 'action', __( 'Ready — balance to pay', 'sm-engineering' ) ),
 			'assigned'       => array( 'progress', __( 'Accepted — engineer being appointed', 'sm-engineering' ) ),
 			'in_progress'    => array( 'progress', __( 'Study in progress', 'sm-engineering' ) ),
 			'review'         => array( 'progress', __( 'Study in progress', 'sm-engineering' ) ),
