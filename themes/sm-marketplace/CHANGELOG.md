@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.30.1 — 2026-11-13
+
+- Cache de pages : un membre connecté ne doit plus voir « Se connecter » / « Créer un compte » dans le menu quand le cache de l'hébergeur lui sert une page faite pour un visiteur.
+  - LiteSpeed reçoit la consigne de garder une version distincte pour les membres connectés (`X-LiteSpeed-Vary`).
+  - Sécurité : la page indique pour qui elle a été faite (`data-sm-user`), un petit témoin lisible par la page (`sm_in`, sans identité ni droit d'accès) indique si le navigateur est connecté ; s'ils diffèrent, le menu du haut et le bas du menu mobile sont redemandés hors cache (`admin-ajax.php?action=sm_user_nav`) et remplacés. Aucune requête en plus dans le cas normal.
+- Les actions de l'en-tête et le bas du menu mobile sont des parties de gabarit (`template-parts/header-actions.php`, `drawer-foot.php`).
+- Test navigateur `tests/e2e-cache.py` (17 vérifications).
+
 ## 0.30.0 — 2026-11-13 (avec sm-engineering 0.5.0)
 
 - Compte ingénieur : bouton Disponible / Indisponible en haut de la barre latérale (ingénieurs validés).

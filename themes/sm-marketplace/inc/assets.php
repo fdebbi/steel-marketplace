@@ -37,6 +37,7 @@ function sm_theme_enqueue_assets() {
 		array(
 			'dir'  => sm_theme_dir(),
 			'lang' => sm_theme_current_language(),
+			'ajax' => admin_url( 'admin-ajax.php', 'relative' ),
 			'i18n' => array(
 				'openMenu'  => __( 'Open menu', 'sm-marketplace' ),
 				'closeMenu' => __( 'Close menu', 'sm-marketplace' ),

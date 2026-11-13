@@ -270,3 +270,17 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Photo ou logo | Obligatoire à l'inscription | Choix du client |
 | Bouton « Demander une étude » | Masqué partout pour un ingénieur connecté ; visible pour les visiteurs et les autres comptes | Un partenaire réalise les études |
 | Disponibilité | Bouton en haut de la barre latérale, disponible par défaut, effet immédiat | Choix du client |
+
+## 13 novembre 2026 — Menu d'un membre connecté et cache de pages
+
+**Constat.** Sur le site en ligne, un membre connecté a vu « Se connecter » et « Créer un compte » dans le menu mobile. Le cache de pages de l'hébergeur (LiteSpeed) lui avait servi la page d'accueil faite pour un visiteur. Vider le cache a réglé le cas, sans empêcher qu'il revienne.
+
+**Décision (choix laissé par le propriétaire : « la meilleure expérience pour l'utilisateur »).** Deux protections ensemble, dans le thème 0.30.1 :
+
+1. Le thème demande à LiteSpeed de garder une version à part pour les membres connectés. Non vérifiable hors de l'hébergeur : à contrôler en ligne.
+2. La page se vérifie elle-même à l'ouverture et corrige le menu si le cache s'est trompé. Cette protection ne dépend d'aucun réglage de l'hébergeur ; elle est testée (`tests/e2e-cache.py`).
+
+**Écarté.** Ne plus mettre aucune page en cache : le site serait plus lent pour tous les visiteurs. Envoyer `Vary: Cookie` : les caches garderaient une version par visiteur, donc presque plus de cache.
+
+**Limite connue.** Seuls le menu du haut et le bas du menu mobile sont corrigés. Le reste d'une page servie par erreur reste celui d'un visiteur jusqu'à la page suivante.
+

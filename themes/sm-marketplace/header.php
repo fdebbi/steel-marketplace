@@ -7,8 +7,6 @@
 
 defined( 'ABSPATH' ) || exit;
 $sm_nav     = sm_theme_nav_items();
-$sm_account = is_user_logged_in() ? sm_theme_account() : null;
-$sm_unread  = $sm_account ? (int) ( $sm_account['unread'] ?? 0 ) : 0;
 ?><!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -17,7 +15,7 @@ $sm_unread  = $sm_account ? (int) ( $sm_account['unread'] ?? 0 ) : 0;
 	<meta name="theme-color" content="<?php echo esc_attr( sm_theme_color( 'primary' ) ); ?>">
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> data-sm-user="<?php echo is_user_logged_in() ? '1' : '0'; ?>">
 <?php wp_body_open(); ?>
 <a class="sm-skip" href="#sm-main"><?php esc_html_e( 'Skip to content', 'sm-marketplace' ); ?></a>
 
@@ -55,32 +53,8 @@ $sm_unread  = $sm_account ? (int) ( $sm_account['unread'] ?? 0 ) : 0;
 				<button class="sm-search__submit" type="submit"><?php sm_icon( 'search' ); ?><span class="screen-reader-text"><?php esc_html_e( 'Search', 'sm-marketplace' ); ?></span></button>
 			</form>
 
-			<div class="sm-header__actions">
-				<a class="sm-icon-btn sm-header__search-mobile" href="<?php echo esc_url( sm_page_url( 'search' ) ); ?>"><?php sm_icon( 'search' ); ?><span class="screen-reader-text"><?php esc_html_e( 'Search', 'sm-marketplace' ); ?></span></a>
-				<a class="sm-icon-btn sm-hide-mobile" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'saved' ) ) ); ?>"><?php sm_icon( 'heart' ); ?><span class="screen-reader-text"><?php esc_html_e( 'Saved listings', 'sm-marketplace' ); ?></span></a>
-				<?php if ( $sm_account ) : ?>
-					<div class="sm-notif sm-hide-mobile" data-sm-notif>
-						<a class="sm-icon-btn sm-header__bell" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'notifications' ) ) ); ?>" aria-haspopup="true" aria-expanded="false" aria-controls="sm-notif-panel" data-sm-notif-toggle>
-							<?php sm_icon( 'bell' ); ?>
-							<?php if ( $sm_unread ) : ?><span class="sm-dot"><?php echo esc_html( min( 99, $sm_unread ) ); ?></span><?php endif; ?>
-							<span class="screen-reader-text"><?php esc_html_e( 'Notifications', 'sm-marketplace' ); ?></span>
-						</a>
-						<?php get_template_part( 'template-parts/notif-panel', null, array( 'unread' => $sm_unread ) ); ?>
-					</div>
-					<a class="sm-header__account sm-hide-mobile" href="<?php echo esc_url( sm_page_url( 'account' ) ); ?>">
-						<?php sm_avatar( array_merge( $sm_account['company'], array( 'class' => sm_account_class( $sm_account ) ) ), 'xs' ); ?>
-						<span><?php esc_html_e( 'My account', 'sm-marketplace' ); ?></span>
-					</a>
-				<?php elseif ( is_user_logged_in() ) : ?>
-					<a class="sm-header__account sm-hide-mobile" href="<?php echo esc_url( admin_url() ); ?>"><?php sm_icon( 'user' ); ?><span><?php esc_html_e( 'Administration', 'sm-marketplace' ); ?></span></a>
-				<?php else : ?>
-					<a class="sm-header__account sm-hide-mobile" href="<?php echo esc_url( sm_page_url( 'login' ) ); ?>"><?php sm_icon( 'user' ); ?><span><?php esc_html_e( 'Sign in', 'sm-marketplace' ); ?></span></a>
-				<?php endif; ?>
-				<?php if ( ! $sm_account || 'engineer' !== sm_account_class( $sm_account ) ) : ?>
-					<a class="sm-btn sm-btn--accent sm-header__publish" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'publish' ) ) ); ?>"><?php sm_icon( 'plus' ); ?><span><?php esc_html_e( 'Publish', 'sm-marketplace' ); ?></span></a>
-				<?php else : ?>
-					<a class="sm-btn sm-btn--accent sm-header__publish" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'missions' ) ) ); ?>"><?php sm_icon( 'hard-hat' ); ?><span><?php esc_html_e( 'My missions', 'sm-marketplace' ); ?></span></a>
-				<?php endif; ?>
+			<div class="sm-header__actions" data-sm-usernav="head">
+				<?php get_template_part( 'template-parts/header-actions' ); ?>
 			</div>
 		</div>
 	</div>
@@ -135,15 +109,8 @@ $sm_unread  = $sm_account ? (int) ( $sm_account['unread'] ?? 0 ) : 0;
 			<a class="sm-drawer__link" href="<?php echo esc_url( sm_page_url( 'weight' ) ); ?>"><?php sm_icon( 'scale' ); ?><span><?php esc_html_e( 'Weight calculator', 'sm-marketplace' ); ?></span></a>
 			<a class="sm-drawer__link" href="<?php echo esc_url( sm_page_url( 'price-index' ) ); ?>"><?php sm_icon( 'chart' ); ?><span><?php esc_html_e( 'Price index', 'sm-marketplace' ); ?></span></a>
 		</nav>
-		<div class="sm-drawer__foot">
-			<a class="sm-btn sm-btn--accent sm-btn--block" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'publish' ) ) ); ?>"><?php sm_icon( 'plus' ); ?><?php esc_html_e( 'Publish a listing', 'sm-marketplace' ); ?></a>
-			<?php if ( is_user_logged_in() ) : ?>
-				<a class="sm-btn sm-btn--ghost sm-btn--block" href="<?php echo esc_url( sm_page_url( 'account' ) ); ?>"><?php sm_icon( 'user' ); ?><?php esc_html_e( 'My account', 'sm-marketplace' ); ?></a>
-				<a class="sm-btn sm-btn--ghost sm-btn--block" href="<?php echo esc_url( wp_logout_url() ); ?>"><?php sm_icon( 'logout' ); ?><?php esc_html_e( 'Sign out', 'sm-marketplace' ); ?></a>
-			<?php else : ?>
-				<a class="sm-btn sm-btn--ghost sm-btn--block" href="<?php echo esc_url( sm_page_url( 'login' ) ); ?>"><?php sm_icon( 'user' ); ?><?php esc_html_e( 'Sign in', 'sm-marketplace' ); ?></a>
-				<a class="sm-btn sm-btn--ghost sm-btn--block" href="<?php echo esc_url( sm_page_url( 'register' ) ); ?>"><?php esc_html_e( 'Create an account', 'sm-marketplace' ); ?></a>
-			<?php endif; ?>
+		<div class="sm-drawer__foot" data-sm-usernav="drawer">
+			<?php get_template_part( 'template-parts/drawer-foot' ); ?>
 		</div>
 	</div>
 </div>

@@ -452,7 +452,7 @@
 
 	/* ---- Photo previews --------------------------------------------------- */
 	/* ---- Bell (0.16.0): floating panel of the latest notifications. ------ */
-	$$( '[data-sm-notif]' ).forEach( function ( box ) {
+	function bindNotif( box ) {
 		var btn = $( '[data-sm-notif-toggle]', box );
 		var panel = $( '[data-sm-notif-panel]', box );
 		if ( ! btn || ! panel ) { return; }
@@ -464,7 +464,37 @@
 		btn.addEventListener( 'click', function ( e ) { e.preventDefault(); set( panel.hidden ); } );
 		document.addEventListener( 'click', function ( e ) { if ( ! panel.hidden && ! box.contains( e.target ) ) { set( false ); } } );
 		document.addEventListener( 'keydown', function ( e ) { if ( 'Escape' === e.key && ! panel.hidden ) { set( false ); btn.focus(); } } );
-	} );
+	}
+	$$( '[data-sm-notif]' ).forEach( bindNotif );
+
+	/*
+	 * ---- Menu of the right person (0.30.1) --------------------------------
+	 * A page cache can hand a page made for a visitor to a signed-in member (or the
+	 * reverse). The page says how it was made (data-sm-user), the sm_in cookie says
+	 * whether this browser is signed in: when they differ, the header actions and
+	 * the foot of the mobile menu are asked again, outside any cache.
+	 */
+	( function () {
+		var made = document.body.getAttribute( 'data-sm-user' );
+		if ( null === made || ! cfg.ajax || ! window.fetch || ! window.FormData ) { return; }
+		var now = /(?:^|;\s*)sm_in=1(?:;|$)/.test( document.cookie ) ? '1' : '0';
+		if ( made === now ) { return; }
+		var data = new FormData();
+		data.append( 'action', 'sm_user_nav' );
+		data.append( 'sm_lang', cfg.lang || '' );
+		fetch( cfg.ajax, { method: 'POST', body: data, credentials: 'same-origin', cache: 'no-store' } )
+			.then( function ( r ) { return r.json(); } )
+			.then( function ( res ) {
+				var d = res && res.success ? res.data : null;
+				if ( ! d || ( d.in ? '1' : '0' ) === made ) { return; } // The page was right: only the cookie was late.
+				var head = $( '[data-sm-usernav="head"]' ), foot = $( '[data-sm-usernav="drawer"]' );
+				if ( head ) { head.innerHTML = d.head; $$( '[data-sm-notif]', head ).forEach( bindNotif ); }
+				if ( foot ) { foot.innerHTML = d.drawer; }
+				document.body.setAttribute( 'data-sm-user', d.in ? '1' : '0' );
+				document.body.classList.toggle( 'logged-in', !! d.in );
+			} )
+			.catch( function () {} );
+	}() );
 
 	/* ---- Service form (0.15.2): "Other" shows the name field. ---------- */
 	$$( '[data-sms-category]' ).forEach( function ( sel ) {

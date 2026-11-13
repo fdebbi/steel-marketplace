@@ -11,6 +11,12 @@
  *    marked as non-cacheable for WordPress cache plugins, LiteSpeed and CDNs.
  * 2. A visitor whose saved language differs from the URL is redirected to the
  *    explicit ?lang= URL, so the content of a URL never depends on a cookie.
+ * 3. Signed-in members (0.30.1): a page kept for visitors must never be shown
+ *    to a member (he would see "Sign in" in the menu). Two protections:
+ *    - LiteSpeed is asked to keep separate versions by sign-in cookie;
+ *    - the page carries the state it was made in (data-sm-user); a small
+ *      cookie readable by the page (sm_in) says whether the browser is signed
+ *      in; when they differ, main.js asks sm_user_nav for the right menu.
  *
  * @package SM_Marketplace
  */
@@ -39,8 +45,13 @@ function sm_theme_is_uncacheable_request() {
 /** Send no-cache signals understood by WordPress cache plugins, LiteSpeed and CDNs. */
 function sm_theme_cache_control() {
 	if ( ! sm_theme_is_uncacheable_request() ) {
+		// Cacheable page: one version for visitors, never reused for a signed-in member.
+		if ( ! is_admin() && ! wp_doing_ajax() && ! headers_sent() && defined( 'LOGGED_IN_COOKIE' ) ) {
+			header( 'X-LiteSpeed-Vary: cookie=' . LOGGED_IN_COOKIE, false );
+		}
 		return;
 	}
+	sm_theme_user_hint_sync();
 	if ( ! defined( 'DONOTCACHEPAGE' ) ) {
 		define( 'DONOTCACHEPAGE', true ); // WP Super Cache, W3TC, LiteSpeed Cache plugin.
 	}
@@ -75,3 +86,104 @@ function sm_theme_language_redirect() {
 	exit;
 }
 add_action( 'template_redirect', 'sm_theme_language_redirect', 1 );
+
+/*
+ * ---- Signed-in hint (0.30.1) ---------------------------------------------
+ * sm_in=1 is a cookie the page can read (the WordPress session cookies cannot
+ * be read by scripts). It carries no identity and gives no access: it only
+ * says "this browser is signed in", so a cached page can check itself.
+ */
+
+/** Write or clear the hint cookie. */
+function sm_theme_user_hint( $on, $expire = 0 ) {
+	if ( headers_sent() ) {
+		return;
+	}
+	$args = array(
+		'expires'  => $on ? (int) $expire : time() - YEAR_IN_SECONDS,
+		'path'     => COOKIEPATH ? COOKIEPATH : '/',
+		'domain'   => COOKIE_DOMAIN ? COOKIE_DOMAIN : '',
+		'secure'   => is_ssl(),
+		'httponly' => false,
+		'samesite' => 'Lax',
+	);
+	setcookie( 'sm_in', $on ? '1' : '', $args );
+	if ( $on ) {
+		$_COOKIE['sm_in'] = '1';
+	} else {
+		unset( $_COOKIE['sm_in'] );
+	}
+}
+
+/** Same lifetime as the WordPress session. */
+function sm_theme_user_hint_login( $cookie, $expire ) {
+	sm_theme_user_hint( true, $expire );
+}
+add_action( 'set_logged_in_cookie', 'sm_theme_user_hint_login', 10, 2 );
+
+function sm_theme_user_hint_logout() {
+	sm_theme_user_hint( false );
+}
+add_action( 'clear_auth_cookie', 'sm_theme_user_hint_logout' );
+
+/** On a page that is never cached: put the hint back in line with the real session. */
+function sm_theme_user_hint_sync() {
+	$has = ! empty( $_COOKIE['sm_in'] );
+	if ( is_user_logged_in() && ! $has ) {
+		sm_theme_user_hint( true, time() + 14 * DAY_IN_SECONDS ); // Sessions opened before 0.30.1.
+	} elseif ( ! is_user_logged_in() && $has ) {
+		sm_theme_user_hint( false );
+	}
+}
+
+/**
+ * Links made during an admin-ajax request carry no language prefix (/ar/…):
+ * put it back, so the corrected menu keeps the visitor in his language.
+ */
+function sm_theme_localize_links( $html, $lang ) {
+	if ( ! $lang || ! class_exists( '\\SM\\Core\\I18n\\Language' ) || \SM\Core\I18n\Language::default_language() === $lang ) {
+		return $html;
+	}
+	$home = untrailingslashit( home_url() );
+	return preg_replace_callback(
+		'#href="(' . preg_quote( $home, '#' ) . '/[^"]*)"#',
+		static function ( $m ) use ( $home, $lang ) {
+			$url = html_entity_decode( $m[1], ENT_QUOTES );
+			if ( preg_match( '#^' . preg_quote( $home, '#' ) . '/wp-#', $url ) ) {
+				return $m[0]; // wp-login.php (sign out), wp-admin.
+			}
+			return 'href="' . esc_url( \SM\Core\I18n\Language::url_for( $url, $lang ) ) . '"';
+		},
+		$html
+	);
+}
+
+/**
+ * admin-ajax.php?action=sm_user_nav: the header actions and the foot of the
+ * mobile menu for the person who asks (member or visitor). Never cached.
+ */
+function sm_theme_ajax_user_nav() {
+	// phpcs:ignore WordPress.Security.NonceVerification -- read-only, returns only the caller's own menu.
+	$lang = isset( $_POST['sm_lang'] ) ? sanitize_key( wp_unslash( $_POST['sm_lang'] ) ) : '';
+	if ( $lang && class_exists( '\\SM\\Core\\I18n\\Language' ) ) {
+		\SM\Core\I18n\Language::force( $lang );
+	}
+	sm_theme_user_hint_sync();
+	nocache_headers();
+	header( 'X-LiteSpeed-Cache-Control: no-cache', true );
+	ob_start();
+	get_template_part( 'template-parts/header-actions' );
+	$head = ob_get_clean();
+	ob_start();
+	get_template_part( 'template-parts/drawer-foot' );
+	$drawer = ob_get_clean();
+	wp_send_json_success(
+		array(
+			'in'     => is_user_logged_in(),
+			'head'   => sm_theme_localize_links( $head, $lang ),
+			'drawer' => sm_theme_localize_links( $drawer, $lang ),
+		)
+	);
+}
+add_action( 'wp_ajax_sm_user_nav', 'sm_theme_ajax_user_nav' );
+add_action( 'wp_ajax_nopriv_sm_user_nav', 'sm_theme_ajax_user_nav' );
