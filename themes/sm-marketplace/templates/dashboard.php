@@ -114,6 +114,7 @@ if ( $is_eng ) {
 				'sales'    => $has_trade ? __( 'Orders and offers received', 'sm-marketplace' ) : null,
 				'offers'   => 'client' === $class ? null : __( 'Quotations sent', 'sm-marketplace' ),
 				'messages' => __( 'Enquiries received', 'sm-marketplace' ),
+				'visits'   => $is_demo ? null : __( 'Visit requests', 'sm-marketplace' ),
 				'stats'    => __( 'Statistics', 'sm-marketplace' ),
 			),
 		),
@@ -123,6 +124,7 @@ if ( $is_eng ) {
 			array(
 				'purchases' => $has_trade ? __( 'My purchases and offers', 'sm-marketplace' ) : null,
 				'saved'     => __( 'Saved listings', 'sm-marketplace' ),
+				'my-visits' => $is_demo ? null : __( 'My visits', 'sm-marketplace' ),
 				'rfq'       => __( 'My requests for quotation', 'sm-marketplace' ),
 				'history'   => $has_trade ? null : __( 'Purchase history', 'sm-marketplace' ),
 			),

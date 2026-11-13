@@ -708,7 +708,7 @@ msgstr "إلغاء"
 msgid "Give the reason, so the seller knows why the listing was changed."
 msgstr "اذكر السبب ليعرف البائع سبب تعديل الإعلان."
 
-#: src/Admin/Admin.php:514 src/Spec.php:154
+#: src/Admin/Admin.php:514 src/Spec.php:199
 msgid "Give the product a title (in French or in Arabic)."
 msgstr "أعط المنتج عنوانا (بالفرنسية أو بالعربية)."
 
@@ -750,7 +750,7 @@ msgstr "تم تعديل الإعلان وإعلام البائع بالسبب."
 msgid "Category saved."
 msgstr "تم حفظ الفئة."
 
-#: src/Form.php:47
+#: src/Form.php:47 src/Visits.php:182
 msgid "Your account has no company."
 msgstr "حسابك غير مرتبط بمؤسسة."
 
@@ -766,7 +766,7 @@ msgstr "نشرت عددا كبيرا من المنتجات اليوم. أعد ا
 msgid "Add at least one photo of the product."
 msgstr "أضف صورة واحدة على الأقل للمنتج."
 
-#: src/Form.php:82 src/Spec.php:28
+#: src/Form.php:82 src/Spec.php:29
 msgid "Choose a category."
 msgstr "اختر فئة."
 
@@ -966,91 +966,91 @@ msgid ""
 "still available."
 msgstr "لم يعد «%s» معروضا. أعد نشره من «إعلاناتي» إن كان لا يزال متوفرا."
 
-#: src/Presenter.php:131
+#: src/Presenter.php:136
 msgid "Product type"
 msgstr "نوع المنتج"
 
-#: src/Presenter.php:133 src/Presenter.php:161
+#: src/Presenter.php:138 src/Presenter.php:166
 msgid "Designation"
 msgstr "التسمية"
 
-#: src/Presenter.php:134 src/Presenter.php:162
+#: src/Presenter.php:139 src/Presenter.php:167
 msgid "Steel grade"
 msgstr "درجة الفولاذ"
 
-#: src/Presenter.php:134 src/Presenter.php:162
+#: src/Presenter.php:139 src/Presenter.php:167
 msgid "Not specified"
 msgstr "غير محددة"
 
-#: src/Presenter.php:136
+#: src/Presenter.php:141
 msgid "Standard"
 msgstr "المعيار"
 
-#: src/Presenter.php:146
+#: src/Presenter.php:151
 msgid "Dimensions"
 msgstr "الأبعاد"
 
-#: src/Presenter.php:149
+#: src/Presenter.php:154
 msgid "Plate size"
 msgstr "مقاس الصفيحة"
 
-#: src/Presenter.php:151
+#: src/Presenter.php:156
 msgid "Bar length"
 msgstr "طول القضبان"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:154
+#: src/Presenter.php:159
 msgid "%s plates"
 msgstr "%s صفائح"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:154
+#: src/Presenter.php:159
 msgid "%s bars"
 msgstr "%s قضبان"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:156 src/Presenter.php:164
+#: src/Presenter.php:161 src/Presenter.php:169
 msgid "Quantity"
 msgstr "الكمية"
 
-#: src/Presenter.php:158
+#: src/Presenter.php:163
 msgid "Weight per metre"
 msgstr "الوزن لكل متر"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:164
+#: src/Presenter.php:169
 msgid "%s pieces in the lot"
 msgstr "%s قطعة في الدفعة"
 
-#: src/Presenter.php:167
+#: src/Presenter.php:172
 msgid "Weight of the lot"
 msgstr "وزن الدفعة"
 
-#: src/Presenter.php:189
+#: src/Presenter.php:194
 msgid "Available quantity"
 msgstr "الكمية المتوفرة"
 
-#: src/Presenter.php:195
+#: src/Presenter.php:200
 msgid "Condition"
 msgstr "الحالة"
 
-#: src/Presenter.php:203
+#: src/Presenter.php:208
 msgid "Yes"
 msgstr "نعم"
 
-#: src/Presenter.php:203
+#: src/Presenter.php:208
 msgid "No"
 msgstr "لا"
 
-#: src/Presenter.php:242
+#: src/Presenter.php:247
 msgid "m (linear)"
 msgstr "م.ط"
 
-#: src/Presenter.php:243
+#: src/Presenter.php:248
 msgid "pieces"
 msgstr "قطع"
 
-#: src/Presenter.php:244
+#: src/Presenter.php:249
 msgid "lot"
 msgstr "دفعة"
 
@@ -1074,110 +1074,118 @@ msgstr "سوق غير معروف."
 msgid "This listing is not available."
 msgstr "هذا الإعلان غير متاح."
 
-#: src/Spec.php:63
+#: src/Spec.php:64
 msgid "This category is not available."
 msgstr "هذه الفئة غير متاحة."
 
-#: src/Spec.php:88
+#: src/Spec.php:89
 msgid "Enter the price."
 msgstr "أدخل السعر."
 
-#: src/Spec.php:91 src/Spec.php:100
+#: src/Spec.php:92 src/Spec.php:101
 msgid "This price is outside the accepted range."
 msgstr "هذا السعر خارج النطاق المقبول."
 
-#: src/Spec.php:97
+#: src/Spec.php:98
 msgid "Enter the price of the whole lot."
 msgstr "أدخل سعر الحصة كاملة."
 
-#: src/Spec.php:112
+#: src/Spec.php:113
 msgid ""
 "A price per piece needs the number of pieces: choose \"Number of bars\" or a"
 " price per kg."
 msgstr "السعر للقطعة يتطلب عدد القطع: اختر «عدد القضبان» أو سعرا للكيلوغرام."
 
-#: src/Spec.php:137
+#: src/Spec.php:138
 msgid ""
 "The price of the whole lot is higher than the total at the detail price: "
 "check it."
 msgstr "سعر الحصة كاملة أعلى من المجموع بسعر التفصيل: تحقق منه."
 
-#: src/Spec.php:158
-msgid "The description is too long (4000 characters at most)."
-msgstr "الوصف طويل جدا (4000 حرف كحد أقصى)."
-
-#: src/Spec.php:162
+#: src/Spec.php:148
 msgid "Choose the wilaya where the product is."
 msgstr "اختر الولاية التي يوجد فيها المنتج."
 
-#: src/Spec.php:182 src/Spec.php:378
+#: src/Spec.php:170
+msgid "Enter the commune."
+msgstr "أدخل البلدية."
+
+#: src/Spec.php:173
+msgid "Place the marker on the map, where the building is."
+msgstr "ضع العلامة على الخريطة في مكان المبنى."
+
+#: src/Spec.php:203
+msgid "The description is too long (4000 characters at most)."
+msgstr "الوصف طويل جدا (4000 حرف كحد أقصى)."
+
+#: src/Spec.php:222 src/Spec.php:418
 msgid "The weight engine is not active."
 msgstr "محرك الأوزان غير مفعّل."
 
-#: src/Spec.php:186
+#: src/Spec.php:226
 msgid "Choose the product type."
 msgstr "اختر نوع المنتج."
 
-#: src/Spec.php:204
+#: src/Spec.php:244
 msgid "Choose the size."
 msgstr "اختر المقاس."
 
-#: src/Spec.php:221 src/Spec.php:466
+#: src/Spec.php:261 src/Spec.php:506
 msgid "Enter the total weight."
 msgstr "أدخل الوزن الإجمالي."
 
-#: src/Spec.php:221
+#: src/Spec.php:261
 msgid "Enter the number of pieces."
 msgstr "أدخل عدد القطع."
 
-#: src/Spec.php:262 src/Spec.php:450
+#: src/Spec.php:302 src/Spec.php:490
 msgid "Enter the weighed weight in kg."
 msgstr "أدخل الوزن الفعلي بالكيلوغرام."
 
 #. translators: %s: theoretical weight in kg.
-#: src/Spec.php:265 src/Spec.php:453
+#: src/Spec.php:305 src/Spec.php:493
 msgid "The weighed weight is very far from the theoretical %s kg. Check it."
 msgstr "الوزن الفعلي بعيد جدا عن الوزن النظري %s كغ. تحقق منه."
 
-#: src/Spec.php:324
+#: src/Spec.php:364
 msgid "Enter the available quantity."
 msgstr "أدخل الكمية المتوفرة."
 
-#: src/Spec.php:346 src/Spec.php:501
+#: src/Spec.php:386 src/Spec.php:541
 msgid "Required."
 msgstr "إلزامي."
 
-#: src/Spec.php:353
+#: src/Spec.php:393
 msgid "Enter a positive number."
 msgstr "أدخل عددا موجبا."
 
-#: src/Spec.php:358
+#: src/Spec.php:398
 msgid "Choose a value from the list."
 msgstr "اختر قيمة من القائمة."
 
-#: src/Spec.php:395
+#: src/Spec.php:435
 msgid "Choose the element (column, rafter, purlin…)."
 msgstr "اختر العنصر (عمود، عارضة، مداد…)."
 
-#: src/Spec.php:399
+#: src/Spec.php:439
 msgid "Choose the type and the size."
 msgstr "اختر النوع والمقاس."
 
-#: src/Spec.php:405
+#: src/Spec.php:445
 msgid "Enter the number of pieces and their length in metres."
 msgstr "أدخل عدد القطع وطولها بالمتر."
 
-#: src/Spec.php:433
+#: src/Spec.php:473
 msgid ""
 "Describe the lot: at least one line with type, size, number of pieces and "
 "length."
 msgstr "صِف الدفعة: سطر واحد على الأقل بالنوع والمقاس وعدد القطع والطول."
 
-#: src/Spec.php:468
+#: src/Spec.php:508
 msgid "This weight is outside the accepted range."
 msgstr "هذا الوزن خارج النطاق المقبول."
 
-#: src/Spec.php:487
+#: src/Spec.php:527
 msgid "Choose the condition."
 msgstr "اختر الحالة."
 
@@ -1205,3 +1213,141 @@ msgstr "المتوفر %1$s %2$s فقط."
 #: src/Stock.php:119
 msgid "This listing is no longer on sale."
 msgstr "هذا الإعلان لم يعد معروضا للبيع."
+
+#: src/Visits.php:158
+msgid "Choose the date and the time of the visit."
+msgstr "اختر تاريخ ووقت الزيارة."
+
+#: src/Visits.php:163
+msgid "Choose a date and a time in the future."
+msgstr "اختر تاريخًا ووقتًا في المستقبل."
+
+#: src/Visits.php:166
+msgid "Choose a date within the next three months."
+msgstr "اختر تاريخًا خلال الأشهر الثلاثة القادمة."
+
+#: src/Visits.php:179
+msgid "A visit cannot be asked for this listing."
+msgstr "لا يمكن طلب زيارة لهذا الإعلان."
+
+#: src/Visits.php:185
+msgid "This is your own listing."
+msgstr "هذا إعلانك."
+
+#: src/Visits.php:193
+msgid "You already asked for a visit of this listing. Follow it in \"My visits\"."
+msgstr "سبق أن طلبت زيارة لهذا الإعلان. تابعها في «زياراتي»."
+
+#: src/Visits.php:249
+msgid "This request can no longer be answered."
+msgstr "لم يعد ممكنًا الرد على هذا الطلب."
+
+#: src/Visits.php:269
+msgid "This request can no longer be changed."
+msgstr "لم يعد ممكنًا تعديل هذا الطلب."
+
+#: src/Visits.php:328
+msgid "This listing no longer exists."
+msgstr "هذا الإعلان لم يعد موجودًا."
+
+#: src/Visits.php:331
+msgid "You asked for many visits today. Try again tomorrow."
+msgstr "طلبت زيارات كثيرة اليوم. حاول غدًا."
+
+#: src/Visits.php:337
+msgid ""
+"Your request is sent. The seller will answer; you will be told by "
+"notification and e-mail."
+msgstr "تم إرسال طلبك. سيرد البائع وسيتم إعلامك بإشعار وبريد إلكتروني."
+
+#: src/Visits.php:344
+msgid "You cannot answer this request."
+msgstr "لا يمكنك الرد على هذا الطلب."
+
+#: src/Visits.php:352
+msgid "Visit accepted. The buyer now sees the position on the map."
+msgstr "تم قبول الزيارة. يرى المشتري الآن الموقع على الخريطة."
+
+#: src/Visits.php:353
+msgid "Request refused. The buyer is told."
+msgstr "تم رفض الطلب. تم إعلام المشتري."
+
+#: src/Visits.php:354
+msgid "New date proposed. The buyer must confirm it."
+msgstr "تم اقتراح تاريخ جديد. على المشتري تأكيده."
+
+#: src/Visits.php:364
+msgid "You cannot change this request."
+msgstr "لا يمكنك تعديل هذا الطلب."
+
+#: src/Visits.php:371
+msgid "Visit confirmed. The position is now shown on the listing."
+msgstr "تم تأكيد الزيارة. يظهر الموقع الآن في الإعلان."
+
+#: src/Visits.php:371
+msgid "Request cancelled."
+msgstr "تم إلغاء الطلب."
+
+#: src/Visits.php:395
+msgid "New visit request"
+msgstr "طلب زيارة جديد"
+
+#. translators: 1: company, 2: listing title, 3: date and time.
+#: src/Visits.php:397
+msgid ""
+"%1$s asks to visit \"%2$s\" on %3$s. Accept, refuse or propose another date "
+"from your account."
+msgstr ""
+"%1$s يطلب زيارة «%2$s» بتاريخ %3$s. اقبل أو ارفض أو اقترح تاريخًا آخر من "
+"حسابك."
+
+#: src/Visits.php:402
+msgid "Your visit is accepted"
+msgstr "تم قبول زيارتك"
+
+#. translators: 1: listing title, 2: date and time.
+#: src/Visits.php:404
+msgid ""
+"The seller accepted your visit of \"%1$s\" on %2$s. The exact position is "
+"now shown on the listing."
+msgstr ""
+"قبل البائع زيارتك لـ«%1$s» بتاريخ %2$s. يظهر الموقع الدقيق الآن في الإعلان."
+
+#: src/Visits.php:409
+msgid "Your visit request was refused"
+msgstr "تم رفض طلب زيارتك"
+
+#. translators: %s: listing title.
+#: src/Visits.php:411
+msgid ""
+"The seller cannot receive you for \"%s\". You can write to him from the "
+"listing."
+msgstr "لا يستطيع البائع استقبالك بخصوص «%s». يمكنك مراسلته من الإعلان."
+
+#: src/Visits.php:416
+msgid "The seller proposes another date for your visit"
+msgstr "يقترح البائع تاريخًا آخر لزيارتك"
+
+#. translators: 1: listing title, 2: date and time.
+#: src/Visits.php:418
+msgid ""
+"For \"%1$s\", the seller proposes %2$s. Confirm or cancel from your account."
+msgstr "بخصوص «%1$s»، يقترح البائع %2$s. أكّد أو ألغِ من حسابك."
+
+#: src/Visits.php:423
+msgid "Visit confirmed by the buyer"
+msgstr "أكّد المشتري الزيارة"
+
+#. translators: 1: company, 2: listing title, 3: date and time.
+#: src/Visits.php:425
+msgid "%1$s confirmed the visit of \"%2$s\" on %3$s."
+msgstr "%1$s أكّد زيارة «%2$s» بتاريخ %3$s."
+
+#: src/Visits.php:430
+msgid "Visit cancelled by the buyer"
+msgstr "ألغى المشتري الزيارة"
+
+#. translators: 1: company, 2: listing title.
+#: src/Visits.php:432
+msgid "%1$s cancelled the visit of \"%2$s\"."
+msgstr "%1$s ألغى زيارة «%2$s»."

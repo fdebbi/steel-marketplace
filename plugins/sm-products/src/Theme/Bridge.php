@@ -216,6 +216,11 @@ final class Bridge {
 			'quantity'      => $p->quantity ? (string) $p->quantity : '',
 			'unit'          => $p->unit,
 			'wilaya'        => $p->wilaya,
+			'commune'       => (string) ( $p->commune ?? '' ),
+			'address'       => (string) ( $p->address ?? '' ),
+			'lat'           => null === $p->lat ? '' : (string) $p->lat,
+			'lng'           => null === $p->lng ? '' : (string) $p->lng,
+			'map_public'    => (string) (int) $p->map_public,
 			'title'         => array( 'fr' => $t['title']['fr'] ?? '', 'ar' => $t['title']['ar'] ?? '' ),
 			'description'   => trim( ( $t['description']['fr'] ?? '' ) . ( $t['description']['ar'] ?? '' ) ),
 			'keep_photos'   => $rev ? $rev['photos'] : Media::get( 'product', $p->id, 'photo' ),
@@ -268,6 +273,7 @@ final class Bridge {
 			'errors'  => $spec['errors'],
 			'summary' => $spec['summary'],
 			'calc'    => $spec['calc'],
+			'title'   => $spec['title'] ?? array(),
 		);
 	}
 

@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Buildings 0.1.0\n"
+"Project-Id-Version: SM Buildings 0.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-buildings\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-07T21:59:03+00:00\n"
+"POT-Creation-Date: 2026-11-13T22:19:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-buildings\n"
@@ -87,7 +87,7 @@ msgid "Dismantled"
 msgstr ""
 
 #: src/Presenter.php:88
-msgid "Length × width × eaves height"
+msgid "Length × width × height at the column"
 msgstr ""
 
 #: src/Presenter.php:89
@@ -99,31 +99,55 @@ msgid "Number of portal frames"
 msgstr ""
 
 #: src/Presenter.php:93
+msgid "Height of the roof (ridge)"
+msgstr ""
+
+#: src/Presenter.php:96
 msgid "Roof slope"
 msgstr ""
 
-#: src/Presenter.php:96
-msgid "Estimated steel weight"
+#: src/Presenter.php:99
+msgid "Number of floors"
 msgstr ""
 
-#: src/Presenter.php:96
-msgid "Steel weight"
+#: src/Presenter.php:102
+msgid "Mezzanine"
 msgstr ""
 
-#: src/Presenter.php:101
-msgid "Indicative drawing made from the figures given by the seller. It is not a structural design."
+#: src/Presenter.php:102
+msgid "Yes"
+msgstr ""
+
+#: src/Presenter.php:106
+msgid "Total steel weight (given by the seller)"
 msgstr ""
 
 #: src/Presenter.php:107
+msgid "Weight of the declared elements (not the whole structure)"
+msgstr ""
+
+#: src/Presenter.php:109
+msgid "Steel weight"
+msgstr ""
+
+#: src/Presenter.php:111
+msgid "Of which declared elements (calculated)"
+msgstr ""
+
+#: src/Presenter.php:116
+msgid "Indicative drawing made from the figures given by the seller. It is not a structural design."
+msgstr ""
+
+#: src/Presenter.php:122
 msgid "Before buying and reassembling: ask an engineer"
 msgstr ""
 
 #. translators: %s: platform name.
-#: src/Presenter.php:109
+#: src/Presenter.php:124
 msgid "A used steel building must be checked by a qualified engineer before it is reassembled: condition of the members and connections, corrosion, and a new calculation for the new site (wind, snow, foundations). The information in this listing is declared by the seller; %s does not certify it."
 msgstr ""
 
-#: src/Presenter.php:110
+#: src/Presenter.php:125
 msgid "Find an engineer"
 msgstr ""
 
@@ -135,47 +159,68 @@ msgstr ""
 msgid "The building is already dismantled: untick \"Dismantling included\"."
 msgstr ""
 
-#: src/Spec.php:33
+#: src/Spec.php:75
 msgid "Say whether the building is assembled or dismantled."
 msgstr ""
 
-#: src/Spec.php:41
+#: src/Spec.php:84
 msgid "Enter the length in metres."
 msgstr ""
 
-#: src/Spec.php:42
+#: src/Spec.php:85
 msgid "Enter the width in metres."
 msgstr ""
 
-#: src/Spec.php:43
-msgid "Enter the eaves height in metres."
+#: src/Spec.php:86
+msgid "Enter the height at the column in metres."
+msgstr ""
+
+#: src/Spec.php:87
+msgid "Enter the height of the roof (at the ridge) in metres."
 msgstr ""
 
 #. translators: %s: maximum in metres.
-#: src/Spec.php:51
+#: src/Spec.php:95
 msgid "At most %s m."
 msgstr ""
 
-#: src/Spec.php:58
+#: src/Spec.php:101
+msgid "The height of the roof cannot be lower than the height at the column."
+msgstr ""
+
+#: src/Spec.php:106
 msgid "Enter the number of portal frames (2 or more)."
 msgstr ""
 
-#: src/Spec.php:60
+#: src/Spec.php:108
 msgid "This number of portal frames is outside the accepted range."
 msgstr ""
 
-#: src/Spec.php:68
-msgid "Roof slope in % (between 1 and 100)."
+#. translators: %d: maximum number of floors.
+#: src/Spec.php:117
+msgid "Number of floors: a whole number from 1 to %d."
 msgstr ""
 
-#: src/Spec.php:86
-msgid "A dismantled building is sold with its inventory: add at least one element (type, profile, quantity, length)."
+#: src/Spec.php:128
+msgid "Area of the mezzanine in m²: more than 0 and at most the floor area."
 msgstr ""
 
-#: src/Spec.php:92
-msgid "Give the estimated weight of the steel structure, or list its elements below."
+#: src/Spec.php:167
+msgid "Describe at least the columns and the trusses (profile, number, length)."
 msgstr ""
 
-#: src/Spec.php:94
+#: src/Spec.php:168
+msgid "Describe at least the columns and the rafters (profile, number, length)."
+msgstr ""
+
+#: src/Spec.php:177
 msgid "This weight is outside the accepted range."
+msgstr ""
+
+#: src/Spec.php:179
+msgid "The total weight cannot be lower than the weight of the elements you declared."
+msgstr ""
+
+#: src/Spec.php:188
+msgid "Give the total weight of the steel structure, or list its elements."
 msgstr ""

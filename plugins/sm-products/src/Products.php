@@ -52,6 +52,9 @@ final class Products {
 		$r->specs  = json_decode( (string) $r->specs, true ) ?: array();
 		$r->attrs  = json_decode( (string) ( $r->attrs ?? '' ), true ) ?: array();
 		$r->lines  = json_decode( (string) ( $r->inventory ?? '' ), true ) ?: array();
+		$r->lat        = isset( $r->lat ) && '' !== (string) $r->lat ? (float) $r->lat : null;
+		$r->lng        = isset( $r->lng ) && '' !== (string) $r->lng ? (float) $r->lng : null;
+		$r->map_public = (int) ( $r->map_public ?? 0 );
 		$r->market  = $r->market ? $r->market : self::MODULE;
 		$r->variant = (string) ( $r->variant ?? '' );
 		return $r;
@@ -71,7 +74,7 @@ final class Products {
 		global $wpdb;
 		$now  = current_time( 'mysql', true );
 		$was  = $id ? self::get( $id ) : null;
-		$cols = array( 'market', 'item_condition', 'variant', 'category', 'family', 'section_id', 'designation', 'grade', 'qty_mode', 'length_mm', 'width_mm', 'pieces', 'quantity', 'unit', 'unit_weight', 'total_weight', 'weight_source', 'engine_version', 'ref_version', 'price', 'price_unit', 'total_price', 'price_per_kg', 'wilaya', 'sale_mode', 'lot_price', 'drawing' );
+		$cols = array( 'market', 'item_condition', 'variant', 'category', 'family', 'section_id', 'designation', 'grade', 'qty_mode', 'length_mm', 'width_mm', 'pieces', 'quantity', 'unit', 'unit_weight', 'total_weight', 'weight_source', 'engine_version', 'ref_version', 'price', 'price_unit', 'total_price', 'price_per_kg', 'wilaya', 'commune', 'address', 'lat', 'lng', 'map_public', 'sale_mode', 'lot_price', 'drawing' );
 		$row  = array();
 		foreach ( $cols as $c ) {
 			if ( array_key_exists( $c, $spec['data'] ) ) {
@@ -263,6 +266,7 @@ final class Products {
 		}
 		$wpdb->delete( self::table(), array( 'id' => (int) $id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		Index::remove( $p->market, $id );
+		$wpdb->delete( Visits::table(), array( 'product_id' => (int) $id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		Translations::delete( 'product', $id );
 		Media::set( 'product', $id, 'photo', array() );
 		Media::set( 'product', $id, 'sheet', array() );

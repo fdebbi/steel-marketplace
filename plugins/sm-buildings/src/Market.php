@@ -2,6 +2,8 @@
 /**
  * The "buildings" market, added to the SM Products listing engine.
  *
+ * 0.2.0: structural systems renamed (codes kept: portal = column / rafter frame,
+ * tapered = welded built-up section PRS, truss); element type "truss" added.
  * Structural system, roof and cladding are declared by the seller as listed
  * choices; "what the price includes" is a set of yes/no answers shown as a
  * checklist (not as specification rows).
@@ -50,9 +52,9 @@ final class Market {
 					'label'    => array( 'fr' => 'Système porteur', 'ar' => 'النظام الإنشائي' ),
 					'required' => true,
 					'options'  => array(
-						self::opt( 'portal', 'Portiques à âme pleine', 'إطارات بجذع مصمت' ),
-						self::opt( 'tapered', 'Portiques à inertie variable', 'إطارات متغيرة المقطع' ),
-						self::opt( 'truss', 'Fermes en treillis', 'جملونات شبكية' ),
+						self::opt( 'portal', 'Portique poteau / traverse', 'إطار عمود / عارضة' ),
+						self::opt( 'tapered', 'Profilé reconstitué soudé (PRS)', 'مقطع مركب ملحوم (PRS)' ),
+						self::opt( 'truss', 'Ferme en treillis', 'جملون شبكي' ),
 						self::opt( 'other', 'Autre', 'أخرى' ),
 					),
 				),
@@ -124,6 +126,7 @@ final class Market {
 		return array(
 			'column'  => array( 'fr' => 'Poteaux', 'ar' => 'أعمدة' ),
 			'rafter'  => array( 'fr' => 'Traverses (arbalétriers)', 'ar' => 'عوارض السقف' ),
+			'truss'   => array( 'fr' => 'Fermes', 'ar' => 'جملونات' ),
 			'purlin'  => array( 'fr' => 'Pannes', 'ar' => 'مدادات السقف' ),
 			'rail'    => array( 'fr' => 'Lisses de bardage', 'ar' => 'مدادات جانبية' ),
 			'bracing' => array( 'fr' => 'Contreventements', 'ar' => 'تكتيف' ),

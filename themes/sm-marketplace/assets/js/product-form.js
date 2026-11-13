@@ -49,6 +49,9 @@
 			if ( '' === String( value ).trim() ) { return; }
 			q.append( key, value );
 		} );
+		// The generated title of a building names the wilaya, which sits outside the technical part.
+		var wil = form.querySelector( '[name="wilaya"]' );
+		if ( wil && wil.value && block.querySelector( '.smb-title' ) ) { q.set( 'wilaya', wil.value ); }
 		var line = changed && changed.name ? changed.name.match( /^lines\[(\d+)\]\[family\]$/ ) : null;
 		if ( changed && 'mode' === changed.name ) {
 			q.delete( 'price_unit' ); // Assembled and dismantled buildings have different default units.
@@ -103,6 +106,7 @@
 	function inTech( el ) { return tech() && tech().contains( el ); }
 
 	form.addEventListener( 'change', function ( e ) {
+		if ( 'wilaya' === e.target.name && tech() && tech().querySelector( '.smb-title' ) ) { clearTimeout( timer ); refresh( null ); return; }
 		if ( ! e.target.name || ! inTech( e.target ) ) { return; }
 		if ( 'INPUT' === e.target.tagName && 'radio' !== e.target.type && 'checkbox' !== e.target.type ) { return; }
 		clearTimeout( timer );

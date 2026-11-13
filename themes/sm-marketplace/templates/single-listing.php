@@ -74,10 +74,11 @@ if ( ! empty( $item['spec_rows'] ) ) { // Rows prepared by the listing plugin fo
 		$specs[ $row[0] ] = $row[1];
 	}
 }
-if ( in_array( $item['weight_source'], array( 'actual', 'theoretical', 'estimated' ), true ) ) {
+if ( in_array( $item['weight_source'], array( 'actual', 'theoretical', 'estimated', 'partial' ), true ) ) {
 	$specs[ __( 'Weight source', 'sm-marketplace' ) ] = esc_html( sm_weight_source_label( $item['weight_source'] ) );
 }
-$specs[ __( 'Location', 'sm-marketplace' ) ]      = esc_html( sm_t( $wilayas[ $item['wilaya'] ] ?? '' ) );
+$sm_place = implode( ', ', array_filter( array( (string) ( $item['commune'] ?? '' ), sm_t( $wilayas[ $item['wilaya'] ] ?? '' ) ) ) );
+$specs[ __( 'Location', 'sm-marketplace' ) ]      = esc_html( $sm_place );
 
 $similar = sm_theme_listings( array( 'market' => $market, 'per_page' => 4 ) )['items'];
 $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !== $item['id'] ) );
@@ -267,8 +268,9 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 						</tbody>
 						<tfoot>
 							<tr>
-								<th scope="row" colspan="5"><?php esc_html_e( 'Total steel weight', 'sm-marketplace' ); ?></th>
-								<td class="num" data-label="<?php esc_attr_e( 'Total steel weight', 'sm-marketplace' ); ?>"><strong><?php echo esc_html( sm_number( $item['weight_kg'] ) ); ?></strong></td>
+								<?php $sm_el_kg = (float) ( $item['elements_kg'] ?? 0 ); // Buildings (0.31.0): the listed elements, not the whole structure. ?>
+								<th scope="row" colspan="5"><?php echo esc_html( $sm_el_kg > 0 ? __( 'Weight of the declared elements', 'sm-marketplace' ) : __( 'Total steel weight', 'sm-marketplace' ) ); ?></th>
+								<td class="num" data-label="<?php echo esc_attr( $sm_el_kg > 0 ? __( 'Weight of the declared elements', 'sm-marketplace' ) : __( 'Total steel weight', 'sm-marketplace' ) ); ?>"><strong><?php echo esc_html( sm_number( $sm_el_kg > 0 ? $sm_el_kg : $item['weight_kg'] ) ); ?></strong></td>
 							</tr>
 						</tfoot>
 					</table>
@@ -302,6 +304,8 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 				<p class="sm-callout"><?php sm_icon( 'hard-hat' ); ?><span><?php esc_html_e( 'Planning a structural reuse? Have the elements checked by a verified engineer before installation.', 'sm-marketplace' ); ?> <a href="<?php echo esc_url( sm_page_url( 'engineers' ) ); ?>"><?php esc_html_e( 'Find an engineer', 'sm-marketplace' ); ?></a></span></p>
 			<?php endif; ?>
 		</section>
+
+		<?php sm_component( 'listing-place', array( 'item' => $item, 'place' => $sm_place ) ); ?>
 
 		<?php
 		sm_component(

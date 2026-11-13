@@ -85,17 +85,33 @@ final class Presenter {
 		$n     = static fn( $v, $d = 0 ) => number_format( (float) $v, $d, ',', "\u{202F}" );
 		$rows  = array(
 			array( __( 'Assembled or dismantled', 'sm-buildings' ), esc_html( 'assembled' === $p->variant ? __( 'Assembled', 'sm-buildings' ) : __( 'Dismantled', 'sm-buildings' ) ) ),
-			array( __( 'Length × width × eaves height', 'sm-buildings' ), $tech( Spec::fmt( $shape['length'] ) . ' × ' . Spec::fmt( $shape['width'] ) . ' × ' . Spec::fmt( $shape['height'] ) . ' m' ) ),
+			array( __( 'Length × width × height at the column', 'sm-buildings' ), $tech( Spec::fmt( $shape['length'] ) . ' × ' . Spec::fmt( $shape['width'] ) . ' × ' . Spec::fmt( $shape['height'] ) . ' m' ) ),
 			array( __( 'Total area', 'sm-buildings' ), $tech( $n( $p->quantity, fmod( (float) $p->quantity, 1 ) ? 1 : 0 ) . ' m²' ) ),
 			array( __( 'Number of portal frames', 'sm-buildings' ), $tech( $shape['portals'] ) ),
 		);
+		if ( ! empty( $p->specs['ridge_m'] ) ) {
+			$rows[] = array( __( 'Height of the roof (ridge)', 'sm-buildings' ), $tech( Spec::fmt( $p->specs['ridge_m'] ) . ' m' ) );
+		}
 		if ( $shape['slope'] > 0 ) {
 			$rows[] = array( __( 'Roof slope', 'sm-buildings' ), $tech( Spec::fmt( $shape['slope'] ) . ' %' ) );
 		}
-		if ( $p->total_weight > 0 ) {
-			$label  = 'estimated' === $p->weight_source ? __( 'Estimated steel weight', 'sm-buildings' ) : __( 'Steel weight', 'sm-buildings' );
-			$rows[] = array( $label, $tech( $n( $p->total_weight ) . ' kg' ) );
+		if ( ! empty( $p->specs['floors'] ) ) {
+			$rows[] = array( __( 'Number of floors', 'sm-buildings' ), $tech( (int) $p->specs['floors'] ) );
 		}
+		if ( ! empty( $p->specs['mezzanine'] ) ) {
+			$rows[] = array( __( 'Mezzanine', 'sm-buildings' ), empty( $p->specs['mezz_area'] ) ? esc_html__( 'Yes', 'sm-buildings' ) : $tech( $n( $p->specs['mezz_area'], fmod( (float) $p->specs['mezz_area'], 1 ) ? 1 : 0 ) . ' m²' ) );
+		}
+		if ( $p->total_weight > 0 ) {
+			$labels = array(
+				'estimated' => __( 'Total steel weight (given by the seller)', 'sm-buildings' ),
+				'partial'   => __( 'Weight of the declared elements (not the whole structure)', 'sm-buildings' ),
+			);
+			$rows[] = array( $labels[ $p->weight_source ] ?? __( 'Steel weight', 'sm-buildings' ), $tech( $n( $p->total_weight ) . ' kg' ) );
+			if ( 'estimated' === $p->weight_source && ! empty( $p->specs['elements_kg'] ) ) {
+				$rows[] = array( __( 'Of which declared elements (calculated)', 'sm-buildings' ), $tech( $n( $p->specs['elements_kg'] ) . ' kg' ) );
+			}
+		}
+		$out['elements_kg'] = (float) ( $p->specs['elements_kg'] ?? 0 );
 		$out['spec_rows'] = array_merge( $rows, (array) ( $out['spec_rows'] ?? array() ) );
 		$out['drawing']   = Drawing::svg( $shape );
 		$out['drawing_note'] = __( 'Indicative drawing made from the figures given by the seller. It is not a structural design.', 'sm-buildings' );

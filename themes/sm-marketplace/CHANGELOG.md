@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.31.0 — 2026-11-13 (avec sm-products 0.12.0 et sm-buildings 0.2.0)
+
+- Publier un bâtiment métallique : formulaire en 7 étapes — 1 type, 2 géométrie (longueur, largeur, portiques, hauteur au poteau, hauteur de toiture, étages, mezzanine ; surface, entraxe et pente calculés), 3 système porteur et enveloppe, 4 éléments de la structure, 5 état, poids et prix (ce que comprend le prix, titre automatique), 6 description, photos et fiche technique, 7 localisation.
+- Localisation de toute annonce : commune, adresse ou lieu-dit, position sur la carte (obligatoire pour un bâtiment, facultative ailleurs), case « Afficher la carte au public » (décochée par défaut).
+- Page de l'annonce : bloc « Localisation » (adresse ; carte seulement pour ceux qui y ont droit), « Demander une visite » (date, heure, message) pour les bâtiments et les ventes en lot, suivi de la demande.
+- Compte : « Demandes de visite » (vendeur : accepter, refuser, proposer une autre date) et « Mes visites » (acheteur : confirmer, annuler, voir la carte).
+- Poids « éléments déclarés » affiché comme tel (bloc prix, caractéristiques, inventaire).
+
 ## 0.30.1 — 2026-11-13
 
 - Cache de pages : un membre connecté ne doit plus voir « Se connecter » / « Créer un compte » dans le menu quand le cache de l'hébergeur lui sert une page faite pour un visiteur.

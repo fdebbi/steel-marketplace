@@ -49,6 +49,7 @@ final class Presenter {
 			'lot_price'      => (float) ( $p->lot_price ?? 0 ),
 			'lot_per_kg'     => 'both' === ( $p->sale_mode ?? '' ) && $p->total_weight > 0 && (float) $p->lot_price > 0 ? round( (float) $p->lot_price / $p->total_weight, 2 ) : 0,
 			'wilaya'         => $p->wilaya,
+			'commune'        => (string) ( $p->commune ?? '' ),
 			// Clients (private sellers) have no public page: no link, "Private seller" on the card.
 			'company'        => $company && Companies::is_public_class( $company->account_class ) ? $company->slug : '',
 			'company_id'     => $p->company_id,
@@ -102,6 +103,10 @@ final class Presenter {
 		}
 		$out['spec_rows'] = self::spec_rows( $p );
 		$out['elements']  = self::elements( $p );
+		// Place and visits (0.12.0): the exact position only for those allowed to see it.
+		$out['address']  = (string) ( $p->address ?? '' );
+		$out['location'] = Visits::location_for( $p );
+		$out['visit']    = Visits::state_for( $p );
 		$out['drawing']   = '';
 		$out['drawing_dims'] = array();
 		if ( $p->family && 'PLATE' !== $p->family && ! $p->lines ) {

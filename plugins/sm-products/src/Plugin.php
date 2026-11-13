@@ -36,6 +36,7 @@ final class Plugin {
 		Activity::init();
 		Form::init();
 		Expiry::init();
+		Visits::init();
 		Theme\Bridge::init();
 		Rest\Api::init();
 		if ( is_admin() ) {

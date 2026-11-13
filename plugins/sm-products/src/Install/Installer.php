@@ -89,6 +89,11 @@ final class Installer {
 				revision_at datetime DEFAULT NULL,
 				price_per_kg decimal(14,2) NOT NULL DEFAULT 0,
 				wilaya char(2) NOT NULL DEFAULT '',
+				commune varchar(80) NOT NULL DEFAULT '',
+				address varchar(160) NOT NULL DEFAULT '',
+				lat decimal(9,6) DEFAULT NULL,
+				lng decimal(9,6) DEFAULT NULL,
+				map_public tinyint(1) NOT NULL DEFAULT 0,
 				reject_reason text,
 				views int(11) NOT NULL DEFAULT 0,
 				created_at datetime NOT NULL,
@@ -101,6 +106,27 @@ final class Installer {
 				KEY status_category (status,category,published_at),
 				KEY market_status (market,status,published_at),
 				KEY listing_id (listing_id)
+			) $c;"
+		);
+		// 0.12.0: visit requests (buildings and whole-lot sales).
+		dbDelta(
+			"CREATE TABLE {$p}product_visits (
+				id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+				product_id bigint(20) unsigned NOT NULL,
+				seller_id bigint(20) unsigned NOT NULL,
+				company_id bigint(20) unsigned NOT NULL,
+				user_id bigint(20) unsigned NOT NULL,
+				visit_at datetime NOT NULL,
+				proposed_at datetime DEFAULT NULL,
+				message text,
+				reply text,
+				status varchar(12) NOT NULL DEFAULT 'pending',
+				created_at datetime NOT NULL,
+				updated_at datetime NOT NULL,
+				PRIMARY KEY  (id),
+				KEY seller_status (seller_id,status),
+				KEY company_product (company_id,product_id),
+				KEY product_id (product_id)
 			) $c;"
 		);
 		$from = (int) get_option( 'sm_products_db_version', 0 );

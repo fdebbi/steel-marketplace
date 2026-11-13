@@ -1,0 +1,47 @@
+/* ---- 0.31.0: building form in steps, place of a listing, visit requests ---- */
+
+/* The technical part of a building holds its own step panels. */
+.smp-tech--steps { display: block; }
+.smb-dims { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 720px) { .smb-dims { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.smb-mezz { display: grid; gap: var(--sm-s2); margin-block: var(--sm-s2) var(--sm-s3); padding: var(--sm-s3); border: 1px solid var(--sm-line); border-radius: var(--sm-radius); }
+.smb-mezz__area { margin: 0; max-inline-size: 280px; }
+.smb-calc { display: grid; gap: var(--sm-s2); grid-template-columns: minmax(0, 1fr); margin: 0 0 var(--sm-s2); }
+@media (min-width: 560px) { .smb-calc { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.smb-calc > div { padding: var(--sm-s2) var(--sm-s3); border-radius: var(--sm-radius); background: var(--sm-primary-soft); }
+.smb-calc dt { font-size: var(--sm-fs-xs); font-weight: 600; color: var(--sm-muted); }
+.smb-calc dd { margin: 2px 0 0; font-size: var(--sm-fs-lg); font-weight: 700; color: var(--sm-primary); }
+.smb-system .smw-modes { flex-wrap: wrap; }
+.smb-need { margin-block-end: var(--sm-s3); }
+.smb-readonly { margin: 6px 0 0; padding: 10px 12px; min-block-size: 44px; border: 1px dashed var(--sm-line-strong); border-radius: var(--sm-radius); background: var(--sm-primary-soft); font-weight: 600; color: var(--sm-primary); }
+.smb-title__text { font-size: var(--sm-fs-md, 1rem); }
+.smb-weights > div { min-inline-size: 0; }
+
+/* Location step of the publication form. */
+.smp-place { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 720px) { .smp-place { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.smp-place__map { border: 1px dashed var(--sm-line-strong); border-radius: var(--sm-radius); padding: var(--sm-s2) var(--sm-s3); }
+.smp-place__map > summary { display: flex; gap: var(--sm-s2); align-items: center; min-block-size: 40px; cursor: pointer; font-weight: 600; color: var(--sm-primary); }
+.smp-place__map[open] > summary { margin-block-end: var(--sm-s2); }
+
+/* Place on the public listing. */
+.sm-place__address { display: flex; gap: var(--sm-s2); align-items: flex-start; margin: 0 0 var(--sm-s3); }
+.sm-place__address .sm-icon { flex: none; margin-block-start: 3px; color: var(--sm-accent-ink); }
+.sm-place__actions { display: flex; flex-wrap: wrap; gap: var(--sm-s2); margin: var(--sm-s3) 0 0; }
+.sm-place .sm-map { margin-block: var(--sm-s3); }
+.smc-dialog__actions { display: flex; flex-wrap: wrap; gap: var(--sm-s2); justify-content: flex-end; margin-block-start: var(--sm-s3); }
+
+/* Visit requests in the dashboard. */
+.sm-visits { display: grid; gap: var(--sm-s3); margin: 0; padding: 0; list-style: none; }
+.sm-visit.is-closed { opacity: .75; }
+.sm-visit__head { display: flex; gap: var(--sm-s3); justify-content: space-between; align-items: flex-start; }
+.sm-visit__head p { margin: 0; }
+.sm-visit__title { font-weight: 700; color: var(--sm-primary); }
+.sm-visit__when { display: flex; flex-wrap: wrap; gap: var(--sm-s2); align-items: center; margin: var(--sm-s3) 0 0; }
+.sm-visit__when .sm-icon { color: var(--sm-accent-ink); }
+.sm-visit__msg { margin: var(--sm-s2) 0 0; padding: var(--sm-s2) var(--sm-s3); border-radius: var(--sm-radius); background: var(--sm-bg); white-space: pre-line; }
+.sm-visit__msg--reply { background: var(--sm-info-soft); }
+.sm-visit__actions { display: flex; flex-wrap: wrap; gap: var(--sm-s2); margin-block-start: var(--sm-s3); }
+.sm-visit__propose { margin-block-start: var(--sm-s3); border-block-start: 1px solid var(--sm-line); padding-block-start: var(--sm-s2); }
+.sm-visit__propose > summary { display: inline-flex; gap: var(--sm-s2); align-items: center; min-block-size: 40px; cursor: pointer; font-weight: 600; color: var(--sm-primary); }
+.sm-visit__propose[open] > summary { margin-block-end: var(--sm-s2); }

@@ -47,3 +47,24 @@ T = {
 "This weight is outside the accepted range.": ("Ce poids est hors de la plage acceptée.", "هذا الوزن خارج النطاق المقبول."),
 }
 P = {}
+
+# 0.2.0 — geometry, required elements, weights.
+T.update({
+"Length × width × height at the column": ("Longueur × largeur × hauteur au poteau", "الطول × العرض × الارتفاع عند العمود"),
+"Height of the roof (ridge)": ("Hauteur de la toiture (faîtage)", "ارتفاع السقف (القمة)"),
+"Number of floors": ("Nombre d’étages", "عدد الطوابق"),
+"Mezzanine": ("Mezzanine", "ميزانين"),
+"Yes": ("Oui", "نعم"),
+"Total steel weight (given by the seller)": ("Poids total d’acier (donné par le vendeur)", "الوزن الإجمالي للفولاذ (حسب البائع)"),
+"Weight of the declared elements (not the whole structure)": ("Poids des éléments déclarés (pas toute la structure)", "وزن العناصر المصرّح بها (ليس كامل الهيكل)"),
+"Of which declared elements (calculated)": ("Dont éléments déclarés (calculé)", "منها العناصر المصرّح بها (محسوب)"),
+"Enter the height at the column in metres.": ("Indiquez la hauteur au poteau en mètres.", "أدخل الارتفاع عند العمود بالمتر."),
+"Enter the height of the roof (at the ridge) in metres.": ("Indiquez la hauteur de la toiture (au faîtage) en mètres.", "أدخل ارتفاع السقف (عند القمة) بالمتر."),
+"The height of the roof cannot be lower than the height at the column.": ("La hauteur de la toiture ne peut pas être inférieure à la hauteur au poteau.", "لا يمكن أن يكون ارتفاع السقف أقل من الارتفاع عند العمود."),
+"Number of floors: a whole number from 1 to %d.": ("Nombre d’étages : un nombre entier de 1 à %d.", "عدد الطوابق: عدد صحيح من 1 إلى %d."),
+"Area of the mezzanine in m²: more than 0 and at most the floor area.": ("Surface de la mezzanine en m² : plus de 0 et au plus la surface au sol.", "مساحة الميزانين بالمتر المربع: أكبر من 0 ولا تتجاوز مساحة الأرضية."),
+"Describe at least the columns and the trusses (profile, number, length).": ("Décrivez au moins les poteaux et les fermes (profilé, nombre, longueur).", "صِف على الأقل الأعمدة والجملونات (المقطع، العدد، الطول)."),
+"Describe at least the columns and the rafters (profile, number, length).": ("Décrivez au moins les poteaux et les traverses (profilé, nombre, longueur).", "صِف على الأقل الأعمدة وعوارض السقف (المقطع، العدد، الطول)."),
+"The total weight cannot be lower than the weight of the elements you declared.": ("Le poids total ne peut pas être inférieur au poids des éléments que vous avez déclarés.", "لا يمكن أن يكون الوزن الإجمالي أقل من وزن العناصر التي صرّحت بها."),
+"Give the total weight of the steel structure, or list its elements.": ("Indiquez le poids total de la structure en acier, ou listez ses éléments.", "أدخل الوزن الإجمالي للهيكل الفولاذي أو اذكر عناصره."),
+})

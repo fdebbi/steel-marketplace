@@ -44,12 +44,13 @@ $assembled = 'buildings' === $item['market'] && 'assembled' === ( $item['mode'] 
 		<?php endif; ?>
 	<?php endif; ?>
 
-	<?php if ( in_array( $item['weight_source'], array( 'actual', 'theoretical', 'estimated' ), true ) ) : ?>
+	<?php if ( in_array( $item['weight_source'], array( 'actual', 'theoretical', 'estimated', 'partial' ), true ) ) : ?>
 	<?php
 	$notes = array(
 		'actual'      => __( 'Weighed by the seller.', 'sm-marketplace' ),
 		'theoretical' => __( 'Calculated from standard section tables.', 'sm-marketplace' ),
 		'estimated'   => __( 'Estimated by the seller, not weighed.', 'sm-marketplace' ),
+		'partial'     => __( 'Calculated for the elements listed by the seller only; the whole structure is heavier.', 'sm-marketplace' ),
 	);
 	?>
 	<p class="sm-weight-note sm-weight-note--<?php echo esc_attr( $item['weight_source'] ); ?>">

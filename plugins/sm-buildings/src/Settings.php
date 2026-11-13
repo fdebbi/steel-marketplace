@@ -16,7 +16,8 @@ final class Settings {
 	public static function defaults() {
 		return array(
 			'max_length_m' => 300,  // Length and width.
-			'max_height_m' => 40,   // Eaves height.
+			'max_height_m' => 40,   // Eaves height (the ridge may be up to 1.5 times higher).
+			'max_floors'   => 10,
 			'max_portals'  => 150,
 			'max_lines'    => 60,   // Rows of the element inventory.
 		);
@@ -37,6 +38,7 @@ final class Settings {
 			$out[ $k ] = $n > 0 ? $n : $v;
 		}
 		$out['max_portals'] = (int) $out['max_portals'];
+		$out['max_floors']  = (int) $out['max_floors'];
 		$out['max_lines']   = (int) min( 200, $out['max_lines'] );
 		update_option( self::OPTION, $out, false );
 		return $out;

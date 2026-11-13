@@ -284,3 +284,26 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 
 **Limite connue.** Seuls le menu du haut et le bas du menu mobile sont corrigés. Le reste d'une page servie par erreur reste celui d'un visiteur jusqu'à la page suivante.
 
+## 13 novembre 2026 — Publier un bâtiment métallique : étapes, poids, carte et visite
+
+**Demande du propriétaire.** Ordre des étapes : type, géométrie, système porteur et enveloppe, éléments de la structure, état / poids / prix / ce que comprend le prix / titre automatique, photos et fiche technique, localisation (wilaya et carte). Maquettes présentées et validées avant le code.
+
+**Décisions validées.**
+
+- État : on garde l'existant — bâtiment monté ou démonté, et état de l'acier (neuf, excellent, bon, à inspecter).
+- Poids (choix B1) : le poids des éléments déclarés est calculé ; le vendeur peut ajouter le poids total s'il le connaît. Raison : avec les seuls poteaux et traverses, le poids est plus bas que la réalité et le prix au kg serait faussé. L'acheteur voit lequel des deux poids est utilisé.
+- Carte (proposition du propriétaire) : le vendeur place le bâtiment exactement ; case « Afficher la carte au public ». Carte masquée : le public voit l'adresse sans carte et peut demander une visite avec date et heure ; après accord du vendeur, la carte est montrée à ce demandeur.
+- Demande de visite : pour les bâtiments et les ventes en lot. Compte obligatoire (il faut savoir à qui montrer la carte). Le vendeur peut aussi proposer une autre date.
+- Mezzanine : option oui / non, surface facultative. Étages : 1 par défaut.
+- Poteaux + traverses obligatoires ; avec « Ferme en treillis », poteaux + fermes.
+
+**Choix faits pendant le codage, à confirmer.**
+
+- **PRS et « Autre »** : un profilé reconstitué soudé n'existe pas dans les tables de profilés du site ; on ne peut donc pas le déclarer comme élément. Pour ces deux systèmes, les éléments sont facultatifs et le poids total devient obligatoire. Une ligne « PRS » avec ses dimensions (hauteur, largeur, épaisseurs) pourrait être ajoutée plus tard.
+- **« Vente en lot »** est compris comme : toute annonce vendue « lot entier » ou « détail et lot », quel que soit le marché.
+- La carte reste visible pour l'acheteur accepté jusqu'à 2 jours après la date de la visite.
+- Titre : « Type largeur × longueur m — hauteur — système — wilaya » (comme la maquette).
+- Les annonces de bâtiments publiées avant cette version restent en ligne ; à la prochaine modification, le vendeur devra compléter la hauteur de toiture, les éléments, la commune et la position.
+
+**Non vérifié ici.** L'affichage des fonds de carte OpenStreetMap (pas d'accès réseau dans l'environnement de test) : la carte, le repère et les positions sont testés, pas les images du fond.
+

@@ -1,6 +1,6 @@
 # SM Buildings — marché des bâtiments métalliques
 
-Extension de **ReuSteel** (Phase 6). Nécessite **SM Core 0.3.0**, **SM Weight Engine 0.1.0** et **SM Products 0.3.0**.
+Extension de **ReuSteel** (Phase 6). Nécessite **SM Core 0.3.0**, **SM Weight Engine 0.1.0** et **SM Products 0.12.0**.
 
 ## Ce qu'elle fait
 

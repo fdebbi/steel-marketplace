@@ -5,7 +5,8 @@
  *
  * 1. market and category (links, no JavaScript needed); 2. technical part, condition, quantity and
  * price with a live summary (product-tech); 3. title and description;
- * 4. photos and technical sheet; 5. location; draft or submit.
+ * 4. photos and technical sheet; 5. location (commune, address, map position);
+ * draft or submit. A building has seven steps: 2 to 5 are in product-tech.
  *
  * @var array $args { account: array }
  * @package SM_Marketplace
@@ -101,15 +102,24 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 	<input type="hidden" name="category" value="<?php echo esc_attr( $cat_slug ); ?>">
 	<input type="hidden" name="product_id" value="<?php echo esc_attr( (string) ( $state['product_id'] ?? '' ) ); ?>">
 
+	<?php
+	// A building (0.31.0) has its own steps 2 to 5 inside the technical part, then 6 (description, photos) and 7 (location).
+	$steps_build = 'building' === ( $cat['kind'] ?? '' );
+	$auto_title  = 'products' === $market && 'engine' === ( $cat['kind'] ?? '' ); // Calculated new products: generated title (0.20.0).
+	?>
+	<?php if ( $steps_build ) : ?>
+		<?php sm_component( 'product-tech', array( 'state' => $state, 'category' => $cat, 'market' => $mk ) ); ?>
+	<?php else : ?>
 	<section class="sm-panel smp-step">
 		<h2 class="smw-step__title"><span class="smw-step__n">2</span><?php echo esc_html( sm_t( $cat['name'] ) ); ?> — <?php esc_html_e( 'technical data, quantity and price', 'sm-marketplace' ); ?></h2>
 		<?php sm_component( 'product-tech', array( 'state' => $state, 'category' => $cat, 'market' => $mk ) ); ?>
 	</section>
+	<?php endif; ?>
 
 	<section class="sm-panel smp-step">
-		<?php $auto_title = 'products' === $market && 'engine' === ( $cat['kind'] ?? '' ); // Calculated new products: generated title (0.20.0). ?>
-		<h2 class="smw-step__title"><span class="smw-step__n">3</span><?php echo $auto_title ? esc_html__( 'Description', 'sm-marketplace' ) : esc_html__( 'Title and description', 'sm-marketplace' ); ?></h2>
-		<?php if ( $auto_title ) : ?>
+		<h2 class="smw-step__title"><span class="smw-step__n"><?php echo $steps_build ? 6 : 3; ?></span><?php echo $steps_build ? esc_html__( 'Description, photos and technical sheet', 'sm-marketplace' ) : ( $auto_title ? esc_html__( 'Description', 'sm-marketplace' ) : esc_html__( 'Title and description', 'sm-marketplace' ) ); ?></h2>
+		<?php if ( $steps_build ) : ?>
+		<?php elseif ( $auto_title ) : ?>
 			<p class="sm-notice sm-notice--info smp-autotitle"><?php sm_icon( 'info' ); ?><span><?php esc_html_e( 'The title is created automatically from the product: type and size, steel grade and length (for example "IPE 200 · S275JR · 12 m"), in French and in Arabic.', 'sm-marketplace' ); ?></span></p>
 		<?php else : ?>
 		<div class="sm-field">
@@ -127,10 +137,12 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 			<textarea id="smp-desc" name="description" rows="5" dir="auto" maxlength="4000"><?php echo esc_textarea( (string) ( $state['description'] ?? '' ) ); ?></textarea>
 			<?php sm_theme_error( 'description' ); ?>
 		</div>
+	<?php if ( ! $steps_build ) : ?>
 	</section>
 
 	<section class="sm-panel smp-step">
 		<h2 class="smw-step__title"><span class="smw-step__n">4</span><?php esc_html_e( 'Photos and technical sheet', 'sm-marketplace' ); ?></h2>
+	<?php endif; ?>
 		<?php if ( $auto_title ) : ?>
 			<p class="sm-muted smp-photo-optional"><?php esc_html_e( 'Photos are optional: without a photo, the listing shows the standard drawing of the section. A real photo of your stock is still recommended, buyers trust it more.', 'sm-marketplace' ); ?></p>
 		<?php endif; ?>
@@ -167,16 +179,48 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 	</section>
 
 	<section class="sm-panel smp-step">
-		<h2 class="smw-step__title"><span class="smw-step__n">5</span><?php esc_html_e( 'Location', 'sm-marketplace' ); ?></h2>
+		<h2 class="smw-step__title"><span class="smw-step__n"><?php echo $steps_build ? 7 : 5; ?></span><?php esc_html_e( 'Location', 'sm-marketplace' ); ?></h2>
 		<?php $wilaya = (string) ( $state['wilaya'] ?? ( $args['account']['company']['wilaya'] ?? '' ) ); ?>
-		<div class="sm-field">
-			<label for="smp-wilaya"><?php esc_html_e( 'Wilaya where the product is', 'sm-marketplace' ); ?></label>
-			<select id="smp-wilaya" name="wilaya"<?php sm_theme_aria( 'wilaya' ); ?>>
-				<option value=""><?php esc_html_e( 'Choose…', 'sm-marketplace' ); ?></option>
-				<?php foreach ( sm_theme_wilayas() as $code => $name ) : ?><option value="<?php echo esc_attr( $code ); ?>" <?php selected( $wilaya, (string) $code ); ?>><?php echo esc_html( $code . ' — ' . sm_t( $name ) ); ?></option><?php endforeach; ?>
-			</select>
-			<?php sm_theme_error( 'wilaya' ); ?>
+		<div class="sm-field-grid smp-place">
+			<div class="sm-field">
+				<label for="smp-wilaya"><?php echo esc_html( $steps_build ? __( 'Wilaya', 'sm-marketplace' ) : __( 'Wilaya where the product is', 'sm-marketplace' ) ); ?></label>
+				<select id="smp-wilaya" name="wilaya"<?php sm_theme_aria( 'wilaya' ); ?>>
+					<option value=""><?php esc_html_e( 'Choose…', 'sm-marketplace' ); ?></option>
+					<?php foreach ( sm_theme_wilayas() as $code => $name ) : ?><option value="<?php echo esc_attr( $code ); ?>" <?php selected( $wilaya, (string) $code ); ?>><?php echo esc_html( $code . ' — ' . sm_t( $name ) ); ?></option><?php endforeach; ?>
+				</select>
+				<?php sm_theme_error( 'wilaya' ); ?>
+			</div>
+			<div class="sm-field">
+				<label for="smp-commune"><?php esc_html_e( 'Commune', 'sm-marketplace' ); ?><?php echo $steps_build ? '' : ' <small class="sm-optional">' . esc_html__( 'optional', 'sm-marketplace' ) . '</small>'; ?></label>
+				<input id="smp-commune" name="commune" dir="auto" maxlength="80" value="<?php echo esc_attr( (string) ( $state['commune'] ?? '' ) ); ?>"<?php sm_theme_aria( 'commune' ); ?>>
+				<?php sm_theme_error( 'commune' ); ?>
+			</div>
+			<div class="sm-field">
+				<label for="smp-address"><?php esc_html_e( 'Address or place name', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
+				<input id="smp-address" name="address" dir="auto" maxlength="160" value="<?php echo esc_attr( (string) ( $state['address'] ?? '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. industrial zone', 'sm-marketplace' ); ?>">
+			</div>
 		</div>
+		<?php
+		$map_args = array(
+			'mode'          => 'picker',
+			'lat'           => (string) ( $state['lat'] ?? '' ),
+			'lng'           => (string) ( $state['lng'] ?? '' ),
+			'wilaya_select' => '#smp-wilaya',
+			'map_public'    => (int) ( $state['map_public'] ?? 0 ),
+			'legend'        => $steps_build ? __( 'Exact position of the building', 'sm-marketplace' ) : __( 'Exact position', 'sm-marketplace' ),
+			'help'          => __( 'Choose the wilaya: the map opens on it. Then drag the marker (or click the map) to the exact place, or use your current location if you are on site.', 'sm-marketplace' ),
+			'public_label'  => __( 'Show the map to the public', 'sm-marketplace' ),
+			'public_help'   => __( 'Unticked: the public only sees the address (commune, wilaya). The map is shown to a buyer after you accept his visit request.', 'sm-marketplace' ),
+		);
+		?>
+		<?php if ( $steps_build ) : ?>
+			<?php sm_component( 'location-map', $map_args ); ?>
+		<?php else : ?>
+			<details class="smp-place__map"<?php echo '' !== (string) ( $state['lat'] ?? '' ) || sm_theme_field_error( 'location' ) ? ' open' : ''; ?>>
+				<summary><?php sm_icon( 'map-pin' ); ?><?php esc_html_e( 'Place it on the map (optional)', 'sm-marketplace' ); ?></summary>
+				<?php sm_component( 'location-map', $map_args ); ?>
+			</details>
+		<?php endif; ?>
 	</section>
 
 	<div class="smp-actions">

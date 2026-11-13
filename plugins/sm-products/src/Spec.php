@@ -7,7 +7,8 @@
  *
  * Input keys: category, family, section, dims[], grade, length ("custom" + length_custom in m),
  * width, plate_length, qty_mode (bars|weight), bars, total_kg, weight_source (theoretical|actual),
- * actual_weight, price, price_unit, specs[], quantity, unit, wilaya, title[fr|ar], description.
+ * actual_weight, price, price_unit, specs[], quantity, unit, wilaya, commune, address, lat, lng,
+ * map_public, title[fr|ar], description.
  *
  * @package SM\Products
  */
@@ -142,26 +143,65 @@ final class Spec {
 		$d['lot_per_kg']   = 'both' === $mode && ! empty( $d['total_weight'] ) && $lot_price > 0 ? round( $lot_price / $d['total_weight'], 2 ) : 0;
 
 		// Common fields.
+		$wilaya = (string) ( $in['wilaya'] ?? '' );
+		if ( $for_save && ! \SM\Core\Accounts\Wilayas::exists( $wilaya ) ) {
+			$e['wilaya'] = __( 'Choose the wilaya where the product is.', 'sm-products' );
+		}
+		$d['wilaya'] = $wilaya;
+		// Place (0.12.0): commune, address and exact position; the map is public only if the seller says so.
+		$d['commune'] = mb_substr( trim( sanitize_text_field( (string) ( $in['commune'] ?? '' ) ) ), 0, 80 );
+		$d['address'] = mb_substr( trim( sanitize_text_field( (string) ( $in['address'] ?? '' ) ) ), 0, 160 );
+		$loc          = \SM\Core\Accounts\Companies::parse_location( $in['lat'] ?? '', $in['lng'] ?? '' );
+		if ( is_wp_error( $loc ) ) {
+			$e['location'] = $loc->get_error_message();
+			$loc           = null;
+		}
+		$d['lat']        = $loc ? $loc['lat'] : null;
+		$d['lng']        = $loc ? $loc['lng'] : null;
+		$d['map_public'] = $loc && ! empty( $in['map_public'] ) ? 1 : 0;
+		/**
+		 * Markets whose listings must say exactly where they are (sm-buildings).
+		 *
+		 * @param bool   $required Commune and map position required.
+		 * @param object $cat      Category.
+		 */
+		if ( $for_save && apply_filters( 'sm_products_location_required', false, $cat ) ) {
+			if ( '' === $d['commune'] ) {
+				$e['commune'] = __( 'Enter the commune.', 'sm-products' );
+			}
+			if ( ! $loc && empty( $e['location'] ) ) {
+				$e['location'] = __( 'Place the marker on the map, where the building is.', 'sm-products' );
+			}
+		}
+
 		$title = array(
 			'fr' => mb_substr( trim( sanitize_text_field( $in['title']['fr'] ?? '' ) ), 0, 140 ),
 			'ar' => mb_substr( trim( sanitize_text_field( $in['title']['ar'] ?? '' ) ), 0, 140 ),
 		);
 		// New calculated products (0.7.0): the title is the product itself, never typed.
-		if ( self::auto_title( $cat ) ) {
+		$generated = self::auto_title( $cat );
+		if ( $generated ) {
 			$title = self::make_title( $d );
 		}
-		if ( $for_save && '' === $title['fr'] && '' === $title['ar'] && ! self::auto_title( $cat ) ) {
+		/**
+		 * Title made by a market plugin from the checked data (sm-buildings, 0.12.0).
+		 *
+		 * @param array|null $title { fr, ar } or null to keep the typed title.
+		 * @param object     $cat   Category.
+		 * @param array      $d     Checked data.
+		 */
+		$made = apply_filters( 'sm_products_generated_title', null, $cat, $d );
+		if ( is_array( $made ) ) {
+			$generated = true;
+			$title     = array( 'fr' => mb_substr( (string) ( $made['fr'] ?? '' ), 0, 140 ), 'ar' => mb_substr( (string) ( $made['ar'] ?? '' ), 0, 140 ) );
+		}
+		if ( $for_save && '' === $title['fr'] && '' === $title['ar'] && ! $generated ) {
 			$e['title'] = __( 'Give the product a title (in French or in Arabic).', 'sm-products' );
 		}
 		$desc = trim( sanitize_textarea_field( $in['description'] ?? '' ) );
 		if ( mb_strlen( $desc ) > 4000 ) {
 			$e['description'] = __( 'The description is too long (4000 characters at most).', 'sm-products' );
 		}
-		$wilaya = (string) ( $in['wilaya'] ?? '' );
-		if ( $for_save && ! \SM\Core\Accounts\Wilayas::exists( $wilaya ) ) {
-			$e['wilaya'] = __( 'Choose the wilaya where the product is.', 'sm-products' );
-		}
-		$d['wilaya']       = $wilaya;
 		$out['title']      = $title;
 		$out['description'] = $desc;
 
@@ -531,6 +571,7 @@ final class Spec {
 			'lot_price'     => (float) ( $d['lot_price'] ?? 0 ),
 			'lot_per_kg'    => (float) ( $d['lot_per_kg'] ?? 0 ),
 			'condition'     => $d['item_condition'] ?? '',
+			'specs'         => (array) ( $d['specs'] ?? array() ), // Calculated values of a market plugin (sm-buildings: slope, bay).
 		);
 	}
 

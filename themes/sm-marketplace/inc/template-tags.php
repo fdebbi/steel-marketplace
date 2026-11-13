@@ -214,6 +214,7 @@ function sm_weight_source_label( $source ) {
 	$labels = array(
 		'actual'    => __( 'Actual weight', 'sm-marketplace' ),
 		'estimated' => __( 'Estimated weight', 'sm-marketplace' ),
+		'partial'   => __( 'Weight of the declared elements', 'sm-marketplace' ), // Buildings (0.31.0): not the whole structure.
 	);
 	return $labels[ $source ] ?? __( 'Theoretical weight', 'sm-marketplace' );
 }
@@ -223,6 +224,7 @@ function sm_weight_source_short( $source ) {
 	$labels = array(
 		'actual'    => __( 'actual', 'sm-marketplace' ),
 		'estimated' => __( 'estimated', 'sm-marketplace' ),
+		'partial'   => __( 'declared elements', 'sm-marketplace' ),
 	);
 	return $labels[ $source ] ?? __( 'theoretical', 'sm-marketplace' );
 }

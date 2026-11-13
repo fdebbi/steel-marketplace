@@ -14,7 +14,8 @@
  *
  * @var array $args {
  *   mode: 'picker'|'view', lat: string|float, lng: string|float, wilaya: string,
- *   wilaya_select: string (CSS selector, picker), map_public: int (picker), label: string (view)
+ *   wilaya_select: string (CSS selector, picker), map_public: int (picker), label: string (view),
+ *   legend, help, public_label, public_help: string (picker texts; the company form keeps its own)
  * }
  * @package SM_Marketplace
  */
@@ -48,8 +49,8 @@ endif;
 $public = (int) ( $args['map_public'] ?? 1 );
 ?>
 <div class="sm-field sm-map sm-map--picker" data-sm-map-picker data-wilaya-select="<?php echo esc_attr( $args['wilaya_select'] ?? '#c-wilaya' ); ?>">
-	<span class="sm-field__legend" id="sm-map-label"><?php esc_html_e( 'Position on the map', 'sm-marketplace' ); ?></span>
-	<p class="sm-help" id="sm-map-help"><?php esc_html_e( 'Choose the wilaya: the map opens on it. Then drag the marker (or click the map) to your exact address, or use your current location if you are on site.', 'sm-marketplace' ); ?></p>
+	<span class="sm-field__legend" id="sm-map-label"><?php echo esc_html( $args['legend'] ?? __( 'Position on the map', 'sm-marketplace' ) ); ?></span>
+	<p class="sm-help" id="sm-map-help"><?php echo esc_html( $args['help'] ?? __( 'Choose the wilaya: the map opens on it. Then drag the marker (or click the map) to your exact address, or use your current location if you are on site.', 'sm-marketplace' ) ); ?></p>
 	<div class="sm-map__tools">
 		<button type="button" class="sm-btn sm-btn--ghost sm-btn--sm" data-sm-map-locate><?php sm_icon( 'locate' ); ?><?php esc_html_e( 'Use my current location', 'sm-marketplace' ); ?></button>
 		<button type="button" class="sm-btn sm-btn--ghost sm-btn--sm" data-sm-map-clear<?php echo $has ? '' : ' hidden'; ?>><?php sm_icon( 'trash' ); ?><?php esc_html_e( 'Remove the position', 'sm-marketplace' ); ?></button>
@@ -60,5 +61,6 @@ $public = (int) ( $args['map_public'] ?? 1 );
 	<input type="hidden" name="lat" value="<?php echo esc_attr( $lat ); ?>" data-sm-map-lat>
 	<input type="hidden" name="lng" value="<?php echo esc_attr( $lng ); ?>" data-sm-map-lng>
 	<?php sm_theme_error( 'location' ); ?>
-	<label class="sm-check"><input type="checkbox" name="map_public" value="1" <?php checked( $public ); ?>><span><?php esc_html_e( 'Show the map on my public page', 'sm-marketplace' ); ?></span></label>
+	<label class="sm-check"><input type="checkbox" name="map_public" value="1" <?php checked( $public ); ?>><span><?php echo esc_html( $args['public_label'] ?? __( 'Show the map on my public page', 'sm-marketplace' ) ); ?></span></label>
+	<?php if ( ! empty( $args['public_help'] ) ) : ?><p class="sm-help"><?php echo esc_html( $args['public_help'] ); ?></p><?php endif; ?>
 </div>

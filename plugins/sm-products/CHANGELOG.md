@@ -1,5 +1,13 @@
 # Changelog — sm-products
 
+## 0.12.0 — 2026-11-13
+
+- Lieu de l'annonce : colonnes `commune`, `address`, `lat`, `lng`, `map_public` (base v8). Position validée par sm-core (en Algérie). Filtre `sm_products_location_required` (obligatoire pour un marché).
+- Demandes de visite (`Visits`, table `sm_product_visits`) : demande avec date et heure (dans le futur, 3 mois au plus, une seule demande ouverte par annonce), réponse du vendeur (accepter, refuser, proposer une autre date), réponse de l'acheteur (confirmer, annuler). Proposées pour les ventes en lot et les marchés qui le demandent (filtre `sm_products_visits`).
+- Position exacte donnée seulement : au vendeur et à l'équipe ; à tous si le vendeur a rendu la carte publique ; sinon à l'acheteur dont la visite est acceptée, jusqu'à 2 jours après la visite.
+- Notifications et e-mails : `visit.requested`, `visit.accepted`, `visit.refused`, `visit.proposed`, `visit.confirmed`, `visit.cancelled`. Pastille « Demandes de visite » du tableau de bord.
+- Filtre `sm_products_generated_title` : un marché compose le titre de ses annonces. L'aperçu renvoie le titre et les valeurs calculées (`summary.specs`).
+
 ## 0.11.0 — 2026-11-13
 
 - `Facets::get( market, category, family )` (ressource `listing_facets`) : onglets des types avec leur nombre d'annonces en ligne, filtres propres au type choisi construits sur les valeurs réellement utilisées.
