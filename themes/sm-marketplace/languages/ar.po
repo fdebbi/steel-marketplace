@@ -137,7 +137,7 @@ msgid "Create an account"
 msgstr "إنشاء حساب"
 
 #: footer.php:44 header.php:30 templates/contact.php:23
-#: templates/contact.php:32 templates/single-listing.php:336
+#: templates/contact.php:32 templates/single-listing.php:337
 msgid "Contact"
 msgstr "اتصل بنا"
 
@@ -529,6 +529,7 @@ msgid "Estimated weight"
 msgstr "وزن تقديري"
 
 #: inc/template-tags.php:217 template-parts/components/product-tech.php:444
+#: templates/single-listing.php:272 templates/single-listing.php:273
 msgid "Weight of the declared elements"
 msgstr "وزن العناصر المصرّح بها"
 
@@ -1808,10 +1809,8 @@ msgstr "التاريخ المطلوب"
 
 #: template-parts/components/listing-place.php:89
 #: template-parts/components/visits-list.php:78
-#: template-parts/dashboard/engineer-missions.php:43
-#: template-parts/dashboard/studies.php:107
-msgid "Time"
-msgstr "الأجل"
+msgid "Time of the visit"
+msgstr "الساعة"
 
 #: template-parts/components/listing-place.php:94
 #: template-parts/components/product-form.php:131
@@ -2380,7 +2379,7 @@ msgstr "الوصف والصور والبطاقة التقنية"
 
 #: template-parts/components/product-form.php:120
 #: template-parts/dashboard/invoice.php:65 templates/mission-request.php:90
-#: templates/single-listing.php:283 templates/single-service.php:99
+#: templates/single-listing.php:284 templates/single-service.php:99
 msgid "Description"
 msgstr "الوصف"
 
@@ -4805,6 +4804,11 @@ msgstr "الخدمات الفرعية المطلوبة"
 #: template-parts/dashboard/engineer-missions.php:42
 msgid "Your fee"
 msgstr "أتعابك"
+
+#: template-parts/dashboard/engineer-missions.php:43
+#: template-parts/dashboard/studies.php:107
+msgid "Time"
+msgstr "الأجل"
 
 #. translators: %d: days.
 #: template-parts/dashboard/engineer-missions.php:44
@@ -8126,11 +8130,11 @@ msgstr "جرد الدفعة"
 msgid "Structural element inventory"
 msgstr "جرد العناصر الإنشائية"
 
-#: templates/single-listing.php:271 templates/single-listing.php:272
+#: templates/single-listing.php:272 templates/single-listing.php:273
 msgid "Total steel weight"
 msgstr "الوزن الإجمالي للفولاذ"
 
-#: templates/single-listing.php:277
+#: templates/single-listing.php:278
 msgid ""
 "Unit weights come from the platform’s standard section tables. The "
 "theoretical weight excludes bolts, plates and welds."
@@ -8138,26 +8142,26 @@ msgstr ""
 "الأوزان الوحدوية مأخوذة من جداول المقاطع القياسية للمنصة. لا يشمل الوزن "
 "النظري البراغي والصفائح واللحام."
 
-#: templates/single-listing.php:285
+#: templates/single-listing.php:286
 msgid "No description. Ask the seller for details with the form below."
 msgstr "لا يوجد وصف. اطلب التفاصيل من البائع عبر الاستمارة أدناه."
 
-#: templates/single-listing.php:289
+#: templates/single-listing.php:290
 msgid "Shown in the language the seller wrote it in."
 msgstr "معروض باللغة التي كتب بها البائع."
 
-#: templates/single-listing.php:303
+#: templates/single-listing.php:304
 msgid ""
 "Planning a structural reuse? Have the elements checked by a verified "
 "engineer before installation."
 msgstr ""
 "تنوي إعادة استعمال إنشائي؟ اطلب فحص العناصر من مهندس موثق قبل التركيب."
 
-#: templates/single-listing.php:303
+#: templates/single-listing.php:304
 msgid "Find an engineer"
 msgstr "ابحث عن مهندس"
 
-#: templates/single-listing.php:325
+#: templates/single-listing.php:326
 msgid "Similar listings"
 msgstr "إعلانات مشابهة"
 

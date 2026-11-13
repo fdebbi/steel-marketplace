@@ -75,7 +75,7 @@ $when = static fn( $dt ) => $dt ? sm_date( $dt ) . ' · ' . substr( (string) $dt
 							<input type="hidden" name="do" value="propose">
 							<div class="sm-field sm-field--row">
 								<div><label for="sm-vp-d<?php echo esc_attr( (string) $r['id'] ); ?>"><?php esc_html_e( 'Date', 'sm-marketplace' ); ?></label><input id="sm-vp-d<?php echo esc_attr( (string) $r['id'] ); ?>" type="date" name="visit_date" required min="<?php echo esc_attr( $r['min_date'] ); ?>" max="<?php echo esc_attr( $r['max_date'] ); ?>"></div>
-								<div><label for="sm-vp-t<?php echo esc_attr( (string) $r['id'] ); ?>"><?php esc_html_e( 'Time', 'sm-marketplace' ); ?></label><input id="sm-vp-t<?php echo esc_attr( (string) $r['id'] ); ?>" type="time" name="visit_time" required value="10:00"></div>
+								<div><label for="sm-vp-t<?php echo esc_attr( (string) $r['id'] ); ?>"><?php esc_html_e( 'Time of the visit', 'sm-marketplace' ); ?></label><input id="sm-vp-t<?php echo esc_attr( (string) $r['id'] ); ?>" type="time" name="visit_time" required value="10:00"></div>
 							</div>
 							<div class="sm-field"><label for="sm-vp-n<?php echo esc_attr( (string) $r['id'] ); ?>"><?php esc_html_e( 'Note for the buyer', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label><input id="sm-vp-n<?php echo esc_attr( (string) $r['id'] ); ?>" name="reply" dir="auto" maxlength="500"></div>
 							<button class="sm-btn sm-btn--primary-outline" type="submit"><?php esc_html_e( 'Send this date', 'sm-marketplace' ); ?></button>

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-13T22:19:29+00:00\n"
+"POT-Creation-Date: 2026-11-13T22:48:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -181,7 +181,7 @@ msgstr ""
 #: header.php:30
 #: templates/contact.php:23
 #: templates/contact.php:32
-#: templates/single-listing.php:336
+#: templates/single-listing.php:337
 msgid "Contact"
 msgstr ""
 
@@ -593,6 +593,8 @@ msgstr ""
 
 #: inc/template-tags.php:217
 #: template-parts/components/product-tech.php:444
+#: templates/single-listing.php:272
+#: templates/single-listing.php:273
 msgid "Weight of the declared elements"
 msgstr ""
 
@@ -1850,9 +1852,7 @@ msgstr ""
 
 #: template-parts/components/listing-place.php:89
 #: template-parts/components/visits-list.php:78
-#: template-parts/dashboard/engineer-missions.php:43
-#: template-parts/dashboard/studies.php:107
-msgid "Time"
+msgid "Time of the visit"
 msgstr ""
 
 #: template-parts/components/listing-place.php:94
@@ -2410,7 +2410,7 @@ msgstr ""
 #: template-parts/components/product-form.php:120
 #: template-parts/dashboard/invoice.php:65
 #: templates/mission-request.php:90
-#: templates/single-listing.php:283
+#: templates/single-listing.php:284
 #: templates/single-service.php:99
 msgid "Description"
 msgstr ""
@@ -4611,6 +4611,11 @@ msgstr ""
 
 #: template-parts/dashboard/engineer-missions.php:42
 msgid "Your fee"
+msgstr ""
+
+#: template-parts/dashboard/engineer-missions.php:43
+#: template-parts/dashboard/studies.php:107
+msgid "Time"
 msgstr ""
 
 #. translators: %d: days.
@@ -7634,32 +7639,32 @@ msgstr ""
 msgid "Structural element inventory"
 msgstr ""
 
-#: templates/single-listing.php:271
 #: templates/single-listing.php:272
+#: templates/single-listing.php:273
 msgid "Total steel weight"
 msgstr ""
 
-#: templates/single-listing.php:277
+#: templates/single-listing.php:278
 msgid "Unit weights come from the platform’s standard section tables. The theoretical weight excludes bolts, plates and welds."
 msgstr ""
 
-#: templates/single-listing.php:285
+#: templates/single-listing.php:286
 msgid "No description. Ask the seller for details with the form below."
 msgstr ""
 
-#: templates/single-listing.php:289
+#: templates/single-listing.php:290
 msgid "Shown in the language the seller wrote it in."
 msgstr ""
 
-#: templates/single-listing.php:303
+#: templates/single-listing.php:304
 msgid "Planning a structural reuse? Have the elements checked by a verified engineer before installation."
 msgstr ""
 
-#: templates/single-listing.php:303
+#: templates/single-listing.php:304
 msgid "Find an engineer"
 msgstr ""
 
-#: templates/single-listing.php:325
+#: templates/single-listing.php:326
 msgid "Similar listings"
 msgstr ""
 

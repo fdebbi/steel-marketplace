@@ -138,7 +138,7 @@ msgid "Create an account"
 msgstr "Créer un compte"
 
 #: footer.php:44 header.php:30 templates/contact.php:23
-#: templates/contact.php:32 templates/single-listing.php:336
+#: templates/contact.php:32 templates/single-listing.php:337
 msgid "Contact"
 msgstr "Contact"
 
@@ -544,6 +544,7 @@ msgid "Estimated weight"
 msgstr "Poids estimé"
 
 #: inc/template-tags.php:217 template-parts/components/product-tech.php:444
+#: templates/single-listing.php:272 templates/single-listing.php:273
 msgid "Weight of the declared elements"
 msgstr "Poids des éléments déclarés"
 
@@ -1814,10 +1815,8 @@ msgstr "Date souhaitée"
 
 #: template-parts/components/listing-place.php:89
 #: template-parts/components/visits-list.php:78
-#: template-parts/dashboard/engineer-missions.php:43
-#: template-parts/dashboard/studies.php:107
-msgid "Time"
-msgstr "Délai"
+msgid "Time of the visit"
+msgstr "Heure"
 
 #: template-parts/components/listing-place.php:94
 #: template-parts/components/product-form.php:131
@@ -2393,7 +2392,7 @@ msgstr "Description, photos et fiche technique"
 
 #: template-parts/components/product-form.php:120
 #: template-parts/dashboard/invoice.php:65 templates/mission-request.php:90
-#: templates/single-listing.php:283 templates/single-service.php:99
+#: templates/single-listing.php:284 templates/single-service.php:99
 msgid "Description"
 msgstr "Description"
 
@@ -4831,6 +4830,11 @@ msgstr "Prestations souhaitées"
 #: template-parts/dashboard/engineer-missions.php:42
 msgid "Your fee"
 msgstr "Vos honoraires"
+
+#: template-parts/dashboard/engineer-missions.php:43
+#: template-parts/dashboard/studies.php:107
+msgid "Time"
+msgstr "Délai"
 
 #. translators: %d: days.
 #: template-parts/dashboard/engineer-missions.php:44
@@ -8241,11 +8245,11 @@ msgstr "Inventaire du lot"
 msgid "Structural element inventory"
 msgstr "Inventaire des éléments de structure"
 
-#: templates/single-listing.php:271 templates/single-listing.php:272
+#: templates/single-listing.php:272 templates/single-listing.php:273
 msgid "Total steel weight"
 msgstr "Poids total d’acier"
 
-#: templates/single-listing.php:277
+#: templates/single-listing.php:278
 msgid ""
 "Unit weights come from the platform’s standard section tables. The "
 "theoretical weight excludes bolts, plates and welds."
@@ -8253,17 +8257,17 @@ msgstr ""
 "Les poids unitaires proviennent des tables de profilés normalisés de la "
 "plateforme. Le poids théorique exclut boulons, platines et soudures."
 
-#: templates/single-listing.php:285
+#: templates/single-listing.php:286
 msgid "No description. Ask the seller for details with the form below."
 msgstr ""
 "Pas de description. Demandez des précisions au vendeur avec le formulaire "
 "ci-dessous."
 
-#: templates/single-listing.php:289
+#: templates/single-listing.php:290
 msgid "Shown in the language the seller wrote it in."
 msgstr "Affiché dans la langue de rédaction du vendeur."
 
-#: templates/single-listing.php:303
+#: templates/single-listing.php:304
 msgid ""
 "Planning a structural reuse? Have the elements checked by a verified "
 "engineer before installation."
@@ -8271,11 +8275,11 @@ msgstr ""
 "Réemploi structurel prévu ? Faites contrôler les éléments par un ingénieur "
 "vérifié avant montage."
 
-#: templates/single-listing.php:303
+#: templates/single-listing.php:304
 msgid "Find an engineer"
 msgstr "Trouver un ingénieur"
 
-#: templates/single-listing.php:325
+#: templates/single-listing.php:326
 msgid "Similar listings"
 msgstr "Annonces similaires"
 

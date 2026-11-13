@@ -86,7 +86,7 @@ $when = static fn( $dt ) => $dt ? sm_date( $dt ) . ' · ' . substr( (string) $dt
 								<input id="sm-visit-date" type="date" name="visit_date" required min="<?php echo esc_attr( (string) ( $visit['min_date'] ?? '' ) ); ?>" max="<?php echo esc_attr( (string) ( $visit['max_date'] ?? '' ) ); ?>" value="<?php echo esc_attr( (string) sm_theme_old( 'visit_date' ) ); ?>">
 							</div>
 							<div>
-								<label for="sm-visit-time"><?php esc_html_e( 'Time', 'sm-marketplace' ); ?></label>
+								<label for="sm-visit-time"><?php esc_html_e( 'Time of the visit', 'sm-marketplace' ); ?></label>
 								<input id="sm-visit-time" type="time" name="visit_time" required value="<?php echo esc_attr( (string) sm_theme_old( 'visit_time', '10:00' ) ); ?>">
 							</div>
 						</div>

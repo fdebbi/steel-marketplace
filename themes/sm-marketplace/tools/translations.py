@@ -1997,3 +1997,4 @@ T.update({
 "Visit requests": ("Demandes de visite", "طلبات الزيارة"),
 "My visits": ("Mes visites", "زياراتي"),
 })
+T.update({"Time of the visit": ("Heure", "الساعة")})
