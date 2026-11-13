@@ -81,7 +81,7 @@ msgstr "طلبات عروض الأسعار"
 
 #: footer.php:29 inc/menus.php:40
 #: template-parts/components/services-board.php:30
-#: templates/company-profile.php:67 templates/dashboard.php:137
+#: templates/company-profile.php:67 templates/dashboard.php:132
 msgid "Services"
 msgstr "الخدمات"
 
@@ -175,7 +175,7 @@ msgstr "نشر"
 msgid "Enquiries"
 msgstr "الاستفسارات"
 
-#: footer.php:66 templates/dashboard.php:87 templates/dashboard.php:157
+#: footer.php:66 templates/dashboard.php:87 templates/dashboard.php:152
 msgid "Account"
 msgstr "الحساب"
 
@@ -195,7 +195,7 @@ msgstr "روابط مفيدة"
 msgid "Open menu"
 msgstr "فتح القائمة"
 
-#: header.php:48 template-parts/components/filter-panel.php:32
+#: header.php:48 template-parts/components/filter-panel.php:64
 #: template-parts/components/product-form.php:65
 #: template-parts/components/rfq-form.php:48
 #: template-parts/components/rfq-single.php:21
@@ -207,7 +207,7 @@ msgstr "فتح القائمة"
 msgid "Market"
 msgstr "السوق"
 
-#: header.php:49 template-parts/components/filter-panel.php:36
+#: header.php:49 template-parts/components/filter-panel.php:68
 #: templates/front-page-template.php:42 templates/rfq-board.php:73
 msgid "All markets"
 msgstr "كل الأسواق"
@@ -216,18 +216,18 @@ msgstr "كل الأسواق"
 msgid "IPE 200, HEA, tube 100×50, hangar…"
 msgstr "IPE 200، HEA، أنبوب 100×50، هنغار…"
 
-#: header.php:60 templates/dashboard.php:130
+#: header.php:60 templates/dashboard.php:125
 msgid "Saved listings"
 msgstr "الإعلانات المحفوظة"
 
 #: header.php:66 template-parts/dashboard/notifications.php:19
 #: template-parts/notif-panel.php:15 template-parts/notif-panel.php:17
-#: templates/dashboard.php:175
+#: templates/dashboard.php:170
 msgid "Notifications"
 msgstr "الإشعارات"
 
 #: header.php:72 header.php:141 templates/contact.php:64
-#: templates/dashboard.php:157
+#: templates/dashboard.php:152
 msgid "My account"
 msgstr "حسابي"
 
@@ -243,11 +243,11 @@ msgstr "الإدارة"
 msgid "Sign in"
 msgstr "تسجيل الدخول"
 
-#: header.php:111 templates/dashboard.php:278
+#: header.php:111 templates/dashboard.php:273
 msgid "Menu"
 msgstr "القائمة"
 
-#: header.php:114 inc/assets.php:38 templates/dashboard.php:247
+#: header.php:114 inc/assets.php:38 templates/dashboard.php:242
 msgid "Close menu"
 msgstr "إغلاق القائمة"
 
@@ -257,12 +257,12 @@ msgstr "عرض كل الإعلانات"
 
 #: header.php:139 template-parts/components/my-products.php:52
 #: template-parts/components/my-products.php:56
-#: template-parts/dashboard/listings.php:25 templates/dashboard.php:165
-#: templates/dashboard.php:250 templates/front-page-template.php:27
+#: template-parts/dashboard/listings.php:25 templates/dashboard.php:160
+#: templates/dashboard.php:245 templates/front-page-template.php:27
 msgid "Publish a listing"
 msgstr "نشر إعلان"
 
-#: header.php:142 templates/dashboard.php:270 templates/engineer-apply.php:43
+#: header.php:142 templates/dashboard.php:265 templates/engineer-apply.php:43
 msgid "Sign out"
 msgstr "تسجيل الخروج"
 
@@ -813,7 +813,7 @@ msgid "Unlimited"
 msgstr "غير محدود"
 
 #. translators: %s: number of results.
-#: inc/template-tags.php:619 template-parts/components/filter-panel.php:101
+#: inc/template-tags.php:624 template-parts/components/filter-panel.php:162
 msgid "Show %s result"
 msgid_plural "Show %s results"
 msgstr[0] "عرض %s نتيجة"
@@ -942,7 +942,6 @@ msgid "Suggested listing"
 msgstr "الإعلان المقترح"
 
 #: template-parts/components/ai-result-listing.php:21
-#: template-parts/components/filter-panel.php:42
 #: template-parts/components/product-form.php:63
 #: template-parts/components/rfq-form.php:56
 #: template-parts/dashboard/publish.php:67
@@ -1208,7 +1207,7 @@ msgstr "غير متاح حاليا"
 
 #: template-parts/components/card-engineer.php:39
 #: template-parts/components/card-engineer.php:41
-#: template-parts/dashboard/studies.php:132 templates/dashboard.php:170
+#: template-parts/dashboard/studies.php:132 templates/dashboard.php:165
 #: templates/marketplace-engineers.php:36
 #: templates/marketplace-engineers.php:80 templates/mission-request.php:19
 msgid "Ask for a study"
@@ -1242,7 +1241,7 @@ msgid "Save listing"
 msgstr "حفظ الإعلان"
 
 #: template-parts/components/card-listing.php:39
-#: template-parts/components/filter-panel.php:68
+#: template-parts/components/filter-panel.php:34
 #: template-parts/components/product-tech.php:354
 #: template-parts/dashboard/publish.php:112 templates/single-listing.php:49
 #: templates/single-listing.php:132
@@ -1250,7 +1249,7 @@ msgid "Assembled"
 msgstr "مركّب"
 
 #: template-parts/components/card-listing.php:39
-#: template-parts/components/filter-panel.php:69
+#: template-parts/components/filter-panel.php:35
 #: template-parts/components/product-tech.php:355
 #: template-parts/dashboard/publish.php:113 templates/single-listing.php:49
 #: templates/single-listing.php:132
@@ -1339,13 +1338,16 @@ msgstr[4] "%d ولاية"
 msgstr[5] "%d ولاية"
 
 #: template-parts/components/deal-list.php:21
-#: template-parts/components/filter-panel.php:67
+#: template-parts/components/filter-panel.php:97
+#: template-parts/components/filter-panel.php:107
+#: template-parts/components/filter-panel.php:148
 #: template-parts/components/my-products.php:46
 #: template-parts/components/service-requests-list.php:20
 #: template-parts/components/services-board.php:31
 #: template-parts/dashboard/listings.php:20
 #: template-parts/dashboard/rfq.php:29 template-parts/directory.php:62
-#: template-parts/marketplace-archive.php:39
+#: template-parts/marketplace-archive.php:45
+#: template-parts/marketplace-archive.php:51
 #: templates/marketplace-engineers.php:56
 msgid "All"
 msgstr "الكل"
@@ -1373,7 +1375,7 @@ msgid ""
 msgstr "يطلب المشترون أو يقدمون عروضا من إعلاناتك؛ تُبلَّغ بالبريد وترد هنا."
 
 #: template-parts/components/deal-list.php:37
-#: template-parts/dashboard/listings.php:27 templates/dashboard.php:118
+#: template-parts/dashboard/listings.php:27 templates/dashboard.php:113
 msgid "My listings"
 msgstr "إعلاناتي"
 
@@ -1397,11 +1399,12 @@ msgid "Your answer is awaited"
 msgstr "ردك منتظر"
 
 #: template-parts/components/deal-list.php:56
+#: template-parts/components/filter-panel.php:148
 msgid "Whole lot"
 msgstr "الحصة كاملة"
 
 #: template-parts/components/deal-list.php:66 template-parts/directory.php:122
-#: template-parts/marketplace-archive.php:91 templates/rfq-board.php:101
+#: template-parts/marketplace-archive.php:104 templates/rfq-board.php:101
 msgid "Pagination"
 msgstr "ترقيم الصفحات"
 
@@ -1503,55 +1506,76 @@ msgstr "إرسال الاستفسار"
 msgid "The company receives your name, phone and e-mail to answer you."
 msgstr "تتلقى المؤسسة اسمك وهاتفك وبريدك الإلكتروني للرد عليك."
 
-#: template-parts/components/filter-panel.php:16
-#: template-parts/components/filter-panel.php:20
-#: template-parts/directory.php:59 template-parts/marketplace-archive.php:64
-msgid "Filters"
-msgstr "التصفية"
+#: template-parts/components/filter-panel.php:23
+msgid "Shape"
+msgstr "الشكل"
 
-#: template-parts/components/filter-panel.php:21
-msgid "Close filters"
-msgstr "إغلاق التصفية"
+#: template-parts/components/filter-panel.php:23
+msgid "Family"
+msgstr "العائلة"
+
+#: template-parts/components/filter-panel.php:24
+#: template-parts/components/product-lines.php:79
+#: template-parts/components/weight-calculator.php:132
+msgid "Size"
+msgstr "المقاس"
+
+#: template-parts/components/filter-panel.php:24
+#: template-parts/components/rfq-single.php:24
+msgid "Designation"
+msgstr "التسمية"
+
+#: template-parts/components/filter-panel.php:25
+#: template-parts/components/section-sheet.php:26
+#: template-parts/components/weight-calculator.php:132
+msgid "Thickness"
+msgstr "السُّمك"
 
 #: template-parts/components/filter-panel.php:26
-msgid "Profile designation or keyword"
-msgstr "تسمية المقطع أو كلمة مفتاحية"
+msgid "Min. length"
+msgstr "الطول الأدنى"
 
-#: template-parts/components/filter-panel.php:43
-msgid "All categories"
-msgstr "كل الفئات"
+#: template-parts/components/filter-panel.php:27
+msgid "Min. weight"
+msgstr "الوزن الأدنى"
 
-#: template-parts/components/filter-panel.php:52
+#: template-parts/components/filter-panel.php:28
+msgid "Min. area"
+msgstr "المساحة الدنيا"
+
+#: template-parts/components/filter-panel.php:29
+msgid "Min. eaves height"
+msgstr "الارتفاع الأدنى تحت الإفريز"
+
+#: template-parts/components/filter-panel.php:30
 #: template-parts/dashboard/publish.php:93
 msgid "Condition"
 msgstr "الحالة"
 
+#: template-parts/components/filter-panel.php:31
+msgid "Assembled or dismantled"
+msgstr "مركّب أو مفكّك"
+
+#: template-parts/components/filter-panel.php:44
+#: template-parts/components/filter-panel.php:52
+#: template-parts/directory.php:59 template-parts/marketplace-archive.php:76
+msgid "Filters"
+msgstr "التصفية"
+
 #: template-parts/components/filter-panel.php:53
-msgid "Any condition"
-msgstr "كل الحالات"
+msgid "Close filters"
+msgstr "إغلاق التصفية"
+
+#: template-parts/components/filter-panel.php:58
+#: template-parts/components/services-board.php:40
+msgid "Keyword"
+msgstr "كلمة مفتاحية"
 
 #: template-parts/components/filter-panel.php:59
-msgid "Min. length (m)"
-msgstr "الطول الأدنى (m)"
+msgid "hangar, poultry house…"
+msgstr "هنجر، مدجنة…"
 
-#: template-parts/components/filter-panel.php:60
-msgid "Min. pieces"
-msgstr "أدنى عدد قطع"
-
-#: template-parts/components/filter-panel.php:66
-#: templates/single-listing.php:49
-msgid "State"
-msgstr "حالة المبنى"
-
-#: template-parts/components/filter-panel.php:72
-msgid "Min. area (m²)"
-msgstr "المساحة الدنيا (m²)"
-
-#: template-parts/components/filter-panel.php:73
-msgid "Min. height (m)"
-msgstr "الارتفاع الأدنى (m)"
-
-#: template-parts/components/filter-panel.php:78
+#: template-parts/components/filter-panel.php:129
 #: template-parts/dashboard/company.php:101
 #: template-parts/dashboard/engineer-missions.php:126
 #: template-parts/dashboard/engineer-missions.php:131
@@ -1562,26 +1586,34 @@ msgstr "الارتفاع الأدنى (m)"
 msgid "Wilaya"
 msgstr "الولاية"
 
-#: template-parts/components/filter-panel.php:80
+#: template-parts/components/filter-panel.php:131
 #: template-parts/components/services-board.php:45
 #: template-parts/directory.php:49 templates/front-page-template.php:51
 #: templates/rfq-board.php:78
 msgid "All wilayas"
 msgstr "كل الولايات"
 
-#: template-parts/components/filter-panel.php:89
+#: template-parts/components/filter-panel.php:140
 msgid "Min. DA/kg"
 msgstr "الأدنى دج/kg"
 
-#: template-parts/components/filter-panel.php:90
+#: template-parts/components/filter-panel.php:141
 msgid "Max. DA/kg"
 msgstr "الأقصى دج/kg"
 
-#: template-parts/components/filter-panel.php:92
+#: template-parts/components/filter-panel.php:146
+msgid "Sale"
+msgstr "البيع"
+
+#: template-parts/components/filter-panel.php:148
+msgid "By quantity"
+msgstr "بالتجزئة"
+
+#: template-parts/components/filter-panel.php:154
 msgid "Verified sellers only"
 msgstr "البائعون الموثقون فقط"
 
-#: template-parts/components/filter-panel.php:97 templates/styleguide.php:37
+#: template-parts/components/filter-panel.php:158 templates/styleguide.php:37
 msgid "Reset"
 msgstr "إعادة الضبط"
 
@@ -1860,7 +1892,7 @@ msgstr "طلباتي"
 
 #: template-parts/components/order-history.php:23
 #: template-parts/components/order-history.php:33
-#: template-parts/dashboard/invoice.php:50 templates/dashboard.php:176
+#: template-parts/dashboard/invoice.php:50 templates/dashboard.php:171
 msgid "Order"
 msgstr "الطلب"
 
@@ -1896,7 +1928,7 @@ msgstr "إجراءات"
 #: template-parts/components/order-history.php:39
 #: template-parts/dashboard/engineer-files.php:25
 #: template-parts/dashboard/invoice.php:38
-#: template-parts/dashboard/invoice.php:47 templates/dashboard.php:177
+#: template-parts/dashboard/invoice.php:47 templates/dashboard.php:172
 msgid "Invoice"
 msgstr "فاتورة"
 
@@ -2358,11 +2390,6 @@ msgstr "العنصر"
 #: template-parts/components/product-lines.php:73
 msgid "Type"
 msgstr "النوع"
-
-#: template-parts/components/product-lines.php:79
-#: template-parts/components/weight-calculator.php:132
-msgid "Size"
-msgstr "المقاس"
 
 #: template-parts/components/product-lines.php:86
 msgid "Pieces"
@@ -3099,10 +3126,6 @@ msgid ""
 "when you send it."
 msgstr "المشتري وحده يرى عرضك. يُحسب المجموع والسعر للكيلوغرام عند الإرسال."
 
-#: template-parts/components/rfq-single.php:24
-msgid "Designation"
-msgstr "التسمية"
-
 #: template-parts/components/rfq-single.php:27
 #: template-parts/components/rfq-tech.php:48
 msgid "Dimensions"
@@ -3264,11 +3287,6 @@ msgstr "سمك الجذع"
 #: template-parts/components/section-sheet.php:25
 msgid "Flange thickness"
 msgstr "سمك الجناح"
-
-#: template-parts/components/section-sheet.php:26
-#: template-parts/components/weight-calculator.php:132
-msgid "Thickness"
-msgstr "السُّمك"
 
 #: template-parts/components/section-sheet.php:27
 #: template-parts/components/section-sheet.php:28
@@ -3636,17 +3654,13 @@ msgid ""
 msgstr "تظهر طلبات العملاء هنا. صفحة خدمة كاملة مع صور تتلقى طلبات أكثر."
 
 #: template-parts/components/service-requests-list.php:38
-#: template-parts/dashboard/services.php:19 templates/dashboard.php:139
+#: template-parts/dashboard/services.php:19 templates/dashboard.php:134
 msgid "My services"
 msgstr "خدماتي"
 
 #: template-parts/components/services-board.php:37
 msgid "Filter the services"
 msgstr "تصفية الخدمات"
-
-#: template-parts/components/services-board.php:40
-msgid "Keyword"
-msgstr "كلمة مفتاحية"
 
 #: template-parts/components/services-board.php:41
 msgid "e.g. welding, galvanizing, hangar"
@@ -3809,7 +3823,7 @@ msgstr "أدخل عدد القطع لمعرفة الوزن الإجمالي."
 #: template-parts/dashboard/ai-credits.php:16
 #: template-parts/dashboard/ai-credits.php:55
 #: template-parts/dashboard/plan.php:24 templates/dashboard.php:82
-#: templates/dashboard.php:151
+#: templates/dashboard.php:146
 msgid "AI credits"
 msgstr "رصيد الذكاء الاصطناعي"
 
@@ -3900,7 +3914,7 @@ msgid "The counters start again on the 1st of each month."
 msgstr "تبدأ العدادات من جديد في اليوم الأول من كل شهر."
 
 #: template-parts/dashboard/ai.php:16 templates/dashboard.php:79
-#: templates/dashboard.php:148
+#: templates/dashboard.php:143
 msgid "AI assistant"
 msgstr "المساعد الذكي"
 
@@ -4748,7 +4762,7 @@ msgstr "عرض كل الإشعارات"
 msgid "No notification yet."
 msgstr "لا توجد إشعارات بعد."
 
-#: template-parts/dashboard/offers.php:13 templates/dashboard.php:120
+#: template-parts/dashboard/offers.php:13 templates/dashboard.php:115
 msgid "Quotations sent"
 msgstr "العروض المرسلة"
 
@@ -5510,7 +5524,7 @@ msgstr "وثائقك قيد المراجعة من طرف فريق المنصة،
 msgid "Verify your contact details first."
 msgstr "تحقق من معلومات الاتصال أولا."
 
-#: template-parts/dashboard/verification.php:33 templates/dashboard.php:292
+#: template-parts/dashboard/verification.php:33 templates/dashboard.php:287
 msgid "Enter the code"
 msgstr "أدخل الرمز"
 
@@ -5593,7 +5607,7 @@ msgstr "اسم المؤسسة"
 msgid "Trade"
 msgstr "الحرفة"
 
-#: template-parts/directory.php:67 templates/dashboard.php:160
+#: template-parts/directory.php:67 templates/dashboard.php:155
 msgid "Verification"
 msgstr "التوثيق"
 
@@ -5635,7 +5649,7 @@ msgstr[3] "%d مؤسسات"
 msgstr[4] "%d مؤسسة"
 msgstr[5] "%d مؤسسة"
 
-#: template-parts/directory.php:84 template-parts/marketplace-archive.php:69
+#: template-parts/directory.php:84 template-parts/marketplace-archive.php:82
 #: templates/rfq-board.php:81
 msgid "Sort by"
 msgstr "ترتيب حسب"
@@ -5668,16 +5682,20 @@ msgstr "غيّر أو أزل أحد عوامل التصفية."
 msgid "See the whole directory"
 msgstr "عرض الدليل كاملا"
 
-#: template-parts/marketplace-archive.php:34
+#: template-parts/marketplace-archive.php:37
 msgid "Publish here"
 msgstr "انشر هنا"
 
-#: template-parts/marketplace-archive.php:38
+#: template-parts/marketplace-archive.php:41
+msgid "Types"
+msgstr "الأنواع"
+
+#: template-parts/marketplace-archive.php:50
 msgid "Categories"
 msgstr "الفئات"
 
 #. translators: %s: number of listings.
-#: template-parts/marketplace-archive.php:60
+#: template-parts/marketplace-archive.php:72
 msgid "<strong>%s</strong> listing"
 msgid_plural "<strong>%s</strong> listings"
 msgstr[0] "<strong>%s</strong> إعلان"
@@ -5687,41 +5705,41 @@ msgstr[3] "<strong>%s</strong> إعلانات"
 msgstr[4] "<strong>%s</strong> إعلانا"
 msgstr[5] "<strong>%s</strong> إعلان"
 
-#: template-parts/marketplace-archive.php:72 templates/rfq-board.php:82
+#: template-parts/marketplace-archive.php:85 templates/rfq-board.php:82
 msgid "Most recent"
 msgstr "الأحدث"
 
-#: template-parts/marketplace-archive.php:73
+#: template-parts/marketplace-archive.php:86
 msgid "Price per kg: low to high"
 msgstr "السعر للكيلوغرام: تصاعدي"
 
-#: template-parts/marketplace-archive.php:74
+#: template-parts/marketplace-archive.php:87
 msgid "Price per kg: high to low"
 msgstr "السعر للكيلوغرام: تنازلي"
 
-#: template-parts/marketplace-archive.php:77
+#: template-parts/marketplace-archive.php:90
 msgid "Display"
 msgstr "العرض"
 
-#: template-parts/marketplace-archive.php:78
+#: template-parts/marketplace-archive.php:91
 msgid "Grid"
 msgstr "شبكة"
 
-#: template-parts/marketplace-archive.php:79
+#: template-parts/marketplace-archive.php:92
 msgid "List"
 msgstr "قائمة"
 
-#: template-parts/marketplace-archive.php:102
+#: template-parts/marketplace-archive.php:115
 msgid "No listing matches these filters"
 msgstr "لا يوجد إعلان يطابق هذه التصفية"
 
-#: template-parts/marketplace-archive.php:103
+#: template-parts/marketplace-archive.php:116
 msgid ""
 "Widen your search, or publish a request for quotation so suppliers come to "
 "you."
 msgstr "وسّع بحثك أو انشر طلب عرض سعر ليأتيك الموردون."
 
-#: template-parts/marketplace-archive.php:104
+#: template-parts/marketplace-archive.php:117
 #: templates/front-page-template.php:151 templates/single-listing.php:156
 #: templates/single-service.php:92 templates/single-service.php:121
 #: templates/styleguide.php:36
@@ -5906,7 +5924,7 @@ msgstr[4] "%d ولاية"
 msgstr[5] "%d ولاية"
 
 #: templates/company-profile.php:64 templates/company-profile.php:160
-#: templates/dashboard.php:141 templates/single-service.php:160
+#: templates/dashboard.php:136 templates/single-service.php:160
 msgid "Completed projects"
 msgstr "المشاريع المنجزة"
 
@@ -6123,7 +6141,7 @@ msgstr "SM — لوحة التحكم"
 msgid "Create an account to use the dashboard."
 msgstr "أنشئ حسابا لاستعمال لوحة التحكم."
 
-#: templates/dashboard.php:73 templates/dashboard.php:113
+#: templates/dashboard.php:73 templates/dashboard.php:108
 msgid "Overview"
 msgstr "نظرة عامة"
 
@@ -6131,145 +6149,145 @@ msgstr "نظرة عامة"
 msgid "Files and plans"
 msgstr "الملفات والمخططات"
 
-#: templates/dashboard.php:81 templates/dashboard.php:150
+#: templates/dashboard.php:81 templates/dashboard.php:145
 msgid "Assistant"
 msgstr "المساعد"
 
-#: templates/dashboard.php:90 templates/dashboard.php:161
+#: templates/dashboard.php:90 templates/dashboard.php:156
 msgid "Settings"
 msgstr "الإعدادات"
 
-#: templates/dashboard.php:108 templates/dashboard.php:159
+#: templates/dashboard.php:103 templates/dashboard.php:154
 msgid "Company profile"
 msgstr "ملف المؤسسة"
 
-#: templates/dashboard.php:109
+#: templates/dashboard.php:104
 msgid "Professional profile"
 msgstr "الملف المهني"
 
-#: templates/dashboard.php:110
+#: templates/dashboard.php:105
 msgid "My profile"
 msgstr "ملفي"
 
-#: templates/dashboard.php:116
+#: templates/dashboard.php:111
 msgid "Selling"
 msgstr "البيع"
 
-#: templates/dashboard.php:119
+#: templates/dashboard.php:114
 msgid "Orders and offers received"
 msgstr "الطلبات والعروض الواردة"
 
-#: templates/dashboard.php:121
+#: templates/dashboard.php:116
 msgid "Enquiries received"
 msgstr "الاستفسارات الواردة"
 
-#: templates/dashboard.php:122
+#: templates/dashboard.php:117
 msgid "Statistics"
 msgstr "الإحصائيات"
 
-#: templates/dashboard.php:127
+#: templates/dashboard.php:122
 msgid "Buying"
 msgstr "الشراء"
 
-#: templates/dashboard.php:129
+#: templates/dashboard.php:124
 msgid "My purchases and offers"
 msgstr "مشترياتي وعروضي"
 
-#: templates/dashboard.php:131
+#: templates/dashboard.php:126
 msgid "My requests for quotation"
 msgstr "طلبات عروضي"
 
-#: templates/dashboard.php:132
+#: templates/dashboard.php:127
 msgid "Purchase history"
 msgstr "سجل المشتريات"
 
-#: templates/dashboard.php:140 templates/single-service.php:89
+#: templates/dashboard.php:135 templates/single-service.php:89
 msgid "Requests received"
 msgstr "الطلبات المستلمة"
 
-#: templates/dashboard.php:142
+#: templates/dashboard.php:137
 msgid "My service requests"
 msgstr "طلبات الخدمات الخاصة بي"
 
-#: templates/dashboard.php:145
+#: templates/dashboard.php:140
 msgid "Engineering studies"
 msgstr "الدراسات الهندسية"
 
-#: templates/dashboard.php:154
+#: templates/dashboard.php:149
 msgid "Plan"
 msgstr "الاشتراك"
 
-#: templates/dashboard.php:169
+#: templates/dashboard.php:164
 msgid "Add a service"
 msgstr "إضافة خدمة"
 
-#: templates/dashboard.php:174
+#: templates/dashboard.php:169
 msgid "Verify your account"
 msgstr "توثيق حسابك"
 
-#: templates/dashboard.php:178
+#: templates/dashboard.php:173
 msgid "Order or offer"
 msgstr "طلب أو عرض"
 
-#: templates/dashboard.php:226
+#: templates/dashboard.php:221
 msgid "See my partner profile"
 msgstr "عرض ملفي كشريك"
 
-#: templates/dashboard.php:229
+#: templates/dashboard.php:224
 msgid "See my public profile"
 msgstr "عرض ملفي العام"
 
-#: templates/dashboard.php:232
+#: templates/dashboard.php:227
 msgid "See my profile"
 msgstr "عرض ملفي"
 
-#: templates/dashboard.php:236
+#: templates/dashboard.php:231
 msgid "Account menu"
 msgstr "قائمة الحساب"
 
-#: templates/dashboard.php:246
+#: templates/dashboard.php:241
 msgid "Collapse the menu"
 msgstr "طيّ القائمة"
 
-#: templates/dashboard.php:246
+#: templates/dashboard.php:241
 msgid "Expand the menu"
 msgstr "توسيع القائمة"
 
-#: templates/dashboard.php:259
+#: templates/dashboard.php:254
 msgid "Dashboard"
 msgstr "لوحة التحكم"
 
-#: templates/dashboard.php:269
+#: templates/dashboard.php:264
 msgid "Dark mode"
 msgstr "الوضع الداكن"
 
-#: templates/dashboard.php:288
+#: templates/dashboard.php:283
 msgid "Demo partner engineer account."
 msgstr "حساب مهندس شريك تجريبي."
 
-#: templates/dashboard.php:288
+#: templates/dashboard.php:283
 msgid "Demo company account."
 msgstr "حساب شركة تجريبي."
 
-#: templates/dashboard.php:288
+#: templates/dashboard.php:283
 msgid "Switch to the company dashboard"
 msgstr "الانتقال إلى لوحة الشركة"
 
-#: templates/dashboard.php:288
+#: templates/dashboard.php:283
 msgid "Switch to the engineer dashboard"
 msgstr "الانتقال إلى لوحة المهندس"
 
-#: templates/dashboard.php:292
+#: templates/dashboard.php:287
 msgid ""
 "Verify your account with the 6-digit code to publish and answer requests."
 msgstr ""
 "وثّق حسابك بالرمز المكون من 6 أرقام لتتمكن من النشر والرد على الطلبات."
 
-#: templates/dashboard.php:323
+#: templates/dashboard.php:318
 msgid "This section arrives with its plugin"
 msgstr "يُفعّل هذا القسم مع إضافته"
 
-#: templates/dashboard.php:324
+#: templates/dashboard.php:319
 msgid ""
 "The layout is ready; the content will be provided by the corresponding "
 "marketplace plugin."
@@ -7180,6 +7198,10 @@ msgstr "هذا الإعلان لم يعد متوفرا"
 #: templates/single-listing.php:33
 msgid "Back to the marketplace"
 msgstr "العودة إلى المنصة"
+
+#: templates/single-listing.php:49
+msgid "State"
+msgstr "حالة المبنى"
 
 #: templates/single-listing.php:50
 msgid "Length × width × height"

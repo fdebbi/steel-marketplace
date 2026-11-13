@@ -1,5 +1,11 @@
 # Changelog — sm-products
 
+## 0.11.0 — 2026-11-13
+
+- `Facets::get( market, category, family )` (ressource `listing_facets`) : onglets des types avec leur nombre d'annonces en ligne, filtres propres au type choisi construits sur les valeurs réellement utilisées.
+- Nouveaux filtres de recherche : désignation exacte, poids minimal, mode de vente (lot / détail), champs à liste des catégories (`spec[clé]`).
+- 9 tests PHP de plus.
+
 ## 0.10.0 — 2026-11-13 (base v7)
 
 - Publication directe : la vérification avant publication est désactivée par défaut (aussi pour les clients particuliers et les modifications d'annonces en ligne). À la mise à jour, le réglage est désactivé et les annonces en attente sont publiées. La vérification reste disponible dans les réglages.

@@ -24,7 +24,7 @@ final class Products {
 	const MODULE   = 'products'; // Default market; each product stores its own market.
 	const STATUSES = array( 'draft', 'pending', 'published', 'rejected', 'sold', 'expired', 'paused' );
 
-	private static function table() {
+	public static function table() {
 		global $wpdb;
 		return $wpdb->prefix . 'sm_products';
 	}
@@ -337,6 +337,28 @@ final class Products {
 			if ( ! empty( $a[ $k ] ) ) {
 				$where[] = $sql;
 				$args[]  = $a[ $k ];
+			}
+		}
+		// 0.11.0: filters of each type.
+		if ( ! empty( $a['designation'] ) ) {
+			$where[] = 'designation = %s';
+			$args[]  = (string) $a['designation'];
+		}
+		if ( ! empty( $a['weight_min'] ) ) {
+			$where[] = 'total_weight >= %f';
+			$args[]  = (float) $a['weight_min'];
+		}
+		if ( ! empty( $a['sale'] ) && in_array( $a['sale'], array( 'lot', 'detail' ), true ) ) {
+			$where[] = 'lot' === $a['sale'] ? "(sale_mode IN ('lot','both') OR price_unit = 'lot')" : "(sale_mode IN ('detail','both') AND price_unit <> 'lot')";
+		}
+		if ( ! empty( $a['spec'] ) && is_array( $a['spec'] ) ) {
+			foreach ( $a['spec'] as $key => $value ) {
+				$key = sanitize_key( (string) $key );
+				if ( '' === $key || '' === (string) $value ) {
+					continue;
+				}
+				$where[] = "JSON_UNQUOTE(JSON_EXTRACT(specs, '$.{$key}')) = %s";
+				$args[]  = (string) $value;
 			}
 		}
 		// Verified sellers only (0.10.0): documents checked, level 2 or more.

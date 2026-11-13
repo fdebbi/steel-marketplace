@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.23.0\n"
+"Project-Id-Version: SM Marketplace 0.24.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-13T00:40:14+00:00\n"
+"POT-Creation-Date: 2026-11-13T09:48:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -94,7 +94,7 @@ msgstr ""
 #: inc/menus.php:40
 #: template-parts/components/services-board.php:30
 #: templates/company-profile.php:67
-#: templates/dashboard.php:137
+#: templates/dashboard.php:132
 msgid "Services"
 msgstr ""
 
@@ -232,7 +232,7 @@ msgstr ""
 
 #: footer.php:66
 #: templates/dashboard.php:87
-#: templates/dashboard.php:157
+#: templates/dashboard.php:152
 msgid "Account"
 msgstr ""
 
@@ -254,7 +254,7 @@ msgid "Open menu"
 msgstr ""
 
 #: header.php:48
-#: template-parts/components/filter-panel.php:32
+#: template-parts/components/filter-panel.php:64
 #: template-parts/components/product-form.php:65
 #: template-parts/components/rfq-form.php:48
 #: template-parts/components/rfq-single.php:21
@@ -269,7 +269,7 @@ msgid "Market"
 msgstr ""
 
 #: header.php:49
-#: template-parts/components/filter-panel.php:36
+#: template-parts/components/filter-panel.php:68
 #: templates/front-page-template.php:42
 #: templates/rfq-board.php:73
 msgid "All markets"
@@ -280,7 +280,7 @@ msgid "IPE 200, HEA, tube 100×50, hangar…"
 msgstr ""
 
 #: header.php:60
-#: templates/dashboard.php:130
+#: templates/dashboard.php:125
 msgid "Saved listings"
 msgstr ""
 
@@ -288,14 +288,14 @@ msgstr ""
 #: template-parts/dashboard/notifications.php:19
 #: template-parts/notif-panel.php:15
 #: template-parts/notif-panel.php:17
-#: templates/dashboard.php:175
+#: templates/dashboard.php:170
 msgid "Notifications"
 msgstr ""
 
 #: header.php:72
 #: header.php:141
 #: templates/contact.php:64
-#: templates/dashboard.php:157
+#: templates/dashboard.php:152
 msgid "My account"
 msgstr ""
 
@@ -318,13 +318,13 @@ msgid "Sign in"
 msgstr ""
 
 #: header.php:111
-#: templates/dashboard.php:278
+#: templates/dashboard.php:273
 msgid "Menu"
 msgstr ""
 
 #: header.php:114
 #: inc/assets.php:38
-#: templates/dashboard.php:247
+#: templates/dashboard.php:242
 msgid "Close menu"
 msgstr ""
 
@@ -337,14 +337,14 @@ msgstr ""
 #: template-parts/components/my-products.php:52
 #: template-parts/components/my-products.php:56
 #: template-parts/dashboard/listings.php:25
-#: templates/dashboard.php:165
-#: templates/dashboard.php:250
+#: templates/dashboard.php:160
+#: templates/dashboard.php:245
 #: templates/front-page-template.php:27
 msgid "Publish a listing"
 msgstr ""
 
 #: header.php:142
-#: templates/dashboard.php:270
+#: templates/dashboard.php:265
 #: templates/engineer-apply.php:43
 msgid "Sign out"
 msgstr ""
@@ -902,8 +902,8 @@ msgid "Unlimited"
 msgstr ""
 
 #. translators: %s: number of results.
-#: inc/template-tags.php:619
-#: template-parts/components/filter-panel.php:101
+#: inc/template-tags.php:624
+#: template-parts/components/filter-panel.php:162
 msgid "Show %s result"
 msgid_plural "Show %s results"
 msgstr[0] ""
@@ -1025,7 +1025,6 @@ msgid "Suggested listing"
 msgstr ""
 
 #: template-parts/components/ai-result-listing.php:21
-#: template-parts/components/filter-panel.php:42
 #: template-parts/components/product-form.php:63
 #: template-parts/components/rfq-form.php:56
 #: template-parts/dashboard/publish.php:67
@@ -1269,7 +1268,7 @@ msgstr ""
 #: template-parts/components/card-engineer.php:39
 #: template-parts/components/card-engineer.php:41
 #: template-parts/dashboard/studies.php:132
-#: templates/dashboard.php:170
+#: templates/dashboard.php:165
 #: templates/marketplace-engineers.php:36
 #: templates/marketplace-engineers.php:80
 #: templates/mission-request.php:19
@@ -1306,7 +1305,7 @@ msgid "Save listing"
 msgstr ""
 
 #: template-parts/components/card-listing.php:39
-#: template-parts/components/filter-panel.php:68
+#: template-parts/components/filter-panel.php:34
 #: template-parts/components/product-tech.php:354
 #: template-parts/dashboard/publish.php:112
 #: templates/single-listing.php:49
@@ -1315,7 +1314,7 @@ msgid "Assembled"
 msgstr ""
 
 #: template-parts/components/card-listing.php:39
-#: template-parts/components/filter-panel.php:69
+#: template-parts/components/filter-panel.php:35
 #: template-parts/components/product-tech.php:355
 #: template-parts/dashboard/publish.php:113
 #: templates/single-listing.php:49
@@ -1394,14 +1393,17 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: template-parts/components/deal-list.php:21
-#: template-parts/components/filter-panel.php:67
+#: template-parts/components/filter-panel.php:97
+#: template-parts/components/filter-panel.php:107
+#: template-parts/components/filter-panel.php:148
 #: template-parts/components/my-products.php:46
 #: template-parts/components/service-requests-list.php:20
 #: template-parts/components/services-board.php:31
 #: template-parts/dashboard/listings.php:20
 #: template-parts/dashboard/rfq.php:29
 #: template-parts/directory.php:62
-#: template-parts/marketplace-archive.php:39
+#: template-parts/marketplace-archive.php:45
+#: template-parts/marketplace-archive.php:51
 #: templates/marketplace-engineers.php:56
 msgid "All"
 msgstr ""
@@ -1429,7 +1431,7 @@ msgstr ""
 
 #: template-parts/components/deal-list.php:37
 #: template-parts/dashboard/listings.php:27
-#: templates/dashboard.php:118
+#: templates/dashboard.php:113
 msgid "My listings"
 msgstr ""
 
@@ -1451,12 +1453,13 @@ msgid "Your answer is awaited"
 msgstr ""
 
 #: template-parts/components/deal-list.php:56
+#: template-parts/components/filter-panel.php:148
 msgid "Whole lot"
 msgstr ""
 
 #: template-parts/components/deal-list.php:66
 #: template-parts/directory.php:122
-#: template-parts/marketplace-archive.php:91
+#: template-parts/marketplace-archive.php:104
 #: templates/rfq-board.php:101
 msgid "Pagination"
 msgstr ""
@@ -1554,56 +1557,77 @@ msgstr ""
 msgid "The company receives your name, phone and e-mail to answer you."
 msgstr ""
 
-#: template-parts/components/filter-panel.php:16
-#: template-parts/components/filter-panel.php:20
-#: template-parts/directory.php:59
-#: template-parts/marketplace-archive.php:64
-msgid "Filters"
+#: template-parts/components/filter-panel.php:23
+msgid "Shape"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:21
-msgid "Close filters"
+#: template-parts/components/filter-panel.php:23
+msgid "Family"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:24
+#: template-parts/components/product-lines.php:79
+#: template-parts/components/weight-calculator.php:132
+msgid "Size"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:24
+#: template-parts/components/rfq-single.php:24
+msgid "Designation"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:25
+#: template-parts/components/section-sheet.php:26
+#: template-parts/components/weight-calculator.php:132
+msgid "Thickness"
 msgstr ""
 
 #: template-parts/components/filter-panel.php:26
-msgid "Profile designation or keyword"
+msgid "Min. length"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:43
-msgid "All categories"
+#: template-parts/components/filter-panel.php:27
+msgid "Min. weight"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:52
+#: template-parts/components/filter-panel.php:28
+msgid "Min. area"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:29
+msgid "Min. eaves height"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:30
 #: template-parts/dashboard/publish.php:93
 msgid "Condition"
 msgstr ""
 
+#: template-parts/components/filter-panel.php:31
+msgid "Assembled or dismantled"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:44
+#: template-parts/components/filter-panel.php:52
+#: template-parts/directory.php:59
+#: template-parts/marketplace-archive.php:76
+msgid "Filters"
+msgstr ""
+
 #: template-parts/components/filter-panel.php:53
-msgid "Any condition"
+msgid "Close filters"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:58
+#: template-parts/components/services-board.php:40
+msgid "Keyword"
 msgstr ""
 
 #: template-parts/components/filter-panel.php:59
-msgid "Min. length (m)"
+msgid "hangar, poultry house…"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:60
-msgid "Min. pieces"
-msgstr ""
-
-#: template-parts/components/filter-panel.php:66
-#: templates/single-listing.php:49
-msgid "State"
-msgstr ""
-
-#: template-parts/components/filter-panel.php:72
-msgid "Min. area (m²)"
-msgstr ""
-
-#: template-parts/components/filter-panel.php:73
-msgid "Min. height (m)"
-msgstr ""
-
-#: template-parts/components/filter-panel.php:78
+#: template-parts/components/filter-panel.php:129
 #: template-parts/dashboard/company.php:101
 #: template-parts/dashboard/engineer-missions.php:126
 #: template-parts/dashboard/engineer-missions.php:131
@@ -1617,7 +1641,7 @@ msgstr ""
 msgid "Wilaya"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:80
+#: template-parts/components/filter-panel.php:131
 #: template-parts/components/services-board.php:45
 #: template-parts/directory.php:49
 #: templates/front-page-template.php:51
@@ -1625,19 +1649,27 @@ msgstr ""
 msgid "All wilayas"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:89
+#: template-parts/components/filter-panel.php:140
 msgid "Min. DA/kg"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:90
+#: template-parts/components/filter-panel.php:141
 msgid "Max. DA/kg"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:92
+#: template-parts/components/filter-panel.php:146
+msgid "Sale"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:148
+msgid "By quantity"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:154
 msgid "Verified sellers only"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:97
+#: template-parts/components/filter-panel.php:158
 #: templates/styleguide.php:37
 msgid "Reset"
 msgstr ""
@@ -1911,7 +1943,7 @@ msgstr ""
 #: template-parts/components/order-history.php:23
 #: template-parts/components/order-history.php:33
 #: template-parts/dashboard/invoice.php:50
-#: templates/dashboard.php:176
+#: templates/dashboard.php:171
 msgid "Order"
 msgstr ""
 
@@ -1948,7 +1980,7 @@ msgstr ""
 #: template-parts/dashboard/engineer-files.php:25
 #: template-parts/dashboard/invoice.php:38
 #: template-parts/dashboard/invoice.php:47
-#: templates/dashboard.php:177
+#: templates/dashboard.php:172
 msgid "Invoice"
 msgstr ""
 
@@ -2370,11 +2402,6 @@ msgstr ""
 
 #: template-parts/components/product-lines.php:73
 msgid "Type"
-msgstr ""
-
-#: template-parts/components/product-lines.php:79
-#: template-parts/components/weight-calculator.php:132
-msgid "Size"
 msgstr ""
 
 #: template-parts/components/product-lines.php:86
@@ -3068,10 +3095,6 @@ msgstr ""
 msgid "Only the buyer sees your offer. Your total and price per kg are calculated when you send it."
 msgstr ""
 
-#: template-parts/components/rfq-single.php:24
-msgid "Designation"
-msgstr ""
-
 #: template-parts/components/rfq-single.php:27
 #: template-parts/components/rfq-tech.php:48
 msgid "Dimensions"
@@ -3220,11 +3243,6 @@ msgstr ""
 
 #: template-parts/components/section-sheet.php:25
 msgid "Flange thickness"
-msgstr ""
-
-#: template-parts/components/section-sheet.php:26
-#: template-parts/components/weight-calculator.php:132
-msgid "Thickness"
 msgstr ""
 
 #: template-parts/components/section-sheet.php:27
@@ -3563,16 +3581,12 @@ msgstr ""
 
 #: template-parts/components/service-requests-list.php:38
 #: template-parts/dashboard/services.php:19
-#: templates/dashboard.php:139
+#: templates/dashboard.php:134
 msgid "My services"
 msgstr ""
 
 #: template-parts/components/services-board.php:37
 msgid "Filter the services"
-msgstr ""
-
-#: template-parts/components/services-board.php:40
-msgid "Keyword"
 msgstr ""
 
 #: template-parts/components/services-board.php:41
@@ -3733,7 +3747,7 @@ msgstr ""
 #: template-parts/dashboard/ai-credits.php:55
 #: template-parts/dashboard/plan.php:24
 #: templates/dashboard.php:82
-#: templates/dashboard.php:151
+#: templates/dashboard.php:146
 msgid "AI credits"
 msgstr ""
 
@@ -3798,7 +3812,7 @@ msgstr ""
 
 #: template-parts/dashboard/ai.php:16
 #: templates/dashboard.php:79
-#: templates/dashboard.php:148
+#: templates/dashboard.php:143
 msgid "AI assistant"
 msgstr ""
 
@@ -4586,7 +4600,7 @@ msgid "No notification yet."
 msgstr ""
 
 #: template-parts/dashboard/offers.php:13
-#: templates/dashboard.php:120
+#: templates/dashboard.php:115
 msgid "Quotations sent"
 msgstr ""
 
@@ -5269,7 +5283,7 @@ msgid "Verify your contact details first."
 msgstr ""
 
 #: template-parts/dashboard/verification.php:33
-#: templates/dashboard.php:292
+#: templates/dashboard.php:287
 msgid "Enter the code"
 msgstr ""
 
@@ -5346,7 +5360,7 @@ msgid "Trade"
 msgstr ""
 
 #: template-parts/directory.php:67
-#: templates/dashboard.php:160
+#: templates/dashboard.php:155
 msgid "Verification"
 msgstr ""
 
@@ -5381,7 +5395,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: template-parts/directory.php:84
-#: template-parts/marketplace-archive.php:69
+#: template-parts/marketplace-archive.php:82
 #: templates/rfq-board.php:81
 msgid "Sort by"
 msgstr ""
@@ -5414,55 +5428,59 @@ msgstr ""
 msgid "See the whole directory"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:34
+#: template-parts/marketplace-archive.php:37
 msgid "Publish here"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:38
+#: template-parts/marketplace-archive.php:41
+msgid "Types"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:50
 msgid "Categories"
 msgstr ""
 
 #. translators: %s: number of listings.
-#: template-parts/marketplace-archive.php:60
+#: template-parts/marketplace-archive.php:72
 msgid "<strong>%s</strong> listing"
 msgid_plural "<strong>%s</strong> listings"
 msgstr[0] ""
 msgstr[1] ""
 
-#: template-parts/marketplace-archive.php:72
+#: template-parts/marketplace-archive.php:85
 #: templates/rfq-board.php:82
 msgid "Most recent"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:73
+#: template-parts/marketplace-archive.php:86
 msgid "Price per kg: low to high"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:74
+#: template-parts/marketplace-archive.php:87
 msgid "Price per kg: high to low"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:77
+#: template-parts/marketplace-archive.php:90
 msgid "Display"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:78
+#: template-parts/marketplace-archive.php:91
 msgid "Grid"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:79
+#: template-parts/marketplace-archive.php:92
 msgid "List"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:102
+#: template-parts/marketplace-archive.php:115
 msgid "No listing matches these filters"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:103
+#: template-parts/marketplace-archive.php:116
 msgid "Widen your search, or publish a request for quotation so suppliers come to you."
 msgstr ""
 
-#: template-parts/marketplace-archive.php:104
+#: template-parts/marketplace-archive.php:117
 #: templates/front-page-template.php:151
 #: templates/single-listing.php:156
 #: templates/single-service.php:92
@@ -5635,7 +5653,7 @@ msgstr[1] ""
 
 #: templates/company-profile.php:64
 #: templates/company-profile.php:160
-#: templates/dashboard.php:141
+#: templates/dashboard.php:136
 #: templates/single-service.php:160
 msgid "Completed projects"
 msgstr ""
@@ -5837,7 +5855,7 @@ msgid "Create an account to use the dashboard."
 msgstr ""
 
 #: templates/dashboard.php:73
-#: templates/dashboard.php:113
+#: templates/dashboard.php:108
 msgid "Overview"
 msgstr ""
 
@@ -5846,146 +5864,146 @@ msgid "Files and plans"
 msgstr ""
 
 #: templates/dashboard.php:81
-#: templates/dashboard.php:150
+#: templates/dashboard.php:145
 msgid "Assistant"
 msgstr ""
 
 #: templates/dashboard.php:90
-#: templates/dashboard.php:161
+#: templates/dashboard.php:156
 msgid "Settings"
 msgstr ""
 
-#: templates/dashboard.php:108
-#: templates/dashboard.php:159
+#: templates/dashboard.php:103
+#: templates/dashboard.php:154
 msgid "Company profile"
 msgstr ""
 
-#: templates/dashboard.php:109
+#: templates/dashboard.php:104
 msgid "Professional profile"
 msgstr ""
 
-#: templates/dashboard.php:110
+#: templates/dashboard.php:105
 msgid "My profile"
 msgstr ""
 
-#: templates/dashboard.php:116
+#: templates/dashboard.php:111
 msgid "Selling"
 msgstr ""
 
-#: templates/dashboard.php:119
+#: templates/dashboard.php:114
 msgid "Orders and offers received"
 msgstr ""
 
-#: templates/dashboard.php:121
+#: templates/dashboard.php:116
 msgid "Enquiries received"
 msgstr ""
 
-#: templates/dashboard.php:122
+#: templates/dashboard.php:117
 msgid "Statistics"
 msgstr ""
 
-#: templates/dashboard.php:127
+#: templates/dashboard.php:122
 msgid "Buying"
 msgstr ""
 
-#: templates/dashboard.php:129
+#: templates/dashboard.php:124
 msgid "My purchases and offers"
 msgstr ""
 
-#: templates/dashboard.php:131
+#: templates/dashboard.php:126
 msgid "My requests for quotation"
 msgstr ""
 
-#: templates/dashboard.php:132
+#: templates/dashboard.php:127
 msgid "Purchase history"
 msgstr ""
 
-#: templates/dashboard.php:140
+#: templates/dashboard.php:135
 #: templates/single-service.php:89
 msgid "Requests received"
 msgstr ""
 
-#: templates/dashboard.php:142
+#: templates/dashboard.php:137
 msgid "My service requests"
 msgstr ""
 
-#: templates/dashboard.php:145
+#: templates/dashboard.php:140
 msgid "Engineering studies"
 msgstr ""
 
-#: templates/dashboard.php:154
+#: templates/dashboard.php:149
 msgid "Plan"
 msgstr ""
 
-#: templates/dashboard.php:169
+#: templates/dashboard.php:164
 msgid "Add a service"
 msgstr ""
 
-#: templates/dashboard.php:174
+#: templates/dashboard.php:169
 msgid "Verify your account"
 msgstr ""
 
-#: templates/dashboard.php:178
+#: templates/dashboard.php:173
 msgid "Order or offer"
 msgstr ""
 
-#: templates/dashboard.php:226
+#: templates/dashboard.php:221
 msgid "See my partner profile"
 msgstr ""
 
-#: templates/dashboard.php:229
+#: templates/dashboard.php:224
 msgid "See my public profile"
 msgstr ""
 
-#: templates/dashboard.php:232
+#: templates/dashboard.php:227
 msgid "See my profile"
 msgstr ""
 
-#: templates/dashboard.php:236
+#: templates/dashboard.php:231
 msgid "Account menu"
 msgstr ""
 
-#: templates/dashboard.php:246
+#: templates/dashboard.php:241
 msgid "Collapse the menu"
 msgstr ""
 
-#: templates/dashboard.php:246
+#: templates/dashboard.php:241
 msgid "Expand the menu"
 msgstr ""
 
-#: templates/dashboard.php:259
+#: templates/dashboard.php:254
 msgid "Dashboard"
 msgstr ""
 
-#: templates/dashboard.php:269
+#: templates/dashboard.php:264
 msgid "Dark mode"
 msgstr ""
 
-#: templates/dashboard.php:288
+#: templates/dashboard.php:283
 msgid "Demo partner engineer account."
 msgstr ""
 
-#: templates/dashboard.php:288
+#: templates/dashboard.php:283
 msgid "Demo company account."
 msgstr ""
 
-#: templates/dashboard.php:288
+#: templates/dashboard.php:283
 msgid "Switch to the company dashboard"
 msgstr ""
 
-#: templates/dashboard.php:288
+#: templates/dashboard.php:283
 msgid "Switch to the engineer dashboard"
 msgstr ""
 
-#: templates/dashboard.php:292
+#: templates/dashboard.php:287
 msgid "Verify your account with the 6-digit code to publish and answer requests."
 msgstr ""
 
-#: templates/dashboard.php:323
+#: templates/dashboard.php:318
 msgid "This section arrives with its plugin"
 msgstr ""
 
-#: templates/dashboard.php:324
+#: templates/dashboard.php:319
 msgid "The layout is ready; the content will be provided by the corresponding marketplace plugin."
 msgstr ""
 
@@ -6747,6 +6765,10 @@ msgstr ""
 
 #: templates/single-listing.php:33
 msgid "Back to the marketplace"
+msgstr ""
+
+#: templates/single-listing.php:49
+msgid "State"
 msgstr ""
 
 #: templates/single-listing.php:50

@@ -1761,3 +1761,17 @@ T.update({
 P.update({
 ("%d answer with a price left on this offer.", "%d answers with a price left on this offer."): (["%d réponse avec un prix restante sur cette offre.", "%d réponses avec un prix restantes sur cette offre."], ["لا ردود متبقية بسعر على هذا العرض.", "رد واحد متبقٍ بسعر على هذا العرض.", "ردّان متبقيان بسعر على هذا العرض.", "%d ردود متبقية بسعر على هذا العرض.", "%d ردا متبقيا بسعر على هذا العرض.", "%d رد متبقٍ بسعر على هذا العرض."]),
 })
+# 0.25.0: types as tabs, filters of each type.
+T.update({
+"Shape": ("Forme", "الشكل"),
+"Family": ("Famille", "العائلة"),
+"Min. length": ("Longueur min.", "الطول الأدنى"),
+"Min. weight": ("Poids min.", "الوزن الأدنى"),
+"Min. area": ("Surface min.", "المساحة الدنيا"),
+"Min. eaves height": ("Hauteur sous sablière min.", "الارتفاع الأدنى تحت الإفريز"),
+"Assembled or dismantled": ("Monté ou démonté", "مركّب أو مفكّك"),
+"hangar, poultry house…": ("hangar, poulailler…", "هنجر، مدجنة…"),
+"Sale": ("Vente", "البيع"),
+"By quantity": ("Au détail", "بالتجزئة"),
+"Types": ("Types", "الأنواع"),
+})

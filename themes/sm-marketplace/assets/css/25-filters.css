@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Results pages (0.25.0): types as tabs with their count; filters of the type.
+   ========================================================================== */
+.sm-catpills a { gap: 8px; }
+.sm-catpills__n { display: inline-block; min-inline-size: 22px; padding: 1px 7px; border-radius: 999px; background: var(--sm-bg); color: var(--sm-muted); font-size: var(--sm-fs-xs); font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
+.sm-catpills a[aria-current] .sm-catpills__n { background: rgb(255 255 255 / .16); color: var(--sm-on-dark); }
+.sm-catpills a.is-empty { color: var(--sm-muted); border-style: dashed; }
+
+.sm-fchips { border: 0; padding: 0; margin: 0; }
+.sm-fchips legend { margin-block-end: var(--sm-s2); font-weight: 600; font-size: var(--sm-fs-sm); }
+.sm-fchips__list { display: flex; flex-wrap: wrap; gap: 6px; }
+.sm-fchips__list label { position: relative; cursor: pointer; }
+.sm-fchips__list input { position: absolute; opacity: 0; inline-size: 1px; block-size: 1px; }
+.sm-fchips__list span { display: inline-flex; align-items: center; gap: 6px; min-block-size: 34px; padding: 4px 12px; border: 1px solid var(--sm-line-strong); border-radius: 999px; background: var(--sm-surface); font-size: var(--sm-fs-sm); font-weight: 500; }
+.sm-fchips__list span small { color: var(--sm-muted); font-size: var(--sm-fs-xs); font-weight: 700; }
+.sm-fchips__list input:checked + span { background: var(--sm-primary); border-color: var(--sm-primary); color: var(--sm-on-dark); }
+.sm-fchips__list input:checked + span small { color: rgb(255 255 255 / .75); }
+.sm-fchips__list input:focus-visible + span { outline: 2px solid var(--sm-accent); outline-offset: 2px; }
+.sm-fchips__list label:hover span { border-color: var(--sm-primary); }

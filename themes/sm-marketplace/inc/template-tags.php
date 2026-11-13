@@ -584,6 +584,11 @@ function sm_theme_listing_query( $market, $page_num = 1 ) {
 		'area_min'   => sm_theme_query_arg( 'area_min' ),
 		'height_min' => sm_theme_query_arg( 'height_min' ),
 		'verified'   => '1' === sm_theme_query_arg( 'verified' ) ? 1 : 0,
+		'family'      => sm_theme_query_arg( 'family' ),
+		'designation' => sm_theme_query_arg( 'designation' ),
+		'weight_min'  => sm_theme_query_arg( 'weight_min' ),
+		'sale'        => sm_theme_query_arg( 'sale' ),
+		'spec'        => sm_theme_query_spec(),
 		'wilaya'     => sm_theme_query_arg( 'wilaya' ),
 		'q'          => sm_theme_query_arg( 'q' ),
 		'min_price'  => sm_theme_query_arg( 'price_min' ),
@@ -620,3 +625,37 @@ function sm_theme_ajax_count() {
 }
 add_action( 'wp_ajax_sm_count', 'sm_theme_ajax_count' );
 add_action( 'wp_ajax_nopriv_sm_count', 'sm_theme_ajax_count' );
+
+/** Custom list fields of a category in the address: spec[key]=value (0.25.0). */
+function sm_theme_query_spec() {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only filters.
+	$raw = isset( $_GET['spec'] ) && is_array( $_GET['spec'] ) ? wp_unslash( $_GET['spec'] ) : array();
+	$out = array();
+	foreach ( $raw as $k => $v ) {
+		$k = sanitize_key( (string) $k );
+		$v = sanitize_text_field( (string) $v );
+		if ( '' !== $k && '' !== $v ) {
+			$out[ $k ] = $v;
+		}
+	}
+	return $out;
+}
+
+/**
+ * Address of a type tab of a results page (0.25.0): keeps the filters common to every
+ * type (keyword, wilaya, price, sale mode, verified sellers, sort, display) and drops
+ * those of the previous type.
+ */
+function sm_theme_tab_url( $action, $category ) {
+	$keep = array();
+	foreach ( array( 'q', 'wilaya', 'price_min', 'price_max', 'sale', 'verified', 'sort', 'display', 'lang' ) as $k ) {
+		$v = sm_theme_query_arg( $k );
+		if ( '' !== $v ) {
+			$keep[ $k ] = $v;
+		}
+	}
+	if ( '' !== (string) $category ) {
+		$keep['category'] = $category;
+	}
+	return add_query_arg( $keep, $action );
+}

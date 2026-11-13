@@ -225,6 +225,27 @@ smp_assert( null === \SM\Products\PriceTrend::recent_average( 'zz-none', 30, $pt
 foreach ( $pt_ids as $id ) { $wpdb->delete( $wpdb->prefix . 'sm_products', array( 'id' => $id ) ); }
 \SM\Products\PriceTrend::flush();
 
+// ---- Types as tabs, filters of each type (0.11.0) ----
+$fx = \SM\Products\Facets::get( 'products', '' );
+smp_assert( 8 === count( $fx['tabs'] ) && '' === $fx['tabs'][0]['slug'] && array() === $fx['facets'], 'products: all + 7 type tabs, no type filter on "All"' );
+$fx = \SM\Products\Facets::get( 'products', 'profiles' );
+$fk = wp_list_pluck( $fx['facets'], 'key' );
+smp_assert( array( 'family', 'designation', 'length_min' ) === $fk, 'profiles: family, designation, minimum length' );
+smp_assert( ! in_array( '', wp_list_pluck( $fx['facets'][1]['options'], 'value' ), true ) && $fx['facets'][1]['options'][0]['count'] >= 1, 'only values used by listings online, with their count' );
+$fx = \SM\Products\Facets::get( 'buildings', '' );
+smp_assert( in_array( 'mode', wp_list_pluck( $fx['facets'], 'key' ), true ) && in_array( 'area_min', wp_list_pluck( $fx['facets'], 'key' ), true ), 'buildings: assembled or dismantled, area' );
+smp_assert( 'profiles' === \SM\Products\Facets::get( 'products', 'profiles' )['category'] && '' === \SM\Products\Facets::get( 'products', 'nope' )['category'], 'unknown type ignored' );
+smp_assert( array( 'roof_type' ) === array_slice( \SM\Products\Facets::spec_keys( 'roofing' ), 0, 1 ) && array() === \SM\Products\Facets::spec_keys( 'profiles' ), 'list fields of a category accepted as filters (roofing: type)' );
+$d1 = \SM\Products\Products::query( array( 'market' => 'products', 'per_page' => 60 ) );
+if ( $d1['items'] ) {
+	$one = $d1['items'][0];
+	$byd = \SM\Products\Products::query( array( 'market' => 'products', 'designation' => $one->designation, 'per_page' => 60 ) );
+	smp_assert( $byd['total'] >= 1 && ! array_filter( $byd['items'], static fn( $x ) => $x->designation !== $one->designation ), 'designation filter: exact' );
+}
+smp_assert( 0 === \SM\Products\Products::query( array( 'market' => 'products', 'weight_min' => 1e12 ) )['total'], 'minimum weight filter' );
+$lot = \SM\Products\Products::query( array( 'market' => array( 'products', 'reuse', 'buildings' ), 'sale' => 'lot', 'per_page' => 60 ) );
+smp_assert( ! array_filter( $lot['items'], static fn( $x ) => ! in_array( $x->sale_mode, array( 'lot', 'both' ), true ) && 'lot' !== $x->price_unit ), 'sale filter "whole lot"' );
+
 // ---- Price index: automatic average or reference prices (0.9.0) ----
 $pi_set  = get_option( \SM\Products\PriceTrend::OPTION, null );
 $pi_refs = get_option( \SM\Products\PriceTrend::REFS, null );

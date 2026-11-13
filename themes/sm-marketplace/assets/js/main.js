@@ -195,6 +195,25 @@
 			} );
 		} );
 	} );
+	/* Filters (0.25.0): designations of the chosen family only. */
+	$$( '[data-sm-family]' ).forEach( function ( set ) {
+		var form = set.closest( 'form' );
+		var sel = form && form.querySelector( '[data-sm-designation]' );
+		if ( ! sel ) { return; }
+		function narrow() {
+			var fam = ( set.querySelector( 'input:checked' ) || {} ).value || '';
+			Array.prototype.forEach.call( sel.options, function ( o ) {
+				if ( ! o.value ) { return; }
+				var ok = ! fam || o.value.indexOf( fam + ' ' ) === 0 || o.value === fam;
+				o.hidden = ! ok;
+				o.disabled = ! ok;
+				if ( ! ok && o.selected ) { sel.value = ''; }
+			} );
+		}
+		set.addEventListener( 'change', narrow );
+		narrow();
+	} );
+
 	/* Buy / make an offer on a listing (0.24.0). */
 	var buyPanel = $( '[data-sm-buy-panel]' );
 	var buyForm = $( '[data-sm-buy-form]' );

@@ -1,5 +1,12 @@
 # Changelog — sm-marketplace
 
+## 0.25.0 — 2026-11-13 (avec sm-products 0.11.0)
+
+- Pages Produits, Réemploi et Bâtiments : les types sont les onglets du haut, avec leur nombre d'annonces en ligne (onglet vide en pointillés) ; ils ne sont plus répétés dans la colonne de filtres.
+- Colonne de filtres propre au type choisi, avec seulement les valeurs utilisées par des annonces en ligne et leur nombre : famille (IPE, HEA… ; forme pour les tubes et barres), désignation (limitée à la famille choisie), épaisseur des tôles, longueur et poids minimaux, champs à liste des catégories Toiture / Finition / Autres, état (réemploi), monté ou démonté, surface et hauteur (bâtiments).
+- Filtres communs : mot-clé, wilaya, prix au kg (sauf bâtiments), vente au détail ou en lot entier, vendeurs vérifiés.
+- Changer d'onglet garde les filtres communs et retire ceux du type précédent ; le tri garde tous les filtres ; « Réinitialiser » garde l'onglet.
+
 ## 0.24.0 — 2026-11-13 (avec sm-trade 0.1.0 et sm-products 0.10.0)
 
 - Page d'annonce : boutons « Acheter », « Faire une offre », « Contacter le vendeur ». Formulaire replié qui s'ouvre au clic : choix tout le lot / une quantité, quantité dans l'unité de vente (barres, kg, pièces, m²…) avec le disponible, total au prix affiché calculé en direct, prix proposé pour une offre, nom / téléphone / e-mail préremplis, message. Mention claire : rien n'est payé sur la plateforme.

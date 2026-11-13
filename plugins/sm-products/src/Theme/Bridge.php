@@ -24,6 +24,7 @@ final class Bridge {
 
 	public static function init() {
 		add_filter( 'sm_theme_data_listings', array( __CLASS__, 'listings' ), 10, 2 );
+		add_filter( 'sm_theme_data_listing_facets', static fn( $r, $a ) => \SM\Products\Facets::get( sanitize_key( (string) ( $a['market'] ?? 'products' ) ), sanitize_key( (string) ( $a['category'] ?? '' ) ), sanitize_text_field( (string) ( $a['family'] ?? '' ) ) ), 10, 2 );
 		add_filter( 'sm_theme_data_listing', array( __CLASS__, 'listing' ), 10, 2 );
 		add_filter( 'sm_theme_data_categories', array( __CLASS__, 'categories' ), 10, 2 );
 		add_filter( 'sm_theme_data_product_categories', array( __CLASS__, 'product_categories' ), 10, 2 );
@@ -68,6 +69,10 @@ final class Bridge {
 				'company'   => ! empty( $args['company'] ) ? (int) ( Companies::get_by_slug( $args['company'] )->id ?? -1 ) : 0,
 				'q'         => sanitize_text_field( (string) ( $args['q'] ?? '' ) ),
 				'verified'   => ! empty( $args['verified'] ),
+				'designation' => sanitize_text_field( (string) ( $args['designation'] ?? '' ) ),
+				'weight_min'  => (float) ( $args['weight_min'] ?? 0 ),
+				'sale'        => sanitize_key( (string) ( $args['sale'] ?? '' ) ),
+				'spec'        => array_intersect_key( array_map( 'sanitize_text_field', (array) ( $args['spec'] ?? array() ) ), array_flip( \SM\Products\Facets::spec_keys( (string) ( $args['category'] ?? '' ) ) ) ),
 				'area_min'   => (float) ( $args['area_min'] ?? 0 ),
 				'height_min' => (float) ( $args['height_min'] ?? 0 ),
 				'min_price' => (float) ( $args['min_price'] ?? 0 ),

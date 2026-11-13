@@ -16,6 +16,9 @@ $result   = sm_theme_listings( $query );
 $layout   = 'list' === sm_theme_query_arg( 'display' ) ? 'list' : 'grid';
 $category = sm_theme_query_arg( 'category' );
 $cats     = 'search' === $market ? array() : sm_theme_categories( $market );
+// Types as tabs with their number of listings, and the filters of the chosen type (0.25.0).
+$facets   = 'search' === $market ? array() : sm_theme_data( 'listing_facets', array( 'market' => $market, 'category' => $category, 'family' => sm_theme_query_arg( 'family' ) ) );
+$tabs     = (array) ( $facets['tabs'] ?? array() );
 
 $crumbs = array( array( $args['title'], $category ? $action : '' ) );
 if ( $category && isset( $cats[ $category ] ) ) {
@@ -34,7 +37,16 @@ if ( $category && isset( $cats[ $category ] ) ) {
 				<a class="sm-btn sm-btn--accent" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'publish', 'market' => $market ) ) ); ?>"><?php sm_icon( 'plus' ); ?><?php esc_html_e( 'Publish here', 'sm-marketplace' ); ?></a>
 			<?php endif; ?>
 		</div>
-		<?php if ( $cats ) : ?>
+		<?php if ( $tabs ) : ?>
+			<nav class="sm-typetabs" aria-label="<?php esc_attr_e( 'Types', 'sm-marketplace' ); ?>">
+				<ul class="sm-catpills">
+					<?php foreach ( $tabs as $t ) : ?>
+						<?php $is = (string) $t['slug'] === (string) $category; ?>
+						<li><a href="<?php echo esc_url( sm_theme_tab_url( $action, $t['slug'] ) ); ?>" <?php echo $is ? 'aria-current="page"' : ''; ?> class="<?php echo 0 === (int) $t['count'] && ! $is ? 'is-empty' : ''; ?>"><?php echo esc_html( '' === $t['slug'] ? __( 'All', 'sm-marketplace' ) : $t['label'] ); ?> <span class="sm-catpills__n" dir="ltr"><?php echo esc_html( sm_number( $t['count'] ) ); ?></span></a></li>
+					<?php endforeach; ?>
+				</ul>
+			</nav>
+		<?php elseif ( $cats ) : ?>
 			<ul class="sm-catpills" aria-label="<?php esc_attr_e( 'Categories', 'sm-marketplace' ); ?>">
 				<li><a href="<?php echo esc_url( $action ); ?>" <?php echo $category ? '' : 'aria-current="true"'; ?>><?php esc_html_e( 'All', 'sm-marketplace' ); ?></a></li>
 				<?php foreach ( $cats as $slug => $label ) : ?>
@@ -50,7 +62,7 @@ if ( $category && isset( $cats[ $category ] ) ) {
 </div>
 
 <div class="sm-container sm-results">
-	<?php sm_component( 'filter-panel', array( 'market' => $market, 'action' => $action, 'total' => $result['total'] ) ); ?>
+	<?php sm_component( 'filter-panel', array( 'market' => $market, 'action' => $action, 'total' => $result['total'], 'facets' => $facets ) ); ?>
 
 	<div class="sm-results__main">
 		<div class="sm-toolbar">
@@ -63,9 +75,10 @@ if ( $category && isset( $cats[ $category ] ) ) {
 			<div class="sm-toolbar__controls">
 				<button class="sm-btn sm-btn--ghost sm-toolbar__filters" type="button" aria-controls="sm-filters" aria-expanded="false" data-sm-filters-open><?php sm_icon( 'filter' ); ?><?php esc_html_e( 'Filters', 'sm-marketplace' ); ?></button>
 				<form method="get" class="sm-sort">
-					<?php foreach ( array( 'category', 'condition', 'mode', 'wilaya', 'q', 'display', 'market', 'length_min', 'qty_min' ) as $keep ) : ?>
+					<?php foreach ( array( 'category', 'condition', 'mode', 'wilaya', 'q', 'display', 'market', 'length_min', 'qty_min', 'family', 'designation', 'weight_min', 'area_min', 'height_min', 'price_min', 'price_max', 'sale', 'verified', 'lang' ) as $keep ) : ?>
 						<?php if ( '' !== sm_theme_query_arg( $keep ) ) : ?><input type="hidden" name="<?php echo esc_attr( $keep ); ?>" value="<?php echo esc_attr( sm_theme_query_arg( $keep ) ); ?>"><?php endif; ?>
 					<?php endforeach; ?>
+					<?php foreach ( sm_theme_query_spec() as $sk => $sv ) : ?><input type="hidden" name="spec[<?php echo esc_attr( $sk ); ?>]" value="<?php echo esc_attr( $sv ); ?>"><?php endforeach; ?>
 					<label class="screen-reader-text" for="sm-sort"><?php esc_html_e( 'Sort by', 'sm-marketplace' ); ?></label>
 					<?php sm_icon( 'sort' ); ?>
 					<select id="sm-sort" name="sort" data-sm-autosubmit>
