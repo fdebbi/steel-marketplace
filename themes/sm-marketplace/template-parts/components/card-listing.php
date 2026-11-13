@@ -20,6 +20,9 @@ $market  = $item['market'];
 <article class="sm-card sm-card--listing sm-card--<?php echo esc_attr( $market ); ?>">
 	<a class="sm-card__media<?php echo ! empty( $item['image_drawing'] ) ? ' is-drawing' : ''; ?>" href="<?php echo esc_url( $url ); ?>" tabindex="-1" aria-hidden="true">
 		<img src="<?php echo esc_url( sm_image_url( $item['image'] ?? '' ) ); ?>" alt="" loading="lazy" decoding="async" width="640" height="480">
+		<?php if ( count( (array) ( $item['photos'] ?? array() ) ) > 1 ) : ?>
+			<span class="sm-card__more" dir="ltr"><?php sm_icon( 'camera' ); ?><?php echo esc_html( count( $item['photos'] ) ); ?></span>
+		<?php endif; ?>
 		<span class="sm-card__chips">
 			<?php if ( ! empty( $item['featured'] ) || ! empty( $item['is_featured'] ) ) : ?>
 				<span class="sm-chip sm-chip--featured"><?php sm_icon( 'star' ); ?><?php esc_html_e( 'Featured', 'sm-marketplace' ); ?></span>

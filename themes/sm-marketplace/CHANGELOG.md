@@ -1,5 +1,10 @@
 # Changelog — sm-marketplace
 
+## 0.26.0 — 2026-11-13
+
+- Types des pages Produits, Réemploi et Bâtiments en cadres : petit dessin du type (profilé, tube, tôle, barres, toiture) ou icône de la catégorie, nom, nombre d'annonces (« Aucune annonce pour l'instant » en pointillés). Plus de cadre « Tous » : recliquer sur le type choisi (marqué ×) revient à toutes les annonces ; « Tous les types » est en tête de la colonne de filtres. Sur téléphone, les cadres défilent horizontalement.
+- Cartes d'annonces (résultats et accueil) : image plus basse (16:9 au lieu de 4:3), une seule image, nombre de photos en badge.
+
 ## 0.25.0 — 2026-11-13 (avec sm-products 0.11.0)
 
 - Pages Produits, Réemploi et Bâtiments : les types sont les onglets du haut, avec leur nombre d'annonces en ligne (onglet vide en pointillés) ; ils ne sont plus répétés dans la colonne de filtres.

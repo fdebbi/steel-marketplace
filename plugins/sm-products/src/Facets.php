@@ -98,7 +98,7 @@ final class Facets {
 		$cat  = null;
 		foreach ( $cats as $c ) {
 			$name   = 'ar' === $l && '' !== (string) $c->name_ar ? $c->name_ar : $c->name_fr;
-			$tabs[] = array( 'slug' => $c->slug, 'label' => (string) $name, 'count' => $counts[ $c->slug ] ?? 0 );
+			$tabs[] = array( 'slug' => $c->slug, 'label' => (string) $name, 'icon' => (string) $c->icon, 'count' => $counts[ $c->slug ] ?? 0 );
 			if ( $c->slug === $category ) {
 				$cat = $c;
 			}

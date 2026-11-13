@@ -8,7 +8,7 @@ Architecture : un thème WordPress sur mesure (présentation uniquement) + des e
 
 | Dossier | Contenu | État |
 | --- | --- | --- |
-| `themes/sm-marketplace/` | Thème de présentation (FR / AR / EN) | 0.25.0 |
+| `themes/sm-marketplace/` | Thème de présentation (FR / AR / EN) | 0.26.0 |
 | `plugins/sm-core/` | Socle : comptes, permissions, vérification, langues, notifications, demandes, API | 0.8.1 |
 | `plugins/sm-weight-engine/` | Catalogue acier vérifié, schémas exacts, calcul des poids | 0.2.1 |
 | `plugins/sm-products/` | Produits neufs (et base des annonces réemploi / bâtiments), indice des prix | 0.11.0 |

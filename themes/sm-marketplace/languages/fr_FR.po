@@ -198,7 +198,7 @@ msgstr "Liens utiles"
 msgid "Open menu"
 msgstr "Ouvrir le menu"
 
-#: header.php:48 template-parts/components/filter-panel.php:64
+#: header.php:48 template-parts/components/filter-panel.php:88
 #: template-parts/components/product-form.php:65
 #: template-parts/components/rfq-form.php:48
 #: template-parts/components/rfq-single.php:21
@@ -210,7 +210,7 @@ msgstr "Ouvrir le menu"
 msgid "Market"
 msgstr "Marché"
 
-#: header.php:49 template-parts/components/filter-panel.php:68
+#: header.php:49 template-parts/components/filter-panel.php:92
 #: templates/front-page-template.php:42 templates/rfq-board.php:73
 msgid "All markets"
 msgstr "Tous les marchés"
@@ -820,7 +820,7 @@ msgid "Unlimited"
 msgstr "Illimité"
 
 #. translators: %s: number of results.
-#: inc/template-tags.php:624 template-parts/components/filter-panel.php:162
+#: inc/template-tags.php:624 template-parts/components/filter-panel.php:186
 msgid "Show %s result"
 msgid_plural "Show %s results"
 msgstr[0] "Afficher %s résultat"
@@ -1229,21 +1229,21 @@ msgstr "Demander un devis"
 msgid "See the profile"
 msgstr "Voir le profil"
 
-#: template-parts/components/card-listing.php:25
+#: template-parts/components/card-listing.php:28
 #: templates/front-page-template.php:189
 msgid "Featured"
 msgstr "À la une"
 
-#: template-parts/components/card-listing.php:28
-#: template-parts/components/card-listing.php:48
+#: template-parts/components/card-listing.php:31
+#: template-parts/components/card-listing.php:51
 msgid "Urgent"
 msgstr "Urgent"
 
-#: template-parts/components/card-listing.php:33
+#: template-parts/components/card-listing.php:36
 msgid "Save listing"
 msgstr "Enregistrer l’annonce"
 
-#: template-parts/components/card-listing.php:39
+#: template-parts/components/card-listing.php:42
 #: template-parts/components/filter-panel.php:34
 #: template-parts/components/product-tech.php:354
 #: template-parts/dashboard/publish.php:112 templates/single-listing.php:49
@@ -1251,7 +1251,7 @@ msgstr "Enregistrer l’annonce"
 msgid "Assembled"
 msgstr "Monté"
 
-#: template-parts/components/card-listing.php:39
+#: template-parts/components/card-listing.php:42
 #: template-parts/components/filter-panel.php:35
 #: template-parts/components/product-tech.php:355
 #: template-parts/dashboard/publish.php:113 templates/single-listing.php:49
@@ -1260,26 +1260,26 @@ msgid "Dismantled"
 msgstr "Démonté"
 
 #. translators: 1: number of pieces, 2: longest length in metres.
-#: template-parts/components/card-listing.php:56
+#: template-parts/components/card-listing.php:59
 msgid "%1$s pcs · up to %2$s m"
 msgstr "%1$s pcs · jusqu’à %2$s m"
 
-#: template-parts/components/card-listing.php:72
+#: template-parts/components/card-listing.php:75
 #: template-parts/components/product-tech.php:458
 msgid "Whole lot only"
 msgstr "Lot complet uniquement"
 
-#: template-parts/components/card-listing.php:75
+#: template-parts/components/card-listing.php:78
 #: template-parts/components/rfq-compare.php:64
 msgid "Total"
 msgstr "Total"
 
 #. translators: %s: price.
-#: template-parts/components/card-listing.php:77
+#: template-parts/components/card-listing.php:80
 msgid "or %s for the whole lot"
 msgstr "ou %s le lot complet"
 
-#: template-parts/components/card-listing.php:90
+#: template-parts/components/card-listing.php:93
 #: templates/single-listing.php:186
 msgid "Private seller"
 msgstr "Particulier"
@@ -1329,16 +1329,15 @@ msgstr[0] "%d wilaya desservie"
 msgstr[1] "%d wilayas desservies"
 
 #: template-parts/components/deal-list.php:21
-#: template-parts/components/filter-panel.php:97
-#: template-parts/components/filter-panel.php:107
-#: template-parts/components/filter-panel.php:148
+#: template-parts/components/filter-panel.php:121
+#: template-parts/components/filter-panel.php:131
+#: template-parts/components/filter-panel.php:172
 #: template-parts/components/my-products.php:46
 #: template-parts/components/service-requests-list.php:20
 #: template-parts/components/services-board.php:31
 #: template-parts/dashboard/listings.php:20
 #: template-parts/dashboard/rfq.php:29 template-parts/directory.php:62
-#: template-parts/marketplace-archive.php:45
-#: template-parts/marketplace-archive.php:51
+#: template-parts/marketplace-archive.php:44
 #: templates/marketplace-engineers.php:56
 msgid "All"
 msgstr "Tous"
@@ -1394,12 +1393,12 @@ msgid "Your answer is awaited"
 msgstr "Votre réponse est attendue"
 
 #: template-parts/components/deal-list.php:56
-#: template-parts/components/filter-panel.php:148
+#: template-parts/components/filter-panel.php:172
 msgid "Whole lot"
 msgstr "Tout le lot"
 
 #: template-parts/components/deal-list.php:66 template-parts/directory.php:122
-#: template-parts/marketplace-archive.php:104 templates/rfq-board.php:101
+#: template-parts/marketplace-archive.php:97 templates/rfq-board.php:101
 msgid "Pagination"
 msgstr "Pagination"
 
@@ -1560,7 +1559,7 @@ msgstr "Monté ou démonté"
 
 #: template-parts/components/filter-panel.php:44
 #: template-parts/components/filter-panel.php:52
-#: template-parts/directory.php:59 template-parts/marketplace-archive.php:76
+#: template-parts/directory.php:59 template-parts/marketplace-archive.php:69
 msgid "Filters"
 msgstr "Filtres"
 
@@ -1568,16 +1567,26 @@ msgstr "Filtres"
 msgid "Close filters"
 msgstr "Fermer les filtres"
 
-#: template-parts/components/filter-panel.php:58
+#: template-parts/components/filter-panel.php:70
+#: template-parts/components/product-lines.php:73
+msgid "Type"
+msgstr "Type"
+
+#: template-parts/components/filter-panel.php:73
+#: template-parts/components/filter-panel.php:76
+msgid "All types"
+msgstr "Tous les types"
+
+#: template-parts/components/filter-panel.php:82
 #: template-parts/components/services-board.php:40
 msgid "Keyword"
 msgstr "Mot-clé"
 
-#: template-parts/components/filter-panel.php:59
+#: template-parts/components/filter-panel.php:83
 msgid "hangar, poultry house…"
 msgstr "hangar, poulailler…"
 
-#: template-parts/components/filter-panel.php:129
+#: template-parts/components/filter-panel.php:153
 #: template-parts/dashboard/company.php:101
 #: template-parts/dashboard/engineer-missions.php:126
 #: template-parts/dashboard/engineer-missions.php:131
@@ -1588,34 +1597,34 @@ msgstr "hangar, poulailler…"
 msgid "Wilaya"
 msgstr "Wilaya"
 
-#: template-parts/components/filter-panel.php:131
+#: template-parts/components/filter-panel.php:155
 #: template-parts/components/services-board.php:45
 #: template-parts/directory.php:49 templates/front-page-template.php:51
 #: templates/rfq-board.php:78
 msgid "All wilayas"
 msgstr "Toutes les wilayas"
 
-#: template-parts/components/filter-panel.php:140
+#: template-parts/components/filter-panel.php:164
 msgid "Min. DA/kg"
 msgstr "Min. DA/kg"
 
-#: template-parts/components/filter-panel.php:141
+#: template-parts/components/filter-panel.php:165
 msgid "Max. DA/kg"
 msgstr "Max. DA/kg"
 
-#: template-parts/components/filter-panel.php:146
+#: template-parts/components/filter-panel.php:170
 msgid "Sale"
 msgstr "Vente"
 
-#: template-parts/components/filter-panel.php:148
+#: template-parts/components/filter-panel.php:172
 msgid "By quantity"
 msgstr "Au détail"
 
-#: template-parts/components/filter-panel.php:154
+#: template-parts/components/filter-panel.php:178
 msgid "Verified sellers only"
 msgstr "Vendeurs vérifiés uniquement"
 
-#: template-parts/components/filter-panel.php:158 templates/styleguide.php:37
+#: template-parts/components/filter-panel.php:182 templates/styleguide.php:37
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -2400,10 +2409,6 @@ msgstr ""
 #: templates/single-listing.php:259
 msgid "Element"
 msgstr "Élément"
-
-#: template-parts/components/product-lines.php:73
-msgid "Type"
-msgstr "Type"
 
 #: template-parts/components/product-lines.php:86
 msgid "Pieces"
@@ -3705,6 +3710,30 @@ msgstr "Élargissez la recherche, ou publiez une demande de devis."
 #: template-parts/components/services-board.php:50
 msgid "See all services"
 msgstr "Voir tous les services"
+
+#: template-parts/components/type-tiles.php:37
+msgid "Types"
+msgstr "Types"
+
+#: template-parts/components/type-tiles.php:46
+msgid "Show every type"
+msgstr "Afficher tous les types"
+
+#. translators: %s: number of listings.
+#: template-parts/components/type-tiles.php:59
+msgid "No listing yet"
+msgstr "Aucune annonce pour l’instant"
+
+#. translators: %s: number of listings.
+#: template-parts/components/type-tiles.php:59
+msgid "%s listing"
+msgid_plural "%s listings"
+msgstr[0] "%s annonce"
+msgstr[1] "%s annonces"
+
+#: template-parts/components/type-tiles.php:64
+msgid "Remove this type: show every listing"
+msgstr "Retirer ce type : afficher toutes les annonces"
 
 #: template-parts/components/verification-steps.php:16
 msgid "Verified business"
@@ -5687,7 +5716,7 @@ msgid_plural "%d companies"
 msgstr[0] "%d entreprise"
 msgstr[1] "%d entreprises"
 
-#: template-parts/directory.php:84 template-parts/marketplace-archive.php:82
+#: template-parts/directory.php:84 template-parts/marketplace-archive.php:75
 #: templates/rfq-board.php:81
 msgid "Sort by"
 msgstr "Trier par"
@@ -5724,50 +5753,46 @@ msgstr "Voir tout l’annuaire"
 msgid "Publish here"
 msgstr "Publier ici"
 
-#: template-parts/marketplace-archive.php:41
-msgid "Types"
-msgstr "Types"
-
-#: template-parts/marketplace-archive.php:50
+#: template-parts/marketplace-archive.php:43
 msgid "Categories"
 msgstr "Catégories"
 
 #. translators: %s: number of listings.
-#: template-parts/marketplace-archive.php:72
+#: template-parts/marketplace-archive.php:65
 msgid "<strong>%s</strong> listing"
 msgid_plural "<strong>%s</strong> listings"
 msgstr[0] "<strong>%s</strong> annonce"
 msgstr[1] "<strong>%s</strong> annonces"
 
-#: template-parts/marketplace-archive.php:85 templates/rfq-board.php:82
+#: template-parts/marketplace-archive.php:78 templates/rfq-board.php:82
 msgid "Most recent"
 msgstr "Plus récentes"
 
-#: template-parts/marketplace-archive.php:86
+#: template-parts/marketplace-archive.php:79
 msgid "Price per kg: low to high"
 msgstr "Prix au kg croissant"
 
-#: template-parts/marketplace-archive.php:87
+#: template-parts/marketplace-archive.php:80
 msgid "Price per kg: high to low"
 msgstr "Prix au kg décroissant"
 
-#: template-parts/marketplace-archive.php:90
+#: template-parts/marketplace-archive.php:83
 msgid "Display"
 msgstr "Affichage"
 
-#: template-parts/marketplace-archive.php:91
+#: template-parts/marketplace-archive.php:84
 msgid "Grid"
 msgstr "Grille"
 
-#: template-parts/marketplace-archive.php:92
+#: template-parts/marketplace-archive.php:85
 msgid "List"
 msgstr "Liste"
 
-#: template-parts/marketplace-archive.php:115
+#: template-parts/marketplace-archive.php:108
 msgid "No listing matches these filters"
 msgstr "Aucune annonce ne correspond à ces filtres"
 
-#: template-parts/marketplace-archive.php:116
+#: template-parts/marketplace-archive.php:109
 msgid ""
 "Widen your search, or publish a request for quotation so suppliers come to "
 "you."
@@ -5775,7 +5800,7 @@ msgstr ""
 "Élargissez votre recherche ou publiez une demande de devis : les "
 "fournisseurs viendront à vous."
 
-#: template-parts/marketplace-archive.php:117
+#: template-parts/marketplace-archive.php:110
 #: templates/front-page-template.php:151 templates/single-listing.php:156
 #: templates/single-service.php:92 templates/single-service.php:121
 #: templates/styleguide.php:36

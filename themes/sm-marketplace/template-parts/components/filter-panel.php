@@ -54,6 +54,30 @@ $fid = static fn( $key ) => 'f-' . trim( preg_replace( '/[^a-z0-9]+/', '-', $key
 		</div>
 
 		<div class="sm-filters__body">
+			<?php
+			// "All types" (0.26.0): the type tiles at the top have no "All" tile.
+			$tabs = (array) ( $args['facets']['tabs'] ?? array() );
+			if ( $tabs ) :
+				$all_n = (int) ( $tabs[0]['count'] ?? 0 );
+				$cur_t = '';
+				foreach ( $tabs as $t ) {
+					if ( '' !== $category && $t['slug'] === $category ) {
+						$cur_t = $t['label'];
+					}
+				}
+				?>
+				<div class="sm-filters__type">
+					<p class="sm-filters__typelabel"><?php esc_html_e( 'Type', 'sm-marketplace' ); ?></p>
+					<div class="sm-fchips__list">
+						<?php if ( '' !== $cur_t ) : ?>
+							<a class="sm-fchip-link" href="<?php echo esc_url( sm_theme_tab_url( $args['action'], '' ) ); ?>"><?php esc_html_e( 'All types', 'sm-marketplace' ); ?> <small dir="ltr"><?php echo esc_html( sm_number( $all_n ) ); ?></small></a>
+							<span class="sm-fchip-link is-current" aria-current="true"><?php echo esc_html( $cur_t ); ?></span>
+						<?php else : ?>
+							<span class="sm-fchip-link is-current" aria-current="true"><?php esc_html_e( 'All types', 'sm-marketplace' ); ?> <small dir="ltr"><?php echo esc_html( sm_number( $all_n ) ); ?></small></span>
+						<?php endif; ?>
+					</div>
+				</div>
+			<?php endif; ?>
 			<div class="sm-field">
 				<label for="f-q"><?php esc_html_e( 'Keyword', 'sm-marketplace' ); ?></label>
 				<input id="f-q" type="search" name="q" value="<?php echo esc_attr( $q( 'q' ) ); ?>" placeholder="<?php echo esc_attr( 'buildings' === $market ? __( 'hangar, poultry house…', 'sm-marketplace' ) : 'IPE 200' ); ?>" dir="auto">

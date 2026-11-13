@@ -1775,3 +1775,13 @@ T.update({
 "By quantity": ("Au détail", "بالتجزئة"),
 "Types": ("Types", "الأنواع"),
 })
+# 0.26.0: type tiles, "All types", photo count.
+T.update({
+"All types": ("Tous les types", "كل الأنواع"),
+"Show every type": ("Afficher tous les types", "عرض كل الأنواع"),
+"No listing yet": ("Aucune annonce pour l’instant", "لا إعلانات بعد"),
+"Remove this type: show every listing": ("Retirer ce type : afficher toutes les annonces", "إزالة هذا النوع: عرض كل الإعلانات"),
+})
+P.update({
+("%s listing", "%s listings"): (["%s annonce", "%s annonces"], ["لا إعلانات", "إعلان واحد", "إعلانان", "%s إعلانات", "%s إعلانا", "%s إعلان"]),
+})

@@ -38,14 +38,7 @@ if ( $category && isset( $cats[ $category ] ) ) {
 			<?php endif; ?>
 		</div>
 		<?php if ( $tabs ) : ?>
-			<nav class="sm-typetabs" aria-label="<?php esc_attr_e( 'Types', 'sm-marketplace' ); ?>">
-				<ul class="sm-catpills">
-					<?php foreach ( $tabs as $t ) : ?>
-						<?php $is = (string) $t['slug'] === (string) $category; ?>
-						<li><a href="<?php echo esc_url( sm_theme_tab_url( $action, $t['slug'] ) ); ?>" <?php echo $is ? 'aria-current="page"' : ''; ?> class="<?php echo 0 === (int) $t['count'] && ! $is ? 'is-empty' : ''; ?>"><?php echo esc_html( '' === $t['slug'] ? __( 'All', 'sm-marketplace' ) : $t['label'] ); ?> <span class="sm-catpills__n" dir="ltr"><?php echo esc_html( sm_number( $t['count'] ) ); ?></span></a></li>
-					<?php endforeach; ?>
-				</ul>
-			</nav>
+			<?php sm_component( 'type-tiles', array( 'tabs' => $tabs, 'current' => (string) ( $facets['category'] ?? '' ), 'action' => $action ) ); ?>
 		<?php elseif ( $cats ) : ?>
 			<ul class="sm-catpills" aria-label="<?php esc_attr_e( 'Categories', 'sm-marketplace' ); ?>">
 				<li><a href="<?php echo esc_url( $action ); ?>" <?php echo $category ? '' : 'aria-current="true"'; ?>><?php esc_html_e( 'All', 'sm-marketplace' ); ?></a></li>
