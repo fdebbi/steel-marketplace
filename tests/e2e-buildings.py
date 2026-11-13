@@ -148,7 +148,7 @@ with sync_playwright() as p:
     print('\nD. Public pages')
     pub = b.new_page(viewport={'width': 1280, 'height': 900}, reduced_motion='reduce')
     pub.goto(BASE + '/batiments/')
-    ca = '.sm-card--listing:has-text("20 × 40 m")'; cd = '.sm-card--listing:has-text("12 × 60 m")'
+    ca = '.sm-card--listing:has(a[href*="/annonce/%s/"])' % la; cd = '.sm-card--listing:has(a[href*="/annonce/%s/"])' % ld
     check(pub.locator(ca).count() == 1 and pub.locator(cd).count() == 1, 'both buildings listed in the buildings market')
     check('800 m²' in txt(pub, ca) and '40 × 20 × 6 m' in txt(pub, ca), 'card: dimensions and area')
     pub.goto(BASE + '/batiments/?mode=dismantled')
