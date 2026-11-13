@@ -385,7 +385,9 @@ final class Bridge {
 	}
 
 	public static function form_action( $url, $form ) {
-		return Forms::action_url();
+		// The form name is also in the address (0.8.2): if PHP drops a too heavy form, the
+		// request still reaches its handler, which tells the visitor the files are too heavy.
+		return add_query_arg( 'action', 'sm_' . sanitize_key( $form ), Forms::action_url() );
 	}
 
 	public static function form_fields( $form ) {

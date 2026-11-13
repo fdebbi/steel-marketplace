@@ -1,5 +1,11 @@
 # Changelog — sm-core
 
+## 0.8.2 — 2026-11-13
+
+- Corrige « Le formulaire a expiré » sur une page servie par le cache (LiteSpeed/CDN) ou restée ouverte longtemps : les pages avec un formulaire ne sont plus mises en cache, et le thème renouvelle le code de sécurité avant l'envoi d'une page ancienne (`admin-ajax.php?action=sm_nonce`).
+- Fichiers trop lourds pour le serveur (post_max_size) : message clair avec la taille maximale, au lieu de « formulaire expiré » ou d'une page blanche (nom du formulaire aussi dans l'adresse d'envoi).
+- Message « formulaire expiré » reformulé : « La page est restée ouverte trop longtemps : veuillez renvoyer le formulaire. »
+
 ## 0.8.1 — 2026-11-12 (Phase 10)
 
 - `Bridge::shape_company` : filtre `sm_company_contacts_visible` ; quand il renvoie faux, téléphone, e-mail et site sont vides et `contacts_hidden` vaut vrai. Les membres du compte et l'équipe les voient toujours.

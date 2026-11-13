@@ -9,6 +9,39 @@
 	var $ = function ( s, c ) { return ( c || document ).querySelector( s ); };
 	var $$ = function ( s, c ) { return Array.prototype.slice.call( ( c || document ).querySelectorAll( s ) ); };
 
+	/*
+	 * Fresh security code just before a form is sent (0.28.1): a page kept by a page
+	 * cache, or left open for hours, would otherwise be refused as "expired".
+	 * Runs after the form's own handlers (bubble phase on document) and lets the form
+	 * go as it is if the request fails.
+	 */
+	var loadedAt = Date.now();
+	function oldPage( form ) {
+		var ts = form.querySelector( 'input[name="sm_ts"]' ), made = ts ? parseInt( ts.value, 10 ) * 1000 : 0;
+		// Open for more than 10 minutes, or made more than 30 minutes before it was opened (page cache).
+		return Date.now() - loadedAt > 600000 || ( made > 0 && loadedAt - made > 1800000 );
+	}
+	document.addEventListener( 'submit', function ( e ) {
+		var form = e.target, nonce = form.querySelector( 'input[name="_sm_nonce"]' ), act = form.querySelector( 'input[name="action"]' );
+		if ( e.defaultPrevented || ! nonce || ! act || form.dataset.smFresh || ! window.fetch || -1 === ( form.getAttribute( 'action' ) || '' ).indexOf( 'admin-post.php' ) || ! oldPage( form ) ) {
+			return;
+		}
+		e.preventDefault();
+		var submitter = e.submitter || null;
+		var u = new URL( form.getAttribute( 'action' ), window.location.href );
+		u.pathname = u.pathname.replace( 'admin-post.php', 'admin-ajax.php' );
+		u.search = '?action=sm_nonce&form=' + encodeURIComponent( act.value );
+		var url = u.toString();
+		var go = function () {
+			form.dataset.smFresh = '1';
+			if ( form.requestSubmit ) { form.requestSubmit( submitter && submitter.form === form ? submitter : undefined ); } else { form.submit(); }
+		};
+		fetch( url, { credentials: 'same-origin', cache: 'no-store' } )
+			.then( function ( r ) { return r.ok ? r.json() : null; } )
+			.then( function ( j ) { if ( j && j.success && j.data && j.data.nonce ) { nonce.value = j.data.nonce; } go(); } )
+			.catch( go );
+	} );
+
 	function toast( msg ) {
 		var t = $( '[data-sm-toast]' );
 		if ( ! t ) { return; }

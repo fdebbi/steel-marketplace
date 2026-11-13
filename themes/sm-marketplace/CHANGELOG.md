@@ -1,5 +1,9 @@
 # Changelog — sm-marketplace
 
+## 0.28.1 — 2026-11-13 (avec sm-core 0.8.2)
+
+- Formulaires : code de sécurité renouvelé avant l'envoi d'une page ancienne (cache ou onglet ouvert longtemps) ; pages « Devenir ingénieur partenaire », « Demander une étude » et « Contact » jamais mises en cache.
+
 ## 0.28.0 — 2026-11-13 (avec sm-engineering 0.3.0)
 
 - Demander une étude : cartes à cocher pour un ou plusieurs services, prestations cochées par défaut ; type de projet ; plus de budget.

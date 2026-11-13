@@ -24,6 +24,7 @@ final class Plugin {
 		Accounts\Registration::init();
 		Accounts\PhoneVerification::init();
 		Accounts\CompanyForms::init();
+		Support\Forms::init();
 		Verification\Verifications::init();
 		Notifications\Notifications::init();
 		Enquiries\Enquiries::init();

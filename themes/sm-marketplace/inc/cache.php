@@ -26,7 +26,8 @@ function sm_theme_is_uncacheable_request() {
 	if ( ! empty( $_GET ) ) {
 		return true;
 	}
-	$private = array( 'templates/dashboard.php', 'templates/auth-login.php', 'templates/auth-register.php', 'templates/auth-lost.php' );
+	// Pages with a form (0.28.1): never kept by a cache, so the security code of the form stays valid.
+	$private = array( 'templates/dashboard.php', 'templates/auth-login.php', 'templates/auth-register.php', 'templates/auth-lost.php', 'templates/engineer-apply.php', 'templates/mission-request.php', 'templates/contact.php' );
 	foreach ( $private as $template ) {
 		if ( is_page_template( $template ) ) {
 			return true;

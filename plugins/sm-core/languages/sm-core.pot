@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Core 0.8.1\n"
+"Project-Id-Version: SM Core 0.8.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-core\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-12T13:35:25+00:00\n"
+"POT-Creation-Date: 2026-11-13T15:51:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-core\n"
@@ -1767,11 +1767,16 @@ msgstr ""
 msgid "Engineering accounts offer services only."
 msgstr ""
 
-#: src/Support/Forms.php:57
+#. translators: %s: maximum size, e.g. 8 MB.
+#: src/Support/Forms.php:94
+msgid "The files sent are too heavy: %s maximum in total. Send lighter files (PDF, or compressed photos) and try again."
+msgstr ""
+
+#: src/Support/Forms.php:98
 msgid "The form expired. Please try again."
 msgstr ""
 
-#: src/Support/Forms.php:61
+#: src/Support/Forms.php:102
 msgid "Thank you."
 msgstr ""
 

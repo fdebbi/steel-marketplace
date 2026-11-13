@@ -1919,11 +1919,20 @@ msgstr "اشتراكك لا يشمل هذا الإجراء."
 msgid "Engineering accounts offer services only."
 msgstr "حسابات الهندسة تعرض الخدمات فقط."
 
-#: src/Support/Forms.php:57
-msgid "The form expired. Please try again."
-msgstr "انتهت صلاحية النموذج. يرجى إعادة المحاولة."
+#. translators: %s: maximum size, e.g. 8 MB.
+#: src/Support/Forms.php:94
+msgid ""
+"The files sent are too heavy: %s maximum in total. Send lighter files (PDF, "
+"or compressed photos) and try again."
+msgstr ""
+"الملفات المرسلة كبيرة جدا: %s كحد أقصى في المجموع. أرسل ملفات أخف (PDF أو "
+"صور مضغوطة) وأعد المحاولة."
 
-#: src/Support/Forms.php:61
+#: src/Support/Forms.php:98
+msgid "The form expired. Please try again."
+msgstr "بقيت الصفحة مفتوحة مدة طويلة: يرجى إعادة إرسال النموذج."
+
+#: src/Support/Forms.php:102
 msgid "Thank you."
 msgstr "شكرا."
 

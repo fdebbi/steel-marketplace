@@ -1951,11 +1951,21 @@ msgstr "Votre abonnement n’inclut pas cette action."
 msgid "Engineering accounts offer services only."
 msgstr "Les comptes ingénierie proposent uniquement des services."
 
-#: src/Support/Forms.php:57
-msgid "The form expired. Please try again."
-msgstr "Le formulaire a expiré. Veuillez réessayer."
+#. translators: %s: maximum size, e.g. 8 MB.
+#: src/Support/Forms.php:94
+msgid ""
+"The files sent are too heavy: %s maximum in total. Send lighter files (PDF, "
+"or compressed photos) and try again."
+msgstr ""
+"Les fichiers envoyés sont trop lourds : %s maximum au total. Envoyez des "
+"fichiers plus légers (PDF ou photos compressées) et réessayez."
 
-#: src/Support/Forms.php:61
+#: src/Support/Forms.php:98
+msgid "The form expired. Please try again."
+msgstr ""
+"La page est restée ouverte trop longtemps : veuillez renvoyer le formulaire."
+
+#: src/Support/Forms.php:102
 msgid "Thank you."
 msgstr "Merci."
 

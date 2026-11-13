@@ -96,8 +96,12 @@ with sync_playwright() as p:
     e.set_input_files('input[name="doc_diploma"]', PDF)
     e.set_input_files('input[name="doc_id"]', PDF)
     e.set_input_files('input[name="photo[]"]', JPG)
-    e.click('.sme-apply button[type="submit"]'); e.wait_for_load_state()
-    check(e.url.split('?')[0].rstrip('/').endswith('/compte') and 'candidature est envoyée' in notice(e), 'application sent, signed in, dashboard opened')
+    # A page served by a page cache carries an old security code: it is renewed when the form is sent.
+    e.evaluate("document.querySelector('.sme-apply input[name=_sm_nonce]').value = 'old-cached-code'; document.querySelector('.sme-apply input[name=sm_ts]').value = Math.floor(Date.now() / 1000) - 3 * 86400")
+    with e.expect_navigation():
+        e.click('.sme-apply button[type="submit"]')
+    e.wait_for_load_state()
+    check(e.url.split('?')[0].rstrip('/').endswith('/compte') and 'candidature est envoyée' in notice(e), 'application sent (even from a cached page), signed in, dashboard opened')
     check(e.locator('.sme-status').count() == 1 and 'examen' in e.inner_text('.sme-status'), 'dashboard shows "application being reviewed"')
     nav = menu(e)
     check('Mes missions' not in nav and 'Profil partenaire' in nav and 'Publier une annonce' not in nav, 'pending engineer: no missions yet, no trading menu')

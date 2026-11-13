@@ -26,10 +26,44 @@ final class Forms {
 		return admin_url( 'admin-post.php' );
 	}
 
+	/**
+	 * Fresh security code of a form (0.8.2): admin-ajax.php?action=sm_nonce&form=<form>.
+	 * The theme asks for it just before sending a form, so a page served by a page
+	 * cache (LiteSpeed, CDN) or left open for hours is not refused as "expired".
+	 */
+	public static function init() {
+		add_action( 'wp_ajax_sm_nonce', array( __CLASS__, 'ajax_nonce' ) );
+		add_action( 'wp_ajax_nopriv_sm_nonce', array( __CLASS__, 'ajax_nonce' ) );
+	}
+
+	public static function ajax_nonce() {
+		$form = sanitize_key( (string) ( $_GET['form'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification
+		$form = preg_replace( '/^sm_/', '', $form );
+		if ( '' === $form ) {
+			wp_send_json_error( null, 400 );
+		}
+		nocache_headers();
+		wp_send_json_success( array( 'nonce' => wp_create_nonce( 'sm_' . $form ) ) );
+	}
+
+	/** Pages with a form are never kept by a page cache (LiteSpeed Cache, WP Super Cache, W3TC). */
+	private static function no_page_cache() {
+		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
+			define( 'DONOTCACHEPAGE', true );
+		}
+		do_action( 'litespeed_control_set_nocache', 'sm: page with a form' );
+		if ( ! headers_sent() ) {
+			nocache_headers();
+		}
+	}
+
 	/** Hidden fields for a form. */
 	public static function fields( $form, $redirect = '' ) {
+		self::no_page_cache();
 		$redirect = $redirect ? $redirect : self::current_url();
 		printf( '<input type="hidden" name="action" value="%s">', esc_attr( 'sm_' . $form ) );
+		// Time the page was made: the theme renews the security code of an old page (cache, open tab).
+		printf( '<input type="hidden" name="sm_ts" value="%d">', time() );
 		printf( '<input type="hidden" name="sm_lang" value="%s">', esc_attr( Language::current() ) );
 		printf( '<input type="hidden" name="redirect_to" value="%s">', esc_url( remove_query_arg( array( 'sm_n' ), $redirect ) ) );
 		wp_nonce_field( 'sm_' . $form, '_sm_nonce', false );
@@ -52,6 +86,13 @@ final class Forms {
 		$lang = isset( $_POST['sm_lang'] ) ? sanitize_key( wp_unslash( $_POST['sm_lang'] ) ) : Language::default_language(); // phpcs:ignore WordPress.Security.NonceVerification
 		Language::force( $lang );
 
+		// Files heavier than the server accepts (post_max_size): PHP drops the whole form.
+		$length = isset( $_SERVER['CONTENT_LENGTH'] ) ? (int) $_SERVER['CONTENT_LENGTH'] : 0;
+		$max    = wp_convert_hr_to_bytes( (string) ini_get( 'post_max_size' ) );
+		if ( empty( $_POST ) && $max > 0 && $length > $max ) { // phpcs:ignore WordPress.Security.NonceVerification
+			/* translators: %s: maximum size, e.g. 8 MB. */
+			self::back( array( sprintf( __( 'The files sent are too heavy: %s maximum in total. Send lighter files (PDF, or compressed photos) and try again.', 'sm-core' ), size_format( $max ) ) ) );
+		}
 		$nonce = isset( $_POST['_sm_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['_sm_nonce'] ) ) : '';
 		if ( ! wp_verify_nonce( $nonce, 'sm_' . $form ) ) {
 			self::back( array( __( 'The form expired. Please try again.', 'sm-core' ) ) );
