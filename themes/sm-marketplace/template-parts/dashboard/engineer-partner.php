@@ -35,7 +35,7 @@ $locked = in_array( $d['status'], array( 'approved', 'suspended' ), true );
 					<?php if ( $d['photo'] ) : ?><?php if ( ! empty( $d['photo_id'] ) ) : ?><?php sm_saved_files( array( 'ids' => array( $d['photo_id'] ), 'field' => 'photo[]', 'remove' => 'photo_remove' ) ); ?><?php else : ?><label class="sm-check"><input type="checkbox" name="photo_remove" value="1"><span><?php esc_html_e( 'Remove the photo', 'sm-marketplace' ); ?></span></label><?php endif; ?><?php endif; ?>
 				</div>
 			</div>
-			<?php sm_component( 'engineer-fields', array( 'values' => $d['profile'], 'types' => $d['types'], 'locked' => $locked ) ); ?>
+			<?php sm_component( 'engineer-fields', array( 'values' => $d['profile'], 'types' => $d['types'], 'titles' => $d['titles'] ?? array(), 'specs' => $d['specs'] ?? array(), 'locked' => $locked ) ); ?>
 			<label class="sm-check"><input type="checkbox" name="available" value="1" <?php checked( $d['available'] ); ?>><span><?php esc_html_e( 'Available for new missions', 'sm-marketplace' ); ?></span></label>
 			<button class="sm-btn sm-btn--primary" type="submit"><?php esc_html_e( 'Save my profile', 'sm-marketplace' ); ?></button>
 		</form>

@@ -19,6 +19,7 @@ use SM\Engineering\Messages;
 use SM\Engineering\Missions;
 use SM\Engineering\Notifications;
 use SM\Engineering\Payments;
+use SM\Engineering\Lists;
 use SM\Engineering\ProjectTypes;
 use SM\Engineering\Services;
 use SM\Engineering\Settings;
@@ -167,10 +168,12 @@ final class Admin {
 		echo '<h1 style="display:flex;gap:12px;align-items:center">' . self::photo( $c ) . ' ' . esc_html( $c->name ) . ' ' . self::pill( $labels[ $e->status ][0] ?? $e->status, $labels[ $e->status ][1] ?? '' ) . '</h1>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		self::notice();
 		echo '<div class="sme-grid"><div class="sme-box"><h2>' . esc_html__( 'Profile', 'sm-engineering' ) . '</h2><dl>';
+		// Applications sent before 0.4.0 keep their school and year.
 		$rows = array(
-			__( 'Title', 'sm-engineering' )       => $e->title,
-			__( 'Diploma', 'sm-engineering' )     => $e->diploma,
-			__( 'School', 'sm-engineering' )      => $e->school . ( $e->grad_year ? ' (' . $e->grad_year . ')' : '' ),
+			__( 'Partner', 'sm-engineering' )     => 'bet' === ( $e->partner_type ?? '' ) ? __( 'Engineering office (BET)', 'sm-engineering' ) . ( $e->bet_name ? ' — ' . $e->bet_name : '' ) : __( 'Independent engineer', 'sm-engineering' ),
+			__( 'Professional title', 'sm-engineering' ) => '' !== (string) ( $e->degree ?? '' ) ? Lists::label( 'titles', $e->degree, $e->degree_other ) : $e->diploma,
+			__( 'Speciality', 'sm-engineering' )  => '' !== (string) ( $e->speciality ?? '' ) ? Lists::label( 'specialities', $e->speciality, $e->speciality_other ) : $e->title,
+			__( 'School', 'sm-engineering' )      => $e->school ? $e->school . ( $e->grad_year ? ' (' . $e->grad_year . ')' : '' ) : '',
 			/* translators: %d: years. */
 			__( 'Experience', 'sm-engineering' )  => sprintf( _n( '%d year', '%d years', $e->experience, 'sm-engineering' ), $e->experience ),
 			__( 'Services offered', 'sm-engineering' ) => implode( ', ', array_map( static fn( $s ) => $types[ $s ]['fr'] ?? $s, $e->specialties ) ),
@@ -178,7 +181,7 @@ final class Admin {
 			__( 'Available', 'sm-engineering' )   => $e->available ? __( 'Yes', 'sm-engineering' ) : __( 'No', 'sm-engineering' ),
 			__( 'Applied', 'sm-engineering' )     => wp_strip_all_tags( self::date( $e->applied_at ) ),
 		);
-		foreach ( $rows as $k => $v ) {
+		foreach ( array_filter( $rows, static fn( $x ) => '' !== (string) $x ) as $k => $v ) {
 			echo '<dt>' . esc_html( $k ) . '</dt><dd>' . esc_html( $v ) . '</dd>';
 		}
 		echo '</dl><p>' . nl2br( esc_html( (string) $e->bio ) ) . '</p></div>';
@@ -191,9 +194,8 @@ final class Admin {
 		echo '<h2 style="margin-top:16px">' . esc_html__( 'Documents', 'sm-engineering' ) . '</h2>';
 		if ( $v && $v->documents ) {
 			echo '<ul>';
-			$docs = Apply::documents();
 			foreach ( $v->documents as $key => $doc ) {
-				echo '<li><a target="_blank" rel="noopener" href="' . esc_url( Verifications::document_url( $v->id, $key ) ) . '">' . esc_html( $docs[ $key ][0] ?? $key ) . '</a> — ' . esc_html( $doc['original'] ) . '</li>';
+				echo '<li><a target="_blank" rel="noopener" href="' . esc_url( Verifications::document_url( $v->id, $key ) ) . '">' . esc_html( Apply::document_label( $key ) ) . '</a> — ' . esc_html( $doc['original'] ) . '</li>';
 			}
 			echo '</ul>';
 		} else {
@@ -687,8 +689,23 @@ final class Admin {
 		echo '</tbody></table>';
 		self::services_editor();
 		self::project_types_editor();
+		self::lists_editor();
 		submit_button();
 		echo '</form></div>';
+	}
+
+	/** Professional titles and specialities of the partner engineer application. */
+	private static function lists_editor() {
+		$names = array( 'titles' => __( 'Professional titles (engineer application)', 'sm-engineering' ), 'specialities' => __( 'Specialities (engineer application)', 'sm-engineering' ) );
+		foreach ( $names as $list => $title ) {
+			echo '<h2>' . esc_html( $title ) . '</h2><table class="widefat striped" style="max-width:900px"><thead><tr><th>' . esc_html__( 'French', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Arabic', 'sm-engineering' ) . '</th><th style="width:80px">' . esc_html__( 'Order', 'sm-engineering' ) . '</th><th style="width:60px">' . esc_html__( 'Active', 'sm-engineering' ) . '</th></tr></thead><tbody>';
+			foreach ( Lists::all( $list, true ) as $code => $t ) {
+				$n     = 'lists[' . $list . '][' . esc_attr( $code ) . ']';
+				$fixed = 'other' === $code;
+				echo '<tr><td><input class="large-text" name="' . $n . '[fr]" value="' . esc_attr( $t['fr'] ) . '"></td><td><input class="large-text" dir="rtl" name="' . $n . '[ar]" value="' . esc_attr( $t['ar'] ) . '"></td><td>' . ( $fixed ? '<em>' . esc_html__( 'last', 'sm-engineering' ) . '</em>' : '<input type="number" min="0" max="998" class="small-text" name="' . $n . '[order]" value="' . (int) $t['order'] . '">' ) . '</td><td>' . ( $fixed ? '<input type="hidden" name="' . $n . '[on]" value="1">✓' : '<input type="checkbox" name="' . $n . '[on]" value="1"' . checked( $t['off'], 0, false ) . '>' ) . '</td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
+			}
+			echo '<tr><td><input class="large-text" name="new_list[' . esc_attr( $list ) . '][fr]" placeholder="' . esc_attr__( 'New entry', 'sm-engineering' ) . '"></td><td><input class="large-text" dir="rtl" name="new_list[' . esc_attr( $list ) . '][ar]"></td><td></td><td></td></tr></tbody></table>';
+		}
 	}
 
 	/** Types of project of the request form (FR / AR, shown, order). */

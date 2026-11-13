@@ -1,5 +1,14 @@
 # Changelog — sm-engineering
 
+## 0.4.0 — 2026-11-13 (avec le thème 0.29.0)
+
+- Candidature d'ingénieur partenaire en 5 étapes : nom et prénom séparés ; « Ingénieur indépendant » ou « Bureau d'études (BET) » (même compte, nom du bureau) ; titre professionnel et spécialité en listes (avec « Autre (à préciser) ») ; années d'expérience ; services ; présentation. Établissement et année du diplôme supprimés.
+- Listes des titres et spécialités modifiables (FR/AR, masquer, ordre, ajout) dans Réglages ingénierie ; « Autre » toujours en dernier.
+- Documents tous obligatoires : diplôme, pièce d'identité ; « Agrément de BET (MHUV, en cours de validité) » pour un BET.
+- Vérification de l'adresse e-mail par code à 6 chiffres avant la création du compte (`sm_eng_code`, `sm_eng_check`) : code haché, valable 10 minutes, nouveau code après 45 s, 5 essais, 8 codes par heure et par connexion. Le compte créé a son contact vérifié.
+- Base v4 (type de partenaire, nom du BET, titre, spécialité). Les candidatures existantes gardent leur établissement et leur année.
+- 129 tests PHP, 87 vérifications de bout en bout.
+
 ## 0.3.0 — 2026-11-13 (avec sm-subscriptions 0.2.0 et le thème 0.28.0)
 
 - Demande d'étude : plusieurs services d'ingénierie dans une seule demande ; toutes les prestations d'un service coché sont cochées par défaut. Type de projet obligatoire (industriel, hangar de stockage, agricole, élevage, commercial, bureaux, équipement public, habitation, autre), liste modifiable FR/AR dans les réglages. Champ « Budget indicatif » supprimé.

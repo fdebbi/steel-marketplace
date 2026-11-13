@@ -247,3 +247,15 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Paiement | Commandes de SM Subscriptions (virement, CCP, BaridiMob, preuve, facture) ; pas d'ingénieur avant l'avance | Un seul circuit de paiement |
 | Solde | Payé à la livraison ; documents téléchargeables après le solde | Protège la plateforme |
 | Tâche quotidienne | WP-Cron ; une tâche planifiée chez l'hébergeur est conseillée | WP-Cron ne tourne qu'avec des visites |
+
+## 13 novembre 2026 — Candidature d'ingénieur partenaire en étapes
+
+| Sujet | Décision | Raison |
+|---|---|---|
+| Forme | Assistant en 5 étapes, fenêtre de taille fixe sur ordinateur, plein écran sur téléphone, adresse propre | Lisible, lien partageable, pas de perte au « retour » |
+| Création du compte | Seulement après le code reçu par e-mail ; rien n'est créé si la personne abandonne | Adresses réelles, pas de comptes à moitié créés |
+| Brouillon | Textes gardés sur l'appareil ; jamais le mot de passe ni les documents | Confidentialité |
+| BET | Même compte que l'ingénieur ; nom du bureau ; agrément MHUV obligatoire pour un BET seulement | Choix du client |
+| Titre et spécialité | Listes modifiables (FR/AR) avec « Autre (à préciser) » | Profils homogènes, aucun candidat bloqué |
+| Établissement, année, n° d'agrément | Supprimés | Choix du client ; le diplôme suffit à la vérification |
+| Documents | Tous obligatoires ; photos compressées avant l'envoi | Choix du client ; éviter les fichiers trop lourds |

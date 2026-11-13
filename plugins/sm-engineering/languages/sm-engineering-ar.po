@@ -46,7 +46,7 @@ msgstr "تحتاج SM Engineering إلى إضافة SM Core. فعّلها أول
 msgid "Engineering"
 msgstr "الهندسة"
 
-#: src/Activity.php:77 src/Activity.php:230 src/Apply.php:121
+#: src/Activity.php:77 src/Activity.php:230 src/Apply.php:160
 msgid "Partner engineer application"
 msgstr "ترشح مهندس شريك"
 
@@ -474,7 +474,7 @@ msgstr "تذكير: التسبيق غير مدفوع"
 msgid "Mission file downloaded"
 msgstr "تنزيل ملف مهمة"
 
-#: src/Activity.php:259 src/Admin/Admin.php:296
+#: src/Activity.php:259 src/Admin/Admin.php:298
 msgid "Mission"
 msgstr "المهمة"
 
@@ -482,39 +482,39 @@ msgstr "المهمة"
 msgid "Partner engineer"
 msgstr "مهندس شريك"
 
-#: src/Admin/Admin.php:46 src/Admin/Admin.php:278 src/Admin/Admin.php:366
+#: src/Admin/Admin.php:47 src/Admin/Admin.php:280 src/Admin/Admin.php:368
 msgid "Engineering missions"
 msgstr "المهام الهندسية"
 
-#: src/Admin/Admin.php:47 src/Admin/Admin.php:130 src/Admin/Admin.php:166
+#: src/Admin/Admin.php:48 src/Admin/Admin.php:131 src/Admin/Admin.php:167
 msgid "Partner engineers"
 msgstr "المهندسون الشركاء"
 
-#: src/Admin/Admin.php:48 src/Admin/Admin.php:663
+#: src/Admin/Admin.php:49 src/Admin/Admin.php:665
 msgid "Engineering settings"
 msgstr "إعدادات الهندسة"
 
-#: src/Admin/Admin.php:58
+#: src/Admin/Admin.php:59
 msgid "Saved."
 msgstr "تم الحفظ."
 
-#: src/Admin/Admin.php:103
+#: src/Admin/Admin.php:104
 msgid "To review"
 msgstr "للدراسة"
 
-#: src/Admin/Admin.php:104
+#: src/Admin/Admin.php:105
 msgid "Approved"
 msgstr "معتمد"
 
-#: src/Admin/Admin.php:105
+#: src/Admin/Admin.php:106
 msgid "Refused"
 msgstr "مرفوض"
 
-#: src/Admin/Admin.php:106
+#: src/Admin/Admin.php:107
 msgid "Suspended"
 msgstr "موقوف"
 
-#: src/Admin/Admin.php:132
+#: src/Admin/Admin.php:133
 msgid ""
 "Engineers apply on the page “Become a partner engineer”. Check the diploma "
 "and the documents, then approve or refuse. Approved engineers appear on the "
@@ -524,37 +524,37 @@ msgstr ""
 "ارفض. يظهر المهندسون المعتمدون في القائمة العمومية دون بيانات اتصالهم "
 "ويمكنهم تلقي المهام."
 
-#: src/Admin/Admin.php:140
+#: src/Admin/Admin.php:141
 msgid "Nobody here."
 msgstr "لا أحد هنا."
 
-#: src/Admin/Admin.php:144 src/Admin/Admin.php:296 src/Admin/Admin.php:438
+#: src/Admin/Admin.php:145 src/Admin/Admin.php:298 src/Admin/Admin.php:440
 msgid "Engineer"
 msgstr "المهندس"
 
-#: src/Admin/Admin.php:144 src/Admin/Admin.php:176
+#: src/Admin/Admin.php:145 src/Admin/Admin.php:179
 msgid "Services offered"
 msgstr "الخدمات المقترحة"
 
 #. translators: %d: years.
-#: src/Admin/Admin.php:144 src/Admin/Admin.php:175
+#: src/Admin/Admin.php:145 src/Admin/Admin.php:178
 msgid "Experience"
 msgstr "الخبرة"
 
-#: src/Admin/Admin.php:144 src/Admin/Admin.php:177 src/Admin/Admin.php:376
+#: src/Admin/Admin.php:145 src/Admin/Admin.php:180 src/Admin/Admin.php:378
 msgid "Wilaya"
 msgstr "الولاية"
 
-#: src/Admin/Admin.php:144 src/Admin/Admin.php:231
+#: src/Admin/Admin.php:145 src/Admin/Admin.php:233
 msgid "Missions"
 msgstr "المهام"
 
-#: src/Admin/Admin.php:144 src/Admin/Admin.php:179
+#: src/Admin/Admin.php:145 src/Admin/Admin.php:182
 msgid "Applied"
 msgstr "تاريخ الترشح"
 
 #. translators: %d: years.
-#: src/Admin/Admin.php:151 src/Admin/Admin.php:175
+#: src/Admin/Admin.php:152 src/Admin/Admin.php:178
 msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] "%d سنة"
@@ -564,103 +564,115 @@ msgstr[3] "%d سنوات"
 msgstr[4] "%d سنة"
 msgstr[5] "%d سنة"
 
-#: src/Admin/Admin.php:160
+#: src/Admin/Admin.php:161
 msgid "Engineer not found"
 msgstr "المهندس غير موجود"
 
-#: src/Admin/Admin.php:169
+#: src/Admin/Admin.php:170
 msgid "Profile"
 msgstr "الملف"
 
-#: src/Admin/Admin.php:171
-msgid "Title"
-msgstr "الصفة"
-
-#: src/Admin/Admin.php:172
-msgid "Diploma"
-msgstr "الشهادة"
+#: src/Admin/Admin.php:173
+msgid "Partner"
+msgstr "الشريك"
 
 #: src/Admin/Admin.php:173
+msgid "Engineering office (BET)"
+msgstr "مكتب دراسات (BET)"
+
+#: src/Admin/Admin.php:173
+msgid "Independent engineer"
+msgstr "مهندس مستقل"
+
+#: src/Admin/Admin.php:174
+msgid "Professional title"
+msgstr "اللقب المهني"
+
+#: src/Admin/Admin.php:175
+msgid "Speciality"
+msgstr "التخصص"
+
+#: src/Admin/Admin.php:176
 msgid "School"
 msgstr "المدرسة"
 
-#: src/Admin/Admin.php:178
+#: src/Admin/Admin.php:181
 msgid "Available"
 msgstr "متاح"
 
-#: src/Admin/Admin.php:178
+#: src/Admin/Admin.php:181
 msgid "Yes"
 msgstr "نعم"
 
-#: src/Admin/Admin.php:178
+#: src/Admin/Admin.php:181
 msgid "No"
 msgstr "لا"
 
-#: src/Admin/Admin.php:186
+#: src/Admin/Admin.php:189
 msgid "Contact (platform only)"
 msgstr "الاتصال (للمنصة فقط)"
 
-#: src/Admin/Admin.php:187
+#: src/Admin/Admin.php:190
 msgid "E-mail"
 msgstr "البريد الإلكتروني"
 
-#: src/Admin/Admin.php:188 src/Admin/Admin.php:405
+#: src/Admin/Admin.php:191 src/Admin/Admin.php:407
 msgid "Phone"
 msgstr "الهاتف"
 
-#: src/Admin/Admin.php:189
+#: src/Admin/Admin.php:192
 msgid "Verification"
 msgstr "التوثيق"
 
-#: src/Admin/Admin.php:191
+#: src/Admin/Admin.php:194
 msgid "Documents"
 msgstr "الوثائق"
 
-#: src/Admin/Admin.php:200
+#: src/Admin/Admin.php:202
 msgid "No documents."
 msgstr "لا توجد وثائق."
 
-#: src/Admin/Admin.php:204
+#: src/Admin/Admin.php:206
 msgid "Decision"
 msgstr "القرار"
 
-#: src/Admin/Admin.php:210
+#: src/Admin/Admin.php:212
 msgid "Reason (required to refuse or suspend; the engineer reads it)"
 msgstr "السبب (إجباري للرفض أو الإيقاف؛ يقرؤه المهندس)"
 
-#: src/Admin/Admin.php:212
+#: src/Admin/Admin.php:214
 msgid "Approve"
 msgstr "اعتماد"
 
-#: src/Admin/Admin.php:212
+#: src/Admin/Admin.php:214
 msgid "Refuse"
 msgstr "رفض"
 
-#: src/Admin/Admin.php:213
+#: src/Admin/Admin.php:215
 msgid "Suspend"
 msgstr "إيقاف"
 
-#: src/Admin/Admin.php:214
+#: src/Admin/Admin.php:216
 msgid "Restore"
 msgstr "إعادة التفعيل"
 
-#: src/Admin/Admin.php:215
+#: src/Admin/Admin.php:217
 msgid "Approve anyway"
 msgstr "اعتماد رغم ذلك"
 
-#: src/Admin/Admin.php:231
+#: src/Admin/Admin.php:233
 msgid "Fees due"
 msgstr "الأتعاب المستحقة"
 
-#: src/Admin/Admin.php:231
+#: src/Admin/Admin.php:233
 msgid "Fees paid"
 msgstr "الأتعاب المدفوعة"
 
-#: src/Admin/Admin.php:248
+#: src/Admin/Admin.php:250
 msgid "Give the reason: the engineer reads it."
 msgstr "اذكر السبب: يقرؤه المهندس."
 
-#: src/Admin/Admin.php:280
+#: src/Admin/Admin.php:282
 msgid ""
 "Every study or inspection request comes here. Send the quote to the client, "
 "then give the mission to a partner engineer with the fee you agree with him."
@@ -671,216 +683,216 @@ msgstr ""
 "مهندس شريك بالأتعاب المتفق عليها معه. راجع المخرجات قبل وصولها إلى الزبون. "
 "لا يرى الزبون والمهندس بعضهما أبدا."
 
-#: src/Admin/Admin.php:283
+#: src/Admin/Admin.php:285
 msgid "Open"
 msgstr "مفتوحة"
 
-#: src/Admin/Admin.php:290
+#: src/Admin/Admin.php:292
 msgid "Search"
 msgstr "بحث"
 
-#: src/Admin/Admin.php:293
+#: src/Admin/Admin.php:295
 msgid "No mission here."
 msgstr "لا توجد مهام هنا."
 
-#: src/Admin/Admin.php:296
+#: src/Admin/Admin.php:298
 msgid "Client"
 msgstr "الزبون"
 
-#: src/Admin/Admin.php:296
+#: src/Admin/Admin.php:298
 msgid "Status"
 msgstr "الحالة"
 
-#: src/Admin/Admin.php:296 src/Admin/Admin.php:432
+#: src/Admin/Admin.php:298 src/Admin/Admin.php:434
 msgid "Client price"
 msgstr "سعر الزبون"
 
-#: src/Admin/Admin.php:296 src/Admin/Admin.php:439
+#: src/Admin/Admin.php:298 src/Admin/Admin.php:441
 msgid "Engineer fee"
 msgstr "أتعاب المهندس"
 
-#: src/Admin/Admin.php:296
+#: src/Admin/Admin.php:298
 msgid "Margin"
 msgstr "الهامش"
 
-#: src/Admin/Admin.php:296
+#: src/Admin/Admin.php:298
 msgid "Updated"
 msgstr "آخر تحديث"
 
-#: src/Admin/Admin.php:310
+#: src/Admin/Admin.php:312
 msgid "Client documents"
 msgstr "وثائق الزبون"
 
-#: src/Admin/Admin.php:311
+#: src/Admin/Admin.php:313
 msgid "Deliverables of the engineer"
 msgstr "مخرجات المهندس"
 
-#: src/Admin/Admin.php:312
+#: src/Admin/Admin.php:314
 msgid "Platform documents"
 msgstr "وثائق المنصة"
 
-#: src/Admin/Admin.php:313
+#: src/Admin/Admin.php:315
 msgid "Engineer invoices"
 msgstr "فواتير المهندس"
 
-#: src/Admin/Admin.php:315
+#: src/Admin/Admin.php:317
 msgid "Files"
 msgstr "الملفات"
 
 #. translators: 1: client or engineer, 2: mission reference and title.
-#: src/Admin/Admin.php:325 src/Notifications.php:172
+#: src/Admin/Admin.php:327 src/Notifications.php:172
 msgid "client"
 msgstr "الزبون"
 
 #. translators: 1: client or engineer, 2: mission reference and title.
-#: src/Admin/Admin.php:328 src/Notifications.php:172
+#: src/Admin/Admin.php:330 src/Notifications.php:172
 msgid "engineer"
 msgstr "المهندس"
 
 #. translators: %s: who sees the file.
-#: src/Admin/Admin.php:330
+#: src/Admin/Admin.php:332
 msgid "seen by: %s"
 msgstr "يراه: %s"
 
 #. translators: %s: who sees the file.
-#: src/Admin/Admin.php:330
+#: src/Admin/Admin.php:332
 msgid "platform only"
 msgstr "المنصة فقط"
 
-#: src/Admin/Admin.php:335
+#: src/Admin/Admin.php:337
 msgid "Visible to the client"
 msgstr "مرئي للزبون"
 
-#: src/Admin/Admin.php:335
+#: src/Admin/Admin.php:337
 msgid "Visible to the engineer"
 msgstr "مرئي للمهندس"
 
-#: src/Admin/Admin.php:335
+#: src/Admin/Admin.php:337
 msgid "Add platform documents"
 msgstr "إضافة وثائق المنصة"
 
-#: src/Admin/Admin.php:339
+#: src/Admin/Admin.php:341
 msgid "Messages with the client"
 msgstr "الرسائل مع الزبون"
 
-#: src/Admin/Admin.php:339
+#: src/Admin/Admin.php:341
 msgid "Messages with the engineer"
 msgstr "الرسائل مع المهندس"
 
-#: src/Admin/Admin.php:343
+#: src/Admin/Admin.php:345
 msgid "No message yet."
 msgstr "لا توجد رسائل بعد."
 
-#: src/Admin/Admin.php:347
+#: src/Admin/Admin.php:349
 msgid "Platform"
 msgstr "المنصة"
 
-#: src/Admin/Admin.php:352
+#: src/Admin/Admin.php:354
 msgid "Send"
 msgstr "إرسال"
 
-#: src/Admin/Admin.php:360
+#: src/Admin/Admin.php:362
 msgid "Mission not found"
 msgstr "المهمة غير موجودة"
 
-#: src/Admin/Admin.php:372
+#: src/Admin/Admin.php:374
 msgid "Request"
 msgstr "الطلب"
 
-#: src/Admin/Admin.php:375
+#: src/Admin/Admin.php:377
 msgid "Type of project"
 msgstr "نوع المشروع"
 
-#: src/Admin/Admin.php:377
+#: src/Admin/Admin.php:379
 msgid "Wanted for"
 msgstr "مطلوب قبل"
 
-#: src/Admin/Admin.php:378
+#: src/Admin/Admin.php:380
 msgid "Sent"
 msgstr "أُرسل"
 
-#: src/Admin/Admin.php:382
+#: src/Admin/Admin.php:384
 msgid "Indicative budget"
 msgstr "الميزانية التقديرية"
 
-#: src/Admin/Admin.php:385
+#: src/Admin/Admin.php:387
 msgid "Preferred engineer"
 msgstr "المهندس المفضّل"
 
-#: src/Admin/Admin.php:391
+#: src/Admin/Admin.php:393
 msgid "Services and prestations wanted"
 msgstr "الخدمات والخدمات الفرعية المطلوبة"
 
-#: src/Admin/Admin.php:403
+#: src/Admin/Admin.php:405
 msgid "Client (never shown to the engineer)"
 msgstr "الزبون (لا يُعرض أبدا على المهندس)"
 
-#: src/Admin/Admin.php:404
+#: src/Admin/Admin.php:406
 msgid "Account"
 msgstr "الحساب"
 
-#: src/Admin/Admin.php:405
+#: src/Admin/Admin.php:407
 msgid "Contact"
 msgstr "الاتصال"
 
-#: src/Admin/Admin.php:407
+#: src/Admin/Admin.php:409
 msgid "Reason given:"
 msgstr "السبب المذكور:"
 
-#: src/Admin/Admin.php:412
+#: src/Admin/Admin.php:414
 msgid "Quote, engineer and fee"
 msgstr "عرض السعر والمهندس والأتعاب"
 
-#: src/Admin/Admin.php:421 src/Admin/Admin.php:460
+#: src/Admin/Admin.php:423 src/Admin/Admin.php:462
 msgid "Total before tax"
 msgstr "المجموع دون رسوم"
 
 #. translators: %s: rate.
-#: src/Admin/Admin.php:422 src/Admin/Admin.php:460
+#: src/Admin/Admin.php:424 src/Admin/Admin.php:462
 msgid "TVA %s %%"
 msgstr "الرسم على القيمة المضافة %s %%"
 
 #. translators: %s: rate.
-#: src/Admin/Admin.php:424 src/Admin/Admin.php:460
+#: src/Admin/Admin.php:426 src/Admin/Admin.php:462
 msgid "Total including tax"
 msgstr "المجموع بكل الرسوم"
 
 #. translators: %s: rate.
-#: src/Admin/Admin.php:424 src/Admin/Admin.php:460
+#: src/Admin/Admin.php:426 src/Admin/Admin.php:462
 msgid "Total (no TVA)"
 msgstr "المجموع (بدون رسم)"
 
 #. translators: %s: percentage.
-#: src/Admin/Admin.php:425
+#: src/Admin/Admin.php:427
 msgid "Advance %s %%"
 msgstr "التسبيق %s %%"
 
 #. translators: %s: percentage.
-#: src/Admin/Admin.php:425 src/Admin/Admin.php:426 src/Admin/Admin.php:442
+#: src/Admin/Admin.php:427 src/Admin/Admin.php:428 src/Admin/Admin.php:444
 msgid "received"
 msgstr "مستلم"
 
 #. translators: %s: percentage.
-#: src/Admin/Admin.php:425 src/Admin/Admin.php:426
+#: src/Admin/Admin.php:427 src/Admin/Admin.php:428
 msgid "not received"
 msgstr "لم يُستلم"
 
 #. translators: %s: percentage.
 #. translators: %s: rate.
-#: src/Admin/Admin.php:426 src/Admin/Admin.php:460
+#: src/Admin/Admin.php:428 src/Admin/Admin.php:462
 msgid "Balance"
 msgstr "الرصيد المتبقي"
 
-#: src/Admin/Admin.php:429
+#: src/Admin/Admin.php:431
 msgid "Order of the advance"
 msgstr "طلب دفع التسبيق"
 
-#: src/Admin/Admin.php:429
+#: src/Admin/Admin.php:431
 msgid "Order of the balance"
 msgstr "طلب دفع الرصيد"
 
 #. translators: %d: days.
-#: src/Admin/Admin.php:432
+#: src/Admin/Admin.php:434
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d يوم"
@@ -890,77 +902,77 @@ msgstr[3] "%d أيام"
 msgstr[4] "%d يوما"
 msgstr[5] "%d يوم"
 
-#: src/Admin/Admin.php:434
+#: src/Admin/Admin.php:436
 msgid "Valid until"
 msgstr "صالح إلى غاية"
 
-#: src/Admin/Admin.php:439
+#: src/Admin/Admin.php:441
 msgid "not started"
 msgstr "لم تبدأ"
 
-#: src/Admin/Admin.php:439
+#: src/Admin/Admin.php:441
 msgid "planned"
 msgstr "مبرمجة"
 
-#: src/Admin/Admin.php:439
+#: src/Admin/Admin.php:441
 msgid "due"
 msgstr "مستحقة"
 
-#: src/Admin/Admin.php:439
+#: src/Admin/Admin.php:441
 msgid "paid"
 msgstr "مدفوعة"
 
-#: src/Admin/Admin.php:440
+#: src/Admin/Admin.php:442
 msgid "Platform margin"
 msgstr "هامش المنصة"
 
-#: src/Admin/Admin.php:442
+#: src/Admin/Admin.php:444
 msgid "Client payment"
 msgstr "دفع الزبون"
 
-#: src/Admin/Admin.php:442
+#: src/Admin/Admin.php:444
 msgid "advance received"
 msgstr "تم استلام التسبيق"
 
-#: src/Admin/Admin.php:442
+#: src/Admin/Admin.php:444
 msgid "not recorded"
 msgstr "غير مسجل"
 
-#: src/Admin/Admin.php:448
+#: src/Admin/Admin.php:450
 msgid "Change the quote"
 msgstr "تعديل عرض السعر"
 
-#: src/Admin/Admin.php:448
+#: src/Admin/Admin.php:450
 msgid "Send the quote to the client"
 msgstr "إرسال عرض السعر للزبون"
 
-#: src/Admin/Admin.php:453
+#: src/Admin/Admin.php:455
 msgid "Service"
 msgstr "الخدمة"
 
-#: src/Admin/Admin.php:453
+#: src/Admin/Admin.php:455
 msgid "Price before tax (DA)"
 msgstr "السعر دون رسوم (دج)"
 
-#: src/Admin/Admin.php:453
+#: src/Admin/Admin.php:455
 msgid "Price (DA)"
 msgstr "السعر (دج)"
 
-#: src/Admin/Admin.php:459
+#: src/Admin/Admin.php:461
 msgid "Advance (%)"
 msgstr "التسبيق (%)"
 
-#: src/Admin/Admin.php:459 src/Admin/Admin.php:522
+#: src/Admin/Admin.php:461 src/Admin/Admin.php:524
 msgid "Time (days)"
 msgstr "الأجل (أيام)"
 
 #. translators: %s: rate.
-#: src/Admin/Admin.php:460
+#: src/Admin/Admin.php:462
 msgid "Advance"
 msgstr "التسبيق"
 
 #. translators: %d: number of days.
-#: src/Admin/Admin.php:462
+#: src/Admin/Admin.php:464
 msgid ""
 "The quote is valid %d days; the client is reminded the day before it ends. "
 "The TVA rate comes from the payment settings."
@@ -968,31 +980,31 @@ msgstr ""
 "العرض صالح %d يوما؛ يتلقى العميل تذكيرا قبل يوم من انتهائه. نسبة الرسم من "
 "إعدادات الدفع."
 
-#: src/Admin/Admin.php:483
+#: src/Admin/Admin.php:485
 msgid "Message to the client (what is included, conditions)"
 msgstr "رسالة للزبون (ما يشمله العرض والشروط)"
 
-#: src/Admin/Admin.php:484
+#: src/Admin/Admin.php:486
 msgid "Reason, if you decline the request"
 msgstr "السبب إذا رفضت الطلب"
 
-#: src/Admin/Admin.php:485
+#: src/Admin/Admin.php:487
 msgid "Send the quote"
 msgstr "إرسال عرض السعر"
 
-#: src/Admin/Admin.php:486
+#: src/Admin/Admin.php:488
 msgid "Decline the request"
 msgstr "رفض الطلب"
 
-#: src/Admin/Admin.php:486
+#: src/Admin/Admin.php:488
 msgid "Decline this request? The client is told."
 msgstr "رفض هذا الطلب؟ سيتم إعلام الزبون."
 
-#: src/Admin/Admin.php:490
+#: src/Admin/Admin.php:492
 msgid "Waiting for the advance"
 msgstr "في انتظار التسبيق"
 
-#: src/Admin/Admin.php:490
+#: src/Admin/Admin.php:492
 msgid ""
 "The mission can be given to an engineer once the advance is received (order "
 "checked in SM → Orders, or recorded below)."
@@ -1000,213 +1012,231 @@ msgstr ""
 "يمكن إسناد المهمة لمهندس بعد استلام التسبيق (طلب يُتحقق منه في SM ← "
 "الاشتراكات، أو يُسجل أدناه)."
 
-#: src/Admin/Admin.php:492
+#: src/Admin/Admin.php:494
 msgid "Give the mission to another engineer"
 msgstr "إسناد المهمة إلى مهندس آخر"
 
-#: src/Admin/Admin.php:492
+#: src/Admin/Admin.php:494
 msgid "Give the mission to an engineer"
 msgstr "إسناد المهمة إلى مهندس"
 
-#: src/Admin/Admin.php:504
+#: src/Admin/Admin.php:506
 msgid "No approved engineer yet."
 msgstr "لا يوجد مهندس معتمد بعد."
 
-#: src/Admin/Admin.php:512
+#: src/Admin/Admin.php:514
 msgid "chosen by the client"
 msgstr "اختاره الزبون"
 
-#: src/Admin/Admin.php:515
+#: src/Admin/Admin.php:517
 msgid "service"
 msgstr "خدمة"
 
-#: src/Admin/Admin.php:518
+#: src/Admin/Admin.php:520
 msgid "not available"
 msgstr "غير متاح"
 
-#: src/Admin/Admin.php:522
+#: src/Admin/Admin.php:524
 msgid "Engineer fee (DA)"
 msgstr "أتعاب المهندس (دج)"
 
-#: src/Admin/Admin.php:523
+#: src/Admin/Admin.php:525
 msgid ""
 "Instructions for the engineer (he does not see the client’s name nor price)"
 msgstr "تعليمات للمهندس (لا يرى اسم الزبون ولا السعر)"
 
-#: src/Admin/Admin.php:524
+#: src/Admin/Admin.php:526
 msgid "Offer the mission"
 msgstr "عرض المهمة"
 
-#: src/Admin/Admin.php:531
+#: src/Admin/Admin.php:533
 msgid "Withdraw the mission from the engineer"
 msgstr "سحب المهمة من المهندس"
 
-#: src/Admin/Admin.php:531
+#: src/Admin/Admin.php:533
 msgid "Withdraw the mission? The engineer is told."
 msgstr "سحب المهمة؟ سيتم إعلام المهندس."
 
-#: src/Admin/Admin.php:535
+#: src/Admin/Admin.php:537
 msgid "Check the deliverables"
 msgstr "مراجعة المخرجات"
 
-#: src/Admin/Admin.php:537
+#: src/Admin/Admin.php:539
 msgid "Changes to ask the engineer"
 msgstr "التعديلات المطلوبة من المهندس"
 
-#: src/Admin/Admin.php:538
+#: src/Admin/Admin.php:540
 msgid "Validate and deliver to the client"
 msgstr "اعتماد وتسليم للزبون"
 
-#: src/Admin/Admin.php:538
+#: src/Admin/Admin.php:540
 msgid "The client will see the deliverables. Continue?"
 msgstr "سيرى الزبون المخرجات. متابعة؟"
 
-#: src/Admin/Admin.php:539
+#: src/Admin/Admin.php:541
 msgid "Ask for changes"
 msgstr "طلب تعديلات"
 
-#: src/Admin/Admin.php:545
+#: src/Admin/Admin.php:547
 msgid "Close the mission"
 msgstr "إغلاق المهمة"
 
-#: src/Admin/Admin.php:549
+#: src/Admin/Admin.php:551
 msgid "Pay the engineer"
 msgstr "دفع أتعاب المهندس"
 
-#: src/Admin/Admin.php:551
+#: src/Admin/Admin.php:553
 msgid "Payment reference (transfer, cheque…)"
 msgstr "مرجع الدفع (تحويل، صك…)"
 
-#: src/Admin/Admin.php:552
+#: src/Admin/Admin.php:554
 msgid "Record the payment of the fee"
 msgstr "تسجيل دفع الأتعاب"
 
-#: src/Admin/Admin.php:555
+#: src/Admin/Admin.php:557
 msgid "Fee paid"
 msgstr "تم دفع الأتعاب"
 
-#: src/Admin/Admin.php:561
+#: src/Admin/Admin.php:563
 msgid "Record the advance received (cash, transfer…)"
 msgstr "تسجيل استلام التسبيق (نقدا، تحويل…)"
 
-#: src/Admin/Admin.php:561
+#: src/Admin/Admin.php:563
 msgid ""
 "Record the advance as received? The client is told and the mission can "
 "start."
 msgstr "تسجيل التسبيق كمستلم؟ يُبلغ العميل ويمكن بدء المهمة."
 
-#: src/Admin/Admin.php:563
+#: src/Admin/Admin.php:565
 msgid "Record the balance received"
 msgstr "تسجيل استلام الرصيد"
 
-#: src/Admin/Admin.php:563
+#: src/Admin/Admin.php:565
 msgid ""
 "Record the balance as received? The client can download the delivered "
 "documents."
 msgstr "تسجيل الرصيد كمستلم؟ يمكن للعميل تحميل الوثائق المسلمة."
 
-#: src/Admin/Admin.php:565
+#: src/Admin/Admin.php:567
 msgid "Cancel the client payment"
 msgstr "إلغاء دفع الزبون"
 
-#: src/Admin/Admin.php:565
+#: src/Admin/Admin.php:567
 msgid "Record the client payment"
 msgstr "تسجيل دفع الزبون"
 
-#: src/Admin/Admin.php:585 src/Admin/Admin.php:652 src/Missions.php:212
+#: src/Admin/Admin.php:587 src/Admin/Admin.php:654 src/Missions.php:213
 msgid "Mission not found."
 msgstr "المهمة غير موجودة."
 
-#: src/Admin/Admin.php:619
+#: src/Admin/Admin.php:621
 msgid "Write the changes you ask for."
 msgstr "اكتب التعديلات المطلوبة."
 
-#: src/Admin/Admin.php:641
+#: src/Admin/Admin.php:643
 msgid "Write the message."
 msgstr "اكتب الرسالة."
 
-#: src/Admin/Admin.php:668
+#: src/Admin/Admin.php:670
 msgid "Accept new partner engineer applications"
 msgstr "قبول ترشحات المهندسين الشركاء الجديدة"
 
-#: src/Admin/Admin.php:669
+#: src/Admin/Admin.php:671
 msgid "Also show the list of partner engineers under the services"
 msgstr "عرض قائمة المهندسين الشركاء أيضا تحت الخدمات"
 
-#: src/Admin/Admin.php:670
+#: src/Admin/Admin.php:672
 msgid "Show the number of completed missions on the list"
 msgstr "عرض عدد المهام المنجزة في القائمة"
 
-#: src/Admin/Admin.php:676
+#: src/Admin/Admin.php:678
 msgid "Quote valid for (days)"
 msgstr "صلاحية عرض السعر (أيام)"
 
-#: src/Admin/Admin.php:677
+#: src/Admin/Admin.php:679
 msgid "Advance asked on acceptance (% of the total)"
 msgstr "التسبيق المطلوب عند القبول (% من المجموع)"
 
-#: src/Admin/Admin.php:678
+#: src/Admin/Admin.php:680
 msgid "Reminder of an unpaid advance after (days)"
 msgstr "تذكير بالتسبيق غير المدفوع بعد (أيام)"
 
-#: src/Admin/Admin.php:679
+#: src/Admin/Admin.php:681
 msgid "Study requests a client may send per day"
 msgstr "طلبات الدراسة المسموحة لكل زبون يوميا"
 
-#: src/Admin/Admin.php:680
+#: src/Admin/Admin.php:682
 msgid "Files per sending"
 msgstr "الملفات في كل إرسال"
 
-#: src/Admin/Admin.php:681
+#: src/Admin/Admin.php:683
 msgid "Size of one file (MB)"
 msgstr "حجم الملف (ميغابايت)"
 
-#: src/Admin/Admin.php:686
+#: src/Admin/Admin.php:688
 msgid "Accepted file types"
 msgstr "أنواع الملفات المقبولة"
 
-#: src/Admin/Admin.php:686
+#: src/Admin/Admin.php:688
 msgid ""
 "Extensions separated by commas. Program and web files are always refused."
 msgstr "امتدادات مفصولة بفواصل. ملفات البرامج والويب مرفوضة دائما."
 
-#: src/Admin/Admin.php:696
-msgid "Types of project"
-msgstr "أنواع المشاريع"
+#: src/Admin/Admin.php:699
+msgid "Professional titles (engineer application)"
+msgstr "الألقاب المهنية (ترشح المهندس)"
 
-#: src/Admin/Admin.php:696 src/Admin/Admin.php:709
+#: src/Admin/Admin.php:699
+msgid "Specialities (engineer application)"
+msgstr "التخصصات (ترشح المهندس)"
+
+#: src/Admin/Admin.php:701 src/Admin/Admin.php:713 src/Admin/Admin.php:726
 msgid "French"
 msgstr "الفرنسية"
 
-#: src/Admin/Admin.php:696 src/Admin/Admin.php:709
+#: src/Admin/Admin.php:701 src/Admin/Admin.php:713 src/Admin/Admin.php:726
 msgid "Arabic"
 msgstr "العربية"
 
-#: src/Admin/Admin.php:696 src/Admin/Admin.php:709 src/Admin/Admin.php:720
+#: src/Admin/Admin.php:701 src/Admin/Admin.php:713 src/Admin/Admin.php:726
+#: src/Admin/Admin.php:737
 msgid "Order"
 msgstr "الترتيب"
 
-#: src/Admin/Admin.php:696 src/Admin/Admin.php:709 src/Admin/Admin.php:720
+#: src/Admin/Admin.php:701 src/Admin/Admin.php:713 src/Admin/Admin.php:726
+#: src/Admin/Admin.php:737
 msgid "Active"
 msgstr "مفعّل"
 
-#: src/Admin/Admin.php:699 src/Admin/Admin.php:718 src/Admin/Admin.php:722
+#: src/Admin/Admin.php:705
+msgid "last"
+msgstr "في الأخير"
+
+#: src/Admin/Admin.php:707
+msgid "New entry"
+msgstr "عنصر جديد"
+
+#: src/Admin/Admin.php:713
+msgid "Types of project"
+msgstr "أنواع المشاريع"
+
+#: src/Admin/Admin.php:716 src/Admin/Admin.php:735 src/Admin/Admin.php:739
 msgid "Title in French"
 msgstr "العنوان بالفرنسية"
 
-#: src/Admin/Admin.php:699 src/Admin/Admin.php:719 src/Admin/Admin.php:722
+#: src/Admin/Admin.php:716 src/Admin/Admin.php:736 src/Admin/Admin.php:739
 msgid "Title in Arabic"
 msgstr "العنوان بالعربية"
 
-#: src/Admin/Admin.php:701
+#: src/Admin/Admin.php:718
 msgid "New type of project"
 msgstr "نوع مشروع جديد"
 
-#: src/Admin/Admin.php:707
+#: src/Admin/Admin.php:724
 msgid "Engineering services"
 msgstr "الخدمات الهندسية"
 
-#: src/Admin/Admin.php:708
+#: src/Admin/Admin.php:725
 msgid ""
 "Shown on the engineering page and offered in the study request form and to "
 "partner engineers. One prestation per line; the Arabic lines follow the "
@@ -1217,90 +1247,104 @@ msgstr ""
 "خدمة فرعية في كل سطر؛ الأسطر العربية تتبع الأسطر الفرنسية بنفس الترتيب "
 "(السطر العربي الفارغ يعرض النص الفرنسي). بدون صورة، تعرض الصفحة رسما."
 
-#: src/Admin/Admin.php:709
+#: src/Admin/Admin.php:726
 msgid "Image"
 msgstr "الصورة"
 
-#: src/Admin/Admin.php:715
+#: src/Admin/Admin.php:732
 msgid "Choose"
 msgstr "اختيار"
 
-#: src/Admin/Admin.php:715
+#: src/Admin/Admin.php:732
 msgid "Remove"
 msgstr "إزالة"
 
-#: src/Admin/Admin.php:718
+#: src/Admin/Admin.php:735
 msgid "Prestations in French"
 msgstr "الخدمات الفرعية بالفرنسية"
 
-#: src/Admin/Admin.php:719
+#: src/Admin/Admin.php:736
 msgid "Prestations in Arabic"
 msgstr "الخدمات الفرعية بالعربية"
 
-#: src/Admin/Admin.php:722
+#: src/Admin/Admin.php:739
 msgid "New service"
 msgstr "خدمة جديدة"
 
-#: src/Admin/Admin.php:730
+#: src/Admin/Admin.php:747
 msgid "Image of the service"
 msgstr "صورة الخدمة"
 
-#: src/Apply.php:40
-msgid "Engineering diploma"
-msgstr "شهادة مهندس"
+#: src/Apply.php:45 src/Apply.php:57
+msgid "Diploma"
+msgstr "الشهادة"
 
-#: src/Apply.php:41
+#: src/Apply.php:46 src/Apply.php:58
 msgid "Identity card or passport"
 msgstr "بطاقة التعريف أو جواز السفر"
 
-#: src/Apply.php:42
+#: src/Apply.php:49 src/Apply.php:59
+msgid "BET approval (MHUV, valid)"
+msgstr "اعتماد مكتب الدراسات (وزارة السكن، ساري المفعول)"
+
+#: src/Apply.php:60
 msgid "Approval or registration of the engineering office (if any)"
 msgstr "اعتماد أو تسجيل مكتب الدراسات (إن وجد)"
 
-#: src/Apply.php:43
+#: src/Apply.php:61
 msgid "CV or list of references"
 msgstr "السيرة الذاتية أو قائمة المراجع"
 
-#: src/Apply.php:65
-msgid ""
-"Enter your professional title, for example “Civil engineer — steel "
-"structures”."
-msgstr "أدخل صفتك المهنية، مثلا «مهندس هندسة مدنية — هياكل معدنية»."
+#: src/Apply.php:93
+msgid "Enter the name of the engineering office."
+msgstr "أدخل اسم مكتب الدراسات."
 
-#: src/Apply.php:69
-msgid "Enter your diploma."
-msgstr "أدخل شهادتك."
+#: src/Apply.php:97
+msgid "Choose your professional title."
+msgstr "اختر لقبك المهني."
 
-#: src/Apply.php:72
-msgid "Enter the university or school."
-msgstr "أدخل الجامعة أو المدرسة."
+#: src/Apply.php:99
+msgid "Write your professional title."
+msgstr "اكتب لقبك المهني."
 
-#: src/Apply.php:75
-msgid "Enter the year of the diploma."
-msgstr "أدخل سنة الحصول على الشهادة."
+#: src/Apply.php:106
+msgid "Choose your speciality."
+msgstr "اختر تخصصك."
 
-#: src/Apply.php:79
+#: src/Apply.php:108
+msgid "Write your speciality."
+msgstr "اكتب تخصصك."
+
+#: src/Apply.php:114
 msgid "Choose at least one service."
 msgstr "اختر خدمة واحدة على الأقل."
 
-#: src/Apply.php:82
-msgid "Describe your experience in a few lines (40 characters at least)."
-msgstr "صف خبرتك في بضعة أسطر (40 حرفا على الأقل)."
+#: src/Apply.php:117
+msgid "Present your experience in a few words (20 characters at least)."
+msgstr "قدّم خبرتك في بضع كلمات (20 حرفا على الأقل)."
 
 #. translators: %s: document name.
-#: src/Apply.php:101
+#: src/Apply.php:140
 msgid "%s is required."
 msgstr "%s إجباري."
 
-#: src/Apply.php:142
+#: src/Apply.php:181
 msgid "Applications are closed for the moment."
 msgstr "الترشحات مغلقة حاليا."
 
-#: src/Apply.php:150
+#: src/Apply.php:189
 msgid "Too many sign-ups from this connection. Try again in an hour."
 msgstr "تسجيلات كثيرة من هذا الاتصال. أعد المحاولة بعد ساعة."
 
-#: src/Apply.php:179
+#: src/Apply.php:202
+msgid "Enter your last name and first name."
+msgstr "أدخل لقبك واسمك."
+
+#: src/Apply.php:207
+msgid "Confirm your e-mail address with the code you received."
+msgstr "أكّد بريدك الإلكتروني بالرمز الذي تلقيته."
+
+#: src/Apply.php:239
 msgid ""
 "Thank you, your application is sent. The platform team checks your documents"
 " and answers by e-mail."
@@ -1308,34 +1352,88 @@ msgstr ""
 "شكرا، تم إرسال ترشحك. يتحقق فريق المنصة من وثائقك ويرد عليك عبر البريد "
 "الإلكتروني."
 
-#: src/Apply.php:186
+#: src/Apply.php:246
 msgid ""
 "Partner engineers have their own account. Sign out, then apply with another "
 "e-mail address."
 msgstr ""
 "للمهندسين الشركاء حسابهم الخاص. سجّل الخروج ثم ترشح ببريد إلكتروني آخر."
 
-#: src/Apply.php:189
+#: src/Apply.php:249
 msgid "Your application is already being reviewed or approved."
 msgstr "ترشحك قيد الدراسة أو مقبول بالفعل."
 
-#: src/Apply.php:204
+#: src/Apply.php:264
 msgid "Your application is sent again. The platform team will review it."
 msgstr "تم إرسال ترشحك من جديد. سيدرسه فريق المنصة."
 
-#: src/Apply.php:221
+#: src/Apply.php:281
 msgid "This page is for partner engineers."
 msgstr "هذه الصفحة خاصة بالمهندسين الشركاء."
 
-#: src/Apply.php:241
+#: src/Apply.php:304
 msgid "Your profile is saved."
 msgstr "تم حفظ ملفك."
 
-#: src/Engineers.php:97
+#: src/EmailCode.php:58
+msgid "Enter a valid e-mail address."
+msgstr "أدخل بريدا إلكترونيا صحيحا."
+
+#: src/EmailCode.php:61
+msgid ""
+"An account already exists with this e-mail. Sign in or reset your password."
+msgstr ""
+"يوجد حساب بهذا البريد الإلكتروني. سجّل الدخول أو أعد تعيين كلمة المرور."
+
+#. translators: %d: seconds.
+#: src/EmailCode.php:66
+msgid "Wait %d seconds before asking for a new code."
+msgstr "انتظر %d ثانية قبل طلب رمز جديد."
+
+#. translators: %s: platform name.
+#: src/EmailCode.php:87
+msgid "Your %s verification code"
+msgstr "رمز التحقق الخاص بك في %s"
+
+#. translators: 1: 6-digit code.
+#: src/EmailCode.php:90
+msgid ""
+"Here is the code to confirm your e-mail address and send your partner "
+"engineer application: %1$s. It expires in 10 minutes. If you did not ask for"
+" it, ignore this message."
+msgstr ""
+"هذا هو الرمز لتأكيد بريدك الإلكتروني وإرسال ترشحك كمهندس شريك: %1$s. تنتهي "
+"صلاحيته بعد 10 دقائق. إذا لم تطلبه، تجاهل هذه الرسالة."
+
+#: src/EmailCode.php:105
+msgid "Ask for a new code."
+msgstr "اطلب رمزا جديدا."
+
+#: src/EmailCode.php:111
+msgid "This code has expired. Ask for a new one."
+msgstr "انتهت صلاحية هذا الرمز. اطلب رمزا جديدا."
+
+#: src/EmailCode.php:114
+msgid "Too many wrong codes. Ask for a new one."
+msgstr "رموز خاطئة كثيرة. اطلب رمزا جديدا."
+
+#: src/EmailCode.php:120
+msgid "Wrong code. Check it and try again."
+msgstr "رمز خاطئ. تحقق منه وأعد المحاولة."
+
+#: src/EmailCode.php:141
+msgid "The page stayed open too long: reload it."
+msgstr "بقيت الصفحة مفتوحة مدة طويلة: أعد تحميلها."
+
+#: src/EmailCode.php:152
+msgid "Too many codes asked from this connection. Try again in an hour."
+msgstr "طلبات رموز كثيرة من هذا الاتصال. أعد المحاولة بعد ساعة."
+
+#: src/Engineers.php:103
 msgid "Unknown engineer."
 msgstr "مهندس غير معروف."
 
-#: src/Engineers.php:100
+#: src/Engineers.php:106
 msgid "Give the reason of the refusal: the engineer reads it."
 msgstr "اذكر سبب الرفض: يقرؤه المهندس."
 
@@ -1489,7 +1587,7 @@ msgstr "تم إلغاء طلبك."
 msgid "Thank you. The mission is closed."
 msgstr "شكرا. تم إغلاق المهمة."
 
-#: src/Form.php:188 src/Form.php:259 src/Missions.php:307 src/Missions.php:401
+#: src/Form.php:188 src/Form.php:259 src/Missions.php:308 src/Missions.php:402
 msgid "Unknown action."
 msgstr "إجراء غير معروف."
 
@@ -1568,139 +1666,139 @@ msgstr "رسائل كثيرة. أعد المحاولة لاحقا."
 msgid "Message sent to the platform."
 msgstr "تم إرسال الرسالة إلى المنصة."
 
-#: src/Missions.php:263
+#: src/Missions.php:264
 msgid "The advance was not paid before the end of the quote."
 msgstr "لم يُدفع التسبيق قبل نهاية العرض."
 
-#: src/Missions.php:310
+#: src/Missions.php:311
 msgid ""
 "This step is no longer possible: the mission has moved on. Reload the page."
 msgstr "هذه الخطوة لم تعد ممكنة: تقدمت المهمة. أعد تحميل الصفحة."
 
-#: src/Missions.php:322
+#: src/Missions.php:323
 msgid "Enter the price of each service for the client."
 msgstr "أدخل سعر كل خدمة للعميل."
 
-#: src/Missions.php:353
+#: src/Missions.php:354
 msgid "Give the reason: the client reads it."
 msgstr "اذكر السبب: يقرؤه الزبون."
 
-#: src/Missions.php:358
+#: src/Missions.php:359
 msgid "This quote has expired. Write to the platform to get an updated one."
 msgstr "انتهت صلاحية عرض السعر. راسل المنصة للحصول على عرض محدّث."
 
-#: src/Missions.php:369
+#: src/Missions.php:370
 msgid ""
 "The advance of the client is not paid yet: the mission can be given to an "
 "engineer once it is received."
 msgstr "لم يدفع العميل التسبيق بعد: يمكن إسناد المهمة لمهندس عند استلامه."
 
-#: src/Missions.php:372
+#: src/Missions.php:373
 msgid "Choose an approved engineer."
 msgstr "اختر مهندسا معتمدا."
 
-#: src/Missions.php:375
+#: src/Missions.php:376
 msgid "Enter the fee paid to the engineer."
 msgstr "أدخل الأتعاب المدفوعة للمهندس."
 
-#: src/Missions.php:386
+#: src/Missions.php:387
 msgid ""
 "Add the deliverables (plans, calculation notes, report) before sending."
 msgstr "أضف المخرجات (مخططات، مذكرات حساب، تقرير) قبل الإرسال."
 
-#: src/Missions.php:407
+#: src/Missions.php:408
 msgid "The fee of this mission is not due."
 msgstr "أتعاب هذه المهمة غير مستحقة."
 
-#: src/Missions.php:482
+#: src/Missions.php:483
 msgid "Being studied by the platform"
 msgstr "قيد الدراسة لدى المنصة"
 
-#: src/Missions.php:483
+#: src/Missions.php:484
 msgid "Quote to accept"
 msgstr "عرض سعر للقبول"
 
-#: src/Missions.php:484 src/Missions.php:487
+#: src/Missions.php:485 src/Missions.php:488
 msgid "Accepted — engineer being appointed"
 msgstr "مقبول — جارٍ تعيين المهندس"
 
-#: src/Missions.php:485
+#: src/Missions.php:486
 msgid "Accepted — advance to pay"
 msgstr "مقبول — التسبيق للدفع"
 
-#: src/Missions.php:486
+#: src/Missions.php:487
 msgid "Ready — balance to pay"
 msgstr "جاهزة — الرصيد للدفع"
 
-#: src/Missions.php:488 src/Missions.php:489 src/Theme/Bridge.php:243
+#: src/Missions.php:489 src/Missions.php:490 src/Theme/Bridge.php:259
 msgid "Study in progress"
 msgstr "الدراسة قيد الإنجاز"
 
-#: src/Missions.php:490 src/Missions.php:520 src/Theme/Bridge.php:243
+#: src/Missions.php:491 src/Missions.php:521 src/Theme/Bridge.php:259
 msgid "Delivered"
 msgstr "تم التسليم"
 
-#: src/Missions.php:491 src/Missions.php:506 src/Missions.php:521
+#: src/Missions.php:492 src/Missions.php:507 src/Missions.php:522
 msgid "Closed"
 msgstr "مغلقة"
 
-#: src/Missions.php:492
+#: src/Missions.php:493
 msgid "Not taken by the platform"
 msgstr "لم تقبلها المنصة"
 
-#: src/Missions.php:493
+#: src/Missions.php:494
 msgid "Quote declined"
 msgstr "عرض سعر مرفوض"
 
-#: src/Missions.php:494 src/Missions.php:524
+#: src/Missions.php:495 src/Missions.php:525
 msgid "Cancelled"
 msgstr "ملغاة"
 
-#: src/Missions.php:502
+#: src/Missions.php:503
 msgid "Offered to you"
 msgstr "معروضة عليك"
 
-#: src/Missions.php:503 src/Missions.php:518
+#: src/Missions.php:504 src/Missions.php:519
 msgid "In progress"
 msgstr "قيد الإنجاز"
 
-#: src/Missions.php:504
+#: src/Missions.php:505
 msgid "Sent, being checked by the platform"
 msgstr "مُرسلة، قيد المراجعة لدى المنصة"
 
-#: src/Missions.php:505
+#: src/Missions.php:506
 msgid "Delivered to the client"
 msgstr "سُلّمت للزبون"
 
-#: src/Missions.php:508
+#: src/Missions.php:509
 msgid "No longer assigned to you"
 msgstr "لم تعد مسندة إليك"
 
-#: src/Missions.php:514
+#: src/Missions.php:515
 msgid "New request"
 msgstr "طلب جديد"
 
-#: src/Missions.php:515
+#: src/Missions.php:516
 msgid "Quote sent"
 msgstr "عرض السعر مُرسل"
 
-#: src/Missions.php:516
+#: src/Missions.php:517
 msgid "Accepted, to assign"
 msgstr "مقبولة، للإسناد"
 
-#: src/Missions.php:517
+#: src/Missions.php:518
 msgid "Offered to an engineer"
 msgstr "معروضة على مهندس"
 
-#: src/Missions.php:519 src/Notifications.php:163
+#: src/Missions.php:520 src/Notifications.php:163
 msgid "Deliverables to check"
 msgstr "مخرجات للمراجعة"
 
-#: src/Missions.php:522
+#: src/Missions.php:523
 msgid "Declined"
 msgstr "مرفوضة"
 
-#: src/Missions.php:523
+#: src/Missions.php:524
 msgid "Quote refused"
 msgstr "عرض سعر مرفوض"
 
@@ -2090,14 +2188,14 @@ msgid ""
 "Online payment details are not available yet: the platform contacts you."
 msgstr "وسائل الدفع غير متاحة بعد: ستتصل بك المنصة."
 
-#: src/Theme/Bridge.php:243
+#: src/Theme/Bridge.php:259
 msgid "Request sent"
 msgstr "تم إرسال الطلب"
 
-#: src/Theme/Bridge.php:243
+#: src/Theme/Bridge.php:259
 msgid "Quote"
 msgstr "عرض السعر"
 
-#: src/Theme/Bridge.php:243
+#: src/Theme/Bridge.php:259
 msgid "Accepted"
 msgstr "مقبولة"

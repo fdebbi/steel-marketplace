@@ -22,6 +22,8 @@ use SM\Engineering\Form;
 use SM\Engineering\Messages;
 use SM\Engineering\Missions;
 use SM\Engineering\Payments;
+use SM\Engineering\Lists;
+use SM\Engineering\EmailCode;
 use SM\Engineering\ProjectTypes;
 use SM\Engineering\Services;
 use SM\Engineering\Settings;
@@ -110,6 +112,12 @@ final class Bridge {
 	private static function profile_values( $e ) {
 		return $e ? array(
 			'title'       => $e->title,
+			'partner_type'     => (string) ( $e->partner_type ?? 'independent' ),
+			'bet_name'         => (string) ( $e->bet_name ?? '' ),
+			'degree'           => (string) ( $e->degree ?? '' ),
+			'degree_other'     => (string) ( $e->degree_other ?? '' ),
+			'speciality'       => (string) ( $e->speciality ?? '' ),
+			'speciality_other' => (string) ( $e->speciality_other ?? '' ),
 			'diploma'     => $e->diploma,
 			'school'      => $e->school,
 			'grad_year'   => $e->grad_year ? (string) $e->grad_year : '',
@@ -131,10 +139,18 @@ final class Bridge {
 			$state = $e ? ( 'rejected' === $e->status ? 'reapply' : 'engineer' ) : ( Companies::for_user( $user ) ? 'other' : 'guest' );
 		}
 		$docs = array();
-		foreach ( Apply::documents() as $k => list( $label, $required ) ) {
-			$docs[ $k ] = array( 'label' => $label, 'required' => $required );
+		foreach ( Apply::documents( true ) as $k => list( $label, $required ) ) {
+			$docs[ $k ] = array( 'label' => $label, 'required' => $required, 'bet' => 'bet_agrement' === $k );
 		}
+		$u = $user ? get_userdata( $user ) : null;
 		return array(
+			'sent'      => $e && 'pending' === $e->status && ! empty( $_GET['sent'] ), // phpcs:ignore WordPress.Security.NonceVerification
+			'titles'    => Lists::options( 'titles' ),
+			'specs'     => Lists::options( 'specialities' ),
+			'first_name' => $u ? (string) $u->first_name : '',
+			'last_name'  => $u ? (string) $u->last_name : '',
+			'resend'    => EmailCode::RESEND,
+			'ajax'      => admin_url( 'admin-ajax.php' ),
 			'open'      => (bool) Settings::get( 'applications_open' ),
 			'state'     => $state,
 			'status'    => $e ? $e->status : '',
@@ -328,6 +344,8 @@ final class Bridge {
 			'reason'    => (string) $e->reject_reason,
 			'available' => (bool) $e->available,
 			'profile'   => self::profile_values( $e ),
+			'titles'    => Lists::options( 'titles' ),
+			'specs'     => Lists::options( 'specialities' ),
 			'public'    => Engineers::public_shape( $e ),
 			'types'     => self::type_options(),
 			'photo'     => $c ? Companies::logo_url( $c, 'medium' ) : '',

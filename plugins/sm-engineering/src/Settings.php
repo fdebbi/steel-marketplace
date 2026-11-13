@@ -129,6 +129,11 @@ final class Settings {
 
 		// Former mission types (before 0.2.0) are kept as they were: they name old missions.
 		$out['types'] = (array) $cur['types'];
+		foreach ( Lists::names() as $list ) {
+			if ( isset( $in['lists'][ $list ] ) && is_array( $in['lists'][ $list ] ) ) {
+				Lists::save( $list, $in['lists'][ $list ], (array) ( $in['new_list'][ $list ] ?? array() ) );
+			}
+		}
 		if ( isset( $in['project_types'] ) && is_array( $in['project_types'] ) ) {
 			ProjectTypes::save( $in['project_types'], (array) ( $in['new_project_type'] ?? array() ) );
 		}

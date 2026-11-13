@@ -3,9 +3,11 @@
  * Partner engineer profile fields (application page and dashboard profile).
  *
  * @var array $args {
- *   values: array  Saved values (title, diploma, school, grad_year, experience, specialties, bio).
+ *   values: array  Saved values (partner_type, bet_name, degree, speciality, experience, specialties, bio).
+ *   titles: array  Professional titles code => label (0.29.0).
+ *   specs:  array  Specialities code => label.
  *   types:  array  Engineering services code => label (stored as specialties).
- *   locked: bool   Diploma, school and year cannot change (approved engineer).
+ *   locked: bool   The title cannot change (approved engineer).
  * }
  * @package SM_Marketplace
  */
@@ -15,29 +17,24 @@ $v      = (array) ( $args['values'] ?? array() );
 $locked = ! empty( $args['locked'] );
 $old    = static fn( $k ) => sm_theme_old( $k, $v[ $k ] ?? '' );
 $specs  = (array) sm_theme_old( 'specialties', $v['specialties'] ?? array() );
+$bet    = 'bet' === (string) $old( 'partner_type' );
+$deg    = (string) $old( 'degree' );
+$spec   = (string) $old( 'speciality' );
+$titles = (array) ( $args['titles'] ?? array() );
+$specl  = (array) ( $args['specs'] ?? array() );
 ?>
-<div class="sm-field">
-	<label for="e-title"><?php esc_html_e( 'Professional title', 'sm-marketplace' ); ?></label>
-	<input id="e-title" name="title" dir="auto" maxlength="160" required value="<?php echo esc_attr( (string) $old( 'title' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. Civil engineer — steel structures', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'title' ); ?>>
-	<?php sm_theme_error( 'title' ); ?>
-</div>
+<fieldset class="sm-field">
+	<legend><?php esc_html_e( 'You are', 'sm-marketplace' ); ?></legend>
+	<div class="sm-checkgrid">
+		<label class="sm-check"><input type="radio" name="partner_type" value="independent" <?php checked( ! $bet ); ?>><span><?php esc_html_e( 'Independent engineer', 'sm-marketplace' ); ?></span></label>
+		<label class="sm-check"><input type="radio" name="partner_type" value="bet" <?php checked( $bet ); ?>><span><?php esc_html_e( 'Engineering office (BET)', 'sm-marketplace' ); ?></span></label>
+	</div>
+</fieldset>
 <div class="sm-field sm-field--row">
 	<div>
-		<label for="e-diploma"><?php esc_html_e( 'Diploma', 'sm-marketplace' ); ?></label>
-		<input id="e-diploma" name="diploma" dir="auto" maxlength="160" value="<?php echo esc_attr( (string) $old( 'diploma' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. State engineer in civil engineering', 'sm-marketplace' ); ?>" <?php echo $locked ? 'readonly' : 'required'; ?><?php sm_theme_aria( 'diploma' ); ?>>
-		<?php sm_theme_error( 'diploma' ); ?>
-	</div>
-	<div>
-		<label for="e-school"><?php esc_html_e( 'University or school', 'sm-marketplace' ); ?></label>
-		<input id="e-school" name="school" dir="auto" maxlength="160" value="<?php echo esc_attr( (string) $old( 'school' ) ); ?>" <?php echo $locked ? 'readonly' : 'required'; ?><?php sm_theme_aria( 'school' ); ?>>
-		<?php sm_theme_error( 'school' ); ?>
-	</div>
-</div>
-<div class="sm-field sm-field--row">
-	<div>
-		<label for="e-year"><?php esc_html_e( 'Year of the diploma', 'sm-marketplace' ); ?></label>
-		<input id="e-year" name="grad_year" type="number" inputmode="numeric" min="1960" max="<?php echo esc_attr( gmdate( 'Y' ) ); ?>" dir="ltr" value="<?php echo esc_attr( (string) $old( 'grad_year' ) ); ?>" <?php echo $locked ? 'readonly' : 'required'; ?><?php sm_theme_aria( 'grad_year' ); ?>>
-		<?php sm_theme_error( 'grad_year' ); ?>
+		<label for="e-bet"><?php esc_html_e( 'Name of the engineering office', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'BET only', 'sm-marketplace' ); ?></small></label>
+		<input id="e-bet" name="bet_name" dir="auto" maxlength="160" value="<?php echo esc_attr( (string) $old( 'bet_name' ) ); ?>"<?php sm_theme_aria( 'bet_name' ); ?>>
+		<?php sm_theme_error( 'bet_name' ); ?>
 	</div>
 	<div>
 		<label for="e-exp"><?php esc_html_e( 'Years of experience', 'sm-marketplace' ); ?></label>
@@ -45,8 +42,32 @@ $specs  = (array) sm_theme_old( 'specialties', $v['specialties'] ?? array() );
 		<?php sm_theme_error( 'experience' ); ?>
 	</div>
 </div>
+<div class="sm-field sm-field--row">
+	<div>
+		<label for="e-degree"><?php esc_html_e( 'Professional title', 'sm-marketplace' ); ?></label>
+		<?php if ( $locked ) : ?>
+			<input id="e-degree" value="<?php echo esc_attr( (string) ( '' !== $deg ? ( 'other' === $deg ? $old( 'degree_other' ) : ( $titles[ $deg ] ?? $deg ) ) : $old( 'diploma' ) ) ); ?>" readonly>
+		<?php else : ?>
+			<select id="e-degree" name="degree" required<?php sm_theme_aria( 'degree' ); ?>>
+				<option value=""><?php esc_html_e( 'Select', 'sm-marketplace' ); ?></option>
+				<?php foreach ( $titles as $code => $label ) : ?><option value="<?php echo esc_attr( $code ); ?>" <?php selected( $deg, (string) $code ); ?>><?php echo esc_html( $label ); ?></option><?php endforeach; ?>
+			</select>
+			<input name="degree_other" dir="auto" maxlength="120" value="<?php echo esc_attr( (string) $old( 'degree_other' ) ); ?>" placeholder="<?php esc_attr_e( 'Specify your title', 'sm-marketplace' ); ?>" aria-label="<?php esc_attr_e( 'Specify your title', 'sm-marketplace' ); ?>" style="margin-top:8px">
+		<?php endif; ?>
+		<?php sm_theme_error( 'degree' ); ?><?php sm_theme_error( 'degree_other' ); ?>
+	</div>
+	<div>
+		<label for="e-spec"><?php esc_html_e( 'Speciality', 'sm-marketplace' ); ?></label>
+		<select id="e-spec" name="speciality" required<?php sm_theme_aria( 'speciality' ); ?>>
+			<option value=""><?php esc_html_e( 'Select', 'sm-marketplace' ); ?></option>
+			<?php foreach ( $specl as $code => $label ) : ?><option value="<?php echo esc_attr( $code ); ?>" <?php selected( $spec, (string) $code ); ?>><?php echo esc_html( $label ); ?></option><?php endforeach; ?>
+		</select>
+		<input name="speciality_other" dir="auto" maxlength="120" value="<?php echo esc_attr( (string) $old( 'speciality_other' ) ); ?>" placeholder="<?php esc_attr_e( 'Specify your speciality', 'sm-marketplace' ); ?>" aria-label="<?php esc_attr_e( 'Specify your speciality', 'sm-marketplace' ); ?>" style="margin-top:8px">
+		<?php sm_theme_error( 'speciality' ); ?><?php sm_theme_error( 'speciality_other' ); ?>
+	</div>
+</div>
 <?php if ( $locked ) : ?>
-	<p class="sm-help"><?php sm_icon( 'lock' ); ?> <?php esc_html_e( 'The diploma was checked by the platform. Write to the platform to change it.', 'sm-marketplace' ); ?></p>
+	<p class="sm-help"><?php sm_icon( 'lock' ); ?> <?php esc_html_e( 'Your title was checked by the platform with your diploma. Write to the platform to change it.', 'sm-marketplace' ); ?></p>
 <?php endif; ?>
 <fieldset class="sm-field">
 	<legend><?php esc_html_e( 'Services offered', 'sm-marketplace' ); ?></legend>

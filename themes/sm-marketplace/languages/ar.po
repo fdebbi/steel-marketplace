@@ -176,6 +176,7 @@ msgid "Enquiries"
 msgstr "الاستفسارات"
 
 #: footer.php:66 templates/dashboard.php:87 templates/dashboard.php:152
+#: templates/engineer-apply.php:306
 msgid "Account"
 msgstr "الحساب"
 
@@ -191,7 +192,7 @@ msgstr "السوق الصناعية للفولاذ في الجزائر"
 msgid "Utility"
 msgstr "روابط مفيدة"
 
-#: header.php:41 inc/assets.php:37
+#: header.php:41 inc/assets.php:41
 msgid "Open menu"
 msgstr "فتح القائمة"
 
@@ -238,7 +239,7 @@ msgstr "الإدارة"
 #: header.php:77 header.php:144 template-parts/components/enquiry-form.php:30
 #: template-parts/components/rfq-single.php:157 templates/auth-login.php:17
 #: templates/auth-login.php:39 templates/auth-register.php:101
-#: templates/company-profile.php:331 templates/engineer-apply.php:118
+#: templates/company-profile.php:331 templates/engineer-apply.php:163
 #: templates/mission-request.php:36 templates/single-service.php:130
 msgid "Sign in"
 msgstr "تسجيل الدخول"
@@ -247,7 +248,7 @@ msgstr "تسجيل الدخول"
 msgid "Menu"
 msgstr "القائمة"
 
-#: header.php:114 inc/assets.php:38 templates/dashboard.php:242
+#: header.php:114 inc/assets.php:42 templates/dashboard.php:242
 msgid "Close menu"
 msgstr "إغلاق القائمة"
 
@@ -262,58 +263,58 @@ msgstr "عرض كل الإعلانات"
 msgid "Publish a listing"
 msgstr "نشر إعلان"
 
-#: header.php:142 templates/dashboard.php:265 templates/engineer-apply.php:43
+#: header.php:142 templates/dashboard.php:265 templates/engineer-apply.php:75
 msgid "Sign out"
 msgstr "تسجيل الخروج"
 
-#: inc/assets.php:39 templates/auth-login.php:32
+#: inc/assets.php:43 templates/auth-login.php:32
 #: templates/auth-register.php:92 templates/company-profile.php:239
-#: templates/engineer-apply.php:82
+#: templates/engineer-apply.php:271
 msgid "Show"
 msgstr "إظهار"
 
-#: inc/assets.php:40
+#: inc/assets.php:44
 msgid "Hide"
 msgstr "إخفاء"
 
-#: inc/assets.php:41 inc/template-tags.php:531
+#: inc/assets.php:45 inc/template-tags.php:531
 msgid "Saved"
 msgstr "تم الحفظ"
 
-#: inc/assets.php:42
+#: inc/assets.php:46
 msgid "Removed from saved listings"
 msgstr "أزيل من الإعلانات المحفوظة"
 
-#: inc/assets.php:43
+#: inc/assets.php:47
 msgid "Uploaded"
 msgstr "تم الرفع"
 
 #. translators: %s: file name.
-#: inc/assets.php:45
+#: inc/assets.php:49
 msgid "Remove %s"
 msgstr "إزالة %s"
 
-#: inc/assets.php:46
+#: inc/assets.php:50
 msgid "Add other files"
 msgstr "إضافة ملفات أخرى"
 
-#: inc/assets.php:47
+#: inc/assets.php:51
 msgid "Too many files: the extra ones were not added."
 msgstr "عدد الملفات كبير: لم تُضف الملفات الزائدة."
 
-#: inc/assets.php:48
+#: inc/assets.php:52
 msgid "Will be deleted when you save"
 msgstr "سيُحذف عند الحفظ"
 
-#: inc/assets.php:49
+#: inc/assets.php:53
 msgid "Will be replaced when you save"
 msgstr "سيُستبدل عند الحفظ"
 
-#: inc/assets.php:50
+#: inc/assets.php:54
 msgid "Undo"
 msgstr "تراجع"
 
-#: inc/assets.php:51 inc/template-tags.php:535 inc/template-tags.php:541
+#: inc/assets.php:55 inc/template-tags.php:535 inc/template-tags.php:541
 #: template-parts/components/my-products.php:98
 #: template-parts/components/portfolio-grid.php:30
 #: template-parts/components/rfq-single.php:138
@@ -322,82 +323,83 @@ msgstr "تراجع"
 msgid "Delete"
 msgstr "حذف"
 
-#: inc/assets.php:52 templates/company-profile.php:290
-#: templates/company-profile.php:344
+#: inc/assets.php:56 templates/company-profile.php:290
+#: templates/company-profile.php:344 templates/engineer-apply.php:38
+#: templates/engineer-apply.php:144
 msgid "Close"
 msgstr "إغلاق"
 
-#: inc/assets.php:53
+#: inc/assets.php:57
 msgid "Previous photo"
 msgstr "الصورة السابقة"
 
-#: inc/assets.php:54
+#: inc/assets.php:58
 msgid "Next photo"
 msgstr "الصورة التالية"
 
-#: inc/assets.php:55
+#: inc/assets.php:59
 msgid "Original size"
 msgstr "الحجم الأصلي"
 
-#: inc/assets.php:102
+#: inc/assets.php:106
 msgid "Company position. Drag it, or use the arrow keys."
 msgstr "موقع المؤسسة. اسحبه أو استعمل أسهم لوحة المفاتيح."
 
-#: inc/assets.php:103 template-parts/components/location-map.php:59
+#: inc/assets.php:107 template-parts/components/location-map.php:59
 msgid "No position yet."
 msgstr "لم يُحدَّد أي موقع بعد."
 
-#: inc/assets.php:104
+#: inc/assets.php:108
 msgid "Drag the marker to your exact address, or click the map."
 msgstr "اسحب العلامة إلى عنوانك بالضبط، أو انقر على الخريطة."
 
-#: inc/assets.php:105
+#: inc/assets.php:109
 msgid "Position placed:"
 msgstr "تم تحديد الموقع:"
 
-#: inc/assets.php:106
+#: inc/assets.php:110
 msgid "Current location found:"
 msgstr "تم العثور على موقعك الحالي:"
 
 #. translators: %d: accuracy in metres.
-#: inc/assets.php:108
+#: inc/assets.php:112
 msgid "Approximate (about %d m): drag the marker to correct it."
 msgstr "تقريبي (حوالي %d م): اسحب العلامة لتصحيحه."
 
-#: inc/assets.php:109
+#: inc/assets.php:113
 msgid "Looking for your location…"
 msgstr "جارٍ البحث عن موقعك…"
 
-#: inc/assets.php:110
+#: inc/assets.php:114
 msgid ""
 "Location access was refused. Allow it in your browser, or place the marker "
 "by hand."
 msgstr "تم رفض الوصول إلى الموقع. اسمح به في متصفحك، أو ضع العلامة يدويا."
 
-#: inc/assets.php:111
+#: inc/assets.php:115
 msgid "Your location could not be found. Place the marker by hand."
 msgstr "تعذّر العثور على موقعك. ضع العلامة يدويا."
 
-#: inc/assets.php:112
+#: inc/assets.php:116
 msgid ""
 "Finding your location took too long. Try again or place the marker by hand."
 msgstr "استغرق البحث عن موقعك وقتا طويلا. أعد المحاولة أو ضع العلامة يدويا."
 
-#: inc/assets.php:113
+#: inc/assets.php:117
 msgid ""
 "Your browser only shares your location on a secure (https) site. Place the "
 "marker by hand."
 msgstr "لا يشارك متصفحك الموقع إلا على موقع آمن (https). ضع العلامة يدويا."
 
-#: inc/assets.php:114
+#: inc/assets.php:118
 msgid "This position is outside Algeria. Place the marker on your address."
 msgstr "هذا الموقع خارج الجزائر. ضع العلامة على عنوانك."
 
-#: inc/assets.php:115
+#: inc/assets.php:119
 msgid "Wilaya changed: place the marker again on your address."
 msgstr "تم تغيير الولاية: ضع العلامة من جديد على عنوانك."
 
-#: inc/assets.php:116
+#: inc/assets.php:120
 msgid "Position removed. It will be deleted when you save."
 msgstr "تمت إزالة الموقع. سيُحذف عند الحفظ."
 
@@ -636,6 +638,7 @@ msgid "Company"
 msgstr "المؤسسة"
 
 #: inc/template-tags.php:277 templates/auth-register.php:31
+#: templates/engineer-apply.php:304
 msgid "Professional"
 msgstr "مهني"
 
@@ -796,7 +799,7 @@ msgstr "ملغى"
 msgid "Keep"
 msgstr "الإبقاء"
 
-#: inc/template-tags.php:539
+#: inc/template-tags.php:539 templates/engineer-apply.php:124
 msgid "Replace"
 msgstr "استبدال"
 
@@ -1129,7 +1132,6 @@ msgstr "سجّل الدخول للمتابعة"
 #: template-parts/components/buy-box.php:111
 #: template-parts/components/enquiry-form.php:45
 #: template-parts/dashboard/settings.php:22 templates/auth-register.php:74
-#: templates/engineer-apply.php:64
 msgid "Full name"
 msgstr "الاسم الكامل"
 
@@ -1408,63 +1410,94 @@ msgstr "الحصة كاملة"
 msgid "Pagination"
 msgstr "ترقيم الصفحات"
 
-#: template-parts/components/engineer-fields.php:20
-msgid "Professional title"
-msgstr "الصفة المهنية"
-
-#: template-parts/components/engineer-fields.php:21
-msgid "e.g. Civil engineer — steel structures"
-msgstr "مثال: مهندس هندسة مدنية — هياكل معدنية"
-
-#: template-parts/components/engineer-fields.php:26
-msgid "Diploma"
-msgstr "الشهادة"
-
 #: template-parts/components/engineer-fields.php:27
-msgid "e.g. State engineer in civil engineering"
-msgstr "مثال: مهندس دولة في الهندسة المدنية"
+#: templates/engineer-apply.php:184
+msgid "You are"
+msgstr "أنت"
 
-#: template-parts/components/engineer-fields.php:31
-msgid "University or school"
-msgstr "الجامعة أو المدرسة"
+#: template-parts/components/engineer-fields.php:29
+#: templates/engineer-apply.php:185
+msgid "Independent engineer"
+msgstr "مهندس مستقل"
 
-#: template-parts/components/engineer-fields.php:38
-msgid "Year of the diploma"
-msgstr "سنة الحصول على الشهادة"
+#: template-parts/components/engineer-fields.php:30
+#: templates/engineer-apply.php:186
+msgid "Engineering office (BET)"
+msgstr "مكتب دراسات (BET)"
 
-#: template-parts/components/engineer-fields.php:43
+#: template-parts/components/engineer-fields.php:35
+#: templates/engineer-apply.php:189
+msgid "Name of the engineering office"
+msgstr "اسم مكتب الدراسات"
+
+#: template-parts/components/engineer-fields.php:35
+msgid "BET only"
+msgstr "لمكتب الدراسات فقط"
+
+#: template-parts/components/engineer-fields.php:40
+#: templates/engineer-apply.php:190
 msgid "Years of experience"
 msgstr "سنوات الخبرة"
 
-#: template-parts/components/engineer-fields.php:49
-msgid ""
-"The diploma was checked by the platform. Write to the platform to change it."
-msgstr "تحققت المنصة من الشهادة. راسل المنصة لتعديلها."
+#: template-parts/components/engineer-fields.php:47
+#: templates/engineer-apply.php:192
+msgid "Professional title"
+msgstr "الصفة المهنية"
 
 #: template-parts/components/engineer-fields.php:52
+#: template-parts/components/engineer-fields.php:62
+#: templates/auth-register.php:78 templates/engineer-apply.php:171
+#: templates/engineer-apply.php:194 templates/engineer-apply.php:203
+#: templates/mission-request.php:79 templates/mission-request.php:98
+msgid "Select"
+msgstr "اختر"
+
+#: template-parts/components/engineer-fields.php:55
+#: templates/engineer-apply.php:197
+msgid "Specify your title"
+msgstr "حدد لقبك المهني"
+
+#: template-parts/components/engineer-fields.php:60
+#: templates/engineer-apply.php:201
+msgid "Speciality"
+msgstr "التخصص"
+
+#: template-parts/components/engineer-fields.php:65
+#: templates/engineer-apply.php:206
+msgid "Specify your speciality"
+msgstr "حدد تخصصك"
+
+#: template-parts/components/engineer-fields.php:70
+msgid ""
+"Your title was checked by the platform with your diploma. Write to the "
+"platform to change it."
+msgstr "تحققت المنصة من لقبك المهني مع شهادتك. راسل المنصة لتغييره."
+
+#: template-parts/components/engineer-fields.php:73
 #: templates/company-profile.php:169
 msgid "Services offered"
 msgstr "الخدمات المقدمة"
 
-#: template-parts/components/engineer-fields.php:58
+#: template-parts/components/engineer-fields.php:79
 msgid ""
 "Tick the engineering services you can carry out. The platform offers you the"
 " missions of these services."
 msgstr ""
 "اختر الخدمات الهندسية التي يمكنك إنجازها. تعرض عليك المنصة مهام هذه الخدمات."
 
-#: template-parts/components/engineer-fields.php:62
+#: template-parts/components/engineer-fields.php:83
 msgid "Experience and references"
 msgstr "الخبرة والمراجع"
 
-#: template-parts/components/engineer-fields.php:63
+#: template-parts/components/engineer-fields.php:84
+#: templates/engineer-apply.php:222
 msgid ""
 "Projects you designed or checked, software, standards (Eurocode 3, RPA, CCM "
 "97)…"
 msgstr ""
 "مشاريع صممتها أو راجعتها، البرمجيات، المعايير (Eurocode 3، RPA، CCM 97)…"
 
-#: template-parts/components/engineer-fields.php:64
+#: template-parts/components/engineer-fields.php:85
 msgid ""
 "Shown on the list of partner engineers. Do not write your phone number or "
 "e-mail: clients contact the platform."
@@ -1595,7 +1628,7 @@ msgstr "هنجر، مدجنة…"
 #: template-parts/dashboard/engineer-missions.php:134
 #: template-parts/dashboard/portfolio.php:66
 #: template-parts/dashboard/publish.php:184 template-parts/directory.php:47
-#: templates/auth-register.php:76 templates/engineer-apply.php:66
+#: templates/auth-register.php:76 templates/engineer-apply.php:169
 #: templates/front-page-template.php:49 templates/marketplace-engineers.php:92
 msgid "Wilaya"
 msgstr "الولاية"
@@ -1846,7 +1879,9 @@ msgstr "عاجل إلى غاية %s"
 #: template-parts/components/rfq-single.php:127
 #: template-parts/dashboard/listings.php:52
 #: template-parts/dashboard/rfq.php:57
-#: template-parts/dashboard/services.php:58 templates/single-service.php:88
+#: template-parts/dashboard/services.php:58 templates/engineer-apply.php:303
+#: templates/engineer-apply.php:304 templates/engineer-apply.php:305
+#: templates/engineer-apply.php:306 templates/single-service.php:88
 msgid "Edit"
 msgstr "تعديل"
 
@@ -1949,7 +1984,8 @@ msgstr "فاتورة"
 #: template-parts/components/order-history.php:41
 #: template-parts/components/weight-calculator.php:127
 #: template-parts/components/weight-calculator.php:166
-#: template-parts/dashboard/publish.php:210 templates/styleguide.php:35
+#: template-parts/dashboard/publish.php:210 templates/engineer-apply.php:324
+#: templates/styleguide.php:35
 msgid "Continue"
 msgstr "متابعة"
 
@@ -1994,7 +2030,7 @@ msgstr "يعود حسابك إلى هذا الاشتراك عند نهاية ف�
 msgid "Start free"
 msgstr "ابدأ مجانا"
 
-#: template-parts/components/plan-card.php:82
+#: template-parts/components/plan-card.php:82 templates/engineer-apply.php:253
 msgid "Choose"
 msgstr "اختيار"
 
@@ -2279,7 +2315,7 @@ msgstr "العنوان بالعربية"
 #: template-parts/dashboard/portfolio.php:54
 #: template-parts/dashboard/portfolio.php:74 templates/company-profile.php:314
 #: templates/company-profile.php:321 templates/contact.php:56
-#: templates/engineer-apply.php:94 templates/mission-request.php:104
+#: templates/engineer-apply.php:248 templates/mission-request.php:104
 #: templates/mission-request.php:111 templates/mission-request.php:121
 msgid "optional"
 msgstr "اختياري"
@@ -3375,6 +3411,7 @@ msgstr ""
 
 #: template-parts/components/service-form.php:74
 #: templates/company-profile.php:62 templates/company-profile.php:129
+#: templates/engineer-apply.php:222
 msgid "Presentation"
 msgstr "التقديم"
 
@@ -4230,7 +4267,7 @@ msgstr "الحصة كاملة"
 #: template-parts/dashboard/deal.php:25
 #: template-parts/dashboard/invoice.php:34
 #: template-parts/dashboard/order.php:28
-#: template-parts/dashboard/publish.php:208
+#: template-parts/dashboard/publish.php:208 templates/engineer-apply.php:323
 msgid "Back"
 msgstr "رجوع"
 
@@ -4332,7 +4369,7 @@ msgid "Refuse"
 msgstr "رفض"
 
 #: template-parts/dashboard/deal.php:128
-#: template-parts/dashboard/publish.php:42
+#: template-parts/dashboard/publish.php:42 templates/engineer-apply.php:146
 msgid "Steps"
 msgstr "المراحل"
 
@@ -4657,7 +4694,6 @@ msgid "This section needs the SM Engineering plugin."
 msgstr "هذا القسم يتطلب إضافة SM Engineering."
 
 #: template-parts/dashboard/engineer-partner.php:21
-#: templates/engineer-apply.php:89
 msgid "Your profile"
 msgstr "ملفك"
 
@@ -5406,7 +5442,7 @@ msgid "Sign in with a real account to change your settings."
 msgstr "سجّل الدخول بحساب حقيقي لتعديل إعداداتك."
 
 #: template-parts/dashboard/settings.php:23 templates/auth-register.php:86
-#: templates/engineer-apply.php:76
+#: templates/engineer-apply.php:176
 msgid "Email"
 msgstr "البريد الإلكتروني"
 
@@ -5560,7 +5596,7 @@ msgstr "تم تسليم دراستك"
 msgid "I received the study — close the request"
 msgstr "استلمت الدراسة — أغلق الطلب"
 
-#: template-parts/dashboard/studies.php:175
+#: template-parts/dashboard/studies.php:175 templates/engineer-apply.php:227
 msgid "Your documents"
 msgstr "وثائقك"
 
@@ -5735,6 +5771,7 @@ msgid "Trade"
 msgstr "الحرفة"
 
 #: template-parts/directory.php:67 templates/dashboard.php:155
+#: templates/engineer-apply.php:91
 msgid "Verification"
 msgstr "التوثيق"
 
@@ -5897,7 +5934,7 @@ msgid "Email or phone"
 msgstr "البريد الإلكتروني أو الهاتف"
 
 #: templates/auth-login.php:29 templates/auth-register.php:89
-#: templates/engineer-apply.php:79
+#: templates/engineer-apply.php:268
 msgid "Password"
 msgstr "كلمة المرور"
 
@@ -5991,16 +6028,12 @@ msgstr "اختر مهنة أو أكثر."
 msgid "Business name (optional)"
 msgstr "الاسم التجاري (اختياري)"
 
-#: templates/auth-register.php:78 templates/engineer-apply.php:68
-#: templates/mission-request.php:79 templates/mission-request.php:98
-msgid "Select"
-msgstr "اختر"
-
-#: templates/auth-register.php:85 templates/engineer-apply.php:75
+#: templates/auth-register.php:85 templates/engineer-apply.php:167
 msgid "Mobile phone"
 msgstr "الهاتف النقال"
 
-#: templates/auth-register.php:94 templates/engineer-apply.php:84
+#: templates/auth-register.php:94 templates/engineer-apply.php:106
+#: templates/engineer-apply.php:274
 msgid "At least 10 characters."
 msgstr "10 أحرف على الأقل."
 
@@ -6416,66 +6449,73 @@ msgstr "التصميم جاهز؛ وستوفر الإضافة المعنية ا�
 msgid "SM — Become a partner engineer"
 msgstr "SM — كن مهندسا شريكا"
 
-#: templates/engineer-apply.php:19 templates/marketplace-engineers.php:81
+#: templates/engineer-apply.php:37 templates/engineer-apply.php:141
+#: templates/marketplace-engineers.php:81
 #: templates/marketplace-engineers.php:116
 msgid "Become a partner engineer"
 msgstr "كن مهندسا شريكا"
 
-#: templates/engineer-apply.php:20
-msgid ""
-"The platform receives the study and inspection requests of its clients and "
-"gives them to its partner engineers as subcontractors. You work on the "
-"missions; the platform deals with the clients, the quotes and the payments."
-msgstr ""
-"تستقبل المنصة طلبات الدراسات والمعاينات من زبائنها وتسندها إلى مهندسيها "
-"الشركاء كمناولين. أنت تنجز المهام؛ والمنصة تتكفل بالزبائن وعروض الأسعار "
-"والمدفوعات."
-
-#: templates/engineer-apply.php:21
-msgid ""
-"Engineering missions in steel construction, without looking for clients."
-msgstr "مهام هندسية في المنشآت المعدنية دون البحث عن زبائن."
-
-#: templates/engineer-apply.php:23
-msgid "Missions matching your services"
-msgstr "مهام حسب خدماتك"
-
-#: templates/engineer-apply.php:24
-msgid "Fee agreed before you start, paid by the platform"
-msgstr "أتعاب متفق عليها قبل البدء تدفعها المنصة"
-
-#: templates/engineer-apply.php:25
-msgid "Your contact details never published"
-msgstr "بيانات اتصالك لا تُنشر أبدا"
-
-#: templates/engineer-apply.php:30
+#: templates/engineer-apply.php:53
 msgid "Applications open soon"
 msgstr "الترشحات تُفتح قريبا"
 
-#: templates/engineer-apply.php:30 templates/mission-request.php:26
+#: templates/engineer-apply.php:53 templates/mission-request.php:26
 msgid "This page needs the SM Engineering plugin."
 msgstr "هذه الصفحة تتطلب إضافة SM Engineering."
 
-#: templates/engineer-apply.php:36
+#: templates/engineer-apply.php:61
+msgid "Application sent"
+msgstr "تم إرسال الترشح"
+
+#: templates/engineer-apply.php:62
+msgid "Your e-mail address is confirmed and your account is created."
+msgstr "تم تأكيد بريدك الإلكتروني وإنشاء حسابك."
+
+#: templates/engineer-apply.php:62
+msgid ""
+"The team checks your diploma and your documents (usually within 48 hours)."
+msgstr "يتحقق الفريق من شهادتك ووثائقك (عادة خلال 48 ساعة)."
+
+#: templates/engineer-apply.php:62
+msgid "You receive an e-mail as soon as your profile is approved."
+msgstr "تتلقى بريدا إلكترونيا فور قبول ملفك."
+
+#: templates/engineer-apply.php:62
+msgid "The platform then offers you the missions of your services."
+msgstr "تعرض عليك المنصة بعد ذلك مهام خدماتك."
+
+#: templates/engineer-apply.php:63
+msgid "Go to my dashboard"
+msgstr "الذهاب إلى فضائي"
+
+#: templates/engineer-apply.php:69
 msgid ""
 "You are a partner engineer of the platform. Your missions are in your "
 "dashboard."
 msgstr "أنت مهندس شريك للمنصة. مهامك في لوحة التحكم."
 
-#: templates/engineer-apply.php:36
+#: templates/engineer-apply.php:69
 msgid "Your partner account is suspended. Write to the platform for details."
 msgstr "حساب الشريك موقوف. راسل المنصة لمعرفة التفاصيل."
 
-#: templates/engineer-apply.php:36
+#: templates/engineer-apply.php:69
 msgid ""
 "Your application is being reviewed. You receive the decision by e-mail."
 msgstr "ترشحك قيد الدراسة. ستصلك النتيجة عبر البريد الإلكتروني."
 
-#: templates/engineer-apply.php:38
+#: templates/engineer-apply.php:70
+msgid "Your partner account"
+msgstr "حسابك كشريك"
+
+#: templates/engineer-apply.php:70
 msgid "Open my dashboard"
 msgstr "افتح لوحة التحكم"
 
-#: templates/engineer-apply.php:42
+#: templates/engineer-apply.php:75
+msgid "A separate account"
+msgstr "حساب منفصل"
+
+#: templates/engineer-apply.php:75
 msgid ""
 "You are signed in with a company, professional or client account. A partner "
 "engineer has a separate account: sign out, then apply with another e-mail "
@@ -6484,78 +6524,311 @@ msgstr ""
 "أنت متصل بحساب شركة أو مهني أو زبون. للمهندس الشريك حساب منفصل: سجّل الخروج "
 "ثم ترشح ببريد إلكتروني آخر."
 
-#: templates/engineer-apply.php:47
+#: templates/engineer-apply.php:80
+msgid "Applications closed"
+msgstr "الترشحات مغلقة"
+
+#: templates/engineer-apply.php:80
 msgid ""
 "Applications are closed for the moment. Come back later or write to the "
 "platform."
 msgstr "الترشحات مغلقة حاليا. عُد لاحقا أو راسل المنصة."
 
-#: templates/engineer-apply.php:53
-msgid "You apply with your diploma"
-msgstr "تترشح بشهادتك"
+#: templates/engineer-apply.php:91
+msgid "Personal information"
+msgstr "المعلومات الشخصية"
 
-#: templates/engineer-apply.php:54
-msgid "The platform checks it"
-msgstr "المنصة تتحقق منها"
+#: templates/engineer-apply.php:91 templates/engineer-apply.php:92
+msgid "Professional information"
+msgstr "المعلومات المهنية"
 
-#: templates/engineer-apply.php:55
-msgid "You receive missions"
-msgstr "تتلقى المهام"
-
-#: templates/engineer-apply.php:58
-msgid "Your application was not approved:"
-msgstr "لم يُقبل ترشحك:"
-
-#: templates/engineer-apply.php:58
-msgid "Correct it and send it again."
-msgstr "صحّحه وأرسله من جديد."
-
-#: templates/engineer-apply.php:62
-msgid "Your account"
-msgstr "حسابك"
-
-#: templates/engineer-apply.php:94
-msgid "Your photo"
-msgstr "صورتك"
-
-#: templates/engineer-apply.php:95
-msgid ""
-"Shown on the list of partner engineers. JPG, PNG or WebP, 4 MB maximum."
-msgstr ""
-"تظهر في قائمة المهندسين الشركاء. JPG أو PNG أو WebP، بحد أقصى 4 ميغابايت."
-
-#: templates/engineer-apply.php:98
+#: templates/engineer-apply.php:91 templates/engineer-apply.php:92
+#: templates/engineer-apply.php:305
 msgid "Documents"
 msgstr "الوثائق"
 
+#: templates/engineer-apply.php:91 templates/engineer-apply.php:263
+msgid "Password and terms"
+msgstr "كلمة المرور والشروط"
+
+#: templates/engineer-apply.php:92 templates/engineer-apply.php:263
+msgid "Terms"
+msgstr "الشروط"
+
+#: templates/engineer-apply.php:96
+msgid "Step %1$d of %2$d"
+msgstr "الخطوة %1$d من %2$d"
+
+#: templates/engineer-apply.php:97
+msgid "%d services chosen"
+msgstr "تم اختيار %d خدمات"
+
+#: templates/engineer-apply.php:98
+msgid "Choose the services"
+msgstr "اختر الخدمات"
+
 #: templates/engineer-apply.php:99
-msgid "Kept in a private space, seen only by the platform team."
-msgstr "تُحفظ في فضاء خاص ولا يطلع عليها إلا فريق المنصة."
+msgid "Complete this field."
+msgstr "أكمل هذا الحقل."
+
+#: templates/engineer-apply.php:100
+msgid "Enter a valid e-mail address."
+msgstr "أدخل بريدا إلكترونيا صحيحا."
+
+#: templates/engineer-apply.php:101
+msgid ""
+"Enter a valid Algerian mobile number (05, 06 or 07 followed by 8 digits)."
+msgstr "أدخل رقم هاتف جزائري صحيح (05 أو 06 أو 07 متبوعا بـ 8 أرقام)."
+
+#: templates/engineer-apply.php:102
+msgid "Choose at least one service."
+msgstr "اختر خدمة واحدة على الأقل."
+
+#: templates/engineer-apply.php:103
+msgid "Add this document."
+msgstr "أضف هذه الوثيقة."
+
+#: templates/engineer-apply.php:104
+msgid "This file is too heavy (%s MB maximum)."
+msgstr "هذا الملف كبير جدا (%s ميغابايت كحد أقصى)."
+
+#: templates/engineer-apply.php:105
+msgid "The two passwords are different."
+msgstr "كلمتا المرور مختلفتان."
+
+#: templates/engineer-apply.php:107
+msgid "Weak password"
+msgstr "كلمة مرور ضعيفة"
+
+#: templates/engineer-apply.php:108
+msgid "Fair password"
+msgstr "كلمة مرور متوسطة"
+
+#: templates/engineer-apply.php:109
+msgid "Good password"
+msgstr "كلمة مرور جيدة"
+
+#: templates/engineer-apply.php:110
+msgid "Strong password"
+msgstr "كلمة مرور قوية"
+
+#: templates/engineer-apply.php:111
+msgid "Identical"
+msgstr "متطابقتان"
+
+#: templates/engineer-apply.php:112
+msgid "Send the code again in %s"
+msgstr "إعادة إرسال الرمز بعد %s"
+
+#: templates/engineer-apply.php:113
+msgid "Send the code again"
+msgstr "إعادة إرسال الرمز"
+
+#: templates/engineer-apply.php:114
+msgid "Sending the code…"
+msgstr "جار إرسال الرمز…"
+
+#: templates/engineer-apply.php:115
+msgid "Code sent to %s"
+msgstr "تم إرسال الرمز إلى %s"
+
+#: templates/engineer-apply.php:116
+msgid "Checking…"
+msgstr "جار التحقق…"
+
+#: templates/engineer-apply.php:117
+msgid "Enter the 6 digits of the code."
+msgstr "أدخل أرقام الرمز الستة."
+
+#: templates/engineer-apply.php:118
+msgid "The connection failed. Check your network and try again."
+msgstr "فشل الاتصال. تحقق من الشبكة وأعد المحاولة."
+
+#: templates/engineer-apply.php:119
+msgid "Making the photo lighter…"
+msgstr "جار ضغط الصورة…"
+
+#: templates/engineer-apply.php:120
+msgid "Draft saved on this device"
+msgstr "تم حفظ المسودة على هذا الجهاز"
+
+#: templates/engineer-apply.php:121
+msgid "%s years"
+msgstr "%s سنة"
+
+#: templates/engineer-apply.php:122
+msgid "%d documents added"
+msgstr "تمت إضافة %d وثائق"
+
+#: templates/engineer-apply.php:123
+msgid "Add your documents again: files are never kept in the draft."
+msgstr "أضف وثائقك من جديد: لا تُحفظ الملفات أبدا في المسودة."
+
+#: templates/engineer-apply.php:141
+msgid "Send your application again"
+msgstr "أعد إرسال ترشحك"
+
+#. translators: %d: number of steps.
+#: templates/engineer-apply.php:142
+msgid "%d steps · about 5 minutes"
+msgstr "%d خطوات · حوالي 5 دقائق"
+
+#: templates/engineer-apply.php:156
+msgid "Your application was not approved:"
+msgstr "لم يُقبل ترشحك:"
+
+#: templates/engineer-apply.php:156
+msgid "Correct it and send it again."
+msgstr "صحّحه وأرسله من جديد."
+
+#: templates/engineer-apply.php:158
+msgid ""
+"This form needs JavaScript. Turn it on in your browser, then reload the "
+"page."
+msgstr ""
+"يحتاج هذا النموذج إلى JavaScript. فعّله في متصفحك ثم أعد تحميل الصفحة."
+
+#: templates/engineer-apply.php:162
+msgid "Your personal information"
+msgstr "معلوماتك الشخصية"
+
+#: templates/engineer-apply.php:163
+msgid ""
+"It is used to create your account and to reach you. It is never shown to "
+"clients."
+msgstr "تُستعمل لإنشاء حسابك والتواصل معك. لا تُعرض أبدا على العملاء."
+
+#: templates/engineer-apply.php:163
+msgid "Already a partner?"
+msgstr "شريك بالفعل؟"
+
+#: templates/engineer-apply.php:165
+msgid "Last name"
+msgstr "اللقب"
+
+#: templates/engineer-apply.php:166
+msgid "First name"
+msgstr "الاسم"
+
+#: templates/engineer-apply.php:176
+msgid "A verification code is sent to it at the last step."
+msgstr "يُرسل إليه رمز تحقق في الخطوة الأخيرة."
+
+#: templates/engineer-apply.php:182
+msgid "Your professional profile"
+msgstr "ملفك المهني"
+
+#: templates/engineer-apply.php:183
+msgid "The platform uses it to give you the missions that suit you."
+msgstr "تستعمله المنصة لإسناد المهام المناسبة لك."
+
+#: templates/engineer-apply.php:210
+msgid "Services you carry out"
+msgstr "الخدمات التي تنجزها"
+
+#: templates/engineer-apply.php:217
+msgid "OK"
+msgstr "موافق"
+
+#: templates/engineer-apply.php:228
+msgid ""
+"All documents are required. Choose your files or take them in photo: photos "
+"are made lighter before sending."
+msgstr "كل الوثائق إلزامية. اختر ملفاتك أو صوّرها: تُضغط الصور قبل الإرسال."
 
 #. translators: %d: MB.
-#: templates/engineer-apply.php:106
+#: templates/engineer-apply.php:235
 msgid "PDF, JPG or PNG, %d MB maximum"
 msgstr "PDF أو JPG أو PNG، بحد أقصى %d ميغابايت"
 
-#: templates/engineer-apply.php:113
+#: templates/engineer-apply.php:240
+msgid "Add"
+msgstr "إضافة"
+
+#: templates/engineer-apply.php:248 templates/engineer-apply.php:254
+msgid "Photo or logo"
+msgstr "صورة أو شعار"
+
+#: templates/engineer-apply.php:249
+msgid "JPG or PNG — resized automatically"
+msgstr "JPG أو PNG — يُعاد تحجيمها تلقائيا"
+
+#: templates/engineer-apply.php:258
 msgid ""
-"I accept the terms of use and the rules of partner engineers: I work on the "
-"missions the platform gives me and never contact its clients directly."
-msgstr ""
-"أوافق على شروط الاستخدام وقواعد المهندسين الشركاء: أنجز المهام التي تسندها "
-"المنصة ولا أتواصل مباشرة مع زبائنها أبدا."
+"Your documents are kept in a private space: only the platform team sees "
+"them."
+msgstr "تُحفظ وثائقك في فضاء خاص: لا يراها إلا فريق المنصة."
 
-#: templates/engineer-apply.php:116
-msgid "Send my application"
-msgstr "أرسل ترشحي"
+#: templates/engineer-apply.php:264
+msgid "Last step before the check of your e-mail address."
+msgstr "آخر خطوة قبل التحقق من بريدك الإلكتروني."
 
-#: templates/engineer-apply.php:116
+#: templates/engineer-apply.php:264
+msgid "Accept the rules, then send your application again."
+msgstr "اقبل القواعد ثم أعد إرسال ترشحك."
+
+#: templates/engineer-apply.php:278
+msgid "Confirm the password"
+msgstr "تأكيد كلمة المرور"
+
+#: templates/engineer-apply.php:284
+msgid "Rules of partner engineers"
+msgstr "قواعد المهندسين الشركاء"
+
+#: templates/engineer-apply.php:286
+msgid "In short:"
+msgstr "باختصار:"
+
+#: templates/engineer-apply.php:288
+msgid "The platform offers you missions; you are free to accept them."
+msgstr "تعرض عليك المنصة مهاما؛ ولك حرية قبولها."
+
+#: templates/engineer-apply.php:289
+msgid "You never contact the clients of the platform directly."
+msgstr "لا تتصل أبدا بعملاء المنصة مباشرة."
+
+#: templates/engineer-apply.php:290
+msgid ""
+"Your fee is set when the mission is given to you and paid by the platform."
+msgstr "تُحدد أتعابك عند إسناد المهمة وتدفعها المنصة."
+
+#: templates/engineer-apply.php:291
+msgid "Your documents and studies stay confidential."
+msgstr "تبقى وثائقك ودراساتك سرية."
+
+#: templates/engineer-apply.php:294
+msgid "I accept the terms of use and the rules of partner engineers."
+msgstr "أقبل شروط الاستعمال وقواعد المهندسين الشركاء."
+
+#: templates/engineer-apply.php:300
+msgid "Check and confirm"
+msgstr "راجع وأكّد"
+
+#: templates/engineer-apply.php:301
+msgid ""
+"Read your application again, then type the code sent to your e-mail address."
+msgstr "راجع ترشحك ثم أدخل الرمز المرسل إلى بريدك الإلكتروني."
+
+#: templates/engineer-apply.php:303
+msgid "Personal"
+msgstr "شخصي"
+
+#. translators: %d: position.
+#: templates/engineer-apply.php:311
+msgid "Digit %d of the code"
+msgstr "الرقم %d من الرمز"
+
+#: templates/engineer-apply.php:314
+msgid "Not received? Check your spam folder."
+msgstr "لم يصلك؟ تحقق من البريد غير المرغوب فيه."
+
+#: templates/engineer-apply.php:325
+msgid "Confirm and send"
+msgstr "تأكيد وإرسال"
+
+#: templates/engineer-apply.php:325
 msgid "Send my application again"
 msgstr "أعد إرسال ترشحي"
-
-#: templates/engineer-apply.php:118
-msgid "Already a partner?"
-msgstr "شريك بالفعل؟"
 
 #. Template Name of the theme
 msgid "SM — Home"

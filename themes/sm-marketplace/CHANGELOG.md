@@ -1,5 +1,11 @@
 # Changelog — sm-marketplace
 
+## 0.29.0 — 2026-11-13 (avec sm-engineering 0.4.0)
+
+- « Devenir ingénieur partenaire » : assistant en 5 étapes dans une fenêtre de taille fixe (plein écran sur téléphone) — informations personnelles, professionnelles, documents, mot de passe et conditions, vérification (récapitulatif + code e-mail).
+- Vérification de chaque étape avant de continuer ; brouillon des textes sur l'appareil (jamais le mot de passe ni les fichiers) ; services en liste déroulante à choix multiples ; « Autre » ouvre un champ ; photos des documents compressées avant l'envoi ; indicateur de mot de passe ; retour du navigateur = étape précédente.
+- Profil partenaire du tableau de bord : mêmes champs (type, nom du BET, titre verrouillé après validation, spécialité).
+
 ## 0.28.1 — 2026-11-13 (avec sm-core 0.8.2)
 
 - Formulaires : code de sécurité renouvelé avant l'envoi d'une page ancienne (cache ou onglet ouvert longtemps) ; pages « Devenir ingénieur partenaire », « Demander une étude » et « Contact » jamais mises en cache.

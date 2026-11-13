@@ -56,6 +56,12 @@ final class Engineers {
 		global $wpdb;
 		$row = array(
 			'title'       => $d['title'],
+			'partner_type'     => (string) ( $d['partner_type'] ?? 'independent' ),
+			'bet_name'         => (string) ( $d['bet_name'] ?? '' ),
+			'degree'           => (string) ( $d['degree'] ?? '' ),
+			'degree_other'     => (string) ( $d['degree_other'] ?? '' ),
+			'speciality'       => (string) ( $d['speciality'] ?? '' ),
+			'speciality_other' => (string) ( $d['speciality_other'] ?? '' ),
 			'diploma'     => $d['diploma'],
 			'school'      => $d['school'],
 			'grad_year'   => (int) $d['grad_year'],

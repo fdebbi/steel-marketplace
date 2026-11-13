@@ -524,7 +524,7 @@
 		return v + ( 'ar' === cfg.lang ? ( mb ? ' MB' : ' KB' ) : ( mb ? ' Mo' : ' Ko' ) );
 	}
 	var canSet = ( function () { try { return !! new DataTransfer(); } catch ( e ) { return false; } } )();
-	$$( 'input[type="file"]' ).forEach( function ( input ) {
+	$$( 'input[type="file"]:not([data-wz-file])' ).forEach( function ( input ) {
 		if ( input.hasAttribute( 'data-sm-files-off' ) ) { return; }
 		var box = input.closest( 'label' ) || input;
 		var list = document.createElement( 'ul' );

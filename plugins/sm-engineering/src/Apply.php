@@ -34,62 +34,101 @@ final class Apply {
 		add_action( 'admin_post_sm_engineer_profile', array( __CLASS__, 'handle_profile' ) );
 	}
 
-	/** Documents asked with the application: key => [ label, required ]. */
-	public static function documents() {
-		return array(
-			'diploma'  => array( __( 'Engineering diploma', 'sm-engineering' ), true ),
-			'id'       => array( __( 'Identity card or passport', 'sm-engineering' ), true ),
-			'approval' => array( __( 'Approval or registration of the engineering office (if any)', 'sm-engineering' ), false ),
-			'cv'       => array( __( 'CV or list of references', 'sm-engineering' ), false ),
+	/**
+	 * Documents asked with the application (0.4.0): key => [ label, required ].
+	 * All are required; the approval of the engineering office only for a BET.
+	 *
+	 * @param bool $bet The engineer applies as an engineering office (BET).
+	 */
+	public static function documents( $bet = false ) {
+		$docs = array(
+			'diploma' => array( __( 'Diploma', 'sm-engineering' ), true ),
+			'id'      => array( __( 'Identity card or passport', 'sm-engineering' ), true ),
 		);
+		if ( $bet ) {
+			$docs['bet_agrement'] = array( __( 'BET approval (MHUV, valid)', 'sm-engineering' ), true );
+		}
+		return $docs;
+	}
+
+	/** Name of a document of a verification (also the documents of older applications). */
+	public static function document_label( $key ) {
+		$labels = array(
+			'diploma'      => __( 'Diploma', 'sm-engineering' ),
+			'id'           => __( 'Identity card or passport', 'sm-engineering' ),
+			'bet_agrement' => __( 'BET approval (MHUV, valid)', 'sm-engineering' ),
+			'approval'     => __( 'Approval or registration of the engineering office (if any)', 'sm-engineering' ),
+			'cv'           => __( 'CV or list of references', 'sm-engineering' ),
+		);
+		return $labels[ $key ] ?? $key;
 	}
 
 	/**
-	 * Validate the engineer fields.
+	 * Validate the engineer fields (0.4.0: type of partner, title and speciality
+	 * chosen in lists, years of experience, services, presentation).
 	 *
-	 * @param bool $locked Diploma, school and year cannot change (approved engineer).
+	 * @param bool $locked The title cannot change (approved engineer).
 	 */
 	public static function validate_profile( $locked = false ) {
-		$errors = array();
-		$types  = Settings::types();
-		$d      = array(
-			'title'       => mb_substr( trim( Forms::post( 'title' ) ), 0, 160 ),
-			'diploma'     => mb_substr( trim( Forms::post( 'diploma' ) ), 0, 160 ),
-			'school'      => mb_substr( trim( Forms::post( 'school' ) ), 0, 160 ),
-			'grad_year'   => absint( Forms::post( 'grad_year' ) ),
-			'experience'  => min( 60, absint( Forms::post( 'experience' ) ) ),
-			'specialties' => array_values( array_intersect( array_map( 'sanitize_key', (array) Forms::post( 'specialties', array() ) ), array_keys( $types ) ) ),
-			'bio'         => mb_substr( Forms::post_textarea( 'bio' ), 0, 2000 ),
+		$errors  = array();
+		$types   = Settings::types();
+		$titles  = Lists::all( 'titles' );
+		$specs   = Lists::all( 'specialities' );
+		$d       = array(
+			'partner_type'     => 'bet' === Forms::post( 'partner_type' ) ? 'bet' : 'independent',
+			'bet_name'         => mb_substr( trim( Forms::post( 'bet_name' ) ), 0, 160 ),
+			'degree'           => sanitize_key( Forms::post( 'degree' ) ),
+			'degree_other'     => mb_substr( trim( Forms::post( 'degree_other' ) ), 0, 120 ),
+			'speciality'       => sanitize_key( Forms::post( 'speciality' ) ),
+			'speciality_other' => mb_substr( trim( Forms::post( 'speciality_other' ) ), 0, 120 ),
+			'experience'       => min( 60, absint( Forms::post( 'experience' ) ) ),
+			'specialties'      => array_values( array_intersect( array_map( 'sanitize_key', (array) Forms::post( 'specialties', array() ) ), array_keys( $types ) ) ),
+			'bio'              => mb_substr( Forms::post_textarea( 'bio' ), 0, 2000 ),
+			'school'           => '',
+			'grad_year'        => 0,
 		);
-		if ( mb_strlen( $d['title'] ) < 3 ) {
-			$errors['title'] = __( 'Enter your professional title, for example “Civil engineer — steel structures”.', 'sm-engineering' );
+		if ( 'bet' !== $d['partner_type'] ) {
+			$d['bet_name'] = '';
+		} elseif ( mb_strlen( $d['bet_name'] ) < 2 ) {
+			$errors['bet_name'] = __( 'Enter the name of the engineering office.', 'sm-engineering' );
 		}
 		if ( ! $locked ) {
-			if ( mb_strlen( $d['diploma'] ) < 3 ) {
-				$errors['diploma'] = __( 'Enter your diploma.', 'sm-engineering' );
+			if ( ! isset( $titles[ $d['degree'] ] ) ) {
+				$errors['degree'] = __( 'Choose your professional title.', 'sm-engineering' );
+			} elseif ( 'other' === $d['degree'] && mb_strlen( $d['degree_other'] ) < 3 ) {
+				$errors['degree_other'] = __( 'Write your professional title.', 'sm-engineering' );
 			}
-			if ( mb_strlen( $d['school'] ) < 2 ) {
-				$errors['school'] = __( 'Enter the university or school.', 'sm-engineering' );
+			if ( 'other' !== $d['degree'] ) {
+				$d['degree_other'] = '';
 			}
-			if ( $d['grad_year'] < 1960 || $d['grad_year'] > (int) gmdate( 'Y' ) ) {
-				$errors['grad_year'] = __( 'Enter the year of the diploma.', 'sm-engineering' );
-			}
+		}
+		if ( ! isset( $specs[ $d['speciality'] ] ) ) {
+			$errors['speciality'] = __( 'Choose your speciality.', 'sm-engineering' );
+		} elseif ( 'other' === $d['speciality'] && mb_strlen( $d['speciality_other'] ) < 3 ) {
+			$errors['speciality_other'] = __( 'Write your speciality.', 'sm-engineering' );
+		}
+		if ( 'other' !== $d['speciality'] ) {
+			$d['speciality_other'] = '';
 		}
 		if ( ! $d['specialties'] ) {
 			$errors['specialties'] = __( 'Choose at least one service.', 'sm-engineering' );
 		}
-		if ( mb_strlen( $d['bio'] ) < 40 ) {
-			$errors['bio'] = __( 'Describe your experience in a few lines (40 characters at least).', 'sm-engineering' );
+		if ( mb_strlen( $d['bio'] ) < 20 ) {
+			$errors['bio'] = __( 'Present your experience in a few words (20 characters at least).', 'sm-engineering' );
 		}
+		// Title shown to the platform team: "Ingénieur d'État en génie civil — Structure métallique".
+		$degree       = Lists::label( 'titles', $d['degree'], $d['degree_other'], 'fr' );
+		$d['diploma'] = $degree;
+		$d['title']   = mb_substr( trim( $degree . ' — ' . Lists::label( 'specialities', $d['speciality'], $d['speciality_other'], 'fr' ), ' —' ), 0, 160 );
 		return array( 'data' => $d, 'errors' => $errors );
 	}
 
 	/** Store the documents and open a verification request. */
-	private static function store_documents( $company_id, $require ) {
+	private static function store_documents( $company_id, $require, $bet = false ) {
 		$stored = array();
 		$errors = array();
 		$sub    = 'engineers/' . (int) $company_id . '-' . wp_generate_password( 10, false );
-		foreach ( self::documents() as $key => list( $label, $required ) ) {
+		foreach ( self::documents( $bet ) as $key => list( $label, $required ) ) {
 			$r = Files::store( 'doc_' . $key, $sub, 1, array( 'pdf', 'jpg', 'jpeg', 'png' ) );
 			if ( $r['errors'] ) {
 				$errors[ 'doc_' . $key ] = $label . ' : ' . $r['errors'][0];
@@ -149,20 +188,34 @@ final class Apply {
 		if ( ! Forms::rate_limit( 'register', (int) sm_setting( 'register_per_hour', 5 ), HOUR_IN_SECONDS ) ) {
 			Forms::back( array( __( 'Too many sign-ups from this connection. Try again in an hour.', 'sm-engineering' ) ) );
 		}
+		// 0.4.0: first name and last name in two fields.
+		$first = trim( Forms::post( 'first_name' ) );
+		$last  = trim( Forms::post( 'last_name' ) );
+		if ( '' !== $first || '' !== $last ) {
+			$_POST['name'] = trim( $first . ' ' . $last ); // phpcs:ignore WordPress.Security.NonceVerification -- checked in Forms::begin().
+		}
 		$account = Registration::validate( 'engineer' );
 		$profile = self::validate_profile();
 		$errors  = $account['errors'] + $profile['errors'];
 		unset( $errors['company'] );
+		if ( isset( $errors['name'] ) ) {
+			$errors[ '' === $first ? 'first_name' : 'last_name' ] = __( 'Enter your last name and first name.', 'sm-engineering' );
+			unset( $errors['name'] );
+		}
+		// The e-mail address is confirmed with a code before the account is created.
+		if ( ! isset( $errors['email'] ) && ! EmailCode::confirmed( $account['email'] ) ) {
+			$errors['email_code'] = __( 'Confirm your e-mail address with the code you received.', 'sm-engineering' );
+		}
 		if ( $errors ) {
 			Forms::back( $errors );
 		}
-		$account['company'] = $account['full_name'];
+		$account['company'] = 'bet' === $profile['data']['partner_type'] ? $profile['data']['bet_name'] : $account['full_name'];
 		$ids                = Registration::create_account( $account );
 		if ( is_wp_error( $ids ) ) {
 			Forms::back( array( $ids->get_error_code() => $ids->get_error_message() ) );
 		}
 		list( $new_user, $company_id ) = $ids;
-		$docs = self::store_documents( $company_id, true );
+		$docs = self::store_documents( $company_id, true, 'bet' === $profile['data']['partner_type'] );
 		if ( $docs['errors'] ) {
 			// Nothing is kept when a required document is missing: the person sends the form again.
 			require_once ABSPATH . 'wp-admin/includes/user.php';
@@ -172,11 +225,18 @@ final class Apply {
 		Engineers::save( $company_id, $new_user, $profile['data'], 'pending' );
 		Engineers::set( $company_id, array( 'verification_id' => self::open_verification( $company_id, $docs['docs'], $new_user ) ) );
 		$photo_errors = self::photo( $company_id );
+		if ( '' !== $first || '' !== $last ) {
+			wp_update_user( array( 'ID' => $new_user, 'first_name' => $first, 'last_name' => $last ) );
+		}
+		// The address was confirmed with the code: the contact of the account is verified.
+		update_user_meta( $new_user, 'sm_contact_verified', 'email' );
+		update_user_meta( $new_user, 'sm_contact_verified_at', time() );
+		Companies::raise_level( $company_id, 1 );
+		EmailCode::forget( $account['email'] );
 		Registration::sign_in( $new_user, $account );
-		AuditLog::add( 'engineer.applied', 'engineer', $company_id, array( 'specialties' => $profile['data']['specialties'] ), $new_user, $company_id );
+		AuditLog::add( 'engineer.applied', 'engineer', $company_id, array( 'specialties' => $profile['data']['specialties'], 'partner_type' => $profile['data']['partner_type'] ), $new_user, $company_id );
 		Notify::notify_moderators( 'engineer.applied', array( 'company_id' => $company_id ) );
-		PhoneVerification::send_code( $new_user );
-		Forms::back( $photo_errors, __( 'Thank you, your application is sent. The platform team checks your documents and answers by e-mail.', 'sm-engineering' ), CoreRoutes::url( 'account' ) );
+		Forms::back( $photo_errors, __( 'Thank you, your application is sent. The platform team checks your documents and answers by e-mail.', 'sm-engineering' ), CoreRoutes::url( 'engineer-apply', array( 'sent' => 1 ) ) );
 	}
 
 	/** A partner engineer sends the application again (after a refusal) or completes it. */
@@ -192,7 +252,7 @@ final class Apply {
 		if ( $profile['errors'] ) {
 			Forms::back( $profile['errors'] );
 		}
-		$docs = self::store_documents( $e->company_id, true );
+		$docs = self::store_documents( $e->company_id, true, 'bet' === $profile['data']['partner_type'] );
 		if ( $docs['errors'] ) {
 			Forms::back( $docs['errors'] );
 		}
@@ -201,7 +261,7 @@ final class Apply {
 		$photo_errors = self::photo( $e->company_id );
 		AuditLog::add( 'engineer.applied', 'engineer', $e->company_id, array( 'again' => 1 ), $user_id, $e->company_id );
 		Notify::notify_moderators( 'engineer.applied', array( 'company_id' => $e->company_id ) );
-		Forms::back( $photo_errors, __( 'Your application is sent again. The platform team will review it.', 'sm-engineering' ), CoreRoutes::url( 'account' ) );
+		Forms::back( $photo_errors, __( 'Your application is sent again. The platform team will review it.', 'sm-engineering' ), CoreRoutes::url( 'engineer-apply', array( 'sent' => 1 ) ) );
 	}
 
 	private static function remove_account( $user_id, $company_id ) {
@@ -226,10 +286,13 @@ final class Apply {
 			Forms::back( $profile['errors'] );
 		}
 		$d = $profile['data'];
-		if ( $locked ) { // The diploma was checked by the platform: it stays as approved.
-			$d['diploma']   = $e->diploma;
-			$d['school']    = $e->school;
-			$d['grad_year'] = $e->grad_year;
+		if ( $locked ) { // The title was checked by the platform with the diploma: it stays as approved.
+			$d['degree']       = $e->degree;
+			$d['degree_other'] = $e->degree_other;
+			$d['diploma']      = $e->diploma;
+			$d['school']       = $e->school;
+			$d['grad_year']    = $e->grad_year;
+			$d['title']        = mb_substr( trim( ( '' !== $e->degree ? Lists::label( 'titles', $e->degree, $e->degree_other, 'fr' ) : $e->diploma ) . ' — ' . Lists::label( 'specialities', $d['speciality'], $d['speciality_other'], 'fr' ), ' —' ), 0, 160 );
 		}
 		Engineers::save( $e->company_id, $user_id, $d );
 		Engineers::set( $e->company_id, array( 'available' => Forms::post( 'available' ) ? 1 : 0 ) );
