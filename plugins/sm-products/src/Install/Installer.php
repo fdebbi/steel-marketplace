@@ -108,6 +108,19 @@ final class Installer {
 			// 0.5.0: a price "per lot" becomes the sale mode "whole lot" (assembled buildings keep their asking price).
 			$wpdb->query( "UPDATE {$wpdb->prefix}sm_products SET sale_mode = 'lot', lot_price = price WHERE price_unit = 'lot' AND variant <> 'assembled'" ); // phpcs:ignore WordPress.DB
 		}
+		if ( $from && $from < 7 ) {
+			// 0.10.0 (decision of 13 Nov. 2026): no check before publication. Switch moderation
+			// off and publish the listings that were waiting for a check.
+			$s = get_option( 'sm_products_settings', array() );
+			if ( is_array( $s ) && $s ) {
+				$s['moderation']        = 0;
+				$s['client_moderation'] = 0;
+				update_option( 'sm_products_settings', $s );
+			}
+			foreach ( $wpdb->get_col( "SELECT id FROM {$wpdb->prefix}sm_products WHERE status = 'pending'" ) as $pid ) { // phpcs:ignore WordPress.DB
+				\SM\Products\Products::set_status( (int) $pid, 'published' );
+			}
+		}
 		update_option( 'sm_products_db_version', SM_PRODUCTS_DB_VERSION, false );
 	}
 

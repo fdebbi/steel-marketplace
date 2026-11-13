@@ -18,7 +18,11 @@ $acct = is_user_logged_in() ? sm_theme_account() : null;
 ?>
 <section class="sm-panel" id="<?php echo esc_attr( $args['id'] ); ?>">
 	<h2 class="sm-panel__title"><?php echo esc_html( $args['title'] ); ?></h2>
-	<?php sm_theme_notices(); ?>
+	<?php
+	if ( '' === sm_theme_old( 'product_id' ) ) { // Not the messages of the "Buy / offer" form (0.24.0).
+		sm_theme_notices();
+	}
+	?>
 
 	<?php if ( sm_theme_core_active() && ! is_user_logged_in() ) : ?>
 		<p><?php esc_html_e( 'Sign in or create a free account to contact companies on the platform.', 'sm-marketplace' ); ?></p>
@@ -36,11 +40,12 @@ $acct = is_user_logged_in() ? sm_theme_account() : null;
 			<input type="hidden" name="module" value="<?php echo esc_attr( $args['module'] ); ?>">
 			<input type="hidden" name="entity_id" value="<?php echo esc_attr( $args['entity_id'] ); ?>">
 			<input type="hidden" name="company" value="<?php echo esc_attr( $args['company'] ); ?>">
-			<input type="hidden" name="subject" value="<?php echo esc_attr( $args['subject'] ); ?>">
+
 			<div class="sm-field sm-field--row">
 				<div><label for="<?php echo esc_attr( $args['id'] ); ?>-name"><?php esc_html_e( 'Full name', 'sm-marketplace' ); ?></label><input id="<?php echo esc_attr( $args['id'] ); ?>-name" name="name" autocomplete="name" dir="auto" required value="<?php echo esc_attr( sm_theme_old( 'name', $acct['user'] ?? '' ) ); ?>"></div>
 				<div><label for="<?php echo esc_attr( $args['id'] ); ?>-phone"><?php esc_html_e( 'Phone', 'sm-marketplace' ); ?></label><input id="<?php echo esc_attr( $args['id'] ); ?>-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" value="<?php echo esc_attr( sm_theme_old( 'phone', $acct['user_phone'] ?? '' ) ); ?>"<?php sm_theme_aria( 'phone' ); ?>><?php sm_theme_error( 'phone' ); ?></div>
 			</div>
+			<div class="sm-field"><label for="<?php echo esc_attr( $args['id'] ); ?>-subject"><?php esc_html_e( 'Subject', 'sm-marketplace' ); ?></label><input id="<?php echo esc_attr( $args['id'] ); ?>-subject" name="subject" dir="auto" maxlength="200" value="<?php echo esc_attr( sm_theme_old( 'subject', $args['subject'] ) ); ?>"></div>
 			<?php if ( 'listing' === $args['kind'] ) : ?>
 				<div class="sm-field"><label for="<?php echo esc_attr( $args['id'] ); ?>-qty"><?php esc_html_e( 'Quantity needed', 'sm-marketplace' ); ?></label><input id="<?php echo esc_attr( $args['id'] ); ?>-qty" name="qty" dir="auto" value="<?php echo esc_attr( sm_theme_old( 'qty' ) ); ?>"></div>
 			<?php endif; ?>

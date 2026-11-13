@@ -1,0 +1,498 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Trade 0.1.0\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: sm-trade\n"
+
+#. Plugin Name of the plugin
+#: sm-trade.php
+msgid "SM Trade"
+msgstr "SM Commandes et offres"
+
+#. Plugin URI of the plugin
+#: sm-trade.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-trade.php
+msgid ""
+"Orders and offers between buyers and sellers: \"Buy\" at the listed price "
+"(whole lot or a quantity), \"Make an offer\" with counter-offers, acceptance"
+" by the seller, stock taken from the listing, contact details shared once "
+"accepted, history for the buyer, the seller and the administration (CSV "
+"export). Payment and delivery are settled directly between buyer and seller."
+" Requires SM Core and SM Products 0.10.0."
+msgstr ""
+"Commandes et offres entre acheteurs et vendeurs : « Acheter » au prix "
+"affiché (tout le lot ou une quantité), « Faire une offre » avec contre-"
+"offres, acceptation par le vendeur, stock retiré de l’annonce, coordonnées "
+"partagées après acceptation, historique pour l’acheteur, le vendeur et "
+"l’administration (export CSV). Le paiement et la livraison se règlent "
+"directement entre acheteur et vendeur. Nécessite SM Core et SM Products "
+"0.10.0."
+
+#. Author of the plugin
+#: sm-trade.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-trade.php:48
+msgid ""
+"SM Trade needs SM Core and SM Products 0.10.0 or later. Activate or update "
+"them first."
+msgstr ""
+"SM Commandes et offres nécessite SM Core et SM Products 0.10.0 ou plus "
+"récent. Activez-les ou mettez-les à jour d’abord."
+
+#: src/Admin/Admin.php:29 src/Admin/Admin.php:84
+msgid "Orders and offers"
+msgstr "Commandes et offres"
+
+#: src/Admin/Admin.php:55
+msgid "Waiting for an answer"
+msgstr "En attente de réponse"
+
+#: src/Admin/Admin.php:56 src/Admin/Admin.php:67 src/Theme/Bridge.php:100
+msgid "Accepted"
+msgstr "Acceptée"
+
+#: src/Admin/Admin.php:57 src/Admin/Admin.php:68 src/Theme/Bridge.php:101
+msgid "Refused"
+msgstr "Refusée"
+
+#: src/Admin/Admin.php:58 src/Admin/Admin.php:69 src/Theme/Bridge.php:102
+msgid "Cancelled"
+msgstr "Annulée"
+
+#: src/Admin/Admin.php:59 src/Theme/Bridge.php:103
+msgid "Expired"
+msgstr "Expirée"
+
+#: src/Admin/Admin.php:65
+msgid "Request sent"
+msgstr "Demande envoyée"
+
+#: src/Admin/Admin.php:66
+msgid "Other price proposed"
+msgstr "Autre prix proposé"
+
+#: src/Admin/Admin.php:70
+msgid "Expired (no answer)"
+msgstr "Expirée (sans réponse)"
+
+#: src/Admin/Admin.php:90
+msgid ""
+"Every order (\"Buy\") and offer between buyers and sellers, with each "
+"answer. Payment and delivery are settled directly between them; the platform"
+" keeps the history."
+msgstr ""
+"Toutes les commandes (« Acheter ») et offres entre acheteurs et vendeurs, "
+"avec chaque réponse. Le paiement et la livraison se règlent directement "
+"entre eux ; la plateforme garde l’historique."
+
+#: src/Admin/Admin.php:97 src/Admin/Admin.php:109 src/Admin/Admin.php:114
+#: src/Admin/Admin.php:115
+msgid "All"
+msgstr "Tous"
+
+#. translators: %s: total of the accepted orders and offers.
+#: src/Admin/Admin.php:104
+msgid "Total accepted: %s"
+msgstr "Total accepté : %s"
+
+#: src/Admin/Admin.php:109 src/Admin/Admin.php:133 src/Admin/Admin.php:160
+#: src/Admin/Admin.php:197
+msgid "Status"
+msgstr "Statut"
+
+#: src/Admin/Admin.php:114 src/Admin/Admin.php:197
+msgid "Type"
+msgstr "Type"
+
+#: src/Admin/Admin.php:114 src/Admin/Admin.php:137 src/Admin/Admin.php:157
+#: src/Admin/Admin.php:200 src/Theme/Bridge.php:132
+msgid "Order"
+msgstr "Commande"
+
+#: src/Admin/Admin.php:114 src/Admin/Admin.php:137 src/Admin/Admin.php:157
+#: src/Admin/Admin.php:200 src/Theme/Bridge.php:132
+msgid "Offer"
+msgstr "Offre"
+
+#: src/Admin/Admin.php:115 src/Admin/Admin.php:197
+msgid "Market"
+msgstr "Marché"
+
+#: src/Admin/Admin.php:120
+msgid "From"
+msgstr "Du"
+
+#: src/Admin/Admin.php:121
+msgid "To"
+msgstr "Au"
+
+#: src/Admin/Admin.php:122
+msgid "Search (reference, listing, buyer)"
+msgstr "Recherche (référence, annonce, acheteur)"
+
+#: src/Admin/Admin.php:123
+msgid "Filter"
+msgstr "Filtrer"
+
+#: src/Admin/Admin.php:124
+msgid "Export (CSV, Excel)"
+msgstr "Exporter (CSV, Excel)"
+
+#: src/Admin/Admin.php:130
+msgid "No order or offer yet."
+msgstr "Aucune commande ni offre pour l’instant."
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:197
+msgid "Reference"
+msgstr "Référence"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:173
+msgid "Date (UTC)"
+msgstr "Date (UTC)"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:161 src/Admin/Admin.php:197
+msgid "Listing"
+msgstr "Annonce"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:162 src/Admin/Admin.php:175
+#: src/Admin/Admin.php:197 src/Theme/Bridge.php:110
+msgid "Seller"
+msgstr "Vendeur"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:163 src/Admin/Admin.php:175
+#: src/Admin/Admin.php:197 src/Theme/Bridge.php:109
+msgid "Buyer"
+msgstr "Acheteur"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:164 src/Admin/Admin.php:197
+msgid "Quantity"
+msgstr "Quantité"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:165
+msgid "Listed price"
+msgstr "Prix affiché"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:166
+msgid "Price agreed or proposed"
+msgstr "Prix convenu ou proposé"
+
+#: src/Admin/Admin.php:142 src/Admin/Admin.php:164 src/Theme/Bridge.php:35
+msgid "whole lot"
+msgstr "tout le lot"
+
+#. translators: %d: number of counter-offers.
+#: src/Admin/Admin.php:143
+msgid "%d counter-offer"
+msgid_plural "%d counter-offers"
+msgstr[0] "%d contre-offre"
+msgstr[1] "%d contre-offres"
+
+#. translators: %d: number of counter-offers.
+#: src/Admin/Admin.php:144
+msgid "Seller to answer"
+msgstr "Réponse du vendeur attendue"
+
+#. translators: %d: number of counter-offers.
+#: src/Admin/Admin.php:144
+msgid "Buyer to answer"
+msgstr "Réponse de l’acheteur attendue"
+
+#: src/Admin/Admin.php:156
+msgid "All orders and offers"
+msgstr "Toutes les commandes et offres"
+
+#: src/Admin/Admin.php:167
+msgid "Message of the buyer"
+msgstr "Message de l’acheteur"
+
+#: src/Admin/Admin.php:172
+msgid "Open the listing"
+msgstr "Ouvrir l’annonce"
+
+#: src/Admin/Admin.php:173
+msgid "Steps"
+msgstr "Étapes"
+
+#: src/Admin/Admin.php:173
+msgid "By"
+msgstr "Par"
+
+#: src/Admin/Admin.php:173
+msgid "Step"
+msgstr "Étape"
+
+#: src/Admin/Admin.php:173
+msgid "Price"
+msgstr "Prix"
+
+#: src/Admin/Admin.php:173
+msgid "Message"
+msgstr "Message"
+
+#: src/Admin/Admin.php:175 src/Theme/Bridge.php:111 src/Theme/Bridge.php:112
+msgid "Platform"
+msgstr "Plateforme"
+
+#: src/Admin/Admin.php:197
+msgid "Created (UTC)"
+msgstr "Créée (UTC)"
+
+#: src/Admin/Admin.php:197
+msgid "Closed (UTC)"
+msgstr "Clôturée (UTC)"
+
+#: src/Admin/Admin.php:197
+msgid "Buyer phone"
+msgstr "Téléphone de l’acheteur"
+
+#: src/Admin/Admin.php:197
+msgid "Buyer e-mail"
+msgstr "E-mail de l’acheteur"
+
+#: src/Admin/Admin.php:197
+msgid "Unit"
+msgstr "Unité"
+
+#: src/Admin/Admin.php:197
+msgid "Listed price (DA)"
+msgstr "Prix affiché (DA)"
+
+#: src/Admin/Admin.php:197
+msgid "Price agreed or proposed (DA)"
+msgstr "Prix convenu ou proposé (DA)"
+
+#: src/Admin/Admin.php:197
+msgid "Counter-offers"
+msgstr "Contre-offres"
+
+#: src/Deals.php:76
+msgid "This listing is no longer on sale."
+msgstr "Cette annonce n’est plus en vente."
+
+#: src/Deals.php:80
+msgid "Sign in to buy or make an offer."
+msgstr "Connectez-vous pour acheter ou faire une offre."
+
+#: src/Deals.php:84
+msgid "This is one of your own listings."
+msgstr "C’est une de vos propres annonces."
+
+#: src/Deals.php:87
+msgid ""
+"You already have an order or an offer waiting on this listing. Follow it in "
+"\"My purchases\"."
+msgstr ""
+"Vous avez déjà une commande ou une offre en attente sur cette annonce. "
+"Suivez-la dans « Mes achats »."
+
+#: src/Deals.php:100
+msgid "Enter the total price you offer."
+msgstr "Indiquez le prix total que vous proposez."
+
+#: src/Deals.php:107
+msgid "Enter your name."
+msgstr "Indiquez votre nom."
+
+#: src/Deals.php:110
+msgid "Enter a valid phone number, so the seller can call you."
+msgstr ""
+"Indiquez un numéro de téléphone valide, pour que le vendeur puisse vous "
+"appeler."
+
+#: src/Deals.php:113
+msgid "Enter a valid e-mail address."
+msgstr "Indiquez une adresse e-mail valide."
+
+#: src/Deals.php:144
+msgid "The request could not be saved. Try again."
+msgstr "La demande n’a pas pu être enregistrée. Réessayez."
+
+#: src/Deals.php:196
+msgid "This order or offer does not exist."
+msgstr "Cette commande ou offre n’existe pas."
+
+#: src/Deals.php:200
+msgid "It is not your turn to answer."
+msgstr "Ce n’est pas à vous de répondre."
+
+#: src/Deals.php:200
+msgid "This order or offer is already closed."
+msgstr "Cette commande ou offre est déjà clôturée."
+
+#: src/Deals.php:223
+msgid "Enter the total price you propose."
+msgstr "Indiquez le prix total que vous proposez."
+
+#: src/Deals.php:226
+msgid "Propose a different price, or accept this one."
+msgstr "Proposez un prix différent, ou acceptez celui-ci."
+
+#: src/Form.php:43
+msgid "You sent many orders or offers in a short time. Try again later."
+msgstr ""
+"Vous avez envoyé beaucoup de commandes ou d’offres en peu de temps. "
+"Réessayez plus tard."
+
+#: src/Form.php:72
+msgid ""
+"Offer sent to the seller. You will be told by e-mail when the seller "
+"answers."
+msgstr ""
+"Offre envoyée au vendeur. Vous serez prévenu par e-mail de sa réponse."
+
+#: src/Form.php:73
+msgid ""
+"Order sent to the seller. Nothing is paid on the platform: the seller "
+"accepts or refuses, then you agree on payment and delivery directly."
+msgstr ""
+"Commande envoyée au vendeur. Rien n’est payé sur la plateforme : le vendeur "
+"accepte ou refuse, puis vous convenez directement du paiement et de la "
+"livraison."
+
+#: src/Form.php:87
+msgid ""
+"Accepted. The contact details are below: agree on payment and delivery "
+"directly."
+msgstr ""
+"Accepté. Les coordonnées sont ci-dessous : convenez directement du paiement "
+"et de la livraison."
+
+#: src/Form.php:88
+msgid "Refused. The other party was told."
+msgstr "Refusé. L’autre partie a été prévenue."
+
+#: src/Form.php:89
+msgid "Cancelled. The seller was told."
+msgstr "Annulé. Le vendeur a été prévenu."
+
+#: src/Form.php:90
+msgid "Your price was sent. You will be told when the other party answers."
+msgstr "Votre prix a été envoyé. Vous serez prévenu de la réponse."
+
+#. translators: %s: message written with the answer.
+#: src/Notifications.php:49
+msgid "Message: \"%s\""
+msgstr "Message : « %s »"
+
+#: src/Notifications.php:56
+msgid "New order on your listing"
+msgstr "Nouvelle commande sur votre annonce"
+
+#. translators: 1: reference and listing, 2: total.
+#: src/Notifications.php:58
+msgid ""
+"A buyer orders %1$s for %2$s at your price. Accept or refuse it within 7 "
+"days; the buyer's name, phone and e-mail are on the order."
+msgstr ""
+"Un acheteur commande %1$s pour %2$s à votre prix. Acceptez ou refusez sous 7"
+" jours ; le nom, le téléphone et l’e-mail de l’acheteur figurent sur la "
+"commande."
+
+#: src/Notifications.php:63
+msgid "New offer on your listing"
+msgstr "Nouvelle offre sur votre annonce"
+
+#. translators: 1: reference and listing, 2: offered total.
+#: src/Notifications.php:65
+msgid ""
+"A buyer offers %2$s for %1$s. Accept, refuse or propose another price within"
+" 7 days."
+msgstr ""
+"Un acheteur propose %2$s pour %1$s. Acceptez, refusez ou proposez un autre "
+"prix sous 7 jours."
+
+#: src/Notifications.php:70
+msgid "New price proposed"
+msgstr "Nouveau prix proposé"
+
+#. translators: 1: reference and listing, 2: proposed total.
+#: src/Notifications.php:72
+msgid ""
+"For %1$s, the other party proposes %2$s. Accept, refuse or answer within 7 "
+"days."
+msgstr ""
+"Pour %1$s, l’autre partie propose %2$s. Acceptez, refusez ou répondez sous 7"
+" jours."
+
+#: src/Notifications.php:77
+msgid "Order accepted"
+msgstr "Commande acceptée"
+
+#. translators: 1: reference and listing, 2: total.
+#: src/Notifications.php:79
+msgid ""
+"%1$s is accepted for %2$s. The contact details are on the order page: agree "
+"on payment and delivery directly."
+msgstr ""
+"%1$s est acceptée pour %2$s. Les coordonnées sont sur la page de la commande"
+" : convenez directement du paiement et de la livraison."
+
+#: src/Notifications.php:84
+msgid "Order or offer refused"
+msgstr "Commande ou offre refusée"
+
+#. translators: %s: reference and listing.
+#: src/Notifications.php:86
+msgid "%s was refused."
+msgstr "%s a été refusée."
+
+#: src/Notifications.php:91
+msgid "Order or offer cancelled by the buyer"
+msgstr "Commande ou offre annulée par l’acheteur"
+
+#. translators: %s: reference and listing.
+#: src/Notifications.php:93
+msgid "The buyer cancelled %s."
+msgstr "L’acheteur a annulé %s."
+
+#: src/Notifications.php:98
+msgid "Order or offer expired"
+msgstr "Commande ou offre expirée"
+
+#. translators: %s: reference and listing.
+#: src/Notifications.php:100
+msgid "%s got no answer within 7 days and is closed."
+msgstr "%s n’a pas reçu de réponse sous 7 jours et est clôturée."
+
+#: src/Theme/Bridge.php:97
+msgid "Waiting for the seller"
+msgstr "En attente du vendeur"
+
+#: src/Theme/Bridge.php:97
+msgid "Waiting for the buyer"
+msgstr "En attente de l’acheteur"
+
+#: src/Theme/Bridge.php:115
+msgid "sent the request"
+msgstr "a envoyé la demande"
+
+#: src/Theme/Bridge.php:116
+msgid "proposed another price"
+msgstr "a proposé un autre prix"
+
+#: src/Theme/Bridge.php:117
+msgid "accepted"
+msgstr "a accepté"
+
+#: src/Theme/Bridge.php:118
+msgid "refused"
+msgstr "a refusé"
+
+#: src/Theme/Bridge.php:119
+msgid "cancelled"
+msgstr "a annulé"
+
+#: src/Theme/Bridge.php:120
+msgid "closed: no answer within 7 days"
+msgstr "clôturé : pas de réponse sous 7 jours"

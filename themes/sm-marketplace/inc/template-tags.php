@@ -568,3 +568,55 @@ function sm_plan_value( $key, $value ) {
 function sm_plan_saving( array $plan ) {
 	return max( 0, (float) $plan['price_month'] * 12 - (float) $plan['price_year'] );
 }
+
+/**
+ * Search arguments of a marketplace page from the query string (0.24.0):
+ * shared by the results page and the live count of the filter panel.
+ */
+function sm_theme_listing_query( $market, $page_num = 1 ) {
+	$query = array(
+		'market'     => 'search' === $market ? sm_theme_query_arg( 'market' ) : $market,
+		'category'   => sm_theme_query_arg( 'category' ),
+		'condition'  => sm_theme_query_arg( 'condition' ),
+		'mode'       => sm_theme_query_arg( 'mode' ),
+		'length_min' => sm_theme_query_arg( 'length_min' ),
+		'qty_min'    => sm_theme_query_arg( 'qty_min' ),
+		'area_min'   => sm_theme_query_arg( 'area_min' ),
+		'height_min' => sm_theme_query_arg( 'height_min' ),
+		'verified'   => '1' === sm_theme_query_arg( 'verified' ) ? 1 : 0,
+		'wilaya'     => sm_theme_query_arg( 'wilaya' ),
+		'q'          => sm_theme_query_arg( 'q' ),
+		'min_price'  => sm_theme_query_arg( 'price_min' ),
+		'max_price'  => sm_theme_query_arg( 'max_price', sm_theme_query_arg( 'price_max' ) ),
+		'sort'       => sm_theme_query_arg( 'sort', 'recent' ),
+		'per_page'   => 12,
+		'page'       => max( 1, (int) $page_num ),
+	);
+	if ( 'search' === $market && '' === $query['market'] ) {
+		$query['market'] = array( 'products', 'reuse', 'buildings' );
+	}
+	return $query;
+}
+
+/**
+ * Live count of the filter panel (0.24.0): admin-ajax.php?action=sm_count&base=products&…
+ * Returns { total, label } so the button says how many results the chosen filters give.
+ */
+function sm_theme_ajax_count() {
+	$base = sanitize_key( (string) sm_theme_query_arg( 'base' ) );
+	$lang = sanitize_key( (string) sm_theme_query_arg( 'sm_lang' ) );
+	if ( $lang && class_exists( '\\SM\\Core\\I18n\\Language' ) ) {
+		\SM\Core\I18n\Language::force( $lang );
+	}
+	if ( ! in_array( $base, array( 'products', 'reuse', 'buildings', 'search' ), true ) ) {
+		wp_send_json_error( null, 400 );
+	}
+	$q             = sm_theme_listing_query( $base );
+	$q['per_page'] = 1;
+	$r             = sm_theme_listings( $q );
+	$total         = (int) ( $r['total'] ?? 0 );
+	/* translators: %s: number of results. */
+	wp_send_json_success( array( 'total' => $total, 'label' => sprintf( _n( 'Show %s result', 'Show %s results', $total, 'sm-marketplace' ), sm_number( $total ) ) ) );
+}
+add_action( 'wp_ajax_sm_count', 'sm_theme_ajax_count' );
+add_action( 'wp_ajax_nopriv_sm_count', 'sm_theme_ajax_count' );

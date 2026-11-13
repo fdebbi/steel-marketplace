@@ -109,7 +109,8 @@ final class Admin {
 	private static function tab_products( $status ) {
 		$labels = self::status_labels();
 		if ( ! isset( $labels[ $status ] ) ) {
-			$status = 'pending';
+			// 0.10.0: listings are published at once; open on what waits, if anything, else on what is online.
+			$status = Products::query( array( 'status' => 'pending', 'per_page' => 1 ) )['total'] ? 'pending' : 'published';
 		}
 		echo '<ul class="subsubsub">';
 		$links = array();
@@ -165,6 +166,7 @@ final class Admin {
 					echo '<button class="button button-primary" name="decision" value="approve">' . esc_html__( 'Publish', 'sm-products' ) . '</button> ';
 				}
 				echo '<input name="reason" placeholder="' . esc_attr__( 'Reason (sent to the seller)', 'sm-products' ) . '" style="width:180px"> <button class="button" name="decision" value="reject">' . esc_html( 'published' === $p->status ? __( 'Unpublish', 'sm-products' ) : __( 'Request changes', 'sm-products' ) ) . '</button>';
+				echo ' <button class="button button-link-delete" name="decision" value="delete" onclick="return confirm(this.getAttribute(\'data-confirm\'))" data-confirm="' . esc_attr__( 'Delete this listing for good? The seller receives your reason.', 'sm-products' ) . '">' . esc_html__( 'Delete', 'sm-products' ) . '</button>';
 				echo '</form>';
 			}
 			if ( 'rejected' === $p->status && $p->reject_reason ) {
@@ -393,6 +395,16 @@ final class Admin {
 			Products::reject_revision( $id, $reason );
 			Notifications::notify_company( $p->company_id, 'product.revision_rejected', array( 'product_id' => $id, 'reason' => $reason ) );
 			self::back( array( 'status' => $from, 'msg' => __( 'Changes refused. The previous version stays online; the seller was told why.', 'sm-products' ) ) );
+		}
+		if ( 'delete' === $decision ) {
+			if ( '' === trim( $reason ) ) {
+				self::back( array( 'status' => $from, 'msg' => __( 'Give the reason, so the seller knows why the listing was deleted.', 'sm-products' ) ) );
+			}
+			$title = Presenter::title_text( $p );
+			Notifications::notify_company( $p->company_id, 'product.deleted', array( 'product_id' => $id, 'title' => $title, 'reason' => $reason ) );
+			\SM\Core\Audit\AuditLog::add( 'product.deleted_by_team', 'product', $id, array( 'title' => $title, 'reason' => $reason ), null, $p->company_id );
+			Products::delete( $id );
+			self::back( array( 'status' => $from, 'msg' => __( 'Listing deleted. The seller was informed with your reason.', 'sm-products' ) ) );
 		}
 		if ( 'approve' === $decision ) {
 			Products::set_status( $id, 'published' );

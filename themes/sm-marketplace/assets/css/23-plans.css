@@ -30,7 +30,7 @@
 .sm-pricing__tabs button { min-block-size: 44px; padding-inline: var(--sm-s4); border: 0; border-radius: 999px; background: transparent; color: var(--sm-muted); font: inherit; font-weight: 600; cursor: pointer; }
 .sm-pricing__tabs button[aria-selected="true"] { background: var(--sm-primary); color: var(--sm-on-dark); }
 .sm-pricing__tabs button:focus-visible { outline: 2px solid var(--sm-accent); outline-offset: 2px; }
-.sm-pricing__you { display: inline-block; margin-inline-start: 6px; padding: 1px 8px; border-radius: 999px; background: rgb(6 206 119 / .16); color: var(--sm-accent-ink, #047a47); font-size: var(--sm-fs-xs); font-weight: 700; vertical-align: 1px; }
+.sm-pricing__you { display: inline-block; margin-inline-start: 6px; padding: 1px 8px; border-radius: 999px; background: rgb(6 206 119 / .16); color: var(--sm-accent-ink); font-size: var(--sm-fs-xs); font-weight: 700; vertical-align: 1px; }
 .sm-pricing__tabs button[aria-selected="true"] .sm-pricing__you { background: rgb(6 206 119 / .22); color: #8EF3C4; }
 .sm-pricing__mine { display: grid; gap: var(--sm-s4); }
 .sm-panel--lead { border-color: rgb(6 206 119 / .45); box-shadow: 0 0 0 3px rgb(6 206 119 / .08); }
@@ -127,3 +127,4 @@
 	.sm-is-account .sm-main, .sm-dash, .sm-dash__main, .sm-dash__view { background: #fff !important; padding: 0 !important; margin: 0 !important; display: block !important; }
 	.sm-invoice { border: 0; max-inline-size: none; padding: 0; }
 }
+.sm-filters__foot .sm-btn.is-loading { opacity: .7; }

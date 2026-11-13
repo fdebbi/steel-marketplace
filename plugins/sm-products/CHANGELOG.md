@@ -1,5 +1,13 @@
 # Changelog — sm-products
 
+## 0.10.0 — 2026-11-13 (base v7)
+
+- Publication directe : la vérification avant publication est désactivée par défaut (aussi pour les clients particuliers et les modifications d'annonces en ligne). À la mise à jour, le réglage est désactivé et les annonces en attente sont publiées. La vérification reste disponible dans les réglages.
+- E-mail immédiat aux administrateurs pour chaque annonce publiée et chaque modification par son vendeur, avec le lien vers l'administration.
+- Suppression d'une annonce par l'administrateur avec un motif obligatoire, envoyé au vendeur (notification et e-mail), journalisée.
+- Filtres de recherche : vendeurs vérifiés (niveau 2), surface minimale et hauteur minimale des bâtiments.
+- `Stock::options()`, `check()`, `take()` : ce qu'un acheteur peut commander (lot, barres entières, kg, pièces, m², mètres) et retrait du stock à l'acceptation d'une commande (SM Trade).
+
 ## 0.9.0 — 2026-11-12
 
 - Indice des prix (SM → Produits → Indice des prix) : calcul automatique de la moyenne activable ou non, seuils réglables (annonces par semaine, semaines nécessaires), tableau des dernières semaines pour choisir les seuils.

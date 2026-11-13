@@ -1,0 +1,485 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Trade 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-trade\n"
+
+#. Plugin Name of the plugin
+#: sm-trade.php
+msgid "SM Trade"
+msgstr "SM الطلبات والعروض"
+
+#. Plugin URI of the plugin
+#: sm-trade.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-trade.php
+msgid ""
+"Orders and offers between buyers and sellers: \"Buy\" at the listed price "
+"(whole lot or a quantity), \"Make an offer\" with counter-offers, acceptance"
+" by the seller, stock taken from the listing, contact details shared once "
+"accepted, history for the buyer, the seller and the administration (CSV "
+"export). Payment and delivery are settled directly between buyer and seller."
+" Requires SM Core and SM Products 0.10.0."
+msgstr ""
+"الطلبات والعروض بين المشترين والبائعين: «شراء» بالسعر المعروض (الحصة كاملة "
+"أو كمية)، «تقديم عرض» مع عروض مضادة، قبول البائع، خصم الكمية من الإعلان، "
+"مشاركة بيانات الاتصال بعد القبول، سجل للمشتري والبائع والإدارة (تصدير CSV). "
+"يتم الدفع والتسليم مباشرة بين المشتري والبائع. يتطلب SM Core و SM Products "
+"0.10.0."
+
+#. Author of the plugin
+#: sm-trade.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-trade.php:48
+msgid ""
+"SM Trade needs SM Core and SM Products 0.10.0 or later. Activate or update "
+"them first."
+msgstr ""
+"تتطلب إضافة الطلبات والعروض SM Core و SM Products 0.10.0 أو أحدث. فعّلهما أو"
+" حدّثهما أولا."
+
+#: src/Admin/Admin.php:29 src/Admin/Admin.php:84
+msgid "Orders and offers"
+msgstr "الطلبات والعروض"
+
+#: src/Admin/Admin.php:55
+msgid "Waiting for an answer"
+msgstr "في انتظار الرد"
+
+#: src/Admin/Admin.php:56 src/Admin/Admin.php:67 src/Theme/Bridge.php:100
+msgid "Accepted"
+msgstr "مقبول"
+
+#: src/Admin/Admin.php:57 src/Admin/Admin.php:68 src/Theme/Bridge.php:101
+msgid "Refused"
+msgstr "مرفوض"
+
+#: src/Admin/Admin.php:58 src/Admin/Admin.php:69 src/Theme/Bridge.php:102
+msgid "Cancelled"
+msgstr "ملغى"
+
+#: src/Admin/Admin.php:59 src/Theme/Bridge.php:103
+msgid "Expired"
+msgstr "منتهي"
+
+#: src/Admin/Admin.php:65
+msgid "Request sent"
+msgstr "تم إرسال الطلب"
+
+#: src/Admin/Admin.php:66
+msgid "Other price proposed"
+msgstr "اقتراح سعر آخر"
+
+#: src/Admin/Admin.php:70
+msgid "Expired (no answer)"
+msgstr "منتهي (دون رد)"
+
+#: src/Admin/Admin.php:90
+msgid ""
+"Every order (\"Buy\") and offer between buyers and sellers, with each "
+"answer. Payment and delivery are settled directly between them; the platform"
+" keeps the history."
+msgstr ""
+"كل الطلبات («شراء») والعروض بين المشترين والبائعين مع كل رد. يتم الدفع "
+"والتسليم مباشرة بينهم؛ وتحتفظ المنصة بالسجل."
+
+#: src/Admin/Admin.php:97 src/Admin/Admin.php:109 src/Admin/Admin.php:114
+#: src/Admin/Admin.php:115
+msgid "All"
+msgstr "الكل"
+
+#. translators: %s: total of the accepted orders and offers.
+#: src/Admin/Admin.php:104
+msgid "Total accepted: %s"
+msgstr "مجموع المقبول: %s"
+
+#: src/Admin/Admin.php:109 src/Admin/Admin.php:133 src/Admin/Admin.php:160
+#: src/Admin/Admin.php:197
+msgid "Status"
+msgstr "الحالة"
+
+#: src/Admin/Admin.php:114 src/Admin/Admin.php:197
+msgid "Type"
+msgstr "النوع"
+
+#: src/Admin/Admin.php:114 src/Admin/Admin.php:137 src/Admin/Admin.php:157
+#: src/Admin/Admin.php:200 src/Theme/Bridge.php:132
+msgid "Order"
+msgstr "طلب شراء"
+
+#: src/Admin/Admin.php:114 src/Admin/Admin.php:137 src/Admin/Admin.php:157
+#: src/Admin/Admin.php:200 src/Theme/Bridge.php:132
+msgid "Offer"
+msgstr "عرض"
+
+#: src/Admin/Admin.php:115 src/Admin/Admin.php:197
+msgid "Market"
+msgstr "السوق"
+
+#: src/Admin/Admin.php:120
+msgid "From"
+msgstr "من"
+
+#: src/Admin/Admin.php:121
+msgid "To"
+msgstr "إلى"
+
+#: src/Admin/Admin.php:122
+msgid "Search (reference, listing, buyer)"
+msgstr "بحث (المرجع، الإعلان، المشتري)"
+
+#: src/Admin/Admin.php:123
+msgid "Filter"
+msgstr "تصفية"
+
+#: src/Admin/Admin.php:124
+msgid "Export (CSV, Excel)"
+msgstr "تصدير (CSV، Excel)"
+
+#: src/Admin/Admin.php:130
+msgid "No order or offer yet."
+msgstr "لا توجد طلبات أو عروض بعد."
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:197
+msgid "Reference"
+msgstr "المرجع"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:173
+msgid "Date (UTC)"
+msgstr "التاريخ (UTC)"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:161 src/Admin/Admin.php:197
+msgid "Listing"
+msgstr "الإعلان"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:162 src/Admin/Admin.php:175
+#: src/Admin/Admin.php:197 src/Theme/Bridge.php:110
+msgid "Seller"
+msgstr "البائع"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:163 src/Admin/Admin.php:175
+#: src/Admin/Admin.php:197 src/Theme/Bridge.php:109
+msgid "Buyer"
+msgstr "المشتري"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:164 src/Admin/Admin.php:197
+msgid "Quantity"
+msgstr "الكمية"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:165
+msgid "Listed price"
+msgstr "السعر المعروض"
+
+#: src/Admin/Admin.php:133 src/Admin/Admin.php:166
+msgid "Price agreed or proposed"
+msgstr "السعر المتفق عليه أو المقترح"
+
+#: src/Admin/Admin.php:142 src/Admin/Admin.php:164 src/Theme/Bridge.php:35
+msgid "whole lot"
+msgstr "الحصة كاملة"
+
+#. translators: %d: number of counter-offers.
+#: src/Admin/Admin.php:143
+msgid "%d counter-offer"
+msgid_plural "%d counter-offers"
+msgstr[0] "لا عروض مضادة"
+msgstr[1] "عرض مضاد واحد"
+msgstr[2] "عرضان مضادان"
+msgstr[3] "%d عروض مضادة"
+msgstr[4] "%d عرضا مضادا"
+msgstr[5] "%d عرض مضاد"
+
+#. translators: %d: number of counter-offers.
+#: src/Admin/Admin.php:144
+msgid "Seller to answer"
+msgstr "في انتظار رد البائع"
+
+#. translators: %d: number of counter-offers.
+#: src/Admin/Admin.php:144
+msgid "Buyer to answer"
+msgstr "في انتظار رد المشتري"
+
+#: src/Admin/Admin.php:156
+msgid "All orders and offers"
+msgstr "كل الطلبات والعروض"
+
+#: src/Admin/Admin.php:167
+msgid "Message of the buyer"
+msgstr "رسالة المشتري"
+
+#: src/Admin/Admin.php:172
+msgid "Open the listing"
+msgstr "فتح الإعلان"
+
+#: src/Admin/Admin.php:173
+msgid "Steps"
+msgstr "المراحل"
+
+#: src/Admin/Admin.php:173
+msgid "By"
+msgstr "بواسطة"
+
+#: src/Admin/Admin.php:173
+msgid "Step"
+msgstr "المرحلة"
+
+#: src/Admin/Admin.php:173
+msgid "Price"
+msgstr "السعر"
+
+#: src/Admin/Admin.php:173
+msgid "Message"
+msgstr "الرسالة"
+
+#: src/Admin/Admin.php:175 src/Theme/Bridge.php:111 src/Theme/Bridge.php:112
+msgid "Platform"
+msgstr "المنصة"
+
+#: src/Admin/Admin.php:197
+msgid "Created (UTC)"
+msgstr "أُنشئ (UTC)"
+
+#: src/Admin/Admin.php:197
+msgid "Closed (UTC)"
+msgstr "أُغلق (UTC)"
+
+#: src/Admin/Admin.php:197
+msgid "Buyer phone"
+msgstr "هاتف المشتري"
+
+#: src/Admin/Admin.php:197
+msgid "Buyer e-mail"
+msgstr "بريد المشتري"
+
+#: src/Admin/Admin.php:197
+msgid "Unit"
+msgstr "الوحدة"
+
+#: src/Admin/Admin.php:197
+msgid "Listed price (DA)"
+msgstr "السعر المعروض (دج)"
+
+#: src/Admin/Admin.php:197
+msgid "Price agreed or proposed (DA)"
+msgstr "السعر المتفق عليه أو المقترح (دج)"
+
+#: src/Admin/Admin.php:197
+msgid "Counter-offers"
+msgstr "العروض المضادة"
+
+#: src/Deals.php:76
+msgid "This listing is no longer on sale."
+msgstr "هذا الإعلان لم يعد معروضا للبيع."
+
+#: src/Deals.php:80
+msgid "Sign in to buy or make an offer."
+msgstr "سجّل الدخول للشراء أو تقديم عرض."
+
+#: src/Deals.php:84
+msgid "This is one of your own listings."
+msgstr "هذا أحد إعلاناتك."
+
+#: src/Deals.php:87
+msgid ""
+"You already have an order or an offer waiting on this listing. Follow it in "
+"\"My purchases\"."
+msgstr "لديك طلب أو عرض قيد الانتظار على هذا الإعلان. تابعه في «مشترياتي»."
+
+#: src/Deals.php:100
+msgid "Enter the total price you offer."
+msgstr "أدخل السعر الإجمالي الذي تعرضه."
+
+#: src/Deals.php:107
+msgid "Enter your name."
+msgstr "أدخل اسمك."
+
+#: src/Deals.php:110
+msgid "Enter a valid phone number, so the seller can call you."
+msgstr "أدخل رقم هاتف صحيحا ليتمكن البائع من الاتصال بك."
+
+#: src/Deals.php:113
+msgid "Enter a valid e-mail address."
+msgstr "أدخل بريدا إلكترونيا صحيحا."
+
+#: src/Deals.php:144
+msgid "The request could not be saved. Try again."
+msgstr "تعذّر حفظ الطلب. أعد المحاولة."
+
+#: src/Deals.php:196
+msgid "This order or offer does not exist."
+msgstr "هذا الطلب أو العرض غير موجود."
+
+#: src/Deals.php:200
+msgid "It is not your turn to answer."
+msgstr "ليس دورك في الرد."
+
+#: src/Deals.php:200
+msgid "This order or offer is already closed."
+msgstr "هذا الطلب أو العرض مغلق بالفعل."
+
+#: src/Deals.php:223
+msgid "Enter the total price you propose."
+msgstr "أدخل السعر الإجمالي الذي تقترحه."
+
+#: src/Deals.php:226
+msgid "Propose a different price, or accept this one."
+msgstr "اقترح سعرا مختلفا أو اقبل هذا السعر."
+
+#: src/Form.php:43
+msgid "You sent many orders or offers in a short time. Try again later."
+msgstr "أرسلت طلبات أو عروضا كثيرة في وقت قصير. أعد المحاولة لاحقا."
+
+#: src/Form.php:72
+msgid ""
+"Offer sent to the seller. You will be told by e-mail when the seller "
+"answers."
+msgstr "تم إرسال العرض إلى البائع. ستُبلَّغ بالبريد عند رده."
+
+#: src/Form.php:73
+msgid ""
+"Order sent to the seller. Nothing is paid on the platform: the seller "
+"accepts or refuses, then you agree on payment and delivery directly."
+msgstr ""
+"تم إرسال الطلب إلى البائع. لا يُدفع شيء على المنصة: يقبل البائع أو يرفض، ثم "
+"تتفقان مباشرة على الدفع والتسليم."
+
+#: src/Form.php:87
+msgid ""
+"Accepted. The contact details are below: agree on payment and delivery "
+"directly."
+msgstr "تم القبول. بيانات الاتصال أدناه: اتفقا مباشرة على الدفع والتسليم."
+
+#: src/Form.php:88
+msgid "Refused. The other party was told."
+msgstr "تم الرفض. تم إبلاغ الطرف الآخر."
+
+#: src/Form.php:89
+msgid "Cancelled. The seller was told."
+msgstr "تم الإلغاء. تم إبلاغ البائع."
+
+#: src/Form.php:90
+msgid "Your price was sent. You will be told when the other party answers."
+msgstr "تم إرسال سعرك. ستُبلَّغ عند رد الطرف الآخر."
+
+#. translators: %s: message written with the answer.
+#: src/Notifications.php:49
+msgid "Message: \"%s\""
+msgstr "الرسالة: «%s»"
+
+#: src/Notifications.php:56
+msgid "New order on your listing"
+msgstr "طلب شراء جديد على إعلانك"
+
+#. translators: 1: reference and listing, 2: total.
+#: src/Notifications.php:58
+msgid ""
+"A buyer orders %1$s for %2$s at your price. Accept or refuse it within 7 "
+"days; the buyer's name, phone and e-mail are on the order."
+msgstr ""
+"مشترٍ يطلب %1$s مقابل %2$s بسعرك. اقبل أو ارفض خلال 7 أيام؛ اسم المشتري "
+"وهاتفه وبريده في الطلب."
+
+#: src/Notifications.php:63
+msgid "New offer on your listing"
+msgstr "عرض جديد على إعلانك"
+
+#. translators: 1: reference and listing, 2: offered total.
+#: src/Notifications.php:65
+msgid ""
+"A buyer offers %2$s for %1$s. Accept, refuse or propose another price within"
+" 7 days."
+msgstr ""
+"مشترٍ يعرض %2$s مقابل %1$s. اقبل أو ارفض أو اقترح سعرا آخر خلال 7 أيام."
+
+#: src/Notifications.php:70
+msgid "New price proposed"
+msgstr "سعر جديد مقترح"
+
+#. translators: 1: reference and listing, 2: proposed total.
+#: src/Notifications.php:72
+msgid ""
+"For %1$s, the other party proposes %2$s. Accept, refuse or answer within 7 "
+"days."
+msgstr "بخصوص %1$s، يقترح الطرف الآخر %2$s. اقبل أو ارفض أو رد خلال 7 أيام."
+
+#: src/Notifications.php:77
+msgid "Order accepted"
+msgstr "تم قبول الطلب"
+
+#. translators: 1: reference and listing, 2: total.
+#: src/Notifications.php:79
+msgid ""
+"%1$s is accepted for %2$s. The contact details are on the order page: agree "
+"on payment and delivery directly."
+msgstr ""
+"تم قبول %1$s مقابل %2$s. بيانات الاتصال في صفحة الطلب: اتفقا مباشرة على "
+"الدفع والتسليم."
+
+#: src/Notifications.php:84
+msgid "Order or offer refused"
+msgstr "تم رفض الطلب أو العرض"
+
+#. translators: %s: reference and listing.
+#: src/Notifications.php:86
+msgid "%s was refused."
+msgstr "تم رفض %s."
+
+#: src/Notifications.php:91
+msgid "Order or offer cancelled by the buyer"
+msgstr "ألغى المشتري الطلب أو العرض"
+
+#. translators: %s: reference and listing.
+#: src/Notifications.php:93
+msgid "The buyer cancelled %s."
+msgstr "ألغى المشتري %s."
+
+#: src/Notifications.php:98
+msgid "Order or offer expired"
+msgstr "انتهى الطلب أو العرض"
+
+#. translators: %s: reference and listing.
+#: src/Notifications.php:100
+msgid "%s got no answer within 7 days and is closed."
+msgstr "لم يتلق %s ردا خلال 7 أيام وتم إغلاقه."
+
+#: src/Theme/Bridge.php:97
+msgid "Waiting for the seller"
+msgstr "في انتظار البائع"
+
+#: src/Theme/Bridge.php:97
+msgid "Waiting for the buyer"
+msgstr "في انتظار المشتري"
+
+#: src/Theme/Bridge.php:115
+msgid "sent the request"
+msgstr "أرسل الطلب"
+
+#: src/Theme/Bridge.php:116
+msgid "proposed another price"
+msgstr "اقترح سعرا آخر"
+
+#: src/Theme/Bridge.php:117
+msgid "accepted"
+msgstr "قَبِل"
+
+#: src/Theme/Bridge.php:118
+msgid "refused"
+msgstr "رفض"
+
+#: src/Theme/Bridge.php:119
+msgid "cancelled"
+msgstr "ألغى"
+
+#: src/Theme/Bridge.php:120
+msgid "closed: no answer within 7 days"
+msgstr "أُغلق: لا رد خلال 7 أيام"

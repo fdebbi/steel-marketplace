@@ -14,7 +14,7 @@ $categories = 'search' === $market ? array() : sm_theme_categories( $market );
 $q          = 'sm_theme_query_arg';
 ?>
 <aside class="sm-filters" id="sm-filters" data-sm-filters aria-label="<?php esc_attr_e( 'Filters', 'sm-marketplace' ); ?>">
-	<form class="sm-filters__form" method="get" action="<?php echo esc_url( $args['action'] ); ?>">
+	<form class="sm-filters__form" method="get" action="<?php echo esc_url( $args['action'] ); ?>" data-sm-count="<?php echo esc_url( add_query_arg( array( 'action' => 'sm_count', 'base' => $market, 'sm_lang' => sm_theme_current_language() ), admin_url( 'admin-ajax.php' ) ) ); ?>">
 		<?php if ( 'ar' === sm_theme_current_language() ) : ?><input type="hidden" name="lang" value="ar"><?php endif; ?>
 		<div class="sm-filters__head">
 			<p class="sm-filters__title"><?php sm_icon( 'filter' ); ?><?php esc_html_e( 'Filters', 'sm-marketplace' ); ?></p>
@@ -95,7 +95,7 @@ $q          = 'sm_theme_query_arg';
 
 		<div class="sm-filters__foot">
 			<a class="sm-btn sm-btn--ghost" href="<?php echo esc_url( $args['action'] ); ?>"><?php esc_html_e( 'Reset', 'sm-marketplace' ); ?></a>
-			<button class="sm-btn sm-btn--primary" type="submit">
+			<button class="sm-btn sm-btn--primary" type="submit" data-sm-count-label aria-live="polite">
 				<?php
 				/* translators: %s: number of results. */
 				echo esc_html( sprintf( _n( 'Show %s result', 'Show %s results', (int) $args['total'], 'sm-marketplace' ), sm_number( $args['total'] ) ) );

@@ -11,24 +11,7 @@ defined( 'ABSPATH' ) || exit;
 $market   = $args['market'];
 $action   = sm_page_url( 'search' === $market ? 'search' : $market );
 $page_num = max( 1, (int) sm_theme_query_arg( 'pg', 1 ) );
-$query    = array(
-	'market'    => 'search' === $market ? sm_theme_query_arg( 'market' ) : $market,
-	'category'  => sm_theme_query_arg( 'category' ),
-	'condition' => sm_theme_query_arg( 'condition' ),
-	'mode'      => sm_theme_query_arg( 'mode' ),
-	'length_min' => sm_theme_query_arg( 'length_min' ),
-	'qty_min'    => sm_theme_query_arg( 'qty_min' ),
-	'wilaya'    => sm_theme_query_arg( 'wilaya' ),
-	'q'         => sm_theme_query_arg( 'q' ),
-	'min_price' => sm_theme_query_arg( 'price_min' ),
-	'max_price' => sm_theme_query_arg( 'max_price', sm_theme_query_arg( 'price_max' ) ),
-	'sort'      => sm_theme_query_arg( 'sort', 'recent' ),
-	'per_page'  => 12,
-	'page'      => $page_num,
-);
-if ( 'search' === $market && '' === $query['market'] ) {
-	$query['market'] = array( 'products', 'reuse', 'buildings' );
-}
+$query    = sm_theme_listing_query( $market, $page_num );
 $result   = sm_theme_listings( $query );
 $layout   = 'list' === sm_theme_query_arg( 'display' ) ? 'list' : 'grid';
 $category = sm_theme_query_arg( 'category' );

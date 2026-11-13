@@ -304,7 +304,7 @@ final class Products {
 	/**
 	 * Query products.
 	 *
-	 * @param array $a status, market (string|string[]), condition, length_min (m), qty_min, company, category, family, wilaya, q, min_price, max_price, sort (recent|price_asc|price_desc|weight_desc), per_page, page.
+	 * @param array $a status, market (string|string[]), condition, length_min (m), qty_min, company, category, family, wilaya, q, verified, area_min, height_min (0.10.0), min_price, max_price, sort (recent|price_asc|price_desc|weight_desc), per_page, page.
 	 * @return array{items: object[], total: int, pages: int}
 	 */
 	public static function query( array $a ) {
@@ -338,6 +338,19 @@ final class Products {
 				$where[] = $sql;
 				$args[]  = $a[ $k ];
 			}
+		}
+		// Verified sellers only (0.10.0): documents checked, level 2 or more.
+		if ( ! empty( $a['verified'] ) ) {
+			$where[] = "company_id IN (SELECT id FROM {$wpdb->prefix}sm_companies WHERE verification_level >= 2)";
+		}
+		// Buildings (0.10.0): area is the quantity in m², eaves height is in the specs.
+		if ( ! empty( $a['area_min'] ) ) {
+			$where[] = 'quantity >= %f';
+			$args[]  = (float) $a['area_min'];
+		}
+		if ( ! empty( $a['height_min'] ) ) {
+			$where[] = "CAST(JSON_EXTRACT(specs, '$.height_m') AS DECIMAL(10,2)) >= %f";
+			$args[]  = (float) $a['height_min'];
 		}
 		if ( ! empty( $a['q'] ) ) {
 			$like    = '%' . $wpdb->esc_like( preg_replace( '/\s+/', '', (string) $a['q'] ) ) . '%';

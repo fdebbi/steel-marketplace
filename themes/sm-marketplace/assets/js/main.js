@@ -163,6 +163,82 @@
 	if ( filters ) {
 		filters.addEventListener( 'click', function ( e ) { if ( e.target === filters ) { setFilters( false ); } } );
 	}
+	/* Live count of the filter panel; empty fields left out of the address (0.24.0). */
+	$$( 'form[data-sm-count]' ).forEach( function ( form ) {
+		var btn = form.querySelector( '[data-sm-count-label]' );
+		var timer = null;
+		var seq = 0;
+		function params() {
+			var out = new URLSearchParams();
+			new FormData( form ).forEach( function ( v, k ) { if ( String( v ).trim() !== '' ) { out.append( k, v ); } } );
+			return out;
+		}
+		function refresh() {
+			if ( ! btn || ! window.fetch ) { return; }
+			var mine = ++seq;
+			btn.classList.add( 'is-loading' );
+			fetch( form.getAttribute( 'data-sm-count' ) + '&' + params().toString(), { credentials: 'same-origin' } )
+				.then( function ( r ) { return r.json(); } )
+				.then( function ( j ) { if ( mine === seq && j && j.success ) { btn.textContent = j.data.label; } } )
+				.catch( function () {} )
+				.then( function () { if ( mine === seq ) { btn.classList.remove( 'is-loading' ); } } );
+		}
+		form.addEventListener( 'change', refresh );
+		form.addEventListener( 'input', function ( e ) {
+			if ( e.target.type === 'radio' || e.target.type === 'checkbox' || e.target.tagName === 'SELECT' ) { return; }
+			clearTimeout( timer );
+			timer = setTimeout( refresh, 400 );
+		} );
+		form.addEventListener( 'submit', function () {
+			Array.prototype.forEach.call( form.elements, function ( el ) {
+				if ( el.name && ( el.type === 'search' || el.type === 'number' || el.type === 'text' || el.tagName === 'SELECT' || ( el.type === 'radio' && el.checked ) ) && String( el.value ).trim() === '' ) { el.disabled = true; }
+			} );
+		} );
+	} );
+	/* Buy / make an offer on a listing (0.24.0). */
+	var buyPanel = $( '[data-sm-buy-panel]' );
+	var buyForm = $( '[data-sm-buy-form]' );
+	function buyUpdate() {
+		if ( ! buyForm ) { return; }
+		var kindEl = buyForm.querySelector( 'input[name="kind"]:checked' );
+		var offer = kindEl && kindEl.value === 'offer';
+		var modeEl = buyForm.querySelector( 'input[name="mode"]:checked' ) || buyForm.querySelector( 'input[name="mode"]' );
+		var lot = modeEl && modeEl.value === 'lot';
+		buyForm.classList.toggle( 'is-offer', offer );
+		buyForm.classList.toggle( 'is-lot', lot );
+		var total = 0;
+		if ( lot ) {
+			total = parseFloat( modeEl.getAttribute( 'data-total' ) || '0' );
+		} else {
+			var q = buyForm.querySelector( '[name="quantity"]' );
+			if ( q ) { total = ( parseFloat( String( q.value ).replace( ',', '.' ) ) || 0 ) * parseFloat( q.getAttribute( 'data-unit-price' ) || '0' ); }
+		}
+		var out = buyForm.querySelector( '[data-sm-buy-total]' );
+		if ( out ) {
+			var lang = document.documentElement.lang || 'fr';
+			out.textContent = total > 0 ? new Intl.NumberFormat( lang.indexOf( 'ar' ) === 0 ? 'ar-DZ' : 'fr-FR', { maximumFractionDigits: 0 } ).format( Math.round( total ) ) + '\u00a0' + ( out.getAttribute( 'data-currency' ) || 'DA' ) : '—';
+		}
+		var btn = buyForm.querySelector( '[data-sm-buy-submit] span' );
+		if ( btn ) { btn.textContent = buyForm.querySelector( '[data-sm-buy-submit]' ).getAttribute( offer ? 'data-offer' : 'data-order' ); }
+	}
+	if ( buyForm ) {
+		buyForm.addEventListener( 'change', buyUpdate );
+		buyForm.addEventListener( 'input', buyUpdate );
+		buyUpdate();
+	}
+	$$( '[data-sm-buy]' ).forEach( function ( a ) {
+		a.addEventListener( 'click', function ( e ) {
+			if ( ! buyPanel ) { return; }
+			e.preventDefault();
+			buyPanel.hidden = false;
+			var want = a.getAttribute( 'data-sm-buy' );
+			var r = buyForm && buyForm.querySelector( 'input[name="kind"][value="' + want + '"]' );
+			if ( r ) { r.checked = true; buyUpdate(); }
+			buyPanel.scrollIntoView( { behavior: window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ? 'auto' : 'smooth', block: 'start' } );
+			var first = buyPanel.querySelector( want === 'offer' ? '#buy-amount' : '#buy-qty' ) || buyPanel.querySelector( 'input:not([type=hidden]),a.sm-btn' );
+			if ( first ) { setTimeout( function () { first.focus( { preventScroll: true } ); }, 300 ); }
+		} );
+	} );
 	$$( '[data-sm-autosubmit]' ).forEach( function ( s ) { s.addEventListener( 'change', function () { s.form.submit(); } ); } );
 
 	/* ---- Saved listings (local only until sm-core stores them) ----------- */

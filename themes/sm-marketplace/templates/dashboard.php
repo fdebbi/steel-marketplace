@@ -97,6 +97,8 @@ if ( $is_eng ) {
 	$svc_set   = (array) sm_theme_data( 'services_settings' );
 	$can_fab   = ! empty( $svc_set['kinds']['fabrication']['allowed'] );
 	$has_eng   = is_array( sm_theme_data( 'engineers' ) );
+	// Orders and offers (sm-trade, 0.24.0).
+	$has_trade = ! $is_demo && isset( sm_theme_data( 'trade_waiting' )['seller'] ); // Counters come with the account badges.
 	$own_label = array(
 		'company'      => __( 'Company profile', 'sm-marketplace' ),
 		'professional' => __( 'Professional profile', 'sm-marketplace' ),
@@ -109,6 +111,7 @@ if ( $is_eng ) {
 			__( 'Selling', 'sm-marketplace' ),
 			array(
 				'listings' => __( 'My listings', 'sm-marketplace' ),
+				'sales'    => $has_trade ? __( 'Orders and offers received', 'sm-marketplace' ) : null,
 				'offers'   => 'client' === $class ? null : __( 'Quotations sent', 'sm-marketplace' ),
 				'messages' => __( 'Enquiries received', 'sm-marketplace' ),
 				'stats'    => __( 'Statistics', 'sm-marketplace' ),
@@ -118,9 +121,10 @@ if ( $is_eng ) {
 			'rfq',
 			__( 'Buying', 'sm-marketplace' ),
 			array(
-				'saved'   => __( 'Saved listings', 'sm-marketplace' ),
-				'rfq'     => __( 'My requests for quotation', 'sm-marketplace' ),
-				'history' => __( 'Purchase history', 'sm-marketplace' ),
+				'purchases' => $has_trade ? __( 'My purchases and offers', 'sm-marketplace' ) : null,
+				'saved'     => __( 'Saved listings', 'sm-marketplace' ),
+				'rfq'       => __( 'My requests for quotation', 'sm-marketplace' ),
+				'history'   => $has_trade ? null : __( 'Purchase history', 'sm-marketplace' ),
 			),
 		),
 		'services' => array(
@@ -166,6 +170,7 @@ $hidden['verify-phone']               = array( 'account', __( 'Verify your accou
 $hidden['notifications']              = array( '', __( 'Notifications', 'sm-marketplace' ) );
 $hidden['order']                      = array( '', __( 'Order', 'sm-marketplace' ) );
 $hidden['invoice']                    = array( '', __( 'Invoice', 'sm-marketplace' ) );
+$hidden['deal']                       = array( '', __( 'Order or offer', 'sm-marketplace' ) );
 
 // Drop empty pages and empty groups; find the current page and its group.
 $titles = array();

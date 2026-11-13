@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.24.0 — 2026-11-13 (avec sm-trade 0.1.0 et sm-products 0.10.0)
+
+- Page d'annonce : boutons « Acheter », « Faire une offre », « Contacter le vendeur ». Formulaire replié qui s'ouvre au clic : choix tout le lot / une quantité, quantité dans l'unité de vente (barres, kg, pièces, m²…) avec le disponible, total au prix affiché calculé en direct, prix proposé pour une offre, nom / téléphone / e-mail préremplis, message. Mention claire : rien n'est payé sur la plateforme.
+- Formulaire de contact : champ « Objet » visible, prérempli avec le titre de l'annonce ; ses messages ne se mélangent plus avec ceux du formulaire d'achat.
+- Compte : « Mes achats et offres » (Achat), « Commandes et offres reçues » (Vente), page d'une demande (coordonnées, réponses, étapes) ; compteurs des réponses attendues.
+- Filtres des pages de résultats : « Vendeurs vérifiés uniquement » et surface / hauteur des bâtiments fonctionnent ; le bouton donne en direct le nombre de résultats des filtres choisis ; l'adresse ne garde que les filtres utilisés.
+- Icônes panier, horloge, étiquette.
+
 ## 0.23.0 — 2026-11-12 (avec sm-products 0.9.0 et sm-subscriptions 0.1.1)
 
 - Courbe du prix de l'acier sous l'image de l'accueil, refaite : courbe lissée en SVG sans bibliothèque (sans pic ni creux inventés entre deux points), tracée de gauche à droite quand elle entre dans l'écran, lueur légère, points qui apparaissent l'un après l'autre, carte « verre métallique » accrochée au dernier point avec le prix au kg, la date et l'évolution. Hauteur réservée : rien ne bouge sur la page. Immobile avec « réduire les animations » ou sans JavaScript.

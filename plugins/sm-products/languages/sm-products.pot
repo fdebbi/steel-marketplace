@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Products 0.8.0\n"
+"Project-Id-Version: SM Products 0.10.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-products\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-12T18:32:54+00:00\n"
+"POT-Creation-Date: 2026-11-13T00:40:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-products\n"
@@ -39,6 +39,7 @@ msgid "SM Products needs the SM Core and SM Weight Engine plugins. Activate them
 msgstr ""
 
 #: src/Activity.php:43
+#: src/Notifications.php:41
 msgid "New listing published"
 msgstr ""
 
@@ -200,475 +201,488 @@ msgstr ""
 msgid "Expired"
 msgstr ""
 
-#: src/Admin/Admin.php:126
+#: src/Admin/Admin.php:127
 msgid "Market:"
 msgstr ""
 
-#: src/Admin/Admin.php:127
+#: src/Admin/Admin.php:128
 msgid "All"
 msgstr ""
 
-#: src/Admin/Admin.php:137
-#: src/Admin/Admin.php:444
+#: src/Admin/Admin.php:138
+#: src/Admin/Admin.php:456
 msgid "Nothing here."
 msgstr ""
 
-#: src/Admin/Admin.php:140
+#: src/Admin/Admin.php:141
 msgid "Product"
 msgstr ""
 
-#: src/Admin/Admin.php:140
+#: src/Admin/Admin.php:141
 msgid "Company"
 msgstr ""
 
-#: src/Admin/Admin.php:140
+#: src/Admin/Admin.php:141
 msgid "Weight / quantity"
 msgstr ""
 
-#: src/Admin/Admin.php:140
+#: src/Admin/Admin.php:141
 msgid "Price"
 msgstr ""
 
-#: src/Admin/Admin.php:140
+#: src/Admin/Admin.php:141
 msgid "Updated (UTC)"
 msgstr ""
 
-#: src/Admin/Admin.php:140
+#: src/Admin/Admin.php:141
 msgid "Decision"
 msgstr ""
 
 #. translators: %d: level.
-#: src/Admin/Admin.php:145
+#: src/Admin/Admin.php:146
 msgid "Verification level %d"
 msgstr ""
 
-#: src/Admin/Admin.php:150
+#: src/Admin/Admin.php:151
 msgid "Changed:"
 msgstr ""
 
-#: src/Admin/Admin.php:154
+#: src/Admin/Admin.php:155
 msgid "Publish the changes"
 msgstr ""
 
-#: src/Admin/Admin.php:155
-#: src/Admin/Admin.php:167
-#: src/Admin/Admin.php:472
+#: src/Admin/Admin.php:156
+#: src/Admin/Admin.php:168
+#: src/Admin/Admin.php:484
 msgid "Reason (sent to the seller)"
 msgstr ""
 
-#: src/Admin/Admin.php:155
+#: src/Admin/Admin.php:156
 msgid "Refuse the changes"
 msgstr ""
 
-#: src/Admin/Admin.php:159
+#: src/Admin/Admin.php:160
 msgid "Edit text and photos"
 msgstr ""
 
-#: src/Admin/Admin.php:165
+#: src/Admin/Admin.php:166
 msgid "Publish"
 msgstr ""
 
-#: src/Admin/Admin.php:167
+#: src/Admin/Admin.php:168
 msgid "Unpublish"
 msgstr ""
 
-#: src/Admin/Admin.php:167
+#: src/Admin/Admin.php:168
 msgid "Request changes"
 msgstr ""
 
-#: src/Admin/Admin.php:180
+#: src/Admin/Admin.php:169
+msgid "Delete this listing for good? The seller receives your reason."
+msgstr ""
+
+#: src/Admin/Admin.php:169
+#: src/Admin/Admin.php:328
+#: src/Admin/Admin.php:474
+#: src/Admin/Admin.php:480
+msgid "Delete"
+msgstr ""
+
+#: src/Admin/Admin.php:182
 msgid "Profiles, tubes, plates and bars take their technical data and weight from the weight engine. For the other categories, the fields below are the form shown to sellers. Select options: one per line, \"value|Français|عربي\"."
 msgstr ""
 
-#: src/Admin/Admin.php:193
+#: src/Admin/Admin.php:195
 msgid "hidden"
 msgstr ""
 
-#: src/Admin/Admin.php:194
+#: src/Admin/Admin.php:196
 msgid "Name (French)"
 msgstr ""
 
-#: src/Admin/Admin.php:194
+#: src/Admin/Admin.php:196
 msgid "Name (Arabic)"
 msgstr ""
 
-#: src/Admin/Admin.php:194
+#: src/Admin/Admin.php:196
 msgid "Order"
 msgstr ""
 
-#: src/Admin/Admin.php:194
+#: src/Admin/Admin.php:196
 msgid "Visible"
 msgstr ""
 
-#: src/Admin/Admin.php:195
+#: src/Admin/Admin.php:197
 msgid "Units:"
 msgstr ""
 
-#: src/Admin/Admin.php:201
+#: src/Admin/Admin.php:203
 msgid "Weight engine families:"
 msgstr ""
 
-#: src/Admin/Admin.php:203
+#: src/Admin/Admin.php:205
 msgid "Key"
 msgstr ""
 
-#: src/Admin/Admin.php:203
+#: src/Admin/Admin.php:205
 msgid "Type"
 msgstr ""
 
-#: src/Admin/Admin.php:203
+#: src/Admin/Admin.php:205
 msgid "Label (French)"
 msgstr ""
 
-#: src/Admin/Admin.php:203
+#: src/Admin/Admin.php:205
 msgid "Label (Arabic)"
 msgstr ""
 
-#: src/Admin/Admin.php:203
+#: src/Admin/Admin.php:205
 msgid "Unit"
 msgstr ""
 
-#: src/Admin/Admin.php:203
+#: src/Admin/Admin.php:205
 msgid "Required"
 msgstr ""
 
-#: src/Admin/Admin.php:203
+#: src/Admin/Admin.php:205
 msgid "Options (lists)"
 msgstr ""
 
-#: src/Admin/Admin.php:208
+#: src/Admin/Admin.php:210
 msgid "new_field"
 msgstr ""
 
-#: src/Admin/Admin.php:214
+#: src/Admin/Admin.php:216
 msgid "To remove a field, empty its key. The last row adds a field."
 msgstr ""
 
-#: src/Admin/Admin.php:217
+#: src/Admin/Admin.php:219
 msgid "Save the category"
 msgstr ""
 
-#: src/Admin/Admin.php:228
+#: src/Admin/Admin.php:230
 msgid "Moderation"
 msgstr ""
 
-#: src/Admin/Admin.php:228
+#: src/Admin/Admin.php:230
 msgid "Check every product before it is published"
 msgstr ""
 
-#: src/Admin/Admin.php:229
+#: src/Admin/Admin.php:231
 msgid "Client accounts"
 msgstr ""
 
-#: src/Admin/Admin.php:229
+#: src/Admin/Admin.php:231
 msgid "Always check the listings of client accounts (private sellers), even when moderation is off"
 msgstr ""
 
-#: src/Admin/Admin.php:231
+#: src/Admin/Admin.php:233
 msgid "Listings online per client account (0 = no limit)"
 msgstr ""
 
-#: src/Admin/Admin.php:232
+#: src/Admin/Admin.php:234
 msgid "Publication period (days, 0 = no end)"
 msgstr ""
 
-#: src/Admin/Admin.php:233
+#: src/Admin/Admin.php:235
 msgid "Photos per product"
 msgstr ""
 
-#: src/Admin/Admin.php:234
+#: src/Admin/Admin.php:236
 msgid "Largest photo (MB)"
 msgstr ""
 
-#: src/Admin/Admin.php:235
+#: src/Admin/Admin.php:237
 msgid "Largest technical sheet (MB)"
 msgstr ""
 
-#: src/Admin/Admin.php:236
+#: src/Admin/Admin.php:238
 msgid "Lowest price accepted (DA)"
 msgstr ""
 
-#: src/Admin/Admin.php:237
+#: src/Admin/Admin.php:239
 msgid "Highest price accepted (DA)"
 msgstr ""
 
-#: src/Admin/Admin.php:238
+#: src/Admin/Admin.php:240
 msgid "Steel grades offered (comma separated)"
 msgstr ""
 
-#: src/Admin/Admin.php:258
+#: src/Admin/Admin.php:260
 msgid "The price shown under the picture of the home page and on the price index page. It is either the average asking price of new hot-rolled sections (IPE, HEA, HEB, HEM, IPN, UPN, UPE, angles) published on the platform, or the reference prices you enter below."
 msgstr ""
 
-#: src/Admin/Admin.php:261
+#: src/Admin/Admin.php:263
 msgid "Shown now:"
 msgstr ""
 
 #. translators: 1: price per kg, 2: number of weeks.
-#: src/Admin/Admin.php:264
+#: src/Admin/Admin.php:266
 msgid "average of the listings, %1$s DA/kg (curve over %2$d weeks)."
 msgstr ""
 
 #. translators: 1: price per kg, 2: date.
-#: src/Admin/Admin.php:267
+#: src/Admin/Admin.php:269
 msgid "your reference price, %1$s DA/kg of %2$s."
 msgstr ""
 
-#: src/Admin/Admin.php:269
+#: src/Admin/Admin.php:271
 msgid "The automatic average does not have enough listings yet."
 msgstr ""
 
-#: src/Admin/Admin.php:272
+#: src/Admin/Admin.php:274
 msgid "no price yet: the home page says \"Price coming soon\"."
 msgstr ""
 
-#: src/Admin/Admin.php:276
+#: src/Admin/Admin.php:278
 msgid "Source of the price"
 msgstr ""
 
-#: src/Admin/Admin.php:280
+#: src/Admin/Admin.php:282
 msgid "Automatic average"
 msgstr ""
 
-#: src/Admin/Admin.php:280
+#: src/Admin/Admin.php:282
 msgid "Compute the average of the listings week by week"
 msgstr ""
 
-#: src/Admin/Admin.php:280
+#: src/Admin/Admin.php:282
 msgid "Off: your reference prices are shown. On: the average is shown when the thresholds below are reached, otherwise your reference prices."
 msgstr ""
 
-#: src/Admin/Admin.php:281
+#: src/Admin/Admin.php:283
 msgid "Listings needed in a week"
 msgstr ""
 
-#: src/Admin/Admin.php:281
+#: src/Admin/Admin.php:283
 msgid "A week with fewer listings is left out of the curve. With few listings, one wrong price moves the average a lot."
 msgstr ""
 
 #. translators: %d: number of weeks of the curve.
-#: src/Admin/Admin.php:283
+#: src/Admin/Admin.php:285
 msgid "Weeks needed"
 msgstr ""
 
 #. translators: %d: number of weeks of the curve.
-#: src/Admin/Admin.php:283
+#: src/Admin/Admin.php:285
 msgid "Number of such weeks, over the last %d, before the average replaces your reference prices."
 msgstr ""
 
-#: src/Admin/Admin.php:286
+#: src/Admin/Admin.php:288
 msgid "Save"
 msgstr ""
 
-#: src/Admin/Admin.php:292
+#: src/Admin/Admin.php:294
 msgid "Listings of the last weeks"
 msgstr ""
 
-#: src/Admin/Admin.php:294
+#: src/Admin/Admin.php:296
 msgid "No new section listing with a price per kg in the last 12 weeks."
 msgstr ""
 
-#: src/Admin/Admin.php:296
+#: src/Admin/Admin.php:298
 msgid "Week of"
 msgstr ""
 
-#: src/Admin/Admin.php:296
+#: src/Admin/Admin.php:298
 msgid "Listings"
 msgstr ""
 
-#: src/Admin/Admin.php:296
+#: src/Admin/Admin.php:298
 msgid "Average DA/kg"
 msgstr ""
 
-#: src/Admin/Admin.php:299
+#: src/Admin/Admin.php:301
 msgid "below the threshold"
 msgstr ""
 
-#: src/Admin/Admin.php:304
+#: src/Admin/Admin.php:306
 msgid "Reference prices"
 msgstr ""
 
-#: src/Admin/Admin.php:305
+#: src/Admin/Admin.php:307
 msgid "A price per kg of new sections that you checked yourself (suppliers, traders). Each date adds a point to the curve; a price entered again for the same date replaces it. Visitors see \"ReuSteel reference price\" and the date."
 msgstr ""
 
-#: src/Admin/Admin.php:310
-#: src/Admin/Admin.php:320
+#: src/Admin/Admin.php:312
+#: src/Admin/Admin.php:322
 msgid "Date"
 msgstr ""
 
-#: src/Admin/Admin.php:311
+#: src/Admin/Admin.php:313
 msgid "Price (DA per kg)"
 msgstr ""
 
-#: src/Admin/Admin.php:312
+#: src/Admin/Admin.php:314
 msgid "Source (optional, shown to visitors)"
 msgstr ""
 
-#: src/Admin/Admin.php:313
+#: src/Admin/Admin.php:315
 msgid "Add the price"
 msgstr ""
 
-#: src/Admin/Admin.php:317
+#: src/Admin/Admin.php:319
 msgid "No reference price yet."
 msgstr ""
 
-#: src/Admin/Admin.php:320
+#: src/Admin/Admin.php:322
 msgid "DA/kg"
 msgstr ""
 
-#: src/Admin/Admin.php:320
+#: src/Admin/Admin.php:322
 msgid "Source"
 msgstr ""
 
-#: src/Admin/Admin.php:326
-#: src/Admin/Admin.php:462
-#: src/Admin/Admin.php:468
-msgid "Delete"
-msgstr ""
-
-#: src/Admin/Admin.php:343
-#: src/Admin/Admin.php:575
+#: src/Admin/Admin.php:345
+#: src/Admin/Admin.php:587
 msgid "Settings saved."
 msgstr ""
 
-#: src/Admin/Admin.php:356
+#: src/Admin/Admin.php:358
 msgid "Reference price deleted."
 msgstr ""
 
-#: src/Admin/Admin.php:366
+#: src/Admin/Admin.php:368
 msgid "Reference price saved."
 msgstr ""
 
-#: src/Admin/Admin.php:387
+#: src/Admin/Admin.php:389
 msgid "Changes published. The seller was notified."
 msgstr ""
 
-#: src/Admin/Admin.php:391
-#: src/Admin/Admin.php:404
+#: src/Admin/Admin.php:393
+#: src/Admin/Admin.php:416
 msgid "Give the reason, so the seller knows what to change."
 msgstr ""
 
-#: src/Admin/Admin.php:395
+#: src/Admin/Admin.php:397
 msgid "Changes refused. The previous version stays online; the seller was told why."
 msgstr ""
 
-#: src/Admin/Admin.php:400
+#: src/Admin/Admin.php:401
+msgid "Give the reason, so the seller knows why the listing was deleted."
+msgstr ""
+
+#: src/Admin/Admin.php:407
+msgid "Listing deleted. The seller was informed with your reason."
+msgstr ""
+
+#: src/Admin/Admin.php:412
 msgid "Product published. The seller was notified."
 msgstr ""
 
-#: src/Admin/Admin.php:408
+#: src/Admin/Admin.php:420
 msgid "The seller was asked to change the product."
 msgstr ""
 
-#: src/Admin/Admin.php:419
-#: src/Admin/Admin.php:507
+#: src/Admin/Admin.php:431
+#: src/Admin/Admin.php:519
 msgid "title"
 msgstr ""
 
-#: src/Admin/Admin.php:422
-#: src/Admin/Admin.php:511
+#: src/Admin/Admin.php:434
+#: src/Admin/Admin.php:523
 msgid "description"
 msgstr ""
 
-#: src/Admin/Admin.php:425
+#: src/Admin/Admin.php:437
 msgid "photos"
 msgstr ""
 
-#: src/Admin/Admin.php:428
+#: src/Admin/Admin.php:440
 msgid "technical sheets"
 msgstr ""
 
-#: src/Admin/Admin.php:432
+#: src/Admin/Admin.php:444
 msgid "technical data"
 msgstr ""
 
-#: src/Admin/Admin.php:435
+#: src/Admin/Admin.php:447
 msgid "price"
 msgstr ""
 
-#: src/Admin/Admin.php:437
+#: src/Admin/Admin.php:449
 msgid "quantities"
 msgstr ""
 
 #. translators: %s: listing title.
-#: src/Admin/Admin.php:451
+#: src/Admin/Admin.php:463
 msgid "Edit \"%s\""
 msgstr ""
 
 #. translators: %s: company.
-#: src/Admin/Admin.php:452
+#: src/Admin/Admin.php:464
 msgid "Seller: %s. The seller receives a notification and an e-mail with your reason and the list of changes."
 msgstr ""
 
-#: src/Admin/Admin.php:457
+#: src/Admin/Admin.php:469
 msgid "Title in French"
 msgstr ""
 
-#: src/Admin/Admin.php:458
+#: src/Admin/Admin.php:470
 msgid "Title in Arabic"
 msgstr ""
 
-#: src/Admin/Admin.php:459
+#: src/Admin/Admin.php:471
 msgid "Description"
 msgstr ""
 
-#: src/Admin/Admin.php:460
+#: src/Admin/Admin.php:472
 msgid "Photos"
 msgstr ""
 
-#: src/Admin/Admin.php:464
+#: src/Admin/Admin.php:476
 msgid "Add photos"
 msgstr ""
 
-#: src/Admin/Admin.php:466
+#: src/Admin/Admin.php:478
 msgid "Technical sheets"
 msgstr ""
 
-#: src/Admin/Admin.php:474
+#: src/Admin/Admin.php:486
 msgid "Save and inform the seller"
 msgstr ""
 
-#: src/Admin/Admin.php:475
+#: src/Admin/Admin.php:487
 msgid "Cancel"
 msgstr ""
 
-#: src/Admin/Admin.php:491
+#: src/Admin/Admin.php:503
 msgid "Give the reason, so the seller knows why the listing was changed."
 msgstr ""
 
-#: src/Admin/Admin.php:502
+#: src/Admin/Admin.php:514
 #: src/Spec.php:154
 msgid "Give the product a title (in French or in Arabic)."
 msgstr ""
 
 #. translators: %d: number of photos.
-#: src/Admin/Admin.php:518
+#: src/Admin/Admin.php:530
 msgid "%d photo deleted"
 msgid_plural "%d photos deleted"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d: number of photos.
-#: src/Admin/Admin.php:522
+#: src/Admin/Admin.php:534
 msgid "%d photo added"
 msgid_plural "%d photos added"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Admin/Admin.php:526
+#: src/Admin/Admin.php:538
 msgid "technical sheet deleted"
 msgstr ""
 
-#: src/Admin/Admin.php:529
+#: src/Admin/Admin.php:541
 msgid "Nothing was changed."
 msgstr ""
 
-#: src/Admin/Admin.php:537
+#: src/Admin/Admin.php:549
 msgid "Listing changed. The seller was informed with your reason."
 msgstr ""
 
-#: src/Admin/Admin.php:565
+#: src/Admin/Admin.php:577
 msgid "Category saved."
 msgstr ""
 
@@ -697,59 +711,59 @@ msgstr ""
 msgid "Thank you. Your changes will be visible after a quick check by the platform team; meanwhile the current version stays online."
 msgstr ""
 
-#: src/Form.php:128
+#: src/Form.php:133
 msgid "Draft saved. You can finish it later from \"My listings\"."
 msgstr ""
 
-#: src/Form.php:129
+#: src/Form.php:134
 msgid "Thank you. Your product will be visible after a quick check by the platform team."
 msgstr ""
 
-#: src/Form.php:130
-#: src/Form.php:233
+#: src/Form.php:135
+#: src/Form.php:238
 msgid "Your product is published."
 msgstr ""
 
 #. translators: %d: number of listings.
-#: src/Form.php:168
+#: src/Form.php:173
 msgid "A client account can have %d listing online at a time. Mark one as sold or withdraw it first, or open a company or professional account."
 msgid_plural "A client account can have %d listings online at a time. Mark one as sold or withdraw it first, or open a company or professional account."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Form.php:206
+#: src/Form.php:211
 msgid "You cannot change this product."
 msgstr ""
 
-#: src/Form.php:211
+#: src/Form.php:216
 msgid "Only a published product can be marked as sold."
 msgstr ""
 
-#: src/Form.php:214
+#: src/Form.php:219
 msgid "Marked as sold. Buyers no longer see it."
 msgstr ""
 
-#: src/Form.php:218
+#: src/Form.php:223
 msgid "The product is withdrawn and saved as a draft."
 msgstr ""
 
-#: src/Form.php:222
+#: src/Form.php:227
 msgid "This product cannot be published again from here. Edit it instead."
 msgstr ""
 
-#: src/Form.php:233
+#: src/Form.php:238
 msgid "Sent for review again."
 msgstr ""
 
-#: src/Form.php:237
+#: src/Form.php:242
 msgid "Withdraw the product before deleting it."
 msgstr ""
 
-#: src/Form.php:240
+#: src/Form.php:245
 msgid "Product deleted."
 msgstr ""
 
-#: src/Form.php:243
+#: src/Form.php:248
 msgid "Unknown action."
 msgstr ""
 
@@ -762,66 +776,89 @@ msgstr ""
 msgid "A seller submitted \"%s\". Check it before it is published."
 msgstr ""
 
-#: src/Notifications.php:34
+#. translators: 1: company, 2: listing title, 3: administration address.
+#: src/Notifications.php:43
+msgid "%1$s published \"%2$s\". It is already online. To change, unpublish or delete it with a reason sent to the seller: %3$s"
+msgstr ""
+
+#: src/Notifications.php:48
+msgid "Listing changed by its seller"
+msgstr ""
+
+#. translators: 1: company, 2: listing title, 3: administration address.
+#: src/Notifications.php:50
+msgid "%1$s changed \"%2$s\". The changes are already online. To change, unpublish or delete it with a reason sent to the seller: %3$s"
+msgstr ""
+
+#: src/Notifications.php:55
+msgid "One of your listings was deleted"
+msgstr ""
+
+#. translators: 1: listing title, 2: reason.
+#: src/Notifications.php:57
+msgid "The platform team deleted \"%1$s\". Reason: %2$s"
+msgstr ""
+
+#: src/Notifications.php:62
 msgid "Changes of a listing to review"
 msgstr ""
 
 #. translators: %s: product title.
-#: src/Notifications.php:36
+#: src/Notifications.php:64
 msgid "A seller changed \"%s\". The published version stays online until you check the changes."
 msgstr ""
 
-#: src/Notifications.php:41
+#: src/Notifications.php:69
 msgid "Your changes are published"
 msgstr ""
 
 #. translators: %s: product title.
-#: src/Notifications.php:43
+#: src/Notifications.php:71
 msgid "The changes of \"%s\" are now visible to buyers."
 msgstr ""
 
-#: src/Notifications.php:48
+#: src/Notifications.php:76
 msgid "Your changes were not accepted"
 msgstr ""
 
 #. translators: 1: product title, 2: reason.
-#: src/Notifications.php:50
+#: src/Notifications.php:78
 msgid "The changes of \"%1$s\" were not published: %2$s The previous version is still online; you can edit it again."
 msgstr ""
 
-#: src/Notifications.php:55
+#: src/Notifications.php:83
 msgid "The platform changed one of your listings"
 msgstr ""
 
 #. translators: 1: product title, 2: reason, 3: changes.
-#: src/Notifications.php:57
+#: src/Notifications.php:85
 msgid "The platform team changed \"%1$s\". Reason: %2$s Changes: %3$s"
 msgstr ""
 
-#: src/Notifications.php:62
+#: src/Notifications.php:90
 msgid "Your product is published"
 msgstr ""
 
 #. translators: %s: product title.
-#: src/Notifications.php:64
+#: src/Notifications.php:92
 msgid "\"%s\" is now visible to buyers."
 msgstr ""
 
-#: src/Notifications.php:69
+#: src/Notifications.php:97
 msgid "Your product needs changes"
 msgstr ""
 
 #. translators: 1: product title, 2: reason.
-#: src/Notifications.php:71
+#: src/Notifications.php:99
 msgid "\"%1$s\" was not published: %2$s Edit it and send it again."
 msgstr ""
 
-#: src/Notifications.php:76
+#: src/Notifications.php:104
 msgid "Your product has expired"
 msgstr ""
 
 #. translators: %s: product title.
-#: src/Notifications.php:78
+#: src/Notifications.php:106
 msgid "\"%s\" is no longer shown. Publish it again from \"My listings\" if it is still available."
 msgstr ""
 
@@ -1042,4 +1079,29 @@ msgstr ""
 
 #: src/Spec.php:487
 msgid "Choose the condition."
+msgstr ""
+
+#: src/Stock.php:88
+msgid "This listing is not sold as a whole lot."
+msgstr ""
+
+#: src/Stock.php:94
+msgid "This listing is sold as a whole lot only."
+msgstr ""
+
+#: src/Stock.php:98
+msgid "Enter the quantity you want."
+msgstr ""
+
+#: src/Stock.php:101
+msgid "Enter a whole number."
+msgstr ""
+
+#. translators: 1: available quantity, 2: unit.
+#: src/Stock.php:105
+msgid "Only %1$s %2$s available."
+msgstr ""
+
+#: src/Stock.php:119
+msgid "This listing is no longer on sale."
 msgstr ""

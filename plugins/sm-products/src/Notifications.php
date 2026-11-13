@@ -29,6 +29,34 @@ final class Notifications {
 			'body'    => static fn( $p ) => sprintf( __( 'A seller submitted "%s". Check it before it is published.', 'sm-products' ), $title( $p ) ),
 			'link'    => static fn( $p ) => admin_url( 'admin.php?page=sm-products&status=pending' ),
 		);
+		$seller = static function ( $p ) {
+			$c = \SM\Core\Accounts\Companies::get( (int) ( $p['company_id'] ?? 0 ) );
+			return $c ? $c->name : '';
+		};
+		$manage = static fn( $p ) => admin_url( 'admin.php?page=sm-products&status=published&market=' . rawurlencode( (string) ( Products::get( $p['product_id'] ?? 0 )->market ?? '' ) ) );
+		$public = static fn( $p ) => ( $prod = Products::get( $p['product_id'] ?? 0 ) ) ? sm_url( 'listing', array( 'id' => $prod->listing_id ) ) : admin_url( 'admin.php?page=sm-products' );
+		// 0.10.0: listings are published at once; the team is told of each one.
+		$types['product.published'] = array(
+			'email'   => true,
+			'subject' => static fn( $p ) => __( 'New listing published', 'sm-products' ),
+			/* translators: 1: company, 2: listing title, 3: administration address. */
+			'body'    => static fn( $p ) => sprintf( __( '%1$s published "%2$s". It is already online. To change, unpublish or delete it with a reason sent to the seller: %3$s', 'sm-products' ), $seller( $p ), $title( $p ), $manage( $p ) ),
+			'link'    => $public,
+		);
+		$types['product.updated'] = array(
+			'email'   => true,
+			'subject' => static fn( $p ) => __( 'Listing changed by its seller', 'sm-products' ),
+			/* translators: 1: company, 2: listing title, 3: administration address. */
+			'body'    => static fn( $p ) => sprintf( __( '%1$s changed "%2$s". The changes are already online. To change, unpublish or delete it with a reason sent to the seller: %3$s', 'sm-products' ), $seller( $p ), $title( $p ), $manage( $p ) ),
+			'link'    => $public,
+		);
+		$types['product.deleted'] = array(
+			'email'   => true,
+			'subject' => static fn( $p ) => __( 'One of your listings was deleted', 'sm-products' ),
+			/* translators: 1: listing title, 2: reason. */
+			'body'    => static fn( $p ) => sprintf( __( 'The platform team deleted "%1$s". Reason: %2$s', 'sm-products' ), $p['title'] ?? '', $p['reason'] ?? '' ),
+			'link'    => static fn( $p ) => Routes::url( 'account', array( 'view' => 'listings' ) ),
+		);
 		$types['product.revision']  = array(
 			'email'   => true,
 			'subject' => static fn( $p ) => __( 'Changes of a listing to review', 'sm-products' ),

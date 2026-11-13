@@ -37,6 +37,11 @@ wp('update_user_meta(get_user_by("email","%s")->ID, "sm_locale", "fr");' % selle
 # Start clean: remove the products left by a previous run of this seller.
 wp('$c = SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","%s")->ID); foreach (SM\\Products\\Products::query(array("status"=>"any","company"=>$c->id,"per_page"=>60))["items"] as $p) SM\\Products\\Products::delete($p->id);' % seller)
 
+# These tests cover the check before publication: switch it on for the run (off by
+# default since sm-products 0.10.0) and put the settings back at the end.
+saved_settings = wp('echo wp_json_encode(get_option("sm_products_settings", null));')
+wp('$s = SM\\Products\\Settings::all(); $s["moderation"] = 1; update_option("sm_products_settings", $s);')
+
 with sync_playwright() as p:
     b = p.chromium.launch()
     ctx = b.new_context(viewport={'width': 390, 'height': 844}); pg = ctx.new_page()
@@ -196,6 +201,8 @@ with sync_playwright() as p:
     wp('update_user_meta(get_user_by("email","%s")->ID, "sm_locale", "fr");' % seller)
     b.close()
 
+open(os.path.join(OUT, '.settings.json'), 'w').write(saved_settings or 'null')
+wp('$v = json_decode(file_get_contents("%s"), true); null === $v ? delete_option("sm_products_settings") : update_option("sm_products_settings", $v);' % os.path.abspath(os.path.join(OUT, '.settings.json')))
 ok = sum(1 for r in results if r[0])
 print(f'\n{ok}/{len(results)} checks passed')
 sys.exit(0 if ok == len(results) else 1)

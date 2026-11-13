@@ -140,14 +140,29 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 
 			<?php sm_component( 'price-block', array( 'item' => $item ) ); ?>
 
+			<?php
+			// Buy / make an offer (sm-trade, 0.24.0).
+			$trade     = sm_theme_data( 'trade_box', array( 'id' => $item['id'] ) );
+			$can_trade = isset( $trade['state'] ) && ! empty( $trade['can_buy'] ) && 'unavailable' !== $trade['state'];
+			?>
 			<div class="sm-detail__actions">
-				<a class="sm-btn sm-btn--accent sm-btn--block" href="#sm-enquiry"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Contact the seller', 'sm-marketplace' ); ?></a>
+				<?php if ( $can_trade && 'own' !== $trade['state'] ) : ?>
+					<a class="sm-btn sm-btn--accent sm-btn--block" href="#sm-buy" data-sm-buy="order"><?php sm_icon( 'cart' ); ?><?php esc_html_e( 'Buy', 'sm-marketplace' ); ?></a>
+					<a class="sm-btn sm-btn--primary-outline sm-btn--block" href="#sm-buy" data-sm-buy="offer"><?php sm_icon( 'tag' ); ?><?php esc_html_e( 'Make an offer', 'sm-marketplace' ); ?></a>
+					<a class="sm-btn sm-btn--ghost sm-btn--block" href="#sm-enquiry"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Contact the seller', 'sm-marketplace' ); ?></a>
+				<?php else : ?>
+					<a class="sm-btn sm-btn--accent sm-btn--block" href="#sm-enquiry"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Contact the seller', 'sm-marketplace' ); ?></a>
+				<?php endif; ?>
 				<a class="sm-btn sm-btn--primary-outline sm-btn--block" href="<?php echo esc_url( sm_page_url( 'rfq', array( 'from' => $item['id'] ) ) ); ?>"><?php sm_icon( 'rfq' ); ?><?php esc_html_e( 'Request a quotation', 'sm-marketplace' ); ?></a>
 				<div class="sm-detail__mini">
 					<button class="sm-btn sm-btn--ghost" type="button" aria-pressed="false" data-sm-save="<?php echo esc_attr( $item['id'] ); ?>"><?php sm_icon( 'heart' ); ?><?php esc_html_e( 'Save', 'sm-marketplace' ); ?></button>
 					<button class="sm-btn sm-btn--ghost" type="button" data-sm-share><?php sm_icon( 'share' ); ?><?php esc_html_e( 'Share', 'sm-marketplace' ); ?></button>
 				</div>
 			</div>
+			<?php if ( $can_trade && 'own' !== $trade['state'] ) : ?>
+				<?php sm_component( 'buy-box', array( 'item' => $item, 'box' => $trade ) ); ?>
+				<script>(function(p){if(!p)return;var keep=location.hash==='#sm-buy'||p.querySelector('.sm-notice--error,.sm-notice--info,.sm-field__error,[aria-invalid="true"]');if(!keep){p.hidden=true;}})(document.currentScript.previousElementSibling);</script>
+			<?php endif; ?>
 			<?php do_action( 'sm_slot', 'listing.aside', $item ); ?>
 
 			<?php if ( $company ) : ?>

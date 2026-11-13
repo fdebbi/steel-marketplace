@@ -275,3 +275,21 @@ T.update({
 "Reference price deleted.": ("Prix de référence supprimé.", "تم حذف السعر المرجعي."),
 "Reference price saved.": ("Prix de référence enregistré.", "تم حفظ السعر المرجعي."),
 })
+# 0.10.0: direct publication, admin e-mails, deletion with a reason, stock of orders.
+T.update({
+"New listing published": ("Nouvelle annonce publiée", "إعلان جديد منشور"),
+"Delete this listing for good? The seller receives your reason.": ("Supprimer définitivement cette annonce ? Le vendeur reçoit votre motif.", "حذف هذا الإعلان نهائيا؟ يتلقى البائع السبب."),
+"Give the reason, so the seller knows why the listing was deleted.": ("Indiquez le motif, pour que le vendeur sache pourquoi l’annonce a été supprimée.", "اذكر السبب ليعرف البائع لماذا حُذف الإعلان."),
+"Listing deleted. The seller was informed with your reason.": ("Annonce supprimée. Le vendeur a été informé avec votre motif.", "تم حذف الإعلان. أُبلغ البائع بالسبب."),
+"%1$s published \"%2$s\". It is already online. To change, unpublish or delete it with a reason sent to the seller: %3$s": ("%1$s a publié « %2$s ». L’annonce est déjà en ligne. Pour la modifier, la retirer ou la supprimer avec un motif envoyé au vendeur : %3$s", "نشر %1$s «%2$s». الإعلان منشور بالفعل. لتعديله أو سحبه أو حذفه مع سبب يُرسل إلى البائع: %3$s"),
+"Listing changed by its seller": ("Annonce modifiée par son vendeur", "إعلان عدّله بائعه"),
+"%1$s changed \"%2$s\". The changes are already online. To change, unpublish or delete it with a reason sent to the seller: %3$s": ("%1$s a modifié « %2$s ». Les changements sont déjà en ligne. Pour la modifier, la retirer ou la supprimer avec un motif envoyé au vendeur : %3$s", "عدّل %1$s «%2$s». التغييرات منشورة بالفعل. لتعديله أو سحبه أو حذفه مع سبب يُرسل إلى البائع: %3$s"),
+"One of your listings was deleted": ("Une de vos annonces a été supprimée", "تم حذف أحد إعلاناتك"),
+"The platform team deleted \"%1$s\". Reason: %2$s": ("L’équipe de la plateforme a supprimé « %1$s ». Motif : %2$s", "حذف فريق المنصة «%1$s». السبب: %2$s"),
+"This listing is not sold as a whole lot.": ("Cette annonce n’est pas vendue en lot entier.", "هذا الإعلان لا يُباع كحصة كاملة."),
+"This listing is sold as a whole lot only.": ("Cette annonce est vendue en lot entier uniquement.", "هذا الإعلان يُباع كحصة كاملة فقط."),
+"Enter the quantity you want.": ("Indiquez la quantité souhaitée.", "أدخل الكمية المطلوبة."),
+"Enter a whole number.": ("Indiquez un nombre entier.", "أدخل عددا صحيحا."),
+"Only %1$s %2$s available.": ("Seulement %1$s %2$s disponibles.", "المتوفر %1$s %2$s فقط."),
+"This listing is no longer on sale.": ("Cette annonce n’est plus en vente.", "هذا الإعلان لم يعد معروضا للبيع."),
+})

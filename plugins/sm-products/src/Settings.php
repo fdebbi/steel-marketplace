@@ -15,8 +15,10 @@ final class Settings {
 
 	public static function defaults() {
 		return array(
-			'moderation'   => 1,
-			'client_moderation' => 1, // Listings of client accounts (private sellers) are always checked.
+			// 0.10.0: listings are published at once; the administrators get an e-mail for each
+			// new listing and each change, and can change, unpublish or delete with a reason.
+			'moderation'   => 0,
+			'client_moderation' => 0, // When on, listings of client accounts (private sellers) are checked first.
 			'client_max_active' => 5, // Published or waiting listings of a client account (0 = no limit).
 			'expiry_days'  => 90,
 			'max_photos'   => 10,

@@ -117,7 +117,12 @@ final class Form {
 				Products::clear_revision( $product->id );
 			}
 		}
+		$was = $product ? $product->status : '';
 		$pid = Products::save( $id, $company->id, $user_id, $spec, $status, $photos, $sheets );
+		// 0.10.0: the administrators are told at once of every listing published or changed.
+		if ( 'published' === $status && ! current_user_can( 'sm_moderate' ) ) {
+			\SM\Core\Notifications\Notifications::notify_moderators( 'published' === $was ? 'product.updated' : 'product.published', array( 'product_id' => $pid, 'company_id' => $company->id ) );
+		}
 		foreach ( array_merge( $photos, $sheets ) as $aid ) {
 			update_post_meta( $aid, '_sm_owner', $user_id );
 		}

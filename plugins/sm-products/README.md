@@ -18,6 +18,12 @@ Depuis la version 0.2.0, cette extension est le **moteur d’annonces** commun :
 - Tableau de bord vendeur : « Mes annonces » par statut, modifier, marquer vendu, retirer, republier, supprimer.
 - Règles : seules les entreprises commerciales ayant une activité de vente et un contact vérifié publient ; un compte ingénierie ne publie jamais.
 
+## Publication et contrôle (0.10.0)
+
+Les annonces sont publiées tout de suite, comme leurs modifications. Les administrateurs reçoivent un e-mail pour chaque annonce publiée et chaque modification, et peuvent depuis SM → Produits la modifier, la retirer ou la supprimer avec un motif envoyé au vendeur. La vérification avant publication reste disponible dans les réglages (« Modération »).
+
+Le stock d'une annonce diminue quand le vendeur accepte une commande ou une offre (extension SM Trade).
+
 ## Indice des prix (0.9.0)
 
 SM → Produits → Indice des prix. Le prix affiché sous l'image de l'accueil et sur la page Indice des prix vient :
