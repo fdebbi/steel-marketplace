@@ -32,6 +32,9 @@ if ( $id ) :
 				<p class="sme-ref" dir="ltr"><?php echo esc_html( $m['ref'] ); ?></p>
 				<h2 class="sm-panel__title" dir="auto"><?php echo esc_html( $m['title'] ); ?></h2>
 				<p class="sm-muted"><?php echo esc_html( $m['type'] ); ?> · <?php echo esc_html( sm_t( sm_theme_wilayas()[ $m['wilaya'] ] ?? '' ) ); ?></p>
+				<?php if ( ! empty( $m['prestations'] ) ) : ?>
+					<ul class="sme-prest-list" aria-label="<?php esc_attr_e( 'Prestations wanted', 'sm-marketplace' ); ?>"><?php foreach ( $m['prestations'] as $p ) : ?><li><?php echo esc_html( $p ); ?></li><?php endforeach; ?></ul>
+				<?php endif; ?>
 			</div>
 			<?php sm_mission_status( $m ); ?>
 		</div>

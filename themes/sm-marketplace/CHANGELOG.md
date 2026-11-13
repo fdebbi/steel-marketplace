@@ -1,5 +1,12 @@
 # Changelog — sm-marketplace
 
+## 0.27.0 — 2026-11-13 (avec sm-engineering 0.2.0)
+
+- Page Ingénierie : cartes des services d'ingénierie (image, titre, prestations, bouton « Demander ce service »), puis « Comment ça marche » ; plus d'annuaire des ingénieurs partenaires (sauf si l'administrateur le réactive) ; lien discret « Devenir ingénieur partenaire » en bas.
+- Demander une étude : liste des services (préchoisi depuis la carte) et cases des prestations du service choisi ; plus de choix d'ingénieur quand la liste n'est pas publique.
+- Compte client et ingénieur : prestations demandées affichées sur la page de la demande ; « Service » au lieu de « Type d'étude ».
+- Candidature et profil ingénieur : « Services proposés » au lieu de « Spécialités ».
+
 ## 0.26.0 — 2026-11-13
 
 - Types des pages Produits, Réemploi et Bâtiments en cadres : petit dessin du type (profilé, tube, tôle, barres, toiture) ou icône de la catégorie, nom, nombre d'annonces (« Aucune annonce pour l'instant » en pointillés). Plus de cadre « Tous » : recliquer sur le type choisi (marqué ×) revient à toutes les annonces ; « Tous les types » est en tête de la colonne de filtres. Sur téléphone, les cadres défilent horizontalement.

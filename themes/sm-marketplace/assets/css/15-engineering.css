@@ -136,3 +136,30 @@
 }
 .sm-dash__cols--wide { grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 1180px) { .sm-dash__cols--wide { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); } }
+
+/* Engineering services (0.27.0): cards with image, prestations and a button */
+.sme-services { list-style: none; margin: 0 0 var(--sm-s6); padding: 0; display: grid; gap: var(--sm-s4); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 720px) { .sme-services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1180px) { .sme-services { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.sme-service { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--sm-line); border-radius: var(--sm-radius-lg); background: var(--sm-surface); box-shadow: 0 10px 24px -22px rgb(15 23 42 / .45); transition: box-shadow .2s ease, transform .2s ease; }
+.sme-service:hover { box-shadow: 0 18px 34px -24px rgb(15 23 42 / .55); transform: translateY(-2px); }
+.sme-service__media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--sm-bg); }
+.sme-service__media img { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: cover; }
+.sme-service__body { display: flex; flex: 1; flex-direction: column; gap: var(--sm-s3); padding: var(--sm-s4); }
+.sme-service__title { margin: 0; font-size: var(--sm-fs-lg); line-height: 1.3; }
+.sme-service__items { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; flex: 1; align-content: start; }
+.sme-service__items li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; align-items: start; font-size: var(--sm-fs-sm); line-height: 1.45; color: var(--sm-text); }
+.sme-service__items .sm-icon { inline-size: 16px; block-size: 16px; margin-block-start: 2px; color: var(--sm-accent-ink); }
+.sme-service__cta { align-self: flex-start; }
+@media (prefers-reduced-motion: reduce) { .sme-service, .sme-service:hover { transition: none; transform: none; } }
+.sme-partner { margin: var(--sm-s4) 0 0; text-align: center; color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+
+/* Prestations of the chosen service in the study request form */
+.sme-prest { margin: 0; padding: 0; border: 0; }
+.sme-prest legend { font-weight: 600; margin-block-end: var(--sm-s2); }
+.sme-prest__group { display: grid; gap: 6px; padding: var(--sm-s3); border: 1px solid var(--sm-line); border-radius: var(--sm-radius); background: var(--sm-bg); }
+.sme-prest__group[hidden] { display: none; }
+.sme-prest__group label { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; align-items: start; font-weight: 400; line-height: 1.4; cursor: pointer; }
+.sme-prest__group input { margin: 2px 0 0; }
+.sme-prest-list { list-style: none; margin: var(--sm-s2) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.sme-prest-list li { padding: 3px 10px; border-radius: 999px; background: var(--sm-accent-soft, var(--sm-bg)); font-size: var(--sm-fs-xs); line-height: 1.5; }

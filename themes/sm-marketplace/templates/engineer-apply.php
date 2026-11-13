@@ -20,7 +20,7 @@ get_template_part(
 		'lead'    => __( 'The platform receives the study and inspection requests of its clients and gives them to its partner engineers as subcontractors. You work on the missions; the platform deals with the clients, the quotes and the payments.', 'sm-marketplace' ),
 		'claim'   => __( 'Engineering missions in steel construction, without looking for clients.', 'sm-marketplace' ),
 		'points'  => array(
-			__( 'Missions matching your specialties', 'sm-marketplace' ),
+			__( 'Missions matching your services', 'sm-marketplace' ),
 			__( 'Fee agreed before you start, paid by the platform', 'sm-marketplace' ),
 			__( 'Your contact details never published', 'sm-marketplace' ),
 		),

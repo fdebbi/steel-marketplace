@@ -4,7 +4,7 @@
  *
  * @var array $args {
  *   values: array  Saved values (title, diploma, school, grad_year, experience, specialties, bio).
- *   types:  array  Study types code => label (specialties).
+ *   types:  array  Engineering services code => label (stored as specialties).
  *   locked: bool   Diploma, school and year cannot change (approved engineer).
  * }
  * @package SM_Marketplace
@@ -49,13 +49,13 @@ $specs  = (array) sm_theme_old( 'specialties', $v['specialties'] ?? array() );
 	<p class="sm-help"><?php sm_icon( 'lock' ); ?> <?php esc_html_e( 'The diploma was checked by the platform. Write to the platform to change it.', 'sm-marketplace' ); ?></p>
 <?php endif; ?>
 <fieldset class="sm-field">
-	<legend><?php esc_html_e( 'Specialties', 'sm-marketplace' ); ?></legend>
+	<legend><?php esc_html_e( 'Services offered', 'sm-marketplace' ); ?></legend>
 	<div class="sm-checkgrid">
 		<?php foreach ( (array) ( $args['types'] ?? array() ) as $code => $label ) : ?>
 			<label class="sm-check"><input type="checkbox" name="specialties[]" value="<?php echo esc_attr( $code ); ?>" <?php checked( in_array( $code, $specs, true ) ); ?>><span><?php echo esc_html( $label ); ?></span></label>
 		<?php endforeach; ?>
 	</div>
-	<p class="sm-help"><?php esc_html_e( 'The platform offers you the missions matching your specialties.', 'sm-marketplace' ); ?></p>
+	<p class="sm-help"><?php esc_html_e( 'Tick the engineering services you can carry out. The platform offers you the missions of these services.', 'sm-marketplace' ); ?></p>
 	<?php sm_theme_error( 'specialties' ); ?>
 </fieldset>
 <div class="sm-field">

@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.25.0\n"
+"Project-Id-Version: SM Marketplace 0.27.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-13T10:59:52+00:00\n"
+"POT-Creation-Date: 2026-11-13T12:03:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -115,7 +115,7 @@ msgstr ""
 #: inc/menus.php:63
 #: inc/template-tags.php:237
 #: templates/front-page-template.php:84
-#: templates/marketplace-engineers.php:30
+#: templates/marketplace-engineers.php:34
 #: templates/mission-request.php:19
 msgid "Engineering"
 msgstr ""
@@ -203,7 +203,7 @@ msgstr ""
 #: header.php:59
 #: template-parts/directory.php:53
 #: templates/front-page-template.php:57
-#: templates/marketplace-engineers.php:68
+#: templates/marketplace-engineers.php:99
 msgid "Search"
 msgstr ""
 
@@ -1267,10 +1267,10 @@ msgstr ""
 
 #: template-parts/components/card-engineer.php:39
 #: template-parts/components/card-engineer.php:41
-#: template-parts/dashboard/studies.php:132
+#: template-parts/dashboard/studies.php:135
 #: templates/dashboard.php:165
-#: templates/marketplace-engineers.php:36
-#: templates/marketplace-engineers.php:80
+#: templates/marketplace-engineers.php:40
+#: templates/marketplace-engineers.php:111
 #: templates/mission-request.php:19
 msgid "Ask for a study"
 msgstr ""
@@ -1403,19 +1403,19 @@ msgstr[1] ""
 #: template-parts/dashboard/rfq.php:29
 #: template-parts/directory.php:62
 #: template-parts/marketplace-archive.php:44
-#: templates/marketplace-engineers.php:56
+#: templates/marketplace-engineers.php:87
 msgid "All"
 msgstr ""
 
 #: template-parts/components/deal-list.php:22
-#: template-parts/dashboard/engineer-missions.php:115
+#: template-parts/dashboard/engineer-missions.php:118
 #: template-parts/dashboard/engineer-overview.php:48
 msgid "In progress"
 msgstr ""
 
 #: template-parts/components/deal-list.php:26
 #: template-parts/components/services-board.php:47
-#: templates/marketplace-engineers.php:71
+#: templates/marketplace-engineers.php:102
 #: templates/rfq-board.php:84
 msgid "Filter"
 msgstr ""
@@ -1496,11 +1496,12 @@ msgid "The diploma was checked by the platform. Write to the platform to change 
 msgstr ""
 
 #: template-parts/components/engineer-fields.php:52
-msgid "Specialties"
+#: templates/company-profile.php:169
+msgid "Services offered"
 msgstr ""
 
 #: template-parts/components/engineer-fields.php:58
-msgid "The platform offers you the missions matching your specialties."
+msgid "Tick the engineering services you can carry out. The platform offers you the missions of these services."
 msgstr ""
 
 #: template-parts/components/engineer-fields.php:62
@@ -1638,15 +1639,15 @@ msgstr ""
 
 #: template-parts/components/filter-panel.php:153
 #: template-parts/dashboard/company.php:101
-#: template-parts/dashboard/engineer-missions.php:126
-#: template-parts/dashboard/engineer-missions.php:131
+#: template-parts/dashboard/engineer-missions.php:129
+#: template-parts/dashboard/engineer-missions.php:134
 #: template-parts/dashboard/portfolio.php:66
 #: template-parts/dashboard/publish.php:184
 #: template-parts/directory.php:47
 #: templates/auth-register.php:76
 #: templates/engineer-apply.php:66
 #: templates/front-page-template.php:49
-#: templates/marketplace-engineers.php:61
+#: templates/marketplace-engineers.php:92
 msgid "Wilaya"
 msgstr ""
 
@@ -1820,7 +1821,7 @@ msgid "Write to the platform…"
 msgstr ""
 
 #: template-parts/components/mission-thread.php:31
-#: template-parts/dashboard/engineer-missions.php:102
+#: template-parts/dashboard/engineer-missions.php:105
 msgid "Send"
 msgstr ""
 
@@ -1847,7 +1848,7 @@ msgstr ""
 #. translators: %d: days.
 #: template-parts/components/my-products.php:22
 #: template-parts/components/my-products.php:31
-#: template-parts/dashboard/studies.php:57
+#: template-parts/dashboard/studies.php:60
 msgid "Expired"
 msgstr ""
 
@@ -1971,12 +1972,12 @@ msgstr ""
 #: template-parts/components/order-history.php:36
 #: template-parts/dashboard/engineer-billing.php:34
 #: template-parts/dashboard/engineer-billing.php:40
-#: template-parts/dashboard/engineer-missions.php:126
-#: template-parts/dashboard/engineer-missions.php:133
+#: template-parts/dashboard/engineer-missions.php:129
+#: template-parts/dashboard/engineer-missions.php:136
 #: template-parts/dashboard/listings.php:36
 #: template-parts/dashboard/listings.php:50
-#: template-parts/dashboard/studies.php:140
-#: template-parts/dashboard/studies.php:147
+#: template-parts/dashboard/studies.php:143
+#: template-parts/dashboard/studies.php:150
 msgid "Status"
 msgstr ""
 
@@ -2088,7 +2089,7 @@ msgstr ""
 #: template-parts/components/price-block.php:15
 #: template-parts/components/product-tech.php:466
 #: template-parts/components/rfq-offer-form.php:39
-#: template-parts/dashboard/studies.php:55
+#: template-parts/dashboard/studies.php:58
 #: templates/single-service.php:68
 msgid "Price"
 msgstr ""
@@ -2239,7 +2240,7 @@ msgstr ""
 
 #: template-parts/components/product-form.php:111
 #: template-parts/dashboard/invoice.php:65
-#: templates/mission-request.php:62
+#: templates/mission-request.php:85
 #: templates/single-listing.php:282
 #: templates/single-service.php:99
 msgid "Description"
@@ -2310,10 +2311,10 @@ msgstr ""
 #: templates/company-profile.php:321
 #: templates/contact.php:56
 #: templates/engineer-apply.php:94
-#: templates/mission-request.php:76
-#: templates/mission-request.php:83
-#: templates/mission-request.php:87
-#: templates/mission-request.php:97
+#: templates/mission-request.php:99
+#: templates/mission-request.php:106
+#: templates/mission-request.php:111
+#: templates/mission-request.php:122
 msgid "optional"
 msgstr ""
 
@@ -2817,9 +2818,9 @@ msgstr ""
 #: template-parts/components/rfq-compare.php:66
 #: template-parts/components/rfq-my-offer.php:20
 #: template-parts/components/service-request-row.php:46
-#: template-parts/dashboard/engineer-missions.php:40
+#: template-parts/dashboard/engineer-missions.php:43
 #: template-parts/dashboard/offers.php:36
-#: template-parts/dashboard/studies.php:56
+#: template-parts/dashboard/studies.php:59
 #: templates/single-service.php:69
 msgid "%d day"
 msgid_plural "%d days"
@@ -2834,7 +2835,7 @@ msgstr ""
 #. translators: %d: days.
 #: template-parts/components/rfq-compare.php:67
 #: template-parts/components/rfq-my-offer.php:21
-#: template-parts/dashboard/studies.php:57
+#: template-parts/dashboard/studies.php:60
 msgid "Valid until"
 msgstr ""
 
@@ -2874,8 +2875,8 @@ msgid "Shortlist"
 msgstr ""
 
 #: template-parts/components/rfq-compare.php:91
-#: template-parts/dashboard/engineer-missions.php:48
-#: template-parts/dashboard/studies.php:65
+#: template-parts/dashboard/engineer-missions.php:51
+#: template-parts/dashboard/studies.php:68
 msgid "Decline"
 msgstr ""
 
@@ -3166,7 +3167,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: template-parts/components/rfq-single.php:123
-#: template-parts/dashboard/studies.php:91
+#: template-parts/dashboard/studies.php:94
 msgid "Your request"
 msgstr ""
 
@@ -3290,7 +3291,10 @@ msgid "Your account cannot publish services."
 msgstr ""
 
 #: template-parts/components/service-form.php:52
+#: template-parts/dashboard/studies.php:143
+#: template-parts/dashboard/studies.php:148
 #: templates/company-profile.php:296
+#: templates/marketplace-engineers.php:85
 msgid "Service"
 msgstr ""
 
@@ -3434,7 +3438,7 @@ msgstr ""
 #: template-parts/components/service-request-form.php:26
 #: template-parts/components/services-board.php:44
 #: templates/company-profile.php:307
-#: templates/mission-request.php:68
+#: templates/mission-request.php:91
 msgid "Wilaya of the project"
 msgstr ""
 
@@ -3464,13 +3468,13 @@ msgid "Service removed"
 msgstr ""
 
 #: template-parts/components/service-request-row.php:44
-#: template-parts/dashboard/studies.php:95
+#: template-parts/dashboard/studies.php:98
 msgid "Indicative budget"
 msgstr ""
 
 #: template-parts/components/service-request-row.php:46
-#: template-parts/dashboard/studies.php:140
-#: template-parts/dashboard/studies.php:146
+#: template-parts/dashboard/studies.php:143
+#: template-parts/dashboard/studies.php:149
 msgid "Quote"
 msgstr ""
 
@@ -3519,17 +3523,17 @@ msgid "Decline the request"
 msgstr ""
 
 #: template-parts/components/service-request-row.php:106
-#: template-parts/dashboard/studies.php:63
+#: template-parts/dashboard/studies.php:66
 msgid "Accept the quote"
 msgstr ""
 
 #: template-parts/components/service-request-row.php:107
-#: template-parts/dashboard/studies.php:68
+#: template-parts/dashboard/studies.php:71
 msgid "Decline the quote"
 msgstr ""
 
 #: template-parts/components/service-request-row.php:109
-#: template-parts/dashboard/studies.php:114
+#: template-parts/dashboard/studies.php:117
 msgid "Cancel the request"
 msgstr ""
 
@@ -4221,15 +4225,15 @@ msgstr ""
 
 #: template-parts/dashboard/engineer-billing.php:34
 #: template-parts/dashboard/engineer-billing.php:38
-#: template-parts/dashboard/engineer-missions.php:126
-#: template-parts/dashboard/engineer-missions.php:130
+#: template-parts/dashboard/engineer-missions.php:129
+#: template-parts/dashboard/engineer-missions.php:133
 msgid "Mission"
 msgstr ""
 
 #: template-parts/dashboard/engineer-billing.php:34
 #: template-parts/dashboard/engineer-billing.php:39
-#: template-parts/dashboard/engineer-missions.php:126
-#: template-parts/dashboard/engineer-missions.php:132
+#: template-parts/dashboard/engineer-missions.php:129
+#: template-parts/dashboard/engineer-missions.php:135
 msgid "Fee"
 msgstr ""
 
@@ -4292,116 +4296,122 @@ msgstr ""
 msgid "All my missions"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:39
+#: template-parts/dashboard/engineer-missions.php:36
+#: template-parts/dashboard/studies.php:37
+#: templates/mission-request.php:70
+msgid "Prestations wanted"
+msgstr ""
+
+#: template-parts/dashboard/engineer-missions.php:42
 msgid "Your fee"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:40
-#: template-parts/dashboard/studies.php:56
+#: template-parts/dashboard/engineer-missions.php:43
+#: template-parts/dashboard/studies.php:59
 msgid "Time"
 msgstr ""
 
 #. translators: %d: days.
-#: template-parts/dashboard/engineer-missions.php:41
-#: template-parts/dashboard/studies.php:94
-#: templates/mission-request.php:76
+#: template-parts/dashboard/engineer-missions.php:44
+#: template-parts/dashboard/studies.php:97
+#: templates/mission-request.php:99
 msgid "Wanted for"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:46
+#: template-parts/dashboard/engineer-missions.php:49
 msgid "Accept the mission"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:49
+#: template-parts/dashboard/engineer-missions.php:52
 msgid "Reason (for the platform)"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:51
+#: template-parts/dashboard/engineer-missions.php:54
 msgid "Decline the mission"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:59
+#: template-parts/dashboard/engineer-missions.php:62
 msgid "Brief"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:62
+#: template-parts/dashboard/engineer-missions.php:65
 msgid "Instructions of the platform:"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:64
+#: template-parts/dashboard/engineer-missions.php:67
 msgid "Documents of the client"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:65
-#: template-parts/dashboard/studies.php:98
+#: template-parts/dashboard/engineer-missions.php:68
+#: template-parts/dashboard/studies.php:101
 msgid "Documents of the platform"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:68
+#: template-parts/dashboard/engineer-missions.php:71
 msgid "Your deliverables"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:69
+#: template-parts/dashboard/engineer-missions.php:72
 msgid "Plans, calculation notes, inspection report: add them here, then send the work to the platform."
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:76
+#: template-parts/dashboard/engineer-missions.php:79
 msgid "Add deliverables"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:77
+#: template-parts/dashboard/engineer-missions.php:80
 msgid "PDF, DWG, DXF, IFC, Excel, Word, images or ZIP."
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:79
+#: template-parts/dashboard/engineer-missions.php:82
 msgid "Upload"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:85
+#: template-parts/dashboard/engineer-missions.php:88
 msgid "Send the work to the platform? You can no longer change the files while it is checked."
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:85
+#: template-parts/dashboard/engineer-missions.php:88
 msgid "Send the work to the platform"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:88
+#: template-parts/dashboard/engineer-missions.php:91
 msgid "The platform checks your work. It may ask for changes in the messages."
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:91
+#: template-parts/dashboard/engineer-missions.php:94
 msgid "Your fee invoice"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:99
+#: template-parts/dashboard/engineer-missions.php:102
 msgid "Send an invoice"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:100
+#: template-parts/dashboard/engineer-missions.php:103
 msgid "PDF, JPG or PNG. Seen by the platform only."
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:108
+#: template-parts/dashboard/engineer-missions.php:111
 msgid "Questions about the brief go to the platform, which asks the client if needed."
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:114
+#: template-parts/dashboard/engineer-missions.php:117
 msgid "Offered to you"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:114
+#: template-parts/dashboard/engineer-missions.php:117
 msgid "No mission waiting for your answer."
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:115
+#: template-parts/dashboard/engineer-missions.php:118
 msgid "No mission in progress."
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:116
+#: template-parts/dashboard/engineer-missions.php:119
 msgid "Done"
 msgstr ""
 
-#: template-parts/dashboard/engineer-missions.php:116
+#: template-parts/dashboard/engineer-missions.php:119
 msgid "Your completed missions appear here."
 msgstr ""
 
@@ -4454,7 +4464,7 @@ msgid "Missions to answer and in progress"
 msgstr ""
 
 #: template-parts/dashboard/engineer-overview.php:70
-msgid "No mission at the moment. The platform offers you missions matching your specialties; you are told by e-mail."
+msgid "No mission at the moment. The platform offers you missions matching your services; you are told by e-mail."
 msgstr ""
 
 #: template-parts/dashboard/engineer-overview.php:74
@@ -5203,83 +5213,77 @@ msgstr ""
 msgid "All my studies"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:47
+#: template-parts/dashboard/studies.php:50
 msgid "The platform cannot take this request:"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:53
+#: template-parts/dashboard/studies.php:56
 msgid "Quote of the platform"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:66
+#: template-parts/dashboard/studies.php:69
 msgid "Why? (optional, it helps the platform)"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:71
+#: template-parts/dashboard/studies.php:74
 msgid "Once you accept, the platform appoints one of its partner engineers. The study is delivered in this page."
 msgstr ""
 
-#: template-parts/dashboard/studies.php:78
+#: template-parts/dashboard/studies.php:81
 msgid "Your study is delivered"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:83
+#: template-parts/dashboard/studies.php:86
 msgid "I received the study — close the request"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:97
+#: template-parts/dashboard/studies.php:100
 msgid "Your documents"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:105
+#: template-parts/dashboard/studies.php:108
 msgid "Add documents"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:106
+#: template-parts/dashboard/studies.php:109
 msgid "Plans, photos, soil report…"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:108
+#: template-parts/dashboard/studies.php:111
 msgid "Send the documents"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:114
+#: template-parts/dashboard/studies.php:117
 msgid "Cancel this request?"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:118
+#: template-parts/dashboard/studies.php:121
 msgid "Questions, details, documents: the platform answers here and coordinates the engineer."
 msgstr ""
 
-#: template-parts/dashboard/studies.php:128
+#: template-parts/dashboard/studies.php:131
 msgid "Studies and inspections by the platform"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:129
+#: template-parts/dashboard/studies.php:132
 msgid "Design, calculation notes, drawings, inspection of a used structure: send your request, receive a quote from the platform, and get the study done by a verified partner engineer."
 msgstr ""
 
-#: template-parts/dashboard/studies.php:136
+#: template-parts/dashboard/studies.php:139
 msgid "No study request yet"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:136
+#: template-parts/dashboard/studies.php:139
 msgid "Your requests and their quotes appear here."
 msgstr ""
 
-#: template-parts/dashboard/studies.php:140
-#: template-parts/dashboard/studies.php:144
+#: template-parts/dashboard/studies.php:143
+#: template-parts/dashboard/studies.php:147
 msgid "Request"
 msgstr ""
 
-#: template-parts/dashboard/studies.php:140
-#: template-parts/dashboard/studies.php:145
-#: templates/mission-request.php:49
-msgid "Type of study"
-msgstr ""
-
-#: template-parts/dashboard/studies.php:140
-#: template-parts/dashboard/studies.php:148
+#: template-parts/dashboard/studies.php:143
+#: template-parts/dashboard/studies.php:151
 msgid "Updated"
 msgstr ""
 
@@ -5626,8 +5630,8 @@ msgstr ""
 
 #: templates/auth-register.php:78
 #: templates/engineer-apply.php:68
-#: templates/mission-request.php:51
-#: templates/mission-request.php:70
+#: templates/mission-request.php:56
+#: templates/mission-request.php:93
 msgid "Select"
 msgstr ""
 
@@ -5724,10 +5728,6 @@ msgstr ""
 
 #: templates/company-profile.php:152
 msgid "Specialisations"
-msgstr ""
-
-#: templates/company-profile.php:169
-msgid "Services offered"
 msgstr ""
 
 #: templates/company-profile.php:170
@@ -6037,7 +6037,8 @@ msgid "SM — Become a partner engineer"
 msgstr ""
 
 #: templates/engineer-apply.php:19
-#: templates/marketplace-engineers.php:50
+#: templates/marketplace-engineers.php:81
+#: templates/marketplace-engineers.php:116
 msgid "Become a partner engineer"
 msgstr ""
 
@@ -6050,7 +6051,7 @@ msgid "Engineering missions in steel construction, without looking for clients."
 msgstr ""
 
 #: templates/engineer-apply.php:23
-msgid "Missions matching your specialties"
+msgid "Missions matching your services"
 msgstr ""
 
 #: templates/engineer-apply.php:24
@@ -6406,76 +6407,90 @@ msgstr ""
 msgid "SM — Engineering"
 msgstr ""
 
-#: templates/marketplace-engineers.php:22
+#: templates/marketplace-engineers.php:26
 msgid "You describe your project"
 msgstr ""
 
-#: templates/marketplace-engineers.php:22
-msgid "Type of study, plans, photos, wilaya."
+#: templates/marketplace-engineers.php:26
+msgid "Service, prestations, plans, photos, wilaya."
 msgstr ""
 
-#: templates/marketplace-engineers.php:23
+#: templates/marketplace-engineers.php:27
 msgid "The platform sends you a quote"
 msgstr ""
 
-#: templates/marketplace-engineers.php:23
+#: templates/marketplace-engineers.php:27
 msgid "One price, one time, one contact: the platform."
 msgstr ""
 
-#: templates/marketplace-engineers.php:24
+#: templates/marketplace-engineers.php:28
 msgid "A partner engineer carries out the study"
 msgstr ""
 
-#: templates/marketplace-engineers.php:24
+#: templates/marketplace-engineers.php:28
 msgid "Chosen for your project among the verified engineers."
 msgstr ""
 
-#: templates/marketplace-engineers.php:25
+#: templates/marketplace-engineers.php:29
 msgid "The platform delivers it"
 msgstr ""
 
-#: templates/marketplace-engineers.php:25
+#: templates/marketplace-engineers.php:29
 msgid "Checked documents, in your account."
 msgstr ""
 
-#: templates/marketplace-engineers.php:33
+#: templates/marketplace-engineers.php:37
 msgid "Engineering studies and inspections"
 msgstr ""
 
-#: templates/marketplace-engineers.php:34
-msgid "Steel design, calculation notes, connections, shop drawings, inspection of used structures: ask the platform, which works with verified partner engineers."
+#: templates/marketplace-engineers.php:38
+msgid "Studies, calculation notes, drawings, inspections and site follow-up of steel structures: ask the platform, which works with verified partner engineers."
 msgstr ""
 
-#: templates/marketplace-engineers.php:49
+#: templates/marketplace-engineers.php:47
+msgid "Our engineering services"
+msgstr ""
+
+#: templates/marketplace-engineers.php:62
+msgid "Ask for this service"
+msgstr ""
+
+#: templates/marketplace-engineers.php:70
+#: templates/mission-request.php:134
+#: templates/rfq-board.php:110
+msgid "How it works"
+msgstr ""
+
+#: templates/marketplace-engineers.php:80
 msgid "Partner engineers of the platform"
 msgstr ""
 
-#: templates/marketplace-engineers.php:54
-msgid "Specialty"
-msgstr ""
-
-#: templates/marketplace-engineers.php:63
+#: templates/marketplace-engineers.php:94
 msgid "All Algeria"
 msgstr ""
 
-#: templates/marketplace-engineers.php:69
+#: templates/marketplace-engineers.php:100
 msgid "e.g. hangar, Eurocode, expertise"
 msgstr ""
 
-#: templates/marketplace-engineers.php:80
+#: templates/marketplace-engineers.php:111
 msgid "No partner engineer matches these filters"
 msgstr ""
 
-#: templates/marketplace-engineers.php:80
+#: templates/marketplace-engineers.php:111
 msgid "The list of partner engineers opens soon"
 msgstr ""
 
-#: templates/marketplace-engineers.php:80
+#: templates/marketplace-engineers.php:111
 msgid "You can already send your request: the platform finds the right engineer."
 msgstr ""
 
-#: templates/marketplace-engineers.php:83
+#: templates/marketplace-engineers.php:114
 msgid "You deal only with the platform: quote, follow-up and delivery. AI tools on this platform never replace a structural calculation or an engineer’s signature."
+msgstr ""
+
+#: templates/marketplace-engineers.php:116
+msgid "Are you a structural engineer?"
 msgstr ""
 
 #. Template Name of the theme
@@ -6538,73 +6553,72 @@ msgstr ""
 msgid "Clients, companies and professionals can ask for studies. Creating an account takes one minute."
 msgstr ""
 
-#: templates/mission-request.php:57
+#: templates/mission-request.php:54
+msgid "Engineering service"
+msgstr ""
+
+#: templates/mission-request.php:80
 msgid "Project"
 msgstr ""
 
-#: templates/mission-request.php:58
+#: templates/mission-request.php:81
 msgid "e.g. Storage hangar 20 × 40 m"
 msgstr ""
 
-#: templates/mission-request.php:63
+#: templates/mission-request.php:86
 msgid "Dimensions, use, loads (crane, snow, wind), soil, what you expect from the study, existing documents…"
 msgstr ""
 
-#: templates/mission-request.php:83
+#: templates/mission-request.php:106
 msgid "Indicative budget (DA)"
 msgstr ""
 
-#: templates/mission-request.php:87
+#: templates/mission-request.php:111
 msgid "Preferred engineer"
 msgstr ""
 
-#: templates/mission-request.php:89
+#: templates/mission-request.php:113
 msgid "Let the platform choose"
 msgstr ""
 
-#: templates/mission-request.php:97
+#: templates/mission-request.php:122
 msgid "Plans, photos, documents"
 msgstr ""
 
 #. translators: 1: number of files, 2: MB, 3: extensions.
-#: templates/mission-request.php:98
+#: templates/mission-request.php:123
 msgid "Up to %1$d files of %2$d MB (%3$s)."
 msgstr ""
 
-#: templates/mission-request.php:100
+#: templates/mission-request.php:125
 msgid "Send my request to the platform"
 msgstr ""
 
-#: templates/mission-request.php:104
+#: templates/mission-request.php:129
 msgid "Engineer you chose"
 msgstr ""
 
-#: templates/mission-request.php:106
+#: templates/mission-request.php:131
 msgid "The platform offers the mission to this engineer first, if available."
 msgstr ""
 
-#: templates/mission-request.php:109
-#: templates/rfq-board.php:110
-msgid "How it works"
-msgstr ""
-
-#: templates/mission-request.php:111
+#: templates/mission-request.php:136
 msgid "The platform studies your request and sends you a quote."
 msgstr ""
 
-#: templates/mission-request.php:112
+#: templates/mission-request.php:137
 msgid "You accept it from your account."
 msgstr ""
 
-#: templates/mission-request.php:113
+#: templates/mission-request.php:138
 msgid "A verified partner engineer carries out the study."
 msgstr ""
 
-#: templates/mission-request.php:114
+#: templates/mission-request.php:139
 msgid "The platform checks it and delivers the documents in your account."
 msgstr ""
 
-#: templates/mission-request.php:116
+#: templates/mission-request.php:141
 msgid "Your documents are private: only the platform and the engineer of your study see them."
 msgstr ""
 

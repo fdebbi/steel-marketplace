@@ -13,7 +13,15 @@ defined( 'ABSPATH' ) || exit;
 final class Installer {
 
 	public static function activate() {
+		$from = (int) get_option( 'sm_engineering_db_version', 0 );
 		self::migrate();
+		// 0.2.0: the engineering page shows the services; the list of partner engineers is hidden.
+		if ( $from > 0 && $from < 2 ) {
+			$s = get_option( \SM\Engineering\Settings::OPTION, array() );
+			$s = is_array( $s ) ? $s : array();
+			$s['public_list'] = 0;
+			update_option( \SM\Engineering\Settings::OPTION, $s );
+		}
 		update_option( 'sm_engineering_db_version', SM_ENGINEERING_DB_VERSION, false );
 	}
 
@@ -58,6 +66,7 @@ final class Installer {
 				type varchar(40) NOT NULL,
 				title varchar(200) NOT NULL DEFAULT '',
 				description text,
+				prestations text,
 				wilaya char(2) NOT NULL DEFAULT '',
 				needed_by date DEFAULT NULL,
 				budget decimal(14,2) NOT NULL DEFAULT 0,

@@ -67,6 +67,7 @@ final class Missions {
 				'type'         => $d['type'],
 				'title'        => $d['title'],
 				'description'  => $d['description'],
+				'prestations'  => wp_json_encode( array_values( (array) ( $d['prestations'] ?? array() ) ), JSON_UNESCAPED_UNICODE ),
 				'wilaya'       => $d['wilaya'],
 				'needed_by'    => $d['needed_by'],
 				'budget'       => $d['budget'],
@@ -79,6 +80,16 @@ final class Missions {
 		$id = (int) $wpdb->insert_id;
 		AuditLog::add( 'mission.submitted', 'mission', $id, array( 'type' => $d['type'], 'preferred' => (int) $d['preferred_id'] ), $client_user, $client_id );
 		return $id;
+	}
+
+	/** Prestations ticked by the client, in the visitor's language (copy kept with the request). */
+	public static function prestations( $m ) {
+		$list = json_decode( (string) ( $m->prestations ?? '' ), true );
+		if ( ! is_array( $list ) ) {
+			return array();
+		}
+		$ar = 'ar' === sm_current_language();
+		return array_values( array_filter( array_map( static fn( $p ) => is_array( $p ) ? (string) ( $ar && '' !== (string) ( $p['ar'] ?? '' ) ? $p['ar'] : ( $p['fr'] ?? '' ) ) : '', $list ) ) );
 	}
 
 	private static function update( $id, array $row, $action, array $log = array() ) {

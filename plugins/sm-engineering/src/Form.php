@@ -52,7 +52,11 @@ final class Form {
 		$types  = Settings::types();
 		$type   = sanitize_key( (string) ( $in['type'] ?? '' ) );
 		if ( ! isset( $types[ $type ] ) ) {
-			$errors['type'] = __( 'Choose the type of study.', 'sm-engineering' );
+			$errors['type'] = __( 'Choose the engineering service.', 'sm-engineering' );
+		}
+		$picked = isset( $types[ $type ] ) ? Services::pick( $type, array_map( 'absint', (array) ( ( (array) ( $in['prestations'] ?? array() ) )[ $type ] ?? array() ) ) ) : array();
+		if ( isset( $types[ $type ] ) && ! $picked && ( Services::get( $type )['items'] ?? array() ) ) {
+			$errors['prestations'] = __( 'Tick at least one prestation of the service.', 'sm-engineering' );
 		}
 		$title = mb_substr( sanitize_text_field( (string) ( $in['title'] ?? '' ) ), 0, 200 );
 		if ( mb_strlen( $title ) < 5 ) {
@@ -81,6 +85,7 @@ final class Form {
 				'type'         => $type,
 				'title'        => $title,
 				'description'  => $desc,
+				'prestations'  => $picked,
 				'wilaya'       => $wilaya,
 				'needed_by'    => '' !== $needed ? $needed : null,
 				'budget'       => max( 0, min( 1e10, $budget ) ),

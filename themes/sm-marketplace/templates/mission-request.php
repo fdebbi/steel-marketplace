@@ -45,14 +45,37 @@ $d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'type
 		<div class="sme-request__grid">
 			<?php sm_theme_form_open( 'mission_request', array( 'class' => 'sm-form sm-panel', 'enctype' => 'multipart/form-data' ) ); ?>
 				<?php sm_theme_notices( true ); ?>
+				<?php
+				$services = (array) ( $d['services'] ?? array() );
+				$chosen   = (string) sm_theme_old( 'type', $d['type'] );
+				$ticked   = (array) sm_theme_old( 'prestations', array() );
+				?>
 				<div class="sm-field">
-					<label for="m-type"><?php esc_html_e( 'Type of study', 'sm-marketplace' ); ?></label>
-					<select id="m-type" name="type" required<?php sm_theme_aria( 'type' ); ?>>
+					<label for="m-type"><?php esc_html_e( 'Engineering service', 'sm-marketplace' ); ?></label>
+					<select id="m-type" name="type" required data-sm-service<?php sm_theme_aria( 'type' ); ?>>
 						<option value=""><?php esc_html_e( 'Select', 'sm-marketplace' ); ?></option>
-						<?php foreach ( $d['types'] as $code => $label ) : ?><option value="<?php echo esc_attr( $code ); ?>" <?php selected( sm_theme_old( 'type', $d['type'] ), $code ); ?>><?php echo esc_html( $label ); ?></option><?php endforeach; ?>
+						<?php foreach ( $services as $sv ) : ?><option value="<?php echo esc_attr( $sv['code'] ); ?>" <?php selected( $chosen, $sv['code'] ); ?>><?php echo esc_html( $sv['title'] ); ?></option><?php endforeach; ?>
 					</select>
 					<?php sm_theme_error( 'type' ); ?>
 				</div>
+				<?php foreach ( $services as $sv ) : ?>
+					<?php
+					if ( ! $sv['items'] ) {
+						continue;
+					}
+					$on   = $chosen === $sv['code'];
+					$mine = array_map( 'intval', (array) ( $ticked[ $sv['code'] ] ?? array() ) );
+					?>
+					<fieldset class="sme-prest" data-sm-prest="<?php echo esc_attr( $sv['code'] ); ?>"<?php echo $on ? '' : ' hidden disabled'; ?>>
+						<legend><?php esc_html_e( 'Prestations wanted', 'sm-marketplace' ); ?></legend>
+						<div class="sme-prest__group">
+							<?php foreach ( $sv['items'] as $i => $item ) : ?>
+								<label><input type="checkbox" name="prestations[<?php echo esc_attr( $sv['code'] ); ?>][]" value="<?php echo (int) $i; ?>" <?php checked( in_array( (int) $i, $mine, true ) ); ?>><span><?php echo esc_html( $item ); ?></span></label>
+							<?php endforeach; ?>
+						</div>
+						<?php if ( $on ) : ?><?php sm_theme_error( 'prestations' ); ?><?php endif; ?>
+					</fieldset>
+				<?php endforeach; ?>
 				<div class="sm-field">
 					<label for="m-title"><?php esc_html_e( 'Project', 'sm-marketplace' ); ?></label>
 					<input id="m-title" name="title" dir="auto" maxlength="200" required value="<?php echo esc_attr( sm_theme_old( 'title' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. Storage hangar 20 × 40 m', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'title' ); ?>>
@@ -78,11 +101,12 @@ $d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'type
 						<?php sm_theme_error( 'needed_by' ); ?>
 					</div>
 				</div>
-				<div class="sm-field sm-field--row">
+				<div class="sm-field<?php echo $d['engineers'] ? ' sm-field--row' : ''; ?>">
 					<div>
 						<label for="m-budget"><?php esc_html_e( 'Indicative budget (DA)', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
 						<input id="m-budget" name="budget" inputmode="numeric" dir="ltr" value="<?php echo esc_attr( sm_theme_old( 'budget' ) ); ?>">
 					</div>
+					<?php if ( $d['engineers'] ) : ?>
 					<div>
 						<label for="m-eng"><?php esc_html_e( 'Preferred engineer', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
 						<select id="m-eng" name="engineer">
@@ -90,6 +114,7 @@ $d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'type
 							<?php foreach ( $d['engineers'] as $eid => $label ) : ?><option value="<?php echo (int) $eid; ?>" <?php selected( (int) sm_theme_old( 'engineer', $engineer ), (int) $eid ); ?>><?php echo esc_html( $label ); ?></option><?php endforeach; ?>
 						</select>
 					</div>
+					<?php endif; ?>
 				</div>
 				<label class="sm-upload sm-upload--small">
 					<input type="file" name="files[]" multiple data-sm-filename>

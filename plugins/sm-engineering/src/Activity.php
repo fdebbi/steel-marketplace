@@ -56,6 +56,7 @@ final class Activity {
 			'reference'  => $m->ref,
 			'titre'      => $m->title,
 			'type_etude' => Settings::type_label( $m->type ),
+			'prestations' => implode( ', ', Missions::prestations( $m ) ),
 			'client'     => $c['entreprise'],
 			'ingenieur'  => $e['entreprise'],
 			'message'    => (string) $m->description,
@@ -67,7 +68,7 @@ final class Activity {
 	}
 
 	public static function events( array $events ) {
-		$mvars = array( 'reference', 'titre', 'type_etude', 'client', 'ingenieur', 'nom', 'email', 'telephone', 'wilaya', 'message', 'montant', 'honoraires', 'lien', 'lien_admin' );
+		$mvars = array( 'reference', 'titre', 'type_etude', 'prestations', 'client', 'ingenieur', 'nom', 'email', 'telephone', 'wilaya', 'message', 'montant', 'honoraires', 'lien', 'lien_admin' );
 		$events['engineer.applied']   = array(
 			'group'     => 'engineering',
 			'label'     => __( 'Partner engineer application', 'sm-engineering' ),
@@ -82,11 +83,11 @@ final class Activity {
 			'templates' => array(
 				'admin' => array(
 					static fn() => __( 'Partner engineer application: {nom}', 'sm-engineering' ),
-					static fn() => __( "{nom} applied to become a partner engineer.\n\nTitle: {titre}\nDiploma: {diplome}\nExperience: {experience} years\nSpecialties: {specialites}\nWilaya: {wilaya}\n\n{email} — {telephone}\n\nCheck the documents and decide:\n{lien_admin}", 'sm-engineering' ),
+					static fn() => __( "{nom} applied to become a partner engineer.\n\nTitle: {titre}\nDiploma: {diplome}\nExperience: {experience} years\nServices: {specialites}\nWilaya: {wilaya}\n\n{email} — {telephone}\n\nCheck the documents and decide:\n{lien_admin}", 'sm-engineering' ),
 				),
 				'user'  => array(
 					static fn() => __( 'Your partner engineer application is received', 'sm-engineering' ),
-					static fn() => __( "Hello {nom},\n\nThank you for applying to become a partner engineer of {site}. The platform team checks your diploma and your documents, usually within 3 working days, and tells you the decision by e-mail.\n\nOnce approved, you appear on the list of partner engineers (without your contact details) and the platform offers you missions matching your specialties: {specialites}.\n\nFollow your application:\n{lien}\n\nThe {site} team", 'sm-engineering' ),
+					static fn() => __( "Hello {nom},\n\nThank you for applying to become a partner engineer of {site}. The platform team checks your diploma and your documents, usually within 3 working days, and tells you the decision by e-mail.\n\nOnce approved, the platform offers you missions matching the services you chose: {specialites}.\n\nFollow your application:\n{lien}\n\nThe {site} team", 'sm-engineering' ),
 				),
 			),
 		);
@@ -104,7 +105,7 @@ final class Activity {
 			'templates' => array(
 				'admin' => array(
 					static fn() => __( 'Study request {reference}: {type_etude}', 'sm-engineering' ),
-					static fn() => __( "{client} ({wilaya}) asks for a study.\n\n{reference} — {titre}\nType: {type_etude}\n\n{message}\n\nContact: {nom} — {email} — {telephone}\n\nPrepare the quote:\n{lien_admin}", 'sm-engineering' ),
+					static fn() => __( "{client} ({wilaya}) asks for a study.\n\n{reference} — {titre}\nType: {type_etude}\nPrestations: {prestations}\n\n{message}\n\nContact: {nom} — {email} — {telephone}\n\nPrepare the quote:\n{lien_admin}", 'sm-engineering' ),
 				),
 				'user'  => array(
 					static fn() => __( 'Your study request {reference} is received', 'sm-engineering' ),

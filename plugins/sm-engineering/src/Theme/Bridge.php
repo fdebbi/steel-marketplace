@@ -21,6 +21,7 @@ use SM\Engineering\Files;
 use SM\Engineering\Form;
 use SM\Engineering\Messages;
 use SM\Engineering\Missions;
+use SM\Engineering\Services;
 use SM\Engineering\Settings;
 
 defined( 'ABSPATH' ) || exit;
@@ -38,6 +39,28 @@ final class Bridge {
 	public static function type_options( $all = false ) {
 		$ar = 'ar' === sm_current_language();
 		return array_map( static fn( $t ) => $ar ? $t['ar'] : $t['fr'], Settings::types( $all ) );
+	}
+
+	/**
+	 * Active engineering services in the visitor's language, for the engineering
+	 * page and the request form.
+	 *
+	 * @return array list of { code, title, items: string[], image: url ('' = drawing of the theme), demo, url }
+	 */
+	public static function services() {
+		$out = array();
+		foreach ( Services::all() as $code => $s ) {
+			$out[] = array(
+				'code'  => $code,
+				'title' => Services::text( $s ),
+				'items' => array_map( array( Services::class, 'text' ), $s['items'] ),
+				'image' => $s['image'] ? (string) wp_get_attachment_image_url( $s['image'], 'large' ) : '',
+				'alt'   => $s['image'] ? (string) get_post_meta( $s['image'], '_wp_attachment_image_alt', true ) : '',
+				'demo'  => $s['demo'],
+				'url'   => CoreRoutes::url( 'mission-request', array( 'type' => $code ) ),
+			);
+		}
+		return $out;
 	}
 
 	/** Engineer status for the dashboard and the account resource. */
@@ -72,6 +95,7 @@ final class Bridge {
 		}
 		return array(
 			'enabled'     => $enabled,
+			'services'    => self::services(),
 			'items'       => $items,
 			'total'       => $total,
 			'types'       => self::type_options(),
@@ -137,9 +161,11 @@ final class Bridge {
 		return array(
 			'block'      => Form::request_block(),
 			'types'      => self::type_options(),
+			'services'   => self::services(),
 			'type'       => sanitize_key( (string) ( $args['type'] ?? '' ) ),
 			'preferred'  => ( $pe && 'approved' === $pe->status ) ? Engineers::public_shape( $pe ) : null,
-			'engineers'  => $list,
+			// The list of partner engineers is offered only when it is public (setting).
+			'engineers'  => Settings::get( 'public_list' ) ? $list : array(),
 			'max_files'  => (int) Settings::get( 'max_files' ),
 			'file_mb'    => (int) Settings::get( 'file_mb' ),
 			'extensions' => Settings::extensions(),
@@ -159,6 +185,7 @@ final class Bridge {
 			'ref'         => $m->ref,
 			'title'       => $m->title,
 			'type'        => Settings::type_label( $m->type ),
+			'prestations' => Missions::prestations( $m ),
 			'status'      => $m->status,
 			'tone'        => $tone,
 			'label'       => $label,
@@ -236,6 +263,7 @@ final class Bridge {
 			'ref'     => $m->ref,
 			'title'   => $m->title,
 			'type'    => Settings::type_label( $m->type ),
+			'prestations' => Missions::prestations( $m ),
 			'status'  => $m->status,
 			'tone'    => $tone,
 			'label'   => $label,

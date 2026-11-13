@@ -1781,6 +1781,16 @@ T.update({
 "Show every type": ("Afficher tous les types", "عرض كل الأنواع"),
 "No listing yet": ("Aucune annonce pour l’instant", "لا إعلانات بعد"),
 "Remove this type: show every listing": ("Retirer ce type : afficher toutes les annonces", "إزالة هذا النوع: عرض كل الإعلانات"),
+"Tick the engineering services you can carry out. The platform offers you the missions of these services.": ("Cochez les services d’ingénierie que vous pouvez réaliser. La plateforme vous propose les missions de ces services.", "اختر الخدمات الهندسية التي يمكنك إنجازها. تعرض عليك المنصة مهام هذه الخدمات."),
+"Prestations wanted": ("Prestations souhaitées", "الخدمات الفرعية المطلوبة"),
+"No mission at the moment. The platform offers you missions matching your services; you are told by e-mail.": ("Aucune mission pour le moment. La plateforme vous propose des missions selon vos services ; vous êtes prévenu par e-mail.", "لا توجد مهمة حاليا. تعرض عليك المنصة مهاما حسب خدماتك، ويتم إعلامك عبر البريد الإلكتروني."),
+"Missions matching your services": ("Des missions selon vos services", "مهام حسب خدماتك"),
+"Service, prestations, plans, photos, wilaya.": ("Service, prestations, plans, photos, wilaya.", "الخدمة، الخدمات الفرعية، المخططات، الصور، الولاية."),
+"Studies, calculation notes, drawings, inspections and site follow-up of steel structures: ask the platform, which works with verified partner engineers.": ("Études, notes de calcul, plans, expertises et suivi de chantier des structures métalliques : demandez à la plateforme, qui travaille avec des ingénieurs partenaires vérifiés.", "الدراسات ومذكرات الحساب والمخططات والخبرة ومتابعة الورشات للهياكل المعدنية: اطلب من المنصة التي تعمل مع مهندسين شركاء موثقين."),
+"Our engineering services": ("Nos services d’ingénierie", "خدماتنا الهندسية"),
+"Ask for this service": ("Demander ce service", "اطلب هذه الخدمة"),
+"Are you a structural engineer?": ("Vous êtes ingénieur en structures ?", "هل أنت مهندس هياكل؟"),
+"Engineering service": ("Service d’ingénierie", "الخدمة الهندسية"),
 })
 P.update({
 ("%s listing", "%s listings"): (["%s annonce", "%s annonces"], ["لا إعلانات", "إعلان واحد", "إعلانان", "%s إعلانات", "%s إعلانا", "%s إعلان"]),

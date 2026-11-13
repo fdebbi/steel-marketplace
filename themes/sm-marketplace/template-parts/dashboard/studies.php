@@ -33,6 +33,9 @@ if ( $id ) :
 				<p class="sme-ref" dir="ltr"><?php echo esc_html( $m['ref'] ); ?></p>
 				<h2 class="sm-panel__title" dir="auto"><?php echo esc_html( $m['title'] ); ?></h2>
 				<p class="sm-muted"><?php echo esc_html( $m['type'] ); ?> · <?php echo esc_html( sm_t( sm_theme_wilayas()[ $m['wilaya'] ] ?? '' ) ); ?> · <?php echo esc_html( sm_ago( $m['created'] ) ); ?></p>
+				<?php if ( ! empty( $m['prestations'] ) ) : ?>
+					<ul class="sme-prest-list" aria-label="<?php esc_attr_e( 'Prestations wanted', 'sm-marketplace' ); ?>"><?php foreach ( $m['prestations'] as $p ) : ?><li><?php echo esc_html( $p ); ?></li><?php endforeach; ?></ul>
+				<?php endif; ?>
 			</div>
 			<?php sm_mission_status( $m ); ?>
 		</div>
@@ -137,12 +140,12 @@ $items = $data['items'];
 <?php else : ?>
 	<div class="sm-table-wrap">
 		<table class="sm-table sm-table--stack">
-			<thead><tr><th><?php esc_html_e( 'Request', 'sm-marketplace' ); ?></th><th><?php esc_html_e( 'Type of study', 'sm-marketplace' ); ?></th><th><?php esc_html_e( 'Quote', 'sm-marketplace' ); ?></th><th><?php esc_html_e( 'Status', 'sm-marketplace' ); ?></th><th><?php esc_html_e( 'Updated', 'sm-marketplace' ); ?></th></tr></thead>
+			<thead><tr><th><?php esc_html_e( 'Request', 'sm-marketplace' ); ?></th><th><?php esc_html_e( 'Service', 'sm-marketplace' ); ?></th><th><?php esc_html_e( 'Quote', 'sm-marketplace' ); ?></th><th><?php esc_html_e( 'Status', 'sm-marketplace' ); ?></th><th><?php esc_html_e( 'Updated', 'sm-marketplace' ); ?></th></tr></thead>
 			<tbody>
 				<?php foreach ( $items as $m ) : ?>
 					<tr>
 						<td data-label="<?php esc_attr_e( 'Request', 'sm-marketplace' ); ?>"><a href="<?php echo esc_url( $m['url'] ); ?>"><strong dir="auto"><?php echo esc_html( $m['title'] ); ?></strong></a><br><small dir="ltr"><?php echo esc_html( $m['ref'] ); ?></small></td>
-						<td data-label="<?php esc_attr_e( 'Type of study', 'sm-marketplace' ); ?>"><?php echo esc_html( $m['type'] ); ?></td>
+						<td data-label="<?php esc_attr_e( 'Service', 'sm-marketplace' ); ?>"><?php echo esc_html( $m['type'] ); ?></td>
 						<td data-label="<?php esc_attr_e( 'Quote', 'sm-marketplace' ); ?>"><?php echo $m['amount'] ? esc_html( sm_money( $m['amount'] ) ) : '—'; ?></td>
 						<td data-label="<?php esc_attr_e( 'Status', 'sm-marketplace' ); ?>"><?php sm_mission_status( $m ); ?></td>
 						<td data-label="<?php esc_attr_e( 'Updated', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_ago( $m['updated'] ) ); ?></td>

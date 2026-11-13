@@ -218,3 +218,17 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 | Édition par l'admin | Écran dans l'admin WP (titre, description, photos, fiches ; services : textes et image), motif obligatoire, notification + e-mail au vendeur, journal | Demande du client |
 | Cloche | 8 dernières notifications, « Tout marquer comme lu », « Voir toutes » ; sur mobile la cloche n'est pas dans l'en-tête | Validé par le client |
 
+
+## 13 novembre 2026 — Page Ingénierie : les services, plus l'annuaire
+
+| Sujet | Décision | Raison |
+|---|---|---|
+| Annuaire des ingénieurs partenaires | Plus affiché sur la page Ingénierie ni dans le formulaire de demande ; code gardé, réglage « Afficher aussi la liste des ingénieurs partenaires sous les services » (désactivé) | Demande du client ; le client traite avec la plateforme |
+| Services d'ingénierie | 6 services (Études et Conception, Note de Calcul, Dessin et Modélisation 2D/3D, Expertise et Inspection Technique, CCTP/DQE/BPU, Suivi et Assistance Technique) ; titre, image, prestations (FR/AR), ordre et affichage modifiables dans Réglages ingénierie ; ajout possible | Demande du client |
+| Image par défaut | Dessin du thème (pas de photo d'internet) tant que l'administrateur n'a pas choisi d'image | Droits d'image ; page complète dès l'installation |
+| Formulaire de demande | Le client choisit un service puis coche au moins une prestation ; les prestations cochées sont copiées avec la demande | Devis plus précis |
+| Ingénieurs partenaires | Ils cochent les services qu'ils réalisent (« Services proposés », pas « spécialités ») ; l'administrateur voit « service » à côté des ingénieurs qui proposent celui de la mission | Choix du client |
+| Anciens types d'étude | Cachés mais gardés : les anciennes missions et les anciens profils gardent leur nom | Ne rien perdre |
+| Prix | Aucun prix par service : la plateforme envoie un devis | Pas de prix inventé |
+| Lien partenaires | Lien discret « Devenir ingénieur partenaire » en bas de page | Choix du client |
+| Arabe | Traduction des services et prestations à relire par un ingénieur arabophone | Termes techniques |

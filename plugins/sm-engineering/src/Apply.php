@@ -76,7 +76,7 @@ final class Apply {
 			}
 		}
 		if ( ! $d['specialties'] ) {
-			$errors['specialties'] = __( 'Choose at least one specialty.', 'sm-engineering' );
+			$errors['specialties'] = __( 'Choose at least one service.', 'sm-engineering' );
 		}
 		if ( mb_strlen( $d['bio'] ) < 40 ) {
 			$errors['bio'] = __( 'Describe your experience in a few lines (40 characters at least).', 'sm-engineering' );

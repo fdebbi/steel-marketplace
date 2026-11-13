@@ -3,9 +3,9 @@
  * Settings of engineering missions (wp-admin → SM → Engineering → Settings)
  * and the list of mission types.
  *
- * Mission types are stored with each mission by code. The built-in list can be
- * renamed (FR / AR), hidden or extended by the administrator; the filter
- * sm_mission_types also receives it.
+ * Mission types are stored with each mission by code. Since 0.2.0 they are the
+ * engineering services (Services); the filter sm_mission_types also receives
+ * the list.
  *
  * @package SM\Engineering
  */
@@ -25,7 +25,7 @@ final class Settings {
 			'extensions'        => 'pdf, jpg, jpeg, png, webp, dwg, dxf, ifc, zip, xlsx, xls, docx, doc',
 			'quote_valid_days'  => 30,      // Validity of the platform quote.
 			'requests_per_day'  => 5,       // Mission requests a client may send per day.
-			'public_list'       => 1,       // Show the list of approved engineers.
+			'public_list'       => 0,       // Also show the list of approved engineers under the services (off since 0.2.0).
 			'show_missions'     => 1,       // Show the number of completed missions on the list.
 			'applications_open' => 1,       // Accept new engineer applications.
 			'types'             => array(), // code => [ fr, ar, off ].
@@ -57,21 +57,28 @@ final class Settings {
 	}
 
 	/**
-	 * Mission types: code => [ fr, ar ].
+	 * Mission types: code => [ fr, ar ]. Since 0.2.0 the types offered are the
+	 * engineering services (Services); the former types are kept, hidden, so the
+	 * missions and the engineer profiles that use them keep their name.
 	 *
-	 * @param bool $all Include hidden types (to read existing missions).
+	 * @param bool $all Include hidden services and former types (to read existing data).
 	 */
 	public static function types( $all = false ) {
-		$saved = (array) self::get( 'types' );
-		$out   = array();
-		foreach ( self::default_types() + array_fill_keys( array_keys( $saved ), array() ) as $code => $def ) {
-			$row = (array) ( $saved[ $code ] ?? array() );
-			if ( ! $all && ! empty( $row['off'] ) ) {
-				continue;
+		$out = array();
+		foreach ( Services::all( $all ) as $code => $s ) {
+			$out[ $code ] = array( 'fr' => $s['fr'], 'ar' => $s['ar'] );
+		}
+		if ( $all ) {
+			$saved = (array) self::get( 'types' );
+			foreach ( self::default_types() + array_fill_keys( array_keys( $saved ), array() ) as $code => $def ) {
+				if ( isset( $out[ $code ] ) ) {
+					continue;
+				}
+				$row = (array) ( $saved[ $code ] ?? array() );
+				$fr  = trim( (string) ( $row['fr'] ?? '' ) ) ?: ( $def['fr'] ?? $code );
+				$ar  = trim( (string) ( $row['ar'] ?? '' ) ) ?: ( $def['ar'] ?? $fr );
+				$out[ $code ] = array( 'fr' => $fr, 'ar' => $ar );
 			}
-			$fr = trim( (string) ( $row['fr'] ?? '' ) ) ?: ( $def['fr'] ?? $code );
-			$ar = trim( (string) ( $row['ar'] ?? '' ) ) ?: ( $def['ar'] ?? $fr );
-			$out[ $code ] = array( 'fr' => $fr, 'ar' => $ar );
 		}
 		return apply_filters( 'sm_mission_types', $out, $all );
 	}
@@ -105,34 +112,11 @@ final class Settings {
 		$ext               = sanitize_text_field( (string) ( $in['extensions'] ?? $d['extensions'] ) );
 		$out['extensions'] = '' !== trim( $ext ) ? $ext : $d['extensions'];
 
-		$types = array();
-		foreach ( (array) ( $in['types'] ?? array() ) as $code => $row ) {
-			$code = sanitize_key( $code );
-			if ( '' === $code ) {
-				continue;
-			}
-			$types[ $code ] = array(
-				'fr'  => mb_substr( sanitize_text_field( (string) ( $row['fr'] ?? '' ) ), 0, 100 ),
-				'ar'  => mb_substr( sanitize_text_field( (string) ( $row['ar'] ?? '' ) ), 0, 100 ),
-				'off' => empty( $row['on'] ) ? 1 : 0,
-			);
+		// Former mission types (before 0.2.0) are kept as they were: they name old missions.
+		$out['types'] = (array) $cur['types'];
+		if ( isset( $in['services'] ) && is_array( $in['services'] ) ) {
+			Services::save( $in['services'], (array) ( $in['new_service'] ?? array() ) );
 		}
-		// Added types that are not in the built-in list keep existing when not posted.
-		foreach ( (array) $cur['types'] as $code => $row ) {
-			if ( ! isset( $types[ $code ] ) && ! isset( self::default_types()[ $code ] ) ) {
-				$types[ $code ] = $row;
-			}
-		}
-		$new = trim( sanitize_text_field( (string) ( $in['new_type']['fr'] ?? '' ) ) );
-		if ( '' !== $new ) {
-			$base = substr( str_replace( '-', '_', sanitize_title( $new ) ), 0, 30 ) ?: 'type';
-			$code = $base;
-			for ( $i = 2; isset( $types[ $code ] ) || isset( self::default_types()[ $code ] ); $i++ ) {
-				$code = $base . '_' . $i;
-			}
-			$types[ $code ] = array( 'fr' => mb_substr( $new, 0, 100 ), 'ar' => mb_substr( sanitize_text_field( (string) ( $in['new_type']['ar'] ?? '' ) ), 0, 100 ), 'off' => 0 );
-		}
-		$out['types'] = $types;
 		update_option( self::OPTION, $out );
 		return $out;
 	}

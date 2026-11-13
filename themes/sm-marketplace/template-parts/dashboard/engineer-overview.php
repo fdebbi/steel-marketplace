@@ -67,7 +67,7 @@ $money = $d['money'];
 				<?php endforeach; ?>
 			</ul>
 		<?php else : ?>
-			<p class="sm-muted"><?php esc_html_e( 'No mission at the moment. The platform offers you missions matching your specialties; you are told by e-mail.', 'sm-marketplace' ); ?></p>
+			<p class="sm-muted"><?php esc_html_e( 'No mission at the moment. The platform offers you missions matching your services; you are told by e-mail.', 'sm-marketplace' ); ?></p>
 		<?php endif; ?>
 	</section>
 	<section class="sm-panel">

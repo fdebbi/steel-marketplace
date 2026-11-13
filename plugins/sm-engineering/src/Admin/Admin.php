@@ -18,6 +18,7 @@ use SM\Engineering\Files;
 use SM\Engineering\Messages;
 use SM\Engineering\Missions;
 use SM\Engineering\Notifications;
+use SM\Engineering\Services;
 use SM\Engineering\Settings;
 
 defined( 'ABSPATH' ) || exit;
@@ -138,7 +139,7 @@ final class Admin {
 			return;
 		}
 		$types = Settings::types( true );
-		echo '<table class="widefat striped"><thead><tr><th></th><th>' . esc_html__( 'Engineer', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Specialties', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Experience', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Wilaya', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Missions', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Applied', 'sm-engineering' ) . '</th></tr></thead><tbody>';
+		echo '<table class="widefat striped"><thead><tr><th></th><th>' . esc_html__( 'Engineer', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Services offered', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Experience', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Wilaya', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Missions', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Applied', 'sm-engineering' ) . '</th></tr></thead><tbody>';
 		foreach ( $q['items'] as $e ) {
 			$c   = Companies::get( $e->company_id );
 			$url = admin_url( 'admin.php?page=' . self::ENGINEERS . '&id=' . $e->company_id );
@@ -170,7 +171,7 @@ final class Admin {
 			__( 'School', 'sm-engineering' )      => $e->school . ( $e->grad_year ? ' (' . $e->grad_year . ')' : '' ),
 			/* translators: %d: years. */
 			__( 'Experience', 'sm-engineering' )  => sprintf( _n( '%d year', '%d years', $e->experience, 'sm-engineering' ), $e->experience ),
-			__( 'Specialties', 'sm-engineering' ) => implode( ', ', array_map( static fn( $s ) => $types[ $s ]['fr'] ?? $s, $e->specialties ) ),
+			__( 'Services offered', 'sm-engineering' ) => implode( ', ', array_map( static fn( $s ) => $types[ $s ]['fr'] ?? $s, $e->specialties ) ),
 			__( 'Wilaya', 'sm-engineering' )      => $c->wilaya . ' ' . Wilayas::name( $c->wilaya ),
 			__( 'Available', 'sm-engineering' )   => $e->available ? __( 'Yes', 'sm-engineering' ) : __( 'No', 'sm-engineering' ),
 			__( 'Applied', 'sm-engineering' )     => wp_strip_all_tags( self::date( $e->applied_at ) ),
@@ -369,7 +370,7 @@ final class Admin {
 		echo '<div class="sme-box"><h2>' . esc_html__( 'Request', 'sm-engineering' ) . '</h2><dl>';
 		$pref = $m->preferred_id ? Companies::get( $m->preferred_id ) : null;
 		$rows = array(
-			__( 'Type of study', 'sm-engineering' )   => Settings::type_label( $m->type ),
+			__( 'Engineering service', 'sm-engineering' ) => Settings::type_label( $m->type ),
 			__( 'Wilaya', 'sm-engineering' )          => $m->wilaya . ' ' . Wilayas::name( $m->wilaya ),
 			__( 'Wanted for', 'sm-engineering' )      => $m->needed_by ? wp_date( get_option( 'date_format' ), strtotime( $m->needed_by ) ) : '—',
 			__( 'Indicative budget', 'sm-engineering' ) => $m->budget > 0 ? self::money( $m->budget ) : '—',
@@ -379,7 +380,16 @@ final class Admin {
 		foreach ( $rows as $k => $v ) {
 			echo '<dt>' . esc_html( $k ) . '</dt><dd>' . esc_html( $v ) . '</dd>';
 		}
-		echo '</dl><p>' . nl2br( esc_html( (string) $m->description ) ) . '</p>';
+		echo '</dl>';
+		$pre = Missions::prestations( $m );
+		if ( $pre ) {
+			echo '<h3>' . esc_html__( 'Prestations wanted', 'sm-engineering' ) . '</h3><ul style="list-style:disc;padding-inline-start:20px">';
+			foreach ( $pre as $p ) {
+				echo '<li>' . esc_html( $p ) . '</li>';
+			}
+			echo '</ul>';
+		}
+		echo '<p>' . nl2br( esc_html( (string) $m->description ) ) . '</p>';
 		echo '<h2>' . esc_html__( 'Client (never shown to the engineer)', 'sm-engineering' ) . '</h2><dl>';
 		echo '<dt>' . esc_html__( 'Account', 'sm-engineering' ) . '</dt><dd>' . ( $client ? '<a href="' . esc_url( admin_url( 'admin.php?page=sm-companies&id=' . $client->id ) ) . '">' . esc_html( $client->name ) . '</a> · ' . esc_html( Companies::class_label( $client->account_class ) ) : '—' ) . '</dd>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		echo '<dt>' . esc_html__( 'Contact', 'sm-engineering' ) . '</dt><dd>' . esc_html( $cuser ? $cuser->display_name . ' — ' . $cuser->user_email : '' ) . '</dd><dt>' . esc_html__( 'Phone', 'sm-engineering' ) . '</dt><dd>' . esc_html( $client ? (string) $client->phone : '' ) . '</dd></dl>';
@@ -439,7 +449,7 @@ final class Admin {
 						$tags[] = __( 'chosen by the client', 'sm-engineering' );
 					}
 					if ( in_array( $m->type, $e->specialties, true ) ) {
-						$tags[] = __( 'specialty', 'sm-engineering' );
+						$tags[] = __( 'service', 'sm-engineering' );
 					}
 					if ( ! $e->available ) {
 						$tags[] = __( 'not available', 'sm-engineering' );
@@ -574,7 +584,7 @@ final class Admin {
 		echo '<table class="form-table"><tbody>';
 		$checks = array(
 			'applications_open' => __( 'Accept new partner engineer applications', 'sm-engineering' ),
-			'public_list'       => __( 'Show the list of partner engineers to visitors', 'sm-engineering' ),
+			'public_list'       => __( 'Also show the list of partner engineers under the services', 'sm-engineering' ),
 			'show_missions'     => __( 'Show the number of completed missions on the list', 'sm-engineering' ),
 		);
 		foreach ( $checks as $k => $label ) {
@@ -590,15 +600,48 @@ final class Admin {
 			echo '<tr><th>' . esc_html( $label ) . '</th><td><input type="number" min="1" name="' . esc_attr( $k ) . '" value="' . (int) $s[ $k ] . '" class="small-text"></td></tr>';
 		}
 		echo '<tr><th>' . esc_html__( 'Accepted file types', 'sm-engineering' ) . '</th><td><input type="text" class="large-text" name="extensions" value="' . esc_attr( $s['extensions'] ) . '"><p class="description">' . esc_html__( 'Extensions separated by commas. Program and web files are always refused.', 'sm-engineering' ) . '</p></td></tr>';
-		echo '</tbody></table><h2>' . esc_html__( 'Types of study', 'sm-engineering' ) . '</h2><table class="widefat striped" style="max-width:900px"><thead><tr><th>' . esc_html__( 'Code', 'sm-engineering' ) . '</th><th>' . esc_html__( 'French', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Arabic', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Active', 'sm-engineering' ) . '</th></tr></thead><tbody>';
-		$saved = (array) $s['types'];
-		foreach ( Settings::types( true ) as $code => $t ) {
-			$c = esc_attr( $code );
-			echo '<tr><td><code>' . esc_html( $code ) . '</code></td><td><input class="regular-text" name="types[' . $c . '][fr]" value="' . esc_attr( $t['fr'] ) . '"></td><td><input class="regular-text" dir="rtl" name="types[' . $c . '][ar]" value="' . esc_attr( $t['ar'] ) . '"></td><td><input type="checkbox" name="types[' . $c . '][on]" value="1"' . checked( empty( $saved[ $code ]['off'] ), true, false ) . '></td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
-		}
-		echo '<tr><td><em>' . esc_html__( 'New', 'sm-engineering' ) . '</em></td><td><input class="regular-text" name="new_type[fr]"></td><td><input class="regular-text" dir="rtl" name="new_type[ar]"></td><td></td></tr></tbody></table>';
+		echo '</tbody></table>';
+		self::services_editor();
 		submit_button();
 		echo '</form></div>';
+	}
+
+	/** Engineering services: title, image, prestations (FR / AR), shown, order. */
+	private static function services_editor() {
+		wp_enqueue_media();
+		echo '<h2>' . esc_html__( 'Engineering services', 'sm-engineering' ) . '</h2>';
+		echo '<p class="description">' . esc_html__( 'Shown on the engineering page and offered in the study request form and to partner engineers. One prestation per line; the Arabic lines follow the French lines in the same order (an empty Arabic line shows the French text). Without an image, the page shows a drawing.', 'sm-engineering' ) . '</p>';
+		echo '<table class="widefat striped sme-services" style="max-width:1200px"><thead><tr><th style="width:150px">' . esc_html__( 'Image', 'sm-engineering' ) . '</th><th>' . esc_html__( 'French', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Arabic', 'sm-engineering' ) . '</th><th style="width:90px">' . esc_html__( 'Order', 'sm-engineering' ) . '<br>' . esc_html__( 'Active', 'sm-engineering' ) . '</th></tr></thead><tbody>';
+		foreach ( Services::all( true ) as $code => $sv ) {
+			$n   = 'services[' . esc_attr( $code ) . ']';
+			$img = $sv['image'] ? wp_get_attachment_image_url( $sv['image'], 'medium' ) : '';
+			echo '<tr><td><div class="sme-img" style="width:140px;height:90px;background:#f0f0f1 center/cover no-repeat;border:1px solid #dcdcde;border-radius:4px' . ( $img ? ';background-image:url(' . esc_url( $img ) . ')' : '' ) . '"></div>';
+			echo '<input type="hidden" name="' . $n . '[image]" value="' . (int) $sv['image'] . '">'; // phpcs:ignore WordPress.Security.EscapeOutput
+			echo '<p><button type="button" class="button sme-img-pick">' . esc_html__( 'Choose', 'sm-engineering' ) . '</button> <button type="button" class="button-link sme-img-clear">' . esc_html__( 'Remove', 'sm-engineering' ) . '</button></p><code>' . esc_html( $code ) . '</code></td>';
+			$fr = implode( "\n", array_column( $sv['items'], 'fr' ) );
+			$ar = implode( "\n", array_map( static fn( $i ) => $i['ar'] === $i['fr'] ? '' : $i['ar'], $sv['items'] ) );
+			echo '<td><input class="large-text" name="' . $n . '[fr]" value="' . esc_attr( $sv['fr'] ) . '" aria-label="' . esc_attr__( 'Title in French', 'sm-engineering' ) . '"><textarea class="large-text" rows="5" name="' . $n . '[items_fr]" aria-label="' . esc_attr__( 'Prestations in French', 'sm-engineering' ) . '">' . esc_textarea( $fr ) . '</textarea></td>'; // phpcs:ignore WordPress.Security.EscapeOutput
+			echo '<td><input class="large-text" dir="rtl" name="' . $n . '[ar]" value="' . esc_attr( $sv['ar'] ) . '" aria-label="' . esc_attr__( 'Title in Arabic', 'sm-engineering' ) . '"><textarea class="large-text" dir="rtl" rows="5" name="' . $n . '[items_ar]" aria-label="' . esc_attr__( 'Prestations in Arabic', 'sm-engineering' ) . '">' . esc_textarea( $ar ) . '</textarea></td>'; // phpcs:ignore WordPress.Security.EscapeOutput
+			echo '<td><input type="number" min="0" max="999" class="small-text" name="' . $n . '[order]" value="' . (int) $sv['order'] . '" aria-label="' . esc_attr__( 'Order', 'sm-engineering' ) . '"><p><label><input type="checkbox" name="' . $n . '[on]" value="1"' . checked( $sv['off'], 0, false ) . '> ' . esc_html__( 'Active', 'sm-engineering' ) . '</label></p></td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		}
+		echo '<tr><td><em>' . esc_html__( 'New service', 'sm-engineering' ) . '</em></td><td><input class="large-text" name="new_service[fr]" aria-label="' . esc_attr__( 'Title in French', 'sm-engineering' ) . '"></td><td><input class="large-text" dir="rtl" name="new_service[ar]" aria-label="' . esc_attr__( 'Title in Arabic', 'sm-engineering' ) . '"></td><td></td></tr></tbody></table>';
+		?>
+		<script>
+		document.addEventListener( 'click', function ( e ) {
+			var pick = e.target.closest( '.sme-img-pick' ), clear = e.target.closest( '.sme-img-clear' );
+			if ( ! pick && ! clear ) { return; }
+			var td = ( pick || clear ).closest( 'td' ), input = td.querySelector( 'input[type=hidden]' ), box = td.querySelector( '.sme-img' );
+			if ( clear ) { input.value = 0; box.style.backgroundImage = ''; return; }
+			var frame = wp.media( { title: <?php echo wp_json_encode( __( 'Image of the service', 'sm-engineering' ) ); ?>, library: { type: 'image' }, multiple: false } );
+			frame.on( 'select', function () {
+				var a = frame.state().get( 'selection' ).first().toJSON();
+				input.value = a.id;
+				box.style.backgroundImage = 'url(' + ( ( a.sizes && a.sizes.medium ) ? a.sizes.medium.url : a.url ) + ')';
+			} );
+			frame.open();
+		} );
+		</script>
+		<?php
 	}
 
 	public static function handle_settings() {

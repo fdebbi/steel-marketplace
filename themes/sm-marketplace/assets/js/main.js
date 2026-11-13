@@ -214,6 +214,20 @@
 		narrow();
 	} );
 
+	/* Study request (0.27.0): show the prestations of the chosen engineering service. */
+	$$( '[data-sm-service]' ).forEach( function ( sel ) {
+		var form = sel.form;
+		function show() {
+			$$( '[data-sm-prest]', form ).forEach( function ( fs ) {
+				var on = fs.getAttribute( 'data-sm-prest' ) === sel.value;
+				fs.hidden = ! on;
+				fs.disabled = ! on;
+			} );
+		}
+		sel.addEventListener( 'change', show );
+		show();
+	} );
+
 	/* Buy / make an offer on a listing (0.24.0). */
 	var buyPanel = $( '[data-sm-buy-panel]' );
 	var buyForm = $( '[data-sm-buy-form]' );
