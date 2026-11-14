@@ -1,5 +1,14 @@
 # Changelog — sm-marketplace
 
+## 0.32.0 — 2026-11-14 (avec sm-products 0.13.0 et sm-buildings 0.3.0)
+
+- Formulaire bâtiment, étape 3 : les 4 systèmes porteurs en cases de même largeur, le choix actif en couleur pleine (2 × 2 sur téléphone) ; case « Le bâtiment a un pont roulant » avec capacité (t) facultative.
+- Étape 4 : éléments proposés automatiquement à partir des dimensions pour un portique poteau / traverse (bandeau « Proposition calculée… »). La proposition suit les dimensions tant que le vendeur n'a touché aucune ligne ; ensuite « Recalculer à partir des dimensions » remplace les lignes après confirmation. Colonne « Nbr pièces » (tous les marchés).
+- Étape 5 : cartes « Monté » / « Démonté » sans phrase sur la vente ; état de l'acier en cases égales sur toute la largeur (2 × 2 sur téléphone) ; prix au kg possible pour un bâtiment monté, avec « Total indicatif » quand le poids vient des seuls éléments déclarés (formulaire et page de l'annonce) ; explication sous le titre automatique supprimée.
+- Poids affiché « 41,79 t — (41 789 kg) » partout.
+- Même espace avant chaque bloc et chaque titre de champ du formulaire de publication.
+- Nouvelle donnée `product_form_state` (les valeurs du formulaire complétées par un plugin de marché).
+
 ## 0.31.0 — 2026-11-13 (avec sm-products 0.12.0 et sm-buildings 0.2.0)
 
 - Publier un bâtiment métallique : formulaire en 7 étapes — 1 type, 2 géométrie (longueur, largeur, portiques, hauteur au poteau, hauteur de toiture, étages, mezzanine ; surface, entraxe et pente calculés), 3 système porteur et enveloppe, 4 éléments de la structure, 5 état, poids et prix (ce que comprend le prix, titre automatique), 6 description, photos et fiche technique, 7 localisation.

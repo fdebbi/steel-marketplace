@@ -307,3 +307,21 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 
 **Non vérifié ici.** L'affichage des fonds de carte OpenStreetMap (pas d'accès réseau dans l'environnement de test) : la carte, le repère et les positions sont testés, pas les images du fond.
 
+## Bâtiment métallique : pont roulant, éléments proposés, prix au kg (2026-11-14)
+
+**Demandé par l'utilisateur, validé sur maquette** (`Design/0.32`). sm-buildings 0.3.0, sm-products 0.13.0, thème 0.32.0.
+
+- **Pont roulant** : case à cocher, capacité (t) facultative.
+- **Éléments proposés automatiquement**, pour faciliter la déclaration. Règles données par l'utilisateur (ingénieur) ; ce sont des ordres de grandeur, pas un calcul de structure :
+  - Poteaux : IPE de hauteur = largeur (m) × 20 ; avec pont roulant, HEA de hauteur = largeur × 18. Nombre = portiques × 2. Longueur = hauteur au poteau.
+  - Traverses : IPE de hauteur = largeur × 20. Deux versants : portiques × 2, longueur = largeur / 2. Un versant : portiques, longueur = largeur.
+  - Pannes : IPE 120, ⌈largeur / 1,2⌉ × (portiques − 1). Lisses : UPN 120, 2 × ⌈hauteur au poteau / 1,2⌉ × (portiques − 1).
+  - Contreventements : 32 × L 80x80x8 de 6 m.
+- **Longueur des pannes et lisses** = longueur totale / (portiques − 1), c'est-à-dire l'entraxe réel (décision de l'utilisateur ; 6 m fixe sous-estimait le poids dès que l'entraxe dépasse 6 m).
+- **Dimension la plus proche** dans les tables ; au-delà de la plus grande (IPE 600 → largeur > 30 m ; HEA 1000 → largeur > 55 m) la dimension reste vide et le vendeur choisit, plutôt que proposer un profilé faux.
+- **Seulement pour « Portique poteau / traverse »** : PRS, ferme en treillis et « Autre » ne génèrent aucune pièce (décision de l'utilisateur). Dans le portique : pas de traverses pour une toiture multi-travées, cintrée ou autre ; pas de lisses sans bardage.
+- **Ne jamais écraser la saisie** : la proposition suit les dimensions tant qu'aucune ligne n'a été modifiée (signature des lignes, champ `lines_auto`). Dès qu'une ligne change, plus rien n'est remplacé sans le bouton « Recalculer » et sa confirmation. Une annonce existante n'est jamais recalculée seule.
+- **Réglages** : coefficients, pas et profilés sont dans SM → Bâtiments, pas dans le code.
+- **Prix** : au kg ou pour le bâtiment entier, monté comme démonté. Quand le poids vient des seuls éléments déclarés, le total est affiché « Total indicatif » (formulaire et annonce).
+- **Affichage** : poids « x t — (y kg) » ; cartes « Monté » / « Démonté » sans phrase sur la vente ; colonne « Nbr pièces ».
+

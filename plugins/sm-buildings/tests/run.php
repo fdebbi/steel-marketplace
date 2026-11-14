@@ -101,7 +101,7 @@ smb_assert( smb_near( $a['data']['total_price'], 9800000 ) && smb_near( $a['data
 $wf = 10 * 6 * $kgm( 'HEA', 'HEA 300' ) + 10 * 10.2 * $kgm( 'IPE', 'IPE 360' );
 smb_assert( 'estimated' === $a['data']['weight_source'] && smb_near( $a['data']['total_weight'], 32000 ) && smb_near( $a['data']['specs']['elements_kg'], $wf, 0.5 ), 'total weight given by the seller (estimated); declared elements kept beside it' );
 $x = Spec::build( array_merge( $asm, array( 'price_unit' => 'kg', 'price' => '300' ) ) );
-smb_assert( isset( $x['errors']['price_unit'] ), 'an assembled building is sold at a price for the whole building' );
+smb_assert( ! $x['errors'] && 'kg' === $x['data']['price_unit'] && smb_near( $x['data']['total_price'], 300 * 32000 ), '0.3.0: an assembled building may be priced per kg (total = price × weight)' );
 $inv = Spec::build( array_merge( $asm, array( 'total_kg' => '', 'lines' => $dis['lines'] ) ) );
 $w   = 22 * 4.5 * $kgm( 'HEA', 'HEA 160' ) + 22 * 6.2 * $kgm( 'IPE', 'IPE 220' ) + 50 * 6 * $kgm( 'IPE', 'IPE 140' );
 smb_assert( ! $inv['errors'] && smb_near( $inv['data']['total_weight'], $w, 0.5 ) && 'partial' === $inv['data']['weight_source'], 'without a total: weight of the declared elements, marked "partial"' );
@@ -204,7 +204,7 @@ smb_assert( true === $V::answer( $V::get( $vid ), 'accept' ) && 'accepted' === $
 smb_assert( null !== $V::location_for( $pp, $u_fab ) && null === $V::location_for( $pp, $u_eng ) && null === $V::location_for( $pp, 0 ), 'position shown to the accepted buyer only' );
 global $wpdb;
 $wpdb->update( $V::table(), array( 'visit_at' => wp_date( 'Y-m-d H:i:s', time() - 5 * DAY_IN_SECONDS ) ), array( 'id' => $vid ) );
-smb_assert( null === $V::location_for( $pp, $u_fab ), 'position hidden again two days after the visit' );
+smb_assert( null !== $V::location_for( $pp, $u_fab ), 'sm-products 0.12.1: the accepted buyer keeps the position after the visit, with no time limit' );
 $wpdb->update( $V::table(), array( 'visit_at' => $new_when ), array( 'id' => $vid ) );
 smb_assert( true === $V::reply( $V::get( $vid ), 'refuse' ) && null === $V::location_for( $pp, $u_fab ) && is_wp_error( $V::answer( $V::get( $vid ), 'accept' ) ), 'the seller cancels an accepted visit: position hidden, request closed' );
 $v2 = $V::request( $pp, Companies::get( $c_fab ), $u_fab, $when, '' );
@@ -225,6 +225,76 @@ smb_assert( sm_can( 'listing.buildings' ), 'every company type may sell a buildi
 wp_set_current_user( $u_eng );
 smb_assert( ! sm_can( 'listing.buildings' ) && ! Bridge::product_markets( null )['buildings']['allowed'], 'a partner engineer account never publishes buildings' );
 wp_set_current_user( 0 );
+
+// ---- 0.3.0: overhead crane, elements proposed from the dimensions ----
+echo "\nCrane and proposed elements\n";
+use SM\Buildings\Proposal;
+$w    = \SM\Core\Modules::service( 'weight' );
+$name = static function ( $id ) use ( $w ) {
+	$sec = $w->section( (int) $id );
+	return $sec ? $sec['designation'] : '';
+};
+$x = Spec::build( array_merge( $asm, array( 'specs' => $asm['specs'] + array( 'crane' => '1', 'crane_t' => '10' ) ) ) );
+smb_assert( ! $x['errors'] && 1 === $x['data']['specs']['crane'] && 10.0 === (float) $x['data']['specs']['crane_t'], 'overhead crane kept with its capacity' );
+$x = Spec::build( array_merge( $asm, array( 'specs' => $asm['specs'] + array( 'crane' => '1' ) ) ) );
+smb_assert( ! $x['errors'] && 1 === $x['data']['specs']['crane'] && ! isset( $x['data']['specs']['crane_t'] ), 'capacity of the crane is optional' );
+$x = Spec::build( array_merge( $asm, array( 'specs' => $asm['specs'] + array( 'crane' => '1', 'crane_t' => '9000' ) ) ) );
+smb_assert( isset( $x['errors']['specs_crane_t'] ), 'absurd crane capacity refused' );
+
+$pst  = array(
+	'specs' => array( 'length_m' => '40', 'width_m' => '20', 'height_m' => '6', 'ridge_m' => '8', 'portals' => '5' ),
+	'attrs' => array( 'system' => 'portal', 'roof' => 'duo', 'roof_cover' => 'sandwich', 'cladding' => 'sandwich' ),
+);
+$rows = Proposal::rows( $pst );
+$by   = array();
+foreach ( (array) $rows as $r ) {
+	$by[ $r['element'] ] = $r;
+}
+smb_assert( 5 === count( (array) $rows ) && array( 'column', 'rafter', 'purlin', 'rail', 'bracing' ) === array_column( $rows, 'element' ), 'frame 20 × 40 m: columns, rafters, purlins, rails, bracing proposed' );
+smb_assert( 'IPE 400' === $name( $by['column']['section'] ) && '10' === $by['column']['qty'] && '6' === $by['column']['length'], 'columns: IPE 400 (20 × 20), 2 per frame, as long as the column height' );
+smb_assert( 'IPE 400' === $name( $by['rafter']['section'] ) && '10' === $by['rafter']['qty'] && '10' === $by['rafter']['length'], 'rafters, two slopes: IPE 400, 2 per frame, half the width' );
+smb_assert( 'IPE 120' === $name( $by['purlin']['section'] ) && '68' === $by['purlin']['qty'] && '10' === $by['purlin']['length'], 'purlins: IPE 120, ceil(20 / 1.2) = 17 rows × 4 bays, as long as the frame spacing' );
+smb_assert( 'UPN 120' === $name( $by['rail']['section'] ) && '40' === $by['rail']['qty'] && '10' === $by['rail']['length'], 'rails: UPN 120, 2 × ceil(6 / 1.2) × 4 bays' );
+smb_assert( 'L 80x80x8' === $name( $by['bracing']['section'] ) && '32' === $by['bracing']['qty'] && '6' === $by['bracing']['length'], 'bracing: 32 angles L 80x80x8 of 6 m' );
+$c = Proposal::rows( array_replace_recursive( $pst, array( 'specs' => array( 'crane' => '1' ) ) ) );
+smb_assert( 'HEA' === $c[0]['family'] && 'HEA 360' === $name( $c[0]['section'] ), 'with a crane: columns HEA 360 (20 × 18)' );
+$c = Proposal::rows( array_replace_recursive( $pst, array( 'specs' => array( 'width_m' => '22' ) ) ) );
+smb_assert( 'IPE 450' === $name( $c[0]['section'] ), 'nearest catalogue size: 22 m → 440 → IPE 450' );
+$c = Proposal::rows( array_replace_recursive( $pst, array( 'specs' => array( 'width_m' => '36' ) ) ) );
+smb_assert( '' === $c[0]['section'] && '10' === $c[0]['qty'], 'beyond the largest size the dimension is left to the seller' );
+$c = Proposal::rows( array_replace_recursive( $pst, array( 'attrs' => array( 'roof' => 'mono' ) ) ) );
+smb_assert( '5' === $c[1]['qty'] && '20' === $c[1]['length'], 'one slope: 1 rafter per frame, as long as the width' );
+$c = Proposal::rows( array_replace_recursive( $pst, array( 'attrs' => array( 'roof' => 'curved', 'cladding' => 'none' ) ) ) );
+smb_assert( array( 'column', 'purlin', 'bracing' ) === array_column( $c, 'element' ), 'curved roof: no rafters; no cladding: no rails' );
+$c = Proposal::rows( array_replace_recursive( $pst, array( 'specs' => array( 'length_m' => '50', 'portals' => '4' ) ) ) );
+smb_assert( '16.67' === $c[2]['length'], 'purlin length = length / (frames − 1), two decimals' );
+foreach ( array( 'tapered', 'truss', 'other' ) as $sys ) {
+	smb_assert( null === Proposal::rows( array_replace_recursive( $pst, array( 'attrs' => array( 'system' => $sys ) ) ) ), "nothing proposed for the system $sys" );
+}
+smb_assert( null === Proposal::rows( array_replace_recursive( $pst, array( 'specs' => array( 'portals' => '' ) ) ) ) && null === Proposal::rows( array_replace_recursive( $pst, array( 'attrs' => array( 'cladding' => '' ) ) ) ), 'nothing proposed while the dimensions or the envelope are missing' );
+
+$bcat = Categories::get( 'bld-industrial' );
+$s1   = Proposal::state( $pst, $bcat );
+smb_assert( 'synced' === $s1['lines_proposal'] && 5 === count( $s1['lines'] ) && Proposal::signature( $s1['lines'] ) === $s1['lines_auto'], 'empty inventory: the proposal is placed and signed' );
+$s2 = Proposal::state( array_replace_recursive( $s1, array( 'specs' => array( 'portals' => '6' ) ) ), $bcat );
+smb_assert( 'synced' === $s2['lines_proposal'] && '12' === $s2['lines'][0]['qty'], 'untouched proposal follows the dimensions (6 frames → 12 columns)' );
+$edit                    = $s2;
+$edit['lines'][0]['qty'] = '14';
+$s3 = Proposal::state( array_replace_recursive( $edit, array( 'specs' => array( 'portals' => '7' ) ) ), $bcat );
+smb_assert( 'available' === $s3['lines_proposal'] && '14' === $s3['lines'][0]['qty'], 'a row changed by the seller is never overwritten' );
+$s4 = Proposal::state( $s3 + array( 'lines_recalc' => '1' ), $bcat );
+smb_assert( 'synced' === $s4['lines_proposal'] && '14' === $s4['lines'][0]['qty'] && '7' === $s4['specs']['portals'], 'on request the rows are replaced by a new proposal (7 frames → 14 columns)' );
+$gone          = $s4;
+$gone['lines'] = array();
+$s5 = Proposal::state( $gone, $bcat );
+smb_assert( ! $s5['lines'] && 'available' === $s5['lines_proposal'], 'rows removed by the seller are not proposed again on their own' );
+$s6 = Proposal::state( array_replace_recursive( $s1, array( 'attrs' => array( 'system' => 'tapered' ) ) ), $bcat );
+smb_assert( ! $s6['lines'] && '' === $s6['lines_auto'], 'untouched proposal removed when the system becomes PRS' );
+$typed = array_merge( $pst, array( 'lines' => array( array( 'element' => 'column', 'family' => 'HEA', 'section' => $by['column']['section'], 'qty' => '4', 'length' => '5' ) ) ) );
+$s7    = Proposal::state( $typed, $bcat );
+smb_assert( 1 === count( $s7['lines'] ) && Proposal::MANUAL === $s7['lines_auto'] && 'available' === $s7['lines_proposal'], 'rows typed before any proposal are kept' );
+$full = Spec::build( array_merge( $asm, $pst, array( 'lines' => $s1['lines'], 'total_kg' => '' ) ) );
+smb_assert( ! $full['errors'] && 'partial' === $full['data']['weight_source'] && smb_near( $full['data']['total_weight'], 24900, 150 ), 'the proposed rows are valid and weighed (' . round( $full['data']['total_weight'] ) . ' kg)' );
 
 smb_cleanup();
 remove_filter( 'sm_theme_demo_enabled', '__return_false', 99 );

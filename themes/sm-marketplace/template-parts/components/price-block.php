@@ -10,7 +10,8 @@
 defined( 'ABSPATH' ) || exit;
 
 $item      = $args['item'];
-$assembled = 'buildings' === $item['market'] && 'assembled' === ( $item['mode'] ?? '' );
+// An assembled building priced for the whole building (0.32.0: it may also be priced per kg, shown like any per-kg listing).
+$assembled = 'buildings' === $item['market'] && 'assembled' === ( $item['mode'] ?? '' ) && 'lot' === ( $item['price_unit'] ?? '' );
 ?>
 <section class="sm-priceblock" aria-label="<?php esc_attr_e( 'Price', 'sm-marketplace' ); ?>">
 	<?php if ( $assembled ) : ?>
@@ -36,7 +37,7 @@ $assembled = 'buildings' === $item['market'] && 'assembled' === ( $item['mode'] 
 				<div><dt><?php esc_html_e( 'Equivalent price per kg', 'sm-marketplace' ); ?></dt><dd><?php echo sm_per_unit( $item['price_per_kg'] ); // phpcs:ignore ?></dd></div>
 			<?php endif; ?>
 			<?php if ( ! $is_lot ) : ?>
-				<div class="sm-priceblock__total"><dt><?php echo esc_html( 'both' === ( $item['sale_mode'] ?? '' ) ? __( 'Total at the detail price', 'sm-marketplace' ) : __( 'Total price', 'sm-marketplace' ) ); ?></dt><dd><?php echo esc_html( sm_money( $item['total_price'] ) ); ?></dd></div>
+				<div class="sm-priceblock__total"><dt><?php echo esc_html( $per_kg && 'partial' === $item['weight_source'] ? __( 'Indicative total', 'sm-marketplace' ) : ( 'both' === ( $item['sale_mode'] ?? '' ) ? __( 'Total at the detail price', 'sm-marketplace' ) : __( 'Total price', 'sm-marketplace' ) ) ); ?></dt><dd><?php echo esc_html( sm_money( $item['total_price'] ) ); ?></dd></div>
 			<?php endif; ?>
 		</dl>
 		<?php if ( 'both' === ( $item['sale_mode'] ?? '' ) && ! empty( $item['lot_price'] ) ) : ?>

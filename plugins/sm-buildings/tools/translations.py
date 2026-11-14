@@ -68,3 +68,24 @@ T.update({
 "The total weight cannot be lower than the weight of the elements you declared.": ("Le poids total ne peut pas être inférieur au poids des éléments que vous avez déclarés.", "لا يمكن أن يكون الوزن الإجمالي أقل من وزن العناصر التي صرّحت بها."),
 "Give the total weight of the steel structure, or list its elements.": ("Indiquez le poids total de la structure en acier, ou listez ses éléments.", "أدخل الوزن الإجمالي للهيكل الفولاذي أو اذكر عناصره."),
 })
+# 0.3.0: overhead crane, elements proposed from the dimensions.
+T.update({
+"Capacity of the crane in tonnes: more than 0 and at most %s.": ("Capacité du pont roulant en tonnes : plus de 0 et au plus %s.", "حمولة الرافعة بالطن: أكبر من 0 و%s على الأكثر."),
+"Overhead crane": ("Pont roulant", "رافعة جسرية"),
+"Maximum capacity of an overhead crane (t)": ("Capacité maximale d’un pont roulant (t)", "الحمولة القصوى للرافعة الجسرية (طن)"),
+"Columns: profile family": ("Poteaux : famille de profilé", "الأعمدة: عائلة المقطع"),
+"Columns: height of the profile (mm) = width of the building (m) ×": ("Poteaux : hauteur du profilé (mm) = largeur du bâtiment (m) ×", "الأعمدة: ارتفاع المقطع (مم) = عرض المبنى (م) ×"),
+"Columns with an overhead crane: profile family": ("Poteaux avec pont roulant : famille de profilé", "الأعمدة مع رافعة جسرية: عائلة المقطع"),
+"Columns with an overhead crane: height (mm) = width (m) ×": ("Poteaux avec pont roulant : hauteur (mm) = largeur (m) ×", "الأعمدة مع رافعة جسرية: الارتفاع (مم) = العرض (م) ×"),
+"Rafters: profile family": ("Traverses : famille de profilé", "عوارض السقف: عائلة المقطع"),
+"Rafters: height of the profile (mm) = width (m) ×": ("Traverses : hauteur du profilé (mm) = largeur (m) ×", "عوارض السقف: ارتفاع المقطع (مم) = العرض (م) ×"),
+"Purlins: profile": ("Pannes : profilé", "مدادات السقف: المقطع"),
+"Purlins: spacing of the rows (m)": ("Pannes : espacement des files (m)", "مدادات السقف: التباعد بين الصفوف (م)"),
+"Cladding rails: profile": ("Lisses de bardage : profilé", "المدادات الجانبية: المقطع"),
+"Cladding rails: spacing of the rows (m)": ("Lisses de bardage : espacement des files (m)", "المدادات الجانبية: التباعد بين الصفوف (م)"),
+"Bracing: profile": ("Contreventements : profilé", "التكتيف: المقطع"),
+"Bracing: number of pieces": ("Contreventements : nombre de pièces", "التكتيف: عدد القطع"),
+"Bracing: length of a piece (m)": ("Contreventements : longueur d’une pièce (m)", "التكتيف: طول القطعة (م)"),
+"Elements proposed from the dimensions": ("Éléments proposés à partir des dimensions", "العناصر المقترحة انطلاقا من الأبعاد"),
+"For a column / rafter frame, the form proposes the elements from the dimensions; the seller can change every row. The nearest catalogue size is taken; beyond the largest size the dimension is left to the seller.": ("Pour un portique poteau / traverse, le formulaire propose les éléments à partir des dimensions ; le vendeur peut modifier chaque ligne. La dimension de catalogue la plus proche est retenue ; au-delà de la plus grande, la dimension est laissée au vendeur.", "في حالة إطار عمود / عارضة، يقترح النموذج العناصر انطلاقا من الأبعاد؛ ويمكن للبائع تعديل كل سطر. يُؤخذ أقرب مقاس في الجدول؛ وإذا تجاوز أكبر مقاس يُترك المقاس للبائع."),
+})

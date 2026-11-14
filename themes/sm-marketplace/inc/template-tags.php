@@ -154,7 +154,7 @@ function sm_tech( $text ) {
 
 /**
  * Weight with unit (0.20.0): under 1 000 kg in kg ("850 kg"); from 1 000 kg in
- * tonnes, with the kilograms in small ("1,25 t" + "1 250 kg"). Tonnes keep at
+ * tonnes, with the kilograms in small ("1,25 t — (1 250 kg)"). Tonnes keep at
  * most two decimals, without trailing zeros. Display only: inputs and
  * calculations stay in kg.
  */
@@ -163,7 +163,8 @@ function sm_kg( $value, $decimals = 0 ) {
 	if ( abs( $value ) < 1000 ) {
 		return sm_tech( sm_number( $value, $decimals ) . "\u{00A0}kg" );
 	}
-	return '<span class="sm-weight">' . sm_tech( sm_tonnes( $value ) ) . ' <small class="sm-weight__kg">' . sm_tech( sm_number( $value, $decimals ) . "\u{00A0}kg" ) . '</small></span>';
+	// 0.32.0: "41,79 t — (41 789 kg)".
+	return '<span class="sm-weight">' . sm_tech( sm_tonnes( $value ) ) . ' <small class="sm-weight__kg">— (' . sm_tech( sm_number( $value, $decimals ) . "\u{00A0}kg" ) . ')</small></span>';
 }
 
 /** Tonnes as text, e.g. "1,25 t" ("1,25 طن" in Arabic). */

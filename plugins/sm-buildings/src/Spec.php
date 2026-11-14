@@ -18,6 +18,7 @@
  *   Engine (source "partial": it is not the whole structure). The seller may
  *   add the total weight he knows (source "estimated"); it cannot be lower than
  *   the declared elements.
+ * 0.3.0: overhead crane (yes / no, optional capacity).
  * - Title: generated (type, size, height, system, wilaya), in French and Arabic.
  *
  * @package SM\Buildings
@@ -128,6 +129,20 @@ final class Spec {
 					$e['specs_mezz_area'] = __( 'Area of the mezzanine in m²: more than 0 and at most the floor area.', 'sm-buildings' );
 				} else {
 					$specs['mezz_area'] = round( $mv, 1 );
+				}
+			}
+		}
+		// Overhead crane (0.3.0): yes / no, optional capacity in tonnes.
+		if ( ! empty( $in['specs']['crane'] ) ) {
+			$specs['crane'] = 1;
+			$ct             = trim( (string) ( $in['specs']['crane_t'] ?? '' ) );
+			if ( '' !== $ct ) {
+				$cv = $num( $ct );
+				if ( $cv <= 0 || $cv > (float) $s['max_crane_t'] ) {
+					/* translators: %s: maximum in tonnes. */
+					$e['specs_crane_t'] = sprintf( __( 'Capacity of the crane in tonnes: more than 0 and at most %s.', 'sm-buildings' ), self::fmt( $s['max_crane_t'] ) );
+				} else {
+					$specs['crane_t'] = round( $cv, 2 );
 				}
 			}
 		}

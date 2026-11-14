@@ -15,6 +15,11 @@ defined( 'ABSPATH' ) || exit;
 $st  = (array) ( $args['state'] ?? array() );
 $cat = (array) $args['category'];
 $mk  = (array) ( $args['market'] ?? array() );
+// A market plugin may complete the typed values (sm-buildings proposes the elements from the dimensions).
+$sm_fs = sm_theme_data( 'product_form_state', array( 'state' => $st, 'category' => (string) ( $cat['slug'] ?? '' ) ) );
+if ( is_array( $sm_fs ) && $sm_fs ) {
+	$st = $sm_fs;
+}
 $v   = static fn( $k, $d = '' ) => isset( $st[ $k ] ) && ! is_array( $st[ $k ] ) ? (string) $st[ $k ] : $d;
 $pv  = (array) sm_theme_data( 'product_preview', $st );
 $sum = $pv['summary'] ?? null;
@@ -101,7 +106,7 @@ $render_grade = static function () use ( $v, $ps ) {
 		<?php $cond = $v( 'condition' ); ?>
 		<fieldset class="sm-field smp-conditions">
 			<legend class="sm-field__legend"><?php esc_html_e( 'Condition of the steel', 'sm-marketplace' ); ?></legend>
-			<div class="smp-cond-list">
+			<div class="smp-cond-list" style="--smp-cond-n:<?php echo (int) max( 1, count( $mk['conditions'] ) ); ?>">
 				<?php foreach ( $mk['conditions'] as $code => $label ) : ?>
 					<label class="smp-cond smp-cond--<?php echo esc_attr( (string) sm_condition_level( $code ) ); ?>">
 						<input type="radio" name="condition" value="<?php echo esc_attr( $code ); ?>" <?php checked( $cond, $code ); ?><?php sm_theme_aria( 'condition' ); ?>>
@@ -128,9 +133,9 @@ $render_grade = static function () use ( $v, $ps ) {
 				?>
 				<fieldset class="sm-field smb-system">
 					<legend class="sm-field__legend"><?php echo esc_html( sm_t( $f['label'] ) ); ?></legend>
-					<div class="smw-modes">
+					<div class="smb-systems" style="--smb-sys-n:<?php echo (int) max( 1, count( $f['options'] ) ); ?>">
 						<?php foreach ( $f['options'] as $o ) : ?>
-							<label class="smw-mode"><input type="radio" name="attrs[system]" value="<?php echo esc_attr( $o['value'] ); ?>" <?php checked( (string) ( $attrs['system'] ?? '' ), $o['value'] ); ?>><span><?php echo esc_html( sm_t( array( 'fr' => $o['fr'], 'ar' => $o['ar'] ) ) ); ?></span></label>
+							<label class="smb-sys"><input type="radio" name="attrs[system]" value="<?php echo esc_attr( $o['value'] ); ?>" <?php checked( (string) ( $attrs['system'] ?? '' ), $o['value'] ); ?>><span><?php echo esc_html( sm_t( array( 'fr' => $o['fr'], 'ar' => $o['ar'] ) ) ); ?></span></label>
 						<?php endforeach; ?>
 					</div>
 					<?php sm_theme_error( 'attrs_system' ); ?>
@@ -413,6 +418,17 @@ $render_grade = static function () use ( $v, $ps ) {
 
 		<?php $step( 3, __( 'Structural system and envelope', 'sm-marketplace' ) ); ?>
 			<?php echo $attrs_html; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above. ?>
+			<?php $crane = ! empty( $specs['crane'] ); ?>
+			<div class="smb-mezz smb-crane">
+				<label class="sm-check" for="smb-crane"><input type="checkbox" id="smb-crane" name="specs[crane]" value="1" <?php checked( $crane ); ?>><span><?php esc_html_e( 'The building has an overhead crane', 'sm-marketplace' ); ?></span></label>
+				<?php if ( $crane ) : ?>
+					<div class="sm-field smb-mezz__area">
+						<label for="smb-crane-t"><?php esc_html_e( 'Capacity of the crane', 'sm-marketplace' ); ?> <small>(t)</small> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
+						<input id="smb-crane-t" name="specs[crane_t]" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( $sv( 'crane_t' ) ); ?>"<?php sm_theme_aria( 'specs_crane_t' ); ?>>
+						<?php $field_error( 'specs_crane_t' ); ?>
+					</div>
+				<?php endif; ?>
+			</div>
 		</section>
 
 		<?php $step( 4, __( 'Elements of the structure', 'sm-marketplace' ) ); ?>
@@ -425,6 +441,18 @@ $render_grade = static function () use ( $v, $ps ) {
 			<?php else : ?>
 				<p class="sm-help"><?php esc_html_e( 'Choose the structural system in step 3 to see which elements are required.', 'sm-marketplace' ); ?></p>
 			<?php endif; ?>
+			<?php $proposal = (string) ( $st['lines_proposal'] ?? '' ); ?>
+			<input type="hidden" name="lines_auto" value="<?php echo esc_attr( (string) ( $st['lines_auto'] ?? '' ) ); ?>">
+			<input type="hidden" name="lines_recalc" value="" data-smb-recalc-flag>
+			<?php if ( 'synced' === $proposal ) : ?>
+				<p class="sm-notice sm-notice--success smb-proposal"><?php sm_icon( 'check' ); ?><span><strong><?php esc_html_e( 'Proposal calculated from the dimensions.', 'sm-marketplace' ); ?></strong> <?php esc_html_e( 'Correct each row to match your building: profile, number of pieces, length.', 'sm-marketplace' ); ?></span></p>
+			<?php elseif ( 'available' === $proposal ) : ?>
+				<details class="smb-recalc">
+					<summary><?php sm_icon( 'ruler' ); ?><?php esc_html_e( 'Recalculate from the dimensions', 'sm-marketplace' ); ?></summary>
+					<p><?php esc_html_e( 'The rows below will be replaced by a new proposal calculated from the dimensions.', 'sm-marketplace' ); ?></p>
+					<button type="button" class="sm-btn sm-btn--ghost sm-btn--sm" data-smb-recalc><?php esc_html_e( 'Replace my rows', 'sm-marketplace' ); ?></button>
+				</details>
+			<?php endif; ?>
 			<?php sm_component( 'product-lines', array( 'state' => $st, 'category' => $cat, 'summary' => $sum, 'field_error' => $field_error, 'elements' => (array) ( $mk['elements'] ?? array() ), 'legend' => __( 'Elements: profile, number of pieces, length', 'sm-marketplace' ), 'max' => (int) ( $cat['max_lines'] ?? 30 ) ) ); ?>
 		</section>
 
@@ -432,8 +460,8 @@ $render_grade = static function () use ( $v, $ps ) {
 			<fieldset class="sm-field smb-mode">
 				<legend class="sm-field__legend"><?php esc_html_e( 'State of the building', 'sm-marketplace' ); ?></legend>
 				<div class="smb-modes">
-					<label class="smb-mode-card"><input type="radio" name="mode" value="assembled" <?php checked( $mode, 'assembled' ); ?>><span><?php sm_icon( 'warehouse' ); ?><strong><?php esc_html_e( 'Assembled', 'sm-marketplace' ); ?></strong><small><?php esc_html_e( 'Still standing: sold at a price for the whole building.', 'sm-marketplace' ); ?></small></span></label>
-					<label class="smb-mode-card"><input type="radio" name="mode" value="dismantled" <?php checked( $mode, 'dismantled' ); ?>><span><?php sm_icon( 'layers' ); ?><strong><?php esc_html_e( 'Dismantled', 'sm-marketplace' ); ?></strong><small><?php esc_html_e( 'Taken down: sold whole or by the kg.', 'sm-marketplace' ); ?></small></span></label>
+					<label class="smb-mode-card"><input type="radio" name="mode" value="assembled" <?php checked( $mode, 'assembled' ); ?>><span><?php sm_icon( 'warehouse' ); ?><strong><?php esc_html_e( 'Assembled', 'sm-marketplace' ); ?></strong><small><?php esc_html_e( 'Still standing.', 'sm-marketplace' ); ?></small></span></label>
+					<label class="smb-mode-card"><input type="radio" name="mode" value="dismantled" <?php checked( $mode, 'dismantled' ); ?>><span><?php sm_icon( 'layers' ); ?><strong><?php esc_html_e( 'Dismantled', 'sm-marketplace' ); ?></strong><small><?php esc_html_e( 'Already taken down.', 'sm-marketplace' ); ?></small></span></label>
 				</div>
 				<?php sm_theme_error( 'mode' ); ?>
 			</fieldset>
@@ -543,7 +571,6 @@ $render_grade = static function () use ( $v, $ps ) {
 		<div class="sm-field smb-title">
 			<span class="sm-field__legend"><?php esc_html_e( 'Title of the listing', 'sm-marketplace' ); ?> <small><?php esc_html_e( '(automatic)', 'sm-marketplace' ); ?></small></span>
 			<p class="smb-readonly smb-title__text" aria-live="polite"><?php echo '' !== $made_title ? esc_html( $made_title ) : '—'; ?></p>
-			<p class="sm-help"><?php esc_html_e( 'The title is made by the site from the type, the size, the height, the structural system and the wilaya, in French and in Arabic.', 'sm-marketplace' ); ?></p>
 		</div>
 	<?php endif; ?>
 
@@ -574,7 +601,8 @@ $render_grade = static function () use ( $v, $ps ) {
 			<?php if ( 'building' === $cat['kind'] ) : ?>
 				<div><dt><?php esc_html_e( 'Total area', 'sm-marketplace' ); ?></dt><dd><?php echo $sum && $sum['quantity'] > 0 ? sm_tech( sm_number( $sum['quantity'], fmod( (float) $sum['quantity'], 1 ) ? 1 : 0 ) . ' m²' ) : '—'; // phpcs:ignore WordPress.Security.EscapeOutput ?></dd></div>
 			<?php endif; ?>
-			<div class="is-key"><dt><?php echo esc_html( 'lot' === ( $sum['price_unit'] ?? '' ) ? ( 'building' === $cat['kind'] ? __( 'Asking price', 'sm-marketplace' ) : __( 'Price of the lot', 'sm-marketplace' ) ) : __( 'Total price', 'sm-marketplace' ) ); ?></dt><dd><?php echo $sum && $sum['total_price'] > 0 ? esc_html( sm_money( $sum['total_price'] ) ) : '—'; ?></dd></div>
+			<?php $indicative = 'building' === $cat['kind'] && $sum && 'kg' === ( $sum['price_unit'] ?? '' ) && 'partial' === ( $sum['weight_source'] ?? '' ) && $sum['total_price'] > 0; ?>
+			<div class="is-key"><dt><?php echo esc_html( $indicative ? __( 'Indicative total', 'sm-marketplace' ) : ( 'lot' === ( $sum['price_unit'] ?? '' ) ? ( 'building' === $cat['kind'] ? __( 'Asking price', 'sm-marketplace' ) : __( 'Price of the lot', 'sm-marketplace' ) ) : __( 'Total price', 'sm-marketplace' ) ) ); ?></dt><dd><?php echo $sum && $sum['total_price'] > 0 ? esc_html( sm_money( $sum['total_price'] ) ) : '—'; ?><?php if ( $indicative ) : ?> <small class="smb-indicative"><?php esc_html_e( 'Price per kg × weight of the declared elements only. Buyers see this note.', 'sm-marketplace' ); ?></small><?php endif; ?></dd></div>
 			<?php if ( $sum && 'both' === ( $sum['sale_mode'] ?? '' ) && $sum['lot_price'] > 0 ) : ?>
 				<div class="is-key"><dt><?php esc_html_e( 'Price of the whole lot', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( sm_money( $sum['lot_price'] ) ); ?><?php if ( $sum['lot_per_kg'] > 0 ) : ?> <small><?php echo sm_per_unit( $sum['lot_per_kg'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></small><?php endif; ?></dd></div>
 			<?php endif; ?>

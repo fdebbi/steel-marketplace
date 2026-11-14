@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.13.0 — 2026-11-14
+
+- Filtre `sm_products_form_state` (et donnée de thème `product_form_state`) : un plugin de marché complète les valeurs du formulaire de publication avant l'affichage (sm-buildings : éléments proposés à partir des dimensions).
+
 ## 0.12.1 — 2026-11-14
 
 - Carte de l'annonce : l'acheteur dont une visite a été acceptée garde la position exacte sans limite de temps (avant : jusqu'à 2 jours après la visite). Il la perd s'il annule sa visite ou si le vendeur la refuse ensuite. Une visite passée depuis plus de 2 jours laisse toujours demander une nouvelle visite.

@@ -101,6 +101,9 @@ final class Presenter {
 		if ( ! empty( $p->specs['mezzanine'] ) ) {
 			$rows[] = array( __( 'Mezzanine', 'sm-buildings' ), empty( $p->specs['mezz_area'] ) ? esc_html__( 'Yes', 'sm-buildings' ) : $tech( $n( $p->specs['mezz_area'], fmod( (float) $p->specs['mezz_area'], 1 ) ? 1 : 0 ) . ' m²' ) );
 		}
+		if ( ! empty( $p->specs['crane'] ) ) {
+			$rows[] = array( __( 'Overhead crane', 'sm-buildings' ), empty( $p->specs['crane_t'] ) ? esc_html__( 'Yes', 'sm-buildings' ) : $tech( Spec::fmt( $p->specs['crane_t'] ) . ' t' ) );
+		}
 		if ( $p->total_weight > 0 ) {
 			$labels = array(
 				'estimated' => __( 'Total steel weight (given by the seller)', 'sm-buildings' ),

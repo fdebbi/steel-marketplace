@@ -767,7 +767,7 @@ msgstr "Annonce modifiée. Le vendeur a été informé avec votre motif."
 msgid "Category saved."
 msgstr "Catégorie enregistrée."
 
-#: src/Form.php:47 src/Visits.php:182
+#: src/Form.php:47 src/Visits.php:192
 msgid "Your account has no company."
 msgstr "Votre compte n’a pas d’entreprise."
 
@@ -1239,49 +1239,49 @@ msgstr "Seulement %1$s %2$s disponibles."
 msgid "This listing is no longer on sale."
 msgstr "Cette annonce n’est plus en vente."
 
-#: src/Visits.php:158
+#: src/Visits.php:168
 msgid "Choose the date and the time of the visit."
 msgstr "Choisissez la date et l’heure de la visite."
 
-#: src/Visits.php:163
+#: src/Visits.php:173
 msgid "Choose a date and a time in the future."
 msgstr "Choisissez une date et une heure à venir."
 
-#: src/Visits.php:166
+#: src/Visits.php:176
 msgid "Choose a date within the next three months."
 msgstr "Choisissez une date dans les trois prochains mois."
 
-#: src/Visits.php:179
+#: src/Visits.php:189
 msgid "A visit cannot be asked for this listing."
 msgstr "Cette annonce n’accepte pas de demande de visite."
 
-#: src/Visits.php:185
+#: src/Visits.php:195
 msgid "This is your own listing."
 msgstr "C’est votre propre annonce."
 
-#: src/Visits.php:193
+#: src/Visits.php:203
 msgid "You already asked for a visit of this listing. Follow it in \"My visits\"."
 msgstr ""
 "Vous avez déjà demandé une visite pour cette annonce. Suivez-la dans « Mes "
 "visites »."
 
-#: src/Visits.php:249
+#: src/Visits.php:259
 msgid "This request can no longer be answered."
 msgstr "Cette demande ne peut plus recevoir de réponse."
 
-#: src/Visits.php:269
+#: src/Visits.php:279
 msgid "This request can no longer be changed."
 msgstr "Cette demande ne peut plus être modifiée."
 
-#: src/Visits.php:328
+#: src/Visits.php:338
 msgid "This listing no longer exists."
 msgstr "Cette annonce n’existe plus."
 
-#: src/Visits.php:331
+#: src/Visits.php:341
 msgid "You asked for many visits today. Try again tomorrow."
 msgstr "Vous avez demandé beaucoup de visites aujourd’hui. Réessayez demain."
 
-#: src/Visits.php:337
+#: src/Visits.php:347
 msgid ""
 "Your request is sent. The seller will answer; you will be told by "
 "notification and e-mail."
@@ -1289,40 +1289,40 @@ msgstr ""
 "Votre demande est envoyée. Le vendeur va répondre ; vous serez prévenu par "
 "notification et par e-mail."
 
-#: src/Visits.php:344
+#: src/Visits.php:354
 msgid "You cannot answer this request."
 msgstr "Vous ne pouvez pas répondre à cette demande."
 
-#: src/Visits.php:352
+#: src/Visits.php:362
 msgid "Visit accepted. The buyer now sees the position on the map."
 msgstr "Visite acceptée. L’acheteur voit maintenant la position sur la carte."
 
-#: src/Visits.php:353
+#: src/Visits.php:363
 msgid "Request refused. The buyer is told."
 msgstr "Demande refusée. L’acheteur est prévenu."
 
-#: src/Visits.php:354
+#: src/Visits.php:364
 msgid "New date proposed. The buyer must confirm it."
 msgstr "Nouvelle date proposée. L’acheteur doit la confirmer."
 
-#: src/Visits.php:364
+#: src/Visits.php:374
 msgid "You cannot change this request."
 msgstr "Vous ne pouvez pas modifier cette demande."
 
-#: src/Visits.php:371
+#: src/Visits.php:381
 msgid "Visit confirmed. The position is now shown on the listing."
 msgstr "Visite confirmée. La position est maintenant affichée sur l’annonce."
 
-#: src/Visits.php:371
+#: src/Visits.php:381
 msgid "Request cancelled."
 msgstr "Demande annulée."
 
-#: src/Visits.php:395
+#: src/Visits.php:405
 msgid "New visit request"
 msgstr "Nouvelle demande de visite"
 
 #. translators: 1: company, 2: listing title, 3: date and time.
-#: src/Visits.php:397
+#: src/Visits.php:407
 msgid ""
 "%1$s asks to visit \"%2$s\" on %3$s. Accept, refuse or propose another date "
 "from your account."
@@ -1330,12 +1330,12 @@ msgstr ""
 "%1$s demande à visiter « %2$s » le %3$s. Acceptez, refusez ou proposez une "
 "autre date depuis votre compte."
 
-#: src/Visits.php:402
+#: src/Visits.php:412
 msgid "Your visit is accepted"
 msgstr "Votre visite est acceptée"
 
 #. translators: 1: listing title, 2: date and time.
-#: src/Visits.php:404
+#: src/Visits.php:414
 msgid ""
 "The seller accepted your visit of \"%1$s\" on %2$s. The exact position is "
 "now shown on the listing."
@@ -1343,12 +1343,12 @@ msgstr ""
 "Le vendeur a accepté votre visite de « %1$s » le %2$s. La position exacte "
 "est maintenant affichée sur l’annonce."
 
-#: src/Visits.php:409
+#: src/Visits.php:419
 msgid "Your visit request was refused"
 msgstr "Votre demande de visite a été refusée"
 
 #. translators: %s: listing title.
-#: src/Visits.php:411
+#: src/Visits.php:421
 msgid ""
 "The seller cannot receive you for \"%s\". You can write to him from the "
 "listing."
@@ -1356,32 +1356,32 @@ msgstr ""
 "Le vendeur ne peut pas vous recevoir pour « %s ». Vous pouvez lui écrire "
 "depuis l’annonce."
 
-#: src/Visits.php:416
+#: src/Visits.php:426
 msgid "The seller proposes another date for your visit"
 msgstr "Le vendeur propose une autre date pour votre visite"
 
 #. translators: 1: listing title, 2: date and time.
-#: src/Visits.php:418
+#: src/Visits.php:428
 msgid ""
 "For \"%1$s\", the seller proposes %2$s. Confirm or cancel from your account."
 msgstr ""
 "Pour « %1$s », le vendeur propose le %2$s. Confirmez ou annulez depuis votre"
 " compte."
 
-#: src/Visits.php:423
+#: src/Visits.php:433
 msgid "Visit confirmed by the buyer"
 msgstr "Visite confirmée par l’acheteur"
 
 #. translators: 1: company, 2: listing title, 3: date and time.
-#: src/Visits.php:425
+#: src/Visits.php:435
 msgid "%1$s confirmed the visit of \"%2$s\" on %3$s."
 msgstr "%1$s a confirmé la visite de « %2$s » le %3$s."
 
-#: src/Visits.php:430
+#: src/Visits.php:440
 msgid "Visit cancelled by the buyer"
 msgstr "Visite annulée par l’acheteur"
 
 #. translators: 1: company, 2: listing title.
-#: src/Visits.php:432
+#: src/Visits.php:442
 msgid "%1$s cancelled the visit of \"%2$s\"."
 msgstr "%1$s a annulé la visite de « %2$s »."

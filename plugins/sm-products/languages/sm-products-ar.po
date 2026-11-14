@@ -750,7 +750,7 @@ msgstr "تم تعديل الإعلان وإعلام البائع بالسبب."
 msgid "Category saved."
 msgstr "تم حفظ الفئة."
 
-#: src/Form.php:47 src/Visits.php:182
+#: src/Form.php:47 src/Visits.php:192
 msgid "Your account has no company."
 msgstr "حسابك غير مرتبط بمؤسسة."
 
@@ -1214,86 +1214,86 @@ msgstr "المتوفر %1$s %2$s فقط."
 msgid "This listing is no longer on sale."
 msgstr "هذا الإعلان لم يعد معروضا للبيع."
 
-#: src/Visits.php:158
+#: src/Visits.php:168
 msgid "Choose the date and the time of the visit."
 msgstr "اختر تاريخ ووقت الزيارة."
 
-#: src/Visits.php:163
+#: src/Visits.php:173
 msgid "Choose a date and a time in the future."
 msgstr "اختر تاريخًا ووقتًا في المستقبل."
 
-#: src/Visits.php:166
+#: src/Visits.php:176
 msgid "Choose a date within the next three months."
 msgstr "اختر تاريخًا خلال الأشهر الثلاثة القادمة."
 
-#: src/Visits.php:179
+#: src/Visits.php:189
 msgid "A visit cannot be asked for this listing."
 msgstr "لا يمكن طلب زيارة لهذا الإعلان."
 
-#: src/Visits.php:185
+#: src/Visits.php:195
 msgid "This is your own listing."
 msgstr "هذا إعلانك."
 
-#: src/Visits.php:193
+#: src/Visits.php:203
 msgid "You already asked for a visit of this listing. Follow it in \"My visits\"."
 msgstr "سبق أن طلبت زيارة لهذا الإعلان. تابعها في «زياراتي»."
 
-#: src/Visits.php:249
+#: src/Visits.php:259
 msgid "This request can no longer be answered."
 msgstr "لم يعد ممكنًا الرد على هذا الطلب."
 
-#: src/Visits.php:269
+#: src/Visits.php:279
 msgid "This request can no longer be changed."
 msgstr "لم يعد ممكنًا تعديل هذا الطلب."
 
-#: src/Visits.php:328
+#: src/Visits.php:338
 msgid "This listing no longer exists."
 msgstr "هذا الإعلان لم يعد موجودًا."
 
-#: src/Visits.php:331
+#: src/Visits.php:341
 msgid "You asked for many visits today. Try again tomorrow."
 msgstr "طلبت زيارات كثيرة اليوم. حاول غدًا."
 
-#: src/Visits.php:337
+#: src/Visits.php:347
 msgid ""
 "Your request is sent. The seller will answer; you will be told by "
 "notification and e-mail."
 msgstr "تم إرسال طلبك. سيرد البائع وسيتم إعلامك بإشعار وبريد إلكتروني."
 
-#: src/Visits.php:344
+#: src/Visits.php:354
 msgid "You cannot answer this request."
 msgstr "لا يمكنك الرد على هذا الطلب."
 
-#: src/Visits.php:352
+#: src/Visits.php:362
 msgid "Visit accepted. The buyer now sees the position on the map."
 msgstr "تم قبول الزيارة. يرى المشتري الآن الموقع على الخريطة."
 
-#: src/Visits.php:353
+#: src/Visits.php:363
 msgid "Request refused. The buyer is told."
 msgstr "تم رفض الطلب. تم إعلام المشتري."
 
-#: src/Visits.php:354
+#: src/Visits.php:364
 msgid "New date proposed. The buyer must confirm it."
 msgstr "تم اقتراح تاريخ جديد. على المشتري تأكيده."
 
-#: src/Visits.php:364
+#: src/Visits.php:374
 msgid "You cannot change this request."
 msgstr "لا يمكنك تعديل هذا الطلب."
 
-#: src/Visits.php:371
+#: src/Visits.php:381
 msgid "Visit confirmed. The position is now shown on the listing."
 msgstr "تم تأكيد الزيارة. يظهر الموقع الآن في الإعلان."
 
-#: src/Visits.php:371
+#: src/Visits.php:381
 msgid "Request cancelled."
 msgstr "تم إلغاء الطلب."
 
-#: src/Visits.php:395
+#: src/Visits.php:405
 msgid "New visit request"
 msgstr "طلب زيارة جديد"
 
 #. translators: 1: company, 2: listing title, 3: date and time.
-#: src/Visits.php:397
+#: src/Visits.php:407
 msgid ""
 "%1$s asks to visit \"%2$s\" on %3$s. Accept, refuse or propose another date "
 "from your account."
@@ -1301,53 +1301,53 @@ msgstr ""
 "%1$s يطلب زيارة «%2$s» بتاريخ %3$s. اقبل أو ارفض أو اقترح تاريخًا آخر من "
 "حسابك."
 
-#: src/Visits.php:402
+#: src/Visits.php:412
 msgid "Your visit is accepted"
 msgstr "تم قبول زيارتك"
 
 #. translators: 1: listing title, 2: date and time.
-#: src/Visits.php:404
+#: src/Visits.php:414
 msgid ""
 "The seller accepted your visit of \"%1$s\" on %2$s. The exact position is "
 "now shown on the listing."
 msgstr ""
 "قبل البائع زيارتك لـ«%1$s» بتاريخ %2$s. يظهر الموقع الدقيق الآن في الإعلان."
 
-#: src/Visits.php:409
+#: src/Visits.php:419
 msgid "Your visit request was refused"
 msgstr "تم رفض طلب زيارتك"
 
 #. translators: %s: listing title.
-#: src/Visits.php:411
+#: src/Visits.php:421
 msgid ""
 "The seller cannot receive you for \"%s\". You can write to him from the "
 "listing."
 msgstr "لا يستطيع البائع استقبالك بخصوص «%s». يمكنك مراسلته من الإعلان."
 
-#: src/Visits.php:416
+#: src/Visits.php:426
 msgid "The seller proposes another date for your visit"
 msgstr "يقترح البائع تاريخًا آخر لزيارتك"
 
 #. translators: 1: listing title, 2: date and time.
-#: src/Visits.php:418
+#: src/Visits.php:428
 msgid ""
 "For \"%1$s\", the seller proposes %2$s. Confirm or cancel from your account."
 msgstr "بخصوص «%1$s»، يقترح البائع %2$s. أكّد أو ألغِ من حسابك."
 
-#: src/Visits.php:423
+#: src/Visits.php:433
 msgid "Visit confirmed by the buyer"
 msgstr "أكّد المشتري الزيارة"
 
 #. translators: 1: company, 2: listing title, 3: date and time.
-#: src/Visits.php:425
+#: src/Visits.php:435
 msgid "%1$s confirmed the visit of \"%2$s\" on %3$s."
 msgstr "%1$s أكّد زيارة «%2$s» بتاريخ %3$s."
 
-#: src/Visits.php:430
+#: src/Visits.php:440
 msgid "Visit cancelled by the buyer"
 msgstr "ألغى المشتري الزيارة"
 
 #. translators: 1: company, 2: listing title.
-#: src/Visits.php:432
+#: src/Visits.php:442
 msgid "%1$s cancelled the visit of \"%2$s\"."
 msgstr "%1$s ألغى زيارة «%2$s»."

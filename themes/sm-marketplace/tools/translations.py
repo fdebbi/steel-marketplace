@@ -1998,3 +1998,18 @@ T.update({
 "My visits": ("Mes visites", "زياراتي"),
 })
 T.update({"Time of the visit": ("Heure", "الساعة")})
+# 0.32.0: building form — crane, proposed elements, price per kg for an assembled building.
+T.update({
+"The building has an overhead crane": ("Le bâtiment a un pont roulant", "المبنى مجهز برافعة جسرية"),
+"Capacity of the crane": ("Capacité du pont roulant", "حمولة الرافعة"),
+"Proposal calculated from the dimensions.": ("Proposition calculée à partir des dimensions.", "اقتراح محسوب انطلاقا من الأبعاد."),
+"Correct each row to match your building: profile, number of pieces, length.": ("Corrigez chaque ligne selon votre bâtiment : profilé, nombre de pièces, longueur.", "صحّح كل سطر حسب مبناك: المقطع، عدد القطع، الطول."),
+"Recalculate from the dimensions": ("Recalculer à partir des dimensions", "إعادة الحساب انطلاقا من الأبعاد"),
+"The rows below will be replaced by a new proposal calculated from the dimensions.": ("Les lignes ci-dessous seront remplacées par une nouvelle proposition calculée à partir des dimensions.", "ستُستبدل الأسطر أدناه باقتراح جديد محسوب انطلاقا من الأبعاد."),
+"Replace my rows": ("Remplacer mes lignes", "استبدال أسطري"),
+"Still standing.": ("Encore debout.", "ما زال قائما."),
+"Already taken down.": ("Déjà démonté.", "مفكك مسبقا."),
+"Indicative total": ("Total indicatif", "المجموع التقريبي"),
+"Price per kg × weight of the declared elements only. Buyers see this note.": ("Prix au kg × poids des éléments déclarés seulement. L’acheteur voit cette mention.", "السعر للكيلوغرام × وزن العناصر المصرح بها فقط. يرى المشتري هذه الملاحظة."),
+"No. of pieces": ("Nbr pièces", "عدد القطع"),
+})

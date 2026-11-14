@@ -130,6 +130,16 @@
 		clearTimeout( timer );
 		timer = setTimeout( function () { refresh( null ); }, 180 );
 	} );
+	// Buildings: replace the element rows by a new proposal calculated by the server.
+	form.addEventListener( 'click', function ( e ) {
+		var btn = e.target.closest ? e.target.closest( '[data-smb-recalc]' ) : null;
+		if ( ! btn || ! inTech( btn ) ) { return; }
+		var flag = tech().querySelector( '[data-smb-recalc-flag]' );
+		if ( ! flag ) { return; }
+		flag.value = '1';
+		clearTimeout( timer );
+		refresh( null );
+	} );
 	// Enter in a technical field must not submit the whole form.
 	form.addEventListener( 'keydown', function ( e ) {
 		if ( 'Enter' === e.key && inTech( e.target ) && 'INPUT' === e.target.tagName ) {

@@ -1,5 +1,13 @@
 # Changelog — sm-buildings
 
+## 0.3.0 — 2026-11-14
+
+- Pont roulant : oui / non, capacité en tonnes facultative ; affiché dans les caractéristiques de l'annonce.
+- Éléments proposés à partir des dimensions (`Proposal`), seulement pour le système « Portique poteau / traverse » : poteaux IPE (largeur × 20) ou HEA avec pont roulant (largeur × 18), 2 par portique, longueur = hauteur au poteau ; traverses IPE (largeur × 20), 2 par portique de largeur / 2 (deux versants) ou 1 par portique de la largeur (un versant), aucune pour les autres toitures ; pannes IPE 120, ⌈largeur / 1,2⌉ files × (portiques − 1), longueur = entraxe ; lisses UPN 120, 2 × ⌈hauteur / 1,2⌉ × (portiques − 1), longueur = entraxe, aucune sans bardage ; contreventements 32 × L 80x80x8 de 6 m. Dimension de catalogue la plus proche ; au-delà de la plus grande, la dimension est laissée au vendeur.
+- Tous ces chiffres et profilés sont des réglages (SM → Bâtiments). Le vendeur peut modifier chaque ligne ; une ligne modifiée n'est jamais écrasée ; une annonce existante n'est jamais recalculée seule.
+- Prix : un bâtiment monté peut être vendu au kg ou pour le bâtiment entier (la règle « monté = prix du bâtiment entier » est retirée).
+- Tests : 92.
+
 ## 0.2.0 — 2026-11-13
 
 - Géométrie : hauteur au poteau et hauteur de toiture (faîtage) ; la pente n'est plus saisie, elle est calculée (deux versants : sur la demi-portée ; un versant : sur la portée) ; entraxe des portiques calculé ; nombre d'étages (1 par défaut) ; mezzanine (oui / non, surface facultative).

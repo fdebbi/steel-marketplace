@@ -45,3 +45,35 @@
 .sm-visit__propose { margin-block-start: var(--sm-s3); border-block-start: 1px solid var(--sm-line); padding-block-start: var(--sm-s2); }
 .sm-visit__propose > summary { display: inline-flex; gap: var(--sm-s2); align-items: center; min-block-size: 40px; cursor: pointer; font-weight: 600; color: var(--sm-primary); }
 .sm-visit__propose[open] > summary { margin-block-end: var(--sm-s2); }
+
+/* ---- 0.32.0: building form — systems, crane, proposed elements, even spacing ---- */
+
+/* Structural system: equal boxes, the chosen one filled. */
+.smb-systems { display: grid; gap: var(--sm-s2); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 720px) { .smb-systems { grid-template-columns: repeat(var(--smb-sys-n, 4), minmax(0, 1fr)); } }
+.smb-sys { position: relative; }
+.smb-sys input { position: absolute; opacity: 0; inline-size: 1px; block-size: 1px; }
+.smb-sys span { display: grid; place-items: center; block-size: 100%; min-block-size: 56px; padding: var(--sm-s2) var(--sm-s3); border: 1.5px solid var(--sm-line-strong); border-radius: var(--sm-radius); background: var(--sm-surface); font-size: var(--sm-fs-sm); font-weight: 600; line-height: 1.3; text-align: center; color: var(--sm-text); cursor: pointer; transition: background-color var(--sm-dur-1, 150ms) var(--sm-ease, ease), border-color var(--sm-dur-1, 150ms) var(--sm-ease, ease); }
+.smb-sys:hover span { border-color: var(--sm-accent); }
+.smb-sys input:checked + span { background: var(--sm-accent-ink); border-color: var(--sm-accent-ink); color: #fff; }
+.smb-sys input:focus-visible + span { box-shadow: var(--sm-focus); }
+
+/* Condition of the steel: equal boxes over the whole width. */
+.smp-cond-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 640px) { .smp-cond-list { grid-template-columns: repeat(var(--smp-cond-n, 5), minmax(0, 1fr)); } }
+
+/* Proposed elements. */
+.smb-proposal { margin: 0; }
+.smb-recalc { border: 1px dashed var(--sm-line-strong); border-radius: var(--sm-radius); padding: var(--sm-s2) var(--sm-s3); }
+.smb-recalc > summary { display: flex; gap: var(--sm-s2); align-items: center; min-block-size: 40px; cursor: pointer; font-weight: 600; color: var(--sm-primary); }
+.smb-recalc > p { margin: var(--sm-s2) 0; font-size: var(--sm-fs-sm); color: var(--sm-muted); }
+.smb-indicative { max-inline-size: 46ch; }
+
+/* The same space before every block and every field title of the form. */
+.smp-tech { gap: var(--sm-s4); }
+.smp-tech--steps .smp-step > * + * { margin-block-start: var(--sm-s4); }
+.smp-tech--steps .smp-step > .smw-step__title + * { margin-block-start: 0; }
+.smp-tech--steps .smp-step > .sm-help, .smp-tech--steps .smp-step > .sm-field-error { margin-block-start: var(--sm-s2); }
+.smp-form .sm-field-grid { row-gap: var(--sm-s4); }
+.smp-tech--steps .smb-mezz, .smp-tech--steps .smb-calc, .smp-tech--steps .smw-modes, .smp-tech--steps .smp-sale { margin-block-end: 0; }
+.smb-modes, .smp-includes__list, .smp-cond-list { margin-block-start: 0; }

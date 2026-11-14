@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Buildings 0.2.0\n"
+"Project-Id-Version: SM Buildings 0.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-buildings\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-13T22:19:30+00:00\n"
+"POT-Creation-Date: 2026-11-14T10:37:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-buildings\n"
@@ -58,19 +58,83 @@ msgstr ""
 msgid "Maximum rows in the element inventory"
 msgstr ""
 
-#: src/Admin/Admin.php:36
-msgid "Steel buildings"
+#: src/Admin/Admin.php:35
+msgid "Maximum capacity of an overhead crane (t)"
+msgstr ""
+
+#: src/Admin/Admin.php:38
+msgid "Columns: profile family"
 msgstr ""
 
 #: src/Admin/Admin.php:39
-msgid "Settings saved."
+msgid "Columns: height of the profile (mm) = width of the building (m) ×"
+msgstr ""
+
+#: src/Admin/Admin.php:40
+msgid "Columns with an overhead crane: profile family"
 msgstr ""
 
 #: src/Admin/Admin.php:41
-msgid "Categories, moderation and listings of buildings are managed in SM → Products, with the other markets. Here: the limits of the publication form."
+msgid "Columns with an overhead crane: height (mm) = width (m) ×"
+msgstr ""
+
+#: src/Admin/Admin.php:42
+msgid "Rafters: profile family"
+msgstr ""
+
+#: src/Admin/Admin.php:43
+msgid "Rafters: height of the profile (mm) = width (m) ×"
+msgstr ""
+
+#: src/Admin/Admin.php:44
+msgid "Purlins: profile"
+msgstr ""
+
+#: src/Admin/Admin.php:45
+msgid "Purlins: spacing of the rows (m)"
+msgstr ""
+
+#: src/Admin/Admin.php:46
+msgid "Cladding rails: profile"
+msgstr ""
+
+#: src/Admin/Admin.php:47
+msgid "Cladding rails: spacing of the rows (m)"
+msgstr ""
+
+#: src/Admin/Admin.php:48
+msgid "Bracing: profile"
+msgstr ""
+
+#: src/Admin/Admin.php:49
+msgid "Bracing: number of pieces"
+msgstr ""
+
+#: src/Admin/Admin.php:50
+msgid "Bracing: length of a piece (m)"
+msgstr ""
+
+#: src/Admin/Admin.php:52
+msgid "Steel buildings"
 msgstr ""
 
 #: src/Admin/Admin.php:55
+msgid "Settings saved."
+msgstr ""
+
+#: src/Admin/Admin.php:57
+msgid "Categories, moderation and listings of buildings are managed in SM → Products, with the other markets. Here: the limits of the publication form."
+msgstr ""
+
+#: src/Admin/Admin.php:65
+msgid "Elements proposed from the dimensions"
+msgstr ""
+
+#: src/Admin/Admin.php:66
+msgid "For a column / rafter frame, the form proposes the elements from the dimensions; the seller can change every row. The nearest catalogue size is taken; beyond the largest size the dimension is left to the seller."
+msgstr ""
+
+#: src/Admin/Admin.php:79
 msgid "You cannot change these settings."
 msgstr ""
 
@@ -115,112 +179,118 @@ msgid "Mezzanine"
 msgstr ""
 
 #: src/Presenter.php:102
+#: src/Presenter.php:105
 msgid "Yes"
 msgstr ""
 
-#: src/Presenter.php:106
-msgid "Total steel weight (given by the seller)"
-msgstr ""
-
-#: src/Presenter.php:107
-msgid "Weight of the declared elements (not the whole structure)"
+#: src/Presenter.php:105
+msgid "Overhead crane"
 msgstr ""
 
 #: src/Presenter.php:109
+msgid "Total steel weight (given by the seller)"
+msgstr ""
+
+#: src/Presenter.php:110
+msgid "Weight of the declared elements (not the whole structure)"
+msgstr ""
+
+#: src/Presenter.php:112
 msgid "Steel weight"
 msgstr ""
 
-#: src/Presenter.php:111
+#: src/Presenter.php:114
 msgid "Of which declared elements (calculated)"
 msgstr ""
 
-#: src/Presenter.php:116
+#: src/Presenter.php:120
 msgid "Indicative drawing made from the figures given by the seller. It is not a structural design."
 msgstr ""
 
-#: src/Presenter.php:122
+#: src/Presenter.php:126
 msgid "Before buying and reassembling: ask an engineer"
 msgstr ""
 
 #. translators: %s: platform name.
-#: src/Presenter.php:124
+#: src/Presenter.php:128
 msgid "A used steel building must be checked by a qualified engineer before it is reassembled: condition of the members and connections, corrosion, and a new calculation for the new site (wind, snow, foundations). The information in this listing is declared by the seller; %s does not certify it."
 msgstr ""
 
-#: src/Presenter.php:125
+#: src/Presenter.php:129
 msgid "Find an engineer"
 msgstr ""
 
-#: src/Rules.php:29
-msgid "An assembled building is sold at a price for the whole building. The price per kg and per m² are calculated from it."
-msgstr ""
-
-#: src/Rules.php:32
+#: src/Rules.php:28
 msgid "The building is already dismantled: untick \"Dismantling included\"."
 msgstr ""
 
-#: src/Spec.php:75
+#: src/Spec.php:76
 msgid "Say whether the building is assembled or dismantled."
 msgstr ""
 
-#: src/Spec.php:84
+#: src/Spec.php:85
 msgid "Enter the length in metres."
 msgstr ""
 
-#: src/Spec.php:85
+#: src/Spec.php:86
 msgid "Enter the width in metres."
 msgstr ""
 
-#: src/Spec.php:86
+#: src/Spec.php:87
 msgid "Enter the height at the column in metres."
 msgstr ""
 
-#: src/Spec.php:87
+#: src/Spec.php:88
 msgid "Enter the height of the roof (at the ridge) in metres."
 msgstr ""
 
 #. translators: %s: maximum in metres.
-#: src/Spec.php:95
+#: src/Spec.php:96
 msgid "At most %s m."
 msgstr ""
 
-#: src/Spec.php:101
+#: src/Spec.php:102
 msgid "The height of the roof cannot be lower than the height at the column."
 msgstr ""
 
-#: src/Spec.php:106
+#: src/Spec.php:107
 msgid "Enter the number of portal frames (2 or more)."
 msgstr ""
 
-#: src/Spec.php:108
+#: src/Spec.php:109
 msgid "This number of portal frames is outside the accepted range."
 msgstr ""
 
 #. translators: %d: maximum number of floors.
-#: src/Spec.php:117
+#: src/Spec.php:118
 msgid "Number of floors: a whole number from 1 to %d."
 msgstr ""
 
-#: src/Spec.php:128
+#: src/Spec.php:129
 msgid "Area of the mezzanine in m²: more than 0 and at most the floor area."
 msgstr ""
 
-#: src/Spec.php:167
+#. translators: %s: maximum in tonnes.
+#: src/Spec.php:143
+msgid "Capacity of the crane in tonnes: more than 0 and at most %s."
+msgstr ""
+
+#: src/Spec.php:182
 msgid "Describe at least the columns and the trusses (profile, number, length)."
 msgstr ""
 
-#: src/Spec.php:168
+#: src/Spec.php:183
 msgid "Describe at least the columns and the rafters (profile, number, length)."
 msgstr ""
 
-#: src/Spec.php:177
+#: src/Spec.php:192
 msgid "This weight is outside the accepted range."
 msgstr ""
 
-#: src/Spec.php:179
+#: src/Spec.php:194
 msgid "The total weight cannot be lower than the weight of the elements you declared."
 msgstr ""
 
-#: src/Spec.php:188
+#: src/Spec.php:203
 msgid "Give the total weight of the steel structure, or list its elements."
 msgstr ""

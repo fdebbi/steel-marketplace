@@ -20,6 +20,21 @@ final class Settings {
 			'max_floors'   => 10,
 			'max_portals'  => 150,
 			'max_lines'    => 60,   // Rows of the element inventory.
+			'max_crane_t'  => 500,  // Capacity of an overhead crane (t).
+			// Elements proposed from the dimensions (0.3.0, see Proposal).
+			'prop_col_family'    => 'IPE',
+			'prop_col_factor'    => 20,   // Column height (mm) = width (m) × factor.
+			'prop_crane_family'  => 'HEA',
+			'prop_crane_factor'  => 18,   // Same, with an overhead crane.
+			'prop_rafter_family' => 'IPE',
+			'prop_rafter_factor' => 20,
+			'prop_purlin'        => 'IPE 120',
+			'prop_purlin_step'   => 1.2,  // Spacing of the purlin rows (m).
+			'prop_rail'          => 'UPN 120',
+			'prop_rail_step'     => 1.2,
+			'prop_brace'         => 'L 80x80x8',
+			'prop_brace_qty'     => 32,
+			'prop_brace_len'     => 6,
 		);
 	}
 
@@ -34,9 +49,15 @@ final class Settings {
 	public static function save( array $in ) {
 		$out = array();
 		foreach ( self::defaults() as $k => $v ) {
-			$n         = isset( $in[ $k ] ) ? (float) $in[ $k ] : $v;
+			if ( is_string( $v ) ) {
+				$t         = isset( $in[ $k ] ) ? trim( sanitize_text_field( (string) $in[ $k ] ) ) : '';
+				$out[ $k ] = '' !== $t ? mb_substr( $t, 0, 40 ) : $v;
+				continue;
+			}
+			$n         = isset( $in[ $k ] ) ? (float) str_replace( ',', '.', (string) $in[ $k ] ) : $v;
 			$out[ $k ] = $n > 0 ? $n : $v;
 		}
+		$out['prop_brace_qty'] = (int) $out['prop_brace_qty'];
 		$out['max_portals'] = (int) $out['max_portals'];
 		$out['max_floors']  = (int) $out['max_floors'];
 		$out['max_lines']   = (int) min( 200, $out['max_lines'] );

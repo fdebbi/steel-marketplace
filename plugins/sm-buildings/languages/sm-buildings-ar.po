@@ -69,15 +69,71 @@ msgstr "العدد الأقصى للإطارات"
 msgid "Maximum rows in the element inventory"
 msgstr "العدد الأقصى لأسطر الجرد"
 
-#: src/Admin/Admin.php:36
+#: src/Admin/Admin.php:35
+msgid "Maximum capacity of an overhead crane (t)"
+msgstr "الحمولة القصوى للرافعة الجسرية (طن)"
+
+#: src/Admin/Admin.php:38
+msgid "Columns: profile family"
+msgstr "الأعمدة: عائلة المقطع"
+
+#: src/Admin/Admin.php:39
+msgid "Columns: height of the profile (mm) = width of the building (m) ×"
+msgstr "الأعمدة: ارتفاع المقطع (مم) = عرض المبنى (م) ×"
+
+#: src/Admin/Admin.php:40
+msgid "Columns with an overhead crane: profile family"
+msgstr "الأعمدة مع رافعة جسرية: عائلة المقطع"
+
+#: src/Admin/Admin.php:41
+msgid "Columns with an overhead crane: height (mm) = width (m) ×"
+msgstr "الأعمدة مع رافعة جسرية: الارتفاع (مم) = العرض (م) ×"
+
+#: src/Admin/Admin.php:42
+msgid "Rafters: profile family"
+msgstr "عوارض السقف: عائلة المقطع"
+
+#: src/Admin/Admin.php:43
+msgid "Rafters: height of the profile (mm) = width (m) ×"
+msgstr "عوارض السقف: ارتفاع المقطع (مم) = العرض (م) ×"
+
+#: src/Admin/Admin.php:44
+msgid "Purlins: profile"
+msgstr "مدادات السقف: المقطع"
+
+#: src/Admin/Admin.php:45
+msgid "Purlins: spacing of the rows (m)"
+msgstr "مدادات السقف: التباعد بين الصفوف (م)"
+
+#: src/Admin/Admin.php:46
+msgid "Cladding rails: profile"
+msgstr "المدادات الجانبية: المقطع"
+
+#: src/Admin/Admin.php:47
+msgid "Cladding rails: spacing of the rows (m)"
+msgstr "المدادات الجانبية: التباعد بين الصفوف (م)"
+
+#: src/Admin/Admin.php:48
+msgid "Bracing: profile"
+msgstr "التكتيف: المقطع"
+
+#: src/Admin/Admin.php:49
+msgid "Bracing: number of pieces"
+msgstr "التكتيف: عدد القطع"
+
+#: src/Admin/Admin.php:50
+msgid "Bracing: length of a piece (m)"
+msgstr "التكتيف: طول القطعة (م)"
+
+#: src/Admin/Admin.php:52
 msgid "Steel buildings"
 msgstr "المباني الفولاذية"
 
-#: src/Admin/Admin.php:39
+#: src/Admin/Admin.php:55
 msgid "Settings saved."
 msgstr "تم حفظ الإعدادات."
 
-#: src/Admin/Admin.php:41
+#: src/Admin/Admin.php:57
 msgid ""
 "Categories, moderation and listings of buildings are managed in SM → "
 "Products, with the other markets. Here: the limits of the publication form."
@@ -85,7 +141,21 @@ msgstr ""
 "تُدار فئات المباني والإشراف والإعلانات من SM ← المنتجات مع باقي الأسواق. "
 "هنا: حدود نموذج النشر."
 
-#: src/Admin/Admin.php:55
+#: src/Admin/Admin.php:65
+msgid "Elements proposed from the dimensions"
+msgstr "العناصر المقترحة انطلاقا من الأبعاد"
+
+#: src/Admin/Admin.php:66
+msgid ""
+"For a column / rafter frame, the form proposes the elements from the "
+"dimensions; the seller can change every row. The nearest catalogue size is "
+"taken; beyond the largest size the dimension is left to the seller."
+msgstr ""
+"في حالة إطار عمود / عارضة، يقترح النموذج العناصر انطلاقا من الأبعاد؛ ويمكن "
+"للبائع تعديل كل سطر. يُؤخذ أقرب مقاس في الجدول؛ وإذا تجاوز أكبر مقاس يُترك "
+"المقاس للبائع."
+
+#: src/Admin/Admin.php:79
 msgid "You cannot change these settings."
 msgstr "لا يمكنك تعديل هذه الإعدادات."
 
@@ -129,38 +199,42 @@ msgstr "عدد الطوابق"
 msgid "Mezzanine"
 msgstr "ميزانين"
 
-#: src/Presenter.php:102
+#: src/Presenter.php:102 src/Presenter.php:105
 msgid "Yes"
 msgstr "نعم"
 
-#: src/Presenter.php:106
+#: src/Presenter.php:105
+msgid "Overhead crane"
+msgstr "رافعة جسرية"
+
+#: src/Presenter.php:109
 msgid "Total steel weight (given by the seller)"
 msgstr "الوزن الإجمالي للفولاذ (حسب البائع)"
 
-#: src/Presenter.php:107
+#: src/Presenter.php:110
 msgid "Weight of the declared elements (not the whole structure)"
 msgstr "وزن العناصر المصرّح بها (ليس كامل الهيكل)"
 
-#: src/Presenter.php:109
+#: src/Presenter.php:112
 msgid "Steel weight"
 msgstr "وزن الفولاذ"
 
-#: src/Presenter.php:111
+#: src/Presenter.php:114
 msgid "Of which declared elements (calculated)"
 msgstr "منها العناصر المصرّح بها (محسوب)"
 
-#: src/Presenter.php:116
+#: src/Presenter.php:120
 msgid ""
 "Indicative drawing made from the figures given by the seller. It is not a "
 "structural design."
 msgstr "رسم توضيحي مبني على الأرقام التي قدمها البائع. ليس دراسة إنشائية."
 
-#: src/Presenter.php:122
+#: src/Presenter.php:126
 msgid "Before buying and reassembling: ask an engineer"
 msgstr "قبل الشراء وإعادة التركيب: استشر مهندسًا"
 
 #. translators: %s: platform name.
-#: src/Presenter.php:124
+#: src/Presenter.php:128
 msgid ""
 "A used steel building must be checked by a qualified engineer before it is "
 "reassembled: condition of the members and connections, corrosion, and a new "
@@ -171,88 +245,85 @@ msgstr ""
 "العناصر والوصلات، التآكل، وحساب جديد للموقع الجديد (الرياح، الثلوج، "
 "الأساسات). معلومات هذا الإعلان يصرّح بها البائع، و%s لا تصادق عليها."
 
-#: src/Presenter.php:125
+#: src/Presenter.php:129
 msgid "Find an engineer"
 msgstr "ابحث عن مهندس"
 
-#: src/Rules.php:29
-msgid ""
-"An assembled building is sold at a price for the whole building. The price "
-"per kg and per m² are calculated from it."
-msgstr ""
-"يُباع المبنى المركب بسعر للمبنى كاملًا، ويُحسب منه السعر للكيلوغرام وللمتر "
-"المربع."
-
-#: src/Rules.php:32
+#: src/Rules.php:28
 msgid "The building is already dismantled: untick \"Dismantling included\"."
 msgstr "المبنى مفكك أصلًا: ألغِ تحديد «التفكيك مشمول»."
 
-#: src/Spec.php:75
+#: src/Spec.php:76
 msgid "Say whether the building is assembled or dismantled."
 msgstr "حدّد هل المبنى مركب أم مفكك."
 
-#: src/Spec.php:84
+#: src/Spec.php:85
 msgid "Enter the length in metres."
 msgstr "أدخل الطول بالمتر."
 
-#: src/Spec.php:85
+#: src/Spec.php:86
 msgid "Enter the width in metres."
 msgstr "أدخل العرض بالمتر."
 
-#: src/Spec.php:86
+#: src/Spec.php:87
 msgid "Enter the height at the column in metres."
 msgstr "أدخل الارتفاع عند العمود بالمتر."
 
-#: src/Spec.php:87
+#: src/Spec.php:88
 msgid "Enter the height of the roof (at the ridge) in metres."
 msgstr "أدخل ارتفاع السقف (عند القمة) بالمتر."
 
 #. translators: %s: maximum in metres.
-#: src/Spec.php:95
+#: src/Spec.php:96
 msgid "At most %s m."
 msgstr "%s م كحد أقصى."
 
-#: src/Spec.php:101
+#: src/Spec.php:102
 msgid "The height of the roof cannot be lower than the height at the column."
 msgstr "لا يمكن أن يكون ارتفاع السقف أقل من الارتفاع عند العمود."
 
-#: src/Spec.php:106
+#: src/Spec.php:107
 msgid "Enter the number of portal frames (2 or more)."
 msgstr "أدخل عدد الإطارات (2 أو أكثر)."
 
-#: src/Spec.php:108
+#: src/Spec.php:109
 msgid "This number of portal frames is outside the accepted range."
 msgstr "عدد الإطارات هذا خارج النطاق المقبول."
 
 #. translators: %d: maximum number of floors.
-#: src/Spec.php:117
+#: src/Spec.php:118
 msgid "Number of floors: a whole number from 1 to %d."
 msgstr "عدد الطوابق: عدد صحيح من 1 إلى %d."
 
-#: src/Spec.php:128
+#: src/Spec.php:129
 msgid "Area of the mezzanine in m²: more than 0 and at most the floor area."
 msgstr "مساحة الميزانين بالمتر المربع: أكبر من 0 ولا تتجاوز مساحة الأرضية."
 
-#: src/Spec.php:167
+#. translators: %s: maximum in tonnes.
+#: src/Spec.php:143
+msgid "Capacity of the crane in tonnes: more than 0 and at most %s."
+msgstr "حمولة الرافعة بالطن: أكبر من 0 و%s على الأكثر."
+
+#: src/Spec.php:182
 msgid ""
 "Describe at least the columns and the trusses (profile, number, length)."
 msgstr "صِف على الأقل الأعمدة والجملونات (المقطع، العدد، الطول)."
 
-#: src/Spec.php:168
+#: src/Spec.php:183
 msgid ""
 "Describe at least the columns and the rafters (profile, number, length)."
 msgstr "صِف على الأقل الأعمدة وعوارض السقف (المقطع، العدد، الطول)."
 
-#: src/Spec.php:177
+#: src/Spec.php:192
 msgid "This weight is outside the accepted range."
 msgstr "هذا الوزن خارج النطاق المقبول."
 
-#: src/Spec.php:179
+#: src/Spec.php:194
 msgid ""
 "The total weight cannot be lower than the weight of the elements you "
 "declared."
 msgstr "لا يمكن أن يكون الوزن الإجمالي أقل من وزن العناصر التي صرّحت بها."
 
-#: src/Spec.php:188
+#: src/Spec.php:203
 msgid "Give the total weight of the steel structure, or list its elements."
 msgstr "أدخل الوزن الإجمالي للهيكل الفولاذي أو اذكر عناصره."

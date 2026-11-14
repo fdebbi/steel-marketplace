@@ -71,15 +71,71 @@ msgstr "Nombre maximal de portiques"
 msgid "Maximum rows in the element inventory"
 msgstr "Nombre maximal de lignes dans l’inventaire"
 
-#: src/Admin/Admin.php:36
+#: src/Admin/Admin.php:35
+msgid "Maximum capacity of an overhead crane (t)"
+msgstr "Capacité maximale d’un pont roulant (t)"
+
+#: src/Admin/Admin.php:38
+msgid "Columns: profile family"
+msgstr "Poteaux : famille de profilé"
+
+#: src/Admin/Admin.php:39
+msgid "Columns: height of the profile (mm) = width of the building (m) ×"
+msgstr "Poteaux : hauteur du profilé (mm) = largeur du bâtiment (m) ×"
+
+#: src/Admin/Admin.php:40
+msgid "Columns with an overhead crane: profile family"
+msgstr "Poteaux avec pont roulant : famille de profilé"
+
+#: src/Admin/Admin.php:41
+msgid "Columns with an overhead crane: height (mm) = width (m) ×"
+msgstr "Poteaux avec pont roulant : hauteur (mm) = largeur (m) ×"
+
+#: src/Admin/Admin.php:42
+msgid "Rafters: profile family"
+msgstr "Traverses : famille de profilé"
+
+#: src/Admin/Admin.php:43
+msgid "Rafters: height of the profile (mm) = width (m) ×"
+msgstr "Traverses : hauteur du profilé (mm) = largeur (m) ×"
+
+#: src/Admin/Admin.php:44
+msgid "Purlins: profile"
+msgstr "Pannes : profilé"
+
+#: src/Admin/Admin.php:45
+msgid "Purlins: spacing of the rows (m)"
+msgstr "Pannes : espacement des files (m)"
+
+#: src/Admin/Admin.php:46
+msgid "Cladding rails: profile"
+msgstr "Lisses de bardage : profilé"
+
+#: src/Admin/Admin.php:47
+msgid "Cladding rails: spacing of the rows (m)"
+msgstr "Lisses de bardage : espacement des files (m)"
+
+#: src/Admin/Admin.php:48
+msgid "Bracing: profile"
+msgstr "Contreventements : profilé"
+
+#: src/Admin/Admin.php:49
+msgid "Bracing: number of pieces"
+msgstr "Contreventements : nombre de pièces"
+
+#: src/Admin/Admin.php:50
+msgid "Bracing: length of a piece (m)"
+msgstr "Contreventements : longueur d’une pièce (m)"
+
+#: src/Admin/Admin.php:52
 msgid "Steel buildings"
 msgstr "Bâtiments métalliques"
 
-#: src/Admin/Admin.php:39
+#: src/Admin/Admin.php:55
 msgid "Settings saved."
 msgstr "Réglages enregistrés."
 
-#: src/Admin/Admin.php:41
+#: src/Admin/Admin.php:57
 msgid ""
 "Categories, moderation and listings of buildings are managed in SM → "
 "Products, with the other markets. Here: the limits of the publication form."
@@ -88,7 +144,22 @@ msgstr ""
 " → Produits, avec les autres marchés. Ici : les limites du formulaire de "
 "publication."
 
-#: src/Admin/Admin.php:55
+#: src/Admin/Admin.php:65
+msgid "Elements proposed from the dimensions"
+msgstr "Éléments proposés à partir des dimensions"
+
+#: src/Admin/Admin.php:66
+msgid ""
+"For a column / rafter frame, the form proposes the elements from the "
+"dimensions; the seller can change every row. The nearest catalogue size is "
+"taken; beyond the largest size the dimension is left to the seller."
+msgstr ""
+"Pour un portique poteau / traverse, le formulaire propose les éléments à "
+"partir des dimensions ; le vendeur peut modifier chaque ligne. La dimension "
+"de catalogue la plus proche est retenue ; au-delà de la plus grande, la "
+"dimension est laissée au vendeur."
+
+#: src/Admin/Admin.php:79
 msgid "You cannot change these settings."
 msgstr "Vous ne pouvez pas modifier ces réglages."
 
@@ -132,27 +203,31 @@ msgstr "Nombre d’étages"
 msgid "Mezzanine"
 msgstr "Mezzanine"
 
-#: src/Presenter.php:102
+#: src/Presenter.php:102 src/Presenter.php:105
 msgid "Yes"
 msgstr "Oui"
 
-#: src/Presenter.php:106
+#: src/Presenter.php:105
+msgid "Overhead crane"
+msgstr "Pont roulant"
+
+#: src/Presenter.php:109
 msgid "Total steel weight (given by the seller)"
 msgstr "Poids total d’acier (donné par le vendeur)"
 
-#: src/Presenter.php:107
+#: src/Presenter.php:110
 msgid "Weight of the declared elements (not the whole structure)"
 msgstr "Poids des éléments déclarés (pas toute la structure)"
 
-#: src/Presenter.php:109
+#: src/Presenter.php:112
 msgid "Steel weight"
 msgstr "Poids d’acier"
 
-#: src/Presenter.php:111
+#: src/Presenter.php:114
 msgid "Of which declared elements (calculated)"
 msgstr "Dont éléments déclarés (calculé)"
 
-#: src/Presenter.php:116
+#: src/Presenter.php:120
 msgid ""
 "Indicative drawing made from the figures given by the seller. It is not a "
 "structural design."
@@ -160,12 +235,12 @@ msgstr ""
 "Schéma indicatif tracé à partir des chiffres donnés par le vendeur. Ce n’est"
 " pas une étude structurelle."
 
-#: src/Presenter.php:122
+#: src/Presenter.php:126
 msgid "Before buying and reassembling: ask an engineer"
 msgstr "Avant d’acheter et de remonter : consultez un ingénieur"
 
 #. translators: %s: platform name.
-#: src/Presenter.php:124
+#: src/Presenter.php:128
 msgid ""
 "A used steel building must be checked by a qualified engineer before it is "
 "reassembled: condition of the members and connections, corrosion, and a new "
@@ -178,87 +253,84 @@ msgstr ""
 " Les informations de cette annonce sont déclarées par le vendeur ; %s ne les"
 " certifie pas."
 
-#: src/Presenter.php:125
+#: src/Presenter.php:129
 msgid "Find an engineer"
 msgstr "Trouver un ingénieur"
 
-#: src/Rules.php:29
-msgid ""
-"An assembled building is sold at a price for the whole building. The price "
-"per kg and per m² are calculated from it."
-msgstr ""
-"Un bâtiment monté se vend à un prix pour le bâtiment entier. Le prix au kg "
-"et au m² en sont calculés."
-
-#: src/Rules.php:32
+#: src/Rules.php:28
 msgid "The building is already dismantled: untick \"Dismantling included\"."
 msgstr "Le bâtiment est déjà démonté : décochez « Démontage inclus »."
 
-#: src/Spec.php:75
+#: src/Spec.php:76
 msgid "Say whether the building is assembled or dismantled."
 msgstr "Indiquez si le bâtiment est monté ou démonté."
 
-#: src/Spec.php:84
+#: src/Spec.php:85
 msgid "Enter the length in metres."
 msgstr "Indiquez la longueur en mètres."
 
-#: src/Spec.php:85
+#: src/Spec.php:86
 msgid "Enter the width in metres."
 msgstr "Indiquez la largeur en mètres."
 
-#: src/Spec.php:86
+#: src/Spec.php:87
 msgid "Enter the height at the column in metres."
 msgstr "Indiquez la hauteur au poteau en mètres."
 
-#: src/Spec.php:87
+#: src/Spec.php:88
 msgid "Enter the height of the roof (at the ridge) in metres."
 msgstr "Indiquez la hauteur de la toiture (au faîtage) en mètres."
 
 #. translators: %s: maximum in metres.
-#: src/Spec.php:95
+#: src/Spec.php:96
 msgid "At most %s m."
 msgstr "%s m au maximum."
 
-#: src/Spec.php:101
+#: src/Spec.php:102
 msgid "The height of the roof cannot be lower than the height at the column."
 msgstr ""
 "La hauteur de la toiture ne peut pas être inférieure à la hauteur au poteau."
 
-#: src/Spec.php:106
+#: src/Spec.php:107
 msgid "Enter the number of portal frames (2 or more)."
 msgstr "Indiquez le nombre de portiques (2 ou plus)."
 
-#: src/Spec.php:108
+#: src/Spec.php:109
 msgid "This number of portal frames is outside the accepted range."
 msgstr "Ce nombre de portiques est hors de la plage acceptée."
 
 #. translators: %d: maximum number of floors.
-#: src/Spec.php:117
+#: src/Spec.php:118
 msgid "Number of floors: a whole number from 1 to %d."
 msgstr "Nombre d’étages : un nombre entier de 1 à %d."
 
-#: src/Spec.php:128
+#: src/Spec.php:129
 msgid "Area of the mezzanine in m²: more than 0 and at most the floor area."
 msgstr ""
 "Surface de la mezzanine en m² : plus de 0 et au plus la surface au sol."
 
-#: src/Spec.php:167
+#. translators: %s: maximum in tonnes.
+#: src/Spec.php:143
+msgid "Capacity of the crane in tonnes: more than 0 and at most %s."
+msgstr "Capacité du pont roulant en tonnes : plus de 0 et au plus %s."
+
+#: src/Spec.php:182
 msgid ""
 "Describe at least the columns and the trusses (profile, number, length)."
 msgstr ""
 "Décrivez au moins les poteaux et les fermes (profilé, nombre, longueur)."
 
-#: src/Spec.php:168
+#: src/Spec.php:183
 msgid ""
 "Describe at least the columns and the rafters (profile, number, length)."
 msgstr ""
 "Décrivez au moins les poteaux et les traverses (profilé, nombre, longueur)."
 
-#: src/Spec.php:177
+#: src/Spec.php:192
 msgid "This weight is outside the accepted range."
 msgstr "Ce poids est hors de la plage acceptée."
 
-#: src/Spec.php:179
+#: src/Spec.php:194
 msgid ""
 "The total weight cannot be lower than the weight of the elements you "
 "declared."
@@ -266,7 +338,7 @@ msgstr ""
 "Le poids total ne peut pas être inférieur au poids des éléments que vous "
 "avez déclarés."
 
-#: src/Spec.php:188
+#: src/Spec.php:203
 msgid "Give the total weight of the steel structure, or list its elements."
 msgstr ""
 "Indiquez le poids total de la structure en acier, ou listez ses éléments."

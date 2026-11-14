@@ -83,7 +83,7 @@ $sections = array();
 						</select>
 					</div>
 					<div class="smp-line__f smp-line__f--qty">
-						<label for="smp-l<?php echo esc_attr( $i ); ?>-q"><?php esc_html_e( 'Pieces', 'sm-marketplace' ); ?></label>
+						<label for="smp-l<?php echo esc_attr( $i ); ?>-q"><?php esc_html_e( 'No. of pieces', 'sm-marketplace' ); ?></label>
 						<input id="smp-l<?php echo esc_attr( $i ); ?>-q" name="<?php echo esc_attr( $n ); ?>[qty]" inputmode="numeric" dir="ltr" value="<?php echo esc_attr( (string) ( $row['qty'] ?? '' ) ); ?>">
 					</div>
 					<div class="smp-line__f smp-line__f--len">

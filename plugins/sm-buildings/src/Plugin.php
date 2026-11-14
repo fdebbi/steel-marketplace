@@ -35,6 +35,7 @@ final class Plugin {
 		Market::init();
 		Spec::init();
 		Rules::init();
+		Proposal::init();
 		Presenter::init();
 		if ( is_admin() ) {
 			Admin\Admin::init();

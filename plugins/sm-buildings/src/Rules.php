@@ -2,8 +2,8 @@
 /**
  * Consistency rules of building listings, checked with the rest of the form.
  *
- * - An assembled building is sold at an asking price for the whole building
- *   (price per kg and per m² are then derived, never typed).
+ * - 0.3.0: an assembled building may be priced for the whole building or per
+ *   kg, like a dismantled one (the per-kg price helps to value it as a lot).
  * - "Dismantling included" only makes sense for a building that is still assembled.
  *
  * @package SM\Buildings
@@ -24,10 +24,6 @@ final class Rules {
 			return $errors;
 		}
 		$mode = (string) ( $d['variant'] ?? '' );
-		$unit = (string) ( $in['price_unit'] ?? '' );
-		if ( 'assembled' === $mode && '' !== $unit && 'lot' !== $unit ) {
-			$errors['price_unit'] = __( 'An assembled building is sold at a price for the whole building. The price per kg and per m² are calculated from it.', 'sm-buildings' );
-		}
 		if ( 'dismantled' === $mode && ! empty( $d['attrs']['inc_dismantling'] ) ) {
 			$errors['attrs_inc_dismantling'] = __( 'The building is already dismantled: untick "Dismantling included".', 'sm-buildings' );
 		}

@@ -31,6 +31,7 @@ final class Bridge {
 		add_filter( 'sm_theme_data_product_markets', array( __CLASS__, 'product_markets' ) );
 		add_filter( 'sm_theme_data_product_form', array( __CLASS__, 'product_form' ), 10, 2 );
 		add_filter( 'sm_theme_data_product_preview', array( __CLASS__, 'product_preview' ), 10, 2 );
+		add_filter( 'sm_theme_data_product_form_state', array( __CLASS__, 'product_form_state' ), 10, 2 );
 		add_filter( 'sm_theme_data_my_products', array( __CLASS__, 'my_products' ), 10, 2 );
 		add_filter( 'sm_theme_data_product_settings', array( __CLASS__, 'settings' ) );
 		add_filter( 'sm_theme_data_price_trend', array( __CLASS__, 'price_trend' ) );
@@ -261,6 +262,24 @@ final class Bridge {
 			$v['actual_weight'] = (string) $p->total_weight;
 		}
 		return array( 'values' => $v, 'status' => $p->status, 'reject_reason' => (string) $p->reject_reason, 'listing_id' => $p->listing_id );
+	}
+
+	/**
+	 * State of the publication form before it is shown (0.13.0): a market plugin
+	 * may complete it, e.g. sm-buildings proposes the elements of the structure
+	 * from the dimensions. Args: state (typed values), category (slug).
+	 */
+	public static function product_form_state( $result, $args ) {
+		if ( null !== $result ) {
+			return $result;
+		}
+		$state = (array) ( $args['state'] ?? array() );
+		$cat   = Categories::get( sanitize_key( (string) ( $args['category'] ?? '' ) ) );
+		/**
+		 * @param array  $state Values of the form.
+		 * @param object $cat   Category.
+		 */
+		return $cat ? (array) apply_filters( 'sm_products_form_state', $state, $cat ) : $state;
 	}
 
 	/** Live summary of the publication form: weight, pieces, totals, errors of the technical part. */
