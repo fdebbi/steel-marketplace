@@ -46,7 +46,7 @@ function sme_account( $suffix, $class, array $activities = array() ) {
 function sme_cleanup() {
 	global $wpdb;
 	require_once ABSPATH . 'wp-admin/includes/user.php';
-	foreach ( $wpdb->get_col( "SELECT id FROM {$wpdb->prefix}sm_companies WHERE name LIKE 'SMETEST %'" ) as $cid ) {
+	foreach ( $wpdb->get_col( "SELECT id FROM {$wpdb->prefix}sm_companies WHERE name LIKE 'SMETEST %' OR name = 'BET SMETEST'" ) as $cid ) {
 		foreach ( $wpdb->get_col( $wpdb->prepare( "SELECT id FROM {$wpdb->prefix}sm_missions WHERE client_id = %d OR engineer_id = %d", $cid, $cid ) ) as $mid ) {
 			foreach ( Files::for_mission( $mid ) as $f ) {
 				Files::delete( $f->id );

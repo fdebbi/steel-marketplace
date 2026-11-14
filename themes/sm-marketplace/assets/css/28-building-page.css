@@ -140,3 +140,7 @@
 .sme-pre .sm-help { margin-block: var(--sm-s2) 0; }
 .sm-buy__line label { min-inline-size: 0; }
 .sm-buy__line label strong, .sm-buy__line label strong bdi { white-space: normal; overflow-wrap: anywhere; }
+/* Inventory inside the narrower column: headers may wrap so the six columns fit. */
+.smb-stock .sm-table thead th { white-space: normal; vertical-align: bottom; }
+.smb-stock .sm-table th, .smb-stock .sm-table td { padding-inline: 8px; }
+.smb-stock .sm-table { min-inline-size: 0; }
