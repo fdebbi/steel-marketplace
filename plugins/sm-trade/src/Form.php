@@ -51,6 +51,8 @@ final class Form {
 				'mode'     => Forms::post( 'mode' ),
 				'quantity' => self::amount( Forms::post( 'quantity' ) ),
 				'amount'   => self::amount( Forms::post( 'amount' ) ),
+				'amount_kg' => self::amount( Forms::post( 'amount_kg' ) ),
+				'items'    => isset( $_POST['items'] ) && is_array( $_POST['items'] ) ? array_map( 'absint', wp_unslash( $_POST['items'] ) ) : array(), // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput -- nonce checked by Forms::begin(); numbers only.
 				'name'     => Forms::post( 'name' ),
 				'phone'    => Forms::post( 'phone' ),
 				'email'    => Forms::post( 'email' ),
@@ -62,7 +64,7 @@ final class Form {
 			if ( $open ) {
 				Forms::back( array(), $id->get_error_message(), Notifications::deal_url( $open->id ) );
 			}
-			$field = in_array( $id->get_error_code(), array( 'qty', 'amount', 'name', 'phone', 'email' ), true ) ? array( 'qty' === $id->get_error_code() ? 'quantity' : $id->get_error_code() => $id->get_error_message() ) : array( $id->get_error_message() );
+			$field = in_array( $id->get_error_code(), array( 'qty', 'amount', 'amount_kg', 'items', 'name', 'phone', 'email' ), true ) ? array( 'qty' === $id->get_error_code() ? 'quantity' : $id->get_error_code() => $id->get_error_message() ) : array( $id->get_error_message() );
 			Forms::back( $field );
 		}
 		$deal = Deals::get( $id );

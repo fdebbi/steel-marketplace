@@ -19,7 +19,12 @@ $is_seller = 'seller' === $d['role'];
 $back      = sm_page_url( 'account', array( 'view' => $is_seller ? 'sales' : 'purchases' ) );
 $tone      = array( 'open' => 'warn', 'accepted' => 'ok', 'refused' => 'muted', 'cancelled' => 'muted', 'expired' => 'muted' );
 $acts      = (array) $d['actions'];
-$qty_text  = 'lot' === $d['mode'] ? __( 'The whole lot', 'sm-marketplace' ) : sm_number( $d['quantity'], fmod( $d['quantity'], 1 ) ? 2 : 0 ) . ' ' . $d['unit_label'];
+$qty_text  = 'lot' === $d['mode'] ? ( 'buildings' === $d['market'] ? __( 'Complete building', 'sm-marketplace' ) : __( 'The whole lot', 'sm-marketplace' ) ) : sm_number( $d['quantity'], fmod( $d['quantity'], 1 ) ? 2 : 0 ) . ' ' . $d['unit_label'];
+$items     = (array) ( $d['items'] ?? array() ); // Bought by element (0.33.0).
+if ( $items ) {
+	/* translators: 1: number of pieces, 2: weight. */
+	$qty_text = sprintf( __( '%1$s pieces · %2$s kg', 'sm-marketplace' ), sm_number( array_sum( array_map( static fn( $i ) => (int) $i['n'], $items ) ) ), sm_number( $d['quantity'] ) );
+}
 $c         = $d['seller_contacts'];
 ?>
 <p><a class="sm-link" href="<?php echo esc_url( $back ); ?>"><?php sm_icon( 'chevron-start' ); ?><?php esc_html_e( 'Back', 'sm-marketplace' ); ?></a></p>
@@ -51,6 +56,13 @@ $c         = $d['seller_contacts'];
 		<?php endif; ?>
 		<div><dt><?php echo esc_html( $is_seller ? __( 'Buyer', 'sm-marketplace' ) : __( 'Seller', 'sm-marketplace' ) ); ?></dt><dd><?php echo esc_html( $is_seller ? $d['buyer']['name'] : $d['seller']['name'] ); ?></dd></div>
 	</dl>
+	<?php if ( $items ) : ?>
+		<ul class="sm-dealview__items" role="list">
+			<?php foreach ( $items as $it ) : ?>
+				<li><span><strong><?php echo esc_html( sm_number( (int) $it['n'] ) ); ?> ×</strong> <?php echo sm_kses_tech( sm_tech( trim( ( ! empty( $it['label'] ) ? sm_t( $it['label'] ) . ' · ' : '' ) . $it['designation'] ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?> <small><?php echo sm_kses_tech( sm_tech( sm_number( $it['length_mm'] / 1000, fmod( $it['length_mm'], 1000 ) ? 2 : 1 ) . ' m' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></small></span><span><?php echo sm_kses_tech( sm_tech( sm_number( $it['kg'] ) . ' kg' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span></li>
+			<?php endforeach; ?>
+		</ul>
+	<?php endif; ?>
 	<?php if ( '' !== $d['message'] ) : ?>
 		<blockquote class="sm-dealview__msg"><p><?php echo nl2br( esc_html( $d['message'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></p></blockquote>
 	<?php endif; ?>

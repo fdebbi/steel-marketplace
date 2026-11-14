@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Products 0.12.1\n"
+"Project-Id-Version: SM Products 0.14.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-products\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-14T10:37:16+00:00\n"
+"POT-Creation-Date: 2026-11-14T15:18:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-products\n"
@@ -652,7 +652,7 @@ msgid "Give the reason, so the seller knows why the listing was changed."
 msgstr ""
 
 #: src/Admin/Admin.php:514
-#: src/Spec.php:199
+#: src/Spec.php:212
 msgid "Give the product a title (in French or in Arabic)."
 msgstr ""
 
@@ -863,95 +863,95 @@ msgstr ""
 msgid "\"%s\" is no longer shown. Publish it again from \"My listings\" if it is still available."
 msgstr ""
 
-#: src/Presenter.php:136
+#: src/Presenter.php:139
 msgid "Product type"
 msgstr ""
 
-#: src/Presenter.php:138
-#: src/Presenter.php:166
+#: src/Presenter.php:141
+#: src/Presenter.php:169
 msgid "Designation"
 msgstr ""
 
-#: src/Presenter.php:139
-#: src/Presenter.php:167
+#: src/Presenter.php:142
+#: src/Presenter.php:170
 msgid "Steel grade"
 msgstr ""
 
-#: src/Presenter.php:139
-#: src/Presenter.php:167
+#: src/Presenter.php:142
+#: src/Presenter.php:170
 msgid "Not specified"
 msgstr ""
 
-#: src/Presenter.php:141
+#: src/Presenter.php:144
 msgid "Standard"
 msgstr ""
 
-#: src/Presenter.php:151
+#: src/Presenter.php:154
 msgid "Dimensions"
 msgstr ""
 
-#: src/Presenter.php:154
+#: src/Presenter.php:157
 msgid "Plate size"
 msgstr ""
 
-#: src/Presenter.php:156
+#: src/Presenter.php:159
 msgid "Bar length"
 msgstr ""
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:159
+#: src/Presenter.php:162
 msgid "%s plates"
 msgstr ""
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:159
+#: src/Presenter.php:162
 msgid "%s bars"
 msgstr ""
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:161
-#: src/Presenter.php:169
+#: src/Presenter.php:164
+#: src/Presenter.php:172
 msgid "Quantity"
 msgstr ""
 
-#: src/Presenter.php:163
+#: src/Presenter.php:166
 msgid "Weight per metre"
 msgstr ""
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:169
+#: src/Presenter.php:172
 msgid "%s pieces in the lot"
 msgstr ""
 
-#: src/Presenter.php:172
+#: src/Presenter.php:175
 msgid "Weight of the lot"
 msgstr ""
 
-#: src/Presenter.php:194
+#: src/Presenter.php:197
 msgid "Available quantity"
 msgstr ""
 
-#: src/Presenter.php:200
+#: src/Presenter.php:203
 msgid "Condition"
 msgstr ""
 
-#: src/Presenter.php:208
+#: src/Presenter.php:211
 msgid "Yes"
 msgstr ""
 
-#: src/Presenter.php:208
+#: src/Presenter.php:211
 msgid "No"
 msgstr ""
 
-#: src/Presenter.php:247
+#: src/Presenter.php:250
 msgid "m (linear)"
 msgstr ""
 
-#: src/Presenter.php:248
+#: src/Presenter.php:251
 msgid "pieces"
 msgstr ""
 
-#: src/Presenter.php:249
+#: src/Presenter.php:252
 msgid "lot"
 msgstr ""
 
@@ -979,139 +979,148 @@ msgstr ""
 msgid "This category is not available."
 msgstr ""
 
-#: src/Spec.php:89
+#: src/Spec.php:102
 msgid "Enter the price."
 msgstr ""
 
-#: src/Spec.php:92
-#: src/Spec.php:101
+#: src/Spec.php:105
+#: src/Spec.php:114
 msgid "This price is outside the accepted range."
 msgstr ""
 
-#: src/Spec.php:98
+#: src/Spec.php:111
 msgid "Enter the price of the whole lot."
 msgstr ""
 
-#: src/Spec.php:113
+#: src/Spec.php:126
 msgid "A price per piece needs the number of pieces: choose \"Number of bars\" or a price per kg."
 msgstr ""
 
-#: src/Spec.php:138
+#: src/Spec.php:151
 msgid "The price of the whole lot is higher than the total at the detail price: check it."
 msgstr ""
 
-#: src/Spec.php:148
+#: src/Spec.php:161
 msgid "Choose the wilaya where the product is."
 msgstr ""
 
-#: src/Spec.php:170
+#: src/Spec.php:183
 msgid "Enter the commune."
 msgstr ""
 
-#: src/Spec.php:173
+#: src/Spec.php:186
 msgid "Place the marker on the map, where the building is."
 msgstr ""
 
-#: src/Spec.php:203
+#: src/Spec.php:216
 msgid "The description is too long (4000 characters at most)."
 msgstr ""
 
-#: src/Spec.php:222
-#: src/Spec.php:418
+#: src/Spec.php:235
+#: src/Spec.php:431
 msgid "The weight engine is not active."
 msgstr ""
 
-#: src/Spec.php:226
+#: src/Spec.php:239
 msgid "Choose the product type."
 msgstr ""
 
-#: src/Spec.php:244
+#: src/Spec.php:257
 msgid "Choose the size."
 msgstr ""
 
-#: src/Spec.php:261
-#: src/Spec.php:506
+#: src/Spec.php:274
+#: src/Spec.php:519
 msgid "Enter the total weight."
 msgstr ""
 
-#: src/Spec.php:261
+#: src/Spec.php:274
 msgid "Enter the number of pieces."
 msgstr ""
 
-#: src/Spec.php:302
-#: src/Spec.php:490
+#: src/Spec.php:315
+#: src/Spec.php:503
 msgid "Enter the weighed weight in kg."
 msgstr ""
 
 #. translators: %s: theoretical weight in kg.
-#: src/Spec.php:305
-#: src/Spec.php:493
+#: src/Spec.php:318
+#: src/Spec.php:506
 msgid "The weighed weight is very far from the theoretical %s kg. Check it."
 msgstr ""
 
-#: src/Spec.php:364
+#: src/Spec.php:377
 msgid "Enter the available quantity."
 msgstr ""
 
-#: src/Spec.php:386
-#: src/Spec.php:541
+#: src/Spec.php:399
+#: src/Spec.php:554
 msgid "Required."
 msgstr ""
 
-#: src/Spec.php:393
+#: src/Spec.php:406
 msgid "Enter a positive number."
 msgstr ""
 
-#: src/Spec.php:398
+#: src/Spec.php:411
 msgid "Choose a value from the list."
 msgstr ""
 
-#: src/Spec.php:435
+#: src/Spec.php:448
 msgid "Choose the element (column, rafter, purlin…)."
 msgstr ""
 
-#: src/Spec.php:439
+#: src/Spec.php:452
 msgid "Choose the type and the size."
 msgstr ""
 
-#: src/Spec.php:445
+#: src/Spec.php:458
 msgid "Enter the number of pieces and their length in metres."
 msgstr ""
 
-#: src/Spec.php:473
+#: src/Spec.php:486
 msgid "Describe the lot: at least one line with type, size, number of pieces and length."
 msgstr ""
 
-#: src/Spec.php:508
+#: src/Spec.php:521
 msgid "This weight is outside the accepted range."
 msgstr ""
 
-#: src/Spec.php:527
+#: src/Spec.php:540
 msgid "Choose the condition."
 msgstr ""
 
-#: src/Stock.php:88
+#: src/Stock.php:140
 msgid "This listing is not sold as a whole lot."
 msgstr ""
 
-#: src/Stock.php:94
+#: src/Stock.php:146
 msgid "This listing is sold as a whole lot only."
 msgstr ""
 
-#: src/Stock.php:98
+#. translators: 1: number of pieces, 2: profile (IPE 200).
+#: src/Stock.php:158
+msgid "Only %1$s pieces of %2$s are available."
+msgstr ""
+
+#: src/Stock.php:165
+msgid "Choose the elements you want and their number."
+msgstr ""
+
+#: src/Stock.php:171
 msgid "Enter the quantity you want."
 msgstr ""
 
-#: src/Stock.php:101
+#: src/Stock.php:174
 msgid "Enter a whole number."
 msgstr ""
 
 #. translators: 1: available quantity, 2: unit.
-#: src/Stock.php:105
+#: src/Stock.php:178
 msgid "Only %1$s %2$s available."
 msgstr ""
 
-#: src/Stock.php:119
+#: src/Stock.php:192
 msgid "This listing is no longer on sale."
 msgstr ""
 

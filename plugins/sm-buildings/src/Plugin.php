@@ -13,7 +13,7 @@ final class Plugin {
 
 	/** @param \SM\Core\Modules $registry */
 	public static function register( $registry ) {
-		if ( ! defined( 'SM_PRODUCTS_VERSION' ) || version_compare( SM_PRODUCTS_VERSION, '0.3.0', '<' ) ) {
+		if ( ! defined( 'SM_PRODUCTS_VERSION' ) || version_compare( SM_PRODUCTS_VERSION, '0.14.0', '<' ) ) {
 			return;
 		}
 		$ok = $registry->register(
@@ -31,11 +31,12 @@ final class Plugin {
 		load_plugin_textdomain( 'sm-buildings', false, dirname( plugin_basename( SM_BUILDINGS_FILE ) ) . '/languages' );
 		add_action( 'sm_language_switched', array( __CLASS__, 'reload_textdomain' ), 10, 2 );
 
-		Install\Installer::maybe_upgrade();
 		Market::init();
 		Spec::init();
 		Rules::init();
 		Proposal::init();
+		Sale::init();
+		Install\Installer::maybe_upgrade(); // After the market is registered: the 0.4.0 migration re-indexes listings.
 		Presenter::init();
 		if ( is_admin() ) {
 			Admin\Admin::init();

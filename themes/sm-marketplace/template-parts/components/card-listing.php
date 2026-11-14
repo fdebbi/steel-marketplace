@@ -67,7 +67,16 @@ $market  = $item['market'];
 		</ul>
 
 		<div class="sm-card__price">
-			<?php if ( 'buildings' === $market && 'assembled' === $item['mode'] ) : ?>
+			<?php if ( 'buildings' === $market && isset( $item['building_sale'] ) ) : ?>
+				<?php $bs = (array) $item['building_sale']; // 0.33.0: the whole-building price first, its equivalent per kg below. ?>
+				<?php if ( $bs['lot_total'] > 0 ) : ?>
+					<strong class="sm-price-main"><?php echo esc_html( sm_money( $bs['lot_total'] ) ); ?></strong>
+					<span class="sm-price-sub"><?php if ( $bs['per_kg'] > 0 ) : ?><?php echo sm_per_unit( $bs['per_kg'], 'kg', false, $bs['per_kg'] - floor( $bs['per_kg'] ) > 0 ? 2 : 0 ); // phpcs:ignore ?><?php endif; ?><?php if ( ! empty( $bs['by_element'] ) ) : ?> · <?php esc_html_e( 'also by element', 'sm-marketplace' ); ?><?php endif; ?></span>
+				<?php else : ?>
+					<strong class="sm-price-main"><?php echo sm_per_unit( $bs['per_kg'], 'kg', true, $bs['per_kg'] - floor( $bs['per_kg'] ) > 0 ? 2 : 0 ); // phpcs:ignore ?></strong>
+					<span class="sm-price-sub"><?php esc_html_e( 'Sold by element', 'sm-marketplace' ); ?></span>
+				<?php endif; ?>
+			<?php elseif ( 'buildings' === $market && 'assembled' === $item['mode'] ) : ?>
 				<strong class="sm-price-main"><?php echo esc_html( sm_money( $item['total_price'] ) ); ?></strong>
 				<span class="sm-price-sub"><?php echo sm_per_unit( $item['price_per_kg'] ); // phpcs:ignore ?> · <?php echo sm_per_unit( $item['price_per_m2'], 'm²' ); // phpcs:ignore ?></span>
 			<?php elseif ( 'lot' === ( $item['sale_mode'] ?? '' ) ) : ?>

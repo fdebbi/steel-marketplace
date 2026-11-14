@@ -19,7 +19,13 @@ final class Installer {
 		if ( ! class_exists( '\\SM\\Products\\Install\\Installer' ) ) {
 			return;
 		}
-		\SM\Products\Install\Installer::insert_categories( 'buildings', self::categories() );
+		$from = (int) get_option( 'sm_buildings_db_version', 0 );
+		if ( $from < 1 ) {
+			\SM\Products\Install\Installer::insert_categories( 'buildings', self::categories() );
+		}
+		if ( $from < 2 ) {
+			\SM\Buildings\Sale::migrate(); // 0.4.0: whole building and / or by element.
+		}
 		update_option( 'sm_buildings_db_version', SM_BUILDINGS_DB_VERSION, false );
 	}
 

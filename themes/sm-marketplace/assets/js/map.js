@@ -39,7 +39,8 @@
 		var lat = parseFloat( el.dataset.lat ), lng = parseFloat( el.dataset.lng );
 		if ( isNaN( lat ) || isNaN( lng ) ) { return; }
 		var map = baseMap( el, { scrollWheelZoom: false, dragging: ! L.Browser.mobile, tap: false } );
-		map.setView( [ lat, lng ], 15 );
+		map.setView( [ lat, lng ], parseInt( el.dataset.zoom, 10 ) || 15 );
+		if ( el.dataset.area ) { return; } // Area only (0.33.0): no marker, the exact place is not public.
 		var m = L.marker( [ lat, lng ], { keyboard: false, title: el.dataset.label || '', alt: el.dataset.label || '' } ).addTo( map );
 		if ( el.dataset.label ) { m.bindTooltip( el.dataset.label ); }
 	} );

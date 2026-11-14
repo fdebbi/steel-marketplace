@@ -46,7 +46,7 @@ $acct = is_user_logged_in() ? sm_theme_account() : null;
 				<div><label for="<?php echo esc_attr( $args['id'] ); ?>-phone"><?php esc_html_e( 'Phone', 'sm-marketplace' ); ?></label><input id="<?php echo esc_attr( $args['id'] ); ?>-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" value="<?php echo esc_attr( sm_theme_old( 'phone', $acct['user_phone'] ?? '' ) ); ?>"<?php sm_theme_aria( 'phone' ); ?>><?php sm_theme_error( 'phone' ); ?></div>
 			</div>
 			<div class="sm-field"><label for="<?php echo esc_attr( $args['id'] ); ?>-subject"><?php esc_html_e( 'Subject', 'sm-marketplace' ); ?></label><input id="<?php echo esc_attr( $args['id'] ); ?>-subject" name="subject" dir="auto" maxlength="200" value="<?php echo esc_attr( sm_theme_old( 'subject', $args['subject'] ) ); ?>"></div>
-			<?php if ( 'listing' === $args['kind'] ) : ?>
+			<?php if ( 'listing' === $args['kind'] && 'buildings' !== ( $args['module'] ?? '' ) ) : // A building is not asked for by quantity (0.33.0). ?>
 				<div class="sm-field"><label for="<?php echo esc_attr( $args['id'] ); ?>-qty"><?php esc_html_e( 'Quantity needed', 'sm-marketplace' ); ?></label><input id="<?php echo esc_attr( $args['id'] ); ?>-qty" name="qty" dir="auto" value="<?php echo esc_attr( sm_theme_old( 'qty' ) ); ?>"></div>
 			<?php endif; ?>
 			<div class="sm-field"><label for="<?php echo esc_attr( $args['id'] ); ?>-msg"><?php esc_html_e( 'Message', 'sm-marketplace' ); ?></label><textarea id="<?php echo esc_attr( $args['id'] ); ?>-msg" name="message" rows="4" dir="auto" required minlength="10"<?php sm_theme_aria( 'message' ); ?>><?php echo esc_textarea( sm_theme_old( 'message' ) ); ?></textarea><?php sm_theme_error( 'message' ); ?></div>

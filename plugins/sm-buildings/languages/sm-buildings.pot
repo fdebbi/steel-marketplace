@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Buildings 0.3.0\n"
+"Project-Id-Version: SM Buildings 0.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-buildings\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-14T10:37:16+00:00\n"
+"POT-Creation-Date: 2026-11-14T15:18:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-buildings\n"
@@ -138,90 +138,148 @@ msgstr ""
 msgid "You cannot change these settings."
 msgstr ""
 
-#: src/Presenter.php:87
+#: src/Presenter.php:96
 msgid "Assembled or dismantled"
 msgstr ""
 
-#: src/Presenter.php:87
+#: src/Presenter.php:96
 msgid "Assembled"
 msgstr ""
 
-#: src/Presenter.php:87
+#: src/Presenter.php:96
 msgid "Dismantled"
 msgstr ""
 
-#: src/Presenter.php:88
-msgid "Length × width × height at the column"
+#: src/Presenter.php:100
+msgid "Length × width"
 msgstr ""
 
-#: src/Presenter.php:89
-msgid "Total area"
+#: src/Presenter.php:101
+msgid "Floor area"
 msgstr ""
 
-#: src/Presenter.php:90
-msgid "Number of portal frames"
+#: src/Presenter.php:102
+msgid "Height at the column"
 msgstr ""
 
-#: src/Presenter.php:93
-msgid "Height of the roof (ridge)"
+#. translators: %s: height in metres.
+#: src/Presenter.php:102
+msgid "ridge %s m"
 msgstr ""
 
-#: src/Presenter.php:96
-msgid "Roof slope"
+#. translators: %s: height in metres.
+#: src/Presenter.php:103
+msgid "Portal frames"
 msgstr ""
 
-#: src/Presenter.php:99
+#. translators: %s: slope in percent.
+#: src/Presenter.php:103
+msgid "slope %s %%"
+msgstr ""
+
+#: src/Presenter.php:106
 msgid "Number of floors"
 msgstr ""
 
-#: src/Presenter.php:102
+#: src/Presenter.php:109
 msgid "Mezzanine"
 msgstr ""
 
-#: src/Presenter.php:102
-#: src/Presenter.php:105
+#: src/Presenter.php:109
+#: src/Presenter.php:112
 msgid "Yes"
 msgstr ""
 
-#: src/Presenter.php:105
+#: src/Presenter.php:112
 msgid "Overhead crane"
 msgstr ""
 
-#: src/Presenter.php:109
+#: src/Presenter.php:116
 msgid "Total steel weight (given by the seller)"
 msgstr ""
 
-#: src/Presenter.php:110
+#: src/Presenter.php:117
 msgid "Weight of the declared elements (not the whole structure)"
 msgstr ""
 
-#: src/Presenter.php:112
+#: src/Presenter.php:119
+#: src/Presenter.php:180
 msgid "Steel weight"
 msgstr ""
 
-#: src/Presenter.php:114
+#: src/Presenter.php:121
 msgid "Of which declared elements (calculated)"
 msgstr ""
 
-#: src/Presenter.php:120
+#: src/Presenter.php:127
 msgid "Indicative drawing made from the figures given by the seller. It is not a structural design."
 msgstr ""
 
-#: src/Presenter.php:126
-msgid "Before buying and reassembling: ask an engineer"
+#: src/Presenter.php:143
+msgid "Have this building inspected before you buy"
 msgstr ""
 
 #. translators: %s: platform name.
-#: src/Presenter.php:128
-msgid "A used steel building must be checked by a qualified engineer before it is reassembled: condition of the members and connections, corrosion, and a new calculation for the new site (wind, snow, foundations). The information in this listing is declared by the seller; %s does not certify it."
+#: src/Presenter.php:145
+msgid "An engineer verified on %s checks the condition of the members, the connections and the corrosion, and tells you whether the building can be reassembled on your site. The information in this listing is declared by the seller."
 msgstr ""
 
-#: src/Presenter.php:129
-msgid "Find an engineer"
+#: src/Presenter.php:146
+msgid "Ask for an inspection"
+msgstr ""
+
+#. translators: %s: number of portal frames.
+#: src/Presenter.php:172
+msgid "%s portal frames"
+msgstr ""
+
+#: src/Presenter.php:176
+msgid "Building"
+msgstr ""
+
+#: src/Presenter.php:177
+msgid "Dimensions"
+msgstr ""
+
+#: src/Presenter.php:180
+msgid "Weight of the declared elements"
+msgstr ""
+
+#: src/Presenter.php:182
+msgid "Where it is"
+msgstr ""
+
+#: src/Presenter.php:183
+msgid "Listing"
+msgstr ""
+
+#: src/Presenter.php:184
+msgid "Inspection before buying a building listed on the platform."
+msgstr ""
+
+#: src/Presenter.php:188
+msgid "What I expect from the inspection:"
+msgstr ""
+
+#. translators: %s: title of the listing.
+#: src/Presenter.php:192
+msgid "Inspection: %s"
 msgstr ""
 
 #: src/Rules.php:28
 msgid "The building is already dismantled: untick \"Dismantling included\"."
+msgstr ""
+
+#: src/Sale.php:89
+msgid "Choose how you sell: the whole building, by element, or both."
+msgstr ""
+
+#: src/Sale.php:92
+msgid "To sell by element, list the elements of the structure first (step \"Elements\")."
+msgstr ""
+
+#: src/Sale.php:95
+msgid "A price per kg needs the steel weight: list the elements or give the total weight, or type the price of the whole building."
 msgstr ""
 
 #: src/Spec.php:76

@@ -277,61 +277,65 @@ msgstr "السعر المتفق عليه أو المقترح (دج)"
 msgid "Counter-offers"
 msgstr "العروض المضادة"
 
-#: src/Deals.php:76
+#: src/Deals.php:92
 msgid "This listing is no longer on sale."
 msgstr "هذا الإعلان لم يعد معروضا للبيع."
 
-#: src/Deals.php:80
+#: src/Deals.php:96
 msgid "Sign in to buy or make an offer."
 msgstr "سجّل الدخول للشراء أو تقديم عرض."
 
-#: src/Deals.php:84
+#: src/Deals.php:100
 msgid "This is one of your own listings."
 msgstr "هذا أحد إعلاناتك."
 
-#: src/Deals.php:87
+#: src/Deals.php:103
 msgid ""
 "You already have an order or an offer waiting on this listing. Follow it in "
 "\"My purchases\"."
 msgstr "لديك طلب أو عرض قيد الانتظار على هذا الإعلان. تابعه في «مشترياتي»."
 
-#: src/Deals.php:100
+#: src/Deals.php:120
+msgid "Enter the price per kg you offer."
+msgstr "أدخل السعر للكيلوغرام الذي تقترحه."
+
+#: src/Deals.php:125
 msgid "Enter the total price you offer."
 msgstr "أدخل السعر الإجمالي الذي تعرضه."
 
-#: src/Deals.php:107
+#: src/Deals.php:132
 msgid "Enter your name."
 msgstr "أدخل اسمك."
 
-#: src/Deals.php:110
+#: src/Deals.php:135
 msgid "Enter a valid phone number, so the seller can call you."
 msgstr "أدخل رقم هاتف صحيحا ليتمكن البائع من الاتصال بك."
 
-#: src/Deals.php:113
+#: src/Deals.php:138
 msgid "Enter a valid e-mail address."
 msgstr "أدخل بريدا إلكترونيا صحيحا."
 
-#: src/Deals.php:144
+#: src/Deals.php:170
 msgid "The request could not be saved. Try again."
 msgstr "تعذّر حفظ الطلب. أعد المحاولة."
 
-#: src/Deals.php:196
+#: src/Deals.php:222
 msgid "This order or offer does not exist."
 msgstr "هذا الطلب أو العرض غير موجود."
 
-#: src/Deals.php:200
+#: src/Deals.php:226
 msgid "It is not your turn to answer."
 msgstr "ليس دورك في الرد."
 
-#: src/Deals.php:200
+#: src/Deals.php:226
 msgid "This order or offer is already closed."
 msgstr "هذا الطلب أو العرض مغلق بالفعل."
 
-#: src/Deals.php:223
+#: src/Deals.php:249
 msgid "Enter the total price you propose."
 msgstr "أدخل السعر الإجمالي الذي تقترحه."
 
-#: src/Deals.php:226
+#: src/Deals.php:252
 msgid "Propose a different price, or accept this one."
 msgstr "اقترح سعرا مختلفا أو اقبل هذا السعر."
 
@@ -339,13 +343,13 @@ msgstr "اقترح سعرا مختلفا أو اقبل هذا السعر."
 msgid "You sent many orders or offers in a short time. Try again later."
 msgstr "أرسلت طلبات أو عروضا كثيرة في وقت قصير. أعد المحاولة لاحقا."
 
-#: src/Form.php:72
+#: src/Form.php:74
 msgid ""
 "Offer sent to the seller. You will be told by e-mail when the seller "
 "answers."
 msgstr "تم إرسال العرض إلى البائع. ستُبلَّغ بالبريد عند رده."
 
-#: src/Form.php:73
+#: src/Form.php:75
 msgid ""
 "Order sent to the seller. Nothing is paid on the platform: the seller "
 "accepts or refuses, then you agree on payment and delivery directly."
@@ -353,21 +357,21 @@ msgstr ""
 "تم إرسال الطلب إلى البائع. لا يُدفع شيء على المنصة: يقبل البائع أو يرفض، ثم "
 "تتفقان مباشرة على الدفع والتسليم."
 
-#: src/Form.php:87
+#: src/Form.php:89
 msgid ""
 "Accepted. The contact details are below: agree on payment and delivery "
 "directly."
 msgstr "تم القبول. بيانات الاتصال أدناه: اتفقا مباشرة على الدفع والتسليم."
 
-#: src/Form.php:88
+#: src/Form.php:90
 msgid "Refused. The other party was told."
 msgstr "تم الرفض. تم إبلاغ الطرف الآخر."
 
-#: src/Form.php:89
+#: src/Form.php:91
 msgid "Cancelled. The seller was told."
 msgstr "تم الإلغاء. تم إبلاغ البائع."
 
-#: src/Form.php:90
+#: src/Form.php:92
 msgid "Your price was sent. You will be told when the other party answers."
 msgstr "تم إرسال سعرك. ستُبلَّغ عند رد الطرف الآخر."
 

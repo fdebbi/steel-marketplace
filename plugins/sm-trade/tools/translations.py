@@ -114,3 +114,8 @@ T = {
 P = {
 ("%d counter-offer", "%d counter-offers"): (["%d contre-offre", "%d contre-offres"], ["لا عروض مضادة", "عرض مضاد واحد", "عرضان مضادان", "%d عروض مضادة", "%d عرضا مضادا", "%d عرض مضاد"]),
 }
+
+# 0.2.0 — offers by element.
+T.update({
+"Enter the price per kg you offer.": ("Indiquez le prix au kg que vous proposez.", "أدخل السعر للكيلوغرام الذي تقترحه."),
+})

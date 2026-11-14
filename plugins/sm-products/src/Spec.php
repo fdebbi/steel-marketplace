@@ -66,6 +66,19 @@ final class Spec {
 		}
 		self::market_fields( $cat, $in, $d, $e, $for_save );
 
+		/**
+		 * A market plugin may prepare the price fields (0.14.0): sm-buildings turns its
+		 * "whole building / by element" choice and its two linked prices (per kg, total)
+		 * into sale_mode, price, lot_price and price_unit.
+		 *
+		 * @param object $cat Category.
+		 * @param array  $in  Raw input (by reference).
+		 * @param array  $d   Data (by reference).
+		 * @param array  $e   Errors (by reference).
+		 * @param bool   $for_save Full check (save) or live preview.
+		 */
+		do_action_ref_array( 'sm_products_price_input', array( $cat, &$in, &$d, &$e, $for_save ) );
+
 		// Price (0.5.0): sale mode "detail" (per kg / piece), "lot" (whole lot) or "both".
 		$s       = Settings::all();
 		$lot_ok  = self::lot_allowed( $cat, $d );
@@ -577,14 +590,13 @@ final class Spec {
 
 	/**
 	 * Whole-lot sale is offered for profiles, tubes, plates, inventories,
-	 * offcuts and scrap, and dismantled buildings (an assembled building is
-	 * always sold at one asking price).
+	 * offcuts and scrap, and buildings (whole building and / or by element).
 	 */
 	public static function lot_allowed( $cat, array $d = array() ) {
 		if ( in_array( $cat->kind, array( 'engine', 'lines', 'weight' ), true ) ) {
 			return true;
 		}
-		return 'building' === $cat->kind && 'assembled' !== ( $d['variant'] ?? '' );
+		return 'building' === $cat->kind; // 0.14.0: assembled buildings too (whole building and / or by element).
 	}
 
 	/** Units of the detail price (per kg, per piece…), without the whole lot. */

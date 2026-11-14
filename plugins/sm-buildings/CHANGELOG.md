@@ -1,5 +1,16 @@
 # Changelog — sm-buildings
 
+## 0.4.0 — 2026-11-14
+
+- Mode de vente (`Sale`) : « Lot entier (bâtiment complet) », coché par défaut, et / ou « Par élément », pour un bâtiment monté comme démonté. Enregistré dans le mode de vente de SM Products (lot, both, detail).
+- Un seul prix, saisi au kg ou pour le bâtiment entier : l'autre est calculé à partir du poids d'acier de l'annonce (poids donné par le vendeur, sinon poids des éléments déclarés). Prix au kg saisi : total arrondi au dinar inférieur. Total saisi : prix au kg arrondi au centime supérieur. Le total est le prix de vente ; le prix au kg est son équivalent et le prix des éléments vendus séparément. « Total indicatif » disparaît.
+- Par élément : demande un inventaire ; l'acheteur choisit des pièces de l'inventaire. Après une vente par élément, la vente en lot entier se ferme et le poids des éléments déclarés suit.
+- Annonces d'avant 0.4.0 (migration) : un bâtiment monté au kg, ou vendu au kg sans inventaire, devient une vente en lot entier à son total.
+- Fiche : chiffres clés de la géométrie (longueur × largeur, surface, hauteur au poteau et faîtage, portiques et pente) ; les autres caractéristiques dans une liste à déplier.
+- Inspection : le conseil « consultez un ingénieur » devient « Faites inspecter ce bâtiment avant d'acheter » (ingénieur « vérifié », pas « certifié »), avec la demande pré-remplie (`mission_prefill`) : service « Expertise et Inspection Technique », titre, dimensions, poids, lieu et lien de l'annonce. La demande arrive à la plateforme, qui désigne l'ingénieur (circuit existant de SM Engineering).
+- Demande SM Products 0.14.0 (et SM Trade 0.2.0 pour l'achat par élément).
+- Tests : 111.
+
 ## 0.3.0 — 2026-11-14
 
 - Pont roulant : oui / non, capacité en tonnes facultative ; affiché dans les caractéristiques de l'annonce.

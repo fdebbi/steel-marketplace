@@ -100,30 +100,12 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 	<?php endif; ?>
 	<?php sm_breadcrumb( array( array( $labels[ $market ], sm_page_url( $market ) ), array( sm_t( $cats[ $item['category'] ] ?? '' ), sm_page_url( $market, array( 'category' => $item['category'] ) ) ), array( sm_t( $item['title'] ), '' ) ) ); ?>
 
+	<?php if ( $is_build && ! empty( $item['building'] ) ) : ?>
+		<?php // 0.33.0: page of a building (sm-buildings 0.4.0): price of the whole building first, geometry, inventory on demand. ?>
+		<?php sm_component( 'listing-building', array( 'item' => $item, 'company' => $company, 'specs' => $specs, 'place' => $sm_place ) ); ?>
+	<?php else : ?>
 	<div class="sm-detail__top">
-		<div class="sm-gallery" data-sm-gallery>
-			<?php $sheet = ! empty( $item['image_drawing'] ) ? ( $item['section_sheet'] ?? null ) : null; ?>
-			<figure class="sm-gallery__main<?php echo ! empty( $item['image_drawing'] ) ? ' is-drawing' : ''; ?><?php echo $sheet ? ' has-sheet' : ''; ?>">
-				<img src="<?php echo esc_url( sm_image_url( $item['image'] ) ); ?>" alt="<?php echo esc_attr( sm_t( $item['title'] ) ); ?>" width="1280" height="960" data-sm-gallery-main>
-				<?php if ( $sheet ) : ?>
-					<?php sm_component( 'section-sheet', array( 'sheet' => $sheet ) ); ?>
-				<?php endif; ?>
-			</figure>
-			<div class="sm-gallery__thumbs">
-				<?php $gallery = ! empty( $item['photos'] ) ? $item['photos'] : ( ! empty( $item['demo'] ) ? array( $item['image'], 'demo:detail-section', 'demo:detail-stack' ) : array( $item['image'] ) ); ?>
-				<?php foreach ( count( $gallery ) > 1 ? $gallery : array() as $n => $img ) : ?>
-					<button type="button" class="sm-gallery__thumb" aria-pressed="<?php echo 0 === $n ? 'true' : 'false'; ?>" data-src="<?php echo esc_url( sm_image_url( $img ) ); ?>">
-						<img src="<?php echo esc_url( sm_image_url( $img ) ); ?>" alt="" width="160" height="120" loading="lazy">
-						<span class="screen-reader-text">
-							<?php
-							/* translators: %d: photo number. */
-							echo esc_html( sprintf( __( 'Photo %d', 'sm-marketplace' ), $n + 1 ) );
-							?>
-						</span>
-					</button>
-				<?php endforeach; ?>
-			</div>
-		</div>
+		<?php sm_component( 'listing-gallery', array( 'item' => $item ) ); ?>
 
 		<aside class="sm-detail__aside">
 			<div class="sm-card__meta">
@@ -166,29 +148,7 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 			<?php endif; ?>
 			<?php do_action( 'sm_slot', 'listing.aside', $item ); ?>
 
-			<?php if ( $company ) : ?>
-				<div class="sm-seller">
-					<?php sm_avatar( $company ); ?>
-					<div>
-						<p class="sm-seller__name"><a href="<?php echo esc_url( sm_page_url( 'company', array( 'c' => $company['slug'] ) ) ); ?>"><?php sm_e( $company['name'] ); ?></a></p>
-						<p class="sm-seller__badge<?php echo $company['verification'] >= 2 ? ' is-verified' : ''; ?>"><?php sm_icon( $company['verification'] >= 2 ? 'verified' : 'shield' ); ?><?php echo esc_html( sm_verification_label( $company['verification'], $company['class'] ?? '' ) ); ?></p>
-						<p class="sm-seller__since">
-							<?php
-							/* translators: %s: year. */
-							echo esc_html( sprintf( __( 'Active since %s', 'sm-marketplace' ), $company['since'] ) );
-							?>
-						</p>
-					</div>
-				</div>
-			<?php elseif ( isset( $item['seller_public'] ) && ! $item['seller_public'] ) : ?>
-				<div class="sm-seller">
-					<span class="sm-avatar sm-avatar--client" aria-hidden="true"><?php sm_icon( 'user' ); ?></span>
-					<div>
-						<p class="sm-seller__name"><?php esc_html_e( 'Private seller', 'sm-marketplace' ); ?></p>
-						<p class="sm-seller__since"><?php esc_html_e( 'Listing checked by the platform. Contact the seller with the form; your details are shared only when you write.', 'sm-marketplace' ); ?></p>
-					</div>
-				</div>
-			<?php endif; ?>
+			<?php sm_component( 'listing-seller', array( 'item' => $item, 'company' => $company ) ); ?>
 		</aside>
 	</div>
 
@@ -242,39 +202,7 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 			<section class="sm-panel sm-panel--wide">
 				<?php $inv_title = 'reuse' === $market ? __( 'Lot inventory', 'sm-marketplace' ) : __( 'Structural element inventory', 'sm-marketplace' ); ?>
 				<h2 class="sm-panel__title"><?php echo esc_html( $inv_title ); ?></h2>
-				<div class="sm-table-wrap" tabindex="0" role="region" aria-label="<?php echo esc_attr( $inv_title ); ?>">
-					<table class="sm-table sm-table--stack">
-						<thead>
-							<tr>
-								<th scope="col"><?php esc_html_e( 'Element', 'sm-marketplace' ); ?></th>
-								<th scope="col"><?php esc_html_e( 'Profile', 'sm-marketplace' ); ?></th>
-								<th scope="col" class="num"><?php esc_html_e( 'Quantity', 'sm-marketplace' ); ?></th>
-								<th scope="col" class="num"><?php esc_html_e( 'Length (m)', 'sm-marketplace' ); ?></th>
-								<th scope="col" class="num"><?php esc_html_e( 'Unit weight (kg/m)', 'sm-marketplace' ); ?></th>
-								<th scope="col" class="num"><?php esc_html_e( 'Total weight (kg)', 'sm-marketplace' ); ?></th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php foreach ( $item['elements'] as $el ) : ?>
-								<tr>
-									<th scope="row" data-label="<?php esc_attr_e( 'Element', 'sm-marketplace' ); ?>"><?php sm_e( $el['type'] ); ?></th>
-									<td data-label="<?php esc_attr_e( 'Profile', 'sm-marketplace' ); ?>"><?php echo sm_tech( $el['designation'] ); // phpcs:ignore ?></td>
-									<td class="num" data-label="<?php esc_attr_e( 'Quantity', 'sm-marketplace' ); ?>"><?php echo esc_html( $el['qty'] ); ?></td>
-									<td class="num" data-label="<?php esc_attr_e( 'Length (m)', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_number( $el['length'], fmod( $el['length'] * 10, 1 ) ? 2 : 1 ) ); ?></td>
-									<td class="num" data-label="<?php esc_attr_e( 'Unit weight (kg/m)', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_number( $el['unit_weight'], 2 ) ); ?></td>
-									<td class="num" data-label="<?php esc_attr_e( 'Total weight (kg)', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_number( $el['total'] ) ); ?></td>
-								</tr>
-							<?php endforeach; ?>
-						</tbody>
-						<tfoot>
-							<tr>
-								<?php $sm_el_kg = (float) ( $item['elements_kg'] ?? 0 ); // Buildings (0.31.0): the listed elements, not the whole structure. ?>
-								<th scope="row" colspan="5"><?php echo esc_html( $sm_el_kg > 0 ? __( 'Weight of the declared elements', 'sm-marketplace' ) : __( 'Total steel weight', 'sm-marketplace' ) ); ?></th>
-								<td class="num" data-label="<?php echo esc_attr( $sm_el_kg > 0 ? __( 'Weight of the declared elements', 'sm-marketplace' ) : __( 'Total steel weight', 'sm-marketplace' ) ); ?>"><strong><?php echo esc_html( sm_number( $sm_el_kg > 0 ? $sm_el_kg : $item['weight_kg'] ) ); ?></strong></td>
-							</tr>
-						</tfoot>
-					</table>
-				</div>
+				<?php sm_component( 'listing-inventory', array( 'item' => $item, 'title' => $inv_title ) ); ?>
 				<p class="sm-muted"><?php esc_html_e( 'Unit weights come from the platform’s standard section tables. The theoretical weight excludes bolts, plates and welds.', 'sm-marketplace' ); ?></p>
 			</section>
 		<?php endif; ?>
@@ -320,6 +248,7 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 		);
 		?>
 	</div>
+	<?php endif; ?>
 
 	<?php if ( $similar ) : ?>
 		<section class="sm-section">
@@ -333,7 +262,7 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 	<?php endif; ?>
 </div>
 <div class="sm-stickybar" aria-hidden="false">
-	<div><strong><?php echo $is_build && 'assembled' === $item['mode'] ? esc_html( sm_money( $item['total_price'] ) ) : sm_listing_price( $item, false ); // phpcs:ignore ?></strong></div>
+	<div><strong><?php echo $is_build && ! empty( $item['building_sale']['lot_total'] ) ? esc_html( sm_money( $item['building_sale']['lot_total'] ) ) : ( $is_build && 'assembled' === $item['mode'] ? esc_html( sm_money( $item['total_price'] ) ) : sm_listing_price( $item, false ) ); // phpcs:ignore ?></strong></div>
 	<a class="sm-btn sm-btn--accent" href="#sm-enquiry"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Contact', 'sm-marketplace' ); ?></a>
 </div>
 <?php

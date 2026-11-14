@@ -163,71 +163,78 @@ msgstr ""
 msgid "You cannot change these settings."
 msgstr "Vous ne pouvez pas modifier ces réglages."
 
-#: src/Presenter.php:87
+#: src/Presenter.php:96
 msgid "Assembled or dismantled"
 msgstr "Monté ou démonté"
 
-#: src/Presenter.php:87
+#: src/Presenter.php:96
 msgid "Assembled"
 msgstr "Monté"
 
-#: src/Presenter.php:87
+#: src/Presenter.php:96
 msgid "Dismantled"
 msgstr "Démonté"
 
-#: src/Presenter.php:88
-msgid "Length × width × height at the column"
-msgstr "Longueur × largeur × hauteur au poteau"
+#: src/Presenter.php:100
+msgid "Length × width"
+msgstr "Longueur × largeur"
 
-#: src/Presenter.php:89
-msgid "Total area"
-msgstr "Surface totale"
+#: src/Presenter.php:101
+msgid "Floor area"
+msgstr "Surface au sol"
 
-#: src/Presenter.php:90
-msgid "Number of portal frames"
-msgstr "Nombre de portiques"
+#: src/Presenter.php:102
+msgid "Height at the column"
+msgstr "Hauteur au poteau"
 
-#: src/Presenter.php:93
-msgid "Height of the roof (ridge)"
-msgstr "Hauteur de la toiture (faîtage)"
+#. translators: %s: height in metres.
+#: src/Presenter.php:102
+msgid "ridge %s m"
+msgstr "faîtage %s m"
 
-#: src/Presenter.php:96
-msgid "Roof slope"
-msgstr "Pente de toiture"
+#. translators: %s: height in metres.
+#: src/Presenter.php:103
+msgid "Portal frames"
+msgstr "Portiques"
 
-#: src/Presenter.php:99
+#. translators: %s: slope in percent.
+#: src/Presenter.php:103
+msgid "slope %s %%"
+msgstr "pente %s %%"
+
+#: src/Presenter.php:106
 msgid "Number of floors"
 msgstr "Nombre d’étages"
 
-#: src/Presenter.php:102
+#: src/Presenter.php:109
 msgid "Mezzanine"
 msgstr "Mezzanine"
 
-#: src/Presenter.php:102 src/Presenter.php:105
+#: src/Presenter.php:109 src/Presenter.php:112
 msgid "Yes"
 msgstr "Oui"
 
-#: src/Presenter.php:105
+#: src/Presenter.php:112
 msgid "Overhead crane"
 msgstr "Pont roulant"
 
-#: src/Presenter.php:109
+#: src/Presenter.php:116
 msgid "Total steel weight (given by the seller)"
 msgstr "Poids total d’acier (donné par le vendeur)"
 
-#: src/Presenter.php:110
+#: src/Presenter.php:117
 msgid "Weight of the declared elements (not the whole structure)"
 msgstr "Poids des éléments déclarés (pas toute la structure)"
 
-#: src/Presenter.php:112
+#: src/Presenter.php:119 src/Presenter.php:180
 msgid "Steel weight"
 msgstr "Poids d’acier"
 
-#: src/Presenter.php:114
+#: src/Presenter.php:121
 msgid "Of which declared elements (calculated)"
 msgstr "Dont éléments déclarés (calculé)"
 
-#: src/Presenter.php:120
+#: src/Presenter.php:127
 msgid ""
 "Indicative drawing made from the figures given by the seller. It is not a "
 "structural design."
@@ -235,31 +242,89 @@ msgstr ""
 "Schéma indicatif tracé à partir des chiffres donnés par le vendeur. Ce n’est"
 " pas une étude structurelle."
 
-#: src/Presenter.php:126
-msgid "Before buying and reassembling: ask an engineer"
-msgstr "Avant d’acheter et de remonter : consultez un ingénieur"
+#: src/Presenter.php:143
+msgid "Have this building inspected before you buy"
+msgstr "Faites inspecter ce bâtiment avant d’acheter"
 
 #. translators: %s: platform name.
-#: src/Presenter.php:128
+#: src/Presenter.php:145
 msgid ""
-"A used steel building must be checked by a qualified engineer before it is "
-"reassembled: condition of the members and connections, corrosion, and a new "
-"calculation for the new site (wind, snow, foundations). The information in "
-"this listing is declared by the seller; %s does not certify it."
+"An engineer verified on %s checks the condition of the members, the "
+"connections and the corrosion, and tells you whether the building can be "
+"reassembled on your site. The information in this listing is declared by the"
+" seller."
 msgstr ""
-"Un bâtiment métallique d’occasion doit être vérifié par un ingénieur "
-"qualifié avant d’être remonté : état des éléments et des assemblages, "
-"corrosion, et nouveau calcul pour le nouveau site (vent, neige, fondations)."
-" Les informations de cette annonce sont déclarées par le vendeur ; %s ne les"
-" certifie pas."
+"Un ingénieur vérifié sur %s contrôle l’état des éléments, les assemblages et"
+" la corrosion, et vous dit si le bâtiment peut être remonté sur votre site. "
+"Les informations de cette annonce sont déclarées par le vendeur."
 
-#: src/Presenter.php:129
-msgid "Find an engineer"
-msgstr "Trouver un ingénieur"
+#: src/Presenter.php:146
+msgid "Ask for an inspection"
+msgstr "Demander une inspection"
+
+#. translators: %s: number of portal frames.
+#: src/Presenter.php:172
+msgid "%s portal frames"
+msgstr "%s portiques"
+
+#: src/Presenter.php:176
+msgid "Building"
+msgstr "Bâtiment"
+
+#: src/Presenter.php:177
+msgid "Dimensions"
+msgstr "Dimensions"
+
+#: src/Presenter.php:180
+msgid "Weight of the declared elements"
+msgstr "Poids des éléments déclarés"
+
+#: src/Presenter.php:182
+msgid "Where it is"
+msgstr "Lieu du bâtiment"
+
+#: src/Presenter.php:183
+msgid "Listing"
+msgstr "Annonce"
+
+#: src/Presenter.php:184
+msgid "Inspection before buying a building listed on the platform."
+msgstr "Inspection avant l’achat d’un bâtiment publié sur la plateforme."
+
+#: src/Presenter.php:188
+msgid "What I expect from the inspection:"
+msgstr "Ce que j’attends de l’inspection :"
+
+#. translators: %s: title of the listing.
+#: src/Presenter.php:192
+msgid "Inspection: %s"
+msgstr "Inspection : %s"
 
 #: src/Rules.php:28
 msgid "The building is already dismantled: untick \"Dismantling included\"."
 msgstr "Le bâtiment est déjà démonté : décochez « Démontage inclus »."
+
+#: src/Sale.php:89
+msgid "Choose how you sell: the whole building, by element, or both."
+msgstr ""
+"Choisissez comment vous vendez : le bâtiment entier, par élément, ou les "
+"deux."
+
+#: src/Sale.php:92
+msgid ""
+"To sell by element, list the elements of the structure first (step "
+"\"Elements\")."
+msgstr ""
+"Pour vendre par élément, déclarez d’abord les éléments de la structure "
+"(étape « Éléments »)."
+
+#: src/Sale.php:95
+msgid ""
+"A price per kg needs the steel weight: list the elements or give the total "
+"weight, or type the price of the whole building."
+msgstr ""
+"Un prix au kg demande le poids d’acier : déclarez les éléments ou le poids "
+"total, ou saisissez le prix du bâtiment entier."
 
 #: src/Spec.php:76
 msgid "Say whether the building is assembled or dismantled."

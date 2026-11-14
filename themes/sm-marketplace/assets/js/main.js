@@ -275,8 +275,23 @@
 		buyForm.classList.toggle( 'is-offer', offer );
 		buyForm.classList.toggle( 'is-lot', lot );
 		var total = 0;
+		var pick = buyForm.querySelector( '[data-sm-buy-pick]' );
+		var lang0 = document.documentElement.lang || 'fr';
+		var nf = function ( v, d ) { return new Intl.NumberFormat( lang0.indexOf( 'ar' ) === 0 ? 'ar-DZ' : 'fr-FR', { maximumFractionDigits: d || 0 } ).format( v ); };
+		var num = function ( v ) { return parseFloat( String( v || '' ).replace( /[\s\u00a0\u202f]/g, '' ).replace( ',', '.' ) ) || 0; };
+		var kg = 0, pieces = 0;
+		buyForm.classList.toggle( 'is-pick', !! pick && ! lot );
 		if ( lot ) {
 			total = parseFloat( modeEl.getAttribute( 'data-total' ) || '0' );
+		} else if ( pick ) {
+			// Buildings by element (0.33.0): pieces of the inventory, weight from the section tables.
+			Array.prototype.forEach.call( pick.querySelectorAll( 'input[type="number"]' ), function ( inp ) {
+				var n = Math.max( 0, Math.min( parseInt( inp.value, 10 ) || 0, parseInt( inp.max, 10 ) || 0 ) );
+				inp.closest( '[data-sm-buy-line]' ).classList.toggle( 'is-on', n > 0 );
+				pieces += n;
+				kg += n * parseFloat( inp.getAttribute( 'data-kg' ) || '0' );
+			} );
+			total = kg * parseFloat( pick.getAttribute( 'data-unit-price' ) || '0' );
 		} else {
 			var q = buyForm.querySelector( '[name="quantity"]' );
 			if ( q ) { total = ( parseFloat( String( q.value ).replace( ',', '.' ) ) || 0 ) * parseFloat( q.getAttribute( 'data-unit-price' ) || '0' ); }
@@ -286,12 +301,43 @@
 			var lang = document.documentElement.lang || 'fr';
 			out.textContent = total > 0 ? new Intl.NumberFormat( lang.indexOf( 'ar' ) === 0 ? 'ar-DZ' : 'fr-FR', { maximumFractionDigits: 0 } ).format( Math.round( total ) ) + '\u00a0' + ( out.getAttribute( 'data-currency' ) || 'DA' ) : '—';
 		}
+		// Buildings: what is bought, its weight, and what the offer comes to.
+		var what = buyForm.querySelector( '[data-sm-buy-what]' );
+		var kgOut = buyForm.querySelector( '[data-sm-buy-kg]' );
+		if ( what && kgOut ) {
+			var lotKg = parseFloat( kgOut.getAttribute( 'data-lot-kg' ) || '0' );
+			var w = lot ? lotKg : kg;
+			what.textContent = lot ? what.getAttribute( 'data-lot' ) : nf( pieces ) + ' ' + what.getAttribute( 'data-pieces' );
+			kgOut.textContent = w > 0 ? nf( Math.round( w ) ) + '\u00a0kg' : '—';
+			var eq = buyForm.querySelector( '[data-sm-buy-eq]' );
+			var eqLabel = buyForm.querySelector( '[data-sm-buy-eqlabel]' );
+			if ( eq && eqLabel ) {
+				var cur = eq.getAttribute( 'data-currency' ) || 'DA';
+				if ( pick && ! lot ) {
+					var per = num( ( buyForm.querySelector( '[name="amount_kg"]' ) || {} ).value );
+					eqLabel.textContent = eqLabel.getAttribute( 'data-total' );
+					eq.textContent = per > 0 && kg > 0 ? nf( Math.round( per * kg ) ) + '\u00a0' + cur : '—';
+				} else {
+					var amt = num( ( buyForm.querySelector( '[name="amount"]' ) || {} ).value );
+					eqLabel.textContent = eqLabel.getAttribute( 'data-kg' );
+					eq.textContent = amt > 0 && w > 0 ? nf( amt / w, 1 ) + '\u00a0' + cur + '/kg' : '—';
+				}
+			}
+		}
 		var btn = buyForm.querySelector( '[data-sm-buy-submit] span' );
 		if ( btn ) { btn.textContent = buyForm.querySelector( '[data-sm-buy-submit]' ).getAttribute( offer ? 'data-offer' : 'data-order' ); }
 	}
 	if ( buyForm ) {
 		buyForm.addEventListener( 'change', buyUpdate );
 		buyForm.addEventListener( 'input', buyUpdate );
+		buyForm.addEventListener( 'click', function ( e ) {
+			var b = e.target.closest ? e.target.closest( '[data-sm-buy-step]' ) : null;
+			if ( ! b ) { return; }
+			var inp = b.parentNode.querySelector( 'input' );
+			var v = ( parseInt( inp.value, 10 ) || 0 ) + parseInt( b.getAttribute( 'data-sm-buy-step' ), 10 );
+			inp.value = Math.max( 0, Math.min( v, parseInt( inp.max, 10 ) || 0 ) );
+			buyUpdate();
+		} );
 		buyUpdate();
 	}
 	$$( '[data-sm-buy]' ).forEach( function ( a ) {
@@ -301,6 +347,9 @@
 			buyPanel.hidden = false;
 			var want = a.getAttribute( 'data-sm-buy' );
 			var r = buyForm && buyForm.querySelector( 'input[name="kind"][value="' + want + '"]' );
+			var wantMode = a.getAttribute( 'data-sm-buy-mode' );
+			var rm = wantMode && buyForm ? buyForm.querySelector( 'input[type="radio"][name="mode"][value="' + wantMode + '"]' ) : null;
+			if ( rm ) { rm.checked = true; }
 			if ( r ) { r.checked = true; buyUpdate(); }
 			buyPanel.scrollIntoView( { behavior: window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ? 'auto' : 'smooth', block: 'start' } );
 			var first = buyPanel.querySelector( want === 'offer' ? '#buy-amount' : '#buy-qty' ) || buyPanel.querySelector( 'input:not([type=hidden]),a.sm-btn' );

@@ -1,0 +1,142 @@
+/* ==========================================================================
+   0.33.0 — Building listing page, whole-building / by-element sale,
+   inspection request (data from sm-buildings 0.4.0 and sm-trade 0.2.0).
+   ========================================================================== */
+
+/* ---- Page: two columns that stack on their own; phone: photos, title, price, actions first ---- */
+.smb-page { display: grid; gap: var(--sm-s4); }
+.smb-page__col { display: contents; }
+.smb-page__col > * { order: 5; min-inline-size: 0; }
+.smb-page__gallery { order: 1; }
+.smb-page__headline { order: 2; }
+.smb-page__price { order: 3; }
+.smb-page__actions { order: 4; }
+.smb-page__seller, .smb-page__place, .smb-insp { order: 6; }
+.smb-page__enquiry { order: 7; }
+.smb-page .sm-panel + .sm-panel { margin: 0; }
+@media (min-width: 1024px) {
+	.smb-page { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: start; gap: var(--sm-s5); }
+	.smb-page__col { display: grid; gap: var(--sm-s4); align-content: start; min-inline-size: 0; }
+	.smb-page__col > * { order: 0; }
+}
+.smb-page__headline { display: grid; gap: var(--sm-s2); }
+.smb-page__headline .sm-detail__title { margin: 0; }
+.smb-loc { display: flex; flex-wrap: wrap; gap: 6px var(--sm-s2); align-items: center; margin: 0; font-weight: 600; }
+.smb-loc .sm-icon { color: var(--sm-accent-ink); }
+.smb-loc a { font-size: var(--sm-fs-sm); font-weight: 500; }
+.smb-page__actions { display: grid; gap: var(--sm-s3); }
+.smb-page__seller .sm-seller { margin: 0; padding: 0; border: 0; background: none; }
+.smb-page__place .sm-place { margin: 0; }
+.smb-page__place .sm-map__canvas { block-size: 200px; }
+
+/* ---- Actions ---- */
+.smb-actions { display: grid; gap: var(--sm-s2); }
+.smb-actions__two { display: grid; gap: var(--sm-s2); grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); }
+.smb-actions__two .sm-btn { justify-content: center; text-align: center; }
+.smb-actions__mini { display: grid; gap: var(--sm-s2); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 480px) { .smb-actions__mini { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.smb-actions__mini .sm-btn { justify-content: center; padding-inline: 6px; gap: 6px; font-weight: 500; min-inline-size: 0; }
+
+/* ---- Price of a building ---- */
+.sm-priceblock--building { background: linear-gradient(180deg, var(--sm-surface), var(--sm-accent-soft)); border-color: color-mix(in srgb, var(--sm-accent) 35%, var(--sm-line)); }
+.sm-priceblock--building .sm-priceblock__label { text-transform: uppercase; letter-spacing: .05em; font-weight: 600; font-size: var(--sm-fs-xs); }
+.sm-priceblock--building .sm-priceblock__main { margin: 4px 0 2px; color: var(--sm-text); font-family: var(--sm-font-display); }
+.sm-priceblock__eq { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: baseline; }
+.sm-priceblock__eq strong { color: var(--sm-accent-ink); font-size: var(--sm-fs-md); }
+.sm-priceblock__eq span { color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+.sm-priceblock__or { display: flex; justify-content: space-between; gap: var(--sm-s3); align-items: baseline; margin: var(--sm-s3) 0 0; padding: 10px 14px; border: 1px solid var(--sm-line); border-radius: var(--sm-radius); background: var(--sm-surface); font-size: var(--sm-fs-sm); }
+.sm-priceblock__or strong { font-variant-numeric: tabular-nums; }
+.sm-priceblock__ref { margin: var(--sm-s3) 0 0; padding-block-start: var(--sm-s3); border-block-start: 1px dashed color-mix(in srgb, var(--sm-accent) 35%, var(--sm-line)); font-size: var(--sm-fs-sm); color: var(--sm-muted); }
+.sm-priceblock--building .sm-weight-note { margin-block-start: var(--sm-s3); }
+
+/* ---- Geometry and inventory ---- */
+.smb-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--sm-s2) var(--sm-s3); }
+.smb-head .sm-panel__title { margin: 0; }
+.smb-figures { display: grid; gap: var(--sm-s2); grid-template-columns: repeat(2, minmax(0, 1fr)); margin: var(--sm-s4) 0; }
+@media (min-width: 640px) { .smb-figures { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.smb-figures > div { display: grid; gap: 2px; align-content: start; padding: 12px 14px; border: 1px solid var(--sm-line); border-radius: var(--sm-radius); background: var(--sm-bg); }
+.smb-figures dd { margin: 0; font-family: var(--sm-font-display); font-size: 1.2rem; font-weight: 700; line-height: 1.2; color: var(--sm-text); }
+.smb-figures dt { font-size: var(--sm-fs-xs); color: var(--sm-muted); line-height: 1.35; }
+.smb-geo .smp-drawing { margin-block: 0; }
+.smb-more { margin-block-start: var(--sm-s4); border: 1px solid var(--sm-line); border-radius: var(--sm-radius); background: var(--sm-bg); }
+.smb-more > summary { display: flex; justify-content: space-between; align-items: center; gap: var(--sm-s3); min-block-size: 52px; padding: 10px 14px; cursor: pointer; font-weight: 600; list-style: none; }
+.smb-more > summary::-webkit-details-marker { display: none; }
+.smb-more > summary small { font-weight: 400; color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+.smb-more__chev { flex: none; inline-size: 28px; block-size: 28px; padding: 5px; border: 1px solid var(--sm-line); border-radius: 50%; background: var(--sm-surface); transition: transform var(--sm-dur-1, 150ms) var(--sm-ease, ease); }
+.smb-more[open] { background: var(--sm-surface); border-color: color-mix(in srgb, var(--sm-accent) 35%, var(--sm-line)); }
+.smb-more[open] > summary { background: var(--sm-accent-soft); border-start-start-radius: var(--sm-radius); border-start-end-radius: var(--sm-radius); }
+.smb-more[open] .smb-more__chev { transform: rotate(180deg); }
+.smb-more > summary:focus-visible { outline: none; box-shadow: var(--sm-focus); border-radius: var(--sm-radius); }
+.smb-more__body { margin: 0; padding: var(--sm-s2) 14px var(--sm-s3); }
+.smb-stock__count { margin: 2px 0 0; font-size: var(--sm-fs-sm); }
+.smb-pill { display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 999px; background: var(--sm-primary); color: var(--sm-on-dark); font-family: var(--sm-font-display); font-weight: 700; white-space: nowrap; }
+.smb-pill .sm-weight__kg { color: inherit; opacity: .85; font-size: .85em; }
+
+/* ---- What the price includes: written in full, nothing struck through ---- */
+.smb-inc { display: grid; gap: var(--sm-s2); margin: var(--sm-s3) 0 0; padding: 0; list-style: none; }
+@media (min-width: 640px) { .smb-inc { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.smb-inc li { display: flex; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--sm-line); border-radius: var(--sm-radius); font-size: var(--sm-fs-sm); }
+.smb-inc .is-yes { background: var(--sm-accent-soft); border-color: color-mix(in srgb, var(--sm-accent) 35%, var(--sm-line)); font-weight: 600; }
+.smb-inc .is-yes .sm-icon { flex: none; inline-size: 20px; block-size: 20px; padding: 3px; border-radius: 50%; background: var(--sm-accent); color: var(--sm-on-accent); }
+.smb-inc .is-no { background: var(--sm-bg); color: var(--sm-muted); }
+.smb-inc__dash { flex: none; display: grid; place-items: center; inline-size: 20px; block-size: 20px; border-radius: 50%; background: var(--sm-line); font-weight: 700; line-height: 1; }
+
+/* ---- Inspection request ---- */
+.smb-insp { display: grid; gap: var(--sm-s3); grid-template-columns: auto minmax(0, 1fr); align-items: start; padding: var(--sm-s4); border-radius: var(--sm-radius-lg); border: 1px solid color-mix(in srgb, var(--sm-info) 25%, transparent); background: color-mix(in srgb, var(--sm-info-soft) 70%, var(--sm-surface)); }
+.smb-insp--warning { border-color: color-mix(in srgb, var(--sm-warn) 30%, transparent); background: color-mix(in srgb, var(--sm-warn-soft) 75%, var(--sm-surface)); }
+.smb-insp__icon { inline-size: 44px; block-size: 44px; padding: 10px; border-radius: 12px; background: var(--sm-info); color: #fff; }
+.smb-insp--warning .smb-insp__icon { background: var(--sm-warn); }
+.smb-insp__title { margin: 0 0 4px; font-family: var(--sm-font-display); font-size: var(--sm-fs-lg); line-height: 1.3; }
+.smb-insp p { margin: 0; font-size: var(--sm-fs-sm); }
+.smb-insp .sm-btn { grid-column: 1 / -1; justify-content: center; }
+.sm-btn--info { background: var(--sm-info); border-color: var(--sm-info); color: #fff; font-weight: 700; }
+.sm-btn--info:hover { background: color-mix(in srgb, var(--sm-info) 85%, #000); color: #fff; }
+.smb-insp--warning .sm-btn--info { background: var(--sm-warn); border-color: var(--sm-warn); }
+
+/* ---- Buy box: whole building or pieces of the inventory ---- */
+.sm-buy__mode label:has(input:checked) span { background: var(--sm-primary); color: var(--sm-on-dark); }
+.sm-buy__pick { display: grid; gap: var(--sm-s2); border: 0; padding: 0; margin-inline: 0; min-inline-size: 0; }
+.sm-buy__pick legend { padding: 0; font-weight: 600; margin-block-end: 6px; }
+.sm-buy__line { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--sm-s3); align-items: center; padding: 10px 12px; border: 1px solid var(--sm-line); border-radius: var(--sm-radius); background: var(--sm-surface); }
+.sm-buy__line.is-on { border-color: color-mix(in srgb, var(--sm-accent) 45%, var(--sm-line)); background: var(--sm-accent-soft); }
+.sm-buy__line label { display: grid; gap: 2px; margin: 0; font-weight: 400; cursor: pointer; }
+.sm-buy__line label small { color: var(--sm-muted); font-size: var(--sm-fs-xs); line-height: 1.35; }
+.sm-buy__step { display: grid; grid-template-columns: 36px 52px 36px; align-items: stretch; block-size: 42px; border: 1px solid var(--sm-line-strong); border-radius: 10px; background: var(--sm-surface); overflow: hidden; }
+.sm-buy__step button { border: 0; background: none; font-size: 1.1rem; color: var(--sm-muted); cursor: pointer; }
+.sm-buy__step button:hover { background: var(--sm-bg); color: var(--sm-text); }
+.sm-buy__step input { inline-size: 100%; min-block-size: 0; block-size: 100%; padding: 0; border: 0; border-inline: 1px solid var(--sm-line); border-radius: 0; text-align: center; font-weight: 700; -moz-appearance: textfield; appearance: textfield; background: transparent; }
+.sm-buy__step input::-webkit-outer-spin-button, .sm-buy__step input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.sm-buy__sum { margin: var(--sm-s2) 0 var(--sm-s4); padding: var(--sm-s3); border-radius: var(--sm-radius); background: var(--sm-bg); border: 1px dashed var(--sm-line); }
+.sm-buy__sumrow { display: flex; justify-content: space-between; gap: var(--sm-s3); align-items: baseline; margin: 0; padding-block: 3px; }
+.sm-buy__sumrow span { color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+.sm-buy__sumrow strong { font-variant-numeric: tabular-nums; }
+.sm-buy__sumrow:nth-child(2) strong { font-size: 1.25rem; font-family: var(--sm-font-display); }
+.sm-buy__form:not(.is-offer) .sm-buy__sumrow--offer { display: none; }
+.sm-buy__sumrow--offer { margin-block-start: 6px; padding-block-start: 8px; border-block-start: 1px solid var(--sm-line); }
+.sm-buy__form.is-pick .sm-buy__offertotal { display: none; }
+.sm-buy__form:not(.is-pick) .sm-buy__offerkg { display: none; }
+
+/* ---- Order or offer by element (account) ---- */
+.sm-dealview__items { display: grid; gap: 6px; margin: var(--sm-s3) 0; padding: 0; list-style: none; }
+.sm-dealview__items li { display: flex; justify-content: space-between; gap: var(--sm-s3); padding: 8px 12px; border: 1px solid var(--sm-line); border-radius: var(--sm-radius); font-size: var(--sm-fs-sm); }
+.sm-dealview__items small { color: var(--sm-muted); }
+
+/* ---- Publication form: how the building is sold ---- */
+.smb-sell { display: grid; gap: var(--sm-s2); }
+.smb-sell__opt { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1.5px solid var(--sm-line); border-radius: 12px; background: var(--sm-surface); cursor: pointer; font-weight: 400; margin: 0; }
+.smb-sell__opt:has(input:checked) { border-color: var(--sm-accent); background: var(--sm-accent-soft); }
+.smb-sell__opt input { flex: none; inline-size: 20px; block-size: 20px; margin-block-start: 2px; accent-color: var(--sm-accent-ink); }
+.smb-sell__opt span { display: grid; gap: 2px; }
+.smb-sell__opt small { color: var(--sm-muted); font-size: var(--sm-fs-sm); line-height: 1.4; }
+.smp-tech--steps .smp-step > .smb-prices__help { margin-block-start: var(--sm-s2); }
+
+/* ---- Inspection request: the building already filled in ---- */
+.sme-pre { margin-block-end: var(--sm-s4); padding: var(--sm-s3) var(--sm-s4); border-radius: var(--sm-radius); border: 1px solid color-mix(in srgb, var(--sm-info) 25%, transparent); background: color-mix(in srgb, var(--sm-info-soft) 70%, var(--sm-surface)); }
+.sme-pre__title { display: flex; gap: var(--sm-s2); align-items: center; margin: 0 0 var(--sm-s2); font-weight: 700; }
+.sme-pre dl { display: grid; margin: 0; }
+.sme-pre dl > div { display: flex; justify-content: space-between; gap: var(--sm-s3); padding-block: 5px; border-block-end: 1px solid color-mix(in srgb, var(--sm-info) 15%, transparent); font-size: var(--sm-fs-sm); }
+.sme-pre dt { color: var(--sm-muted); flex: none; }
+.sme-pre dd { margin: 0; font-weight: 600; text-align: end; overflow-wrap: anywhere; }
+.sme-pre .sm-help { margin-block: var(--sm-s2) 0; }
+.sm-buy__line label { min-inline-size: 0; }
+.sm-buy__line label strong, .sm-buy__line label strong bdi { white-space: normal; overflow-wrap: anywhere; }

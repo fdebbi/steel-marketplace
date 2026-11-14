@@ -159,99 +159,161 @@ msgstr ""
 msgid "You cannot change these settings."
 msgstr "لا يمكنك تعديل هذه الإعدادات."
 
-#: src/Presenter.php:87
+#: src/Presenter.php:96
 msgid "Assembled or dismantled"
 msgstr "مركب أو مفكك"
 
-#: src/Presenter.php:87
+#: src/Presenter.php:96
 msgid "Assembled"
 msgstr "مركب"
 
-#: src/Presenter.php:87
+#: src/Presenter.php:96
 msgid "Dismantled"
 msgstr "مفكك"
 
-#: src/Presenter.php:88
-msgid "Length × width × height at the column"
-msgstr "الطول × العرض × الارتفاع عند العمود"
+#: src/Presenter.php:100
+msgid "Length × width"
+msgstr "الطول × العرض"
 
-#: src/Presenter.php:89
-msgid "Total area"
-msgstr "المساحة الإجمالية"
+#: src/Presenter.php:101
+msgid "Floor area"
+msgstr "مساحة الأرضية"
 
-#: src/Presenter.php:90
-msgid "Number of portal frames"
-msgstr "عدد الإطارات"
+#: src/Presenter.php:102
+msgid "Height at the column"
+msgstr "الارتفاع عند العمود"
 
-#: src/Presenter.php:93
-msgid "Height of the roof (ridge)"
-msgstr "ارتفاع السقف (القمة)"
+#. translators: %s: height in metres.
+#: src/Presenter.php:102
+msgid "ridge %s m"
+msgstr "القمة %s م"
 
-#: src/Presenter.php:96
-msgid "Roof slope"
-msgstr "ميل السقف"
+#. translators: %s: height in metres.
+#: src/Presenter.php:103
+msgid "Portal frames"
+msgstr "الإطارات"
 
-#: src/Presenter.php:99
+#. translators: %s: slope in percent.
+#: src/Presenter.php:103
+msgid "slope %s %%"
+msgstr "الميل %s %%"
+
+#: src/Presenter.php:106
 msgid "Number of floors"
 msgstr "عدد الطوابق"
 
-#: src/Presenter.php:102
+#: src/Presenter.php:109
 msgid "Mezzanine"
 msgstr "ميزانين"
 
-#: src/Presenter.php:102 src/Presenter.php:105
+#: src/Presenter.php:109 src/Presenter.php:112
 msgid "Yes"
 msgstr "نعم"
 
-#: src/Presenter.php:105
+#: src/Presenter.php:112
 msgid "Overhead crane"
 msgstr "رافعة جسرية"
 
-#: src/Presenter.php:109
+#: src/Presenter.php:116
 msgid "Total steel weight (given by the seller)"
 msgstr "الوزن الإجمالي للفولاذ (حسب البائع)"
 
-#: src/Presenter.php:110
+#: src/Presenter.php:117
 msgid "Weight of the declared elements (not the whole structure)"
 msgstr "وزن العناصر المصرّح بها (ليس كامل الهيكل)"
 
-#: src/Presenter.php:112
+#: src/Presenter.php:119 src/Presenter.php:180
 msgid "Steel weight"
 msgstr "وزن الفولاذ"
 
-#: src/Presenter.php:114
+#: src/Presenter.php:121
 msgid "Of which declared elements (calculated)"
 msgstr "منها العناصر المصرّح بها (محسوب)"
 
-#: src/Presenter.php:120
+#: src/Presenter.php:127
 msgid ""
 "Indicative drawing made from the figures given by the seller. It is not a "
 "structural design."
 msgstr "رسم توضيحي مبني على الأرقام التي قدمها البائع. ليس دراسة إنشائية."
 
-#: src/Presenter.php:126
-msgid "Before buying and reassembling: ask an engineer"
-msgstr "قبل الشراء وإعادة التركيب: استشر مهندسًا"
+#: src/Presenter.php:143
+msgid "Have this building inspected before you buy"
+msgstr "اطلب معاينة هذا المبنى قبل الشراء"
 
 #. translators: %s: platform name.
-#: src/Presenter.php:128
+#: src/Presenter.php:145
 msgid ""
-"A used steel building must be checked by a qualified engineer before it is "
-"reassembled: condition of the members and connections, corrosion, and a new "
-"calculation for the new site (wind, snow, foundations). The information in "
-"this listing is declared by the seller; %s does not certify it."
+"An engineer verified on %s checks the condition of the members, the "
+"connections and the corrosion, and tells you whether the building can be "
+"reassembled on your site. The information in this listing is declared by the"
+" seller."
 msgstr ""
-"يجب أن يفحص مهندس مؤهل المبنى الفولاذي المستعمل قبل إعادة تركيبه: حالة "
-"العناصر والوصلات، التآكل، وحساب جديد للموقع الجديد (الرياح، الثلوج، "
-"الأساسات). معلومات هذا الإعلان يصرّح بها البائع، و%s لا تصادق عليها."
+"مهندس موثّق على %s يفحص حالة العناصر والوصلات والتآكل، ويخبرك إن كان المبنى "
+"قابلا لإعادة التركيب في موقعك. معلومات هذا الإعلان مصرح بها من البائع."
 
-#: src/Presenter.php:129
-msgid "Find an engineer"
-msgstr "ابحث عن مهندس"
+#: src/Presenter.php:146
+msgid "Ask for an inspection"
+msgstr "طلب معاينة"
+
+#. translators: %s: number of portal frames.
+#: src/Presenter.php:172
+msgid "%s portal frames"
+msgstr "%s إطارات"
+
+#: src/Presenter.php:176
+msgid "Building"
+msgstr "المبنى"
+
+#: src/Presenter.php:177
+msgid "Dimensions"
+msgstr "الأبعاد"
+
+#: src/Presenter.php:180
+msgid "Weight of the declared elements"
+msgstr "وزن العناصر المصرح بها"
+
+#: src/Presenter.php:182
+msgid "Where it is"
+msgstr "مكان المبنى"
+
+#: src/Presenter.php:183
+msgid "Listing"
+msgstr "الإعلان"
+
+#: src/Presenter.php:184
+msgid "Inspection before buying a building listed on the platform."
+msgstr "معاينة قبل شراء مبنى منشور على المنصة."
+
+#: src/Presenter.php:188
+msgid "What I expect from the inspection:"
+msgstr "ما أنتظره من المعاينة:"
+
+#. translators: %s: title of the listing.
+#: src/Presenter.php:192
+msgid "Inspection: %s"
+msgstr "معاينة: %s"
 
 #: src/Rules.php:28
 msgid "The building is already dismantled: untick \"Dismantling included\"."
 msgstr "المبنى مفكك أصلًا: ألغِ تحديد «التفكيك مشمول»."
+
+#: src/Sale.php:89
+msgid "Choose how you sell: the whole building, by element, or both."
+msgstr "اختر طريقة البيع: المبنى كاملا، حسب العنصر، أو كلاهما."
+
+#: src/Sale.php:92
+msgid ""
+"To sell by element, list the elements of the structure first (step "
+"\"Elements\")."
+msgstr "للبيع حسب العنصر، صرّح أولا بعناصر الهيكل (مرحلة «العناصر»)."
+
+#: src/Sale.php:95
+msgid ""
+"A price per kg needs the steel weight: list the elements or give the total "
+"weight, or type the price of the whole building."
+msgstr ""
+"السعر للكيلوغرام يتطلب وزن الفولاذ: صرّح بالعناصر أو بالوزن الإجمالي، أو "
+"أدخل سعر المبنى كاملا."
 
 #: src/Spec.php:76
 msgid "Say whether the building is assembled or dismantled."

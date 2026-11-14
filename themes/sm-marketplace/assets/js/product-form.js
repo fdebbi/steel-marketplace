@@ -53,8 +53,10 @@
 		var wil = form.querySelector( '[name="wilaya"]' );
 		if ( wil && wil.value && block.querySelector( '.smb-title' ) ) { q.set( 'wilaya', wil.value ); }
 		var line = changed && changed.name ? changed.name.match( /^lines\[(\d+)\]\[family\]$/ ) : null;
-		if ( changed && 'mode' === changed.name ) {
-			q.delete( 'price_unit' ); // Assembled and dismantled buildings have different default units.
+		// Buildings (0.33.0): two linked prices; the one typed last is kept, the other is calculated.
+		if ( changed && ( 'price' === changed.name || 'lot_price' === changed.name ) && block.querySelector( '[data-smb-basis]' ) ) {
+			q.set( 'price_basis', 'price' === changed.name ? 'kg' : 'total' );
+			q.delete( 'price' === changed.name ? 'lot_price' : 'price' );
 		}
 		if ( line ) {
 			q.delete( 'lines[' + line[1] + '][section]' ); // A size of another type means nothing.

@@ -276,19 +276,19 @@ msgstr "Prix convenu ou proposé (DA)"
 msgid "Counter-offers"
 msgstr "Contre-offres"
 
-#: src/Deals.php:76
+#: src/Deals.php:92
 msgid "This listing is no longer on sale."
 msgstr "Cette annonce n’est plus en vente."
 
-#: src/Deals.php:80
+#: src/Deals.php:96
 msgid "Sign in to buy or make an offer."
 msgstr "Connectez-vous pour acheter ou faire une offre."
 
-#: src/Deals.php:84
+#: src/Deals.php:100
 msgid "This is one of your own listings."
 msgstr "C’est une de vos propres annonces."
 
-#: src/Deals.php:87
+#: src/Deals.php:103
 msgid ""
 "You already have an order or an offer waiting on this listing. Follow it in "
 "\"My purchases\"."
@@ -296,45 +296,49 @@ msgstr ""
 "Vous avez déjà une commande ou une offre en attente sur cette annonce. "
 "Suivez-la dans « Mes achats »."
 
-#: src/Deals.php:100
+#: src/Deals.php:120
+msgid "Enter the price per kg you offer."
+msgstr "Indiquez le prix au kg que vous proposez."
+
+#: src/Deals.php:125
 msgid "Enter the total price you offer."
 msgstr "Indiquez le prix total que vous proposez."
 
-#: src/Deals.php:107
+#: src/Deals.php:132
 msgid "Enter your name."
 msgstr "Indiquez votre nom."
 
-#: src/Deals.php:110
+#: src/Deals.php:135
 msgid "Enter a valid phone number, so the seller can call you."
 msgstr ""
 "Indiquez un numéro de téléphone valide, pour que le vendeur puisse vous "
 "appeler."
 
-#: src/Deals.php:113
+#: src/Deals.php:138
 msgid "Enter a valid e-mail address."
 msgstr "Indiquez une adresse e-mail valide."
 
-#: src/Deals.php:144
+#: src/Deals.php:170
 msgid "The request could not be saved. Try again."
 msgstr "La demande n’a pas pu être enregistrée. Réessayez."
 
-#: src/Deals.php:196
+#: src/Deals.php:222
 msgid "This order or offer does not exist."
 msgstr "Cette commande ou offre n’existe pas."
 
-#: src/Deals.php:200
+#: src/Deals.php:226
 msgid "It is not your turn to answer."
 msgstr "Ce n’est pas à vous de répondre."
 
-#: src/Deals.php:200
+#: src/Deals.php:226
 msgid "This order or offer is already closed."
 msgstr "Cette commande ou offre est déjà clôturée."
 
-#: src/Deals.php:223
+#: src/Deals.php:249
 msgid "Enter the total price you propose."
 msgstr "Indiquez le prix total que vous proposez."
 
-#: src/Deals.php:226
+#: src/Deals.php:252
 msgid "Propose a different price, or accept this one."
 msgstr "Proposez un prix différent, ou acceptez celui-ci."
 
@@ -344,14 +348,14 @@ msgstr ""
 "Vous avez envoyé beaucoup de commandes ou d’offres en peu de temps. "
 "Réessayez plus tard."
 
-#: src/Form.php:72
+#: src/Form.php:74
 msgid ""
 "Offer sent to the seller. You will be told by e-mail when the seller "
 "answers."
 msgstr ""
 "Offre envoyée au vendeur. Vous serez prévenu par e-mail de sa réponse."
 
-#: src/Form.php:73
+#: src/Form.php:75
 msgid ""
 "Order sent to the seller. Nothing is paid on the platform: the seller "
 "accepts or refuses, then you agree on payment and delivery directly."
@@ -360,7 +364,7 @@ msgstr ""
 "accepte ou refuse, puis vous convenez directement du paiement et de la "
 "livraison."
 
-#: src/Form.php:87
+#: src/Form.php:89
 msgid ""
 "Accepted. The contact details are below: agree on payment and delivery "
 "directly."
@@ -368,15 +372,15 @@ msgstr ""
 "Accepté. Les coordonnées sont ci-dessous : convenez directement du paiement "
 "et de la livraison."
 
-#: src/Form.php:88
+#: src/Form.php:90
 msgid "Refused. The other party was told."
 msgstr "Refusé. L’autre partie a été prévenue."
 
-#: src/Form.php:89
+#: src/Form.php:91
 msgid "Cancelled. The seller was told."
 msgstr "Annulé. Le vendeur a été prévenu."
 
-#: src/Form.php:90
+#: src/Form.php:92
 msgid "Your price was sent. You will be told when the other party answers."
 msgstr "Votre prix a été envoyé. Vous serez prévenu de la réponse."
 

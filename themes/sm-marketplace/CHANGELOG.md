@@ -1,5 +1,16 @@
 # Changelog — sm-marketplace
 
+## 0.33.0 — 2026-11-14
+
+- Fiche d'un bâtiment refaite (`listing-building`) : à droite le titre, la localisation, le prix, les actions, le vendeur, la carte et la demande d'inspection ; à gauche les photos, les caractéristiques géométriques (4 chiffres clés et schéma, le reste à déplier), l'inventaire (titre, pièces et poids, tableau à déplier), ce que comprend le prix (écrit en clair, plus de texte barré), la description. Sur téléphone : photos, titre, prix et actions d'abord.
+- Prix d'un bâtiment : le total en grand (« Prix du bâtiment complet »), dessous « soit … DA/kg », puis « ou achat par élément » si le vendeur l'autorise ; prix de l'acier neuf seulement si l'indice des prix a une valeur. Même logique sur les cartes d'annonces.
+- Achat et offre : plus de quantité en kg pour un bâtiment. Lot entier : total et offre en prix total. Par élément : choix des pièces de l'inventaire, poids et total calculés, offre au kg.
+- Publication : « Lot entier » et / ou « Par élément », deux prix liés (au kg, bâtiment entier).
+- Carte : sans position exacte visible, carte de la wilaya sans repère ni itinéraire.
+- Demande d'étude : ouverte depuis un bâtiment, elle arrive pré-remplie (bâtiment, dimensions, lien).
+- Message au vendeur : pas de « quantité souhaitée » pour un bâtiment. Compte : pièces d'une commande par élément.
+- Composants extraits : `listing-gallery`, `listing-inventory`, `listing-seller`.
+
 ## 0.32.0 — 2026-11-14 (avec sm-products 0.13.0 et sm-buildings 0.3.0)
 
 - Formulaire bâtiment, étape 3 : les 4 systèmes porteurs en cases de même largeur, le choix actif en couleur pleine (2 × 2 sur téléphone) ; case « Le bâtiment a un pont roulant » avec capacité (t) facultative.

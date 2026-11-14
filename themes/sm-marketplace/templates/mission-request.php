@@ -12,7 +12,11 @@
 defined( 'ABSPATH' ) || exit;
 get_header();
 $engineer = absint( sm_theme_query_arg( 'engineer' ) );
-$d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'type' => sm_theme_query_arg( 'type' ) ) );
+// 0.33.0: opened from a building listing ("Ask for an inspection"), the building is already filled in.
+$listing  = absint( sm_theme_query_arg( 'listing' ) );
+$pre      = $listing ? sm_theme_data( 'mission_prefill', array( 'listing' => $listing ) ) : null;
+$pre      = is_array( $pre ) ? $pre : array();
+$d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'type' => sm_theme_query_arg( 'type' ) ? sm_theme_query_arg( 'type' ) : ( $pre['type'] ?? '' ) ) );
 ?>
 <section class="sm-pagehead sm-pagehead--engineers">
 	<div class="sm-container">
@@ -45,6 +49,17 @@ $d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'type
 		<div class="sme-request__grid">
 			<?php sm_theme_form_open( 'mission_request', array( 'class' => 'sm-form sm-panel', 'enctype' => 'multipart/form-data' ) ); ?>
 				<?php sm_theme_notices( true ); ?>
+				<?php if ( ! empty( $pre['rows'] ) ) : ?>
+					<div class="sme-pre" role="note">
+						<p class="sme-pre__title"><?php sm_icon( 'warehouse' ); ?><?php esc_html_e( 'Building concerned by the inspection', 'sm-marketplace' ); ?></p>
+						<dl>
+							<?php foreach ( $pre['rows'] as $row ) : ?>
+								<div><dt><?php echo esc_html( $row[0] ); ?></dt><dd><?php if ( 0 === strpos( (string) $row[1], 'http' ) ) : ?><a href="<?php echo esc_url( $row[1] ); ?>"><?php esc_html_e( 'See the listing', 'sm-marketplace' ); ?></a><?php else : ?><bdi dir="auto"><?php echo esc_html( $row[1] ); ?></bdi><?php endif; ?></dd></div>
+							<?php endforeach; ?>
+						</dl>
+						<p class="sm-help"><?php esc_html_e( 'Your request goes to the platform, which sends you a quote and appoints the engineer.', 'sm-marketplace' ); ?></p>
+					</div>
+				<?php endif; ?>
 				<?php
 				$services = (array) ( $d['services'] ?? array() );
 				$sent     = null !== sm_theme_old( 'title', null ); // The form comes back after an error.
@@ -83,17 +98,17 @@ $d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'type
 				</div>
 				<div class="sm-field">
 					<label for="m-title"><?php esc_html_e( 'Project', 'sm-marketplace' ); ?></label>
-					<input id="m-title" name="title" dir="auto" maxlength="200" required value="<?php echo esc_attr( sm_theme_old( 'title' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. Storage hangar 20 × 40 m', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'title' ); ?>>
+					<input id="m-title" name="title" dir="auto" maxlength="200" required value="<?php echo esc_attr( sm_theme_old( 'title', $pre['title'] ?? '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. Storage hangar 20 × 40 m', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'title' ); ?>>
 					<?php sm_theme_error( 'title' ); ?>
 				</div>
 				<div class="sm-field">
 					<label for="m-desc"><?php esc_html_e( 'Description', 'sm-marketplace' ); ?></label>
-					<textarea id="m-desc" name="description" rows="7" dir="auto" maxlength="5000" required placeholder="<?php esc_attr_e( 'Dimensions, use, loads (crane, snow, wind), soil, what you expect from the study, existing documents…', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'description' ); ?>><?php echo esc_textarea( sm_theme_old( 'description' ) ); ?></textarea>
+					<textarea id="m-desc" name="description" rows="7" dir="auto" maxlength="5000" required placeholder="<?php esc_attr_e( 'Dimensions, use, loads (crane, snow, wind), soil, what you expect from the study, existing documents…', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'description' ); ?>><?php echo esc_textarea( sm_theme_old( 'description', $pre['description'] ?? '' ) ); ?></textarea>
 					<?php sm_theme_error( 'description' ); ?>
 				</div>
 				<div class="sm-field sm-field--row">
 					<div>
-						<label for="m-wilaya"><?php esc_html_e( 'Wilaya of the project', 'sm-marketplace' ); ?></label>
+						<label for="m-wilaya"><?php echo esc_html( $pre ? __( 'Wilaya where you want to reassemble the building', 'sm-marketplace' ) : __( 'Wilaya of the project', 'sm-marketplace' ) ); ?></label>
 						<select id="m-wilaya" name="wilaya" required<?php sm_theme_aria( 'wilaya' ); ?>>
 							<option value=""><?php esc_html_e( 'Select', 'sm-marketplace' ); ?></option>
 							<?php foreach ( sm_theme_wilayas() as $code => $name ) : ?><option value="<?php echo esc_attr( $code ); ?>" <?php selected( sm_theme_old( 'wilaya' ), (string) $code ); ?>><?php echo esc_html( $code . ' — ' . sm_t( $name ) ); ?></option><?php endforeach; ?>

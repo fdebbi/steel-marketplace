@@ -14,6 +14,7 @@
  *
  * @var array $args {
  *   mode: 'picker'|'view', lat: string|float, lng: string|float, wilaya: string,
+ *   area: bool, zoom: int (view, 0.33.0: the wilaya only, without marker or directions),
  *   wilaya_select: string (CSS selector, picker), map_public: int (picker), label: string (view),
  *   legend, help, public_label, public_help: string (picker texts; the company form keeps its own)
  * }
@@ -36,7 +37,13 @@ if ( 'view' === $mode ) :
 	$dest = rawurlencode( $lat . ',' . $lng );
 	?>
 	<div class="sm-map sm-map--view">
-		<div class="sm-map__canvas" dir="ltr" data-sm-map="view" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-label="<?php echo esc_attr( $args['label'] ?? '' ); ?>" role="region" aria-label="<?php esc_attr_e( 'Map of the company location', 'sm-marketplace' ); ?>"></div>
+		<div class="sm-map__canvas" dir="ltr" data-sm-map="view" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-label="<?php echo esc_attr( $args['label'] ?? '' ); ?>"<?php echo ! empty( $args['area'] ) ? ' data-area="1" data-zoom="' . (int) ( $args['zoom'] ?? 9 ) . '"' : ''; ?> role="region" aria-label="<?php echo esc_attr( ! empty( $args['area'] ) ? __( 'Map of the wilaya', 'sm-marketplace' ) : __( 'Map of the company location', 'sm-marketplace' ) ); ?>"></div>
+		<?php if ( ! empty( $args['area'] ) ) : ?>
+	</div>
+			<?php
+			return;
+		endif;
+		?>
 		<div class="sm-map__actions">
 			<a class="sm-btn sm-btn--ghost sm-btn--sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=<?php echo esc_attr( $dest ); ?>" target="_blank" rel="noopener nofollow"><?php sm_icon( 'navigation' ); ?><?php esc_html_e( 'Directions', 'sm-marketplace' ); ?></a>
 			<a class="sm-btn sm-btn--ghost sm-btn--sm" href="https://www.openstreetmap.org/?mlat=<?php echo esc_attr( $lat ); ?>&amp;mlon=<?php echo esc_attr( $lng ); ?>#map=17/<?php echo esc_attr( $lat ); ?>/<?php echo esc_attr( $lng ); ?>" target="_blank" rel="noopener nofollow"><?php sm_icon( 'map-pin' ); ?><?php esc_html_e( 'Open the map', 'sm-marketplace' ); ?></a>

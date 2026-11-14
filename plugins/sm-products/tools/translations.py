@@ -329,3 +329,9 @@ T.update({
 "Visit cancelled by the buyer": ("Visite annulée par l’acheteur", "ألغى المشتري الزيارة"),
 "%1$s cancelled the visit of \"%2$s\".": ("%1$s a annulé la visite de « %2$s ».", "%1$s ألغى زيارة «%2$s»."),
 })
+
+# 0.14.0 — pieces picked in the inventory.
+T.update({
+"Only %1$s pieces of %2$s are available.": ("Seulement %1$s pièces de %2$s sont disponibles.", "لا يتوفر سوى %1$s قطعة من %2$s."),
+"Choose the elements you want and their number.": ("Choisissez les éléments voulus et leur nombre.", "اختر العناصر المطلوبة وعددها."),
+})

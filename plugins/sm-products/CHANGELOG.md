@@ -1,5 +1,13 @@
 # Changelog — sm-products
 
+## 0.14.0 — 2026-11-14
+
+- Achat de pièces de l'inventaire : `Stock::pick_lines()` (une entrée par élément, profilé et longueur), `Stock::check()` et `Stock::take()` acceptent les pièces choisies ; le poids vient des tables de profilés, les pièces vendues quittent l'inventaire, l'annonce est vendue quand il est vide. Filtres `sm_products_stock_options` et `sm_products_stock_row` pour les extensions de marché.
+- Action `sm_products_price_input` : une extension de marché prépare les champs de prix avant leur contrôle (utilisée par SM Buildings 0.4.0).
+- La vente en lot est permise pour tous les bâtiments (montés aussi).
+- Fiche : `map_area` (centre approximatif de la wilaya) quand la position exacte n'est pas visible par le visiteur.
+- Tests : 82 (inchangés) ; les nouveaux cas sont dans les tests de SM Buildings.
+
 ## 0.13.0 — 2026-11-14
 
 - Filtre `sm_products_form_state` (et donnée de thème `product_form_state`) : un plugin de marché complète les valeurs du formulaire de publication avant l'affichage (sm-buildings : éléments proposés à partir des dimensions).

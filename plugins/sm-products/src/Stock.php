@@ -32,6 +32,55 @@ final class Stock {
 	 * }
 	 */
 	public static function options( $p ) {
+		/**
+		 * A market plugin may change what can be bought (0.14.0). When it adds
+		 * detail.lines (self::pick_lines()), the buyer chooses pieces of the
+		 * inventory instead of typing a quantity.
+		 *
+		 * @param array  $out Options.
+		 * @param object $p   Product.
+		 */
+		return (array) apply_filters( 'sm_products_stock_options', self::base_options( $p ), $p );
+	}
+
+	/**
+	 * Inventory rows a buyer can pick from: one entry per element, size and length
+	 * (identical rows are added up).
+	 *
+	 * @return array[] { key, element, label, designation, length_mm, qty, piece_kg }
+	 */
+	public static function pick_lines( $p ) {
+		$out   = array();
+		$names = (array) ( Markets::get( (string) ( $p->market ?? '' ) )['line_elements'] ?? array() );
+		foreach ( (array) ( $p->lines ?? array() ) as $l ) {
+			$qty = (int) ( $l['qty'] ?? 0 );
+			if ( $qty < 1 ) {
+				continue;
+			}
+			$key = self::line_key( $l );
+			if ( isset( $out[ $key ] ) ) {
+				$out[ $key ]['qty'] += $qty;
+				continue;
+			}
+			$len = (int) ( $l['length_mm'] ?? 0 );
+			$out[ $key ] = array(
+				'key'         => $key,
+				'element'     => (string) ( $l['element'] ?? '' ),
+				'label'       => (array) ( $names[ (string) ( $l['element'] ?? '' ) ] ?? array() ), // { fr, ar } or empty.
+				'designation' => (string) ( $l['designation'] ?? '' ),
+				'length_mm'   => $len,
+				'qty'         => $qty,
+				'piece_kg'    => ! empty( $l['kg_m'] ) && $len > 0 ? round( (float) $l['kg_m'] * $len / 1000, 3 ) : round( (float) ( $l['total'] ?? 0 ) / $qty, 3 ),
+			);
+		}
+		return array_values( $out );
+	}
+
+	private static function line_key( $l ) {
+		return sanitize_key( (string) ( $l['element'] ?? '' ) ) . '-' . (int) ( $l['section_id'] ?? 0 ) . '-' . (int) ( $l['length_mm'] ?? 0 );
+	}
+
+	private static function base_options( $p ) {
 		$out = array( 'lot' => null, 'detail' => null );
 		if ( ! $p ) {
 			return $out;
@@ -78,10 +127,13 @@ final class Stock {
 
 	/**
 	 * Check a wanted quantity. Returns [ quantity, unit, total at the listed price ] or a WP_Error.
+	 * For a listing bought by pieces of its inventory, a fourth entry lists the pieces:
+	 * { key, element, designation, length_mm, n, kg }.
 	 *
-	 * @param string $mode lot|detail
+	 * @param string $mode  lot|detail
+	 * @param array  $items Pieces wanted: key of the inventory row => number.
 	 */
-	public static function check( $p, $mode, $qty ) {
+	public static function check( $p, $mode, $qty, $items = array() ) {
 		$o = self::options( $p );
 		if ( 'lot' === $mode ) {
 			if ( ! $o['lot'] ) {
@@ -92,6 +144,27 @@ final class Stock {
 		$d = $o['detail'];
 		if ( ! $d ) {
 			return new \WP_Error( 'mode', __( 'This listing is sold as a whole lot only.', 'sm-products' ) );
+		}
+		if ( ! empty( $d['lines'] ) ) {
+			$kg   = 0.0;
+			$norm = array();
+			foreach ( $d['lines'] as $l ) {
+				$n = (int) ( $items[ $l['key'] ] ?? 0 );
+				if ( $n < 1 ) {
+					continue;
+				}
+				if ( $n > $l['qty'] ) {
+					/* translators: 1: number of pieces, 2: profile (IPE 200). */
+					return new \WP_Error( 'items', sprintf( __( 'Only %1$s pieces of %2$s are available.', 'sm-products' ), Presenter::n( $l['qty'] ), $l['designation'] ) );
+				}
+				$w      = round( $n * $l['piece_kg'], 3 );
+				$kg    += $w;
+				$norm[] = array( 'key' => $l['key'], 'element' => $l['element'], 'label' => $l['label'], 'designation' => $l['designation'], 'length_mm' => $l['length_mm'], 'n' => $n, 'kg' => $w );
+			}
+			if ( ! $norm ) {
+				return new \WP_Error( 'items', __( 'Choose the elements you want and their number.', 'sm-products' ) );
+			}
+			return array( round( $kg, 3 ), 'kg', round( $kg * $d['unit_price'], 2 ), $norm );
 		}
 		$qty = round( (float) $qty, 3 );
 		if ( $qty <= 0 ) {
@@ -112,15 +185,18 @@ final class Stock {
 	 *
 	 * @param string $mode lot|detail
 	 */
-	public static function take( $product_id, $mode, $qty, $ref = '' ) {
+	public static function take( $product_id, $mode, $qty, $ref = '', $items = array() ) {
 		global $wpdb;
 		$p = Products::get( (int) $product_id );
 		if ( ! $p || ! in_array( $p->status, array( 'published', 'paused' ), true ) ) {
 			return new \WP_Error( 'gone', __( 'This listing is no longer on sale.', 'sm-products' ) );
 		}
-		$ok = self::check( $p, $mode, $qty );
+		$ok = self::check( $p, $mode, $qty, $items );
 		if ( is_wp_error( $ok ) ) {
 			return $ok;
+		}
+		if ( 'lot' !== $mode && ! empty( $ok[3] ) ) {
+			return self::take_items( $p, $ok, $ref );
 		}
 		if ( 'lot' === $mode ) {
 			Products::set_status( $p->id, 'sold' );
@@ -159,6 +235,63 @@ final class Stock {
 		$wpdb->update( $wpdb->prefix . 'sm_products', $row, array( 'id' => (int) $p->id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		AuditLog::add( 'product.stock_taken', 'product', $p->id, array( 'mode' => 'detail', 'qty' => $qty, 'unit' => $d['unit'], 'left' => $left, 'ref' => $ref ), null, $p->company_id );
 		if ( $left <= 0.0001 ) {
+			Products::set_status( $p->id, 'sold' );
+		} else {
+			PriceTrend::flush();
+			Products::index( $p->id );
+		}
+		return true;
+	}
+
+	/** Take pieces of the inventory (accepted order by element). */
+	private static function take_items( $p, array $ok, $ref ) {
+		global $wpdb;
+		$want = array();
+		foreach ( $ok[3] as $it ) {
+			$want[ $it['key'] ] = (int) $it['n'];
+		}
+		$lines = array();
+		$sum   = 0.0;
+		$count = 0;
+		foreach ( (array) $p->lines as $l ) {
+			$key = self::line_key( $l );
+			$qty = (int) ( $l['qty'] ?? 0 );
+			$n   = min( $qty, (int) ( $want[ $key ] ?? 0 ) );
+			if ( $n > 0 ) {
+				$want[ $key ] -= $n;
+				$l['total']    = $qty > 0 ? round( (float) ( $l['total'] ?? 0 ) * ( $qty - $n ) / $qty, 3 ) : 0;
+				$l['qty']      = $qty - $n;
+			}
+			if ( (int) $l['qty'] > 0 ) {
+				$lines[] = $l;
+				$sum    += (float) ( $l['total'] ?? 0 );
+				$count  += (int) $l['qty'];
+			}
+		}
+		$sold   = (float) $ok[0];
+		$weight = max( round( $sum, 3 ), 'partial' === $p->weight_source || 'theoretical' === $p->weight_source ? 0 : round( (float) $p->total_weight - $sold, 3 ) );
+		$row    = array(
+			'inventory'    => wp_json_encode( $lines ),
+			'pieces'       => $count,
+			'total_weight' => $weight,
+			'total_price'  => round( (float) $p->price * $weight, 2 ),
+			'updated_at'   => current_time( 'mysql', true ),
+		);
+		if ( 'both' === $p->sale_mode ) {
+			$row['sale_mode'] = 'detail'; // Part of the lot is sold: the lot price no longer applies.
+			$row['lot_price'] = 0;
+		}
+		/**
+		 * Row written after pieces were sold (a market plugin keeps its own figures in line).
+		 *
+		 * @param array  $row   Columns to update.
+		 * @param object $p     Product before the sale.
+		 * @param array  $lines Inventory left.
+		 */
+		$row = (array) apply_filters( 'sm_products_stock_row', $row, $p, $lines );
+		$wpdb->update( $wpdb->prefix . 'sm_products', $row, array( 'id' => (int) $p->id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		AuditLog::add( 'product.stock_taken', 'product', $p->id, array( 'mode' => 'items', 'qty' => $sold, 'unit' => 'kg', 'items' => $ok[3], 'left' => $count, 'ref' => $ref ), null, $p->company_id );
+		if ( ! $lines ) {
 			Products::set_status( $p->id, 'sold' );
 		} else {
 			PriceTrend::flush();

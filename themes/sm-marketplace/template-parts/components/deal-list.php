@@ -53,7 +53,7 @@ $filter = array(
 				</span>
 				<strong class="sm-deal__title"><?php echo esc_html( $d['title'] ); ?></strong>
 				<span class="sm-deal__meta">
-					<span><?php echo esc_html( 'lot' === $d['mode'] ? __( 'Whole lot', 'sm-marketplace' ) : sm_number( $d['quantity'], fmod( $d['quantity'], 1 ) ? 2 : 0 ) . ' ' . $d['unit_label'] ); ?></span>
+					<span><?php echo esc_html( 'lot' === $d['mode'] ? ( 'buildings' === $d['market'] ? __( 'Complete building', 'sm-marketplace' ) : __( 'Whole lot', 'sm-marketplace' ) ) : sm_number( $d['quantity'], fmod( $d['quantity'], 1 ) ? 2 : 0 ) . ' ' . $d['unit_label'] ); ?></span>
 					<span><strong><?php echo esc_html( sm_money( $d['amount'] ) ); ?></strong></span>
 					<span><?php echo esc_html( 'seller' === $role ? $d['buyer']['name'] : $d['seller']['name'] ); ?></span>
 					<span><?php echo esc_html( sm_ago( $d['updated'] ) ); ?></span>

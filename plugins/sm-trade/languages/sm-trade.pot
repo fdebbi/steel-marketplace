@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Trade 0.1.0\n"
+"Project-Id-Version: SM Trade 0.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-trade\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-13T00:39:17+00:00\n"
+"POT-Creation-Date: 2026-11-14T15:18:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-trade\n"
@@ -296,59 +296,63 @@ msgstr ""
 msgid "Counter-offers"
 msgstr ""
 
-#: src/Deals.php:76
+#: src/Deals.php:92
 msgid "This listing is no longer on sale."
 msgstr ""
 
-#: src/Deals.php:80
+#: src/Deals.php:96
 msgid "Sign in to buy or make an offer."
 msgstr ""
 
-#: src/Deals.php:84
+#: src/Deals.php:100
 msgid "This is one of your own listings."
 msgstr ""
 
-#: src/Deals.php:87
+#: src/Deals.php:103
 msgid "You already have an order or an offer waiting on this listing. Follow it in \"My purchases\"."
 msgstr ""
 
-#: src/Deals.php:100
+#: src/Deals.php:120
+msgid "Enter the price per kg you offer."
+msgstr ""
+
+#: src/Deals.php:125
 msgid "Enter the total price you offer."
 msgstr ""
 
-#: src/Deals.php:107
+#: src/Deals.php:132
 msgid "Enter your name."
 msgstr ""
 
-#: src/Deals.php:110
+#: src/Deals.php:135
 msgid "Enter a valid phone number, so the seller can call you."
 msgstr ""
 
-#: src/Deals.php:113
+#: src/Deals.php:138
 msgid "Enter a valid e-mail address."
 msgstr ""
 
-#: src/Deals.php:144
+#: src/Deals.php:170
 msgid "The request could not be saved. Try again."
 msgstr ""
 
-#: src/Deals.php:196
+#: src/Deals.php:222
 msgid "This order or offer does not exist."
 msgstr ""
 
-#: src/Deals.php:200
+#: src/Deals.php:226
 msgid "It is not your turn to answer."
 msgstr ""
 
-#: src/Deals.php:200
+#: src/Deals.php:226
 msgid "This order or offer is already closed."
 msgstr ""
 
-#: src/Deals.php:223
+#: src/Deals.php:249
 msgid "Enter the total price you propose."
 msgstr ""
 
-#: src/Deals.php:226
+#: src/Deals.php:252
 msgid "Propose a different price, or accept this one."
 msgstr ""
 
@@ -356,27 +360,27 @@ msgstr ""
 msgid "You sent many orders or offers in a short time. Try again later."
 msgstr ""
 
-#: src/Form.php:72
+#: src/Form.php:74
 msgid "Offer sent to the seller. You will be told by e-mail when the seller answers."
 msgstr ""
 
-#: src/Form.php:73
+#: src/Form.php:75
 msgid "Order sent to the seller. Nothing is paid on the platform: the seller accepts or refuses, then you agree on payment and delivery directly."
 msgstr ""
 
-#: src/Form.php:87
+#: src/Form.php:89
 msgid "Accepted. The contact details are below: agree on payment and delivery directly."
 msgstr ""
 
-#: src/Form.php:88
+#: src/Form.php:90
 msgid "Refused. The other party was told."
 msgstr ""
 
-#: src/Form.php:89
+#: src/Form.php:91
 msgid "Cancelled. The seller was told."
 msgstr ""
 
-#: src/Form.php:90
+#: src/Form.php:92
 msgid "Your price was sent. You will be told when the other party answers."
 msgstr ""
 

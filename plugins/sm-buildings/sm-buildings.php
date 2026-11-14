@@ -2,8 +2,8 @@
 /**
  * Plugin Name:       SM Buildings
  * Plugin URI:        https://github.com/fdebbi/steel-marketplace
-  * Description:       Steel buildings market: new and used warehouses, agricultural and industrial hangars, workshops, livestock buildings and building kits, assembled or dismantled. Adds the "buildings" market to the SM Products listing engine: dimensions and area, structural system, roof and cladding, what the price includes, structural element inventory weighed by SM Weight Engine, price per kg and per m², indicative drawing. Requires SM Core, SM Weight Engine and SM Products 0.3.0.
- * Version:           0.3.0
+  * Description:       Steel buildings market: new and used warehouses, agricultural and industrial hangars, workshops, livestock buildings and building kits, assembled or dismantled. Adds the "buildings" market to the SM Products listing engine: dimensions and area, structural system, roof and cladding, what the price includes, structural element inventory weighed by SM Weight Engine, price per kg and per m², indicative drawing. Requires SM Core, SM Weight Engine and SM Products 0.14.0.
+ * Version:           0.4.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Requires Plugins:  sm-core, sm-weight-engine, sm-products
@@ -17,8 +17,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_BUILDINGS_VERSION', '0.3.0' );
-define( 'SM_BUILDINGS_DB_VERSION', 1 );
+define( 'SM_BUILDINGS_VERSION', '0.4.0' );
+define( 'SM_BUILDINGS_DB_VERSION', 2 );
 define( 'SM_BUILDINGS_FILE', __FILE__ );
 define( 'SM_BUILDINGS_DIR', __DIR__ );
 

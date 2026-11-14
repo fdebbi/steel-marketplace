@@ -17,6 +17,7 @@ final class Presenter {
 	public static function init() {
 		add_filter( 'sm_products_listing', array( __CLASS__, 'listing' ), 10, 2 );
 		add_filter( 'sm_products_listing_detail', array( __CLASS__, 'detail' ), 10, 2 );
+		add_filter( 'sm_theme_data_mission_prefill', array( __CLASS__, 'mission_prefill' ), 10, 2 );
 	}
 
 	private static function is_mine( $p ) {
@@ -73,6 +74,13 @@ final class Presenter {
 		if ( 'lot' === $p->price_unit ) {
 			$out['asking_price'] = (float) $p->price;
 		}
+		// 0.4.0: the whole building (sale price) and / or by element (price per kg).
+		$lot = in_array( $p->sale_mode, array( 'lot', 'both' ), true ) ? ( (float) $p->lot_price > 0 ? (float) $p->lot_price : ( 'lot' === $p->price_unit ? (float) $p->price : 0.0 ) ) : ( 'lot' === $p->price_unit ? (float) $p->price : 0.0 );
+		$out['building_sale'] = array(
+			'lot_total'  => $lot,
+			'by_element' => in_array( $p->sale_mode, array( 'both', 'detail' ), true ) && 'kg' === $p->price_unit && ! empty( $p->lines ),
+			'per_kg'     => 'kg' === $p->price_unit ? (float) $p->price : ( $lot > 0 && $p->total_weight > 0 ? round( $lot / $p->total_weight, 2 ) : 0.0 ),
+		);
 		return $out;
 	}
 
@@ -83,18 +91,17 @@ final class Presenter {
 		$shape = self::shape( $p );
 		$tech  = static fn( $s ) => '<bdi dir="ltr">' . esc_html( (string) $s ) . '</bdi>';
 		$n     = static fn( $v, $d = 0 ) => number_format( (float) $v, $d, ',', "\u{202F}" );
+		$area  = $n( $p->quantity, fmod( (float) $p->quantity, 1 ) ? 1 : 0 ) . ' m²';
 		$rows  = array(
 			array( __( 'Assembled or dismantled', 'sm-buildings' ), esc_html( 'assembled' === $p->variant ? __( 'Assembled', 'sm-buildings' ) : __( 'Dismantled', 'sm-buildings' ) ) ),
-			array( __( 'Length × width × height at the column', 'sm-buildings' ), $tech( Spec::fmt( $shape['length'] ) . ' × ' . Spec::fmt( $shape['width'] ) . ' × ' . Spec::fmt( $shape['height'] ) . ' m' ) ),
-			array( __( 'Total area', 'sm-buildings' ), $tech( $n( $p->quantity, fmod( (float) $p->quantity, 1 ) ? 1 : 0 ) . ' m²' ) ),
-			array( __( 'Number of portal frames', 'sm-buildings' ), $tech( $shape['portals'] ) ),
 		);
-		if ( ! empty( $p->specs['ridge_m'] ) ) {
-			$rows[] = array( __( 'Height of the roof (ridge)', 'sm-buildings' ), $tech( Spec::fmt( $p->specs['ridge_m'] ) . ' m' ) );
-		}
-		if ( $shape['slope'] > 0 ) {
-			$rows[] = array( __( 'Roof slope', 'sm-buildings' ), $tech( Spec::fmt( $shape['slope'] ) . ' %' ) );
-		}
+		// 0.4.0: the geometry is shown as key figures above the drawing; the other rows open on demand.
+		$figures = array(
+			array( $tech( Spec::fmt( $shape['length'] ) . ' × ' . Spec::fmt( $shape['width'] ) . ' m' ), __( 'Length × width', 'sm-buildings' ) ),
+			array( $tech( $area ), __( 'Floor area', 'sm-buildings' ) ),
+			array( $tech( Spec::fmt( $shape['height'] ) . ' m' ), __( 'Height at the column', 'sm-buildings' ) . ( ! empty( $p->specs['ridge_m'] ) ? ' · ' . sprintf( /* translators: %s: height in metres. */ __( 'ridge %s m', 'sm-buildings' ), Spec::fmt( $p->specs['ridge_m'] ) ) : '' ) ),
+			array( $tech( $shape['portals'] ), __( 'Portal frames', 'sm-buildings' ) . ( $shape['slope'] > 0 ? ' · ' . sprintf( /* translators: %s: slope in percent. */ __( 'slope %s %%', 'sm-buildings' ), Spec::fmt( $shape['slope'] ) ) : '' ) ),
+		);
 		if ( ! empty( $p->specs['floors'] ) ) {
 			$rows[] = array( __( 'Number of floors', 'sm-buildings' ), $tech( (int) $p->specs['floors'] ) );
 		}
@@ -119,17 +126,73 @@ final class Presenter {
 		$out['drawing']   = Drawing::svg( $shape );
 		$out['drawing_note'] = __( 'Indicative drawing made from the figures given by the seller. It is not a structural design.', 'sm-buildings' );
 		$out['configurator'] = $shape;
+		$pieces = array_sum( array_map( static fn( $l ) => (int) ( $l['qty'] ?? 0 ), (array) $p->lines ) );
+		$out['building'] = array(
+			'figures'    => $figures,
+			'system'     => self::attr_label( $p, 'system' ),
+			'condition'  => (array) ( Market::conditions()[ (string) $p->item_condition ] ?? array() ),
+			'pieces'     => $pieces,
+			'kinds'      => count( (array) $p->lines ),
+			'inspection' => null,
+		);
 		if ( 'new' !== $p->item_condition ) {
-			$brand          = function_exists( 'sm_brand_name' ) ? sm_brand_name() : 'ReuSteel';
-			$out['advice']  = array(
-				'level'      => 'inspection' === $p->item_condition ? 'warning' : 'info',
-				'title'      => __( 'Before buying and reassembling: ask an engineer', 'sm-buildings' ),
+			$brand = function_exists( 'sm_brand_name' ) ? sm_brand_name() : 'ReuSteel';
+			// 0.4.0: the request goes to the platform, which appoints the engineer.
+			$out['building']['inspection'] = array(
+				'level' => 'inspection' === $p->item_condition ? 'warning' : 'info',
+				'title' => __( 'Have this building inspected before you buy', 'sm-buildings' ),
 				/* translators: %s: platform name. */
-				'text'       => sprintf( __( 'A used steel building must be checked by a qualified engineer before it is reassembled: condition of the members and connections, corrosion, and a new calculation for the new site (wind, snow, foundations). The information in this listing is declared by the seller; %s does not certify it.', 'sm-buildings' ), $brand ),
-				'link_label' => __( 'Find an engineer', 'sm-buildings' ),
-				'link_page'  => 'engineers',
+				'text'  => sprintf( __( 'An engineer verified on %s checks the condition of the members, the connections and the corrosion, and tells you whether the building can be reassembled on your site. The information in this listing is declared by the seller.', 'sm-buildings' ), $brand ),
+				'label' => __( 'Ask for an inspection', 'sm-buildings' ),
+				'type'  => 'expertise',
 			);
 		}
 		return $out;
+	}
+
+	/**
+	 * Inspection request opened from a building listing: the building is already
+	 * filled in (title, description, summary). Args: listing (listing id).
+	 */
+	public static function mission_prefill( $result, $args ) {
+		if ( null !== $result ) {
+			return $result;
+		}
+		$p = \SM\Products\Products::by_listing( (int) ( $args['listing'] ?? 0 ) );
+		if ( ! $p || ! self::is_mine( $p ) || 'published' !== $p->status ) {
+			return null;
+		}
+		$shape = self::shape( $p );
+		$n     = static fn( $v, $d = 0 ) => number_format( (float) $v, $d, ',', ' ' );
+		$title = \SM\Products\Presenter::title_text( $p );
+		$url   = function_exists( 'sm_url' ) ? sm_url( 'listing', array( 'id' => (int) $p->listing_id ) ) : '';
+		$dims  = Spec::fmt( $shape['length'] ) . ' × ' . Spec::fmt( $shape['width'] ) . ' × ' . Spec::fmt( $shape['height'] ) . ' m · ' . $n( $p->quantity, fmod( (float) $p->quantity, 1 ) ? 1 : 0 ) . ' m²';
+		if ( $shape['portals'] > 0 ) {
+			/* translators: %s: number of portal frames. */
+			$dims .= ' · ' . sprintf( __( '%s portal frames', 'sm-buildings' ), $shape['portals'] );
+		}
+		$place = trim( (string) ( $p->commune ?? '' ) . ( ! empty( $p->wilaya ) ? ', ' . \SM\Core\Accounts\Wilayas::name( $p->wilaya ) : '' ), ', ' );
+		$rows  = array(
+			array( __( 'Building', 'sm-buildings' ), $title ),
+			array( __( 'Dimensions', 'sm-buildings' ), $dims ),
+		);
+		if ( $p->total_weight > 0 ) {
+			$rows[] = array( 'partial' === $p->weight_source ? __( 'Weight of the declared elements', 'sm-buildings' ) : __( 'Steel weight', 'sm-buildings' ), $n( $p->total_weight ) . ' kg' );
+		}
+		$rows[] = array( __( 'Where it is', 'sm-buildings' ), $place );
+		$rows[] = array( __( 'Listing', 'sm-buildings' ), $url );
+		$text   = __( 'Inspection before buying a building listed on the platform.', 'sm-buildings' ) . "\n";
+		foreach ( $rows as $r ) {
+			$text .= $r[0] . ' : ' . $r[1] . "\n";
+		}
+		$text .= "\n" . __( 'What I expect from the inspection:', 'sm-buildings' ) . ' ';
+		return array(
+			'type'        => 'expertise',
+			/* translators: %s: title of the listing. */
+			'title'       => mb_substr( sprintf( __( 'Inspection: %s', 'sm-buildings' ), $title ), 0, 200 ),
+			'description' => $text,
+			'rows'        => $rows,
+			'url'         => $url,
+		);
 	}
 }

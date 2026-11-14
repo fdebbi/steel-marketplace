@@ -325,3 +325,18 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 - **Prix** : au kg ou pour le bâtiment entier, monté comme démonté. Quand le poids vient des seuls éléments déclarés, le total est affiché « Total indicatif » (formulaire et annonce).
 - **Affichage** : poids « x t — (y kg) » ; cartes « Monté » / « Démonté » sans phrase sur la vente ; colonne « Nbr pièces ».
 
+## Bâtiment métallique : vente en lot entier ou par élément, fiche refaite, inspection (2026-11-14)
+
+Décisions du propriétaire de la plateforme, validées sur maquette avant le code.
+
+- **Un bâtiment s'achète en lot entier.** Le prix affiché en grand est le total ; le prix au kg, dessous, est un équivalent qui sert à comparer avec l'acier neuf. « Total indicatif » est supprimé : le total est le prix de vente.
+- **Mode de vente choisi par le vendeur à la publication** : « Lot entier », coché par défaut, et / ou « Par élément », pour un bâtiment monté comme démonté.
+- **Par élément** : l'acheteur ne saisit pas de poids. Il choisit des éléments de l'inventaire et leur nombre ; le site calcule le poids avec les tables de profilés, puis le total avec le prix au kg. Une offre par élément se fait au kg.
+- **Un seul prix au kg pour tous les éléments** (pas de prix par type d'élément).
+- **Après la première vente par élément, la vente en lot entier se ferme** : le bâtiment n'est plus complet. L'inventaire diminue à chaque vente.
+- **Prix liés** : le vendeur saisit le prix au kg ou le total, le site calcule l'autre à partir du poids d'acier de l'annonce. Arrondis : total au dinar inférieur ; prix au kg au centime supérieur (les éléments achetés un par un ne coûtent jamais moins que le bâtiment entier).
+- **Comparaison avec l'acier neuf** : affichée seulement quand l'indice des prix du site a une valeur. Aucun prix n'est inventé.
+- **Fiche** : localisation en haut ; caractéristiques géométriques et schéma sous les photos, le reste au clic ; inventaire résumé (pièces, poids), détail au clic ; demande d'inspection sous la localisation.
+- **Inspection** : « ingénieur vérifié sur ReuSteel », pas « certifié » (la plateforme vérifie des comptes, elle ne délivre pas de certification). La demande part à l'administrateur de la plateforme, qui établit le devis et désigne l'ingénieur ; l'acheteur ne choisit pas l'ingénieur.
+- **Carte** : pour les visiteurs, carte de la wilaya sans repère (centre approximatif de la wilaya : il n'existe pas de coordonnées par commune) ; la position exacte reste réservée au vendeur, à la plateforme et à l'acheteur dont la visite est acceptée.
+- **Annonces déjà publiées** : un bâtiment monté au kg, ou vendu au kg sans inventaire, devient une vente en lot entier à son total.

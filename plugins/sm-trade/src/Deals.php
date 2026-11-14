@@ -56,6 +56,21 @@ final class Deals {
 		return $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$t} WHERE id = %d", (int) $id ) ); // phpcs:ignore WordPress.DB
 	}
 
+	/** Pieces of the inventory of a deal by element: list of { key, element, designation, length_mm, n, kg }. */
+	public static function items( $deal ) {
+		$items = json_decode( (string) ( $deal->items ?? '' ), true );
+		return is_array( $items ) ? $items : array();
+	}
+
+	/** The same pieces as key => number (what Stock expects). */
+	private static function item_counts( $deal ) {
+		$out = array();
+		foreach ( self::items( $deal ) as $it ) {
+			$out[ (string) $it['key'] ] = (int) $it['n'];
+		}
+		return $out;
+	}
+
 	/** Open deal of this buyer on this listing, or null (one at a time). */
 	public static function open_for( $product_id, $user_id ) {
 		global $wpdb;
@@ -67,7 +82,8 @@ final class Deals {
 	 * Create an order or an offer. Returns the id or a WP_Error.
 	 *
 	 * @param array $in kind (order|offer), mode (lot|detail), quantity, amount (offer total, DA),
-	 *                  name, phone, email, message.
+	 *                  name, phone, email, message; items (pieces of the inventory: key => number)
+	 *                  and amount_kg (offer per kg) for a listing bought by element (0.2.0).
 	 */
 	public static function create( $product_id, $user_id, array $in ) {
 		global $wpdb;
@@ -88,14 +104,23 @@ final class Deals {
 		}
 		$kind = 'offer' === ( $in['kind'] ?? '' ) ? 'offer' : 'order';
 		$mode = 'lot' === ( $in['mode'] ?? '' ) ? 'lot' : 'detail';
-		$ok   = Stock::check( $p, $mode, (float) ( $in['quantity'] ?? 0 ) );
+		$ok   = Stock::check( $p, $mode, (float) ( $in['quantity'] ?? 0 ), array_map( 'absint', (array) ( $in['items'] ?? array() ) ) );
 		if ( is_wp_error( $ok ) ) {
 			return $ok;
 		}
 		list( $qty, $unit, $listed ) = $ok;
+		$items  = (array) ( $ok[3] ?? array() );
 		$amount = $listed;
 		if ( 'offer' === $kind ) {
 			$amount = round( (float) ( $in['amount'] ?? 0 ), 2 );
+			if ( $items ) {
+				// By element: the buyer offers a price per kg; the total follows the pieces chosen.
+				$per_kg = round( (float) ( $in['amount_kg'] ?? 0 ), 2 );
+				if ( $per_kg <= 0 ) {
+					return new \WP_Error( 'amount_kg', __( 'Enter the price per kg you offer.', 'sm-trade' ) );
+				}
+				$amount = round( $qty * $per_kg, 2 );
+			}
 			if ( $amount <= 0 ) {
 				return new \WP_Error( 'amount', __( 'Enter the total price you offer.', 'sm-trade' ) );
 			}
@@ -135,6 +160,7 @@ final class Deals {
 				'listed_total'      => $listed,
 				'amount'            => $amount,
 				'message'           => mb_substr( sanitize_textarea_field( (string) ( $in['message'] ?? '' ) ), 0, 2000 ),
+				'items'             => $items ? wp_json_encode( $items ) : '',
 				'created_at'        => $now,
 				'updated_at'        => $now,
 			)
@@ -205,7 +231,7 @@ final class Deals {
 		$row   = array( 'updated_at' => $now );
 		switch ( $action ) {
 			case 'accept':
-				$taken = Stock::take( (int) $deal->product_id, $deal->mode, (float) $deal->quantity, $deal->ref );
+				$taken = Stock::take( (int) $deal->product_id, $deal->mode, (float) $deal->quantity, $deal->ref, self::item_counts( $deal ) );
 				if ( is_wp_error( $taken ) ) {
 					return $taken;
 				}

@@ -152,6 +152,8 @@ final class Bridge {
 			'seller'       => array( 'name' => $seller ? $seller->name : '', 'slug' => $seller ? $seller->slug : '' ),
 			'buyer'        => array( 'name' => $d->buyer_name, 'phone' => $d->buyer_phone, 'email' => $d->buyer_email ),
 			'message'      => (string) $d->message,
+			// Bought by element (0.2.0): the pieces chosen in the inventory.
+			'items'        => Deals::items( $d ),
 		);
 	}
 

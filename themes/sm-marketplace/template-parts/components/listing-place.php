@@ -36,6 +36,10 @@ $when = static fn( $dt ) => $dt ? sm_date( $dt ) . ' · ' . substr( (string) $dt
 		<?php if ( ! empty( $visit['own'] ) && empty( $visit['map_public'] ) ) : ?>
 			<p class="sm-help"><?php esc_html_e( 'Only you see this map. Buyers see it after you accept their visit request.', 'sm-marketplace' ); ?></p>
 		<?php endif; ?>
+	<?php elseif ( ! empty( $args['area'] ) && ! empty( $item['map_area'] ) ) : ?>
+		<?php // 0.33.0: the wilaya on a map, without a marker; the exact place stays private. ?>
+		<?php sm_component( 'location-map', array( 'mode' => 'view', 'lat' => $item['map_area']['lat'], 'lng' => $item['map_area']['lng'], 'area' => true, 'zoom' => 9 ) ); ?>
+		<p class="sm-help"><?php echo esc_html( ! empty( $visit['has_position'] ) ? __( 'Map of the wilaya. The exact position is shown to the buyer whose visit is accepted.', 'sm-marketplace' ) : __( 'Map of the wilaya. Ask the seller for the exact address.', 'sm-marketplace' ) ); ?></p>
 	<?php elseif ( ! empty( $visit['has_position'] ) ) : ?>
 		<p class="sm-help"><?php esc_html_e( 'The exact position is given after the agreement of the seller.', 'sm-marketplace' ); ?></p>
 	<?php endif; ?>

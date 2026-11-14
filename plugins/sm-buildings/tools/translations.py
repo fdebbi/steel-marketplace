@@ -89,3 +89,28 @@ T.update({
 "Elements proposed from the dimensions": ("Éléments proposés à partir des dimensions", "العناصر المقترحة انطلاقا من الأبعاد"),
 "For a column / rafter frame, the form proposes the elements from the dimensions; the seller can change every row. The nearest catalogue size is taken; beyond the largest size the dimension is left to the seller.": ("Pour un portique poteau / traverse, le formulaire propose les éléments à partir des dimensions ; le vendeur peut modifier chaque ligne. La dimension de catalogue la plus proche est retenue ; au-delà de la plus grande, la dimension est laissée au vendeur.", "في حالة إطار عمود / عارضة، يقترح النموذج العناصر انطلاقا من الأبعاد؛ ويمكن للبائع تعديل كل سطر. يُؤخذ أقرب مقاس في الجدول؛ وإذا تجاوز أكبر مقاس يُترك المقاس للبائع."),
 })
+
+# 0.4.0 — whole building / by element, key figures, inspection request.
+T.update({
+"Length × width": ("Longueur × largeur", "الطول × العرض"),
+"Floor area": ("Surface au sol", "مساحة الأرضية"),
+"Height at the column": ("Hauteur au poteau", "الارتفاع عند العمود"),
+"ridge %s m": ("faîtage %s m", "القمة %s م"),
+"Portal frames": ("Portiques", "الإطارات"),
+"slope %s %%": ("pente %s %%", "الميل %s %%"),
+"Have this building inspected before you buy": ("Faites inspecter ce bâtiment avant d’acheter", "اطلب معاينة هذا المبنى قبل الشراء"),
+"An engineer verified on %s checks the condition of the members, the connections and the corrosion, and tells you whether the building can be reassembled on your site. The information in this listing is declared by the seller.": ("Un ingénieur vérifié sur %s contrôle l’état des éléments, les assemblages et la corrosion, et vous dit si le bâtiment peut être remonté sur votre site. Les informations de cette annonce sont déclarées par le vendeur.", "مهندس موثّق على %s يفحص حالة العناصر والوصلات والتآكل، ويخبرك إن كان المبنى قابلا لإعادة التركيب في موقعك. معلومات هذا الإعلان مصرح بها من البائع."),
+"Ask for an inspection": ("Demander une inspection", "طلب معاينة"),
+"%s portal frames": ("%s portiques", "%s إطارات"),
+"Building": ("Bâtiment", "المبنى"),
+"Dimensions": ("Dimensions", "الأبعاد"),
+"Weight of the declared elements": ("Poids des éléments déclarés", "وزن العناصر المصرح بها"),
+"Where it is": ("Lieu du bâtiment", "مكان المبنى"),
+"Listing": ("Annonce", "الإعلان"),
+"Inspection before buying a building listed on the platform.": ("Inspection avant l’achat d’un bâtiment publié sur la plateforme.", "معاينة قبل شراء مبنى منشور على المنصة."),
+"What I expect from the inspection:": ("Ce que j’attends de l’inspection :", "ما أنتظره من المعاينة:"),
+"Inspection: %s": ("Inspection : %s", "معاينة: %s"),
+"Choose how you sell: the whole building, by element, or both.": ("Choisissez comment vous vendez : le bâtiment entier, par élément, ou les deux.", "اختر طريقة البيع: المبنى كاملا، حسب العنصر، أو كلاهما."),
+"To sell by element, list the elements of the structure first (step \"Elements\").": ("Pour vendre par élément, déclarez d’abord les éléments de la structure (étape « Éléments »).", "للبيع حسب العنصر، صرّح أولا بعناصر الهيكل (مرحلة «العناصر»)."),
+"A price per kg needs the steel weight: list the elements or give the total weight, or type the price of the whole building.": ("Un prix au kg demande le poids d’acier : déclarez les éléments ou le poids total, ou saisissez le prix du bâtiment entier.", "السعر للكيلوغرام يتطلب وزن الفولاذ: صرّح بالعناصر أو بالوزن الإجمالي، أو أدخل سعر المبنى كاملا."),
+})

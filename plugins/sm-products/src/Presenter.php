@@ -107,6 +107,9 @@ final class Presenter {
 		$out['address']  = (string) ( $p->address ?? '' );
 		$out['location'] = Visits::location_for( $p );
 		$out['visit']    = Visits::state_for( $p );
+		// 0.14.0: without the exact position, the page may show the wilaya on a map (approximate centre, no marker).
+		$centres     = \SM\Core\Accounts\Wilayas::centres();
+		$out['map_area'] = ! $out['location'] && isset( $centres[ $p->wilaya ] ) ? array( 'lat' => $centres[ $p->wilaya ][0], 'lng' => $centres[ $p->wilaya ][1] ) : null;
 		$out['drawing']   = '';
 		$out['drawing_dims'] = array();
 		if ( $p->family && 'PLATE' !== $p->family && ! $p->lines ) {

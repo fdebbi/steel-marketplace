@@ -53,6 +53,7 @@ final class Installer {
 				amount decimal(16,2) NOT NULL DEFAULT 0,
 				counters tinyint(3) unsigned NOT NULL DEFAULT 0,
 				message text,
+				items longtext,
 				created_at datetime NOT NULL,
 				updated_at datetime NOT NULL,
 				closed_at datetime DEFAULT NULL,
