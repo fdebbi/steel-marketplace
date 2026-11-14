@@ -297,11 +297,11 @@ Document d'architecture complet (Phase 0) : https://claude.ai/artifact/EWVZtQ3Zm
 - Mezzanine : option oui / non, surface facultative. Étages : 1 par défaut.
 - Poteaux + traverses obligatoires ; avec « Ferme en treillis », poteaux + fermes.
 
-**Choix faits pendant le codage, à confirmer.**
+**Choix faits pendant le codage, confirmés par l'utilisateur le 2026-11-14** (sauf la durée de la carte, changée).
 
 - **PRS et « Autre »** : un profilé reconstitué soudé n'existe pas dans les tables de profilés du site ; on ne peut donc pas le déclarer comme élément. Pour ces deux systèmes, les éléments sont facultatifs et le poids total devient obligatoire. Une ligne « PRS » avec ses dimensions (hauteur, largeur, épaisseurs) pourrait être ajoutée plus tard.
 - **« Vente en lot »** est compris comme : toute annonce vendue « lot entier » ou « détail et lot », quel que soit le marché.
-- La carte reste visible pour l'acheteur accepté jusqu'à 2 jours après la date de la visite.
+- La carte reste toujours visible pour l'acheteur dont une visite a été acceptée (décision de l'utilisateur ; la première version la retirait 2 jours après la visite). Il la perd seulement s'il annule sa visite ou si le vendeur la refuse ensuite. sm-products 0.12.1.
 - Titre : « Type largeur × longueur m — hauteur — système — wilaya » (comme la maquette).
 - Les annonces de bâtiments publiées avant cette version restent en ligne ; à la prochaine modification, le vendeur devra compléter la hauteur de toiture, les éléments, la commune et la position.
 

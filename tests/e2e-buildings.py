@@ -206,6 +206,13 @@ with sync_playwright() as p:
     bp.goto(BASE + '/annonce/%s/' % la)
     check('Visite acceptée' in txt(bp, '.sm-place') and '15:30' in txt(bp, '.sm-place') and bp.locator('.sm-place [data-sm-map="view"]').count() == 1 and bp.get_attribute('.sm-place [data-sm-map="view"]', 'data-lat').startswith('35.6477'), 'buyer with an accepted visit sees the map at the exact position')
     bp.screenshot(path=os.path.join(OUT, 'place-accepted-fr-1280.png'), full_page=True)
+    # 0.12.1: the accepted buyer keeps the map with no time limit, even long after the visit.
+    shift = 'global $wpdb; $t = $wpdb->prefix . "sm_product_visits"; foreach ($wpdb->get_results("SELECT id, visit_at, proposed_at FROM $t WHERE status = \'accepted\'") as $r) { $d = array("visit_at" => gmdate("Y-m-d H:i:s", strtotime($r->visit_at) %s 40 * DAY_IN_SECONDS)); if ($r->proposed_at) { $d["proposed_at"] = gmdate("Y-m-d H:i:s", strtotime($r->proposed_at) %s 40 * DAY_IN_SECONDS); } $wpdb->update($t, $d, array("id" => $r->id)); }'
+    wp(shift % ('-', '-'))
+    bp.reload()
+    check(bp.locator('.sm-place [data-sm-map="view"]').count() == 1 and bp.locator('[data-smc-open="sm-visit"]').count() == 1, 'visit passed for 40 days: the accepted buyer still sees the map and can ask for a new visit')
+    wp(shift % ('+', '+'))
+    bp.reload()
     pub.reload()
     check(pub.locator('.sm-place .sm-map').count() == 0, 'the map stays hidden for everyone else')
     pg.goto(BASE + '/annonce/%s/' % la)

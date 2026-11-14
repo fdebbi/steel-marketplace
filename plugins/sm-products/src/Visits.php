@@ -28,7 +28,7 @@ final class Visits {
 
 	const OPEN      = array( 'pending', 'proposed', 'accepted' );
 	const MAX_DAYS  = 90;  // A visit is asked at most three months ahead.
-	const KEEP_DAYS = 2;   // The map stays visible two days after the visit.
+	const KEEP_DAYS = 2;   // A passed visit stays shown two days; then a new one can be asked.
 
 	public static function init() {
 		add_action( 'admin_post_sm_visit_request', array( __CLASS__, 'handle_request' ) );
@@ -84,9 +84,20 @@ final class Visits {
 	}
 
 	/**
+	 * Did the seller accept a visit of this company for the listing? Once
+	 * accepted the buyer keeps the map, even after the visit (the buyer who
+	 * cancels, or whom the seller refuses afterwards, loses it).
+	 */
+	public static function was_accepted( $product_id, $company_id ) {
+		global $wpdb;
+		// phpcs:ignore WordPress.DB
+		return (bool) $wpdb->get_var( $wpdb->prepare( 'SELECT id FROM ' . self::table() . " WHERE product_id = %d AND company_id = %d AND status = 'accepted' LIMIT 1", $product_id, $company_id ) );
+	}
+
+	/**
 	 * Exact position the current visitor may see, or null: the seller and the
 	 * platform team always; everyone when the seller made the map public;
-	 * otherwise the buyer whose visit was accepted.
+	 * otherwise the buyer whose visit was accepted, with no time limit.
 	 */
 	public static function location_for( $p, $user_id = null ) {
 		if ( null === $p->lat || null === $p->lng ) {
@@ -104,8 +115,7 @@ final class Visits {
 			return $loc;
 		}
 		$company = Companies::for_user( $user_id );
-		$v       = $company ? self::latest( $p->id, $company->id ) : null;
-		return $v && 'accepted' === $v->status && self::current( $v ) ? $loc : null;
+		return $company && self::was_accepted( $p->id, $company->id ) ? $loc : null;
 	}
 
 	/** What the product page shows about visits to the current visitor. */

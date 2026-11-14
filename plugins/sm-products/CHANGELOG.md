@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.12.1 — 2026-11-14
+
+- Carte de l'annonce : l'acheteur dont une visite a été acceptée garde la position exacte sans limite de temps (avant : jusqu'à 2 jours après la visite). Il la perd s'il annule sa visite ou si le vendeur la refuse ensuite. Une visite passée depuis plus de 2 jours laisse toujours demander une nouvelle visite.
+
 ## 0.12.0 — 2026-11-13
 
 - Lieu de l'annonce : colonnes `commune`, `address`, `lat`, `lng`, `map_public` (base v8). Position validée par sm-core (en Algérie). Filtre `sm_products_location_required` (obligatoire pour un marché).
