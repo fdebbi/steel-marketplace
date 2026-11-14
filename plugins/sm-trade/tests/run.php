@@ -175,6 +175,20 @@ wp_set_current_user( 0 );
 $box = apply_filters( 'sm_theme_data_trade_box', null, array( 'id' => Products::get( $bars )->listing_id ) );
 smt_assert( 'login' === $box['state'] && false !== strpos( $box['login_url'], 'redirect_to' ), 'visitor: sign-in link that comes back to the listing' );
 
+echo "6. Overview statistics (0.4.0)\n";
+$pk = Products::get( $kg );
+smt_assert( 300.0 === \SM\Trade\Stats::weight_of( $pk, 'detail', 300, 'kg' ) && abs( \SM\Trade\Stats::weight_of( Products::get( $bars ), 'detail', 2, 'unit' ) - 2 * Products::get( $bars )->total_weight / Products::get( $bars )->pieces ) < 0.01 && 0.0 === \SM\Trade\Stats::weight_of( (object) array( 'total_weight' => 0, 'pieces' => 0 ), 'detail', 50, 'm2' ), 'weight of an order: kg as is, bars from the weight of a bar, nothing for m²' );
+$st = \SM\Trade\Stats::for_account( $c_s, $u_s );
+$all = $st['periods']['all']['totals'];
+$acc = $GLOBALS['wpdb']->get_row( $GLOBALS['wpdb']->prepare( "SELECT COUNT(*) n, SUM(amount) a, SUM(weight_kg) w FROM {$GLOBALS['wpdb']->prefix}sm_trade_deals WHERE status = 'accepted' AND seller_company_id = %d", $c_s ) );
+smt_assert( (int) $acc->n === $all['sold_n'] && abs( (float) $acc->a - $all['sold'] ) < 0.05 && abs( (float) $acc->w - $all['sold_kg'] ) < 0.01 && 0 === $all['bought_n'], 'seller: accepted sales counted with their amount and weight; nothing bought (' . $all['sold_n'] . ' sales)' );
+smt_assert( 30 === count( $st['periods']['30d']['buckets'] ) && 13 === count( $st['periods']['3m']['buckets'] ) && 12 === count( $st['periods']['12m']['buckets'] ) && $st['periods']['12m']['totals']['sold_n'] === $all['sold_n'] && null === $st['periods']['all']['prev'] && isset( $st['periods']['12m']['prev']['sold'] ), 'periods: 30 days, 13 weeks, 12 months, all; comparison with the period before (not for all)' );
+$sb = \SM\Trade\Stats::for_account( $c_b, $u_b );
+smt_assert( $sb['periods']['all']['totals']['bought_n'] >= 1 && 0 === $sb['periods']['all']['totals']['sold_n'], 'buyer: accepted purchases counted on the buying side' );
+$GLOBALS['wpdb']->update( $GLOBALS['wpdb']->prefix . 'sm_trade_deals', array( 'closed_at' => gmdate( 'Y-m-d H:i:s', strtotime( '-5 months' ) ) ), array( 'id' => $d1 ) );
+$s5 = \SM\Trade\Stats::for_account( $c_s, $u_s );
+smt_assert( $s5['periods']['30d']['totals']['sold_n'] === $all['sold_n'] - 1 && $s5['periods']['12m']['totals']['sold_n'] === $all['sold_n'], 'an order accepted five months ago: out of the last 30 days, in the last 12 months' );
+
 smt_cleanup();
 $t = $GLOBALS['smt_t'];
 echo "\n{$t[0]} passed, {$t[1]} failed\n";

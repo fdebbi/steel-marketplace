@@ -13,7 +13,11 @@ defined( 'ABSPATH' ) || exit;
 final class Installer {
 
 	public static function activate() {
+		$from = (int) get_option( 'sm_trade_db_version', 0 );
 		self::migrate();
+		if ( $from > 0 && $from < 3 ) {
+			\SM\Trade\Stats::estimate_weights(); // 0.4.0: weight of the orders made before it was stored.
+		}
 		update_option( 'sm_trade_db_version', SM_TRADE_DB_VERSION, false );
 		\SM\Trade\Cron::schedule();
 	}
@@ -54,6 +58,7 @@ final class Installer {
 				counters tinyint(3) unsigned NOT NULL DEFAULT 0,
 				message text,
 				items longtext,
+				weight_kg decimal(16,3) NOT NULL DEFAULT 0,
 				created_at datetime NOT NULL,
 				updated_at datetime NOT NULL,
 				closed_at datetime DEFAULT NULL,

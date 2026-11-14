@@ -1,5 +1,12 @@
 # Changelog — sm-trade
 
+## 0.4.0 — 2026-11-14
+
+- Statistiques de la Vue d'ensemble (`Stats`, donnée de thème `account_stats`) : montants, poids et nombre des ventes et achats acceptés, par jour (30 jours), par semaine (3 mois), par mois (12 mois et tout), avec la période précédente pour comparer.
+- Poids de chaque commande enregistré à sa création (colonne `weight_kg`, base v3) : kg tels quels, barres à partir du poids d'une barre, lot au poids de l'annonce, rien pour le m². Commandes passées : poids estimé une fois à partir de l'annonce quand c'est possible.
+- Noms des mois fournis par l'extension (français et arabe même sans traduction de WordPress installée).
+- Tests : 48.
+
 ## 0.3.0 — 2026-11-14
 
 - Offre sur des barres au prix au kg (`amount_kg`) : le total = nombre de barres × poids d'une barre × prix proposé. Une offre en prix total reste possible.

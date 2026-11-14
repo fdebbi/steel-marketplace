@@ -199,7 +199,7 @@ msgstr "La place de marché industrielle de l’acier en Algérie"
 msgid "Utility"
 msgstr "Liens utiles"
 
-#: header.php:39 inc/assets.php:42
+#: header.php:39 inc/assets.php:46
 msgid "Open menu"
 msgstr "Ouvrir le menu"
 
@@ -228,7 +228,7 @@ msgstr "IPE 200, HEA, tube 100×50, hangar…"
 msgid "Menu"
 msgstr "Menu"
 
-#: header.php:88 inc/assets.php:43 templates/dashboard.php:244
+#: header.php:88 inc/assets.php:47 templates/dashboard.php:244
 msgid "Close menu"
 msgstr "Fermer le menu"
 
@@ -236,54 +236,54 @@ msgstr "Fermer le menu"
 msgid "View all listings"
 msgstr "Voir toutes les annonces"
 
-#: inc/assets.php:44 templates/auth-login.php:32
+#: inc/assets.php:48 templates/auth-login.php:32
 #: templates/auth-register.php:92 templates/company-profile.php:239
 #: templates/engineer-apply.php:272
 msgid "Show"
 msgstr "Afficher"
 
-#: inc/assets.php:45
+#: inc/assets.php:49
 msgid "Hide"
 msgstr "Masquer"
 
-#: inc/assets.php:46 inc/template-tags.php:534
+#: inc/assets.php:50 inc/template-tags.php:534
 msgid "Saved"
 msgstr "Enregistrée"
 
-#: inc/assets.php:47
+#: inc/assets.php:51
 msgid "Removed from saved listings"
 msgstr "Retirée des annonces enregistrées"
 
-#: inc/assets.php:48
+#: inc/assets.php:52
 msgid "Uploaded"
 msgstr "Téléchargé"
 
 #. translators: %s: file name.
-#: inc/assets.php:50
+#: inc/assets.php:54
 msgid "Remove %s"
 msgstr "Retirer %s"
 
-#: inc/assets.php:51
+#: inc/assets.php:55
 msgid "Add other files"
 msgstr "Ajouter d’autres fichiers"
 
-#: inc/assets.php:52
+#: inc/assets.php:56
 msgid "Too many files: the extra ones were not added."
 msgstr "Trop de fichiers : les fichiers en trop n’ont pas été ajoutés."
 
-#: inc/assets.php:53
+#: inc/assets.php:57
 msgid "Will be deleted when you save"
 msgstr "Sera supprimé à l’enregistrement"
 
-#: inc/assets.php:54
+#: inc/assets.php:58
 msgid "Will be replaced when you save"
 msgstr "Sera remplacé à l’enregistrement"
 
-#: inc/assets.php:55
+#: inc/assets.php:59
 msgid "Undo"
 msgstr "Annuler"
 
-#: inc/assets.php:56 inc/template-tags.php:538 inc/template-tags.php:544
+#: inc/assets.php:60 inc/template-tags.php:538 inc/template-tags.php:544
 #: template-parts/components/my-products.php:98
 #: template-parts/components/portfolio-grid.php:30
 #: template-parts/components/rfq-single.php:138
@@ -292,59 +292,59 @@ msgstr "Annuler"
 msgid "Delete"
 msgstr "Supprimer"
 
-#: inc/assets.php:57 template-parts/components/listing-place.php:82
+#: inc/assets.php:61 template-parts/components/listing-place.php:82
 #: templates/company-profile.php:290 templates/company-profile.php:344
 #: templates/engineer-apply.php:38 templates/engineer-apply.php:144
 msgid "Close"
 msgstr "Fermer"
 
-#: inc/assets.php:58
+#: inc/assets.php:62
 msgid "Previous photo"
 msgstr "Photo précédente"
 
-#: inc/assets.php:59
+#: inc/assets.php:63
 msgid "Next photo"
 msgstr "Photo suivante"
 
-#: inc/assets.php:60
+#: inc/assets.php:64
 msgid "Original size"
 msgstr "Taille originale"
 
-#: inc/assets.php:107
+#: inc/assets.php:111
 msgid "Company position. Drag it, or use the arrow keys."
 msgstr ""
 "Position de l’entreprise. Faites-la glisser ou utilisez les flèches du "
 "clavier."
 
-#: inc/assets.php:108 template-parts/components/location-map.php:67
+#: inc/assets.php:112 template-parts/components/location-map.php:67
 msgid "No position yet."
 msgstr "Aucune position pour le moment."
 
-#: inc/assets.php:109
+#: inc/assets.php:113
 msgid "Drag the marker to your exact address, or click the map."
 msgstr ""
 "Faites glisser le repère jusqu’à votre adresse exacte, ou cliquez sur la "
 "carte."
 
-#: inc/assets.php:110
+#: inc/assets.php:114
 msgid "Position placed:"
 msgstr "Position placée :"
 
-#: inc/assets.php:111
+#: inc/assets.php:115
 msgid "Current location found:"
 msgstr "Position actuelle trouvée :"
 
 #. translators: %d: accuracy in metres.
-#: inc/assets.php:113
+#: inc/assets.php:117
 msgid "Approximate (about %d m): drag the marker to correct it."
 msgstr ""
 "Approximative (environ %d m) : faites glisser le repère pour la corriger."
 
-#: inc/assets.php:114
+#: inc/assets.php:118
 msgid "Looking for your location…"
 msgstr "Recherche de votre position…"
 
-#: inc/assets.php:115
+#: inc/assets.php:119
 msgid ""
 "Location access was refused. Allow it in your browser, or place the marker "
 "by hand."
@@ -352,18 +352,18 @@ msgstr ""
 "L’accès à la position a été refusé. Autorisez-le dans votre navigateur, ou "
 "placez le repère à la main."
 
-#: inc/assets.php:116
+#: inc/assets.php:120
 msgid "Your location could not be found. Place the marker by hand."
 msgstr "Votre position est introuvable. Placez le repère à la main."
 
-#: inc/assets.php:117
+#: inc/assets.php:121
 msgid ""
 "Finding your location took too long. Try again or place the marker by hand."
 msgstr ""
 "La recherche de votre position a pris trop de temps. Réessayez ou placez le "
 "repère à la main."
 
-#: inc/assets.php:118
+#: inc/assets.php:122
 msgid ""
 "Your browser only shares your location on a secure (https) site. Place the "
 "marker by hand."
@@ -371,16 +371,16 @@ msgstr ""
 "Votre navigateur ne partage la position que sur un site sécurisé (https). "
 "Placez le repère à la main."
 
-#: inc/assets.php:119
+#: inc/assets.php:123
 msgid "This position is outside Algeria. Place the marker on your address."
 msgstr ""
 "Cette position est hors d’Algérie. Placez le repère sur votre adresse."
 
-#: inc/assets.php:120
+#: inc/assets.php:124
 msgid "Wilaya changed: place the marker again on your address."
 msgstr "Wilaya modifiée : replacez le repère sur votre adresse."
 
-#: inc/assets.php:121
+#: inc/assets.php:125
 msgid "Position removed. It will be deleted when you save."
 msgstr "Position retirée. Elle sera supprimée à l’enregistrement."
 
@@ -2378,7 +2378,8 @@ msgstr "Filtrer par statut"
 
 #: template-parts/components/my-products.php:52
 #: template-parts/components/my-products.php:56
-#: template-parts/dashboard/listings.php:25 template-parts/drawer-foot.php:11
+#: template-parts/dashboard/listings.php:25
+#: template-parts/dashboard/overview.php:196 template-parts/drawer-foot.php:11
 #: templates/dashboard.php:162 templates/dashboard.php:257
 #: templates/front-page-template.php:27
 msgid "Publish a listing"
@@ -5846,75 +5847,252 @@ msgstr "Envoyer la preuve"
 msgid "Cancel this order"
 msgstr "Annuler cette commande"
 
-#: template-parts/dashboard/overview.php:18
-msgid "Active listings"
-msgstr "Annonces actives"
+#: template-parts/dashboard/overview.php:56
+msgid "Orders and offers waiting for your answer"
+msgstr "Commandes et offres qui attendent votre réponse"
 
-#: template-parts/dashboard/overview.php:19
-msgid "Views (30 days)"
-msgstr "Vues (30 jours)"
+#: template-parts/dashboard/overview.php:57 templates/dashboard.php:117
+msgid "Visit requests"
+msgstr "Demandes de visite"
 
-#: template-parts/dashboard/overview.php:20
+#: template-parts/dashboard/overview.php:58
 msgid "New enquiries"
 msgstr "Nouvelles demandes"
 
-#: template-parts/dashboard/overview.php:21
-msgid "Open quotations"
-msgstr "Devis en cours"
+#: template-parts/dashboard/overview.php:59
+msgid "Service requests received"
+msgstr "Demandes de service reçues"
 
-#: template-parts/dashboard/overview.php:27
+#. translators: %s: first name.
+#: template-parts/dashboard/overview.php:86
+msgid "Hello, %s"
+msgstr "Bonjour, %s"
+
+#. translators: %s: first name.
+#: template-parts/dashboard/overview.php:86
+msgid "Hello"
+msgstr "Bonjour"
+
+#: template-parts/dashboard/overview.php:91
+msgid "Verified"
+msgstr "Vérifié"
+
+#: template-parts/dashboard/overview.php:95
+msgid "Period"
+msgstr "Période"
+
+#: template-parts/dashboard/overview.php:98
+msgid "30 days"
+msgstr "30 jours"
+
+#: template-parts/dashboard/overview.php:99
+msgid "3 months"
+msgstr "3 mois"
+
+#: template-parts/dashboard/overview.php:100
+msgid "12 months"
+msgstr "12 mois"
+
+#: template-parts/dashboard/overview.php:101
+msgid "All time"
+msgstr "Tout"
+
+#: template-parts/dashboard/overview.php:112
+msgid "Amount sold"
+msgstr "Montant vendu"
+
+#: template-parts/dashboard/overview.php:114
+msgid "%s accepted sale"
+msgid_plural "%s accepted sales"
+msgstr[0] "%s vente acceptée"
+msgstr[1] "%s ventes acceptées"
+
+#: template-parts/dashboard/overview.php:114
+msgid "%s accepted sales"
+msgstr "%s ventes acceptées"
+
+#: template-parts/dashboard/overview.php:118
+msgid "Amount bought"
+msgstr "Montant acheté"
+
+#: template-parts/dashboard/overview.php:120
+msgid "%s accepted purchase"
+msgid_plural "%s accepted purchases"
+msgstr[0] "%s achat accepté"
+msgstr[1] "%s achats acceptés"
+
+#: template-parts/dashboard/overview.php:120
+msgid "%s accepted purchases"
+msgstr "%s achats acceptés"
+
+#: template-parts/dashboard/overview.php:125
+msgid "Steel on sale"
+msgstr "Acier en vente"
+
+#. translators: 1: number of listings, 2: their value.
+#: template-parts/dashboard/overview.php:130
+msgid "%1$s listing online · %2$s"
+msgid_plural "%1$s listings online · %2$s"
+msgstr[0] "%1$s annonce en ligne · %2$s"
+msgstr[1] "%1$s annonces en ligne · %2$s"
+
+#: template-parts/dashboard/overview.php:136
+msgid "Steel traded"
+msgstr "Acier échangé"
+
+#. translators: 1: weight sold, 2: weight bought.
+#: template-parts/dashboard/overview.php:138
+#: template-parts/dashboard/overview.php:143
+msgid "%1$s sold · %2$s bought"
+msgstr "%1$s vendues · %2$s achetées"
+
+#: template-parts/dashboard/overview.php:152
+msgid "Sales and purchases"
+msgstr "Ventes et achats"
+
+#: template-parts/dashboard/overview.php:153
+msgid "Measure"
+msgstr "Mesure"
+
+#. translators: %s: currency.
+#: template-parts/dashboard/overview.php:154
+msgid "Amount (%s)"
+msgstr "Montant (%s)"
+
+#. translators: %s: currency.
+#: template-parts/dashboard/overview.php:155
+msgid "Weight (t)"
+msgstr "Poids (t)"
+
+#: template-parts/dashboard/overview.php:156
+msgid "Number of orders"
+msgstr "Nombre"
+
+#: template-parts/dashboard/overview.php:159
+#: template-parts/dashboard/overview.php:169
+msgid "Total sold"
+msgstr "Vendu"
+
+#: template-parts/dashboard/overview.php:159
+#: template-parts/dashboard/overview.php:169
+msgid "Total bought"
+msgstr "Acheté"
+
+#: template-parts/dashboard/overview.php:161
+msgid "Sales and purchases per period"
+msgstr "Ventes et achats par période"
+
+#: template-parts/dashboard/overview.php:163
+msgid "No accepted sale or purchase in this period yet."
+msgstr "Aucune vente ni aucun achat accepté sur cette période pour l’instant."
+
+#: template-parts/dashboard/overview.php:166
+msgid ""
+"Orders and offers accepted on ReuSteel. Payment is made outside the "
+"platform: these are the amounts agreed, not money received."
+msgstr ""
+"Commandes et offres acceptées sur ReuSteel. Le paiement se fait hors "
+"plateforme : ce sont les montants convenus, pas des sommes encaissées."
+
+#: template-parts/dashboard/overview.php:167
+msgid ""
+"%s orders without a steel weight (sold per m² or per piece) count in amounts"
+" only."
+msgstr ""
+"%s commandes sans poids d’acier (vendues au m² ou à la pièce) comptent "
+"seulement dans les montants."
+
+#: template-parts/dashboard/overview.php:169
+msgid "sales"
+msgstr "ventes"
+
+#: template-parts/dashboard/overview.php:169
+msgid "purchases"
+msgstr "achats"
+
+#: template-parts/dashboard/overview.php:169
+msgid "sale"
+msgstr "vente"
+
+#: template-parts/dashboard/overview.php:169
+msgid "purchase"
+msgstr "achat"
+
+#: template-parts/dashboard/overview.php:176
+msgid "My steel on sale"
+msgstr "Mon acier en vente"
+
+#: template-parts/dashboard/overview.php:195
+msgid "No steel on sale at the moment."
+msgstr "Aucun acier en vente pour le moment."
+
+#: template-parts/dashboard/overview.php:199
+msgid "Views of your listings online"
+msgstr "Vues de vos annonces en ligne"
+
+#: template-parts/dashboard/overview.php:204
+msgid "To do"
+msgstr "À traiter"
+
+#: template-parts/dashboard/overview.php:206
+msgid "Nothing waits for you. Well done."
+msgstr "Rien ne vous attend. Bravo."
+
+#: template-parts/dashboard/overview.php:219
 msgid "Recent listings"
 msgstr "Annonces récentes"
 
-#: template-parts/dashboard/overview.php:28
+#: template-parts/dashboard/overview.php:220
 msgid "Manage"
 msgstr "Gérer"
 
-#: template-parts/dashboard/overview.php:41
-msgid ""
-"You have no listing yet. Publishing opens with the marketplace modules "
-"(products, reuse, buildings)."
-msgstr ""
-"Vous n’avez pas encore d’annonce. La publication ouvrira avec les modules de"
-" marché (produits, réemploi, bâtiments)."
+#: template-parts/dashboard/overview.php:227
+msgid "%s view"
+msgid_plural "%s views"
+msgstr[0] "%s vue"
+msgstr[1] "%s vues"
 
-#: template-parts/dashboard/overview.php:46
-msgid "Account status"
-msgstr "État du compte"
+#: template-parts/dashboard/overview.php:233
+msgid "You have no listing yet."
+msgstr "Vous n’avez pas encore d’annonce."
 
-#: template-parts/dashboard/overview.php:50
+#: template-parts/dashboard/overview.php:238
+msgid "Account and plan"
+msgstr "Compte et abonnement"
+
+#: template-parts/dashboard/overview.php:242
 msgid "Listings"
 msgstr "Annonces"
 
-#: template-parts/dashboard/overview.php:51
+#: template-parts/dashboard/overview.php:243
 msgid "Featured slots"
 msgstr "Emplacements à la une"
 
-#: template-parts/dashboard/overview.php:52
+#: template-parts/dashboard/overview.php:244
 msgid "AI credits used"
 msgstr "Crédits IA utilisés"
 
-#: template-parts/dashboard/overview.php:66
+#: template-parts/dashboard/overview.php:258
 msgid "Change plan"
 msgstr "Changer d’abonnement"
 
-#: template-parts/dashboard/overview.php:74
+#: template-parts/dashboard/overview.php:264
 msgid "Quick actions"
 msgstr "Actions rapides"
 
-#: template-parts/dashboard/overview.php:76
+#: template-parts/dashboard/overview.php:266
 msgid "Sell new steel"
 msgstr "Vendre de l’acier neuf"
 
-#: template-parts/dashboard/overview.php:77
+#: template-parts/dashboard/overview.php:267
 msgid "Sell offcuts or surplus"
 msgstr "Vendre des chutes ou surplus"
 
-#: template-parts/dashboard/overview.php:78
+#: template-parts/dashboard/overview.php:268
 msgid "Sell a building"
 msgstr "Vendre un bâtiment"
 
-#: template-parts/dashboard/overview.php:79
+#: template-parts/dashboard/overview.php:269
 msgid "Complete the company profile"
 msgstr "Compléter la fiche entreprise"
 
@@ -7236,10 +7414,6 @@ msgstr "Commandes et offres reçues"
 #: templates/dashboard.php:116
 msgid "Enquiries received"
 msgstr "Demandes reçues"
-
-#: templates/dashboard.php:117
-msgid "Visit requests"
-msgstr "Demandes de visite"
 
 #: templates/dashboard.php:118
 msgid "Statistics"

@@ -119,3 +119,14 @@ P = {
 T.update({
 "Enter the price per kg you offer.": ("Indiquez le prix au kg que vous proposez.", "أدخل السعر للكيلوغرام الذي تقترحه."),
 })
+
+# 0.4.0 — overview statistics.
+T.update({
+"Week of %s": ("Semaine du %s", "أسبوع %s"),
+})
+T.update({
+"Jan": ("janv.", "جانفي"), "Feb": ("févr.", "فيفري"), "Mar": ("mars", "مارس"), "Apr": ("avr.", "أفريل"), "May": ("mai", "ماي"), "Jun": ("juin", "جوان"),
+"Jul": ("juil.", "جويلية"), "Aug": ("août", "أوت"), "Sep": ("sept.", "سبتمبر"), "Oct": ("oct.", "أكتوبر"), "Nov": ("nov.", "نوفمبر"), "Dec": ("déc.", "ديسمبر"),
+"January": ("Janvier", "جانفي"), "February": ("Février", "فيفري"), "March": ("Mars", "مارس"), "April": ("Avril", "أفريل"), "May (month)": ("Mai", "ماي"), "June": ("Juin", "جوان"),
+"July": ("Juillet", "جويلية"), "August": ("Août", "أوت"), "September": ("Septembre", "سبتمبر"), "October": ("Octobre", "أكتوبر"), "November": ("Novembre", "نوفمبر"), "December": ("Décembre", "ديسمبر"),
+})

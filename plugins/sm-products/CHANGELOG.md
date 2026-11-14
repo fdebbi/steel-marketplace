@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.16.0 — 2026-11-14
+
+- Donnée de thème `account_stock` : annonces en ligne du compte, leur poids, leur valeur, leurs vues, par marché (Vue d'ensemble).
+
 ## 0.15.0 — 2026-11-14
 
 - Barres entières : `Stock::options()` donne aussi le poids d'une barre (`bar_kg`), sa longueur et le prix au kg, pour compter en barres sur la page.

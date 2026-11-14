@@ -169,6 +169,8 @@ final class Deals {
 				'amount'            => $amount,
 				'message'           => mb_substr( sanitize_textarea_field( (string) ( $in['message'] ?? '' ) ), 0, 2000 ),
 				'items'             => $items ? wp_json_encode( $items ) : '',
+				// 0.4.0: steel weight of what is bought (0 when the listing has none: roofing per m²…).
+				'weight_kg'         => Stats::weight_of( $p, $mode, $qty, $unit ),
 				'created_at'        => $now,
 				'updated_at'        => $now,
 			)

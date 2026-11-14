@@ -58,19 +58,19 @@ msgstr "Commandes et offres"
 msgid "Waiting for an answer"
 msgstr "En attente de réponse"
 
-#: src/Admin/Admin.php:56 src/Admin/Admin.php:67 src/Theme/Bridge.php:100
+#: src/Admin/Admin.php:56 src/Admin/Admin.php:67 src/Theme/Bridge.php:113
 msgid "Accepted"
 msgstr "Acceptée"
 
-#: src/Admin/Admin.php:57 src/Admin/Admin.php:68 src/Theme/Bridge.php:101
+#: src/Admin/Admin.php:57 src/Admin/Admin.php:68 src/Theme/Bridge.php:114
 msgid "Refused"
 msgstr "Refusée"
 
-#: src/Admin/Admin.php:58 src/Admin/Admin.php:69 src/Theme/Bridge.php:102
+#: src/Admin/Admin.php:58 src/Admin/Admin.php:69 src/Theme/Bridge.php:115
 msgid "Cancelled"
 msgstr "Annulée"
 
-#: src/Admin/Admin.php:59 src/Theme/Bridge.php:103
+#: src/Admin/Admin.php:59 src/Theme/Bridge.php:116
 msgid "Expired"
 msgstr "Expirée"
 
@@ -116,12 +116,12 @@ msgid "Type"
 msgstr "Type"
 
 #: src/Admin/Admin.php:114 src/Admin/Admin.php:137 src/Admin/Admin.php:157
-#: src/Admin/Admin.php:200 src/Theme/Bridge.php:132
+#: src/Admin/Admin.php:200 src/Theme/Bridge.php:145
 msgid "Order"
 msgstr "Commande"
 
 #: src/Admin/Admin.php:114 src/Admin/Admin.php:137 src/Admin/Admin.php:157
-#: src/Admin/Admin.php:200 src/Theme/Bridge.php:132
+#: src/Admin/Admin.php:200 src/Theme/Bridge.php:145
 msgid "Offer"
 msgstr "Offre"
 
@@ -166,12 +166,12 @@ msgid "Listing"
 msgstr "Annonce"
 
 #: src/Admin/Admin.php:133 src/Admin/Admin.php:162 src/Admin/Admin.php:175
-#: src/Admin/Admin.php:197 src/Theme/Bridge.php:110
+#: src/Admin/Admin.php:197 src/Theme/Bridge.php:123
 msgid "Seller"
 msgstr "Vendeur"
 
 #: src/Admin/Admin.php:133 src/Admin/Admin.php:163 src/Admin/Admin.php:175
-#: src/Admin/Admin.php:197 src/Theme/Bridge.php:109
+#: src/Admin/Admin.php:197 src/Theme/Bridge.php:122
 msgid "Buyer"
 msgstr "Acheteur"
 
@@ -187,7 +187,7 @@ msgstr "Prix affiché"
 msgid "Price agreed or proposed"
 msgstr "Prix convenu ou proposé"
 
-#: src/Admin/Admin.php:142 src/Admin/Admin.php:164 src/Theme/Bridge.php:35
+#: src/Admin/Admin.php:142 src/Admin/Admin.php:164 src/Theme/Bridge.php:48
 msgid "whole lot"
 msgstr "tout le lot"
 
@@ -240,7 +240,7 @@ msgstr "Prix"
 msgid "Message"
 msgstr "Message"
 
-#: src/Admin/Admin.php:175 src/Theme/Bridge.php:111 src/Theme/Bridge.php:112
+#: src/Admin/Admin.php:175 src/Theme/Bridge.php:124 src/Theme/Bridge.php:125
 msgid "Platform"
 msgstr "Plateforme"
 
@@ -318,27 +318,27 @@ msgstr ""
 msgid "Enter a valid e-mail address."
 msgstr "Indiquez une adresse e-mail valide."
 
-#: src/Deals.php:178
+#: src/Deals.php:180
 msgid "The request could not be saved. Try again."
 msgstr "La demande n’a pas pu être enregistrée. Réessayez."
 
-#: src/Deals.php:230
+#: src/Deals.php:232
 msgid "This order or offer does not exist."
 msgstr "Cette commande ou offre n’existe pas."
 
-#: src/Deals.php:234
+#: src/Deals.php:236
 msgid "It is not your turn to answer."
 msgstr "Ce n’est pas à vous de répondre."
 
-#: src/Deals.php:234
+#: src/Deals.php:236
 msgid "This order or offer is already closed."
 msgstr "Cette commande ou offre est déjà clôturée."
 
-#: src/Deals.php:257
+#: src/Deals.php:259
 msgid "Enter the total price you propose."
 msgstr "Indiquez le prix total que vous proposez."
 
-#: src/Deals.php:260
+#: src/Deals.php:262
 msgid "Propose a different price, or accept this one."
 msgstr "Proposez un prix différent, ou acceptez celui-ci."
 
@@ -469,34 +469,135 @@ msgstr "Commande ou offre expirée"
 msgid "%s got no answer within 7 days and is closed."
 msgstr "%s n’a pas reçu de réponse sous 7 jours et est clôturée."
 
-#: src/Theme/Bridge.php:97
+#: src/Stats.php:194
+msgid "Jan"
+msgstr "janv."
+
+#: src/Stats.php:194
+msgid "Feb"
+msgstr "févr."
+
+#: src/Stats.php:194
+msgid "Mar"
+msgstr "mars"
+
+#: src/Stats.php:194
+msgid "Apr"
+msgstr "avr."
+
+#: src/Stats.php:194
+msgid "May"
+msgstr "mai"
+
+#: src/Stats.php:194
+msgid "Jun"
+msgstr "juin"
+
+#: src/Stats.php:194
+msgid "Jul"
+msgstr "juil."
+
+#: src/Stats.php:194
+msgid "Aug"
+msgstr "août"
+
+#: src/Stats.php:194
+msgid "Sep"
+msgstr "sept."
+
+#: src/Stats.php:194
+msgid "Oct"
+msgstr "oct."
+
+#: src/Stats.php:194
+msgid "Nov"
+msgstr "nov."
+
+#: src/Stats.php:194
+msgid "Dec"
+msgstr "déc."
+
+#: src/Stats.php:195
+msgid "January"
+msgstr "Janvier"
+
+#: src/Stats.php:195
+msgid "February"
+msgstr "Février"
+
+#: src/Stats.php:195
+msgid "March"
+msgstr "Mars"
+
+#: src/Stats.php:195
+msgid "April"
+msgstr "Avril"
+
+#: src/Stats.php:195
+msgid "May (month)"
+msgstr "Mai"
+
+#: src/Stats.php:195
+msgid "June"
+msgstr "Juin"
+
+#: src/Stats.php:195
+msgid "July"
+msgstr "Juillet"
+
+#: src/Stats.php:195
+msgid "August"
+msgstr "Août"
+
+#: src/Stats.php:195
+msgid "September"
+msgstr "Septembre"
+
+#: src/Stats.php:195
+msgid "October"
+msgstr "Octobre"
+
+#: src/Stats.php:195
+msgid "November"
+msgstr "Novembre"
+
+#: src/Stats.php:195
+msgid "December"
+msgstr "Décembre"
+
+#. translators: %s: date of the first day of the week.
+#: src/Stats.php:202
+msgid "Week of %s"
+msgstr "Semaine du %s"
+
+#: src/Theme/Bridge.php:110
 msgid "Waiting for the seller"
 msgstr "En attente du vendeur"
 
-#: src/Theme/Bridge.php:97
+#: src/Theme/Bridge.php:110
 msgid "Waiting for the buyer"
 msgstr "En attente de l’acheteur"
 
-#: src/Theme/Bridge.php:115
+#: src/Theme/Bridge.php:128
 msgid "sent the request"
 msgstr "a envoyé la demande"
 
-#: src/Theme/Bridge.php:116
+#: src/Theme/Bridge.php:129
 msgid "proposed another price"
 msgstr "a proposé un autre prix"
 
-#: src/Theme/Bridge.php:117
+#: src/Theme/Bridge.php:130
 msgid "accepted"
 msgstr "a accepté"
 
-#: src/Theme/Bridge.php:118
+#: src/Theme/Bridge.php:131
 msgid "refused"
 msgstr "a refusé"
 
-#: src/Theme/Bridge.php:119
+#: src/Theme/Bridge.php:132
 msgid "cancelled"
 msgstr "a annulé"
 
-#: src/Theme/Bridge.php:120
+#: src/Theme/Bridge.php:133
 msgid "closed: no answer within 7 days"
 msgstr "clôturé : pas de réponse sous 7 jours"

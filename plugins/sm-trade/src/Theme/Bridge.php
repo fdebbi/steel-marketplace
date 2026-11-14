@@ -6,6 +6,7 @@
  *   deals         { role: buyer|seller, status: open|closed|'', page } orders and offers of the account
  *   deal          { id } one order or offer, its steps and the answers the visitor can give
  *   trade_waiting { seller, buyer } orders and offers waiting for an answer of the visitor
+ *   account_stats  overview of the account: sold and bought per period (Stats)
  *
  * @package SM\Trade
  */
@@ -29,6 +30,18 @@ final class Bridge {
 		add_filter( 'sm_theme_data_deals', array( __CLASS__, 'deals' ), 10, 2 );
 		add_filter( 'sm_theme_data_deal', array( __CLASS__, 'deal' ), 10, 2 );
 		add_filter( 'sm_theme_data_trade_waiting', array( __CLASS__, 'waiting' ), 10, 2 );
+		add_filter( 'sm_theme_data_account_stats', array( __CLASS__, 'stats' ), 10, 2 );
+	}
+
+	/** Overview of the account (0.4.0): sold and bought per period, and what waits for an answer. */
+	public static function stats( $result, $args ) {
+		$user_id = get_current_user_id();
+		if ( null !== $result || ! $user_id ) {
+			return $result;
+		}
+		$company = Companies::for_user( $user_id );
+		$cid     = $company ? (int) $company->id : 0;
+		return \SM\Trade\Stats::for_account( $cid, $user_id ) + array( 'waiting' => Deals::waiting( $cid, $user_id ) );
 	}
 
 	public static function unit_label( $unit ) {

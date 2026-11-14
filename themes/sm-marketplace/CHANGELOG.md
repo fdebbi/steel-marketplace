@@ -1,5 +1,12 @@
 # Changelog — sm-marketplace
 
+## 0.35.0 — 2026-11-14
+
+- Vue d'ensemble refaite (première page après connexion) : salutation, choix de période (30 jours, 3 mois, 12 mois, tout), 4 chiffres clés (montant vendu, montant acheté, acier en vente, acier échangé) avec évolution et petites courbes, grande courbe animée « Ventes et achats » (montant, poids, nombre ; détail d'un mois au survol ou au toucher), anneau de l'acier en vente par marché, « À traiter », annonces récentes avec leurs vues, compte et abonnement, actions rapides.
+- `assets/js/overview.js` : courbes tracées à l'ouverture, chiffres qui montent, changement de période et de mesure sans recharger ; rien ne bouge avec « réduire les animations ». Dessin à la taille réelle de l'écran (texte jamais étiré).
+- Icônes `arrow-up-right` et `arrow-down-left`.
+- La liste des notifications n'est plus répétée sur la Vue d'ensemble (cloche et page Notifications).
+
 ## 0.34.0 — 2026-11-14
 
 - Fiche d'une annonce de produits et de réemploi refaite (`listing-product`), sur le modèle du bâtiment : à droite état, titre, localisation, prix, actions, vendeur, carte et visite, inspection (réemploi) ; à gauche galerie, « Le lot en vente » en 4 chiffres clés (le reste à déplier), inventaire d'un lot à déplier, documents, description, message au vendeur.

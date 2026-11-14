@@ -2097,3 +2097,57 @@ T.update({
 T.update({
 "Get in touch": ("Contacter", "تواصل"),
 })
+
+# 0.35.0 — account overview.
+T.update({
+"Orders and offers waiting for your answer": ("Commandes et offres qui attendent votre réponse", "طلبات وعروض تنتظر ردك"),
+"Hello, %s": ("Bonjour, %s", "مرحبا، %s"),
+"Hello": ("Bonjour", "مرحبا"),
+"Verified": ("Vérifié", "موثّق"),
+"Period": ("Période", "الفترة"),
+"30 days": ("30 jours", "30 يوما"),
+"3 months": ("3 mois", "3 أشهر"),
+"12 months": ("12 mois", "12 شهرا"),
+"All time": ("Tout", "الكل"),
+"Amount sold": ("Montant vendu", "المبلغ المبيع"),
+"Amount bought": ("Montant acheté", "المبلغ المشترى"),
+"Steel on sale": ("Acier en vente", "الفولاذ المعروض للبيع"),
+"Steel traded": ("Acier échangé", "الفولاذ المتداول"),
+"%1$s sold · %2$s bought": ("%1$s vendues · %2$s achetées", "%1$s مبيعة · %2$s مشتراة"),
+"Sales and purchases": ("Ventes et achats", "المبيعات والمشتريات"),
+"Measure": ("Mesure", "المقياس"),
+"Amount (%s)": ("Montant (%s)", "المبلغ (%s)"),
+"Weight (t)": ("Poids (t)", "الوزن (طن)"),
+"Number of orders": ("Nombre", "العدد"),
+"Total sold": ("Vendu", "مبيع"),
+"Total bought": ("Acheté", "مشترى"),
+"Sales and purchases per period": ("Ventes et achats par période", "المبيعات والمشتريات حسب الفترة"),
+"No accepted sale or purchase in this period yet.": ("Aucune vente ni aucun achat accepté sur cette période pour l’instant.", "لا توجد مبيعات أو مشتريات مقبولة في هذه الفترة بعد."),
+"Orders and offers accepted on ReuSteel. Payment is made outside the platform: these are the amounts agreed, not money received.": ("Commandes et offres acceptées sur ReuSteel. Le paiement se fait hors plateforme : ce sont les montants convenus, pas des sommes encaissées.", "الطلبات والعروض المقبولة على ReuSteel. يتم الدفع خارج المنصة: هذه هي المبالغ المتفق عليها، وليست أموالا محصّلة."),
+"%s orders without a steel weight (sold per m² or per piece) count in amounts only.": ("%s commandes sans poids d’acier (vendues au m² ou à la pièce) comptent seulement dans les montants.", "%s طلبات بدون وزن فولاذ (تباع بالمتر المربع أو بالقطعة) تُحسب في المبالغ فقط."),
+"sales": ("ventes", "مبيعات"),
+"purchases": ("achats", "مشتريات"),
+"My steel on sale": ("Mon acier en vente", "الفولاذ الذي أعرضه للبيع"),
+"No steel on sale at the moment.": ("Aucun acier en vente pour le moment.", "لا يوجد فولاذ معروض للبيع حاليا."),
+"Views of your listings online": ("Vues de vos annonces en ligne", "مشاهدات إعلاناتك المنشورة"),
+"To do": ("À traiter", "للمعالجة"),
+"Nothing waits for you. Well done.": ("Rien ne vous attend. Bravo.", "لا شيء ينتظرك. أحسنت."),
+"You have no listing yet.": ("Vous n’avez pas encore d’annonce.", "ليس لديك أي إعلان بعد."),
+"Account and plan": ("Compte et abonnement", "الحساب والاشتراك"),
+})
+P.update({
+("%s accepted sale", "%s accepted sales"): (("%s vente acceptée", "%s ventes acceptées"), ("%s بيع مقبول", "بيع مقبول واحد", "بيعان مقبولان", "%s مبيعات مقبولة", "%s بيعا مقبولا", "%s بيع مقبول")),
+("%s accepted purchase", "%s accepted purchases"): (("%s achat accepté", "%s achats acceptés"), ("%s شراء مقبول", "شراء مقبول واحد", "شراءان مقبولان", "%s مشتريات مقبولة", "%s شراء مقبولا", "%s شراء مقبول")),
+("%1$s listing online · %2$s", "%1$s listings online · %2$s"): (("%1$s annonce en ligne · %2$s", "%1$s annonces en ligne · %2$s"), ("%1$s إعلان منشور · %2$s", "إعلان منشور واحد · %2$s", "إعلانان منشوران · %2$s", "%1$s إعلانات منشورة · %2$s", "%1$s إعلانا منشورا · %2$s", "%1$s إعلان منشور · %2$s")),
+})
+T.update({
+"%s accepted sales": ("%s ventes acceptées", "%s مبيعات مقبولة"),
+"%s accepted purchases": ("%s achats acceptés", "%s مشتريات مقبولة"),
+})
+P.update({
+("%s view", "%s views"): (("%s vue", "%s vues"), ("%s مشاهدة", "مشاهدة واحدة", "مشاهدتان", "%s مشاهدات", "%s مشاهدة", "%s مشاهدة")),
+})
+T.update({
+"sale": ("vente", "بيع"),
+"purchase": ("achat", "شراء"),
+})

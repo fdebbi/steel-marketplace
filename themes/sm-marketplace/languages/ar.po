@@ -196,7 +196,7 @@ msgstr "السوق الصناعية للفولاذ في الجزائر"
 msgid "Utility"
 msgstr "روابط مفيدة"
 
-#: header.php:39 inc/assets.php:42
+#: header.php:39 inc/assets.php:46
 msgid "Open menu"
 msgstr "فتح القائمة"
 
@@ -225,7 +225,7 @@ msgstr "IPE 200، HEA، أنبوب 100×50، هنغار…"
 msgid "Menu"
 msgstr "القائمة"
 
-#: header.php:88 inc/assets.php:43 templates/dashboard.php:244
+#: header.php:88 inc/assets.php:47 templates/dashboard.php:244
 msgid "Close menu"
 msgstr "إغلاق القائمة"
 
@@ -233,54 +233,54 @@ msgstr "إغلاق القائمة"
 msgid "View all listings"
 msgstr "عرض كل الإعلانات"
 
-#: inc/assets.php:44 templates/auth-login.php:32
+#: inc/assets.php:48 templates/auth-login.php:32
 #: templates/auth-register.php:92 templates/company-profile.php:239
 #: templates/engineer-apply.php:272
 msgid "Show"
 msgstr "إظهار"
 
-#: inc/assets.php:45
+#: inc/assets.php:49
 msgid "Hide"
 msgstr "إخفاء"
 
-#: inc/assets.php:46 inc/template-tags.php:534
+#: inc/assets.php:50 inc/template-tags.php:534
 msgid "Saved"
 msgstr "تم الحفظ"
 
-#: inc/assets.php:47
+#: inc/assets.php:51
 msgid "Removed from saved listings"
 msgstr "أزيل من الإعلانات المحفوظة"
 
-#: inc/assets.php:48
+#: inc/assets.php:52
 msgid "Uploaded"
 msgstr "تم الرفع"
 
 #. translators: %s: file name.
-#: inc/assets.php:50
+#: inc/assets.php:54
 msgid "Remove %s"
 msgstr "إزالة %s"
 
-#: inc/assets.php:51
+#: inc/assets.php:55
 msgid "Add other files"
 msgstr "إضافة ملفات أخرى"
 
-#: inc/assets.php:52
+#: inc/assets.php:56
 msgid "Too many files: the extra ones were not added."
 msgstr "عدد الملفات كبير: لم تُضف الملفات الزائدة."
 
-#: inc/assets.php:53
+#: inc/assets.php:57
 msgid "Will be deleted when you save"
 msgstr "سيُحذف عند الحفظ"
 
-#: inc/assets.php:54
+#: inc/assets.php:58
 msgid "Will be replaced when you save"
 msgstr "سيُستبدل عند الحفظ"
 
-#: inc/assets.php:55
+#: inc/assets.php:59
 msgid "Undo"
 msgstr "تراجع"
 
-#: inc/assets.php:56 inc/template-tags.php:538 inc/template-tags.php:544
+#: inc/assets.php:60 inc/template-tags.php:538 inc/template-tags.php:544
 #: template-parts/components/my-products.php:98
 #: template-parts/components/portfolio-grid.php:30
 #: template-parts/components/rfq-single.php:138
@@ -289,83 +289,83 @@ msgstr "تراجع"
 msgid "Delete"
 msgstr "حذف"
 
-#: inc/assets.php:57 template-parts/components/listing-place.php:82
+#: inc/assets.php:61 template-parts/components/listing-place.php:82
 #: templates/company-profile.php:290 templates/company-profile.php:344
 #: templates/engineer-apply.php:38 templates/engineer-apply.php:144
 msgid "Close"
 msgstr "إغلاق"
 
-#: inc/assets.php:58
+#: inc/assets.php:62
 msgid "Previous photo"
 msgstr "الصورة السابقة"
 
-#: inc/assets.php:59
+#: inc/assets.php:63
 msgid "Next photo"
 msgstr "الصورة التالية"
 
-#: inc/assets.php:60
+#: inc/assets.php:64
 msgid "Original size"
 msgstr "الحجم الأصلي"
 
-#: inc/assets.php:107
+#: inc/assets.php:111
 msgid "Company position. Drag it, or use the arrow keys."
 msgstr "موقع المؤسسة. اسحبه أو استعمل أسهم لوحة المفاتيح."
 
-#: inc/assets.php:108 template-parts/components/location-map.php:67
+#: inc/assets.php:112 template-parts/components/location-map.php:67
 msgid "No position yet."
 msgstr "لم يُحدَّد أي موقع بعد."
 
-#: inc/assets.php:109
+#: inc/assets.php:113
 msgid "Drag the marker to your exact address, or click the map."
 msgstr "اسحب العلامة إلى عنوانك بالضبط، أو انقر على الخريطة."
 
-#: inc/assets.php:110
+#: inc/assets.php:114
 msgid "Position placed:"
 msgstr "تم تحديد الموقع:"
 
-#: inc/assets.php:111
+#: inc/assets.php:115
 msgid "Current location found:"
 msgstr "تم العثور على موقعك الحالي:"
 
 #. translators: %d: accuracy in metres.
-#: inc/assets.php:113
+#: inc/assets.php:117
 msgid "Approximate (about %d m): drag the marker to correct it."
 msgstr "تقريبي (حوالي %d م): اسحب العلامة لتصحيحه."
 
-#: inc/assets.php:114
+#: inc/assets.php:118
 msgid "Looking for your location…"
 msgstr "جارٍ البحث عن موقعك…"
 
-#: inc/assets.php:115
+#: inc/assets.php:119
 msgid ""
 "Location access was refused. Allow it in your browser, or place the marker "
 "by hand."
 msgstr "تم رفض الوصول إلى الموقع. اسمح به في متصفحك، أو ضع العلامة يدويا."
 
-#: inc/assets.php:116
+#: inc/assets.php:120
 msgid "Your location could not be found. Place the marker by hand."
 msgstr "تعذّر العثور على موقعك. ضع العلامة يدويا."
 
-#: inc/assets.php:117
+#: inc/assets.php:121
 msgid ""
 "Finding your location took too long. Try again or place the marker by hand."
 msgstr "استغرق البحث عن موقعك وقتا طويلا. أعد المحاولة أو ضع العلامة يدويا."
 
-#: inc/assets.php:118
+#: inc/assets.php:122
 msgid ""
 "Your browser only shares your location on a secure (https) site. Place the "
 "marker by hand."
 msgstr "لا يشارك متصفحك الموقع إلا على موقع آمن (https). ضع العلامة يدويا."
 
-#: inc/assets.php:119
+#: inc/assets.php:123
 msgid "This position is outside Algeria. Place the marker on your address."
 msgstr "هذا الموقع خارج الجزائر. ضع العلامة على عنوانك."
 
-#: inc/assets.php:120
+#: inc/assets.php:124
 msgid "Wilaya changed: place the marker again on your address."
 msgstr "تم تغيير الولاية: ضع العلامة من جديد على عنوانك."
 
-#: inc/assets.php:121
+#: inc/assets.php:125
 msgid "Position removed. It will be deleted when you save."
 msgstr "تمت إزالة الموقع. سيُحذف عند الحفظ."
 
@@ -2367,7 +2367,8 @@ msgstr "التصفية حسب الحالة"
 
 #: template-parts/components/my-products.php:52
 #: template-parts/components/my-products.php:56
-#: template-parts/dashboard/listings.php:25 template-parts/drawer-foot.php:11
+#: template-parts/dashboard/listings.php:25
+#: template-parts/dashboard/overview.php:196 template-parts/drawer-foot.php:11
 #: templates/dashboard.php:162 templates/dashboard.php:257
 #: templates/front-page-template.php:27
 msgid "Publish a listing"
@@ -5793,75 +5794,268 @@ msgstr "إرسال الإثبات"
 msgid "Cancel this order"
 msgstr "إلغاء هذا الطلب"
 
-#: template-parts/dashboard/overview.php:18
-msgid "Active listings"
-msgstr "الإعلانات النشطة"
+#: template-parts/dashboard/overview.php:56
+msgid "Orders and offers waiting for your answer"
+msgstr "طلبات وعروض تنتظر ردك"
 
-#: template-parts/dashboard/overview.php:19
-msgid "Views (30 days)"
-msgstr "المشاهدات (30 يوما)"
+#: template-parts/dashboard/overview.php:57 templates/dashboard.php:117
+msgid "Visit requests"
+msgstr "طلبات الزيارة"
 
-#: template-parts/dashboard/overview.php:20
+#: template-parts/dashboard/overview.php:58
 msgid "New enquiries"
 msgstr "استفسارات جديدة"
 
-#: template-parts/dashboard/overview.php:21
-msgid "Open quotations"
-msgstr "العروض الجارية"
+#: template-parts/dashboard/overview.php:59
+msgid "Service requests received"
+msgstr "طلبات الخدمات المستلمة"
 
-#: template-parts/dashboard/overview.php:27
+#. translators: %s: first name.
+#: template-parts/dashboard/overview.php:86
+msgid "Hello, %s"
+msgstr "مرحبا، %s"
+
+#. translators: %s: first name.
+#: template-parts/dashboard/overview.php:86
+msgid "Hello"
+msgstr "مرحبا"
+
+#: template-parts/dashboard/overview.php:91
+msgid "Verified"
+msgstr "موثّق"
+
+#: template-parts/dashboard/overview.php:95
+msgid "Period"
+msgstr "الفترة"
+
+#: template-parts/dashboard/overview.php:98
+msgid "30 days"
+msgstr "30 يوما"
+
+#: template-parts/dashboard/overview.php:99
+msgid "3 months"
+msgstr "3 أشهر"
+
+#: template-parts/dashboard/overview.php:100
+msgid "12 months"
+msgstr "12 شهرا"
+
+#: template-parts/dashboard/overview.php:101
+msgid "All time"
+msgstr "الكل"
+
+#: template-parts/dashboard/overview.php:112
+msgid "Amount sold"
+msgstr "المبلغ المبيع"
+
+#: template-parts/dashboard/overview.php:114
+msgid "%s accepted sale"
+msgid_plural "%s accepted sales"
+msgstr[0] "%s بيع مقبول"
+msgstr[1] "بيع مقبول واحد"
+msgstr[2] "بيعان مقبولان"
+msgstr[3] "%s مبيعات مقبولة"
+msgstr[4] "%s بيعا مقبولا"
+msgstr[5] "%s بيع مقبول"
+
+#: template-parts/dashboard/overview.php:114
+msgid "%s accepted sales"
+msgstr "%s مبيعات مقبولة"
+
+#: template-parts/dashboard/overview.php:118
+msgid "Amount bought"
+msgstr "المبلغ المشترى"
+
+#: template-parts/dashboard/overview.php:120
+msgid "%s accepted purchase"
+msgid_plural "%s accepted purchases"
+msgstr[0] "%s شراء مقبول"
+msgstr[1] "شراء مقبول واحد"
+msgstr[2] "شراءان مقبولان"
+msgstr[3] "%s مشتريات مقبولة"
+msgstr[4] "%s شراء مقبولا"
+msgstr[5] "%s شراء مقبول"
+
+#: template-parts/dashboard/overview.php:120
+msgid "%s accepted purchases"
+msgstr "%s مشتريات مقبولة"
+
+#: template-parts/dashboard/overview.php:125
+msgid "Steel on sale"
+msgstr "الفولاذ المعروض للبيع"
+
+#. translators: 1: number of listings, 2: their value.
+#: template-parts/dashboard/overview.php:130
+msgid "%1$s listing online · %2$s"
+msgid_plural "%1$s listings online · %2$s"
+msgstr[0] "%1$s إعلان منشور · %2$s"
+msgstr[1] "إعلان منشور واحد · %2$s"
+msgstr[2] "إعلانان منشوران · %2$s"
+msgstr[3] "%1$s إعلانات منشورة · %2$s"
+msgstr[4] "%1$s إعلانا منشورا · %2$s"
+msgstr[5] "%1$s إعلان منشور · %2$s"
+
+#: template-parts/dashboard/overview.php:136
+msgid "Steel traded"
+msgstr "الفولاذ المتداول"
+
+#. translators: 1: weight sold, 2: weight bought.
+#: template-parts/dashboard/overview.php:138
+#: template-parts/dashboard/overview.php:143
+msgid "%1$s sold · %2$s bought"
+msgstr "%1$s مبيعة · %2$s مشتراة"
+
+#: template-parts/dashboard/overview.php:152
+msgid "Sales and purchases"
+msgstr "المبيعات والمشتريات"
+
+#: template-parts/dashboard/overview.php:153
+msgid "Measure"
+msgstr "المقياس"
+
+#. translators: %s: currency.
+#: template-parts/dashboard/overview.php:154
+msgid "Amount (%s)"
+msgstr "المبلغ (%s)"
+
+#. translators: %s: currency.
+#: template-parts/dashboard/overview.php:155
+msgid "Weight (t)"
+msgstr "الوزن (طن)"
+
+#: template-parts/dashboard/overview.php:156
+msgid "Number of orders"
+msgstr "العدد"
+
+#: template-parts/dashboard/overview.php:159
+#: template-parts/dashboard/overview.php:169
+msgid "Total sold"
+msgstr "مبيع"
+
+#: template-parts/dashboard/overview.php:159
+#: template-parts/dashboard/overview.php:169
+msgid "Total bought"
+msgstr "مشترى"
+
+#: template-parts/dashboard/overview.php:161
+msgid "Sales and purchases per period"
+msgstr "المبيعات والمشتريات حسب الفترة"
+
+#: template-parts/dashboard/overview.php:163
+msgid "No accepted sale or purchase in this period yet."
+msgstr "لا توجد مبيعات أو مشتريات مقبولة في هذه الفترة بعد."
+
+#: template-parts/dashboard/overview.php:166
+msgid ""
+"Orders and offers accepted on ReuSteel. Payment is made outside the "
+"platform: these are the amounts agreed, not money received."
+msgstr ""
+"الطلبات والعروض المقبولة على ReuSteel. يتم الدفع خارج المنصة: هذه هي المبالغ"
+" المتفق عليها، وليست أموالا محصّلة."
+
+#: template-parts/dashboard/overview.php:167
+msgid ""
+"%s orders without a steel weight (sold per m² or per piece) count in amounts"
+" only."
+msgstr ""
+"%s طلبات بدون وزن فولاذ (تباع بالمتر المربع أو بالقطعة) تُحسب في المبالغ "
+"فقط."
+
+#: template-parts/dashboard/overview.php:169
+msgid "sales"
+msgstr "مبيعات"
+
+#: template-parts/dashboard/overview.php:169
+msgid "purchases"
+msgstr "مشتريات"
+
+#: template-parts/dashboard/overview.php:169
+msgid "sale"
+msgstr "بيع"
+
+#: template-parts/dashboard/overview.php:169
+msgid "purchase"
+msgstr "شراء"
+
+#: template-parts/dashboard/overview.php:176
+msgid "My steel on sale"
+msgstr "الفولاذ الذي أعرضه للبيع"
+
+#: template-parts/dashboard/overview.php:195
+msgid "No steel on sale at the moment."
+msgstr "لا يوجد فولاذ معروض للبيع حاليا."
+
+#: template-parts/dashboard/overview.php:199
+msgid "Views of your listings online"
+msgstr "مشاهدات إعلاناتك المنشورة"
+
+#: template-parts/dashboard/overview.php:204
+msgid "To do"
+msgstr "للمعالجة"
+
+#: template-parts/dashboard/overview.php:206
+msgid "Nothing waits for you. Well done."
+msgstr "لا شيء ينتظرك. أحسنت."
+
+#: template-parts/dashboard/overview.php:219
 msgid "Recent listings"
 msgstr "أحدث الإعلانات"
 
-#: template-parts/dashboard/overview.php:28
+#: template-parts/dashboard/overview.php:220
 msgid "Manage"
 msgstr "إدارة"
 
-#: template-parts/dashboard/overview.php:41
-msgid ""
-"You have no listing yet. Publishing opens with the marketplace modules "
-"(products, reuse, buildings)."
-msgstr ""
-"ليس لديك إعلان بعد. سيُفتح النشر مع وحدات السوق (المنتجات، إعادة الاستعمال، "
-"المباني)."
+#: template-parts/dashboard/overview.php:227
+msgid "%s view"
+msgid_plural "%s views"
+msgstr[0] "%s مشاهدة"
+msgstr[1] "مشاهدة واحدة"
+msgstr[2] "مشاهدتان"
+msgstr[3] "%s مشاهدات"
+msgstr[4] "%s مشاهدة"
+msgstr[5] "%s مشاهدة"
 
-#: template-parts/dashboard/overview.php:46
-msgid "Account status"
-msgstr "حالة الحساب"
+#: template-parts/dashboard/overview.php:233
+msgid "You have no listing yet."
+msgstr "ليس لديك أي إعلان بعد."
 
-#: template-parts/dashboard/overview.php:50
+#: template-parts/dashboard/overview.php:238
+msgid "Account and plan"
+msgstr "الحساب والاشتراك"
+
+#: template-parts/dashboard/overview.php:242
 msgid "Listings"
 msgstr "الإعلانات"
 
-#: template-parts/dashboard/overview.php:51
+#: template-parts/dashboard/overview.php:243
 msgid "Featured slots"
 msgstr "خانات التمييز"
 
-#: template-parts/dashboard/overview.php:52
+#: template-parts/dashboard/overview.php:244
 msgid "AI credits used"
 msgstr "أرصدة الذكاء الاصطناعي المستعملة"
 
-#: template-parts/dashboard/overview.php:66
+#: template-parts/dashboard/overview.php:258
 msgid "Change plan"
 msgstr "تغيير الاشتراك"
 
-#: template-parts/dashboard/overview.php:74
+#: template-parts/dashboard/overview.php:264
 msgid "Quick actions"
 msgstr "إجراءات سريعة"
 
-#: template-parts/dashboard/overview.php:76
+#: template-parts/dashboard/overview.php:266
 msgid "Sell new steel"
 msgstr "بيع فولاذ جديد"
 
-#: template-parts/dashboard/overview.php:77
+#: template-parts/dashboard/overview.php:267
 msgid "Sell offcuts or surplus"
 msgstr "بيع البقايا أو الفائض"
 
-#: template-parts/dashboard/overview.php:78
+#: template-parts/dashboard/overview.php:268
 msgid "Sell a building"
 msgstr "بيع مبنى"
 
-#: template-parts/dashboard/overview.php:79
+#: template-parts/dashboard/overview.php:269
 msgid "Complete the company profile"
 msgstr "استكمال ملف المؤسسة"
 
@@ -7169,10 +7363,6 @@ msgstr "الطلبات والعروض الواردة"
 #: templates/dashboard.php:116
 msgid "Enquiries received"
 msgstr "الاستفسارات الواردة"
-
-#: templates/dashboard.php:117
-msgid "Visit requests"
-msgstr "طلبات الزيارة"
 
 #: templates/dashboard.php:118
 msgid "Statistics"

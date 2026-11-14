@@ -26,6 +26,7 @@ final class Bridge {
 		add_filter( 'sm_theme_data_listings', array( __CLASS__, 'listings' ), 10, 2 );
 		add_filter( 'sm_theme_data_listing_facets', static fn( $r, $a ) => \SM\Products\Facets::get( sanitize_key( (string) ( $a['market'] ?? 'products' ) ), sanitize_key( (string) ( $a['category'] ?? '' ) ), sanitize_text_field( (string) ( $a['family'] ?? '' ) ) ), 10, 2 );
 		add_filter( 'sm_theme_data_listing', array( __CLASS__, 'listing' ), 10, 2 );
+		add_filter( 'sm_theme_data_account_stock', array( __CLASS__, 'account_stock' ), 10, 2 );
 		add_filter( 'sm_theme_data_categories', array( __CLASS__, 'categories' ), 10, 2 );
 		add_filter( 'sm_theme_data_product_categories', array( __CLASS__, 'product_categories' ), 10, 2 );
 		add_filter( 'sm_theme_data_product_markets', array( __CLASS__, 'product_markets' ) );
@@ -363,5 +364,40 @@ final class Bridge {
 	 */
 	public static function price_trend() {
 		return \SM\Products\PriceTrend::summary();
+	}
+
+	/**
+	 * Steel the account has on sale (0.16.0, overview): listings online, their
+	 * weight and value, by market, and the views they received since published.
+	 *
+	 * @return array { count, kg, value, views, markets: code => { count, kg } }
+	 */
+	public static function account_stock( $result, $args ) {
+		if ( null !== $result || ! is_user_logged_in() ) {
+			return $result;
+		}
+		$company = Companies::for_user( get_current_user_id() );
+		$out     = array( 'count' => 0, 'kg' => 0.0, 'value' => 0.0, 'views' => 0, 'markets' => array() );
+		if ( ! $company ) {
+			return $out;
+		}
+		global $wpdb;
+		$rows = (array) $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$wpdb->prepare(
+				"SELECT market, COUNT(*) AS n, SUM(total_weight) AS kg, SUM(CASE WHEN sale_mode = 'lot' AND lot_price > 0 THEN lot_price ELSE total_price END) AS v, SUM(views) AS views
+				FROM {$wpdb->prefix}sm_products WHERE company_id = %d AND status = 'published' GROUP BY market",
+				(int) $company->id
+			)
+		);
+		foreach ( $rows as $r ) {
+			$out['count']                  += (int) $r->n;
+			$out['kg']                     += (float) $r->kg;
+			$out['value']                  += (float) $r->v;
+			$out['views']                  += (int) $r->views;
+			$out['markets'][ $r->market ]   = array( 'count' => (int) $r->n, 'kg' => round( (float) $r->kg, 1 ) );
+		}
+		$out['kg']    = round( $out['kg'], 1 );
+		$out['value'] = round( $out['value'], 2 );
+		return $out;
 	}
 }

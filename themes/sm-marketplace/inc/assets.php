@@ -27,6 +27,10 @@ function sm_theme_enqueue_assets() {
 		// Partner engineer application in steps (0.29.0).
 		wp_enqueue_script( 'sm-wizard', SM_THEME_URI . '/assets/js/wizard.js', array(), sm_theme_asset_version( 'assets/js/wizard.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
+	if ( is_page_template( 'templates/dashboard.php' ) ) {
+		// Account overview (0.35.0): animated curves and figures; does nothing on the other views.
+		wp_enqueue_script( 'sm-overview', SM_THEME_URI . '/assets/js/overview.js', array(), sm_theme_asset_version( 'assets/js/overview.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	}
 	if ( sm_theme_is_home() ) {
 		// The 3D beam of the hero: loads Three.js itself, after the page, on desktops only.
 		wp_enqueue_script( 'sm-hero-3d', SM_THEME_URI . '/assets/js/hero-3d.js', array(), sm_theme_asset_version( 'assets/js/hero-3d.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );

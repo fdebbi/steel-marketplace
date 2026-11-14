@@ -56,19 +56,19 @@ msgstr "الطلبات والعروض"
 msgid "Waiting for an answer"
 msgstr "في انتظار الرد"
 
-#: src/Admin/Admin.php:56 src/Admin/Admin.php:67 src/Theme/Bridge.php:100
+#: src/Admin/Admin.php:56 src/Admin/Admin.php:67 src/Theme/Bridge.php:113
 msgid "Accepted"
 msgstr "مقبول"
 
-#: src/Admin/Admin.php:57 src/Admin/Admin.php:68 src/Theme/Bridge.php:101
+#: src/Admin/Admin.php:57 src/Admin/Admin.php:68 src/Theme/Bridge.php:114
 msgid "Refused"
 msgstr "مرفوض"
 
-#: src/Admin/Admin.php:58 src/Admin/Admin.php:69 src/Theme/Bridge.php:102
+#: src/Admin/Admin.php:58 src/Admin/Admin.php:69 src/Theme/Bridge.php:115
 msgid "Cancelled"
 msgstr "ملغى"
 
-#: src/Admin/Admin.php:59 src/Theme/Bridge.php:103
+#: src/Admin/Admin.php:59 src/Theme/Bridge.php:116
 msgid "Expired"
 msgstr "منتهي"
 
@@ -113,12 +113,12 @@ msgid "Type"
 msgstr "النوع"
 
 #: src/Admin/Admin.php:114 src/Admin/Admin.php:137 src/Admin/Admin.php:157
-#: src/Admin/Admin.php:200 src/Theme/Bridge.php:132
+#: src/Admin/Admin.php:200 src/Theme/Bridge.php:145
 msgid "Order"
 msgstr "طلب شراء"
 
 #: src/Admin/Admin.php:114 src/Admin/Admin.php:137 src/Admin/Admin.php:157
-#: src/Admin/Admin.php:200 src/Theme/Bridge.php:132
+#: src/Admin/Admin.php:200 src/Theme/Bridge.php:145
 msgid "Offer"
 msgstr "عرض"
 
@@ -163,12 +163,12 @@ msgid "Listing"
 msgstr "الإعلان"
 
 #: src/Admin/Admin.php:133 src/Admin/Admin.php:162 src/Admin/Admin.php:175
-#: src/Admin/Admin.php:197 src/Theme/Bridge.php:110
+#: src/Admin/Admin.php:197 src/Theme/Bridge.php:123
 msgid "Seller"
 msgstr "البائع"
 
 #: src/Admin/Admin.php:133 src/Admin/Admin.php:163 src/Admin/Admin.php:175
-#: src/Admin/Admin.php:197 src/Theme/Bridge.php:109
+#: src/Admin/Admin.php:197 src/Theme/Bridge.php:122
 msgid "Buyer"
 msgstr "المشتري"
 
@@ -184,7 +184,7 @@ msgstr "السعر المعروض"
 msgid "Price agreed or proposed"
 msgstr "السعر المتفق عليه أو المقترح"
 
-#: src/Admin/Admin.php:142 src/Admin/Admin.php:164 src/Theme/Bridge.php:35
+#: src/Admin/Admin.php:142 src/Admin/Admin.php:164 src/Theme/Bridge.php:48
 msgid "whole lot"
 msgstr "الحصة كاملة"
 
@@ -241,7 +241,7 @@ msgstr "السعر"
 msgid "Message"
 msgstr "الرسالة"
 
-#: src/Admin/Admin.php:175 src/Theme/Bridge.php:111 src/Theme/Bridge.php:112
+#: src/Admin/Admin.php:175 src/Theme/Bridge.php:124 src/Theme/Bridge.php:125
 msgid "Platform"
 msgstr "المنصة"
 
@@ -315,27 +315,27 @@ msgstr "أدخل رقم هاتف صحيحا ليتمكن البائع من ال�
 msgid "Enter a valid e-mail address."
 msgstr "أدخل بريدا إلكترونيا صحيحا."
 
-#: src/Deals.php:178
+#: src/Deals.php:180
 msgid "The request could not be saved. Try again."
 msgstr "تعذّر حفظ الطلب. أعد المحاولة."
 
-#: src/Deals.php:230
+#: src/Deals.php:232
 msgid "This order or offer does not exist."
 msgstr "هذا الطلب أو العرض غير موجود."
 
-#: src/Deals.php:234
+#: src/Deals.php:236
 msgid "It is not your turn to answer."
 msgstr "ليس دورك في الرد."
 
-#: src/Deals.php:234
+#: src/Deals.php:236
 msgid "This order or offer is already closed."
 msgstr "هذا الطلب أو العرض مغلق بالفعل."
 
-#: src/Deals.php:257
+#: src/Deals.php:259
 msgid "Enter the total price you propose."
 msgstr "أدخل السعر الإجمالي الذي تقترحه."
 
-#: src/Deals.php:260
+#: src/Deals.php:262
 msgid "Propose a different price, or accept this one."
 msgstr "اقترح سعرا مختلفا أو اقبل هذا السعر."
 
@@ -456,34 +456,135 @@ msgstr "انتهى الطلب أو العرض"
 msgid "%s got no answer within 7 days and is closed."
 msgstr "لم يتلق %s ردا خلال 7 أيام وتم إغلاقه."
 
-#: src/Theme/Bridge.php:97
+#: src/Stats.php:194
+msgid "Jan"
+msgstr "جانفي"
+
+#: src/Stats.php:194
+msgid "Feb"
+msgstr "فيفري"
+
+#: src/Stats.php:194
+msgid "Mar"
+msgstr "مارس"
+
+#: src/Stats.php:194
+msgid "Apr"
+msgstr "أفريل"
+
+#: src/Stats.php:194
+msgid "May"
+msgstr "ماي"
+
+#: src/Stats.php:194
+msgid "Jun"
+msgstr "جوان"
+
+#: src/Stats.php:194
+msgid "Jul"
+msgstr "جويلية"
+
+#: src/Stats.php:194
+msgid "Aug"
+msgstr "أوت"
+
+#: src/Stats.php:194
+msgid "Sep"
+msgstr "سبتمبر"
+
+#: src/Stats.php:194
+msgid "Oct"
+msgstr "أكتوبر"
+
+#: src/Stats.php:194
+msgid "Nov"
+msgstr "نوفمبر"
+
+#: src/Stats.php:194
+msgid "Dec"
+msgstr "ديسمبر"
+
+#: src/Stats.php:195
+msgid "January"
+msgstr "جانفي"
+
+#: src/Stats.php:195
+msgid "February"
+msgstr "فيفري"
+
+#: src/Stats.php:195
+msgid "March"
+msgstr "مارس"
+
+#: src/Stats.php:195
+msgid "April"
+msgstr "أفريل"
+
+#: src/Stats.php:195
+msgid "May (month)"
+msgstr "ماي"
+
+#: src/Stats.php:195
+msgid "June"
+msgstr "جوان"
+
+#: src/Stats.php:195
+msgid "July"
+msgstr "جويلية"
+
+#: src/Stats.php:195
+msgid "August"
+msgstr "أوت"
+
+#: src/Stats.php:195
+msgid "September"
+msgstr "سبتمبر"
+
+#: src/Stats.php:195
+msgid "October"
+msgstr "أكتوبر"
+
+#: src/Stats.php:195
+msgid "November"
+msgstr "نوفمبر"
+
+#: src/Stats.php:195
+msgid "December"
+msgstr "ديسمبر"
+
+#. translators: %s: date of the first day of the week.
+#: src/Stats.php:202
+msgid "Week of %s"
+msgstr "أسبوع %s"
+
+#: src/Theme/Bridge.php:110
 msgid "Waiting for the seller"
 msgstr "في انتظار البائع"
 
-#: src/Theme/Bridge.php:97
+#: src/Theme/Bridge.php:110
 msgid "Waiting for the buyer"
 msgstr "في انتظار المشتري"
 
-#: src/Theme/Bridge.php:115
+#: src/Theme/Bridge.php:128
 msgid "sent the request"
 msgstr "أرسل الطلب"
 
-#: src/Theme/Bridge.php:116
+#: src/Theme/Bridge.php:129
 msgid "proposed another price"
 msgstr "اقترح سعرا آخر"
 
-#: src/Theme/Bridge.php:117
+#: src/Theme/Bridge.php:130
 msgid "accepted"
 msgstr "قَبِل"
 
-#: src/Theme/Bridge.php:118
+#: src/Theme/Bridge.php:131
 msgid "refused"
 msgstr "رفض"
 
-#: src/Theme/Bridge.php:119
+#: src/Theme/Bridge.php:132
 msgid "cancelled"
 msgstr "ألغى"
 
-#: src/Theme/Bridge.php:120
+#: src/Theme/Bridge.php:133
 msgid "closed: no answer within 7 days"
 msgstr "أُغلق: لا رد خلال 7 أيام"

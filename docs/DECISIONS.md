@@ -350,3 +350,13 @@ Décisions validées sur la maquette 0.34.
 - **Fiche des profilés** : même construction que le bâtiment. Pour les profilés, le **prix au kg reste en grand** (on achète une quantité), avec l'équivalent d'une barre ; le lot complet vient en second.
 - **Achat en nombre de barres** quand l'annonce est en barres ; le site calcule le poids et le total. Une offre sur des barres se fait au kg. Sans nombre de barres (vente au poids), la quantité reste en kg.
 - **Réemploi** : l'état remplace « Neuf », les photos passent avant la fiche de section, et l'encadré « Faites contrôler cet acier avant d'acheter » (ingénieur vérifié, désigné par la plateforme) apparaît sous la localisation. Pas d'encadré pour la ferraille ni pour l'acier neuf.
+
+## Vue d'ensemble du compte (2026-11-14)
+
+Validé sur la maquette 0.35.
+
+- **Montant vendu / acheté** = commandes et offres **acceptées** sur ReuSteel. Le paiement se fait hors plateforme : la page le dit, ce ne sont pas des sommes encaissées.
+- **Poids** : enregistré sur chaque commande à partir de la version 0.4.0 de SM Trade ; estimé pour les commandes passées quand l'annonce le permet. Les ventes sans poids d'acier (tôles au m²) comptent dans les montants seulement, avec une note.
+- **Acier en vente** : les annonces en ligne du compte seulement (pas le total du marché).
+- **Les blocs vente et achat sont toujours affichés**, à zéro s'il n'y a rien, pour tous les comptes acheteurs et vendeurs.
+- **Période par défaut : 12 mois.** Les courbes sont dessinées par le thème, sans bibliothèque externe.
