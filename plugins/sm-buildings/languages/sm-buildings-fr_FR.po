@@ -28,7 +28,7 @@ msgid ""
 " dimensions and area, structural system, roof and cladding, what the price "
 "includes, structural element inventory weighed by SM Weight Engine, price "
 "per kg and per m², indicative drawing. Requires SM Core, SM Weight Engine "
-"and SM Products 0.3.0."
+"and SM Products 0.14.0."
 msgstr ""
 "Marché des bâtiments métalliques : entrepôts neufs et d’occasion, hangars "
 "agricoles et industriels, ateliers, bâtiments d’élevage et kits, montés ou "
@@ -36,7 +36,7 @@ msgstr ""
 "dimensions et surface, système porteur, toiture et bardage, ce que comprend "
 "le prix, inventaire des éléments pesé par SM Weight Engine, prix au kg et au"
 " m², schéma indicatif. Nécessite SM Core, SM Weight Engine et SM Products "
-"0.3.0."
+"0.14.0."
 
 #. Author of the plugin
 #: sm-buildings.php
@@ -299,6 +299,10 @@ msgstr "Ce que j’attends de l’inspection :"
 #: src/Presenter.php:192
 msgid "Inspection: %s"
 msgstr "Inspection : %s"
+
+#: src/Presenter.php:196
+msgid "Building concerned by the inspection"
+msgstr "Bâtiment concerné par l’inspection"
 
 #: src/Rules.php:28
 msgid "The building is already dismantled: untick \"Dismantling included\"."

@@ -357,7 +357,8 @@ smb_assert( $ol['lot'] && ! $ol['detail'], 'whole building only: nothing can be 
 $fv   = apply_filters( 'sm_products_form_values', array(), Products::get( $pl ) );
 smb_assert( '1' === $fv['sell_lot'] && '' === $fv['sell_elements'] && 'kg' === $fv['price_basis'] && '170' === $fv['price'], 'edit form: the box and the price that were typed come back' );
 $pre  = apply_filters( 'sm_theme_data_mission_prefill', null, array( 'listing' => Products::get( $pl )->listing_id ) );
-smb_assert( is_array( $pre ) && 'expertise' === $pre['type'] && false !== strpos( $pre['description'], '60 × 12 × 4,5 m' ) && false !== strpos( $pre['description'], (string) $pre['url'] ) && 0 === strpos( $pre['title'], 'Inspection' ), 'inspection request: title, dimensions and link of the building already filled in' );
+smb_assert( is_array( $pre ) && 'expertise' === $pre['type'] && false !== strpos( $pre['description'], '60 × 12 × 4,5 m' ) && false !== strpos( $pre['description'], (string) $pre['url'] ) && 0 === strpos( $pre['title'], 'Inspection' ) && 'livestock' === $pre['project_type'], 'inspection request: title, dimensions and link of the building already filled in; type of project from the category (livestock)' );
+smb_assert( 'industrial' === \SM\Buildings\Presenter::project_type( 'bld-workshop' ) && 'other' === \SM\Buildings\Presenter::project_type( 'bld-kit' ) && '' === \SM\Buildings\Presenter::project_type( 'xyz' ), '0.5.0: workshop → industrial building, kits → other' );
 global $wpdb;
 $wpdb->update( $wpdb->prefix . 'sm_products', array( 'variant' => 'assembled', 'sale_mode' => 'detail', 'price_unit' => 'kg', 'price' => 300, 'lot_price' => 0, 'total_price' => 9600000.4 ), array( 'id' => $pl ) );
 $Sale::migrate();

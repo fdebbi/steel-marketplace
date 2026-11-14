@@ -186,7 +186,7 @@ $el_kg     = (float) ( $item['elements_kg'] ?? 0 );
 					<a class="sm-btn sm-btn--accent sm-btn--block" href="#sm-enquiry"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Contact the seller', 'sm-marketplace' ); ?></a>
 				<?php endif; ?>
 				<div class="smb-actions__mini">
-					<?php if ( $can_trade ) : ?><a class="sm-btn sm-btn--ghost sm-btn--sm" href="#sm-enquiry"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Contact', 'sm-marketplace' ); ?></a><?php endif; ?>
+					<?php if ( $can_trade ) : ?><a class="sm-btn sm-btn--ghost sm-btn--sm" href="#sm-enquiry"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Get in touch', 'sm-marketplace' ); ?></a><?php endif; ?>
 					<a class="sm-btn sm-btn--ghost sm-btn--sm" href="<?php echo esc_url( sm_page_url( 'rfq', array( 'from' => $item['id'] ) ) ); ?>"><?php sm_icon( 'rfq' ); ?><?php esc_html_e( 'Quotation', 'sm-marketplace' ); ?></a>
 					<button class="sm-btn sm-btn--ghost sm-btn--sm" type="button" aria-pressed="false" data-sm-save="<?php echo esc_attr( $item['id'] ); ?>"><?php sm_icon( 'heart' ); ?><?php esc_html_e( 'Save', 'sm-marketplace' ); ?></button>
 					<button class="sm-btn sm-btn--ghost sm-btn--sm" type="button" data-sm-share><?php sm_icon( 'share' ); ?><?php esc_html_e( 'Share', 'sm-marketplace' ); ?></button>

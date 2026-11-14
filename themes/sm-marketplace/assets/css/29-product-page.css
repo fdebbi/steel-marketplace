@@ -1,0 +1,24 @@
+/* ==========================================================================
+   0.34.0 — Product and reuse listing page (same construction as the building
+   page, 28-building-page.css), whole bars in the buy box, section sheet slide.
+   ========================================================================== */
+
+/* Price block: what is available, between the price and the whole lot. */
+.sm-priceblock__avail { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px var(--sm-s3); align-items: baseline; margin: var(--sm-s3) 0 0; padding-block-start: var(--sm-s3); border-block-start: 1px dashed color-mix(in srgb, var(--sm-accent) 35%, var(--sm-line)); font-size: var(--sm-fs-sm); }
+.sm-priceblock__avail span { color: var(--sm-muted); }
+.sm-priceblock__avail strong { text-align: end; font-variant-numeric: tabular-nums; }
+.sm-priceblock__or span { color: var(--sm-text); }
+.sm-priceblock__or span .sm-unit, .sm-priceblock__or span bdi { color: var(--sm-muted); }
+
+/* Gallery: the section sheet is one slide among the photos. */
+.sm-gallery__sheet[hidden] { display: none; }
+.sm-gallery__thumb.is-drawing { background: linear-gradient(150deg, #1A232C, #0B1015); }
+.sm-gallery__thumb.is-drawing img { object-fit: contain; padding: 10%; box-sizing: border-box; }
+
+/* Buy box: number of bars. */
+.sm-buy__picktitle { font-weight: 600; margin-block-end: 6px; }
+.sm-buy__linetext { display: grid; gap: 2px; min-inline-size: 0; }
+.sm-buy__linetext small { color: var(--sm-muted); font-size: var(--sm-fs-xs); line-height: 1.35; }
+.sm-buy__linetext strong { overflow-wrap: anywhere; }
+.smb-more .smp-drawing { margin-block: var(--sm-s3) 0; }
+.smb-more .smp-drawing svg { max-block-size: 220px; inline-size: auto; max-inline-size: 100%; margin-inline: auto; display: block; }

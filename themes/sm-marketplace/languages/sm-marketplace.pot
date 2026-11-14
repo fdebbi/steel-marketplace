@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.33.0\n"
+"Project-Id-Version: SM Marketplace 0.34.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-14T15:18:49+00:00\n"
+"POT-Creation-Date: 2026-11-14T21:01:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -165,7 +165,7 @@ msgid "Plans"
 msgstr ""
 
 #: footer.php:43
-#: template-parts/components/buy-box.php:183
+#: template-parts/components/buy-box.php:220
 #: template-parts/components/enquiry-form.php:31
 #: template-parts/components/rfq-single.php:158
 #: template-parts/drawer-foot.php:17
@@ -179,10 +179,9 @@ msgstr ""
 
 #: footer.php:44
 #: header.php:30
-#: template-parts/components/listing-building.php:189
 #: templates/contact.php:23
 #: templates/contact.php:32
-#: templates/single-listing.php:266
+#: templates/single-listing.php:269
 msgid "Contact"
 msgstr ""
 
@@ -947,7 +946,7 @@ msgid "Length"
 msgstr ""
 
 #: template-parts/components/ai-result-document.php:25
-#: template-parts/components/buy-box.php:77
+#: template-parts/components/buy-box.php:86
 #: template-parts/components/rfq-form.php:71
 #: template-parts/components/rfq-single.php:30
 #: template-parts/components/rfq-single.php:82
@@ -1089,143 +1088,169 @@ msgstr ""
 msgid "Smart search"
 msgstr ""
 
-#: template-parts/components/buy-box.php:32
+#: template-parts/components/buy-box.php:36
 msgid "Buy or make an offer"
 msgstr ""
 
 #. translators: %s: reference of the order or offer.
-#: template-parts/components/buy-box.php:44
+#: template-parts/components/buy-box.php:48
 msgid "You already have %s waiting on this listing."
 msgstr ""
 
-#: template-parts/components/buy-box.php:46
+#: template-parts/components/buy-box.php:50
 msgid "Follow it"
 msgstr ""
 
-#: template-parts/components/buy-box.php:57
+#: template-parts/components/buy-box.php:61
 msgid "What do you buy?"
 msgstr ""
 
-#: template-parts/components/buy-box.php:59
-#: template-parts/components/buy-box.php:170
+#: template-parts/components/buy-box.php:64
+#: template-parts/components/buy-box.php:205
 #: template-parts/components/deal-list.php:56
 #: template-parts/dashboard/deal.php:22
 msgid "Complete building"
 msgstr ""
 
-#: template-parts/components/buy-box.php:60
+#: template-parts/components/buy-box.php:65
 #: template-parts/components/product-tech.php:551
 msgid "By element"
 msgstr ""
 
-#: template-parts/components/buy-box.php:66
-msgid "What do you want to do?"
+#: template-parts/components/buy-box.php:67
+msgid "Retail"
 msgstr ""
 
 #: template-parts/components/buy-box.php:68
+#: template-parts/components/buy-box.php:205
+msgid "Complete lot"
+msgstr ""
+
+#: template-parts/components/buy-box.php:75
+msgid "What do you want to do?"
+msgstr ""
+
+#: template-parts/components/buy-box.php:77
 msgid "Buy at this price"
 msgstr ""
 
-#: template-parts/components/buy-box.php:69
+#: template-parts/components/buy-box.php:78
 #: template-parts/components/listing-building.php:183
-#: templates/single-listing.php:134
+#: template-parts/components/listing-product.php:194
+#: templates/single-listing.php:137
 msgid "Make an offer"
 msgstr ""
 
 #. translators: %s: price of the whole lot.
-#: template-parts/components/buy-box.php:81
+#: template-parts/components/buy-box.php:90
 msgid "The whole lot · %s"
 msgstr ""
 
-#: template-parts/components/buy-box.php:84
+#: template-parts/components/buy-box.php:93
 msgid "A quantity of my choice"
 msgstr ""
 
-#: template-parts/components/buy-box.php:92
+#: template-parts/components/buy-box.php:101
 msgid "Choose the elements and their number"
 msgstr ""
 
 #. translators: 1: length in metres, 2: number of pieces, 3: weight of one piece in kg.
-#: template-parts/components/buy-box.php:106
+#: template-parts/components/buy-box.php:115
 msgid "%1$s m · %2$s available · %3$s kg each"
 msgstr ""
 
-#: template-parts/components/buy-box.php:116
+#: template-parts/components/buy-box.php:125
+#: template-parts/components/buy-box.php:159
 msgid "One less"
 msgstr ""
 
-#: template-parts/components/buy-box.php:118
+#: template-parts/components/buy-box.php:127
+#: template-parts/components/buy-box.php:161
 msgid "One more"
 msgstr ""
 
 #. translators: %s: price per kg.
-#: template-parts/components/buy-box.php:125
+#: template-parts/components/buy-box.php:134
 msgid "Listed price: %s. The weight comes from the section tables."
 msgstr ""
 
+#. translators: %s: length of a bar in metres.
+#: template-parts/components/buy-box.php:145
+msgid "Number of bars of %s m"
+msgstr ""
+
+#. translators: 1: number of bars, 2: weight of one bar in kg.
+#: template-parts/components/buy-box.php:154
+msgid "%1$s available · %2$s kg a bar"
+msgstr ""
+
 #. translators: %s: unit (kg, pieces, m²…).
-#: template-parts/components/buy-box.php:135
+#: template-parts/components/buy-box.php:171
 msgid "Quantity (%s)"
 msgstr ""
 
 #. translators: 1: available quantity, 2: unit, 3: price of one unit.
-#: template-parts/components/buy-box.php:142
+#: template-parts/components/buy-box.php:178
 msgid "Available: %1$s %2$s · %3$s each"
 msgstr ""
 
-#: template-parts/components/buy-box.php:151
+#: template-parts/components/buy-box.php:187
 msgid "Price per kg you offer (DA/kg)"
 msgstr ""
 
-#: template-parts/components/buy-box.php:158
+#: template-parts/components/buy-box.php:194
 #: template-parts/dashboard/deal.php:49
 msgid "Total at the listed price"
 msgstr ""
 
-#: template-parts/components/buy-box.php:162
+#: template-parts/components/buy-box.php:198
 msgid "Total price you offer (DA)"
 msgstr ""
 
-#: template-parts/components/buy-box.php:164
+#: template-parts/components/buy-box.php:200
 msgid "The seller accepts, refuses or proposes another price. Up to 3 answers with a price; without an answer the offer closes after 7 days."
 msgstr ""
 
-#: template-parts/components/buy-box.php:170
+#: template-parts/components/buy-box.php:207
 msgid "pieces"
 msgstr ""
 
-#: template-parts/components/buy-box.php:171
+#: template-parts/components/buy-box.php:207
+msgid "bars"
+msgstr ""
+
+#: template-parts/components/buy-box.php:208
 msgid "Listed price"
 msgstr ""
 
-#: template-parts/components/buy-box.php:172
+#: template-parts/components/buy-box.php:209
 msgid "Your offer comes to"
 msgstr ""
 
-#: template-parts/components/buy-box.php:172
+#: template-parts/components/buy-box.php:209
 msgid "Total of your offer"
 msgstr ""
 
-#: template-parts/components/buy-box.php:178
+#: template-parts/components/buy-box.php:215
 msgid "This is your listing: buyers order and make offers here."
 msgstr ""
 
-#: template-parts/components/buy-box.php:180
+#: template-parts/components/buy-box.php:217
 msgid "Sign in or create a free account to send your order or offer: the seller needs to know who buys."
 msgstr ""
 
-#: template-parts/components/buy-box.php:182
+#: template-parts/components/buy-box.php:219
 msgid "Sign in to continue"
 msgstr ""
 
-#: template-parts/components/buy-box.php:188
+#: template-parts/components/buy-box.php:225
 #: template-parts/components/enquiry-form.php:45
 #: template-parts/dashboard/settings.php:22
 #: templates/auth-register.php:74
 msgid "Full name"
 msgstr ""
 
-#: template-parts/components/buy-box.php:189
+#: template-parts/components/buy-box.php:226
 #: template-parts/components/enquiry-form.php:46
 #: template-parts/dashboard/company.php:125
 #: templates/company-profile.php:235
@@ -1234,7 +1259,7 @@ msgid "Phone"
 msgstr ""
 
 #. translators: %d: request number.
-#: template-parts/components/buy-box.php:191
+#: template-parts/components/buy-box.php:228
 #: template-parts/components/rfq-compare.php:86
 #: template-parts/dashboard/company.php:126
 #: templates/company-profile.php:245
@@ -1242,27 +1267,27 @@ msgstr ""
 msgid "E-mail"
 msgstr ""
 
-#: template-parts/components/buy-box.php:192
+#: template-parts/components/buy-box.php:229
 msgid "Message to the seller (optional)"
 msgstr ""
 
-#: template-parts/components/buy-box.php:192
+#: template-parts/components/buy-box.php:229
 msgid "Date wanted, dismantling, transport…"
 msgstr ""
 
-#: template-parts/components/buy-box.php:192
+#: template-parts/components/buy-box.php:229
 msgid "Delivery place, date, cutting…"
 msgstr ""
 
-#: template-parts/components/buy-box.php:193
+#: template-parts/components/buy-box.php:230
 msgid "Send the order"
 msgstr ""
 
-#: template-parts/components/buy-box.php:193
+#: template-parts/components/buy-box.php:230
 msgid "Send the offer"
 msgstr ""
 
-#: template-parts/components/buy-box.php:194
+#: template-parts/components/buy-box.php:231
 msgid "Nothing is paid on ReuSteel. The seller receives your name, phone and e-mail with the quantity and the price; once accepted, you get the seller's contact details and agree on payment and delivery directly."
 msgstr ""
 
@@ -1335,7 +1360,7 @@ msgstr ""
 #: template-parts/components/product-tech.php:463
 #: template-parts/dashboard/publish.php:112
 #: templates/single-listing.php:49
-#: templates/single-listing.php:115
+#: templates/single-listing.php:118
 msgid "Assembled"
 msgstr ""
 
@@ -1345,7 +1370,7 @@ msgstr ""
 #: template-parts/components/product-tech.php:464
 #: template-parts/dashboard/publish.php:113
 #: templates/single-listing.php:49
-#: templates/single-listing.php:115
+#: templates/single-listing.php:118
 msgid "Dismantled"
 msgstr ""
 
@@ -1653,6 +1678,7 @@ msgid "Size"
 msgstr ""
 
 #: template-parts/components/filter-panel.php:24
+#: template-parts/components/listing-product.php:38
 #: template-parts/components/rfq-single.php:24
 msgid "Designation"
 msgstr ""
@@ -1852,6 +1878,7 @@ msgid "Geometric characteristics"
 msgstr ""
 
 #: template-parts/components/listing-building.php:55
+#: template-parts/components/listing-product.php:79
 msgid "All characteristics"
 msgstr ""
 
@@ -1860,27 +1887,30 @@ msgid "condition, roof, covering, cladding…"
 msgstr ""
 
 #: template-parts/components/listing-building.php:65
-#: templates/single-listing.php:203
+#: templates/single-listing.php:206
 msgid "Structural element inventory"
 msgstr ""
 
 #. translators: 1: number of kinds of elements, 2: number of pieces.
 #: template-parts/components/listing-building.php:75
+#: template-parts/components/listing-product.php:108
 msgid "%1$s kinds of elements · %2$s pieces"
 msgstr ""
 
 #: template-parts/components/listing-building.php:86
+#: template-parts/components/listing-product.php:115
 msgid "See the detail of the inventory"
 msgstr ""
 
 #: template-parts/components/listing-building.php:89
-#: templates/single-listing.php:206
+#: template-parts/components/listing-product.php:118
+#: templates/single-listing.php:209
 msgid "Unit weights come from the platform’s standard section tables. The theoretical weight excludes bolts, plates and welds."
 msgstr ""
 
 #: template-parts/components/listing-building.php:96
 #: template-parts/components/product-tech.php:170
-#: templates/single-listing.php:183
+#: templates/single-listing.php:186
 msgid "What the price includes"
 msgstr ""
 
@@ -1921,30 +1951,35 @@ msgid "Foundations and accessories: not included"
 msgstr ""
 
 #: template-parts/components/listing-building.php:124
-#: templates/single-listing.php:172
+#: template-parts/components/listing-product.php:126
+#: templates/single-listing.php:175
 msgid "Technical documents"
 msgstr ""
 
 #: template-parts/components/listing-building.php:135
+#: template-parts/components/listing-product.php:137
 #: template-parts/components/product-form.php:120
 #: template-parts/dashboard/invoice.php:65
 #: templates/mission-request.php:105
-#: templates/single-listing.php:212
+#: templates/single-listing.php:215
 #: templates/single-service.php:99
 msgid "Description"
 msgstr ""
 
 #: template-parts/components/listing-building.php:137
-#: templates/single-listing.php:214
+#: template-parts/components/listing-product.php:139
+#: templates/single-listing.php:217
 msgid "No description. Ask the seller for details with the form below."
 msgstr ""
 
 #: template-parts/components/listing-building.php:141
-#: templates/single-listing.php:218
+#: template-parts/components/listing-product.php:143
+#: templates/single-listing.php:221
 msgid "Shown in the language the seller wrote it in."
 msgstr ""
 
 #: template-parts/components/listing-building.php:168
+#: template-parts/components/listing-product.php:181
 msgid "See the location"
 msgstr ""
 
@@ -1957,29 +1992,42 @@ msgid "Buy elements"
 msgstr ""
 
 #: template-parts/components/listing-building.php:186
-#: templates/single-listing.php:135
-#: templates/single-listing.php:137
+#: template-parts/components/listing-product.php:197
+#: templates/single-listing.php:138
+#: templates/single-listing.php:140
 msgid "Contact the seller"
 msgstr ""
 
+#: template-parts/components/listing-building.php:189
+#: template-parts/components/listing-product.php:200
+msgid "Get in touch"
+msgstr ""
+
 #: template-parts/components/listing-building.php:190
+#: template-parts/components/listing-product.php:201
 msgid "Quotation"
 msgstr ""
 
 #: template-parts/components/listing-building.php:191
+#: template-parts/components/listing-product.php:202
 #: template-parts/dashboard/company.php:149
 #: template-parts/dashboard/settings.php:43
-#: templates/single-listing.php:141
+#: templates/single-listing.php:144
 msgid "Save"
 msgstr ""
 
 #: template-parts/components/listing-building.php:192
-#: templates/single-listing.php:142
+#: template-parts/components/listing-product.php:203
+#: templates/single-listing.php:145
 msgid "Share"
 msgstr ""
 
+#: template-parts/components/listing-gallery.php:50
+msgid "Drawing of the section"
+msgstr ""
+
 #. translators: %d: photo number.
-#: template-parts/components/listing-gallery.php:29
+#: template-parts/components/listing-gallery.php:52
 #: templates/single-service.php:56
 msgid "Photo %d"
 msgstr ""
@@ -2169,6 +2217,71 @@ msgstr ""
 #: template-parts/components/service-form.php:158
 #: template-parts/dashboard/portfolio.php:87
 msgid "Cancel"
+msgstr ""
+
+#: template-parts/components/listing-product.php:32
+msgid "Kinds of elements"
+msgstr ""
+
+#: template-parts/components/listing-product.php:33
+#: template-parts/components/listing-product.php:45
+msgid "Pieces"
+msgstr ""
+
+#: template-parts/components/listing-product.php:35
+#: template-parts/components/listing-product.php:48
+#: template-parts/components/price-block.php:141
+#: template-parts/components/product-tech.php:324
+#: template-parts/components/product-tech.php:327
+#: template-parts/components/product-tech.php:614
+#: template-parts/components/weight-calculator.php:202
+#: template-parts/components/weight-calculator.php:224
+#: template-parts/components/weight-calculator.php:269
+#: template-parts/dashboard/publish.php:199
+msgid "Total weight"
+msgstr ""
+
+#: template-parts/components/listing-product.php:40
+#: template-parts/components/product-tech.php:92
+#: template-parts/dashboard/publish.php:87
+#: templates/single-listing.php:59
+msgid "Steel grade"
+msgstr ""
+
+#: template-parts/components/listing-product.php:43
+msgid "Bars × length"
+msgstr ""
+
+#: template-parts/components/listing-product.php:68
+msgid "The lot for sale"
+msgstr ""
+
+#: template-parts/components/listing-product.php:79
+msgid "standard, dimensions, weight per metre, weight source…"
+msgstr ""
+
+#: template-parts/components/listing-product.php:98
+#: templates/single-listing.php:206
+msgid "Lot inventory"
+msgstr ""
+
+#: template-parts/components/listing-product.php:163
+msgid "Quantity needed (bars)"
+msgstr ""
+
+#: template-parts/components/listing-product.php:176
+msgid "Brand new"
+msgstr ""
+
+#: template-parts/components/listing-product.php:189
+#: template-parts/dashboard/ai-credits.php:61
+#: templates/single-listing.php:136
+msgid "Buy"
+msgstr ""
+
+#: template-parts/components/listing-product.php:189
+#: template-parts/components/listing-product.php:192
+msgid "Buy the whole lot"
 msgstr ""
 
 #. translators: %s: year.
@@ -2523,7 +2636,7 @@ msgstr ""
 msgid "Delete this reference?"
 msgstr ""
 
-#: template-parts/components/price-block.php:23
+#: template-parts/components/price-block.php:25
 #: template-parts/components/product-tech.php:580
 #: template-parts/components/rfq-offer-form.php:39
 #: template-parts/dashboard/studies.php:106
@@ -2531,101 +2644,111 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: template-parts/components/price-block.php:34
+#: template-parts/components/price-block.php:36
 msgid "Price of the complete building"
 msgstr ""
 
 #. translators: %s: price per kg.
-#: template-parts/components/price-block.php:41
+#: template-parts/components/price-block.php:43
+#: template-parts/components/price-block.php:111
 msgid "i.e. %s"
 msgstr ""
 
 #. translators: %s: weight.
-#: template-parts/components/price-block.php:48
+#: template-parts/components/price-block.php:50
 msgid "calculated on %s of declared elements"
 msgstr ""
 
 #. translators: %s: weight.
-#: template-parts/components/price-block.php:48
+#: template-parts/components/price-block.php:50
 msgid "calculated on %s of steel"
 msgstr ""
 
-#: template-parts/components/price-block.php:55
+#: template-parts/components/price-block.php:57
 msgid "Or bought by element"
 msgstr ""
 
-#: template-parts/components/price-block.php:58
+#: template-parts/components/price-block.php:60
 msgid "Sold by element · price per kilogram"
 msgstr ""
 
-#: template-parts/components/price-block.php:61
+#: template-parts/components/price-block.php:63
+#: template-parts/components/price-block.php:94
 #: templates/dashboard.php:252
 msgid "Available"
 msgstr ""
 
 #. translators: %s: price per kg.
-#: template-parts/components/price-block.php:68
+#: template-parts/components/price-block.php:70
+#: template-parts/components/price-block.php:120
 msgid "New steel: %s (ReuSteel price index)"
 msgstr ""
 
-#: template-parts/components/price-block.php:73
+#: template-parts/components/price-block.php:83
+#: template-parts/components/price-block.php:137
+msgid "Price per kilogram"
+msgstr ""
+
+#. translators: 1: price of one bar, 2: length of the bar in metres.
+#: template-parts/components/price-block.php:89
+msgid "i.e. %1$s a bar of %2$s m"
+msgstr ""
+
+#. translators: %s: number of bars.
+#: template-parts/components/price-block.php:98
+msgid "%s bar"
+msgid_plural "%s bars"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/components/price-block.php:106
+#: template-parts/components/price-block.php:151
+msgid "Or the whole lot"
+msgstr ""
+
+#: template-parts/components/price-block.php:125
 #: template-parts/components/product-tech.php:654
 msgid "Asking price"
 msgstr ""
 
-#: template-parts/components/price-block.php:76
-#: template-parts/components/price-block.php:92
+#: template-parts/components/price-block.php:128
+#: template-parts/components/price-block.php:144
 #: template-parts/components/product-tech.php:647
 #: template-parts/components/product-tech.php:659
 msgid "Equivalent price per kg"
 msgstr ""
 
-#: template-parts/components/price-block.php:77
+#: template-parts/components/price-block.php:129
 #: template-parts/components/product-tech.php:663
 msgid "Price per m²"
 msgstr ""
 
-#: template-parts/components/price-block.php:78
+#: template-parts/components/price-block.php:130
 msgid "Estimated steel weight"
 msgstr ""
 
-#: template-parts/components/price-block.php:85
-msgid "Price per kilogram"
-msgstr ""
-
-#: template-parts/components/price-block.php:85
+#: template-parts/components/price-block.php:137
 msgid "Price for the whole lot"
 msgstr ""
 
-#: template-parts/components/price-block.php:85
+#: template-parts/components/price-block.php:137
 msgid "Unit price"
 msgstr ""
 
-#: template-parts/components/price-block.php:85
+#: template-parts/components/price-block.php:137
 msgid "sold as a whole lot only"
 msgstr ""
 
-#: template-parts/components/price-block.php:89
-#: template-parts/components/product-tech.php:324
-#: template-parts/components/product-tech.php:327
-#: template-parts/components/product-tech.php:614
-#: template-parts/components/weight-calculator.php:202
-#: template-parts/components/weight-calculator.php:224
-#: template-parts/components/weight-calculator.php:269
-#: template-parts/dashboard/publish.php:199
-msgid "Total weight"
-msgstr ""
-
-#: template-parts/components/price-block.php:95
+#: template-parts/components/price-block.php:147
 #: template-parts/components/product-tech.php:654
 msgid "Indicative total"
 msgstr ""
 
-#: template-parts/components/price-block.php:95
+#: template-parts/components/price-block.php:147
 msgid "Total at the detail price"
 msgstr ""
 
-#: template-parts/components/price-block.php:95
+#: template-parts/components/price-block.php:147
 #: template-parts/components/product-tech.php:654
 #: template-parts/components/rfq-compare.php:20
 #: template-parts/components/rfq-my-offer.php:18
@@ -2636,27 +2759,23 @@ msgstr ""
 msgid "Total price"
 msgstr ""
 
-#: template-parts/components/price-block.php:99
-msgid "Or the whole lot"
-msgstr ""
-
-#: template-parts/components/price-block.php:106
+#: template-parts/components/price-block.php:158
 msgid "Weighed by the seller."
 msgstr ""
 
-#: template-parts/components/price-block.php:107
+#: template-parts/components/price-block.php:159
 msgid "Calculated from standard section tables."
 msgstr ""
 
-#: template-parts/components/price-block.php:108
+#: template-parts/components/price-block.php:160
 msgid "Estimated by the seller, not weighed."
 msgstr ""
 
-#: template-parts/components/price-block.php:109
+#: template-parts/components/price-block.php:161
 msgid "Calculated for the elements listed by the seller only; the whole structure is heavier."
 msgstr ""
 
-#: template-parts/components/price-block.php:121
+#: template-parts/components/price-block.php:173
 msgid "Demo listing: values are illustrative and will be computed by the weight engine."
 msgstr ""
 
@@ -2883,12 +3002,6 @@ msgstr ""
 
 #: template-parts/components/product-tech.php:34
 msgid "the whole lot"
-msgstr ""
-
-#: template-parts/components/product-tech.php:92
-#: template-parts/dashboard/publish.php:87
-#: templates/single-listing.php:59
-msgid "Steel grade"
 msgstr ""
 
 #: template-parts/components/product-tech.php:92
@@ -3577,7 +3690,7 @@ msgstr ""
 
 #. translators: %d: days.
 #: template-parts/components/rfq-my-offer.php:20
-#: templates/single-listing.php:195
+#: templates/single-listing.php:198
 msgid "included"
 msgstr ""
 
@@ -4451,11 +4564,6 @@ msgstr[1] ""
 
 #: template-parts/dashboard/ai-credits.php:45
 msgid "One use of an AI tool takes one credit. The credits of the month start again on the 1st."
-msgstr ""
-
-#: template-parts/dashboard/ai-credits.php:61
-#: templates/single-listing.php:133
-msgid "Buy"
 msgstr ""
 
 #: template-parts/dashboard/ai-credits.php:70
@@ -6289,7 +6397,7 @@ msgstr ""
 
 #: template-parts/marketplace-archive.php:110
 #: templates/front-page-template.php:151
-#: templates/single-listing.php:139
+#: templates/single-listing.php:142
 #: templates/single-service.php:92
 #: templates/single-service.php:121
 #: templates/styleguide.php:36
@@ -7910,43 +8018,39 @@ msgstr ""
 msgid "Preview: changes were requested; not visible to buyers."
 msgstr ""
 
-#: templates/single-listing.php:157
+#: templates/single-listing.php:160
 msgid "Technical specifications"
 msgstr ""
 
-#: templates/single-listing.php:187
+#: templates/single-listing.php:190
 msgid "Dismantling"
 msgstr ""
 
-#: templates/single-listing.php:188
+#: templates/single-listing.php:191
 msgid "Transport"
 msgstr ""
 
-#: templates/single-listing.php:189
+#: templates/single-listing.php:192
 msgid "Reinstallation"
 msgstr ""
 
-#: templates/single-listing.php:190
+#: templates/single-listing.php:193
 msgid "Foundations and accessories"
 msgstr ""
 
-#: templates/single-listing.php:195
+#: templates/single-listing.php:198
 msgid "not included"
 msgstr ""
 
-#: templates/single-listing.php:203
-msgid "Lot inventory"
-msgstr ""
-
-#: templates/single-listing.php:232
+#: templates/single-listing.php:235
 msgid "Planning a structural reuse? Have the elements checked by a verified engineer before installation."
 msgstr ""
 
-#: templates/single-listing.php:232
+#: templates/single-listing.php:235
 msgid "Find an engineer"
 msgstr ""
 
-#: templates/single-listing.php:255
+#: templates/single-listing.php:258
 msgid "Similar listings"
 msgstr ""
 

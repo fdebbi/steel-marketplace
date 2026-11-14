@@ -966,91 +966,91 @@ msgid ""
 "still available."
 msgstr "لم يعد «%s» معروضا. أعد نشره من «إعلاناتي» إن كان لا يزال متوفرا."
 
-#: src/Presenter.php:139
+#: src/Presenter.php:143
 msgid "Product type"
 msgstr "نوع المنتج"
 
-#: src/Presenter.php:141 src/Presenter.php:169
+#: src/Presenter.php:145 src/Presenter.php:173
 msgid "Designation"
 msgstr "التسمية"
 
-#: src/Presenter.php:142 src/Presenter.php:170
+#: src/Presenter.php:146 src/Presenter.php:174
 msgid "Steel grade"
 msgstr "درجة الفولاذ"
 
-#: src/Presenter.php:142 src/Presenter.php:170
+#: src/Presenter.php:146 src/Presenter.php:174
 msgid "Not specified"
 msgstr "غير محددة"
 
-#: src/Presenter.php:144
+#: src/Presenter.php:148
 msgid "Standard"
 msgstr "المعيار"
 
-#: src/Presenter.php:154
+#: src/Presenter.php:158
 msgid "Dimensions"
 msgstr "الأبعاد"
 
-#: src/Presenter.php:157
+#: src/Presenter.php:161
 msgid "Plate size"
 msgstr "مقاس الصفيحة"
 
-#: src/Presenter.php:159
+#: src/Presenter.php:163
 msgid "Bar length"
 msgstr "طول القضبان"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:162
+#: src/Presenter.php:166
 msgid "%s plates"
 msgstr "%s صفائح"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:162
+#: src/Presenter.php:166
 msgid "%s bars"
 msgstr "%s قضبان"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:164 src/Presenter.php:172
+#: src/Presenter.php:168 src/Presenter.php:176
 msgid "Quantity"
 msgstr "الكمية"
 
-#: src/Presenter.php:166
+#: src/Presenter.php:170
 msgid "Weight per metre"
 msgstr "الوزن لكل متر"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:172
+#: src/Presenter.php:176
 msgid "%s pieces in the lot"
 msgstr "%s قطعة في الدفعة"
 
-#: src/Presenter.php:175
+#: src/Presenter.php:179
 msgid "Weight of the lot"
 msgstr "وزن الدفعة"
 
-#: src/Presenter.php:197
+#: src/Presenter.php:201
 msgid "Available quantity"
 msgstr "الكمية المتوفرة"
 
-#: src/Presenter.php:203
+#: src/Presenter.php:207
 msgid "Condition"
 msgstr "الحالة"
 
-#: src/Presenter.php:211
+#: src/Presenter.php:215
 msgid "Yes"
 msgstr "نعم"
 
-#: src/Presenter.php:211
+#: src/Presenter.php:215
 msgid "No"
 msgstr "لا"
 
-#: src/Presenter.php:250
+#: src/Presenter.php:254
 msgid "m (linear)"
 msgstr "م.ط"
 
-#: src/Presenter.php:251
+#: src/Presenter.php:255
 msgid "pieces"
 msgstr "قطع"
 
-#: src/Presenter.php:252
+#: src/Presenter.php:256
 msgid "lot"
 msgstr "دفعة"
 
@@ -1189,37 +1189,37 @@ msgstr "هذا الوزن خارج النطاق المقبول."
 msgid "Choose the condition."
 msgstr "اختر الحالة."
 
-#: src/Stock.php:140
+#: src/Stock.php:146
 msgid "This listing is not sold as a whole lot."
 msgstr "هذا الإعلان لا يُباع كحصة كاملة."
 
-#: src/Stock.php:146
+#: src/Stock.php:152
 msgid "This listing is sold as a whole lot only."
 msgstr "هذا الإعلان يُباع كحصة كاملة فقط."
 
 #. translators: 1: number of pieces, 2: profile (IPE 200).
-#: src/Stock.php:158
+#: src/Stock.php:164
 msgid "Only %1$s pieces of %2$s are available."
 msgstr "لا يتوفر سوى %1$s قطعة من %2$s."
 
-#: src/Stock.php:165
+#: src/Stock.php:171
 msgid "Choose the elements you want and their number."
 msgstr "اختر العناصر المطلوبة وعددها."
 
-#: src/Stock.php:171
+#: src/Stock.php:177
 msgid "Enter the quantity you want."
 msgstr "أدخل الكمية المطلوبة."
 
-#: src/Stock.php:174
+#: src/Stock.php:180
 msgid "Enter a whole number."
 msgstr "أدخل عددا صحيحا."
 
 #. translators: 1: available quantity, 2: unit.
-#: src/Stock.php:178
+#: src/Stock.php:184
 msgid "Only %1$s %2$s available."
 msgstr "المتوفر %1$s %2$s فقط."
 
-#: src/Stock.php:192
+#: src/Stock.php:198
 msgid "This listing is no longer on sale."
 msgstr "هذا الإعلان لم يعد معروضا للبيع."
 

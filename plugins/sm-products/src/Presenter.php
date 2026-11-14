@@ -102,6 +102,10 @@ final class Presenter {
 			);
 		}
 		$out['spec_rows'] = self::spec_rows( $p );
+		// 0.15.0: with photos, the section sheet stays in the gallery as a slide (first for new steel, last for reuse).
+		$drawing           = '' !== (string) ( $p->drawing ?? '' ) ? self::drawing_url( $p ) : '';
+		$out['sheet_slide'] = ! empty( $out['photos'] ) && '' !== $drawing ? array( 'img' => $drawing, 'sheet' => self::section_sheet( $p ), 'first' => 'reuse' !== $p->market ) : null;
+		$out['qty_mode']    = (string) ( $p->qty_mode ?? '' );
 		$out['elements']  = self::elements( $p );
 		// Place and visits (0.12.0): the exact position only for those allowed to see it.
 		$out['address']  = (string) ( $p->address ?? '' );

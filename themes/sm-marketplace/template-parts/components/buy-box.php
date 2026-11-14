@@ -27,6 +27,10 @@ $old_items = (array) sm_theme_old( 'items', array() );
 if ( $is_b && $lot && ! in_array( sm_theme_old( 'mode' ), array( 'lot', 'detail' ), true ) ) {
 	$mode = 'lot'; // The whole building first.
 }
+// 0.34.0: whole bars: the buyer counts bars, the weight and the total follow; an offer is made per kg.
+$bars   = $det && ! $pick && ! empty( $det['bar_kg'] ) ? $det : null;
+$sum    = $is_b || $bars;
+$per_kg = $pick || ( $bars && ! empty( $bars['per_kg'] ) );
 ?>
 <section class="sm-panel sm-buy" id="sm-buy" data-sm-buy-panel>
 	<h2 class="sm-panel__title"><?php esc_html_e( 'Buy or make an offer', 'sm-marketplace' ); ?></h2>
@@ -52,12 +56,17 @@ if ( $is_b && $lot && ! in_array( sm_theme_old( 'mode' ), array( 'lot', 'detail'
 		<?php sm_theme_form_open( 'trade_create', array( 'class' => 'sm-form sm-buy__form', 'data-sm-buy-form' => '' ) ); ?>
 			<input type="hidden" name="product_id" value="<?php echo esc_attr( $box['product_id'] ); ?>">
 
-			<?php if ( $lot && $det && $is_b ) : ?>
+			<?php if ( $lot && $det && ( $is_b || $bars ) ) : ?>
 				<fieldset class="sm-field">
 					<legend class="screen-reader-text"><?php esc_html_e( 'What do you buy?', 'sm-marketplace' ); ?></legend>
 					<div class="sm-segment sm-buy__kind sm-buy__mode">
-						<label><input type="radio" name="mode" value="lot" data-total="<?php echo esc_attr( $lot['total'] ); ?>" <?php checked( $mode, 'lot' ); ?>><span><?php esc_html_e( 'Complete building', 'sm-marketplace' ); ?></span></label>
-						<label><input type="radio" name="mode" value="detail" <?php checked( $mode, 'detail' ); ?>><span><?php esc_html_e( 'By element', 'sm-marketplace' ); ?></span></label>
+						<?php if ( $is_b ) : ?>
+							<label><input type="radio" name="mode" value="lot" data-total="<?php echo esc_attr( $lot['total'] ); ?>" <?php checked( $mode, 'lot' ); ?>><span><?php esc_html_e( 'Complete building', 'sm-marketplace' ); ?></span></label>
+							<label><input type="radio" name="mode" value="detail" <?php checked( $mode, 'detail' ); ?>><span><?php esc_html_e( 'By element', 'sm-marketplace' ); ?></span></label>
+						<?php else : ?>
+							<label><input type="radio" name="mode" value="detail" <?php checked( $mode, 'detail' ); ?>><span><?php esc_html_e( 'Retail', 'sm-marketplace' ); ?></span></label>
+							<label><input type="radio" name="mode" value="lot" data-total="<?php echo esc_attr( $lot['total'] ); ?>" <?php checked( $mode, 'lot' ); ?>><span><?php esc_html_e( 'Complete lot', 'sm-marketplace' ); ?></span></label>
+						<?php endif; ?>
 					</div>
 				</fieldset>
 			<?php endif; ?>
@@ -70,7 +79,7 @@ if ( $is_b && $lot && ! in_array( sm_theme_old( 'mode' ), array( 'lot', 'detail'
 				</div>
 			</fieldset>
 
-			<?php if ( $lot && $det && $is_b ) : ?>
+			<?php if ( $lot && $det && ( $is_b || $bars ) ) : ?>
 				<?php // Shown above, before the kind of request. ?>
 			<?php elseif ( $lot && $det ) : ?>
 				<fieldset class="sm-field">
@@ -127,6 +136,33 @@ if ( $is_b && $lot && ! in_array( sm_theme_old( 'mode' ), array( 'lot', 'detail'
 					</p>
 					<?php sm_theme_error( 'items' ); ?>
 				</fieldset>
+			<?php elseif ( $bars ) : ?>
+				<?php $len = sm_number( $bars['bar_len_mm'] / 1000, fmod( $bars['bar_len_mm'], 1000 ) ? 1 : 0 ); ?>
+				<div class="sm-field sm-buy__qty sm-buy__pick" data-sm-buy-qty>
+					<label for="buy-qty" class="sm-buy__picktitle">
+						<?php
+						/* translators: %s: length of a bar in metres. */
+						echo esc_html( sprintf( __( 'Number of bars of %s m', 'sm-marketplace' ), $len ) );
+						?>
+					</label>
+					<div class="sm-buy__line is-on" data-sm-buy-line>
+						<span class="sm-buy__linetext">
+							<strong><?php echo sm_kses_tech( sm_tech( sm_t( $item['title'] ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></strong>
+							<small>
+								<?php
+								/* translators: 1: number of bars, 2: weight of one bar in kg. */
+								echo esc_html( sprintf( __( '%1$s available · %2$s kg a bar', 'sm-marketplace' ), sm_number( $bars['max'] ), sm_number( $bars['bar_kg'], 1 ) ) );
+								?>
+							</small>
+						</span>
+						<span class="sm-buy__step">
+							<button type="button" data-sm-buy-step="-1" aria-label="<?php esc_attr_e( 'One less', 'sm-marketplace' ); ?>">−</button>
+							<input id="buy-qty" name="quantity" type="number" inputmode="numeric" min="1" max="<?php echo esc_attr( $bars['max'] ); ?>" step="1" value="<?php echo esc_attr( sm_theme_old( 'quantity', '1' ) ); ?>" data-unit-price="<?php echo esc_attr( $bars['unit_price'] ); ?>" data-kg="<?php echo esc_attr( $bars['bar_kg'] ); ?>" dir="ltr"<?php sm_theme_aria( 'quantity' ); ?>>
+							<button type="button" data-sm-buy-step="1" aria-label="<?php esc_attr_e( 'One more', 'sm-marketplace' ); ?>">+</button>
+						</span>
+					</div>
+					<?php sm_theme_error( 'quantity' ); ?>
+				</div>
 			<?php elseif ( $det ) : ?>
 				<div class="sm-field sm-buy__qty" data-sm-buy-qty>
 					<label for="buy-qty">
@@ -146,7 +182,7 @@ if ( $is_b && $lot && ! in_array( sm_theme_old( 'mode' ), array( 'lot', 'detail'
 				</div>
 			<?php endif; ?>
 
-			<?php if ( $pick ) : ?>
+			<?php if ( $per_kg ) : ?>
 				<div class="sm-field sm-buy__offer sm-buy__offerkg" data-sm-buy-offerkg>
 					<label for="buy-amount-kg"><?php esc_html_e( 'Price per kg you offer (DA/kg)', 'sm-marketplace' ); ?></label>
 					<input id="buy-amount-kg" name="amount_kg" type="text" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( sm_theme_old( 'amount_kg' ) ); ?>"<?php sm_theme_aria( 'amount_kg' ); ?>>
@@ -154,7 +190,7 @@ if ( $is_b && $lot && ! in_array( sm_theme_old( 'mode' ), array( 'lot', 'detail'
 				</div>
 			<?php endif; ?>
 
-			<?php if ( ! $is_b ) : ?>
+			<?php if ( ! $sum ) : ?>
 				<p class="sm-buy__total" aria-live="polite"><span><?php esc_html_e( 'Total at the listed price', 'sm-marketplace' ); ?></span><strong data-sm-buy-total data-currency="<?php echo esc_attr( sm_currency_label() ); ?>">—</strong></p>
 			<?php endif; ?>
 
@@ -165,9 +201,10 @@ if ( $is_b && $lot && ! in_array( sm_theme_old( 'mode' ), array( 'lot', 'detail'
 				<?php sm_theme_error( 'amount' ); ?>
 			</div>
 
-			<?php if ( $is_b ) : ?>
+			<?php if ( $sum ) : ?>
+				<?php $sum_lot = $is_b ? __( 'Complete building', 'sm-marketplace' ) : __( 'Complete lot', 'sm-marketplace' ); ?>
 				<div class="sm-buy__sum" aria-live="polite">
-					<p class="sm-buy__sumrow"><span data-sm-buy-what data-lot="<?php esc_attr_e( 'Complete building', 'sm-marketplace' ); ?>" data-pieces="<?php esc_attr_e( 'pieces', 'sm-marketplace' ); ?>"><?php esc_html_e( 'Complete building', 'sm-marketplace' ); ?></span><strong data-sm-buy-kg data-lot-kg="<?php echo esc_attr( (float) ( $item['weight_kg'] ?? 0 ) ); ?>">—</strong></p>
+					<p class="sm-buy__sumrow"><span data-sm-buy-what data-lot="<?php echo esc_attr( $sum_lot ); ?>" data-pieces="<?php echo esc_attr( $is_b ? __( 'pieces', 'sm-marketplace' ) : __( 'bars', 'sm-marketplace' ) ); ?>"><?php echo esc_html( $sum_lot ); ?></span><strong data-sm-buy-kg data-lot-kg="<?php echo esc_attr( (float) ( $item['weight_kg'] ?? 0 ) ); ?>">—</strong></p>
 					<p class="sm-buy__sumrow"><span><?php esc_html_e( 'Listed price', 'sm-marketplace' ); ?></span><strong data-sm-buy-total data-currency="<?php echo esc_attr( sm_currency_label() ); ?>">—</strong></p>
 					<p class="sm-buy__sumrow sm-buy__sumrow--offer"><span data-sm-buy-eqlabel data-kg="<?php esc_attr_e( 'Your offer comes to', 'sm-marketplace' ); ?>" data-total="<?php esc_attr_e( 'Total of your offer', 'sm-marketplace' ); ?>"><?php esc_html_e( 'Your offer comes to', 'sm-marketplace' ); ?></span><strong data-sm-buy-eq data-currency="<?php echo esc_attr( sm_currency_label() ); ?>">—</strong></p>
 				</div>

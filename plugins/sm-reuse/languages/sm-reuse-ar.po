@@ -45,16 +45,67 @@ msgid ""
 msgstr ""
 "يتطلب SM Reuse إضافات SM Core وSM Weight Engine وSM Products. فعّلها أولًا."
 
-#: src/Advice.php:35
+#: src/Advice.php:34
+msgid "Have this steel checked before you buy"
+msgstr "اطلب فحص هذا الفولاذ قبل الشراء"
+
+#. translators: %s: platform name.
+#: src/Advice.php:36
+msgid ""
+"An engineer verified on %s checks the condition, the corrosion and the "
+"likely grade of the reused elements. The information in this listing is "
+"declared by the seller."
+msgstr ""
+"مهندس موثّق على %s يفحص الحالة والتآكل والرتبة المحتملة للعناصر المعاد "
+"استعمالها. معلومات هذا الإعلان مصرح بها من البائع."
+
+#: src/Advice.php:37
+msgid "Ask for an inspection"
+msgstr "طلب معاينة"
+
+#: src/Advice.php:60
+msgid "Lot"
+msgstr "الحصة"
+
+#: src/Advice.php:62
+msgid "Weight"
+msgstr "الوزن"
+
+#: src/Advice.php:64
+msgid "Where it is"
+msgstr "مكان الحصة"
+
+#: src/Advice.php:65
+msgid "Listing"
+msgstr "الإعلان"
+
+#: src/Advice.php:66
+msgid "Inspection before buying reused steel listed on the platform."
+msgstr "معاينة قبل شراء فولاذ معاد استعماله منشور على المنصة."
+
+#: src/Advice.php:70
+msgid "What I expect from the inspection:"
+msgstr "ما أنتظره من المعاينة:"
+
+#. translators: %s: title of the listing.
+#: src/Advice.php:74
+msgid "Inspection: %s"
+msgstr "معاينة: %s"
+
+#: src/Advice.php:78
+msgid "Steel concerned by the inspection"
+msgstr "الفولاذ المعني بالمعاينة"
+
+#: src/Advice.php:88
 msgid "For recycling only"
 msgstr "للرسكلة فقط"
 
-#: src/Advice.php:36
+#: src/Advice.php:89
 msgid "This lot is sold as scrap. It must not be used in a structure."
 msgstr "تُباع هذه الدفعة كخردة. لا يجوز استعمالها في هيكل إنشائي."
 
 #. translators: %s: platform name.
-#: src/Advice.php:41
+#: src/Advice.php:94
 msgid ""
 "Used or surplus steel can be reused in a structure only after a check by a "
 "qualified engineer: condition of the elements, steel grade, holes, welds and"
@@ -66,7 +117,7 @@ msgstr ""
 "هذا الإعلان يصرّح بها البائع، و%s لا تصادق عليها."
 
 #. translators: %s: platform name.
-#: src/Advice.php:44
+#: src/Advice.php:97
 msgid ""
 "The seller says these elements need an inspection or a treatment. Have them "
 "checked by a qualified engineer before any structural use. The information "
@@ -76,11 +127,11 @@ msgstr ""
 "قبل أي استعمال إنشائي. معلومات هذا الإعلان يصرّح بها البائع، و%s لا تصادق "
 "عليها."
 
-#: src/Advice.php:48
+#: src/Advice.php:101
 msgid "Structural reuse: ask an engineer"
 msgstr "إعادة الاستعمال الإنشائي: استشر مهندسًا"
 
-#: src/Advice.php:50
+#: src/Advice.php:103
 msgid "Find an engineer"
 msgstr "ابحث عن مهندس"
 

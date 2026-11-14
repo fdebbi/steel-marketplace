@@ -193,6 +193,31 @@ final class Presenter {
 			'description' => $text,
 			'rows'        => $rows,
 			'url'         => $url,
+			'heading'     => __( 'Building concerned by the inspection', 'sm-buildings' ),
+			'icon'        => 'warehouse',
+			// 0.5.0: type of project of the study request, from the category of the building (the buyer may change it).
+			'project_type' => self::project_type( (string) $p->category ),
 		);
+	}
+
+	/**
+	 * Type of project (SM Engineering) matching a building category.
+	 *
+	 * @param string $category Category slug (bld-industrial…).
+	 */
+	public static function project_type( $category ) {
+		$map = array(
+			'bld-industrial'   => 'industrial',
+			'bld-storage'      => 'storage',
+			'bld-workshop'     => 'industrial',
+			'bld-agricultural' => 'agricultural',
+			'bld-livestock'    => 'livestock',
+			'bld-kit'          => 'other',
+		);
+		/**
+		 * @param array $map Building category => type of project of a study request.
+		 */
+		$map = (array) apply_filters( 'sm_buildings_project_types', $map );
+		return (string) ( $map[ $category ] ?? '' );
 	}
 }

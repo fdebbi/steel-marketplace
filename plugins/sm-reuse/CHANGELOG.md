@@ -1,5 +1,10 @@
 # Changelog — sm-reuse
 
+## 0.2.0 — 2026-11-14
+
+- « Faites contrôler cet acier avant d'acheter » : demande d'inspection (Expertise et Inspection Technique) pré-remplie avec le lot, envoyée à la plateforme qui désigne l'ingénieur. Pas pour la ferraille. Le type de projet est laissé à l'acheteur.
+- Tests : 40.
+
 ## 0.1.0 — 2026-11-07 (Phase 5)
 
 - Marché « Réemploi » ajouté au moteur d'annonces SM Products 0.2.0 : échelle d'état en cinq classes, origine, état de surface, découpe à la demande, chargement.

@@ -1,5 +1,10 @@
 # Changelog — sm-products
 
+## 0.15.0 — 2026-11-14
+
+- Barres entières : `Stock::options()` donne aussi le poids d'une barre (`bar_kg`), sa longueur et le prix au kg, pour compter en barres sur la page.
+- Fiche : `sheet_slide` (le dessin et la fiche de la section restent dans la galerie quand il y a des photos : en premier pour l'acier neuf, en dernier pour le réemploi) et `qty_mode`.
+
 ## 0.14.0 — 2026-11-14
 
 - Achat de pièces de l'inventaire : `Stock::pick_lines()` (une entrée par élément, profilé et longueur), `Stock::check()` et `Stock::take()` acceptent les pièces choisies ; le poids vient des tables de profilés, les pièces vendues quittent l'inventaire, l'annonce est vendue quand il est vide. Filtres `sm_products_stock_options` et `sm_products_stock_row` pour les extensions de marché.

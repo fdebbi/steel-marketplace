@@ -4,9 +4,9 @@ T = {
 "SM Buildings": ("SM Buildings", "SM Buildings"),
 "https://github.com/fdebbi/steel-marketplace": ("https://github.com/fdebbi/steel-marketplace", "https://github.com/fdebbi/steel-marketplace"),
 "ReuSteel": ("ReuSteel", "ReuSteel"),
-"Steel buildings market: new and used warehouses, agricultural and industrial hangars, workshops, livestock buildings and building kits, assembled or dismantled. Adds the \"buildings\" market to the SM Products listing engine: dimensions and area, structural system, roof and cladding, what the price includes, structural element inventory weighed by SM Weight Engine, price per kg and per m², indicative drawing. Requires SM Core, SM Weight Engine and SM Products 0.3.0.":
- ("Marché des bâtiments métalliques : entrepôts neufs et d’occasion, hangars agricoles et industriels, ateliers, bâtiments d’élevage et kits, montés ou démontés. Ajoute le marché « bâtiments » au moteur d’annonces SM Products : dimensions et surface, système porteur, toiture et bardage, ce que comprend le prix, inventaire des éléments pesé par SM Weight Engine, prix au kg et au m², schéma indicatif. Nécessite SM Core, SM Weight Engine et SM Products 0.3.0.",
-  "سوق المباني الفولاذية: مستودعات جديدة ومستعملة، هناجر فلاحية وصناعية، ورشات، مباني تربية وهياكل جاهزة، مركبة أو مفككة. يضيف سوق «المباني» إلى محرك إعلانات SM Products: الأبعاد والمساحة، النظام الإنشائي، السقف والكسوة، ما يشمله السعر، جرد العناصر بأوزان SM Weight Engine، السعر للكيلوغرام وللمتر المربع، ورسم توضيحي. يتطلب SM Core وSM Weight Engine وSM Products 0.3.0."),
+"Steel buildings market: new and used warehouses, agricultural and industrial hangars, workshops, livestock buildings and building kits, assembled or dismantled. Adds the \"buildings\" market to the SM Products listing engine: dimensions and area, structural system, roof and cladding, what the price includes, structural element inventory weighed by SM Weight Engine, price per kg and per m², indicative drawing. Requires SM Core, SM Weight Engine and SM Products 0.14.0.":
+ ("Marché des bâtiments métalliques : entrepôts neufs et d’occasion, hangars agricoles et industriels, ateliers, bâtiments d’élevage et kits, montés ou démontés. Ajoute le marché « bâtiments » au moteur d’annonces SM Products : dimensions et surface, système porteur, toiture et bardage, ce que comprend le prix, inventaire des éléments pesé par SM Weight Engine, prix au kg et au m², schéma indicatif. Nécessite SM Core, SM Weight Engine et SM Products 0.14.0.",
+  "سوق المباني الفولاذية: مستودعات جديدة ومستعملة، هناجر فلاحية وصناعية، ورشات، مباني تربية وهياكل جاهزة، مركبة أو مفككة. يضيف سوق «المباني» إلى محرك إعلانات SM Products: الأبعاد والمساحة، النظام الإنشائي، السقف والكسوة، ما يشمله السعر، جرد العناصر بأوزان SM Weight Engine، السعر للكيلوغرام وللمتر المربع، ورسم توضيحي. يتطلب SM Core وSM Weight Engine وSM Products 0.14.0."),
 "SM Buildings needs the SM Core, SM Weight Engine and SM Products plugins. Activate them first.": ("SM Buildings nécessite les extensions SM Core, SM Weight Engine et SM Products. Activez-les d’abord.", "يتطلب SM Buildings إضافات SM Core وSM Weight Engine وSM Products. فعّلها أولًا."),
 "Buildings": ("Bâtiments", "المباني"),
 "Maximum length and width (m)": ("Longueur et largeur maximales (m)", "الطول والعرض الأقصيان (م)"),
@@ -113,4 +113,9 @@ T.update({
 "Choose how you sell: the whole building, by element, or both.": ("Choisissez comment vous vendez : le bâtiment entier, par élément, ou les deux.", "اختر طريقة البيع: المبنى كاملا، حسب العنصر، أو كلاهما."),
 "To sell by element, list the elements of the structure first (step \"Elements\").": ("Pour vendre par élément, déclarez d’abord les éléments de la structure (étape « Éléments »).", "للبيع حسب العنصر، صرّح أولا بعناصر الهيكل (مرحلة «العناصر»)."),
 "A price per kg needs the steel weight: list the elements or give the total weight, or type the price of the whole building.": ("Un prix au kg demande le poids d’acier : déclarez les éléments ou le poids total, ou saisissez le prix du bâtiment entier.", "السعر للكيلوغرام يتطلب وزن الفولاذ: صرّح بالعناصر أو بالوزن الإجمالي، أو أدخل سعر المبنى كاملا."),
+})
+
+# 0.5.0
+T.update({
+"Building concerned by the inspection": ("Bâtiment concerné par l’inspection", "المبنى المعني بالمعاينة"),
 })

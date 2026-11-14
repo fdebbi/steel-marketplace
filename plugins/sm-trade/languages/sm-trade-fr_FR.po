@@ -27,7 +27,7 @@ msgid ""
 " by the seller, stock taken from the listing, contact details shared once "
 "accepted, history for the buyer, the seller and the administration (CSV "
 "export). Payment and delivery are settled directly between buyer and seller."
-" Requires SM Core and SM Products 0.10.0."
+" Requires SM Core and SM Products 0.15.0."
 msgstr ""
 "Commandes et offres entre acheteurs et vendeurs : « Acheter » au prix "
 "affiché (tout le lot ou une quantité), « Faire une offre » avec contre-"
@@ -35,7 +35,7 @@ msgstr ""
 "partagées après acceptation, historique pour l’acheteur, le vendeur et "
 "l’administration (export CSV). Le paiement et la livraison se règlent "
 "directement entre acheteur et vendeur. Nécessite SM Core et SM Products "
-"0.10.0."
+"0.15.0."
 
 #. Author of the plugin
 #: sm-trade.php
@@ -44,10 +44,10 @@ msgstr "ReuSteel"
 
 #: sm-trade.php:48
 msgid ""
-"SM Trade needs SM Core and SM Products 0.10.0 or later. Activate or update "
+"SM Trade needs SM Core and SM Products 0.15.0 or later. Activate or update "
 "them first."
 msgstr ""
-"SM Commandes et offres nécessite SM Core et SM Products 0.10.0 ou plus "
+"SM Commandes et offres nécessite SM Core et SM Products 0.15.0 ou plus "
 "récent. Activez-les ou mettez-les à jour d’abord."
 
 #: src/Admin/Admin.php:29 src/Admin/Admin.php:84
@@ -276,19 +276,19 @@ msgstr "Prix convenu ou proposé (DA)"
 msgid "Counter-offers"
 msgstr "Contre-offres"
 
-#: src/Deals.php:92
+#: src/Deals.php:93
 msgid "This listing is no longer on sale."
 msgstr "Cette annonce n’est plus en vente."
 
-#: src/Deals.php:96
+#: src/Deals.php:97
 msgid "Sign in to buy or make an offer."
 msgstr "Connectez-vous pour acheter ou faire une offre."
 
-#: src/Deals.php:100
+#: src/Deals.php:101
 msgid "This is one of your own listings."
 msgstr "C’est une de vos propres annonces."
 
-#: src/Deals.php:103
+#: src/Deals.php:104
 msgid ""
 "You already have an order or an offer waiting on this listing. Follow it in "
 "\"My purchases\"."
@@ -296,49 +296,49 @@ msgstr ""
 "Vous avez déjà une commande ou une offre en attente sur cette annonce. "
 "Suivez-la dans « Mes achats »."
 
-#: src/Deals.php:120
+#: src/Deals.php:121 src/Deals.php:128
 msgid "Enter the price per kg you offer."
 msgstr "Indiquez le prix au kg que vous proposez."
 
-#: src/Deals.php:125
+#: src/Deals.php:133
 msgid "Enter the total price you offer."
 msgstr "Indiquez le prix total que vous proposez."
 
-#: src/Deals.php:132
+#: src/Deals.php:140
 msgid "Enter your name."
 msgstr "Indiquez votre nom."
 
-#: src/Deals.php:135
+#: src/Deals.php:143
 msgid "Enter a valid phone number, so the seller can call you."
 msgstr ""
 "Indiquez un numéro de téléphone valide, pour que le vendeur puisse vous "
 "appeler."
 
-#: src/Deals.php:138
+#: src/Deals.php:146
 msgid "Enter a valid e-mail address."
 msgstr "Indiquez une adresse e-mail valide."
 
-#: src/Deals.php:170
+#: src/Deals.php:178
 msgid "The request could not be saved. Try again."
 msgstr "La demande n’a pas pu être enregistrée. Réessayez."
 
-#: src/Deals.php:222
+#: src/Deals.php:230
 msgid "This order or offer does not exist."
 msgstr "Cette commande ou offre n’existe pas."
 
-#: src/Deals.php:226
+#: src/Deals.php:234
 msgid "It is not your turn to answer."
 msgstr "Ce n’est pas à vous de répondre."
 
-#: src/Deals.php:226
+#: src/Deals.php:234
 msgid "This order or offer is already closed."
 msgstr "Cette commande ou offre est déjà clôturée."
 
-#: src/Deals.php:249
+#: src/Deals.php:257
 msgid "Enter the total price you propose."
 msgstr "Indiquez le prix total que vous proposez."
 
-#: src/Deals.php:252
+#: src/Deals.php:260
 msgid "Propose a different price, or accept this one."
 msgstr "Proposez un prix différent, ou acceptez celui-ci."
 

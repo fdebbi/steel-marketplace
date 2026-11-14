@@ -83,7 +83,8 @@ final class Deals {
 	 *
 	 * @param array $in kind (order|offer), mode (lot|detail), quantity, amount (offer total, DA),
 	 *                  name, phone, email, message; items (pieces of the inventory: key => number)
-	 *                  and amount_kg (offer per kg) for a listing bought by element (0.2.0).
+	 *                  and amount_kg (offer per kg) for a listing bought by element (0.2.0)
+	 *                  or by whole bars (0.3.0).
 	 */
 	public static function create( $product_id, $user_id, array $in ) {
 		global $wpdb;
@@ -120,6 +121,13 @@ final class Deals {
 					return new \WP_Error( 'amount_kg', __( 'Enter the price per kg you offer.', 'sm-trade' ) );
 				}
 				$amount = round( $qty * $per_kg, 2 );
+			} elseif ( 'detail' === $mode && $amount <= 0 && ! empty( Stock::options( $p )['detail']['bar_kg'] ) ) {
+				// Bars (0.3.0): an offer per kg; the total follows the weight of the bars chosen.
+				$per_kg = round( (float) ( $in['amount_kg'] ?? 0 ), 2 );
+				if ( $per_kg <= 0 ) {
+					return new \WP_Error( 'amount_kg', __( 'Enter the price per kg you offer.', 'sm-trade' ) );
+				}
+				$amount = round( $qty * (float) Stock::options( $p )['detail']['bar_kg'] * $per_kg, 2 );
 			}
 			if ( $amount <= 0 ) {
 				return new \WP_Error( 'amount', __( 'Enter the total price you offer.', 'sm-trade' ) );

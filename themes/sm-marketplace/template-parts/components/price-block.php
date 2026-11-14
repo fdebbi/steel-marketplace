@@ -3,7 +3,7 @@
  * Price block of a detail page: price per kg, total, weight and its source.
  * Values are displayed as provided by the listing plugin (computed by sm-weight-engine).
  *
- * @var array $args { item: array }
+ * @var array $args { item: array, page: bool (0.34.0: product page layout) }
  * @package SM_Marketplace
  */
 
@@ -19,8 +19,10 @@ $bsale = 'buildings' === $item['market'] && isset( $item['building_sale'] ) ? (a
 if ( $bsale ) {
 	$assembled = false;
 }
+// 0.34.0: product and reuse page priced per kg: the price per kg first, then a bar, what is available and the whole lot.
+$pkg = ! $bsale && ! empty( $args['page'] ) && in_array( $item['market'], array( 'products', 'reuse' ), true ) && 'kg' === ( $item['price_unit'] ?? '' ) && 'lot' !== ( $item['sale_mode'] ?? '' ) && (float) $item['price'] > 0;
 ?>
-<section class="sm-priceblock<?php echo $bsale ? ' sm-priceblock--building' : ''; ?>" aria-label="<?php esc_attr_e( 'Price', 'sm-marketplace' ); ?>">
+<section class="sm-priceblock<?php echo $bsale || ! empty( $args['page'] ) ? ' sm-priceblock--building' : ''; ?>" aria-label="<?php esc_attr_e( 'Price', 'sm-marketplace' ); ?>">
 	<?php if ( $bsale ) : ?>
 		<?php
 		$b_lot  = (float) $bsale['lot_total'];
@@ -60,6 +62,56 @@ if ( $bsale ) {
 			<?php if ( ! empty( $item['weight_kg'] ) ) : ?>
 				<p class="sm-priceblock__eq"><span><?php esc_html_e( 'Available', 'sm-marketplace' ); ?> · <?php echo sm_kg( $item['weight_kg'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span></p>
 			<?php endif; ?>
+		<?php endif; ?>
+		<?php if ( $ref > 0 ) : ?>
+			<p class="sm-priceblock__ref">
+				<?php
+				/* translators: %s: price per kg. */
+				echo wp_kses_post( sprintf( __( 'New steel: %s (ReuSteel price index)', 'sm-marketplace' ), sm_per_unit( $ref, 'kg', false, $ref - floor( $ref ) > 0 ? 2 : 0 ) ) );
+				?>
+			</p>
+		<?php endif; ?>
+	<?php elseif ( $pkg ) : ?>
+		<?php
+		$p_kg   = (float) $item['price'];
+		$p_dec  = $p_kg - floor( $p_kg ) > 0 ? 2 : 0;
+		$bars   = 'bars' === ( $item['qty_mode'] ?? '' ) && (int) $item['quantity'] > 0 && (float) $item['length_m'] > 0 && (float) $item['weight_kg'] > 0;
+		$bar_kg = $bars ? (float) $item['weight_kg'] / (int) $item['quantity'] : 0.0;
+		$trend  = (array) sm_theme_data( 'price_trend' );
+		$ref    = isset( $trend['last'] ) && in_array( $trend['mode'] ?? '', array( 'auto', 'manual' ), true ) ? (float) $trend['last'] : 0.0;
+		?>
+		<p class="sm-priceblock__label"><?php esc_html_e( 'Price per kilogram', 'sm-marketplace' ); ?></p>
+		<p class="sm-priceblock__main"><?php echo sm_per_unit( $p_kg, 'kg', true, $p_dec ); // phpcs:ignore WordPress.Security.EscapeOutput ?></p>
+		<?php if ( $bars ) : ?>
+			<p class="sm-priceblock__eq"><strong>
+				<?php
+				/* translators: 1: price of one bar, 2: length of the bar in metres. */
+				echo esc_html( sprintf( __( 'i.e. %1$s a bar of %2$s m', 'sm-marketplace' ), sm_money( round( $p_kg * $bar_kg ) ), sm_number( $item['length_m'], fmod( (float) $item['length_m'], 1 ) ? 1 : 0 ) ) );
+				?>
+			</strong></p>
+		<?php endif; ?>
+		<?php if ( ! empty( $item['weight_kg'] ) ) : ?>
+			<p class="sm-priceblock__avail"><span><?php esc_html_e( 'Available', 'sm-marketplace' ); ?></span><strong>
+				<?php
+				if ( $bars ) {
+					/* translators: %s: number of bars. */
+					echo esc_html( sprintf( _n( '%s bar', '%s bars', (int) $item['quantity'], 'sm-marketplace' ), sm_number( (int) $item['quantity'] ) ) ) . ' · ';
+				}
+				echo sm_kg( $item['weight_kg'] ); // phpcs:ignore WordPress.Security.EscapeOutput
+				?>
+			</strong></p>
+		<?php endif; ?>
+		<?php if ( 'both' === ( $item['sale_mode'] ?? '' ) && ! empty( $item['lot_price'] ) ) : ?>
+			<p class="sm-priceblock__or"><span>
+				<?php esc_html_e( 'Or the whole lot', 'sm-marketplace' ); ?>
+				<?php if ( ! empty( $item['lot_per_kg'] ) ) : ?>
+					·
+					<?php
+					/* translators: %s: price per kg. */
+					echo wp_kses_post( sprintf( __( 'i.e. %s', 'sm-marketplace' ), sm_per_unit( $item['lot_per_kg'], 'kg', false, 2 ) ) );
+					?>
+				<?php endif; ?>
+			</span><strong><?php echo esc_html( sm_money( $item['lot_price'] ) ); ?></strong></p>
 		<?php endif; ?>
 		<?php if ( $ref > 0 ) : ?>
 			<p class="sm-priceblock__ref">

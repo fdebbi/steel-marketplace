@@ -1,5 +1,11 @@
 # Changelog — sm-trade
 
+## 0.3.0 — 2026-11-14
+
+- Offre sur des barres au prix au kg (`amount_kg`) : le total = nombre de barres × poids d'une barre × prix proposé. Une offre en prix total reste possible.
+- Demande SM Products 0.15.0.
+- Tests : 43.
+
 ## 0.2.0 — 2026-11-14
 
 - Achat et offre par élément (bâtiments, SM Buildings 0.4.0) : les pièces choisies sont enregistrées avec la commande (colonne `items`), l'offre se fait au kg (`amount_kg`) et son total suit le poids des pièces ; à l'acceptation, les pièces quittent l'inventaire.

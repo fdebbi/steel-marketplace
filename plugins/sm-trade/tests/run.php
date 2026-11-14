@@ -77,6 +77,7 @@ $chk = Stock::check( Products::get( $kg ), 'detail', 6000 );
 smt_assert( is_wp_error( $chk ) && 'qty' === $chk->get_error_code(), 'more than available: refused with the quantity left' );
 smt_assert( is_wp_error( Stock::check( $pb, 'detail', 2.5 ) ), 'bars: whole number only' );
 smt_assert( is_wp_error( Stock::check( $pb, 'lot', 1 ) ), 'not sold as a lot: lot refused' );
+smt_assert( abs( $ob['detail']['bar_kg'] - $pb->total_weight / 10 ) < 0.001 && (int) $pb->length_mm === $ob['detail']['bar_len_mm'] && 200.0 === (float) $ob['detail']['per_kg'], '0.3.0: weight and length of one bar, price per kg, for counting bars' );
 $c = Stock::check( $pb, 'detail', 3 );
 smt_assert( ! is_wp_error( $c ) && 3.0 === $c[0] && 'unit' === $c[1] && abs( $c[2] - 3 * $ob['detail']['unit_price'] ) < 0.02, 'quantity checked: total at the listed price' );
 
@@ -89,6 +90,15 @@ $d1 = Deals::create( $bars, $u_b, array( 'kind' => 'order', 'mode' => 'detail', 
 $o1 = Deals::get( $d1 );
 smt_assert( $o1 && 'open' === $o1->status && 'seller' === $o1->turn && 0 === strpos( $o1->ref, 'ACH-' ) && 4.0 === (float) $o1->quantity && abs( $o1->amount - 4 * $ob['detail']['unit_price'] ) < 0.05 && 'Karim Test' === $o1->buyer_name, 'order created: reference, quantity, total at the listed price, buyer details' );
 smt_assert( smt_notified( $u_s, 'trade.order' ) >= 1, 'seller notified of the order' );
+$ok_ = Deals::create( $bars, $u_x, array( 'kind' => 'offer', 'mode' => 'detail', 'quantity' => 2, 'amount_kg' => 180 ) + $buyer_in );
+$okd = is_wp_error( $ok_ ) ? null : Deals::get( $ok_ );
+smt_assert( $okd && abs( $okd->amount - round( 2 * $ob['detail']['bar_kg'] * 180, 2 ) ) < 0.01 && 2.0 === (float) $okd->quantity, '0.3.0: offer on 2 bars at 180 DA/kg: total = 2 × weight of a bar × 180' );
+$nok = Deals::create( $bars, $u_x, array( 'kind' => 'offer', 'mode' => 'detail', 'quantity' => 2 ) + $buyer_in );
+smt_assert( is_wp_error( $nok ) && in_array( $nok->get_error_code(), array( 'amount_kg', 'open' ), true ), 'offer on bars without a price: refused' );
+if ( $okd ) { // Not counted in the lists below.
+	$GLOBALS['wpdb']->delete( $GLOBALS['wpdb']->prefix . 'sm_trade_deals', array( 'id' => $okd->id ) );
+	$GLOBALS['wpdb']->delete( $GLOBALS['wpdb']->prefix . 'sm_trade_events', array( 'deal_id' => $okd->id ) );
+}
 $e = Deals::create( $bars, $u_b, array( 'kind' => 'order', 'mode' => 'detail', 'quantity' => 1 ) + $buyer_in );
 smt_assert( is_wp_error( $e ) && 'open' === $e->get_error_code(), 'one open order or offer per buyer and listing' );
 smt_assert( array( 'cancel' ) === Deals::actions( $o1, $u_b ) && array( 'accept', 'counter', 'refuse' ) === Deals::actions( $o1, $u_s ) && array() === Deals::actions( $o1, $u_x ), 'answers: buyer may cancel, seller may accept, propose a price or refuse, others nothing' );

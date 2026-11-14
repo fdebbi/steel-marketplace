@@ -1,5 +1,14 @@
 # Changelog — sm-marketplace
 
+## 0.34.0 — 2026-11-14
+
+- Fiche d'une annonce de produits et de réemploi refaite (`listing-product`), sur le modèle du bâtiment : à droite état, titre, localisation, prix, actions, vendeur, carte et visite, inspection (réemploi) ; à gauche galerie, « Le lot en vente » en 4 chiffres clés (le reste à déplier), inventaire d'un lot à déplier, documents, description, message au vendeur.
+- Prix : le prix au kg en grand, « soit … la barre de 12 m », ce qui est disponible, puis « ou le lot complet ».
+- Achat au détail en nombre de barres (poids et total calculés) ; offre au kg sur des barres ; choix « Au détail » / « Lot complet ».
+- Galerie : la fiche de la section reste une image même quand il y a des photos (en premier pour l'acier neuf, en dernier pour le réemploi).
+- Demande d'inspection : type de projet pré-sélectionné pour un bâtiment ; titre du bloc selon le cas (bâtiment ou acier).
+- Bouton « Contacter » dans la petite ligne d'actions (bâtiment et produits).
+
 ## 0.33.0 — 2026-11-14
 
 - Fiche d'un bâtiment refaite (`listing-building`) : à droite le titre, la localisation, le prix, les actions, le vendeur, la carte et la demande d'inspection ; à gauche les photos, les caractéristiques géométriques (4 chiffres clés et schéma, le reste à déplier), l'inventaire (titre, pièces et poids, tableau à déplier), ce que comprend le prix (écrit en clair, plus de texte barré), la description. Sur téléphone : photos, titre, prix et actions d'abord.

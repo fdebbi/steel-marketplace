@@ -27,13 +27,13 @@ msgid ""
 " by the seller, stock taken from the listing, contact details shared once "
 "accepted, history for the buyer, the seller and the administration (CSV "
 "export). Payment and delivery are settled directly between buyer and seller."
-" Requires SM Core and SM Products 0.10.0."
+" Requires SM Core and SM Products 0.15.0."
 msgstr ""
 "الطلبات والعروض بين المشترين والبائعين: «شراء» بالسعر المعروض (الحصة كاملة "
 "أو كمية)، «تقديم عرض» مع عروض مضادة، قبول البائع، خصم الكمية من الإعلان، "
 "مشاركة بيانات الاتصال بعد القبول، سجل للمشتري والبائع والإدارة (تصدير CSV). "
 "يتم الدفع والتسليم مباشرة بين المشتري والبائع. يتطلب SM Core و SM Products "
-"0.10.0."
+"0.15.0."
 
 #. Author of the plugin
 #: sm-trade.php
@@ -42,10 +42,10 @@ msgstr "ReuSteel"
 
 #: sm-trade.php:48
 msgid ""
-"SM Trade needs SM Core and SM Products 0.10.0 or later. Activate or update "
+"SM Trade needs SM Core and SM Products 0.15.0 or later. Activate or update "
 "them first."
 msgstr ""
-"تتطلب إضافة الطلبات والعروض SM Core و SM Products 0.10.0 أو أحدث. فعّلهما أو"
+"تتطلب إضافة الطلبات والعروض SM Core و SM Products 0.15.0 أو أحدث. فعّلهما أو"
 " حدّثهما أولا."
 
 #: src/Admin/Admin.php:29 src/Admin/Admin.php:84
@@ -277,65 +277,65 @@ msgstr "السعر المتفق عليه أو المقترح (دج)"
 msgid "Counter-offers"
 msgstr "العروض المضادة"
 
-#: src/Deals.php:92
+#: src/Deals.php:93
 msgid "This listing is no longer on sale."
 msgstr "هذا الإعلان لم يعد معروضا للبيع."
 
-#: src/Deals.php:96
+#: src/Deals.php:97
 msgid "Sign in to buy or make an offer."
 msgstr "سجّل الدخول للشراء أو تقديم عرض."
 
-#: src/Deals.php:100
+#: src/Deals.php:101
 msgid "This is one of your own listings."
 msgstr "هذا أحد إعلاناتك."
 
-#: src/Deals.php:103
+#: src/Deals.php:104
 msgid ""
 "You already have an order or an offer waiting on this listing. Follow it in "
 "\"My purchases\"."
 msgstr "لديك طلب أو عرض قيد الانتظار على هذا الإعلان. تابعه في «مشترياتي»."
 
-#: src/Deals.php:120
+#: src/Deals.php:121 src/Deals.php:128
 msgid "Enter the price per kg you offer."
 msgstr "أدخل السعر للكيلوغرام الذي تقترحه."
 
-#: src/Deals.php:125
+#: src/Deals.php:133
 msgid "Enter the total price you offer."
 msgstr "أدخل السعر الإجمالي الذي تعرضه."
 
-#: src/Deals.php:132
+#: src/Deals.php:140
 msgid "Enter your name."
 msgstr "أدخل اسمك."
 
-#: src/Deals.php:135
+#: src/Deals.php:143
 msgid "Enter a valid phone number, so the seller can call you."
 msgstr "أدخل رقم هاتف صحيحا ليتمكن البائع من الاتصال بك."
 
-#: src/Deals.php:138
+#: src/Deals.php:146
 msgid "Enter a valid e-mail address."
 msgstr "أدخل بريدا إلكترونيا صحيحا."
 
-#: src/Deals.php:170
+#: src/Deals.php:178
 msgid "The request could not be saved. Try again."
 msgstr "تعذّر حفظ الطلب. أعد المحاولة."
 
-#: src/Deals.php:222
+#: src/Deals.php:230
 msgid "This order or offer does not exist."
 msgstr "هذا الطلب أو العرض غير موجود."
 
-#: src/Deals.php:226
+#: src/Deals.php:234
 msgid "It is not your turn to answer."
 msgstr "ليس دورك في الرد."
 
-#: src/Deals.php:226
+#: src/Deals.php:234
 msgid "This order or offer is already closed."
 msgstr "هذا الطلب أو العرض مغلق بالفعل."
 
-#: src/Deals.php:249
+#: src/Deals.php:257
 msgid "Enter the total price you propose."
 msgstr "أدخل السعر الإجمالي الذي تقترحه."
 
-#: src/Deals.php:252
+#: src/Deals.php:260
 msgid "Propose a different price, or accept this one."
 msgstr "اقترح سعرا مختلفا أو اقبل هذا السعر."
 

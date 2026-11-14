@@ -28,13 +28,13 @@ msgid ""
 " dimensions and area, structural system, roof and cladding, what the price "
 "includes, structural element inventory weighed by SM Weight Engine, price "
 "per kg and per m², indicative drawing. Requires SM Core, SM Weight Engine "
-"and SM Products 0.3.0."
+"and SM Products 0.14.0."
 msgstr ""
 "سوق المباني الفولاذية: مستودعات جديدة ومستعملة، هناجر فلاحية وصناعية، ورشات،"
 " مباني تربية وهياكل جاهزة، مركبة أو مفككة. يضيف سوق «المباني» إلى محرك "
 "إعلانات SM Products: الأبعاد والمساحة، النظام الإنشائي، السقف والكسوة، ما "
 "يشمله السعر، جرد العناصر بأوزان SM Weight Engine، السعر للكيلوغرام وللمتر "
-"المربع، ورسم توضيحي. يتطلب SM Core وSM Weight Engine وSM Products 0.3.0."
+"المربع، ورسم توضيحي. يتطلب SM Core وSM Weight Engine وSM Products 0.14.0."
 
 #. Author of the plugin
 #: sm-buildings.php
@@ -292,6 +292,10 @@ msgstr "ما أنتظره من المعاينة:"
 #: src/Presenter.php:192
 msgid "Inspection: %s"
 msgstr "معاينة: %s"
+
+#: src/Presenter.php:196
+msgid "Building concerned by the inspection"
+msgstr "المبنى المعني بالمعاينة"
 
 #: src/Rules.php:28
 msgid "The building is already dismantled: untick \"Dismantling included\"."

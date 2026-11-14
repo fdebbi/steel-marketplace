@@ -51,7 +51,7 @@ $d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'type
 				<?php sm_theme_notices( true ); ?>
 				<?php if ( ! empty( $pre['rows'] ) ) : ?>
 					<div class="sme-pre" role="note">
-						<p class="sme-pre__title"><?php sm_icon( 'warehouse' ); ?><?php esc_html_e( 'Building concerned by the inspection', 'sm-marketplace' ); ?></p>
+						<p class="sme-pre__title"><?php sm_icon( (string) ( $pre['icon'] ?? 'warehouse' ) ); ?><?php echo esc_html( (string) ( $pre['heading'] ?? __( 'Building concerned by the inspection', 'sm-marketplace' ) ) ); ?></p>
 						<dl>
 							<?php foreach ( $pre['rows'] as $row ) : ?>
 								<div><dt><?php echo esc_html( $row[0] ); ?></dt><dd><?php if ( 0 === strpos( (string) $row[1], 'http' ) ) : ?><a href="<?php echo esc_url( $row[1] ); ?>"><?php esc_html_e( 'See the listing', 'sm-marketplace' ); ?></a><?php else : ?><bdi dir="auto"><?php echo esc_html( $row[1] ); ?></bdi><?php endif; ?></dd></div>
@@ -92,7 +92,7 @@ $d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'type
 					<label for="m-project"><?php esc_html_e( 'Type of project', 'sm-marketplace' ); ?></label>
 					<select id="m-project" name="project_type" required<?php sm_theme_aria( 'project_type' ); ?>>
 						<option value=""><?php esc_html_e( 'Select', 'sm-marketplace' ); ?></option>
-						<?php foreach ( (array) ( $d['projects'] ?? array() ) as $code => $label ) : ?><option value="<?php echo esc_attr( $code ); ?>" <?php selected( (string) sm_theme_old( 'project_type' ), (string) $code ); ?>><?php echo esc_html( $label ); ?></option><?php endforeach; ?>
+						<?php foreach ( (array) ( $d['projects'] ?? array() ) as $code => $label ) : ?><option value="<?php echo esc_attr( $code ); ?>" <?php selected( (string) sm_theme_old( 'project_type', $pre['project_type'] ?? '' ), (string) $code ); ?>><?php echo esc_html( $label ); ?></option><?php endforeach; ?>
 					</select>
 					<?php sm_theme_error( 'project_type' ); ?>
 				</div>

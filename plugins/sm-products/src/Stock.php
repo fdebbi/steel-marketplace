@@ -109,6 +109,12 @@ final class Stock {
 			)[ $p->price_unit ] ?? 0;
 			if ( $per > 0 ) {
 				$out['detail'] = array( 'unit' => 'unit', 'max' => floor( $pieces ), 'step' => 1.0, 'unit_price' => round( $per, 2 ) );
+				// 0.15.0: the buyer counts bars; weight of one bar and its length for the page.
+				if ( $weight > 0 ) {
+					$out['detail']['bar_kg']    = round( $weight / $pieces, 3 );
+					$out['detail']['bar_len_mm'] = (int) $p->length_mm;
+					$out['detail']['per_kg']    = 'kg' === $p->price_unit ? $price : round( $per * $pieces / $weight, 2 );
+				}
 			}
 			return $out;
 		}

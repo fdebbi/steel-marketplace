@@ -48,18 +48,71 @@ msgstr ""
 "SM Reuse nécessite les extensions SM Core, SM Weight Engine et SM Products. "
 "Activez-les d’abord."
 
-#: src/Advice.php:35
+#: src/Advice.php:34
+msgid "Have this steel checked before you buy"
+msgstr "Faites contrôler cet acier avant d’acheter"
+
+#. translators: %s: platform name.
+#: src/Advice.php:36
+msgid ""
+"An engineer verified on %s checks the condition, the corrosion and the "
+"likely grade of the reused elements. The information in this listing is "
+"declared by the seller."
+msgstr ""
+"Un ingénieur vérifié sur %s contrôle l’état, la corrosion et la nuance "
+"probable des éléments de réemploi. Les informations de cette annonce sont "
+"déclarées par le vendeur."
+
+#: src/Advice.php:37
+msgid "Ask for an inspection"
+msgstr "Demander une inspection"
+
+#: src/Advice.php:60
+msgid "Lot"
+msgstr "Lot"
+
+#: src/Advice.php:62
+msgid "Weight"
+msgstr "Poids"
+
+#: src/Advice.php:64
+msgid "Where it is"
+msgstr "Lieu du lot"
+
+#: src/Advice.php:65
+msgid "Listing"
+msgstr "Annonce"
+
+#: src/Advice.php:66
+msgid "Inspection before buying reused steel listed on the platform."
+msgstr ""
+"Inspection avant l’achat d’acier de réemploi publié sur la plateforme."
+
+#: src/Advice.php:70
+msgid "What I expect from the inspection:"
+msgstr "Ce que j’attends de l’inspection :"
+
+#. translators: %s: title of the listing.
+#: src/Advice.php:74
+msgid "Inspection: %s"
+msgstr "Inspection : %s"
+
+#: src/Advice.php:78
+msgid "Steel concerned by the inspection"
+msgstr "Acier concerné par l’inspection"
+
+#: src/Advice.php:88
 msgid "For recycling only"
 msgstr "Uniquement pour le recyclage"
 
-#: src/Advice.php:36
+#: src/Advice.php:89
 msgid "This lot is sold as scrap. It must not be used in a structure."
 msgstr ""
 "Ce lot est vendu comme ferraille. Il ne doit pas être utilisé dans une "
 "structure."
 
 #. translators: %s: platform name.
-#: src/Advice.php:41
+#: src/Advice.php:94
 msgid ""
 "Used or surplus steel can be reused in a structure only after a check by a "
 "qualified engineer: condition of the elements, steel grade, holes, welds and"
@@ -72,7 +125,7 @@ msgstr ""
 "sont déclarées par le vendeur ; %s ne les certifie pas."
 
 #. translators: %s: platform name.
-#: src/Advice.php:44
+#: src/Advice.php:97
 msgid ""
 "The seller says these elements need an inspection or a treatment. Have them "
 "checked by a qualified engineer before any structural use. The information "
@@ -83,11 +136,11 @@ msgstr ""
 "Les informations de cette annonce sont déclarées par le vendeur ; %s ne les "
 "certifie pas."
 
-#: src/Advice.php:48
+#: src/Advice.php:101
 msgid "Structural reuse: ask an engineer"
 msgstr "Réemploi structurel : consultez un ingénieur"
 
-#: src/Advice.php:50
+#: src/Advice.php:103
 msgid "Find an engineer"
 msgstr "Trouver un ingénieur"
 

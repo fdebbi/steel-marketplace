@@ -23,3 +23,18 @@ T = {
 "Cutting on demand is offered for bars and profiles only.": ("La découpe à la demande ne concerne que les barres et profilés.", "القص حسب الطلب متاح للقضبان والمقاطع فقط."),
 }
 P = {}
+
+# 0.2.0 — inspection request from a reuse listing.
+T.update({
+"Have this steel checked before you buy": ("Faites contrôler cet acier avant d’acheter", "اطلب فحص هذا الفولاذ قبل الشراء"),
+"An engineer verified on %s checks the condition, the corrosion and the likely grade of the reused elements. The information in this listing is declared by the seller.": ("Un ingénieur vérifié sur %s contrôle l’état, la corrosion et la nuance probable des éléments de réemploi. Les informations de cette annonce sont déclarées par le vendeur.", "مهندس موثّق على %s يفحص الحالة والتآكل والرتبة المحتملة للعناصر المعاد استعمالها. معلومات هذا الإعلان مصرح بها من البائع."),
+"Ask for an inspection": ("Demander une inspection", "طلب معاينة"),
+"Lot": ("Lot", "الحصة"),
+"Weight": ("Poids", "الوزن"),
+"Where it is": ("Lieu du lot", "مكان الحصة"),
+"Listing": ("Annonce", "الإعلان"),
+"Inspection before buying reused steel listed on the platform.": ("Inspection avant l’achat d’acier de réemploi publié sur la plateforme.", "معاينة قبل شراء فولاذ معاد استعماله منشور على المنصة."),
+"What I expect from the inspection:": ("Ce que j’attends de l’inspection :", "ما أنتظره من المعاينة:"),
+"Inspection: %s": ("Inspection : %s", "معاينة: %s"),
+"Steel concerned by the inspection": ("Acier concerné par l’inspection", "الفولاذ المعني بالمعاينة"),
+})

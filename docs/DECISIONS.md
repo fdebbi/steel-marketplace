@@ -340,3 +340,13 @@ Décisions du propriétaire de la plateforme, validées sur maquette avant le co
 - **Inspection** : « ingénieur vérifié sur ReuSteel », pas « certifié » (la plateforme vérifie des comptes, elle ne délivre pas de certification). La demande part à l'administrateur de la plateforme, qui établit le devis et désigne l'ingénieur ; l'acheteur ne choisit pas l'ingénieur.
 - **Carte** : pour les visiteurs, carte de la wilaya sans repère (centre approximatif de la wilaya : il n'existe pas de coordonnées par commune) ; la position exacte reste réservée au vendeur, à la plateforme et à l'acheteur dont la visite est acceptée.
 - **Annonces déjà publiées** : un bâtiment monté au kg, ou vendu au kg sans inventaire, devient une vente en lot entier à son total.
+
+## Fiche des profilés et inspection (2026-11-14)
+
+Décisions validées sur la maquette 0.34.
+
+- **Demande d'inspection d'un bâtiment** : le type de projet est pré-sélectionné d'après la catégorie (kits et structures préfabriqués → « Autre »). L'acheteur peut le changer.
+- **Demande de visite** : réservée aux comptes connectés (un visiteur est envoyé vers la connexion), comme avant. Le formulaire date / heure / message existait déjà.
+- **Fiche des profilés** : même construction que le bâtiment. Pour les profilés, le **prix au kg reste en grand** (on achète une quantité), avec l'équivalent d'une barre ; le lot complet vient en second.
+- **Achat en nombre de barres** quand l'annonce est en barres ; le site calcule le poids et le total. Une offre sur des barres se fait au kg. Sans nombre de barres (vente au poids), la quantité reste en kg.
+- **Réemploi** : l'état remplace « Neuf », les photos passent avant la fiche de section, et l'encadré « Faites contrôler cet acier avant d'acheter » (ingénieur vérifié, désigné par la plateforme) apparaît sous la localisation. Pas d'encadré pour la ferraille ni pour l'acier neuf.

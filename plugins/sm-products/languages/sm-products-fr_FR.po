@@ -985,91 +985,91 @@ msgstr ""
 "« %s » n’est plus affiché. Republiez-le depuis « Mes annonces » s’il est "
 "toujours disponible."
 
-#: src/Presenter.php:139
+#: src/Presenter.php:143
 msgid "Product type"
 msgstr "Type de produit"
 
-#: src/Presenter.php:141 src/Presenter.php:169
+#: src/Presenter.php:145 src/Presenter.php:173
 msgid "Designation"
 msgstr "Désignation"
 
-#: src/Presenter.php:142 src/Presenter.php:170
+#: src/Presenter.php:146 src/Presenter.php:174
 msgid "Steel grade"
 msgstr "Nuance d’acier"
 
-#: src/Presenter.php:142 src/Presenter.php:170
+#: src/Presenter.php:146 src/Presenter.php:174
 msgid "Not specified"
 msgstr "Non précisée"
 
-#: src/Presenter.php:144
+#: src/Presenter.php:148
 msgid "Standard"
 msgstr "Norme"
 
-#: src/Presenter.php:154
+#: src/Presenter.php:158
 msgid "Dimensions"
 msgstr "Dimensions"
 
-#: src/Presenter.php:157
+#: src/Presenter.php:161
 msgid "Plate size"
 msgstr "Format de la tôle"
 
-#: src/Presenter.php:159
+#: src/Presenter.php:163
 msgid "Bar length"
 msgstr "Longueur des barres"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:162
+#: src/Presenter.php:166
 msgid "%s plates"
 msgstr "%s tôles"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:162
+#: src/Presenter.php:166
 msgid "%s bars"
 msgstr "%s barres"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:164 src/Presenter.php:172
+#: src/Presenter.php:168 src/Presenter.php:176
 msgid "Quantity"
 msgstr "Quantité"
 
-#: src/Presenter.php:166
+#: src/Presenter.php:170
 msgid "Weight per metre"
 msgstr "Poids au mètre"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:172
+#: src/Presenter.php:176
 msgid "%s pieces in the lot"
 msgstr "%s pièces dans le lot"
 
-#: src/Presenter.php:175
+#: src/Presenter.php:179
 msgid "Weight of the lot"
 msgstr "Poids du lot"
 
-#: src/Presenter.php:197
+#: src/Presenter.php:201
 msgid "Available quantity"
 msgstr "Quantité disponible"
 
-#: src/Presenter.php:203
+#: src/Presenter.php:207
 msgid "Condition"
 msgstr "État"
 
-#: src/Presenter.php:211
+#: src/Presenter.php:215
 msgid "Yes"
 msgstr "Oui"
 
-#: src/Presenter.php:211
+#: src/Presenter.php:215
 msgid "No"
 msgstr "Non"
 
-#: src/Presenter.php:250
+#: src/Presenter.php:254
 msgid "m (linear)"
 msgstr "ml"
 
-#: src/Presenter.php:251
+#: src/Presenter.php:255
 msgid "pieces"
 msgstr "pièces"
 
-#: src/Presenter.php:252
+#: src/Presenter.php:256
 msgid "lot"
 msgstr "lot"
 
@@ -1214,37 +1214,37 @@ msgstr "Ce poids est hors de la plage acceptée."
 msgid "Choose the condition."
 msgstr "Choisissez l’état."
 
-#: src/Stock.php:140
+#: src/Stock.php:146
 msgid "This listing is not sold as a whole lot."
 msgstr "Cette annonce n’est pas vendue en lot entier."
 
-#: src/Stock.php:146
+#: src/Stock.php:152
 msgid "This listing is sold as a whole lot only."
 msgstr "Cette annonce est vendue en lot entier uniquement."
 
 #. translators: 1: number of pieces, 2: profile (IPE 200).
-#: src/Stock.php:158
+#: src/Stock.php:164
 msgid "Only %1$s pieces of %2$s are available."
 msgstr "Seulement %1$s pièces de %2$s sont disponibles."
 
-#: src/Stock.php:165
+#: src/Stock.php:171
 msgid "Choose the elements you want and their number."
 msgstr "Choisissez les éléments voulus et leur nombre."
 
-#: src/Stock.php:171
+#: src/Stock.php:177
 msgid "Enter the quantity you want."
 msgstr "Indiquez la quantité souhaitée."
 
-#: src/Stock.php:174
+#: src/Stock.php:180
 msgid "Enter a whole number."
 msgstr "Indiquez un nombre entier."
 
 #. translators: 1: available quantity, 2: unit.
-#: src/Stock.php:178
+#: src/Stock.php:184
 msgid "Only %1$s %2$s available."
 msgstr "Seulement %1$s %2$s disponibles."
 
-#: src/Stock.php:192
+#: src/Stock.php:198
 msgid "This listing is no longer on sale."
 msgstr "Cette annonce n’est plus en vente."
 

@@ -280,7 +280,10 @@
 		var nf = function ( v, d ) { return new Intl.NumberFormat( lang0.indexOf( 'ar' ) === 0 ? 'ar-DZ' : 'fr-FR', { maximumFractionDigits: d || 0 } ).format( v ); };
 		var num = function ( v ) { return parseFloat( String( v || '' ).replace( /[\s\u00a0\u202f]/g, '' ).replace( ',', '.' ) ) || 0; };
 		var kg = 0, pieces = 0;
-		buyForm.classList.toggle( 'is-pick', !! pick && ! lot );
+		// Whole bars (0.34.0): the quantity is a number of bars; its weight is known.
+		var barsIn = buyForm.querySelector( '[name="quantity"][data-kg]' );
+		var perKg = ! lot && ( !! pick || ( !! barsIn && !! buyForm.querySelector( '[data-sm-buy-offerkg]' ) ) );
+		buyForm.classList.toggle( 'is-pick', perKg );
 		if ( lot ) {
 			total = parseFloat( modeEl.getAttribute( 'data-total' ) || '0' );
 		} else if ( pick ) {
@@ -294,7 +297,11 @@
 			total = kg * parseFloat( pick.getAttribute( 'data-unit-price' ) || '0' );
 		} else {
 			var q = buyForm.querySelector( '[name="quantity"]' );
-			if ( q ) { total = ( parseFloat( String( q.value ).replace( ',', '.' ) ) || 0 ) * parseFloat( q.getAttribute( 'data-unit-price' ) || '0' ); }
+			if ( q && barsIn ) {
+				pieces = Math.max( 0, Math.min( parseInt( q.value, 10 ) || 0, parseInt( q.max, 10 ) || 0 ) );
+				kg = pieces * parseFloat( q.getAttribute( 'data-kg' ) || '0' );
+				total = pieces * parseFloat( q.getAttribute( 'data-unit-price' ) || '0' );
+			} else if ( q ) { total = ( parseFloat( String( q.value ).replace( ',', '.' ) ) || 0 ) * parseFloat( q.getAttribute( 'data-unit-price' ) || '0' ); }
 		}
 		var out = buyForm.querySelector( '[data-sm-buy-total]' );
 		if ( out ) {
@@ -313,7 +320,7 @@
 			var eqLabel = buyForm.querySelector( '[data-sm-buy-eqlabel]' );
 			if ( eq && eqLabel ) {
 				var cur = eq.getAttribute( 'data-currency' ) || 'DA';
-				if ( pick && ! lot ) {
+				if ( perKg ) {
 					var per = num( ( buyForm.querySelector( '[name="amount_kg"]' ) || {} ).value );
 					eqLabel.textContent = eqLabel.getAttribute( 'data-total' );
 					eq.textContent = per > 0 && kg > 0 ? nf( Math.round( per * kg ) ) + '\u00a0' + cur : '—';
@@ -335,7 +342,7 @@
 			if ( ! b ) { return; }
 			var inp = b.parentNode.querySelector( 'input' );
 			var v = ( parseInt( inp.value, 10 ) || 0 ) + parseInt( b.getAttribute( 'data-sm-buy-step' ), 10 );
-			inp.value = Math.max( 0, Math.min( v, parseInt( inp.max, 10 ) || 0 ) );
+			inp.value = Math.max( parseInt( inp.min, 10 ) || 0, Math.min( v, parseInt( inp.max, 10 ) || 0 ) );
 			buyUpdate();
 		} );
 		buyUpdate();
@@ -388,9 +395,17 @@
 	/* ---- Gallery --------------------------------------------------------- */
 	$$( '[data-sm-gallery]' ).forEach( function ( g ) {
 		var main = $( '[data-sm-gallery-main]', g );
+		var fig = $( '[data-sm-gallery-figure]', g );
+		var sheet = $( '[data-sm-gallery-sheet]', g );
 		$$( '.sm-gallery__thumb', g ).forEach( function ( t ) {
 			t.addEventListener( 'click', function () {
 				main.src = t.getAttribute( 'data-src' );
+				// 0.34.0: the drawing of the section is one slide among the photos, with its sheet.
+				if ( fig ) {
+					fig.classList.toggle( 'is-drawing', t.hasAttribute( 'data-drawing' ) || ( ! sheet && fig.classList.contains( 'is-drawing' ) ) );
+					fig.classList.toggle( 'has-sheet', t.hasAttribute( 'data-sheet' ) );
+				}
+				if ( sheet ) { sheet.hidden = ! t.hasAttribute( 'data-sheet' ); }
 				$$( '.sm-gallery__thumb', g ).forEach( function ( o ) { o.setAttribute( 'aria-pressed', String( o === t ) ); } );
 			} );
 		} );

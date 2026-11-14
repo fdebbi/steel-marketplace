@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Trade 0.2.0\n"
+"Project-Id-Version: SM Trade 0.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-trade\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-14T15:18:50+00:00\n"
+"POT-Creation-Date: 2026-11-14T20:51:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-trade\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: sm-trade.php
-msgid "Orders and offers between buyers and sellers: \"Buy\" at the listed price (whole lot or a quantity), \"Make an offer\" with counter-offers, acceptance by the seller, stock taken from the listing, contact details shared once accepted, history for the buyer, the seller and the administration (CSV export). Payment and delivery are settled directly between buyer and seller. Requires SM Core and SM Products 0.10.0."
+msgid "Orders and offers between buyers and sellers: \"Buy\" at the listed price (whole lot or a quantity), \"Make an offer\" with counter-offers, acceptance by the seller, stock taken from the listing, contact details shared once accepted, history for the buyer, the seller and the administration (CSV export). Payment and delivery are settled directly between buyer and seller. Requires SM Core and SM Products 0.15.0."
 msgstr ""
 
 #. Author of the plugin
@@ -35,7 +35,7 @@ msgid "ReuSteel"
 msgstr ""
 
 #: sm-trade.php:48
-msgid "SM Trade needs SM Core and SM Products 0.10.0 or later. Activate or update them first."
+msgid "SM Trade needs SM Core and SM Products 0.15.0 or later. Activate or update them first."
 msgstr ""
 
 #: src/Admin/Admin.php:29
@@ -296,63 +296,64 @@ msgstr ""
 msgid "Counter-offers"
 msgstr ""
 
-#: src/Deals.php:92
+#: src/Deals.php:93
 msgid "This listing is no longer on sale."
 msgstr ""
 
-#: src/Deals.php:96
+#: src/Deals.php:97
 msgid "Sign in to buy or make an offer."
 msgstr ""
 
-#: src/Deals.php:100
+#: src/Deals.php:101
 msgid "This is one of your own listings."
 msgstr ""
 
-#: src/Deals.php:103
+#: src/Deals.php:104
 msgid "You already have an order or an offer waiting on this listing. Follow it in \"My purchases\"."
 msgstr ""
 
-#: src/Deals.php:120
+#: src/Deals.php:121
+#: src/Deals.php:128
 msgid "Enter the price per kg you offer."
 msgstr ""
 
-#: src/Deals.php:125
+#: src/Deals.php:133
 msgid "Enter the total price you offer."
 msgstr ""
 
-#: src/Deals.php:132
+#: src/Deals.php:140
 msgid "Enter your name."
 msgstr ""
 
-#: src/Deals.php:135
+#: src/Deals.php:143
 msgid "Enter a valid phone number, so the seller can call you."
 msgstr ""
 
-#: src/Deals.php:138
+#: src/Deals.php:146
 msgid "Enter a valid e-mail address."
 msgstr ""
 
-#: src/Deals.php:170
+#: src/Deals.php:178
 msgid "The request could not be saved. Try again."
 msgstr ""
 
-#: src/Deals.php:222
+#: src/Deals.php:230
 msgid "This order or offer does not exist."
 msgstr ""
 
-#: src/Deals.php:226
+#: src/Deals.php:234
 msgid "It is not your turn to answer."
 msgstr ""
 
-#: src/Deals.php:226
+#: src/Deals.php:234
 msgid "This order or offer is already closed."
 msgstr ""
 
-#: src/Deals.php:249
+#: src/Deals.php:257
 msgid "Enter the total price you propose."
 msgstr ""
 
-#: src/Deals.php:252
+#: src/Deals.php:260
 msgid "Propose a different price, or accept this one."
 msgstr ""
 

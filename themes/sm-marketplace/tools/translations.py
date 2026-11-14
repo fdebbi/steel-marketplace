@@ -2071,3 +2071,29 @@ T.update({
 "Your request goes to the platform, which sends you a quote and appoints the engineer.": ("Votre demande arrive à la plateforme, qui vous envoie un devis et désigne l’ingénieur.", "يصل طلبك إلى المنصة التي ترسل لك عرض سعر وتعيّن المهندس."),
 "Wilaya where you want to reassemble the building": ("Wilaya où vous voulez remonter le bâtiment", "الولاية التي تريد إعادة تركيب المبنى فيها"),
 })
+
+# 0.34.0 — product and reuse page, bars, inspection.
+T.update({
+"The lot for sale": ("Le lot en vente", "الحصة المعروضة للبيع"),
+"Bars × length": ("Barres × longueur", "القضبان × الطول"),
+"standard, dimensions, weight per metre, weight source…": ("norme, dimensions, poids au mètre, origine du poids…", "المعيار، الأبعاد، الوزن للمتر، مصدر الوزن…"),
+"Quantity needed (bars)": ("Quantité souhaitée (barres)", "الكمية المطلوبة (قضبان)"),
+"Brand new": ("Neuf", "جديد"),
+"Buy the whole lot": ("Acheter le lot complet", "شراء الحصة كاملة"),
+"i.e. %1$s a bar of %2$s m": ("soit %1$s la barre de %2$s m", "أي %1$s للقضيب بطول %2$s م"),
+"Retail": ("Au détail", "بالتجزئة"),
+"Complete lot": ("Lot complet", "الحصة كاملة"),
+"Number of bars of %s m": ("Nombre de barres de %s m", "عدد القضبان بطول %s م"),
+"%1$s available · %2$s kg a bar": ("%1$s disponibles · %2$s kg la barre", "%1$s متوفرة · %2$s كغ للقضيب"),
+"bars": ("barres", "قضبان"),
+"Drawing of the section": ("Dessin de la section", "رسم المقطع"),
+})
+P.update({
+("%s bar", "%s bars"): (("%s barre", "%s barres"), ("%s قضيب", "قضيب واحد", "قضيبان", "%s قضبان", "%s قضيبا", "%s قضيب")),
+})
+T.update({
+"Kinds of elements": ("Types d’éléments", "أنواع العناصر"),
+})
+T.update({
+"Get in touch": ("Contacter", "تواصل"),
+})

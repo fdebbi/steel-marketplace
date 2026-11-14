@@ -146,6 +146,9 @@ smr_assert( 2 === count( $d['elements'] ) && 'IPE 200' === $d['elements'][0]['de
 $labels = wp_list_pluck( $d['spec_rows'], 0 );
 smr_assert( in_array( 'Condition', $labels, true ) || in_array( 'État', $labels, true ) || in_array( 'الحالة', $labels, true ), 'product page: condition row' );
 smr_assert( 'good' === $d['condition'] && ! empty( $d['advice']['text'] ) && 'engineers' === $d['advice']['link_page'], 'product page: engineer advice with a link to the engineers' );
+smr_assert( 'expertise' === ( $d['inspection']['type'] ?? '' ) && false === strpos( $d['inspection']['text'], 'certif' ), '0.2.0: inspection request offered (verified engineer, appointed by the platform)' );
+$pre = apply_filters( 'sm_theme_data_mission_prefill', null, array( 'listing' => $d['id'] ) );
+smr_assert( is_array( $pre ) && 'expertise' === $pre['type'] && 0 === strpos( $pre['title'], 'Inspection' ) && false !== strpos( $pre['description'], (string) $pre['url'] ) && ! isset( $pre['project_type'] ), 'inspection request pre-filled with the lot; type of project left to the buyer' );
 smr_assert( 'warning' === Advice::for_condition( 'inspection' )['level'] && empty( Advice::for_condition( 'scrap' )['link_page'] ), 'stronger advice for "to inspect"; recycling note for scrap' );
 smr_assert( '' === $d['drawing'], 'no single drawing for a lot of several sizes' );
 $form = null;

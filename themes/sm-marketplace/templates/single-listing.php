@@ -103,6 +103,9 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 	<?php if ( $is_build && ! empty( $item['building'] ) ) : ?>
 		<?php // 0.33.0: page of a building (sm-buildings 0.4.0): price of the whole building first, geometry, inventory on demand. ?>
 		<?php sm_component( 'listing-building', array( 'item' => $item, 'company' => $company, 'specs' => $specs, 'place' => $sm_place ) ); ?>
+	<?php elseif ( in_array( $market, array( 'products', 'reuse' ), true ) && empty( $item['demo'] ) ) : ?>
+		<?php // 0.34.0: page of a product or reuse lot, built like the building page. ?>
+		<?php sm_component( 'listing-product', array( 'item' => $item, 'company' => $company, 'specs' => $specs, 'place' => $sm_place ) ); ?>
 	<?php else : ?>
 	<div class="sm-detail__top">
 		<?php sm_component( 'listing-gallery', array( 'item' => $item ) ); ?>

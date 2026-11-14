@@ -1,5 +1,10 @@
 # Changelog — sm-buildings
 
+## 0.5.0 — 2026-11-14
+
+- Demande d'inspection : le type de projet est déjà choisi d'après la catégorie du bâtiment (hangars industriels et ateliers → bâtiment industriel, entrepôts → hangar de stockage, hangars agricoles → bâtiment agricole, élevage → bâtiment d'élevage, kits → autre). L'acheteur peut le changer. Filtre `sm_buildings_project_types`.
+- Tests : 112.
+
 ## 0.4.0 — 2026-11-14
 
 - Mode de vente (`Sale`) : « Lot entier (bâtiment complet) », coché par défaut, et / ou « Par élément », pour un bâtiment monté comme démonté. Enregistré dans le mode de vente de SM Products (lot, both, detail).
