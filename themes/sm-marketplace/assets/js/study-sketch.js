@@ -358,31 +358,6 @@
 		return b;
 	}
 
-	/* Communes of the chosen wilaya (a text field when the wilaya has no list). */
-	function communes( form ) {
-		var wrap = form.querySelector( '[data-smx-commune]' ), wil = form.querySelector( '#m-wilaya' );
-		if ( ! wrap || ! wil ) { return; }
-		var map = {};
-		try { map = JSON.parse( wrap.getAttribute( 'data-communes' ) || '{}' ); } catch ( e ) {}
-		var sel = wrap.querySelector( '[data-smx-commune-list]' ), txt = wrap.querySelector( '[data-smx-commune-text]' );
-		var first = sel.options[ 0 ] ? sel.options[ 0 ].textContent : '';
-		wil.addEventListener( 'change', function () {
-			var list = map[ wil.value ] || [];
-			var has = list.length > 0;
-			sel.hidden = sel.disabled = ! has;
-			txt.hidden = txt.disabled = has || ! wil.value;
-			if ( ! wil.value ) { sel.hidden = false; sel.disabled = true; }
-			sel.innerHTML = '';
-			var o = document.createElement( 'option' );
-			o.value = ''; o.textContent = first; sel.appendChild( o );
-			list.forEach( function ( c ) {
-				var op = document.createElement( 'option' );
-				op.value = c[ 0 ]; op.textContent = c[ 1 ]; sel.appendChild( op );
-			} );
-			txt.value = '';
-		} );
-	}
-
 	/* Levels: one row each, "+ Add a level", × to remove; names GF, F+1… */
 	function floors( form ) {
 		var box = form.querySelector( '[data-smx-floors]' ), add = form.querySelector( '[data-smx-floor-add]' );
@@ -443,7 +418,6 @@
 	}
 
 	document.querySelectorAll( 'form.smx' ).forEach( function ( form ) {
-		communes( form );
 		floors( form );
 		var box = form.querySelector( '[data-smx-sketch]' );
 		doors( form, box );

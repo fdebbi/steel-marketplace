@@ -123,6 +123,13 @@
 	} else {
 		showWilaya( select ? select.value : '' );
 		say( t.drag || '' );
+		// 0.41.0: a commune already chosen (form sent back with an error, draft): open on it.
+		var cs = select && select.id ? document.querySelector( 'select[data-sm-commune][data-wilaya-select="#' + select.id + '"]' ) : null;
+		var co = cs && cs.options[ cs.selectedIndex ];
+		if ( co && co.getAttribute( 'data-lat' ) ) {
+			map.setView( [ +co.getAttribute( 'data-lat' ), +co.getAttribute( 'data-lng' ) ], 13 );
+			marker.setLatLng( [ +co.getAttribute( 'data-lat' ), +co.getAttribute( 'data-lng' ) ] );
+		}
 	}
 
 	marker.on( 'dragend', function () {
@@ -156,15 +163,35 @@
 
 	if ( select ) {
 		select.addEventListener( 'change', function () {
+			communeCentre = null;
 			if ( latIn.value ) { unset( t.wilayaChanged || '' ); } else { say( t.drag || '' ); }
 			showWilaya( select.value );
 		} );
 	}
 
+	// 0.41.0: the chosen commune moves the map. A saved marker far from it (> 25 km) is removed:
+	// it was placed for another commune. The suggested marker follows the commune, unsaved.
+	var communeCentre = null;
+	window.addEventListener( 'sm-commune', function ( e ) {
+		var d = e.detail || {};
+		if ( select && d.wilaya && document.querySelector( d.wilaya ) !== select ) { return; }
+		if ( ! inAlgeria( d.lat, d.lng ) ) { return; }
+		communeCentre = L.latLng( d.lat, d.lng );
+		if ( latIn.value ) {
+			var saved = L.latLng( parseFloat( latIn.value ), parseFloat( lngIn.value ) );
+			if ( ! d.user ) { return; } // Page opened on a saved position: keep it.
+			if ( saved.distanceTo( communeCentre ) <= 25000 ) { map.setView( saved, Math.max( map.getZoom(), 13 ) ); return; }
+			unset( t.communeChanged || t.wilayaChanged || '' );
+		}
+		map.setView( communeCentre, 13 );
+		marker.setLatLng( communeCentre );
+		if ( ! map.hasLayer( marker ) ) { marker.addTo( map ); }
+	} );
+
 	if ( clearBtn ) {
 		clearBtn.addEventListener( 'click', function () {
 			unset( t.removed || '' );
-			showWilaya( select ? select.value : '' );
+			if ( communeCentre ) { map.setView( communeCentre, 13 ); marker.setLatLng( communeCentre ); } else { showWilaya( select ? select.value : '' ); }
 		} );
 	}
 

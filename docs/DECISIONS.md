@@ -405,3 +405,9 @@ Validé sur la maquette 0.37.
 - Bâtiment à niveaux : chaque étage a sa hauteur et son usage.
 - Commune obligatoire, choisie dans la liste de la wilaya (texte libre pour les nouvelles wilayas 59-69 tant que leur liste n'est pas publiée). Repère sur la carte facultatif, jamais public.
 - Plus de date « souhaitée » dans la demande d'étude.
+
+## Communes et cartes (2026-11-15)
+
+- Partout où il y a une wilaya et une carte, la commune se choisit dans la liste de la wilaya et la carte se déplace sur la commune. Le repère n'est jamais placé automatiquement : l'utilisateur le pose lui-même.
+- Source des communes : geoalgeria (69 wilayas, nouveau découpage seulement, option B). Mention « © OpenStreetMap contributors » pour les coordonnées issues d'OSM (ODbL).
+- Annonce sans repère précis : la carte publique montre la commune (déjà publique), pas un point exact.

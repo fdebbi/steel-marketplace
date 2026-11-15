@@ -401,14 +401,7 @@ $i18n = sm_study_sketch_i18n();
 		<legend class="smx-step__title"><b>4</b><?php esc_html_e( 'Location, project and documents', 'sm-marketplace' ); ?></legend>
 		<?php
 		$wil      = (string) sm_theme_old( 'wilaya', $from['wilaya'] ?? '' );
-		$communes = (array) sm_theme_data( 'communes' );
-		$is_ar    = 0 === strpos( determine_locale(), 'ar' );
-		$cmap     = array();
-		foreach ( $communes as $wc => $list ) {
-			$cmap[ $wc ] = array_map( static fn( $c ) => array( $c[0], $is_ar ? $c[1] : $c[0] ), $list );
-		}
-		$cur      = (string) $bv( 'commune' );
-		$has_list = ! empty( $cmap[ $wil ] );
+
 		?>
 		<section class="smx-zone">
 			<h3 class="smx-zone__title"><?php sm_icon( 'map-pin' ); ?><?php esc_html_e( 'Location', 'sm-marketplace' ); ?></h3>
@@ -421,15 +414,7 @@ $i18n = sm_study_sketch_i18n();
 					</select>
 					<?php sm_theme_error( 'wilaya' ); ?>
 				</div>
-				<div class="smx-f" data-smx-commune data-communes="<?php echo esc_attr( wp_json_encode( $cmap ) ); ?>">
-					<label for="smx-commune"><?php esc_html_e( 'Commune', 'sm-marketplace' ); ?> <span class="smx-req" aria-hidden="true">*</span></label>
-					<select id="smx-commune" name="b[commune]"<?php echo $has_list ? '' : ' hidden disabled'; ?> data-smx-commune-list aria-required="true">
-						<option value=""><?php echo esc_html( $wil ? __( 'Select', 'sm-marketplace' ) : __( 'Choose the wilaya first', 'sm-marketplace' ) ); ?></option>
-						<?php foreach ( (array) ( $cmap[ $wil ] ?? array() ) as $c ) : ?><option value="<?php echo esc_attr( $c[0] ); ?>" <?php selected( $cur, $c[0] ); ?>><?php echo esc_html( $c[1] ); ?></option><?php endforeach; ?>
-					</select>
-					<input id="smx-commune-text" name="b[commune]" dir="auto" maxlength="80" value="<?php echo esc_attr( $has_list ? '' : $cur ); ?>"<?php echo $has_list ? ' hidden disabled' : ''; ?> data-smx-commune-text aria-required="true">
-					<?php sm_theme_error( 'b_commune' ); ?>
-				</div>
+				<?php sm_component( 'commune-field', array( 'name' => 'b[commune]', 'id' => 'smx-commune', 'wilaya' => $wil, 'wilaya_select' => '#m-wilaya', 'value' => (string) $bv( 'commune' ), 'required' => true, 'error' => 'b_commune', 'class' => 'smx-f' ) ); ?>
 			</div>
 			<?php
 			sm_component(

@@ -509,6 +509,10 @@ final class Companies {
 		if ( isset( $data['wilaya'] ) && Wilayas::exists( $data['wilaya'] ) ) {
 			$fields['wilaya'] = $data['wilaya'];
 		}
+		if ( isset( $fields['commune'] ) ) {
+			// 0.8.4: written as in the list of the wilaya when it is found there.
+			$fields['commune'] = Communes::clean( $fields['wilaya'] ?? ( self::get( $company_id )->wilaya ?? '' ), $fields['commune'] );
+		}
 		foreach ( array( 'about_fr', 'about_ar' ) as $f ) {
 			if ( isset( $data[ $f ] ) ) {
 				$fields[ $f ] = sanitize_textarea_field( $data[ $f ] );

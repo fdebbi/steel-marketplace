@@ -170,7 +170,7 @@ msgstr "مهامي"
 msgid "Invoicing"
 msgstr "الفوترة"
 
-#: footer.php:63 template-parts/components/product-form.php:231
+#: footer.php:63 template-parts/components/product-form.php:230
 #: template-parts/dashboard/publish.php:211
 #: template-parts/header-actions.php:34 templates/styleguide.php:34
 msgid "Publish"
@@ -367,6 +367,10 @@ msgid "Wilaya changed: place the marker again on your address."
 msgstr "تم تغيير الولاية: ضع العلامة من جديد على عنوانك."
 
 #: inc/assets.php:131
+msgid "Commune changed: place the marker again on the exact place."
+msgstr "تغيّرت البلدية: ضع العلامة من جديد في المكان الدقيق."
+
+#: inc/assets.php:132
 msgid "Position removed. It will be deleted when you save."
 msgstr "تمت إزالة الموقع. سيُحذف عند الحفظ."
 
@@ -1587,6 +1591,68 @@ msgstr[3] "%d ولايات"
 msgstr[4] "%d ولاية"
 msgstr[5] "%d ولاية"
 
+#: template-parts/components/commune-field.php:32
+msgid "Commune"
+msgstr "البلدية"
+
+#: template-parts/components/commune-field.php:32
+#: template-parts/components/listing-place.php:98
+#: template-parts/components/mission-request-form.php:385
+#: template-parts/components/mission-request-form.php:450
+#: template-parts/components/mission-request-form.php:463
+#: template-parts/components/my-products.php:180
+#: template-parts/components/plate-fields.php:219
+#: template-parts/components/product-form.php:132
+#: template-parts/components/product-form.php:137
+#: template-parts/components/product-form.php:174
+#: template-parts/components/product-form.php:201
+#: template-parts/components/product-tech.php:70
+#: template-parts/components/product-tech.php:79
+#: template-parts/components/product-tech.php:167
+#: template-parts/components/product-tech.php:435
+#: template-parts/components/product-tech.php:456
+#: template-parts/components/rfq-form.php:56
+#: template-parts/components/rfq-form.php:83
+#: template-parts/components/rfq-form.php:92
+#: template-parts/components/rfq-form.php:110
+#: template-parts/components/rfq-form.php:114
+#: template-parts/components/rfq-form.php:132
+#: template-parts/components/rfq-offer-form.php:44
+#: template-parts/components/rfq-offer-form.php:63
+#: template-parts/components/rfq-offer-form.php:67
+#: template-parts/components/rfq-offer-form.php:77
+#: template-parts/components/rfq-tech.php:48
+#: template-parts/components/service-form.php:83
+#: template-parts/components/service-form.php:88
+#: template-parts/components/service-form.php:117
+#: template-parts/components/service-request-form.php:34
+#: template-parts/components/service-request-form.php:39
+#: template-parts/components/service-request-form.php:47
+#: template-parts/components/service-request-row.php:87
+#: template-parts/components/visits-list.php:80
+#: template-parts/dashboard/ai.php:66 template-parts/dashboard/ai.php:92
+#: template-parts/dashboard/portfolio.php:48
+#: template-parts/dashboard/portfolio.php:54
+#: template-parts/dashboard/portfolio.php:74 templates/company-profile.php:294
+#: templates/company-profile.php:301 templates/contact.php:56
+msgid "optional"
+msgstr "اختياري"
+
+#: template-parts/components/commune-field.php:33
+#: template-parts/components/commune-field.php:34
+#: template-parts/components/engineer-fields.php:49
+#: template-parts/components/engineer-fields.php:58
+#: template-parts/components/mission-request-form.php:412
+#: templates/auth-register.php:78 templates/engineer-apply.php:171
+#: templates/engineer-apply.php:194 templates/engineer-apply.php:203
+msgid "Select"
+msgstr "اختر"
+
+#: template-parts/components/commune-field.php:33
+#: template-parts/components/commune-field.php:34
+msgid "Choose the wilaya first"
+msgstr "اختر الولاية أولًا"
+
 #: template-parts/components/deal-list.php:21
 #: template-parts/components/filter-panel.php:121
 #: template-parts/components/filter-panel.php:131
@@ -1691,15 +1757,6 @@ msgstr "سنوات الخبرة"
 #: templates/engineer-apply.php:192
 msgid "Professional title"
 msgstr "الصفة المهنية"
-
-#: template-parts/components/engineer-fields.php:49
-#: template-parts/components/engineer-fields.php:58
-#: template-parts/components/mission-request-form.php:419
-#: template-parts/components/mission-request-form.php:427
-#: templates/auth-register.php:78 templates/engineer-apply.php:171
-#: templates/engineer-apply.php:194 templates/engineer-apply.php:203
-msgid "Select"
-msgstr "اختر"
 
 #: template-parts/components/engineer-fields.php:52
 #: templates/engineer-apply.php:197
@@ -1896,7 +1953,7 @@ msgid "hangar, poultry house…"
 msgstr "هنجر، مدجنة…"
 
 #: template-parts/components/filter-panel.php:153
-#: template-parts/components/mission-request-form.php:417
+#: template-parts/components/mission-request-form.php:410
 #: template-parts/components/product-form.php:189
 #: template-parts/dashboard/company.php:101
 #: template-parts/dashboard/engineer-missions.php:132
@@ -2111,7 +2168,7 @@ msgstr "الوثائق التقنية"
 
 #: template-parts/components/listing-building.php:135
 #: template-parts/components/listing-product.php:173
-#: template-parts/components/mission-request-form.php:459
+#: template-parts/components/mission-request-form.php:444
 #: template-parts/components/product-form.php:121
 #: template-parts/dashboard/invoice.php:65 templates/single-listing.php:215
 #: templates/single-service.php:99
@@ -2272,7 +2329,7 @@ msgid "Element"
 msgstr "العنصر"
 
 #: template-parts/components/listing-place.php:27
-#: template-parts/components/mission-request-form.php:414
+#: template-parts/components/mission-request-form.php:407
 #: template-parts/components/product-form.php:185
 #: templates/company-profile.php:222 templates/single-listing.php:81
 msgid "Location"
@@ -2364,49 +2421,6 @@ msgstr "التاريخ المطلوب"
 #: template-parts/components/visits-list.php:78
 msgid "Time of the visit"
 msgstr "الساعة"
-
-#: template-parts/components/listing-place.php:98
-#: template-parts/components/mission-request-form.php:385
-#: template-parts/components/mission-request-form.php:465
-#: template-parts/components/mission-request-form.php:478
-#: template-parts/components/my-products.php:180
-#: template-parts/components/plate-fields.php:219
-#: template-parts/components/product-form.php:132
-#: template-parts/components/product-form.php:137
-#: template-parts/components/product-form.php:174
-#: template-parts/components/product-form.php:197
-#: template-parts/components/product-form.php:202
-#: template-parts/components/product-tech.php:70
-#: template-parts/components/product-tech.php:79
-#: template-parts/components/product-tech.php:167
-#: template-parts/components/product-tech.php:435
-#: template-parts/components/product-tech.php:456
-#: template-parts/components/rfq-form.php:56
-#: template-parts/components/rfq-form.php:83
-#: template-parts/components/rfq-form.php:92
-#: template-parts/components/rfq-form.php:110
-#: template-parts/components/rfq-form.php:114
-#: template-parts/components/rfq-form.php:132
-#: template-parts/components/rfq-offer-form.php:44
-#: template-parts/components/rfq-offer-form.php:63
-#: template-parts/components/rfq-offer-form.php:67
-#: template-parts/components/rfq-offer-form.php:77
-#: template-parts/components/rfq-tech.php:48
-#: template-parts/components/service-form.php:83
-#: template-parts/components/service-form.php:88
-#: template-parts/components/service-form.php:117
-#: template-parts/components/service-request-form.php:34
-#: template-parts/components/service-request-form.php:39
-#: template-parts/components/service-request-form.php:47
-#: template-parts/components/service-request-row.php:87
-#: template-parts/components/visits-list.php:80
-#: template-parts/dashboard/ai.php:66 template-parts/dashboard/ai.php:92
-#: template-parts/dashboard/portfolio.php:48
-#: template-parts/dashboard/portfolio.php:54
-#: template-parts/dashboard/portfolio.php:74 templates/company-profile.php:294
-#: templates/company-profile.php:301 templates/contact.php:56
-msgid "optional"
-msgstr "اختياري"
 
 #: template-parts/components/listing-place.php:99
 msgid "Number of people, questions…"
@@ -2915,25 +2929,15 @@ msgstr "الاستعجال"
 msgid "Location, project and documents"
 msgstr "الموقع والمشروع والوثائق"
 
-#: template-parts/components/mission-request-form.php:417
+#: template-parts/components/mission-request-form.php:410
 msgid "Wilaya where you want to reassemble the building"
 msgstr "الولاية التي تريد إعادة تركيب المبنى فيها"
 
-#: template-parts/components/mission-request-form.php:425
-#: template-parts/components/product-form.php:197
-#: template-parts/dashboard/company.php:107
-msgid "Commune"
-msgstr "البلدية"
-
-#: template-parts/components/mission-request-form.php:427
-msgid "Choose the wilaya first"
-msgstr "اختر الولاية أولًا"
-
-#: template-parts/components/mission-request-form.php:443
+#: template-parts/components/mission-request-form.php:428
 msgid "Place of the project on the map (optional)"
 msgstr "موقع المشروع على الخريطة (اختياري)"
 
-#: template-parts/components/mission-request-form.php:444
+#: template-parts/components/mission-request-form.php:429
 msgid ""
 "The map opens on the wilaya. Drag the marker (or click the map) to the exact"
 " place, or use your current location if you are on site."
@@ -2941,71 +2945,71 @@ msgstr ""
 "تُفتح الخريطة على الولاية. اسحب العلامة (أو انقر على الخريطة) إلى المكان "
 "الدقيق، أو استعمل موقعك الحالي إن كنت في المكان."
 
-#: template-parts/components/mission-request-form.php:445
+#: template-parts/components/mission-request-form.php:430
 msgid ""
 "Exact place seen only by the platform and the engineer in charge of the "
 "study."
 msgstr "الموقع الدقيق لا يراه إلا المنصة والمهندس المكلف بالدراسة."
 
-#: template-parts/components/mission-request-form.php:452
+#: template-parts/components/mission-request-form.php:437
 msgid "Project"
 msgstr "المشروع"
 
-#: template-parts/components/mission-request-form.php:454
+#: template-parts/components/mission-request-form.php:439
 msgid "Title of the project"
 msgstr "عنوان المشروع"
 
-#: template-parts/components/mission-request-form.php:454
+#: template-parts/components/mission-request-form.php:439
 msgid "optional — otherwise made from the type and the dimensions"
 msgstr "اختياري — وإلا يُكوَّن من النوع والأبعاد"
 
-#: template-parts/components/mission-request-form.php:455
+#: template-parts/components/mission-request-form.php:440
 msgid "e.g. Storage hangar 20 × 40 m"
 msgstr "مثال: هنغار تخزين 20 × 40 م"
 
-#: template-parts/components/mission-request-form.php:459
+#: template-parts/components/mission-request-form.php:444
 msgid "what the dimensions do not say"
 msgstr "ما لا تقوله الأبعاد"
 
-#: template-parts/components/mission-request-form.php:460
+#: template-parts/components/mission-request-form.php:445
 msgid ""
 "Possible extension, stored goods, constraints of the site, what you expect "
 "from the study…"
 msgstr "توسعة محتملة، البضائع المخزنة، قيود الأرض، ما تنتظره من الدراسة…"
 
-#: template-parts/components/mission-request-form.php:465
+#: template-parts/components/mission-request-form.php:450
 msgid "Preferred engineer"
 msgstr "المهندس المفضّل"
 
-#: template-parts/components/mission-request-form.php:467
+#: template-parts/components/mission-request-form.php:452
 msgid "Let the platform choose"
 msgstr "دع المنصة تختار"
 
-#: template-parts/components/mission-request-form.php:474
+#: template-parts/components/mission-request-form.php:459
 #: templates/engineer-apply.php:91 templates/engineer-apply.php:92
 #: templates/engineer-apply.php:306
 msgid "Documents"
 msgstr "الوثائق"
 
-#: template-parts/components/mission-request-form.php:478
+#: template-parts/components/mission-request-form.php:463
 msgid "Plans, soil study, photos"
 msgstr "مخططات، دراسة التربة، صور"
 
-#: template-parts/components/mission-request-form.php:478
+#: template-parts/components/mission-request-form.php:463
 msgid "Photos of the building — 2 at least"
 msgstr "صور المبنى — صورتان على الأقل"
 
-#: template-parts/components/mission-request-form.php:478
+#: template-parts/components/mission-request-form.php:463
 #: template-parts/dashboard/publish.php:159
 msgid "Photos and documents"
 msgstr "الصور والوثائق"
 
 #. translators: 1: number of files, 2: MB, 3: extensions.
-#: template-parts/components/mission-request-form.php:479
+#: template-parts/components/mission-request-form.php:464
 msgid "Up to %1$d files of %2$d MB (%3$s)."
 msgstr "حتى %1$d ملفات بحجم %2$d ميغابايت (%3$s)."
 
-#: template-parts/components/mission-request-form.php:483
+#: template-parts/components/mission-request-form.php:468
 msgid "Send my request to the platform"
 msgstr "أرسل طلبي إلى المنصة"
 
@@ -3864,23 +3868,23 @@ msgstr "الولاية التي يوجد فيها المنتج"
 msgid "Choose…"
 msgstr "اختر…"
 
-#: template-parts/components/product-form.php:202
+#: template-parts/components/product-form.php:201
 msgid "Address or place name"
 msgstr "العنوان أو اسم المكان"
 
-#: template-parts/components/product-form.php:203
+#: template-parts/components/product-form.php:202
 msgid "e.g. industrial zone"
 msgstr "مثال: المنطقة الصناعية"
 
-#: template-parts/components/product-form.php:213
+#: template-parts/components/product-form.php:212
 msgid "Exact position of the building"
 msgstr "الموقع الدقيق للمبنى"
 
-#: template-parts/components/product-form.php:213
+#: template-parts/components/product-form.php:212
 msgid "Exact position"
 msgstr "الموقع الدقيق"
 
-#: template-parts/components/product-form.php:214
+#: template-parts/components/product-form.php:213
 msgid ""
 "Choose the wilaya: the map opens on it. Then drag the marker (or click the "
 "map) to the exact place, or use your current location if you are on site."
@@ -3888,11 +3892,11 @@ msgstr ""
 "اختر الولاية: تُفتح الخريطة عليها. ثم اسحب العلامة (أو انقر على الخريطة) إلى"
 " المكان الدقيق، أو استعمل موقعك الحالي إن كنت في عين المكان."
 
-#: template-parts/components/product-form.php:215
+#: template-parts/components/product-form.php:214
 msgid "Show the map to the public"
 msgstr "إظهار الخريطة للعموم"
 
-#: template-parts/components/product-form.php:216
+#: template-parts/components/product-form.php:215
 msgid ""
 "Unticked: the public only sees the address (commune, wilaya). The map is "
 "shown to a buyer after you accept his visit request."
@@ -3900,20 +3904,20 @@ msgstr ""
 "بدون تحديد: يرى العموم العنوان فقط (البلدية، الولاية). تظهر الخريطة للمشتري "
 "بعد موافقتك على طلب زيارته."
 
-#: template-parts/components/product-form.php:223
+#: template-parts/components/product-form.php:222
 msgid "Place it on the map (optional)"
 msgstr "تحديده على الخريطة (اختياري)"
 
-#: template-parts/components/product-form.php:230
+#: template-parts/components/product-form.php:229
 #: template-parts/dashboard/publish.php:209
 msgid "Save draft"
 msgstr "حفظ كمسودة"
 
-#: template-parts/components/product-form.php:231
+#: template-parts/components/product-form.php:230
 msgid "Send for publication"
 msgstr "إرسال للنشر"
 
-#: template-parts/components/product-form.php:234
+#: template-parts/components/product-form.php:233
 msgid ""
 "The platform team checks each product (usually within a working day) before "
 "it is shown to buyers."

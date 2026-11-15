@@ -2372,3 +2372,6 @@ T.update({
 "Title of the project": ("Intitulé du projet", "عنوان المشروع"),
 "optional — otherwise made from the type and the dimensions": ("facultatif — sinon composé du type et des dimensions", "اختياري — وإلا يُكوَّن من النوع والأبعاد"),
 })
+T.update({
+"Commune changed: place the marker again on the exact place.": ("Commune changée : placez à nouveau le repère à l'endroit exact.", "تغيّرت البلدية: ضع العلامة من جديد في المكان الدقيق."),
+})

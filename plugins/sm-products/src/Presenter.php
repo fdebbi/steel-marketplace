@@ -113,7 +113,9 @@ final class Presenter {
 		$out['visit']    = Visits::state_for( $p );
 		// 0.14.0: without the exact position, the page may show the wilaya on a map (approximate centre, no marker).
 		$centres     = \SM\Core\Accounts\Wilayas::centres();
-		$out['map_area'] = ! $out['location'] && isset( $centres[ $p->wilaya ] ) ? array( 'lat' => $centres[ $p->wilaya ][0], 'lng' => $centres[ $p->wilaya ][1] ) : null;
+		// 0.18.2: without an exact position, the area map shows the commune (public) or else the wilaya.
+		$cp              = ! $out['location'] && '' !== (string) ( $p->commune ?? '' ) ? \SM\Core\Accounts\Communes::point( $p->wilaya, $p->commune ) : null;
+		$out['map_area'] = $cp ? array( 'lat' => $cp[0], 'lng' => $cp[1], 'zoom' => 12 ) : ( ! $out['location'] && isset( $centres[ $p->wilaya ] ) ? array( 'lat' => $centres[ $p->wilaya ][0], 'lng' => $centres[ $p->wilaya ][1], 'zoom' => 9 ) : null );
 		$out['drawing']   = '';
 		$out['drawing_dims'] = array();
 		if ( $p->family && 'PLATE' !== $p->family && ! $p->lines ) {

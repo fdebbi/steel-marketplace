@@ -1,5 +1,11 @@
 # Changelog — sm-marketplace
 
+## 0.41.0 — 2026-11-15
+
+- La commune se choisit dans la liste de la wilaya partout où il y a une wilaya et une carte : profil d'entreprise, formulaire d'annonce (neuf, réemploi, bâtiments) et demande d'étude (composant `commune-field`). Changer de wilaya recharge la liste ; une commune tapée avant reste proposée.
+- La carte se déplace sur la commune choisie (zoom ville) avec un repère suggéré non enregistré ; un repère enregistré à plus de 25 km de la nouvelle commune est retiré (« Commune changée : placez à nouveau le repère »). À l'ouverture, la carte s'ouvre sur la commune déjà choisie.
+- Fiche d'annonce sans repère précis : la carte de la zone se centre sur la commune (zoom 12) au lieu de la wilaya.
+
 ## 0.40.0 — 2026-11-15
 
 - Demande d'étude, charpente en portiques : couverture et bardage séparés. Bardage : tôle simple, panneau sandwich, mur, mixte (hauteur du mur + bardage au-dessus) ou ouvert. Le mur est hachuré sur la vue de face.

@@ -128,6 +128,7 @@ function sm_theme_enqueue_map() {
 				'insecure'      => __( 'Your browser only shares your location on a secure (https) site. Place the marker by hand.', 'sm-marketplace' ),
 				'outside'       => __( 'This position is outside Algeria. Place the marker on your address.', 'sm-marketplace' ),
 				'wilayaChanged' => __( 'Wilaya changed: place the marker again on your address.', 'sm-marketplace' ),
+				'communeChanged' => __( 'Commune changed: place the marker again on the exact place.', 'sm-marketplace' ),
 				'removed'       => __( 'Position removed. It will be deleted when you save.', 'sm-marketplace' ),
 			),
 		)

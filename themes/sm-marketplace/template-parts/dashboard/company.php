@@ -104,7 +104,7 @@ if ( empty( $account['can_manage'] ) ) {
 				</select>
 				<?php sm_theme_error( 'wilaya' ); ?>
 			</div>
-			<div><label for="c-commune"><?php esc_html_e( 'Commune', 'sm-marketplace' ); ?></label><input id="c-commune" name="commune" value="<?php echo esc_attr( $old( 'commune' ) ); ?>" dir="auto"></div>
+			<?php sm_component( 'commune-field', array( 'name' => 'commune', 'id' => 'c-commune', 'wilaya' => (string) $old( 'wilaya' ), 'wilaya_select' => '#c-wilaya', 'value' => (string) $old( 'commune' ), 'class' => 'sm-commune' ) ); // 0.41.0: list of the wilaya. ?>
 		</div>
 		<div class="sm-field"><label for="c-address"><?php esc_html_e( 'Address', 'sm-marketplace' ); ?></label><input id="c-address" name="address" value="<?php echo esc_attr( $old( 'address' ) ); ?>" dir="auto"></div>
 		<?php if ( ! $is_cli ) : ?>

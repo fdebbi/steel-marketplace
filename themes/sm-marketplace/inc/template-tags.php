@@ -768,3 +768,21 @@ function sm_study_sketch_i18n() {
 		'uses'       => class_exists( '\\SM\\Engineering\\Brief' ) ? \SM\Engineering\Brief::choices( 'floor_use' ) : array(),
 	);
 }
+
+/**
+ * The communes of every wilaya for the commune lists (0.41.0), printed once per page:
+ * { code: [ [ value, label, lat, lng ], … ] } with the label in the visitor's language.
+ */
+function sm_theme_communes_data() {
+	static $done = false;
+	if ( $done ) {
+		return;
+	}
+	$done  = true;
+	$is_ar = 0 === strpos( determine_locale(), 'ar' );
+	$out   = array();
+	foreach ( (array) sm_theme_data( 'communes' ) as $w => $list ) {
+		$out[ $w ] = array_map( static fn( $c ) => array( $c[0], $is_ar ? $c[1] : $c[0], $c[2] ?? null, $c[3] ?? null ), (array) $list );
+	}
+	echo '<script type="application/json" id="sm-communes-data">' . wp_json_encode( $out, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP ) . '</script>';
+}

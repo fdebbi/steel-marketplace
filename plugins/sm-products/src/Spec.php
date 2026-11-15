@@ -162,7 +162,7 @@ final class Spec {
 		}
 		$d['wilaya'] = $wilaya;
 		// Place (0.12.0): commune, address and exact position; the map is public only if the seller says so.
-		$d['commune'] = mb_substr( trim( sanitize_text_field( (string) ( $in['commune'] ?? '' ) ) ), 0, 80 );
+		$d['commune'] = \SM\Core\Accounts\Communes::clean( $wilaya, (string) ( $in['commune'] ?? '' ) ); // Written as in the list (sm-core 0.8.4).
 		$d['address'] = mb_substr( trim( sanitize_text_field( (string) ( $in['address'] ?? '' ) ) ), 0, 160 );
 		$loc          = \SM\Core\Accounts\Companies::parse_location( $in['lat'] ?? '', $in['lng'] ?? '' );
 		if ( is_wp_error( $loc ) ) {

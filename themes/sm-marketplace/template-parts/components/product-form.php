@@ -193,11 +193,10 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 				</select>
 				<?php sm_theme_error( 'wilaya' ); ?>
 			</div>
-			<div class="sm-field">
-				<label for="smp-commune"><?php esc_html_e( 'Commune', 'sm-marketplace' ); ?><?php echo $steps_build ? '' : ' <small class="sm-optional">' . esc_html__( 'optional', 'sm-marketplace' ) . '</small>'; ?></label>
-				<input id="smp-commune" name="commune" dir="auto" maxlength="80" value="<?php echo esc_attr( (string) ( $state['commune'] ?? '' ) ); ?>"<?php sm_theme_aria( 'commune' ); ?>>
-				<?php sm_theme_error( 'commune' ); ?>
-			</div>
+			<?php
+			// 0.41.0: the commune in the list of the wilaya; the map moves to it.
+			sm_component( 'commune-field', array( 'name' => 'commune', 'id' => 'smp-commune', 'wilaya' => (string) $wilaya, 'wilaya_select' => '#smp-wilaya', 'value' => (string) ( $state['commune'] ?? '' ), 'optional' => ! $steps_build ) );
+			?>
 			<div class="sm-field">
 				<label for="smp-address"><?php esc_html_e( 'Address or place name', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
 				<input id="smp-address" name="address" dir="auto" maxlength="160" value="<?php echo esc_attr( (string) ( $state['address'] ?? '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. industrial zone', 'sm-marketplace' ); ?>">

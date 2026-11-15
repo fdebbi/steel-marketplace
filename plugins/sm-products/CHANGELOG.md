@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.18.2 — 2026-11-15
+
+- Commune enregistrée telle qu'écrite dans la liste de la wilaya (sm-core 0.8.4). Sans position précise, `map_area` est le centre de la commune (zoom 12) quand elle est connue, sinon la wilaya.
+
 ## 0.18.1 — 2026-11-15
 
 - « Mes annonces » par marché : `count_by_status()` accepte un marché, nouveau `count_by_market()` ; la donnée `my_products` renvoie `markets` et `market`.

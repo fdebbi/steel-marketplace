@@ -1,5 +1,10 @@
 # Changelog — sm-core
 
+## 0.8.4 — 2026-11-15
+
+- Liste des communes remplacée par geoalgeria 2.4.0 : 1 541 communes des 69 wilayas (nouveau découpage, wilayas 59-69 comprises) avec le centre de chaque commune. Noms et codes sous licence MIT ; 323 coordonnées issues d'OpenStreetMap sous licence ODbL 1.0, © OpenStreetMap contributors (`data/communes-NOTICE.txt`).
+- `Communes::find()` ignore accents, tirets, apostrophes et casse, et reconnaît le nom arabe ; nouveaux `point()` et `clean()`. Le profil d'entreprise enregistre la commune telle qu'écrite dans la liste.
+
 ## 0.8.3 — 2026-11-15
 
 - Liste des 1 541 communes des 58 wilayas (`data/communes.php`, source ouverte « algeria-cities ») et classe `Accounts\Communes` (`of()`, `find()`) ; donnée de thème `communes`. Les wilayas 59-69 (au 1er janvier 2027) n'ont pas encore de liste : la commune y est saisie en texte.

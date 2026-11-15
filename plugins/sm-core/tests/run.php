@@ -562,6 +562,15 @@ sm_assert( 'engineer' === Companies::get( $m3 )->account_class && array( 'engine
 sm_assert( ! isset( get_option( 'sm_core_settings' )['rights'] ) && sm_can( 'buy', $c_man ), 'old rights matrix reset to the new defaults' );
 update_option( 'sm_core_settings', $core_settings );
 
+sm_section( 'Communes (0.8.4)' );
+$cm = \SM\Core\Accounts\Communes::class;
+sm_assert( 69 === count( $cm::all() ) && 1541 === array_sum( array_map( 'count', $cm::all() ) ), '1 541 communes in 69 wilayas' );
+sm_assert( 'Ain Taya' === $cm::clean( '16', 'aïn-taya' ) && 'Ain Taya' === $cm::find( '16', 'عين طاية' )[0], 'found whatever the accents, hyphens or language' );
+sm_assert( null === $cm::find( '28', 'Ain Taya' ) && 'Ain Taya ' !== $cm::clean( '28', 'Ain Taya ' ), 'a commune of another wilaya is not found (kept as typed)' );
+$pt = $cm::point( '19', 'Setif' );
+sm_assert( $pt && abs( $pt[0] - 36.19 ) < 0.05 && abs( $pt[1] - 5.41 ) < 0.05, 'centre of Sétif for the maps' );
+sm_assert( null !== $cm::find( '68', 'Bou Saada' ) && null === $cm::find( '28', 'Bou Saada' ), 'Bou Saâda in its new wilaya (68)' );
+
 sm_test_cleanup();
 
 $t = $GLOBALS['sm_t'];

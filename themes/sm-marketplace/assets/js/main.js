@@ -649,6 +649,45 @@
 		$$( '[data-smc-close]', dlg ).forEach( function ( b ) { b.addEventListener( 'click', function () { dlg.close(); } ); } );
 		dlg.addEventListener( 'click', function ( e ) { if ( e.target === dlg ) { dlg.close(); } } );
 	} );
+	/* 0.41.0: commune lists follow their wilaya; the chosen commune moves the map of the form. */
+	( function () {
+		var data = null;
+		var all = function () {
+			if ( null === data ) {
+				var el = document.getElementById( 'sm-communes-data' );
+				try { data = el ? JSON.parse( el.textContent ) : {}; } catch ( e ) { data = {}; }
+			}
+			return data;
+		};
+		var tell = function ( sel, user ) {
+			var o = sel.options[ sel.selectedIndex ];
+			if ( ! o || ! o.getAttribute( 'data-lat' ) ) { return; }
+			window.dispatchEvent( new CustomEvent( 'sm-commune', { detail: { lat: +o.getAttribute( 'data-lat' ), lng: +o.getAttribute( 'data-lng' ), wilaya: sel.getAttribute( 'data-wilaya-select' ), user: !! user } } ) );
+		};
+		document.querySelectorAll( 'select[data-sm-commune]' ).forEach( function ( sel ) {
+			var wil = document.querySelector( sel.getAttribute( 'data-wilaya-select' ) || '#none' );
+			sel.addEventListener( 'change', function () { tell( sel, true ); } );
+			if ( wil ) {
+				wil.addEventListener( 'change', function () {
+					var list = all()[ wil.value ] || [];
+					sel.innerHTML = '';
+					var first = document.createElement( 'option' );
+					first.value = '';
+					first.textContent = wil.value ? sel.getAttribute( 'data-empty' ) : sel.getAttribute( 'data-first' );
+					sel.appendChild( first );
+					list.forEach( function ( c ) {
+						var o = document.createElement( 'option' );
+						o.value = c[ 0 ];
+						o.textContent = c[ 1 ];
+						if ( null !== c[ 2 ] ) { o.setAttribute( 'data-lat', c[ 2 ] ); o.setAttribute( 'data-lng', c[ 3 ] ); }
+						sel.appendChild( o );
+					} );
+				} );
+			}
+			if ( sel.value ) { setTimeout( function () { tell( sel, false ); }, 0 ); } // Map opens on the saved commune.
+		} );
+	} )();
+
 	/* 0.38.0: the contact window opens again after a failed send, or after signing in (#id). */
 	( function () {
 		var dlg = $( 'dialog.smc-dialog[data-smc-autoopen]' );
