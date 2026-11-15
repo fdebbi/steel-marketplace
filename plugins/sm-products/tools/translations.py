@@ -335,3 +335,15 @@ T.update({
 "Only %1$s pieces of %2$s are available.": ("Seulement %1$s pièces de %2$s sont disponibles.", "لا يتوفر سوى %1$s قطعة من %2$s."),
 "Choose the elements you want and their number.": ("Choisissez les éléments voulus et leur nombre.", "اختر العناصر المطلوبة وعددها."),
 })
+
+# 0.17.0: plates by kind.
+T.update({
+"Choose the kind of plate.": ("Choisissez le type de tôle.", "اختر نوع الصفيحة."),
+"The pitch must be larger than the hole diameter.": ("Le pas doit être plus grand que le diamètre des trous.", "يجب أن تكون المسافة بين الثقوب أكبر من قطرها."),
+"Enter the weight of one sheet in kg.": ("Indiquez le poids d’une feuille en kg.", "أدخل وزن الصفيحة الواحدة بالكغ."),
+"This weight is very far from the estimated %s kg per sheet. Check it.": ("Ce poids est très éloigné des %s kg estimés par feuille. Vérifiez-le.", "هذا الوزن بعيد جدًا عن الوزن التقديري %s كغ للصفيحة. تحقّق منه."),
+})
+T.update({
+"holes Ø%1$s, pitch %2$s": ("trous Ø%1$s, pas %2$s", "ثقوب Ø%1$s، المسافة %2$s"),
+"Weight of one sheet": ("Poids d’une feuille", "وزن الصفيحة الواحدة"),
+})

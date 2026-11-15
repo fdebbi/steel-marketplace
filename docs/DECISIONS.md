@@ -360,3 +360,13 @@ Validé sur la maquette 0.35.
 - **Acier en vente** : les annonces en ligne du compte seulement (pas le total du marché).
 - **Les blocs vente et achat sont toujours affichés**, à zéro s'il n'y a rien, pour tous les comptes acheteurs et vendeurs.
 - **Période par défaut : 12 mois.** Les courbes sont dessinées par le thème, sans bibliothèque externe.
+
+## Dimensions courantes, tôles par type, sources (2026-11-15)
+
+Validé sur la maquette 0.36.
+
+- **Listes de dimensions regroupées avec recherche** pour les tubes carrés, rectangulaires et ronds, et pour les fers plats ; carrés et ronds pleins en liste simple. « Autre dimension » garde la saisie libre.
+- **Tôles** : 8 types (noire, laminée à froid, galvanisée, larmée / striée — même tôle en Algérie —, perforée, inox, alu à damier, autre). 4 formats suffisent (1000 × 2000, 1250 × 2500, 1500 × 3000, 2000 × 6000), plus un format personnalisé.
+- **Vente à la feuille** : le poids d'une feuille est estimé, le vendeur peut le remplacer par le poids réel ; c'est ce poids que voit l'acheteur. Pour la larmée et l'alu à damier, l'estimation vient du poids au m² publié par un négociant ; les autres épaisseurs sont calculées.
+- **Sources** : aucune source de données (nom de catalogue, lien) n'est affichée sur le site, pour tous les produits ; la norme reste affichée. Les sources restent dans l'administration et `docs/VERIFICATION.md`.
+

@@ -985,91 +985,100 @@ msgstr ""
 "« %s » n’est plus affiché. Republiez-le depuis « Mes annonces » s’il est "
 "toujours disponible."
 
-#: src/Presenter.php:143
+#: src/Presenter.php:155
 msgid "Product type"
 msgstr "Type de produit"
 
-#: src/Presenter.php:145 src/Presenter.php:173
+#: src/Presenter.php:157 src/Presenter.php:196
 msgid "Designation"
 msgstr "Désignation"
 
-#: src/Presenter.php:146 src/Presenter.php:174
+#: src/Presenter.php:158 src/Presenter.php:197
 msgid "Steel grade"
 msgstr "Nuance d’acier"
 
-#: src/Presenter.php:146 src/Presenter.php:174
+#: src/Presenter.php:158 src/Presenter.php:197
 msgid "Not specified"
 msgstr "Non précisée"
 
-#: src/Presenter.php:148
+#: src/Presenter.php:160
 msgid "Standard"
 msgstr "Norme"
 
-#: src/Presenter.php:158
+#. translators: 1: hole diameter, 2: pitch, in mm.
+#: src/Presenter.php:175
+msgid "holes Ø%1$s, pitch %2$s"
+msgstr "trous Ø%1$s, pas %2$s"
+
+#: src/Presenter.php:178
 msgid "Dimensions"
 msgstr "Dimensions"
 
-#: src/Presenter.php:161
+#: src/Presenter.php:181
 msgid "Plate size"
 msgstr "Format de la tôle"
 
-#: src/Presenter.php:163
+#: src/Presenter.php:183
+msgid "Weight of one sheet"
+msgstr "Poids d’une feuille"
+
+#: src/Presenter.php:186
 msgid "Bar length"
 msgstr "Longueur des barres"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:166
+#: src/Presenter.php:189
 msgid "%s plates"
 msgstr "%s tôles"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:166
+#: src/Presenter.php:189
 msgid "%s bars"
 msgstr "%s barres"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:168 src/Presenter.php:176
+#: src/Presenter.php:191 src/Presenter.php:199
 msgid "Quantity"
 msgstr "Quantité"
 
-#: src/Presenter.php:170
+#: src/Presenter.php:193
 msgid "Weight per metre"
 msgstr "Poids au mètre"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:176
+#: src/Presenter.php:199
 msgid "%s pieces in the lot"
 msgstr "%s pièces dans le lot"
 
-#: src/Presenter.php:179
+#: src/Presenter.php:202
 msgid "Weight of the lot"
 msgstr "Poids du lot"
 
-#: src/Presenter.php:201
+#: src/Presenter.php:224
 msgid "Available quantity"
 msgstr "Quantité disponible"
 
-#: src/Presenter.php:207
+#: src/Presenter.php:230
 msgid "Condition"
 msgstr "État"
 
-#: src/Presenter.php:215
+#: src/Presenter.php:238
 msgid "Yes"
 msgstr "Oui"
 
-#: src/Presenter.php:215
+#: src/Presenter.php:238
 msgid "No"
 msgstr "Non"
 
-#: src/Presenter.php:254
+#: src/Presenter.php:277
 msgid "m (linear)"
 msgstr "ml"
 
-#: src/Presenter.php:255
+#: src/Presenter.php:278
 msgid "pieces"
 msgstr "pièces"
 
-#: src/Presenter.php:256
+#: src/Presenter.php:279
 msgid "lot"
 msgstr "lot"
 
@@ -1140,7 +1149,7 @@ msgstr "Placez le repère sur la carte, à l’endroit du bâtiment."
 msgid "The description is too long (4000 characters at most)."
 msgstr "La description est trop longue (4000 caractères au maximum)."
 
-#: src/Spec.php:235 src/Spec.php:431
+#: src/Spec.php:235 src/Spec.php:503
 msgid "The weight engine is not active."
 msgstr "Le moteur de poids n’est pas actif."
 
@@ -1148,57 +1157,74 @@ msgstr "Le moteur de poids n’est pas actif."
 msgid "Choose the product type."
 msgstr "Choisissez le type de produit."
 
-#: src/Spec.php:257
+#: src/Spec.php:258
+msgid "Choose the kind of plate."
+msgstr "Choisissez le type de tôle."
+
+#: src/Spec.php:277
+msgid "The pitch must be larger than the hole diameter."
+msgstr "Le pas doit être plus grand que le diamètre des trous."
+
+#: src/Spec.php:292
 msgid "Choose the size."
 msgstr "Choisissez la dimension."
 
-#: src/Spec.php:274 src/Spec.php:519
+#: src/Spec.php:309 src/Spec.php:591
 msgid "Enter the total weight."
 msgstr "Saisissez le poids total."
 
-#: src/Spec.php:274
+#: src/Spec.php:309
 msgid "Enter the number of pieces."
 msgstr "Saisissez le nombre de pièces."
 
-#: src/Spec.php:315 src/Spec.php:503
+#: src/Spec.php:357
+msgid "Enter the weight of one sheet in kg."
+msgstr "Indiquez le poids d’une feuille en kg."
+
+#. translators: %s: estimated weight of one sheet in kg.
+#: src/Spec.php:360
+msgid "This weight is very far from the estimated %s kg per sheet. Check it."
+msgstr "Ce poids est très éloigné des %s kg estimés par feuille. Vérifiez-le."
+
+#: src/Spec.php:375 src/Spec.php:575
 msgid "Enter the weighed weight in kg."
 msgstr "Saisissez le poids pesé en kg."
 
 #. translators: %s: theoretical weight in kg.
-#: src/Spec.php:318 src/Spec.php:506
+#: src/Spec.php:378 src/Spec.php:578
 msgid "The weighed weight is very far from the theoretical %s kg. Check it."
 msgstr ""
 "Le poids pesé est très éloigné du poids théorique de %s kg. Vérifiez-le."
 
-#: src/Spec.php:377
+#: src/Spec.php:449
 msgid "Enter the available quantity."
 msgstr "Saisissez la quantité disponible."
 
-#: src/Spec.php:399 src/Spec.php:554
+#: src/Spec.php:471 src/Spec.php:626
 msgid "Required."
 msgstr "Obligatoire."
 
-#: src/Spec.php:406
+#: src/Spec.php:478
 msgid "Enter a positive number."
 msgstr "Saisissez un nombre positif."
 
-#: src/Spec.php:411
+#: src/Spec.php:483
 msgid "Choose a value from the list."
 msgstr "Choisissez une valeur dans la liste."
 
-#: src/Spec.php:448
+#: src/Spec.php:520
 msgid "Choose the element (column, rafter, purlin…)."
 msgstr "Choisissez l’élément (poteau, traverse, panne…)."
 
-#: src/Spec.php:452
+#: src/Spec.php:524
 msgid "Choose the type and the size."
 msgstr "Choisissez le type et le profil."
 
-#: src/Spec.php:458
+#: src/Spec.php:530
 msgid "Enter the number of pieces and their length in metres."
 msgstr "Indiquez le nombre de pièces et leur longueur en mètres."
 
-#: src/Spec.php:486
+#: src/Spec.php:558
 msgid ""
 "Describe the lot: at least one line with type, size, number of pieces and "
 "length."
@@ -1206,11 +1232,11 @@ msgstr ""
 "Décrivez le lot : au moins une ligne avec type, profil, nombre de pièces et "
 "longueur."
 
-#: src/Spec.php:521
+#: src/Spec.php:593
 msgid "This weight is outside the accepted range."
 msgstr "Ce poids est hors de la plage acceptée."
 
-#: src/Spec.php:540
+#: src/Spec.php:612
 msgid "Choose the condition."
 msgstr "Choisissez l’état."
 

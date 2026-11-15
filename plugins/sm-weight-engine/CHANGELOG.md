@@ -1,5 +1,12 @@
 # Changelog — sm-weight-engine
 
+## 0.3.0 — 2026-11-15
+
+- Données de référence `2026.11.3` : dimensions courantes ajoutées pour les tubes rectangulaires (420, gamme Ferpinta, masses publiées contrôlées à 0,01 kg/m près), les fers plats (58), les ronds pleins (24) et les carrés pleins (40). Une dimension saisie reste possible.
+- Tôles par type (`data/plates.php`, classe `Plates`) : noire laminée à chaud, laminée à froid, galvanisée, larmée / striée, perforée, inox, alu à damier, autre ; épaisseurs courantes et 4 formats (1000 × 2000, 1250 × 2500, 1500 × 3000, 2000 × 6000). Larmée et alu à damier : poids au m² d'un tableau publié ; inox 7 900 kg/m³ ; aluminium 2 700 kg/m³ ; tôle perforée : trous en quinconce déduits (diamètre et pas facultatifs).
+- `Calculator::calculate()` accepte `kind` et `holes` pour une tôle ; `Calculator::sheet()` accepte le type de tôle.
+- Les sources des données (texte et lien) ne sont plus envoyées aux visiteurs (thème et API) : seule la norme est publique ; les sources restent dans l'administration.
+
 ## 0.2.1 — 2026-11-12
 
 - Dessins enregistrés (version 2 des fichiers) : valeurs réelles sur les lignes de cote (option `values` de `Drawing::svg()`).

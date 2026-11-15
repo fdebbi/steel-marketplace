@@ -147,6 +147,34 @@ function sm_kses_tech( $html ) {
 	);
 }
 
+/**
+ * Sizes of a family grouped for the size list (0.36.0): tubes by outside size
+ * (40 × 40, 80 × 40, Ø 48,3), flats by width. Other families: one group.
+ *
+ * @param array $family Family from sm_theme_data( 'weight_family' ).
+ * @return array label => list of sections ('' = no group label).
+ */
+function sm_size_groups( array $family ) {
+	$groups = array();
+	$shape  = (string) ( $family['shape'] ?? '' );
+	$n      = static fn( $x ) => sm_number( $x, fmod( (float) $x, 1 ) ? 1 : 0 );
+	foreach ( (array) ( $family['sections'] ?? array() ) as $s ) {
+		$d = (array) $s['dims'];
+		if ( 'rhs' === $shape && isset( $d['h'], $d['b'] ) ) {
+			$key = $n( $d['h'] ) . ' × ' . $n( $d['b'] );
+		} elseif ( 'chs' === $shape && isset( $d['d'] ) ) {
+			$key = 'Ø ' . $n( $d['d'] );
+		} elseif ( 'flat' === $shape && isset( $d['b'] ) ) {
+			/* translators: %s: width of a flat bar in mm. */
+			$key = sprintf( __( 'Width %s mm', 'sm-marketplace' ), $n( $d['b'] ) );
+		} else {
+			$key = '';
+		}
+		$groups[ $key ][] = $s;
+	}
+	return $groups;
+}
+
 /** Technical value kept left-to-right inside any sentence (IPE 200, 12 m, S275JR). */
 function sm_tech( $text ) {
 	return '<bdi dir="ltr" class="sm-tech">' . esc_html( $text ) . '</bdi>';

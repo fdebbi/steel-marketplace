@@ -23,7 +23,9 @@ final class Presenter {
 	public static function family( $f ) {
 		$sections = 'table' === $f->method || $f->count ? Catalogue::sections( $f->code ) : array();
 		$sample   = $sections ? $sections[ (int) floor( count( $sections ) / 2 ) ]->dims : ( self::ICON_DIMS[ $f->shape ] ?? array() );
-		return array(
+		// 0.3.0: the sources of the data stay in the administration; the public sees the standard only.
+		$internal = current_user_can( 'manage_options' );
+		$out      = array(
 			'code'       => $f->code,
 			'shape'      => $f->shape,
 			'group'      => $f->group_code,
@@ -31,11 +33,16 @@ final class Presenter {
 			'standard'   => $f->standard,
 			'method'     => $f->method,
 			'count'      => (int) $f->count,
-			'source'     => $f->source,
-			'source_url' => $f->source_url,
+			'source'     => $internal ? $f->source : '',
+			'source_url' => $internal ? $f->source_url : '',
 			'dims_keys'  => Domain\Geometry::SHAPES[ $f->shape ],
 			'icon'       => $sample ? Drawing::svg( $f->shape, $sample, array( 'dims' => false ) ) : '',
 		);
+		if ( 'plate' === $f->shape ) {
+			$out['plates']  = Plates::present();
+			$out['formats'] = Plates::formats();
+		}
+		return $out;
 	}
 
 	public static function section( $s, $with_drawing = false ) {
@@ -52,7 +59,8 @@ final class Presenter {
 		if ( $with_drawing ) {
 			$fam            = Catalogue::family( $s->family );
 			$out['drawing'] = $fam ? Drawing::svg( $fam->shape, $s->dims, array( 'title' => $s->designation ) ) : '';
-			$out['source']  = $fam ? array( 'standard' => $fam->standard, 'text' => $fam->source, 'url' => $fam->source_url ) : null;
+			$internal       = current_user_can( 'manage_options' );
+			$out['source']  = $fam ? array( 'standard' => $fam->standard, 'text' => $internal ? $fam->source : '', 'url' => $internal ? $fam->source_url : '' ) : null;
 		}
 		return $out;
 	}

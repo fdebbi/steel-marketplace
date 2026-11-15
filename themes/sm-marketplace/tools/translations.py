@@ -2151,3 +2151,31 @@ T.update({
 "sale": ("vente", "بيع"),
 "purchase": ("achat", "شراء"),
 })
+
+# 0.36.0: size lists with search, plates by kind.
+T.update({
+"Width %s mm": ("Largeur %s mm", "العرض %s مم"),
+"Kind of plate": ("Type de tôle", "نوع الصفيحة"),
+"(base / with relief, mm)": ("(base / avec relief, mm)", "(القاعدة / مع النتوءات، مم)"),
+"Base thickness": ("Épaisseur de base", "السُّمك الأساسي"),
+"Size of the sheet": ("Format de la feuille", "مقاس الصفيحة"),
+"Custom…": ("Personnalisé…", "مقاس آخر…"),
+"Holes": ("Trous", "الثقوب"),
+"optional — makes the weight more accurate": ("facultatif — affine le poids", "اختياري — يُدقّق الوزن"),
+"Hole diameter": ("Diamètre des trous", "قطر الثقوب"),
+"Pitch": ("Pas", "المسافة بين الثقوب"),
+"Area %s m² per sheet": ("Surface %s m² par feuille", "المساحة %s م² للصفيحة"),
+"Estimated weight of one sheet": ("Poids estimé d’une feuille", "الوزن التقديري للصفيحة الواحدة"),
+"From the usual weight of this plate: %s kg/m².": ("D’après le poids courant de cette tôle : %s kg/m².", "حسب الوزن المعتاد لهذه الصفيحة: %s كغ/م²."),
+"Holes deducted: about %s %% of the surface.": ("Trous déduits : environ %s %% de la surface.", "تم خصم الثقوب: نحو %s %% من المساحة."),
+"Weight of the plain sheet: give the holes or the real weight.": ("Poids de la tôle pleine : indiquez les trous ou le poids réel.", "وزن الصفيحة دون ثقوب: أدخل الثقوب أو الوزن الحقيقي."),
+"Thickness × area: %s kg/m².": ("Épaisseur × surface : %s kg/m².", "السُّمك × المساحة: %s كغ/م²."),
+"Real weight of one sheet": ("Poids réel par feuille", "الوزن الحقيقي للصفيحة الواحدة"),
+"Do you know the exact weight? Enter it: this is the weight buyers will see.": ("Vous connaissez le poids exact ? Saisissez-le : c’est ce poids que verront les acheteurs.", "تعرف الوزن الدقيق؟ أدخله: هذا هو الوزن الذي سيراه المشترون."),
+"Search a size…": ("Rechercher une dimension…", "ابحث عن مقاس…"),
+"No size found.": ("Aucune dimension trouvée.", "لا يوجد مقاس مطابق."),
+"+ Other size (type the dimensions)": ("+ Autre dimension (saisir les cotes)", "+ مقاس آخر (أدخل الأبعاد)"),
+})
+T.update({
+"Sheets": ("Feuilles", "الصفائح"),
+})

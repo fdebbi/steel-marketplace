@@ -11,6 +11,9 @@
  *                 "weight": total weight -> number of bars (or plates)
  *   length        bar length in mm (default: setting default_length, 12 m)
  *   width         plate width in mm (plates)
+ *   kind          plates (0.3.0): hot, cold, galvanized, tread, perforated, stainless, alu_tread, other
+ *                 ('' = plain steel); see data/plates.php
+ *   holes         perforated plates: [ d, p ] hole diameter and pitch in mm (optional)
  *   bars          number of bars / plates (mode bars)
  *   total_kg      total weight in kg (mode weight)
  *
@@ -92,9 +95,19 @@ final class Calculator {
 			if ( $width * $length / 1e6 > $s['max_plate_area'] ) {
 				return self::error( 'smw_width', __( 'This plate is larger than the allowed size.', 'sm-weight-engine' ) );
 			}
-			$result['width_mm']  = $width;
-			$result['kg_per_m2'] = round( $dims['t'] * $density / 1000, 3 );
-			$per_piece           = $dims['t'] * $width * $length * $density / 1e9;
+			$kind  = isset( $in['kind'] ) && Plates::kind( $in['kind'] ) ? (string) $in['kind'] : '';
+			$holes = isset( $in['holes'] ) && is_array( $in['holes'] ) ? array( 'd' => self::number( $in['holes']['d'] ?? 0 ), 'p' => self::number( $in['holes']['p'] ?? 0 ) ) : null;
+			$m2    = Plates::per_m2( $kind, $dims['t'], $holes, $density );
+			$result['width_mm']    = $width;
+			$result['kg_per_m2']   = $m2['kg_m2'];
+			$result['plate_kind']  = $kind;
+			$result['plate_label'] = $m2['label'];
+			$result['plate_basis'] = $m2['basis'];
+			$result['open_ratio']  = $m2['open'];
+			if ( $kind ) {
+				$result['density'] = 'table' === $m2['basis'] ? null : (float) ( 7850 === (int) Plates::kind( $kind )['density'] ? $density : Plates::kind( $kind )['density'] );
+			}
+			$per_piece = $m2['kg_m2'] * $width * $length / 1e6;
 		} else {
 			$area                = $section ? $section->area_mm2 : Geometry::area( $fam->shape, $dims );
 			$result['area_mm2']  = round( $area, 1 );
@@ -196,7 +209,7 @@ final class Calculator {
 	 * mass per metre and standard, from the catalogue (section id) or from the
 	 * designation of a typed size. Null when unknown.
 	 */
-	public static function sheet( $family, $section_id, $designation ) {
+	public static function sheet( $family, $section_id, $designation, array $plate = array() ) {
 		$fam = Catalogue::family( $family );
 		if ( ! $fam ) {
 			return null;
@@ -205,6 +218,8 @@ final class Calculator {
 		if ( 'PLATE' === $family ) {
 			$in['width']  = 1000;
 			$in['length'] = 1000;
+			$in['kind']   = (string) ( $plate['kind'] ?? '' );
+			$in['holes']  = isset( $plate['holes'] ) ? (array) $plate['holes'] : null;
 		}
 		if ( $section_id ) {
 			$in['section'] = (int) $section_id;
@@ -227,6 +242,7 @@ final class Calculator {
 			'mass_kg_m'   => 'PLATE' === $family ? null : (float) $r['mass_kg_m'],
 			'mass_kg_m2'  => 'PLATE' === $family ? (float) $r['total_kg'] : null,
 			'standard'    => (string) ( $r['standard'] ?? '' ),
+			'plate_label' => (string) ( $r['plate_label'] ?? '' ),
 		);
 	}
 

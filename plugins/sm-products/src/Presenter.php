@@ -34,7 +34,7 @@ final class Presenter {
 			'kind'           => $cat ? $cat->kind : 'specs',
 			'title'          => $title,
 			'description'    => array_filter( (array) ( $texts['description'] ?? array() ) ),
-			'designation'    => $p->designation,
+			'designation'    => self::designation( $p ),
 			'grade'          => $p->grade,
 			'family'         => $p->family,
 			'length_m'       => $p->length_mm ? $p->length_mm / 1000 : 0,
@@ -132,6 +132,18 @@ final class Presenter {
 		return apply_filters( 'sm_products_listing_detail', $out, $p );
 	}
 
+	/** Designation shown to people: "Tôle larmée 3/5" for a plate of a known kind (0.17.0), else the catalogue designation. */
+	public static function designation( $p ) {
+		$specs = (array) ( $p->specs ?? array() );
+		if ( 'PLATE' === ( $p->family ?? '' ) && ! empty( $specs['plate_kind'] ) && class_exists( '\\SM\\WeightEngine\\Plates' ) ) {
+			$def = \SM\WeightEngine\Plates::kind( $specs['plate_kind'] );
+			if ( $def ) {
+				return trim( self::pick( $def['title'] ) . ' ' . \SM\WeightEngine\Plates::label( $specs['plate_kind'], $p->dims['t'] ?? 0 ) );
+			}
+		}
+		return (string) $p->designation;
+	}
+
 	/** Label / value rows of the technical specification (values are safe HTML). */
 	public static function spec_rows( $p ) {
 		$rows = array();
@@ -142,7 +154,7 @@ final class Presenter {
 			if ( $fam ) {
 				$rows[] = array( __( 'Product type', 'sm-products' ), esc_html( self::pick( array( 'fr' => $fam->name_fr, 'ar' => $fam->name_ar ) ) ) );
 			}
-			$rows[] = array( __( 'Designation', 'sm-products' ), $tech( $p->designation ) );
+			$rows[] = array( __( 'Designation', 'sm-products' ), $tech( self::designation( $p ) ) );
 			$rows[] = array( __( 'Steel grade', 'sm-products' ), $p->grade ? $tech( $p->grade ) : esc_html__( 'Not specified', 'sm-products' ) );
 			if ( $fam ) {
 				$rows[] = array( __( 'Standard', 'sm-products' ), $tech( $fam->standard ) );
@@ -155,10 +167,21 @@ final class Presenter {
 					}
 					$dims[] = ( 'd' === $k ? 'D' : $k ) . ' ' . self::n( $v, fmod( (float) $v, 1 ) ? 1 : 0 );
 				}
+				$specs = (array) $p->specs;
+				if ( 'PLATE' === $p->family && ! empty( $specs['plate_kind'] ) && class_exists( '\\SM\\WeightEngine\\Plates' ) ) {
+					$dims = array( 't ' . \SM\WeightEngine\Plates::label( $specs['plate_kind'], $p->dims['t'] ?? 0 ) );
+					if ( ! empty( $specs['hole_d'] ) ) {
+						/* translators: 1: hole diameter, 2: pitch, in mm. */
+						$dims[] = sprintf( __( 'holes Ø%1$s, pitch %2$s', 'sm-products' ), self::n( $specs['hole_d'], fmod( (float) $specs['hole_d'], 1 ) ? 1 : 0 ), self::n( $specs['hole_p'], fmod( (float) $specs['hole_p'], 1 ) ? 1 : 0 ) );
+					}
+				}
 				$rows[] = array( __( 'Dimensions', 'sm-products' ), $tech( implode( ' · ', $dims ) . ' mm' ) );
 			}
 			if ( 'PLATE' === $p->family ) {
 				$rows[] = array( __( 'Plate size', 'sm-products' ), $tech( self::n( $p->width_mm ) . ' × ' . self::n( $p->length_mm ) . ' mm' ) );
+				if ( $p->unit_weight > 0 ) {
+					$rows[] = array( __( 'Weight of one sheet', 'sm-products' ), $tech( self::n( $p->unit_weight, fmod( (float) $p->unit_weight, 1 ) ? 1 : 0 ) . ' kg' ) );
+				}
 			} elseif ( $p->length_mm ) {
 				$rows[] = array( __( 'Bar length', 'sm-products' ), $tech( self::n( $p->length_mm / 1000, fmod( $p->length_mm, 1000 ) ? 2 : 0 ) . ' m' ) );
 			}
@@ -289,7 +312,13 @@ final class Presenter {
 		if ( empty( $p->family ) || ! class_exists( '\\SM\\WeightEngine\\Calculator' ) ) {
 			return null;
 		}
-		return \SM\WeightEngine\Calculator::sheet( $p->family, (int) $p->section_id, (string) $p->designation );
+		$specs = (array) ( $p->specs ?? array() );
+		$plate = 'PLATE' === $p->family ? array( 'kind' => (string) ( $specs['plate_kind'] ?? '' ), 'holes' => ! empty( $specs['hole_d'] ) ? array( 'd' => $specs['hole_d'], 'p' => $specs['hole_p'] ?? 0 ) : null ) : array();
+		$sheet = \SM\WeightEngine\Calculator::sheet( $p->family, (int) $p->section_id, (string) $p->designation, $plate );
+		if ( $sheet && ! empty( $plate['kind'] ) ) {
+			$sheet['designation'] = self::designation( $p );
+		}
+		return $sheet;
 	}
 
 	public static function pick( array $values ) {

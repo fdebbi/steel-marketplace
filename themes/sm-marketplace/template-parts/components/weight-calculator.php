@@ -135,10 +135,14 @@ $m    = static fn( $mm ) => sm_number( $mm / 1000, fmod( $mm, 1000 ) ? 2 : 0 ) .
 					<?php if ( $family['sections'] ) : ?>
 						<div class="sm-field">
 							<label for="smw-section"><?php echo esc_html( 'formula' === $family['method'] ? __( 'Common size', 'sm-marketplace' ) : __( 'Size (European catalogue)', 'sm-marketplace' ) ); ?></label>
-							<select id="smw-section" name="section" dir="ltr">
+							<select id="smw-section" name="section" dir="ltr" data-sm-picker data-sm-picker-search="<?php esc_attr_e( 'Search a size…', 'sm-marketplace' ); ?>" data-sm-picker-empty="<?php esc_attr_e( 'No size found.', 'sm-marketplace' ); ?>">
 								<option value=""><?php echo esc_html( 'formula' === $family['method'] ? __( '— or type the dimensions below —', 'sm-marketplace' ) : __( 'Choose…', 'sm-marketplace' ) ); ?></option>
-								<?php foreach ( $family['sections'] as $s ) : ?>
-									<option value="<?php echo esc_attr( $s['id'] ); ?>" <?php selected( (int) ( $section['id'] ?? 0 ), $s['id'] ); ?>><?php echo esc_html( $s['designation'] . ' — ' . sm_number( $s['mass_kg_m'], 2 ) . ' kg/m' ); ?></option>
+								<?php foreach ( sm_size_groups( $family ) as $glabel => $rows ) : ?>
+									<?php echo '' !== $glabel ? '<optgroup label="' . esc_attr( $glabel ) . '">' : ''; ?>
+									<?php foreach ( $rows as $s ) : ?>
+										<option value="<?php echo esc_attr( $s['id'] ); ?>" <?php selected( (int) ( $section['id'] ?? 0 ), $s['id'] ); ?>><?php echo esc_html( $s['designation'] . ' — ' . sm_number( $s['mass_kg_m'], 2 ) . ' kg/m' ); ?></option>
+									<?php endforeach; ?>
+									<?php echo '' !== $glabel ? '</optgroup>' : ''; ?>
 								<?php endforeach; ?>
 							</select>
 						</div>
@@ -183,7 +187,7 @@ $m    = static fn( $mm ) => sm_number( $mm / 1000, fmod( $mm, 1000 ) ? 2 : 0 ) .
 								<?php endif; ?>
 							</dl>
 							<?php if ( $section && ! empty( $section['source'] ) ) : ?>
-								<p class="smw-source"><?php sm_icon( 'file' ); ?><span><?php echo esc_html( $section['source']['standard'] ); ?><?php if ( $section['source']['url'] ) : ?> · <a href="<?php echo esc_url( $section['source']['url'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Source table', 'sm-marketplace' ); ?></a><?php endif; ?></span></p>
+								<p class="smw-source"><?php sm_icon( 'file' ); ?><span><?php echo esc_html( $section['source']['standard'] ); // 0.36.0: the standard only, never the source of the data. ?></span></p>
 							<?php elseif ( $typed ) : ?>
 								<p class="smw-source"><?php sm_icon( 'file' ); ?><span><?php echo esc_html( $family['standard'] ); ?></span></p>
 							<?php endif; ?>

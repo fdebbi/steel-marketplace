@@ -164,6 +164,35 @@ $svg = SM\WeightEngine\Drawing::svg( 'i_taper', Catalogue::find( 'IPN', 'IPN 200
 smw_assert( 1 === preg_match_all( '/<path class="smw-shape"/', $svg ) && substr_count( $svg, 'A' ) >= 8, 'IPN drawing has its fillets as true arcs' );
 smw_assert( false !== strpos( $svg, 'role="img"' ) && false !== strpos( $svg, '<title>IPN 200</title>' ), 'drawing is accessible (role img + title)' );
 
+/* ------------------------------------------------------------------ */
+smw_section( '9. Common sizes and plates by kind (0.3.0)' );
+smw_assert( 420 === count( Catalogue::sections( 'RHS' ) ) && 58 === count( Catalogue::sections( 'FLAT' ) ) && 24 === count( Catalogue::sections( 'ROUND' ) ) && 40 === count( Catalogue::sections( 'SQUARE' ) ), 'common sizes: 420 RHS, 58 flats, 24 rounds, 40 squares' );
+$rhs_out = array();
+foreach ( $sections['RHS'] as $r ) {
+	if ( abs( Geometry::area( 'rhs', $r[1] ) * 7850 / 1e6 - $r[3] ) > 0.011 ) {
+		$rhs_out[] = $r[0];
+	}
+}
+smw_assert( ! $rhs_out, 'every RHS mass agrees with the published mass (≤ 0,01 kg/m)' . ( $rhs_out ? ': ' . implode( ', ', $rhs_out ) : '' ) );
+smw_assert( 'RHS 80x40x3' === Catalogue::find( 'RHS', 'RHS 80x40x3' )->designation, 'a typed RHS 80x40x3 is found in the list' );
+$p = static fn( $kind, $t, $holes = null ) => Calculator::calculate( array( 'family' => 'PLATE', 'dims' => array( 't' => $t ), 'width' => 1000, 'length' => 2000, 'kind' => $kind, 'holes' => $holes ) );
+smw_assert( smw_near( $p( 'tread', 3 )['per_piece_kg'], 58, 0.001 ) && '3/5' === $p( 'tread', 3 )['plate_label'] && 'table' === $p( 'tread', 3 )['plate_basis'], 'tread plate 3/5, 1000 × 2000: 58 kg (29 kg/m², published table)' );
+smw_assert( smw_near( $p( 'tread', 7 )['per_piece_kg'], 109.9, 0.001 ), 'tread plate with a thickness out of the table: thickness × 7,85' );
+smw_assert( smw_near( $p( 'hot', 10 )['per_piece_kg'], 157, 0.001 ) && smw_near( $p( '', 10 )['per_piece_kg'], 157, 0.001 ), 'black plate 10 mm: 157 kg, same as before 0.3.0' );
+smw_assert( smw_near( $p( 'stainless', 2 )['per_piece_kg'], 31.6, 0.001 ), 'stainless 2 mm: 7 900 kg/m³ → 31,6 kg' );
+smw_assert( smw_near( $p( 'alu_tread', 3 )['per_piece_kg'], 17.8, 0.001 ) && smw_near( $p( 'alu_tread', 6 )['per_piece_kg'], 32.4, 0.001 ), 'aluminium checker plate: table (3/4,5 = 17,8 kg), else 2 700 kg/m³' );
+$perf = $p( 'perforated', 2, array( 'd' => 5, 'p' => 8 ) );
+smw_assert( smw_near( $perf['open_ratio'], 0.354, 0.001 ) && smw_near( $perf['per_piece_kg'], 31.4 * ( 1 - 0.35424 ), 0.05 ), 'perforated 2 mm, Ø5 every 8 mm: 35 % open, holes deducted' );
+smw_assert( smw_near( $p( 'perforated', 2, array( 'd' => 9, 'p' => 8 ) )['per_piece_kg'], 31.4, 0.001 ), 'holes larger than the pitch are ignored' );
+$sheet = Calculator::sheet( 'PLATE', 0, 'PLATE 3', array( 'kind' => 'tread' ) );
+smw_assert( smw_near( $sheet['mass_kg_m2'], 29, 0.001 ) && '3/5' === $sheet['plate_label'], 'sheet of a tread plate: 29 kg/m², 3/5' );
+wp_set_current_user( 0 );
+$pub = SM\WeightEngine\Presenter::family( Catalogue::family( 'RHS' ) );
+$sec = SM\WeightEngine\Presenter::section( Catalogue::find( 'RHS', 'RHS 80x40x3' ), true );
+smw_assert( '' === $pub['source'] && '' === $pub['source_url'] && '' === $sec['source']['url'] && 'EN 10219-2 (profils creux formés à froid)' === $sec['source']['standard'], 'visitors see the standard, never the source of the data' );
+$fam_plate = SM\WeightEngine\Presenter::family( Catalogue::family( 'PLATE' ) );
+smw_assert( 8 === count( $fam_plate['plates'] ) && 4 === count( $fam_plate['formats'] ), 'plates: 8 kinds and 4 formats for the form' );
+
 $t = $GLOBALS['smw_t'];
 printf( "\n%d passed, %d failed\n", $t['pass'], $t['fail'] );
 if ( $t['fail'] ) {

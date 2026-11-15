@@ -23,7 +23,13 @@ Une ligne est acceptée seulement si les trois contrôles passent. Le moteur PHP
 | UPE | EN 10365:2017 | [STAD UPE](https://www.stad.fr/downloads/pdf/stad-technical-data-of-sections-upe.pdf) | 14/14 |
 | Cornières égales / inégales | EN 10056-1 | [STAD L](https://www.stad.fr/downloads/pdf/stad-technical-data-of-sections-l.pdf) ; rayons r1/r2 de la liste EN 10056-1 de structuralcodes | 66 + 15 |
 | Tubes carrés et ronds | EN 10219-2 | Formule de la norme, contrôlée sur le catalogue [Ferpinta EN 10219](https://www.ferpinta.pt/en/products-en/tubes-en/structural-hollow-sections-en/) (22 carrés, 12 ronds, écart nul) ; tailles proposées = gamme Ferpinta | formule |
-| Tubes rectangulaires, fers plats, ronds et carrés pleins, tôles | EN 10219-2, EN 10058, EN 10060, EN 10059, EN 10029/10051 | Géométrie simple × 7850 kg/m³ | formule |
+| Tubes rectangulaires (0.3.0) | EN 10219-2 | Formule de la norme ; tailles et masses du [manuel Ferpinta, section 8.1.3](https://ct.upt.ro/suscos/files/2016-2018/L2_Annex_Manual_Ferpinta_vEN_20-02-14.pdf) (`raw/rhs_ferpinta.txt`) : les 420 masses publiées sont retrouvées à 0,01 kg/m près | 420/420 |
+| Fers plats (0.3.0) | EN 10058 | b × t × 7850 kg/m³ ; tailles de la gamme [Melinda Steel](https://melindasteel.com/profiles-and-laminated-products/42-flat-steel-bar-3.html) (masses publiées retrouvées à l'arrondi près) | 58 |
+| Ronds pleins (0.3.0) | EN 10060 | π·d²/4 × 7850 kg/m³ ; diamètres de la gamme [Melinda Steel](https://melindasteel.com/profiles-and-laminated-products/40-round-steel-bar-2.html) | 24 |
+| Carrés pleins (0.3.0) | EN 10059 | a² × 7850 kg/m³ ; côtés de la gamme [Emile Maurin, série A](https://acier.emile-maurin.fr/custom/docs/produit/serie%20a_a/acier-construction-non-allie-tube-rond-carre-hexagone-serie-pdf-259-ko-serie_a-lser2.pdf) | 40 |
+| Tôles (0.3.0, `data/plates.php`) | EN 10029 / EN 10051 | Épaisseur × 7850 kg/m³. Épaisseurs proposées : gamme de tôles [ArcelorMittal e-steel](https://e-steel.arcelormittal.com/FR/fr/Tole/Tole-Acier-/Tole-acier/p/000000000002097292) (0,5 à 25 mm). Larmée 3/5 à 10/12 : poids des feuilles 2000 × 1000 de [Codip](https://www.codip.fr/tole/63-tole-larmee.html) (29 à 81 kg/m² ; d'autres négociants publient jusqu'à ±10 %). Alu à damier 2/3,5 à 5,5/7 : [Codip](https://www.codip.fr/49-7520-tole-damier.html). Inox 7900 kg/m³ (EN 10088-1, 1.4301), aluminium 2700 kg/m³. Perforée : trous en quinconce à 60°, vide = π/(2√3)·(d/p)². Poids estimé : le vendeur peut donner le poids réel d'une feuille | formule / tableau |
+
+Les sources ne sont jamais affichées aux visiteurs (0.3.0) : le site montre la norme seulement.
 
 ## Écarts relevés et décisions
 

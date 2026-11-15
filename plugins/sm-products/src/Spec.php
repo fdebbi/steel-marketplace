@@ -249,7 +249,42 @@ final class Spec {
 		$d['grade'] = mb_substr( $grade, 0, 30 );
 
 		$calc = array( 'family' => $family, 'mode' => $mode );
-		if ( ! empty( $in['section'] ) ) {
+		$kind = '';
+		if ( 'PLATE' === $family ) {
+			// 0.17.0: kind of plate, thickness and format chosen from common values (or typed).
+			$kind = sanitize_key( (string) ( $in['plate_kind'] ?? '' ) );
+			$def  = class_exists( '\\SM\\WeightEngine\\Plates' ) ? \SM\WeightEngine\Plates::kind( $kind ) : null;
+			if ( ! $def ) {
+				$e['plate_kind'] = __( 'Choose the kind of plate.', 'sm-products' );
+				return;
+			}
+			$pt = (string) ( $in['plate_t'] ?? '' );
+			if ( '' !== $pt && 'custom' !== $pt ) {
+				$in['dims'] = array( 't' => $pt );
+			}
+			$fmt = (string) ( $in['plate_format'] ?? '' );
+			if ( preg_match( '/^(\d+)x(\d+)$/', $fmt, $fm ) ) {
+				$in['width']        = $fm[1];
+				$in['plate_length'] = $fm[2];
+			}
+			$calc['kind'] = $kind;
+			$specs        = array( 'plate_kind' => $kind );
+			if ( ! empty( $def['holes'] ) ) {
+				$hd = self::num( $in['hole_d'] ?? '' );
+				$hp = self::num( $in['hole_p'] ?? '' );
+				if ( $hd > 0 || $hp > 0 ) {
+					if ( $hd <= 0 || $hp <= $hd || $hp > 500 ) {
+						$e['holes'] = __( 'The pitch must be larger than the hole diameter.', 'sm-products' );
+					} else {
+						$calc['holes']    = array( 'd' => $hd, 'p' => $hp );
+						$specs['hole_d'] = $hd;
+						$specs['hole_p'] = $hp;
+					}
+				}
+			}
+			$d['specs'] = $specs;
+		}
+		if ( ! empty( $in['section'] ) && 'custom' !== $in['section'] && 'PLATE' !== $family ) {
 			$calc['section'] = is_numeric( $in['section'] ) ? (int) $in['section'] : sanitize_text_field( (string) $in['section'] );
 		} elseif ( ! empty( $in['dims'] ) && is_array( $in['dims'] ) && array_filter( $in['dims'], static fn( $v ) => '' !== (string) $v ) ) {
 			$calc['dims'] = array_map( 'sanitize_text_field', $in['dims'] );
@@ -289,6 +324,10 @@ final class Spec {
 		}
 		$out['calc'] = $r;
 		self::describe( $r, $d );
+		if ( 'PLATE' === $family ) {
+			$d['specs']['plate_label'] = (string) ( $r['plate_label'] ?? '' );
+			$d['specs']['kg_m2']       = (float) ( $r['kg_per_m2'] ?? 0 );
+		}
 		// Standard picture of the section (0.7.0): used when the listing has no photo.
 		if ( $for_save && self::auto_title( $cat ) && ! empty( $r['shape'] ) && class_exists( '\\SM\\WeightEngine\\Drawing' ) ) {
 			$key = sanitize_title( $family . '-' . $r['designation'] );
@@ -309,7 +348,28 @@ final class Spec {
 			$d['total_weight'] = $r['total_kg'];
 		}
 		$source = 'actual' === ( $in['weight_source'] ?? '' ) ? 'actual' : 'theoretical';
-		if ( 'actual' === $source && 'bars' === $mode ) {
+		if ( 'PLATE' === $family ) {
+			// 0.17.0: plates are sold by the sheet; the seller may give the weight of one sheet.
+			$source = 'theoretical';
+			$piece  = self::num( $in['piece_kg'] ?? '' );
+			if ( '' !== trim( (string) ( $in['piece_kg'] ?? '' ) ) ) {
+				if ( $piece <= 0 ) {
+					$e['piece_kg'] = __( 'Enter the weight of one sheet in kg.', 'sm-products' );
+				} elseif ( $piece > $r['per_piece_kg'] * 1.6 || $piece < $r['per_piece_kg'] * 0.3 ) {
+					/* translators: %s: estimated weight of one sheet in kg. */
+					$e['piece_kg'] = sprintf( __( 'This weight is very far from the estimated %s kg per sheet. Check it.', 'sm-products' ), number_format( $r['per_piece_kg'], 1, '.', ' ' ) );
+				} else {
+					$source             = 'actual';
+					$d['unit_weight']   = round( $piece, 3 );
+					$d['specs']['piece_kg'] = round( $piece, 3 );
+					if ( 'weight' === $mode ) {
+						$d['pieces'] = round( $d['total_weight'] / $piece, 2 );
+					} else {
+						$d['total_weight'] = round( $piece * $d['pieces'], 3 );
+					}
+				}
+			}
+		} elseif ( 'actual' === $source && 'bars' === $mode ) {
 			$w = self::num( $in['actual_weight'] ?? '' );
 			if ( $w <= 0 ) {
 				$e['actual_weight'] = __( 'Enter the weighed weight in kg.', 'sm-products' );
@@ -341,6 +401,13 @@ final class Spec {
 		if ( '' === $name ) {
 			return array( 'fr' => '', 'ar' => '' );
 		}
+		$kind = (string) ( $d['specs']['plate_kind'] ?? '' );
+		if ( 'PLATE' === ( $d['family'] ?? '' ) && '' !== $kind && class_exists( '\\SM\\WeightEngine\\Plates' ) && \SM\WeightEngine\Plates::kind( $kind ) ) {
+			// 0.17.0: "Tôle larmée 3/5 · S235JR · 1 × 2 m".
+			$def   = \SM\WeightEngine\Plates::kind( $kind );
+			$label = (string) ( $d['specs']['plate_label'] ?? '' );
+			$names = array( 'fr' => trim( $def['title']['fr'] . ' ' . $label ), 'ar' => trim( $def['title']['ar'] . ' ' . $label ) );
+		}
 		$m     = static fn( $mm ) => rtrim( rtrim( number_format( $mm / 1000, 2, ',', '' ), '0' ), ',' );
 		$parts = array( $name );
 		if ( ! empty( $d['grade'] ) ) {
@@ -352,11 +419,16 @@ final class Spec {
 		} elseif ( 'bars' === ( $d['qty_mode'] ?? '' ) && ! empty( $d['length_mm'] ) ) {
 			$len = array( 'fr' => $m( $d['length_mm'] ) . ' m', 'ar' => 'الطول ' . $m( $d['length_mm'] ) . ' م' ); // An Arabic word first keeps "12 م" together in right-to-left text.
 		}
-		$base = implode( ' · ', $parts );
-		return array(
-			'fr' => mb_substr( $base . ( $len['fr'] ? ' · ' . $len['fr'] : '' ), 0, 140 ),
-			'ar' => mb_substr( $base . ( $len['ar'] ? ' · ' . $len['ar'] : '' ), 0, 140 ),
-		);
+		$out = array();
+		foreach ( array( 'fr', 'ar' ) as $lang ) {
+			$p = $parts;
+			if ( isset( $names ) ) {
+				$p[0] = $names[ $lang ];
+			}
+			$base         = implode( ' · ', $p );
+			$out[ $lang ] = mb_substr( $base . ( $len[ $lang ] ? ' · ' . $len[ $lang ] : '' ), 0, 140 );
+		}
+		return $out;
 	}
 
 	/** Copy designation and dimensions of the engine result. */

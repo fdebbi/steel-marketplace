@@ -58,17 +58,17 @@ msgstr ""
 msgid "Marketplaces"
 msgstr "الأسواق"
 
-#: footer.php:22 inc/menus.php:16 inc/template-tags.php:236
+#: footer.php:22 inc/menus.php:16 inc/template-tags.php:264
 #: templates/front-page-template.php:80 templates/marketplace-products.php:15
 msgid "Steel products"
 msgstr "المنتجات الفولاذية"
 
-#: footer.php:23 inc/menus.php:24 inc/template-tags.php:237
+#: footer.php:23 inc/menus.php:24 inc/template-tags.php:265
 #: templates/front-page-template.php:81 templates/marketplace-reuse.php:15
 msgid "Steel reuse"
 msgstr "إعادة استعمال الفولاذ"
 
-#: footer.php:24 inc/menus.php:32 inc/template-tags.php:238
+#: footer.php:24 inc/menus.php:32 inc/template-tags.php:266
 #: templates/front-page-template.php:82 templates/marketplace-buildings.php:15
 msgid "Steel buildings"
 msgstr "المباني الفولاذية"
@@ -85,7 +85,7 @@ msgstr "طلبات عروض الأسعار"
 msgid "Services"
 msgstr "الخدمات"
 
-#: footer.php:31 inc/menus.php:62 inc/template-tags.php:239
+#: footer.php:31 inc/menus.php:62 inc/template-tags.php:267
 #: template-parts/components/card-service.php:23
 #: templates/front-page-template.php:83 templates/marketplace-services.php:17
 #: templates/marketplace-services.php:20 templates/single-service.php:44
@@ -93,7 +93,7 @@ msgid "Fabrication & installation"
 msgstr "التصنيع والتركيب"
 
 #: footer.php:32 header.php:77 header.php:107 inc/menus.php:63
-#: inc/template-tags.php:240 templates/front-page-template.php:84
+#: inc/template-tags.php:268 templates/front-page-template.php:84
 #: templates/marketplace-engineers.php:35 templates/mission-request.php:23
 msgid "Engineering"
 msgstr "الهندسة"
@@ -150,7 +150,7 @@ msgstr "الأسعار المعروضة يحددها البائعون وليست
 msgid "Quick navigation"
 msgstr "تنقل سريع"
 
-#: footer.php:56 inc/template-tags.php:381
+#: footer.php:56 inc/template-tags.php:409
 msgid "Home"
 msgstr "الرئيسية"
 
@@ -196,7 +196,7 @@ msgstr "السوق الصناعية للفولاذ في الجزائر"
 msgid "Utility"
 msgstr "روابط مفيدة"
 
-#: header.php:39 inc/assets.php:46
+#: header.php:39 inc/assets.php:48
 msgid "Open menu"
 msgstr "فتح القائمة"
 
@@ -225,7 +225,7 @@ msgstr "IPE 200، HEA، أنبوب 100×50، هنغار…"
 msgid "Menu"
 msgstr "القائمة"
 
-#: header.php:88 inc/assets.php:47 templates/dashboard.php:244
+#: header.php:88 inc/assets.php:49 templates/dashboard.php:244
 msgid "Close menu"
 msgstr "إغلاق القائمة"
 
@@ -233,54 +233,54 @@ msgstr "إغلاق القائمة"
 msgid "View all listings"
 msgstr "عرض كل الإعلانات"
 
-#: inc/assets.php:48 templates/auth-login.php:32
+#: inc/assets.php:50 templates/auth-login.php:32
 #: templates/auth-register.php:92 templates/company-profile.php:239
 #: templates/engineer-apply.php:272
 msgid "Show"
 msgstr "إظهار"
 
-#: inc/assets.php:49
+#: inc/assets.php:51
 msgid "Hide"
 msgstr "إخفاء"
 
-#: inc/assets.php:50 inc/template-tags.php:534
+#: inc/assets.php:52 inc/template-tags.php:562
 msgid "Saved"
 msgstr "تم الحفظ"
 
-#: inc/assets.php:51
+#: inc/assets.php:53
 msgid "Removed from saved listings"
 msgstr "أزيل من الإعلانات المحفوظة"
 
-#: inc/assets.php:52
+#: inc/assets.php:54
 msgid "Uploaded"
 msgstr "تم الرفع"
 
 #. translators: %s: file name.
-#: inc/assets.php:54
+#: inc/assets.php:56
 msgid "Remove %s"
 msgstr "إزالة %s"
 
-#: inc/assets.php:55
+#: inc/assets.php:57
 msgid "Add other files"
 msgstr "إضافة ملفات أخرى"
 
-#: inc/assets.php:56
+#: inc/assets.php:58
 msgid "Too many files: the extra ones were not added."
 msgstr "عدد الملفات كبير: لم تُضف الملفات الزائدة."
 
-#: inc/assets.php:57
+#: inc/assets.php:59
 msgid "Will be deleted when you save"
 msgstr "سيُحذف عند الحفظ"
 
-#: inc/assets.php:58
+#: inc/assets.php:60
 msgid "Will be replaced when you save"
 msgstr "سيُستبدل عند الحفظ"
 
-#: inc/assets.php:59
+#: inc/assets.php:61
 msgid "Undo"
 msgstr "تراجع"
 
-#: inc/assets.php:60 inc/template-tags.php:538 inc/template-tags.php:544
+#: inc/assets.php:62 inc/template-tags.php:566 inc/template-tags.php:572
 #: template-parts/components/my-products.php:98
 #: template-parts/components/portfolio-grid.php:30
 #: template-parts/components/rfq-single.php:138
@@ -289,83 +289,83 @@ msgstr "تراجع"
 msgid "Delete"
 msgstr "حذف"
 
-#: inc/assets.php:61 template-parts/components/listing-place.php:82
+#: inc/assets.php:63 template-parts/components/listing-place.php:82
 #: templates/company-profile.php:290 templates/company-profile.php:344
 #: templates/engineer-apply.php:38 templates/engineer-apply.php:144
 msgid "Close"
 msgstr "إغلاق"
 
-#: inc/assets.php:62
+#: inc/assets.php:64
 msgid "Previous photo"
 msgstr "الصورة السابقة"
 
-#: inc/assets.php:63
+#: inc/assets.php:65
 msgid "Next photo"
 msgstr "الصورة التالية"
 
-#: inc/assets.php:64
+#: inc/assets.php:66
 msgid "Original size"
 msgstr "الحجم الأصلي"
 
-#: inc/assets.php:111
+#: inc/assets.php:113
 msgid "Company position. Drag it, or use the arrow keys."
 msgstr "موقع المؤسسة. اسحبه أو استعمل أسهم لوحة المفاتيح."
 
-#: inc/assets.php:112 template-parts/components/location-map.php:67
+#: inc/assets.php:114 template-parts/components/location-map.php:67
 msgid "No position yet."
 msgstr "لم يُحدَّد أي موقع بعد."
 
-#: inc/assets.php:113
+#: inc/assets.php:115
 msgid "Drag the marker to your exact address, or click the map."
 msgstr "اسحب العلامة إلى عنوانك بالضبط، أو انقر على الخريطة."
 
-#: inc/assets.php:114
+#: inc/assets.php:116
 msgid "Position placed:"
 msgstr "تم تحديد الموقع:"
 
-#: inc/assets.php:115
+#: inc/assets.php:117
 msgid "Current location found:"
 msgstr "تم العثور على موقعك الحالي:"
 
 #. translators: %d: accuracy in metres.
-#: inc/assets.php:117
+#: inc/assets.php:119
 msgid "Approximate (about %d m): drag the marker to correct it."
 msgstr "تقريبي (حوالي %d م): اسحب العلامة لتصحيحه."
 
-#: inc/assets.php:118
+#: inc/assets.php:120
 msgid "Looking for your location…"
 msgstr "جارٍ البحث عن موقعك…"
 
-#: inc/assets.php:119
+#: inc/assets.php:121
 msgid ""
 "Location access was refused. Allow it in your browser, or place the marker "
 "by hand."
 msgstr "تم رفض الوصول إلى الموقع. اسمح به في متصفحك، أو ضع العلامة يدويا."
 
-#: inc/assets.php:120
+#: inc/assets.php:122
 msgid "Your location could not be found. Place the marker by hand."
 msgstr "تعذّر العثور على موقعك. ضع العلامة يدويا."
 
-#: inc/assets.php:121
+#: inc/assets.php:123
 msgid ""
 "Finding your location took too long. Try again or place the marker by hand."
 msgstr "استغرق البحث عن موقعك وقتا طويلا. أعد المحاولة أو ضع العلامة يدويا."
 
-#: inc/assets.php:122
+#: inc/assets.php:124
 msgid ""
 "Your browser only shares your location on a secure (https) site. Place the "
 "marker by hand."
 msgstr "لا يشارك متصفحك الموقع إلا على موقع آمن (https). ضع العلامة يدويا."
 
-#: inc/assets.php:123
+#: inc/assets.php:125
 msgid "This position is outside Algeria. Place the marker on your address."
 msgstr "هذا الموقع خارج الجزائر. ضع العلامة على عنوانك."
 
-#: inc/assets.php:124
+#: inc/assets.php:126
 msgid "Wilaya changed: place the marker again on your address."
 msgstr "تم تغيير الولاية: ضع العلامة من جديد على عنوانك."
 
-#: inc/assets.php:125
+#: inc/assets.php:127
 msgid "Position removed. It will be deleted when you save."
 msgstr "تمت إزالة الموقع. سيُحذف عند الحفظ."
 
@@ -484,9 +484,9 @@ msgstr "قائمة التذييل"
 msgid "Top utility menu"
 msgstr "القائمة العلوية"
 
-#: inc/template-tags.php:123 inc/template-tags.php:407
-#: inc/template-tags.php:467 template-parts/components/product-tech.php:31
-#: template-parts/components/product-tech.php:531
+#: inc/template-tags.php:123 inc/template-tags.php:435
+#: inc/template-tags.php:495 template-parts/components/product-tech.php:31
+#: template-parts/components/product-tech.php:540
 msgid "piece"
 msgid_plural "pieces"
 msgstr[0] "قطعة"
@@ -496,168 +496,173 @@ msgstr[3] "قطع"
 msgstr[4] "قطعة"
 msgstr[5] "قطعة"
 
-#: inc/template-tags.php:124 inc/template-tags.php:412
+#: inc/template-tags.php:124 inc/template-tags.php:440
 msgid "lot"
 msgstr "دفعة"
 
-#: inc/template-tags.php:195
+#. translators: %s: width of a flat bar in mm.
+#: inc/template-tags.php:169
+msgid "Width %s mm"
+msgstr "العرض %s مم"
+
+#: inc/template-tags.php:223
 msgid "New unused surplus"
 msgstr "فائض جديد غير مستعمل"
 
-#: inc/template-tags.php:196
+#: inc/template-tags.php:224
 msgid "Excellent used condition"
 msgstr "مستعمل، حالة ممتازة"
 
-#: inc/template-tags.php:197
+#: inc/template-tags.php:225
 msgid "Good used condition"
 msgstr "مستعمل، حالة جيدة"
 
-#: inc/template-tags.php:198
+#: inc/template-tags.php:226
 msgid "Requires inspection or treatment"
 msgstr "يحتاج فحصا أو معالجة"
 
-#: inc/template-tags.php:199
+#: inc/template-tags.php:227
 msgid "Scrap / recycling only"
 msgstr "خردة / للرسكلة فقط"
 
-#: inc/template-tags.php:216
+#: inc/template-tags.php:244
 msgid "Actual weight"
 msgstr "الوزن الفعلي"
 
-#: inc/template-tags.php:217 template-parts/components/product-tech.php:492
+#: inc/template-tags.php:245 template-parts/components/product-tech.php:501
 msgid "Estimated weight"
 msgstr "وزن تقديري"
 
-#: inc/template-tags.php:218
+#: inc/template-tags.php:246
 #: template-parts/components/listing-inventory.php:41
 #: template-parts/components/listing-inventory.php:42
-#: template-parts/components/product-tech.php:472
+#: template-parts/components/product-tech.php:481
 msgid "Weight of the declared elements"
 msgstr "وزن العناصر المصرّح بها"
 
-#: inc/template-tags.php:220
+#: inc/template-tags.php:248
 #: template-parts/components/ai-result-document.php:25
 #: template-parts/components/rfq-single.php:33
 msgid "Theoretical weight"
 msgstr "الوزن النظري"
 
-#: inc/template-tags.php:226 templates/styleguide.php:51
+#: inc/template-tags.php:254 templates/styleguide.php:51
 msgid "actual"
 msgstr "فعلي"
 
-#: inc/template-tags.php:227
+#: inc/template-tags.php:255
 msgid "estimated"
 msgstr "تقديري"
 
-#: inc/template-tags.php:228
+#: inc/template-tags.php:256
 msgid "declared elements"
 msgstr "العناصر المصرّح بها"
 
-#: inc/template-tags.php:230 templates/styleguide.php:52
+#: inc/template-tags.php:258 templates/styleguide.php:52
 msgid "theoretical"
 msgstr "نظري"
 
-#: inc/template-tags.php:261
+#: inc/template-tags.php:289
 msgid "Steel construction contractor"
 msgstr "إنجاز المنشآت المعدنية"
 
-#: inc/template-tags.php:262
+#: inc/template-tags.php:290
 msgid "Manufacturing"
 msgstr "التصنيع"
 
-#: inc/template-tags.php:263
+#: inc/template-tags.php:291
 msgid "Supply and distribution"
 msgstr "التوريد والتوزيع"
 
-#: inc/template-tags.php:264
+#: inc/template-tags.php:292
 msgid "Recycling and scrap"
 msgstr "رسكلة الحديد والخردة"
 
-#: inc/template-tags.php:265
+#: inc/template-tags.php:293
 msgid "Dismantling and second-hand resale"
 msgstr "التفكيك وإعادة بيع المستعمل"
 
-#: inc/template-tags.php:268
+#: inc/template-tags.php:296
 msgid "Structural steel fabricator"
 msgstr "صانع الهياكل المعدنية"
 
-#: inc/template-tags.php:269
+#: inc/template-tags.php:297
 msgid "Steel structure erector"
 msgstr "مركّب الهياكل المعدنية"
 
-#: inc/template-tags.php:270
+#: inc/template-tags.php:298
 msgid "Roofing and cladding installer"
 msgstr "مركّب الأسقف والبارداج"
 
-#: inc/template-tags.php:271
+#: inc/template-tags.php:299
 msgid "Welder"
 msgstr "لحّام"
 
-#: inc/template-tags.php:272
+#: inc/template-tags.php:300
 msgid "Boilermaker"
 msgstr "حرفي تشكيل الصفائح المعدنية"
 
-#: inc/template-tags.php:273
+#: inc/template-tags.php:301
 msgid "Metalworker (locksmith)"
 msgstr "حدّاد فني"
 
-#: inc/template-tags.php:274
+#: inc/template-tags.php:302
 msgid "Lifting and handling"
 msgstr "الرفع والمناولة"
 
-#: inc/template-tags.php:275
+#: inc/template-tags.php:303
 msgid "Sandblasting and painting"
 msgstr "السفع بالرمل والطلاء"
 
-#: inc/template-tags.php:279 template-parts/dashboard/company.php:41
+#: inc/template-tags.php:307 template-parts/dashboard/company.php:41
 #: templates/auth-register.php:30
 msgid "Company"
 msgstr "المؤسسة"
 
-#: inc/template-tags.php:280 templates/auth-register.php:31
+#: inc/template-tags.php:308 templates/auth-register.php:31
 #: templates/engineer-apply.php:305
 msgid "Professional"
 msgstr "مهني"
 
-#: inc/template-tags.php:281 inc/template-tags.php:284
+#: inc/template-tags.php:309 inc/template-tags.php:312
 #: template-parts/dashboard/engineer-files.php:22
 #: templates/auth-register.php:32
 msgid "Client"
 msgstr "زبون"
 
-#: inc/template-tags.php:282 inc/template-tags.php:284
+#: inc/template-tags.php:310 inc/template-tags.php:312
 msgid "Partner engineer"
 msgstr "مهندس شريك"
 
-#: inc/template-tags.php:327
+#: inc/template-tags.php:355
 msgid "Not verified"
 msgstr "غير موثق"
 
-#: inc/template-tags.php:328 template-parts/components/card-featured.php:35
+#: inc/template-tags.php:356 template-parts/components/card-featured.php:35
 #: template-parts/directory.php:107 templates/company-profile.php:98
 msgid "Account verified"
 msgstr "حساب موثّق"
 
-#: inc/template-tags.php:330
+#: inc/template-tags.php:358
 #: template-parts/components/verification-steps.php:19
 msgid "Verified engineer"
 msgstr "مهندس موثق"
 
-#: inc/template-tags.php:340
+#: inc/template-tags.php:368
 #: template-parts/components/verification-steps.php:17
 msgid "Verified professional"
 msgstr "مهني موثّق"
 
-#: inc/template-tags.php:340
+#: inc/template-tags.php:368
 msgid "Verified company"
 msgstr "مؤسسة موثّقة"
 
-#: inc/template-tags.php:347
+#: inc/template-tags.php:375
 msgid "just now"
 msgstr "الآن"
 
 #. translators: %s: number of hours.
-#: inc/template-tags.php:352
+#: inc/template-tags.php:380
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] "منذ أقل من ساعة"
@@ -668,7 +673,7 @@ msgstr[4] "منذ %s ساعة"
 msgstr[5] "منذ %s ساعة"
 
 #. translators: %s: number of days.
-#: inc/template-tags.php:356
+#: inc/template-tags.php:384
 msgid "%s day ago"
 msgid_plural "%s days ago"
 msgstr[0] "اليوم"
@@ -678,123 +683,123 @@ msgstr[3] "منذ %s أيام"
 msgstr[4] "منذ %s يوما"
 msgstr[5] "منذ %s يوم"
 
-#: inc/template-tags.php:380
+#: inc/template-tags.php:408
 msgid "Breadcrumb"
 msgstr "مسار التنقل"
 
-#: inc/template-tags.php:420 template-parts/components/my-products.php:18
+#: inc/template-tags.php:448 template-parts/components/my-products.php:18
 #: template-parts/components/my-products.php:27
 #: template-parts/dashboard/services.php:24
 msgid "Waiting for review"
 msgstr "في انتظار المراجعة"
 
-#: inc/template-tags.php:421
+#: inc/template-tags.php:449
 msgid "Open for offers"
 msgstr "مفتوح للعروض"
 
-#: inc/template-tags.php:422
+#: inc/template-tags.php:450
 msgid "Awarded"
 msgstr "مُسند"
 
-#: inc/template-tags.php:423 template-parts/components/deal-list.php:23
+#: inc/template-tags.php:451 template-parts/components/deal-list.php:23
 msgid "Closed"
 msgstr "مغلق"
 
-#: inc/template-tags.php:424
+#: inc/template-tags.php:452
 msgid "Deadline passed"
 msgstr "انتهى الأجل"
 
-#: inc/template-tags.php:425 template-parts/components/my-products.php:19
+#: inc/template-tags.php:453 template-parts/components/my-products.php:19
 #: template-parts/components/my-products.php:28
 #: template-parts/dashboard/services.php:26
 msgid "Changes requested"
 msgstr "تعديلات مطلوبة"
 
-#: inc/template-tags.php:432 template-parts/dashboard/deal.php:53
+#: inc/template-tags.php:460 template-parts/dashboard/deal.php:53
 msgid "Sent"
 msgstr "مُرسل"
 
-#: inc/template-tags.php:433
+#: inc/template-tags.php:461
 msgid "Shortlisted"
 msgstr "في القائمة المختصرة"
 
-#: inc/template-tags.php:434 inc/template-tags.php:488
+#: inc/template-tags.php:462 inc/template-tags.php:516
 #: template-parts/components/visits-list.php:20
 msgid "Accepted"
 msgstr "مقبول"
 
-#: inc/template-tags.php:435
+#: inc/template-tags.php:463
 msgid "Not retained"
 msgstr "غير مختار"
 
-#: inc/template-tags.php:436
+#: inc/template-tags.php:464
 msgid "Withdrawn"
 msgstr "مسحوب"
 
-#: inc/template-tags.php:462
+#: inc/template-tags.php:490
 msgid "project"
 msgstr "مشروع"
 
-#: inc/template-tags.php:468
+#: inc/template-tags.php:496
 msgid "hour"
 msgstr "ساعة"
 
-#: inc/template-tags.php:469
+#: inc/template-tags.php:497
 msgid "day"
 msgstr "يوم"
 
-#: inc/template-tags.php:477 template-parts/components/service-form.php:124
+#: inc/template-tags.php:505 template-parts/components/service-form.php:124
 msgid "On quotation"
 msgstr "حسب عرض السعر"
 
 #. translators: %s: price with unit.
-#: inc/template-tags.php:480
+#: inc/template-tags.php:508
 msgid "From %s"
 msgstr "ابتداءً من %s"
 
-#: inc/template-tags.php:486 template-parts/dashboard/messages.php:14
+#: inc/template-tags.php:514 template-parts/dashboard/messages.php:14
 #: templates/styleguide.php:49
 msgid "New"
 msgstr "جديد"
 
-#: inc/template-tags.php:487 templates/styleguide.php:48
+#: inc/template-tags.php:515 templates/styleguide.php:48
 msgid "Quote sent"
 msgstr "أُرسل العرض"
 
-#: inc/template-tags.php:489
+#: inc/template-tags.php:517
 msgid "Quote declined"
 msgstr "عرض السعر مرفوض"
 
-#: inc/template-tags.php:490
+#: inc/template-tags.php:518
 msgid "Declined by the provider"
 msgstr "اعتذر مقدم الخدمة"
 
-#: inc/template-tags.php:491 template-parts/components/visits-list.php:22
+#: inc/template-tags.php:519 template-parts/components/visits-list.php:22
 msgid "Cancelled"
 msgstr "ملغى"
 
-#: inc/template-tags.php:536
+#: inc/template-tags.php:564
 msgid "Keep"
 msgstr "الإبقاء"
 
-#: inc/template-tags.php:542 templates/engineer-apply.php:124
+#: inc/template-tags.php:570 templates/engineer-apply.php:124
 msgid "Replace"
 msgstr "استبدال"
 
-#: inc/template-tags.php:562
+#: inc/template-tags.php:590
 msgid "Yes"
 msgstr "نعم"
 
-#: inc/template-tags.php:562
+#: inc/template-tags.php:590
 msgid "No"
 msgstr "لا"
 
-#: inc/template-tags.php:565
+#: inc/template-tags.php:593
 msgid "Unlimited"
 msgstr "غير محدود"
 
 #. translators: %s: number of results.
-#: inc/template-tags.php:627 template-parts/components/filter-panel.php:186
+#: inc/template-tags.php:655 template-parts/components/filter-panel.php:186
 msgid "Show %s result"
 msgid_plural "Show %s results"
 msgstr[0] "عرض %s نتيجة"
@@ -868,9 +873,9 @@ msgstr "الرتبة"
 
 #: template-parts/components/ai-result-document.php:25
 #: template-parts/components/product-lines.php:90
-#: template-parts/components/product-tech.php:314
-#: template-parts/components/product-tech.php:382
-#: template-parts/components/weight-calculator.php:217
+#: template-parts/components/product-tech.php:321
+#: template-parts/components/product-tech.php:391
+#: template-parts/components/weight-calculator.php:221
 #: templates/single-listing.php:64
 msgid "Length"
 msgstr "الطول"
@@ -882,7 +887,7 @@ msgstr "الطول"
 #: template-parts/components/rfq-single.php:82
 #: template-parts/components/rfq-single.php:87
 #: template-parts/components/rfq-tech.php:54
-#: template-parts/components/weight-calculator.php:199
+#: template-parts/components/weight-calculator.php:203
 #: template-parts/dashboard/deal.php:48
 #: template-parts/dashboard/publish.php:128
 #: template-parts/dashboard/publish.php:133
@@ -1055,7 +1060,7 @@ msgid "Complete building"
 msgstr "المبنى كاملا"
 
 #: template-parts/components/buy-box.php:65
-#: template-parts/components/product-tech.php:551
+#: template-parts/components/product-tech.php:560
 msgid "By element"
 msgstr "حسب العنصر"
 
@@ -1078,7 +1083,7 @@ msgstr "الشراء بهذا السعر"
 
 #: template-parts/components/buy-box.php:78
 #: template-parts/components/listing-building.php:183
-#: template-parts/components/listing-product.php:194
+#: template-parts/components/listing-product.php:195
 #: templates/single-listing.php:137
 msgid "Make an offer"
 msgstr "تقديم عرض"
@@ -1313,7 +1318,7 @@ msgstr "حفظ الإعلان"
 #: template-parts/components/card-listing.php:42
 #: template-parts/components/filter-panel.php:34
 #: template-parts/components/listing-building.php:163
-#: template-parts/components/product-tech.php:463
+#: template-parts/components/product-tech.php:472
 #: template-parts/dashboard/publish.php:112 templates/single-listing.php:49
 #: templates/single-listing.php:118
 msgid "Assembled"
@@ -1322,7 +1327,7 @@ msgstr "مركّب"
 #: template-parts/components/card-listing.php:42
 #: template-parts/components/filter-panel.php:35
 #: template-parts/components/listing-building.php:163
-#: template-parts/components/product-tech.php:464
+#: template-parts/components/product-tech.php:473
 #: template-parts/dashboard/publish.php:113 templates/single-listing.php:49
 #: templates/single-listing.php:118
 msgid "Dismantled"
@@ -1342,7 +1347,7 @@ msgid "Sold by element"
 msgstr "يباع حسب العنصر"
 
 #: template-parts/components/card-listing.php:84
-#: template-parts/components/product-tech.php:572
+#: template-parts/components/product-tech.php:581
 msgid "Whole lot only"
 msgstr "الحصة كاملة فقط"
 
@@ -1642,12 +1647,13 @@ msgid "Size"
 msgstr "المقاس"
 
 #: template-parts/components/filter-panel.php:24
-#: template-parts/components/listing-product.php:38
+#: template-parts/components/listing-product.php:39
 #: template-parts/components/rfq-single.php:24
 msgid "Designation"
 msgstr "التسمية"
 
 #: template-parts/components/filter-panel.php:25
+#: template-parts/components/plate-fields.php:97
 #: template-parts/components/section-sheet.php:26
 #: template-parts/components/weight-calculator.php:132
 msgid "Thickness"
@@ -1838,7 +1844,7 @@ msgid "Geometric characteristics"
 msgstr "الخصائص الهندسية"
 
 #: template-parts/components/listing-building.php:55
-#: template-parts/components/listing-product.php:79
+#: template-parts/components/listing-product.php:80
 msgid "All characteristics"
 msgstr "جميع الخصائص"
 
@@ -1853,17 +1859,17 @@ msgstr "جرد العناصر الإنشائية"
 
 #. translators: 1: number of kinds of elements, 2: number of pieces.
 #: template-parts/components/listing-building.php:75
-#: template-parts/components/listing-product.php:108
+#: template-parts/components/listing-product.php:109
 msgid "%1$s kinds of elements · %2$s pieces"
 msgstr "%1$s أنواع من العناصر · %2$s قطعة"
 
 #: template-parts/components/listing-building.php:86
-#: template-parts/components/listing-product.php:115
+#: template-parts/components/listing-product.php:116
 msgid "See the detail of the inventory"
 msgstr "عرض تفاصيل الجرد"
 
 #: template-parts/components/listing-building.php:89
-#: template-parts/components/listing-product.php:118
+#: template-parts/components/listing-product.php:119
 #: templates/single-listing.php:209
 msgid ""
 "Unit weights come from the platform’s standard section tables. The "
@@ -1915,13 +1921,13 @@ msgid "Foundations and accessories: not included"
 msgstr "الأساسات والملحقات: غير مشمولة"
 
 #: template-parts/components/listing-building.php:124
-#: template-parts/components/listing-product.php:126
+#: template-parts/components/listing-product.php:127
 #: templates/single-listing.php:175
 msgid "Technical documents"
 msgstr "الوثائق التقنية"
 
 #: template-parts/components/listing-building.php:135
-#: template-parts/components/listing-product.php:137
+#: template-parts/components/listing-product.php:138
 #: template-parts/components/product-form.php:120
 #: template-parts/dashboard/invoice.php:65 templates/mission-request.php:105
 #: templates/single-listing.php:215 templates/single-service.php:99
@@ -1929,19 +1935,19 @@ msgid "Description"
 msgstr "الوصف"
 
 #: template-parts/components/listing-building.php:137
-#: template-parts/components/listing-product.php:139
+#: template-parts/components/listing-product.php:140
 #: templates/single-listing.php:217
 msgid "No description. Ask the seller for details with the form below."
 msgstr "لا يوجد وصف. اطلب التفاصيل من البائع عبر الاستمارة أدناه."
 
 #: template-parts/components/listing-building.php:141
-#: template-parts/components/listing-product.php:143
+#: template-parts/components/listing-product.php:144
 #: templates/single-listing.php:221
 msgid "Shown in the language the seller wrote it in."
 msgstr "معروض باللغة التي كتب بها البائع."
 
 #: template-parts/components/listing-building.php:168
-#: template-parts/components/listing-product.php:181
+#: template-parts/components/listing-product.php:182
 msgid "See the location"
 msgstr "عرض الموقع"
 
@@ -1954,30 +1960,30 @@ msgid "Buy elements"
 msgstr "شراء عناصر"
 
 #: template-parts/components/listing-building.php:186
-#: template-parts/components/listing-product.php:197
+#: template-parts/components/listing-product.php:198
 #: templates/single-listing.php:138 templates/single-listing.php:140
 msgid "Contact the seller"
 msgstr "التواصل مع البائع"
 
 #: template-parts/components/listing-building.php:189
-#: template-parts/components/listing-product.php:200
+#: template-parts/components/listing-product.php:201
 msgid "Get in touch"
 msgstr "تواصل"
 
 #: template-parts/components/listing-building.php:190
-#: template-parts/components/listing-product.php:201
+#: template-parts/components/listing-product.php:202
 msgid "Quotation"
 msgstr "عرض سعر"
 
 #: template-parts/components/listing-building.php:191
-#: template-parts/components/listing-product.php:202
+#: template-parts/components/listing-product.php:203
 #: template-parts/dashboard/company.php:149
 #: template-parts/dashboard/settings.php:43 templates/single-listing.php:144
 msgid "Save"
 msgstr "حفظ"
 
 #: template-parts/components/listing-building.php:192
-#: template-parts/components/listing-product.php:203
+#: template-parts/components/listing-product.php:204
 #: templates/single-listing.php:145
 msgid "Share"
 msgstr "مشاركة"
@@ -2026,7 +2032,7 @@ msgstr "الوزن الوحدوي (kg/m)"
 
 #: template-parts/components/listing-inventory.php:23
 #: template-parts/components/listing-inventory.php:34
-#: template-parts/components/product-tech.php:513
+#: template-parts/components/product-tech.php:522
 #: template-parts/components/rfq-single.php:82
 #: template-parts/components/rfq-single.php:90
 msgid "Total weight (kg)"
@@ -2131,6 +2137,7 @@ msgid "Time of the visit"
 msgstr "الساعة"
 
 #: template-parts/components/listing-place.php:98
+#: template-parts/components/plate-fields.php:209
 #: template-parts/components/product-form.php:131
 #: template-parts/components/product-form.php:136
 #: template-parts/components/product-form.php:171
@@ -2138,8 +2145,8 @@ msgstr "الساعة"
 #: template-parts/components/product-form.php:199
 #: template-parts/components/product-tech.php:68
 #: template-parts/components/product-tech.php:156
-#: template-parts/components/product-tech.php:405
-#: template-parts/components/product-tech.php:426
+#: template-parts/components/product-tech.php:414
+#: template-parts/components/product-tech.php:435
 #: template-parts/components/rfq-form.php:56
 #: template-parts/components/rfq-form.php:83
 #: template-parts/components/rfq-form.php:92
@@ -2180,66 +2187,70 @@ msgstr "عدد الأشخاص، أسئلة…"
 msgid "Cancel"
 msgstr "إلغاء"
 
-#: template-parts/components/listing-product.php:32
+#: template-parts/components/listing-product.php:33
 msgid "Kinds of elements"
 msgstr "أنواع العناصر"
 
-#: template-parts/components/listing-product.php:33
-#: template-parts/components/listing-product.php:45
+#: template-parts/components/listing-product.php:34
+#: template-parts/components/listing-product.php:46
 msgid "Pieces"
 msgstr "القطع"
 
-#: template-parts/components/listing-product.php:35
-#: template-parts/components/listing-product.php:48
+#: template-parts/components/listing-product.php:36
+#: template-parts/components/listing-product.php:49
 #: template-parts/components/price-block.php:141
-#: template-parts/components/product-tech.php:324
-#: template-parts/components/product-tech.php:327
-#: template-parts/components/product-tech.php:614
-#: template-parts/components/weight-calculator.php:202
-#: template-parts/components/weight-calculator.php:224
-#: template-parts/components/weight-calculator.php:269
+#: template-parts/components/product-tech.php:331
+#: template-parts/components/product-tech.php:334
+#: template-parts/components/product-tech.php:623
+#: template-parts/components/weight-calculator.php:206
+#: template-parts/components/weight-calculator.php:228
+#: template-parts/components/weight-calculator.php:273
 #: template-parts/dashboard/publish.php:199
 msgid "Total weight"
 msgstr "الوزن الإجمالي"
 
-#: template-parts/components/listing-product.php:40
+#: template-parts/components/listing-product.php:41
 #: template-parts/components/product-tech.php:92
 #: template-parts/dashboard/publish.php:87 templates/single-listing.php:59
 msgid "Steel grade"
 msgstr "رتبة الفولاذ"
 
-#: template-parts/components/listing-product.php:43
+#: template-parts/components/listing-product.php:44
 msgid "Bars × length"
 msgstr "القضبان × الطول"
 
-#: template-parts/components/listing-product.php:68
+#: template-parts/components/listing-product.php:46
+msgid "Sheets"
+msgstr "الصفائح"
+
+#: template-parts/components/listing-product.php:69
 msgid "The lot for sale"
 msgstr "الحصة المعروضة للبيع"
 
-#: template-parts/components/listing-product.php:79
+#: template-parts/components/listing-product.php:80
 msgid "standard, dimensions, weight per metre, weight source…"
 msgstr "المعيار، الأبعاد، الوزن للمتر، مصدر الوزن…"
 
-#: template-parts/components/listing-product.php:98
+#: template-parts/components/listing-product.php:99
 #: templates/single-listing.php:206
 msgid "Lot inventory"
 msgstr "جرد الدفعة"
 
-#: template-parts/components/listing-product.php:163
+#: template-parts/components/listing-product.php:164
 msgid "Quantity needed (bars)"
 msgstr "الكمية المطلوبة (قضبان)"
 
-#: template-parts/components/listing-product.php:176
+#: template-parts/components/listing-product.php:177
 msgid "Brand new"
 msgstr "جديد"
 
-#: template-parts/components/listing-product.php:189
+#: template-parts/components/listing-product.php:190
 #: template-parts/dashboard/ai-credits.php:61 templates/single-listing.php:136
 msgid "Buy"
 msgstr "شراء"
 
-#: template-parts/components/listing-product.php:189
-#: template-parts/components/listing-product.php:192
+#: template-parts/components/listing-product.php:190
+#: template-parts/components/listing-product.php:193
 msgid "Buy the whole lot"
 msgstr "شراء الحصة كاملة"
 
@@ -2507,7 +2518,7 @@ msgstr "فاتورة"
 
 #: template-parts/components/order-history.php:41
 #: template-parts/components/weight-calculator.php:127
-#: template-parts/components/weight-calculator.php:166
+#: template-parts/components/weight-calculator.php:170
 #: template-parts/dashboard/publish.php:210 templates/engineer-apply.php:325
 #: templates/styleguide.php:35
 msgid "Continue"
@@ -2587,6 +2598,100 @@ msgstr "دفع سنة واحدة · %s"
 msgid "Pay 1 month · %s"
 msgstr "دفع شهر واحد · %s"
 
+#: template-parts/components/plate-fields.php:77
+msgid "Kind of plate"
+msgstr "نوع الصفيحة"
+
+#: template-parts/components/plate-fields.php:97
+msgid "(base / with relief, mm)"
+msgstr "(القاعدة / مع النتوءات، مم)"
+
+#: template-parts/components/plate-fields.php:102
+#: template-parts/components/product-tech.php:96
+msgid "Other…"
+msgstr "أخرى…"
+
+#: template-parts/components/plate-fields.php:106
+msgid "Base thickness"
+msgstr "السُّمك الأساسي"
+
+#: template-parts/components/plate-fields.php:106
+#: template-parts/components/product-tech.php:277
+#: template-parts/components/weight-calculator.php:43
+msgid "Thickness t"
+msgstr "السُّمك t"
+
+#: template-parts/components/plate-fields.php:114
+msgid "Size of the sheet"
+msgstr "مقاس الصفيحة"
+
+#: template-parts/components/plate-fields.php:120
+msgid "Custom…"
+msgstr "مقاس آخر…"
+
+#: template-parts/components/plate-fields.php:124
+#: template-parts/components/weight-calculator.php:210
+msgid "Plate width"
+msgstr "عرض الصفيحة"
+
+#: template-parts/components/plate-fields.php:125
+#: template-parts/components/weight-calculator.php:211
+msgid "Plate length"
+msgstr "طول الصفيحة"
+
+#: template-parts/components/plate-fields.php:134
+msgid "Holes"
+msgstr "الثقوب"
+
+#: template-parts/components/plate-fields.php:134
+msgid "optional — makes the weight more accurate"
+msgstr "اختياري — يُدقّق الوزن"
+
+#: template-parts/components/plate-fields.php:136
+msgid "Hole diameter"
+msgstr "قطر الثقوب"
+
+#: template-parts/components/plate-fields.php:137
+msgid "Pitch"
+msgstr "المسافة بين الثقوب"
+
+#. translators: %s: area in m².
+#: template-parts/components/plate-fields.php:180
+msgid "Area %s m² per sheet"
+msgstr "المساحة %s م² للصفيحة"
+
+#: template-parts/components/plate-fields.php:189
+msgid "Estimated weight of one sheet"
+msgstr "الوزن التقديري للصفيحة الواحدة"
+
+#. translators: %s: weight per m².
+#: template-parts/components/plate-fields.php:195
+msgid "From the usual weight of this plate: %s kg/m²."
+msgstr "حسب الوزن المعتاد لهذه الصفيحة: %s كغ/م²."
+
+#. translators: %s: share of the surface taken by the holes, in %.
+#: template-parts/components/plate-fields.php:198
+msgid "Holes deducted: about %s %% of the surface."
+msgstr "تم خصم الثقوب: نحو %s %% من المساحة."
+
+#: template-parts/components/plate-fields.php:200
+msgid "Weight of the plain sheet: give the holes or the real weight."
+msgstr "وزن الصفيحة دون ثقوب: أدخل الثقوب أو الوزن الحقيقي."
+
+#. translators: %s: weight per m².
+#: template-parts/components/plate-fields.php:203
+msgid "Thickness × area: %s kg/m²."
+msgstr "السُّمك × المساحة: %s كغ/م²."
+
+#: template-parts/components/plate-fields.php:209
+msgid "Real weight of one sheet"
+msgstr "الوزن الحقيقي للصفيحة الواحدة"
+
+#: template-parts/components/plate-fields.php:213
+msgid ""
+"Do you know the exact weight? Enter it: this is the weight buyers will see."
+msgstr "تعرف الوزن الدقيق؟ أدخله: هذا هو الوزن الذي سيراه المشترون."
+
 #. translators: %s: project title.
 #: template-parts/components/portfolio-grid.php:16
 msgid "Enlarge the photo: %s"
@@ -2597,7 +2702,7 @@ msgid "Delete this reference?"
 msgstr "حذف هذا المرجع؟"
 
 #: template-parts/components/price-block.php:25
-#: template-parts/components/product-tech.php:580
+#: template-parts/components/product-tech.php:589
 #: template-parts/components/rfq-offer-form.php:39
 #: template-parts/dashboard/studies.php:106 templates/single-service.php:68
 msgid "Price"
@@ -2669,19 +2774,19 @@ msgid "Or the whole lot"
 msgstr "أو الحصة كاملة"
 
 #: template-parts/components/price-block.php:125
-#: template-parts/components/product-tech.php:654
+#: template-parts/components/product-tech.php:663
 msgid "Asking price"
 msgstr "السعر المطلوب"
 
 #: template-parts/components/price-block.php:128
 #: template-parts/components/price-block.php:144
-#: template-parts/components/product-tech.php:647
-#: template-parts/components/product-tech.php:659
+#: template-parts/components/product-tech.php:656
+#: template-parts/components/product-tech.php:668
 msgid "Equivalent price per kg"
 msgstr "السعر المكافئ للكيلوغرام"
 
 #: template-parts/components/price-block.php:129
-#: template-parts/components/product-tech.php:663
+#: template-parts/components/product-tech.php:672
 msgid "Price per m²"
 msgstr "السعر للمتر المربع"
 
@@ -2702,7 +2807,7 @@ msgid "sold as a whole lot only"
 msgstr "يُباع كحصة كاملة فقط"
 
 #: template-parts/components/price-block.php:147
-#: template-parts/components/product-tech.php:654
+#: template-parts/components/product-tech.php:663
 msgid "Indicative total"
 msgstr "المجموع التقريبي"
 
@@ -2711,7 +2816,7 @@ msgid "Total at the detail price"
 msgstr "المجموع بسعر التفصيل"
 
 #: template-parts/components/price-block.php:147
-#: template-parts/components/product-tech.php:654
+#: template-parts/components/product-tech.php:663
 #: template-parts/components/rfq-compare.php:20
 #: template-parts/components/rfq-my-offer.php:18
 #: template-parts/components/rfq-offer-form.php:35
@@ -2938,7 +3043,7 @@ msgstr "الولاية التي يوجد فيها المنتج"
 #: template-parts/components/product-lines.php:81
 #: template-parts/components/product-tech.php:72
 #: template-parts/components/product-tech.php:158
-#: template-parts/components/product-tech.php:253
+#: template-parts/components/product-tech.php:258
 #: template-parts/components/rfq-form.php:50
 #: template-parts/components/rfq-form.php:104
 #: template-parts/components/service-form.php:57
@@ -3031,10 +3136,6 @@ msgstr "الدفعة كاملة"
 msgid "Not specified"
 msgstr "غير محددة"
 
-#: template-parts/components/product-tech.php:96
-msgid "Other…"
-msgstr "أخرى…"
-
 #: template-parts/components/product-tech.php:98
 msgid "Other steel grade"
 msgstr "درجة فولاذ أخرى"
@@ -3048,198 +3149,191 @@ msgstr "حالة الفولاذ"
 msgid "Product type"
 msgstr "نوع المنتج"
 
-#: template-parts/components/product-tech.php:251
+#: template-parts/components/product-tech.php:256
 #: template-parts/components/weight-calculator.php:137
 msgid "Common size"
 msgstr "مقاس شائع"
 
-#: template-parts/components/product-tech.php:251
+#: template-parts/components/product-tech.php:256
 #: template-parts/components/weight-calculator.php:137
 msgid "Size (European catalogue)"
 msgstr "المقاس (الكتالوج الأوروبي)"
 
-#: template-parts/components/product-tech.php:253
-#: template-parts/components/weight-calculator.php:139
-msgid "— or type the dimensions below —"
-msgstr "— أو أدخل الأبعاد أدناه —"
+#: template-parts/components/product-tech.php:257
+#: template-parts/components/weight-calculator.php:138
+msgid "Search a size…"
+msgstr "ابحث عن مقاس…"
 
-#: template-parts/components/product-tech.php:265
+#: template-parts/components/product-tech.php:257
+#: template-parts/components/weight-calculator.php:138
+msgid "No size found."
+msgstr "لا يوجد مقاس مطابق."
+
+#: template-parts/components/product-tech.php:267
+msgid "+ Other size (type the dimensions)"
+msgstr "+ مقاس آخر (أدخل الأبعاد)"
+
+#: template-parts/components/product-tech.php:277
 #: template-parts/components/weight-calculator.php:41
 msgid "Height h"
 msgstr "الارتفاع h"
 
-#: template-parts/components/product-tech.php:265
+#: template-parts/components/product-tech.php:277
 #: template-parts/components/section-sheet.php:23
-#: template-parts/components/weight-calculator.php:157
+#: template-parts/components/weight-calculator.php:161
 msgid "Side"
 msgstr "الضلع"
 
-#: template-parts/components/product-tech.php:265
+#: template-parts/components/product-tech.php:277
 #: template-parts/components/weight-calculator.php:42
 msgid "Width b"
 msgstr "العرض b"
 
-#: template-parts/components/product-tech.php:265
-#: template-parts/components/product-tech.php:295
-#: template-parts/components/weight-calculator.php:43
-msgid "Thickness t"
-msgstr "السُّمك t"
-
-#: template-parts/components/product-tech.php:265
+#: template-parts/components/product-tech.php:277
 #: template-parts/components/weight-calculator.php:44
 msgid "Diameter D"
 msgstr "القطر D"
 
-#: template-parts/components/product-tech.php:265
+#: template-parts/components/product-tech.php:277
 #: template-parts/components/weight-calculator.php:45
 msgid "Side a"
 msgstr "الضلع a"
 
-#: template-parts/components/product-tech.php:296
-#: template-parts/components/weight-calculator.php:206
-msgid "Plate width"
-msgstr "عرض الصفيحة"
-
-#: template-parts/components/product-tech.php:297
-#: template-parts/components/weight-calculator.php:207
-msgid "Plate length"
-msgstr "طول الصفيحة"
-
-#: template-parts/components/product-tech.php:307
-#: template-parts/components/weight-calculator.php:210
+#: template-parts/components/product-tech.php:314
+#: template-parts/components/weight-calculator.php:214
 msgid "Bar length"
 msgstr "طول القضيب"
 
-#: template-parts/components/product-tech.php:310
-#: template-parts/components/weight-calculator.php:213
+#: template-parts/components/product-tech.php:317
+#: template-parts/components/weight-calculator.php:217
 msgid "Other length…"
 msgstr "طول آخر…"
 
-#: template-parts/components/product-tech.php:321
+#: template-parts/components/product-tech.php:328
 msgid "Quantity for sale"
 msgstr "الكمية المعروضة للبيع"
 
-#: template-parts/components/product-tech.php:323
-#: template-parts/components/product-tech.php:331
-#: template-parts/components/product-tech.php:621
-#: template-parts/components/weight-calculator.php:201
-#: template-parts/components/weight-calculator.php:227
-#: template-parts/components/weight-calculator.php:249
+#: template-parts/components/product-tech.php:330
+#: template-parts/components/product-tech.php:338
+#: template-parts/components/product-tech.php:630
+#: template-parts/components/weight-calculator.php:205
+#: template-parts/components/weight-calculator.php:231
+#: template-parts/components/weight-calculator.php:253
 msgid "Number of plates"
 msgstr "عدد الصفائح"
 
-#: template-parts/components/product-tech.php:323
-#: template-parts/components/product-tech.php:331
-#: template-parts/components/product-tech.php:621
-#: template-parts/components/weight-calculator.php:201
-#: template-parts/components/weight-calculator.php:227
-#: template-parts/components/weight-calculator.php:249
+#: template-parts/components/product-tech.php:330
+#: template-parts/components/product-tech.php:338
+#: template-parts/components/product-tech.php:630
+#: template-parts/components/weight-calculator.php:205
+#: template-parts/components/weight-calculator.php:231
+#: template-parts/components/weight-calculator.php:253
 msgid "Number of bars"
 msgstr "عدد القضبان"
 
-#: template-parts/components/product-tech.php:338
-#: template-parts/components/product-tech.php:358
+#: template-parts/components/product-tech.php:346
+#: template-parts/components/product-tech.php:367
 msgid "Weight shown to buyers"
 msgstr "الوزن المعروض على المشترين"
 
-#: template-parts/components/product-tech.php:340
-#: template-parts/components/product-tech.php:489
+#: template-parts/components/product-tech.php:348
+#: template-parts/components/product-tech.php:498
 msgid "Estimated"
 msgstr "تقديري"
 
-#: template-parts/components/product-tech.php:340
-#: template-parts/components/product-tech.php:360
+#: template-parts/components/product-tech.php:348
+#: template-parts/components/product-tech.php:369
 #: template-parts/dashboard/publish.php:100
 msgid "Theoretical (calculated)"
 msgstr "نظري (محسوب)"
 
-#: template-parts/components/product-tech.php:341
-#: template-parts/components/product-tech.php:361
-#: template-parts/components/product-tech.php:490
+#: template-parts/components/product-tech.php:349
+#: template-parts/components/product-tech.php:370
+#: template-parts/components/product-tech.php:499
 #: template-parts/dashboard/publish.php:101
 msgid "Actual (weighed)"
 msgstr "فعلي (موزون)"
 
-#: template-parts/components/product-tech.php:344
+#: template-parts/components/product-tech.php:352
 #: template-parts/dashboard/publish.php:104
 msgid "Measured weight (kg)"
 msgstr "الوزن المقاس (kg)"
 
-#: template-parts/components/product-tech.php:355
+#: template-parts/components/product-tech.php:364
 msgid "Content of the lot"
 msgstr "محتوى الدفعة"
 
-#: template-parts/components/product-tech.php:364
+#: template-parts/components/product-tech.php:373
 msgid "Measured weight of the lot (kg)"
 msgstr "الوزن الموزون للدفعة (كغ)"
 
-#: template-parts/components/product-tech.php:383
+#: template-parts/components/product-tech.php:392
 msgid "Width (span)"
 msgstr "العرض (البحر)"
 
-#: template-parts/components/product-tech.php:384
+#: template-parts/components/product-tech.php:393
 msgid "Number of portal frames"
 msgstr "عدد الإطارات"
 
-#: template-parts/components/product-tech.php:385
+#: template-parts/components/product-tech.php:394
 msgid "Height at the column"
 msgstr "الارتفاع عند العمود"
 
-#: template-parts/components/product-tech.php:386
+#: template-parts/components/product-tech.php:395
 msgid "Height of the roof (ridge)"
 msgstr "ارتفاع السقف (القمة)"
 
-#: template-parts/components/product-tech.php:387
+#: template-parts/components/product-tech.php:396
 msgid "Number of floors"
 msgstr "عدد الطوابق"
 
-#: template-parts/components/product-tech.php:391
+#: template-parts/components/product-tech.php:400
 msgid "Geometry"
 msgstr "الهندسة"
 
-#: template-parts/components/product-tech.php:402
+#: template-parts/components/product-tech.php:411
 msgid "The building has a mezzanine"
 msgstr "للمبنى ميزانين"
 
-#: template-parts/components/product-tech.php:405
+#: template-parts/components/product-tech.php:414
 msgid "Area of the mezzanine"
 msgstr "مساحة الميزانين"
 
-#: template-parts/components/product-tech.php:412
+#: template-parts/components/product-tech.php:421
 msgid "Floor area (calculated)"
 msgstr "مساحة الأرضية (محسوبة)"
 
-#: template-parts/components/product-tech.php:413
+#: template-parts/components/product-tech.php:422
 msgid "Spacing of the frames (calculated)"
 msgstr "المسافة بين الإطارات (محسوبة)"
 
-#: template-parts/components/product-tech.php:414
+#: template-parts/components/product-tech.php:423
 msgid "Roof slope (calculated)"
 msgstr "ميل السقف (محسوب)"
 
-#: template-parts/components/product-tech.php:416
+#: template-parts/components/product-tech.php:425
 msgid ""
 "The slope is not typed: it is calculated from the two heights and the shape "
 "of the roof (step 3)."
 msgstr "لا يُكتب الميل: يُحسب من الارتفاعين وشكل السقف (الخطوة 3)."
 
-#: template-parts/components/product-tech.php:419
+#: template-parts/components/product-tech.php:428
 msgid "Structural system and envelope"
 msgstr "النظام الإنشائي والغلاف"
 
-#: template-parts/components/product-tech.php:423
+#: template-parts/components/product-tech.php:432
 msgid "The building has an overhead crane"
 msgstr "المبنى مجهز برافعة جسرية"
 
-#: template-parts/components/product-tech.php:426
+#: template-parts/components/product-tech.php:435
 msgid "Capacity of the crane"
 msgstr "حمولة الرافعة"
 
-#: template-parts/components/product-tech.php:434
+#: template-parts/components/product-tech.php:443
 msgid "Elements of the structure"
 msgstr "عناصر الهيكل"
 
-#: template-parts/components/product-tech.php:436
+#: template-parts/components/product-tech.php:445
 msgid ""
 "Required: at least the columns and the trusses. The other elements (purlins,"
 " rails, bracing…) are optional but make the weight more exact."
@@ -3247,7 +3341,7 @@ msgstr ""
 "إلزامي: الأعمدة والجملونات على الأقل. العناصر الأخرى (المدادات، التكتيف…) "
 "اختيارية لكنها تجعل الوزن أدق."
 
-#: template-parts/components/product-tech.php:438
+#: template-parts/components/product-tech.php:447
 msgid ""
 "Required: at least the columns and the rafters. The other elements (purlins,"
 " rails, bracing…) are optional but make the weight more exact."
@@ -3255,7 +3349,7 @@ msgstr ""
 "إلزامي: الأعمدة وعوارض السقف على الأقل. العناصر الأخرى (المدادات، التكتيف…) "
 "اختيارية لكنها تجعل الوزن أدق."
 
-#: template-parts/components/product-tech.php:440
+#: template-parts/components/product-tech.php:449
 msgid ""
 "This structure is not made of catalogue sections: the elements are optional "
 "here. Give the total weight of the steel in step 5."
@@ -3263,67 +3357,67 @@ msgstr ""
 "هذا الهيكل ليس من مقاطع الكتالوج: العناصر اختيارية هنا. أدخل الوزن الإجمالي "
 "للفولاذ في الخطوة 5."
 
-#: template-parts/components/product-tech.php:442
+#: template-parts/components/product-tech.php:451
 msgid ""
 "Choose the structural system in step 3 to see which elements are required."
 msgstr "اختر النظام الإنشائي في الخطوة 3 لمعرفة العناصر الإلزامية."
 
-#: template-parts/components/product-tech.php:448
+#: template-parts/components/product-tech.php:457
 msgid "Proposal calculated from the dimensions."
 msgstr "اقتراح محسوب انطلاقا من الأبعاد."
 
-#: template-parts/components/product-tech.php:448
+#: template-parts/components/product-tech.php:457
 msgid ""
 "Correct each row to match your building: profile, number of pieces, length."
 msgstr "صحّح كل سطر حسب مبناك: المقطع، عدد القطع، الطول."
 
-#: template-parts/components/product-tech.php:451
+#: template-parts/components/product-tech.php:460
 msgid "Recalculate from the dimensions"
 msgstr "إعادة الحساب انطلاقا من الأبعاد"
 
-#: template-parts/components/product-tech.php:452
+#: template-parts/components/product-tech.php:461
 msgid ""
 "The rows below will be replaced by a new proposal calculated from the "
 "dimensions."
 msgstr "ستُستبدل الأسطر أدناه باقتراح جديد محسوب انطلاقا من الأبعاد."
 
-#: template-parts/components/product-tech.php:453
+#: template-parts/components/product-tech.php:462
 msgid "Replace my rows"
 msgstr "استبدال أسطري"
 
-#: template-parts/components/product-tech.php:456
+#: template-parts/components/product-tech.php:465
 msgid "Elements: profile, number of pieces, length"
 msgstr "العناصر: المقطع، عدد القطع، الطول"
 
-#: template-parts/components/product-tech.php:459
+#: template-parts/components/product-tech.php:468
 msgid "State, weight and price"
 msgstr "الحالة والوزن والسعر"
 
-#: template-parts/components/product-tech.php:461
+#: template-parts/components/product-tech.php:470
 msgid "State of the building"
 msgstr "حالة المبنى"
 
-#: template-parts/components/product-tech.php:463
+#: template-parts/components/product-tech.php:472
 msgid "Still standing."
 msgstr "ما زال قائما."
 
-#: template-parts/components/product-tech.php:464
+#: template-parts/components/product-tech.php:473
 msgid "Already taken down."
 msgstr "مفكك مسبقا."
 
-#: template-parts/components/product-tech.php:472
+#: template-parts/components/product-tech.php:481
 msgid "(calculated)"
 msgstr "(محسوب)"
 
-#: template-parts/components/product-tech.php:476
+#: template-parts/components/product-tech.php:485
 msgid "Total weight of the steel structure"
 msgstr "الوزن الإجمالي للهيكل الفولاذي"
 
-#: template-parts/components/product-tech.php:476
+#: template-parts/components/product-tech.php:485
 msgid "optional, if you know it"
 msgstr "اختياري، إن كنت تعرفه"
 
-#: template-parts/components/product-tech.php:481
+#: template-parts/components/product-tech.php:490
 msgid ""
 "The price per kg uses the total weight when you give it; otherwise the "
 "weight of the declared elements, and buyers are told so."
@@ -3331,53 +3425,53 @@ msgstr ""
 "يُحسب السعر للكيلوغرام من الوزن الإجمالي إن أدخلته؛ وإلا فمن وزن العناصر "
 "المصرّح بها، ويُعلَم المشتري بذلك."
 
-#: template-parts/components/product-tech.php:487
+#: template-parts/components/product-tech.php:496
 msgid "Weight of the lot"
 msgstr "وزن الدفعة"
 
-#: template-parts/components/product-tech.php:492
+#: template-parts/components/product-tech.php:501
 msgid "Weighed weight"
 msgstr "الوزن الموزون"
 
-#: template-parts/components/product-tech.php:502
+#: template-parts/components/product-tech.php:511
 msgid "Available quantity"
 msgstr "الكمية المتوفرة"
 
-#: template-parts/components/product-tech.php:507
+#: template-parts/components/product-tech.php:516
 #: template-parts/components/rfq-tech.php:59
 msgid "Unit"
 msgstr "الوحدة"
 
-#: template-parts/components/product-tech.php:513
+#: template-parts/components/product-tech.php:522
 msgid "optional, if weighed"
 msgstr "اختياري، إن تم وزنه"
 
-#: template-parts/components/product-tech.php:531
+#: template-parts/components/product-tech.php:540
 msgid "plate"
 msgstr "صفيحة"
 
-#: template-parts/components/product-tech.php:531
+#: template-parts/components/product-tech.php:540
 msgid "bar"
 msgstr "قضيب"
 
-#: template-parts/components/product-tech.php:531
+#: template-parts/components/product-tech.php:540
 msgid "the whole building"
 msgstr "المبنى كاملًا"
 
-#: template-parts/components/product-tech.php:547
-#: template-parts/components/product-tech.php:569
+#: template-parts/components/product-tech.php:556
+#: template-parts/components/product-tech.php:578
 msgid "How do you sell it?"
 msgstr "كيف تبيعه؟"
 
-#: template-parts/components/product-tech.php:550
+#: template-parts/components/product-tech.php:559
 msgid "Whole building"
 msgstr "المبنى كاملا (دفعة واحدة)"
 
-#: template-parts/components/product-tech.php:550
+#: template-parts/components/product-tech.php:559
 msgid "The buyer takes the complete building, at one total price."
 msgstr "يأخذ المشتري المبنى كله بسعر إجمالي واحد."
 
-#: template-parts/components/product-tech.php:551
+#: template-parts/components/product-tech.php:560
 msgid ""
 "The buyer chooses elements of your inventory and their number. After the "
 "first sale by element, the whole-building sale closes."
@@ -3385,19 +3479,19 @@ msgstr ""
 "يختار المشتري عناصر من جردك وعددها. بعد أول بيع حسب العنصر، يُغلق بيع المبنى"
 " كاملا."
 
-#: template-parts/components/product-tech.php:556
+#: template-parts/components/product-tech.php:565
 #: template-parts/components/rfq-compare.php:21
 #: template-parts/components/rfq-my-offer.php:19
 msgid "Price per kg"
 msgstr "السعر للكيلوغرام"
 
-#: template-parts/components/product-tech.php:561
-#: template-parts/components/product-tech.php:597
-#: template-parts/components/product-tech.php:646
+#: template-parts/components/product-tech.php:570
+#: template-parts/components/product-tech.php:606
+#: template-parts/components/product-tech.php:655
 msgid "Price of the whole building"
 msgstr "سعر المبنى كاملا"
 
-#: template-parts/components/product-tech.php:566
+#: template-parts/components/product-tech.php:575
 msgid ""
 "Fill in one of the two prices: the site calculates the other from the steel "
 "weight. Buyers see the total first, then the price per kg."
@@ -3405,63 +3499,63 @@ msgstr ""
 "املأ أحد السعرين: يحسب الموقع الآخر من وزن الفولاذ. يرى المشتري المجموع أولا"
 " ثم السعر للكيلوغرام."
 
-#: template-parts/components/product-tech.php:571
+#: template-parts/components/product-tech.php:580
 msgid "By the piece / by the kg"
 msgstr "بالقطعة / بالكيلوغرام"
 
-#: template-parts/components/product-tech.php:571
+#: template-parts/components/product-tech.php:580
 msgid "The buyer takes the quantity he needs."
 msgstr "يأخذ المشتري الكمية التي يحتاجها."
 
-#: template-parts/components/product-tech.php:572
+#: template-parts/components/product-tech.php:581
 msgid "One price for everything."
 msgstr "سعر واحد للكل."
 
-#: template-parts/components/product-tech.php:573
+#: template-parts/components/product-tech.php:582
 msgid "Both"
 msgstr "الاثنان"
 
-#: template-parts/components/product-tech.php:573
+#: template-parts/components/product-tech.php:582
 msgid "A detail price and a price for the whole lot."
 msgstr "سعر بالتفصيل وسعر للحصة كاملة."
 
-#: template-parts/components/product-tech.php:580
+#: template-parts/components/product-tech.php:589
 msgid "Detail price"
 msgstr "سعر التفصيل"
 
-#: template-parts/components/product-tech.php:586
+#: template-parts/components/product-tech.php:595
 msgid "Price per"
 msgstr "السعر لكل"
 
 #. translators: %s: unit.
-#: template-parts/components/product-tech.php:590
+#: template-parts/components/product-tech.php:599
 msgid "per %s"
 msgstr "لكل %s"
 
-#: template-parts/components/product-tech.php:597
-#: template-parts/components/product-tech.php:656
+#: template-parts/components/product-tech.php:606
+#: template-parts/components/product-tech.php:665
 msgid "Price of the whole lot"
 msgstr "سعر الحصة كاملة"
 
-#: template-parts/components/product-tech.php:606
+#: template-parts/components/product-tech.php:615
 msgid "Title of the listing"
 msgstr "عنوان الإعلان"
 
-#: template-parts/components/product-tech.php:606
+#: template-parts/components/product-tech.php:615
 msgid "(automatic)"
 msgstr "(تلقائي)"
 
-#: template-parts/components/product-tech.php:612
+#: template-parts/components/product-tech.php:621
 #: template-parts/dashboard/publish.php:189
 msgid "Summary shown to buyers"
 msgstr "الملخص الذي يراه المشترون"
 
-#: template-parts/components/product-tech.php:628
+#: template-parts/components/product-tech.php:637
 msgid "Pieces in the lot"
 msgstr "عدد القطع في الدفعة"
 
 #. translators: %s: number of sizes.
-#: template-parts/components/product-tech.php:631
+#: template-parts/components/product-tech.php:640
 msgid "%s size"
 msgid_plural "%s sizes"
 msgstr[0] "%s مقاس"
@@ -3471,26 +3565,26 @@ msgstr[3] "%s مقاسات"
 msgstr[4] "%s مقاسًا"
 msgstr[5] "%s مقاس"
 
-#: template-parts/components/product-tech.php:636
+#: template-parts/components/product-tech.php:645
 #: templates/single-listing.php:51
 msgid "Total area"
 msgstr "المساحة الإجمالية"
 
-#: template-parts/components/product-tech.php:650
+#: template-parts/components/product-tech.php:659
 msgid "Price by element"
 msgstr "السعر حسب العنصر"
 
-#: template-parts/components/product-tech.php:654
+#: template-parts/components/product-tech.php:663
 msgid "Price of the lot"
 msgstr "سعر الدفعة"
 
-#: template-parts/components/product-tech.php:654
+#: template-parts/components/product-tech.php:663
 msgid ""
 "Price per kg × weight of the declared elements only. Buyers see this note."
 msgstr ""
 "السعر للكيلوغرام × وزن العناصر المصرح بها فقط. يرى المشتري هذه الملاحظة."
 
-#: template-parts/components/product-tech.php:667
+#: template-parts/components/product-tech.php:676
 msgid ""
 "Price per kg and per m² are calculated by the platform from your price, the "
 "area and the steel weight."
@@ -3498,14 +3592,14 @@ msgstr ""
 "تحسب المنصة السعر للكيلوغرام وللمتر المربع انطلاقًا من سعرك والمساحة ووزن "
 "الفولاذ."
 
-#: template-parts/components/product-tech.php:669
+#: template-parts/components/product-tech.php:678
 msgid ""
 "The weight of this lot is given by you: say whether it was weighed or "
 "estimated. Buyers see the difference."
 msgstr ""
 "وزن هذه الدفعة تحدده أنت: وضّح هل تم وزنها أم تقديرها. يرى المشترون الفرق."
 
-#: template-parts/components/product-tech.php:671
+#: template-parts/components/product-tech.php:680
 msgid ""
 "Weight and totals are calculated by the platform from the European tables; "
 "you can still give the weighed weight."
@@ -3513,21 +3607,21 @@ msgstr ""
 "تحسب المنصة الوزن والمجاميع من الجداول الأوروبية؛ ويمكنك أيضا إدخال الوزن "
 "الفعلي."
 
-#: template-parts/components/product-tech.php:674
+#: template-parts/components/product-tech.php:683
 msgid ""
 "Buyers will see a notice recommending a check by a qualified engineer before"
 " reassembling a used building."
 msgstr ""
 "سيرى المشترون تنبيهًا يوصي بفحص من مهندس مؤهل قبل إعادة تركيب مبنى مستعمل."
 
-#: template-parts/components/product-tech.php:676
+#: template-parts/components/product-tech.php:685
 msgid ""
 "Buyers will see a notice recommending a check by a qualified engineer before"
 " any structural reuse."
 msgstr ""
 "سيرى المشترون تنبيهًا يوصي بفحص من مهندس مؤهل قبل أي إعادة استعمال إنشائي."
 
-#: template-parts/components/product-tech.php:679
+#: template-parts/components/product-tech.php:688
 #: template-parts/components/rfq-tech.php:71
 msgid "Update"
 msgstr "تحديث"
@@ -4042,7 +4136,7 @@ msgid "Cross-section area"
 msgstr "مساحة المقطع"
 
 #: template-parts/components/section-sheet.php:45
-#: template-parts/components/weight-calculator.php:182
+#: template-parts/components/weight-calculator.php:186
 msgid "Weight per metre"
 msgstr "الوزن لكل متر"
 
@@ -4628,49 +4722,49 @@ msgstr "نصف قطر الوصلة r1"
 msgid "Toe radius r2"
 msgstr "نصف قطر الحافة r2"
 
-#: template-parts/components/weight-calculator.php:181
+#: template-parts/components/weight-calculator.php:139
+msgid "— or type the dimensions below —"
+msgstr "— أو أدخل الأبعاد أدناه —"
+
+#: template-parts/components/weight-calculator.php:185
 msgid "Area"
 msgstr "المساحة"
 
-#: template-parts/components/weight-calculator.php:186
-msgid "Source table"
-msgstr "الجدول المصدر"
-
-#: template-parts/components/weight-calculator.php:200
+#: template-parts/components/weight-calculator.php:204
 msgid "What do you know?"
 msgstr "ماذا تعرف؟"
 
-#: template-parts/components/weight-calculator.php:231
+#: template-parts/components/weight-calculator.php:235
 msgid "Calculate"
 msgstr "احسب"
 
 #. translators: %s: weight of one piece.
-#: template-parts/components/weight-calculator.php:241
+#: template-parts/components/weight-calculator.php:245
 msgid "One plate weighs %s"
 msgstr "تزن الصفيحة الواحدة %s"
 
 #. translators: %s: weight of one piece.
-#: template-parts/components/weight-calculator.php:241
+#: template-parts/components/weight-calculator.php:245
 msgid "One bar weighs %s"
 msgstr "يزن القضيب الواحد %s"
 
 #. translators: 1: number of pieces, 2: their weight.
-#: template-parts/components/weight-calculator.php:243
+#: template-parts/components/weight-calculator.php:247
 msgid "%1$s whole plates = %2$s"
 msgstr "%1$s صفائح كاملة = %2$s"
 
 #. translators: 1: number of pieces, 2: their weight.
-#: template-parts/components/weight-calculator.php:243
+#: template-parts/components/weight-calculator.php:247
 msgid "%1$s whole bars = %2$s"
 msgstr "%1$s قضبان كاملة = %2$s"
 
 #. translators: 1: weight, 2: size and length of one piece.
-#: template-parts/components/weight-calculator.php:255
+#: template-parts/components/weight-calculator.php:259
 msgid "for %1$s of %2$s"
 msgstr "لـ %1$s من %2$s"
 
 #. translators: %s: density.
-#: template-parts/components/weight-calculator.php:281
+#: template-parts/components/weight-calculator.php:285
 msgid ""
 "Theoretical weight: nominal dimensions × %s kg/m³. The weighed weight can "
 "differ within the manufacturing tolerances."
@@ -4678,11 +4772,11 @@ msgstr ""
 "وزن نظري: الأبعاد الاسمية × %s kg/m³. قد يختلف الوزن عند الوزن الفعلي ضمن "
 "حدود تفاوتات التصنيع."
 
-#: template-parts/components/weight-calculator.php:284
+#: template-parts/components/weight-calculator.php:288
 msgid "Enter the total weight to see the number of pieces."
 msgstr "أدخل الوزن الإجمالي لمعرفة عدد القطع."
 
-#: template-parts/components/weight-calculator.php:284
+#: template-parts/components/weight-calculator.php:288
 msgid "Enter the number of pieces to see the total weight."
 msgstr "أدخل عدد القطع لمعرفة الوزن الإجمالي."
 

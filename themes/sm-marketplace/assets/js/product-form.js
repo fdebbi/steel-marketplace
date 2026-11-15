@@ -61,12 +61,22 @@
 		if ( line ) {
 			q.delete( 'lines[' + line[1] + '][section]' ); // A size of another type means nothing.
 		} else if ( changed && 'family' === changed.name ) {
-			[ 'section', 'grade', 'grade_other' ].forEach( function ( k ) { q.delete( k ); } );
+			[ 'section', 'grade', 'grade_other', 'plate_kind', 'plate_t', 'plate_format', 'hole_d', 'hole_p', 'piece_kg' ].forEach( function ( k ) { q.delete( k ); } );
 			Array.from( q.keys() ).filter( function ( k ) { return 0 === k.indexOf( 'dims[' ); } ).forEach( function ( k ) { q.delete( k ); } );
 		} else if ( changed && 'section' === changed.name ) {
 			Array.from( q.keys() ).filter( function ( k ) { return 0 === k.indexOf( 'dims[' ); } ).forEach( function ( k ) { q.delete( k ); } );
 		} else if ( changed && 0 === changed.name.indexOf( 'dims[' ) ) {
-			q.delete( 'section' );
+			// 0.36.0: typing the dimensions keeps "Other size" chosen.
+			if ( block.querySelector( 'select[name="section"] option[value="custom"]' ) ) { q.set( 'section', 'custom' ); } else { q.delete( 'section' ); }
+		} else if ( changed && 'plate_kind' === changed.name ) {
+			// Plates (0.36.0): another kind has other thicknesses.
+			[ 'plate_t', 'dims[t]', 'hole_d', 'hole_p', 'piece_kg', 'grade', 'grade_other' ].forEach( function ( k ) { q.delete( k ); } );
+		} else if ( changed && 'plate_t' === changed.name && 'custom' !== changed.value ) {
+			q.delete( 'dims[t]' );
+			q.delete( 'piece_kg' );
+		} else if ( changed && 'plate_format' === changed.name ) {
+			if ( 'custom' !== changed.value ) { q.delete( 'width' ); q.delete( 'plate_length' ); }
+			q.delete( 'piece_kg' );
 		}
 		return q;
 	}
@@ -93,6 +103,7 @@
 				var again = carry( before, tech(), fresh );
 				fresh.classList.add( 'sm-swap-in' );
 				tech().replaceWith( fresh );
+				if ( window.smSizePicker ) { window.smSizePicker.scan( fresh ); }
 				if ( again ) { clearTimeout( timer ); timer = setTimeout( function () { refresh( null ); }, 300 ); }
 				var el = focusId ? document.getElementById( focusId ) : null;
 				if ( el ) {

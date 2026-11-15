@@ -91,8 +91,26 @@ $far = Spec::build( $base + array( 'category' => 'profiles', 'family' => 'IPE', 
 smp_assert( isset( $far['errors']['actual_weight'] ), 'a weighed weight far from the theoretical one is questioned' );
 $t = Spec::build( $base + array( 'category' => 'tubes', 'family' => 'RHS', 'dims' => array( 'h' => '120', 'b' => '80', 't' => '4' ), 'bars' => '5', 'length' => 'custom', 'length_custom' => '6,5' ) );
 smp_assert( ! $t['errors'] && 'RHS 120x80x4' === $t['data']['designation'] && 6500 === $t['data']['length_mm'], 'typed tube with a free length of 6,5 m' );
-$pl = Spec::build( array_merge( $base, array( 'category' => 'plates', 'dims' => array( 't' => '10' ), 'width' => '1500', 'plate_length' => '3000', 'bars' => '4', 'price' => '20000', 'price_unit' => 'unit' ) ) );
+$pl = Spec::build( array_merge( $base, array( 'category' => 'plates', 'plate_kind' => 'hot', 'dims' => array( 't' => '10' ), 'width' => '1500', 'plate_length' => '3000', 'bars' => '4', 'price' => '20000', 'price_unit' => 'unit' ) ) );
 smp_assert( ! $pl['errors'] && smp_near( $pl['data']['total_weight'], 1413 ) && smp_near( $pl['data']['total_price'], 80000 ) && smp_near( $pl['data']['price_per_kg'], 56.62 ), 'plates priced per piece: 4 × 20 000 DA, 56,62 DA/kg equivalent' );
+// 0.17.0: kind of plate, common thickness and format, weight of one sheet given by the seller.
+$nok = Spec::build( array_merge( $base, array( 'category' => 'plates', 'dims' => array( 't' => '10' ), 'width' => '1500', 'plate_length' => '3000', 'bars' => '4' ) ) );
+smp_assert( isset( $nok['errors']['plate_kind'] ), 'a plate needs its kind' );
+$tr = Spec::build( array_merge( $base, array( 'category' => 'plates', 'plate_kind' => 'tread', 'plate_t' => '3', 'plate_format' => '1000x2000', 'bars' => '10', 'price' => '9000', 'price_unit' => 'unit' ) ) );
+smp_assert( ! $tr['errors'] && smp_near( $tr['data']['total_weight'], 580 ) && 'tread' === $tr['data']['specs']['plate_kind'] && '3/5' === $tr['data']['specs']['plate_label'] && 1000 === $tr['data']['width_mm'], 'tread plate 3/5, 1000 × 2000, 10 sheets: 580 kg estimated' );
+smp_assert( 'Tôle larmée 3/5 · 1 × 2 m' === $tr['title']['fr'] && 0 === strpos( $tr['title']['ar'], 'صفيحة مضلعة لارمي 3/5' ), 'title names the kind of plate: ' . $tr['title']['fr'] );
+$rw = Spec::build( array_merge( $base, array( 'category' => 'plates', 'plate_kind' => 'tread', 'plate_t' => '3', 'plate_format' => '1000x2000', 'bars' => '10', 'piece_kg' => '61' ) ) );
+smp_assert( ! $rw['errors'] && 'actual' === $rw['data']['weight_source'] && smp_near( $rw['data']['total_weight'], 610 ) && smp_near( $rw['data']['unit_weight'], 61 ), 'weight of one sheet given by the seller: 10 × 61 = 610 kg' );
+$rf = Spec::build( array_merge( $base, array( 'category' => 'plates', 'plate_kind' => 'tread', 'plate_t' => '3', 'plate_format' => '1000x2000', 'bars' => '10', 'piece_kg' => '5' ) ) );
+smp_assert( isset( $rf['errors']['piece_kg'] ), 'a sheet weight far from the estimate is questioned' );
+$pf = Spec::build( array_merge( $base, array( 'category' => 'plates', 'plate_kind' => 'perforated', 'plate_t' => '2', 'plate_format' => '1000x2000', 'bars' => '1', 'hole_d' => '5', 'hole_p' => '8' ) ) );
+smp_assert( ! $pf['errors'] && smp_near( $pf['data']['total_weight'], 20.276, 0.01 ) && smp_near( $pf['data']['specs']['hole_p'], 8 ), 'perforated plate: holes deducted and kept' );
+$pb = Spec::build( array_merge( $base, array( 'category' => 'plates', 'plate_kind' => 'perforated', 'plate_t' => '2', 'plate_format' => '1000x2000', 'bars' => '1', 'hole_d' => '9', 'hole_p' => '8' ) ) );
+smp_assert( isset( $pb['errors']['holes'] ), 'a pitch smaller than the hole is refused' );
+$cu = Spec::build( $base + array( 'category' => 'tubes', 'family' => 'RHS', 'section' => 'custom', 'dims' => array( 'h' => '85', 'b' => '45', 't' => '3' ), 'bars' => '2' ) );
+smp_assert( ! $cu['errors'] && 'RHS 85x45x3' === $cu['data']['designation'], '"Other size" with typed dimensions' );
+$li = Spec::build( $base + array( 'category' => 'tubes', 'family' => 'RHS', 'section' => 'RHS 80x40x3', 'bars' => '2' ) );
+smp_assert( ! $li['errors'] && $li['data']['section_id'] > 0, 'RHS from the list of common sizes' );
 // 0.5.0: sale by the whole lot, or both.
 $ipe = $base + array( 'category' => 'profiles', 'family' => 'IPE', 'section' => 'IPE 200', 'bars' => '10', 'price_unit' => 'kg' );
 $lot = Spec::build( array( 'sale_mode' => 'lot', 'lot_price' => '600000' ) + $ipe );

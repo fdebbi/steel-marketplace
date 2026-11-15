@@ -25,7 +25,8 @@ $insp    = $item['inspection'] ?? null;
 // Key figures of the lot: designation, grade, bars × length (or pieces), weight; else the first rows of the specification.
 $figures = array();
 $els     = (array) ( $item['elements'] ?? array() );
-$bars    = ! $els && 'bars' === ( $item['qty_mode'] ?? '' ) && (int) $item['quantity'] > 0 && (float) $item['length_m'] > 0;
+$plate   = 'PLATE' === ( $item['family'] ?? '' );
+$bars    = ! $els && ! $plate && 'bars' === ( $item['qty_mode'] ?? '' ) && (int) $item['quantity'] > 0 && (float) $item['length_m'] > 0;
 $weight  = static fn( $w ) => sm_tech( $w >= 1000 ? sm_number( $w / 1000, 2 ) . ' t' : sm_number( $w ) . ' kg' );
 if ( $els ) {
 	// A lot of several elements (reuse): kinds, pieces and weight; the inventory below gives the detail.
@@ -42,7 +43,7 @@ if ( $els ) {
 	if ( $bars ) {
 		$figures[] = array( sm_tech( sm_number( (int) $item['quantity'] ) . ' × ' . sm_number( $item['length_m'], fmod( (float) $item['length_m'], 1 ) ? 1 : 0 ) . ' m' ), __( 'Bars × length', 'sm-marketplace' ) );
 	} elseif ( (float) $item['quantity'] > 0 ) {
-		$figures[] = array( sm_tech( ( 'weight' === ( $item['qty_mode'] ?? '' ) ? '≈ ' : '' ) . sm_number( $item['quantity'], fmod( (float) $item['quantity'], 1 ) ? 1 : 0 ) ), __( 'Pieces', 'sm-marketplace' ) );
+		$figures[] = array( sm_tech( ( 'weight' === ( $item['qty_mode'] ?? '' ) ? '≈ ' : '' ) . sm_number( $item['quantity'], fmod( (float) $item['quantity'], 1 ) ? 1 : 0 ) ), $plate ? __( 'Sheets', 'sm-marketplace' ) : __( 'Pieces', 'sm-marketplace' ) );
 	}
 	if ( (float) $item['weight_kg'] > 0 ) {
 		$figures[] = array( $weight( (float) $item['weight_kg'] ), __( 'Total weight', 'sm-marketplace' ) . ' · ' . sm_weight_source_short( $item['weight_source'] ) );

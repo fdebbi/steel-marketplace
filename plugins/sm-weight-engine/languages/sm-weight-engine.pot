@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Weight Engine 0.1.0\n"
+"Project-Id-Version: SM Weight Engine 0.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-weight-engine\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-07T13:25:40+00:00\n"
+"POT-Creation-Date: 2026-11-15T08:14:35+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-weight-engine\n"
@@ -310,45 +310,45 @@ msgstr ""
 msgid "Explain the change and give its source."
 msgstr ""
 
-#: src/Calculator.php:36
+#: src/Calculator.php:39
 msgid "Choose a section type."
 msgstr ""
 
-#: src/Calculator.php:45
-#: src/Calculator.php:59
+#: src/Calculator.php:48
+#: src/Calculator.php:62
 msgid "Choose a size from the list."
 msgstr ""
 
-#: src/Calculator.php:59
+#: src/Calculator.php:62
 msgid "Enter the dimensions."
 msgstr ""
 
 #. translators: %s: maximum length in metres.
-#: src/Calculator.php:67
+#: src/Calculator.php:70
 msgid "Enter a length between 0.1 and %s m."
 msgstr ""
 
-#: src/Calculator.php:90
+#: src/Calculator.php:93
 msgid "Enter the plate width in mm."
 msgstr ""
 
-#: src/Calculator.php:93
+#: src/Calculator.php:96
 msgid "This plate is larger than the allowed size."
 msgstr ""
 
-#: src/Calculator.php:113
+#: src/Calculator.php:126
 msgid "Enter a whole number of bars (1 or more)."
 msgstr ""
 
-#: src/Calculator.php:120
+#: src/Calculator.php:133
 msgid "Enter the total weight in kg."
 msgstr ""
 
-#: src/Calculator.php:143
+#: src/Calculator.php:156
 msgid "Check the dimensions (in mm)."
 msgstr ""
 
-#: src/Calculator.php:148
+#: src/Calculator.php:161
 msgid "The thickness is too large for this size."
 msgstr ""
 

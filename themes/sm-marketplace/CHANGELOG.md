@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.36.0 — 2026-11-15
+
+- Liste des dimensions avec recherche (`assets/js/size-picker.js`) : tubes carrés, rectangulaires et ronds regroupés par dimension extérieure (40 × 40, 80 × 40, Ø 48,3), fers plats par largeur ; recherche « 80x40 », « 80 × 40 » ou « 80*40 » ; « + Autre dimension » ouvre la saisie des cotes. Aussi dans le calculateur de poids.
+- Tôles (`plate-fields.php`) : 8 types en cartes, épaisseurs et formats en boutons, schéma de la feuille, poids estimé d'une feuille et poids réel modifiable.
+- Le curseur devient une main sur toutes les cartes à choix (« Comment le vendez-vous ? »…).
+- Le lien « Tableau source » du calculateur de poids est retiré : seule la norme reste affichée.
+- Fiche d'une tôle : nombre de feuilles au lieu de « barres × longueur ».
+
 ## 0.35.0 — 2026-11-14
 
 - Vue d'ensemble refaite (première page après connexion) : salutation, choix de période (30 jours, 3 mois, 12 mois, tout), 4 chiffres clés (montant vendu, montant acheté, acier en vente, acier échangé) avec évolution et petites courbes, grande courbe animée « Ventes et achats » (montant, poids, nombre ; détail d'un mois au survol ou au toucher), anneau de l'acier en vente par marché, « À traiter », annonces récentes avec leurs vues, compte et abonnement, actions rapides.

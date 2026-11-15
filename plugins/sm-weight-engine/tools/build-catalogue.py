@@ -35,6 +35,23 @@ def sizes(name):
             yield float(a), float(t)
 out['SHS'] = [['SHS {:g}x{:g}x{:g}'.format(B, B, T), {'h': num(B), 'b': num(B), 't': num(T)}, round(shs_area(B, B, T), 1), None] for B, T in sizes('shs_ferpinta_sizes.txt')]
 out['CHS'] = [['CHS {:g}x{:g}'.format(D, T), {'d': num(D), 't': num(T)}, round(math.pi * T * (D - T), 1), None] for D, T in sizes('chs_ferpinta_sizes.txt')]
+def rhs_rows():
+    for line in open(os.path.join(REF, 'raw', 'rhs_ferpinta.txt')):
+        if line.startswith('#') or not line.strip():
+            continue
+        hb, ts = line.strip().split(':')
+        H, B = (float(x) for x in hb.split('x'))
+        for part in ts.split(','):
+            T, G = (float(x) for x in part.strip().split('='))
+            yield H, B, T, G
+out['RHS'] = [['RHS {:g}x{:g}x{:g}'.format(H, B, T), {'h': num(H), 'b': num(B), 't': num(T)}, round(shs_area(B, H, T), 1), G] for H, B, T, G in sorted(rhs_rows())]
+out['FLAT'] = [['FLAT {:g}x{:g}'.format(B, T), {'b': num(B), 't': num(T)}, round(B * T, 1), None] for B, T in sizes('flat_sizes.txt')]
+def one_list(name):
+    for line in open(os.path.join(REF, 'raw', name)):
+        if not line.startswith('#') and line.strip():
+            return [float(x) for x in line.strip().split(',')]
+out['ROUND'] = [['ROUND {:g}'.format(D), {'d': num(D)}, round(math.pi * D * D / 4, 3), None] for D in one_list('round_sizes.txt')]
+out['SQUARE'] = [['SQUARE {:g}'.format(A), {'a': num(A)}, round(A * A, 1), None] for A in one_list('square_sizes.txt')]
 def php(v):
     if isinstance(v, dict):
         return 'array( ' + ', '.join(f"'{k}' => {php(x)}" for k, x in v.items()) + ' )'

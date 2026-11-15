@@ -250,6 +250,19 @@ final class Bridge {
 		} elseif ( 'PLATE' === $p->family ) {
 			$v['width']        = (string) $p->width_mm;
 			$v['plate_length'] = (string) $p->length_mm;
+			// 0.17.0: kind, thickness and format of the plate (plates published before have no kind: black plate).
+			$specs           = (array) $p->specs;
+			$v['plate_kind'] = (string) ( $specs['plate_kind'] ?? 'hot' );
+			$t               = (float) ( $p->dims['t'] ?? 0 );
+			$offered         = class_exists( '\\SM\\WeightEngine\\Plates' ) ? wp_list_pluck( \SM\WeightEngine\Plates::thicknesses( $v['plate_kind'] ), 'value' ) : array();
+			$v['plate_t']    = in_array( $t, array_map( 'floatval', $offered ), true ) ? (string) $t : 'custom';
+			$v['dims']       = array( 't' => (string) $t );
+			$formats         = class_exists( '\\SM\\WeightEngine\\Plates' ) ? \SM\WeightEngine\Plates::formats() : array();
+			$v['plate_format'] = in_array( array( (int) $p->width_mm, (int) $p->length_mm ), $formats, true ) ? $p->width_mm . 'x' . $p->length_mm : 'custom';
+			$v['hole_d']       = isset( $specs['hole_d'] ) ? (string) $specs['hole_d'] : '';
+			$v['hole_p']       = isset( $specs['hole_p'] ) ? (string) $specs['hole_p'] : '';
+			$v['piece_kg']     = 'actual' === $p->weight_source && $p->unit_weight ? (string) $p->unit_weight : '';
+			$v['actual_weight'] = '';
 		} elseif ( $p->length_mm ) {
 			$lengths = (array) sm_weight_setting( 'bar_lengths' );
 			if ( in_array( $p->length_mm, array_map( 'intval', $lengths ), true ) ) {

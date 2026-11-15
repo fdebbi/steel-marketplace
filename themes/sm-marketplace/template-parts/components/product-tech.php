@@ -37,7 +37,7 @@ $unit_labels = array(
 $field_error = static function ( $key ) use ( $err, $st ) {
 	$msg = sm_theme_field_error( $key );
 	if ( ! $msg && isset( $err[ $key ] ) ) {
-		$filled = array( 'section' => 'section', 'bars' => 'bars', 'total_kg' => 'total_kg', 'actual_weight' => 'actual_weight', 'length' => 'length_custom', 'width' => 'width', 'price' => 'price', 'price_unit' => 'price', 'quantity' => 'quantity', 'lot_price' => 'lot_price' );
+		$filled = array( 'section' => 'section', 'bars' => 'bars', 'total_kg' => 'total_kg', 'actual_weight' => 'actual_weight', 'piece_kg' => 'piece_kg', 'holes' => 'hole_d', 'length' => 'length_custom', 'width' => 'width', 'price' => 'price', 'price_unit' => 'price', 'quantity' => 'quantity', 'lot_price' => 'lot_price' );
 		if ( isset( $filled[ $key ] ) && '' !== (string) ( $st[ $filled[ $key ] ] ?? '' ) && ! is_array( $st[ $filled[ $key ] ] ) ) {
 			$msg = $err[ $key ];
 		}
@@ -243,22 +243,34 @@ $render_grade = static function () use ( $v, $ps ) {
 				}
 			}
 			$shape = $section ? $section : $typed;
+			// 0.36.0: a size from the list, or "Other size" to type the dimensions.
+			$custom = 'formula' === $family['method'] && ( ! $family['sections'] || 'custom' === $v( 'section' ) || ( ! $section && $dims_in ) );
 			?>
+			<?php if ( $is_plate ) : ?>
+				<?php sm_component( 'plate-fields', array( 'state' => $st, 'family' => $family, 'summary' => $sum, 'calc' => $pv['calc'] ?? null, 'field_error' => $field_error, 'render_grade' => $render_grade ) ); ?>
+			<?php else : ?>
 			<div class="smw-size smp-size">
 				<div class="smw-size__fields">
-					<?php if ( $family['sections'] && ! $is_plate ) : ?>
+					<?php if ( $family['sections'] ) : ?>
 						<div class="sm-field">
 							<label for="smp-section"><?php echo esc_html( 'formula' === $family['method'] ? __( 'Common size', 'sm-marketplace' ) : __( 'Size (European catalogue)', 'sm-marketplace' ) ); ?></label>
-							<select id="smp-section" name="section" dir="ltr"<?php sm_theme_aria( 'section' ); ?>>
-								<option value=""><?php echo esc_html( 'formula' === $family['method'] ? __( '— or type the dimensions below —', 'sm-marketplace' ) : __( 'Choose…', 'sm-marketplace' ) ); ?></option>
-								<?php foreach ( $family['sections'] as $s ) : ?>
-									<option value="<?php echo esc_attr( $s['id'] ); ?>" <?php selected( (int) ( $section['id'] ?? 0 ), $s['id'] ); ?>><?php echo esc_html( $s['designation'] . ' — ' . sm_number( $s['mass_kg_m'], 2 ) . ' kg/m' ); ?></option>
+							<select id="smp-section" name="section" dir="ltr" data-sm-picker data-sm-picker-search="<?php esc_attr_e( 'Search a size…', 'sm-marketplace' ); ?>" data-sm-picker-empty="<?php esc_attr_e( 'No size found.', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'section' ); ?>>
+								<option value=""><?php esc_html_e( 'Choose…', 'sm-marketplace' ); ?></option>
+								<?php foreach ( sm_size_groups( $family ) as $glabel => $rows ) : ?>
+									<?php echo '' !== $glabel ? '<optgroup label="' . esc_attr( $glabel ) . '">' : ''; ?>
+									<?php foreach ( $rows as $s ) : ?>
+										<option value="<?php echo esc_attr( $s['id'] ); ?>" <?php selected( (int) ( $section['id'] ?? 0 ), $s['id'] ); ?>><?php echo esc_html( $s['designation'] . ' — ' . sm_number( $s['mass_kg_m'], 2 ) . ' kg/m' ); ?></option>
+									<?php endforeach; ?>
+									<?php echo '' !== $glabel ? '</optgroup>' : ''; ?>
 								<?php endforeach; ?>
+								<?php if ( 'formula' === $family['method'] ) : ?>
+									<option value="custom" data-sm-picker-other <?php selected( $custom ); ?>><?php esc_html_e( '+ Other size (type the dimensions)', 'sm-marketplace' ); ?></option>
+								<?php endif; ?>
 							</select>
 							<?php $field_error( 'section' ); ?>
 						</div>
 					<?php endif; ?>
-					<?php if ( 'formula' === $family['method'] ) : ?>
+					<?php if ( $custom ) : ?>
 						<?php
 						$keys   = 'SHS' === $family['code'] ? array( 'b', 't' ) : $family['dims_keys'];
 						$shown  = $section ? $section['dims'] : $dims_in;
@@ -290,13 +302,8 @@ $render_grade = static function () use ( $v, $ps ) {
 				<?php endif; ?>
 			</div>
 
-			<?php if ( $is_plate ) : ?>
-				<div class="sm-field sm-field--row sm-field--row3">
-					<div><label for="smp-d-t"><?php esc_html_e( 'Thickness t', 'sm-marketplace' ); ?> <small>(mm)</small></label><input id="smp-d-t" name="dims[t]" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( (string) ( $dims_in['t'] ?? '' ) ); ?>"><?php $field_error( 'section' ); ?></div>
-					<div><label for="smp-width"><?php esc_html_e( 'Plate width', 'sm-marketplace' ); ?> <small>(mm)</small></label><input id="smp-width" name="width" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( $v( 'width' ) ); ?>" placeholder="1500"><?php $field_error( 'width' ); ?></div>
-					<div><label for="smp-plen"><?php esc_html_e( 'Plate length', 'sm-marketplace' ); ?> <small>(mm)</small></label><input id="smp-plen" name="plate_length" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( $v( 'plate_length' ) ); ?>" placeholder="3000"><?php $field_error( 'length' ); ?></div>
-				</div>
-			<?php else : ?>
+			<?php endif; ?>
+			<?php if ( ! $is_plate ) : ?>
 				<?php
 				$lengths = (array) ( $ws['bar_lengths'] ?? array() );
 				$length  = $v( 'length', (string) ( $ws['default_length'] ?? '' ) );
@@ -334,6 +341,7 @@ $render_grade = static function () use ( $v, $ps ) {
 				<?php endif; ?>
 			</fieldset>
 			<?php $source = 'actual' === $v( 'weight_source' ) ? 'actual' : 'theoretical'; ?>
+			<?php if ( ! $is_plate ) : // 0.36.0: a plate has its own "real weight of one sheet". ?>
 			<fieldset class="sm-field">
 				<legend class="sm-field__legend"><?php esc_html_e( 'Weight shown to buyers', 'sm-marketplace' ); ?></legend>
 				<div class="sm-segment">
@@ -346,6 +354,7 @@ $render_grade = static function () use ( $v, $ps ) {
 					<?php $field_error( 'actual_weight' ); ?>
 				<?php endif; ?>
 			</fieldset>
+			<?php endif; ?>
 		<?php endif; ?>
 
 	<?php elseif ( 'lines' === $cat['kind'] ) : ?>

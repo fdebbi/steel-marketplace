@@ -60,6 +60,7 @@
 				} );
 				fresh.classList.add( 'sm-swap-in' );
 				form.replaceWith( fresh );
+				if ( window.smSizePicker ) { window.smSizePicker.scan( fresh ); }
 				bind( fresh );
 				if ( again ) { clearTimeout( timer ); timer = setTimeout( function () { refresh( fresh, null ); }, 300 ); }
 				if ( window.history && history.replaceState ) { history.replaceState( null, '', shown ); }

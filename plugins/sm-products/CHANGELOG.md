@@ -1,5 +1,11 @@
 # Changelog — sm-products
 
+## 0.17.0 — 2026-11-15
+
+- Tôles : type de tôle obligatoire, épaisseur et format choisis dans les valeurs courantes (ou saisis), trous d'une tôle perforée, poids d'une feuille donné par le vendeur (« poids réel »), titre généré avec le type (« Tôle larmée 3/5 · 1 × 2 m »). Les tôles publiées avant restent des tôles noires.
+- Fiche : désignation, épaisseur (3/5), trous et poids d'une feuille pour les tôles.
+- « Autre dimension » (`section = custom`) avec les cotes saisies, pour les familles qui ont maintenant une liste.
+
 ## 0.16.0 — 2026-11-14
 
 - Donnée de thème `account_stock` : annonces en ligne du compte, leur poids, leur valeur, leurs vues, par marché (Vue d'ensemble).
