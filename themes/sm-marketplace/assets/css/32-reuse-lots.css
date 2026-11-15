@@ -55,3 +55,33 @@
 
 /* Inventory of a lot. */
 .smg-table td, .smg-table th { vertical-align: top; }
+
+/* 0.38.0: buy box — lengths chosen one by one, buyer's account. */
+.sm-buy__pick[data-sm-pick-add] .sm-buy__line { grid-template-columns: minmax(0, 1fr) auto 36px; }
+.sm-buy__line[hidden] { display: none !important; }
+.sm-buy__remove { inline-size: 36px; block-size: 36px; border: 1px solid var(--sm-line); border-radius: 10px; background: var(--sm-surface); color: #B42318; font-size: 1.2rem; cursor: pointer; }
+.sm-buy__remove[hidden] { visibility: hidden; display: block; }
+.sm-buy__max { margin: 4px 0; color: #B45309; font-size: var(--sm-fs-sm); }
+.sm-buy__add select { inline-size: 100%; border: 1.5px dashed var(--sm-accent); color: var(--sm-accent-ink, #04663c); font-weight: 600; background-color: transparent; cursor: pointer; }
+.sm-buy__me { display: flex; gap: 10px; align-items: center; margin-block: var(--sm-s3); padding: 10px 12px; border: 1px solid var(--sm-line); border-radius: var(--sm-radius); font-size: var(--sm-fs-sm); }
+.sm-buy__me p { margin: 0; }
+.sm-buy__avatar { flex: none; display: grid; place-items: center; inline-size: 36px; block-size: 36px; border-radius: 50%; background: var(--sm-primary); color: #fff; font-weight: 700; font-size: .8rem; }
+
+/* 0.38.0: lot form: readable fields on the dark box. */
+.smr-group input { color: var(--sm-text); background: var(--sm-surface); }
+.smr-group input::placeholder { color: var(--sm-muted); }
+
+/* 0.38.0: lot inventory — a title row per product, its lengths below. */
+.smg-table .smg-head th, .smg-table .smg-head td { background: var(--sm-surface-2, #f3f5f6); font-weight: 700; border-block-start: 1px solid var(--sm-line); }
+.smg-table .smg-head small { display: inline-block; margin-inline-start: 8px; font-weight: 400; color: var(--sm-muted); }
+.smg-table .smg-sub td:first-child { padding-inline-start: 26px; }
+.smg-table tfoot th, .smg-table tfoot td { font-weight: 700; }
+.sm-contact-dialog .smc-dialog__head p { margin: 4px 0 0; color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+
+/* 0.38.0: "My listings" — one tab per market above the states. */
+.smp-tabs { display: flex; flex-wrap: wrap; gap: 4px; margin-block-end: var(--sm-s3); border-block-end: 1px solid var(--sm-line); }
+.smp-tabs a { display: inline-flex; align-items: center; gap: 6px; padding: 10px 14px; margin-block-end: -1px; border-block-end: 3px solid transparent; color: var(--sm-muted); font-weight: 600; text-decoration: none; }
+.smp-tabs a:hover { color: var(--sm-text); }
+.smp-tabs a[aria-current] { color: var(--sm-text); border-block-end-color: var(--sm-accent); }
+.smp-tabs .sm-count { font-weight: 400; font-size: var(--sm-fs-xs); }
+.smg-table tfoot th { text-align: start; }

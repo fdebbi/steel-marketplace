@@ -96,12 +96,7 @@ final class Bridge {
 			$out['open_url'] = Notifications::deal_url( $open->id );
 			$out['open_ref'] = $open->ref;
 		}
-		$user           = wp_get_current_user();
-		$out['contact'] = array(
-			'name'  => $user->display_name,
-			'phone' => (string) get_user_meta( $user_id, 'sm_phone', true ),
-			'email' => $user->user_email,
-		);
+		$out['contact'] = Form::account( $user_id ); // 0.5.0: sent with the order, shown to the buyer.
 		return $out;
 	}
 

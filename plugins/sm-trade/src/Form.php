@@ -53,9 +53,10 @@ final class Form {
 				'amount'   => self::amount( Forms::post( 'amount' ) ),
 				'amount_kg' => self::amount( Forms::post( 'amount_kg' ) ),
 				'items'    => isset( $_POST['items'] ) && is_array( $_POST['items'] ) ? array_map( 'absint', wp_unslash( $_POST['items'] ) ) : array(), // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput -- nonce checked by Forms::begin(); numbers only.
-				'name'     => Forms::post( 'name' ),
-				'phone'    => Forms::post( 'phone' ),
-				'email'    => Forms::post( 'email' ),
+				// 0.5.0: the buyer is the signed-in account; nothing to type.
+				'name'     => self::account( $user_id )['name'],
+				'phone'    => self::account( $user_id )['phone'],
+				'email'    => self::account( $user_id )['email'],
 				'message'  => Forms::post_textarea( 'message' ),
 			)
 		);
@@ -63,6 +64,9 @@ final class Form {
 			$open = 'open' === $id->get_error_code() && $product ? Deals::open_for( $product->id, $user_id ) : null;
 			if ( $open ) {
 				Forms::back( array(), $id->get_error_message(), Notifications::deal_url( $open->id ) );
+			}
+			if ( 'phone' === $id->get_error_code() ) {
+				Forms::back( array( __( 'Add your phone number in your account first: the seller needs it to call you.', 'sm-trade' ) ) );
 			}
 			$field = in_array( $id->get_error_code(), array( 'qty', 'amount', 'amount_kg', 'items', 'name', 'phone', 'email' ), true ) ? array( 'qty' === $id->get_error_code() ? 'quantity' : $id->get_error_code() => $id->get_error_message() ) : array( $id->get_error_message() );
 			Forms::back( $field );
@@ -92,6 +96,21 @@ final class Form {
 			'counter' => __( 'Your price was sent. You will be told when the other party answers.', 'sm-trade' ),
 		)[ $action ] ?? '';
 		Forms::back( array(), $msg, Notifications::deal_url( $deal_id ) );
+	}
+
+	/** Name, phone and e-mail of the buyer's account (the phone of the company when the user has none). */
+	public static function account( $user_id ) {
+		$user    = get_userdata( $user_id );
+		$company = \SM\Core\Accounts\Companies::for_user( $user_id );
+		$phone   = (string) get_user_meta( $user_id, 'sm_phone', true );
+		if ( '' === $phone && $company && ! empty( $company->phone ) ) {
+			$phone = (string) $company->phone;
+		}
+		return array(
+			'name'  => $user ? (string) $user->display_name : '',
+			'phone' => $phone,
+			'email' => $user ? (string) $user->user_email : '',
+		);
 	}
 
 	/** Sign-in page that comes back to the listing. */

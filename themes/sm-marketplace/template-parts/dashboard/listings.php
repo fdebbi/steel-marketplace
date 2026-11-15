@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$mine = sm_theme_data( 'my_products', array( 'status' => sm_theme_query_arg( 'status' ), 'page' => (int) sm_theme_query_arg( 'pg', 1 ) ) );
+$mine = sm_theme_data( 'my_products', array( 'status' => sm_theme_query_arg( 'status' ), 'market' => sm_theme_query_arg( 'market' ), 'page' => (int) sm_theme_query_arg( 'pg', 1 ) ) );
 if ( is_array( $mine ) && isset( $mine['counts'] ) ) {
 	sm_component( 'my-products', array( 'data' => $mine ) );
 	return;

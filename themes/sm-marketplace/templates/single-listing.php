@@ -135,9 +135,9 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 				<?php if ( $can_trade && 'own' !== $trade['state'] ) : ?>
 					<a class="sm-btn sm-btn--accent sm-btn--block" href="#sm-buy" data-sm-buy="order"><?php sm_icon( 'cart' ); ?><?php esc_html_e( 'Buy', 'sm-marketplace' ); ?></a>
 					<a class="sm-btn sm-btn--primary-outline sm-btn--block" href="#sm-buy" data-sm-buy="offer"><?php sm_icon( 'tag' ); ?><?php esc_html_e( 'Make an offer', 'sm-marketplace' ); ?></a>
-					<a class="sm-btn sm-btn--ghost sm-btn--block" href="#sm-enquiry"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Contact the seller', 'sm-marketplace' ); ?></a>
+					<?php sm_contact_button( 'sm-enquiry', __( 'Contact the seller', 'sm-marketplace' ), 'sm-btn sm-btn--ghost sm-btn--block' ); ?>
 				<?php else : ?>
-					<a class="sm-btn sm-btn--accent sm-btn--block" href="#sm-enquiry"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Contact the seller', 'sm-marketplace' ); ?></a>
+					<?php sm_contact_button( 'sm-enquiry', __( 'Contact the seller', 'sm-marketplace' ), 'sm-btn sm-btn--accent sm-btn--block' ); ?>
 				<?php endif; ?>
 				<a class="sm-btn sm-btn--primary-outline sm-btn--block" href="<?php echo esc_url( sm_page_url( 'rfq', array( 'from' => $item['id'] ) ) ); ?>"><?php sm_icon( 'rfq' ); ?><?php esc_html_e( 'Request a quotation', 'sm-marketplace' ); ?></a>
 				<div class="sm-detail__mini">
@@ -214,7 +214,7 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 		<section class="sm-panel">
 			<h2 class="sm-panel__title"><?php esc_html_e( 'Description', 'sm-marketplace' ); ?></h2>
 			<?php if ( '' === trim( (string) $desc['text'] ) ) : ?>
-				<p class="sm-muted"><?php esc_html_e( 'No description. Ask the seller for details with the form below.', 'sm-marketplace' ); ?></p>
+				<p class="sm-muted"><?php esc_html_e( 'No description. Ask the seller for details with the Contact button.', 'sm-marketplace' ); ?></p>
 			<?php else : ?>
 			<p class="sm-prewrap"<?php echo $desc['fallback'] ? ' lang="' . esc_attr( $desc['lang'] ) . '" dir="auto"' : ''; ?>><?php echo esc_html( $desc['text'] ); ?></p>
 			<?php endif; ?>
@@ -247,6 +247,8 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 				'entity_id' => $item['id'],
 				'company'   => $item['company'],
 				'subject'   => sm_t( $item['title'] ),
+					'dialog'    => true, // 0.38.0: a window opened by "Contact".
+					'seller'    => $company ? sm_t( $company['name'] ) : '',
 			)
 		);
 		?>
@@ -266,7 +268,7 @@ $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !==
 </div>
 <div class="sm-stickybar" aria-hidden="false">
 	<div><strong><?php echo $is_build && ! empty( $item['building_sale']['lot_total'] ) ? esc_html( sm_money( $item['building_sale']['lot_total'] ) ) : ( $is_build && 'assembled' === $item['mode'] ? esc_html( sm_money( $item['total_price'] ) ) : sm_listing_price( $item, false ) ); // phpcs:ignore ?></strong></div>
-	<a class="sm-btn sm-btn--accent" href="#sm-enquiry"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Contact', 'sm-marketplace' ); ?></a>
+	<?php sm_contact_button( 'sm-enquiry', __( 'Contact', 'sm-marketplace' ), 'sm-btn sm-btn--accent' ); ?>
 </div>
 <?php
 get_footer();

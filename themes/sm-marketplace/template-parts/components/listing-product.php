@@ -172,7 +172,7 @@ $has_det   = $can_trade && ! empty( $trade['detail'] );
 		<section class="sm-panel">
 			<h2 class="sm-panel__title"><?php esc_html_e( 'Description', 'sm-marketplace' ); ?></h2>
 			<?php if ( '' === trim( (string) $desc['text'] ) ) : ?>
-				<p class="sm-muted"><?php esc_html_e( 'No description. Ask the seller for details with the form below.', 'sm-marketplace' ); ?></p>
+				<p class="sm-muted"><?php esc_html_e( 'No description. Ask the seller for details with the Contact button.', 'sm-marketplace' ); ?></p>
 			<?php else : ?>
 				<p class="sm-prewrap"<?php echo $desc['fallback'] ? ' lang="' . esc_attr( $desc['lang'] ) . '" dir="auto"' : ''; ?>><?php echo esc_html( $desc['text'] ); ?></p>
 			<?php endif; ?>
@@ -196,6 +196,8 @@ $has_det   = $can_trade && ! empty( $trade['detail'] );
 					'entity_id' => $item['id'],
 					'company'   => $item['company'],
 					'subject'   => sm_t( $item['title'] ),
+					'dialog'    => true, // 0.38.0: a window opened by "Contact".
+					'seller'    => $company ? sm_t( $company['name'] ) : '',
 					'qty_label' => $bars ? __( 'Quantity needed (bars)', 'sm-marketplace' ) : '',
 				)
 			);
@@ -230,10 +232,10 @@ $has_det   = $can_trade && ! empty( $trade['detail'] );
 						<a class="sm-btn sm-btn--primary-outline" href="#sm-buy" data-sm-buy="offer"><?php sm_icon( 'tag' ); ?><?php esc_html_e( 'Make an offer', 'sm-marketplace' ); ?></a>
 					</div>
 				<?php else : ?>
-					<a class="sm-btn sm-btn--accent sm-btn--block" href="#sm-enquiry"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Contact the seller', 'sm-marketplace' ); ?></a>
+					<?php sm_contact_button( 'sm-enquiry', __( 'Contact the seller', 'sm-marketplace' ), 'sm-btn sm-btn--accent sm-btn--block' ); ?>
 				<?php endif; ?>
 				<div class="smb-actions__mini">
-					<?php if ( $can_trade ) : ?><a class="sm-btn sm-btn--ghost sm-btn--sm" href="#sm-enquiry"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Get in touch', 'sm-marketplace' ); ?></a><?php endif; ?>
+					<?php if ( $can_trade ) : ?><?php sm_contact_button( 'sm-enquiry', __( 'Get in touch', 'sm-marketplace' ), 'sm-btn sm-btn--ghost sm-btn--sm' ); ?><?php endif; ?>
 					<a class="sm-btn sm-btn--ghost sm-btn--sm" href="<?php echo esc_url( sm_page_url( 'rfq', array( 'from' => $item['id'] ) ) ); ?>"><?php sm_icon( 'rfq' ); ?><?php esc_html_e( 'Quotation', 'sm-marketplace' ); ?></a>
 					<button class="sm-btn sm-btn--ghost sm-btn--sm" type="button" aria-pressed="false" data-sm-save="<?php echo esc_attr( $item['id'] ); ?>"><?php sm_icon( 'heart' ); ?><?php esc_html_e( 'Save', 'sm-marketplace' ); ?></button>
 					<button class="sm-btn sm-btn--ghost sm-btn--sm" type="button" data-sm-share><?php sm_icon( 'share' ); ?><?php esc_html_e( 'Share', 'sm-marketplace' ); ?></button>

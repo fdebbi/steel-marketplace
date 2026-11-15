@@ -348,10 +348,11 @@ final class Bridge {
 			return array( 'items' => array(), 'counts' => array(), 'total' => 0, 'pages' => 0 );
 		}
 		$status = sanitize_key( (string) ( $args['status'] ?? '' ) );
+		$market = Markets::exists( (string) ( $args['market'] ?? '' ) ) ? (string) $args['market'] : '';
 		$q      = Products::query(
 			array(
 				'status'   => in_array( $status, Products::STATUSES, true ) ? $status : 'any',
-				'market'   => Markets::exists( (string) ( $args['market'] ?? '' ) ) ? $args['market'] : '',
+				'market'   => $market,
 				'company'  => $company->id,
 				'sort'     => 'updated',
 				'per_page' => 20,
@@ -363,7 +364,9 @@ final class Bridge {
 		$photos = Media::first_many( 'product', $ids );
 		return array(
 			'items'  => array_map( static fn( $p ) => Presenter::listing( $p, $texts[ $p->id ] ?? array(), $photos[ $p->id ] ?? 0 ), $q['items'] ),
-			'counts' => Products::count_by_status( $company->id ),
+			'counts' => Products::count_by_status( $company->id, $market ),
+			'markets' => Products::count_by_market( $company->id ), // 0.18.1: tabs New / Reuse / Buildings.
+			'market' => $market,
 			'total'  => $q['total'],
 			'pages'  => $q['pages'],
 		);

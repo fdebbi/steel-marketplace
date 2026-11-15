@@ -2225,6 +2225,27 @@ T.update({
 })
 P.update({
 ("Lot of %d product", "Lot of %d products"): (["Lot de %d produit", "Lot de %d produits"], ["دفعة من %d منتج", "دفعة من منتج واحد", "دفعة من منتجين", "دفعة من %d منتجات", "دفعة من %d منتجًا", "دفعة من %d منتج"]),
-("%s piece", "%s pieces"): (["%s morceau", "%s morceaux"], ["%s قطعة", "قطعة واحدة", "قطعتان", "%s قطع", "%s قطعة", "%s قطعة"]),
+("%s piece", "%s pieces"): (["%s pièce", "%s pièces"], ["%s قطعة", "قطعة واحدة", "قطعتان", "%s قطع", "%s قطعة", "%s قطعة"]),
 ("%s product, sold together", "%s products, sold together"): (["%s produit, vendu ensemble", "%s produits, vendus ensemble"], ["%s منتج، يباع معًا", "منتج واحد", "منتجان، يباعان معًا", "%s منتجات، تباع معًا", "%s منتجًا، تباع معًا", "%s منتج، تباع معًا"]),
+})
+# 0.38.0 — buy by bars, contact window, lot inventory, tabs of "My listings".
+T.update({
+"Sign in to contact": ("Connectez-vous pour contacter", "سجّل الدخول للتواصل"),
+"Choose the lengths and the number of bars": ("Choisissez les longueurs et le nombre de barres", "اختر الأطوال وعدد القضبان"),
+"%s available": ("%s dispo", "%s متوفر"),
+"Remove this length": ("Retirer cette longueur", "إزالة هذا الطول"),
+"Maximum reached: %1$s bars of %2$s available.": ("Maximum atteint : %1$s barres de %2$s disponibles.", "تم بلوغ الحد الأقصى: %1$s قضبان من %2$s متوفرة."),
+"Add another length": ("Ajouter une autre longueur", "إضافة طول آخر"),
+"+ Add another length": ("+ Ajouter une autre longueur", "+ إضافة طول آخر"),
+"Sent to the seller with the details of your account:": ("La commande sera envoyée au vendeur avec les informations de votre compte :", "يُرسل الطلب إلى البائع مع معلومات حسابك:"),
+"Add your phone number in your account: the seller needs it to call you.": ("Ajoutez votre numéro de téléphone dans votre compte : le vendeur en a besoin pour vous appeler.", "أضف رقم هاتفك في حسابك: يحتاجه البائع للاتصال بك."),
+"Nothing is paid on ReuSteel. Once the seller accepts, you get the seller's contact details and agree on payment and delivery directly.": ("Rien n’est payé sur ReuSteel. Une fois la commande acceptée, vous recevez les coordonnées du vendeur et vous convenez ensemble du paiement et de la livraison.", "لا يُدفع شيء على ReuSteel. بعد قبول البائع، تحصل على معلومات الاتصال به وتتفقان مباشرة على الدفع والتسليم."),
+"Contact %s": ("Contacter %s", "التواصل مع %s"),
+"Your message is sent with the name and the phone of your account.": ("Votre message est envoyé avec le nom et le téléphone de votre compte.", "تُرسل رسالتك مع اسم حسابك ورقم هاتفه."),
+"The company receives your message with the name, phone and e-mail of your account, and answers you.": ("L’entreprise reçoit votre message avec le nom, le téléphone et l’e-mail de votre compte, et vous répond.", "تتلقى الشركة رسالتك مع اسم حسابك وهاتفه وبريده الإلكتروني، وترد عليك."),
+"No description. Ask the seller for details with the Contact button.": ("Pas de description. Demandez des détails au vendeur avec le bouton Contacter.", "لا يوجد وصف. اطلب التفاصيل من البائع عبر زر التواصل."),
+"Reuse": ("Réemploi", "إعادة الاستخدام"),
+"Buildings": ("Bâtiments", "المباني"),
+"Listings by market": ("Annonces par marché", "الإعلانات حسب السوق"),
+"Phone and e-mail are not shown on ReuSteel: write to this account, it answers you.": ("Le téléphone et l’e-mail ne sont pas affichés sur ReuSteel : écrivez à ce compte, il vous répond.", "لا يُعرض الهاتف والبريد الإلكتروني على ReuSteel: راسل هذا الحساب وسيرد عليك."),
 })

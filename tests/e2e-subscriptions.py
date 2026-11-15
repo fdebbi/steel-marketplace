@@ -89,7 +89,7 @@ with sync_playwright() as p:
     print('\nB. A free company: limits and hidden contacts')
     v.goto(BASE + '/entreprise/' + co_slug + '/?lang=fr')
     t = txt(v)
-    check('0550 98' not in t and 'contact-e2es@example.test' not in t and 'Utilisez le formulaire' in t, 'visitors do not see the phone and e-mail of a free account')
+    check('0550 98' not in t and 'contact-e2es@example.test' not in t and 'ne sont pas affichés' in t, 'visitors do not see the phone and e-mail of a free account')
     c = ctx()
     login(c, CO)
     c.goto(BASE + '/compte/abonnement/')
@@ -158,7 +158,7 @@ with sync_playwright() as p:
     k.goto(c.url)
     check('Facture introuvable' in txt(k), 'another account cannot open the invoice')
     v.goto(BASE + '/entreprise/' + co_slug + '/?lang=fr')
-    check('0550' in txt(v) and 'contact-e2es@example.test' in txt(v), 'with Pro, visitors see the phone and e-mail')
+    check('0550 98' not in txt(v) and 'contact-e2es@example.test' not in txt(v) and v.locator('[data-smc-open="smc-message"], a[href*="smc-message"]').count() >= 1, 'with Pro too, no phone or e-mail shown: "Contact" opens the message window (0.38.0)')
 
     print('\nF. Options on a listing')
     c.goto(BASE + '/compte/annonces/')

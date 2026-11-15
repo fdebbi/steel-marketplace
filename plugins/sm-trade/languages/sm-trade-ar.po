@@ -56,19 +56,19 @@ msgstr "الطلبات والعروض"
 msgid "Waiting for an answer"
 msgstr "في انتظار الرد"
 
-#: src/Admin/Admin.php:56 src/Admin/Admin.php:67 src/Theme/Bridge.php:113
+#: src/Admin/Admin.php:56 src/Admin/Admin.php:67 src/Theme/Bridge.php:108
 msgid "Accepted"
 msgstr "مقبول"
 
-#: src/Admin/Admin.php:57 src/Admin/Admin.php:68 src/Theme/Bridge.php:114
+#: src/Admin/Admin.php:57 src/Admin/Admin.php:68 src/Theme/Bridge.php:109
 msgid "Refused"
 msgstr "مرفوض"
 
-#: src/Admin/Admin.php:58 src/Admin/Admin.php:69 src/Theme/Bridge.php:115
+#: src/Admin/Admin.php:58 src/Admin/Admin.php:69 src/Theme/Bridge.php:110
 msgid "Cancelled"
 msgstr "ملغى"
 
-#: src/Admin/Admin.php:59 src/Theme/Bridge.php:116
+#: src/Admin/Admin.php:59 src/Theme/Bridge.php:111
 msgid "Expired"
 msgstr "منتهي"
 
@@ -113,12 +113,12 @@ msgid "Type"
 msgstr "النوع"
 
 #: src/Admin/Admin.php:114 src/Admin/Admin.php:137 src/Admin/Admin.php:157
-#: src/Admin/Admin.php:200 src/Theme/Bridge.php:145
+#: src/Admin/Admin.php:200 src/Theme/Bridge.php:140
 msgid "Order"
 msgstr "طلب شراء"
 
 #: src/Admin/Admin.php:114 src/Admin/Admin.php:137 src/Admin/Admin.php:157
-#: src/Admin/Admin.php:200 src/Theme/Bridge.php:145
+#: src/Admin/Admin.php:200 src/Theme/Bridge.php:140
 msgid "Offer"
 msgstr "عرض"
 
@@ -163,12 +163,12 @@ msgid "Listing"
 msgstr "الإعلان"
 
 #: src/Admin/Admin.php:133 src/Admin/Admin.php:162 src/Admin/Admin.php:175
-#: src/Admin/Admin.php:197 src/Theme/Bridge.php:123
+#: src/Admin/Admin.php:197 src/Theme/Bridge.php:118
 msgid "Seller"
 msgstr "البائع"
 
 #: src/Admin/Admin.php:133 src/Admin/Admin.php:163 src/Admin/Admin.php:175
-#: src/Admin/Admin.php:197 src/Theme/Bridge.php:122
+#: src/Admin/Admin.php:197 src/Theme/Bridge.php:117
 msgid "Buyer"
 msgstr "المشتري"
 
@@ -241,7 +241,7 @@ msgstr "السعر"
 msgid "Message"
 msgstr "الرسالة"
 
-#: src/Admin/Admin.php:175 src/Theme/Bridge.php:124 src/Theme/Bridge.php:125
+#: src/Admin/Admin.php:175 src/Theme/Bridge.php:119 src/Theme/Bridge.php:120
 msgid "Platform"
 msgstr "المنصة"
 
@@ -343,13 +343,19 @@ msgstr "اقترح سعرا مختلفا أو اقبل هذا السعر."
 msgid "You sent many orders or offers in a short time. Try again later."
 msgstr "أرسلت طلبات أو عروضا كثيرة في وقت قصير. أعد المحاولة لاحقا."
 
-#: src/Form.php:74
+#: src/Form.php:69
+msgid ""
+"Add your phone number in your account first: the seller needs it to call "
+"you."
+msgstr "أضف أولًا رقم هاتفك في حسابك: يحتاجه البائع للاتصال بك."
+
+#: src/Form.php:78
 msgid ""
 "Offer sent to the seller. You will be told by e-mail when the seller "
 "answers."
 msgstr "تم إرسال العرض إلى البائع. ستُبلَّغ بالبريد عند رده."
 
-#: src/Form.php:75
+#: src/Form.php:79
 msgid ""
 "Order sent to the seller. Nothing is paid on the platform: the seller "
 "accepts or refuses, then you agree on payment and delivery directly."
@@ -357,21 +363,21 @@ msgstr ""
 "تم إرسال الطلب إلى البائع. لا يُدفع شيء على المنصة: يقبل البائع أو يرفض، ثم "
 "تتفقان مباشرة على الدفع والتسليم."
 
-#: src/Form.php:89
+#: src/Form.php:93
 msgid ""
 "Accepted. The contact details are below: agree on payment and delivery "
 "directly."
 msgstr "تم القبول. بيانات الاتصال أدناه: اتفقا مباشرة على الدفع والتسليم."
 
-#: src/Form.php:90
+#: src/Form.php:94
 msgid "Refused. The other party was told."
 msgstr "تم الرفض. تم إبلاغ الطرف الآخر."
 
-#: src/Form.php:91
+#: src/Form.php:95
 msgid "Cancelled. The seller was told."
 msgstr "تم الإلغاء. تم إبلاغ البائع."
 
-#: src/Form.php:92
+#: src/Form.php:96
 msgid "Your price was sent. You will be told when the other party answers."
 msgstr "تم إرسال سعرك. ستُبلَّغ عند رد الطرف الآخر."
 
@@ -557,34 +563,34 @@ msgstr "ديسمبر"
 msgid "Week of %s"
 msgstr "أسبوع %s"
 
-#: src/Theme/Bridge.php:110
+#: src/Theme/Bridge.php:105
 msgid "Waiting for the seller"
 msgstr "في انتظار البائع"
 
-#: src/Theme/Bridge.php:110
+#: src/Theme/Bridge.php:105
 msgid "Waiting for the buyer"
 msgstr "في انتظار المشتري"
 
-#: src/Theme/Bridge.php:128
+#: src/Theme/Bridge.php:123
 msgid "sent the request"
 msgstr "أرسل الطلب"
 
-#: src/Theme/Bridge.php:129
+#: src/Theme/Bridge.php:124
 msgid "proposed another price"
 msgstr "اقترح سعرا آخر"
 
-#: src/Theme/Bridge.php:130
+#: src/Theme/Bridge.php:125
 msgid "accepted"
 msgstr "قَبِل"
 
-#: src/Theme/Bridge.php:131
+#: src/Theme/Bridge.php:126
 msgid "refused"
 msgstr "رفض"
 
-#: src/Theme/Bridge.php:132
+#: src/Theme/Bridge.php:127
 msgid "cancelled"
 msgstr "ألغى"
 
-#: src/Theme/Bridge.php:133
+#: src/Theme/Bridge.php:128
 msgid "closed: no answer within 7 days"
 msgstr "أُغلق: لا رد خلال 7 أيام"

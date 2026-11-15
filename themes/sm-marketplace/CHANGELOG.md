@@ -1,5 +1,15 @@
 # Changelog — sm-marketplace
 
+## 0.38.0 — 2026-11-15
+
+- Achat de barres de plusieurs longueurs (réemploi) : deux choix, « Barres » ou « Lot complet ». L'acheteur choisit une longueur de l'inventaire et un nombre plafonné au stock (« Maximum atteint »), puis « + Ajouter une autre longueur » propose les longueurs restantes ; poids et prix calculés ligne par ligne.
+- Plus de champs nom / téléphone / e-mail dans l'achat : la commande part avec les informations du compte (carte « La commande sera envoyée… »). Sans téléphone dans le compte, un lien vers les paramètres.
+- « Contacter » ouvre une fenêtre partout (fiche d'annonce, bâtiment, profil d'entreprise ou de professionnel) ; comptes connectés seulement, un visiteur passe par la connexion et revient avec la fenêtre ouverte. Le formulaire « Envoyer une demande » en bas des fiches disparaît ; la fenêtre se rouvre après un envoi (message de confirmation ou erreur).
+- Profil d'entreprise : téléphone (bouton « Afficher ») et e-mail retirés ; il reste le site web et « Contacter ».
+- Inventaire d'un lot : une ligne de titre par produit (désignation, état, nombre de pièces, poids), puis une ligne par longueur (tôles : par format).
+- « Mes annonces » : onglets Tout / Neuf / Réemploi / Bâtiments au-dessus des filtres d'état ; les cases « Regrouper en lot » n'apparaissent que dans Réemploi. Texte des champs du cadre de regroupement lisible (il était blanc sur blanc).
+- « %s pièces » au lieu de « morceaux ».
+
 ## 0.37.0 — 2026-11-15
 
 - Réemploi : tableau Longueur | Nombre (tôles : Longueur | Largeur | Nombre) avec « + Ajouter une longueur », poids de chaque ligne et total ; mode « Au poids total ». Origine, état et état de surface après les données géométriques, puis le prix et ce qu'il inclut. 2 photos demandées.

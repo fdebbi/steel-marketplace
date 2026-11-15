@@ -36,6 +36,32 @@ final class Groups {
 		add_action( 'sm_products_deleted', array( __CLASS__, 'on_deleted' ) );
 		add_filter( 'sm_products_listing', array( __CLASS__, 'listing' ), 20, 2 );
 		add_filter( 'sm_products_listing_detail', array( __CLASS__, 'detail' ), 20, 2 );
+		add_filter( 'sm_products_stock_options', array( __CLASS__, 'stock_options' ), 10, 2 );
+	}
+
+	/**
+	 * 0.4.0: a reuse listing in several lengths (or plate sizes) is bought by
+	 * pieces of its inventory (each length up to its stock) or as a whole lot;
+	 * never by a free number of kilos or by bars of one length.
+	 */
+	public static function stock_options( $out, $p ) {
+		if ( Market::CODE !== ( $p->market ?? '' ) || empty( $p->lines ) || self::is_lot( $p ) || empty( $out['detail'] ) ) {
+			return $out;
+		}
+		$lines = \SM\Products\Stock::pick_lines( $p );
+		$per   = 'kg' === $p->price_unit ? (float) $p->price : (float) $p->price_per_kg;
+		if ( ! $lines || $per <= 0 ) {
+			$out['detail'] = null;
+			return $out;
+		}
+		$out['detail'] = array(
+			'unit'       => 'kg',
+			'step'       => 1.0,
+			'unit_price' => $per,
+			'lines'      => $lines,
+			'max'        => round( array_sum( array_map( static fn( $l ) => $l['qty'] * $l['piece_kg'], $lines ) ), 3 ),
+		);
+		return $out;
 	}
 
 	public static function is_lot( $p ) {
@@ -236,8 +262,17 @@ final class Groups {
 				continue;
 			}
 			$parts = array();
+			$rows  = array(); // 0.38.0: one row per length (plates: per size) under the product.
 			foreach ( (array) $m->lines as $l ) {
-				$parts[] = ( ! empty( $l['width_mm'] ) ? self::n( $l['length_mm'] ) . ' × ' . self::n( $l['width_mm'] ) . ' mm' : self::m( $l['length_mm'] ) . ' m' ) . ' × ' . (int) $l['qty'];
+				$size    = ! empty( $l['width_mm'] ) ? self::n( $l['length_mm'] ) . ' × ' . self::n( $l['width_mm'] ) . ' mm' : self::m( $l['length_mm'] ) . ' m';
+				$parts[] = $size . ' × ' . (int) $l['qty'];
+				$kg      = isset( $l['total'] ) ? (float) $l['total'] : ( ! empty( $l['kg_m'] ) ? (float) $l['kg_m'] * (float) $l['length_mm'] / 1000 * (int) $l['qty'] : 0.0 );
+				if ( isset( $rows[ $size ] ) ) {
+					$rows[ $size ]['qty']    += (int) $l['qty'];
+					$rows[ $size ]['weight'] += $kg;
+				} else {
+					$rows[ $size ] = array( 'size' => $size, 'qty' => (int) $l['qty'], 'weight' => $kg );
+				}
 			}
 			if ( ! $parts && $m->pieces > 0 && $m->length_mm > 0 && ! $m->lines ) {
 				$parts[] = self::m( $m->length_mm ) . ' m × ' . self::n( $m->pieces );
@@ -251,6 +286,7 @@ final class Groups {
 				'title'       => \SM\Products\Presenter::title_text( $m ),
 				'designation' => \SM\Products\Presenter::designation( $m ),
 				'sizes'       => implode( ' · ', $parts ),
+				'rows'        => array_values( $rows ),
 				'pieces'      => (float) $m->pieces,
 				'condition'   => $conds[ $m->item_condition ] ?? array(),
 				'weight'      => (float) $m->total_weight,

@@ -12,7 +12,17 @@ defined( 'ABSPATH' ) || exit;
 $data    = $args['data'];
 $counts  = (array) $data['counts'];
 $current = sm_theme_query_arg( 'status' );
-$base    = sm_page_url( 'account', array( 'view' => 'listings' ) );
+$market  = (string) ( $data['market'] ?? '' );
+$by_mkt  = (array) ( $data['markets'] ?? array() );
+$root    = sm_page_url( 'account', array( 'view' => 'listings' ) );
+$base    = '' !== $market ? add_query_arg( 'market', $market, $root ) : $root;
+// 0.38.0: one tab per market, then the states of that market.
+$tabs    = array(
+	''          => __( 'All', 'sm-marketplace' ),
+	'products'  => __( 'Brand new', 'sm-marketplace' ),
+	'reuse'     => __( 'Reuse', 'sm-marketplace' ),
+	'buildings' => __( 'Buildings', 'sm-marketplace' ),
+);
 $labels  = array(
 	'published' => __( 'Published', 'sm-marketplace' ),
 	'pending'   => __( 'Waiting for review', 'sm-marketplace' ),
@@ -34,7 +44,7 @@ $one = array(
 	'grouped'   => __( 'In a lot', 'sm-marketplace' ),
 );
 // 0.37.0: published reuse listings can be grouped into one lot (not scrap, not a lot).
-$groupable = static fn( $item ) => 'published' === $item['status'] && 'reuse' === ( $item['market'] ?? '' ) && ! isset( $item['group_count'] ) && 'reuse-scrap' !== ( $item['category'] ?? '' );
+$groupable = static fn( $item ) => 'reuse' === $market && 'published' === $item['status'] && 'reuse' === ( $item['market'] ?? '' ) && ! isset( $item['group_count'] ) && 'reuse-scrap' !== ( $item['category'] ?? '' );
 $n_group   = count( array_filter( $data['items'], $groupable ) );
 // Paid options (sm-subscriptions): back to the top, "Urgent" badge, featured listing.
 $sub     = sm_theme_data( 'subscription' );
@@ -46,6 +56,12 @@ $action  = static function ( $item, $do, $label, $style = 'ghost', $confirm = ''
 	echo '<button type="submit" class="sm-btn sm-btn--' . esc_attr( $style ) . ' sm-btn--sm"' . ( $confirm ? ' data-sm-confirm="' . esc_attr( $confirm ) . '"' : '' ) . '>' . esc_html( $label ) . '</button></form>';
 };
 ?>
+<nav class="smp-tabs" aria-label="<?php esc_attr_e( 'Listings by market', 'sm-marketplace' ); ?>">
+	<?php foreach ( $tabs as $k => $l ) : ?>
+		<?php $n = '' === $k ? array_sum( $by_mkt ) : (int) ( $by_mkt[ $k ] ?? 0 ); ?>
+		<a href="<?php echo esc_url( '' === $k ? $root : add_query_arg( 'market', $k, $root ) ); ?>"<?php echo $market === $k ? ' aria-current="page"' : ''; ?>><?php echo esc_html( $l ); ?> <span class="sm-count"><?php echo esc_html( sm_number( $n ) ); ?></span></a>
+	<?php endforeach; ?>
+</nav>
 <div class="sm-toolbar">
 	<nav class="smp-filter" aria-label="<?php esc_attr_e( 'Filter by status', 'sm-marketplace' ); ?>">
 		<a href="<?php echo esc_url( $base ); ?>"<?php echo '' === $current ? ' aria-current="page"' : ''; ?>><?php esc_html_e( 'All', 'sm-marketplace' ); ?> (<?php echo esc_html( array_sum( $counts ) ); ?>)</a>

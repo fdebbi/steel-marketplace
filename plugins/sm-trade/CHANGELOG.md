@@ -1,5 +1,9 @@
 # Changelog — sm-trade
 
+## 0.5.0 — 2026-11-15
+
+- Une commande ou une offre part avec le nom, le téléphone et l'e-mail du compte (`Form::account()`), plus de saisie dans le formulaire ; sans téléphone dans le compte, l'envoi est refusé avec un message clair. La boîte d'achat reçoit `contact`.
+
 ## 0.4.0 — 2026-11-14
 
 - Statistiques de la Vue d'ensemble (`Stats`, donnée de thème `account_stats`) : montants, poids et nombre des ventes et achats acceptés, par jour (30 jours), par semaine (3 mois), par mois (12 mois et tout), avec la période précédente pour comparer.

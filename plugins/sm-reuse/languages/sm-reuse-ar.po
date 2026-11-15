@@ -150,47 +150,47 @@ msgstr "إعادة الاستعمال الإنشائي: استشر مهندسً�
 msgid "Find an engineer"
 msgstr "ابحث عن مهندس"
 
-#: src/Groups.php:71
+#: src/Groups.php:97
 msgid ""
 "Only your published reuse listings can be grouped (not scrap, not lots)."
 msgstr ""
 "يمكن تجميع إعلانات إعادة الاستعمال المنشورة فقط (لا الخردة ولا الدفعات)."
 
-#: src/Groups.php:76
+#: src/Groups.php:102
 msgid "Tick at least two listings to make a lot."
 msgstr "اختر إعلانين على الأقل لتكوين دفعة."
 
-#: src/Groups.php:79
+#: src/Groups.php:105
 msgid "The products of a lot must be in the same wilaya."
 msgstr "يجب أن تكون منتجات الدفعة في نفس الولاية."
 
-#: src/Groups.php:85
+#: src/Groups.php:111
 msgid "Enter the price of the lot."
 msgstr "أدخل سعر الدفعة."
 
 #. translators: %d: number of products.
-#: src/Groups.php:93
+#: src/Groups.php:119
 msgid "Lot of %d reuse products"
 msgstr "دفعة من %d منتجات لإعادة الاستعمال"
 
 #. translators: %s: number of pieces.
-#: src/Groups.php:247
+#: src/Groups.php:282
 msgid "%s pieces"
 msgstr "%s قطعة"
 
-#: src/Groups.php:279
+#: src/Groups.php:321
 msgid "Your account has no company."
 msgstr "حسابك غير مرتبط بمؤسسة."
 
-#: src/Groups.php:288
+#: src/Groups.php:330
 msgid "The lot is online. Its products are no longer sold separately."
 msgstr "الدفعة منشورة. لم تعد منتجاتها تباع منفصلة."
 
-#: src/Groups.php:295
+#: src/Groups.php:337
 msgid "You cannot change this lot."
 msgstr "لا يمكنك تعديل هذه الدفعة."
 
-#: src/Groups.php:298
+#: src/Groups.php:340
 msgid "The lot is undone: its products are on sale again one by one."
 msgstr "أُلغيت الدفعة: عادت منتجاتها للبيع واحدًا واحدًا."
 

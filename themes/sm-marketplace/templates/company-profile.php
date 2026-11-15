@@ -227,24 +227,8 @@ $shares  = array(
 			</section>
 
 			<section class="smc-card" aria-labelledby="smc-contact-t">
-				<h2 id="smc-contact-t"><?php esc_html_e( 'Contact details', 'sm-marketplace' ); ?></h2>
+				<h2 id="smc-contact-t"><?php esc_html_e( 'Contact', 'sm-marketplace' ); ?></h2>
 				<ul class="smc-contact" role="list">
-					<?php if ( $phone ) : ?>
-						<li>
-							<span class="smc-contact__icon"><?php sm_icon( 'phone' ); ?></span>
-							<span class="smc-contact__text"><small><?php esc_html_e( 'Phone', 'sm-marketplace' ); ?></small>
-								<a href="tel:<?php echo esc_attr( preg_replace( '/[^\d+]/', '', $phone ) ); ?>" data-smc-phone hidden><bdi dir="ltr"><?php echo esc_html( $phone ); ?></bdi></a>
-								<strong data-smc-phone-mask><bdi dir="ltr"><?php echo esc_html( mb_substr( preg_replace( '/\s+/', '', $phone ), 0, 4 ) . ' •• •• ••' ); ?></bdi></strong>
-							</span>
-							<button type="button" class="smc-contact__reveal" data-smc-reveal><?php esc_html_e( 'Show', 'sm-marketplace' ); ?></button>
-						</li>
-					<?php endif; ?>
-					<?php if ( ! empty( $company['email'] ) ) : ?>
-						<li>
-							<span class="smc-contact__icon"><?php sm_icon( 'mail' ); ?></span>
-							<span class="smc-contact__text"><small><?php esc_html_e( 'E-mail', 'sm-marketplace' ); ?></small><a href="mailto:<?php echo esc_attr( $company['email'] ); ?>"><bdi dir="ltr"><?php echo esc_html( $company['email'] ); ?></bdi></a></span>
-						</li>
-					<?php endif; ?>
 					<?php if ( ! empty( $company['website'] ) ) : ?>
 						<li>
 							<span class="smc-contact__icon"><?php sm_icon( 'globe' ); ?></span>
@@ -252,17 +236,13 @@ $shares  = array(
 						</li>
 					<?php endif; ?>
 				</ul>
-				<?php if ( ! empty( $company['contacts_hidden'] ) ) : ?>
-					<p class="smc-contact__hidden"><?php sm_icon( 'lock' ); ?><span><?php esc_html_e( 'This account shares its phone and e-mail in answer to your message. Use the form to contact it.', 'sm-marketplace' ); ?></span></p>
-				<?php elseif ( $own_hidden ) : ?>
-					<p class="smc-contact__hidden"><?php sm_icon( 'lock' ); ?><span><?php esc_html_e( 'Visitors do not see your phone, e-mail and website with the free plan; they write to you through the form.', 'sm-marketplace' ); ?> <a href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'plan' ) ) ); ?>"><?php esc_html_e( 'See the plans', 'sm-marketplace' ); ?></a></span></p>
-				<?php endif; ?>
+				<p class="smc-contact__hidden"><?php sm_icon( 'lock' ); ?><span><?php esc_html_e( 'Phone and e-mail are not shown on ReuSteel: write to this account, it answers you.', 'sm-marketplace' ); ?></span></p>
 				<?php if ( ! $is_owner ) : ?>
 					<div class="smc-contact__actions">
 						<?php if ( $real_services ) : ?>
 							<button type="button" class="sm-btn sm-btn--accent sm-btn--block" data-smc-open="smc-request"><?php sm_icon( 'rfq' ); ?><?php esc_html_e( 'Request a quote', 'sm-marketplace' ); ?></button>
 						<?php endif; ?>
-						<button type="button" class="sm-btn <?php echo $real_services ? 'sm-btn--ghost' : 'sm-btn--accent'; ?> sm-btn--block" data-smc-open="smc-message"><?php sm_icon( 'message' ); ?><?php esc_html_e( 'Send a message', 'sm-marketplace' ); ?></button>
+						<?php sm_contact_button( 'smc-message', __( 'Contact', 'sm-marketplace' ), 'sm-btn ' . ( $real_services ? 'sm-btn--ghost' : 'sm-btn--accent' ) . ' sm-btn--block' ); ?>
 					</div>
 				<?php endif; ?>
 			</section>
@@ -338,27 +318,20 @@ $shares  = array(
 <?php endif; ?>
 
 <?php if ( ! $is_owner ) : ?>
-	<dialog class="smc-dialog" id="smc-message" aria-label="<?php esc_attr_e( 'Send a message', 'sm-marketplace' ); ?>">
-		<div class="smc-dialog__head">
-			<div><h2><?php esc_html_e( 'Send a message', 'sm-marketplace' ); ?></h2></div>
-			<button type="button" class="smc-dialog__close" data-smc-close aria-label="<?php esc_attr_e( 'Close', 'sm-marketplace' ); ?>"><?php sm_icon( 'close' ); ?></button>
-		</div>
-		<div class="smc-dialog__body">
-			<?php
-			sm_component(
-				'enquiry-form',
-				array(
-					'kind'    => $is_pro ? 'service' : 'listing',
-					'module'  => 'company',
-					'company' => $company['slug'],
-					'subject' => __( 'Contact from the company page', 'sm-marketplace' ),
-					'title'   => $is_pro ? __( 'Contact this professional', 'sm-marketplace' ) : __( 'Contact this company', 'sm-marketplace' ),
-					'id'      => 'sm-contact',
-				)
-			);
-			?>
-		</div>
-	</dialog>
+	<?php
+	sm_component(
+		'enquiry-form',
+		array(
+			'kind'    => $is_pro ? 'service' : 'listing',
+			'module'  => 'company',
+			'company' => $company['slug'],
+			'subject' => __( 'Contact from the company page', 'sm-marketplace' ),
+			'id'      => 'smc-message',
+			'dialog'  => true, // 0.38.0: the same contact window as on listings.
+			'seller'  => $name,
+		)
+	);
+	?>
 <?php endif; ?>
 <?php
 get_footer();

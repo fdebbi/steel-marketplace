@@ -1,5 +1,10 @@
 # Changelog — sm-reuse
 
+## 0.4.0 — 2026-11-15
+
+- Achat par longueurs : filtre `sm_products_stock_options` — une annonce de réemploi en plusieurs longueurs se vend en barres choisies dans l'inventaire (prix au kg), nombre plafonné au stock de chaque longueur.
+- Inventaire d'un lot : chaque produit expose `rows` (longueur ou format, nombre, poids) pour l'affichage en sous-lignes.
+
 ## 0.3.0 — 2026-11-15
 
 - Les catégories du réemploi deviennent celles du neuf : profilés, tubes, tôles, fers plats et barres, boulonnerie, plus la ferraille. Les anciennes (chutes de profilés, profilés de démontage, tubes de réemploi, chutes de tôles, lots mixtes) ne sont plus proposées ; leurs annonces restent en ligne jusqu'à leur expiration. Chutes et démontage sont dans « Origine ».

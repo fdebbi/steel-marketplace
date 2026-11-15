@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.18.1 — 2026-11-15
+
+- « Mes annonces » par marché : `count_by_status()` accepte un marché, nouveau `count_by_market()` ; la donnée `my_products` renvoie `markets` et `market`.
+
 ## 0.18.0 — 2026-11-15
 
 - Catégorie « Boulonnerie » (boulons, tiges filetées, écrous, rondelles, tiges d'ancrage) : diamètre, longueur, classe, finition, précontraint ; titre généré (« Boulons M16 × 60 · 8.8 · Galvanisé à chaud ») ; vente à la pièce ou au kg. Champs partagés avec sm-reuse (`data/bolt-fields.php`), affichés en boutons (`chips`).

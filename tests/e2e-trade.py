@@ -144,7 +144,7 @@ with sync_playwright() as p:
     login(bb, BUY)
     bb.goto(BASE + '/annonce/%s/?lang=fr' % l_bars)
     bb.click('[data-sm-buy="order"]'); bb.wait_for_timeout(400)
-    check(bb.input_value('#buy-phone') == '0550 12 34 56' and bb.input_value('#buy-name') == 'Karim Acheteur', 'buyer details prefilled from the account')
+    check('Karim Acheteur' in txt(bb, '.sm-buy__me') and '0550 12 34 56' in txt(bb, '.sm-buy__me') and bb.locator('#buy-name, #buy-phone, #buy-email').count() == 0, 'no name/phone/e-mail to type: the order goes with the account (0.38.0)')
     check('Nombre de barres de' in txt(bb, '#sm-buy') and '10 disponibles' in txt(bb, '#sm-buy') and bb.locator('#buy-qty[data-kg]').count() == 1, 'bars: number of bars, 10 available, weight of a bar known (0.34.0)')
     bb.fill('#buy-qty', '4'); bb.wait_for_timeout(200)
     check('4 barres' in txt(bb, '.sm-buy__sum') and ' kg' in txt(bb, '[data-sm-buy-kg]'), 'summary: 4 bars and their weight')

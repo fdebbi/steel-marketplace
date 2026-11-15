@@ -381,3 +381,10 @@ Validé sur la maquette 0.37.
 - **Boulonnerie** en neuf et en réemploi : boulons, tiges filetées, écrous, rondelles, tiges d'ancrage. Pas de calcul de poids (le vendeur le donne s'il vend au kg). Boulons précontraints en réemploi : avertissement (EN 1090-2). Vente à la pièce ou au kg (pas à la boîte pour l'instant).
 - **Lots groupés (réemploi seulement)** : option A, les produits regroupés ne sont plus vendus séparément ; prix proposé = somme, modifiable ; même wilaya ; l'inventaire du lot montre l'état de chaque produit.
 
+
+## Achat par barres, contact en fenêtre, comptes obligatoires (2026-11-15)
+
+- Réemploi en plusieurs longueurs : on achète des barres choisies dans l'inventaire (nombre plafonné au stock de chaque longueur) ou le lot complet, jamais des kilos libres.
+- Aucun achat, aucune offre, aucun message sans compte, sur tous les marchés. Les commandes et messages partent avec le nom, le téléphone et l'e-mail du compte : pas de champs à remplir.
+- Aucune coordonnée (téléphone, e-mail) affichée publiquement ; « Contacter » ouvre une fenêtre de message partout. Les coordonnées du vendeur ne sont données qu'après l'acceptation d'une commande.
+- « Mes annonces » est séparé par marché ; le regroupement en lot n'est proposé que dans l'onglet Réemploi.

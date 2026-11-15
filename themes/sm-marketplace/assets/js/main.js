@@ -347,6 +347,63 @@
 		} );
 		buyUpdate();
 	}
+	// 0.38.0: reuse in several lengths: one row per chosen length, "+ Add another length"
+	// offers the others, each number capped at the stock of its length.
+	var addPick = buyForm ? buyForm.querySelector( '[data-sm-pick-add]' ) : null;
+	if ( addPick ) {
+		var lines = Array.prototype.slice.call( addPick.querySelectorAll( '[data-sm-buy-line]' ) );
+		var adder = addPick.querySelector( '[data-sm-pick-adder]' );
+		var sel = addPick.querySelector( '[data-sm-pick-select]' );
+		var maxNote = addPick.querySelector( '[data-sm-pick-max]' );
+		var first = sel.options[0].cloneNode( true );
+		var input = function ( l ) { return l.querySelector( 'input[type="number"]' ); };
+		var refresh = function () {
+			var shown = lines.filter( function ( l ) { return ! l.hidden; } );
+			shown.forEach( function ( l ) { var x = input( l ); if ( ( parseInt( x.value, 10 ) || 0 ) > ( parseInt( x.max, 10 ) || 0 ) ) { x.value = x.max; } } );
+			lines.forEach( function ( l ) { var b = l.querySelector( '[data-sm-pick-remove]' ); if ( b ) { b.hidden = shown.length < 2; } } );
+			sel.innerHTML = '';
+			sel.appendChild( first.cloneNode( true ) );
+			lines.forEach( function ( l, i ) {
+				if ( ! l.hidden ) { return; }
+				var o = document.createElement( 'option' );
+				o.value = String( i );
+				o.textContent = l.getAttribute( 'data-sm-pick-label' );
+				sel.appendChild( o );
+			} );
+			adder.hidden = sel.options.length < 2;
+			var full = shown.filter( function ( l ) { var x = input( l ); return ( parseInt( x.value, 10 ) || 0 ) >= ( parseInt( x.max, 10 ) || 0 ); } )[0];
+			if ( maxNote ) {
+				maxNote.hidden = ! full;
+				if ( full ) { var x = input( full ); maxNote.textContent = maxNote.getAttribute( 'data-text' ).replace( '%1$s', x.max ).replace( '%2$s', ( full.getAttribute( 'data-sm-pick-label' ) || '' ).split( ' (' )[0] ); }
+			}
+		};
+		var any = lines.some( function ( l ) { return ( parseInt( input( l ).value, 10 ) || 0 ) > 0; } );
+		lines.forEach( function ( l, i ) {
+			l.hidden = any ? ( parseInt( input( l ).value, 10 ) || 0 ) < 1 : i > 0;
+			input( l ).min = '0';
+			if ( ! any && 0 === i ) { input( l ).value = '1'; }
+		} );
+		sel.addEventListener( 'change', function () {
+			var l = lines[ parseInt( sel.value, 10 ) ];
+			if ( ! l ) { return; }
+			l.hidden = false;
+			input( l ).value = '1';
+			refresh(); buyUpdate();
+			input( l ).focus();
+		} );
+		addPick.addEventListener( 'click', function ( e ) {
+			var b = e.target.closest ? e.target.closest( '[data-sm-pick-remove]' ) : null;
+			if ( ! b ) { return; }
+			var l = b.closest( '[data-sm-buy-line]' );
+			input( l ).value = '0';
+			l.hidden = true;
+			refresh(); buyUpdate();
+		} );
+		// Not on the select itself: rebuilding its options would lose the choice.
+		addPick.addEventListener( 'input', function ( e ) { if ( e.target !== sel ) { refresh(); } } );
+		addPick.addEventListener( 'click', function ( e ) { if ( e.target !== sel && ! sel.contains( e.target ) ) { setTimeout( refresh, 0 ); } } );
+		refresh(); buyUpdate();
+	}
 	$$( '[data-sm-buy]' ).forEach( function ( a ) {
 		a.addEventListener( 'click', function ( e ) {
 			if ( ! buyPanel ) { return; }
@@ -591,6 +648,15 @@
 		$$( '[data-smc-close]', dlg ).forEach( function ( b ) { b.addEventListener( 'click', function () { dlg.close(); } ); } );
 		dlg.addEventListener( 'click', function ( e ) { if ( e.target === dlg ) { dlg.close(); } } );
 	} );
+	/* 0.38.0: the contact window opens again after a failed send, or after signing in (#id). */
+	( function () {
+		var dlg = $( 'dialog.smc-dialog[data-smc-autoopen]' );
+		if ( ! dlg && location.hash && /^#[\w-]+$/.test( location.hash ) && document.body.classList.contains( 'logged-in' ) ) {
+			var d = document.getElementById( location.hash.slice( 1 ) );
+			if ( d && d.matches( 'dialog.smc-dialog' ) ) { dlg = d; }
+		}
+		if ( dlg && typeof dlg.showModal === 'function' ) { dlg.showModal(); }
+	} )();
 	$$( '[data-smc-reveal]' ).forEach( function ( btn ) {
 		btn.addEventListener( 'click', function () {
 			var li = btn.closest( 'li' );

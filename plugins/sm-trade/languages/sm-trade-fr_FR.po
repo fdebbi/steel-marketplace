@@ -58,19 +58,19 @@ msgstr "Commandes et offres"
 msgid "Waiting for an answer"
 msgstr "En attente de réponse"
 
-#: src/Admin/Admin.php:56 src/Admin/Admin.php:67 src/Theme/Bridge.php:113
+#: src/Admin/Admin.php:56 src/Admin/Admin.php:67 src/Theme/Bridge.php:108
 msgid "Accepted"
 msgstr "Acceptée"
 
-#: src/Admin/Admin.php:57 src/Admin/Admin.php:68 src/Theme/Bridge.php:114
+#: src/Admin/Admin.php:57 src/Admin/Admin.php:68 src/Theme/Bridge.php:109
 msgid "Refused"
 msgstr "Refusée"
 
-#: src/Admin/Admin.php:58 src/Admin/Admin.php:69 src/Theme/Bridge.php:115
+#: src/Admin/Admin.php:58 src/Admin/Admin.php:69 src/Theme/Bridge.php:110
 msgid "Cancelled"
 msgstr "Annulée"
 
-#: src/Admin/Admin.php:59 src/Theme/Bridge.php:116
+#: src/Admin/Admin.php:59 src/Theme/Bridge.php:111
 msgid "Expired"
 msgstr "Expirée"
 
@@ -116,12 +116,12 @@ msgid "Type"
 msgstr "Type"
 
 #: src/Admin/Admin.php:114 src/Admin/Admin.php:137 src/Admin/Admin.php:157
-#: src/Admin/Admin.php:200 src/Theme/Bridge.php:145
+#: src/Admin/Admin.php:200 src/Theme/Bridge.php:140
 msgid "Order"
 msgstr "Commande"
 
 #: src/Admin/Admin.php:114 src/Admin/Admin.php:137 src/Admin/Admin.php:157
-#: src/Admin/Admin.php:200 src/Theme/Bridge.php:145
+#: src/Admin/Admin.php:200 src/Theme/Bridge.php:140
 msgid "Offer"
 msgstr "Offre"
 
@@ -166,12 +166,12 @@ msgid "Listing"
 msgstr "Annonce"
 
 #: src/Admin/Admin.php:133 src/Admin/Admin.php:162 src/Admin/Admin.php:175
-#: src/Admin/Admin.php:197 src/Theme/Bridge.php:123
+#: src/Admin/Admin.php:197 src/Theme/Bridge.php:118
 msgid "Seller"
 msgstr "Vendeur"
 
 #: src/Admin/Admin.php:133 src/Admin/Admin.php:163 src/Admin/Admin.php:175
-#: src/Admin/Admin.php:197 src/Theme/Bridge.php:122
+#: src/Admin/Admin.php:197 src/Theme/Bridge.php:117
 msgid "Buyer"
 msgstr "Acheteur"
 
@@ -240,7 +240,7 @@ msgstr "Prix"
 msgid "Message"
 msgstr "Message"
 
-#: src/Admin/Admin.php:175 src/Theme/Bridge.php:124 src/Theme/Bridge.php:125
+#: src/Admin/Admin.php:175 src/Theme/Bridge.php:119 src/Theme/Bridge.php:120
 msgid "Platform"
 msgstr "Plateforme"
 
@@ -348,14 +348,22 @@ msgstr ""
 "Vous avez envoyé beaucoup de commandes ou d’offres en peu de temps. "
 "Réessayez plus tard."
 
-#: src/Form.php:74
+#: src/Form.php:69
+msgid ""
+"Add your phone number in your account first: the seller needs it to call "
+"you."
+msgstr ""
+"Ajoutez d’abord votre numéro de téléphone dans votre compte : le vendeur en "
+"a besoin pour vous appeler."
+
+#: src/Form.php:78
 msgid ""
 "Offer sent to the seller. You will be told by e-mail when the seller "
 "answers."
 msgstr ""
 "Offre envoyée au vendeur. Vous serez prévenu par e-mail de sa réponse."
 
-#: src/Form.php:75
+#: src/Form.php:79
 msgid ""
 "Order sent to the seller. Nothing is paid on the platform: the seller "
 "accepts or refuses, then you agree on payment and delivery directly."
@@ -364,7 +372,7 @@ msgstr ""
 "accepte ou refuse, puis vous convenez directement du paiement et de la "
 "livraison."
 
-#: src/Form.php:89
+#: src/Form.php:93
 msgid ""
 "Accepted. The contact details are below: agree on payment and delivery "
 "directly."
@@ -372,15 +380,15 @@ msgstr ""
 "Accepté. Les coordonnées sont ci-dessous : convenez directement du paiement "
 "et de la livraison."
 
-#: src/Form.php:90
+#: src/Form.php:94
 msgid "Refused. The other party was told."
 msgstr "Refusé. L’autre partie a été prévenue."
 
-#: src/Form.php:91
+#: src/Form.php:95
 msgid "Cancelled. The seller was told."
 msgstr "Annulé. Le vendeur a été prévenu."
 
-#: src/Form.php:92
+#: src/Form.php:96
 msgid "Your price was sent. You will be told when the other party answers."
 msgstr "Votre prix a été envoyé. Vous serez prévenu de la réponse."
 
@@ -570,34 +578,34 @@ msgstr "Décembre"
 msgid "Week of %s"
 msgstr "Semaine du %s"
 
-#: src/Theme/Bridge.php:110
+#: src/Theme/Bridge.php:105
 msgid "Waiting for the seller"
 msgstr "En attente du vendeur"
 
-#: src/Theme/Bridge.php:110
+#: src/Theme/Bridge.php:105
 msgid "Waiting for the buyer"
 msgstr "En attente de l’acheteur"
 
-#: src/Theme/Bridge.php:128
+#: src/Theme/Bridge.php:123
 msgid "sent the request"
 msgstr "a envoyé la demande"
 
-#: src/Theme/Bridge.php:129
+#: src/Theme/Bridge.php:124
 msgid "proposed another price"
 msgstr "a proposé un autre prix"
 
-#: src/Theme/Bridge.php:130
+#: src/Theme/Bridge.php:125
 msgid "accepted"
 msgstr "a accepté"
 
-#: src/Theme/Bridge.php:131
+#: src/Theme/Bridge.php:126
 msgid "refused"
 msgstr "a refusé"
 
-#: src/Theme/Bridge.php:132
+#: src/Theme/Bridge.php:127
 msgid "cancelled"
 msgstr "a annulé"
 
-#: src/Theme/Bridge.php:133
+#: src/Theme/Bridge.php:128
 msgid "closed: no answer within 7 days"
 msgstr "clôturé : pas de réponse sous 7 jours"

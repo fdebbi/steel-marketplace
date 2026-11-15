@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-14T22:41:03+00:00\n"
+"POT-Creation-Date: 2026-11-15T13:10:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-trade\n"
@@ -49,24 +49,24 @@ msgstr ""
 
 #: src/Admin/Admin.php:56
 #: src/Admin/Admin.php:67
-#: src/Theme/Bridge.php:113
+#: src/Theme/Bridge.php:108
 msgid "Accepted"
 msgstr ""
 
 #: src/Admin/Admin.php:57
 #: src/Admin/Admin.php:68
-#: src/Theme/Bridge.php:114
+#: src/Theme/Bridge.php:109
 msgid "Refused"
 msgstr ""
 
 #: src/Admin/Admin.php:58
 #: src/Admin/Admin.php:69
-#: src/Theme/Bridge.php:115
+#: src/Theme/Bridge.php:110
 msgid "Cancelled"
 msgstr ""
 
 #: src/Admin/Admin.php:59
-#: src/Theme/Bridge.php:116
+#: src/Theme/Bridge.php:111
 msgid "Expired"
 msgstr ""
 
@@ -114,7 +114,7 @@ msgstr ""
 #: src/Admin/Admin.php:137
 #: src/Admin/Admin.php:157
 #: src/Admin/Admin.php:200
-#: src/Theme/Bridge.php:145
+#: src/Theme/Bridge.php:140
 msgid "Order"
 msgstr ""
 
@@ -122,7 +122,7 @@ msgstr ""
 #: src/Admin/Admin.php:137
 #: src/Admin/Admin.php:157
 #: src/Admin/Admin.php:200
-#: src/Theme/Bridge.php:145
+#: src/Theme/Bridge.php:140
 msgid "Offer"
 msgstr ""
 
@@ -175,7 +175,7 @@ msgstr ""
 #: src/Admin/Admin.php:162
 #: src/Admin/Admin.php:175
 #: src/Admin/Admin.php:197
-#: src/Theme/Bridge.php:123
+#: src/Theme/Bridge.php:118
 msgid "Seller"
 msgstr ""
 
@@ -183,7 +183,7 @@ msgstr ""
 #: src/Admin/Admin.php:163
 #: src/Admin/Admin.php:175
 #: src/Admin/Admin.php:197
-#: src/Theme/Bridge.php:122
+#: src/Theme/Bridge.php:117
 msgid "Buyer"
 msgstr ""
 
@@ -259,8 +259,8 @@ msgid "Message"
 msgstr ""
 
 #: src/Admin/Admin.php:175
-#: src/Theme/Bridge.php:124
-#: src/Theme/Bridge.php:125
+#: src/Theme/Bridge.php:119
+#: src/Theme/Bridge.php:120
 msgid "Platform"
 msgstr ""
 
@@ -361,27 +361,31 @@ msgstr ""
 msgid "You sent many orders or offers in a short time. Try again later."
 msgstr ""
 
-#: src/Form.php:74
+#: src/Form.php:69
+msgid "Add your phone number in your account first: the seller needs it to call you."
+msgstr ""
+
+#: src/Form.php:78
 msgid "Offer sent to the seller. You will be told by e-mail when the seller answers."
 msgstr ""
 
-#: src/Form.php:75
+#: src/Form.php:79
 msgid "Order sent to the seller. Nothing is paid on the platform: the seller accepts or refuses, then you agree on payment and delivery directly."
 msgstr ""
 
-#: src/Form.php:89
+#: src/Form.php:93
 msgid "Accepted. The contact details are below: agree on payment and delivery directly."
 msgstr ""
 
-#: src/Form.php:90
+#: src/Form.php:94
 msgid "Refused. The other party was told."
 msgstr ""
 
-#: src/Form.php:91
+#: src/Form.php:95
 msgid "Cancelled. The seller was told."
 msgstr ""
 
-#: src/Form.php:92
+#: src/Form.php:96
 msgid "Your price was sent. You will be told when the other party answers."
 msgstr ""
 
@@ -554,34 +558,34 @@ msgstr ""
 msgid "Week of %s"
 msgstr ""
 
-#: src/Theme/Bridge.php:110
+#: src/Theme/Bridge.php:105
 msgid "Waiting for the seller"
 msgstr ""
 
-#: src/Theme/Bridge.php:110
+#: src/Theme/Bridge.php:105
 msgid "Waiting for the buyer"
 msgstr ""
 
-#: src/Theme/Bridge.php:128
+#: src/Theme/Bridge.php:123
 msgid "sent the request"
 msgstr ""
 
-#: src/Theme/Bridge.php:129
+#: src/Theme/Bridge.php:124
 msgid "proposed another price"
 msgstr ""
 
-#: src/Theme/Bridge.php:130
+#: src/Theme/Bridge.php:125
 msgid "accepted"
 msgstr ""
 
-#: src/Theme/Bridge.php:131
+#: src/Theme/Bridge.php:126
 msgid "refused"
 msgstr ""
 
-#: src/Theme/Bridge.php:132
+#: src/Theme/Bridge.php:127
 msgid "cancelled"
 msgstr ""
 
-#: src/Theme/Bridge.php:133
+#: src/Theme/Bridge.php:128
 msgid "closed: no answer within 7 days"
 msgstr ""

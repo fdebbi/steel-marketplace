@@ -702,3 +702,32 @@ function sm_theme_is_partner_engineer() {
 	}
 	return $is;
 }
+
+/**
+ * "Contact" (0.38.0): opens the contact window for signed-in accounts; a visitor is
+ * sent to sign in and comes back to the same page with the window open.
+ *
+ * @param string $dialog Id of the <dialog>.
+ * @param string $label  Button text.
+ * @param string $class  Button classes.
+ * @param string $back   Page to come back to (defaults to the current one).
+ */
+function sm_contact_button( $dialog, $label, $class = 'sm-btn sm-btn--accent', $back = '' ) {
+	if ( is_user_logged_in() ) {
+		printf( '<button type="button" class="%1$s" data-smc-open="%2$s">', esc_attr( $class ), esc_attr( $dialog ) );
+		sm_icon( 'message' );
+		echo esc_html( $label ) . '</button>';
+		return;
+	}
+	if ( '' === $back && sm_theme_core_active() && class_exists( 'SM\\Core\\I18n\\Language' ) ) {
+		$back = SM\Core\I18n\Language::url_for( SM\Core\I18n\Language::current_unprefixed_url(), sm_theme_current_language() );
+	}
+	if ( '' === $back ) {
+		$uri  = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '/'; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		$back = set_url_scheme( '//' . wp_parse_url( home_url(), PHP_URL_HOST ) . ( wp_parse_url( home_url(), PHP_URL_PORT ) ? ':' . wp_parse_url( home_url(), PHP_URL_PORT ) : '' ) . $uri );
+	}
+	$url = add_query_arg( 'redirect_to', rawurlencode( strtok( $back, '#' ) . '#' . $dialog ), sm_page_url( 'login' ) );
+	printf( '<a class="%1$s" href="%2$s" title="%3$s">', esc_attr( $class ), esc_url( $url ), esc_attr__( 'Sign in to contact', 'sm-marketplace' ) );
+	sm_icon( 'message' );
+	echo esc_html( $label ) . '</a>';
+}

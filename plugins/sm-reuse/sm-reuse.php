@@ -3,7 +3,7 @@
  * Plugin Name:       SM Reuse
  * Plugin URI:        https://github.com/fdebbi/steel-marketplace
  * Description:       Steel reuse market: profiles, tubes, plates, bars and bolts already used or in surplus, sold in several lengths, and scrap; lots of several listings. Adds the "reuse" market to the SM Products listing engine (condition scale, origin, surface state, what the price includes), seeds its categories and adds the engineer advice on reuse listings. Requires SM Core, SM Weight Engine and SM Products.
- * Version:           0.3.0
+ * Version:           0.4.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Requires Plugins:  sm-core, sm-weight-engine, sm-products
@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_REUSE_VERSION', '0.3.0' );
+define( 'SM_REUSE_VERSION', '0.4.0' );
 define( 'SM_REUSE_DB_VERSION', 2 );
 define( 'SM_REUSE_FILE', __FILE__ );
 define( 'SM_REUSE_DIR', __DIR__ );

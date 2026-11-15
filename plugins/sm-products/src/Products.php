@@ -471,9 +471,17 @@ final class Products {
 		return $wpdb->get_results( $wpdb->prepare( 'SELECT id, market, total_weight FROM ' . self::table() . " WHERE company_id = %d AND status = 'published' ORDER BY COALESCE(published_at, updated_at) ASC, id ASC", $company_id ) ); // phpcs:ignore WordPress.DB
 	}
 
-	public static function count_by_status( $company_id ) {
+	public static function count_by_status( $company_id, $market = '' ) {
 		global $wpdb;
-		$rows = $wpdb->get_results( $wpdb->prepare( 'SELECT status, COUNT(*) AS n FROM ' . self::table() . ' WHERE company_id = %d GROUP BY status', $company_id ), OBJECT_K ); // phpcs:ignore WordPress.DB
+		$and  = '' !== (string) $market ? $wpdb->prepare( ' AND market = %s', $market ) : '';
+		$rows = $wpdb->get_results( $wpdb->prepare( 'SELECT status, COUNT(*) AS n FROM ' . self::table() . ' WHERE company_id = %d' . $and . ' GROUP BY status', $company_id ), OBJECT_K ); // phpcs:ignore WordPress.DB
+		return array_map( static fn( $r ) => (int) $r->n, $rows );
+	}
+
+	/** Number of listings of a company per market (0.18.1: tabs of "My listings"). */
+	public static function count_by_market( $company_id ) {
+		global $wpdb;
+		$rows = $wpdb->get_results( $wpdb->prepare( 'SELECT market, COUNT(*) AS n FROM ' . self::table() . ' WHERE company_id = %d GROUP BY market', $company_id ), OBJECT_K ); // phpcs:ignore WordPress.DB
 		return array_map( static fn( $r ) => (int) $r->n, $rows );
 	}
 

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-15T10:03:41+00:00\n"
+"POT-Creation-Date: 2026-11-15T13:10:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-reuse\n"
@@ -118,45 +118,45 @@ msgstr ""
 msgid "Find an engineer"
 msgstr ""
 
-#: src/Groups.php:71
+#: src/Groups.php:97
 msgid "Only your published reuse listings can be grouped (not scrap, not lots)."
 msgstr ""
 
-#: src/Groups.php:76
+#: src/Groups.php:102
 msgid "Tick at least two listings to make a lot."
 msgstr ""
 
-#: src/Groups.php:79
+#: src/Groups.php:105
 msgid "The products of a lot must be in the same wilaya."
 msgstr ""
 
-#: src/Groups.php:85
+#: src/Groups.php:111
 msgid "Enter the price of the lot."
 msgstr ""
 
 #. translators: %d: number of products.
-#: src/Groups.php:93
+#: src/Groups.php:119
 msgid "Lot of %d reuse products"
 msgstr ""
 
 #. translators: %s: number of pieces.
-#: src/Groups.php:247
+#: src/Groups.php:282
 msgid "%s pieces"
 msgstr ""
 
-#: src/Groups.php:279
+#: src/Groups.php:321
 msgid "Your account has no company."
 msgstr ""
 
-#: src/Groups.php:288
+#: src/Groups.php:330
 msgid "The lot is online. Its products are no longer sold separately."
 msgstr ""
 
-#: src/Groups.php:295
+#: src/Groups.php:337
 msgid "You cannot change this lot."
 msgstr ""
 
-#: src/Groups.php:298
+#: src/Groups.php:340
 msgid "The lot is undone: its products are on sale again one by one."
 msgstr ""
 

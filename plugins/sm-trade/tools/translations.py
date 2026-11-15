@@ -130,3 +130,6 @@ T.update({
 "January": ("Janvier", "جانفي"), "February": ("Février", "فيفري"), "March": ("Mars", "مارس"), "April": ("Avril", "أفريل"), "May (month)": ("Mai", "ماي"), "June": ("Juin", "جوان"),
 "July": ("Juillet", "جويلية"), "August": ("Août", "أوت"), "September": ("Septembre", "سبتمبر"), "October": ("Octobre", "أكتوبر"), "November": ("Novembre", "نوفمبر"), "December": ("Décembre", "ديسمبر"),
 })
+T.update({
+"Add your phone number in your account first: the seller needs it to call you.": ("Ajoutez d’abord votre numéro de téléphone dans votre compte : le vendeur en a besoin pour vous appeler.", "أضف أولًا رقم هاتفك في حسابك: يحتاجه البائع للاتصال بك."),
+})
