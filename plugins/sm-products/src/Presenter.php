@@ -138,7 +138,7 @@ final class Presenter {
 		if ( 'PLATE' === ( $p->family ?? '' ) && ! empty( $specs['plate_kind'] ) && class_exists( '\\SM\\WeightEngine\\Plates' ) ) {
 			$def = \SM\WeightEngine\Plates::kind( $specs['plate_kind'] );
 			if ( $def ) {
-				return trim( self::pick( $def['title'] ) . ' ' . \SM\WeightEngine\Plates::label( $specs['plate_kind'], $p->dims['t'] ?? 0 ) );
+				return trim( self::pick( $def['title'] ) . ' ' . \SM\WeightEngine\Plates::label( $specs['plate_kind'], $p->dims['t'] ?? 0 ) . ( empty( $def['relief'] ) ? ' mm' : '' ) );
 			}
 		}
 		return (string) $p->designation;

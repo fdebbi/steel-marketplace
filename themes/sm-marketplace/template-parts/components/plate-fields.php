@@ -160,7 +160,7 @@ $icon = static function ( $key ) use ( $pattern, $fill ) {
 			$pid   = 'smpl-p-' . $kind;
 			$pat   = $pattern( $kind, $pid );
 			$top   = sprintf( 'M%1$s %2$s L%3$s %4$s H%5$s L%6$s %2$s Z', $x0, $y0, $x0 + $sk, $y0 - $deep, $x0 + $sk + $long, $x0 + $long );
-			$label = (string) ( $calc['plate_label'] ?? '' );
+			$label = (string) ( $calc['plate_label'] ?? '' ) . ( $def['relief'] ? '' : ' mm' );
 			?>
 			<figure class="smw-profile smp-profile smpl-figure">
 				<div class="smw-profile__drawing" dir="ltr">

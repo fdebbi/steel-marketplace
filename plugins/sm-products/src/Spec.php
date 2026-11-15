@@ -405,7 +405,7 @@ final class Spec {
 		if ( 'PLATE' === ( $d['family'] ?? '' ) && '' !== $kind && class_exists( '\\SM\\WeightEngine\\Plates' ) && \SM\WeightEngine\Plates::kind( $kind ) ) {
 			// 0.17.0: "Tôle larmée 3/5 · S235JR · 1 × 2 m".
 			$def   = \SM\WeightEngine\Plates::kind( $kind );
-			$label = (string) ( $d['specs']['plate_label'] ?? '' );
+			$label = (string) ( $d['specs']['plate_label'] ?? '' ) . ( empty( $def['relief'] ) ? ' mm' : '' );
 			$names = array( 'fr' => trim( $def['title']['fr'] . ' ' . $label ), 'ar' => trim( $def['title']['ar'] . ' ' . $label ) );
 		}
 		$m     = static fn( $mm ) => rtrim( rtrim( number_format( $mm / 1000, 2, ',', '' ), '0' ), ',' );
