@@ -1,0 +1,115 @@
+/* ==========================================================================
+   0.39.0 — study request in 4 steps: need, type of project, dimensions with
+   an indicative sketch, place and sending (sm-engineering 0.6.0).
+   ========================================================================== */
+
+.sme-request__grid:has(.smx) { grid-template-columns: minmax(0, 1fr); }
+.sme-request__grid:has(.smx) .sme-request__aside { position: static; display: grid; gap: var(--sm-s4); }
+@media (min-width: 1024px) { .sme-request__grid:has(.smx) .sme-request__aside { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); } }
+
+.smx { display: grid; gap: var(--sm-s4); }
+.smx-steps { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; counter-reset: smx; }
+.smx-steps li { flex: 1 1 140px; counter-increment: smx; }
+.smx-steps a { display: block; padding: 8px 12px; border-radius: 10px; background: var(--sm-surface-2, #e9ecee); color: var(--sm-muted); font-size: var(--sm-fs-sm); font-weight: 600; text-decoration: none; }
+.smx-steps a::before { content: counter(smx) ". "; }
+.smx-steps a:hover { color: var(--sm-text); }
+
+.smx-step { margin: 0; padding: var(--sm-s4) var(--sm-s5); border: 1px solid var(--sm-line); border-radius: var(--sm-radius-lg, 16px); background: var(--sm-surface); min-inline-size: 0; scroll-margin-block-start: 96px; }
+.smx-step__title { display: flex; align-items: center; gap: 12px; padding: 0; margin-block-end: var(--sm-s3); font-family: var(--sm-font-display, inherit); font-size: 1.3rem; font-weight: 700; }
+.smx-step__title b { display: grid; place-items: center; inline-size: 34px; block-size: 34px; border-radius: 50%; background: var(--sm-primary); color: #fff; font-size: .95rem; }
+.smx-sub { margin: var(--sm-s3) 0 var(--sm-s2); font-weight: 600; }
+.smx-req { color: #B42318; }
+
+/* 1. The three parts. */
+.smx-parts { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.smx-part, .smx-type, .smx-roof, .smx-chip { position: relative; cursor: pointer; }
+.smx-part input, .smx-type input, .smx-roof input, .smx-chip input { position: absolute; opacity: 0; inline-size: 1px; block-size: 1px; }
+.smx-part__box { display: grid; gap: 4px; block-size: 100%; padding: 16px; border: 1.5px solid var(--sm-line); border-radius: 16px; color: var(--sm-muted); }
+.smx-part__box svg { inline-size: 40px; block-size: 40px; }
+.smx-part__box strong { color: var(--sm-text); font-family: var(--sm-font-display, inherit); font-size: 1.05rem; }
+.smx-part__box small { font-size: var(--sm-fs-sm); line-height: 1.4; }
+.smx-part input:checked + .smx-part__box { border: 2px solid var(--sm-accent); background: var(--sm-accent-soft); color: var(--sm-accent-ink, #04663c); }
+.smx-part input:focus-visible + .smx-part__box, .smx-type input:focus-visible + .smx-type__box, .smx-roof input:focus-visible + span, .smx-chip input:focus-visible + span { outline: 3px solid var(--sm-focus, #2563eb); outline-offset: 2px; }
+.smx .sme-svc { margin-block-start: var(--sm-s2); }
+.smx .sme-prest summary { cursor: pointer; color: var(--sm-muted); font-size: var(--sm-fs-sm); margin-block: 6px; }
+
+/* Show only the chosen part, and the questions of the chosen shape of building (works without JS). */
+.smx:has([name="part"][value="study"]:checked) .smx-only:not([data-part~="study"]),
+.smx:has([name="part"][value="follow"]:checked) .smx-only:not([data-part~="follow"]),
+.smx:has([name="part"][value="expertise"]:checked) .smx-only:not([data-part~="expertise"]) { display: none; }
+.smx:not(:has([name="part"]:checked)) .smx-only { display: none; }
+.smx:has([name="project_type"][data-fam="portal"]:checked) .smx-fam:not([data-fam~="portal"]),
+.smx:has([name="project_type"][data-fam="levels"]:checked) .smx-fam:not([data-fam~="levels"]),
+.smx:has([name="project_type"][data-fam="free"]:checked) .smx-fam:not([data-fam~="free"]),
+.smx:not(:has([name="project_type"]:checked)) .smx-fam { display: none; }
+.smx:has([name="project_type"]:checked) .smx-need-type { display: none; }
+.smx:has([name="project_type"][data-fam="free"]:checked) .smx-geo { grid-template-columns: minmax(0, 1fr); }
+
+/* 2. Types of project. */
+.smx-types { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.smx-type__box { display: grid; justify-items: center; gap: 2px; block-size: 100%; padding: 12px 10px; border: 1.5px solid var(--sm-line); border-radius: 14px; text-align: center; color: var(--sm-muted); }
+.smx-type__box svg { inline-size: 64px; block-size: 48px; }
+.smx-type__box strong { color: var(--sm-text); font-size: var(--sm-fs-sm); line-height: 1.3; }
+.smx-type__box small { font-size: var(--sm-fs-xs); }
+.smx-type input:checked + .smx-type__box { border: 2px solid var(--sm-accent); background: var(--sm-accent-soft); color: var(--sm-accent-ink, #04663c); }
+
+/* 3. Dimensions and sketch. */
+.smx-geo { display: grid; gap: var(--sm-s5); align-items: start; }
+@media (min-width: 900px) { .smx-geo { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); } .smx-sketch { position: sticky; inset-block-start: 96px; } }
+.smx-grid { display: grid; gap: 10px 12px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.smx-grid + .smx-grid { margin-block-start: 10px; }
+.smx-f { display: grid; gap: 4px; align-content: start; min-inline-size: 0; }
+.smx-f label { font-size: var(--sm-fs-sm); font-weight: 600; }
+.smx-u { display: flex; border: 1.5px solid var(--sm-line); border-radius: var(--sm-radius-sm, 10px); background: var(--sm-surface); overflow: hidden; }
+.smx-u:focus-within { border-color: var(--sm-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sm-accent) 25%, transparent); }
+.smx-u input { flex: 1; min-inline-size: 0; border: 0; padding: 10px 12px; background: transparent; color: var(--sm-text); font: inherit; font-weight: 600; outline: 0; }
+.smx-u em { display: grid; place-items: center; padding-inline: 12px; background: var(--sm-surface-2, #f3f5f6); color: var(--sm-muted); font-style: normal; font-size: var(--sm-fs-sm); }
+.smx-opt { margin-block-start: var(--sm-s3); padding-block-start: var(--sm-s3); border-block-start: 1px dashed var(--sm-line); }
+.smx-opt__more { margin-block-start: 10px; }
+.smx-opt:has(.smx-switch input:not(:checked)) .smx-opt__more { display: none; }
+.smx-switch { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; cursor: pointer; }
+.smx-switch input { appearance: none; inline-size: 42px; block-size: 24px; border-radius: 999px; background: #c6cdd2; position: relative; cursor: pointer; transition: background .15s; margin: 0; }
+.smx-switch input::after { content: ""; position: absolute; inset-block-start: 3px; inset-inline-start: 3px; inline-size: 18px; block-size: 18px; border-radius: 50%; background: #fff; transition: inset-inline-start .15s; }
+.smx-switch input:checked { background: var(--sm-accent); }
+.smx-switch input:checked::after { inset-inline-start: 21px; }
+.smx-roofs { display: grid; gap: 6px; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); }
+.smx-roof span { display: grid; justify-items: center; gap: 2px; padding: 6px 4px; border: 1.5px solid var(--sm-line); border-radius: 10px; font-size: var(--sm-fs-xs); font-weight: 600; text-align: center; }
+.smx-roof svg { inline-size: 46px; block-size: 26px; }
+.smx-roof input:checked + span { border: 2px solid var(--sm-accent); background: var(--sm-accent-soft); color: var(--sm-accent-ink, #04663c); }
+.smx-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.smx-chip span { display: inline-block; padding: 7px 14px; border: 1.5px solid var(--sm-line); border-radius: 999px; font-weight: 600; font-size: var(--sm-fs-sm); }
+.smx-chip input:checked + span { border-color: var(--sm-accent); background: var(--sm-accent-soft); color: var(--sm-accent-ink, #04663c); }
+
+.smx-sketch { padding: 12px; border: 1px solid var(--sm-line); border-radius: 14px; background: var(--sm-surface-2, #fbfcfc); }
+.smx-sketch__view + .smx-sketch__view { margin-block-start: 10px; }
+.smx-sketch__title { display: flex; justify-content: space-between; gap: 8px; margin: 0 0 4px; font-weight: 700; font-size: var(--sm-fs-sm); }
+.smx-sketch__title small { font-weight: 400; color: var(--sm-muted); }
+.smx-sketch svg { display: block; inline-size: 100%; block-size: auto; }
+.smx-sketch svg text { paint-order: stroke; stroke: var(--sm-surface-2, #fbfcfc); stroke-width: 4px; stroke-linejoin: round; font-family: inherit; }
+.smx-figs { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); margin-block: 8px; }
+.smx-figs div { padding: 8px 10px; border-radius: 10px; background: var(--sm-surface); border: 1px solid var(--sm-line); font-size: var(--sm-fs-xs); color: var(--sm-muted); }
+.smx-figs b { display: block; color: var(--sm-text); font-size: 1rem; }
+.smx-figs:empty { display: none; }
+
+/* Sketch colours (dark mode keeps contrast). */
+.smx-d-frame { stroke: var(--sm-text, #111820); fill: none; }
+.smx-d-fill { fill: color-mix(in srgb, var(--sm-accent) 12%, transparent); }
+.smx-d-dim { stroke: var(--sm-muted); fill: var(--sm-muted); }
+.smx-d-mezz { stroke: #1D4ED8; fill: #1D4ED8; }
+.smx-d-crane { stroke: #B45309; fill: #B45309; }
+.smx-d-t { fill: var(--sm-text); font-size: 12px; font-weight: 700; }
+.smx-d-tm { fill: var(--sm-muted); font-size: 12px; }
+.smx-d-tb { fill: #1D4ED8; font-size: 12px; font-weight: 600; }
+.smx-d-to { fill: #B45309; font-size: 12px; font-weight: 600; }
+
+/* The need, on the study page (client and engineer). */
+.sme-need { display: grid; gap: var(--sm-s4); }
+@media (min-width: 900px) { .sme-need:has(.smx-sketch) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: start; } }
+.sme-need dl { margin: 0; display: grid; }
+.sme-need dl div { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-block-end: 1px solid var(--sm-line); font-size: var(--sm-fs-sm); }
+.sme-need dt { color: var(--sm-muted); }
+.sme-need dd { margin: 0; font-weight: 600; text-align: end; }
+.sme-follow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-block-start: var(--sm-s3); padding: var(--sm-s3); border-radius: var(--sm-radius); background: var(--sm-accent-soft); }
+.sme-follow p { margin: 0; flex: 1 1 240px; }
+.smx-step > .sm-btn--lg { inline-size: 100%; justify-content: center; white-space: normal; }
+@media (max-width: 479px) { .smx-step { padding: var(--sm-s3); } .smx-step__title { font-size: 1.1rem; } }

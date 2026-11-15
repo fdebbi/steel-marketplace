@@ -197,6 +197,8 @@ final class Presenter {
 			'icon'        => 'warehouse',
 			// 0.5.0: type of project of the study request, from the category of the building (the buyer may change it).
 			'project_type' => self::project_type( (string) $p->category ),
+			// sm-engineering 0.6.0: approximate dimensions of the building for the expertise.
+			'brief'        => array( 'exp_w' => (float) $shape['width'], 'exp_l' => (float) $shape['length'] ),
 		);
 	}
 

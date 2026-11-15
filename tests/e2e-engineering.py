@@ -28,6 +28,8 @@ CLI = f'e2ee-cli{stamp}@example.test'
 ADMIN = os.environ.get('SM_ADMIN', 'admin:Admin-2026-test!').split(':', 1)
 
 results = []
+def txt(pg, sel):
+    return pg.locator(sel).first.inner_text().replace('\u202f', ' ').replace('\xa0', ' ').replace('\u2066', '').replace('\u2069', '')
 def check(c, label):
     results.append((bool(c), label)); print(('  ✓ ' if c else '  ✗ ') + label)
 def wp(code):
@@ -242,16 +244,25 @@ with sync_playwright() as p:
     check(g.locator('.sm-company-head').count() == 0, 'a client has no public page')
     c.goto(BASE + '/demander-une-etude/?type=calc_notes')
     calc = '[data-sm-svc]:has(input[value="calc_notes"])'
-    expe = '[data-sm-svc]:has(input[value="expertise"])'
-    check(c.is_checked(calc + ' [data-sm-svc-toggle]') and c.locator(calc + ' [data-sm-svc-items] input:checked').count() == 5 and c.locator(expe + ' [data-sm-svc-items]').is_hidden(), 'service pre-selected with its 5 prestations ticked; the others closed')
-    check(c.locator('#m-budget').count() == 0 and c.locator('#m-eng').count() == 0 and c.locator('#m-project option').count() == 10, 'no budget, no engineer to choose; 9 types of project')
+    expe = '[data-sm-svc]:has(input[value="modelling"])'
+    c.uncheck(expe + ' [data-sm-svc-toggle]')
+    check(c.is_checked('input[name="part"][value="study"]') and c.locator('.smx-only[data-part="study"] [data-sm-svc-toggle]').count() == 4, '0.39.0: "Technical study" chosen; its 4 services (study, calculation, drawings, tender documents)')
+    check(c.is_checked(calc + ' [data-sm-svc-toggle]') and c.locator(calc + ' [data-sm-svc-items] input:checked').count() == 5 and c.locator(expe + ' [data-sm-svc-items]').is_hidden(), 'service pre-selected with its 5 prestations ticked; an unticked one is closed')
+    check(c.locator('#m-budget').count() == 0 and c.locator('#m-eng').count() == 0 and c.locator('input[name="project_type"]').count() == 9, 'no budget, no engineer to choose; 9 types of project')
+    check(c.locator('#smx-col_h').is_hidden() and c.locator('.smx-need-type').is_visible(), 'dimensions wait for the type of project')
     c.check(expe + ' [data-sm-svc-toggle]')
     check(c.locator(expe + ' [data-sm-svc-items] input:checked').count() == 4, 'a second service: its 4 prestations are ticked')
     for i in ('1', '3', '4'):
         c.uncheck(calc + ' [data-sm-svc-items] input[value="' + i + '"]')
-    c.select_option('#m-project', 'storage')
+    c.click('.smx-type:has(input[value="storage"])')
+    for k, v in (('width', '20'), ('length', '40'), ('col_h', '8'), ('ridge_h', '10'), ('bay', '5')):
+        c.fill('#smx-' + k, v)
+    c.click('.smx-switch:has(input[name="b[crane]"])')
+    c.fill('#smx-crane_t', '5'); c.fill('#smx-crane_rail', '6,5')
+    c.wait_for_timeout(250)
+    check(c.locator('[data-smx-front] svg').count() == 1 and 'Portée 20 m' in txt(c, '[data-smx-front]') and 'Pont roulant 5 t' in txt(c, '[data-smx-front]') and '9 portiques' in txt(c, '[data-smx-plan-note]') and '800 m²' in txt(c, '[data-smx-figs]'), 'sketch drawn while typing: span, crane, 9 portal frames, 800 m²')
     c.fill('#m-title', 'Hangar 20 × 40 m à Sétif ' + stamp)
-    c.fill('#m-desc', 'Hangar de stockage, portée 20 m, longueur 40 m, hauteur 8 m, pont roulant 5 t, zone sismique IIa. Note de calcul et plans.')
+    c.fill('#m-desc', 'Zone sismique IIa. Note de calcul et plans.')
     c.select_option('#m-wilaya', '19')
     c.set_input_files('input[name="files[]"]', PDF)
     shot(c, 'mission-request-fr-1280')
@@ -260,7 +271,8 @@ with sync_playwright() as p:
     mid = re.search(r'id=(\d+)', c.url).group(1)
     check('À l’étude par la plateforme' in c.inner_text('.sme-head') and c.locator('.sme-files__list a').count() == 1, 'status "being studied", the document is listed')
     lists = c.locator('.sme-head .sme-prest-list')
-    check('Note de Calcul' in c.inner_text('.sme-head') and 'Expertise et Inspection Technique' in c.inner_text('.sme-head') and 'Hangar de stockage' in c.inner_text('.sme-head') and lists.nth(0).locator('li').all_inner_texts() == ['Calcul et dimensionnement des profilés métalliques', 'Dimensionnement des assemblages (boulonnés et soudés)'] and lists.nth(1).locator('li').count() == 4, 'two services, their prestations and the type of project are on the request')
+    check('Pont roulant' in txt(c, '.sme-need') and '20 × 40' in txt(c, '.sme-need') and c.locator('.sme-need [data-smx-front] svg').count() == 1, 'the need and its sketch are on the request page (0.39.0)')
+    check('Note de Calcul' in c.inner_text('.sme-head') and 'Dessin et Modélisation 2D/3D' in c.inner_text('.sme-head') and 'Hangar de stockage' in c.inner_text('.sme-head') and lists.nth(0).locator('li').all_inner_texts() == ['Calcul et dimensionnement des profilés métalliques', 'Dimensionnement des assemblages (boulonnés et soudés)'] and lists.nth(1).locator('li').count() == 4, 'two services, their prestations and the type of project are on the request')
     ref = c.inner_text('.sme-ref').strip()
     m = [x for x in mails()[mail_start:] if ref in x['subject']]
     check(any(x['to'] == 'contact@reusteel.com' for x in m) and any(x['to'] == CLI for x in m), 'e-mails: alert to the platform, confirmation to the client (' + ref + ')')
@@ -330,7 +342,8 @@ with sync_playwright() as p:
     e2.goto(BASE + f'/compte/missions/?id={mid}')
     body = e2.inner_text('.sm-dash__main').replace(' ', ' ').replace('\xa0', ' ')
     check('90 000' in body and 'Eurocode 3' in body, 'engineer sees his fee and the instructions')
-    check(fmt(ttc) not in body and '50 000' not in body and 'Nadia' not in body and CLI not in e2.content() and 'Expertise et Inspection Technique' in body, 'engineer sees the services, never the client nor the client prices')
+    check(fmt(ttc) not in body and '50 000' not in body and 'Nadia' not in body and CLI not in e2.content() and 'Dessin et Modélisation 2D/3D' in body, 'engineer sees the services, never the client nor the client prices')
+    check('Pont roulant' in body and e2.locator('.sme-need [data-smx-front] svg').count() == 1, 'engineer sees the need of the client and the sketch (0.39.0)')
     brief = e2.locator('.sme-files__list a').first.get_attribute('href')
     r = e2.request.get(brief)
     check(r.status == 200 and r.body()[:4] == b'%PDF', 'engineer downloads the client document')
@@ -387,6 +400,23 @@ with sync_playwright() as p:
     check(e2.locator('.smp-form, .sm-stepper').count() == 0, 'engineer has no publication form')
     e2.goto(BASE + '/demander-une-etude/')
     check(e2.locator('.sme-request__grid form').count() == 0, 'engineer cannot request a study')
+
+    print('\nI. Follow-up after the study, expertise (0.39.0)')
+    st = wp(f'echo SM\\Engineering\\Missions::get({mid})->status;')
+    c.goto(BASE + f'/compte/etudes/?id={mid}')
+    check(st in ('delivered', 'closed') and c.locator('.sme-follow a').count() == 1, 'delivered study: "Ask for the follow-up of this project" (%s)' % st)
+    c.click('.sme-follow a'); c.wait_for_load_state()
+    check(c.is_checked('input[name="part"][value="follow"]') and c.is_checked('input[name="project_type"][value="storage"]') and c.input_value('#m-wilaya') == '19' and 'Suivi de l’étude' in txt(c, '.sme-pre').replace("'", '’'), 'follow-up form: part, project and wilaya taken from the study')
+    c.click('.smx-chip:has(input[value="erection"])'); c.fill('#smx-visits', '4')
+    c.click('.smx button[type="submit"]'); c.wait_for_load_state()
+    need = txt(c, '.sme-need')
+    check('envoyée à la plateforme' in notice(c) and 'Suivi et assistance technique' in need and '20 × 40' in need and 'Montage' in need and c.locator('.sme-need [data-smx-front] svg').count() == 1, 'follow-up sent with the geometry and the sketch of the study')
+    c.goto(BASE + '/demander-une-etude/')
+    c.click('.smx-part:has(input[value="expertise"])'); c.click('.smx-type:has(input[value="storage"])')
+    check(c.locator('#smx-col_h').is_hidden() and c.locator('#smx-exp_w').is_visible(), 'expertise: its own questions, no study dimensions')
+    c.click('.smx-chip:has(input[value="existing"])'); c.select_option('#m-wilaya', '16')
+    c.click('.smx button[type="submit"]'); c.wait_for_load_state()
+    check('2 photos' in c.inner_text('main') and c.is_checked('input[name="part"][value="expertise"]'), 'expertise without 2 photos is refused, the form keeps the answers')
 
     check(not errors, 'no JavaScript error' + ((': ' + errors[0]) if errors else ''))
     b.close()

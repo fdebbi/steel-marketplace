@@ -1,5 +1,14 @@
 # Changelog — sm-engineering
 
+## 0.6.0 — 2026-11-15 (avec le thème 0.39.0)
+
+- Nouvelle classe `Brief` : les 3 parties (étude, suivi, expertise), la forme du bâtiment selon le type de projet (portiques, niveaux, libre), les listes de choix, la vérification des réponses (bornes, faîtage ≥ poteaux, rail et mezzanine sous les poteaux, mezzanine dans le bâtiment), les lignes affichées, les chiffres calculés (surface, volume, pente, portiques) et le titre automatique.
+- Table `sm_missions` : colonnes `part` et `brief` (JSON) — base v6.
+- Une demande = une partie ; seuls ses services sont gardés. Suivi et expertise prennent leur service et toutes ses prestations par défaut.
+- Suivi après une étude livrée (`?from=`) : reprend la géométrie de l'étude du même client et indique sa référence.
+- Expertise : 2 photos minimum, sauf depuis une annonce de la plateforme.
+- Le besoin est montré au client, à l'ingénieur et dans l'administration.
+
 ## 0.5.0 — 2026-11-13 (avec le thème 0.30.0)
 
 - Profil verrouillé pendant la vérification de la candidature par la plateforme.

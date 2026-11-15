@@ -85,6 +85,8 @@ final class Installer {
 				prestations text,
 				services longtext,
 				project_type varchar(40) NOT NULL DEFAULT '',
+				part varchar(20) NOT NULL DEFAULT '',
+				brief longtext,
 				wilaya char(2) NOT NULL DEFAULT '',
 				needed_by date DEFAULT NULL,
 				budget decimal(14,2) NOT NULL DEFAULT 0,

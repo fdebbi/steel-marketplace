@@ -412,6 +412,10 @@ final class Admin {
 		if ( $pref ) {
 			$rows[ __( 'Preferred engineer', 'sm-engineering' ) ] = $pref->name;
 		}
+		// 0.6.0: the detailed need (part, geometry, follow-up, expertise).
+		foreach ( \SM\Engineering\Brief::rows( $m->brief ) as $r ) {
+			$rows[ $r[0] ] = $r[1];
+		}
 		foreach ( $rows as $k => $v ) {
 			echo '<dt>' . esc_html( $k ) . '</dt><dd>' . esc_html( $v ) . '</dd>';
 		}

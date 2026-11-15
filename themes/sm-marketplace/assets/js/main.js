@@ -250,6 +250,7 @@
 	/* Study request (0.28.0): one or more services; ticking a service ticks all its prestations. */
 	$$( '[data-sm-svc]' ).forEach( function ( box ) {
 		var toggle = box.querySelector( '[data-sm-svc-toggle]' ), items = box.querySelector( '[data-sm-svc-items]' );
+		if ( ! toggle ) { return; } // Follow-up and expertise (0.39.0): their single service is always on.
 		function show( fresh ) {
 			box.classList.toggle( 'is-on', toggle.checked );
 			if ( ! items ) { return; }

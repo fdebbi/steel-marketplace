@@ -1,5 +1,9 @@
 # Changelog — sm-buildings
 
+## 0.5.1 — 2026-11-15
+
+- Demande d'inspection depuis une annonce : largeur et longueur du bâtiment pré-remplies dans l'expertise (sm-engineering 0.6.0).
+
 ## 0.5.0 — 2026-11-14
 
 - Demande d'inspection : le type de projet est déjà choisi d'après la catégorie du bâtiment (hangars industriels et ateliers → bâtiment industriel, entrepôts → hangar de stockage, hangars agricoles → bâtiment agricole, élevage → bâtiment d'élevage, kits → autre). L'acheteur peut le changer. Filtre `sm_buildings_project_types`.

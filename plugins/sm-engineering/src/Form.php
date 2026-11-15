@@ -56,6 +56,20 @@ final class Form {
 			$codes = array( sanitize_key( (string) $in['type'] ) );
 		}
 		$codes = array_values( array_unique( array_filter( $codes, static fn( $c ) => isset( $types[ $c ] ) ) ) );
+		// 0.6.0: one part per request (study, follow-up or expertise); its services only.
+		$part = sanitize_key( (string) ( $in['part'] ?? '' ) );
+		if ( '' === $part && $codes ) {
+			$part = Brief::part_of_service( $codes[0] ); // Old links (?type=…) and tests.
+		}
+		if ( ! isset( Brief::parts()[ $part ] ) ) {
+			$errors['part'] = __( 'Choose what you need: a study, a follow-up or an expertise.', 'sm-engineering' );
+			$part           = '';
+		} else {
+			$codes = array_values( array_filter( $codes, static fn( $c ) => Brief::part_of_service( $c ) === $part ) );
+			if ( ! $codes && 'study' !== $part ) {
+				$codes = array_values( array_filter( array_keys( $types ), static fn( $c ) => Brief::part_of_service( $c ) === $part ) );
+			}
+		}
 		if ( ! $codes ) {
 			$errors['services'] = __( 'Choose at least one engineering service.', 'sm-engineering' );
 		}
@@ -64,7 +78,11 @@ final class Form {
 		$picked   = array();
 		foreach ( $codes as $code ) {
 			$sv   = Services::get( $code );
-			$pick = Services::pick( $code, array_map( 'absint', (array) ( $ticked[ $code ] ?? array() ) ) );
+			$want = array_map( 'absint', (array) ( $ticked[ $code ] ?? array() ) );
+			if ( ! isset( $ticked[ $code ] ) && 'study' !== $part && $sv ) {
+				$want = array_keys( $sv['items'] ); // Follow-up / expertise: their prestations, all of them unless untick.
+			}
+			$pick = Services::pick( $code, $want );
 			if ( $sv && $sv['items'] && ! $pick ) {
 				/* translators: %s: engineering service. */
 				$errors['prestations'] = sprintf( __( 'Tick at least one prestation of the service “%s”.', 'sm-engineering' ), Services::text( $sv ) );
@@ -77,12 +95,18 @@ final class Form {
 		if ( ! isset( $ptypes[ $project ] ) ) {
 			$errors['project_type'] = __( 'Choose the type of project.', 'sm-engineering' );
 		}
+		$brief = '' !== $part ? Brief::validate( $part, $project, (array) ( $in['b'] ?? array() ), $errors ) : array();
 		$title = mb_substr( sanitize_text_field( (string) ( $in['title'] ?? '' ) ), 0, 200 );
+		if ( '' === $title && '' !== $part && isset( $ptypes[ $project ] ) ) {
+			$title = Brief::title( $brief, ProjectTypes::label( $project ) ); // 0.6.0: the title is optional.
+		}
 		if ( mb_strlen( $title ) < 5 ) {
 			$errors['title'] = __( 'Give a short title, for example “Hangar 20 × 40 m in Sétif”.', 'sm-engineering' );
 		}
 		$desc = mb_substr( sanitize_textarea_field( (string) ( $in['description'] ?? '' ) ), 0, 5000 );
-		if ( mb_strlen( $desc ) < 30 ) {
+		// The dimensions say most of it; a free description is needed only when nothing else describes the project.
+		$free = 'study' === $part ? 'free' === Brief::family( $project ) : '' === $part;
+		if ( $free && mb_strlen( $desc ) < 30 ) {
 			$errors['description'] = __( 'Describe the project: dimensions, use, loads, what you expect (30 characters at least).', 'sm-engineering' );
 		}
 		$wilaya = preg_replace( '/\D/', '', (string) ( $in['wilaya'] ?? '' ) );
@@ -103,6 +127,8 @@ final class Form {
 				'type'         => $codes[0] ?? '',
 				'services'     => $services,
 				'project_type' => $project,
+				'part'         => $part,
+				'brief'        => $brief,
 				'title'        => $title,
 				'description'  => $desc,
 				'prestations'  => $picked,
@@ -126,13 +152,45 @@ final class Form {
 		}
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified in Forms::begin().
 		$v = self::validate_request( (array) wp_unslash( $_POST ) );
+		if ( 'expertise' === ( $v['data']['part'] ?? '' ) && self::photos_sent() < 2 && ! self::from_listing() ) {
+			$v['errors']['files'] = __( 'Add at least 2 photos of the building for an expertise.', 'sm-engineering' );
+		}
 		if ( $v['errors'] ) {
 			Forms::back( $v['errors'] );
+		}
+		// 0.6.0: a follow-up after a delivered study keeps the geometry of the project (own studies only).
+		$from = (int) ( $v['data']['brief']['from'] ?? 0 );
+		if ( $from ) {
+			$parent = Missions::get( $from );
+			if ( $parent && (int) $parent->client_id === (int) $company->id && 'study' === $parent->part ) {
+				$v['data']['brief'] = $v['data']['brief'] + Brief::carry( $parent->brief );
+			} else {
+				unset( $v['data']['brief']['from'] );
+			}
 		}
 		$id    = Missions::create( $company->id, $user_id, $v['data'] );
 		$files = Files::upload( $id, 'files', 'brief', true, true );
 		\SM\Core\Notifications\Notifications::notify_moderators( 'mission.submitted', array( 'mission_id' => $id ) );
 		Forms::back( $files['errors'], __( 'Your request is sent to the platform. You receive a quote, usually within 2 working days.', 'sm-engineering' ), Notifications::link( 'client', $id ) );
+	}
+
+	/** Number of pictures in the files sent with the request (0.6.0). */
+	private static function photos_sent() {
+		$names = (array) ( $_FILES['files']['name'] ?? array() ); // phpcs:ignore WordPress.Security
+		$err   = (array) ( $_FILES['files']['error'] ?? array() ); // phpcs:ignore WordPress.Security
+		$n     = 0;
+		foreach ( $names as $i => $name ) {
+			if ( UPLOAD_ERR_OK === (int) ( $err[ $i ] ?? 1 ) && preg_match( '/\.(jpe?g|png|webp|heic)$/i', (string) $name ) ) {
+				++$n;
+			}
+		}
+		return $n;
+	}
+
+	/** Expertise asked from a listing of the platform: its photos are already on the listing. */
+	private static function from_listing() {
+		$id = absint( Forms::post( 'listing' ) );
+		return $id && null !== apply_filters( 'sm_theme_data_mission_prefill', null, array( 'listing' => $id ) );
 	}
 
 	/** The mission when the user is a member of the client company, or null. */

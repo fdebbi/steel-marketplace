@@ -16,6 +16,7 @@ namespace SM\Engineering\Theme;
 use SM\Core\Accounts\Companies;
 use SM\Core\Routing\Routes as CoreRoutes;
 use SM\Engineering\Apply;
+use SM\Engineering\Brief;
 use SM\Engineering\Engineers;
 use SM\Engineering\Files;
 use SM\Engineering\Form;
@@ -62,6 +63,7 @@ final class Bridge {
 				'image' => $s['image'] ? (string) wp_get_attachment_image_url( $s['image'], 'large' ) : '',
 				'alt'   => $s['image'] ? (string) get_post_meta( $s['image'], '_wp_attachment_image_alt', true ) : '',
 				'demo'  => $s['demo'],
+				'part'  => Brief::part_of_service( $code ),
 				'url'   => CoreRoutes::url( 'mission-request', array( 'type' => $code ) ),
 			);
 		}
@@ -184,6 +186,11 @@ final class Bridge {
 			'services'   => self::services(),
 			'projects'   => ProjectTypes::options(),
 			'type'       => sanitize_key( (string) ( $args['type'] ?? '' ) ),
+			// 0.6.0: the three parts, the shape of each type of project, the lists of choices.
+			'parts'      => Brief::parts(),
+			'families'   => array_map( array( Brief::class, 'family' ), array_combine( array_keys( ProjectTypes::options() ), array_keys( ProjectTypes::options() ) ) ),
+			'choices'    => array_combine( $lists = array( 'roof', 'use', 'mezz_use', 'cladding', 'floor', 'soil', 'phases', 'study_by', 'object', 'findings', 'urgency' ), array_map( array( Brief::class, 'choices' ), $lists ) ),
+			'from'       => self::follow_prefill( absint( $args['from'] ?? 0 ) ),
 			'preferred'  => ( $pe && 'approved' === $pe->status ) ? Engineers::public_shape( $pe ) : null,
 			// The list of partner engineers is offered only when it is public (setting).
 			'engineers'  => Settings::get( 'public_list' ) ? $list : array(),
@@ -191,6 +198,31 @@ final class Bridge {
 			'file_mb'    => (int) Settings::get( 'file_mb' ),
 			'extensions' => Settings::extensions(),
 			'list_url'   => CoreRoutes::url( 'engineers' ),
+		);
+	}
+
+	/** A follow-up asked after a delivered study (0.6.0): same project, same geometry. */
+	private static function follow_prefill( $id ) {
+		$m = $id ? Missions::get( $id ) : null;
+		if ( ! $m || 'study' !== $m->part || ! in_array( $m->status, array( 'delivered', 'closed' ), true ) || ! Companies::member_role( $m->client_id, get_current_user_id() ) ) {
+			return null;
+		}
+		return array(
+			'id'           => $m->id,
+			'ref'          => $m->ref,
+			'title'        => $m->title,
+			'project_type' => $m->project_type,
+			'wilaya'       => $m->wilaya,
+			'brief'        => Brief::carry( $m->brief ),
+		);
+	}
+
+	/** The detailed need of a request, for both sides (0.6.0). */
+	private static function brief_shape( $m ) {
+		return array(
+			'part'    => $m->part,
+			'rows'    => Brief::rows( $m->brief ),
+			'drawing' => Brief::drawable( $m->brief ) ? $m->brief : null,
 		);
 	}
 
@@ -229,6 +261,9 @@ final class Bridge {
 		}
 		$expired = $m->quote_valid_until && $m->quote_valid_until < gmdate( 'Y-m-d' );
 		return $out + array(
+			'need'        => self::brief_shape( $m ),
+			// After a delivered study, a follow-up of the same project in one click.
+			'follow_url'  => 'study' === $m->part && in_array( $m->status, array( 'delivered', 'closed' ), true ) ? CoreRoutes::url( 'mission-request', array( 'from' => $m->id ) ) : '',
 			'description' => (string) $m->description,
 			'needed_by'   => $m->needed_by,
 			'budget'      => $m->budget,
@@ -313,6 +348,7 @@ final class Bridge {
 			return $out;
 		}
 		return $out + array(
+			'need'         => self::brief_shape( $m ),
 			'description'  => (string) $m->description,
 			'needed_by'    => $m->needed_by,
 			'note'         => (string) $m->engineer_note,

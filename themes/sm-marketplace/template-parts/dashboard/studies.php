@@ -165,6 +165,11 @@ if ( $id ) :
 		</section>
 	<?php endif; ?>
 
+	<?php if ( ! empty( $m['need']['rows'] ) ) : ?>
+		<section class="sm-panel"><?php sm_component( 'mission-need', array( 'need' => $m['need'], 'follow_url' => $m['follow_url'] ?? '' ) ); ?></section>
+	<?php elseif ( ! empty( $m['follow_url'] ) ) : ?>
+		<section class="sm-panel"><?php sm_component( 'mission-need', array( 'need' => array( 'rows' => array() ), 'follow_url' => $m['follow_url'] ) ); ?></section>
+	<?php endif; ?>
 	<div class="sm-dash__cols">
 		<section class="sm-panel">
 			<h2 class="sm-panel__title"><?php esc_html_e( 'Your request', 'sm-marketplace' ); ?></h2>

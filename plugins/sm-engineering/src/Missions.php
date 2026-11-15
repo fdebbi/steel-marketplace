@@ -53,7 +53,10 @@ final class Missions {
 			}
 			$r->$k = (float) $r->$k;
 		}
-		$r->ref = self::ref( $r );
+		$r->ref   = self::ref( $r );
+		$b        = isset( $r->brief ) ? json_decode( (string) $r->brief, true ) : null;
+		$r->brief = is_array( $b ) ? $b : array(); // 0.6.0: the detailed need (Brief).
+		$r->part  = (string) ( $r->part ?? '' );
 		return $r;
 	}
 
@@ -82,6 +85,8 @@ final class Missions {
 				'prestations'  => wp_json_encode( array_values( (array) ( $d['prestations'] ?? array() ) ), JSON_UNESCAPED_UNICODE ),
 				'services'     => wp_json_encode( array_values( (array) ( $d['services'] ?? array() ) ), JSON_UNESCAPED_UNICODE ),
 				'project_type' => (string) ( $d['project_type'] ?? '' ),
+				'part'         => (string) ( $d['part'] ?? '' ),
+				'brief'        => ! empty( $d['brief'] ) ? wp_json_encode( $d['brief'], JSON_UNESCAPED_UNICODE ) : null,
 				'wilaya'       => $d['wilaya'],
 				'needed_by'    => $d['needed_by'],
 				'budget'       => (float) ( $d['budget'] ?? 0 ),

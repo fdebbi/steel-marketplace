@@ -388,3 +388,12 @@ Validé sur la maquette 0.37.
 - Aucun achat, aucune offre, aucun message sans compte, sur tous les marchés. Les commandes et messages partent avec le nom, le téléphone et l'e-mail du compte : pas de champs à remplir.
 - Aucune coordonnée (téléphone, e-mail) affichée publiquement ; « Contacter » ouvre une fenêtre de message partout. Les coordonnées du vendeur ne sont données qu'après l'acceptation d'une commande.
 - « Mes annonces » est séparé par marché ; le regroupement en lot n'est proposé que dans l'onglet Réemploi.
+
+## Demande d'étude détaillée (2026-11-15)
+
+- Une demande = une partie : Étude technique (Conception, Note de calcul, Plans 2D/3D, CCTP-DQE-BPU), Suivi et assistance technique, ou Expertise et inspection technique.
+- Le suivi d'un projet se demande après la livraison de l'étude, en reprenant ses dimensions.
+- Le client ne choisit jamais les charges, les profilés ni les zones sismique / vent / neige : l'ingénieur les fixe d'après la commune (RPA, RNV).
+- Obligatoires pour une étude : type, largeur, longueur, hauteur des poteaux (niveaux pour un bâtiment à étages) ; le reste est facultatif, avec « Je ne sais pas ».
+- Schéma en 2D seulement (vue de face + vue en plan), marqué « indicatif » ; pas de 3D.
+- Expertise : 2 photos minimum.

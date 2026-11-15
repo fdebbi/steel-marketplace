@@ -1,5 +1,16 @@
 # Changelog — sm-marketplace
 
+## 0.39.0 — 2026-11-15
+
+- Demande d'étude en 4 étapes : 1. besoin (Étude technique, Suivi et assistance, ou Expertise et inspection — un seul choix par demande ; l'étude ouvre ses 4 prestations), 2. type de projet en cartes illustrées, 3. dimensions et schéma (ou les questions du suivi / de l'expertise), 4. lieu, documents et envoi.
+- Charpente en portiques (hangar, usine, agricole, élevage, équipement) : largeur, longueur, hauteur des poteaux (obligatoires), faîtage, nefs, entraxe, forme de toiture (6 formes), pont roulant (capacité, rail, nombre), mezzanine (dimensions, hauteur, usage), couverture et bardage, portes. Bâtiment à niveaux (bureaux, habitation, commerce) : largeur, longueur, niveaux, hauteur d'étage, plancher.
+- Schéma indicatif dessiné pendant la saisie (`assets/js/study-sketch.js`) : vue de face cotée (poteaux, faîtage, pente, mezzanine, pont roulant) et vue en plan (portiques, travées, nefs, mezzanine, portes), surface, volume, nombre de portiques. Les cotes restent dans le bon ordre en arabe.
+- Le besoin et son schéma apparaissent sur la page de l'étude, chez le client et chez l'ingénieur.
+- Étude livrée : bouton « Demander le suivi de ce projet » qui reprend le projet, la wilaya et les dimensions.
+- Expertise : au moins 2 photos (sauf demande faite depuis une annonce, dont les photos sont déjà en ligne).
+- Titre et description deviennent facultatifs (titre automatique « Hangar de stockage 20 × 40 m »), sauf pour le type « Autre ».
+- Le formulaire marche sans JavaScript (parties et formes affichées par CSS `:has`).
+
 ## 0.38.0 — 2026-11-15
 
 - Achat de barres de plusieurs longueurs (réemploi) : deux choix, « Barres » ou « Lot complet ». L'acheteur choisit une longueur de l'inventaire et un nombre plafonné au stock (« Maximum atteint »), puis « + Ajouter une autre longueur » propose les longueurs restantes ; poids et prix calculés ligne par ligne.

@@ -29,6 +29,10 @@ function sm_theme_enqueue_assets() {
 		// Partner engineer application in steps (0.29.0).
 		wp_enqueue_script( 'sm-wizard', SM_THEME_URI . '/assets/js/wizard.js', array(), sm_theme_asset_version( 'assets/js/wizard.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
+	if ( is_page_template( 'templates/mission-request.php' ) || is_page_template( 'templates/dashboard.php' ) ) {
+		// Indicative sketch of a study request (0.39.0): live in the form, static on the study page.
+		wp_enqueue_script( 'sm-study-sketch', SM_THEME_URI . '/assets/js/study-sketch.js', array(), sm_theme_asset_version( 'assets/js/study-sketch.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	}
 	if ( is_page_template( 'templates/dashboard.php' ) ) {
 		// Account overview (0.35.0): animated curves and figures; does nothing on the other views.
 		wp_enqueue_script( 'sm-overview', SM_THEME_URI . '/assets/js/overview.js', array(), sm_theme_asset_version( 'assets/js/overview.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );

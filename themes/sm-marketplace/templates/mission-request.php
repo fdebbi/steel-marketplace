@@ -16,7 +16,7 @@ $engineer = absint( sm_theme_query_arg( 'engineer' ) );
 $listing  = absint( sm_theme_query_arg( 'listing' ) );
 $pre      = $listing ? sm_theme_data( 'mission_prefill', array( 'listing' => $listing ) ) : null;
 $pre      = is_array( $pre ) ? $pre : array();
-$d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'type' => sm_theme_query_arg( 'type' ) ? sm_theme_query_arg( 'type' ) : ( $pre['type'] ?? '' ) ) );
+$d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'from' => absint( sm_theme_query_arg( 'from' ) ), 'type' => sm_theme_query_arg( 'type' ) ? sm_theme_query_arg( 'type' ) : ( $pre['type'] ?? '' ) ) );
 ?>
 <section class="sm-pagehead sm-pagehead--engineers">
 	<div class="sm-container">
@@ -47,97 +47,7 @@ $d        = sm_theme_data( 'mission_form', array( 'engineer' => $engineer, 'type
 		?>
 	<?php else : ?>
 		<div class="sme-request__grid">
-			<?php sm_theme_form_open( 'mission_request', array( 'class' => 'sm-form sm-panel', 'enctype' => 'multipart/form-data' ) ); ?>
-				<?php sm_theme_notices( true ); ?>
-				<?php if ( ! empty( $pre['rows'] ) ) : ?>
-					<div class="sme-pre" role="note">
-						<p class="sme-pre__title"><?php sm_icon( (string) ( $pre['icon'] ?? 'warehouse' ) ); ?><?php echo esc_html( (string) ( $pre['heading'] ?? __( 'Building concerned by the inspection', 'sm-marketplace' ) ) ); ?></p>
-						<dl>
-							<?php foreach ( $pre['rows'] as $row ) : ?>
-								<div><dt><?php echo esc_html( $row[0] ); ?></dt><dd><?php if ( 0 === strpos( (string) $row[1], 'http' ) ) : ?><a href="<?php echo esc_url( $row[1] ); ?>"><?php esc_html_e( 'See the listing', 'sm-marketplace' ); ?></a><?php else : ?><bdi dir="auto"><?php echo esc_html( $row[1] ); ?></bdi><?php endif; ?></dd></div>
-							<?php endforeach; ?>
-						</dl>
-						<p class="sm-help"><?php esc_html_e( 'Your request goes to the platform, which sends you a quote and appoints the engineer.', 'sm-marketplace' ); ?></p>
-					</div>
-				<?php endif; ?>
-				<?php
-				$services = (array) ( $d['services'] ?? array() );
-				$sent     = null !== sm_theme_old( 'title', null ); // The form comes back after an error.
-				$chosen   = array_map( 'strval', (array) sm_theme_old( 'services', '' !== (string) $d['type'] ? array( $d['type'] ) : array() ) );
-				$ticked   = (array) sm_theme_old( 'prestations', array() );
-				?>
-				<fieldset class="sm-field sme-svc">
-					<legend><?php esc_html_e( 'Engineering services wanted', 'sm-marketplace' ); ?></legend>
-					<p class="sm-help"><?php esc_html_e( 'Tick one or more services. All their prestations are ticked: untick those you do not need.', 'sm-marketplace' ); ?></p>
-					<?php foreach ( $services as $sv ) : ?>
-						<?php
-						$on   = in_array( $sv['code'], $chosen, true );
-						$mine = $sent ? array_map( 'intval', (array) ( $ticked[ $sv['code'] ] ?? array() ) ) : array_keys( $sv['items'] );
-						?>
-						<div class="sme-svc__item<?php echo $on ? ' is-on' : ''; ?>" data-sm-svc>
-							<label class="sme-svc__head"><input type="checkbox" name="services[]" value="<?php echo esc_attr( $sv['code'] ); ?>" <?php checked( $on ); ?> data-sm-svc-toggle><strong><?php echo esc_html( $sv['title'] ); ?></strong></label>
-							<?php if ( $sv['items'] ) : ?>
-								<div class="sme-prest__group" data-sm-svc-items>
-									<?php foreach ( $sv['items'] as $i => $item ) : ?>
-										<label><input type="checkbox" name="prestations[<?php echo esc_attr( $sv['code'] ); ?>][]" value="<?php echo (int) $i; ?>" <?php checked( in_array( (int) $i, $mine, true ) ); ?>><span><?php echo esc_html( $item ); ?></span></label>
-									<?php endforeach; ?>
-								</div>
-							<?php endif; ?>
-						</div>
-					<?php endforeach; ?>
-					<?php sm_theme_error( 'services' ); ?>
-					<?php sm_theme_error( 'prestations' ); ?>
-				</fieldset>
-				<div class="sm-field">
-					<label for="m-project"><?php esc_html_e( 'Type of project', 'sm-marketplace' ); ?></label>
-					<select id="m-project" name="project_type" required<?php sm_theme_aria( 'project_type' ); ?>>
-						<option value=""><?php esc_html_e( 'Select', 'sm-marketplace' ); ?></option>
-						<?php foreach ( (array) ( $d['projects'] ?? array() ) as $code => $label ) : ?><option value="<?php echo esc_attr( $code ); ?>" <?php selected( (string) sm_theme_old( 'project_type', $pre['project_type'] ?? '' ), (string) $code ); ?>><?php echo esc_html( $label ); ?></option><?php endforeach; ?>
-					</select>
-					<?php sm_theme_error( 'project_type' ); ?>
-				</div>
-				<div class="sm-field">
-					<label for="m-title"><?php esc_html_e( 'Project', 'sm-marketplace' ); ?></label>
-					<input id="m-title" name="title" dir="auto" maxlength="200" required value="<?php echo esc_attr( sm_theme_old( 'title', $pre['title'] ?? '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. Storage hangar 20 × 40 m', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'title' ); ?>>
-					<?php sm_theme_error( 'title' ); ?>
-				</div>
-				<div class="sm-field">
-					<label for="m-desc"><?php esc_html_e( 'Description', 'sm-marketplace' ); ?></label>
-					<textarea id="m-desc" name="description" rows="7" dir="auto" maxlength="5000" required placeholder="<?php esc_attr_e( 'Dimensions, use, loads (crane, snow, wind), soil, what you expect from the study, existing documents…', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'description' ); ?>><?php echo esc_textarea( sm_theme_old( 'description', $pre['description'] ?? '' ) ); ?></textarea>
-					<?php sm_theme_error( 'description' ); ?>
-				</div>
-				<div class="sm-field sm-field--row">
-					<div>
-						<label for="m-wilaya"><?php echo esc_html( $pre ? __( 'Wilaya where you want to reassemble the building', 'sm-marketplace' ) : __( 'Wilaya of the project', 'sm-marketplace' ) ); ?></label>
-						<select id="m-wilaya" name="wilaya" required<?php sm_theme_aria( 'wilaya' ); ?>>
-							<option value=""><?php esc_html_e( 'Select', 'sm-marketplace' ); ?></option>
-							<?php foreach ( sm_theme_wilayas() as $code => $name ) : ?><option value="<?php echo esc_attr( $code ); ?>" <?php selected( sm_theme_old( 'wilaya' ), (string) $code ); ?>><?php echo esc_html( $code . ' — ' . sm_t( $name ) ); ?></option><?php endforeach; ?>
-						</select>
-						<?php sm_theme_error( 'wilaya' ); ?>
-					</div>
-					<div>
-						<label for="m-date"><?php esc_html_e( 'Wanted for', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
-						<input id="m-date" name="needed_by" type="date" dir="ltr" min="<?php echo esc_attr( gmdate( 'Y-m-d' ) ); ?>" value="<?php echo esc_attr( sm_theme_old( 'needed_by' ) ); ?>"<?php sm_theme_aria( 'needed_by' ); ?>>
-						<?php sm_theme_error( 'needed_by' ); ?>
-					</div>
-				</div>
-				<?php if ( $d['engineers'] ) : ?>
-					<div class="sm-field">
-						<label for="m-eng"><?php esc_html_e( 'Preferred engineer', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
-						<select id="m-eng" name="engineer">
-							<option value=""><?php esc_html_e( 'Let the platform choose', 'sm-marketplace' ); ?></option>
-							<?php foreach ( $d['engineers'] as $eid => $label ) : ?><option value="<?php echo (int) $eid; ?>" <?php selected( (int) sm_theme_old( 'engineer', $engineer ), (int) $eid ); ?>><?php echo esc_html( $label ); ?></option><?php endforeach; ?>
-						</select>
-					</div>
-				<?php endif; ?>
-				<label class="sm-upload sm-upload--small">
-					<input type="file" name="files[]" multiple data-sm-filename>
-					<?php sm_icon( 'upload', 'sm-upload__icon' ); ?>
-					<strong><?php esc_html_e( 'Plans, photos, documents', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></strong>
-					<small data-sm-filename-label><?php echo esc_html( sprintf( /* translators: 1: number of files, 2: MB, 3: extensions. */ __( 'Up to %1$d files of %2$d MB (%3$s).', 'sm-marketplace' ), (int) $d['max_files'], (int) $d['file_mb'], strtoupper( implode( ', ', $d['extensions'] ) ) ) ); ?></small>
-				</label>
-				<button class="sm-btn sm-btn--accent sm-btn--lg" type="submit"><?php sm_icon( 'hard-hat' ); ?><?php esc_html_e( 'Send my request to the platform', 'sm-marketplace' ); ?></button>
-			</form>
+			<?php sm_component( 'mission-request-form', array( 'd' => $d, 'pre' => $pre, 'engineer' => $engineer, 'listing' => $pre ? $listing : 0 ) ); ?>
 			<aside class="sme-request__aside">
 				<?php if ( $d['preferred'] ) : ?>
 					<h2 class="sm-panel__title"><?php esc_html_e( 'Engineer you chose', 'sm-marketplace' ); ?></h2>
