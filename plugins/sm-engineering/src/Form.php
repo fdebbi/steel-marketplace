@@ -95,7 +95,9 @@ final class Form {
 		if ( ! isset( $ptypes[ $project ] ) ) {
 			$errors['project_type'] = __( 'Choose the type of project.', 'sm-engineering' );
 		}
-		$brief = '' !== $part ? Brief::validate( $part, $project, (array) ( $in['b'] ?? array() ), $errors ) : array();
+		$bin   = (array) ( $in['b'] ?? array() );
+		$bin   = array( '_wilaya' => sanitize_text_field( (string) ( $in['wilaya'] ?? '' ) ), 'lat' => $in['lat'] ?? '', 'lng' => $in['lng'] ?? '' ) + $bin;
+		$brief = '' !== $part ? Brief::validate( $part, $project, $bin, $errors ) : array();
 		$title = mb_substr( sanitize_text_field( (string) ( $in['title'] ?? '' ) ), 0, 200 );
 		if ( '' === $title && '' !== $part && isset( $ptypes[ $project ] ) ) {
 			$title = Brief::title( $brief, ProjectTypes::label( $project ) ); // 0.6.0: the title is optional.

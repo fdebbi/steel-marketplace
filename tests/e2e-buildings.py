@@ -340,6 +340,7 @@ with sync_playwright() as p:
     check(bp.is_checked('input[name="project_type"][value="industrial"]') and bp.is_checked('input[name="part"][value="expertise"]') and bp.input_value('#smx-exp_w') == '20', 'type of project already chosen from the category of the building (industrial), part "expertise", approximate dimensions filled in (0.39.0)')
     bp.click('.smx-chip:has(input[value="existing"])')
     bp.select_option('#m-wilaya', '16')
+    bp.select_option('[data-smx-commune-list]', 'Ain Taya')
     bp.click('.sme-request form button[type="submit"]'); bp.wait_for_load_state()
     mis = wp('global $wpdb; $u = get_user_by("email","%s")->ID; $t = $wpdb->prefix . "sm_missions"; if (!$wpdb->get_var("SHOW TABLES LIKE \'$t\'")) { $t = $wpdb->prefix . "sm_eng_missions"; } echo $wpdb->get_var("SELECT CONCAT(status, \'|\', engineer_id, \'|\', title) FROM $t ORDER BY id DESC LIMIT 1");' % buyer)
     check(mis.startswith('submitted|0|Inspection'), 'the request reaches the platform (submitted, no engineer yet): the administrator appoints him (%s)' % mis[:40])

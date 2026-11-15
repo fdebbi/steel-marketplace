@@ -30,6 +30,7 @@ final class Bridge {
 		add_filter( 'sm_theme_data_featured_companies', array( __CLASS__, 'featured_companies' ), 10, 2 );
 		add_filter( 'sm_theme_data_wilayas', array( __CLASS__, 'wilayas' ) );
 		add_filter( 'sm_theme_data_account_types', array( __CLASS__, 'account_types' ) );
+		add_filter( 'sm_theme_data_communes', static fn( $r ) => null !== $r ? $r : \SM\Core\Accounts\Communes::all() ); // 0.8.3.
 		add_filter( 'sm_theme_data_wilaya_centres', static fn( $r ) => null !== $r ? $r : Wilayas::centres() );
 		add_filter( 'sm_theme_data_map', array( __CLASS__, 'map' ) );
 		add_filter( 'sm_theme_data_contact_info', static fn( $r ) => null !== $r ? $r : array( 'email' => (string) \SM\Core\Mail\Settings::get( 'from_email' ), 'form' => true ) );

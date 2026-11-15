@@ -252,23 +252,96 @@ $i18n = sm_study_sketch_i18n();
 							</div>
 						</div>
 						<div class="smx-opt">
-							<p class="smx-sub"><?php esc_html_e( 'Envelope and openings', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></p>
-							<div class="smx-grid">
+							<p class="smx-sub"><?php esc_html_e( 'Roofing', 'sm-marketplace' ); ?></p>
+							<div class="smx-chips"><?php $chips( 'roofing', 'roofing' ); ?></div>
+							<p class="smx-sub"><?php esc_html_e( 'Walls (cladding)', 'sm-marketplace' ); ?></p>
+							<div class="smx-chips"><?php $chips( 'walls', 'walls' ); ?></div>
+							<div class="smx-grid smx-walls-mixed">
 								<?php
-								$select( 'cladding', __( 'Roofing and cladding', 'sm-marketplace' ), 'cladding', 'unknown' );
-								$unit( 'doors_n', __( 'Number of doors', 'sm-marketplace' ), '', false, '0' );
-								$unit( 'door_w', __( 'Width of a door', 'sm-marketplace' ), 'm', false, '5' );
-								$unit( 'door_h', __( 'Height of a door', 'sm-marketplace' ), 'm', false, '5' );
+								$unit( 'wall_h', __( 'Height of the wall', 'sm-marketplace' ), 'm', true, '1,5' );
+								$select( 'walls_top', __( 'Cladding above', 'sm-marketplace' ), 'walls_top', 'sandwich' );
 								?>
 							</div>
 						</div>
+						<div class="smx-opt" data-smx-doors>
+							<p class="smx-sub"><?php esc_html_e( 'Doors', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'each side closed unless you add doors', 'sm-marketplace' ); ?></small></p>
+							<p class="sm-help"><?php esc_html_e( 'A door sits in the middle of a bay (between two frames). Tick the bays, or click a bay on the plan.', 'sm-marketplace' ); ?></p>
+							<?php
+							$side_names = array(
+								'front' => __( 'Front long side', 'sm-marketplace' ),
+								'back'  => __( 'Back long side', 'sm-marketplace' ),
+								'left'  => __( 'Left gable', 'sm-marketplace' ),
+								'right' => __( 'Right gable', 'sm-marketplace' ),
+							);
+							$bays_now = max( 1, (int) ( ( function () use ( $bv ) {
+								$l   = (float) str_replace( ',', '.', (string) $bv( 'length' ) );
+								$bay = (float) str_replace( ',', '.', (string) $bv( 'bay' ) );
+								return $l > 0 ? ceil( $l / ( $bay > 0 ? $bay : 6 ) - 0.01 ) : 10;
+							} )() ) );
+							foreach ( $side_names as $side => $label ) :
+								$long = in_array( $side, array( 'front', 'back' ), true );
+								$mode = (string) $bv( 'd_' . $side, 'closed' );
+								$list = $long ? 'long' : 'gable';
+								$on   = array_map( 'intval', (array) $bv( 'd_' . $side . '_bays', array() ) );
+								?>
+								<div class="smx-side" data-smx-side="<?php echo esc_attr( $side ); ?>">
+									<div class="smx-side__head">
+										<strong><?php echo esc_html( $label ); ?></strong>
+										<span class="smx-seg">
+											<?php foreach ( (array) ( $choices[ $list ] ?? array() ) as $c => $l ) : ?>
+												<label><input type="radio" name="b[d_<?php echo esc_attr( $side ); ?>]" value="<?php echo esc_attr( $c ); ?>" <?php checked( $mode, (string) $c ); ?> data-smx-in="d_<?php echo esc_attr( $side ); ?>"><span><?php echo esc_html( $l ); ?></span></label>
+											<?php endforeach; ?>
+										</span>
+									</div>
+									<div class="smx-side__more">
+										<?php if ( $long ) : ?>
+											<div class="smx-bays" data-smx-bays>
+												<?php for ( $i = 1; $i <= 40; $i++ ) : ?>
+													<label<?php echo $i > $bays_now ? ' hidden' : ''; ?>><input type="checkbox" name="b[d_<?php echo esc_attr( $side ); ?>_bays][]" value="<?php echo (int) $i; ?>" <?php checked( in_array( $i, $on, true ) ); ?> data-smx-in="d_<?php echo esc_attr( $side ); ?>_bays" data-smx-bay="<?php echo (int) $i; ?>"><span>T<?php echo (int) $i; ?></span></label>
+												<?php endfor; ?>
+											</div>
+											<?php sm_theme_error( 'b_d_' . $side ); ?>
+										<?php endif; ?>
+										<div class="smx-grid">
+											<?php
+											$unit( 'd_' . $side . '_w', __( 'Width of a door', 'sm-marketplace' ), 'm', false, $long ? '4' : '5' );
+											$unit( 'd_' . $side . '_h', __( 'Height of a door', 'sm-marketplace' ), 'm', false, $long ? '4,5' : '5' );
+											?>
+										</div>
+									</div>
+								</div>
+							<?php endforeach; ?>
+						</div>
 					</div>
-					<div class="smx-fam smx-grid" data-fam="levels">
+					<div class="smx-fam" data-fam="levels">
+						<p class="smx-sub"><?php esc_html_e( 'Levels', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'one row per level, from the ground floor up', 'sm-marketplace' ); ?></small></p>
 						<?php
-						$unit( 'levels', __( 'Number of levels (ground floor included)', 'sm-marketplace' ), '', true, '3' );
-						$unit( 'floor_h', __( 'Height of a floor', 'sm-marketplace' ), 'm', false, '3,4' );
-						$select( 'floor', __( 'Floors', 'sm-marketplace' ), 'floor', 'unknown' );
+						$floors = array_values( array_filter( (array) $bv( 'floors', array() ), 'is_array' ) );
+						if ( ! $floors ) {
+							$floors = array( array( 'h' => '', 'use' => '' ) );
+						}
+						$fnum = static fn( $v ) => is_float( $v ) || is_int( $v ) ? rtrim( rtrim( number_format( (float) $v, 2, ',', '' ), '0' ), ',' ) : (string) $v;
 						?>
+						<div class="smx-floors" data-smx-floors data-ground="<?php esc_attr_e( 'Ground floor', 'sm-marketplace' ); ?>" data-level="<?php esc_attr_e( 'F+%d', 'sm-marketplace' ); ?>">
+							<div class="smx-floor smx-floor--head" aria-hidden="true"><span><?php esc_html_e( 'Level', 'sm-marketplace' ); ?></span><span><?php esc_html_e( 'Height', 'sm-marketplace' ); ?></span><span><?php esc_html_e( 'Use', 'sm-marketplace' ); ?></span><span></span></div>
+							<?php foreach ( $floors as $i => $fl ) : ?>
+								<div class="smx-floor" data-smx-floor>
+									<strong data-smx-floor-name><?php echo esc_html( 0 === $i ? __( 'Ground floor', 'sm-marketplace' ) : sprintf( /* translators: %d: floor number. */ __( 'F+%d', 'sm-marketplace' ), $i ) ); ?></strong>
+									<span class="smx-u"><input name="b[floors][<?php echo (int) $i; ?>][h]" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( $fnum( $fl['h'] ?? '' ) ); ?>" placeholder="3,4" aria-label="<?php esc_attr_e( 'Height', 'sm-marketplace' ); ?>" data-smx-in="floor_h"><em>m</em></span>
+									<select name="b[floors][<?php echo (int) $i; ?>][use]" aria-label="<?php esc_attr_e( 'Use', 'sm-marketplace' ); ?>" data-smx-in="floor_use">
+										<option value=""><?php esc_html_e( 'Use', 'sm-marketplace' ); ?></option>
+										<?php foreach ( (array) ( $choices['floor_use'] ?? array() ) as $c => $l ) : ?><option value="<?php echo esc_attr( $c ); ?>" <?php selected( (string) ( $fl['use'] ?? '' ), (string) $c ); ?>><?php echo esc_html( $l ); ?></option><?php endforeach; ?>
+									</select>
+									<button type="button" class="smr-remove" data-smx-floor-remove aria-label="<?php esc_attr_e( 'Remove this level', 'sm-marketplace' ); ?>">×</button>
+									<?php sm_theme_error( 'b_floors_' . $i ); ?>
+								</div>
+							<?php endforeach; ?>
+						</div>
+						<button type="button" class="smr-add" data-smx-floor-add><?php sm_icon( 'plus' ); ?><span><?php esc_html_e( 'Add a level', 'sm-marketplace' ); ?></span></button>
+						<?php sm_theme_error( 'b_floors' ); ?>
+						<div class="smx-grid" style="margin-block-start:10px">
+							<?php $select( 'floor', __( 'Floors', 'sm-marketplace' ), 'floor', 'unknown' ); ?>
+						</div>
 					</div>
 					<div class="smx-fam smx-opt" data-fam="portal levels free">
 						<p class="smx-sub"><?php esc_html_e( 'Use of the building', 'sm-marketplace' ); ?></p>
@@ -280,7 +353,7 @@ $i18n = sm_study_sketch_i18n();
 				</div>
 				<div class="smx-fam smx-sketch" data-fam="portal levels" data-smx-sketch data-i18n="<?php echo esc_attr( wp_json_encode( $i18n ) ); ?>">
 					<div class="smx-sketch__view">
-						<p class="smx-sketch__title"><span data-smx-front-title><?php esc_html_e( 'Front view (gable)', 'sm-marketplace' ); ?></span><small><?php esc_html_e( 'Indicative sketch', 'sm-marketplace' ); ?></small></p>
+						<p class="smx-sketch__title"><span data-smx-front-title><?php esc_html_e( 'Front view (left gable)', 'sm-marketplace' ); ?></span><small><?php esc_html_e( 'Indicative sketch', 'sm-marketplace' ); ?></small></p>
 						<div data-smx-front><p class="sm-help"><?php echo esc_html( $i18n['empty'] ); ?></p></div>
 					</div>
 					<div class="smx-sketch__view" data-smx-plan-box>
@@ -325,36 +398,68 @@ $i18n = sm_study_sketch_i18n();
 
 	<?php /* 4. Place, documents, sending. */ ?>
 	<fieldset class="smx-step" id="smx-s4">
-		<legend class="smx-step__title"><b>4</b><?php esc_html_e( 'Place, documents and sending', 'sm-marketplace' ); ?></legend>
-		<div class="smx-grid">
-			<div class="smx-f">
-				<label for="m-wilaya"><?php echo esc_html( $pre ? __( 'Wilaya where you want to reassemble the building', 'sm-marketplace' ) : __( 'Wilaya of the project', 'sm-marketplace' ) ); ?> <span class="smx-req" aria-hidden="true">*</span></label>
-				<select id="m-wilaya" name="wilaya" required<?php sm_theme_aria( 'wilaya' ); ?>>
-					<option value=""><?php esc_html_e( 'Select', 'sm-marketplace' ); ?></option>
-					<?php foreach ( sm_theme_wilayas() as $code => $name ) : ?><option value="<?php echo esc_attr( $code ); ?>" <?php selected( (string) sm_theme_old( 'wilaya', $from['wilaya'] ?? '' ), (string) $code ); ?>><?php echo esc_html( $code . ' — ' . sm_t( $name ) ); ?></option><?php endforeach; ?>
-				</select>
-				<?php sm_theme_error( 'wilaya' ); ?>
+		<legend class="smx-step__title"><b>4</b><?php esc_html_e( 'Location, project and documents', 'sm-marketplace' ); ?></legend>
+		<?php
+		$wil      = (string) sm_theme_old( 'wilaya', $from['wilaya'] ?? '' );
+		$communes = (array) sm_theme_data( 'communes' );
+		$is_ar    = 0 === strpos( determine_locale(), 'ar' );
+		$cmap     = array();
+		foreach ( $communes as $wc => $list ) {
+			$cmap[ $wc ] = array_map( static fn( $c ) => array( $c[0], $is_ar ? $c[1] : $c[0] ), $list );
+		}
+		$cur      = (string) $bv( 'commune' );
+		$has_list = ! empty( $cmap[ $wil ] );
+		?>
+		<section class="smx-zone">
+			<h3 class="smx-zone__title"><?php sm_icon( 'map-pin' ); ?><?php esc_html_e( 'Location', 'sm-marketplace' ); ?></h3>
+			<div class="smx-grid smx-grid--2">
+				<div class="smx-f">
+					<label for="m-wilaya"><?php echo esc_html( $pre ? __( 'Wilaya where you want to reassemble the building', 'sm-marketplace' ) : __( 'Wilaya', 'sm-marketplace' ) ); ?> <span class="smx-req" aria-hidden="true">*</span></label>
+					<select id="m-wilaya" name="wilaya" required<?php sm_theme_aria( 'wilaya' ); ?>>
+						<option value=""><?php esc_html_e( 'Select', 'sm-marketplace' ); ?></option>
+						<?php foreach ( sm_theme_wilayas() as $code => $name ) : ?><option value="<?php echo esc_attr( $code ); ?>" <?php selected( $wil, (string) $code ); ?>><?php echo esc_html( $code . ' — ' . sm_t( $name ) ); ?></option><?php endforeach; ?>
+					</select>
+					<?php sm_theme_error( 'wilaya' ); ?>
+				</div>
+				<div class="smx-f" data-smx-commune data-communes="<?php echo esc_attr( wp_json_encode( $cmap ) ); ?>">
+					<label for="smx-commune"><?php esc_html_e( 'Commune', 'sm-marketplace' ); ?> <span class="smx-req" aria-hidden="true">*</span></label>
+					<select id="smx-commune" name="b[commune]"<?php echo $has_list ? '' : ' hidden disabled'; ?> data-smx-commune-list aria-required="true">
+						<option value=""><?php echo esc_html( $wil ? __( 'Select', 'sm-marketplace' ) : __( 'Choose the wilaya first', 'sm-marketplace' ) ); ?></option>
+						<?php foreach ( (array) ( $cmap[ $wil ] ?? array() ) as $c ) : ?><option value="<?php echo esc_attr( $c[0] ); ?>" <?php selected( $cur, $c[0] ); ?>><?php echo esc_html( $c[1] ); ?></option><?php endforeach; ?>
+					</select>
+					<input id="smx-commune-text" name="b[commune]" dir="auto" maxlength="80" value="<?php echo esc_attr( $has_list ? '' : $cur ); ?>"<?php echo $has_list ? ' hidden disabled' : ''; ?> data-smx-commune-text aria-required="true">
+					<?php sm_theme_error( 'b_commune' ); ?>
+				</div>
 			</div>
+			<?php
+			sm_component(
+				'location-map',
+				array(
+					'mode'          => 'picker',
+					'lat'           => (string) sm_theme_old( 'lat', (string) ( $seed['lat'] ?? '' ) ),
+					'lng'           => (string) sm_theme_old( 'lng', (string) ( $seed['lng'] ?? '' ) ),
+					'wilaya_select' => '#m-wilaya',
+					'no_public'     => true,
+					'legend'        => __( 'Place of the project on the map (optional)', 'sm-marketplace' ),
+					'help'          => __( 'The map opens on the wilaya. Drag the marker (or click the map) to the exact place, or use your current location if you are on site.', 'sm-marketplace' ),
+					'note'          => __( 'Exact place seen only by the platform and the engineer in charge of the study.', 'sm-marketplace' ),
+				)
+			);
+			sm_theme_error( 'b_location' );
+			?>
+		</section>
+		<section class="smx-zone">
+			<h3 class="smx-zone__title"><?php sm_icon( 'file' ); ?><?php esc_html_e( 'Project', 'sm-marketplace' ); ?></h3>
 			<div class="smx-f">
-				<label for="smx-commune"><?php esc_html_e( 'Municipality', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
-				<input id="smx-commune" name="b[commune]" dir="auto" maxlength="80" value="<?php echo esc_attr( (string) $bv( 'commune' ) ); ?>">
-			</div>
-			<div class="smx-f">
-				<label for="m-date"><?php esc_html_e( 'Wanted for', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
-				<input id="m-date" name="needed_by" type="date" dir="ltr" min="<?php echo esc_attr( gmdate( 'Y-m-d' ) ); ?>" value="<?php echo esc_attr( sm_theme_old( 'needed_by' ) ); ?>"<?php sm_theme_aria( 'needed_by' ); ?>>
-				<?php sm_theme_error( 'needed_by' ); ?>
-			</div>
-			<div class="smx-f">
-				<label for="m-title"><?php esc_html_e( 'Name of the project', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
+				<label for="m-title"><?php esc_html_e( 'Title of the project', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional — otherwise made from the type and the dimensions', 'sm-marketplace' ); ?></small></label>
 				<input id="m-title" name="title" dir="auto" maxlength="200" value="<?php echo esc_attr( sm_theme_old( 'title', $from['title'] ?? ( $pre['title'] ?? '' ) ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. Storage hangar 20 × 40 m', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'title' ); ?>>
 				<?php sm_theme_error( 'title' ); ?>
 			</div>
-		</div>
-		<div class="sm-field">
-			<label for="m-desc"><?php esc_html_e( 'Description', 'sm-marketplace' ); ?> <small class="sm-optional smx-desc-opt"><?php esc_html_e( 'what the dimensions do not say', 'sm-marketplace' ); ?></small></label>
-			<textarea id="m-desc" name="description" rows="5" dir="auto" maxlength="5000" placeholder="<?php esc_attr_e( 'Possible extension, stored goods, constraints of the site, what you expect from the study…', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'description' ); ?>><?php echo esc_textarea( sm_theme_old( 'description', $pre['description'] ?? '' ) ); ?></textarea>
-			<?php sm_theme_error( 'description' ); ?>
-		</div>
+			<div class="smx-f" style="margin-block-start:12px">
+				<label for="m-desc"><?php esc_html_e( 'Description', 'sm-marketplace' ); ?> <small class="sm-optional smx-desc-opt"><?php esc_html_e( 'what the dimensions do not say', 'sm-marketplace' ); ?></small></label>
+				<textarea id="m-desc" name="description" rows="5" dir="auto" maxlength="5000" placeholder="<?php esc_attr_e( 'Possible extension, stored goods, constraints of the site, what you expect from the study…', 'sm-marketplace' ); ?>"<?php sm_theme_aria( 'description' ); ?>><?php echo esc_textarea( sm_theme_old( 'description', $pre['description'] ?? '' ) ); ?></textarea>
+				<?php sm_theme_error( 'description' ); ?>
+			</div>
 		<?php if ( $d['engineers'] ) : ?>
 			<div class="sm-field">
 				<label for="m-eng"><?php esc_html_e( 'Preferred engineer', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
@@ -364,6 +469,9 @@ $i18n = sm_study_sketch_i18n();
 				</select>
 			</div>
 		<?php endif; ?>
+		</section>
+		<section class="smx-zone">
+			<h3 class="smx-zone__title"><?php sm_icon( 'upload' ); ?><?php esc_html_e( 'Documents', 'sm-marketplace' ); ?></h3>
 		<label class="sm-upload sm-upload--small">
 			<input type="file" name="files[]" multiple data-sm-filename>
 			<?php sm_icon( 'upload', 'sm-upload__icon' ); ?>
@@ -371,6 +479,7 @@ $i18n = sm_study_sketch_i18n();
 			<small data-sm-filename-label><?php echo esc_html( sprintf( /* translators: 1: number of files, 2: MB, 3: extensions. */ __( 'Up to %1$d files of %2$d MB (%3$s).', 'sm-marketplace' ), (int) $d['max_files'], (int) $d['file_mb'], strtoupper( implode( ', ', $d['extensions'] ) ) ) ); ?></small>
 		</label>
 		<?php sm_theme_error( 'files' ); ?>
+		</section>
 		<button class="sm-btn sm-btn--accent sm-btn--lg" type="submit"><?php sm_icon( 'hard-hat' ); ?><?php esc_html_e( 'Send my request to the platform', 'sm-marketplace' ); ?></button>
 	</fieldset>
 </form>

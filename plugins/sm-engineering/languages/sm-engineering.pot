@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Engineering 0.6.0\n"
+"Project-Id-Version: SM Engineering 0.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-engineering\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-15T16:35:40+00:00\n"
+"POT-Creation-Date: 2026-11-15T18:38:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-engineering\n"
@@ -545,7 +545,7 @@ msgstr ""
 #. translators: %d: age in years.
 #: src/Admin/Admin.php:153
 #: src/Admin/Admin.php:179
-#: src/Brief.php:488
+#: src/Brief.php:642
 msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] ""
@@ -593,13 +593,13 @@ msgid "Available"
 msgstr ""
 
 #: src/Admin/Admin.php:182
-#: src/Brief.php:401
-#: src/Brief.php:415
+#: src/Brief.php:507
+#: src/Brief.php:521
 msgid "Yes"
 msgstr ""
 
 #: src/Admin/Admin.php:182
-#: src/Brief.php:97
+#: src/Brief.php:132
 msgid "No"
 msgstr ""
 
@@ -1468,6 +1468,7 @@ msgstr ""
 
 #: src/Brief.php:67
 #: src/Brief.php:78
+#: src/Brief.php:119
 msgid "Storage"
 msgstr ""
 
@@ -1484,402 +1485,546 @@ msgid "Sport"
 msgstr ""
 
 #: src/Brief.php:71
+#: src/Brief.php:118
 msgid "Commerce"
 msgstr ""
 
 #: src/Brief.php:72
 #: src/Brief.php:77
+#: src/Brief.php:116
 msgid "Offices"
 msgstr ""
 
 #: src/Brief.php:73
+#: src/Brief.php:117
 msgid "Housing"
 msgstr ""
 
 #: src/Brief.php:74
 #: src/Brief.php:80
 #: src/Brief.php:86
-#: src/Brief.php:92
-#: src/Brief.php:119
+#: src/Brief.php:91
+#: src/Brief.php:127
+#: src/Brief.php:154
 msgid "Other"
 msgstr ""
 
 #: src/Brief.php:79
+#: src/Brief.php:121
 msgid "Technical room"
 msgstr ""
 
 #: src/Brief.php:83
-#: src/Brief.php:89
-#: src/Brief.php:95
+#: src/Brief.php:92
+#: src/Brief.php:100
+#: src/Brief.php:124
+#: src/Brief.php:130
 msgid "I do not know"
 msgstr ""
 
 #: src/Brief.php:84
+#: src/Brief.php:89
+#: src/Brief.php:95
+#: src/Brief.php:104
 msgid "Single steel sheet"
 msgstr ""
 
 #: src/Brief.php:85
+#: src/Brief.php:90
+#: src/Brief.php:96
+#: src/Brief.php:103
 msgid "Sandwich panel"
 msgstr ""
 
-#: src/Brief.php:90
-msgid "Composite steel deck"
+#: src/Brief.php:97
+msgid "Wall"
 msgstr ""
 
-#: src/Brief.php:91
-msgid "Concrete slab"
+#: src/Brief.php:98
+msgid "Mixed: wall + cladding"
 msgstr ""
 
-#: src/Brief.php:96
-msgid "Yes (attach it)"
-msgstr ""
-
-#: src/Brief.php:100
-msgid "Fabrication in the workshop"
-msgstr ""
-
-#: src/Brief.php:101
-msgid "Erection"
-msgstr ""
-
-#: src/Brief.php:102
-msgid "Acceptance"
-msgstr ""
-
-#: src/Brief.php:105
-msgid "An engineer of the platform"
-msgstr ""
-
-#: src/Brief.php:106
-msgid "Another design office"
+#: src/Brief.php:99
+msgid "Open (no cladding)"
 msgstr ""
 
 #: src/Brief.php:107
-msgid "No study"
-msgstr ""
-
-#: src/Brief.php:110
-msgid "Existing building"
-msgstr ""
-
 #: src/Brief.php:111
-msgid "Conformity / acceptance"
+msgid "Closed (no door)"
+msgstr ""
+
+#: src/Brief.php:108
+#: src/Brief.php:557
+msgid "Doors"
 msgstr ""
 
 #: src/Brief.php:112
+msgid "1 centred"
+msgstr ""
+
+#: src/Brief.php:113
+msgid "2 spread"
+msgstr ""
+
+#: src/Brief.php:120
+msgid "Parking"
+msgstr ""
+
+#: src/Brief.php:125
+msgid "Composite steel deck"
+msgstr ""
+
+#: src/Brief.php:126
+msgid "Concrete slab"
+msgstr ""
+
+#: src/Brief.php:131
+msgid "Yes (attach it)"
+msgstr ""
+
+#: src/Brief.php:135
+msgid "Fabrication in the workshop"
+msgstr ""
+
+#: src/Brief.php:136
+msgid "Erection"
+msgstr ""
+
+#: src/Brief.php:137
+msgid "Acceptance"
+msgstr ""
+
+#: src/Brief.php:140
+msgid "An engineer of the platform"
+msgstr ""
+
+#: src/Brief.php:141
+msgid "Another design office"
+msgstr ""
+
+#: src/Brief.php:142
+msgid "No study"
+msgstr ""
+
+#: src/Brief.php:145
+msgid "Existing building"
+msgstr ""
+
+#: src/Brief.php:146
+msgid "Conformity / acceptance"
+msgstr ""
+
+#: src/Brief.php:147
 msgid "Extension / change of use"
 msgstr ""
 
-#: src/Brief.php:115
+#: src/Brief.php:150
 msgid "Cracks"
 msgstr ""
 
-#: src/Brief.php:116
+#: src/Brief.php:151
 msgid "Deformations"
 msgstr ""
 
-#: src/Brief.php:117
+#: src/Brief.php:152
 msgid "Corrosion"
 msgstr ""
 
-#: src/Brief.php:118
+#: src/Brief.php:153
 msgid "Fire"
 msgstr ""
 
-#: src/Brief.php:122
+#: src/Brief.php:157
 msgid "Normal"
 msgstr ""
 
-#: src/Brief.php:123
+#: src/Brief.php:158
 msgid "Urgent (risk)"
 msgstr ""
 
 #. translators: %s: name of a dimension.
-#: src/Brief.php:154
+#: src/Brief.php:189
 msgid "Give the %s."
 msgstr ""
 
 #. translators: 1: name of a dimension, 2: minimum, 3: maximum.
-#: src/Brief.php:160
+#: src/Brief.php:195
 msgid "The %1$s must be a number between %2$s and %3$s."
 msgstr ""
 
-#: src/Brief.php:190
-msgid "width (span)"
+#: src/Brief.php:222
+msgid "Choose the commune."
 msgstr ""
 
-#: src/Brief.php:191
-#: src/Brief.php:246
-#: src/Brief.php:280
-msgid "length"
-msgstr ""
-
-#: src/Brief.php:192
-msgid "height of the columns"
-msgstr ""
-
-#: src/Brief.php:194
-msgid "height at the ridge"
-msgstr ""
-
-#: src/Brief.php:196
-msgid "The ridge cannot be lower than the columns."
-msgstr ""
-
-#: src/Brief.php:202
-msgid "number of spans"
-msgstr ""
-
-#: src/Brief.php:209
-msgid "spacing of the frames"
-msgstr ""
-
-#: src/Brief.php:212
-msgid "capacity of the crane"
-msgstr ""
-
-#: src/Brief.php:213
-msgid "height of the rail"
-msgstr ""
-
-#: src/Brief.php:215
-msgid "The rail must be lower than the columns."
-msgstr ""
-
-#: src/Brief.php:217
-msgid "number of cranes"
-msgstr ""
-
-#: src/Brief.php:224
-msgid "width of the mezzanine"
-msgstr ""
-
-#: src/Brief.php:225
-msgid "length of the mezzanine"
-msgstr ""
-
-#: src/Brief.php:226
-msgid "height of the mezzanine floor"
-msgstr ""
-
-#: src/Brief.php:228
-msgid "The mezzanine must fit in the building."
-msgstr ""
-
-#: src/Brief.php:231
-msgid "The mezzanine floor must be lower than the columns."
+#: src/Brief.php:222
+msgid "This commune is not in the chosen wilaya."
 msgstr ""
 
 #: src/Brief.php:236
-msgid "number of doors"
+msgid "width (span)"
 msgstr ""
 
-#: src/Brief.php:241
-msgid "width of the doors"
+#: src/Brief.php:237
+#: src/Brief.php:319
+#: src/Brief.php:370
+msgid "length"
+msgstr ""
+
+#: src/Brief.php:238
+msgid "height of the columns"
+msgstr ""
+
+#: src/Brief.php:240
+msgid "height at the ridge"
 msgstr ""
 
 #: src/Brief.php:242
-msgid "height of the doors"
+msgid "The ridge cannot be lower than the columns."
 msgstr ""
 
-#: src/Brief.php:245
-#: src/Brief.php:279
-msgid "width"
+#: src/Brief.php:248
+msgid "number of spans"
 msgstr ""
 
-#: src/Brief.php:247
-msgid "number of levels"
-msgstr ""
-
-#: src/Brief.php:251
-msgid "height of a floor"
+#: src/Brief.php:255
+msgid "spacing of the frames"
 msgstr ""
 
 #: src/Brief.php:258
-msgid "Tick the phases to follow."
+msgid "capacity of the crane"
 msgstr ""
 
-#: src/Brief.php:260
-msgid "number of visits"
+#: src/Brief.php:259
+msgid "height of the rail"
 msgstr ""
 
-#: src/Brief.php:264
-msgid "duration of the works"
+#: src/Brief.php:261
+msgid "The rail must be lower than the columns."
+msgstr ""
+
+#: src/Brief.php:263
+msgid "number of cranes"
+msgstr ""
+
+#: src/Brief.php:270
+msgid "width of the mezzanine"
+msgstr ""
+
+#: src/Brief.php:271
+msgid "length of the mezzanine"
 msgstr ""
 
 #: src/Brief.php:272
+msgid "height of the mezzanine floor"
+msgstr ""
+
+#: src/Brief.php:274
+msgid "The mezzanine must fit in the building."
+msgstr ""
+
+#: src/Brief.php:277
+msgid "The mezzanine floor must be lower than the columns."
+msgstr ""
+
+#: src/Brief.php:285
+msgid "height of the wall"
+msgstr ""
+
+#: src/Brief.php:287
+msgid "The wall must be lower than the columns."
+msgstr ""
+
+#: src/Brief.php:300
+msgid "Tick the bays that have a door."
+msgstr ""
+
+#: src/Brief.php:305
+#: src/Brief.php:314
+msgid "width of the doors"
+msgstr ""
+
+#: src/Brief.php:306
+#: src/Brief.php:315
+msgid "height of the doors"
+msgstr ""
+
+#: src/Brief.php:318
+#: src/Brief.php:369
+msgid "width"
+msgstr ""
+
+#. translators: %s: name of the level (Ground floor, F+1…).
+#: src/Brief.php:331
+msgid "%s: give a height between 2 and 12 m."
+msgstr ""
+
+#: src/Brief.php:337
+msgid "Give the levels with their height."
+msgstr ""
+
+#: src/Brief.php:348
+msgid "Tick the phases to follow."
+msgstr ""
+
+#: src/Brief.php:350
+msgid "number of visits"
+msgstr ""
+
+#: src/Brief.php:354
+msgid "duration of the works"
+msgstr ""
+
+#: src/Brief.php:362
 msgid "Choose what is to inspect."
 msgstr ""
 
-#: src/Brief.php:275
+#: src/Brief.php:365
 msgid "age of the building"
 msgstr ""
 
+#. translators: %d: floor number above the ground floor.
+#: src/Brief.php:441
+msgid "Ground floor"
+msgstr ""
+
+#. translators: %d: floor number above the ground floor.
+#: src/Brief.php:441
+msgid "F+%d"
+msgstr ""
+
 #. translators: %d: number of floors above the ground floor.
-#: src/Brief.php:342
+#: src/Brief.php:448
 msgid "Ground floor only"
 msgstr ""
 
 #. translators: %d: number of floors above the ground floor.
-#: src/Brief.php:342
+#: src/Brief.php:448
 msgid "Ground floor + %d"
 msgstr ""
 
-#: src/Brief.php:359
+#: src/Brief.php:465
 msgid "Need"
 msgstr ""
 
-#: src/Brief.php:364
+#: src/Brief.php:470
 msgid "Follow-up of the study"
 msgstr ""
 
 #. translators: %s: height.
-#: src/Brief.php:372
+#: src/Brief.php:478
 msgid "columns %s"
 msgstr ""
 
 #. translators: %s: height.
-#: src/Brief.php:376
+#: src/Brief.php:482
 msgid "ridge %s"
 msgstr ""
 
-#: src/Brief.php:378
-#: src/Brief.php:441
+#: src/Brief.php:484
+#: src/Brief.php:588
 msgid "Dimensions"
 msgstr ""
 
 #. translators: %d: number of spans.
-#: src/Brief.php:382
+#: src/Brief.php:488
 msgid "%d span"
 msgid_plural "%d spans"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s: spacing of the frames.
-#: src/Brief.php:385
+#: src/Brief.php:491
 msgid "frames every %s"
 msgstr ""
 
-#: src/Brief.php:387
+#: src/Brief.php:493
 msgid "Roof"
 msgstr ""
 
 #. translators: %s: height of the rail.
-#: src/Brief.php:395
+#: src/Brief.php:501
 msgid "rail at %s"
 msgstr ""
 
 #. translators: %d: number of overhead cranes.
-#: src/Brief.php:399
+#: src/Brief.php:505
 msgid "%d crane"
 msgid_plural "%d cranes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Brief.php:401
+#: src/Brief.php:507
 msgid "Overhead crane"
 msgstr ""
 
 #. translators: %s: height of the floor.
-#: src/Brief.php:410
+#: src/Brief.php:516
 msgid "floor at %s"
 msgstr ""
 
-#: src/Brief.php:415
+#: src/Brief.php:521
 msgid "Mezzanine"
 msgstr ""
 
+#: src/Brief.php:524
+msgid "Roofing"
+msgstr ""
+
+#. translators: 1: height of the wall, 2: cladding above it.
+#: src/Brief.php:530
+msgid "Wall of %1$s, %2$s above"
+msgstr ""
+
+#: src/Brief.php:532
+msgid "Walls"
+msgstr ""
+
+#: src/Brief.php:535
+msgid "Front long side"
+msgstr ""
+
+#: src/Brief.php:536
+msgid "Back long side"
+msgstr ""
+
+#: src/Brief.php:537
+msgid "Left gable"
+msgstr ""
+
+#: src/Brief.php:538
+msgid "Right gable"
+msgstr ""
+
+#. translators: 1: side of the building, 2: its doors.
+#: src/Brief.php:551
+#: src/Brief.php:553
+msgid "%1$s: %2$s"
+msgstr ""
+
+#. translators: 1: side of the building, 2: its doors.
+#: src/Brief.php:551
+msgid "%1$d door in bay %2$s"
+msgid_plural "%1$d doors in bays %2$s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Brief.php:553
+msgid "1 centred door"
+msgstr ""
+
+#: src/Brief.php:553
+msgid "2 spread doors"
+msgstr ""
+
+#: src/Brief.php:557
+msgid "None (all sides closed)"
+msgstr ""
+
 #. translators: %d: number of doors.
-#: src/Brief.php:423
+#: src/Brief.php:565
 msgid "%d door"
 msgid_plural "%d doors"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Brief.php:430
+#: src/Brief.php:572
 msgid "Envelope"
 msgstr ""
 
+#. translators: %s: total height.
+#: src/Brief.php:582
+msgid "total height %s"
+msgstr ""
+
 #. translators: %s: height of a floor.
-#: src/Brief.php:439
+#: src/Brief.php:586
 msgid "floors of %s"
 msgstr ""
 
-#: src/Brief.php:443
+#: src/Brief.php:593
 msgid "Floors"
 msgstr ""
 
-#: src/Brief.php:447
+#: src/Brief.php:597
 msgid "Use of the building"
 msgstr ""
 
+#. translators: %s: floor area of all levels.
+#: src/Brief.php:607
+msgid "%s of floors in all"
+msgstr ""
+
 #. translators: %d: number of portal frames.
-#: src/Brief.php:457
+#: src/Brief.php:611
 msgid "%d portal frame"
 msgid_plural "%d portal frames"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Brief.php:459
+#: src/Brief.php:613
 msgid "Worked out"
 msgstr ""
 
-#: src/Brief.php:462
+#: src/Brief.php:616
 msgid "Soil study"
 msgstr ""
 
-#: src/Brief.php:466
+#: src/Brief.php:620
 msgid "Phases"
 msgstr ""
 
-#: src/Brief.php:469
+#: src/Brief.php:623
 msgid "Visits"
 msgstr ""
 
 #. translators: %s: number of months.
-#: src/Brief.php:473
+#: src/Brief.php:627
 msgid "Duration of the works"
 msgstr ""
 
 #. translators: %s: number of months.
-#: src/Brief.php:473
+#: src/Brief.php:627
 msgid "%s months"
 msgstr ""
 
-#: src/Brief.php:476
+#: src/Brief.php:630
 msgid "Study made by"
 msgstr ""
 
-#: src/Brief.php:481
+#: src/Brief.php:635
 msgid "To inspect"
 msgstr ""
 
-#: src/Brief.php:484
+#: src/Brief.php:638
 msgid "Findings"
 msgstr ""
 
 #. translators: %d: age in years.
-#: src/Brief.php:488
+#: src/Brief.php:642
 msgid "Age of the building"
 msgstr ""
 
-#: src/Brief.php:491
+#: src/Brief.php:645
 msgid "Approximate dimensions"
 msgstr ""
 
-#: src/Brief.php:494
+#: src/Brief.php:648
 msgid "Urgency"
 msgstr ""
 
-#: src/Brief.php:498
+#: src/Brief.php:653
 msgid "Municipality"
 msgstr ""
 
-#: src/Brief.php:511
+#: src/Brief.php:656
+msgid "Position on the map"
+msgstr ""
+
+#: src/Brief.php:669
 msgid "Follow-up"
 msgstr ""
 
-#: src/Brief.php:512
+#: src/Brief.php:670
 msgid "Expertise"
 msgstr ""
 
@@ -2067,150 +2212,150 @@ msgstr ""
 msgid "Choose the type of project."
 msgstr ""
 
-#: src/Form.php:104
+#: src/Form.php:106
 msgid "Give a short title, for example “Hangar 20 × 40 m in Sétif”."
 msgstr ""
 
-#: src/Form.php:110
+#: src/Form.php:112
 msgid "Describe the project: dimensions, use, loads, what you expect (30 characters at least)."
 msgstr ""
 
-#: src/Form.php:114
+#: src/Form.php:116
 msgid "Choose the wilaya of the project."
 msgstr ""
 
-#: src/Form.php:118
+#: src/Form.php:120
 msgid "Choose a date in the future, or leave it empty."
 msgstr ""
 
-#: src/Form.php:151
+#: src/Form.php:153
 msgid "You sent many study requests today. Try again tomorrow or write to the platform."
 msgstr ""
 
-#: src/Form.php:156
+#: src/Form.php:158
 msgid "Add at least 2 photos of the building for an expertise."
 msgstr ""
 
-#: src/Form.php:174
+#: src/Form.php:176
 msgid "Your request is sent to the platform. You receive a quote, usually within 2 working days."
 msgstr ""
 
-#: src/Form.php:213
+#: src/Form.php:215
 msgid "You cannot change this request."
 msgstr ""
 
-#: src/Form.php:218
+#: src/Form.php:220
 msgid "This request is closed."
 msgstr ""
 
 #. translators: %d: number of files.
-#: src/Form.php:222
+#: src/Form.php:224
 msgid "%d document added."
 msgid_plural "%d documents added."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Form.php:225
+#: src/Form.php:227
 msgid "Documents added. The platform is told."
 msgstr ""
 
-#: src/Form.php:231
+#: src/Form.php:233
 #: src/Payments.php:48
 msgid "Nothing is to pay for this study now."
 msgstr ""
 
-#: src/Form.php:237
+#: src/Form.php:239
 msgid "Pay with one of the methods below, then send the proof of payment."
 msgstr ""
 
-#: src/Form.php:240
+#: src/Form.php:242
 msgid "Quote accepted. The platform appoints a partner engineer and you are told when the study starts."
 msgstr ""
 
-#: src/Form.php:241
+#: src/Form.php:243
 msgid "You declined the quote. The platform is told."
 msgstr ""
 
-#: src/Form.php:242
+#: src/Form.php:244
 msgid "Your request is cancelled."
 msgstr ""
 
-#: src/Form.php:243
+#: src/Form.php:245
 msgid "Thank you. The mission is closed."
 msgstr ""
 
-#: src/Form.php:246
-#: src/Form.php:317
+#: src/Form.php:248
+#: src/Form.php:319
 #: src/Missions.php:313
 #: src/Missions.php:407
 msgid "Unknown action."
 msgstr ""
 
-#: src/Form.php:256
+#: src/Form.php:258
 msgid "Quote accepted. Pay the advance to start the requested services: pay with one of the methods below, then send the proof of payment."
 msgstr ""
 
-#: src/Form.php:258
+#: src/Form.php:260
 msgid "Quote accepted. The platform sends you how to pay the advance; the services start once it is received."
 msgstr ""
 
-#: src/Form.php:268
+#: src/Form.php:270
 msgid "This mission is not assigned to you."
 msgstr ""
 
-#: src/Form.php:271
+#: src/Form.php:273
 msgid "Your partner account is not active."
 msgstr ""
 
-#: src/Form.php:277
+#: src/Form.php:279
 msgid "Mission accepted. You can start; send the deliverables from this page."
 msgstr ""
 
-#: src/Form.php:281
+#: src/Form.php:283
 msgid "You declined the mission. The platform is told."
 msgstr ""
 
-#: src/Form.php:286
+#: src/Form.php:288
 msgid "Deliverables can be added while the mission is in progress."
 msgstr ""
 
-#: src/Form.php:289
+#: src/Form.php:291
 msgid "Files added. Send the work to the platform when everything is there."
 msgstr ""
 
-#: src/Form.php:294
+#: src/Form.php:296
 msgid "This file cannot be removed."
 msgstr ""
 
-#: src/Form.php:297
+#: src/Form.php:299
 msgid "File removed."
 msgstr ""
 
-#: src/Form.php:301
+#: src/Form.php:303
 msgid "An invoice can be sent once the mission is accepted."
 msgstr ""
 
-#: src/Form.php:310
+#: src/Form.php:312
 msgid "Invoice sent to the platform."
 msgstr ""
 
-#: src/Form.php:314
+#: src/Form.php:316
 msgid "Work sent. The platform checks it and delivers it to the client."
 msgstr ""
 
-#: src/Form.php:337
+#: src/Form.php:339
 msgid "You cannot write on this mission."
 msgstr ""
 
-#: src/Form.php:341
+#: src/Form.php:343
 msgid "Write your message."
 msgstr ""
 
-#: src/Form.php:344
+#: src/Form.php:346
 msgid "Too many messages. Try again later."
 msgstr ""
 
-#: src/Form.php:348
+#: src/Form.php:350
 msgid "Message sent to the platform."
 msgstr ""
 
@@ -2277,13 +2422,13 @@ msgstr ""
 
 #: src/Missions.php:494
 #: src/Missions.php:495
-#: src/Theme/Bridge.php:296
+#: src/Theme/Bridge.php:298
 msgid "Study in progress"
 msgstr ""
 
 #: src/Missions.php:496
 #: src/Missions.php:526
-#: src/Theme/Bridge.php:296
+#: src/Theme/Bridge.php:298
 msgid "Delivered"
 msgstr ""
 
@@ -2715,14 +2860,14 @@ msgstr ""
 msgid "Online payment details are not available yet: the platform contacts you."
 msgstr ""
 
-#: src/Theme/Bridge.php:296
+#: src/Theme/Bridge.php:298
 msgid "Request sent"
 msgstr ""
 
-#: src/Theme/Bridge.php:296
+#: src/Theme/Bridge.php:298
 msgid "Quote"
 msgstr ""
 
-#: src/Theme/Bridge.php:296
+#: src/Theme/Bridge.php:298
 msgid "Accepted"
 msgstr ""

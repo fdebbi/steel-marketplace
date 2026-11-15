@@ -1,5 +1,9 @@
 # Changelog — sm-core
 
+## 0.8.3 — 2026-11-15
+
+- Liste des 1 541 communes des 58 wilayas (`data/communes.php`, source ouverte « algeria-cities ») et classe `Accounts\Communes` (`of()`, `find()`) ; donnée de thème `communes`. Les wilayas 59-69 (au 1er janvier 2027) n'ont pas encore de liste : la commune y est saisie en texte.
+
 ## 0.8.2 — 2026-11-13
 
 - Corrige « Le formulaire a expiré » sur une page servie par le cache (LiteSpeed/CDN) ou restée ouverte longtemps : les pages avec un formulaire ne sont plus mises en cache, et le thème renouvelle le code de sécurité avant l'envoi d'une page ancienne (`admin-ajax.php?action=sm_nonce`).

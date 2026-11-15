@@ -24,6 +24,9 @@ $i18n = sm_study_sketch_i18n();
 				<div><dt><?php echo esc_html( $r[0] ); ?></dt><dd><bdi dir="auto"><?php echo esc_html( $r[1] ); ?></bdi></dd></div>
 			<?php endforeach; ?>
 		</dl>
+		<?php if ( ! empty( $need['location'] ) ) : // 0.40.0: the exact place, for the client, the engineer and the platform only. ?>
+			<div class="sme-need__map"><?php sm_component( 'location-map', array( 'mode' => 'view', 'lat' => $need['location']['lat'], 'lng' => $need['location']['lng'], 'label' => __( 'Place of the project', 'sm-marketplace' ) ) ); ?></div>
+		<?php endif; ?>
 		<?php if ( ! empty( $need['drawing'] ) ) : ?>
 			<div class="smx-sketch" data-smx-draw="<?php echo esc_attr( wp_json_encode( $need['drawing'] ) ); ?>" data-i18n="<?php echo esc_attr( wp_json_encode( $i18n ) ); ?>">
 				<div class="smx-sketch__view">

@@ -312,7 +312,7 @@ msgstr "الحجم الأصلي"
 msgid "Company position. Drag it, or use the arrow keys."
 msgstr "موقع المؤسسة. اسحبه أو استعمل أسهم لوحة المفاتيح."
 
-#: inc/assets.php:118 template-parts/components/location-map.php:67
+#: inc/assets.php:118 template-parts/components/location-map.php:68
 msgid "No position yet."
 msgstr "لم يُحدَّد أي موقع بعد."
 
@@ -879,7 +879,10 @@ msgstr "المسافة بين الإطارات: يحددها المهندس"
 msgid "GF"
 msgstr "أرضي"
 
+#. translators: %d: floor number.
 #: inc/template-tags.php:754
+#: template-parts/components/mission-request-form.php:325
+#: template-parts/components/mission-request-form.php:329
 msgid "F+%d"
 msgstr "ط+%d"
 
@@ -909,22 +912,36 @@ msgid "Total height"
 msgstr "الارتفاع الكلي"
 
 #: inc/template-tags.php:761
-#: template-parts/components/mission-request-form.php:283
-msgid "Front view (gable)"
-msgstr "منظر أمامي (الواجهة)"
+#: template-parts/components/mission-request-form.php:356
+msgid "Front view (left gable)"
+msgstr "منظر أمامي (الواجهة اليسرى)"
 
 #: inc/template-tags.php:762
 msgid "Front view"
 msgstr "منظر أمامي"
 
 #: inc/template-tags.php:763
-#: template-parts/components/mission-request-form.php:287
+#: template-parts/components/mission-request-form.php:360
 msgid "Plan view"
 msgstr "منظر علوي (مسقط)"
 
 #: inc/template-tags.php:764
 msgid "Give the width, the length and the height: the sketch draws itself."
 msgstr "أدخل العرض والطول والارتفاع: يُرسم المخطط تلقائيًا."
+
+#: inc/template-tags.php:765
+msgid "Wall %s"
+msgstr "جدار %s"
+
+#: inc/template-tags.php:766
+#: template-parts/components/mission-request-form.php:271
+msgid "Front long side"
+msgstr "الواجهة الطويلة الأمامية"
+
+#: inc/template-tags.php:767
+#: template-parts/components/mission-request-form.php:272
+msgid "Back long side"
+msgstr "الواجهة الطويلة الخلفية"
 
 #: index.php:21
 msgid "Nothing here yet"
@@ -1677,7 +1694,8 @@ msgstr "الصفة المهنية"
 
 #: template-parts/components/engineer-fields.php:49
 #: template-parts/components/engineer-fields.php:58
-#: template-parts/components/mission-request-form.php:333
+#: template-parts/components/mission-request-form.php:419
+#: template-parts/components/mission-request-form.php:427
 #: templates/auth-register.php:78 templates/engineer-apply.php:171
 #: templates/engineer-apply.php:194 templates/engineer-apply.php:203
 msgid "Select"
@@ -1878,6 +1896,7 @@ msgid "hangar, poultry house…"
 msgstr "هنجر، مدجنة…"
 
 #: template-parts/components/filter-panel.php:153
+#: template-parts/components/mission-request-form.php:417
 #: template-parts/components/product-form.php:189
 #: template-parts/dashboard/company.php:101
 #: template-parts/dashboard/engineer-missions.php:132
@@ -2092,7 +2111,7 @@ msgstr "الوثائق التقنية"
 
 #: template-parts/components/listing-building.php:135
 #: template-parts/components/listing-product.php:173
-#: template-parts/components/mission-request-form.php:354
+#: template-parts/components/mission-request-form.php:459
 #: template-parts/components/product-form.php:121
 #: template-parts/dashboard/invoice.php:65 templates/single-listing.php:215
 #: templates/single-service.php:99
@@ -2253,6 +2272,7 @@ msgid "Element"
 msgstr "العنصر"
 
 #: template-parts/components/listing-place.php:27
+#: template-parts/components/mission-request-form.php:414
 #: template-parts/components/product-form.php:185
 #: templates/company-profile.php:222 templates/single-listing.php:81
 msgid "Location"
@@ -2346,13 +2366,9 @@ msgid "Time of the visit"
 msgstr "الساعة"
 
 #: template-parts/components/listing-place.php:98
-#: template-parts/components/mission-request-form.php:255
-#: template-parts/components/mission-request-form.php:312
-#: template-parts/components/mission-request-form.php:339
-#: template-parts/components/mission-request-form.php:343
-#: template-parts/components/mission-request-form.php:348
-#: template-parts/components/mission-request-form.php:360
-#: template-parts/components/mission-request-form.php:370
+#: template-parts/components/mission-request-form.php:385
+#: template-parts/components/mission-request-form.php:465
+#: template-parts/components/mission-request-form.php:478
 #: template-parts/components/my-products.php:180
 #: template-parts/components/plate-fields.php:219
 #: template-parts/components/product-form.php:132
@@ -2513,27 +2529,27 @@ msgstr ""
 "إعلان راجعته المنصة. تواصل مع البائع عبر الاستمارة؛ لا تُرسل بياناتك إلا "
 "عندما تكتب."
 
-#: template-parts/components/location-map.php:40
+#: template-parts/components/location-map.php:41
 msgid "Map of the wilaya"
 msgstr "خريطة الولاية"
 
-#: template-parts/components/location-map.php:40
+#: template-parts/components/location-map.php:41
 msgid "Map of the company location"
 msgstr "خريطة موقع المؤسسة"
 
-#: template-parts/components/location-map.php:48
+#: template-parts/components/location-map.php:49
 msgid "Directions"
 msgstr "الاتجاهات"
 
-#: template-parts/components/location-map.php:49
+#: template-parts/components/location-map.php:50
 msgid "Open the map"
 msgstr "فتح الخريطة"
 
-#: template-parts/components/location-map.php:59
+#: template-parts/components/location-map.php:60
 msgid "Position on the map"
 msgstr "الموقع على الخريطة"
 
-#: template-parts/components/location-map.php:60
+#: template-parts/components/location-map.php:61
 msgid ""
 "Choose the wilaya: the map opens on it. Then drag the marker (or click the "
 "map) to your exact address, or use your current location if you are on site."
@@ -2541,23 +2557,23 @@ msgstr ""
 "اختر الولاية: تُفتح الخريطة عليها. ثم اسحب العلامة (أو انقر على الخريطة) إلى"
 " عنوانك بالضبط، أو استعمل موقعك الحالي إن كنت في عين المكان."
 
-#: template-parts/components/location-map.php:62
+#: template-parts/components/location-map.php:63
 msgid "Use my current location"
 msgstr "استعمال موقعي الحالي"
 
-#: template-parts/components/location-map.php:63
+#: template-parts/components/location-map.php:64
 msgid "Remove the position"
 msgstr "حذف الموقع"
 
-#: template-parts/components/location-map.php:66
+#: template-parts/components/location-map.php:67
 msgid "Enable JavaScript to place your company on the map."
 msgstr "فعّل JavaScript لتحديد موقع مؤسستك على الخريطة."
 
-#: template-parts/components/location-map.php:67
+#: template-parts/components/location-map.php:68
 msgid "Position saved. Drag the marker to correct it."
 msgstr "الموقع محفوظ. اسحب العلامة لتصحيحه."
 
-#: template-parts/components/location-map.php:71
+#: template-parts/components/location-map.php:73
 msgid "Show the map on my public page"
 msgstr "عرض الخريطة في صفحتي العامة"
 
@@ -2569,22 +2585,26 @@ msgstr "حذف"
 msgid "The need of the client"
 msgstr "حاجة العميل"
 
-#: template-parts/components/mission-need.php:30
-#: template-parts/components/mission-request-form.php:283
+#: template-parts/components/mission-need.php:28
+msgid "Place of the project"
+msgstr "موقع المشروع"
+
+#: template-parts/components/mission-need.php:33
+#: template-parts/components/mission-request-form.php:356
 msgid "Indicative sketch"
 msgstr "مخطط توضيحي"
 
-#: template-parts/components/mission-need.php:38
+#: template-parts/components/mission-need.php:41
 msgid "Sketch drawn from the dimensions given by the client."
 msgstr "مخطط مرسوم وفق الأبعاد التي قدّمها العميل."
 
-#: template-parts/components/mission-need.php:45
+#: template-parts/components/mission-need.php:48
 msgid ""
 "Your study is delivered. Need an engineer to follow the fabrication and the "
 "erection?"
 msgstr "تم تسليم دراستك. هل تحتاج مهندسًا لمتابعة التصنيع والتركيب؟"
 
-#: template-parts/components/mission-need.php:46
+#: template-parts/components/mission-need.php:49
 msgid "Ask for the follow-up of this project"
 msgstr "طلب متابعة هذا المشروع"
 
@@ -2737,50 +2757,105 @@ msgid "Height of the floor"
 msgstr "ارتفاع الأرضية"
 
 #: template-parts/components/mission-request-form.php:250
+#: template-parts/components/mission-request-form.php:326
+#: template-parts/components/mission-request-form.php:331
+#: template-parts/components/mission-request-form.php:332
 msgid "Use"
 msgstr "الاستعمال"
 
 #: template-parts/components/mission-request-form.php:255
-msgid "Envelope and openings"
-msgstr "الغلاف والفتحات"
+msgid "Roofing"
+msgstr "التغطية (السقف)"
 
-#: template-parts/components/mission-request-form.php:258
-msgid "Roofing and cladding"
-msgstr "التغطية والتكسية"
+#: template-parts/components/mission-request-form.php:257
+msgid "Walls (cladding)"
+msgstr "التكسية (الجدران)"
 
-#: template-parts/components/mission-request-form.php:259
-msgid "Number of doors"
-msgstr "عدد الأبواب"
+#: template-parts/components/mission-request-form.php:261
+msgid "Height of the wall"
+msgstr "ارتفاع الجدار"
 
-#: template-parts/components/mission-request-form.php:260
+#: template-parts/components/mission-request-form.php:262
+msgid "Cladding above"
+msgstr "التكسية فوقه"
+
+#: template-parts/components/mission-request-form.php:267
+msgid "Doors"
+msgstr "الأبواب"
+
+#: template-parts/components/mission-request-form.php:267
+msgid "each side closed unless you add doors"
+msgstr "كل واجهة مغلقة ما لم تضف أبوابًا"
+
+#: template-parts/components/mission-request-form.php:268
+msgid ""
+"A door sits in the middle of a bay (between two frames). Tick the bays, or "
+"click a bay on the plan."
+msgstr ""
+"يوضع الباب في وسط فتحة (بين إطارين). اختر الفتحات، أو انقر على فتحة في "
+"المخطط."
+
+#: template-parts/components/mission-request-form.php:273
+msgid "Left gable"
+msgstr "الواجهة اليسرى"
+
+#: template-parts/components/mission-request-form.php:274
+msgid "Right gable"
+msgstr "الواجهة اليمنى"
+
+#: template-parts/components/mission-request-form.php:307
 msgid "Width of a door"
 msgstr "عرض الباب"
 
-#: template-parts/components/mission-request-form.php:261
+#: template-parts/components/mission-request-form.php:308
 msgid "Height of a door"
 msgstr "ارتفاع الباب"
 
-#: template-parts/components/mission-request-form.php:268
-msgid "Number of levels (ground floor included)"
-msgstr "عدد الطوابق (مع الأرضي)"
+#: template-parts/components/mission-request-form.php:317
+msgid "Levels"
+msgstr "الطوابق"
 
-#: template-parts/components/mission-request-form.php:269
-msgid "Height of a floor"
-msgstr "ارتفاع الطابق"
+#: template-parts/components/mission-request-form.php:317
+msgid "one row per level, from the ground floor up"
+msgstr "سطر لكل طابق، من الأرضي إلى الأعلى"
 
-#: template-parts/components/mission-request-form.php:270
+#: template-parts/components/mission-request-form.php:325
+#: template-parts/components/mission-request-form.php:329
+msgid "Ground floor"
+msgstr "الطابق الأرضي"
+
+#: template-parts/components/mission-request-form.php:326
+msgid "Level"
+msgstr "الطابق"
+
+#. translators: %d: floor number.
+#: template-parts/components/mission-request-form.php:326
+#: template-parts/components/mission-request-form.php:330
+#: template-parts/components/section-sheet.php:20
+msgid "Height"
+msgstr "الارتفاع"
+
+#: template-parts/components/mission-request-form.php:335
+msgid "Remove this level"
+msgstr "حذف هذا الطابق"
+
+#: template-parts/components/mission-request-form.php:340
+msgid "Add a level"
+msgstr "إضافة طابق"
+
+#: template-parts/components/mission-request-form.php:343
 msgid "Floors"
 msgstr "البلاطات"
 
-#: template-parts/components/mission-request-form.php:274
+#: template-parts/components/mission-request-form.php:347
 msgid "Use of the building"
 msgstr "استعمال المبنى"
 
-#: template-parts/components/mission-request-form.php:277
+#: template-parts/components/mission-request-form.php:350
 msgid "Soil study available?"
 msgstr "هل دراسة التربة متوفرة؟"
 
-#: template-parts/components/mission-request-form.php:291
+#: template-parts/components/mission-request-form.php:364
 msgid ""
 "Sketch drawn from your dimensions. The engineer sets the sections, the loads"
 " and the zones (RPA, RNV) from the municipality."
@@ -2788,125 +2863,149 @@ msgstr ""
 "مخطط مرسوم وفق أبعادك. يحدد المهندس المقاطع والأحمال والمناطق (RPA، RNV) حسب"
 " البلدية."
 
-#: template-parts/components/mission-request-form.php:297
+#: template-parts/components/mission-request-form.php:370
 msgid "Phases to follow"
 msgstr "المراحل المطلوب متابعتها"
 
-#: template-parts/components/mission-request-form.php:301
+#: template-parts/components/mission-request-form.php:374
 msgid "Number of visits"
 msgstr "عدد الزيارات"
 
-#: template-parts/components/mission-request-form.php:302
+#: template-parts/components/mission-request-form.php:375
 msgid "Duration of the works"
 msgstr "مدة الأشغال"
 
-#: template-parts/components/mission-request-form.php:302
+#: template-parts/components/mission-request-form.php:375
 msgid "months"
 msgstr "أشهر"
 
-#: template-parts/components/mission-request-form.php:305
+#: template-parts/components/mission-request-form.php:378
 msgid "Who made the study?"
 msgstr "من أنجز الدراسة؟"
 
-#: template-parts/components/mission-request-form.php:310
+#: template-parts/components/mission-request-form.php:383
 msgid "What is to inspect?"
 msgstr "ما المطلوب معاينته؟"
 
-#: template-parts/components/mission-request-form.php:312
+#: template-parts/components/mission-request-form.php:385
 msgid "What do you see?"
 msgstr "ماذا تلاحظ؟"
 
-#: template-parts/components/mission-request-form.php:316
+#: template-parts/components/mission-request-form.php:389
 msgid "Age of the building"
 msgstr "عمر المبنى"
 
-#: template-parts/components/mission-request-form.php:316
+#: template-parts/components/mission-request-form.php:389
 msgid "years"
 msgstr "سنوات"
 
-#: template-parts/components/mission-request-form.php:317
+#: template-parts/components/mission-request-form.php:390
 msgid "Approximate width"
 msgstr "العرض التقريبي"
 
-#: template-parts/components/mission-request-form.php:318
+#: template-parts/components/mission-request-form.php:391
 msgid "Approximate length"
 msgstr "الطول التقريبي"
 
-#: template-parts/components/mission-request-form.php:321
+#: template-parts/components/mission-request-form.php:394
 msgid "Urgency"
 msgstr "الاستعجال"
 
-#: template-parts/components/mission-request-form.php:328
-msgid "Place, documents and sending"
-msgstr "المكان والوثائق والإرسال"
+#: template-parts/components/mission-request-form.php:401
+msgid "Location, project and documents"
+msgstr "الموقع والمشروع والوثائق"
 
-#: template-parts/components/mission-request-form.php:331
+#: template-parts/components/mission-request-form.php:417
 msgid "Wilaya where you want to reassemble the building"
 msgstr "الولاية التي تريد إعادة تركيب المبنى فيها"
 
-#: template-parts/components/mission-request-form.php:331
-#: template-parts/components/service-request-form.php:26
-#: template-parts/components/services-board.php:44
-#: templates/company-profile.php:287
-msgid "Wilaya of the project"
-msgstr "ولاية المشروع"
-
-#: template-parts/components/mission-request-form.php:339
-msgid "Municipality"
+#: template-parts/components/mission-request-form.php:425
+#: template-parts/components/product-form.php:197
+#: template-parts/dashboard/company.php:107
+msgid "Commune"
 msgstr "البلدية"
 
-#. translators: %d: days.
-#: template-parts/components/mission-request-form.php:343
-#: template-parts/dashboard/engineer-missions.php:44
-#: template-parts/dashboard/studies.php:178
-msgid "Wanted for"
-msgstr "مطلوب قبل"
+#: template-parts/components/mission-request-form.php:427
+msgid "Choose the wilaya first"
+msgstr "اختر الولاية أولًا"
 
-#: template-parts/components/mission-request-form.php:348
-msgid "Name of the project"
-msgstr "اسم المشروع"
+#: template-parts/components/mission-request-form.php:443
+msgid "Place of the project on the map (optional)"
+msgstr "موقع المشروع على الخريطة (اختياري)"
 
-#: template-parts/components/mission-request-form.php:349
+#: template-parts/components/mission-request-form.php:444
+msgid ""
+"The map opens on the wilaya. Drag the marker (or click the map) to the exact"
+" place, or use your current location if you are on site."
+msgstr ""
+"تُفتح الخريطة على الولاية. اسحب العلامة (أو انقر على الخريطة) إلى المكان "
+"الدقيق، أو استعمل موقعك الحالي إن كنت في المكان."
+
+#: template-parts/components/mission-request-form.php:445
+msgid ""
+"Exact place seen only by the platform and the engineer in charge of the "
+"study."
+msgstr "الموقع الدقيق لا يراه إلا المنصة والمهندس المكلف بالدراسة."
+
+#: template-parts/components/mission-request-form.php:452
+msgid "Project"
+msgstr "المشروع"
+
+#: template-parts/components/mission-request-form.php:454
+msgid "Title of the project"
+msgstr "عنوان المشروع"
+
+#: template-parts/components/mission-request-form.php:454
+msgid "optional — otherwise made from the type and the dimensions"
+msgstr "اختياري — وإلا يُكوَّن من النوع والأبعاد"
+
+#: template-parts/components/mission-request-form.php:455
 msgid "e.g. Storage hangar 20 × 40 m"
 msgstr "مثال: هنغار تخزين 20 × 40 م"
 
-#: template-parts/components/mission-request-form.php:354
+#: template-parts/components/mission-request-form.php:459
 msgid "what the dimensions do not say"
 msgstr "ما لا تقوله الأبعاد"
 
-#: template-parts/components/mission-request-form.php:355
+#: template-parts/components/mission-request-form.php:460
 msgid ""
 "Possible extension, stored goods, constraints of the site, what you expect "
 "from the study…"
 msgstr "توسعة محتملة، البضائع المخزنة، قيود الأرض، ما تنتظره من الدراسة…"
 
-#: template-parts/components/mission-request-form.php:360
+#: template-parts/components/mission-request-form.php:465
 msgid "Preferred engineer"
 msgstr "المهندس المفضّل"
 
-#: template-parts/components/mission-request-form.php:362
+#: template-parts/components/mission-request-form.php:467
 msgid "Let the platform choose"
 msgstr "دع المنصة تختار"
 
-#: template-parts/components/mission-request-form.php:370
+#: template-parts/components/mission-request-form.php:474
+#: templates/engineer-apply.php:91 templates/engineer-apply.php:92
+#: templates/engineer-apply.php:306
+msgid "Documents"
+msgstr "الوثائق"
+
+#: template-parts/components/mission-request-form.php:478
 msgid "Plans, soil study, photos"
 msgstr "مخططات، دراسة التربة، صور"
 
-#: template-parts/components/mission-request-form.php:370
+#: template-parts/components/mission-request-form.php:478
 msgid "Photos of the building — 2 at least"
 msgstr "صور المبنى — صورتان على الأقل"
 
-#: template-parts/components/mission-request-form.php:370
+#: template-parts/components/mission-request-form.php:478
 #: template-parts/dashboard/publish.php:159
 msgid "Photos and documents"
 msgstr "الصور والوثائق"
 
 #. translators: 1: number of files, 2: MB, 3: extensions.
-#: template-parts/components/mission-request-form.php:371
+#: template-parts/components/mission-request-form.php:479
 msgid "Up to %1$d files of %2$d MB (%3$s)."
 msgstr "حتى %1$d ملفات بحجم %2$d ميغابايت (%3$s)."
 
-#: template-parts/components/mission-request-form.php:374
+#: template-parts/components/mission-request-form.php:483
 msgid "Send my request to the platform"
 msgstr "أرسل طلبي إلى المنصة"
 
@@ -3764,11 +3863,6 @@ msgstr "الولاية التي يوجد فيها المنتج"
 #: templates/company-profile.php:289
 msgid "Choose…"
 msgstr "اختر…"
-
-#: template-parts/components/product-form.php:197
-#: template-parts/dashboard/company.php:107
-msgid "Commune"
-msgstr "البلدية"
 
 #: template-parts/components/product-form.php:202
 msgid "Address or place name"
@@ -4856,10 +4950,6 @@ msgstr "الوزن إن كان معروفًا"
 msgid "Leg"
 msgstr "الجناح"
 
-#: template-parts/components/section-sheet.php:20
-msgid "Height"
-msgstr "الارتفاع"
-
 #: template-parts/components/section-sheet.php:21
 msgid "Width"
 msgstr "العرض"
@@ -5081,6 +5171,12 @@ msgid ""
 "What must be made or installed: profiles, quantities, dimensions, site, "
 "finish…"
 msgstr "ما يجب تصنيعه أو تركيبه: المقاطع، الكميات، الأبعاد، الموقع، التشطيب…"
+
+#: template-parts/components/service-request-form.php:26
+#: template-parts/components/services-board.php:44
+#: templates/company-profile.php:287
+msgid "Wilaya of the project"
+msgstr "ولاية المشروع"
 
 #: template-parts/components/service-request-form.php:34
 #: templates/company-profile.php:294
@@ -6118,6 +6214,12 @@ msgstr "أتعابك"
 #: template-parts/dashboard/studies.php:107
 msgid "Time"
 msgstr "الأجل"
+
+#. translators: %d: days.
+#: template-parts/dashboard/engineer-missions.php:44
+#: template-parts/dashboard/studies.php:178
+msgid "Wanted for"
+msgstr "مطلوب قبل"
 
 #: template-parts/dashboard/engineer-missions.php:49
 msgid "Accept the mission"
@@ -8406,11 +8508,6 @@ msgstr "المعلومات الشخصية"
 #: templates/engineer-apply.php:91 templates/engineer-apply.php:92
 msgid "Professional information"
 msgstr "المعلومات المهنية"
-
-#: templates/engineer-apply.php:91 templates/engineer-apply.php:92
-#: templates/engineer-apply.php:306
-msgid "Documents"
-msgstr "الوثائق"
 
 #: templates/engineer-apply.php:91 templates/engineer-apply.php:264
 msgid "Password and terms"

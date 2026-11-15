@@ -16,7 +16,8 @@
  *   mode: 'picker'|'view', lat: string|float, lng: string|float, wilaya: string,
  *   area: bool, zoom: int (view, 0.33.0: the wilaya only, without marker or directions),
  *   wilaya_select: string (CSS selector, picker), map_public: int (picker), label: string (view),
- *   legend, help, public_label, public_help: string (picker texts; the company form keeps its own)
+ *   legend, help, public_label, public_help: string (picker texts; the company form keeps its own),
+ *   no_public: bool (picker without the "public" choice), note: string (picker, under the map)
  * }
  * @package SM_Marketplace
  */
@@ -68,6 +69,9 @@ $public = (int) ( $args['map_public'] ?? 1 );
 	<input type="hidden" name="lat" value="<?php echo esc_attr( $lat ); ?>" data-sm-map-lat>
 	<input type="hidden" name="lng" value="<?php echo esc_attr( $lng ); ?>" data-sm-map-lng>
 	<?php sm_theme_error( 'location' ); ?>
-	<label class="sm-check"><input type="checkbox" name="map_public" value="1" <?php checked( $public ); ?>><span><?php echo esc_html( $args['public_label'] ?? __( 'Show the map on my public page', 'sm-marketplace' ) ); ?></span></label>
-	<?php if ( ! empty( $args['public_help'] ) ) : ?><p class="sm-help"><?php echo esc_html( $args['public_help'] ); ?></p><?php endif; ?>
+	<?php if ( empty( $args['no_public'] ) ) : // 0.40.0: a study request never shows its place to the public. ?>
+		<label class="sm-check"><input type="checkbox" name="map_public" value="1" <?php checked( $public ); ?>><span><?php echo esc_html( $args['public_label'] ?? __( 'Show the map on my public page', 'sm-marketplace' ) ); ?></span></label>
+		<?php if ( ! empty( $args['public_help'] ) ) : ?><p class="sm-help"><?php echo esc_html( $args['public_help'] ); ?></p><?php endif; ?>
+	<?php endif; ?>
+	<?php if ( ! empty( $args['note'] ) ) : ?><p class="sm-help sm-map__note"><?php sm_icon( 'lock' ); ?><?php echo esc_html( $args['note'] ); ?></p><?php endif; ?>
 </div>

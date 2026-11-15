@@ -1,5 +1,14 @@
 # Changelog — sm-marketplace
 
+## 0.40.0 — 2026-11-15
+
+- Demande d'étude, charpente en portiques : couverture et bardage séparés. Bardage : tôle simple, panneau sandwich, mur, mixte (hauteur du mur + bardage au-dessus) ou ouvert. Le mur est hachuré sur la vue de face.
+- Portes sur les 4 côtés (fermés par défaut) : long pan avant / arrière — on coche les travées T1…Tn ou on clique la travée sur la vue en plan ; pignons — 1 porte centrée ou 2 réparties. Les portes sont dessinées au centre de leur travée ; la porte du pignon gauche apparaît sur la vue de face.
+- Bâtiment à niveaux : un tableau RDC, R+1… avec la hauteur et l'usage de chaque étage (« + Ajouter un étage ») ; le schéma écrit l'usage et la hauteur de chaque étage, la hauteur totale se calcule.
+- Étape 4 en trois zones : Localisation (wilaya, commune obligatoire choisie dans la liste de la wilaya, repère facultatif sur la carte, vu seulement par la plateforme et l'ingénieur), Projet (intitulé, description), Documents. La date « souhaité pour » est retirée.
+- La page de l'étude montre la carte de l'emplacement au client et à l'ingénieur.
+- `location-map` (sélecteur) : options `no_public` et `note`.
+
 ## 0.39.0 — 2026-11-15
 
 - Demande d'étude en 4 étapes : 1. besoin (Étude technique, Suivi et assistance, ou Expertise et inspection — un seul choix par demande ; l'étude ouvre ses 4 prestations), 2. type de projet en cartes illustrées, 3. dimensions et schéma (ou les questions du suivi / de l'expertise), 4. lieu, documents et envoi.

@@ -1,5 +1,11 @@
 # Changelog — sm-engineering
 
+## 0.7.0 — 2026-11-15 (avec le thème 0.40.0)
+
+- `Brief` : couverture (`roofing`) et bardage (`walls`, `wall_h`, `walls_top`) séparés ; portes par côté (`d_front` / `d_back` avec les travées, `d_left` / `d_right` : 1 centrée ou 2 réparties, largeur et hauteur) ; niveaux un par un (`floors` : hauteur et usage) ; commune obligatoire vérifiée dans la liste de la wilaya (texte libre pour les wilayas sans liste) ; position facultative sur la carte (en Algérie).
+- Lignes affichées, chiffres (hauteur totale, surface de planchers), reprise dans le suivi mis à jour ; les demandes plus anciennes restent lisibles.
+- La position est donnée au thème (`need.location`) pour la carte de la page de l'étude.
+
 ## 0.6.0 — 2026-11-15 (avec le thème 0.39.0)
 
 - Nouvelle classe `Brief` : les 3 parties (étude, suivi, expertise), la forme du bâtiment selon le type de projet (portiques, niveaux, libre), les listes de choix, la vérification des réponses (bornes, faîtage ≥ poteaux, rail et mezzanine sous les poteaux, mezzanine dans le bâtiment), les lignes affichées, les chiffres calculés (surface, volume, pente, portiques) et le titre automatique.

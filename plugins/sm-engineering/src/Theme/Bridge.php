@@ -189,7 +189,7 @@ final class Bridge {
 			// 0.6.0: the three parts, the shape of each type of project, the lists of choices.
 			'parts'      => Brief::parts(),
 			'families'   => array_map( array( Brief::class, 'family' ), array_combine( array_keys( ProjectTypes::options() ), array_keys( ProjectTypes::options() ) ) ),
-			'choices'    => array_combine( $lists = array( 'roof', 'use', 'mezz_use', 'cladding', 'floor', 'soil', 'phases', 'study_by', 'object', 'findings', 'urgency' ), array_map( array( Brief::class, 'choices' ), $lists ) ),
+			'choices'    => array_combine( $lists = array( 'roof', 'use', 'mezz_use', 'roofing', 'walls', 'walls_top', 'long', 'gable', 'floor_use', 'floor', 'soil', 'phases', 'study_by', 'object', 'findings', 'urgency' ), array_map( array( Brief::class, 'choices' ), $lists ) ),
 			'from'       => self::follow_prefill( absint( $args['from'] ?? 0 ) ),
 			'preferred'  => ( $pe && 'approved' === $pe->status ) ? Engineers::public_shape( $pe ) : null,
 			// The list of partner engineers is offered only when it is public (setting).
@@ -223,6 +223,8 @@ final class Bridge {
 			'part'    => $m->part,
 			'rows'    => Brief::rows( $m->brief ),
 			'drawing' => Brief::drawable( $m->brief ) ? $m->brief : null,
+			// 0.7.0: exact place, seen only by the client, the engineer of the study and the platform.
+			'location' => isset( $m->brief['lat'], $m->brief['lng'] ) ? array( 'lat' => $m->brief['lat'], 'lng' => $m->brief['lng'] ) : null,
 		);
 	}
 

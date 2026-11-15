@@ -79,11 +79,46 @@ final class Brief {
 				'technical' => __( 'Technical room', 'sm-engineering' ),
 				'other'   => __( 'Other', 'sm-engineering' ),
 			),
-			'cladding'  => array(
+			'cladding'  => array( // Before 0.7.0 (roofing and walls together).
 				'unknown'  => __( 'I do not know', 'sm-engineering' ),
 				'sheet'    => __( 'Single steel sheet', 'sm-engineering' ),
 				'sandwich' => __( 'Sandwich panel', 'sm-engineering' ),
 				'other'    => __( 'Other', 'sm-engineering' ),
+			),
+			'roofing'   => array(
+				'sheet'    => __( 'Single steel sheet', 'sm-engineering' ),
+				'sandwich' => __( 'Sandwich panel', 'sm-engineering' ),
+				'other'    => __( 'Other', 'sm-engineering' ),
+				'unknown'  => __( 'I do not know', 'sm-engineering' ),
+			),
+			'walls'     => array(
+				'sheet'    => __( 'Single steel sheet', 'sm-engineering' ),
+				'sandwich' => __( 'Sandwich panel', 'sm-engineering' ),
+				'wall'     => __( 'Wall', 'sm-engineering' ),
+				'mixed'    => __( 'Mixed: wall + cladding', 'sm-engineering' ),
+				'open'     => __( 'Open (no cladding)', 'sm-engineering' ),
+				'unknown'  => __( 'I do not know', 'sm-engineering' ),
+			),
+			'walls_top' => array(
+				'sandwich' => __( 'Sandwich panel', 'sm-engineering' ),
+				'sheet'    => __( 'Single steel sheet', 'sm-engineering' ),
+			),
+			'long'      => array(
+				'closed' => __( 'Closed (no door)', 'sm-engineering' ),
+				'doors'  => __( 'Doors', 'sm-engineering' ),
+			),
+			'gable'     => array(
+				'closed' => __( 'Closed (no door)', 'sm-engineering' ),
+				'one'    => __( '1 centred', 'sm-engineering' ),
+				'two'    => __( '2 spread', 'sm-engineering' ),
+			),
+			'floor_use' => array(
+				'offices'   => __( 'Offices', 'sm-engineering' ),
+				'housing'   => __( 'Housing', 'sm-engineering' ),
+				'commerce'  => __( 'Commerce', 'sm-engineering' ),
+				'storage'   => __( 'Storage', 'sm-engineering' ),
+				'parking'   => __( 'Parking', 'sm-engineering' ),
+				'technical' => __( 'Technical room', 'sm-engineering' ),
 			),
 			'floor'     => array(
 				'unknown'   => __( 'I do not know', 'sm-engineering' ),
@@ -178,9 +213,20 @@ final class Brief {
 			}
 			return $v;
 		};
-		$commune = mb_substr( sanitize_text_field( (string) ( $in['commune'] ?? '' ) ), 0, 80 );
-		if ( '' !== $commune ) {
-			$out['commune'] = $commune;
+		// 0.7.0: the commune is required (from the list of the wilaya when there is one); the map position is optional and private.
+		$commune = \SM\Core\Accounts\Communes::find( (string) ( $in['_wilaya'] ?? '' ), (string) ( $in['commune'] ?? '' ) );
+		if ( $commune ) {
+			$out['commune']    = $commune[0];
+			$out['commune_ar'] = $commune[1];
+		} elseif ( '' !== (string) ( $in['_wilaya'] ?? '' ) ) {
+			$errors['b_commune'] = '' === trim( (string) ( $in['commune'] ?? '' ) ) ? __( 'Choose the commune.', 'sm-engineering' ) : __( 'This commune is not in the chosen wilaya.', 'sm-engineering' );
+		}
+		$loc = \SM\Core\Accounts\Companies::parse_location( $in['lat'] ?? '', $in['lng'] ?? '' );
+		if ( is_wp_error( $loc ) ) {
+			$errors['b_location'] = $loc->get_error_message();
+		} elseif ( $loc ) {
+			$out['lat'] = $loc['lat'];
+			$out['lng'] = $loc['lng'];
 		}
 
 		if ( 'study' === $part ) {
@@ -232,23 +278,67 @@ final class Brief {
 					}
 					$pick( 'mezz_use', 'mezz_use' );
 				}
-				$pick( 'cladding', 'cladding' );
-				$dn = $num( 'doors_n', 0, 50, false, __( 'number of doors', 'sm-engineering' ) );
-				if ( null !== $dn ) {
-					$out['doors_n'] = (int) $dn;
+				// 0.7.0: roofing and walls apart; a mixed wall has its height.
+				$pick( 'roofing', 'roofing' );
+				$walls = $pick( 'walls', 'walls' );
+				if ( 'mixed' === $walls ) {
+					$wh = $num( 'wall_h', 0.3, 30, true, __( 'height of the wall', 'sm-engineering' ) );
+					if ( $wh && $h && $wh >= $h ) {
+						$errors['b_wall_h'] = __( 'The wall must be lower than the columns.', 'sm-engineering' );
+					}
+					$pick( 'walls_top', 'walls_top', 'sandwich' );
 				}
-				if ( ! empty( $out['doors_n'] ) ) {
-					$num( 'door_w', 0.5, 40, false, __( 'width of the doors', 'sm-engineering' ) );
-					$num( 'door_h', 0.5, 30, false, __( 'height of the doors', 'sm-engineering' ) );
+				// Doors on the 4 sides, centred in a bay (long sides) or on the gable.
+				$bays = self::bays( $out );
+				foreach ( array( 'front', 'back' ) as $side ) {
+					if ( 'doors' !== sanitize_key( (string) ( $in[ 'd_' . $side ] ?? '' ) ) ) {
+						continue;
+					}
+					$list = array_values( array_unique( array_filter( array_map( 'absint', (array) ( $in[ 'd_' . $side . '_bays' ] ?? array() ) ), static fn( $n ) => $n >= 1 && $n <= $bays ) ) );
+					sort( $list );
+					if ( ! $list ) {
+						$errors[ 'b_d_' . $side ] = __( 'Tick the bays that have a door.', 'sm-engineering' );
+						continue;
+					}
+					$out[ 'd_' . $side ]           = 'doors';
+					$out[ 'd_' . $side . '_bays' ] = $list;
+					$num( 'd_' . $side . '_w', 0.5, 40, false, __( 'width of the doors', 'sm-engineering' ) );
+					$num( 'd_' . $side . '_h', 0.5, 30, false, __( 'height of the doors', 'sm-engineering' ) );
+				}
+				foreach ( array( 'left', 'right' ) as $side ) {
+					$mode = sanitize_key( (string) ( $in[ 'd_' . $side ] ?? '' ) );
+					if ( ! in_array( $mode, array( 'one', 'two' ), true ) ) {
+						continue;
+					}
+					$out[ 'd_' . $side ] = $mode;
+					$num( 'd_' . $side . '_w', 0.5, 40, false, __( 'width of the doors', 'sm-engineering' ) );
+					$num( 'd_' . $side . '_h', 0.5, 30, false, __( 'height of the doors', 'sm-engineering' ) );
 				}
 			} elseif ( 'levels' === $family ) {
 				$num( 'width', 3, 200, true, __( 'width', 'sm-engineering' ) );
 				$num( 'length', 3, 600, true, __( 'length', 'sm-engineering' ) );
-				$lv = $num( 'levels', 1, 40, true, __( 'number of levels', 'sm-engineering' ) );
-				if ( null !== $lv ) {
-					$out['levels'] = (int) $lv;
+				// 0.7.0: one row per level, with its height and its use.
+				$floors = array();
+				foreach ( array_slice( array_values( (array) ( $in['floors'] ?? array() ) ), 0, 40 ) as $i => $row ) {
+					$row = (array) $row;
+					$fh  = self::num( $row['h'] ?? '' );
+					$use = sanitize_key( (string) ( $row['use'] ?? '' ) );
+					if ( null === $fh && '' === $use ) {
+						continue;
+					}
+					if ( null === $fh || false === $fh || $fh < 2 || $fh > 12 ) {
+						/* translators: %s: name of the level (Ground floor, F+1…). */
+						$errors[ 'b_floors_' . $i ] = sprintf( __( '%s: give a height between 2 and 12 m.', 'sm-engineering' ), self::level_label( count( $floors ) ) );
+						continue;
+					}
+					$floors[] = array( 'h' => $fh, 'use' => isset( self::choices( 'floor_use' )[ $use ] ) ? $use : '' );
 				}
-				$num( 'floor_h', 2, 12, false, __( 'height of a floor', 'sm-engineering' ) );
+				if ( ! $floors ) {
+					$errors['b_floors'] = __( 'Give the levels with their height.', 'sm-engineering' );
+				} else {
+					$out['floors'] = $floors;
+					$out['levels'] = count( $floors );
+				}
 				$pick( 'floor', 'floor' );
 			}
 			$pick( 'use', 'use' );
@@ -285,7 +375,7 @@ final class Brief {
 
 	/** Copy of a brief kept for a follow-up of the same project (geometry, place). */
 	public static function carry( array $b ) {
-		$keep = array( 'family', 'width', 'length', 'col_h', 'ridge_h', 'spans', 'bay', 'roof', 'crane', 'crane_t', 'crane_rail', 'crane_n', 'mezz', 'mezz_w', 'mezz_l', 'mezz_h', 'mezz_use', 'cladding', 'doors_n', 'door_w', 'door_h', 'levels', 'floor_h', 'floor', 'use', 'commune' );
+		$keep = array( 'family', 'width', 'length', 'col_h', 'ridge_h', 'spans', 'bay', 'roof', 'crane', 'crane_t', 'crane_rail', 'crane_n', 'mezz', 'mezz_w', 'mezz_l', 'mezz_h', 'mezz_use', 'cladding', 'doors_n', 'door_w', 'door_h', 'levels', 'floor_h', 'floor', 'use', 'commune', 'commune_ar', 'lat', 'lng', 'roofing', 'walls', 'wall_h', 'walls_top', 'd_front', 'd_front_bays', 'd_front_w', 'd_front_h', 'd_back', 'd_back_bays', 'd_back_w', 'd_back_h', 'd_left', 'd_left_w', 'd_left_h', 'd_right', 'd_right_w', 'd_right_h', 'floors' );
 		return array_intersect_key( $b, array_flip( $keep ) );
 	}
 
@@ -321,7 +411,9 @@ final class Brief {
 			}
 		} elseif ( 'levels' === ( $b['family'] ?? '' ) && ! empty( $b['levels'] ) ) {
 			$out['floor_area'] = $w * $l * (int) $b['levels'];
-			if ( ! empty( $b['floor_h'] ) ) {
+			if ( ! empty( $b['floors'] ) ) {
+				$out['height'] = array_sum( array_column( (array) $b['floors'], 'h' ) );
+			} elseif ( ! empty( $b['floor_h'] ) ) {
 				$out['height'] = (float) $b['floor_h'] * (int) $b['levels'];
 			}
 		}
@@ -333,6 +425,20 @@ final class Brief {
 		$n = round( (float) $n, 2 );
 		$d = fmod( $n, 1 ) ? ( fmod( $n * 10, 1 ) ? 2 : 1 ) : 0;
 		return number_format( $n, $d, ',', "\u{202F}" ); // Western digits, French style, in every language (like the theme).
+	}
+
+	/** Number of bays along the length: from the spacing of the frames, 6 m when it is not given. */
+	public static function bays( array $b ) {
+		$l   = (float) ( $b['length'] ?? 0 );
+		$bay = (float) ( $b['bay'] ?? 0 );
+		$bay = $bay > 0 ? $bay : 6.0;
+		return $l > 0 ? max( 1, (int) ceil( $l / $bay - 0.01 ) ) : 0;
+	}
+
+	/** Name of one level: Ground floor, F+1, F+2… (0 = ground floor). */
+	public static function level_label( $i ) {
+		/* translators: %d: floor number above the ground floor. */
+		return 0 === (int) $i ? __( 'Ground floor', 'sm-engineering' ) : sprintf( __( 'F+%d', 'sm-engineering' ), (int) $i );
 	}
 
 	/** Name of a level: RDC, R+1, R+2… */
@@ -414,6 +520,42 @@ final class Brief {
 				}
 				$rows[] = array( __( 'Mezzanine', 'sm-engineering' ), $mz ? implode( ' · ', $mz ) : __( 'Yes', 'sm-engineering' ) );
 			}
+			if ( ! empty( $b['roofing'] ) && 'unknown' !== $b['roofing'] ) {
+				$rows[] = array( __( 'Roofing', 'sm-engineering' ), $c( 'roofing', $b['roofing'] ) );
+			}
+			if ( ! empty( $b['walls'] ) && 'unknown' !== $b['walls'] ) {
+				$wl = $c( 'walls', $b['walls'] );
+				if ( 'mixed' === $b['walls'] ) {
+					/* translators: 1: height of the wall, 2: cladding above it. */
+					$wl = sprintf( __( 'Wall of %1$s, %2$s above', 'sm-engineering' ), $m( $b['wall_h'] ?? 0 ), mb_strtolower( $c( 'walls_top', $b['walls_top'] ?? 'sandwich' ) ) );
+				}
+				$rows[] = array( __( 'Walls', 'sm-engineering' ), $wl );
+			}
+			$sides = array(
+				'front' => __( 'Front long side', 'sm-engineering' ),
+				'back'  => __( 'Back long side', 'sm-engineering' ),
+				'left'  => __( 'Left gable', 'sm-engineering' ),
+				'right' => __( 'Right gable', 'sm-engineering' ),
+			);
+			$doors = array();
+			foreach ( $sides as $side => $label ) {
+				$mode = $b[ 'd_' . $side ] ?? '';
+				if ( ! $mode ) {
+					continue;
+				}
+				$size = ! empty( $b[ 'd_' . $side . '_w' ] ) && ! empty( $b[ 'd_' . $side . '_h' ] ) ? ', ' . self::fmt( $b[ 'd_' . $side . '_w' ] ) . ' × ' . self::fmt( $b[ 'd_' . $side . '_h' ] ) . "\u{00A0}m" : '';
+				if ( 'doors' === $mode ) {
+					$bays = (array) ( $b[ 'd_' . $side . '_bays' ] ?? array() );
+					/* translators: 1: number of doors, 2: list of bays (T3, T8). */
+					/* translators: 1: side of the building, 2: its doors. */
+					$doors[] = sprintf( __( '%1$s: %2$s', 'sm-engineering' ), $label, sprintf( _n( '%1$d door in bay %2$s', '%1$d doors in bays %2$s', count( $bays ), 'sm-engineering' ), count( $bays ), implode( ', ', array_map( static fn( $n ) => 'T' . $n, $bays ) ) ) . $size );
+				} else {
+					$doors[] = sprintf( __( '%1$s: %2$s', 'sm-engineering' ), $label, ( 'one' === $mode ? __( '1 centred door', 'sm-engineering' ) : __( '2 spread doors', 'sm-engineering' ) ) . $size );
+				}
+			}
+			if ( isset( $b['walls'] ) || $doors ) {
+				$rows[] = array( __( 'Doors', 'sm-engineering' ), $doors ? implode( ' ; ', $doors ) : __( 'None (all sides closed)', 'sm-engineering' ) );
+			}
 			$env = array();
 			if ( ! empty( $b['cladding'] ) && 'unknown' !== $b['cladding'] ) {
 				$env[] = $c( 'cladding', $b['cladding'] );
@@ -434,11 +576,19 @@ final class Brief {
 			if ( ! empty( $b['levels'] ) ) {
 				$dims .= ' · ' . self::level_name( $b['levels'] );
 			}
+			$fig = self::figures( $b );
+			if ( ! empty( $b['floors'] ) && ! empty( $fig['height'] ) ) {
+				/* translators: %s: total height. */
+				$dims .= ' · ' . sprintf( __( 'total height %s', 'sm-engineering' ), $m( $fig['height'] ) );
+			}
 			if ( ! empty( $b['floor_h'] ) ) {
 				/* translators: %s: height of a floor. */
 				$dims .= ' · ' . sprintf( __( 'floors of %s', 'sm-engineering' ), $m( $b['floor_h'] ) );
 			}
 			$rows[] = array( __( 'Dimensions', 'sm-engineering' ), $dims );
+			foreach ( (array) ( $b['floors'] ?? array() ) as $i => $fl ) {
+				$rows[] = array( self::level_label( $i ), $m( $fl['h'] ) . ( ! empty( $fl['use'] ) ? ' · ' . $c( 'floor_use', $fl['use'] ) : '' ) );
+			}
 			if ( ! empty( $b['floor'] ) && 'unknown' !== $b['floor'] ) {
 				$rows[] = array( __( 'Floors', 'sm-engineering' ), $c( 'floor', $b['floor'] ) );
 			}
@@ -451,6 +601,10 @@ final class Brief {
 			$fig = array( self::fmt( round( $f['area'] ) ) . "\u{00A0}m²" );
 			if ( ! empty( $f['volume'] ) ) {
 				$fig[] = '≈ ' . self::fmt( round( $f['volume'] ) ) . "\u{00A0}m³";
+			}
+			if ( ! empty( $f['floor_area'] ) && ( $f['floor_area'] - $f['area'] ) > 0.01 ) {
+				/* translators: %s: floor area of all levels. */
+				$fig[] = sprintf( __( '%s of floors in all', 'sm-engineering' ), self::fmt( round( $f['floor_area'] ) ) . "\u{00A0}m²" );
 			}
 			if ( ! empty( $f['frames'] ) ) {
 				/* translators: %d: number of portal frames. */
@@ -495,14 +649,18 @@ final class Brief {
 			}
 		}
 		if ( ! empty( $b['commune'] ) ) {
-			$rows[] = array( __( 'Municipality', 'sm-engineering' ), $b['commune'] );
+			$ar     = 0 === strpos( determine_locale(), 'ar' ) && ! empty( $b['commune_ar'] );
+			$rows[] = array( __( 'Municipality', 'sm-engineering' ), $ar ? $b['commune_ar'] : $b['commune'] );
+		}
+		if ( isset( $b['lat'], $b['lng'] ) ) {
+			$rows[] = array( __( 'Position on the map', 'sm-engineering' ), number_format( (float) $b['lat'], 5, '.', '' ) . ', ' . number_format( (float) $b['lng'], 5, '.', '' ) );
 		}
 		return array_values( array_filter( $rows, static fn( $r ) => '' !== (string) $r[1] ) );
 	}
 
 	/** Can the sketch be drawn? (study of a frame building or of a building with floors). */
 	public static function drawable( array $b ) {
-		return in_array( $b['family'] ?? '', array( 'portal', 'levels' ), true ) && ! empty( $b['width'] ) && ! empty( $b['length'] ) && ( ! empty( $b['col_h'] ) || ! empty( $b['levels'] ) );
+		return in_array( $b['family'] ?? '', array( 'portal', 'levels' ), true ) && ! empty( $b['width'] ) && ! empty( $b['length'] ) && ( ! empty( $b['col_h'] ) || ! empty( $b['levels'] ) || ! empty( $b['floors'] ) );
 	}
 
 	/** Automatic title when the client gives none. */

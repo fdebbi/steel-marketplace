@@ -605,7 +605,7 @@ msgstr "تعديل للموافقة"
 
 #. translators: %d: years.
 #. translators: %d: age in years.
-#: src/Admin/Admin.php:153 src/Admin/Admin.php:179 src/Brief.php:488
+#: src/Admin/Admin.php:153 src/Admin/Admin.php:179 src/Brief.php:642
 msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] "%d سنة"
@@ -651,11 +651,11 @@ msgstr "المدرسة"
 msgid "Available"
 msgstr "متاح"
 
-#: src/Admin/Admin.php:182 src/Brief.php:401 src/Brief.php:415
+#: src/Admin/Admin.php:182 src/Brief.php:507 src/Brief.php:521
 msgid "Yes"
 msgstr "نعم"
 
-#: src/Admin/Admin.php:182 src/Brief.php:97
+#: src/Admin/Admin.php:182 src/Brief.php:132
 msgid "No"
 msgstr "لا"
 
@@ -1542,7 +1542,7 @@ msgstr "مسطّح"
 msgid "Sawtooth (shed)"
 msgstr "منشاري (شد)"
 
-#: src/Brief.php:67 src/Brief.php:78
+#: src/Brief.php:67 src/Brief.php:78 src/Brief.php:119
 msgid "Storage"
 msgstr "تخزين"
 
@@ -1558,263 +1558,323 @@ msgstr "تربية الحيوانات"
 msgid "Sport"
 msgstr "رياضة"
 
-#: src/Brief.php:71
+#: src/Brief.php:71 src/Brief.php:118
 msgid "Commerce"
 msgstr "تجارة"
 
-#: src/Brief.php:72 src/Brief.php:77
+#: src/Brief.php:72 src/Brief.php:77 src/Brief.php:116
 msgid "Offices"
 msgstr "مكاتب"
 
-#: src/Brief.php:73
+#: src/Brief.php:73 src/Brief.php:117
 msgid "Housing"
 msgstr "سكن"
 
-#: src/Brief.php:74 src/Brief.php:80 src/Brief.php:86 src/Brief.php:92
-#: src/Brief.php:119
+#: src/Brief.php:74 src/Brief.php:80 src/Brief.php:86 src/Brief.php:91
+#: src/Brief.php:127 src/Brief.php:154
 msgid "Other"
 msgstr "أخرى"
 
-#: src/Brief.php:79
+#: src/Brief.php:79 src/Brief.php:121
 msgid "Technical room"
 msgstr "غرفة تقنية"
 
-#: src/Brief.php:83 src/Brief.php:89 src/Brief.php:95
+#: src/Brief.php:83 src/Brief.php:92 src/Brief.php:100 src/Brief.php:124
+#: src/Brief.php:130
 msgid "I do not know"
 msgstr "لا أعرف"
 
-#: src/Brief.php:84
+#: src/Brief.php:84 src/Brief.php:89 src/Brief.php:95 src/Brief.php:104
 msgid "Single steel sheet"
 msgstr "صفيحة معدنية بسيطة"
 
-#: src/Brief.php:85
+#: src/Brief.php:85 src/Brief.php:90 src/Brief.php:96 src/Brief.php:103
 msgid "Sandwich panel"
 msgstr "لوح ساندويتش"
 
-#: src/Brief.php:90
+#: src/Brief.php:97
+msgid "Wall"
+msgstr "جدار"
+
+#: src/Brief.php:98
+msgid "Mixed: wall + cladding"
+msgstr "مختلط: جدار + تكسية"
+
+#: src/Brief.php:99
+msgid "Open (no cladding)"
+msgstr "مفتوح (دون تكسية)"
+
+#: src/Brief.php:107 src/Brief.php:111
+msgid "Closed (no door)"
+msgstr "مغلق"
+
+#: src/Brief.php:108 src/Brief.php:557
+msgid "Doors"
+msgstr "الأبواب"
+
+#: src/Brief.php:112
+msgid "1 centred"
+msgstr "باب واحد في الوسط"
+
+#: src/Brief.php:113
+msgid "2 spread"
+msgstr "بابان موزعان"
+
+#: src/Brief.php:120
+msgid "Parking"
+msgstr "موقف سيارات"
+
+#: src/Brief.php:125
 msgid "Composite steel deck"
 msgstr "بلاطة مركّبة (فولاذ وخرسانة)"
 
-#: src/Brief.php:91
+#: src/Brief.php:126
 msgid "Concrete slab"
 msgstr "بلاطة خرسانية"
 
-#: src/Brief.php:96
+#: src/Brief.php:131
 msgid "Yes (attach it)"
 msgstr "نعم (أرفقها)"
 
-#: src/Brief.php:100
+#: src/Brief.php:135
 msgid "Fabrication in the workshop"
 msgstr "التصنيع في الورشة"
 
-#: src/Brief.php:101
+#: src/Brief.php:136
 msgid "Erection"
 msgstr "التركيب"
 
-#: src/Brief.php:102
+#: src/Brief.php:137
 msgid "Acceptance"
 msgstr "الاستلام"
 
-#: src/Brief.php:105
+#: src/Brief.php:140
 msgid "An engineer of the platform"
 msgstr "مهندس من المنصة"
 
-#: src/Brief.php:106
+#: src/Brief.php:141
 msgid "Another design office"
 msgstr "مكتب دراسات آخر"
 
-#: src/Brief.php:107
+#: src/Brief.php:142
 msgid "No study"
 msgstr "لا توجد دراسة"
 
-#: src/Brief.php:110
+#: src/Brief.php:145
 msgid "Existing building"
 msgstr "مبنى قائم"
 
-#: src/Brief.php:111
+#: src/Brief.php:146
 msgid "Conformity / acceptance"
 msgstr "المطابقة / الاستلام"
 
-#: src/Brief.php:112
+#: src/Brief.php:147
 msgid "Extension / change of use"
 msgstr "توسعة / تغيير الاستعمال"
 
-#: src/Brief.php:115
+#: src/Brief.php:150
 msgid "Cracks"
 msgstr "تشققات"
 
-#: src/Brief.php:116
+#: src/Brief.php:151
 msgid "Deformations"
 msgstr "تشوهات"
 
-#: src/Brief.php:117
+#: src/Brief.php:152
 msgid "Corrosion"
 msgstr "تآكل"
 
-#: src/Brief.php:118
+#: src/Brief.php:153
 msgid "Fire"
 msgstr "حريق"
 
-#: src/Brief.php:122
+#: src/Brief.php:157
 msgid "Normal"
 msgstr "عادية"
 
-#: src/Brief.php:123
+#: src/Brief.php:158
 msgid "Urgent (risk)"
 msgstr "مستعجلة (خطر)"
 
 #. translators: %s: name of a dimension.
-#: src/Brief.php:154
+#: src/Brief.php:189
 msgid "Give the %s."
 msgstr "حدّد %s."
 
 #. translators: 1: name of a dimension, 2: minimum, 3: maximum.
-#: src/Brief.php:160
+#: src/Brief.php:195
 msgid "The %1$s must be a number between %2$s and %3$s."
 msgstr "القيمة «%1$s»: عدد بين %2$s و%3$s."
 
-#: src/Brief.php:190
+#: src/Brief.php:222
+msgid "Choose the commune."
+msgstr "اختر البلدية."
+
+#: src/Brief.php:222
+msgid "This commune is not in the chosen wilaya."
+msgstr "هذه البلدية ليست في الولاية المختارة."
+
+#: src/Brief.php:236
 msgid "width (span)"
 msgstr "العرض (البحر)"
 
-#: src/Brief.php:191 src/Brief.php:246 src/Brief.php:280
+#: src/Brief.php:237 src/Brief.php:319 src/Brief.php:370
 msgid "length"
 msgstr "الطول"
 
-#: src/Brief.php:192
+#: src/Brief.php:238
 msgid "height of the columns"
 msgstr "ارتفاع الأعمدة"
 
-#: src/Brief.php:194
+#: src/Brief.php:240
 msgid "height at the ridge"
 msgstr "الارتفاع عند القمة"
 
-#: src/Brief.php:196
+#: src/Brief.php:242
 msgid "The ridge cannot be lower than the columns."
 msgstr "لا يمكن أن تكون القمة أخفض من الأعمدة."
 
-#: src/Brief.php:202
+#: src/Brief.php:248
 msgid "number of spans"
 msgstr "عدد البحور"
 
-#: src/Brief.php:209
+#: src/Brief.php:255
 msgid "spacing of the frames"
 msgstr "المسافة بين الإطارات"
 
-#: src/Brief.php:212
+#: src/Brief.php:258
 msgid "capacity of the crane"
 msgstr "حمولة الرافعة الجسرية"
 
-#: src/Brief.php:213
+#: src/Brief.php:259
 msgid "height of the rail"
 msgstr "ارتفاع السكة"
 
-#: src/Brief.php:215
+#: src/Brief.php:261
 msgid "The rail must be lower than the columns."
 msgstr "يجب أن تكون السكة أخفض من الأعمدة."
 
-#: src/Brief.php:217
+#: src/Brief.php:263
 msgid "number of cranes"
 msgstr "عدد الرافعات"
 
-#: src/Brief.php:224
+#: src/Brief.php:270
 msgid "width of the mezzanine"
 msgstr "عرض الميزانين"
 
-#: src/Brief.php:225
+#: src/Brief.php:271
 msgid "length of the mezzanine"
 msgstr "طول الميزانين"
 
-#: src/Brief.php:226
+#: src/Brief.php:272
 msgid "height of the mezzanine floor"
 msgstr "ارتفاع أرضية الميزانين"
 
-#: src/Brief.php:228
+#: src/Brief.php:274
 msgid "The mezzanine must fit in the building."
 msgstr "يجب أن يكون الميزانين داخل المبنى."
 
-#: src/Brief.php:231
+#: src/Brief.php:277
 msgid "The mezzanine floor must be lower than the columns."
 msgstr "يجب أن تكون أرضية الميزانين أخفض من الأعمدة."
 
-#: src/Brief.php:236
-msgid "number of doors"
-msgstr "عدد الأبواب"
+#: src/Brief.php:285
+msgid "height of the wall"
+msgstr "ارتفاع الجدار"
 
-#: src/Brief.php:241
+#: src/Brief.php:287
+msgid "The wall must be lower than the columns."
+msgstr "يجب أن يكون الجدار أخفض من الأعمدة."
+
+#: src/Brief.php:300
+msgid "Tick the bays that have a door."
+msgstr "اختر الفتحات التي فيها باب."
+
+#: src/Brief.php:305 src/Brief.php:314
 msgid "width of the doors"
 msgstr "عرض الأبواب"
 
-#: src/Brief.php:242
+#: src/Brief.php:306 src/Brief.php:315
 msgid "height of the doors"
 msgstr "ارتفاع الأبواب"
 
-#: src/Brief.php:245 src/Brief.php:279
+#: src/Brief.php:318 src/Brief.php:369
 msgid "width"
 msgstr "العرض"
 
-#: src/Brief.php:247
-msgid "number of levels"
-msgstr "عدد الطوابق"
+#. translators: %s: name of the level (Ground floor, F+1…).
+#: src/Brief.php:331
+msgid "%s: give a height between 2 and 12 m."
+msgstr "%s: ارتفاع بين 2 و12 م."
 
-#: src/Brief.php:251
-msgid "height of a floor"
-msgstr "ارتفاع الطابق"
+#: src/Brief.php:337
+msgid "Give the levels with their height."
+msgstr "حدّد الطوابق وارتفاعها."
 
-#: src/Brief.php:258
+#: src/Brief.php:348
 msgid "Tick the phases to follow."
 msgstr "اختر المراحل المطلوب متابعتها."
 
-#: src/Brief.php:260
+#: src/Brief.php:350
 msgid "number of visits"
 msgstr "عدد الزيارات"
 
-#: src/Brief.php:264
+#: src/Brief.php:354
 msgid "duration of the works"
 msgstr "مدة الأشغال"
 
-#: src/Brief.php:272
+#: src/Brief.php:362
 msgid "Choose what is to inspect."
 msgstr "اختر ما يجب معاينته."
 
-#: src/Brief.php:275
+#: src/Brief.php:365
 msgid "age of the building"
 msgstr "عمر المبنى"
 
+#. translators: %d: floor number above the ground floor.
+#: src/Brief.php:441
+msgid "Ground floor"
+msgstr "الطابق الأرضي"
+
+#. translators: %d: floor number above the ground floor.
+#: src/Brief.php:441
+msgid "F+%d"
+msgstr "ط+%d"
+
 #. translators: %d: number of floors above the ground floor.
-#: src/Brief.php:342
+#: src/Brief.php:448
 msgid "Ground floor only"
 msgstr "طابق أرضي فقط"
 
 #. translators: %d: number of floors above the ground floor.
-#: src/Brief.php:342
+#: src/Brief.php:448
 msgid "Ground floor + %d"
 msgstr "أرضي + %d"
 
-#: src/Brief.php:359
+#: src/Brief.php:465
 msgid "Need"
 msgstr "الحاجة"
 
-#: src/Brief.php:364
+#: src/Brief.php:470
 msgid "Follow-up of the study"
 msgstr "متابعة الدراسة"
 
 #. translators: %s: height.
-#: src/Brief.php:372
+#: src/Brief.php:478
 msgid "columns %s"
 msgstr "الأعمدة %s"
 
 #. translators: %s: height.
-#: src/Brief.php:376
+#: src/Brief.php:482
 msgid "ridge %s"
 msgstr "القمة %s"
 
-#: src/Brief.php:378 src/Brief.php:441
+#: src/Brief.php:484 src/Brief.php:588
 msgid "Dimensions"
 msgstr "الأبعاد"
 
 #. translators: %d: number of spans.
-#: src/Brief.php:382
+#: src/Brief.php:488
 msgid "%d span"
 msgid_plural "%d spans"
 msgstr[0] "%d بحر"
@@ -1825,21 +1885,21 @@ msgstr[4] "%d بحرًا"
 msgstr[5] "%d بحر"
 
 #. translators: %s: spacing of the frames.
-#: src/Brief.php:385
+#: src/Brief.php:491
 msgid "frames every %s"
 msgstr "إطار كل %s"
 
-#: src/Brief.php:387
+#: src/Brief.php:493
 msgid "Roof"
 msgstr "السقف"
 
 #. translators: %s: height of the rail.
-#: src/Brief.php:395
+#: src/Brief.php:501
 msgid "rail at %s"
 msgstr "السكة على %s"
 
 #. translators: %d: number of overhead cranes.
-#: src/Brief.php:399
+#: src/Brief.php:505
 msgid "%d crane"
 msgid_plural "%d cranes"
 msgstr[0] "%d رافعة"
@@ -1849,21 +1909,78 @@ msgstr[3] "%d رافعات"
 msgstr[4] "%d رافعة"
 msgstr[5] "%d رافعة"
 
-#: src/Brief.php:401
+#: src/Brief.php:507
 msgid "Overhead crane"
 msgstr "رافعة جسرية"
 
 #. translators: %s: height of the floor.
-#: src/Brief.php:410
+#: src/Brief.php:516
 msgid "floor at %s"
 msgstr "الأرضية على %s"
 
-#: src/Brief.php:415
+#: src/Brief.php:521
 msgid "Mezzanine"
 msgstr "ميزانين"
 
+#: src/Brief.php:524
+msgid "Roofing"
+msgstr "التغطية"
+
+#. translators: 1: height of the wall, 2: cladding above it.
+#: src/Brief.php:530
+msgid "Wall of %1$s, %2$s above"
+msgstr "جدار %1$s، و%2$s فوقه"
+
+#: src/Brief.php:532
+msgid "Walls"
+msgstr "التكسية"
+
+#: src/Brief.php:535
+msgid "Front long side"
+msgstr "الواجهة الطويلة الأمامية"
+
+#: src/Brief.php:536
+msgid "Back long side"
+msgstr "الواجهة الطويلة الخلفية"
+
+#: src/Brief.php:537
+msgid "Left gable"
+msgstr "الواجهة اليسرى"
+
+#: src/Brief.php:538
+msgid "Right gable"
+msgstr "الواجهة اليمنى"
+
+#. translators: 1: side of the building, 2: its doors.
+#: src/Brief.php:551 src/Brief.php:553
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
+
+#. translators: 1: side of the building, 2: its doors.
+#: src/Brief.php:551
+msgid "%1$d door in bay %2$s"
+msgid_plural "%1$d doors in bays %2$s"
+msgstr[0] "%1$d باب في الفتحات %2$s"
+msgstr[1] "باب واحد في الفتحة %2$s"
+msgstr[2] "بابان في الفتحتين %2$s"
+msgstr[3] "%1$d أبواب في الفتحات %2$s"
+msgstr[4] "%1$d بابًا في الفتحات %2$s"
+msgstr[5] "%1$d باب في الفتحات %2$s"
+
+#: src/Brief.php:553
+msgid "1 centred door"
+msgstr "باب واحد في الوسط"
+
+#: src/Brief.php:553
+msgid "2 spread doors"
+msgstr "بابان موزعان"
+
+#: src/Brief.php:557
+msgid "None (all sides closed)"
+msgstr "لا يوجد (كل الواجهات مغلقة)"
+
 #. translators: %d: number of doors.
-#: src/Brief.php:423
+#: src/Brief.php:565
 msgid "%d door"
 msgid_plural "%d doors"
 msgstr[0] "%d باب"
@@ -1873,25 +1990,35 @@ msgstr[3] "%d أبواب"
 msgstr[4] "%d بابًا"
 msgstr[5] "%d باب"
 
-#: src/Brief.php:430
+#: src/Brief.php:572
 msgid "Envelope"
 msgstr "الغلاف"
 
+#. translators: %s: total height.
+#: src/Brief.php:582
+msgid "total height %s"
+msgstr "الارتفاع الكلي %s"
+
 #. translators: %s: height of a floor.
-#: src/Brief.php:439
+#: src/Brief.php:586
 msgid "floors of %s"
 msgstr "طوابق بارتفاع %s"
 
-#: src/Brief.php:443
+#: src/Brief.php:593
 msgid "Floors"
 msgstr "البلاطات"
 
-#: src/Brief.php:447
+#: src/Brief.php:597
 msgid "Use of the building"
 msgstr "استعمال المبنى"
 
+#. translators: %s: floor area of all levels.
+#: src/Brief.php:607
+msgid "%s of floors in all"
+msgstr "%s من البلاطات إجمالًا"
+
 #. translators: %d: number of portal frames.
-#: src/Brief.php:457
+#: src/Brief.php:611
 msgid "%d portal frame"
 msgid_plural "%d portal frames"
 msgstr[0] "%d إطار"
@@ -1901,66 +2028,70 @@ msgstr[3] "%d إطارات"
 msgstr[4] "%d إطارًا"
 msgstr[5] "%d إطار"
 
-#: src/Brief.php:459
+#: src/Brief.php:613
 msgid "Worked out"
 msgstr "محسوب"
 
-#: src/Brief.php:462
+#: src/Brief.php:616
 msgid "Soil study"
 msgstr "دراسة التربة"
 
-#: src/Brief.php:466
+#: src/Brief.php:620
 msgid "Phases"
 msgstr "المراحل"
 
-#: src/Brief.php:469
+#: src/Brief.php:623
 msgid "Visits"
 msgstr "الزيارات"
 
 #. translators: %s: number of months.
-#: src/Brief.php:473
+#: src/Brief.php:627
 msgid "Duration of the works"
 msgstr "مدة الأشغال"
 
 #. translators: %s: number of months.
-#: src/Brief.php:473
+#: src/Brief.php:627
 msgid "%s months"
 msgstr "%s أشهر"
 
-#: src/Brief.php:476
+#: src/Brief.php:630
 msgid "Study made by"
 msgstr "الدراسة أنجزها"
 
-#: src/Brief.php:481
+#: src/Brief.php:635
 msgid "To inspect"
 msgstr "المطلوب معاينته"
 
-#: src/Brief.php:484
+#: src/Brief.php:638
 msgid "Findings"
 msgstr "المعاينات"
 
 #. translators: %d: age in years.
-#: src/Brief.php:488
+#: src/Brief.php:642
 msgid "Age of the building"
 msgstr "عمر المبنى"
 
-#: src/Brief.php:491
+#: src/Brief.php:645
 msgid "Approximate dimensions"
 msgstr "الأبعاد التقريبية"
 
-#: src/Brief.php:494
+#: src/Brief.php:648
 msgid "Urgency"
 msgstr "الاستعجال"
 
-#: src/Brief.php:498
+#: src/Brief.php:653
 msgid "Municipality"
 msgstr "البلدية"
 
-#: src/Brief.php:511
+#: src/Brief.php:656
+msgid "Position on the map"
+msgstr "الموقع على الخريطة"
+
+#: src/Brief.php:669
 msgid "Follow-up"
 msgstr "متابعة"
 
-#: src/Brief.php:512
+#: src/Brief.php:670
 msgid "Expertise"
 msgstr "خبرة"
 
@@ -2163,51 +2294,51 @@ msgstr "اختر خدمة فرعية واحدة على الأقل من خدمة 
 msgid "Choose the type of project."
 msgstr "اختر نوع المشروع."
 
-#: src/Form.php:104
+#: src/Form.php:106
 msgid "Give a short title, for example “Hangar 20 × 40 m in Sétif”."
 msgstr "أعط عنوانا قصيرا، مثلا «هنغار 20 × 40 م في سطيف»."
 
-#: src/Form.php:110
+#: src/Form.php:112
 msgid ""
 "Describe the project: dimensions, use, loads, what you expect (30 characters"
 " at least)."
 msgstr ""
 "صف المشروع: الأبعاد، الاستعمال، الأحمال، وما تنتظره (30 حرفا على الأقل)."
 
-#: src/Form.php:114
+#: src/Form.php:116
 msgid "Choose the wilaya of the project."
 msgstr "اختر ولاية المشروع."
 
-#: src/Form.php:118
+#: src/Form.php:120
 msgid "Choose a date in the future, or leave it empty."
 msgstr "اختر تاريخا مستقبليا أو اتركه فارغا."
 
-#: src/Form.php:151
+#: src/Form.php:153
 msgid ""
 "You sent many study requests today. Try again tomorrow or write to the "
 "platform."
 msgstr "أرسلت طلبات دراسة كثيرة اليوم. أعد المحاولة غدا أو راسل المنصة."
 
-#: src/Form.php:156
+#: src/Form.php:158
 msgid "Add at least 2 photos of the building for an expertise."
 msgstr "أضف صورتين على الأقل للمبنى من أجل الخبرة."
 
-#: src/Form.php:174
+#: src/Form.php:176
 msgid ""
 "Your request is sent to the platform. You receive a quote, usually within 2 "
 "working days."
 msgstr "تم إرسال طلبك إلى المنصة. ستتلقى عرض سعر خلال يومي عمل عادة."
 
-#: src/Form.php:213
+#: src/Form.php:215
 msgid "You cannot change this request."
 msgstr "لا يمكنك تعديل هذا الطلب."
 
-#: src/Form.php:218
+#: src/Form.php:220
 msgid "This request is closed."
 msgstr "هذا الطلب مغلق."
 
 #. translators: %d: number of files.
-#: src/Form.php:222
+#: src/Form.php:224
 msgid "%d document added."
 msgid_plural "%d documents added."
 msgstr[0] "أُضيفت %d وثيقة."
@@ -2217,41 +2348,41 @@ msgstr[3] "أُضيفت %d وثيقة."
 msgstr[4] "أُضيفت %d وثيقة."
 msgstr[5] "أُضيفت %d وثيقة."
 
-#: src/Form.php:225
+#: src/Form.php:227
 msgid "Documents added. The platform is told."
 msgstr "تمت إضافة الوثائق وإعلام المنصة."
 
-#: src/Form.php:231 src/Payments.php:48
+#: src/Form.php:233 src/Payments.php:48
 msgid "Nothing is to pay for this study now."
 msgstr "لا يوجد ما يُدفع لهذه الدراسة حاليا."
 
-#: src/Form.php:237
+#: src/Form.php:239
 msgid "Pay with one of the methods below, then send the proof of payment."
 msgstr "ادفع بإحدى الطرق أدناه ثم أرسل إثبات الدفع."
 
-#: src/Form.php:240
+#: src/Form.php:242
 msgid ""
 "Quote accepted. The platform appoints a partner engineer and you are told "
 "when the study starts."
 msgstr "تم قبول عرض السعر. تعيّن المنصة مهندسا شريكا وتعلمك عند بدء الدراسة."
 
-#: src/Form.php:241
+#: src/Form.php:243
 msgid "You declined the quote. The platform is told."
 msgstr "رفضت عرض السعر. تم إعلام المنصة."
 
-#: src/Form.php:242
+#: src/Form.php:244
 msgid "Your request is cancelled."
 msgstr "تم إلغاء طلبك."
 
-#: src/Form.php:243
+#: src/Form.php:245
 msgid "Thank you. The mission is closed."
 msgstr "شكرا. تم إغلاق المهمة."
 
-#: src/Form.php:246 src/Form.php:317 src/Missions.php:313 src/Missions.php:407
+#: src/Form.php:248 src/Form.php:319 src/Missions.php:313 src/Missions.php:407
 msgid "Unknown action."
 msgstr "إجراء غير معروف."
 
-#: src/Form.php:256
+#: src/Form.php:258
 msgid ""
 "Quote accepted. Pay the advance to start the requested services: pay with "
 "one of the methods below, then send the proof of payment."
@@ -2259,70 +2390,70 @@ msgstr ""
 "تم قبول العرض. ادفع التسبيق لبدء الخدمات المطلوبة: ادفع بإحدى الطرق أدناه ثم"
 " أرسل إثبات الدفع."
 
-#: src/Form.php:258
+#: src/Form.php:260
 msgid ""
 "Quote accepted. The platform sends you how to pay the advance; the services "
 "start once it is received."
 msgstr ""
 "تم قبول العرض. ترسل لك المنصة طريقة دفع التسبيق؛ تبدأ الخدمات عند استلامه."
 
-#: src/Form.php:268
+#: src/Form.php:270
 msgid "This mission is not assigned to you."
 msgstr "هذه المهمة ليست مسندة إليك."
 
-#: src/Form.php:271
+#: src/Form.php:273
 msgid "Your partner account is not active."
 msgstr "حساب الشريك غير مفعّل."
 
-#: src/Form.php:277
+#: src/Form.php:279
 msgid "Mission accepted. You can start; send the deliverables from this page."
 msgstr "تم قبول المهمة. يمكنك البدء؛ أرسل المخرجات من هذه الصفحة."
 
-#: src/Form.php:281
+#: src/Form.php:283
 msgid "You declined the mission. The platform is told."
 msgstr "رفضت المهمة. تم إعلام المنصة."
 
-#: src/Form.php:286
+#: src/Form.php:288
 msgid "Deliverables can be added while the mission is in progress."
 msgstr "تُضاف المخرجات أثناء إنجاز المهمة."
 
-#: src/Form.php:289
+#: src/Form.php:291
 msgid "Files added. Send the work to the platform when everything is there."
 msgstr "تمت إضافة الملفات. أرسل العمل إلى المنصة عند اكتماله."
 
-#: src/Form.php:294
+#: src/Form.php:296
 msgid "This file cannot be removed."
 msgstr "لا يمكن حذف هذا الملف."
 
-#: src/Form.php:297
+#: src/Form.php:299
 msgid "File removed."
 msgstr "تم حذف الملف."
 
-#: src/Form.php:301
+#: src/Form.php:303
 msgid "An invoice can be sent once the mission is accepted."
 msgstr "يمكن إرسال الفاتورة بعد قبول المهمة."
 
-#: src/Form.php:310
+#: src/Form.php:312
 msgid "Invoice sent to the platform."
 msgstr "تم إرسال الفاتورة إلى المنصة."
 
-#: src/Form.php:314
+#: src/Form.php:316
 msgid "Work sent. The platform checks it and delivers it to the client."
 msgstr "تم إرسال العمل. تراجعه المنصة وتسلّمه للزبون."
 
-#: src/Form.php:337
+#: src/Form.php:339
 msgid "You cannot write on this mission."
 msgstr "لا يمكنك الكتابة حول هذه المهمة."
 
-#: src/Form.php:341
+#: src/Form.php:343
 msgid "Write your message."
 msgstr "اكتب رسالتك."
 
-#: src/Form.php:344
+#: src/Form.php:346
 msgid "Too many messages. Try again later."
 msgstr "رسائل كثيرة. أعد المحاولة لاحقا."
 
-#: src/Form.php:348
+#: src/Form.php:350
 msgid "Message sent to the platform."
 msgstr "تم إرسال الرسالة إلى المنصة."
 
@@ -2390,11 +2521,11 @@ msgstr "مقبول — التسبيق للدفع"
 msgid "Ready — balance to pay"
 msgstr "جاهزة — الرصيد للدفع"
 
-#: src/Missions.php:494 src/Missions.php:495 src/Theme/Bridge.php:296
+#: src/Missions.php:494 src/Missions.php:495 src/Theme/Bridge.php:298
 msgid "Study in progress"
 msgstr "الدراسة قيد الإنجاز"
 
-#: src/Missions.php:496 src/Missions.php:526 src/Theme/Bridge.php:296
+#: src/Missions.php:496 src/Missions.php:526 src/Theme/Bridge.php:298
 msgid "Delivered"
 msgstr "تم التسليم"
 
@@ -2874,14 +3005,14 @@ msgid ""
 "Online payment details are not available yet: the platform contacts you."
 msgstr "وسائل الدفع غير متاحة بعد: ستتصل بك المنصة."
 
-#: src/Theme/Bridge.php:296
+#: src/Theme/Bridge.php:298
 msgid "Request sent"
 msgstr "تم إرسال الطلب"
 
-#: src/Theme/Bridge.php:296
+#: src/Theme/Bridge.php:298
 msgid "Quote"
 msgstr "عرض السعر"
 
-#: src/Theme/Bridge.php:296
+#: src/Theme/Bridge.php:298
 msgid "Accepted"
 msgstr "مقبولة"

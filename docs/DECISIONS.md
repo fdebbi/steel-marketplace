@@ -397,3 +397,11 @@ Validé sur la maquette 0.37.
 - Obligatoires pour une étude : type, largeur, longueur, hauteur des poteaux (niveaux pour un bâtiment à étages) ; le reste est facultatif, avec « Je ne sais pas ».
 - Schéma en 2D seulement (vue de face + vue en plan), marqué « indicatif » ; pas de 3D.
 - Expertise : 2 photos minimum.
+
+## Demande d'étude : enveloppe, portes, niveaux, localisation (2026-11-15)
+
+- Couverture et bardage séparés ; bardage mixte = mur en bas (hauteur donnée) + bardage au-dessus ; « Ouvert » possible.
+- Une porte se place au centre d'une travée (jamais sur un portique). Les 4 côtés sont fermés par défaut. Sans entraxe donné, les travées sont comptées à 6 m.
+- Bâtiment à niveaux : chaque étage a sa hauteur et son usage.
+- Commune obligatoire, choisie dans la liste de la wilaya (texte libre pour les nouvelles wilayas 59-69 tant que leur liste n'est pas publiée). Repère sur la carte facultatif, jamais public.
+- Plus de date « souhaitée » dans la demande d'étude.

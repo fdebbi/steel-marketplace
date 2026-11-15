@@ -758,9 +758,13 @@ function sm_study_sketch_i18n() {
 		'nFrames'  => __( 'Portal frames', 'sm-marketplace' ),
 		'floors'   => __( 'Floor area of all levels', 'sm-marketplace' ),
 		'total'    => __( 'Total height', 'sm-marketplace' ),
-		'front'    => __( 'Front view (gable)', 'sm-marketplace' ),
+		'front'    => __( 'Front view (left gable)', 'sm-marketplace' ),
 		'frontLevels' => __( 'Front view', 'sm-marketplace' ),
 		'plan'     => __( 'Plan view', 'sm-marketplace' ),
 		'empty'    => __( 'Give the width, the length and the height: the sketch draws itself.', 'sm-marketplace' ),
+		'wall'       => __( 'Wall %s', 'sm-marketplace' ),
+		'front_side' => __( 'Front long side', 'sm-marketplace' ),
+		'back_side'  => __( 'Back long side', 'sm-marketplace' ),
+		'uses'       => class_exists( '\\SM\\Engineering\\Brief' ) ? \SM\Engineering\Brief::choices( 'floor_use' ) : array(),
 	);
 }
