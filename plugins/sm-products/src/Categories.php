@@ -112,6 +112,9 @@ final class Categories {
 			if ( ! empty( $f['unit'] ) ) {
 				$field['unit'] = sanitize_text_field( $f['unit'] );
 			}
+			if ( ! empty( $f['chips'] ) ) {
+				$field['chips'] = true; // 0.18.0: choices shown as buttons.
+			}
 			if ( 'select' === $type ) {
 				$opts = array();
 				foreach ( (array) ( $f['options'] ?? array() ) as $o ) {

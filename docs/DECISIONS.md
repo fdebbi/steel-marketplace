@@ -370,3 +370,14 @@ Validé sur la maquette 0.36.
 - **Vente à la feuille** : le poids d'une feuille est estimé, le vendeur peut le remplacer par le poids réel ; c'est ce poids que voit l'acheteur. Pour la larmée et l'alu à damier, l'estimation vient du poids au m² publié par un négociant ; les autres épaisseurs sont calculées.
 - **Sources** : aucune source de données (nom de catalogue, lien) n'est affichée sur le site, pour tous les produits ; la norme reste affichée. Les sources restent dans l'administration et `docs/VERIFICATION.md`.
 
+## Réemploi comme le neuf, boulonnerie, lots groupés (2026-11-15)
+
+Validé sur la maquette 0.37.
+
+- **Réemploi = mêmes catégories que le neuf** (profilés, tubes, tôles, fers plats et barres, boulonnerie) plus la ferraille. Chutes et démontage deviennent l'origine. Les anciennes catégories ne sont plus proposées ; leurs annonces restent jusqu'à expiration.
+- **Une dimension par annonce, plusieurs longueurs** (tôles : plusieurs formats) avec leur nombre ; ou au poids total pour du vrac.
+- **Ordre** : géométrie → origine → état de l'acier → état de surface → prix → ce que le prix inclut (chargement, transport, découpe). Les photos restent dans leur étape (après le prix) : la partie technique se met à jour en direct et perdrait les fichiers choisis.
+- **2 photos au minimum** en réemploi ; elles s'affichent en premier sur la fiche.
+- **Boulonnerie** en neuf et en réemploi : boulons, tiges filetées, écrous, rondelles, tiges d'ancrage. Pas de calcul de poids (le vendeur le donne s'il vend au kg). Boulons précontraints en réemploi : avertissement (EN 1090-2). Vente à la pièce ou au kg (pas à la boîte pour l'instant).
+- **Lots groupés (réemploi seulement)** : option A, les produits regroupés ne sont plus vendus séparément ; prix proposé = somme, modifiable ; même wilaya ; l'inventaire du lot montre l'état de chaque produit.
+

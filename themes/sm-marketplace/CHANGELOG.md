@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.37.0 — 2026-11-15
+
+- Réemploi : tableau Longueur | Nombre (tôles : Longueur | Largeur | Nombre) avec « + Ajouter une longueur », poids de chaque ligne et total ; mode « Au poids total ». Origine, état et état de surface après les données géométriques, puis le prix et ce qu'il inclut. 2 photos demandées.
+- Boulonnerie : choix en boutons, titre automatique.
+- « Mes annonces » : cocher des annonces de réemploi et « Regrouper en lot » (titre, prix proposé = somme) ; « Défaire le lot » ; statut « Dans un lot ».
+- Fiche d'un lot : inventaire de chaque produit avec ses longueurs, son état et son poids. Fiche d'une annonce à une dimension : tableau des longueurs et du nombre.
+- Avertissement des boulons précontraints sur la fiche.
+
 ## 0.36.0 — 2026-11-15
 
 - Liste des dimensions avec recherche (`assets/js/size-picker.js`) : tubes carrés, rectangulaires et ronds regroupés par dimension extérieure (40 × 40, 80 × 40, Ø 48,3), fers plats par largeur ; recherche « 80x40 », « 80 × 40 » ou « 80*40 » ; « + Autre dimension » ouvre la saisie des cotes. Aussi dans le calculateur de poids.

@@ -177,7 +177,14 @@ final class Presenter {
 				}
 				$rows[] = array( __( 'Dimensions', 'sm-products' ), $tech( implode( ' · ', $dims ) . ' mm' ) );
 			}
-			if ( 'PLATE' === $p->family ) {
+			if ( $p->lines ) {
+				// 0.18.0: one size in several lengths or plate sizes.
+				$parts = array();
+				foreach ( $p->lines as $l ) {
+					$parts[] = ( ! empty( $l['width_mm'] ) ? self::n( $l['length_mm'] ) . ' × ' . self::n( $l['width_mm'] ) . ' mm' : rtrim( rtrim( self::n( $l['length_mm'] / 1000, 2 ), '0' ), ',' ) . ' m' ) . ' × ' . (int) $l['qty'];
+				}
+				$rows[] = array( 'PLATE' === $p->family ? __( 'Sizes × number', 'sm-products' ) : __( 'Lengths × number', 'sm-products' ), $tech( implode( ' · ', $parts ) ) );
+			} elseif ( 'PLATE' === $p->family ) {
 				$rows[] = array( __( 'Plate size', 'sm-products' ), $tech( self::n( $p->width_mm ) . ' × ' . self::n( $p->length_mm ) . ' mm' ) );
 				if ( $p->unit_weight > 0 ) {
 					$rows[] = array( __( 'Weight of one sheet', 'sm-products' ), $tech( self::n( $p->unit_weight, fmod( (float) $p->unit_weight, 1 ) ? 1 : 0 ) . ' kg' ) );
@@ -188,7 +195,12 @@ final class Presenter {
 			/* translators: %s: number of plates. */
 			$fmt    = 'PLATE' === $p->family ? __( '%s plates', 'sm-products' ) : __( '%s bars', 'sm-products' ); // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 			$count  = 'weight' === $p->qty_mode ? '≈ ' . self::n( $p->pieces, 1 ) : self::n( $p->pieces );
-			$rows[] = array( __( 'Quantity', 'sm-products' ), sprintf( esc_html( $fmt ), '<bdi dir="ltr">' . esc_html( $count ) . '</bdi>' ) );
+			if ( $p->pieces > 0 ) {
+				$rows[] = array( __( 'Quantity', 'sm-products' ), sprintf( esc_html( $fmt ), '<bdi dir="ltr">' . esc_html( $count ) . '</bdi>' ) );
+			}
+			if ( $p->lines && ! empty( $p->lines[0]['kg_m'] ) ) {
+				$rows[] = array( __( 'Weight per metre', 'sm-products' ), $tech( self::n( $p->lines[0]['kg_m'], 2 ) . ' kg/m' ) );
+			}
 			if ( $p->unit_weight && $p->length_mm && 'PLATE' !== $p->family ) {
 				$rows[] = array( __( 'Weight per metre', 'sm-products' ), $tech( self::n( $p->unit_weight / ( $p->length_mm / 1000 ), 2 ) . ' kg/m' ) );
 			}
@@ -260,10 +272,12 @@ final class Presenter {
 			}
 			$out[] = array(
 				'type'        => $type,
-				'designation' => $l['designation'],
+				'designation' => 'PLATE' === $l['family'] && 'PLATE' === $p->family ? self::designation( $p ) : $l['designation'],
 				'qty'         => (int) $l['qty'],
 				'length'      => $l['length_mm'] / 1000,
-				'unit_weight' => (float) $l['kg_m'],
+				'width'       => (int) ( $l['width_mm'] ?? 0 ), // 0.18.0: plates of several sizes (mm).
+				'length_mm'   => (int) $l['length_mm'],
+				'unit_weight' => ! empty( $l['width_mm'] ) ? (float) ( $l['kg_m2'] ?? 0 ) : (float) $l['kg_m'],
 				'total'       => (float) $l['total'],
 			);
 		}

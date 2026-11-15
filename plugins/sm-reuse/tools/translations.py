@@ -38,3 +38,20 @@ T.update({
 "Inspection: %s": ("Inspection : %s", "معاينة: %s"),
 "Steel concerned by the inspection": ("Acier concerné par l’inspection", "الفولاذ المعني بالمعاينة"),
 })
+
+# 0.3.0: same categories as new steel, lots of several listings, preloaded bolts.
+T.update({
+'Steel reuse market: profiles, tubes, plates, bars and bolts already used or in surplus, sold in several lengths, and scrap; lots of several listings. Adds the "reuse" market to the SM Products listing engine (condition scale, origin, surface state, what the price includes), seeds its categories and adds the engineer advice on reuse listings. Requires SM Core, SM Weight Engine and SM Products.': ("Marché du réemploi de l’acier : profilés, tubes, tôles, barres et boulonnerie déjà utilisés ou en surplus, vendus en plusieurs longueurs, et ferraille ; lots de plusieurs annonces. Ajoute le marché « réemploi » au moteur d’annonces SM Products (échelle d’état, origine, état de surface, ce que comprend le prix), crée ses catégories et ajoute l’avis d’ingénieur sur les annonces. Nécessite SM Core, SM Weight Engine et SM Products.", "سوق إعادة استعمال الفولاذ: مقاطع وأنابيب وصفائح وقضبان وبراغي مستعملة أو فائضة، تباع بعدة أطوال، وخردة؛ ودفعات من عدة إعلانات. يضيف سوق «إعادة الاستعمال» إلى محرك إعلانات SM Products (سلم الحالة، المصدر، حالة السطح، ما يشمله السعر)، وينشئ فئاته ويضيف توصية المهندس على الإعلانات. يتطلب SM Core وSM Weight Engine وSM Products."),
+"Preloaded bolts: not for a preloaded joint": ("Boulons précontraints : pas pour un assemblage précontraint", "براغي مسبقة الشد: لا تصلح لوصلة مسبقة الشد"),
+"A preloaded bolt (HR / HV) that was already tightened must not be reused in a preloaded joint (EN 1090-2). Use these bolts only where no preload is required, after checking them.": ("Un boulon précontraint (HR / HV) déjà serré ne doit pas être réutilisé dans un assemblage précontraint (EN 1090-2). Utilisez ces boulons seulement là où aucune précontrainte n’est demandée, après vérification.", "البرغي مسبق الشد (HR / HV) الذي سبق شدّه لا يُعاد استعماله في وصلة مسبقة الشد (EN 1090-2). استعمل هذه البراغي فقط حيث لا يُطلب شد مسبق، بعد فحصها."),
+"Only your published reuse listings can be grouped (not scrap, not lots).": ("Seules vos annonces de réemploi en ligne peuvent être regroupées (pas la ferraille, pas un lot).", "يمكن تجميع إعلانات إعادة الاستعمال المنشورة فقط (لا الخردة ولا الدفعات)."),
+"Tick at least two listings to make a lot.": ("Cochez au moins deux annonces pour faire un lot.", "اختر إعلانين على الأقل لتكوين دفعة."),
+"The products of a lot must be in the same wilaya.": ("Les produits d’un lot doivent être dans la même wilaya.", "يجب أن تكون منتجات الدفعة في نفس الولاية."),
+"Enter the price of the lot.": ("Indiquez le prix du lot.", "أدخل سعر الدفعة."),
+"Lot of %d reuse products": ("Lot de %d produits de réemploi", "دفعة من %d منتجات لإعادة الاستعمال"),
+"%s pieces": ("%s pièces", "%s قطعة"),
+"Your account has no company.": ("Votre compte n’a pas d’entreprise.", "حسابك غير مرتبط بمؤسسة."),
+"The lot is online. Its products are no longer sold separately.": ("Le lot est en ligne. Ses produits ne sont plus vendus séparément.", "الدفعة منشورة. لم تعد منتجاتها تباع منفصلة."),
+"You cannot change this lot.": ("Vous ne pouvez pas modifier ce lot.", "لا يمكنك تعديل هذه الدفعة."),
+"The lot is undone: its products are on sale again one by one.": ("Le lot est défait : ses produits sont de nouveau en vente un par un.", "أُلغيت الدفعة: عادت منتجاتها للبيع واحدًا واحدًا."),
+})

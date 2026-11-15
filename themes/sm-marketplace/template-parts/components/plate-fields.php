@@ -14,6 +14,7 @@ $st          = (array) $args['state'];
 $family      = (array) $args['family'];
 $calc        = is_array( $args['calc'] ?? null ) ? $args['calc'] : null;
 $field_error = $args['field_error'];
+$rows_mode   = ! empty( $args['rows'] ); // 0.37.0: reuse, the sizes are given row by row.
 $v           = static fn( $k, $d = '' ) => isset( $st[ $k ] ) && ! is_array( $st[ $k ] ) ? (string) $st[ $k ] : $d;
 $kinds       = array();
 foreach ( (array) ( $family['plates'] ?? array() ) as $k ) {
@@ -110,6 +111,7 @@ $icon = static function ( $key ) use ( $pattern, $fill ) {
 				<?php $field_error( 'section' ); ?>
 			</fieldset>
 
+			<?php if ( ! $rows_mode ) : ?>
 			<fieldset class="sm-field">
 				<legend class="sm-field__legend"><?php esc_html_e( 'Size of the sheet', 'sm-marketplace' ); ?> <small>(mm)</small></legend>
 				<div class="smpl-chips">
@@ -128,6 +130,7 @@ $icon = static function ( $key ) use ( $pattern, $fill ) {
 				<?php $field_error( 'width' ); ?>
 				<?php $field_error( 'length' ); ?>
 			</fieldset>
+			<?php endif; ?>
 
 			<?php if ( $def['holes'] ) : ?>
 				<fieldset class="sm-field">
@@ -147,7 +150,14 @@ $icon = static function ( $key ) use ( $pattern, $fill ) {
 			?>
 		</div>
 
-		<?php if ( $calc && ! empty( $calc['width_mm'] ) ) : ?>
+		<?php if ( $rows_mode && $calc && ! empty( $calc['kg_per_m2'] ) ) : ?>
+			<figure class="smw-profile smp-profile smpl-figure">
+				<figcaption>
+					<p class="smw-profile__name"><?php echo esc_html( trim( sm_t( $def['title'] ) . ' ' . (string) ( $calc['plate_label'] ?? '' ) . ( $def['relief'] ? '' : ' mm' ) ) ); ?></p>
+					<p class="smp-kgm"><?php echo sm_tech( sm_number( $calc['kg_per_m2'], 2 ) . ' kg/m²' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></p>
+				</figcaption>
+			</figure>
+		<?php elseif ( $calc && ! empty( $calc['width_mm'] ) ) : ?>
 			<?php
 			$w     = (float) $calc['width_mm'];
 			$l     = (float) $calc['length_mm'];
@@ -183,7 +193,7 @@ $icon = static function ( $key ) use ( $pattern, $fill ) {
 		<?php endif; ?>
 	</div>
 
-	<?php if ( $calc && ! empty( $calc['per_piece_kg'] ) ) : ?>
+	<?php if ( ! $rows_mode && $calc && ! empty( $calc['per_piece_kg'] ) ) : ?>
 		<div class="smpl-weight">
 			<div class="smpl-weight__est">
 				<span><?php esc_html_e( 'Estimated weight of one sheet', 'sm-marketplace' ); ?></span>

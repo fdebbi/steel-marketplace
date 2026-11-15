@@ -71,7 +71,7 @@ $base = array( 'wilaya' => '28', 'title' => array( 'fr' => 'Test produit' ), 'pr
 /* ------------------------------------------------------------------ */
 smp_section( '1. Categories' );
 $cats = Categories::all( false, 'products' );
-smp_assert( 7 === count( $cats ) && 'engine' === $cats['profiles']->kind && 'specs' === $cats['roofing']->kind, '7 default categories (4 from the weight engine, 3 with their own fields)' );
+smp_assert( 8 === count( $cats ) && 'engine' === $cats['profiles']->kind && 'specs' === $cats['roofing']->kind && 'specs' === $cats['bolts']->kind, '8 default categories (4 from the weight engine, 4 with their own fields, bolts since 0.18.0)' );
 smp_assert( array( 'IPE', 'HEA', 'HEB', 'HEM', 'IPN', 'UPN', 'UPE', 'L', 'LI' ) === $cats['profiles']->families, 'profiles cover the 9 rolled-section families' );
 $keys = wp_list_pluck( $cats['roofing']->fields, 'key' );
 smp_assert( ! array_diff( array( 'roof_type', 'maker_type', 'width_mm', 'length_min_m', 'length_max_m', 'sheet_mm', 'insulation_mm' ), $keys ), 'roofing asks the maker type, width, min/max length, sheet and PS thickness' );
@@ -251,7 +251,7 @@ foreach ( $pt_ids as $id ) { $wpdb->delete( $wpdb->prefix . 'sm_products', array
 
 // ---- Types as tabs, filters of each type (0.11.0) ----
 $fx = \SM\Products\Facets::get( 'products', '' );
-smp_assert( 8 === count( $fx['tabs'] ) && '' === $fx['tabs'][0]['slug'] && array() === $fx['facets'], 'products: all + 7 type tabs, no type filter on "All"' );
+smp_assert( 9 === count( $fx['tabs'] ) && '' === $fx['tabs'][0]['slug'] && array() === $fx['facets'], 'products: all + 8 type tabs, no type filter on "All"' );
 $fx = \SM\Products\Facets::get( 'products', 'profiles' );
 $fk = wp_list_pluck( $fx['facets'], 'key' );
 smp_assert( array( 'family', 'designation', 'length_min' ) === $fk, 'profiles: family, designation, minimum length' );

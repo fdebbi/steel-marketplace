@@ -29,12 +29,15 @@ final class Market {
 		$def = array(
 			'label'      => array( 'fr' => 'Réemploi acier', 'ar' => 'إعادة استعمال الفولاذ' ),
 			'intro'      => array(
-				'fr' => 'Chutes, surplus de chantier, profilés de démontage et ferraille : décrivez le lot taille par taille.',
-				'ar' => 'بقايا، فائض الورشات، مقاطع من التفكيك وخردة: صِف الدفعة مقاسًا بمقاس.',
+				'fr' => 'Profilés, tubes, tôles, barres et boulonnerie déjà utilisés ou en surplus, et ferraille : une dimension, ses longueurs et leur nombre.',
+				'ar' => 'مقاطع وأنابيب وصفائح وقضبان وبراغي مستعملة أو فائضة، وخردة: مقاس واحد، أطواله وعددها.',
 			),
 			'icon'       => 'recycle',
 			'cap'        => 'listing.reuse',
 			'conditions' => self::conditions(),
+			'piece_rows' => true, // 0.3.0: one size in several lengths (or plate sizes) and their number.
+			'min_photos' => 2,    // 0.3.0: two photos at least; they come first on the listing page.
+			'order'      => 'after', // 0.3.0: origin, condition and surface after the technical data; what the price includes after the price.
 			'fields'     => array(
 				array(
 					'key'      => 'origin',
@@ -63,14 +66,22 @@ final class Market {
 					),
 				),
 				array(
-					'key'   => 'cut',
-					'type'  => 'bool',
-					'label' => array( 'fr' => 'Découpe à la demande', 'ar' => 'القص حسب الطلب' ),
-				),
-				array(
 					'key'   => 'loading',
 					'type'  => 'bool',
-					'label' => array( 'fr' => 'Chargement assuré sur place', 'ar' => 'التحميل مضمون في الموقع' ),
+					'group' => 'includes',
+					'label' => array( 'fr' => 'Chargement sur place', 'ar' => 'التحميل في الموقع' ),
+				),
+				array(
+					'key'   => 'transport',
+					'type'  => 'bool',
+					'group' => 'includes',
+					'label' => array( 'fr' => 'Transport', 'ar' => 'النقل' ),
+				),
+				array(
+					'key'   => 'cut',
+					'type'  => 'bool',
+					'group' => 'includes',
+					'label' => array( 'fr' => 'Découpe à la demande', 'ar' => 'القص حسب الطلب' ),
 				),
 			),
 		);

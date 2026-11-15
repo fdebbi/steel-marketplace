@@ -1,15 +1,20 @@
 <?php
 /**
- * Default reuse categories (imported once into the SM Products category table,
+ * Default reuse categories (imported into the SM Products category table,
  * market "reuse"; then edited in wp-admin).
  *
- * kind:
- *   lines   inventory of the lot: one row per size (family / size / pieces / length);
- *           weights computed by SM Weight Engine from the European tables
- *   weight  total weight of the lot entered by the seller (estimated or weighed)
- * units: kg (price per kg), unit (per piece), lot (price for the whole lot).
+ * 0.3.0: the same categories as new steel. One size per listing, in several
+ * lengths (or plate sizes) with their number ("piece_rows" of the market), or by
+ * the total weight. Offcuts and dismantled sections are told apart by the origin.
+ * Lots of several products are made in "My listings" (kind "group").
+ * Before 0.3.0: reuse-offcuts, reuse-dismantled, reuse-tubes, reuse-plates and
+ * reuse-mixed (switched off by the upgrade; their listings stay online).
  *
- * No steel reference data here: sizes come from SM Weight Engine.
+ * kind:
+ *   engine  one size from SM Weight Engine (families = engine family codes)
+ *   specs   category fields (bolts)
+ *   weight  total weight of the lot entered by the seller (scrap)
+ *   group   lot made of several listings of the same seller
  *
  * @package SM\Reuse
  */
@@ -17,46 +22,40 @@
 defined( 'ABSPATH' ) || exit;
 
 return array(
-	'reuse-offcuts'    => array(
-		'name'     => array( 'fr' => 'Chutes de profilés et barres', 'ar' => 'بقايا المقاطع والقضبان' ),
+	'reuse-profiles' => array(
+		'name'     => array( 'fr' => 'Profilés', 'ar' => 'المقاطع (البروفيلات)' ),
 		'icon'     => 'layers',
-		'kind'     => 'lines',
-		'families' => array( 'IPE', 'HEA', 'HEB', 'HEM', 'IPN', 'UPN', 'UPE', 'L', 'LI', 'FLAT', 'ROUND', 'SQUARE' ),
-		'units'    => array( 'kg', 'lot', 'unit' ),
-	),
-	'reuse-dismantled' => array(
-		'name'     => array( 'fr' => 'Profilés de démontage', 'ar' => 'مقاطع من التفكيك' ),
-		'icon'     => 'warehouse',
-		'kind'     => 'lines',
+		'kind'     => 'engine',
 		'families' => array( 'IPE', 'HEA', 'HEB', 'HEM', 'IPN', 'UPN', 'UPE', 'L', 'LI' ),
-		'units'    => array( 'kg', 'lot', 'unit' ),
+		'units'    => array( 'kg', 'lot' ),
 	),
-	'reuse-tubes'      => array(
-		'name'     => array( 'fr' => 'Tubes de réemploi', 'ar' => 'أنابيب لإعادة الاستعمال' ),
+	'reuse-hollow'   => array(
+		'name'     => array( 'fr' => 'Tubes', 'ar' => 'الأنابيب' ),
 		'icon'     => 'layers',
-		'kind'     => 'lines',
+		'kind'     => 'engine',
 		'families' => array( 'SHS', 'RHS', 'CHS' ),
-		'units'    => array( 'kg', 'lot', 'unit' ),
+		'units'    => array( 'kg', 'lot' ),
 	),
-	'reuse-plates'     => array(
-		'name'   => array( 'fr' => 'Chutes de tôles', 'ar' => 'بقايا الصفائح' ),
-		'icon'   => 'layers',
-		'kind'   => 'weight',
-		'units'  => array( 'kg', 'lot' ),
-		'fields' => array(
-			array( 'key' => 'thickness_mm', 'type' => 'number', 'unit' => 'mm', 'label' => array( 'fr' => 'Épaisseur', 'ar' => 'السُّمك' ), 'required' => true ),
-			array( 'key' => 'piece_count', 'type' => 'number', 'label' => array( 'fr' => 'Nombre de morceaux (environ)', 'ar' => 'عدد القطع (تقريبًا)' ), 'required' => false ),
-			array( 'key' => 'largest', 'type' => 'text', 'label' => array( 'fr' => 'Plus grand morceau (dimensions)', 'ar' => 'أكبر قطعة (الأبعاد)' ), 'required' => false ),
-		),
+	'reuse-sheets'   => array(
+		'name'     => array( 'fr' => 'Tôles', 'ar' => 'الصفائح' ),
+		'icon'     => 'layers',
+		'kind'     => 'engine',
+		'families' => array( 'PLATE' ),
+		'units'    => array( 'kg', 'lot' ),
 	),
-	'reuse-mixed'      => array(
-		'name'   => array( 'fr' => 'Lots mixtes', 'ar' => 'دفعات مختلطة' ),
-		'icon'   => 'package',
-		'kind'   => 'weight',
-		'units'  => array( 'kg', 'lot' ),
-		'fields' => array(
-			array( 'key' => 'item', 'type' => 'text', 'label' => array( 'fr' => 'Contenu du lot', 'ar' => 'محتوى الدفعة' ), 'required' => true ),
-		),
+	'reuse-bars'     => array(
+		'name'     => array( 'fr' => 'Fers plats et barres', 'ar' => 'الحديد المسطح والقضبان' ),
+		'icon'     => 'layers',
+		'kind'     => 'engine',
+		'families' => array( 'FLAT', 'ROUND', 'SQUARE' ),
+		'units'    => array( 'kg', 'lot' ),
+	),
+	'reuse-bolts'    => array(
+		'name'   => array( 'fr' => 'Boulonnerie', 'ar' => 'البراغي والصواميل' ),
+		'icon'   => 'wrench',
+		'kind'   => 'specs',
+		'units'  => array( 'unit', 'kg' ),
+		'fields' => require SM_PRODUCTS_DIR . '/data/bolt-fields.php',
 	),
 	'reuse-scrap'      => array(
 		'name'   => array( 'fr' => 'Ferraille', 'ar' => 'الخردة' ),
@@ -76,5 +75,11 @@ return array(
 				),
 			),
 		),
+	),
+	'reuse-lot'      => array(
+		'name'  => array( 'fr' => 'Lots groupés', 'ar' => 'دفعات مجمّعة' ),
+		'icon'  => 'package',
+		'kind'  => 'group',
+		'units' => array( 'lot' ),
 	),
 );

@@ -25,6 +25,14 @@ final class Advice {
 			return $out;
 		}
 		$out['advice'] = self::for_condition( (string) $p->item_condition );
+		// 0.3.0: preloaded bolts (HR / HV) once tightened are not reused in a preloaded joint (EN 1090-2).
+		if ( 'yes' === (string) ( $p->specs['preloaded'] ?? '' ) ) {
+			$out['advice'] = array(
+				'level' => 'warning',
+				'title' => __( 'Preloaded bolts: not for a preloaded joint', 'sm-reuse' ),
+				'text'  => __( 'A preloaded bolt (HR / HV) that was already tightened must not be reused in a preloaded joint (EN 1090-2). Use these bolts only where no preload is required, after checking them.', 'sm-reuse' ),
+			);
+		}
 		// 0.2.0: an inspection request sent to the platform, which appoints the engineer (not for scrap).
 		$out['inspection'] = null;
 		if ( 'scrap' !== (string) $p->item_condition ) {

@@ -35,6 +35,7 @@ final class Plugin {
 		Market::init();
 		Rules::init();
 		Advice::init();
+		Groups::init();
 	}
 
 	public static function reload_textdomain( $code, $locale ) {

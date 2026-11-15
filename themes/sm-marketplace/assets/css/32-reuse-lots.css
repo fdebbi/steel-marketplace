@@ -1,0 +1,57 @@
+/* ==========================================================================
+   0.37.0 — reuse: lengths and sizes table, bolts, steps order, lots
+   ========================================================================== */
+
+/* Choices as buttons in category fields (bolts). */
+.sm-field-grid > .smp-chipfield { grid-column: 1 / -1; }
+.smp-chipfield { border: 0; padding: 0; margin: 0 0 var(--sm-s2); min-inline-size: 0; }
+
+/* Origin and condition, then price (reuse). */
+.smp-after { margin-block: var(--sm-s4) var(--sm-s2); padding-block-start: var(--sm-s4); border-block-start: 1px solid var(--sm-line); }
+.smp-after__title { margin: var(--sm-s4) 0 var(--sm-s2); font-family: var(--sm-font-display, inherit); font-size: 1.1rem; }
+.smp-after > .smp-after__title { margin-block-start: 0; }
+
+/* One size in several lengths (or plate sizes). */
+.smr-table { display: grid; gap: 6px; margin-block-start: var(--sm-s2); }
+.smr-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) 110px 40px; gap: 8px; align-items: center; }
+.smr-qty:has(input[name$="[width]"]) .smr-row { grid-template-columns: repeat(3, minmax(0, 1fr)) 110px 40px; }
+.smr-row--head { font-size: var(--sm-fs-xs); font-weight: 600; color: var(--sm-muted); padding-inline: 2px; }
+.smr-row--total { padding-block-start: 8px; border-block-start: 1px solid var(--sm-line); font-weight: 700; }
+.smr-cell { display: block; margin: 0; }
+.smr-cell__label { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.smr-cell input { min-block-size: 42px; padding: 8px 10px; }
+.smr-num { text-align: end; white-space: nowrap; }
+.smr-weight { color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+.smr-remove { inline-size: 40px; block-size: 40px; border: 1px solid var(--sm-line); border-radius: 10px; background: var(--sm-surface); color: #B42318; font-size: 1.25rem; line-height: 1; cursor: pointer; }
+.smr-remove:hover { border-color: #B42318; }
+.smr-error { grid-column: 1 / -1; margin: 0; }
+.smr-add { display: inline-flex; align-items: center; gap: 6px; margin-block-start: var(--sm-s2); min-block-size: 42px; padding: 8px 16px; border: 1.5px dashed var(--sm-accent); border-radius: var(--sm-radius-sm); background: transparent; color: var(--sm-accent-ink, #04663c); font: inherit; font-weight: 600; cursor: pointer; }
+.smr-add:hover { background: var(--sm-accent-soft); }
+.smr-add svg { inline-size: 16px; block-size: 16px; }
+@media (max-width: 479px) {
+	.smr-row, .smr-qty:has(input[name$="[width]"]) .smr-row { grid-template-columns: repeat(2, minmax(0, 1fr)) 40px; }
+	.smr-qty:has(input[name$="[width]"]) .smr-row { grid-template-columns: repeat(3, minmax(0, 1fr)) 40px; }
+	.smr-row .smr-weight { grid-column: 1 / -2; text-align: start; }
+	.smr-row--head .smr-num, .smr-row--head span:last-child { display: none; }
+	.smr-row--total { grid-template-columns: 1fr auto; }
+	.smr-row--total span:empty { display: none; }
+}
+
+/* "My listings": tick reuse listings to make a lot. */
+.smp-row--pick { position: relative; padding-inline-start: 52px; }
+.smr-pick { position: absolute; inset-block-start: 50%; inset-inline-start: 14px; transform: translateY(-50%); display: grid; place-items: center; inline-size: 28px; block-size: 28px; }
+.smr-pick input { inline-size: 22px; block-size: 22px; accent-color: var(--sm-accent); cursor: pointer; }
+.smp-row.is-picked { border-color: var(--sm-accent); background: color-mix(in srgb, var(--sm-accent) 5%, var(--sm-surface)); }
+.smr-group-hint { margin-block-end: var(--sm-s3); }
+.smr-group { position: sticky; inset-block-end: 12px; z-index: 5; margin-block-start: var(--sm-s4); padding: var(--sm-s3) var(--sm-s4); border-radius: var(--sm-radius-lg, 16px); background: var(--sm-primary); color: #fff; box-shadow: 0 12px 30px rgb(17 24 32 / .18); }
+.smr-group .sm-field label, .smr-group .sm-help, .smr-group .sm-optional { color: #d7dee3; }
+.smr-group__count { margin: 0 0 var(--sm-s2); font-weight: 700; }
+.smr-group__fields { display: grid; gap: var(--sm-s3); }
+@media (min-width: 640px) { .smr-group__fields { grid-template-columns: 2fr 1fr; } }
+.smr-group .sm-help { margin: 0 0 var(--sm-s2); font-size: var(--sm-fs-xs); }
+.smr-group.is-js:not(.is-ready) .smr-group__fields, .smr-group.is-js:not(.is-ready) .sm-help, .smr-group.is-js:not(.is-ready) [data-smr-submit] { display: none; }
+.smp-status--lot { background: #111820; color: #fff; }
+.smp-status--grouped { background: #E8F0FE; color: #1D4ED8; }
+
+/* Inventory of a lot. */
+.smg-table td, .smg-table th { vertical-align: top; }

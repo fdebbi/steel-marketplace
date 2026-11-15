@@ -77,7 +77,7 @@ final class Stock {
 	}
 
 	private static function line_key( $l ) {
-		return sanitize_key( (string) ( $l['element'] ?? '' ) ) . '-' . (int) ( $l['section_id'] ?? 0 ) . '-' . (int) ( $l['length_mm'] ?? 0 );
+		return sanitize_key( (string) ( $l['element'] ?? '' ) ) . '-' . (int) ( $l['section_id'] ?? 0 ) . '-' . (int) ( $l['length_mm'] ?? 0 ) . ( empty( $l['width_mm'] ) ? '' : 'x' . (int) $l['width_mm'] ); // 0.18.0: plate sizes.
 	}
 
 	private static function base_options( $p ) {

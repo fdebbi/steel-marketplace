@@ -347,3 +347,14 @@ T.update({
 "holes Ø%1$s, pitch %2$s": ("trous Ø%1$s, pas %2$s", "ثقوب Ø%1$s، المسافة %2$s"),
 "Weight of one sheet": ("Poids d’une feuille", "وزن الصفيحة الواحدة"),
 })
+
+# 0.18.0: reuse in several lengths, minimum photos.
+T.update({
+"Sizes × number": ("Formats × nombre", "المقاسات × العدد"),
+"Lengths × number": ("Longueurs × nombre", "الأطوال × العدد"),
+"Enter the length, the width (mm) and the number of pieces.": ("Indiquez la longueur, la largeur (mm) et le nombre de morceaux.", "أدخل الطول والعرض (مم) وعدد القطع."),
+"Enter the length (m) and the number of bars.": ("Indiquez la longueur (m) et le nombre de barres.", "أدخل الطول (م) وعدد القضبان."),
+"Add at least one size with its number of pieces.": ("Ajoutez au moins un format avec son nombre de morceaux.", "أضف مقاسًا واحدًا على الأقل مع عدد قطعه."),
+"Add at least one length with its number of bars.": ("Ajoutez au moins une longueur avec son nombre de barres.", "أضف طولًا واحدًا على الأقل مع عدد قضبانه."),
+})
+P[("Add at least %d photo of the product.", "Add at least %d photos of the product.")] = (["Ajoutez au moins %d photo du produit.", "Ajoutez au moins %d photos du produit."], ["أضف %d صورة على الأقل للمنتج", "أضف صورة واحدة على الأقل للمنتج", "أضف صورتين على الأقل للمنتج", "أضف %d صور على الأقل للمنتج", "أضف %d صورة على الأقل للمنتج", "أضف %d صورة على الأقل للمنتج"])

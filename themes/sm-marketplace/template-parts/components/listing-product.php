@@ -28,7 +28,26 @@ $els     = (array) ( $item['elements'] ?? array() );
 $plate   = 'PLATE' === ( $item['family'] ?? '' );
 $bars    = ! $els && ! $plate && 'bars' === ( $item['qty_mode'] ?? '' ) && (int) $item['quantity'] > 0 && (float) $item['length_m'] > 0;
 $weight  = static fn( $w ) => sm_tech( $w >= 1000 ? sm_number( $w / 1000, 2 ) . ' t' : sm_number( $w ) . ' kg' );
-if ( $els ) {
+$one_size = $els && 1 === count( array_unique( array_map( static fn( $e ) => (string) $e['designation'], $els ) ) ) && ! isset( $item['group'] ) && 'reuse' === ( $item['market'] ?? '' ); // 0.37.0: one size in several lengths.
+if ( ! empty( $item['group'] ) ) {
+	// 0.37.0: lot of several listings.
+	$figures[] = array( sm_tech( sm_number( count( $item['group']['items'] ) ) ), __( 'Products', 'sm-marketplace' ) );
+	if ( $item['group']['pieces'] > 0 ) {
+		$figures[] = array( sm_tech( sm_number( $item['group']['pieces'] ) ), __( 'Pieces', 'sm-marketplace' ) );
+	}
+	if ( (float) $item['weight_kg'] > 0 ) {
+		$figures[] = array( $weight( (float) $item['weight_kg'] ), __( 'Total weight', 'sm-marketplace' ) . ' · ' . sm_weight_source_short( $item['weight_source'] ) );
+	}
+} elseif ( $one_size ) {
+	$figures[] = array( sm_tech( $els[0]['designation'] ), __( 'Designation', 'sm-marketplace' ) );
+	if ( '' !== (string) $item['grade'] ) {
+		$figures[] = array( sm_tech( $item['grade'] ), __( 'Steel grade', 'sm-marketplace' ) );
+	}
+	$figures[] = array( sm_tech( sm_number( array_sum( array_map( static fn( $e ) => (int) ( $e['qty'] ?? 0 ), $els ) ) ) ), $plate ? __( 'Pieces', 'sm-marketplace' ) : __( 'Bars', 'sm-marketplace' ) );
+	if ( (float) $item['weight_kg'] > 0 ) {
+		$figures[] = array( $weight( (float) $item['weight_kg'] ), __( 'Total weight', 'sm-marketplace' ) . ' · ' . sm_weight_source_short( $item['weight_source'] ) );
+	}
+} elseif ( $els ) {
 	// A lot of several elements (reuse): kinds, pieces and weight; the inventory below gives the detail.
 	$figures[] = array( sm_tech( sm_number( count( $els ) ) ), __( 'Kinds of elements', 'sm-marketplace' ) );
 	$figures[] = array( sm_tech( sm_number( array_sum( array_map( static fn( $e ) => (int) ( $e['qty'] ?? 0 ), $els ) ) ) ), __( 'Pieces', 'sm-marketplace' ) );
@@ -94,9 +113,20 @@ $has_det   = $can_trade && ! empty( $trade['detail'] );
 			</details>
 		</section>
 
-		<?php if ( ! empty( $item['elements'] ) ) : ?>
+		<?php if ( ! empty( $item['group'] ) ) : ?>
+			<section class="sm-panel smb-stock" id="smb-inventory">
+				<div class="smb-head">
+					<div>
+						<h2 class="sm-panel__title"><?php esc_html_e( 'Lot inventory', 'sm-marketplace' ); ?></h2>
+						<p class="sm-muted smb-stock__count"><?php echo esc_html( sprintf( /* translators: %s: number of products. */ _n( '%s product, sold together', '%s products, sold together', count( $item['group']['items'] ), 'sm-marketplace' ), sm_number( count( $item['group']['items'] ) ) ) ); ?></p>
+					</div>
+					<?php if ( (float) $item['weight_kg'] > 0 ) : ?><span class="smb-pill"><?php echo sm_kg( $item['weight_kg'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span><?php endif; ?>
+				</div>
+				<?php sm_component( 'listing-group', array( 'group' => $item['group'] ) ); ?>
+			</section>
+		<?php elseif ( ! empty( $item['elements'] ) ) : ?>
 			<?php
-			$inv_title = __( 'Lot inventory', 'sm-marketplace' );
+			$inv_title = $one_size ? ( $plate ? __( 'Sizes and number', 'sm-marketplace' ) : __( 'Lengths and number', 'sm-marketplace' ) ) : __( 'Lot inventory', 'sm-marketplace' );
 			$pieces    = array_sum( array_map( static fn( $e ) => (int) ( $e['qty'] ?? 0 ), (array) $item['elements'] ) );
 			?>
 			<section class="sm-panel smb-stock" id="smb-inventory">
@@ -105,8 +135,13 @@ $has_det   = $can_trade && ! empty( $trade['detail'] );
 						<h2 class="sm-panel__title"><?php echo esc_html( $inv_title ); ?></h2>
 						<p class="sm-muted smb-stock__count">
 							<?php
-							/* translators: 1: number of kinds of elements, 2: number of pieces. */
-							echo esc_html( sprintf( __( '%1$s kinds of elements · %2$s pieces', 'sm-marketplace' ), sm_number( count( (array) $item['elements'] ) ), sm_number( $pieces ) ) );
+							if ( $one_size ) {
+								/* translators: 1: designation, 2: number of pieces. */
+								echo esc_html( sprintf( __( '%1$s · %2$s pieces', 'sm-marketplace' ), $els[0]['designation'], sm_number( $pieces ) ) );
+							} else {
+								/* translators: 1: number of kinds of elements, 2: number of pieces. */
+								echo esc_html( sprintf( __( '%1$s kinds of elements · %2$s pieces', 'sm-marketplace' ), sm_number( count( (array) $item['elements'] ) ), sm_number( $pieces ) ) );
+							}
 							?>
 						</p>
 					</div>
@@ -115,7 +150,7 @@ $has_det   = $can_trade && ! empty( $trade['detail'] );
 				<details class="smb-more">
 					<summary><span><?php esc_html_e( 'See the detail of the inventory', 'sm-marketplace' ); ?></span><?php sm_icon( 'chevron-down', 'smb-more__chev' ); ?></summary>
 					<div class="smb-more__body">
-						<?php sm_component( 'listing-inventory', array( 'item' => $item, 'title' => $inv_title ) ); ?>
+						<?php sm_component( 'listing-inventory', array( 'item' => $item, 'title' => $inv_title, 'one_size' => $one_size ) ); ?>
 						<p class="sm-muted"><?php esc_html_e( 'Unit weights come from the platform’s standard section tables. The theoretical weight excludes bolts, plates and welds.', 'sm-marketplace' ); ?></p>
 					</div>
 				</details>
@@ -142,10 +177,10 @@ $has_det   = $can_trade && ! empty( $trade['detail'] );
 				<p class="sm-prewrap"<?php echo $desc['fallback'] ? ' lang="' . esc_attr( $desc['lang'] ) . '" dir="auto"' : ''; ?>><?php echo esc_html( $desc['text'] ); ?></p>
 			<?php endif; ?>
 			<?php if ( $desc['fallback'] ) : ?><p class="sm-muted"><?php esc_html_e( 'Shown in the language the seller wrote it in.', 'sm-marketplace' ); ?></p><?php endif; ?>
-			<?php if ( ! $insp && ! empty( $item['advice'] ) && empty( $item['advice']['link_page'] ) ) : ?>
-				<?php $adv = $item['advice']; // Scrap: recycling only. ?>
-				<div class="sm-advice sm-advice--info" role="note">
-					<?php sm_icon( 'recycle', 'sm-advice__icon' ); ?>
+			<?php if ( ! empty( $item['advice'] ) && empty( $item['advice']['link_page'] ) && ( ! $insp || 'warning' === ( $item['advice']['level'] ?? '' ) ) ) : ?>
+				<?php $adv = $item['advice']; // Scrap: recycling only; preloaded bolts (0.37.0): a warning. ?>
+				<div class="sm-advice sm-advice--<?php echo esc_attr( 'warning' === ( $adv['level'] ?? '' ) ? 'warning' : 'info' ); ?>" role="note">
+					<?php sm_icon( 'warning' === ( $adv['level'] ?? '' ) ? 'alert' : 'recycle', 'sm-advice__icon' ); ?>
 					<div><p class="sm-advice__title"><?php echo esc_html( $adv['title'] ); ?></p><p><?php echo esc_html( $adv['text'] ); ?></p></div>
 				</div>
 			<?php endif; ?>

@@ -46,6 +46,13 @@ return array(
 		'units'    => array( 'kg', 'unit' ),
 		'fields'   => array(),
 	),
+	'bolts'     => array(
+		'name'   => array( 'fr' => 'Boulonnerie', 'ar' => 'البراغي والصواميل' ),
+		'icon'   => 'wrench',
+		'kind'   => 'specs',
+		'units'  => array( 'unit', 'kg' ),
+		'fields' => require __DIR__ . '/bolt-fields.php',
+	),
 	'roofing'   => array(
 		'name'   => array( 'fr' => 'Toiture et bardage', 'ar' => 'التسقيف والتكسية' ),
 		'icon'   => 'warehouse',

@@ -42,7 +42,11 @@ final class Catalog {
 			return array();
 		}
 		$out = array();
+		$skip = (array) apply_filters( 'sm_products_unpublished_kinds', array() ); // Lots of listings are made in "My listings", not by the AI.
 		foreach ( \SM\Products\Categories::all( false, $market ) as $slug => $c ) {
+			if ( in_array( $c->kind, $skip, true ) ) {
+				continue;
+			}
 			$out[ $slug ] = array( 'market' => $c->market, 'kind' => $c->kind, 'name_fr' => $c->name_fr, 'name_ar' => $c->name_ar, 'families' => array_values( (array) $c->families ) );
 		}
 		return $out;

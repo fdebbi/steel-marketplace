@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 final class Products {
 
 	const MODULE   = 'products'; // Default market; each product stores its own market.
-	const STATUSES = array( 'draft', 'pending', 'published', 'rejected', 'sold', 'expired', 'paused' );
+	const STATUSES = array( 'draft', 'pending', 'published', 'rejected', 'sold', 'expired', 'paused', 'grouped' ); // grouped (0.18.0): part of a lot (sm-reuse), sold with it only.
 
 	public static function table() {
 		global $wpdb;
@@ -153,6 +153,14 @@ final class Products {
 		$wpdb->update( self::table(), $row, array( 'id' => (int) $id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		self::index( $id );
 		AuditLog::add( 'product.' . $status, 'product', $id, $reason ? array( 'reason' => $reason ) : array(), null, $p->company_id );
+		/**
+		 * A product changed status (0.18.0): sm-reuse sells the products of a lot with it.
+		 *
+		 * @param int    $id     Product ID.
+		 * @param string $status New status.
+		 * @param object $p      Product before the change.
+		 */
+		do_action( 'sm_products_status_changed', (int) $id, $status, $p );
 		return true;
 	}
 
@@ -271,6 +279,12 @@ final class Products {
 		Media::set( 'product', $id, 'photo', array() );
 		Media::set( 'product', $id, 'sheet', array() );
 		AuditLog::add( 'product.deleted', 'product', $id, array(), null, $p->company_id );
+		/**
+		 * A product was deleted (0.18.0): sm-reuse puts the products of a deleted lot back on sale.
+		 *
+		 * @param object $p Deleted product.
+		 */
+		do_action( 'sm_products_deleted', $p );
 		return true;
 	}
 

@@ -192,8 +192,10 @@ final class Spec {
 			'ar' => mb_substr( trim( sanitize_text_field( $in['title']['ar'] ?? '' ) ), 0, 140 ),
 		);
 		// New calculated products (0.7.0): the title is the product itself, never typed.
-		$generated = self::auto_title( $cat );
-		if ( $generated ) {
+		$generated = self::auto_title( $cat ) || self::is_bolts( $cat );
+		if ( self::is_bolts( $cat ) ) {
+			$title = self::bolt_title( $cat, $d );
+		} elseif ( $generated ) {
 			$title = self::make_title( $d );
 		}
 		/**
@@ -241,6 +243,9 @@ final class Spec {
 		}
 		$d['family']   = $family;
 		$mode          = 'weight' === ( $in['qty_mode'] ?? '' ) ? 'weight' : 'bars';
+		// 0.18.0: a market with "piece_rows" (reuse) describes one size in several lengths
+		// (or plate sizes) and their number, or gives the total weight.
+		$rows_ok       = ! empty( Markets::get( $cat->market )['piece_rows'] );
 		$d['qty_mode'] = $mode;
 		$grade         = strtoupper( preg_replace( '/[^A-Za-z0-9+]/', '', (string) ( $in['grade'] ?? '' ) ) );
 		if ( 'OTHER' === $grade ) {
@@ -292,7 +297,14 @@ final class Spec {
 			$e['section'] = __( 'Choose the size.', 'sm-products' );
 			return;
 		}
-		if ( 'PLATE' === $family ) {
+		if ( $rows_ok && 'weight' !== $mode ) {
+			self::rows( $cat, $family, $calc, $in + array( '_for_save' => $for_save ), $d, $e, $out );
+			return;
+		}
+		if ( $rows_ok && 'PLATE' === $family ) {
+			$calc['width']  = 1000; // By the total weight: no sheet size, the weight per m² is enough.
+			$calc['length'] = 1000;
+		} elseif ( 'PLATE' === $family ) {
 			$calc['width']  = self::num( $in['width'] ?? '' );
 			$calc['length'] = self::num( $in['plate_length'] ?? '' );
 		} else {
@@ -340,7 +352,13 @@ final class Spec {
 		$d['unit_weight'] = $r['per_piece_kg'];
 		$d['engine_version'] = $r['engine'];
 		$d['ref_version']    = $r['reference'];
-		if ( 'weight' === $mode ) {
+		if ( 'weight' === $mode && $rows_ok ) {
+			$d['pieces']       = 0; // Loose pieces of unknown lengths: no count.
+			$d['length_mm']    = 0;
+			$d['width_mm']     = 0;
+			$d['unit_weight']  = 0;
+			$d['total_weight'] = $r['total_kg'];
+		} elseif ( 'weight' === $mode ) {
 			$d['pieces']       = $r['bars_exact'];
 			$d['total_weight'] = $r['total_kg'];
 		} else {
@@ -384,11 +402,116 @@ final class Spec {
 	}
 
 	/**
+	 * One size in several lengths (or plate sizes) with their number (0.18.0, reuse).
+	 * Input rows[i][length] in m (plates: rows[i][length] and rows[i][width] in mm) and
+	 * rows[i][qty]. Stored as inventory lines of the same size.
+	 */
+	private static function rows( $cat, $family, array $calc, array $in, array &$d, array &$e, array &$out ) {
+		$engine   = \SM\Core\Modules::service( 'weight' );
+		$plate    = 'PLATE' === $family;
+		$max      = (int) apply_filters( 'sm_products_max_lines', 30, $cat );
+		$rows     = array_slice( array_values( (array) ( $in['rows'] ?? array() ) ), 0, $max );
+		$lines    = array();
+		$total    = 0.0;
+		$count    = 0;
+		$first    = null;
+		$d['qty_mode'] = 'bars';
+		$d['_rows']    = true;
+		foreach ( $rows as $i => $row ) {
+			$row = array_map( static fn( $v ) => is_string( $v ) ? trim( $v ) : '', (array) $row );
+			if ( '' === ( $row['length'] ?? '' ) && '' === ( $row['qty'] ?? '' ) && '' === ( $row['width'] ?? '' ) ) {
+				continue;
+			}
+			$qty = (int) self::num( $row['qty'] ?? '' );
+			$len = self::num( $row['length'] ?? '' );
+			$wid = self::num( $row['width'] ?? '' );
+			if ( $qty < 1 || $len <= 0 || ( $plate && $wid <= 0 ) ) {
+				$e[ 'rows_' . $i ] = $plate ? __( 'Enter the length, the width (mm) and the number of pieces.', 'sm-products' ) : __( 'Enter the length (m) and the number of bars.', 'sm-products' );
+				continue;
+			}
+			$c = array_merge( $calc, array( 'mode' => 'bars', 'bars' => $qty, 'length' => $plate ? $len : $len * 1000 ) );
+			if ( $plate ) {
+				$c['width'] = $wid;
+			}
+			$r = $engine->calculate( $c );
+			if ( is_wp_error( $r ) ) {
+				$e[ 'rows_' . $i ] = $r->get_error_message();
+				continue;
+			}
+			$first   = $first ?? $r;
+			$line    = array(
+				'family'      => $family,
+				'section_id'  => (int) $r['section_id'],
+				'designation' => $r['designation'],
+				'qty'         => $qty,
+				'length_mm'   => (int) round( $r['length_mm'] ),
+				'kg_m'        => $plate ? 0 : (float) $r['mass_kg_m'],
+				'total'       => $r['total_kg'],
+			);
+			if ( $plate ) {
+				$line['width_mm'] = (int) round( $r['width_mm'] );
+				$line['kg_m2']    = (float) $r['kg_per_m2'];
+			}
+			$lines[]              = $line;
+			$d['line_rows'][ $i ] = array( 'total' => $r['total_kg'] );
+			$total               += $r['total_kg'];
+			$count               += $qty;
+		}
+		if ( ! $first ) {
+			// Nothing typed yet: describe the size for the preview.
+			$probe = $engine->calculate( array_merge( $calc, array( 'mode' => 'bars', 'bars' => 1, 'length' => $plate ? 1000 : 1000, 'width' => 1000 ) ) );
+			if ( is_wp_error( $probe ) ) {
+				$e['section'] = $probe->get_error_message();
+				return;
+			}
+			$out['calc'] = $probe;
+			self::describe( $probe, $d );
+			if ( ! array_filter( array_keys( $e ), static fn( $k ) => 0 === strpos( $k, 'rows_' ) ) ) {
+				$e['rows'] = $plate ? __( 'Add at least one size with its number of pieces.', 'sm-products' ) : __( 'Add at least one length with its number of bars.', 'sm-products' );
+			}
+			return;
+		}
+		$out['calc'] = $first;
+		self::describe( $first, $d );
+		if ( ! empty( $first['shape'] ) && class_exists( '\\SM\\WeightEngine\\Drawing' ) && ! empty( $in['_for_save'] ) ) {
+			$key = sanitize_title( $family . '-' . $first['designation'] );
+			if ( \SM\WeightEngine\Drawing::files( $first['shape'], (array) $first['dims'], $key, $first['designation'] ) ) {
+				$d['drawing'] = $key;
+			}
+		}
+		if ( $plate ) {
+			$d['specs']['plate_label'] = (string) ( $first['plate_label'] ?? '' );
+			$d['specs']['kg_m2']       = (float) ( $first['kg_per_m2'] ?? 0 );
+		}
+		$d['lines']          = $lines;
+		$d['pieces']         = $count;
+		$d['total_weight']   = round( $total, 3 );
+		$d['length_mm']      = max( wp_list_pluck( $lines, 'length_mm' ) );
+		$d['width_mm']       = $plate ? max( wp_list_pluck( $lines, 'width_mm' ) ) : 0;
+		$d['unit_weight']    = 0;
+		$d['engine_version'] = $first['engine'];
+		$d['ref_version']    = $first['reference'];
+		$source              = 'actual' === ( $in['weight_source'] ?? '' ) ? 'actual' : 'theoretical';
+		if ( 'actual' === $source ) {
+			$w = self::num( $in['actual_weight'] ?? '' );
+			if ( $w <= 0 ) {
+				$e['actual_weight'] = __( 'Enter the weighed weight in kg.', 'sm-products' );
+			} elseif ( $w > $total * 1.5 || $w < $total * 0.5 ) {
+				/* translators: %s: theoretical weight in kg. */
+				$e['actual_weight'] = sprintf( __( 'The weighed weight is very far from the theoretical %s kg. Check it.', 'sm-products' ), number_format( $total, 1, '.', ' ' ) );
+			} else {
+				$d['total_weight'] = round( $w, 3 );
+			}
+		}
+		$d['weight_source'] = $source;
+	}
+
+	/**
 	 * New products whose weight is calculated (sections, tubes, flats, bars, plates):
 	 * the title is generated and photos are optional (0.7.0).
 	 */
 	public static function auto_title( $cat ) {
-		return $cat && 'products' === $cat->market && 'engine' === $cat->kind;
+		return $cat && 'engine' === $cat->kind && in_array( $cat->market, array( 'products', 'reuse' ), true ); // Reuse too since 0.18.0.
 	}
 
 	/**
@@ -414,7 +537,13 @@ final class Spec {
 			$parts[] = $d['grade'];
 		}
 		$len = array( 'fr' => '', 'ar' => '' );
-		if ( 'PLATE' === ( $d['family'] ?? '' ) && ! empty( $d['width_mm'] ) && ! empty( $d['length_mm'] ) ) {
+		if ( ! empty( $d['_rows'] ) && ! empty( $d['pieces'] ) ) {
+			// 0.18.0: several lengths or sizes: the number of pieces instead of one length.
+			$n   = (int) $d['pieces'];
+			$len = 'PLATE' === ( $d['family'] ?? '' )
+				? array( 'fr' => $n . ( $n > 1 ? ' morceaux' : ' morceau' ), 'ar' => 'العدد ' . $n )
+				: array( 'fr' => $n . ( $n > 1 ? ' barres' : ' barre' ), 'ar' => 'العدد ' . $n );
+		} elseif ( 'PLATE' === ( $d['family'] ?? '' ) && ! empty( $d['width_mm'] ) && ! empty( $d['length_mm'] ) ) {
 			$len = array( 'fr' => $m( $d['width_mm'] ) . ' × ' . $m( $d['length_mm'] ) . ' m', 'ar' => 'المقاس ' . $m( $d['width_mm'] ) . ' × ' . $m( $d['length_mm'] ) . ' م' );
 		} elseif ( 'bars' === ( $d['qty_mode'] ?? '' ) && ! empty( $d['length_mm'] ) ) {
 			$len = array( 'fr' => $m( $d['length_mm'] ) . ' m', 'ar' => 'الطول ' . $m( $d['length_mm'] ) . ' م' ); // An Arabic word first keeps "12 م" together in right-to-left text.
@@ -438,11 +567,47 @@ final class Spec {
 		$d['dims']        = $r['dims'];
 	}
 
+	/** Bolts, threaded rods, nuts, washers, anchors (0.18.0): the category has a "bolt_type" field. */
+	public static function is_bolts( $cat ) {
+		return $cat && 'specs' === $cat->kind && in_array( 'bolt_type', wp_list_pluck( (array) $cat->fields, 'key' ), true );
+	}
+
+	/** "Boulons M16 × 60 · 8.8 · Galvanisé à chaud", in French and in Arabic. */
+	public static function bolt_title( $cat, array $d ) {
+		$specs = (array) ( $d['specs'] ?? array() );
+		$label = static function ( $key, $lang ) use ( $cat, $specs ) {
+			foreach ( (array) $cat->fields as $f ) {
+				if ( $f['key'] === $key ) {
+					foreach ( (array) ( $f['options'] ?? array() ) as $o ) {
+						if ( (string) $o['value'] === (string) ( $specs[ $key ] ?? '' ) ) {
+							return (string) ( $o[ $lang ] ?? $o['fr'] );
+						}
+					}
+				}
+			}
+			return '';
+		};
+		$out = array();
+		foreach ( array( 'fr', 'ar' ) as $lang ) {
+			$parts = array( trim( $label( 'bolt_type', $lang ) . ' ' . (string) ( $d['designation'] ?? '' ) ) );
+			foreach ( array( 'class', 'finish' ) as $k ) {
+				if ( '' !== $label( $k, $lang ) ) {
+					$parts[] = $label( $k, $lang );
+				}
+			}
+			$out[ $lang ] = mb_substr( implode( ' · ', array_filter( $parts ) ), 0, 140 );
+		}
+		return $out;
+	}
+
 	/** Roofing, finishing parts, others: category fields and a quantity in the chosen unit. */
 	private static function specs( $cat, array $in, array &$d, array &$e ) {
 		self::fields( $cat, $in, $d, $e );
 		$specs            = $d['specs'];
 		$d['designation'] = mb_substr( (string) ( $specs['maker_type'] ?? ( $specs['item'] ?? '' ) ), 0, 80 );
+		if ( self::is_bolts( $cat ) && ! empty( $specs['diameter'] ) ) {
+			$d['designation'] = strtoupper( $specs['diameter'] ) . ( ! empty( $specs['length_mm'] ) ? ' × ' . rtrim( rtrim( number_format( (float) $specs['length_mm'], 1, '.', '' ), '0' ), '.' ) : '' );
+		}
 		$d['unit']        = in_array( $in['unit'] ?? '', $cat->units, true ) ? $in['unit'] : $cat->units[0];
 		$q                = self::num( $in['quantity'] ?? '' );
 		if ( $q <= 0 ) {

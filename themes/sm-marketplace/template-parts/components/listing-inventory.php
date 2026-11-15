@@ -10,6 +10,43 @@ defined( 'ABSPATH' ) || exit;
 
 $item      = (array) $args['item'];
 $inv_title = (string) ( $args['title'] ?? '' );
+$one_size  = ! empty( $args['one_size'] ); // 0.37.0: one size in several lengths (or plate sizes).
+$plates    = (bool) array_filter( (array) $item['elements'], static fn( $e ) => ! empty( $e['width'] ) );
+if ( $one_size ) :
+	?>
+<div class="sm-table-wrap" tabindex="0" role="region" aria-label="<?php echo esc_attr( $inv_title ); ?>">
+	<table class="sm-table sm-table--stack">
+		<thead>
+			<tr>
+				<th scope="col"><?php echo esc_html( $plates ? __( 'Size (mm)', 'sm-marketplace' ) : __( 'Length (m)', 'sm-marketplace' ) ); ?></th>
+				<th scope="col" class="num"><?php esc_html_e( 'No. of pieces', 'sm-marketplace' ); ?></th>
+				<th scope="col" class="num"><?php echo esc_html( $plates ? __( 'Weight per m² (kg)', 'sm-marketplace' ) : __( 'Unit weight (kg/m)', 'sm-marketplace' ) ); ?></th>
+				<th scope="col" class="num"><?php esc_html_e( 'Total weight (kg)', 'sm-marketplace' ); ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ( $item['elements'] as $el ) : ?>
+				<tr>
+					<th scope="row" data-label="<?php echo esc_attr( $plates ? __( 'Size (mm)', 'sm-marketplace' ) : __( 'Length (m)', 'sm-marketplace' ) ); ?>"><?php echo sm_tech( $plates ? sm_number( $el['length_mm'] ) . ' × ' . sm_number( $el['width'] ) : sm_number( $el['length'], fmod( $el['length'] * 10, 1 ) ? 2 : 1 ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></th>
+					<td class="num" data-label="<?php esc_attr_e( 'No. of pieces', 'sm-marketplace' ); ?>"><?php echo esc_html( $el['qty'] ); ?></td>
+					<td class="num" data-label="<?php echo esc_attr( $plates ? __( 'Weight per m² (kg)', 'sm-marketplace' ) : __( 'Unit weight (kg/m)', 'sm-marketplace' ) ); ?>"><?php echo esc_html( sm_number( $el['unit_weight'], 2 ) ); ?></td>
+					<td class="num" data-label="<?php esc_attr_e( 'Total weight (kg)', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_number( $el['total'] ) ); ?></td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th scope="row"><?php esc_html_e( 'Total', 'sm-marketplace' ); ?></th>
+				<td class="num" data-label="<?php esc_attr_e( 'No. of pieces', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_number( array_sum( wp_list_pluck( $item['elements'], 'qty' ) ) ) ); ?></td>
+				<td></td>
+				<td class="num" data-label="<?php esc_attr_e( 'Total steel weight', 'sm-marketplace' ); ?>"><strong><?php echo esc_html( sm_number( $item['weight_kg'] ) ); ?></strong></td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+	<?php
+	return;
+endif;
 ?>
 <div class="sm-table-wrap" tabindex="0" role="region" aria-label="<?php echo esc_attr( $inv_title ); ?>">
 	<table class="sm-table sm-table--stack">

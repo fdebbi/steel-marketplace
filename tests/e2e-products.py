@@ -51,7 +51,7 @@ with sync_playwright() as p:
 
     print('\nA. Publish a profile (mobile)')
     pg.goto(BASE + '/compte/publier/')
-    check(pg.locator('.smp-cat').count() == 7, '7 categories offered')
+    check(pg.locator('.smp-cat').count() == 8, '8 categories offered (bolts since 0.37.0)')
     pg.click('.smp-cat:has-text("Profilés")'); pg.wait_for_load_state()
     check(pg.locator('.smp-types .smw-type').count() == 9, '9 profile types with their drawing')
     pg.click('.smw-type:has(input[value="HEA"])'); settle(pg)

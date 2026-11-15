@@ -30,6 +30,10 @@ $by_slug = array(
 	'reuse-tubes'      => 'tube',
 	'plates'           => 'plate',
 	'reuse-plates'     => 'plate',
+	'reuse-profiles'   => 'beam', // 0.37.0: the reuse categories of new steel.
+	'reuse-hollow'     => 'tube',
+	'reuse-sheets'     => 'plate',
+	'reuse-bars'       => 'bar',
 	'bars'             => 'bar',
 	'roofing'          => 'roof',
 );

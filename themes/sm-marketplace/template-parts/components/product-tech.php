@@ -65,6 +65,17 @@ $render_fields = static function () use ( $cat, $st ) {
 	foreach ( $cat['fields'] as $f ) {
 		$id  = 'smp-s-' . $f['key'];
 		$val = (string) ( $specs[ $f['key'] ] ?? '' );
+		if ( 'select' === $f['type'] && ! empty( $f['chips'] ) ) {
+			// 0.37.0: choices as buttons (bolts).
+			echo '<fieldset class="sm-field smp-chipfield' . ( count( $f['options'] ) > 6 ? ' smp-chipfield--wide' : '' ) . '"><legend class="sm-field__legend">' . esc_html( sm_t( $f['label'] ) ) . ( empty( $f['required'] ) ? ' <small class="sm-optional">' . esc_html__( 'optional', 'sm-marketplace' ) . '</small>' : '' ) . '</legend><div class="smpl-chips">';
+			foreach ( $f['options'] as $o ) {
+				echo '<label class="smpl-chip"><input type="radio" name="specs[' . esc_attr( $f['key'] ) . ']" value="' . esc_attr( $o['value'] ) . '"' . checked( $val, $o['value'], false ) . '><span>' . esc_html( sm_t( array( 'fr' => $o['fr'], 'ar' => $o['ar'] ) ) ) . '</span></label>';
+			}
+			echo '</div>';
+			sm_theme_error( 'specs_' . $f['key'] );
+			echo '</fieldset>';
+			continue;
+		}
 		echo '<div class="sm-field"><label for="' . esc_attr( $id ) . '">' . esc_html( sm_t( $f['label'] ) ) . ( empty( $f['unit'] ) ? '' : ' <small>(' . esc_html( $f['unit'] ) . ')</small>' ) . ( empty( $f['required'] ) ? ' <small class="sm-optional">' . esc_html__( 'optional', 'sm-marketplace' ) . '</small>' : '' ) . '</label>';
 		if ( 'select' === $f['type'] ) {
 			echo '<select id="' . esc_attr( $id ) . '" name="specs[' . esc_attr( $f['key'] ) . ']"';
@@ -184,7 +195,9 @@ $render_grade = static function () use ( $v, $ps ) {
 	<?php endif; ?>
 	<?php
 	$includes_html = ob_get_clean();
-	if ( 'building' !== $cat['kind'] ) {
+	// 0.37.0: reuse puts origin, condition and surface after the technical data, and what the price includes after the price.
+	$after = 'after' === ( $mk['order'] ?? '' );
+	if ( 'building' !== $cat['kind'] && ! $after ) {
 		echo $cond_html . $attrs_html . $includes_html; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above.
 	}
 	?>
@@ -247,7 +260,7 @@ $render_grade = static function () use ( $v, $ps ) {
 			$custom = 'formula' === $family['method'] && ( ! $family['sections'] || 'custom' === $v( 'section' ) || ( ! $section && $dims_in ) );
 			?>
 			<?php if ( $is_plate ) : ?>
-				<?php sm_component( 'plate-fields', array( 'state' => $st, 'family' => $family, 'summary' => $sum, 'calc' => $pv['calc'] ?? null, 'field_error' => $field_error, 'render_grade' => $render_grade ) ); ?>
+				<?php sm_component( 'plate-fields', array( 'state' => $st, 'family' => $family, 'summary' => $sum, 'calc' => $pv['calc'] ?? null, 'field_error' => $field_error, 'render_grade' => $render_grade, 'rows' => ! empty( $cat['rows'] ) ) ); ?>
 			<?php else : ?>
 			<div class="smw-size smp-size">
 				<div class="smw-size__fields">
@@ -303,7 +316,8 @@ $render_grade = static function () use ( $v, $ps ) {
 			</div>
 
 			<?php endif; ?>
-			<?php if ( ! $is_plate ) : ?>
+			<?php $rows_mode = ! empty( $cat['rows'] ); // 0.37.0: reuse, one size in several lengths or sizes. ?>
+			<?php if ( ! $is_plate && ! $rows_mode ) : ?>
 				<?php
 				$lengths = (array) ( $ws['bar_lengths'] ?? array() );
 				$length  = $v( 'length', (string) ( $ws['default_length'] ?? '' ) );
@@ -323,6 +337,9 @@ $render_grade = static function () use ( $v, $ps ) {
 				</div>
 			<?php endif; ?>
 
+			<?php if ( $rows_mode ) : ?>
+				<?php sm_component( 'product-rows', array( 'state' => $st, 'plate' => $is_plate, 'summary' => $sum, 'calc' => $pv['calc'] ?? null, 'field_error' => $field_error, 'errors' => $err ) ); ?>
+			<?php else : ?>
 			<?php $mode = 'weight' === $v( 'qty_mode' ) ? 'weight' : 'bars'; ?>
 			<fieldset class="sm-field">
 				<legend class="sm-field__legend"><?php esc_html_e( 'Quantity for sale', 'sm-marketplace' ); ?></legend>
@@ -354,6 +371,7 @@ $render_grade = static function () use ( $v, $ps ) {
 					<?php $field_error( 'actual_weight' ); ?>
 				<?php endif; ?>
 			</fieldset>
+			<?php endif; ?>
 			<?php endif; ?>
 		<?php endif; ?>
 
@@ -525,6 +543,13 @@ $render_grade = static function () use ( $v, $ps ) {
 		<?php endif; ?>
 	<?php endif; ?>
 
+	<?php if ( $after && 'building' !== $cat['kind'] ) : ?>
+		<div class="smp-after">
+			<h3 class="smp-after__title"><?php esc_html_e( 'Origin and condition', 'sm-marketplace' ); ?></h3>
+			<?php echo $attrs_html . $cond_html; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above. ?>
+		</div>
+		<h3 class="smp-after__title"><?php esc_html_e( 'Price', 'sm-marketplace' ); ?></h3>
+	<?php endif; ?>
 	<?php
 	$units      = $cat['units'];
 	$has_punit  = 'specs' !== $cat['kind'];
@@ -608,6 +633,9 @@ $render_grade = static function () use ( $v, $ps ) {
 			<?php $field_error( 'lot_price' ); ?>
 		</div>
 	<?php endif; ?>
+	<?php if ( $after && 'building' !== $cat['kind'] ) : ?>
+		<?php echo $includes_html; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above. ?>
+	<?php endif; ?>
 	<?php if ( 'building' === $cat['kind'] ) : ?>
 		<?php echo $includes_html; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above. ?>
 		<?php $made_title = (string) sm_t( (array) ( $pv['title'] ?? array() ) ); ?>
@@ -629,7 +657,7 @@ $render_grade = static function () use ( $v, $ps ) {
 			<?php if ( 'engine' === $cat['kind'] ) : ?>
 				<div><dt><?php echo esc_html( ! empty( $is_plate ) ? __( 'Number of plates', 'sm-marketplace' ) : __( 'Number of bars', 'sm-marketplace' ) ); ?></dt><dd>
 					<?php if ( $sum && $sum['pieces'] > 0 ) : ?>
-						<?php echo sm_tech( ( 'weight' === $sum['qty_mode'] ? '≈ ' . sm_number( $sum['pieces'], 1 ) : sm_number( $sum['pieces'] ) ) . ( $sum['length_mm'] && empty( $is_plate ) ? ' × ' . sm_number( $sum['length_mm'] / 1000, fmod( $sum['length_mm'], 1000 ) ? 2 : 0 ) . ' m' : '' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+						<?php echo sm_tech( ( 'weight' === $sum['qty_mode'] ? '≈ ' . sm_number( $sum['pieces'], 1 ) : sm_number( $sum['pieces'] ) ) . ( $sum['length_mm'] && empty( $is_plate ) && empty( $cat['rows'] ) ? ' × ' . sm_number( $sum['length_mm'] / 1000, fmod( $sum['length_mm'], 1000 ) ? 2 : 0 ) . ' m' : '' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 					<?php else : ?>—<?php endif; ?>
 				</dd></div>
 			<?php endif; ?>

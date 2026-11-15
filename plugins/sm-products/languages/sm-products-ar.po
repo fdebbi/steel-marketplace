@@ -708,7 +708,7 @@ msgstr "إلغاء"
 msgid "Give the reason, so the seller knows why the listing was changed."
 msgstr "اذكر السبب ليعرف البائع سبب تعديل الإعلان."
 
-#: src/Admin/Admin.php:514 src/Spec.php:212
+#: src/Admin/Admin.php:514 src/Spec.php:214
 msgid "Give the product a title (in French or in Arabic)."
 msgstr "أعط المنتج عنوانا (بالفرنسية أو بالعربية)."
 
@@ -762,15 +762,27 @@ msgstr "لا يمكنك تعديل هذا المنتج."
 msgid "You published many products today. Try again tomorrow."
 msgstr "نشرت عددا كبيرا من المنتجات اليوم. أعد المحاولة غدا."
 
-#: src/Form.php:79
+#. translators: %d: number of photos.
+#: src/Form.php:85
 msgid "Add at least one photo of the product."
 msgstr "أضف صورة واحدة على الأقل للمنتج."
 
-#: src/Form.php:82 src/Spec.php:29
+#. translators: %d: number of photos.
+#: src/Form.php:85
+msgid "Add at least %d photo of the product."
+msgid_plural "Add at least %d photos of the product."
+msgstr[0] "أضف %d صورة على الأقل للمنتج"
+msgstr[1] "أضف صورة واحدة على الأقل للمنتج"
+msgstr[2] "أضف صورتين على الأقل للمنتج"
+msgstr[3] "أضف %d صور على الأقل للمنتج"
+msgstr[4] "أضف %d صورة على الأقل للمنتج"
+msgstr[5] "أضف %d صورة على الأقل للمنتج"
+
+#: src/Form.php:88 src/Spec.php:29
 msgid "Choose a category."
 msgstr "اختر فئة."
 
-#: src/Form.php:114
+#: src/Form.php:120
 msgid ""
 "Thank you. Your changes will be visible after a quick check by the platform "
 "team; meanwhile the current version stays online."
@@ -778,22 +790,22 @@ msgstr ""
 "شكرا. ستظهر تعديلاتك بعد مراجعة سريعة من فريق المنصة، وتبقى النسخة الحالية "
 "منشورة في الأثناء."
 
-#: src/Form.php:133
+#: src/Form.php:139
 msgid "Draft saved. You can finish it later from \"My listings\"."
 msgstr "تم حفظ المسودة. يمكنك إكمالها لاحقا من «إعلاناتي»."
 
-#: src/Form.php:134
+#: src/Form.php:140
 msgid ""
 "Thank you. Your product will be visible after a quick check by the platform "
 "team."
 msgstr "شكرا. سيظهر منتجك بعد مراجعة سريعة من فريق المنصة."
 
-#: src/Form.php:135 src/Form.php:238
+#: src/Form.php:141 src/Form.php:244
 msgid "Your product is published."
 msgstr "تم نشر منتجك."
 
 #. translators: %d: number of listings.
-#: src/Form.php:173
+#: src/Form.php:179
 msgid ""
 "A client account can have %d listing online at a time. Mark one as sold or "
 "withdraw it first, or open a company or professional account."
@@ -819,39 +831,39 @@ msgstr[5] ""
 "يمكن لحساب الزبون نشر %d إعلان في نفس الوقت. علّم أحدها كمباع أو اسحبه أولا،"
 " أو افتح حساب شركة أو مهني."
 
-#: src/Form.php:211
+#: src/Form.php:217
 msgid "You cannot change this product."
 msgstr "لا يمكنك تغيير هذا المنتج."
 
-#: src/Form.php:216
+#: src/Form.php:222
 msgid "Only a published product can be marked as sold."
 msgstr "لا يمكن وضع علامة «مباع» إلا على منتج منشور."
 
-#: src/Form.php:219
+#: src/Form.php:225
 msgid "Marked as sold. Buyers no longer see it."
 msgstr "تم وضع علامة «مباع». لم يعد المشترون يرونه."
 
-#: src/Form.php:223
+#: src/Form.php:229
 msgid "The product is withdrawn and saved as a draft."
 msgstr "تم سحب المنتج وحفظه كمسودة."
 
-#: src/Form.php:227
+#: src/Form.php:233
 msgid "This product cannot be published again from here. Edit it instead."
 msgstr "لا يمكن إعادة نشر هذا المنتج من هنا. عدّله بدلا من ذلك."
 
-#: src/Form.php:238
+#: src/Form.php:244
 msgid "Sent for review again."
 msgstr "أُعيد إرساله للمراجعة."
 
-#: src/Form.php:242
+#: src/Form.php:248
 msgid "Withdraw the product before deleting it."
 msgstr "اسحب المنتج قبل حذفه."
 
-#: src/Form.php:245
+#: src/Form.php:251
 msgid "Product deleted."
 msgstr "تم حذف المنتج."
 
-#: src/Form.php:248
+#: src/Form.php:254
 msgid "Unknown action."
 msgstr "إجراء غير معروف."
 
@@ -970,15 +982,15 @@ msgstr "لم يعد «%s» معروضا. أعد نشره من «إعلاناتي
 msgid "Product type"
 msgstr "نوع المنتج"
 
-#: src/Presenter.php:157 src/Presenter.php:196
+#: src/Presenter.php:157 src/Presenter.php:208
 msgid "Designation"
 msgstr "التسمية"
 
-#: src/Presenter.php:158 src/Presenter.php:197
+#: src/Presenter.php:158 src/Presenter.php:209
 msgid "Steel grade"
 msgstr "درجة الفولاذ"
 
-#: src/Presenter.php:158 src/Presenter.php:197
+#: src/Presenter.php:158 src/Presenter.php:209
 msgid "Not specified"
 msgstr "غير محددة"
 
@@ -995,71 +1007,79 @@ msgstr "ثقوب Ø%1$s، المسافة %2$s"
 msgid "Dimensions"
 msgstr "الأبعاد"
 
-#: src/Presenter.php:181
+#: src/Presenter.php:186
+msgid "Sizes × number"
+msgstr "المقاسات × العدد"
+
+#: src/Presenter.php:186
+msgid "Lengths × number"
+msgstr "الأطوال × العدد"
+
+#: src/Presenter.php:188
 msgid "Plate size"
 msgstr "مقاس الصفيحة"
 
-#: src/Presenter.php:183
+#: src/Presenter.php:190
 msgid "Weight of one sheet"
 msgstr "وزن الصفيحة الواحدة"
 
-#: src/Presenter.php:186
+#: src/Presenter.php:193
 msgid "Bar length"
 msgstr "طول القضبان"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:189
+#: src/Presenter.php:196
 msgid "%s plates"
 msgstr "%s صفائح"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:189
+#: src/Presenter.php:196
 msgid "%s bars"
 msgstr "%s قضبان"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:191 src/Presenter.php:199
+#: src/Presenter.php:199 src/Presenter.php:211
 msgid "Quantity"
 msgstr "الكمية"
 
-#: src/Presenter.php:193
+#: src/Presenter.php:202 src/Presenter.php:205
 msgid "Weight per metre"
 msgstr "الوزن لكل متر"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:199
+#: src/Presenter.php:211
 msgid "%s pieces in the lot"
 msgstr "%s قطعة في الدفعة"
 
-#: src/Presenter.php:202
+#: src/Presenter.php:214
 msgid "Weight of the lot"
 msgstr "وزن الدفعة"
 
-#: src/Presenter.php:224
+#: src/Presenter.php:236
 msgid "Available quantity"
 msgstr "الكمية المتوفرة"
 
-#: src/Presenter.php:230
+#: src/Presenter.php:242
 msgid "Condition"
 msgstr "الحالة"
 
-#: src/Presenter.php:238
+#: src/Presenter.php:250
 msgid "Yes"
 msgstr "نعم"
 
-#: src/Presenter.php:238
+#: src/Presenter.php:250
 msgid "No"
 msgstr "لا"
 
-#: src/Presenter.php:277
+#: src/Presenter.php:291
 msgid "m (linear)"
 msgstr "م.ط"
 
-#: src/Presenter.php:278
+#: src/Presenter.php:292
 msgid "pieces"
 msgstr "قطع"
 
-#: src/Presenter.php:279
+#: src/Presenter.php:293
 msgid "lot"
 msgstr "دفعة"
 
@@ -1123,95 +1143,111 @@ msgstr "أدخل البلدية."
 msgid "Place the marker on the map, where the building is."
 msgstr "ضع العلامة على الخريطة في مكان المبنى."
 
-#: src/Spec.php:216
+#: src/Spec.php:218
 msgid "The description is too long (4000 characters at most)."
 msgstr "الوصف طويل جدا (4000 حرف كحد أقصى)."
 
-#: src/Spec.php:235 src/Spec.php:503
+#: src/Spec.php:237 src/Spec.php:668
 msgid "The weight engine is not active."
 msgstr "محرك الأوزان غير مفعّل."
 
-#: src/Spec.php:239
+#: src/Spec.php:241
 msgid "Choose the product type."
 msgstr "اختر نوع المنتج."
 
-#: src/Spec.php:258
+#: src/Spec.php:263
 msgid "Choose the kind of plate."
 msgstr "اختر نوع الصفيحة."
 
-#: src/Spec.php:277
+#: src/Spec.php:282
 msgid "The pitch must be larger than the hole diameter."
 msgstr "يجب أن تكون المسافة بين الثقوب أكبر من قطرها."
 
-#: src/Spec.php:292
+#: src/Spec.php:297
 msgid "Choose the size."
 msgstr "اختر المقاس."
 
-#: src/Spec.php:309 src/Spec.php:591
+#: src/Spec.php:321 src/Spec.php:756
 msgid "Enter the total weight."
 msgstr "أدخل الوزن الإجمالي."
 
-#: src/Spec.php:309
+#: src/Spec.php:321
 msgid "Enter the number of pieces."
 msgstr "أدخل عدد القطع."
 
-#: src/Spec.php:357
+#: src/Spec.php:375
 msgid "Enter the weight of one sheet in kg."
 msgstr "أدخل وزن الصفيحة الواحدة بالكغ."
 
 #. translators: %s: estimated weight of one sheet in kg.
-#: src/Spec.php:360
+#: src/Spec.php:378
 msgid "This weight is very far from the estimated %s kg per sheet. Check it."
 msgstr "هذا الوزن بعيد جدًا عن الوزن التقديري %s كغ للصفيحة. تحقّق منه."
 
-#: src/Spec.php:375 src/Spec.php:575
+#: src/Spec.php:393 src/Spec.php:498 src/Spec.php:740
 msgid "Enter the weighed weight in kg."
 msgstr "أدخل الوزن الفعلي بالكيلوغرام."
 
 #. translators: %s: theoretical weight in kg.
-#: src/Spec.php:378 src/Spec.php:578
+#: src/Spec.php:396 src/Spec.php:501 src/Spec.php:743
 msgid "The weighed weight is very far from the theoretical %s kg. Check it."
 msgstr "الوزن الفعلي بعيد جدا عن الوزن النظري %s كغ. تحقق منه."
 
-#: src/Spec.php:449
+#: src/Spec.php:429
+msgid "Enter the length, the width (mm) and the number of pieces."
+msgstr "أدخل الطول والعرض (مم) وعدد القطع."
+
+#: src/Spec.php:429
+msgid "Enter the length (m) and the number of bars."
+msgstr "أدخل الطول (م) وعدد القضبان."
+
+#: src/Spec.php:470
+msgid "Add at least one size with its number of pieces."
+msgstr "أضف مقاسًا واحدًا على الأقل مع عدد قطعه."
+
+#: src/Spec.php:470
+msgid "Add at least one length with its number of bars."
+msgstr "أضف طولًا واحدًا على الأقل مع عدد قضبانه."
+
+#: src/Spec.php:614
 msgid "Enter the available quantity."
 msgstr "أدخل الكمية المتوفرة."
 
-#: src/Spec.php:471 src/Spec.php:626
+#: src/Spec.php:636 src/Spec.php:791
 msgid "Required."
 msgstr "إلزامي."
 
-#: src/Spec.php:478
+#: src/Spec.php:643
 msgid "Enter a positive number."
 msgstr "أدخل عددا موجبا."
 
-#: src/Spec.php:483
+#: src/Spec.php:648
 msgid "Choose a value from the list."
 msgstr "اختر قيمة من القائمة."
 
-#: src/Spec.php:520
+#: src/Spec.php:685
 msgid "Choose the element (column, rafter, purlin…)."
 msgstr "اختر العنصر (عمود، عارضة، مداد…)."
 
-#: src/Spec.php:524
+#: src/Spec.php:689
 msgid "Choose the type and the size."
 msgstr "اختر النوع والمقاس."
 
-#: src/Spec.php:530
+#: src/Spec.php:695
 msgid "Enter the number of pieces and their length in metres."
 msgstr "أدخل عدد القطع وطولها بالمتر."
 
-#: src/Spec.php:558
+#: src/Spec.php:723
 msgid ""
 "Describe the lot: at least one line with type, size, number of pieces and "
 "length."
 msgstr "صِف الدفعة: سطر واحد على الأقل بالنوع والمقاس وعدد القطع والطول."
 
-#: src/Spec.php:593
+#: src/Spec.php:758
 msgid "This weight is outside the accepted range."
 msgstr "هذا الوزن خارج النطاق المقبول."
 
-#: src/Spec.php:612
+#: src/Spec.php:777
 msgid "Choose the condition."
 msgstr "اختر الحالة."
 

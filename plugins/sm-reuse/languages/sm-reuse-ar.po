@@ -22,16 +22,18 @@ msgstr "https://github.com/fdebbi/steel-marketplace"
 #. Description of the plugin
 #: sm-reuse.php
 msgid ""
-"Steel reuse market: offcuts, dismantled profiles, used tubes, plate offcuts,"
-" mixed lots and scrap. Adds the \"reuse\" market to the SM Products listing "
-"engine (condition scale, origin, surface state, cutting and loading), seeds "
-"its categories and adds the engineer advice on reuse listings. Requires SM "
-"Core, SM Weight Engine and SM Products."
+"Steel reuse market: profiles, tubes, plates, bars and bolts already used or "
+"in surplus, sold in several lengths, and scrap; lots of several listings. "
+"Adds the \"reuse\" market to the SM Products listing engine (condition "
+"scale, origin, surface state, what the price includes), seeds its categories"
+" and adds the engineer advice on reuse listings. Requires SM Core, SM Weight"
+" Engine and SM Products."
 msgstr ""
-"سوق إعادة استعمال الفولاذ: بقايا، مقاطع من التفكيك، أنابيب مستعملة، بقايا "
-"صفائح، دفعات مختلطة وخردة. يضيف سوق «إعادة الاستعمال» إلى محرك إعلانات SM "
-"Products (سلم الحالة، المصدر، حالة السطح، القص والتحميل)، وينشئ فئاته ويضيف "
-"توصية المهندس على الإعلانات. يتطلب SM Core وSM Weight Engine وSM Products."
+"سوق إعادة استعمال الفولاذ: مقاطع وأنابيب وصفائح وقضبان وبراغي مستعملة أو "
+"فائضة، تباع بعدة أطوال، وخردة؛ ودفعات من عدة إعلانات. يضيف سوق «إعادة "
+"الاستعمال» إلى محرك إعلانات SM Products (سلم الحالة، المصدر، حالة السطح، ما "
+"يشمله السعر)، وينشئ فئاته ويضيف توصية المهندس على الإعلانات. يتطلب SM Core "
+"وSM Weight Engine وSM Products."
 
 #. Author of the plugin
 #: sm-reuse.php
@@ -45,12 +47,25 @@ msgid ""
 msgstr ""
 "يتطلب SM Reuse إضافات SM Core وSM Weight Engine وSM Products. فعّلها أولًا."
 
-#: src/Advice.php:34
+#: src/Advice.php:32
+msgid "Preloaded bolts: not for a preloaded joint"
+msgstr "براغي مسبقة الشد: لا تصلح لوصلة مسبقة الشد"
+
+#: src/Advice.php:33
+msgid ""
+"A preloaded bolt (HR / HV) that was already tightened must not be reused in "
+"a preloaded joint (EN 1090-2). Use these bolts only where no preload is "
+"required, after checking them."
+msgstr ""
+"البرغي مسبق الشد (HR / HV) الذي سبق شدّه لا يُعاد استعماله في وصلة مسبقة "
+"الشد (EN 1090-2). استعمل هذه البراغي فقط حيث لا يُطلب شد مسبق، بعد فحصها."
+
+#: src/Advice.php:42
 msgid "Have this steel checked before you buy"
 msgstr "اطلب فحص هذا الفولاذ قبل الشراء"
 
 #. translators: %s: platform name.
-#: src/Advice.php:36
+#: src/Advice.php:44
 msgid ""
 "An engineer verified on %s checks the condition, the corrosion and the "
 "likely grade of the reused elements. The information in this listing is "
@@ -59,53 +74,53 @@ msgstr ""
 "مهندس موثّق على %s يفحص الحالة والتآكل والرتبة المحتملة للعناصر المعاد "
 "استعمالها. معلومات هذا الإعلان مصرح بها من البائع."
 
-#: src/Advice.php:37
+#: src/Advice.php:45
 msgid "Ask for an inspection"
 msgstr "طلب معاينة"
 
-#: src/Advice.php:60
+#: src/Advice.php:68
 msgid "Lot"
 msgstr "الحصة"
 
-#: src/Advice.php:62
+#: src/Advice.php:70
 msgid "Weight"
 msgstr "الوزن"
 
-#: src/Advice.php:64
+#: src/Advice.php:72
 msgid "Where it is"
 msgstr "مكان الحصة"
 
-#: src/Advice.php:65
+#: src/Advice.php:73
 msgid "Listing"
 msgstr "الإعلان"
 
-#: src/Advice.php:66
+#: src/Advice.php:74
 msgid "Inspection before buying reused steel listed on the platform."
 msgstr "معاينة قبل شراء فولاذ معاد استعماله منشور على المنصة."
 
-#: src/Advice.php:70
+#: src/Advice.php:78
 msgid "What I expect from the inspection:"
 msgstr "ما أنتظره من المعاينة:"
 
 #. translators: %s: title of the listing.
-#: src/Advice.php:74
+#: src/Advice.php:82
 msgid "Inspection: %s"
 msgstr "معاينة: %s"
 
-#: src/Advice.php:78
+#: src/Advice.php:86
 msgid "Steel concerned by the inspection"
 msgstr "الفولاذ المعني بالمعاينة"
 
-#: src/Advice.php:88
+#: src/Advice.php:96
 msgid "For recycling only"
 msgstr "للرسكلة فقط"
 
-#: src/Advice.php:89
+#: src/Advice.php:97
 msgid "This lot is sold as scrap. It must not be used in a structure."
 msgstr "تُباع هذه الدفعة كخردة. لا يجوز استعمالها في هيكل إنشائي."
 
 #. translators: %s: platform name.
-#: src/Advice.php:94
+#: src/Advice.php:102
 msgid ""
 "Used or surplus steel can be reused in a structure only after a check by a "
 "qualified engineer: condition of the elements, steel grade, holes, welds and"
@@ -117,7 +132,7 @@ msgstr ""
 "هذا الإعلان يصرّح بها البائع، و%s لا تصادق عليها."
 
 #. translators: %s: platform name.
-#: src/Advice.php:97
+#: src/Advice.php:105
 msgid ""
 "The seller says these elements need an inspection or a treatment. Have them "
 "checked by a qualified engineer before any structural use. The information "
@@ -127,13 +142,57 @@ msgstr ""
 "قبل أي استعمال إنشائي. معلومات هذا الإعلان يصرّح بها البائع، و%s لا تصادق "
 "عليها."
 
-#: src/Advice.php:101
+#: src/Advice.php:109
 msgid "Structural reuse: ask an engineer"
 msgstr "إعادة الاستعمال الإنشائي: استشر مهندسًا"
 
-#: src/Advice.php:103
+#: src/Advice.php:111
 msgid "Find an engineer"
 msgstr "ابحث عن مهندس"
+
+#: src/Groups.php:71
+msgid ""
+"Only your published reuse listings can be grouped (not scrap, not lots)."
+msgstr ""
+"يمكن تجميع إعلانات إعادة الاستعمال المنشورة فقط (لا الخردة ولا الدفعات)."
+
+#: src/Groups.php:76
+msgid "Tick at least two listings to make a lot."
+msgstr "اختر إعلانين على الأقل لتكوين دفعة."
+
+#: src/Groups.php:79
+msgid "The products of a lot must be in the same wilaya."
+msgstr "يجب أن تكون منتجات الدفعة في نفس الولاية."
+
+#: src/Groups.php:85
+msgid "Enter the price of the lot."
+msgstr "أدخل سعر الدفعة."
+
+#. translators: %d: number of products.
+#: src/Groups.php:93
+msgid "Lot of %d reuse products"
+msgstr "دفعة من %d منتجات لإعادة الاستعمال"
+
+#. translators: %s: number of pieces.
+#: src/Groups.php:247
+msgid "%s pieces"
+msgstr "%s قطعة"
+
+#: src/Groups.php:279
+msgid "Your account has no company."
+msgstr "حسابك غير مرتبط بمؤسسة."
+
+#: src/Groups.php:288
+msgid "The lot is online. Its products are no longer sold separately."
+msgstr "الدفعة منشورة. لم تعد منتجاتها تباع منفصلة."
+
+#: src/Groups.php:295
+msgid "You cannot change this lot."
+msgstr "لا يمكنك تعديل هذه الدفعة."
+
+#: src/Groups.php:298
+msgid "The lot is undone: its products are on sale again one by one."
+msgstr "أُلغيت الدفعة: عادت منتجاتها للبيع واحدًا واحدًا."
 
 #: src/Rules.php:37
 msgid ""

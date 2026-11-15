@@ -143,6 +143,44 @@
 		clearTimeout( timer );
 		timer = setTimeout( function () { refresh( null ); }, 180 );
 	} );
+	// Reuse (0.37.0): lengths or sizes of one product, one row each.
+	function renumber( table ) {
+		table.querySelectorAll( '[data-smr-row]' ).forEach( function ( row, i ) {
+			row.querySelectorAll( 'input[name^="rows["]' ).forEach( function ( el ) {
+				el.name = el.name.replace( /^rows\[\d+\]/, 'rows[' + i + ']' );
+			} );
+		} );
+	}
+	form.addEventListener( 'click', function ( e ) {
+		var add = e.target.closest ? e.target.closest( '[data-smr-add]' ) : null;
+		var rem = e.target.closest ? e.target.closest( '[data-smr-remove]' ) : null;
+		if ( ( ! add && ! rem ) || ! inTech( add || rem ) ) { return; }
+		var table = tech().querySelector( '[data-smr]' );
+		if ( ! table ) { return; }
+		var rows = table.querySelectorAll( '[data-smr-row]' );
+		if ( add ) {
+			var last = rows[ rows.length - 1 ];
+			var row = last.cloneNode( true );
+			row.querySelectorAll( 'input' ).forEach( function ( el ) { el.value = ''; } );
+			row.querySelectorAll( '.sm-field-error' ).forEach( function ( el ) { el.remove(); } );
+			var w = row.querySelector( '.smr-weight' );
+			if ( w ) { w.textContent = '—'; }
+			last.parentNode.insertBefore( row, last.nextSibling );
+			renumber( table );
+			var first = row.querySelector( 'input' );
+			if ( first ) { first.focus(); }
+			return;
+		}
+		var target = rem.closest( '[data-smr-row]' );
+		if ( rows.length > 1 ) {
+			target.remove();
+		} else {
+			target.querySelectorAll( 'input' ).forEach( function ( el ) { el.value = ''; } );
+		}
+		renumber( table );
+		clearTimeout( timer );
+		timer = setTimeout( function () { refresh( null ); }, 150 );
+	} );
 	// Buildings: replace the element rows by a new proposal calculated by the server.
 	form.addEventListener( 'click', function ( e ) {
 		var btn = e.target.closest ? e.target.closest( '[data-smb-recalc]' ) : null;

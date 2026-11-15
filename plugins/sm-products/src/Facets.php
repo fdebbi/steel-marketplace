@@ -123,7 +123,7 @@ final class Facets {
 			if ( in_array( $kind, array( 'engine', 'lines' ), true ) ) {
 				$fams = self::values( 'family', self::base_where( $market, $category ) );
 				$one  = count( $fams ) <= 1 && ! in_array( $category, self::CHIP_FAMILIES, true );
-				if ( 'plates' === $category || 'reuse-plates' === $category || ( $fams && 'PLATE' === $fams[0]->v && 1 === count( $fams ) ) ) {
+				if ( in_array( $category, array( 'plates', 'reuse-plates', 'reuse-sheets' ), true ) || ( $fams && 'PLATE' === $fams[0]->v && 1 === count( $fams ) ) ) {
 					$facets[] = array( 'key' => 'designation', 'type' => 'select', 'label' => 'thickness', 'options' => array_map( static fn( $o ) => array_merge( $o, array( 'label' => trim( preg_replace( '/^PLATE\s*/', '', $o['value'] ) ) . ' mm' ) ), self::options( self::values( 'designation', self::base_where( $market, $category ) ) ) ) );
 				} else {
 					if ( count( $fams ) > 1 || ( ! $one && $fams ) ) {

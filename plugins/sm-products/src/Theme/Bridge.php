@@ -136,6 +136,8 @@ final class Bridge {
 				'conditions' => $m['conditions'],
 				'fields'     => $m['fields'],
 				'elements'   => $m['line_elements'] ?? array(),
+				'order'      => (string) ( $m['order'] ?? '' ), // 0.18.0: "after" = condition after the technical data.
+				'min_photos' => (int) ( $m['min_photos'] ?? 0 ),
 				'allowed'    => ! is_wp_error( $allowed ),
 				'reason'     => is_wp_error( $allowed ) ? $allowed->get_error_message() : '',
 				'count'      => count( Categories::all( false, $key ) ),
@@ -152,6 +154,7 @@ final class Bridge {
 		$market = (string) ( $args['market'] ?? '' );
 		$out    = array();
 		foreach ( Categories::all( false, '' !== $market ? $market : null ) as $slug => $c ) {
+			if ( ! empty( $args['all'] ) || ! in_array( $c->kind, (array) apply_filters( 'sm_products_unpublished_kinds', array() ), true ) ) { // 0.18.0: lots are made from "My listings".
 			$out[ $slug ] = array(
 				'slug'     => $slug,
 				'market'   => $c->market,
@@ -164,7 +167,11 @@ final class Bridge {
 				'detail_units' => Spec::detail_units( $c ),
 				'lot'      => Spec::lot_allowed( $c ),
 				'fields'   => $c->fields,
+				'auto_title' => Spec::auto_title( $c ) || Spec::is_bolts( $c ), // 0.18.0: no title to type.
+				'rows'     => 'engine' === $c->kind && ! empty( Markets::get( $c->market )['piece_rows'] ),
+				'min_photos' => (int) ( Markets::get( $c->market )['min_photos'] ?? 0 ),
 			);
+			}
 		}
 		return $out;
 	}
@@ -229,7 +236,26 @@ final class Bridge {
 			'keep_sheets'   => $rev ? $rev['sheets'] : Media::get( 'product', $p->id, 'sheet' ),
 		);
 		$kind = Categories::get( $p->category )->kind ?? 'specs';
-		if ( $p->lines ) {
+		$cat_kind = Categories::get( $p->category )->kind ?? '';
+		if ( $p->lines && 'engine' === $cat_kind ) {
+			// 0.18.0: one size in several lengths or sizes (reuse).
+			$v['qty_mode'] = 'rows';
+			$v['rows']     = array();
+			foreach ( $p->lines as $l ) {
+				$v['rows'][] = 'PLATE' === $p->family
+					? array( 'length' => (string) $l['length_mm'], 'width' => (string) ( $l['width_mm'] ?? '' ), 'qty' => (string) $l['qty'] )
+					: array( 'length' => (string) ( $l['length_mm'] / 1000 ), 'qty' => (string) $l['qty'] );
+			}
+			$v['section']       = $p->section_id ? $p->section_id : ( $p->dims ? 'custom' : '' );
+			$v['actual_weight'] = 'actual' === $p->weight_source ? (string) $p->total_weight : '';
+			if ( 'PLATE' === $p->family ) {
+				$specs           = (array) $p->specs;
+				$v['plate_kind'] = (string) ( $specs['plate_kind'] ?? 'hot' );
+				$v['dims']       = array( 't' => (string) ( $p->dims['t'] ?? '' ) );
+				$v['hole_d']     = isset( $specs['hole_d'] ) ? (string) $specs['hole_d'] : '';
+				$v['hole_p']     = isset( $specs['hole_p'] ) ? (string) $specs['hole_p'] : '';
+			}
+		} elseif ( $p->lines ) {
 			$v['lines'] = array();
 			foreach ( $p->lines as $l ) {
 				$v['lines'][] = array(
@@ -247,6 +273,8 @@ final class Bridge {
 			$v = apply_filters( 'sm_products_form_values', $v, $p );
 		} elseif ( 'weight' === $kind ) {
 			$v['total_kg'] = $p->total_weight ? (string) $p->total_weight : '';
+		} elseif ( 'engine' === $kind && $p->lines ) {
+			// Rows already set above.
 		} elseif ( 'PLATE' === $p->family ) {
 			$v['width']        = (string) $p->width_mm;
 			$v['plate_length'] = (string) $p->length_mm;

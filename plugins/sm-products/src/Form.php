@@ -75,8 +75,14 @@ final class Form {
 		$file_errors = array_merge( $new['errors'], $snew['errors'] );
 
 		$errors = $spec['errors'];
-		if ( 'draft' !== $intent && ! $photos && ! Spec::auto_title( $spec['category'] ) ) { // Calculated new products show the section drawing (0.7.0).
-			$errors['photos'] = __( 'Add at least one photo of the product.', 'sm-products' );
+		// Calculated new products show the section drawing (0.7.0); a market may ask for more photos (0.18.0: reuse, 2).
+		$min_photos = (int) ( $market['min_photos'] ?? 0 );
+		if ( ! $min_photos ) {
+			$min_photos = Spec::auto_title( $spec['category'] ) && 'products' === ( $spec['category']->market ?? '' ) ? 0 : 1;
+		}
+		if ( 'draft' !== $intent && count( $photos ) < $min_photos ) {
+			/* translators: %d: number of photos. */
+			$errors['photos'] = 1 === $min_photos ? __( 'Add at least one photo of the product.', 'sm-products' ) : sprintf( _n( 'Add at least %d photo of the product.', 'Add at least %d photos of the product.', $min_photos, 'sm-products' ), $min_photos );
 		}
 		if ( 'draft' === $intent && empty( $spec['category'] ) ) {
 			$errors = array( 'category' => $errors['category'] ?? __( 'Choose a category.', 'sm-products' ) );

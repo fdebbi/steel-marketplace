@@ -105,7 +105,8 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 	<?php
 	// A building (0.31.0) has its own steps 2 to 5 inside the technical part, then 6 (description, photos) and 7 (location).
 	$steps_build = 'building' === ( $cat['kind'] ?? '' );
-	$auto_title  = 'products' === $market && 'engine' === ( $cat['kind'] ?? '' ); // Calculated new products: generated title (0.20.0).
+	$auto_title  = ! empty( $cat['auto_title'] ); // Calculated products and bolts: generated title (0.20.0, 0.37.0).
+	$min_photos  = (int) ( $cat['min_photos'] ?? 0 );
 	?>
 	<?php if ( $steps_build ) : ?>
 		<?php sm_component( 'product-tech', array( 'state' => $state, 'category' => $cat, 'market' => $mk ) ); ?>
@@ -120,7 +121,7 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 		<h2 class="smw-step__title"><span class="smw-step__n"><?php echo $steps_build ? 6 : 3; ?></span><?php echo $steps_build ? esc_html__( 'Description, photos and technical sheet', 'sm-marketplace' ) : ( $auto_title ? esc_html__( 'Description', 'sm-marketplace' ) : esc_html__( 'Title and description', 'sm-marketplace' ) ); ?></h2>
 		<?php if ( $steps_build ) : ?>
 		<?php elseif ( $auto_title ) : ?>
-			<p class="sm-notice sm-notice--info smp-autotitle"><?php sm_icon( 'info' ); ?><span><?php esc_html_e( 'The title is created automatically from the product: type and size, steel grade and length (for example "IPE 200 · S275JR · 12 m"), in French and in Arabic.', 'sm-marketplace' ); ?></span></p>
+			<p class="sm-notice sm-notice--info smp-autotitle"><?php sm_icon( 'info' ); ?><span><?php echo esc_html( 'specs' === ( $cat['kind'] ?? '' ) ? __( 'The title is created automatically from the product: type, diameter and length, class and finish (for example "Boulons M16 × 60 · 8.8 · Galvanisé à chaud"), in French and in Arabic.', 'sm-marketplace' ) : __( 'The title is created automatically from the product: type and size, steel grade and length (for example "IPE 200 · S275JR · 12 m"), in French and in Arabic.', 'sm-marketplace' ) ); ?></span></p>
 		<?php else : ?>
 		<div class="sm-field">
 			<label for="smp-title-fr"><?php esc_html_e( 'Title in French', 'sm-marketplace' ); ?></label>
@@ -143,7 +144,9 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 	<section class="sm-panel smp-step">
 		<h2 class="smw-step__title"><span class="smw-step__n">4</span><?php esc_html_e( 'Photos and technical sheet', 'sm-marketplace' ); ?></h2>
 	<?php endif; ?>
-		<?php if ( $auto_title ) : ?>
+		<?php if ( $min_photos > 1 ) : ?>
+			<p class="sm-notice sm-notice--info smp-photo-min"><?php sm_icon( 'camera' ); ?><span><?php echo esc_html( sprintf( /* translators: %d: number of photos. */ __( 'At least %d photos: they come first on the listing page. Show the whole lot, the condition of the surfaces and the ends.', 'sm-marketplace' ), $min_photos ) ); ?></span></p>
+		<?php elseif ( $auto_title && 'products' === $market && 'engine' === ( $cat['kind'] ?? '' ) ) : ?>
 			<p class="sm-muted smp-photo-optional"><?php esc_html_e( 'Photos are optional: without a photo, the listing shows the standard drawing of the section. A real photo of your stock is still recommended, buyers trust it more.', 'sm-marketplace' ); ?></p>
 		<?php endif; ?>
 		<?php $kept = array_filter( array_map( 'absint', (array) ( $state['keep_photos'] ?? array() ) ) ); ?>

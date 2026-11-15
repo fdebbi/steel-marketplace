@@ -1,5 +1,9 @@
 # Changelog — sm-ai
 
+## 0.1.4 — 2026-11-15
+
+- Les lots groupés (catégorie « group » de sm-reuse) ne sont pas proposés par l'assistant d'annonce. Une catégorie de réemploi à dimension unique reçoit la famille et la dimension (le vendeur ajoute les longueurs).
+
 ## 0.1.3 — 2026-11-12 (Phase 10)
 
 - Quand `sm_ai_plan_credits` est vrai (sm-subscriptions), les quotas par outil sont remplacés par les crédits de la formule ; `sm_ai_remaining` donne le solde ; action `sm_ai_used` après chaque appel réussi.

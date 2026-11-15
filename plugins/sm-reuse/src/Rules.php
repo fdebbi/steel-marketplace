@@ -5,7 +5,7 @@
  * - Scrap is published in the Scrap category, and the Scrap category only takes
  *   the "scrap" condition: a buyer looking for reusable steel never finds scrap,
  *   and scrap is never presented as reusable.
- * - Cutting on demand only makes sense for an inventory of bars (lines).
+ * - Cutting on demand only makes sense for bars, profiles and plates (engine, lines).
  *
  * @package SM\Reuse
  */
@@ -38,7 +38,7 @@ final class Rules {
 		} elseif ( self::SCRAP_CATEGORY !== $cat->slug && 'scrap' === $condition ) {
 			$errors['condition'] = __( 'Steel only good for recycling goes in the "Scrap" category.', 'sm-reuse' );
 		}
-		if ( ! empty( $d['attrs']['cut'] ) && 'lines' !== $cat->kind ) {
+		if ( ! empty( $d['attrs']['cut'] ) && ! in_array( $cat->kind, array( 'lines', 'engine' ), true ) ) {
 			$errors['attrs_cut'] = __( 'Cutting on demand is offered for bars and profiles only.', 'sm-reuse' );
 		}
 		return $errors;

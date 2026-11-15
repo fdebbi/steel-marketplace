@@ -1,5 +1,11 @@
 # Changelog — sm-products
 
+## 0.18.0 — 2026-11-15
+
+- Catégorie « Boulonnerie » (boulons, tiges filetées, écrous, rondelles, tiges d'ancrage) : diamètre, longueur, classe, finition, précontraint ; titre généré (« Boulons M16 × 60 · 8.8 · Galvanisé à chaud ») ; vente à la pièce ou au kg. Champs partagés avec sm-reuse (`data/bolt-fields.php`), affichés en boutons (`chips`).
+- Marché avec `piece_rows` (réemploi) : une dimension en plusieurs longueurs (`rows[i][length|qty]`) ou formats de tôle (`rows[i][length|width|qty]`), enregistrés comme lignes d'inventaire ; ou au poids total. Titre avec le nombre de barres ou de morceaux.
+- `min_photos` par marché ; statut `grouped` (produit dans un lot) ; actions `sm_products_status_changed` et `sm_products_deleted` ; filtre `sm_products_unpublished_kinds`.
+
 ## 0.17.0 — 2026-11-15
 
 - Tôles : type de tôle obligatoire, épaisseur et format choisis dans les valeurs courantes (ou saisis), trous d'une tôle perforée, poids d'une feuille donné par le vendeur (« poids réel »), titre généré avec le type (« Tôle larmée 3/5 · 1 × 2 m »). Les tôles publiées avant restent des tôles noires.

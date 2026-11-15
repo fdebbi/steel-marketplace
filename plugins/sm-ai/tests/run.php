@@ -186,8 +186,8 @@ smai_assert( '31' === Catalog::wilaya( 'Oran' ) && '16' === Catalog::wilaya( 'ا
 $c = Recognize::clean( array( 'candidates' => array( array( 'family' => 'HEA', 'designation' => '', 'confidence' => 0.2 ), array( 'family' => 'IPE', 'designation' => 'IPE 200', 'confidence' => 0.7, 'reason' => 'ailes' ), array( 'family' => 'XYZ', 'confidence' => 0.9 ) ) ), array() );
 smai_assert( 2 === count( $c['candidates'] ) && 'IPE' === $c['candidates'][0]['family'] && $c['candidates'][0]['section'] && null === $c['candidates'][1]['section'], 'recognition: unknown family dropped, sorted by confidence, size only when in the catalogue' );
 smai_assert( abs( $c['candidates'][0]['section']['mass_kg_m'] - (float) $ipe->mass_kg_m ) < 0.0001, 'mass per metre from the catalogue, not from the AI' );
-$s = Search::clean( array( 'market' => 'nope', 'category' => 'reuse-offcuts', 'q' => 'ipe200', 'wilaya' => 'Oran', 'length_min' => '6', 'price_max' => -5, 'condition' => 'good', 'mode' => 'assembled' ), array( 'q' => 'x' ) );
-smai_assert( array( 'market' => 'reuse', 'category' => 'reuse-offcuts', 'q' => 'IPE 200', 'wilaya' => '31', 'condition' => 'good', 'length_min' => '6' ) === $s['filters'], 'search filters: market from the category, designation normalised, bad values dropped' );
+$s = Search::clean( array( 'market' => 'nope', 'category' => 'reuse-profiles', 'q' => 'ipe200', 'wilaya' => 'Oran', 'length_min' => '6', 'price_max' => -5, 'condition' => 'good', 'mode' => 'assembled' ), array( 'q' => 'x' ) );
+smai_assert( array( 'market' => 'reuse', 'category' => 'reuse-profiles', 'q' => 'IPE 200', 'wilaya' => '31', 'condition' => 'good', 'length_min' => '6' ) === $s['filters'], 'search filters: market from the category, designation normalised, bad values dropped' );
 $d = Document::clean( array( 'items' => array( array( 'family' => 'IPE', 'designation' => 'IPE 200', 'grade' => 's275jr', 'length_m' => '6', 'quantity' => 10, 'unit' => 'pieces' ), array( 'family' => 'UPN', 'designation' => 'UPN 999', 'length_m' => 50, 'quantity' => 2 ), array( 'designation' => 'HEA 160', 'quantity' => 300, 'unit' => 'kg' ) ) ), array() );
 $eng = SM\Core\Modules::service( 'weight' );
 $exp = $eng->calculate( array( 'family' => 'IPE', 'section' => $ipe->id, 'length' => 6000, 'bars' => 10 ) );
@@ -195,10 +195,10 @@ smai_assert( 3 === count( $d['items'] ) && 2 === $d['known'] && 'S275JR' === $d[
 smai_assert( null === $d['items'][1]['section'] && 0.0 === (float) $d['items'][1]['length_m'] && 'HEA' === $d['items'][2]['family'] && 0.0 === (float) $d['items'][2]['weight_kg'], 'unknown size kept to specify; impossible length dropped; kilos not converted' );
 $v = Document::rfq_values( $d, 'fr' );
 smai_assert( 1 === count( $v['lines'] ) && (string) $ipe->id === $v['lines'][0]['section'] && '10' === $v['lines'][0]['qty'] && false !== strpos( $v['description'], 'UPN 999' ), 'request for quotation: weighable rows, other items in the description' );
-$l = Listing::clean( array( 'category' => 'reuse-offcuts', 'family' => 'HEA', 'designation' => 'HEA 200', 'condition' => 'good', 'title_fr' => str_repeat( 'a', 300 ) ), array( 'company' => Companies::get( $c_seller ) ) );
+$l = Listing::clean( array( 'category' => 'reuse-profiles', 'family' => 'HEA', 'designation' => 'HEA 200', 'condition' => 'good', 'title_fr' => str_repeat( 'a', 300 ) ), array( 'company' => Companies::get( $c_seller ) ) );
 smai_assert( 'reuse' === $l['market'] && 'good' === $l['condition'] && 140 === mb_strlen( $l['title']['fr'] ) && 'HEA 200' === $l['section']['designation'], 'listing: market of the category, condition of that market, titles limited' );
 $lv = Listing::form_values( $l, 'fr' );
-smai_assert( isset( $lv['lines'][0]['section'] ) && ! isset( $lv['section'] ), 'listing form values: rows for a lot category, single profile for a product category' );
+smai_assert( isset( $lv['section'] ) && 'HEA' === $lv['family'] && ! isset( $lv['lines'] ), 'listing form values: the size for an engine category (reuse too since sm-reuse 0.3.0; the seller adds the lengths)' );
 $l2 = Listing::clean( array( 'category' => 'bld-industrial', 'title_fr' => 'Hangar' ), array( 'company' => Companies::get( $c_eng ) ) );
 smai_assert( '' === $l2['market'] && '' === $l2['category'], 'listing: no market for an account that cannot publish' );
 
