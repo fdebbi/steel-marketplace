@@ -185,6 +185,9 @@ $render_grade = static function () use ( $v, $ps ) {
 					if ( 'inc_dismantling' === $f['key'] && 'dismantled' === $v( 'mode' ) && empty( $attrs[ $f['key'] ] ) ) {
 						continue; // Already dismantled.
 					}
+					if ( 'cut' === $f['key'] && ! in_array( $cat['kind'], array( 'engine', 'lines' ), true ) ) {
+						continue; // 0.37.0: cutting on demand for bars, profiles and plates only.
+					}
 					$id = 'smp-a-' . $f['key'];
 					?>
 					<label class="smp-include" for="<?php echo esc_attr( $id ); ?>"><input type="checkbox" id="<?php echo esc_attr( $id ); ?>" name="attrs[<?php echo esc_attr( $f['key'] ); ?>]" value="1" <?php checked( '1', (string) ( $attrs[ $f['key'] ] ?? '' ) ); ?>><span><?php sm_icon( 'check' ); ?><?php echo esc_html( sm_t( $f['label'] ) ); ?></span></label>

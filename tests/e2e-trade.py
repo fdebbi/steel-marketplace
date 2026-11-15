@@ -102,7 +102,7 @@ with sync_playwright() as p:
     print('A2. Types as tabs, filters of each type (0.25.0)')
     v.goto(BASE + '/produits/?lang=fr&verified=1')
     tabs = v.locator('.sm-typetile')
-    check(tabs.count() == 7 and 'Profilés' in txt(v, '.sm-typetiles') and 'Tous' not in txt(v, '.sm-typetiles') and v.locator('.sm-filters input[name="category"][type="radio"]').count() == 0, 'products: 7 type tiles, no "All" tile; types no longer repeated in the filters')
+    check(tabs.count() == 8 and 'Profilés' in txt(v, '.sm-typetiles') and 'Tous' not in txt(v, '.sm-typetiles') and v.locator('.sm-filters input[name="category"][type="radio"]').count() == 0, 'products: 8 type tiles (bolts since 0.37.0), no "All" tile; types no longer repeated in the filters')
     check('Tous les types' in txt(v, '.sm-filters__type') and v.locator('.sm-filters__type .is-current').count() == 1, '"All types" in the filter panel, current')
     pcount = int(re.sub(r'\D', '', v.inner_text('.sm-typetile:has-text("Profilés") small')))
     check(pcount >= 2 and pcount == count(BASE + '/produits/?category=profiles'), 'the "Profiles" tab shows its number of listings (%d)' % pcount)
