@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.43.0 — 2026-11-18
+
+- Tous les messages s'ouvrent au centre de l'écran, au style de la plateforme (fenêtre de SM Core 0.8.6) :
+  - questions avant une action (`data-sm-confirm`) — accepter une offre, supprimer, retirer… — au lieu de la fenêtre grise du navigateur ; bouton rouge et « Annuler » par défaut pour les actions définitives ;
+  - messages après l'envoi d'un formulaire : réussite (se ferme seule après 4 s ou « OK »), erreurs et avertissements (restent jusqu'au clic). Sans JavaScript, les bandeaux restent.
+- Informations manquantes (`assets/js/forms.js`) : le message liste les cases à compléter ou corriger ; « Compléter » ou un clic sur la ligne fait défiler jusqu'à la case, la place au centre, y met le curseur et l'entoure ; l'étape d'un formulaire en étapes s'ouvre (`sm-reveal`, écouté par `wizard.js`), comme une section repliée. Avant l'envoi, les cases obligatoires vides sont signalées de la même façon (sauf « Enregistrer le brouillon »).
+- Offre sur une demande de devis : le montant total s'affiche pendant la saisie du prix au kg (prix × poids), modifiable, avec « Arrondir au millier » / « Annuler l'arrondi » ; le prix au kg se recalcule (« Soit 98,50 DA/kg pour 12 650 kg »). En mode « Prix total », le prix au kg s'affiche. Prix, délai et validité obligatoires dès le navigateur.
+
 ## 0.42.0 — 2026-11-18
 
 - Comptes à rebours des études (composant `mission-clock`, `assets/js/clock.js` mis à jour chaque minute) : bandeau vert, orange dans les dernières heures (ou les 3 derniers jours de l'étude), rouge « En retard de … » une fois dépassé, avec barre de progression.

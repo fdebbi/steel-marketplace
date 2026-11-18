@@ -424,3 +424,9 @@ Validé sur la maquette 0.37.
 ## Schémas des profilés cotés (2026-11-18)
 
 - Les schémas affichent les vraies cotes de la dimension choisie (hauteur, largeur, diamètre) pour tous les profilés, et l'épaisseur de paroi pour les tubes et les cornières (« t = 2 mm »). Pas de lettres à côté des valeurs : plus lisible sur les petits tubes et sur mobile.
+
+## Messages au centre, cases manquantes, total des offres (2026-11-18)
+
+- Tous les messages (questions, réussite, avertissements, erreurs) s'ouvrent au centre de l'écran au style de la plateforme, sur le site et dans l'administration ReuSteel. Les messages de réussite se ferment seuls après 4 secondes ; les autres attendent un clic. Sans JavaScript, les bandeaux restent.
+- Informations manquantes : on emmène l'utilisateur à la case (défilement, curseur, case entourée, étape rouverte).
+- Offre au kg : le total s'affiche pendant la saisie ; le fournisseur peut le modifier ou l'arrondir au millier ; l'acheteur reçoit ce total et le prix au kg recalculé.

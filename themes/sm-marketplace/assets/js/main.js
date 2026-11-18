@@ -906,10 +906,11 @@
 			toast( form.getAttribute( 'data-sm-demo-message' ) || '✓' );
 		} );
 	} );
-	/* Confirm destructive buttons (data-sm-confirm="question"). */
+	/* Confirm destructive buttons (data-sm-confirm="question"): centred dialog of SM Core (0.43.0);
+	   the browser's window only when SM Core is not there. */
 	document.addEventListener( 'click', function ( e ) {
 		var btn = e.target.closest && e.target.closest( '[data-sm-confirm]' );
-		if ( btn && ! window.confirm( btn.getAttribute( 'data-sm-confirm' ) ) ) {
+		if ( btn && ! window.smDialog && ! window.confirm( btn.getAttribute( 'data-sm-confirm' ) ) ) {
 			e.preventDefault();
 		}
 	} );

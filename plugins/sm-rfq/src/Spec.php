@@ -8,7 +8,8 @@
  * dimensions, quantity, unit, weight_kg, title[fr|ar], description, notes, wilaya,
  * place, needed_by (Y-m-d), deadline (Y-m-d).
  *
- * Offer input: price_mode (total|kg), price, weight_kg, delivery_days,
+ * Offer input: price_mode (total|kg), price, weight_kg, total and total_for
+ * (0.2.0: total changed or rounded by the supplier), delivery_days,
  * delivery_included, validity_days, payment_terms, message.
  *
  * @package SM\Rfq
@@ -218,6 +219,20 @@ final class Spec {
 			$e['weight_kg'] = __( 'A price per kg needs a weight: give the weight you quote for.', 'sm-rfq' );
 		}
 		$total = 'kg' === $mode ? $price * $weight : $price;
+		// 0.2.0: with a price per kg, the supplier may change or round the total before sending.
+		// It is kept only if it was set for the same price and weight (total_for = "price|weight"),
+		// so a stale total never survives a new price.
+		$typed = \SM\Products\Spec::num( $in['total'] ?? '' );
+		if ( 'kg' === $mode && $typed > 0 && $total > 0 ) {
+			$for = explode( '|', (string) ( $in['total_for'] ?? '' ) );
+			if ( 2 === count( $for ) && abs( \SM\Products\Spec::num( $for[0] ) - $price ) < 0.005 && abs( \SM\Products\Spec::num( $for[1] ) - $w ) < 0.005 ) {
+				if ( $typed < $total * 0.5 || $typed > $total * 1.5 ) {
+					$e['total'] = __( 'The total is too far from your price per kg × the weight. Check it.', 'sm-rfq' );
+				} else {
+					$total = $typed;
+				}
+			}
+		}
 		$d['price_mode']   = $mode;
 		$d['price']        = $price;
 		$d['weight_kg']    = $w;

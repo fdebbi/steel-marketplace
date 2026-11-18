@@ -166,7 +166,7 @@ final class Admin {
 					echo '<button class="button button-primary" name="decision" value="approve">' . esc_html__( 'Publish', 'sm-products' ) . '</button> ';
 				}
 				echo '<input name="reason" placeholder="' . esc_attr__( 'Reason (sent to the seller)', 'sm-products' ) . '" style="width:180px"> <button class="button" name="decision" value="reject">' . esc_html( 'published' === $p->status ? __( 'Unpublish', 'sm-products' ) : __( 'Request changes', 'sm-products' ) ) . '</button>';
-				echo ' <button class="button button-link-delete" name="decision" value="delete" onclick="return confirm(this.getAttribute(\'data-confirm\'))" data-confirm="' . esc_attr__( 'Delete this listing for good? The seller receives your reason.', 'sm-products' ) . '">' . esc_html__( 'Delete', 'sm-products' ) . '</button>';
+				echo ' <button class="button button-link-delete" name="decision" value="delete" data-sm-confirm="' . esc_attr__( 'Delete this listing for good? The seller receives your reason.', 'sm-products' ) . '">' . esc_html__( 'Delete', 'sm-products' ) . '</button>';
 				echo '</form>';
 			}
 			if ( 'rejected' === $p->status && $p->reject_reason ) {

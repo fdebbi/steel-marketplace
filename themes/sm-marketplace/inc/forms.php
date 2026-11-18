@@ -77,20 +77,23 @@ function sm_theme_notices( $general_only = false ) {
 	$errors  = array_filter( $items, static fn( $n ) => 'error' === $n['type'] && ( ! $general_only || '' === $n['field'] ) );
 	$success = array_filter( $items, static fn( $n ) => 'success' === $n['type'] );
 	if ( $errors ) {
-		echo '<div class="sm-notice sm-notice--error" role="alert">' . sm_get_icon( 'alert' ) . '<div>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		// 0.43.0: data-sm-flash — with JavaScript the message opens in the centre (forms.js),
+		// each error leading to its field; without it, the banner stays.
+		echo '<div class="sm-notice sm-notice--error" role="alert" data-sm-flash="error">' . sm_get_icon( 'alert' ) . '<div>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		if ( count( $errors ) > 1 || $general_only ) {
 			echo '<ul>';
 			foreach ( $errors as $n ) {
-				echo '<li>' . esc_html( $n['message'] ) . '</li>';
+				echo '<li data-field="' . esc_attr( (string) $n['field'] ) . '">' . esc_html( $n['message'] ) . '</li>';
 			}
 			echo '</ul>';
 		} else {
-			echo '<p>' . esc_html( reset( $errors )['message'] ) . '</p>';
+			$n = reset( $errors );
+			echo '<p data-field="' . esc_attr( (string) $n['field'] ) . '">' . esc_html( $n['message'] ) . '</p>';
 		}
 		echo '</div></div>';
 	}
 	foreach ( $success as $n ) {
-		echo '<div class="sm-notice sm-notice--success" role="status">' . sm_get_icon( 'check' ) . '<p>' . esc_html( $n['message'] ) . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		echo '<div class="sm-notice sm-notice--success" role="status" data-sm-flash="success">' . sm_get_icon( 'check' ) . '<p>' . esc_html( $n['message'] ) . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 }
 

@@ -1,5 +1,11 @@
 # Changelog — sm-core
 
+## 0.8.6 — 2026-11-18
+
+- Fenêtre de message centrée commune (`assets/js/sm-dialog.js`, `assets/css/sm-dialog.css`, `Support\Dialog`) : `smDialog.open()` (question, action définitive en rouge, réussite qui se ferme seule, avertissement, lignes cliquables) et tout bouton `data-sm-confirm`. Enregistrée pour le site (le thème l'utilise) et chargée sur les pages ReuSteel de l'administration, où les questions et les messages « Enregistré » s'ouvrent aussi au centre.
+- Filtre `sm_dialog_auto` (sites de test seulement) : les tests automatiques répondent « oui » et gardent les bandeaux.
+- Modèles d'e-mails : « Rétablir le texte par défaut » demande confirmation dans la fenêtre centrée.
+
 ## 0.8.5 — 2026-11-18
 
 - E-mails : un paragraphe `[[Libellé|lien]]` devient un bouton (modèles modifiables dans SM → E-mails). Une notification peut nommer son bouton (`button`, par ex. « Voir la demande complète ») au lieu de « Ouvrir ».

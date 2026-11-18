@@ -595,7 +595,7 @@ final class Admin {
 			echo '<dt>' . esc_html__( 'Client payment', 'sm-engineering' ) . '</dt><dd>' . ( $m->client_paid_at ? esc_html__( 'received', 'sm-engineering' ) . ' — ' . self::date( $m->client_paid_at ) : ( $m->advance_paid_at ? esc_html__( 'advance received', 'sm-engineering' ) . ' — ' . self::date( $m->advance_paid_at ) : esc_html__( 'not recorded', 'sm-engineering' ) ) ) . '</dd></dl>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 		$act = static function ( $do, $label, $primary = false, $confirm = '' ) use ( $m ) {
-			echo '<button class="button' . ( $primary ? ' button-primary' : '' ) . '" name="do" value="' . esc_attr( $do ) . '"' . ( $confirm ? ' onclick="return confirm(\'' . esc_js( $confirm ) . '\')"' : '' ) . '>' . esc_html( $label ) . '</button> ';
+			echo '<button class="button' . ( $primary ? ' button-primary' : '' ) . '" name="do" value="' . esc_attr( $do ) . '"' . ( $confirm ? ' data-sm-confirm="' . esc_attr( $confirm ) . '"' : '' ) . '>' . esc_html( $label ) . '</button> ';
 		};
 		if ( in_array( $m->status, array( 'submitted', 'quoted' ), true ) ) {
 			echo '<h3>' . esc_html( 'quoted' === $m->status ? __( 'Change the quote', 'sm-engineering' ) : __( 'Send the quote to the client', 'sm-engineering' ) ) . '</h3>';

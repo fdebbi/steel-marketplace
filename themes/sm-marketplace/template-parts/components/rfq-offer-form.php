@@ -1,7 +1,8 @@
 <?php
 /**
- * Offer form of a supplier on a request for quotation (sm-rfq). Totals and the
- * price per kg are computed by the server when the offer is sent.
+ * Offer form of a supplier on a request for quotation (sm-rfq). 0.43.0: the total
+ * shows while typing (price per kg × weight); the supplier may change or round it
+ * (« Arrondir au millier ») and the price per kg follows. The server checks it again.
  *
  * @var array $args { item: array }
  * @package SM_Marketplace
@@ -23,6 +24,17 @@ $val  = static function ( $k, $d = '' ) use ( $old, $mine ) {
 };
 $mode = 'kg' === $val( 'price_mode', $r['weight_kg'] ? 'kg' : 'total' ) ? 'kg' : 'total';
 $ws   = (array) sm_theme_data( 'rfq_settings' );
+// The total set by the supplier (kept only for the same price and weight, see sm-rfq Spec::offer).
+if ( isset( $old['total'] ) ) {
+	$total_v   = (string) $old['total'];
+	$total_for = (string) ( $old['total_for'] ?? '' );
+} elseif ( $mine && 'withdrawn' !== $mine['status'] && 'kg' === $mine['price_mode'] ) {
+	$total_v   = (string) ( 0 + $mine['total_price'] );
+	$total_for = ( 0 + $mine['price'] ) . '|' . ( 'supplier' === $mine['weight_from'] ? 0 + $mine['weight_kg'] : 0 );
+} else {
+	$total_v   = '';
+	$total_for = '';
+}
 ?>
 <section class="sm-panel smq-offer" id="smq-offer">
 	<h2 class="sm-panel__title"><?php echo esc_html( $mine && 'withdrawn' !== $mine['status'] ? __( 'Update your offer', 'sm-marketplace' ) : __( 'Send your offer', 'sm-marketplace' ) ); ?></h2>
@@ -37,7 +49,7 @@ $ws   = (array) sm_theme_data( 'rfq_settings' );
 		</fieldset>
 		<div class="sm-field">
 			<label for="smq-price"><?php esc_html_e( 'Price', 'sm-marketplace' ); ?> <small>(<?php echo esc_html( sm_currency_label() ); ?>)</small></label>
-			<input id="smq-price" name="price" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( $val( 'price' ) ); ?>"<?php sm_theme_aria( 'price' ); ?>>
+			<input id="smq-price" name="price" inputmode="decimal" dir="ltr" required value="<?php echo esc_attr( $val( 'price' ) ); ?>"<?php sm_theme_aria( 'price' ); ?>>
 			<?php sm_theme_error( 'price' ); ?>
 		</div>
 		<div class="sm-field">
@@ -46,15 +58,28 @@ $ws   = (array) sm_theme_data( 'rfq_settings' );
 			<p class="sm-help"><?php echo esc_html( $r['weight_kg'] ? sprintf( /* translators: %s: weight. */ __( 'Leave empty to quote for the requested weight (%s kg). Give your own if it differs (e.g. actual weight of your stock).', 'sm-marketplace' ), sm_number( $r['weight_kg'] ) ) : __( 'The request gives no weight: give it to show your price per kg.', 'sm-marketplace' ) ); ?></p>
 			<?php sm_theme_error( 'weight_kg' ); ?>
 		</div>
+		<div class="smq-total" data-smq-total hidden data-request-kg="<?php echo esc_attr( (string) (float) $r['weight_kg'] ); ?>" data-i18n="<?php echo esc_attr( wp_json_encode( array( 'formula' => __( '%1$s × %2$s kg', 'sm-marketplace' ), 'perkg' => __( 'That is %1$s DA/kg for %2$s kg.', 'sm-marketplace' ), 'round' => __( 'Round to the thousand', 'sm-marketplace' ), 'unround' => __( 'Undo the rounding', 'sm-marketplace' ), 'noweight' => __( 'Give the weight to see the total.', 'sm-marketplace' ) ) ) ); ?>">
+			<div class="smq-total__head">
+				<label for="smq-total" data-smq-total-label data-kg="<?php esc_attr_e( 'Total amount of the offer', 'sm-marketplace' ); ?>" data-total="<?php esc_attr_e( 'Price per kg of the offer', 'sm-marketplace' ); ?>"><?php esc_html_e( 'Total amount of the offer', 'sm-marketplace' ); ?></label>
+				<small data-smq-formula></small>
+			</div>
+			<div class="smq-total__row" data-smq-kg-only>
+				<input id="smq-total" name="total" inputmode="decimal" dir="ltr" value="<?php echo esc_attr( $total_v ); ?>"<?php sm_theme_aria( 'total' ); ?>>
+				<button type="button" class="sm-btn sm-btn--ghost smq-total__round" data-smq-round hidden><?php esc_html_e( 'Round to the thousand', 'sm-marketplace' ); ?></button>
+			</div>
+			<input type="hidden" name="total_for" value="<?php echo esc_attr( $total_for ); ?>" data-smq-total-for>
+			<p class="sm-help" data-smq-note><?php esc_html_e( 'You can change this amount before sending.', 'sm-marketplace' ); ?></p>
+			<?php sm_theme_error( 'total' ); ?>
+		</div>
 		<div class="sm-field sm-field--row">
 			<div>
 				<label for="smq-days"><?php esc_html_e( 'Delivery time (days)', 'sm-marketplace' ); ?></label>
-				<input id="smq-days" name="delivery_days" inputmode="numeric" dir="ltr" value="<?php echo esc_attr( $val( 'delivery_days' ) ); ?>"<?php sm_theme_aria( 'delivery_days' ); ?>>
+				<input id="smq-days" name="delivery_days" inputmode="numeric" dir="ltr" required value="<?php echo esc_attr( $val( 'delivery_days' ) ); ?>"<?php sm_theme_aria( 'delivery_days' ); ?>>
 				<?php sm_theme_error( 'delivery_days' ); ?>
 			</div>
 			<div>
 				<label for="smq-valid"><?php esc_html_e( 'Price valid for (days)', 'sm-marketplace' ); ?></label>
-				<input id="smq-valid" name="validity_days" inputmode="numeric" dir="ltr" value="<?php echo esc_attr( $val( 'validity_days', '15' ) ); ?>"<?php sm_theme_aria( 'validity_days' ); ?>>
+				<input id="smq-valid" name="validity_days" inputmode="numeric" dir="ltr" required value="<?php echo esc_attr( $val( 'validity_days', '15' ) ); ?>"<?php sm_theme_aria( 'validity_days' ); ?>>
 				<?php sm_theme_error( 'validity_days' ); ?>
 			</div>
 		</div>
@@ -78,6 +103,6 @@ $ws   = (array) sm_theme_data( 'rfq_settings' );
 			<small><?php echo esc_html( sprintf( /* translators: 1: files, 2: MB. */ __( 'PDF or images, up to %1$d files of %2$d MB.', 'sm-marketplace' ), (int) ( $ws['max_files'] ?? 5 ), (int) ( $ws['file_mb'] ?? 10 ) ) ); ?></small>
 		</label>
 		<button class="sm-btn sm-btn--accent sm-btn--block" type="submit"><?php sm_icon( 'check' ); ?><?php echo esc_html( $mine && 'withdrawn' !== $mine['status'] ? __( 'Update my offer', 'sm-marketplace' ) : __( 'Send my offer', 'sm-marketplace' ) ); ?></button>
-		<p class="sm-help"><?php esc_html_e( 'Only the buyer sees your offer. Your total and price per kg are calculated when you send it.', 'sm-marketplace' ); ?></p>
+		<p class="sm-help"><?php esc_html_e( 'Only the buyer sees your offer: he receives this total and the price per kg.', 'sm-marketplace' ); ?></p>
 	</form>
 </section>

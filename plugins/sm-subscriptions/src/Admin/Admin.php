@@ -218,7 +218,7 @@ final class Admin {
 			$c = Companies::get( (int) $s->company_id );
 			echo '<tr><td>' . self::company_cell( $s->company_id ) . '</td><td>' . esc_html( Plans::name( $s->plan, $c ? $c->account_class : 'company' ) ) . ( $s->founder ? ' · ' . esc_html__( 'founding member', 'sm-subscriptions' ) : '' ) . '</td><td>' . self::date( $s->ends_at ) . '</td><td>' . esc_html( $s->note ) . '</td><td>'; // phpcs:ignore WordPress.Security.EscapeOutput
 			self::form_open( 'smsub_cancel' );
-			echo '<input type="hidden" name="company_id" value="' . (int) $s->company_id . '"><button class="button-link-delete" onclick="return confirm(this.dataset.c)" data-c="' . esc_attr__( 'Stop this plan now? What goes beyond the free plan will be paused.', 'sm-subscriptions' ) . '">' . esc_html__( 'Stop', 'sm-subscriptions' ) . '</button></form></td></tr>';
+			echo '<input type="hidden" name="company_id" value="' . (int) $s->company_id . '"><button class="button-link-delete" value="stop" data-sm-confirm="' . esc_attr__( 'Stop this plan now? What goes beyond the free plan will be paused.', 'sm-subscriptions' ) . '">' . esc_html__( 'Stop', 'sm-subscriptions' ) . '</button></form></td></tr>';
 		}
 		if ( ! $rows ) {
 			echo '<tr><td colspan="5">' . esc_html__( 'No paid plan in force.', 'sm-subscriptions' ) . '</td></tr>';

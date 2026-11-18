@@ -22,6 +22,12 @@ function sm_theme_enqueue_assets() {
 	wp_style_add_data( 'sm-main', 'suffix', '' );
 
 	wp_enqueue_script( 'sm-main', SM_THEME_URI . '/assets/js/main.js', array(), sm_theme_asset_version( 'assets/js/main.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	// 0.43.0: centred messages (SM Core), missing fields, total of an offer.
+	if ( wp_script_is( 'sm-dialog', 'registered' ) ) {
+		wp_enqueue_style( 'sm-dialog' );
+		wp_enqueue_script( 'sm-dialog' );
+	}
+	wp_enqueue_script( 'sm-forms', SM_THEME_URI . '/assets/js/forms.js', array(), sm_theme_asset_version( 'assets/js/forms.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	// Size lists with search (0.36.0): publication form and weight calculator.
 	wp_enqueue_script( 'sm-size-picker', SM_THEME_URI . '/assets/js/size-picker.js', array(), sm_theme_asset_version( 'assets/js/size-picker.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	wp_enqueue_script( 'sm-motion', SM_THEME_URI . '/assets/js/motion.js', array(), sm_theme_asset_version( 'assets/js/motion.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -75,6 +81,13 @@ function sm_theme_enqueue_assets() {
 				'prev'      => __( 'Previous photo', 'sm-marketplace' ),
 				'next'      => __( 'Next photo', 'sm-marketplace' ),
 				'original'  => __( 'Original size', 'sm-marketplace' ),
+				'required'  => __( 'Fill in this field.', 'sm-marketplace' ),
+				'email'     => __( 'Check this e-mail address.', 'sm-marketplace' ),
+				'invalid'   => __( 'Check this field.', 'sm-marketplace' ),
+				/* translators: %d: number of fields. */
+				'missing'   => __( 'To complete or correct (%d)', 'sm-marketplace' ),
+				'complete'  => __( 'Complete', 'sm-marketplace' ),
+				'attention' => __( 'Please note', 'sm-marketplace' ),
 			),
 		)
 	);

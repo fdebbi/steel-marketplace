@@ -574,87 +574,92 @@ msgstr ""
 msgid "This request is not available."
 msgstr "Cette demande n’est pas disponible."
 
-#: src/Spec.php:72
+#: src/Spec.php:73
 msgid "Choose what you need."
 msgstr "Choisissez ce dont vous avez besoin."
 
-#: src/Spec.php:79
+#: src/Spec.php:80
 msgid "This category does not belong to the chosen market."
 msgstr "Cette catégorie n’appartient pas au marché choisi."
 
-#: src/Spec.php:112
+#: src/Spec.php:113
 msgid "Give the quantity, or list the profiles above."
 msgstr "Indiquez la quantité, ou listez les profils ci-dessus."
 
-#: src/Spec.php:115
+#: src/Spec.php:116
 msgid "Choose the unit."
 msgstr "Choisissez l’unité."
 
-#: src/Spec.php:121 src/Spec.php:206
+#: src/Spec.php:122 src/Spec.php:207
 msgid "This weight is outside the accepted range."
 msgstr "Ce poids est hors de la plage acceptée."
 
-#: src/Spec.php:134
+#: src/Spec.php:135
 msgid "Give your request a title (in French or in Arabic)."
 msgstr "Donnez un titre à votre demande (en français ou en arabe)."
 
-#: src/Spec.php:138
+#: src/Spec.php:139
 msgid "Describe what you need (grade, finish, tolerances, standards…)."
 msgstr "Décrivez votre besoin (nuance, finition, tolérances, normes…)."
 
-#: src/Spec.php:140
+#: src/Spec.php:141
 msgid "The description is too long (4000 characters at most)."
 msgstr "La description est trop longue (4000 caractères au maximum)."
 
-#: src/Spec.php:144
+#: src/Spec.php:145
 msgid "The notes are too long (2000 characters at most)."
 msgstr "Les notes sont trop longues (2000 caractères au maximum)."
 
-#: src/Spec.php:149
+#: src/Spec.php:150
 msgid "Choose the delivery wilaya."
 msgstr "Choisissez la wilaya de livraison."
 
-#: src/Spec.php:158
+#: src/Spec.php:159
 msgid "The delivery date must be today or later."
 msgstr "La date de livraison doit être aujourd’hui ou plus tard."
 
-#: src/Spec.php:164
+#: src/Spec.php:165
 msgid "Choose the date until which suppliers can answer."
 msgstr ""
 "Choisissez la date jusqu’à laquelle les fournisseurs peuvent répondre."
 
 #. translators: %d: number of days.
-#: src/Spec.php:168
+#: src/Spec.php:169
 msgid "The answer deadline must be between tomorrow and %d days from today."
 msgstr ""
 "La date limite des offres doit être comprise entre demain et dans %d jours."
 
-#: src/Spec.php:170
+#: src/Spec.php:171
 msgid "The delivery date cannot be before the answer deadline."
 msgstr "La date de livraison ne peut pas précéder la date limite des offres."
 
-#: src/Spec.php:212
+#: src/Spec.php:213
 msgid "Enter your price."
 msgstr "Indiquez votre prix."
 
-#: src/Spec.php:215
+#: src/Spec.php:216
 msgid "This price is outside the accepted range."
 msgstr "Ce prix est hors de la plage acceptée."
 
-#: src/Spec.php:218
+#: src/Spec.php:219
 msgid "A price per kg needs a weight: give the weight you quote for."
 msgstr ""
 "Un prix au kg nécessite un poids : indiquez le poids sur lequel porte votre "
 "prix."
 
-#: src/Spec.php:229
+#: src/Spec.php:230
+msgid "The total is too far from your price per kg × the weight. Check it."
+msgstr ""
+"Le total est trop éloigné de votre prix au kg × le poids. Vérifiez-le."
+
+#: src/Spec.php:244
 msgid "Give the delivery time in days (0 if in stock today)."
 msgstr "Indiquez le délai de livraison en jours (0 si en stock aujourd’hui)."
 
-#: src/Spec.php:236
+#: src/Spec.php:251
 msgid "Say how many days your price is valid (1 to 180)."
 msgstr "Indiquez combien de jours votre prix est valable (1 à 180)."
 
-#: src/Spec.php:243
+#: src/Spec.php:258
 msgid "The message is too long (3000 characters at most)."
 msgstr "Le message est trop long (3000 caractères au maximum)."

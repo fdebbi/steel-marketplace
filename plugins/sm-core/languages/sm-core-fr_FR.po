@@ -1265,7 +1265,7 @@ msgstr "Ordre"
 msgid "Leave a name empty to use the default wording (translated)."
 msgstr "Laissez un nom vide pour garder le libellé par défaut (traduit)."
 
-#: src/Admin/Terms.php:182 src/Admin/Terms.php:227
+#: src/Admin/Terms.php:182 src/Admin/Terms.php:227 src/Support/Dialog.php:24
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -1803,27 +1803,27 @@ msgstr "Vous recevez cet e-mail suite à votre activité sur la plateforme."
 msgid "Hello %s,"
 msgstr "Bonjour %s,"
 
-#: src/Mail/Templates.php:156
+#: src/Mail/Templates.php:166
 msgid "Business account"
 msgstr "Compte entreprise"
 
-#: src/Mail/Templates.php:157
+#: src/Mail/Templates.php:167
 msgid "Supplier / distributor"
 msgstr "Fournisseur / distributeur"
 
-#: src/Mail/Templates.php:159
+#: src/Mail/Templates.php:169
 msgid "Hello, we need 40 bars delivered to Rouiba next month."
 msgstr "Bonjour, il nous faut 40 barres livrées à Rouiba le mois prochain."
 
-#: src/Mail/Templates.php:160
+#: src/Mail/Templates.php:170
 msgid "Price request"
 msgstr "Demande de prix"
 
-#: src/Mail/Templates.php:167
+#: src/Mail/Templates.php:177
 msgid "Steel products"
 msgstr "Produits sidérurgiques"
 
-#: src/Mail/Templates.php:170
+#: src/Mail/Templates.php:180
 msgid "Published"
 msgstr "Publié"
 
@@ -1866,12 +1866,12 @@ msgstr "Votre demande de vérification doit être complétée"
 msgid "The platform team could not validate your documents."
 msgstr "L’équipe de la plateforme n’a pas pu valider vos documents."
 
-#: src/Notifications/Notifications.php:136
+#: src/Notifications/Notifications.php:137
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/Notifications/Notifications.php:138
-#: src/Notifications/Notifications.php:156
+#: src/Notifications/Notifications.php:139
+#: src/Notifications/Notifications.php:157
 msgid "You receive this e-mail because you have an account on the platform."
 msgstr "Vous recevez cet e-mail car vous avez un compte sur la plateforme."
 
@@ -1950,6 +1950,22 @@ msgstr "Votre abonnement n’inclut pas cette action."
 #: src/Permissions/Permissions.php:158
 msgid "Engineering accounts offer services only."
 msgstr "Les comptes ingénierie proposent uniquement des services."
+
+#: src/Support/Dialog.php:23
+msgid "OK"
+msgstr "OK"
+
+#: src/Support/Dialog.php:25
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: src/Support/Dialog.php:26
+msgid "Understood"
+msgstr "J'ai compris"
+
+#: src/Support/Dialog.php:27
+msgid "Complete"
+msgstr "Compléter"
 
 #. translators: %s: maximum size, e.g. 8 MB.
 #: src/Support/Forms.php:94

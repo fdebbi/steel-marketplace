@@ -1,5 +1,9 @@
 # Changelog — sm-engineering
 
+## 0.8.1 — 2026-11-18
+
+- Administration : les actions sur une mission qui demandent confirmation utilisent la fenêtre centrée de SM Core 0.8.6.
+
 ## 0.8.0 — 2026-11-18 (avec le thème 0.42.0 et SM Core 0.8.5)
 
 - Échéances : `Missions::clock()` — 24 h pour répondre à partir de l'attribution, puis le délai de l'ingénieur (`engineer_days`) dès son acceptation ; pour le client, la date de livraison du devis (`quote_days`) fixée au premier démarrage de l'étude (colonne `client_due_at`), qui ne bouge pas si l'ingénieur change. Base v7 : `client_due_at`, `eng_reminded_at`, `eng_late_at`, `study_reminded_at`, `study_late_at`.

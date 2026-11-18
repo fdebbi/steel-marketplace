@@ -150,3 +150,7 @@ T.update({
 })
 T.update({"lot": ("lot", "دفعة")})
 P.update({("piece", "pieces"): (["pièce", "pièces"], ["قطعة", "قطعة", "قطعتان", "قطع", "قطعة", "قطعة"])})
+
+T.update({
+'The total is too far from your price per kg × the weight. Check it.': ('Le total est trop éloigné de votre prix au kg × le poids. Vérifiez-le.', 'المجموع بعيد جدًا عن سعرك للكيلوغرام × الوزن. تحقق منه.'),
+})

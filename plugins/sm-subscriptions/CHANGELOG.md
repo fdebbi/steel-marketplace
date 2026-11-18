@@ -1,5 +1,9 @@
 # Changelog — sm-subscriptions
 
+## 0.2.1 — 2026-11-18
+
+- Administration : « Arrêter » une formule demande confirmation dans la fenêtre centrée de SM Core 0.8.6.
+
 ## 0.2.0 — 2026-11-13
 
 - Commandes d'autres extensions (filtre `sm_sub_order_quote`, avec leur propre taux de TVA) : avance et solde des études d'ingénierie (sm-engineering 0.3.0). Libellé (`sm_sub_order_label`) et page de retour (`sm_sub_order_back`) fournis par l'extension.

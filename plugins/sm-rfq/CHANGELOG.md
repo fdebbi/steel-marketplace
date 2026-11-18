@@ -1,5 +1,9 @@
 # Changelog — sm-rfq
 
+## 0.2.0 — 2026-11-18 (avec le thème 0.43.0)
+
+- Offre au kg : le fournisseur peut modifier ou arrondir le montant total avant l'envoi (champs `total` et `total_for`). Le total est gardé seulement s'il a été fixé pour le même prix et le même poids, et s'il reste entre la moitié et une fois et demie de prix × poids ; le prix au kg enregistré se recalcule à partir du total.
+
 ## 0.1.3 — 2026-11-12 (Phase 10)
 
 - `Offers::count_month()` ; filtre `sm_rfq_offer_limit` sur la première réponse d'un compte à une demande.

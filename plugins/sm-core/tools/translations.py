@@ -494,3 +494,10 @@ T.update({
  "مرحبًا بك في {site}، سوق الفولاذ في الجزائر!\n\nتم إنشاء حساب {entreprise}. لتفعيله أدخل رمز التحقق هذا (صالح 10 دقائق):\n\n{code}\n\nتأكيد حسابي:\n{lien_code}\n\nبعد ذلك أكمل صفحتك (الشعار، التقديم، الموقع)، وانشر إعلاناتك وخدماتك، وأرسل وثائقك للحصول على شارة «موثّق».\n\nلم تنشئ حسابا؟ تجاهل هذه الرسالة.\nفريق {site}"),
 })
 P[("%d entry uses it. Choose what replaces it before the deletion:", "%d entries use it. Choose what replaces it before the deletion:")] = (["%d élément l’utilise. Choisissez ce qui le remplace avant la suppression :", "%d éléments l’utilisent. Choisissez ce qui le remplace avant la suppression :"], ["لا شيء يستعمله.", "عنصر واحد يستعمله. اختر بديله قبل الحذف:", "عنصران يستعملانه. اختر بديله قبل الحذف:", "%d عناصر تستعمله. اختر بديله قبل الحذف:", "%d عنصرا يستعمله. اختر بديله قبل الحذف:", "%d عنصر يستعمله. اختر بديله قبل الحذف:"])
+
+T.update({
+'OK': ('OK', 'حسنًا'),
+'Confirm': ('Confirmer', 'تأكيد'),
+'Understood': ("J'ai compris", 'فهمت'),
+'Complete': ('Compléter', 'إكمال'),
+})

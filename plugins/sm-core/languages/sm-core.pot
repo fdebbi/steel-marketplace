@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-18T15:58:28+00:00\n"
+"POT-Creation-Date: 2026-11-18T18:30:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-core\n"
@@ -1178,6 +1178,7 @@ msgstr ""
 
 #: src/Admin/Terms.php:182
 #: src/Admin/Terms.php:227
+#: src/Support/Dialog.php:24
 msgid "Cancel"
 msgstr ""
 
@@ -1765,6 +1766,22 @@ msgstr ""
 
 #: src/Permissions/Permissions.php:158
 msgid "Engineering accounts offer services only."
+msgstr ""
+
+#: src/Support/Dialog.php:23
+msgid "OK"
+msgstr ""
+
+#: src/Support/Dialog.php:25
+msgid "Confirm"
+msgstr ""
+
+#: src/Support/Dialog.php:26
+msgid "Understood"
+msgstr ""
+
+#: src/Support/Dialog.php:27
+msgid "Complete"
 msgstr ""
 
 #. translators: %s: maximum size, e.g. 8 MB.

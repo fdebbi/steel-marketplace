@@ -213,6 +213,12 @@
 		show( order[ order.indexOf( current ) + 1 ], true );
 	} );
 	btnPrev.addEventListener( 'click', function () { show( order[ Math.max( 0, order.indexOf( current ) - 1 ) ], true ); } );
+	// 0.43.0: a field to complete (forms.js) opens its step.
+	form.addEventListener( 'sm-reveal', function ( e ) {
+		var p = e.target.closest && e.target.closest( '[data-wz-step]' );
+		var n = p ? parseInt( p.getAttribute( 'data-wz-step' ), 10 ) : 0;
+		if ( n && n !== current && order.indexOf( n ) > -1 ) { show( n, true ); }
+	} );
 	window.addEventListener( 'popstate', function ( e ) { if ( e.state && e.state.wz ) { show( e.state.wz, false ); } } );
 	$$( '[data-wz-go]' ).forEach( function ( b ) { b.addEventListener( 'click', function () { show( parseInt( b.getAttribute( 'data-wz-go' ), 10 ), true ); } ); } );
 	form.addEventListener( 'keydown', function ( e ) {

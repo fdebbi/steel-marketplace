@@ -2395,3 +2395,21 @@ T.update({
 P.update({
 ("{d} left · time of your quote: %d day", "{d} left · time of your quote: %d days"): (["Il reste {d} · délai de votre devis : %d jour", "Il reste {d} · délai de votre devis : %d jours"], ["متبقٍ {d} · مدة عرضك: %d يوم", "متبقٍ {d} · مدة عرضك: يوم واحد", "متبقٍ {d} · مدة عرضك: يومان", "متبقٍ {d} · مدة عرضك: %d أيام", "متبقٍ {d} · مدة عرضك: %d يومًا", "متبقٍ {d} · مدة عرضك: %d يوم"]),
 })
+
+T.update({
+'Fill in this field.': ('Remplissez cette case.', 'املأ هذه الخانة.'),
+'Check this e-mail address.': ('Vérifiez cette adresse e-mail.', 'تحقق من هذا البريد الإلكتروني.'),
+'Check this field.': ('Vérifiez cette case.', 'تحقق من هذه الخانة.'),
+'To complete or correct (%d)': ('À compléter ou corriger (%d)', 'للإكمال أو التصحيح (%d)'),
+'Complete': ('Compléter', 'إكمال'),
+'Please note': ('Attention', 'تنبيه'),
+'%1$s × %2$s kg': ('%1$s × %2$s kg', '%1$s × %2$s kg'),
+'That is %1$s DA/kg for %2$s kg.': ('Soit %1$s DA/kg pour %2$s kg.', 'أي %1$s DA/kg لـ %2$s kg.'),
+'Round to the thousand': ('Arrondir au millier', 'تقريب إلى الألف'),
+'Undo the rounding': ("Annuler l'arrondi", 'إلغاء التقريب'),
+'Give the weight to see the total.': ('Indiquez le poids pour voir le total.', 'أدخل الوزن لرؤية المجموع.'),
+'Total amount of the offer': ("Montant total de l'offre", 'المبلغ الإجمالي للعرض'),
+'Price per kg of the offer': ("Prix au kg de l'offre", 'سعر الكيلوغرام في العرض'),
+'You can change this amount before sending.': ("Vous pouvez modifier ce montant avant d'envoyer.", 'يمكنك تعديل هذا المبلغ قبل الإرسال.'),
+'Only the buyer sees your offer: he receives this total and the price per kg.': ("Seul l'acheteur voit votre offre : il reçoit ce total et le prix au kg.", 'المشتري وحده يرى عرضك: يستلم هذا المجموع وسعر الكيلوغرام.'),
+})

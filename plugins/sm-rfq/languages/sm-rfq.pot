@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM RFQ 0.1.3\n"
+"Project-Id-Version: SM RFQ 0.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-rfq\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-12T13:35:25+00:00\n"
+"POT-Creation-Date: 2026-11-18T18:30:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-rfq\n"
@@ -510,84 +510,88 @@ msgstr ""
 msgid "This request is not available."
 msgstr ""
 
-#: src/Spec.php:72
+#: src/Spec.php:73
 msgid "Choose what you need."
 msgstr ""
 
-#: src/Spec.php:79
+#: src/Spec.php:80
 msgid "This category does not belong to the chosen market."
 msgstr ""
 
-#: src/Spec.php:112
+#: src/Spec.php:113
 msgid "Give the quantity, or list the profiles above."
 msgstr ""
 
-#: src/Spec.php:115
+#: src/Spec.php:116
 msgid "Choose the unit."
 msgstr ""
 
-#: src/Spec.php:121
-#: src/Spec.php:206
+#: src/Spec.php:122
+#: src/Spec.php:207
 msgid "This weight is outside the accepted range."
 msgstr ""
 
-#: src/Spec.php:134
+#: src/Spec.php:135
 msgid "Give your request a title (in French or in Arabic)."
 msgstr ""
 
-#: src/Spec.php:138
+#: src/Spec.php:139
 msgid "Describe what you need (grade, finish, tolerances, standards…)."
 msgstr ""
 
-#: src/Spec.php:140
+#: src/Spec.php:141
 msgid "The description is too long (4000 characters at most)."
 msgstr ""
 
-#: src/Spec.php:144
+#: src/Spec.php:145
 msgid "The notes are too long (2000 characters at most)."
 msgstr ""
 
-#: src/Spec.php:149
+#: src/Spec.php:150
 msgid "Choose the delivery wilaya."
 msgstr ""
 
-#: src/Spec.php:158
+#: src/Spec.php:159
 msgid "The delivery date must be today or later."
 msgstr ""
 
-#: src/Spec.php:164
+#: src/Spec.php:165
 msgid "Choose the date until which suppliers can answer."
 msgstr ""
 
 #. translators: %d: number of days.
-#: src/Spec.php:168
+#: src/Spec.php:169
 msgid "The answer deadline must be between tomorrow and %d days from today."
 msgstr ""
 
-#: src/Spec.php:170
+#: src/Spec.php:171
 msgid "The delivery date cannot be before the answer deadline."
 msgstr ""
 
-#: src/Spec.php:212
+#: src/Spec.php:213
 msgid "Enter your price."
 msgstr ""
 
-#: src/Spec.php:215
+#: src/Spec.php:216
 msgid "This price is outside the accepted range."
 msgstr ""
 
-#: src/Spec.php:218
+#: src/Spec.php:219
 msgid "A price per kg needs a weight: give the weight you quote for."
 msgstr ""
 
-#: src/Spec.php:229
+#: src/Spec.php:230
+msgid "The total is too far from your price per kg × the weight. Check it."
+msgstr ""
+
+#: src/Spec.php:244
 msgid "Give the delivery time in days (0 if in stock today)."
 msgstr ""
 
-#: src/Spec.php:236
+#: src/Spec.php:251
 msgid "Say how many days your price is valid (1 to 180)."
 msgstr ""
 
-#: src/Spec.php:243
+#: src/Spec.php:258
 msgid "The message is too long (3000 characters at most)."
 msgstr ""

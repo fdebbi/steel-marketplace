@@ -1,0 +1,26 @@
+/* Centred messages of the platform (SM Core 0.8.6). Colours follow the theme tokens when present. */
+.sm-dlg { border: 0; padding: 0; background: transparent; max-inline-size: calc(100vw - 32px); inline-size: 420px; margin: auto; color: var(--sm-text, #141b22); font-family: inherit; }
+.sm-dlg::backdrop { background: rgba(10, 15, 20, .55); backdrop-filter: blur(2px); }
+.sm-dlg__box { background: var(--sm-surface, #fff); border-radius: 18px; padding: 24px 22px 20px; text-align: center; box-shadow: 0 24px 60px rgba(0, 0, 0, .3); animation: sm-dlg-in .16s ease-out; }
+@keyframes sm-dlg-in { from { transform: translateY(8px) scale(.98); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .sm-dlg__box { animation: none; } }
+.sm-dlg__ic { display: grid; place-items: center; inline-size: 54px; block-size: 54px; margin: 0 auto 10px; border-radius: 50%; font-size: 26px; font-weight: 700; background: #e7f9f0; color: #04663c; }
+.sm-dlg--danger .sm-dlg__ic { background: #fde2e2; color: #B42318; }
+.sm-dlg--warning .sm-dlg__ic { background: #fde9c2; color: #B45309; }
+.sm-dlg__title { margin: 0 0 6px; font-family: var(--sm-font-display, inherit); font-size: 1.2rem; font-weight: 700; line-height: 1.3; color: inherit; }
+.sm-dlg__text { margin: 0 0 16px; color: var(--sm-muted, #5B6670); font-size: .95rem; line-height: 1.5; }
+.sm-dlg__title:last-child, .sm-dlg__title + .sm-dlg__buttons { margin-block-start: 10px; }
+.sm-dlg__items { list-style: none; margin: 4px 0 14px; padding: 0; text-align: start; display: grid; gap: 6px; }
+.sm-dlg__item { display: flex; inline-size: 100%; justify-content: space-between; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--sm-line, #dde1e4); border-radius: 10px; background: var(--sm-surface, #fff); color: inherit; font: inherit; font-size: .93rem; text-align: start; cursor: pointer; }
+.sm-dlg__item:hover { border-color: var(--sm-accent, #06CE77); }
+.sm-dlg__go { color: var(--sm-accent-ink, #04663c); font-weight: 700; }
+[dir="rtl"] .sm-dlg__go { transform: scaleX(-1); }
+.sm-dlg__buttons { display: flex; gap: 10px; }
+.sm-dlg__btn { flex: 1; min-block-size: 46px; padding: 10px 16px; border: 0; border-radius: 10px; background: var(--sm-accent, #06CE77); color: #06281a; font: inherit; font-weight: 700; cursor: pointer; }
+.sm-dlg__btn--ghost { background: var(--sm-surface, #fff); border: 1.5px solid var(--sm-line, #dde1e4); color: var(--sm-text, #141b22); }
+.sm-dlg__btn--danger { background: #DC2626; color: #fff; }
+.sm-dlg__btn:focus-visible, .sm-dlg__item:focus-visible { outline: 3px solid var(--sm-focus, #2563eb); outline-offset: 2px; }
+.sm-dlg__bar { block-size: 4px; margin-block-start: 14px; border-radius: 4px; background: #e9ecee; overflow: hidden; }
+.sm-dlg__bar i { display: block; block-size: 100%; background: var(--sm-accent, #06CE77); animation: sm-dlg-bar linear forwards; transform-origin: left; }
+[dir="rtl"] .sm-dlg__bar i { transform-origin: right; }
+@keyframes sm-dlg-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }

@@ -446,7 +446,7 @@ final class MailAdmin {
 		echo ' ';
 		submit_button( __( 'Save and send me a test', 'sm-core' ), 'secondary', 'do_test', false );
 		echo ' ';
-		submit_button( __( 'Restore the default text', 'sm-core' ), 'delete', 'do_reset', false, array( 'onclick' => 'return confirm(' . wp_json_encode( __( 'Replace your text by the default one in both languages?', 'sm-core' ) ) . ')' ) );
+		submit_button( __( 'Restore the default text', 'sm-core' ), 'delete', 'do_reset', false, array( 'data-sm-confirm' => __( 'Replace your text by the default one in both languages?', 'sm-core' ) ) );
 		echo '</p></form>';
 		echo '<h2>' . esc_html__( 'Preview with example values', 'sm-core' ) . '</h2><div class="smm-grid">';
 		foreach ( Templates::LANGS as $lang ) {

@@ -264,7 +264,7 @@ $ck     = Missions::clock( $m, 'engineer' );
 sme_assert( 'respond' === $ck['kind'] && 24 * HOUR_IN_SECONDS === $ck['due'] - $ck['start'] && 'ok' === Missions::clock_state( $ck ) && null === Missions::clock( $m, 'client' ), 'offered: 24 hours to answer; no client clock yet' );
 $offer = \SM\Core\Notifications\Notifications::types()['mission.offered'];
 $otext = ( $offer['body'] )( array( 'mission_id' => $mid ) );
-sme_assert( false !== strpos( $otext, $m->ref ) && false !== strpos( $otext, Missions::due_text( $ck['due'] ) ) && 'See the full request' === ( $offer['button'] )( array() ), 'offer: short text with the answer time and a "see the full request" button' );
+sme_assert( false !== strpos( $otext, $m->ref ) && false !== strpos( $otext, Missions::due_text( $ck['due'] ) ) && __( 'See the full request', 'sm-engineering' ) === ( $offer['button'] )( array() ), 'offer: short text with the answer time and a "see the full request" button' );
 $back = static fn( $col, $sec ) => $wpdb->update( $mt, array( $col => gmdate( 'Y-m-d H:i:s', time() - $sec ) ), array( 'id' => $mid ) );
 $r0 = $ncount( 'mission.respond_reminder' );
 $back( 'assigned_at', 21 * HOUR_IN_SECONDS );

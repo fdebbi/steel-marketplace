@@ -1242,7 +1242,7 @@ msgstr "الترتيب"
 msgid "Leave a name empty to use the default wording (translated)."
 msgstr "اترك الاسم فارغا لاستعمال التسمية الافتراضية (مترجمة)."
 
-#: src/Admin/Terms.php:182 src/Admin/Terms.php:227
+#: src/Admin/Terms.php:182 src/Admin/Terms.php:227 src/Support/Dialog.php:24
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -1774,27 +1774,27 @@ msgstr "تتلقى هذا البريد بسبب نشاطك على المنصة."
 msgid "Hello %s,"
 msgstr "مرحبا %s،"
 
-#: src/Mail/Templates.php:156
+#: src/Mail/Templates.php:166
 msgid "Business account"
 msgstr "حساب مؤسسة"
 
-#: src/Mail/Templates.php:157
+#: src/Mail/Templates.php:167
 msgid "Supplier / distributor"
 msgstr "مورد / موزع"
 
-#: src/Mail/Templates.php:159
+#: src/Mail/Templates.php:169
 msgid "Hello, we need 40 bars delivered to Rouiba next month."
 msgstr "مرحبًا، نحتاج 40 قضيبًا تُسلَّم في الرويبة الشهر المقبل."
 
-#: src/Mail/Templates.php:160
+#: src/Mail/Templates.php:170
 msgid "Price request"
 msgstr "طلب سعر"
 
-#: src/Mail/Templates.php:167
+#: src/Mail/Templates.php:177
 msgid "Steel products"
 msgstr "المنتجات الفولاذية"
 
-#: src/Mail/Templates.php:170
+#: src/Mail/Templates.php:180
 msgid "Published"
 msgstr "منشور"
 
@@ -1837,12 +1837,12 @@ msgstr "طلب التوثيق يحتاج إلى تعديلات"
 msgid "The platform team could not validate your documents."
 msgstr "لم يتمكن فريق المنصة من قبول وثائقك."
 
-#: src/Notifications/Notifications.php:136
+#: src/Notifications/Notifications.php:137
 msgid "Open"
 msgstr "فتح"
 
-#: src/Notifications/Notifications.php:138
-#: src/Notifications/Notifications.php:156
+#: src/Notifications/Notifications.php:139
+#: src/Notifications/Notifications.php:157
 msgid "You receive this e-mail because you have an account on the platform."
 msgstr "تصلك هذه الرسالة لأن لديك حسابا على المنصة."
 
@@ -1918,6 +1918,22 @@ msgstr "اشتراكك لا يشمل هذا الإجراء."
 #: src/Permissions/Permissions.php:158
 msgid "Engineering accounts offer services only."
 msgstr "حسابات الهندسة تعرض الخدمات فقط."
+
+#: src/Support/Dialog.php:23
+msgid "OK"
+msgstr "حسنًا"
+
+#: src/Support/Dialog.php:25
+msgid "Confirm"
+msgstr "تأكيد"
+
+#: src/Support/Dialog.php:26
+msgid "Understood"
+msgstr "فهمت"
+
+#: src/Support/Dialog.php:27
+msgid "Complete"
+msgstr "إكمال"
 
 #. translators: %s: maximum size, e.g. 8 MB.
 #: src/Support/Forms.php:94
