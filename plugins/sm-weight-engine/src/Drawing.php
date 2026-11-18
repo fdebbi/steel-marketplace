@@ -3,8 +3,9 @@
  * Exact cross-section drawings (SVG), to scale, from the real dimensions.
  *
  * The outline is the same one used to compute the area (Domain\Geometry), so
- * the drawing and the weight can never disagree. Dimension lines show h and b
- * (or D, t); the values themselves are shown next to the drawing by the theme.
+ * the drawing and the weight can never disagree. Dimension lines show the real
+ * values (0.3.1): height and width, the diameter of round sections, and the wall
+ * thickness of tubes and angles ("t = 2 mm"). With values => false: letters.
  * Styling hooks: .smw-shape, .smw-dim, .smw-label (colours follow currentColor).
  *
  * @package SM\WeightEngine
@@ -18,16 +19,17 @@ defined( 'ABSPATH' ) || exit;
 
 final class Drawing {
 
-	/** Version of the stored picture files (2: real dimensions on the lines). */
-	const FILES_VERSION = '2';
+	/** Version of the stored picture files (3: wall thickness shown). */
+	const FILES_VERSION = '3';
 
 	/**
 	 * @param string $shape  Geometry shape.
 	 * @param array  $dims   Dimensions in mm.
-	 * @param array  $opts   title (accessible name), dims (bool, dimension lines; default true).
+	 * @param array  $opts   title (accessible name), dims (bool, dimension lines; default true),
+	 *                       values (bool, real values in mm instead of letters; default true since 0.3.1).
 	 */
 	public static function svg( $shape, array $dims, array $opts = array() ) {
-		$opts = wp_parse_args( $opts, array( 'title' => '', 'dims' => true, 'values' => false ) );
+		$opts = wp_parse_args( $opts, array( 'title' => '', 'dims' => true, 'values' => true ) );
 		$real = $dims; // Before the plate stand-in below: the values shown are the real ones.
 		$real_shape = $shape;
 		if ( 'plate' === $shape ) {
@@ -44,9 +46,22 @@ final class Drawing {
 		$gap  = $ref * 0.07;
 		$pad  = $opts['dims'] ? $ref * 0.24 : $ref * 0.04;
 
-		$min_x = -$pad;
+		$round = in_array( $shape, array( 'chs', 'round' ), true );
+		// 0.3.1: the wall thickness of tubes and angles, written beside the section.
+		$wall = null;
+		if ( $opts['dims'] && in_array( $shape, array( 'rhs', 'chs', 'angle' ), true ) && ! empty( $dims['t'] ) ) {
+			$t    = (float) $dims['t'];
+			$wall = array(
+				'x'    => 'angle' === $shape ? $w - min( $t, $w * 0.08 ) : $w - $t / 2,
+				'y'    => 'angle' === $shape ? $h - $t / 2 : $h / 2,
+				'text' => $opts['values'] ? 't = ' . self::mm( $t ) : 't',
+			);
+		}
+		$wall_w = $wall ? $gap * 1.4 + mb_strlen( $wall['text'] ) * $font * 0.58 : 0;
+
+		$min_x = $round && $opts['dims'] ? -$ref * 0.04 : -$pad; // Round sections: one diameter line, below.
 		$min_y = -$ref * 0.04;
-		$vb_w  = $w + $pad + $ref * 0.04;
+		$vb_w  = $w - $min_x + $ref * 0.04 + $wall_w;
 		$vb_h  = $h + $pad + $ref * 0.04;
 		if ( 'flat' === $shape ) { // Thin bars: give the drawing some height.
 			$min_y -= $ref * 0.1;
@@ -79,14 +94,23 @@ final class Drawing {
 
 		if ( $opts['dims'] ) {
 			$labels = $opts['values'] ? self::value_labels( $real_shape, $real ) : self::labels( $shape, $dims );
-			// Height, on the left.
-			$x    = -$gap * 1.6;
-			$out .= self::dim_line( $x, 0, $x, $h, $ref );
-			$out .= sprintf( '<text class="smw-label" x="%s" y="%s" font-size="%s" text-anchor="middle" transform="rotate(-90 %s %s)" fill="currentColor">%s</text>', self::n( $x - $font * 0.45 ), self::n( $h / 2 ), self::n( $font ), self::n( $x - $font * 0.45 ), self::n( $h / 2 ), esc_html( $labels['h'] ) );
+			// Height, on the left (not for round sections: the diameter is given once, below).
+			if ( ! $round ) {
+				$x    = -$gap * 1.6;
+				$out .= self::dim_line( $x, 0, $x, $h, $ref );
+				$out .= sprintf( '<text class="smw-label" x="%s" y="%s" font-size="%s" text-anchor="middle" transform="rotate(-90 %s %s)" fill="currentColor">%s</text>', self::n( $x - $font * 0.45 ), self::n( $h / 2 ), self::n( $font ), self::n( $x - $font * 0.45 ), self::n( $h / 2 ), esc_html( $labels['h'] ) );
+			}
 			// Width, below.
 			$y    = $h + $gap * 1.6;
 			$out .= self::dim_line( 0, $y, $w, $y, $ref );
-			$out .= sprintf( '<text class="smw-label" x="%s" y="%s" font-size="%s" text-anchor="middle" fill="currentColor">%s</text>', self::n( $w / 2 ), self::n( $y + $font * 1.15 ), self::n( $font ), esc_html( $labels['b'] ) );
+			$out .= sprintf( '<text class="smw-label" x="%s" y="%s" font-size="%s" text-anchor="middle" fill="currentColor">%s</text>', self::n( $w / 2 ), self::n( $y + $font * 1.15 ), self::n( $font ), esc_html( $round ? 'Ø ' . $labels['b'] : $labels['b'] ) );
+			if ( $wall ) {
+				// A dot on the wall, a short line to the right, then "t = 2 mm".
+				$end  = $w + $gap * 0.9;
+				$out .= sprintf( '<circle class="smw-dim" cx="%s" cy="%s" r="%s" fill="currentColor"/>', self::n( $wall['x'] ), self::n( $wall['y'] ), self::n( $ref * 0.012 ) );
+				$out .= sprintf( '<path class="smw-dim" d="M%s %sH%s" fill="none" stroke="currentColor" stroke-opacity=".55" stroke-width="1" vector-effect="non-scaling-stroke"/>', self::n( $wall['x'] ), self::n( $wall['y'] ), self::n( $end ) );
+				$out .= sprintf( '<text class="smw-label smw-label--t" x="%s" y="%s" font-size="%s" fill="currentColor">%s</text>', self::n( $end + $gap * 0.3 ), self::n( $wall['y'] + $font * 0.35 ), self::n( $font ), esc_html( $wall['text'] ) );
+			}
 		}
 		return $out . '</svg>';
 	}
@@ -95,8 +119,13 @@ final class Drawing {
 	 * Real values on the two dimension lines (0.2.0): "160 mm" / "82 mm";
 	 * tubes and bars show the diameter or side, plates their thickness.
 	 */
+	/** A value in mm, French style: "48,3 mm". */
+	private static function mm( $v ) {
+		return str_replace( '.', ',', rtrim( rtrim( number_format( (float) $v, 1, '.', '' ), '0' ), '.' ) ) . ' mm';
+	}
+
 	private static function value_labels( $shape, array $d ) {
-		$mm = static fn( $v ) => str_replace( '.', ',', rtrim( rtrim( number_format( (float) $v, 1, '.', '' ), '0' ), '.' ) ) . ' mm';
+		$mm = static fn( $v ) => self::mm( $v );
 		switch ( $shape ) {
 			case 'chs':
 			case 'round':

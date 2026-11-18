@@ -420,3 +420,7 @@ Validé sur la maquette 0.37.
 - Tâche horaire (WP-Cron) : sur l'hébergement, un vrai cron doit appeler wp-cron.php pour que les rappels partent à l'heure même sans visite.
 - Les e-mails restent courts (référence, projet, missions, lieu, bouton) ; la position exacte et les fichiers ne sont que sur la page de la mission.
 - Le schéma indicatif appartient à SM Engineering (site et administration), le thème ne fait que l'afficher.
+
+## Schémas des profilés cotés (2026-11-18)
+
+- Les schémas affichent les vraies cotes de la dimension choisie (hauteur, largeur, diamètre) pour tous les profilés, et l'épaisseur de paroi pour les tubes et les cornières (« t = 2 mm »). Pas de lettres à côté des valeurs : plus lisible sur les petits tubes et sur mobile.

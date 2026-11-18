@@ -1,5 +1,12 @@
 # Changelog — sm-weight-engine
 
+## 0.3.1 — 2026-11-18
+
+- Schémas des profilés : les cotes donnent les vraies valeurs de la dimension choisie au lieu des lettres (« 100 mm », « 50 mm » au lieu de h, b), partout où le schéma apparaît (formulaire d'annonce, fiche, calculateur, catalogue de l'administration).
+- Tubes (SHS, RHS, CHS) et cornières : l'épaisseur de paroi est cotée sur la paroi (« t = 4 mm »).
+- Tubes ronds et ronds pleins : le diamètre est donné une seule fois, en bas (« Ø 48,3 mm »).
+- Images partagées des sections régénérées (version 3). L'option `values => false` garde les lettres.
+
 ## 0.3.0 — 2026-11-15
 
 - Données de référence `2026.11.3` : dimensions courantes ajoutées pour les tubes rectangulaires (420, gamme Ferpinta, masses publiées contrôlées à 0,01 kg/m près), les fers plats (58), les ronds pleins (24) et les carrés pleins (40). Une dimension saisie reste possible.

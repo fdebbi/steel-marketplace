@@ -151,7 +151,7 @@ smb_assert( 3 === count( $di['elements'] ) && 'Poteaux' === $di['elements'][0]['
 wp_set_current_user( $u_sel );
 $form = Bridge::product_form( null, array( 'id' => $pd ) );
 $fa = Bridge::product_form( null, array( 'id' => $pa ) );
-smb_assert( '32000' === $fa['values']['total_kg'] && '' === Bridge::product_form( null, array( 'id' => $pd ) )['values']['total_kg'] && 'Es Sénia' === $fa['values']['commune'] && '35.6477' === $fa['values']['lat'], 'edit form: total weight only when the seller gave one; commune and position back' );
+smb_assert( '32000' === $fa['values']['total_kg'] && '' === Bridge::product_form( null, array( 'id' => $pd ) )['values']['total_kg'] && 'Es Senia' === $fa['values']['commune'] && '35.6477' === $fa['values']['lat'], 'edit form: total weight only when the seller gave one; commune and position back' );
 smb_assert( 'dismantled' === $form['values']['mode'] && 3 === count( $form['values']['lines'] ) && 'rafter' === $form['values']['lines'][1]['element'] && '4.5' === (string) $form['values']['specs']['height_m'], 'edit form gets back state, dimensions and inventory' );
 
 echo "\n5. Geometry, required elements, title (0.2.0)\n";
@@ -188,7 +188,7 @@ $V   = '\\SM\\Products\\Visits';
 $pp  = Products::get( $pa );
 wp_set_current_user( 0 );
 $g = Bridge::listing( null, array( 'id' => $la, 'no_count' => 1 ) );
-smb_assert( null === $g['location'] && 'Es Sénia' === $g['commune'] && 'Zone industrielle' === $g['address'] && $g['visit']['eligible'] && $g['visit']['guest'] && $g['visit']['has_position'], 'visitor: commune and address, no position, visit offered after sign-in' );
+smb_assert( null === $g['location'] && 'Es Senia' === $g['commune'] && 'Zone industrielle' === $g['address'] && $g['visit']['eligible'] && $g['visit']['guest'] && $g['visit']['has_position'], 'visitor: commune and address, no position, visit offered after sign-in' );
 wp_set_current_user( $u_sel );
 $o = Bridge::listing( null, array( 'id' => $la, 'no_count' => 1 ) );
 smb_assert( $o['location'] && smb_near( $o['location']['lat'], 35.6477, 0.0001 ) && $o['visit']['own'], 'the seller sees his own position' );
