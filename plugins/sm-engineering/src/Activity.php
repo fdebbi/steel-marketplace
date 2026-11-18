@@ -67,11 +67,13 @@ final class Activity {
 			'honoraires' => $m->engineer_fee > 0 ? number_format( $m->engineer_fee, 0, ',', ' ' ) . ' DA' : '',
 			'lien'       => Notifications::link( 'client', $m->id ),
 			'lien_admin' => Notifications::admin_link( $m->id ),
+			'lieu'       => Missions::place( $m ),
+			'echeance'   => ( $ck = Missions::clock( $m, 'engineer' ) ) ? Missions::due_text( $ck['due'] ) : '',
 		);
 	}
 
 	public static function events( array $events ) {
-		$mvars = array( 'reference', 'titre', 'type_etude', 'prestations', 'type_projet', 'avance', 'offre', 'client', 'ingenieur', 'nom', 'email', 'telephone', 'wilaya', 'message', 'montant', 'honoraires', 'lien', 'lien_admin' );
+		$mvars = array( 'reference', 'titre', 'type_etude', 'prestations', 'type_projet', 'avance', 'offre', 'client', 'ingenieur', 'nom', 'email', 'telephone', 'wilaya', 'message', 'montant', 'honoraires', 'lien', 'lien_admin', 'lieu', 'echeance' );
 		$events['engineer.applied']   = array(
 			'group'     => 'engineering',
 			'label'     => __( 'Partner engineer application', 'sm-engineering' ),
@@ -124,7 +126,8 @@ final class Activity {
 			'templates' => array(
 				'admin' => array(
 					static fn() => __( 'Study request {reference}: {type_etude}', 'sm-engineering' ),
-					static fn() => __( "{client} ({wilaya}) asks for a study.\n\n{reference} — {titre}\nProject: {type_projet}\nServices:\n{prestations}\n\n{message}\n\nContact: {nom} — {email} — {telephone}\n\nPrepare the quote:\n{lien_admin}", 'sm-engineering' ),
+					// 0.8.0: short — the full request (description, sketch, map, files) is on the mission page.
+					static fn() => __( "New study request.\n\nReference: {reference}\nProject: {titre}\nMissions: {type_etude}\nPlace: {lieu}\n\n[[See the full request|{lien_admin}]]", 'sm-engineering' ),
 				),
 				'user'  => array(
 					static fn() => __( 'Your study request {reference} is received', 'sm-engineering' ),
@@ -188,6 +191,20 @@ final class Activity {
 			static fn( $v ) => sprintf( /* translators: %s: reference. */ __( 'Balance of %s received', 'sm-engineering' ), $v['reference'] ),
 			static fn() => __( 'Balance received: {reference}', 'sm-engineering' ),
 			static fn() => __( "The balance of {reference} — {titre} is received. The documents are available to the client once the study is delivered.\n\n{lien_admin}", 'sm-engineering' )
+		);
+		$events['mission.respond_late']     = $simple(
+			'mission.respond_late',
+			__( 'Engineer: time to answer over', 'sm-engineering' ),
+			static fn( $v ) => sprintf( /* translators: %s: reference. */ __( 'No answer from the engineer on %s', 'sm-engineering' ), $v['reference'] ),
+			static fn() => __( 'Time over — change the engineer? {reference}', 'sm-engineering' ),
+			static fn() => __( "{ingenieur} has not answered the mission within the time given.\n\nReference: {reference}\nProject: {titre}\nMissions: {type_etude}\nPlace: {lieu}\n\nThe engineer can still accept until you change him.\n\n[[Change the engineer|{lien_admin}]]", 'sm-engineering' )
+		);
+		$events['mission.study_late']       = $simple(
+			'mission.study_late',
+			__( 'Study late', 'sm-engineering' ),
+			static fn( $v ) => sprintf( /* translators: %s: reference. */ __( 'Study %s late', 'sm-engineering' ), $v['reference'] ),
+			static fn() => __( 'Study late: {reference}', 'sm-engineering' ),
+			static fn() => __( "{ingenieur} has not sent the deliverables in time.\n\nReference: {reference}\nProject: {titre}\nMissions: {type_etude}\nPlace: {lieu}\n\n[[See the mission|{lien_admin}]]", 'sm-engineering' )
 		);
 		$events['mission.engineer_declined'] = array(
 			'group'     => 'engineering',
@@ -275,6 +292,10 @@ final class Activity {
 			'mission.balance_paid'      => __( 'Balance of a study received', 'sm-engineering' ),
 			'mission.quote_reminder'    => __( 'Reminder: quote ending', 'sm-engineering' ),
 			'mission.payment_reminder'  => __( 'Reminder: advance not paid', 'sm-engineering' ),
+			'mission.respond_reminder'  => __( 'Reminder to the engineer: answer the mission', 'sm-engineering' ),
+			'mission.respond_late'      => __( 'Engineer: time to answer over', 'sm-engineering' ),
+			'mission.study_reminder'    => __( 'Reminder to the engineer: end of the study near', 'sm-engineering' ),
+			'mission.study_late'        => __( 'Study late', 'sm-engineering' ),
 			'mission.expired_unpaid'    => __( 'Study cancelled: advance not paid', 'sm-engineering' ),
 			'mission.message'           => __( 'Message on a mission', 'sm-engineering' ),
 			'mission.file_downloaded'   => __( 'Mission file downloaded', 'sm-engineering' ),

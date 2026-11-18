@@ -2375,3 +2375,23 @@ T.update({
 T.update({
 "Commune changed: place the marker again on the exact place.": ("Commune changée : placez à nouveau le repère à l'endroit exact.", "تغيّرت البلدية: ضع العلامة من جديد في المكان الدقيق."),
 })
+
+T.update({
+'{d} left to answer': ('Il reste {d} pour répondre', 'متبقٍ {d} للرد'),
+'Offered on %1$s — answer expected before %2$s': ('Confiée le %1$s — réponse attendue avant le %2$s', 'أُسندت في %1$s — الرد منتظر قبل %2$s'),
+'Only {d} left to answer': ('Plus que {d} pour répondre', 'لم يبق سوى {d} للرد'),
+'Without an answer, the platform may give the study to another engineer.': ("Sans réponse, la plateforme peut confier l'étude à un autre ingénieur.", 'دون رد، يمكن للمنصة إسناد الدراسة إلى مهندس آخر.'),
+'Time to answer over by {d}': ('Délai de réponse dépassé de {d}', 'تجاوزت مهلة الرد بـ {d}'),
+'You can still accept until the platform gives the mission to another engineer.': ("Vous pouvez encore accepter tant que la plateforme n'a pas confié la mission à un autre ingénieur.", 'لا يزال بإمكانك القبول ما لم تُسند المنصة المهمة إلى مهندس آخر.'),
+'Answer: time over': ('Réponse : délai dépassé', 'الرد: انتهت المهلة'),
+'To hand in before %s': ('À remettre avant le %s', 'للتسليم قبل %s'),
+'{d} left': ('Il reste {d}', 'متبقٍ {d}'),
+'Late by {d}': ('En retard de {d}', 'متأخر بـ {d}'),
+'The time ended on %s': ('Le délai était le %s', 'كان الأجل %s'),
+'Late {s}': ('Retard {s}', 'تأخر {s}'),
+'Delivery planned on %s': ('Livraison prévue le %s', 'التسليم المتوقع في %s'),
+'The planned date is passed by {d}. The platform follows your study and keeps you informed.': ('La date prévue est dépassée de {d}. La plateforme suit votre étude et vous tient informé.', 'تم تجاوز التاريخ المتوقع بـ {d}. المنصة تتابع دراستك وتبقيك على اطلاع.'),
+})
+P.update({
+("{d} left · time of your quote: %d day", "{d} left · time of your quote: %d days"): (["Il reste {d} · délai de votre devis : %d jour", "Il reste {d} · délai de votre devis : %d jours"], ["متبقٍ {d} · مدة عرضك: %d يوم", "متبقٍ {d} · مدة عرضك: يوم واحد", "متبقٍ {d} · مدة عرضك: يومان", "متبقٍ {d} · مدة عرضك: %d أيام", "متبقٍ {d} · مدة عرضك: %d يومًا", "متبقٍ {d} · مدة عرضك: %d يوم"]),
+})

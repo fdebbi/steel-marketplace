@@ -111,6 +111,11 @@ final class Templates {
 				$out .= '<p style="margin:0 0 14px;text-align:center"><span style="display:inline-block;background:#E7F6EF;border:1px dashed #16A36A;border-radius:10px;padding:10px 22px;font-size:30px;font-weight:700;letter-spacing:6px;color:#0B5A3A">' . esc_html( trim( $p ) ) . '</span></p>';
 				continue;
 			}
+			// 0.8.5: a paragraph "[[Label|https://…]]" is a button.
+			if ( preg_match( '#^\[\[([^|\]]+)\|(https?://[^\s\]]+)\]\]$#u', trim( $p ), $b ) ) {
+				$out .= self::button( $b[1], $b[2] );
+				continue;
+			}
 			$p = esc_html( $p );
 			$p = preg_replace_callback(
 				'#\bhttps?://[^\s<]+#u',
@@ -126,9 +131,14 @@ final class Templates {
 		return $out;
 	}
 
+	/** A green button (e-mail HTML). */
+	public static function button( $label, $url ) {
+		return '<p style="margin:6px 0 16px"><a href="' . esc_url( $url ) . '" style="display:inline-block;background:#16A36A;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600">' . esc_html( $label ) . '</a></p>';
+	}
+
 	/** Plain-text body (for the e-mail log and previews). */
 	public static function body_text( $text, array $vars ) {
-		return trim( self::replace( $text, $vars ) );
+		return trim( preg_replace( '#\[\[([^|\]]+)\|(https?://[^\s\]]+)\]\]#u', '$1 : $2', self::replace( $text, $vars ) ) );
 	}
 
 	/** Replace {name} by values; unknown names are left empty. */

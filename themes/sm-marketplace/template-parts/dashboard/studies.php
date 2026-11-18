@@ -49,6 +49,9 @@ if ( $id ) :
 				<?php endforeach; ?>
 			</ol>
 		<?php endif; ?>
+		<?php if ( ! empty( $m['clock'] ) ) : // 0.42.0: delivery date of the quote, while the study is in progress. ?>
+			<div class="sme-clock"><?php sm_component( 'mission-clock', array( 'clock' => $m['clock'] ) ); ?></div>
+		<?php endif; ?>
 		<?php if ( $m['reason'] ) : ?>
 			<div class="sm-notice sm-notice--warn"><?php sm_icon( 'alert' ); ?><p><strong><?php esc_html_e( 'The platform cannot take this request:', 'sm-marketplace' ); ?></strong> <?php echo esc_html( $m['reason'] ); ?></p></div>
 		<?php endif; ?>
@@ -227,7 +230,7 @@ $items = $data['items'];
 						<td data-label="<?php esc_attr_e( 'Request', 'sm-marketplace' ); ?>"><a href="<?php echo esc_url( $m['url'] ); ?>"><strong dir="auto"><?php echo esc_html( $m['title'] ); ?></strong></a><br><small dir="ltr"><?php echo esc_html( $m['ref'] ); ?></small></td>
 						<td data-label="<?php esc_attr_e( 'Service', 'sm-marketplace' ); ?>"><?php echo esc_html( $m['type'] ); ?></td>
 						<td data-label="<?php esc_attr_e( 'Quote', 'sm-marketplace' ); ?>"><?php echo $m['amount'] ? esc_html( sm_money( $m['amount'] ) ) : '—'; ?></td>
-						<td data-label="<?php esc_attr_e( 'Status', 'sm-marketplace' ); ?>"><?php sm_mission_status( $m ); ?></td>
+						<td data-label="<?php esc_attr_e( 'Status', 'sm-marketplace' ); ?>"><span class="sm-mission-clock-cell"><?php sm_mission_status( $m ); ?><?php if ( ! empty( $m['clock'] ) ) { sm_component( 'mission-clock', array( 'clock' => $m['clock'], 'variant' => 'pill' ) ); } ?></span></td>
 						<td data-label="<?php esc_attr_e( 'Updated', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_ago( $m['updated'] ) ); ?></td>
 					</tr>
 				<?php endforeach; ?>

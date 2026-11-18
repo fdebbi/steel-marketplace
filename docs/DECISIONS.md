@@ -411,3 +411,12 @@ Validé sur la maquette 0.37.
 - Partout où il y a une wilaya et une carte, la commune se choisit dans la liste de la wilaya et la carte se déplace sur la commune. Le repère n'est jamais placé automatiquement : l'utilisateur le pose lui-même.
 - Source des communes : geoalgeria (69 wilayas, nouveau découpage seulement, option B). Mention « © OpenStreetMap contributors » pour les coordonnées issues d'OSM (ODbL).
 - Annonce sans repère précis : la carte publique montre la commune (déjà publique), pas un point exact.
+
+## Échéances des études (2026-11-18)
+
+- L'ingénieur a 24 h pour répondre ; rappel 4 h avant la fin. À la fin des 24 h, la plateforme est prévenue et choisit de changer ou non : pas de retrait automatique, l'ingénieur peut accepter tant qu'il n'est pas remplacé.
+- Le délai de l'étude de l'ingénieur part de son acceptation ; rappel 3 jours avant la fin ; en retard, l'ingénieur et la plateforme sont prévenus.
+- Le client voit la date de livraison de son devis, calculée au premier démarrage de l'étude, qui ne change pas si l'ingénieur change. Il ne voit jamais le délai de l'ingénieur.
+- Tâche horaire (WP-Cron) : sur l'hébergement, un vrai cron doit appeler wp-cron.php pour que les rappels partent à l'heure même sans visite.
+- Les e-mails restent courts (référence, projet, missions, lieu, bouton) ; la position exacte et les fichiers ne sont que sur la page de la mission.
+- Le schéma indicatif appartient à SM Engineering (site et administration), le thème ne fait que l'afficher.

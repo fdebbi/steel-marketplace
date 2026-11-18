@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Core 0.8.2\n"
+"Project-Id-Version: SM Core 0.8.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-core\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-15T13:10:35+00:00\n"
+"POT-Creation-Date: 2026-11-18T15:58:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-core\n"
@@ -1631,27 +1631,27 @@ msgstr ""
 msgid "Hello %s,"
 msgstr ""
 
-#: src/Mail/Templates.php:156
+#: src/Mail/Templates.php:166
 msgid "Business account"
 msgstr ""
 
-#: src/Mail/Templates.php:157
+#: src/Mail/Templates.php:167
 msgid "Supplier / distributor"
 msgstr ""
 
-#: src/Mail/Templates.php:159
+#: src/Mail/Templates.php:169
 msgid "Hello, we need 40 bars delivered to Rouiba next month."
 msgstr ""
 
-#: src/Mail/Templates.php:160
+#: src/Mail/Templates.php:170
 msgid "Price request"
 msgstr ""
 
-#: src/Mail/Templates.php:167
+#: src/Mail/Templates.php:177
 msgid "Steel products"
 msgstr ""
 
-#: src/Mail/Templates.php:170
+#: src/Mail/Templates.php:180
 msgid "Published"
 msgstr ""
 
@@ -1690,12 +1690,12 @@ msgstr ""
 msgid "The platform team could not validate your documents."
 msgstr ""
 
-#: src/Notifications/Notifications.php:136
+#: src/Notifications/Notifications.php:137
 msgid "Open"
 msgstr ""
 
-#: src/Notifications/Notifications.php:138
-#: src/Notifications/Notifications.php:156
+#: src/Notifications/Notifications.php:139
+#: src/Notifications/Notifications.php:157
 msgid "You receive this e-mail because you have an account on the platform."
 msgstr ""
 

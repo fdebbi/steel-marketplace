@@ -1,5 +1,9 @@
 # Changelog — sm-core
 
+## 0.8.5 — 2026-11-18
+
+- E-mails : un paragraphe `[[Libellé|lien]]` devient un bouton (modèles modifiables dans SM → E-mails). Une notification peut nommer son bouton (`button`, par ex. « Voir la demande complète ») au lieu de « Ouvrir ».
+
 ## 0.8.4 — 2026-11-15
 
 - Liste des communes remplacée par geoalgeria 2.4.0 : 1 541 communes des 69 wilayas (nouveau découpage, wilayas 59-69 comprises) avec le centre de chaque commune. Noms et codes sous licence MIT ; 323 coordonnées issues d'OpenStreetMap sous licence ODbL 1.0, © OpenStreetMap contributors (`data/communes-NOTICE.txt`).

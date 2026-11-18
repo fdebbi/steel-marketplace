@@ -228,6 +228,41 @@ final class Bridge {
 		);
 	}
 
+	/**
+	 * Countdown of a mission (0.8.0), for the theme: what is counted, the start and
+	 * the end (ISO 8601, UTC) and the warning window in seconds. null when none runs.
+	 */
+	public static function clock_shape( $m, $side ) {
+		$c = Missions::clock( $m, $side );
+		if ( ! $c ) {
+			return null;
+		}
+		$now = time();
+		return array(
+			'kind'  => $c['kind'],
+			'state' => Missions::clock_state( $c, $now ),
+			'start' => gmdate( 'c', $c['start'] ),
+			'due'   => gmdate( 'c', $c['due'] ),
+			'warn'  => (int) $c['warn'],
+			'days'  => (int) round( ( $c['due'] - $c['start'] ) / DAY_IN_SECONDS ),
+			'left'  => Missions::duration( $c['due'] - $now ),
+			'short' => Missions::duration( $c['due'] - $now, true ),
+			'pct'   => $c['due'] > $c['start'] ? max( 0, min( 100, (int) round( 100 * ( $now - $c['start'] ) / ( $c['due'] - $c['start'] ) ) ) ) : 100,
+			'given' => Missions::due_text( $c['start'] ),
+			'until' => Missions::due_text( $c['due'] ),
+			'day'   => wp_date( 'Y-m-d', $c['due'] ), // Local date of the end, written by the theme.
+			// Words of the live countdown (clock.js), in the visitor's language.
+			'units' => array(
+				/* translators: %d: hours. */
+				'h'   => __( '%d h', 'sm-engineering' ),
+				/* translators: %d: minutes. */
+				'min' => __( '%d min', 'sm-engineering' ),
+				/* translators: %d: days (short). */
+				'd'   => __( '%d d', 'sm-engineering' ),
+			),
+		);
+	}
+
 	private static function files( $m, $viewer, $kind ) {
 		return array_map( array( Files::class, 'shape' ), Files::for_mission( $m->id, $viewer, $kind ) );
 	}
@@ -256,6 +291,7 @@ final class Bridge {
 			'created'     => $m->created_at,
 			'updated'     => $m->updated_at,
 			'amount'      => $m->quote_amount > 0 && ! in_array( $m->status, array( 'submitted', 'declined' ), true ) ? $m->quote_amount : 0,
+			'clock'       => self::clock_shape( $m, 'client' ),
 			'url'         => CoreRoutes::url( 'account', array( 'view' => 'studies', 'id' => $m->id ) ),
 		);
 		if ( ! $detail ) {
@@ -344,6 +380,7 @@ final class Bridge {
 			'days'    => $m->engineer_days,
 			'fee_status' => $m->fee_status,
 			'assigned'   => $m->assigned_at,
+			'clock'      => self::clock_shape( $m, 'engineer' ),
 			'url'     => CoreRoutes::url( 'account', array( 'view' => 'missions', 'id' => $m->id ) ),
 		);
 		if ( ! $detail ) {

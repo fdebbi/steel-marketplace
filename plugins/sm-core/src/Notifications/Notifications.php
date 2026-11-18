@@ -133,7 +133,8 @@ final class Notifications {
 				$tpl  = Templates::get( 'notice:' . $type, $lang ) ?? array( '{titre}', '{message}' );
 				$body = Templates::body_html( $tpl[1], $vars );
 				if ( '' !== $vars['lien'] && false === strpos( $tpl[1], '{lien}' ) ) {
-					$body .= '<p><a href="' . esc_url( $vars['lien'] ) . '" style="display:inline-block;background:#16A36A;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none">' . esc_html__( 'Open', 'sm-core' ) . '</a></p>';
+					// 0.8.5: the type may name its button ("See the full request").
+					$body .= Templates::button( ! empty( $def['button'] ) ? (string) ( $def['button'] )( $payload ) : __( 'Open', 'sm-core' ), $vars['lien'] );
 				}
 				return Mailer::send( $user->user_email, $lang, Templates::subject( $tpl[0], $vars ), $body, array( 'event' => 'notice:' . $type, 'name' => $user->display_name, 'footer' => __( 'You receive this e-mail because you have an account on the platform.', 'sm-core' ) ) );
 			}

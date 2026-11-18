@@ -734,39 +734,8 @@ function sm_contact_button( $dialog, $label, $class = 'sm-btn sm-btn--accent', $
 
 /** Labels of the indicative sketch of a study request (0.39.0), for assets/js/study-sketch.js. */
 function sm_study_sketch_i18n() {
-	return array(
-		'span'     => __( 'Span %s', 'sm-marketplace' ),
-		'columns'  => __( 'Columns %s', 'sm-marketplace' ),
-		'ridge'    => __( 'Ridge %s', 'sm-marketplace' ),
-		'length'   => __( 'Length %s', 'sm-marketplace' ),
-		'width'    => __( 'Width %s', 'sm-marketplace' ),
-		'height'   => __( 'Height %s', 'sm-marketplace' ),
-		'slope'    => __( 'slope ≈ %s %%', 'sm-marketplace' ),
-		'mezz'     => __( 'Mezzanine +%s', 'sm-marketplace' ),
-		'mezzPlan' => __( 'Mezzanine %s', 'sm-marketplace' ),
-		'crane'    => __( 'Overhead crane %1$s · rail +%2$s', 'sm-marketplace' ),
-		'craneOnly' => __( 'Overhead crane', 'sm-marketplace' ),
-		'doors'    => __( '%1$d doors %2$s', 'sm-marketplace' ),
-		'door'     => __( '1 door %s', 'sm-marketplace' ),
-		'frames'   => __( '%1$d portal frames · %2$d bays of %3$s', 'sm-marketplace' ),
-		'noBay'    => __( 'Spacing of the frames: set by the engineer', 'sm-marketplace' ),
-		'ground'   => __( 'GF', 'sm-marketplace' ),
-		'level'    => __( 'F+%d', 'sm-marketplace' ),
-		'area'     => __( 'Floor area', 'sm-marketplace' ),
-		'volume'   => __( 'Volume', 'sm-marketplace' ),
-		'mezzArea' => __( 'Mezzanine', 'sm-marketplace' ),
-		'nFrames'  => __( 'Portal frames', 'sm-marketplace' ),
-		'floors'   => __( 'Floor area of all levels', 'sm-marketplace' ),
-		'total'    => __( 'Total height', 'sm-marketplace' ),
-		'front'    => __( 'Front view (left gable)', 'sm-marketplace' ),
-		'frontLevels' => __( 'Front view', 'sm-marketplace' ),
-		'plan'     => __( 'Plan view', 'sm-marketplace' ),
-		'empty'    => __( 'Give the width, the length and the height: the sketch draws itself.', 'sm-marketplace' ),
-		'wall'       => __( 'Wall %s', 'sm-marketplace' ),
-		'front_side' => __( 'Front long side', 'sm-marketplace' ),
-		'back_side'  => __( 'Back long side', 'sm-marketplace' ),
-		'uses'       => class_exists( '\\SM\\Engineering\\Brief' ) ? \SM\Engineering\Brief::choices( 'floor_use' ) : array(),
-	);
+	// 0.42.0: the sketch and its words belong to SM Engineering (used on the site and in the administration).
+	return class_exists( '\\SM\\Engineering\\Brief' ) && method_exists( '\\SM\\Engineering\\Brief', 'sketch_i18n' ) ? \SM\Engineering\Brief::sketch_i18n() : array();
 }
 
 /**

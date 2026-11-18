@@ -200,7 +200,7 @@ msgstr "La place de marché industrielle de l’acier en Algérie"
 msgid "Utility"
 msgstr "Liens utiles"
 
-#: header.php:39 inc/assets.php:52
+#: header.php:39 inc/assets.php:59
 msgid "Open menu"
 msgstr "Ouvrir le menu"
 
@@ -229,7 +229,7 @@ msgstr "IPE 200, HEA, tube 100×50, hangar…"
 msgid "Menu"
 msgstr "Menu"
 
-#: header.php:88 inc/assets.php:53 templates/dashboard.php:244
+#: header.php:88 inc/assets.php:60 templates/dashboard.php:244
 msgid "Close menu"
 msgstr "Fermer le menu"
 
@@ -237,53 +237,53 @@ msgstr "Fermer le menu"
 msgid "View all listings"
 msgstr "Voir toutes les annonces"
 
-#: inc/assets.php:54 templates/auth-login.php:32
+#: inc/assets.php:61 templates/auth-login.php:32
 #: templates/auth-register.php:92 templates/engineer-apply.php:272
 msgid "Show"
 msgstr "Afficher"
 
-#: inc/assets.php:55
+#: inc/assets.php:62
 msgid "Hide"
 msgstr "Masquer"
 
-#: inc/assets.php:56 inc/template-tags.php:562
+#: inc/assets.php:63 inc/template-tags.php:562
 msgid "Saved"
 msgstr "Enregistrée"
 
-#: inc/assets.php:57
+#: inc/assets.php:64
 msgid "Removed from saved listings"
 msgstr "Retirée des annonces enregistrées"
 
-#: inc/assets.php:58
+#: inc/assets.php:65
 msgid "Uploaded"
 msgstr "Téléchargé"
 
 #. translators: %s: file name.
-#: inc/assets.php:60
+#: inc/assets.php:67
 msgid "Remove %s"
 msgstr "Retirer %s"
 
-#: inc/assets.php:61
+#: inc/assets.php:68
 msgid "Add other files"
 msgstr "Ajouter d’autres fichiers"
 
-#: inc/assets.php:62
+#: inc/assets.php:69
 msgid "Too many files: the extra ones were not added."
 msgstr "Trop de fichiers : les fichiers en trop n’ont pas été ajoutés."
 
-#: inc/assets.php:63
+#: inc/assets.php:70
 msgid "Will be deleted when you save"
 msgstr "Sera supprimé à l’enregistrement"
 
-#: inc/assets.php:64
+#: inc/assets.php:71
 msgid "Will be replaced when you save"
 msgstr "Sera remplacé à l’enregistrement"
 
-#: inc/assets.php:65
+#: inc/assets.php:72
 msgid "Undo"
 msgstr "Annuler"
 
-#: inc/assets.php:66 inc/template-tags.php:566 inc/template-tags.php:572
+#: inc/assets.php:73 inc/template-tags.php:566 inc/template-tags.php:572
 #: template-parts/components/my-products.php:137
 #: template-parts/components/portfolio-grid.php:30
 #: template-parts/components/rfq-single.php:138
@@ -292,60 +292,60 @@ msgstr "Annuler"
 msgid "Delete"
 msgstr "Supprimer"
 
-#: inc/assets.php:67 template-parts/components/enquiry-form.php:29
+#: inc/assets.php:74 template-parts/components/enquiry-form.php:29
 #: template-parts/components/listing-place.php:82
 #: templates/company-profile.php:270 templates/engineer-apply.php:38
 #: templates/engineer-apply.php:144
 msgid "Close"
 msgstr "Fermer"
 
-#: inc/assets.php:68
+#: inc/assets.php:75
 msgid "Previous photo"
 msgstr "Photo précédente"
 
-#: inc/assets.php:69
+#: inc/assets.php:76
 msgid "Next photo"
 msgstr "Photo suivante"
 
-#: inc/assets.php:70
+#: inc/assets.php:77
 msgid "Original size"
 msgstr "Taille originale"
 
-#: inc/assets.php:117
+#: inc/assets.php:124
 msgid "Company position. Drag it, or use the arrow keys."
 msgstr ""
 "Position de l’entreprise. Faites-la glisser ou utilisez les flèches du "
 "clavier."
 
-#: inc/assets.php:118 template-parts/components/location-map.php:68
+#: inc/assets.php:125 template-parts/components/location-map.php:68
 msgid "No position yet."
 msgstr "Aucune position pour le moment."
 
-#: inc/assets.php:119
+#: inc/assets.php:126
 msgid "Drag the marker to your exact address, or click the map."
 msgstr ""
 "Faites glisser le repère jusqu’à votre adresse exacte, ou cliquez sur la "
 "carte."
 
-#: inc/assets.php:120
+#: inc/assets.php:127
 msgid "Position placed:"
 msgstr "Position placée :"
 
-#: inc/assets.php:121
+#: inc/assets.php:128
 msgid "Current location found:"
 msgstr "Position actuelle trouvée :"
 
 #. translators: %d: accuracy in metres.
-#: inc/assets.php:123
+#: inc/assets.php:130
 msgid "Approximate (about %d m): drag the marker to correct it."
 msgstr ""
 "Approximative (environ %d m) : faites glisser le repère pour la corriger."
 
-#: inc/assets.php:124
+#: inc/assets.php:131
 msgid "Looking for your location…"
 msgstr "Recherche de votre position…"
 
-#: inc/assets.php:125
+#: inc/assets.php:132
 msgid ""
 "Location access was refused. Allow it in your browser, or place the marker "
 "by hand."
@@ -353,18 +353,18 @@ msgstr ""
 "L’accès à la position a été refusé. Autorisez-le dans votre navigateur, ou "
 "placez le repère à la main."
 
-#: inc/assets.php:126
+#: inc/assets.php:133
 msgid "Your location could not be found. Place the marker by hand."
 msgstr "Votre position est introuvable. Placez le repère à la main."
 
-#: inc/assets.php:127
+#: inc/assets.php:134
 msgid ""
 "Finding your location took too long. Try again or place the marker by hand."
 msgstr ""
 "La recherche de votre position a pris trop de temps. Réessayez ou placez le "
 "repère à la main."
 
-#: inc/assets.php:128
+#: inc/assets.php:135
 msgid ""
 "Your browser only shares your location on a secure (https) site. Place the "
 "marker by hand."
@@ -372,20 +372,20 @@ msgstr ""
 "Votre navigateur ne partage la position que sur un site sécurisé (https). "
 "Placez le repère à la main."
 
-#: inc/assets.php:129
+#: inc/assets.php:136
 msgid "This position is outside Algeria. Place the marker on your address."
 msgstr ""
 "Cette position est hors d’Algérie. Placez le repère sur votre adresse."
 
-#: inc/assets.php:130
+#: inc/assets.php:137
 msgid "Wilaya changed: place the marker again on your address."
 msgstr "Wilaya modifiée : replacez le repère sur votre adresse."
 
-#: inc/assets.php:131
+#: inc/assets.php:138
 msgid "Commune changed: place the marker again on the exact place."
 msgstr "Commune changée : placez à nouveau le repère à l'endroit exact."
 
-#: inc/assets.php:132
+#: inc/assets.php:139
 msgid "Position removed. It will be deleted when you save."
 msgstr "Position retirée. Elle sera supprimée à l’enregistrement."
 
@@ -820,136 +820,6 @@ msgstr[1] "Afficher %s résultats"
 #: inc/template-tags.php:730
 msgid "Sign in to contact"
 msgstr "Connectez-vous pour contacter"
-
-#: inc/template-tags.php:738
-msgid "Span %s"
-msgstr "Portée %s"
-
-#: inc/template-tags.php:739
-msgid "Columns %s"
-msgstr "Poteaux %s"
-
-#: inc/template-tags.php:740
-msgid "Ridge %s"
-msgstr "Faîtage %s"
-
-#: inc/template-tags.php:741
-msgid "Length %s"
-msgstr "Longueur %s"
-
-#: inc/template-tags.php:742
-msgid "Width %s"
-msgstr "Largeur %s"
-
-#: inc/template-tags.php:743
-msgid "Height %s"
-msgstr "Hauteur %s"
-
-#: inc/template-tags.php:744
-msgid "slope ≈ %s %%"
-msgstr "pente ≈ %s %%"
-
-#: inc/template-tags.php:745
-msgid "Mezzanine +%s"
-msgstr "Mezzanine +%s"
-
-#: inc/template-tags.php:746
-msgid "Mezzanine %s"
-msgstr "Mezzanine %s"
-
-#: inc/template-tags.php:747
-msgid "Overhead crane %1$s · rail +%2$s"
-msgstr "Pont roulant %1$s · rail +%2$s"
-
-#: inc/template-tags.php:748
-#: template-parts/components/mission-request-form.php:234
-msgid "Overhead crane"
-msgstr "Pont roulant"
-
-#: inc/template-tags.php:749
-msgid "%1$d doors %2$s"
-msgstr "%1$d portes %2$s"
-
-#: inc/template-tags.php:750
-msgid "1 door %s"
-msgstr "1 porte %s"
-
-#: inc/template-tags.php:751
-msgid "%1$d portal frames · %2$d bays of %3$s"
-msgstr "%1$d portiques · %2$d travées de %3$s"
-
-#: inc/template-tags.php:752
-msgid "Spacing of the frames: set by the engineer"
-msgstr "Entraxe des portiques : fixé par l'ingénieur"
-
-#: inc/template-tags.php:753
-msgid "GF"
-msgstr "RDC"
-
-#. translators: %d: floor number.
-#: inc/template-tags.php:754
-#: template-parts/components/mission-request-form.php:325
-#: template-parts/components/mission-request-form.php:329
-msgid "F+%d"
-msgstr "R+%d"
-
-#: inc/template-tags.php:755
-msgid "Floor area"
-msgstr "Surface au sol"
-
-#: inc/template-tags.php:756
-msgid "Volume"
-msgstr "Volume"
-
-#: inc/template-tags.php:757
-#: template-parts/components/mission-request-form.php:244
-msgid "Mezzanine"
-msgstr "Mezzanine"
-
-#: inc/template-tags.php:758
-msgid "Portal frames"
-msgstr "Portiques"
-
-#: inc/template-tags.php:759
-msgid "Floor area of all levels"
-msgstr "Surface de tous les niveaux"
-
-#: inc/template-tags.php:760
-msgid "Total height"
-msgstr "Hauteur totale"
-
-#: inc/template-tags.php:761
-#: template-parts/components/mission-request-form.php:356
-msgid "Front view (left gable)"
-msgstr "Vue de face (pignon gauche)"
-
-#: inc/template-tags.php:762
-msgid "Front view"
-msgstr "Vue de face"
-
-#: inc/template-tags.php:763
-#: template-parts/components/mission-request-form.php:360
-msgid "Plan view"
-msgstr "Vue en plan"
-
-#: inc/template-tags.php:764
-msgid "Give the width, the length and the height: the sketch draws itself."
-msgstr ""
-"Indiquez la largeur, la longueur et la hauteur : le schéma se dessine."
-
-#: inc/template-tags.php:765
-msgid "Wall %s"
-msgstr "Mur %s"
-
-#: inc/template-tags.php:766
-#: template-parts/components/mission-request-form.php:271
-msgid "Front long side"
-msgstr "Long pan avant"
-
-#: inc/template-tags.php:767
-#: template-parts/components/mission-request-form.php:272
-msgid "Back long side"
-msgstr "Long pan arrière"
 
 #: index.php:21
 msgid "Nothing here yet"
@@ -1454,7 +1324,7 @@ msgid "Not available at the moment"
 msgstr "Indisponible pour le moment"
 
 #: template-parts/components/card-engineer.php:39
-#: template-parts/dashboard/studies.php:215 templates/dashboard.php:167
+#: template-parts/dashboard/studies.php:218 templates/dashboard.php:167
 #: templates/marketplace-engineers.php:41
 #: templates/marketplace-engineers.php:112 templates/mission-request.php:23
 msgid "Ask for a study"
@@ -1528,7 +1398,7 @@ msgstr "Lot complet uniquement"
 #: template-parts/components/listing-inventory.php:39
 #: template-parts/components/product-rows.php:68
 #: template-parts/components/rfq-compare.php:64
-#: template-parts/dashboard/studies.php:95
+#: template-parts/dashboard/studies.php:98
 msgid "Total"
 msgstr "Total"
 
@@ -1664,7 +1534,7 @@ msgid "All"
 msgstr "Tous"
 
 #: template-parts/components/deal-list.php:22
-#: template-parts/dashboard/engineer-missions.php:121
+#: template-parts/dashboard/engineer-missions.php:124
 #: template-parts/dashboard/engineer-overview.php:48
 msgid "In progress"
 msgstr "En cours"
@@ -1960,8 +1830,8 @@ msgstr "hangar, poulailler…"
 #: template-parts/components/mission-request-form.php:410
 #: template-parts/components/product-form.php:189
 #: template-parts/dashboard/company.php:101
-#: template-parts/dashboard/engineer-missions.php:132
-#: template-parts/dashboard/engineer-missions.php:137
+#: template-parts/dashboard/engineer-missions.php:135
+#: template-parts/dashboard/engineer-missions.php:140
 #: template-parts/dashboard/engineer-partner.php:83
 #: template-parts/dashboard/portfolio.php:66
 #: template-parts/dashboard/publish.php:184 template-parts/directory.php:47
@@ -2598,6 +2468,94 @@ msgstr "Position enregistrée. Faites glisser le repère pour la corriger."
 msgid "Show the map on my public page"
 msgstr "Afficher la carte sur ma page publique"
 
+#. translators: {d}: time left, e.g. "18 h 42 min".
+#: template-parts/components/mission-clock.php:28
+msgid "{d} left to answer"
+msgstr "Il reste {d} pour répondre"
+
+#. translators: 1: date and hour, 2: date and hour.
+#: template-parts/components/mission-clock.php:28
+msgid "Offered on %1$s — answer expected before %2$s"
+msgstr "Confiée le %1$s — réponse attendue avant le %2$s"
+
+#. translators: {d}: time left.
+#: template-parts/components/mission-clock.php:30
+msgid "Only {d} left to answer"
+msgstr "Plus que {d} pour répondre"
+
+#. translators: {d}: time left.
+#: template-parts/components/mission-clock.php:30
+msgid ""
+"Without an answer, the platform may give the study to another engineer."
+msgstr ""
+"Sans réponse, la plateforme peut confier l'étude à un autre ingénieur."
+
+#. translators: {d}: time passed.
+#: template-parts/components/mission-clock.php:32
+msgid "Time to answer over by {d}"
+msgstr "Délai de réponse dépassé de {d}"
+
+#. translators: {d}: time passed.
+#: template-parts/components/mission-clock.php:32
+msgid ""
+"You can still accept until the platform gives the mission to another "
+"engineer."
+msgstr ""
+"Vous pouvez encore accepter tant que la plateforme n'a pas confié la mission"
+" à un autre ingénieur."
+
+#: template-parts/components/mission-clock.php:34
+msgid "Answer: time over"
+msgstr "Réponse : délai dépassé"
+
+#. translators: %s: date and hour.
+#: template-parts/components/mission-clock.php:38
+msgid "To hand in before %s"
+msgstr "À remettre avant le %s"
+
+#. translators: {d}: time left.
+#: template-parts/components/mission-clock.php:41
+#: template-parts/components/mission-clock.php:42
+msgid "{d} left"
+msgstr "Il reste {d}"
+
+#. translators: {d}: time passed.
+#: template-parts/components/mission-clock.php:44
+msgid "Late by {d}"
+msgstr "En retard de {d}"
+
+#. translators: %s: date and hour.
+#: template-parts/components/mission-clock.php:44
+msgid "The time ended on %s"
+msgstr "Le délai était le %s"
+
+#. translators: {s}: time passed, short.
+#: template-parts/components/mission-clock.php:47
+#: template-parts/components/mission-clock.php:60
+msgid "Late {s}"
+msgstr "Retard {s}"
+
+#. translators: %s: date.
+#: template-parts/components/mission-clock.php:51
+msgid "Delivery planned on %s"
+msgstr "Livraison prévue le %s"
+
+#. translators: %d: number of days of the quote; {d}: time left.
+#: template-parts/components/mission-clock.php:53
+msgid "{d} left · time of your quote: %d day"
+msgid_plural "{d} left · time of your quote: %d days"
+msgstr[0] "Il reste {d} · délai de votre devis : %d jour"
+msgstr[1] "Il reste {d} · délai de votre devis : %d jours"
+
+#. translators: {d}: time passed.
+#: template-parts/components/mission-clock.php:58
+msgid ""
+"The planned date is passed by {d}. The platform follows your study and keeps"
+" you informed."
+msgstr ""
+"La date prévue est dépassée de {d}. La plateforme suit votre étude et vous "
+"tient informé."
+
 #: template-parts/components/mission-files.php:24
 msgid "Remove"
 msgstr "Retirer"
@@ -2679,7 +2637,7 @@ msgid "Type of project"
 msgstr "Type de projet"
 
 #: template-parts/components/mission-request-form.php:127
-#: template-parts/dashboard/studies.php:146
+#: template-parts/dashboard/studies.php:149
 msgid "Details"
 msgstr "Détails"
 
@@ -2761,6 +2719,10 @@ msgstr "Entraxe des portiques"
 msgid "Shape of the roof"
 msgstr "Forme de toiture"
 
+#: template-parts/components/mission-request-form.php:234
+msgid "Overhead crane"
+msgstr "Pont roulant"
+
 #: template-parts/components/mission-request-form.php:237
 msgid "Capacity"
 msgstr "Capacité"
@@ -2772,6 +2734,10 @@ msgstr "Hauteur du rail"
 #: template-parts/components/mission-request-form.php:239
 msgid "Number of cranes"
 msgstr "Nombre de ponts"
+
+#: template-parts/components/mission-request-form.php:244
+msgid "Mezzanine"
+msgstr "Mezzanine"
 
 #: template-parts/components/mission-request-form.php:247
 msgid "Width of the mezzanine"
@@ -2824,6 +2790,14 @@ msgstr ""
 "Une porte se place au centre d'une travée (entre deux portiques). Cochez les"
 " travées, ou cliquez une travée sur le plan."
 
+#: template-parts/components/mission-request-form.php:271
+msgid "Front long side"
+msgstr "Long pan avant"
+
+#: template-parts/components/mission-request-form.php:272
+msgid "Back long side"
+msgstr "Long pan arrière"
+
 #: template-parts/components/mission-request-form.php:273
 msgid "Left gable"
 msgstr "Pignon gauche"
@@ -2852,6 +2826,12 @@ msgstr "une ligne par niveau, du RDC vers le haut"
 #: template-parts/components/mission-request-form.php:329
 msgid "Ground floor"
 msgstr "RDC"
+
+#. translators: %d: floor number.
+#: template-parts/components/mission-request-form.php:325
+#: template-parts/components/mission-request-form.php:329
+msgid "F+%d"
+msgstr "R+%d"
 
 #: template-parts/components/mission-request-form.php:326
 msgid "Level"
@@ -2883,6 +2863,14 @@ msgstr "Usage du bâtiment"
 #: template-parts/components/mission-request-form.php:350
 msgid "Soil study available?"
 msgstr "Étude de sol disponible ?"
+
+#: template-parts/components/mission-request-form.php:356
+msgid "Front view (left gable)"
+msgstr "Vue de face (pignon gauche)"
+
+#: template-parts/components/mission-request-form.php:360
+msgid "Plan view"
+msgstr "Vue en plan"
 
 #: template-parts/components/mission-request-form.php:364
 msgid ""
@@ -3046,7 +3034,7 @@ msgid "Write to the platform…"
 msgstr "Écrire à la plateforme…"
 
 #: template-parts/components/mission-thread.php:31
-#: template-parts/dashboard/engineer-missions.php:108
+#: template-parts/dashboard/engineer-missions.php:111
 msgid "Send"
 msgstr "Envoyer"
 
@@ -3079,7 +3067,7 @@ msgstr "Vendues"
 
 #: template-parts/components/my-products.php:32
 #: template-parts/components/my-products.php:42
-#: template-parts/dashboard/studies.php:115
+#: template-parts/dashboard/studies.php:118
 msgid "Expired"
 msgstr "Expirés"
 
@@ -3298,7 +3286,7 @@ msgstr "Date"
 
 #: template-parts/components/order-history.php:25
 #: template-parts/components/order-history.php:35
-#: template-parts/dashboard/studies.php:84
+#: template-parts/dashboard/studies.php:87
 msgid "Amount"
 msgstr "Montant"
 
@@ -3306,12 +3294,12 @@ msgstr "Montant"
 #: template-parts/components/order-history.php:36
 #: template-parts/dashboard/engineer-billing.php:34
 #: template-parts/dashboard/engineer-billing.php:40
-#: template-parts/dashboard/engineer-missions.php:132
-#: template-parts/dashboard/engineer-missions.php:139
+#: template-parts/dashboard/engineer-missions.php:135
+#: template-parts/dashboard/engineer-missions.php:142
 #: template-parts/dashboard/listings.php:36
 #: template-parts/dashboard/listings.php:50
-#: template-parts/dashboard/studies.php:223
-#: template-parts/dashboard/studies.php:230
+#: template-parts/dashboard/studies.php:226
+#: template-parts/dashboard/studies.php:233
 msgid "Status"
 msgstr "Statut"
 
@@ -3518,7 +3506,7 @@ msgstr "Supprimer cette référence ?"
 #: template-parts/components/product-tech.php:554
 #: template-parts/components/product-tech.php:617
 #: template-parts/components/rfq-offer-form.php:39
-#: template-parts/dashboard/studies.php:106 templates/single-service.php:68
+#: template-parts/dashboard/studies.php:109 templates/single-service.php:68
 msgid "Price"
 msgstr "Prix"
 
@@ -4577,7 +4565,7 @@ msgstr "Livraison"
 #: template-parts/components/service-request-row.php:46
 #: template-parts/dashboard/engineer-missions.php:43
 #: template-parts/dashboard/offers.php:36
-#: template-parts/dashboard/studies.php:107 templates/single-service.php:69
+#: template-parts/dashboard/studies.php:110 templates/single-service.php:69
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d jour"
@@ -4636,8 +4624,8 @@ msgid "Shortlist"
 msgstr "Présélectionner"
 
 #: template-parts/components/rfq-compare.php:91
-#: template-parts/dashboard/engineer-missions.php:51
-#: template-parts/dashboard/studies.php:123
+#: template-parts/dashboard/engineer-missions.php:54
+#: template-parts/dashboard/studies.php:126
 msgid "Decline"
 msgstr "Refuser"
 
@@ -4931,7 +4919,7 @@ msgstr[1] ""
 "télécharger."
 
 #: template-parts/components/rfq-single.php:123
-#: template-parts/dashboard/studies.php:175
+#: template-parts/dashboard/studies.php:178
 msgid "Your request"
 msgstr "Votre demande"
 
@@ -5051,9 +5039,9 @@ msgid "Your account cannot publish services."
 msgstr "Votre compte ne peut pas publier de services."
 
 #: template-parts/components/service-form.php:52
-#: template-parts/dashboard/studies.php:84
-#: template-parts/dashboard/studies.php:223
-#: template-parts/dashboard/studies.php:228 templates/company-profile.php:276
+#: template-parts/dashboard/studies.php:87
+#: template-parts/dashboard/studies.php:226
+#: template-parts/dashboard/studies.php:231 templates/company-profile.php:276
 #: templates/marketplace-engineers.php:86
 msgid "Service"
 msgstr "Service"
@@ -5261,8 +5249,8 @@ msgid "Indicative budget"
 msgstr "Budget indicatif"
 
 #: template-parts/components/service-request-row.php:46
-#: template-parts/dashboard/studies.php:223
-#: template-parts/dashboard/studies.php:229
+#: template-parts/dashboard/studies.php:226
+#: template-parts/dashboard/studies.php:232
 msgid "Quote"
 msgstr "Devis"
 
@@ -5320,7 +5308,7 @@ msgid "Decline the quote"
 msgstr "Refuser le devis"
 
 #: template-parts/components/service-request-row.php:109
-#: template-parts/dashboard/studies.php:197
+#: template-parts/dashboard/studies.php:200
 msgid "Cancel the request"
 msgstr "Annuler la demande"
 
@@ -6171,15 +6159,15 @@ msgstr "Honoraires par mission"
 
 #: template-parts/dashboard/engineer-billing.php:34
 #: template-parts/dashboard/engineer-billing.php:38
-#: template-parts/dashboard/engineer-missions.php:132
-#: template-parts/dashboard/engineer-missions.php:136
+#: template-parts/dashboard/engineer-missions.php:135
+#: template-parts/dashboard/engineer-missions.php:139
 msgid "Mission"
 msgstr "Mission"
 
 #: template-parts/dashboard/engineer-billing.php:34
 #: template-parts/dashboard/engineer-billing.php:39
-#: template-parts/dashboard/engineer-missions.php:132
-#: template-parts/dashboard/engineer-missions.php:138
+#: template-parts/dashboard/engineer-missions.php:135
+#: template-parts/dashboard/engineer-missions.php:141
 msgid "Fee"
 msgstr "Honoraires"
 
@@ -6256,50 +6244,50 @@ msgid "Your fee"
 msgstr "Vos honoraires"
 
 #: template-parts/dashboard/engineer-missions.php:43
-#: template-parts/dashboard/studies.php:107
+#: template-parts/dashboard/studies.php:110
 msgid "Time"
 msgstr "Délai"
 
 #. translators: %d: days.
 #: template-parts/dashboard/engineer-missions.php:44
-#: template-parts/dashboard/studies.php:178
+#: template-parts/dashboard/studies.php:181
 msgid "Wanted for"
 msgstr "Souhaité pour le"
 
-#: template-parts/dashboard/engineer-missions.php:49
+#: template-parts/dashboard/engineer-missions.php:52
 msgid "Accept the mission"
 msgstr "Accepter la mission"
 
-#: template-parts/dashboard/engineer-missions.php:52
+#: template-parts/dashboard/engineer-missions.php:55
 msgid "Reason (for the platform)"
 msgstr "Motif (pour la plateforme)"
 
-#: template-parts/dashboard/engineer-missions.php:54
+#: template-parts/dashboard/engineer-missions.php:57
 msgid "Decline the mission"
 msgstr "Refuser la mission"
 
-#: template-parts/dashboard/engineer-missions.php:65
+#: template-parts/dashboard/engineer-missions.php:68
 msgid "Brief"
 msgstr "Cahier des charges"
 
-#: template-parts/dashboard/engineer-missions.php:68
+#: template-parts/dashboard/engineer-missions.php:71
 msgid "Instructions of the platform:"
 msgstr "Consignes de la plateforme :"
 
-#: template-parts/dashboard/engineer-missions.php:70
+#: template-parts/dashboard/engineer-missions.php:73
 msgid "Documents of the client"
 msgstr "Documents du client"
 
-#: template-parts/dashboard/engineer-missions.php:71
-#: template-parts/dashboard/studies.php:181
+#: template-parts/dashboard/engineer-missions.php:74
+#: template-parts/dashboard/studies.php:184
 msgid "Documents of the platform"
 msgstr "Documents de la plateforme"
 
-#: template-parts/dashboard/engineer-missions.php:74
+#: template-parts/dashboard/engineer-missions.php:77
 msgid "Your deliverables"
 msgstr "Vos livrables"
 
-#: template-parts/dashboard/engineer-missions.php:75
+#: template-parts/dashboard/engineer-missions.php:78
 msgid ""
 "Plans, calculation notes, inspection report: add them here, then send the "
 "work to the platform."
@@ -6307,19 +6295,19 @@ msgstr ""
 "Plans, notes de calcul, rapport d’inspection : ajoutez-les ici, puis envoyez"
 " le travail à la plateforme."
 
-#: template-parts/dashboard/engineer-missions.php:82
+#: template-parts/dashboard/engineer-missions.php:85
 msgid "Add deliverables"
 msgstr "Ajouter des livrables"
 
-#: template-parts/dashboard/engineer-missions.php:83
+#: template-parts/dashboard/engineer-missions.php:86
 msgid "PDF, DWG, DXF, IFC, Excel, Word, images or ZIP."
 msgstr "PDF, DWG, DXF, IFC, Excel, Word, images ou ZIP."
 
-#: template-parts/dashboard/engineer-missions.php:85
+#: template-parts/dashboard/engineer-missions.php:88
 msgid "Upload"
 msgstr "Téléverser"
 
-#: template-parts/dashboard/engineer-missions.php:91
+#: template-parts/dashboard/engineer-missions.php:94
 msgid ""
 "Send the work to the platform? You can no longer change the files while it "
 "is checked."
@@ -6327,29 +6315,29 @@ msgstr ""
 "Envoyer le travail à la plateforme ? Vous ne pourrez plus modifier les "
 "fichiers pendant la vérification."
 
-#: template-parts/dashboard/engineer-missions.php:91
+#: template-parts/dashboard/engineer-missions.php:94
 msgid "Send the work to the platform"
 msgstr "Envoyer le travail à la plateforme"
 
-#: template-parts/dashboard/engineer-missions.php:94
+#: template-parts/dashboard/engineer-missions.php:97
 msgid "The platform checks your work. It may ask for changes in the messages."
 msgstr ""
 "La plateforme vérifie votre travail. Elle peut demander des corrections dans"
 " les messages."
 
-#: template-parts/dashboard/engineer-missions.php:97
+#: template-parts/dashboard/engineer-missions.php:100
 msgid "Your fee invoice"
 msgstr "Votre facture d’honoraires"
 
-#: template-parts/dashboard/engineer-missions.php:105
+#: template-parts/dashboard/engineer-missions.php:108
 msgid "Send an invoice"
 msgstr "Envoyer une facture"
 
-#: template-parts/dashboard/engineer-missions.php:106
+#: template-parts/dashboard/engineer-missions.php:109
 msgid "PDF, JPG or PNG. Seen by the platform only."
 msgstr "PDF, JPG ou PNG. Vue uniquement par la plateforme."
 
-#: template-parts/dashboard/engineer-missions.php:114
+#: template-parts/dashboard/engineer-missions.php:117
 msgid ""
 "Questions about the brief go to the platform, which asks the client if "
 "needed."
@@ -6357,23 +6345,23 @@ msgstr ""
 "Les questions sur le cahier des charges vont à la plateforme, qui interroge "
 "le client si besoin."
 
-#: template-parts/dashboard/engineer-missions.php:120
+#: template-parts/dashboard/engineer-missions.php:123
 msgid "Offered to you"
 msgstr "Proposées"
 
-#: template-parts/dashboard/engineer-missions.php:120
+#: template-parts/dashboard/engineer-missions.php:123
 msgid "No mission waiting for your answer."
 msgstr "Aucune mission n’attend votre réponse."
 
-#: template-parts/dashboard/engineer-missions.php:121
+#: template-parts/dashboard/engineer-missions.php:124
 msgid "No mission in progress."
 msgstr "Aucune mission en cours."
 
-#: template-parts/dashboard/engineer-missions.php:122
+#: template-parts/dashboard/engineer-missions.php:125
 msgid "Done"
 msgstr "Terminées"
 
-#: template-parts/dashboard/engineer-missions.php:122
+#: template-parts/dashboard/engineer-missions.php:125
 msgid "Your completed missions appear here."
 msgstr "Vos missions terminées apparaissent ici."
 
@@ -6578,24 +6566,24 @@ msgid "Billed to"
 msgstr "Facturé à"
 
 #: template-parts/dashboard/invoice.php:65
-#: template-parts/dashboard/studies.php:84
+#: template-parts/dashboard/studies.php:87
 msgid "Amount before tax"
 msgstr "Montant HT"
 
 #: template-parts/dashboard/invoice.php:71
-#: template-parts/dashboard/studies.php:92
+#: template-parts/dashboard/studies.php:95
 msgid "Total before tax"
 msgstr "Total HT"
 
 #. translators: %s: TVA rate.
 #: template-parts/dashboard/invoice.php:72
-#: template-parts/dashboard/studies.php:93
+#: template-parts/dashboard/studies.php:96
 msgid "TVA %s %%"
 msgstr "TVA %s %%"
 
 #. translators: %s: TVA rate.
 #: template-parts/dashboard/invoice.php:73
-#: template-parts/dashboard/studies.php:95
+#: template-parts/dashboard/studies.php:98
 msgid "Total including tax"
 msgstr "Total TTC"
 
@@ -7504,53 +7492,53 @@ msgstr "Retour à mes études"
 msgid "All my studies"
 msgstr "Toutes mes études"
 
-#: template-parts/dashboard/studies.php:53
+#: template-parts/dashboard/studies.php:56
 msgid "The platform cannot take this request:"
 msgstr "La plateforme ne peut pas prendre cette demande :"
 
-#: template-parts/dashboard/studies.php:65
+#: template-parts/dashboard/studies.php:68
 msgid "Complete your payment to start the requested services."
 msgstr "Complétez votre paiement pour lancer les services demandés."
 
-#: template-parts/dashboard/studies.php:65
+#: template-parts/dashboard/studies.php:68
 msgid "Your study is ready: pay the balance to download the documents."
 msgstr ""
 "Votre étude est prête : payez le solde pour télécharger les documents."
 
-#: template-parts/dashboard/studies.php:67
+#: template-parts/dashboard/studies.php:70
 msgid "Your proof of payment is being checked by the platform."
 msgstr ""
 "Votre preuve de paiement est en cours de vérification par la plateforme."
 
-#: template-parts/dashboard/studies.php:67
+#: template-parts/dashboard/studies.php:70
 msgid "See the payment"
 msgstr "Voir le paiement"
 
 #. translators: %s: amount.
-#: template-parts/dashboard/studies.php:71
+#: template-parts/dashboard/studies.php:74
 msgid "Pay the advance: %s"
 msgstr "Payer l’avance : %s"
 
 #. translators: %s: amount.
-#: template-parts/dashboard/studies.php:71
+#: template-parts/dashboard/studies.php:74
 msgid "Pay the balance: %s"
 msgstr "Payer le solde : %s"
 
-#: template-parts/dashboard/studies.php:81
+#: template-parts/dashboard/studies.php:84
 msgid "Offer of the platform"
 msgstr "Offre de la plateforme"
 
 #. translators: %s: percentage.
-#: template-parts/dashboard/studies.php:97
+#: template-parts/dashboard/studies.php:100
 msgid "Advance on acceptance (%s %%)"
 msgstr "Avance à l’acceptation (%s %%)"
 
-#: template-parts/dashboard/studies.php:100
+#: template-parts/dashboard/studies.php:103
 msgid "Balance, before the documents are released"
 msgstr "Solde, avant la remise des documents"
 
 #. translators: 1: number of days, 2: date.
-#: template-parts/dashboard/studies.php:113
+#: template-parts/dashboard/studies.php:116
 msgid ""
 "This offer is valid %1$d days, until %2$s. You receive a reminder the day "
 "before."
@@ -7558,19 +7546,19 @@ msgstr ""
 "Cette offre est valable %1$d jours, jusqu’au %2$s. Vous recevez un rappel la"
 " veille."
 
-#: template-parts/dashboard/studies.php:121
+#: template-parts/dashboard/studies.php:124
 msgid "Accept the offer"
 msgstr "Accepter l’offre"
 
-#: template-parts/dashboard/studies.php:124
+#: template-parts/dashboard/studies.php:127
 msgid "Why? (optional, it helps the platform)"
 msgstr "Pourquoi ? (facultatif, cela aide la plateforme)"
 
-#: template-parts/dashboard/studies.php:126
+#: template-parts/dashboard/studies.php:129
 msgid "Decline the offer"
 msgstr "Refuser l’offre"
 
-#: template-parts/dashboard/studies.php:129
+#: template-parts/dashboard/studies.php:132
 msgid ""
 "Once you accept, you pay the advance; the platform then appoints one of its "
 "partner engineers. The study is delivered in this page."
@@ -7578,7 +7566,7 @@ msgstr ""
 "Après acceptation, vous payez l’avance ; la plateforme désigne ensuite l’un "
 "de ses ingénieurs partenaires. L’étude est livrée sur cette page."
 
-#: template-parts/dashboard/studies.php:129
+#: template-parts/dashboard/studies.php:132
 msgid ""
 "Once you accept, the platform appoints one of its partner engineers. The "
 "study is delivered in this page."
@@ -7586,59 +7574,59 @@ msgstr ""
 "Dès votre accord, la plateforme désigne un de ses ingénieurs partenaires. "
 "L’étude est livrée sur cette page."
 
-#: template-parts/dashboard/studies.php:133
+#: template-parts/dashboard/studies.php:136
 msgid "Payments"
 msgstr "Paiements"
 
-#: template-parts/dashboard/studies.php:135
+#: template-parts/dashboard/studies.php:138
 msgid "Advance"
 msgstr "Avance"
 
-#: template-parts/dashboard/studies.php:135
+#: template-parts/dashboard/studies.php:138
 msgid "Balance"
 msgstr "Solde"
 
-#: template-parts/dashboard/studies.php:141
+#: template-parts/dashboard/studies.php:144
 msgid "Payment received"
 msgstr "Paiement reçu"
 
-#: template-parts/dashboard/studies.php:141
+#: template-parts/dashboard/studies.php:144
 msgid "To pay"
 msgstr "À payer"
 
-#: template-parts/dashboard/studies.php:141
+#: template-parts/dashboard/studies.php:144
 msgid "Later"
 msgstr "Plus tard"
 
-#: template-parts/dashboard/studies.php:157
+#: template-parts/dashboard/studies.php:160
 msgid "Your study is delivered"
 msgstr "Votre étude est livrée"
 
-#: template-parts/dashboard/studies.php:162
+#: template-parts/dashboard/studies.php:165
 msgid "I received the study — close the request"
 msgstr "J’ai reçu l’étude — clôturer la demande"
 
-#: template-parts/dashboard/studies.php:180 templates/engineer-apply.php:227
+#: template-parts/dashboard/studies.php:183 templates/engineer-apply.php:227
 msgid "Your documents"
 msgstr "Vos documents"
 
-#: template-parts/dashboard/studies.php:188
+#: template-parts/dashboard/studies.php:191
 msgid "Add documents"
 msgstr "Ajouter des documents"
 
-#: template-parts/dashboard/studies.php:189
+#: template-parts/dashboard/studies.php:192
 msgid "Plans, photos, soil report…"
 msgstr "Plans, photos, rapport de sol…"
 
-#: template-parts/dashboard/studies.php:191
+#: template-parts/dashboard/studies.php:194
 msgid "Send the documents"
 msgstr "Envoyer les documents"
 
-#: template-parts/dashboard/studies.php:197
+#: template-parts/dashboard/studies.php:200
 msgid "Cancel this request?"
 msgstr "Annuler cette demande ?"
 
-#: template-parts/dashboard/studies.php:201
+#: template-parts/dashboard/studies.php:204
 msgid ""
 "Questions, details, documents: the platform answers here and coordinates the"
 " engineer."
@@ -7646,11 +7634,11 @@ msgstr ""
 "Questions, précisions, documents : la plateforme répond ici et coordonne "
 "l’ingénieur."
 
-#: template-parts/dashboard/studies.php:211
+#: template-parts/dashboard/studies.php:214
 msgid "Studies and inspections by the platform"
 msgstr "Études et inspections par la plateforme"
 
-#: template-parts/dashboard/studies.php:212
+#: template-parts/dashboard/studies.php:215
 msgid ""
 "Design, calculation notes, drawings, inspection of a used structure: send "
 "your request, receive a quote from the platform, and get the study done by a"
@@ -7660,21 +7648,21 @@ msgstr ""
 "envoyez votre demande, recevez le devis de la plateforme et faites réaliser "
 "l’étude par un ingénieur partenaire vérifié."
 
-#: template-parts/dashboard/studies.php:219
+#: template-parts/dashboard/studies.php:222
 msgid "No study request yet"
 msgstr "Aucune demande d’étude pour l’instant"
 
-#: template-parts/dashboard/studies.php:219
+#: template-parts/dashboard/studies.php:222
 msgid "Your requests and their quotes appear here."
 msgstr "Vos demandes et leurs devis apparaissent ici."
 
-#: template-parts/dashboard/studies.php:223
-#: template-parts/dashboard/studies.php:227
+#: template-parts/dashboard/studies.php:226
+#: template-parts/dashboard/studies.php:230
 msgid "Request"
 msgstr "Demande"
 
-#: template-parts/dashboard/studies.php:223
-#: template-parts/dashboard/studies.php:231
+#: template-parts/dashboard/studies.php:226
+#: template-parts/dashboard/studies.php:234
 msgid "Updated"
 msgstr "Mis à jour"
 

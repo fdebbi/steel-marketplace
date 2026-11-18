@@ -680,4 +680,49 @@ final class Brief {
 		}
 		return mb_substr( trim( $t ), 0, 200 );
 	}
+	/** Words of the indicative sketch (study-sketch.js), in the visitor's language (0.8.0: moved from the theme). */
+	public static function sketch_i18n() {
+		return array(
+			'span'     => __( 'Span %s', 'sm-engineering' ),
+			'columns'  => __( 'Columns %s', 'sm-engineering' ),
+			'ridge'    => __( 'Ridge %s', 'sm-engineering' ),
+			'length'   => __( 'Length %s', 'sm-engineering' ),
+			'width'    => __( 'Width %s', 'sm-engineering' ),
+			'height'   => __( 'Height %s', 'sm-engineering' ),
+			'slope'    => __( 'slope ≈ %s %%', 'sm-engineering' ),
+			'mezz'     => __( 'Mezzanine +%s', 'sm-engineering' ),
+			'mezzPlan' => __( 'Mezzanine %s', 'sm-engineering' ),
+			'crane'    => __( 'Overhead crane %1$s · rail +%2$s', 'sm-engineering' ),
+			'craneOnly' => __( 'Overhead crane', 'sm-engineering' ),
+			'doors'    => __( '%1$d doors %2$s', 'sm-engineering' ),
+			'door'     => __( '1 door %s', 'sm-engineering' ),
+			'frames'   => __( '%1$d portal frames · %2$d bays of %3$s', 'sm-engineering' ),
+			'noBay'    => __( 'Spacing of the frames: set by the engineer', 'sm-engineering' ),
+			'ground'   => __( 'GF', 'sm-engineering' ),
+			'level'    => __( 'F+%d', 'sm-engineering' ),
+			'area'     => __( 'Floor area', 'sm-engineering' ),
+			'volume'   => __( 'Volume', 'sm-engineering' ),
+			'mezzArea' => __( 'Mezzanine', 'sm-engineering' ),
+			'nFrames'  => __( 'Portal frames', 'sm-engineering' ),
+			'floors'   => __( 'Floor area of all levels', 'sm-engineering' ),
+			'total'    => __( 'Total height', 'sm-engineering' ),
+			'front'    => __( 'Front view (left gable)', 'sm-engineering' ),
+			'frontLevels' => __( 'Front view', 'sm-engineering' ),
+			'plan'     => __( 'Plan view', 'sm-engineering' ),
+			'empty'    => __( 'Give the width, the length and the height: the sketch draws itself.', 'sm-engineering' ),
+			'wall'       => __( 'Wall %s', 'sm-engineering' ),
+			'front_side' => __( 'Front long side', 'sm-engineering' ),
+			'back_side'  => __( 'Back long side', 'sm-engineering' ),
+			'uses'       => self::choices( 'floor_use' ),
+		);
+	}
+
+	/**
+	 * The sketch script, registered for the site and the administration (0.8.0).
+	 * The theme enqueues it on the request form and the study pages.
+	 */
+	public static function register_script() {
+		wp_register_script( 'sm-study-sketch', plugins_url( 'assets/js/study-sketch.js', SM_ENGINEERING_FILE ), array(), SM_ENGINEERING_VERSION . '-' . (int) @filemtime( SM_ENGINEERING_DIR . '/assets/js/study-sketch.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) ); // phpcs:ignore WordPress.PHP.NoSilencedErrors
+	}
+
 }

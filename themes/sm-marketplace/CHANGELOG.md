@@ -1,5 +1,12 @@
 # Changelog — sm-marketplace
 
+## 0.42.0 — 2026-11-18
+
+- Comptes à rebours des études (composant `mission-clock`, `assets/js/clock.js` mis à jour chaque minute) : bandeau vert, orange dans les dernières heures (ou les 3 derniers jours de l'étude), rouge « En retard de … » une fois dépassé, avec barre de progression.
+  - Ingénieur : « Il reste 18 h 42 min pour répondre » (24 h après l'attribution), puis le délai de l'étude dès l'acceptation (« À remettre avant le … »). Pastille dans la liste « Mes missions ».
+  - Client, pendant l'étude : « Livraison prévue le 8 déc. 2026 — il reste 19 jours · délai de votre devis : 20 jours ». Pastille dans la liste « Mes études ». Le client ne voit jamais le délai de l'ingénieur.
+- Le schéma indicatif (`study-sketch.js`) et ses textes passent dans SM Engineering (utilisés aussi dans l'administration) ; le thème charge le script enregistré par l'extension.
+
 ## 0.41.0 — 2026-11-15
 
 - La commune se choisit dans la liste de la wilaya partout où il y a une wilaya et une carte : profil d'entreprise, formulaire d'annonce (neuf, réemploi, bâtiments) et demande d'étude (composant `commune-field`). Changer de wilaya recharge la liste ; une commune tapée avant reste proposée.

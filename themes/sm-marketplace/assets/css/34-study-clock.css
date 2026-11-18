@@ -1,0 +1,21 @@
+/* Countdowns of the studies (0.42.0): banner on the study page, pill in the lists. */
+.sm-clock { --c: var(--sm-accent-ink, #04663c); --c-soft: var(--sm-accent-soft, #E7F6EF); --c-line: var(--sm-accent, #06CE77);
+	display: flex; gap: 14px; align-items: center; padding: 14px 16px; border: 1.5px solid var(--c-line); border-radius: 14px; background: color-mix(in srgb, var(--c-soft) 70%, var(--sm-surface, #fff)); margin-block: 0 var(--sm-s4, 16px); }
+.sm-clock.is-warn { --c: #B45309; --c-soft: #FFF7E8; --c-line: #F59E0B; }
+.sm-clock.is-late { --c: #B42318; --c-soft: #FDECEC; --c-line: #E5484D; }
+.sm-clock__ic { flex: none; display: grid; place-items: center; inline-size: 42px; block-size: 42px; border-radius: 50%; background: var(--c-soft); color: var(--c); }
+.sm-clock__ic .sm-icon { inline-size: 22px; block-size: 22px; }
+.sm-clock__body { flex: 1; min-inline-size: 0; display: grid; gap: 2px; }
+.sm-clock__body b { font-family: var(--sm-font-display, inherit); font-size: 1.12rem; color: var(--sm-text); }
+.sm-clock.is-warn b, .sm-clock.is-late b { color: var(--c); }
+.sm-clock__body small { color: var(--sm-muted); font-size: var(--sm-fs-sm); line-height: 1.45; }
+.sm-clock__bar { display: block; block-size: 6px; margin-block-start: 6px; border-radius: 6px; background: color-mix(in srgb, var(--sm-muted) 18%, transparent); overflow: hidden; }
+.sm-clock__bar i { display: block; block-size: 100%; border-radius: inherit; background: var(--c-line); transition: inline-size .4s ease; }
+.sm-clock.is-late .sm-clock__bar { display: none; }
+
+.sm-clock-pill { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 999px; background: var(--sm-accent-soft, #E7F6EF); color: var(--sm-accent-ink, #04663c); font-size: var(--sm-fs-xs, .8rem); font-weight: 700; white-space: nowrap; }
+.sm-clock-pill .sm-icon { inline-size: 14px; block-size: 14px; }
+.sm-clock-pill.is-warn { background: #FFF1D6; color: #B45309; }
+.sm-clock-pill.is-late { background: #FDECEC; color: #B42318; }
+.sm-mission-clock-cell { display: grid; gap: 4px; justify-items: start; }
+.sme-clock { margin-block-start: var(--sm-s4, 16px); } .sme-clock .sm-clock { margin: 0; }

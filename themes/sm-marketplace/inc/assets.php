@@ -31,7 +31,14 @@ function sm_theme_enqueue_assets() {
 	}
 	if ( is_page_template( 'templates/mission-request.php' ) || is_page_template( 'templates/dashboard.php' ) ) {
 		// Indicative sketch of a study request (0.39.0): live in the form, static on the study page.
-		wp_enqueue_script( 'sm-study-sketch', SM_THEME_URI . '/assets/js/study-sketch.js', array(), sm_theme_asset_version( 'assets/js/study-sketch.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		// 0.42.0: the script is SM Engineering's (registered by the plugin, also used in the administration).
+		if ( wp_script_is( 'sm-study-sketch', 'registered' ) ) {
+			wp_enqueue_script( 'sm-study-sketch' );
+		}
+	}
+	if ( is_page_template( 'templates/dashboard.php' ) ) {
+		// Countdowns of the studies (0.42.0), updated every minute.
+		wp_enqueue_script( 'sm-clock', SM_THEME_URI . '/assets/js/clock.js', array(), sm_theme_asset_version( 'assets/js/clock.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 	if ( is_page_template( 'templates/dashboard.php' ) ) {
 		// Account overview (0.35.0): animated curves and figures; does nothing on the other views.

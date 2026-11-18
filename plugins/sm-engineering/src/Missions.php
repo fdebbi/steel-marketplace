@@ -275,6 +275,123 @@ final class Missions {
 		}
 	}
 
+	/** Place of the project (0.8.0): "Commune, Wilaya" — never the exact position. */
+	public static function place( $m ) {
+		$ar   = 0 === strpos( determine_locale(), 'ar' );
+		$b    = is_array( $m->brief ) ? $m->brief : array();
+		$com  = $ar && ! empty( $b['commune_ar'] ) ? $b['commune_ar'] : (string) ( $b['commune'] ?? '' );
+		$wil  = $m->wilaya ? \SM\Core\Accounts\Wilayas::name( $m->wilaya ) : '';
+		return implode( ', ', array_filter( array( $com, $wil ) ) );
+	}
+
+	/** Date and hour of the end of a clock, in the site's time zone: 20/11/2026 14:30. */
+	public static function due_text( $ts ) {
+		return wp_date( 'd/m/Y H:i', (int) $ts );
+	}
+
+	/** State of a clock now: ok, warn (last hours or days) or late. */
+	public static function clock_state( array $c, $now = null ) {
+		$now = null === $now ? time() : (int) $now;
+		return $now >= $c['due'] ? 'late' : ( $now >= $c['due'] - $c['warn'] ? 'warn' : 'ok' );
+	}
+
+	/** A length of time: "11 days 6 h", "3 h 15 min", "40 min"; short: "11 d". */
+	public static function duration( $sec, $short = false ) {
+		$sec = abs( (int) $sec );
+		$d   = intdiv( $sec, DAY_IN_SECONDS );
+		$h   = intdiv( $sec % DAY_IN_SECONDS, HOUR_IN_SECONDS );
+		$mi  = intdiv( $sec % HOUR_IN_SECONDS, MINUTE_IN_SECONDS );
+		/* translators: %d: hours. */
+		$hs = static fn( $n ) => sprintf( __( '%d h', 'sm-engineering' ), $n );
+		/* translators: %d: minutes. */
+		$ms = static fn( $n ) => sprintf( __( '%d min', 'sm-engineering' ), $n );
+		if ( $d >= 1 ) {
+			/* translators: %d: days (short). */
+			return $short ? sprintf( __( '%d d', 'sm-engineering' ), $d ) : trim( sprintf( /* translators: %d: days. */ _n( '%d day', '%d days', $d, 'sm-engineering' ), $d ) . ( $h ? ' ' . $hs( $h ) : '' ) );
+		}
+		if ( $h >= 1 ) {
+			return trim( $hs( $h ) . ( $mi ? ' ' . $ms( $mi ) : '' ) );
+		}
+		return $ms( max( 1, $mi ) );
+	}
+
+	/** Hours given to the engineer to answer, hours before the end for the reminder, days before the end of the study for its reminder. */
+	public static function respond_hours() {
+		return max( 1, (int) apply_filters( 'sm_engineering_respond_hours', 24 ) );
+	}
+
+	public static function respond_remind_hours() {
+		return max( 1, (int) apply_filters( 'sm_engineering_respond_remind_hours', 4 ) );
+	}
+
+	public static function study_remind_days() {
+		return max( 1, (int) apply_filters( 'sm_engineering_study_remind_days', 3 ) );
+	}
+
+	/**
+	 * The clock of a mission for one side (0.8.0): what is counted, its start and
+	 * its end (UTC timestamps), and the warning window in seconds. null when no clock runs.
+	 *
+	 * @param object $m    Mission.
+	 * @param string $side engineer, client or admin (admin: the engineer's clock).
+	 * @return array|null { kind: respond|study|delivery, start, due, warn }
+	 */
+	public static function clock( $m, $side = 'engineer' ) {
+		$ts = static fn( $d ) => $d ? (int) strtotime( $d . ' UTC' ) : 0;
+		if ( 'client' === $side ) {
+			if ( in_array( $m->status, array( 'in_progress', 'review', 'assigned', 'accepted' ), true ) && ! empty( $m->client_due_at ) ) {
+				$due = $ts( $m->client_due_at );
+				return array( 'kind' => 'delivery', 'start' => $due - max( 1, (int) $m->quote_days ) * DAY_IN_SECONDS, 'due' => $due, 'warn' => self::study_remind_days() * DAY_IN_SECONDS );
+			}
+			return null;
+		}
+		if ( 'assigned' === $m->status && $m->assigned_at ) {
+			$start = $ts( $m->assigned_at );
+			return array( 'kind' => 'respond', 'start' => $start, 'due' => $start + self::respond_hours() * HOUR_IN_SECONDS, 'warn' => self::respond_remind_hours() * HOUR_IN_SECONDS );
+		}
+		if ( 'in_progress' === $m->status && $m->started_at && $m->engineer_days > 0 ) {
+			$start = $ts( $m->started_at );
+			return array( 'kind' => 'study', 'start' => $start, 'due' => $start + (int) $m->engineer_days * DAY_IN_SECONDS, 'warn' => self::study_remind_days() * DAY_IN_SECONDS );
+		}
+		return null;
+	}
+
+	/**
+	 * Hourly task (0.8.0): reminder to the engineer before the end of his 24 hours
+	 * and before the end of the study; the platform is told when a time is over.
+	 */
+	public static function hourly() {
+		global $wpdb;
+		$t   = self::table();
+		$now = time();
+		$at  = gmdate( 'Y-m-d H:i:s', $now );
+		$rows = $wpdb->get_results( "SELECT * FROM {$t} WHERE status IN ('assigned','in_progress') AND engineer_id > 0" ); // phpcs:ignore WordPress.DB
+		foreach ( (array) $rows as $r ) {
+			$m = self::hydrate( $r );
+			$c = self::clock( $m, 'engineer' );
+			if ( ! $c ) {
+				continue;
+			}
+			if ( 'respond' === $c['kind'] ) {
+				if ( $now >= $c['due'] ) {
+					if ( ! $m->eng_late_at ) {
+						self::update( $m->id, array( 'eng_late_at' => $at, 'eng_reminded_at' => $m->eng_reminded_at ? $m->eng_reminded_at : $at ), 'respond_late', array( 'engineer_id' => $m->engineer_id ) );
+					}
+				} elseif ( $now >= $c['due'] - $c['warn'] && ! $m->eng_reminded_at ) {
+					self::update( $m->id, array( 'eng_reminded_at' => $at ), 'respond_reminder', array( 'engineer_id' => $m->engineer_id ) );
+				}
+			} elseif ( 'study' === $c['kind'] ) {
+				if ( $now >= $c['due'] ) {
+					if ( ! $m->study_late_at ) {
+						self::update( $m->id, array( 'study_late_at' => $at, 'study_reminded_at' => $m->study_reminded_at ? $m->study_reminded_at : $at ), 'study_late', array( 'engineer_id' => $m->engineer_id ) );
+					}
+				} elseif ( $now >= $c['due'] - $c['warn'] && ! $m->study_reminded_at ) {
+					self::update( $m->id, array( 'study_reminded_at' => $at ), 'study_reminder', array( 'engineer_id' => $m->engineer_id ) );
+				}
+			}
+		}
+	}
+
 	private static function update( $id, array $row, $action, array $log = array() ) {
 		global $wpdb;
 		$row['updated_at'] = current_time( 'mysql', true );
@@ -380,11 +497,18 @@ final class Missions {
 				if ( $fee <= 0 ) {
 					return new \WP_Error( 'fee', __( 'Enter the fee paid to the engineer.', 'sm-engineering' ) );
 				}
-				return self::update( $m->id, array( 'status' => 'assigned', 'engineer_id' => $eng, 'engineer_fee' => $fee, 'engineer_days' => max( 0, (int) ( $a['days'] ?? 0 ) ), 'engineer_note' => (string) ( $a['note'] ?? '' ), 'assigned_at' => $now, 'fee_status' => 'none' ), 'assigned', array( 'engineer_id' => $eng, 'fee' => $fee, 'previous' => $m->engineer_id ) );
+				// 0.8.0: a new 24-hour clock to answer, new reminders.
+				return self::update( $m->id, array( 'status' => 'assigned', 'engineer_id' => $eng, 'engineer_fee' => $fee, 'engineer_days' => max( 0, (int) ( $a['days'] ?? 0 ) ), 'engineer_note' => (string) ( $a['note'] ?? '' ), 'assigned_at' => $now, 'fee_status' => 'none', 'eng_reminded_at' => null, 'eng_late_at' => null, 'study_reminded_at' => null, 'study_late_at' => null ), 'assigned', array( 'engineer_id' => $eng, 'fee' => $fee, 'previous' => $m->engineer_id ) );
 			case 'unassign':
 				return self::update( $m->id, array( 'status' => 'accepted', 'engineer_id' => 0, 'fee_status' => 'none', 'started_at' => null ), 'unassigned', array( 'engineer_id' => $m->engineer_id ) );
 			case 'take':
-				return self::update( $m->id, array( 'status' => 'in_progress', 'started_at' => $now, 'fee_status' => 'planned' ), 'started', array( 'engineer_id' => $m->engineer_id ) );
+				$row = array( 'status' => 'in_progress', 'started_at' => $now, 'fee_status' => 'planned', 'study_reminded_at' => null, 'study_late_at' => null );
+				if ( empty( $m->client_due_at ) ) {
+					// 0.8.0: the client's delivery date (time of the quote) is set once, when the study first starts;
+					// it does not move if the platform changes the engineer.
+					$row['client_due_at'] = gmdate( 'Y-m-d H:i:s', time() + max( 1, (int) $m->quote_days ) * DAY_IN_SECONDS );
+				}
+				return self::update( $m->id, $row, 'started', array( 'engineer_id' => $m->engineer_id ) );
 			case 'giveup':
 				return self::update( $m->id, array( 'status' => 'accepted', 'engineer_id' => 0, 'reason' => (string) ( $a['reason'] ?? '' ) ), 'engineer_declined', array( 'engineer_id' => $m->engineer_id, 'reason' => (string) ( $a['reason'] ?? '' ) ) );
 			case 'submit':

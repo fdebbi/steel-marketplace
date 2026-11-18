@@ -43,6 +43,9 @@ if ( $id ) :
 			<?php if ( $m['days'] ) : ?><div><dt><?php esc_html_e( 'Time', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( sprintf( /* translators: %d: days. */ _n( '%d day', '%d days', $m['days'], 'sm-marketplace' ), $m['days'] ) ); ?></dd></div><?php endif; ?>
 			<?php if ( $m['needed_by'] ) : ?><div><dt><?php esc_html_e( 'Wanted for', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( sm_date( $m['needed_by'] ) ); ?></dd></div><?php endif; ?>
 		</dl>
+		<?php if ( ! empty( $m['clock'] ) ) : // 0.42.0: 24 hours to answer, then the time of the study. ?>
+			<div class="sme-clock"><?php sm_component( 'mission-clock', array( 'clock' => $m['clock'] ) ); ?></div>
+		<?php endif; ?>
 		<?php if ( $m['can']['take'] ) : ?>
 			<?php sm_theme_form_open( 'mission_engineer', array( 'class' => 'sm-form sme-actions' ) ); ?>
 				<input type="hidden" name="mission_id" value="<?php echo (int) $m['id']; ?>">
@@ -136,7 +139,7 @@ foreach ( $groups as $key => list( $title, $empty ) ) :
 								<td data-label="<?php esc_attr_e( 'Mission', 'sm-marketplace' ); ?>"><a href="<?php echo esc_url( $m['url'] ); ?>"><strong dir="auto"><?php echo esc_html( $m['title'] ); ?></strong></a><br><small><span dir="ltr"><?php echo esc_html( $m['ref'] ); ?></span> · <?php echo esc_html( $m['type'] ); ?></small></td>
 								<td data-label="<?php esc_attr_e( 'Wilaya', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_t( sm_theme_wilayas()[ $m['wilaya'] ] ?? '' ) ); ?></td>
 								<td data-label="<?php esc_attr_e( 'Fee', 'sm-marketplace' ); ?>"><?php echo esc_html( sm_money( $m['fee'] ) ); ?></td>
-								<td data-label="<?php esc_attr_e( 'Status', 'sm-marketplace' ); ?>"><?php sm_mission_status( $m ); ?></td>
+								<td data-label="<?php esc_attr_e( 'Status', 'sm-marketplace' ); ?>"><span class="sm-mission-clock-cell"><?php sm_mission_status( $m ); ?><?php if ( ! empty( $m['clock'] ) ) { sm_component( 'mission-clock', array( 'clock' => $m['clock'], 'variant' => 'pill' ) ); } ?></span></td>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>

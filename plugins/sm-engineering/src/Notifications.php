@@ -18,7 +18,7 @@ final class Notifications {
 
 	public static function init() {
 		add_filter( 'sm_notification_types', array( __CLASS__, 'types' ) );
-		$steps = array( 'quoted', 'declined', 'accepted', 'quote_declined', 'cancelled', 'assigned', 'unassigned', 'started', 'engineer_declined', 'review', 'rework', 'delivered', 'closed', 'fee_paid', 'quote_reminder', 'payment_reminder', 'expired_unpaid', 'advance_paid', 'balance_paid' );
+		$steps = array( 'respond_reminder', 'respond_late', 'study_reminder', 'study_late', 'quoted', 'declined', 'accepted', 'quote_declined', 'cancelled', 'assigned', 'unassigned', 'started', 'engineer_declined', 'review', 'rework', 'delivered', 'closed', 'fee_paid', 'quote_reminder', 'payment_reminder', 'expired_unpaid', 'advance_paid', 'balance_paid' );
 		foreach ( $steps as $step ) {
 			add_action( 'sm_mission_' . $step, array( __CLASS__, 'on_' . $step ), 10, 2 );
 		}
@@ -279,11 +279,71 @@ final class Notifications {
 			static fn( $p ) => sprintf( __( 'You no longer receive missions: %s. Write to the platform for details.', 'sm-engineering' ), $p['reason'] ?? '' ),
 			static fn( $p ) => CoreRoutes::url( 'account' )
 		);
+		$see = static fn( $p ) => __( 'See the full request', 'sm-engineering' );
+		// 0.8.0: short message — reference, project, main missions, place; the full request
+		// (description, sketch, map, files) is on the mission page.
+		$short = static function ( $x ) {
+			if ( ! $x ) {
+				return '';
+			}
+			$parts = array( Missions::services_label( $x ), Missions::place( $x ) );
+			return implode( ' — ', array_filter( $parts ) );
+		};
 		$types['mission.offered']        = $def(
 			static fn( $p ) => __( 'A mission is offered to you', 'sm-engineering' ),
-			/* translators: 1: mission reference and title, 2: fee. */
-			static fn( $p ) => sprintf( __( 'The platform offers you %1$s. Fee: %2$s. Accept or decline it from your dashboard.', 'sm-engineering' ), $ref( $p ), ( $x = $m( $p ) ) ? $money( $x->engineer_fee ) : '' ),
+			static function ( $p ) use ( $m, $ref, $short, $money ) {
+				$x = $m( $p );
+				$c = $x ? Missions::clock( $x, 'engineer' ) : null;
+				/* translators: 1: mission reference and title, 2: main missions and place, 3: fee, 4: days, 5: date and hour. */
+				return sprintf( __( 'The platform offers you %1$s (%2$s). Fee: %3$s, time: %4$s days. Answer before %5$s.', 'sm-engineering' ), $ref( $p ), $short( $x ), $x ? $money( $x->engineer_fee ) : '', $x ? (int) $x->engineer_days : 0, $c ? Missions::due_text( $c['due'] ) : '' );
+			},
 			$eng
+		);
+		$types['mission.offered']['button'] = $see;
+		$types['mission.respond_reminder'] = $def(
+			static fn( $p ) => __( 'A mission waits for your answer', 'sm-engineering' ),
+			static function ( $p ) use ( $m, $ref ) {
+				$x = $m( $p );
+				$c = $x ? Missions::clock( $x, 'engineer' ) : null;
+				/* translators: 1: mission reference and title, 2: date and hour. */
+				return sprintf( __( 'Accept or decline %1$s before %2$s. After this time, the platform may give the mission to another engineer.', 'sm-engineering' ), $ref( $p ), $c ? Missions::due_text( $c['due'] ) : '' );
+			},
+			$eng
+		);
+		$types['mission.respond_reminder']['button'] = $see;
+		$types['mission.respond_late']   = $def(
+			static fn( $p ) => __( 'No answer from the engineer', 'sm-engineering' ),
+			/* translators: %s: mission reference and title. */
+			static fn( $p ) => sprintf( __( 'The time to answer %s is over. Change the engineer?', 'sm-engineering' ), $ref( $p ) ),
+			$admin,
+			false
+		);
+		$types['mission.study_reminder'] = $def(
+			static fn( $p ) => __( 'The end of your study is near', 'sm-engineering' ),
+			static function ( $p ) use ( $m, $ref ) {
+				$x = $m( $p );
+				$c = $x ? Missions::clock( $x, 'engineer' ) : null;
+				/* translators: 1: mission reference and title, 2: date and hour. */
+				return sprintf( __( 'The deliverables of %1$s are due on %2$s. Send them from the mission page.', 'sm-engineering' ), $ref( $p ), $c ? Missions::due_text( $c['due'] ) : '' );
+			},
+			$eng
+		);
+		$types['mission.study_late']     = $def(
+			static fn( $p ) => __( 'Your study is late', 'sm-engineering' ),
+			static function ( $p ) use ( $m, $ref ) {
+				$x = $m( $p );
+				$c = $x ? Missions::clock( $x, 'engineer' ) : null;
+				/* translators: 1: mission reference and title, 2: date and hour. */
+				return sprintf( __( 'The deliverables of %1$s were due on %2$s. Send them as soon as possible or write to the platform.', 'sm-engineering' ), $ref( $p ), $c ? Missions::due_text( $c['due'] ) : '' );
+			},
+			$eng
+		);
+		$types['mission.study_late_team'] = $def(
+			static fn( $p ) => __( 'Study late', 'sm-engineering' ),
+			/* translators: %s: mission reference and title. */
+			static fn( $p ) => sprintf( __( 'The engineer has not sent the deliverables of %s in time.', 'sm-engineering' ), $ref( $p ) ),
+			$admin,
+			false
 		);
 		$types['mission.withdrawn']      = $def(
 			static fn( $p ) => __( 'A mission is no longer assigned to you', 'sm-engineering' ),
@@ -330,6 +390,23 @@ final class Notifications {
 
 	private static function to_team( $m, $type, array $extra = array() ) {
 		Notify::notify_moderators( $type, array( 'mission_id' => $m->id ) + $extra );
+	}
+
+	public static function on_respond_reminder( $m ) {
+		self::to_engineer( $m->engineer_id, $m, 'mission.respond_reminder' );
+	}
+
+	public static function on_respond_late( $m ) {
+		self::to_team( $m, 'mission.respond_late' );
+	}
+
+	public static function on_study_reminder( $m ) {
+		self::to_engineer( $m->engineer_id, $m, 'mission.study_reminder' );
+	}
+
+	public static function on_study_late( $m ) {
+		self::to_engineer( $m->engineer_id, $m, 'mission.study_late' );
+		self::to_team( $m, 'mission.study_late_team' );
 	}
 
 	public static function on_quoted( $m ) {

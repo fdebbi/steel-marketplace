@@ -13,6 +13,7 @@ use SM\Core\Accounts\Wilayas;
 use SM\Core\Notifications\Notifications as Notify;
 use SM\Core\Verification\Verifications;
 use SM\Engineering\Apply;
+use SM\Engineering\Brief;
 use SM\Engineering\Engineers;
 use SM\Engineering\Files;
 use SM\Engineering\Messages;
@@ -95,7 +96,14 @@ final class Admin {
 	}
 
 	private static function styles() {
-		echo '<style>.sme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;margin-top:16px}.sme-box{background:#fff;border:1px solid #dcdcde;border-radius:8px;padding:16px}.sme-box h2{margin-top:0;font-size:15px}.sme-box dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;margin:0}.sme-box dt{color:#646970}.sme-box dd{margin:0}.sme-thread{max-height:360px;overflow:auto;display:grid;gap:8px;margin-bottom:10px}.sme-msg{padding:8px 10px;border-radius:8px;background:#f6f7f7}.sme-msg.platform{background:#e7f5ec}.sme-msg small{display:block;color:#646970}.sme-files li{display:flex;gap:8px;align-items:center}.sme-photo{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#f0f0f1;display:inline-grid;place-items:center;font-weight:700}.sme-margin{font-size:20px;font-weight:700}.sme-warn{color:#b32d2e}</style>';
+		echo '<style>.sme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;margin-top:16px}.sme-box{background:#fff;border:1px solid #dcdcde;border-radius:8px;padding:16px}.sme-box h2{margin-top:0;font-size:15px}.sme-box dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;margin:0}.sme-box dt{color:#646970}.sme-box dd{margin:0}.sme-thread{max-height:360px;overflow:auto;display:grid;gap:8px;margin-bottom:10px}.sme-msg{padding:8px 10px;border-radius:8px;background:#f6f7f7}.sme-msg.platform{background:#e7f5ec}.sme-msg small{display:block;color:#646970}.sme-files li{display:flex;gap:8px;align-items:center}.sme-photo{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#f0f0f1;display:inline-grid;place-items:center;font-weight:700}.sme-margin{font-size:20px;font-weight:700}.sme-warn{color:#b32d2e}'
+			// 0.8.0: deadlines, sketch and map of the need.
+			. '.sm-pill.ok{background:#e7f6ef;color:#04663c}.sme-clocks{display:grid;gap:6px;margin:12px 0 0}.sme-clock{margin:0;padding:8px 12px;border-radius:8px;border:1px solid #9fdcbf;background:#effaf4}.sme-clock.is-warn{border-color:#f5c26b;background:#fff7e8;color:#8a4b06}.sme-clock.is-late{border-color:#f0a3a3;background:#fdecec;color:#9f1f1f;font-weight:600}'
+			. '.sme-needbox{grid-column:1/-1}.sme-needgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:start}.sme-map iframe{width:100%;height:320px;border:1px solid #dcdcde;border-radius:8px}'
+			. '.smx-sketch{--sm-text:#111820;--sm-muted:#5b6670;--sm-accent:#06ce77;--sm-surface:#fff;--sm-line:#dcdcde;padding:12px;border:1px solid #dcdcde;border-radius:10px;background:#fbfcfc}.smx-sketch__view+.smx-sketch__view{margin-top:10px}.smx-sketch__title{display:flex;justify-content:space-between;gap:8px;margin:0 0 4px;font-weight:700}.smx-sketch__title small{font-weight:400;color:#5b6670}.smx-sketch svg{display:block;width:100%;height:auto}.smx-sketch svg text{paint-order:stroke;stroke:#fbfcfc;stroke-width:4px;stroke-linejoin:round}'
+			. '.smx-figs{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));margin:8px 0}.smx-figs div{padding:8px 10px;border-radius:8px;background:#fff;border:1px solid #dcdcde;font-size:12px;color:#5b6670}.smx-figs b{display:block;color:#111820;font-size:14px}.smx-figs:empty{display:none}'
+			. '.smx-d-frame{stroke:#111820;fill:none}.smx-d-fill{fill:color-mix(in srgb,#06ce77 12%,transparent)}.smx-d-dim{stroke:#5b6670;fill:#5b6670}.smx-d-mezz{stroke:#1d4ed8;fill:#1d4ed8}.smx-d-crane{stroke:#b45309;fill:#b45309}.smx-d-t{fill:#111820;font-size:12px;font-weight:700}.smx-d-tm{fill:#5b6670;font-size:12px}.smx-d-tb{fill:#1d4ed8;font-size:12px;font-weight:600}.smx-d-to{fill:#b45309;font-size:12px;font-weight:600}.smx-d-wallbg{fill:#efe7dc}.smx-d-wall{stroke:#8a6a46}.smx-d-clad{stroke:#5b6670;opacity:.45}.smx-d-door{fill:#fff;stroke:#b45309;stroke-width:2.5}.smx-d-tw{fill:#7a5a36;font-size:12px;font-weight:700}.smx-d-hit{fill:transparent}'
+			. '</style>';
 	}
 
 	/* ---- Engineers ---------------------------------------------------- */
@@ -321,16 +329,127 @@ final class Admin {
 			echo '<p>' . esc_html__( 'No mission here.', 'sm-engineering' ) . '</p></div>';
 			return;
 		}
-		echo '<table class="widefat striped"><thead><tr><th>' . esc_html__( 'Mission', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Client', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Engineer', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Status', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Client price', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Engineer fee', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Margin', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Updated', 'sm-engineering' ) . '</th></tr></thead><tbody>';
+		echo '<table class="widefat striped"><thead><tr><th>' . esc_html__( 'Mission', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Client', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Engineer', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Status', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Client price', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Engineer fee', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Margin', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Deadline', 'sm-engineering' ) . '</th><th>' . esc_html__( 'Updated', 'sm-engineering' ) . '</th></tr></thead><tbody>';
 		$tones = array( 'submitted' => 'warn', 'accepted' => 'warn', 'review' => 'warn', 'delivered' => 'ok', 'closed' => 'ok', 'declined' => 'bad', 'quote_declined' => 'bad', 'cancelled' => 'bad' );
 		foreach ( $res['items'] as $m ) {
 			$cl = Companies::get( $m->client_id );
 			$en = $m->engineer_id ? Companies::get( $m->engineer_id ) : null;
 			echo '<tr><td><a href="' . esc_url( $base . '&id=' . $m->id ) . '"><strong>' . esc_html( $m->ref ) . '</strong></a><br>' . esc_html( $m->title ) . '<br><small>' . esc_html( Missions::services_label( $m ) ) . '</small></td>';
 			echo '<td>' . esc_html( $cl ? $cl->name : '—' ) . '</td><td>' . esc_html( $en ? $en->name : '—' ) . '</td><td>' . self::pill( $labels[ $m->status ] ?? $m->status, $tones[ $m->status ] ?? '' ) . '</td>'; // phpcs:ignore WordPress.Security.EscapeOutput
-			echo '<td>' . ( $m->quote_amount ? esc_html( self::money( $m->quote_amount ) ) : '—' ) . '</td><td>' . ( $m->engineer_fee && $m->engineer_id ? esc_html( self::money( $m->engineer_fee ) ) : '—' ) . '</td><td>' . ( $m->quote_amount && $m->engineer_fee && $m->engineer_id ? esc_html( self::money( $m->quote_amount - $m->engineer_fee ) ) : '—' ) . '</td><td>' . self::date( $m->updated_at ) . '</td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
+			echo '<td>' . ( $m->quote_amount ? esc_html( self::money( $m->quote_amount ) ) : '—' ) . '</td><td>' . ( $m->engineer_fee && $m->engineer_id ? esc_html( self::money( $m->engineer_fee ) ) : '—' ) . '</td><td>' . ( $m->quote_amount && $m->engineer_fee && $m->engineer_id ? esc_html( self::money( $m->quote_amount - $m->engineer_fee ) ) : '—' ) . '</td><td>' . self::deadline( $m ) . '</td><td>' . self::date( $m->updated_at ) . '</td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 		echo '</tbody></table></div>';
+	}
+
+	/**
+	 * Deadlines of a mission for the list (0.8.0): the engineer's (to answer, then
+	 * the study) and the client's delivery date; "time over — change?" in red.
+	 */
+	private static function deadline( $m ) {
+		$out = array();
+		$e   = Missions::clock( $m, 'engineer' );
+		if ( $e ) {
+			$st = Missions::clock_state( $e );
+			if ( 'respond' === $e['kind'] ) {
+				$out[] = 'late' === $st
+					? self::pill( __( 'Answer: time over — change?', 'sm-engineering' ), 'bad' )
+					/* translators: %s: time left. */
+					: self::pill( sprintf( __( 'Answer: %s', 'sm-engineering' ), Missions::duration( $e['due'] - time() ) ), 'warn' === $st ? 'warn' : 'ok' );
+			} else {
+				$out[] = 'late' === $st
+					/* translators: %s: time passed. */
+					? self::pill( sprintf( __( 'Engineer: late %s', 'sm-engineering' ), Missions::duration( time() - $e['due'], true ) ), 'bad' )
+					/* translators: %s: time left. */
+					: self::pill( sprintf( __( 'Engineer %s', 'sm-engineering' ), Missions::duration( $e['due'] - time(), true ) ), 'warn' === $st ? 'warn' : 'ok' );
+			}
+		}
+		$c = Missions::clock( $m, 'client' );
+		if ( $c ) {
+			$st    = Missions::clock_state( $c );
+			$out[] = 'late' === $st
+				/* translators: %s: time passed. */
+				? self::pill( sprintf( __( 'Client: late %s', 'sm-engineering' ), Missions::duration( time() - $c['due'], true ) ), 'bad' )
+				/* translators: %s: time left. */
+				: self::pill( sprintf( __( 'Client %s', 'sm-engineering' ), Missions::duration( $c['due'] - time(), true ) ), 'warn' === $st ? 'warn' : 'ok' );
+		}
+		return $out ? implode( ' ', $out ) : '—';
+	}
+
+	/** The deadlines of the mission page (0.8.0), as sentences. */
+	private static function clocks_box( $m ) {
+		$lines = array();
+		$e     = Missions::clock( $m, 'engineer' );
+		if ( $e ) {
+			$st = Missions::clock_state( $e );
+			if ( 'respond' === $e['kind'] ) {
+				$lines[] = array(
+					$st,
+					'late' === $st
+						/* translators: 1: date and hour, 2: time passed. */
+						? sprintf( __( 'The engineer has not answered: the time ended on %1$s (%2$s ago). He can still accept until you give the mission to another engineer.', 'sm-engineering' ), Missions::due_text( $e['due'] ), Missions::duration( time() - $e['due'] ) )
+						/* translators: 1: date and hour, 2: time left. */
+						: sprintf( __( 'Answer of the engineer expected before %1$s (%2$s left).', 'sm-engineering' ), Missions::due_text( $e['due'] ), Missions::duration( $e['due'] - time() ) ),
+				);
+			} else {
+				$lines[] = array(
+					$st,
+					'late' === $st
+						/* translators: 1: date and hour, 2: time passed. */
+						? sprintf( __( 'Study of the engineer late: due on %1$s (late by %2$s).', 'sm-engineering' ), Missions::due_text( $e['due'] ), Missions::duration( time() - $e['due'] ) )
+						/* translators: 1: date and hour, 2: time left. */
+						: sprintf( __( 'Study of the engineer due on %1$s (%2$s left).', 'sm-engineering' ), Missions::due_text( $e['due'] ), Missions::duration( $e['due'] - time() ) ),
+				);
+			}
+		}
+		$c = Missions::clock( $m, 'client' );
+		if ( $c ) {
+			$st      = Missions::clock_state( $c );
+			$lines[] = array(
+				$st,
+				'late' === $st
+					/* translators: 1: date and hour, 2: time passed. */
+					? sprintf( __( 'Delivery promised to the client on %1$s: passed by %2$s.', 'sm-engineering' ), Missions::due_text( $c['due'] ), Missions::duration( time() - $c['due'] ) )
+					/* translators: 1: date and hour, 2: time left. */
+					: sprintf( __( 'Delivery promised to the client on %1$s (%2$s left).', 'sm-engineering' ), Missions::due_text( $c['due'] ), Missions::duration( $c['due'] - time() ) ),
+			);
+		}
+		if ( ! $lines ) {
+			return;
+		}
+		echo '<div class="sme-clocks">';
+		foreach ( $lines as $l ) {
+			echo '<p class="sme-clock is-' . esc_attr( $l[0] ) . '"><span class="dashicons dashicons-' . ( 'ok' === $l[0] ? 'clock' : 'warning' ) . '" aria-hidden="true"></span> ' . esc_html( $l[1] ) . '</p>';
+		}
+		echo '</div>';
+	}
+
+	/**
+	 * The need of the client as on the site (0.8.0): indicative sketch and the place
+	 * on the map; the answers are in the Request box, the files in Files.
+	 */
+	private static function need_box( $m ) {
+		$draw = Brief::drawable( $m->brief );
+		$loc  = isset( $m->brief['lat'], $m->brief['lng'] ) ? array( (float) $m->brief['lat'], (float) $m->brief['lng'] ) : null;
+		if ( ! $draw && ! $loc ) {
+			return;
+		}
+		echo '<div class="sme-box sme-needbox"><h2>' . esc_html__( 'Sketch and place of the project', 'sm-engineering' ) . '</h2><div class="sme-needgrid">';
+		if ( $draw ) {
+			wp_enqueue_script( 'sm-study-sketch' );
+			$i18n = Brief::sketch_i18n();
+			echo '<div class="smx-sketch" data-smx-draw="' . esc_attr( wp_json_encode( $m->brief ) ) . '" data-i18n="' . esc_attr( wp_json_encode( $i18n ) ) . '">';
+			echo '<div class="smx-sketch__view"><p class="smx-sketch__title"><span data-smx-front-title>' . esc_html( $i18n['front'] ) . '</span><small>' . esc_html__( 'Indicative sketch', 'sm-engineering' ) . '</small></p><div data-smx-front></div></div>';
+			echo '<div class="smx-sketch__view" data-smx-plan-box><p class="smx-sketch__title"><span>' . esc_html( $i18n['plan'] ) . '</span><small data-smx-plan-note></small></p><div data-smx-plan></div></div>';
+			echo '<div class="smx-figs" data-smx-figs></div></div>';
+		}
+		if ( $loc ) {
+			$d    = 0.006;
+			$bbox = implode( ',', array( $loc[1] - $d, $loc[0] - $d * 0.7, $loc[1] + $d, $loc[0] + $d * 0.7 ) );
+			$src  = 'https://www.openstreetmap.org/export/embed.html?bbox=' . rawurlencode( $bbox ) . '&layer=mapnik&marker=' . rawurlencode( $loc[0] . ',' . $loc[1] );
+			echo '<div class="sme-map"><iframe title="' . esc_attr__( 'Place of the project', 'sm-engineering' ) . '" src="' . esc_url( $src ) . '" loading="lazy" referrerpolicy="no-referrer"></iframe>';
+			echo '<p><a target="_blank" rel="noopener noreferrer" href="' . esc_url( 'https://www.openstreetmap.org/?mlat=' . $loc[0] . '&mlon=' . $loc[1] . '#map=17/' . $loc[0] . '/' . $loc[1] ) . '">' . esc_html__( 'Open the map', 'sm-engineering' ) . '</a> · <span dir="ltr">' . esc_html( number_format( $loc[0], 5, '.', '' ) . ', ' . number_format( $loc[1], 5, '.', '' ) ) . '</span></p></div>';
+		}
+		echo '</div></div>';
 	}
 
 	private static function files_box( $m ) {
@@ -394,7 +513,9 @@ final class Admin {
 		echo '<p><a href="' . esc_url( admin_url( 'admin.php?page=' . self::MISSIONS ) ) . '">← ' . esc_html__( 'Engineering missions', 'sm-engineering' ) . '</a></p>';
 		echo '<h1>' . esc_html( $m->ref . ' — ' . $m->title ) . ' ' . self::pill( $labels[ $m->status ] ?? $m->status ) . '</h1>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		self::notice();
+		self::clocks_box( $m );
 		echo '<div class="sme-grid">';
+		self::need_box( $m );
 
 		// Request.
 		echo '<div class="sme-box"><h2>' . esc_html__( 'Request', 'sm-engineering' ) . '</h2><dl>';

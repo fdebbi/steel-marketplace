@@ -1,5 +1,14 @@
 # Changelog — sm-engineering
 
+## 0.8.0 — 2026-11-18 (avec le thème 0.42.0 et SM Core 0.8.5)
+
+- Échéances : `Missions::clock()` — 24 h pour répondre à partir de l'attribution, puis le délai de l'ingénieur (`engineer_days`) dès son acceptation ; pour le client, la date de livraison du devis (`quote_days`) fixée au premier démarrage de l'étude (colonne `client_due_at`), qui ne bouge pas si l'ingénieur change. Base v7 : `client_due_at`, `eng_reminded_at`, `eng_late_at`, `study_reminded_at`, `study_late_at`.
+- Tâche horaire `sm_engineering_hourly` (`Missions::hourly()`) : rappel à l'ingénieur 4 h avant la fin des 24 h et 3 jours avant la fin de l'étude ; à la fin des 24 h la plateforme est prévenue (« Délai dépassé — changer ? »), sans retrait automatique : l'ingénieur peut encore accepter ; étude en retard : ingénieur et plateforme prévenus. Chaque alerte part une seule fois.
+- E-mails courts : alerte « Demande d'étude » à la plateforme (référence, projet, missions, lieu, bouton « Voir la demande complète ») et mission proposée à l'ingénieur (missions, lieu, honoraires, délai, « Répondez avant le … », même bouton). Ni position exacte ni fichiers dans les e-mails. Nouvelles variables `{lieu}` et `{echeance}`. Nouveaux événements e-mail : réponse en retard, étude en retard.
+- Administration : colonne « Échéance » (« Réponse : délai dépassé — changer ? », « Ingénieur 11 j », « Client 15 j », retards en rouge) ; page de la mission : échéances, schéma indicatif et carte de l'emplacement (OpenStreetMap) en plus des réponses et des fichiers.
+- Le schéma indicatif (`assets/js/study-sketch.js`) et ses textes (`Brief::sketch_i18n()`) viennent du thème ; script `sm-study-sketch` enregistré pour le site et l'administration.
+- Données du thème : `clock` dans les missions du client et de l'ingénieur.
+
 ## 0.7.0 — 2026-11-15 (avec le thème 0.40.0)
 
 - `Brief` : couverture (`roofing`) et bardage (`walls`, `wall_h`, `walls_top`) séparés ; portes par côté (`d_front` / `d_back` avec les travées, `d_left` / `d_right` : 1 centrée ou 2 réparties, largeur et hauteur) ; niveaux un par un (`floors` : hauteur et usage) ; commune obligatoire vérifiée dans la liste de la wilaya (texte libre pour les wilayas sans liste) ; position facultative sur la carte (en Algérie).

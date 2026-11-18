@@ -42,6 +42,11 @@ final class Plugin {
 		if ( ! wp_next_scheduled( 'sm_engineering_daily' ) ) {
 			wp_schedule_event( time() + HOUR_IN_SECONDS, 'daily', 'sm_engineering_daily' );
 		}
+		// Hourly task (0.8.0): engineer reminders and late alerts.
+		add_action( 'sm_engineering_hourly', array( Missions::class, 'hourly' ) );
+		if ( ! wp_next_scheduled( 'sm_engineering_hourly' ) ) {
+			wp_schedule_event( time() + 300, 'hourly', 'sm_engineering_hourly' );
+		}
 		add_filter(
 			'sm_dashboard_view_slugs',
 			static fn( $slugs ) => array_merge(
@@ -55,6 +60,8 @@ final class Plugin {
 				)
 			)
 		);
+		add_action( 'wp_enqueue_scripts', array( Brief::class, 'register_script' ), 5 );
+		add_action( 'admin_enqueue_scripts', array( Brief::class, 'register_script' ), 5 );
 		Theme\Bridge::init();
 		if ( is_admin() ) {
 			Admin\Admin::init();
