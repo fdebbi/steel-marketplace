@@ -2472,3 +2472,13 @@ P.update({
 ('%d credit per use', '%d credits per use'): (['%d crédit par utilisation', '%d crédits par utilisation'], ['%d رصيد لكل استعمال', 'رصيد واحد لكل استعمال', 'رصيدان لكل استعمال', '%d أرصدة لكل استعمال', '%d رصيدًا لكل استعمال', '%d رصيد لكل استعمال']),
 ('%d credit left', '%d credits left'): (['%d crédit restant', '%d crédits restants'], ['%d رصيد متبقٍ', 'رصيد واحد متبقٍ', 'رصيدان متبقيان', '%d أرصدة متبقية', '%d رصيدًا متبقيًا', '%d رصيد متبقٍ']),
 })
+
+# 0.45.1: Business report announced.
+T.update({
+'Business report': ('Rapport Business', 'تقرير الأعمال'),
+'Follow your market like a pro. Every week or every month, receive the most requested and most searched products, the average advertised prices of new steel, reuse and buildings, and the trends by wilaya, to set your prices and choose your stock at the right time.': ('Suivez votre marché comme un pro. Chaque semaine ou chaque mois, recevez les produits les plus demandés et les plus recherchés, les prix moyens affichés du neuf, du réemploi et des bâtiments, et les tendances par wilaya, pour fixer vos prix et choisir votre stock au bon moment.', 'تابع سوقك كمحترف. كل أسبوع أو كل شهر، استلم المنتجات الأكثر طلباً والأكثر بحثاً، ومتوسط الأسعار المعروضة للفولاذ الجديد وإعادة الاستعمال والمباني، والاتجاهات حسب الولاية، لتحديد أسعارك واختيار مخزونك في الوقت المناسب.'),
+'Included in the Business plan': ('Inclus dans la formule Business', 'مُدرج في اشتراك Business'),
+'Soon': ('Bientôt', 'قريباً'),
+'See the Business plan': ('Voir la formule Business', 'عرض اشتراك Business'),
+})
+

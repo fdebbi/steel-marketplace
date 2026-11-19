@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.45.0\n"
+"Project-Id-Version: SM Marketplace 0.45.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-19T10:46:03+00:00\n"
+"POT-Creation-Date: 2026-11-19T12:17:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -7664,6 +7664,26 @@ msgid "%d credit left"
 msgid_plural "%d credits left"
 msgstr[0] ""
 msgstr[1] ""
+
+#: templates/ai-assistant.php:79
+msgid "Business report"
+msgstr ""
+
+#: templates/ai-assistant.php:80
+msgid "Follow your market like a pro. Every week or every month, receive the most requested and most searched products, the average advertised prices of new steel, reuse and buildings, and the trends by wilaya, to set your prices and choose your stock at the right time."
+msgstr ""
+
+#: templates/ai-assistant.php:81
+msgid "Included in the Business plan"
+msgstr ""
+
+#: templates/ai-assistant.php:81
+msgid "Soon"
+msgstr ""
+
+#: templates/ai-assistant.php:83
+msgid "See the Business plan"
+msgstr ""
 
 #. Template Name of the theme
 msgid "SM — Sign in"

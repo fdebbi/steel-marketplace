@@ -8192,6 +8192,34 @@ msgid_plural "%d credits left"
 msgstr[0] "%d crédit restant"
 msgstr[1] "%d crédits restants"
 
+#: templates/ai-assistant.php:79
+msgid "Business report"
+msgstr "Rapport Business"
+
+#: templates/ai-assistant.php:80
+msgid ""
+"Follow your market like a pro. Every week or every month, receive the most "
+"requested and most searched products, the average advertised prices of new "
+"steel, reuse and buildings, and the trends by wilaya, to set your prices and"
+" choose your stock at the right time."
+msgstr ""
+"Suivez votre marché comme un pro. Chaque semaine ou chaque mois, recevez les"
+" produits les plus demandés et les plus recherchés, les prix moyens affichés"
+" du neuf, du réemploi et des bâtiments, et les tendances par wilaya, pour "
+"fixer vos prix et choisir votre stock au bon moment."
+
+#: templates/ai-assistant.php:81
+msgid "Included in the Business plan"
+msgstr "Inclus dans la formule Business"
+
+#: templates/ai-assistant.php:81
+msgid "Soon"
+msgstr "Bientôt"
+
+#: templates/ai-assistant.php:83
+msgid "See the Business plan"
+msgstr "Voir la formule Business"
+
 #. Template Name of the theme
 msgid "SM — Sign in"
 msgstr "SM — Connexion"

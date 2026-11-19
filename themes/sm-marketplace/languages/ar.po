@@ -8141,6 +8141,33 @@ msgstr[3] "%d أرصدة متبقية"
 msgstr[4] "%d رصيدًا متبقيًا"
 msgstr[5] "%d رصيد متبقٍ"
 
+#: templates/ai-assistant.php:79
+msgid "Business report"
+msgstr "تقرير الأعمال"
+
+#: templates/ai-assistant.php:80
+msgid ""
+"Follow your market like a pro. Every week or every month, receive the most "
+"requested and most searched products, the average advertised prices of new "
+"steel, reuse and buildings, and the trends by wilaya, to set your prices and"
+" choose your stock at the right time."
+msgstr ""
+"تابع سوقك كمحترف. كل أسبوع أو كل شهر، استلم المنتجات الأكثر طلباً والأكثر "
+"بحثاً، ومتوسط الأسعار المعروضة للفولاذ الجديد وإعادة الاستعمال والمباني، "
+"والاتجاهات حسب الولاية، لتحديد أسعارك واختيار مخزونك في الوقت المناسب."
+
+#: templates/ai-assistant.php:81
+msgid "Included in the Business plan"
+msgstr "مُدرج في اشتراك Business"
+
+#: templates/ai-assistant.php:81
+msgid "Soon"
+msgstr "قريباً"
+
+#: templates/ai-assistant.php:83
+msgid "See the Business plan"
+msgstr "عرض اشتراك Business"
+
 #. Template Name of the theme
 msgid "SM — Sign in"
 msgstr "SM — تسجيل الدخول"

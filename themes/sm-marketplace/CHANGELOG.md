@@ -1,5 +1,9 @@
 # Changelog — sm-marketplace
 
+## 0.45.1 — 2026-11-19
+
+- Page « Assistant IA » : carte **Rapport Business** annoncée (« Inclus dans la formule Business », « Bientôt », lien « Voir la formule Business ») ; aucun bouton d'utilisation avant la livraison de l'outil (étape 4).
+
 ## 0.45.0 — 2026-11-19 (avec sm-ai 0.2.0 et sm-subscriptions 0.3.0)
 
 - **Page publique « Assistant IA »** (`/assistant-ia/`, gabarit `templates/ai-assistant.php`, créée à la mise à jour du thème) : chaque outil avec ce qu'il fait, son coût (« Gratuit · pour tous » ou « 1 crédit par utilisation ») et où il se trouve. Selon la situation (composant `ai-gate`) :

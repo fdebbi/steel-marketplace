@@ -73,6 +73,16 @@ $sm_tools = array(
 					</div>
 				</article>
 			<?php endforeach; ?>
+			<?php // Business report (0.45.1): announced, built in step 4 — no button until it works. ?>
+			<article class="smai-card smai-card--soon" id="ai-business">
+				<span class="smai-card__icon"><?php sm_icon( 'chart' ); ?></span>
+				<h2 class="smai-card__title"><?php esc_html_e( 'Business report', 'sm-marketplace' ); ?></h2>
+				<p><?php esc_html_e( 'Follow your market like a pro. Every week or every month, receive the most requested and most searched products, the average advertised prices of new steel, reuse and buildings, and the trends by wilaya, to set your prices and choose your stock at the right time.', 'sm-marketplace' ); ?></p>
+				<p class="smai-card__meta"><span class="is-biz"><?php esc_html_e( 'Included in the Business plan', 'sm-marketplace' ); ?></span><span class="is-soon"><?php esc_html_e( 'Soon', 'sm-marketplace' ); ?></span></p>
+				<div class="smai-card__foot">
+					<a class="sm-btn sm-btn--ai-outline sm-btn--block" href="<?php echo esc_url( sm_page_url( 'pricing' ) ); ?>"><?php esc_html_e( 'See the Business plan', 'sm-marketplace' ); ?></a>
+				</div>
+			</article>
 		</div>
 	<?php endif; ?>
 </div>

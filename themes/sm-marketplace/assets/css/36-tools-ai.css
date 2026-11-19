@@ -119,3 +119,9 @@ textarea[aria-busy="true"] { opacity: .6; }
 .smai-desc-note { margin: 6px 0 0; font-size: var(--sm-fs-xs); color: var(--sm-muted); }
 .smai-desc-note::before { content: "✦ "; color: var(--sm-ai-1); }
 .smai-desc-note__undo { border: 0; background: none; padding: 0; color: var(--sm-text); font: inherit; font-weight: 600; text-decoration: underline; cursor: pointer; }
+
+/* Business report announced (0.45.1) */
+.smai-card--soon { background: linear-gradient(160deg, color-mix(in srgb, #FFD54A 8%, var(--sm-surface)), var(--sm-surface) 60%); }
+.smai-card--soon .smai-card__icon { background: #FFF4D6; color: #7A5600; }
+.smai-card__meta .is-biz { background: #FFF4D6; color: #7A5600; }
+.smai-card__meta .is-soon { background: color-mix(in srgb, var(--sm-ai-1) 14%, var(--sm-surface)); color: var(--sm-ai-ink); }
