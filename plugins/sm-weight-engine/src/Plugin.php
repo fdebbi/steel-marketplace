@@ -36,6 +36,7 @@ final class Plugin {
 
 		Rest\Api::init();
 		Theme\Bridge::init();
+		CuttingActions::init();
 		if ( is_admin() ) {
 			Admin\Admin::init();
 		}

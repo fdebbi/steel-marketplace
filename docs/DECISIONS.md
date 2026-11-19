@@ -446,3 +446,9 @@ Validé sur la maquette 0.37.
 - DQE à partir d'un plan : remplacé pour l'instant par une mission d'ingénieur (fiabilité).
 - Règle interne du Rapport Business (jamais affichée telle quelle) : prix affichés et comptages seulement, au moins 5 sources par moyenne, aucune donnée d'utilisateur ni montant de transaction.
 
+## Optimiseur de découpe (2026-11-19)
+
+- Calcul exact, pas d'IA : gratuit, ouvert à tous, même résultat à chaque fois. Objectif : le moins de barres neuves ; les chutes déclarées en stock sont utilisées en premier.
+- Valeurs par défaut validées : barres de 12 m (6 m ou autre au choix), trait de scie 3 mm, chute réutilisable dès 1 m.
+- Le plan s'imprime, se télécharge en PDF et peut devenir une demande de devis (barres à acheter). Le DQE IA alimentera la liste des pièces (étape 2, suite).
+

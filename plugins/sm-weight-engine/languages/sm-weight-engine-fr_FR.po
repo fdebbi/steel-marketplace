@@ -336,44 +336,44 @@ msgstr "Ouvrir"
 msgid "Explain the change and give its source."
 msgstr "Expliquez la modification et indiquez sa source."
 
-#: src/Calculator.php:36
+#: src/Calculator.php:39
 msgid "Choose a section type."
 msgstr "Choisissez un type de produit."
 
-#: src/Calculator.php:45 src/Calculator.php:59
+#: src/Calculator.php:48 src/Calculator.php:62
 msgid "Choose a size from the list."
 msgstr "Choisissez une dimension dans la liste."
 
-#: src/Calculator.php:59
+#: src/Calculator.php:62
 msgid "Enter the dimensions."
 msgstr "Saisissez les dimensions."
 
 #. translators: %s: maximum length in metres.
-#: src/Calculator.php:67
+#: src/Calculator.php:70
 msgid "Enter a length between 0.1 and %s m."
 msgstr "Saisissez une longueur entre 0,1 et %s m."
 
-#: src/Calculator.php:90
+#: src/Calculator.php:93
 msgid "Enter the plate width in mm."
 msgstr "Saisissez la largeur de la tôle en mm."
 
-#: src/Calculator.php:93
+#: src/Calculator.php:96
 msgid "This plate is larger than the allowed size."
 msgstr "Cette tôle dépasse la taille autorisée."
 
-#: src/Calculator.php:113
+#: src/Calculator.php:126
 msgid "Enter a whole number of bars (1 or more)."
 msgstr "Saisissez un nombre entier de pièces (1 ou plus)."
 
-#: src/Calculator.php:120
+#: src/Calculator.php:133
 msgid "Enter the total weight in kg."
 msgstr "Saisissez le poids total en kg."
 
-#: src/Calculator.php:143
+#: src/Calculator.php:156
 msgid "Check the dimensions (in mm)."
 msgstr "Vérifiez les dimensions (en mm)."
 
-#: src/Calculator.php:148
+#: src/Calculator.php:161
 msgid "The thickness is too large for this size."
 msgstr "L’épaisseur est trop grande pour cette dimension."
 
@@ -405,6 +405,122 @@ msgstr ""
 #: src/Catalogue.php:123
 msgid "This designation already exists in the family."
 msgstr "Cette désignation existe déjà dans la famille."
+
+#: src/Cutting.php:80
+msgid "Choose the profile and its size."
+msgstr "Choisissez le profilé et sa dimension."
+
+#: src/Cutting.php:84
+msgid "Give the length and the number of pieces."
+msgstr "Indiquez la longueur et le nombre de pièces."
+
+#: src/Cutting.php:92
+msgid "Give the profile, the length and the number of offcuts."
+msgstr "Indiquez le profilé, la longueur et le nombre de chutes."
+
+#. translators: 1: piece length in m, 2: profile, 3: bar length in m.
+#: src/Cutting.php:143
+msgid "A piece of %1$s m of %2$s is longer than the bars (%3$s m)."
+msgstr "Une pièce de %1$s m en %2$s est plus longue que les barres (%3$s m)."
+
+#. translators: 1: profile, 2: maximum number of pieces.
+#: src/Cutting.php:151
+msgid "%1$s: %2$d pieces at most per profile."
+msgstr "%1$s : %2$d pièces au maximum par profilé."
+
+#: src/CuttingActions.php:41
+msgid "Nothing to print: give the pieces to cut first."
+msgstr "Rien à imprimer : indiquez d'abord les pièces à couper."
+
+#: src/CuttingActions.php:63
+msgid "Cutting plan"
+msgstr "Plan de coupe"
+
+#. translators: 1: bar length (m), 2: saw kerf (mm), 3: reusable offcut length
+#. (m).
+#: src/CuttingActions.php:67
+msgid "Bars of %1$s m · saw kerf %2$d mm · offcuts kept from %3$s m"
+msgstr "Barres de %1$s m · trait de scie %2$d mm · chutes gardées dès %3$s m"
+
+#. translators: 1: number of bars, 2: weight bought, 3: scrap weight, 4: scrap
+#. percent.
+#: src/CuttingActions.php:72
+msgid ""
+"Bars to buy: %1$d · Weight bought: %2$s kg · Offcuts: %3$s kg (%4$s %%)"
+msgstr ""
+"Barres à acheter : %1$d · Poids acheté : %2$s kg · Chutes : %3$s kg (%4$s "
+"%%)"
+
+#. translators: 1: profile, 2: number of new bars, 3: bar length (m).
+#: src/CuttingActions.php:82
+msgid "%1$s - %2$d bar of %3$s m"
+msgid_plural "%1$s - %2$d bars of %3$s m"
+msgstr[0] "%1$s - %2$d barre de %3$s m"
+msgstr[1] "%1$s - %2$d barres de %3$s m"
+
+#. translators: %d: offcuts from the stock.
+#: src/CuttingActions.php:85
+msgid "%d offcut from the stock"
+msgid_plural "%d offcuts from the stock"
+msgstr[0] "%d chute du stock"
+msgstr[1] "%d chutes du stock"
+
+#. translators: 1: kg per metre, 2: offcuts (kg), 3: percent.
+#: src/CuttingActions.php:89
+msgid "%1$s kg/m · offcuts %2$s kg (%3$s %%)"
+msgstr "%1$s kg/m · chutes %2$s kg (%3$s %%)"
+
+#: src/CuttingActions.php:99
+msgid "stock offcut"
+msgstr "chute du stock"
+
+#: src/CuttingActions.php:99
+msgid "new bar"
+msgstr "barre neuve"
+
+#: src/CuttingActions.php:128
+msgid ""
+"* reusable offcut. Lengths in metres. Weights from the catalogue of the "
+"platform (theoretical weights)."
+msgstr ""
+"* chute réutilisable. Longueurs en mètres. Poids du catalogue de la "
+"plateforme (poids théoriques)."
+
+#: src/CuttingActions.php:130
+msgid ""
+"Long list: this is the best plan found in the time given, not proven to be "
+"the best possible."
+msgstr ""
+"Liste longue : c'est le meilleur plan trouvé dans le temps donné, sans "
+"preuve qu'il soit le meilleur possible."
+
+#: src/CuttingActions.php:144
+msgid "Your account cannot create requests for quotation."
+msgstr "Votre compte ne peut pas créer de demandes de devis."
+
+#: src/CuttingActions.php:148
+msgid "Nothing to order: give the pieces to cut first."
+msgstr "Rien à commander : indiquez d'abord les pièces à couper."
+
+#: src/CuttingActions.php:166
+msgid "The offcuts in stock are enough: there is no bar to buy."
+msgstr "Les chutes en stock suffisent : aucune barre à acheter."
+
+#: src/CuttingActions.php:170
+msgid "Bars according to a cutting plan"
+msgstr "Barres selon un plan de coupe"
+
+#: src/CuttingActions.php:172
+msgid "Pieces to cut (cutting optimiser):"
+msgstr "Pièces à couper (optimiseur de découpe) :"
+
+#: src/CuttingActions.php:174
+msgid ""
+"Request pre-filled with the bars of your cutting plan: check it before "
+"publishing."
+msgstr ""
+"Demande pré-remplie avec les barres de votre plan de coupe : vérifiez-la "
+"avant de publier."
 
 #: src/Rest/Api.php:74
 msgid "Unknown size."

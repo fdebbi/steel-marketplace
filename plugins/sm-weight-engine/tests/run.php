@@ -193,6 +193,39 @@ smw_assert( '' === $pub['source'] && '' === $pub['source_url'] && '' === $sec['s
 $fam_plate = SM\WeightEngine\Presenter::family( Catalogue::family( 'PLATE' ) );
 smw_assert( 8 === count( $fam_plate['plates'] ) && 4 === count( $fam_plate['formats'] ), 'plates: 8 kinds and 4 formats for the form' );
 
+smw_section( 'Cutting optimiser (0.4.0)' );
+use SM\WeightEngine\Cutting;
+$ipe = Catalogue::find( 'IPE', 'IPE 200' );
+$upn = Catalogue::find( 'UPN', 'UPN 100' );
+$in  = Cutting::read( array( 'bar' => '12', 'kerf' => '3', 'reuse' => '1', 'rows' => array(
+	array( 'section' => $ipe->id, 'length' => '5,10', 'qty' => 4 ),
+	array( 'section' => $ipe->id, 'length' => '3,30', 'qty' => 6 ),
+	array( 'section' => $ipe->id, 'length' => '2,70', 'qty' => 2 ),
+	array( 'section' => $upn->id, 'length' => '2,40', 'qty' => 8 ),
+) ) );
+smw_assert( 12000 === $in['bar'] && 3 === $in['kerf'] && 1000 === $in['reuse'] && 5100 === $in['lines'][0]['length'], 'request read in millimetres ("5,10" → 5100)' );
+$r = Cutting::optimize( $in );
+smw_assert( $r['ok'] && 2 === count( $r['profiles'] ), 'two profiles optimised' );
+$pi = $r['profiles'][0];
+$pu = $r['profiles'][1];
+smw_assert( 4 === $pi['new_bars'] && $pi['optimal'], 'IPE 200: 4 bars of 12 m (45,6 m of pieces), proven the fewest' );
+smw_assert( 2 === $pu['new_bars'] && 2 === $pu['reusable'], 'UPN 100: 5 × 2,40 m no longer fits with the saw kerf → 2 bars, 2 reusable offcuts' );
+$pieces = 0;
+foreach ( $pi['bars'] as $b ) {
+	$pieces += $b['count'] * count( $b['pieces'] );
+	smw_assert( array_sum( $b['pieces'] ) + ( count( $b['pieces'] ) - 1 ) * 3 <= $b['length'], 'each bar holds its pieces and the saw cuts (' . implode( '+', $b['pieces'] ) . ')' );
+}
+smw_assert( 12 === $pieces, 'every piece is placed once' );
+smw_near( $pi['bought_kg'], 48 * $ipe->mass_kg_m, 0.05 );
+smw_assert( abs( $pi['scrap_kg'] - 2.4 * $ipe->mass_kg_m ) < 0.05 && 5.0 === $pi['scrap_pct'], 'offcuts: 2,40 m of IPE 200 = 5,0 % of the bars' );
+smw_assert( 6 === $r['totals']['new_bars'] && 7.9 === $r['totals']['scrap_pct'], 'totals: 6 bars, 7,9 % of offcuts' );
+$r2 = Cutting::optimize( Cutting::read( array( 'rows' => array( array( 'section' => $upn->id, 'length' => '2,40', 'qty' => 8 ) ), 'stock' => array( array( 'section' => $upn->id, 'length' => '4,90', 'qty' => 2 ) ) ) ) );
+smw_assert( 1 === $r2['profiles'][0]['new_bars'] && 2 === $r2['profiles'][0]['stock_used'], 'offcuts in stock used first: 2 × 4,90 m take 4 pieces, 1 new bar' );
+$r3 = Cutting::optimize( Cutting::read( array( 'rows' => array( array( 'section' => $ipe->id, 'length' => '13', 'qty' => 1 ), array( 'section' => 0, 'length' => '2', 'qty' => 1 ) ) ) ) );
+smw_assert( ! $r3['ok'] && 2 === count( $r3['errors'] ), 'piece longer than the bar and missing profile: refused with a message' );
+$pdf = SM\WeightEngine\CuttingActions::render( $r );
+smw_assert( 0 === strpos( $pdf, '%PDF-1.4' ) && false !== strpos( $pdf, '%%EOF' ) && false !== strpos( $pdf, 'IPE 200' ), 'cutting plan as a PDF' );
+
 $t = $GLOBALS['smw_t'];
 printf( "\n%d passed, %d failed\n", $t['pass'], $t['fail'] );
 if ( $t['fail'] ) {

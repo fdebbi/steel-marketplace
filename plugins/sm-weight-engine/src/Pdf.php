@@ -1,0 +1,100 @@
+<?php
+/**
+ * Small PDF writer (0.4.0) for the cutting plan: A4 landscape pages, Helvetica
+ * text (Windows-1252, enough for French and English) and filled rectangles.
+ * No library: the plan is made of bars, labels and a few lines of text.
+ *
+ * @package SM\WeightEngine
+ */
+
+namespace SM\WeightEngine;
+
+defined( 'ABSPATH' ) || exit;
+
+final class Pdf {
+
+	const W = 842; // A4 landscape, points.
+	const H = 595;
+
+	private $pages = array();
+	private $ops   = '';
+
+	public function page() {
+		if ( '' !== $this->ops ) {
+			$this->pages[] = $this->ops;
+		}
+		$this->ops = '';
+	}
+
+	/** Text at x, y from the top-left corner. */
+	public function text( $x, $y, $str, $size = 10, $bold = false, $rgb = array( 0.07, 0.09, 0.13 ) ) {
+		$t          = $this->encode( $str );
+		$this->ops .= sprintf( "BT %s rg /F%d %.1F Tf %.2F %.2F Td (%s) Tj ET\n", $this->rgb( $rgb ), $bold ? 2 : 1, $size, $x, self::H - $y, $t );
+	}
+
+	/** Text centred in a box of width $w. */
+	public function text_center( $x, $y, $w, $str, $size = 9, $bold = true, $rgb = array( 0.05, 0.23, 0.16 ) ) {
+		$tw = $this->width( $str, $size );
+		if ( $tw > $w - 2 ) {
+			return;
+		}
+		$this->text( $x + ( $w - $tw ) / 2, $y, $str, $size, $bold, $rgb );
+	}
+
+	public function rect( $x, $y, $w, $h, $fill, $stroke = null ) {
+		$this->ops .= sprintf( "%s rg %.2F %.2F %.2F %.2F re f\n", $this->rgb( $fill ), $x, self::H - $y - $h, $w, $h );
+		if ( $stroke ) {
+			$this->ops .= sprintf( "%s RG 0.6 w %.2F %.2F %.2F %.2F re S\n", $this->rgb( $stroke ), $x, self::H - $y - $h, $w, $h );
+		}
+	}
+
+	/** Approximate width of Helvetica text (average glyph width). */
+	public function width( $str, $size ) {
+		return strlen( $this->encode( $str, false ) ) * $size * 0.52;
+	}
+
+	public function output() {
+		if ( '' !== $this->ops || ! $this->pages ) {
+			$this->pages[] = $this->ops;
+		}
+		$objs   = array();
+		$objs[] = '<< /Type /Catalog /Pages 2 0 R >>';
+		$kids   = array();
+		$n      = count( $this->pages );
+		for ( $i = 0; $i < $n; $i++ ) {
+			$kids[] = ( 5 + 2 * $i ) . ' 0 R';
+		}
+		$objs[] = '<< /Type /Pages /Kids [' . implode( ' ', $kids ) . '] /Count ' . $n . ' >>';
+		$objs[] = '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>';
+		$objs[] = '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>';
+		foreach ( $this->pages as $i => $content ) {
+			$objs[] = '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ' . self::W . ' ' . self::H . '] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents ' . ( 6 + 2 * $i ) . ' 0 R >>';
+			$objs[] = '<< /Length ' . strlen( $content ) . " >>\nstream\n" . $content . "\nendstream";
+		}
+		$pdf  = "%PDF-1.4\n%\xE2\xE3\xCF\xD3\n";
+		$offs = array();
+		foreach ( $objs as $k => $o ) {
+			$offs[] = strlen( $pdf );
+			$pdf   .= ( $k + 1 ) . " 0 obj\n" . $o . "\nendobj\n";
+		}
+		$xref = strlen( $pdf );
+		$pdf .= 'xref' . "\n0 " . ( count( $objs ) + 1 ) . "\n0000000000 65535 f \n";
+		foreach ( $offs as $o ) {
+			$pdf .= sprintf( "%010d 00000 n \n", $o );
+		}
+		$pdf .= 'trailer << /Size ' . ( count( $objs ) + 1 ) . " /Root 1 0 R >>\nstartxref\n" . $xref . "\n%%EOF";
+		return $pdf;
+	}
+
+	private function rgb( array $c ) {
+		return sprintf( '%.3F %.3F %.3F', $c[0], $c[1], $c[2] );
+	}
+
+	/** UTF-8 → Windows-1252, escaped for a PDF string. */
+	private function encode( $str, $escape = true ) {
+		$str = str_replace( array( "\u{202F}", "\u{00A0}", '’', '×', '≥', '—', '…' ), array( ' ', ' ', "'", 'x', '>=', '-', '...' ), (string) $str );
+		$out = function_exists( 'iconv' ) ? @iconv( 'UTF-8', 'Windows-1252//TRANSLIT', $str ) : utf8_decode( $str ); // phpcs:ignore WordPress.PHP.NoSilencedErrors
+		$out = false === $out ? preg_replace( '/[^\x20-\x7E]/', '?', $str ) : $out;
+		return $escape ? strtr( $out, array( '\\' => '\\\\', '(' => '\\(', ')' => '\\)' ) ) : $out;
+	}
+}

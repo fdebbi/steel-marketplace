@@ -100,6 +100,50 @@ with sync_playwright() as p:
     ar.fill('#smw-bars', '0'); settle(ar)
     check('عدد' in ar.inner_text('.smw-result'), 'error message in Arabic')
     ar.screenshot(path=os.path.join(OUT, 'weight-ar-390.png'), full_page=True)
+
+    print('\nD. Cutting optimiser (0.46.0)')
+    import subprocess
+    def wp(c):
+        return subprocess.run(['wp', '--allow-root', '--path=/home/claude/wpenv/wp', 'eval', c], capture_output=True, text=True).stdout.strip()
+    ipe = wp('echo SM\\WeightEngine\\Catalogue::find("IPE","IPE 200")->id;')
+    upn = wp('echo SM\\WeightEngine\\Catalogue::find("UPN","UPN 100")->id;')
+    c = b.new_page(viewport={'width': 1280, 'height': 900})
+    cerr = []; c.on('pageerror', lambda e: cerr.append(str(e)))
+    c.goto(BASE + '/?lang=fr')
+    check(c.locator('.sm-header__utility-links a[href*="optimiseur-decoupe"]').count() == 1, 'header: link to the cutting optimiser')
+    c.goto(BASE + '/optimiseur-decoupe/?lang=fr')
+    check(c.locator('.smc-empty').count() == 1 and c.locator('.smc-free').count() == 1, 'optimiser page: free, nothing computed yet')
+    rows = c.locator('[data-smc-table="rows"] [data-smc-row]')
+    r0 = rows.nth(0); r0.locator('[data-smc-family]').select_option('IPE')
+    check(r0.locator('[data-smc-section] option').count() == 19, 'the size list follows the profile (18 IPE sizes)')
+    c.click('[data-smc-paste]')
+    c.fill('#smc-paste', 'IPE 200\t5,10\t4\nIPE 200;3,30;6\nIPE 200;2,70;2\nUPN 100;2,40;8\nXYZ 1;2;3')
+    c.click('[data-smc-pasteok]'); c.wait_for_timeout(300)
+    filled = [rows.nth(i).locator('[data-smc-section]').input_value() for i in range(4)]
+    check(filled == [ipe, ipe, ipe, upn], 'list pasted from Excel: 4 lines filled, the unknown one left out')
+    c.click('.smc-go'); c.wait_for_load_state()
+    tot = c.inner_text('.smc-totals')
+    check(tot.startswith('Barres à acheter\n6') and '7,9 %' in tot, 'plan: 6 bars to buy, 7,9 %% of offcuts (%s)' % tot.split('\n')[1])
+    check(c.locator('.smc-prof').count() == 2 and c.locator('.smc-sc.is-re').count() >= 2, 'two profiles drawn bar by bar, reusable offcuts marked')
+    check('rows%5B0%5D%5Bsection%5D=' in c.url or 'rows[0][section]=' in c.url, 'the calculation is in the address (link to share)')
+    c.screenshot(path=os.path.join(OUT, 'cutting-1280.png'), full_page=True)
+    with c.expect_download() as dl:
+        c.click('a[href*="sm_weight_cut_pdf"]')
+    path = dl.value.path()
+    check(open(path, 'rb').read(8) == b'%PDF-1.4', 'PDF of the cutting plan downloaded')
+    # Offcuts in stock.
+    c.goto(BASE + '/optimiseur-decoupe/?lang=fr&rows[0][section]=%s&rows[0][length]=2,40&rows[0][qty]=8&stock[0][section]=%s&stock[0][length]=4,90&stock[0][qty]=2' % (upn, upn))
+    check('1' == c.inner_text('.smc-k b').strip() and c.locator('.smc-stock[open]').count() == 1, 'offcuts in stock used first: 1 new bar only')
+    # Request for quotation pre-filled (business account).
+    com = wp('echo get_users(array("search"=>"e2e-com*","search_columns"=>array("user_email"),"orderby"=>"ID","order"=>"DESC"))[0]->user_email;')
+    c.goto(BASE + '/connexion/?lang=fr'); c.fill('#l-user', com); c.fill('#l-pass', 'Acier-2026-test!')
+    c.click('form:has(#l-user) button[type="submit"]'); c.wait_for_load_state()
+    c.goto(BASE + '/optimiseur-decoupe/?lang=fr&rows[0][section]=%s&rows[0][length]=5,10&rows[0][qty]=4' % ipe)
+    c.click('a[href*="sm_weight_cut_rfq"]'); c.wait_for_load_state()
+    secs = c.locator('select[name^="lines["][name$="[section]"]')
+    vals = [secs.nth(i).input_value() for i in range(secs.count())]
+    check('/mes-devis/' in c.url and ipe in vals and '4 × 5,10 m' in c.input_value('textarea[name="description"]'), 'request for quotation pre-filled: the bars to buy, the pieces in the description')
+    check(not cerr, 'no JavaScript error' + (': ' + cerr[0] if cerr else ''))
     b.close()
 
 ok = sum(1 for r in results if r[0])

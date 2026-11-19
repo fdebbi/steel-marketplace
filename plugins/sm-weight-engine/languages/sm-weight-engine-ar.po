@@ -327,44 +327,44 @@ msgstr "فتح"
 msgid "Explain the change and give its source."
 msgstr "اشرح التعديل واذكر مصدره."
 
-#: src/Calculator.php:36
+#: src/Calculator.php:39
 msgid "Choose a section type."
 msgstr "اختر نوع المنتج."
 
-#: src/Calculator.php:45 src/Calculator.php:59
+#: src/Calculator.php:48 src/Calculator.php:62
 msgid "Choose a size from the list."
 msgstr "اختر مقاسا من القائمة."
 
-#: src/Calculator.php:59
+#: src/Calculator.php:62
 msgid "Enter the dimensions."
 msgstr "أدخل الأبعاد."
 
 #. translators: %s: maximum length in metres.
-#: src/Calculator.php:67
+#: src/Calculator.php:70
 msgid "Enter a length between 0.1 and %s m."
 msgstr "أدخل طولا بين 0.1 و%s م."
 
-#: src/Calculator.php:90
+#: src/Calculator.php:93
 msgid "Enter the plate width in mm."
 msgstr "أدخل عرض الصفيحة بالمليمتر."
 
-#: src/Calculator.php:93
+#: src/Calculator.php:96
 msgid "This plate is larger than the allowed size."
 msgstr "هذه الصفيحة أكبر من الحجم المسموح."
 
-#: src/Calculator.php:113
+#: src/Calculator.php:126
 msgid "Enter a whole number of bars (1 or more)."
 msgstr "أدخل عددا صحيحا من القطع (1 أو أكثر)."
 
-#: src/Calculator.php:120
+#: src/Calculator.php:133
 msgid "Enter the total weight in kg."
 msgstr "أدخل الوزن الإجمالي بالكيلوغرام."
 
-#: src/Calculator.php:143
+#: src/Calculator.php:156
 msgid "Check the dimensions (in mm)."
 msgstr "تحقق من الأبعاد (بالمليمتر)."
 
-#: src/Calculator.php:148
+#: src/Calculator.php:161
 msgid "The thickness is too large for this size."
 msgstr "السُّمك كبير جدا بالنسبة لهذا المقاس."
 
@@ -396,6 +396,126 @@ msgstr ""
 #: src/Catalogue.php:123
 msgid "This designation already exists in the family."
 msgstr "هذه التسمية موجودة مسبقا في العائلة."
+
+#: src/Cutting.php:80
+msgid "Choose the profile and its size."
+msgstr "اختر المقطع ومقاسه."
+
+#: src/Cutting.php:84
+msgid "Give the length and the number of pieces."
+msgstr "أدخل الطول وعدد القطع."
+
+#: src/Cutting.php:92
+msgid "Give the profile, the length and the number of offcuts."
+msgstr "أدخل المقطع والطول وعدد البقايا."
+
+#. translators: 1: piece length in m, 2: profile, 3: bar length in m.
+#: src/Cutting.php:143
+msgid "A piece of %1$s m of %2$s is longer than the bars (%3$s m)."
+msgstr "قطعة بطول %1$s m من %2$s أطول من القضبان (%3$s m)."
+
+#. translators: 1: profile, 2: maximum number of pieces.
+#: src/Cutting.php:151
+msgid "%1$s: %2$d pieces at most per profile."
+msgstr "%1$s: %2$d قطعة كحد أقصى لكل مقطع."
+
+#: src/CuttingActions.php:41
+msgid "Nothing to print: give the pieces to cut first."
+msgstr "لا شيء للطباعة: أدخل القطع المراد قصها أولاً."
+
+#: src/CuttingActions.php:63
+msgid "Cutting plan"
+msgstr "مخطط القص"
+
+#. translators: 1: bar length (m), 2: saw kerf (mm), 3: reusable offcut length
+#. (m).
+#: src/CuttingActions.php:67
+msgid "Bars of %1$s m · saw kerf %2$d mm · offcuts kept from %3$s m"
+msgstr "قضبان %1$s m · سمك القص %2$d mm · البقايا المحفوظة من %3$s m"
+
+#. translators: 1: number of bars, 2: weight bought, 3: scrap weight, 4: scrap
+#. percent.
+#: src/CuttingActions.php:72
+msgid ""
+"Bars to buy: %1$d · Weight bought: %2$s kg · Offcuts: %3$s kg (%4$s %%)"
+msgstr ""
+"قضبان للشراء: %1$d · الوزن المشترى: %2$s kg · البقايا: %3$s kg (%4$s %%)"
+
+#. translators: 1: profile, 2: number of new bars, 3: bar length (m).
+#: src/CuttingActions.php:82
+msgid "%1$s - %2$d bar of %3$s m"
+msgid_plural "%1$s - %2$d bars of %3$s m"
+msgstr[0] "%1$s - %2$d قضيب %3$s m"
+msgstr[1] "%1$s - قضيب واحد %3$s m"
+msgstr[2] "%1$s - قضيبان %3$s m"
+msgstr[3] "%1$s - %2$d قضبان %3$s m"
+msgstr[4] "%1$s - %2$d قضيبًا %3$s m"
+msgstr[5] "%1$s - %2$d قضيب %3$s m"
+
+#. translators: %d: offcuts from the stock.
+#: src/CuttingActions.php:85
+msgid "%d offcut from the stock"
+msgid_plural "%d offcuts from the stock"
+msgstr[0] "%d بقية من المخزون"
+msgstr[1] "بقية واحدة من المخزون"
+msgstr[2] "بقيتان من المخزون"
+msgstr[3] "%d بقايا من المخزون"
+msgstr[4] "%d بقية من المخزون"
+msgstr[5] "%d بقية من المخزون"
+
+#. translators: 1: kg per metre, 2: offcuts (kg), 3: percent.
+#: src/CuttingActions.php:89
+msgid "%1$s kg/m · offcuts %2$s kg (%3$s %%)"
+msgstr "%1$s kg/m · بقايا %2$s kg (%3$s %%)"
+
+#: src/CuttingActions.php:99
+msgid "stock offcut"
+msgstr "بقية من المخزون"
+
+#: src/CuttingActions.php:99
+msgid "new bar"
+msgstr "قضيب جديد"
+
+#: src/CuttingActions.php:128
+msgid ""
+"* reusable offcut. Lengths in metres. Weights from the catalogue of the "
+"platform (theoretical weights)."
+msgstr ""
+"* بقية قابلة لإعادة الاستعمال. الأطوال بالمتر. الأوزان من كتالوج المنصة "
+"(أوزان نظرية)."
+
+#: src/CuttingActions.php:130
+msgid ""
+"Long list: this is the best plan found in the time given, not proven to be "
+"the best possible."
+msgstr ""
+"قائمة طويلة: هذا أفضل مخطط وُجد في الوقت المتاح، دون إثبات أنه الأفضل."
+
+#: src/CuttingActions.php:144
+msgid "Your account cannot create requests for quotation."
+msgstr "لا يمكن لحسابك إنشاء طلبات عروض أسعار."
+
+#: src/CuttingActions.php:148
+msgid "Nothing to order: give the pieces to cut first."
+msgstr "لا شيء للطلب: أدخل القطع المراد قصها أولاً."
+
+#: src/CuttingActions.php:166
+msgid "The offcuts in stock are enough: there is no bar to buy."
+msgstr "البقايا في المخزون كافية: لا قضبان للشراء."
+
+#: src/CuttingActions.php:170
+msgid "Bars according to a cutting plan"
+msgstr "قضبان حسب مخطط قص"
+
+#: src/CuttingActions.php:172
+msgid "Pieces to cut (cutting optimiser):"
+msgstr "القطع المراد قصها (محسّن القص):"
+
+#: src/CuttingActions.php:174
+msgid ""
+"Request pre-filled with the bars of your cutting plan: check it before "
+"publishing."
+msgstr "طلب مُعبّأ بقضبان مخطط القص: راجعه قبل النشر."
 
 #: src/Rest/Api.php:74
 msgid "Unknown size."

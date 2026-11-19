@@ -1,5 +1,12 @@
 # Changelog — sm-weight-engine
 
+## 0.4.0 — 2026-11-19
+
+- **Optimiseur de découpe** (`Cutting`) : pièces par profilé, barres du commerce (6 m, 12 m ou autre), trait de scie, longueur à partir de laquelle une chute est réutilisable, **chutes déjà en stock** utilisées en premier. Calcul exact, sans IA : « best fit decreasing » puis recherche bornée qui prouve le plus petit nombre de barres neuves (ou s'arrête à 1 000 000 d'essais sur une très longue liste et le signale). 40 lignes, 300 pièces par profilé au plus. Poids depuis le catalogue (kg/m).
+- **Plan de coupe en PDF** (`Pdf`, sans bibliothèque ; A4 paysage ; en français pour une page en arabe) : `admin-post.php?action=sm_weight_cut_pdf`.
+- **Demande de devis pré-remplie** avec les barres neuves à acheter et les pièces dans la description : `admin-post.php?action=sm_weight_cut_rfq` (compte pouvant créer des demandes).
+- Données du thème : `cutting_sections`, `cutting_input`, `cutting`.
+
 ## 0.3.1 — 2026-11-18
 
 - Schémas des profilés : les cotes donnent les vraies valeurs de la dimension choisie au lieu des lettres (« 100 mm », « 50 mm » au lieu de h, b), partout où le schéma apparaît (formulaire d'annonce, fiche, calculateur, catalogue de l'administration).

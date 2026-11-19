@@ -17,11 +17,33 @@ defined( 'ABSPATH' ) || exit;
 
 final class Bridge {
 
+	/** Bars of the catalogue for the optimiser: family code => { name, sections: [ [id, designation, kg/m] ] } (plates left out). */
+	public static function cutting_sections( $r ) {
+		if ( null !== $r ) {
+			return $r;
+		}
+		$out = array();
+		foreach ( Catalogue::families() as $f ) {
+			if ( 'plate' === $f->shape || ! $f->count ) {
+				continue;
+			}
+			$out[ $f->code ] = array(
+				'name'     => array( 'fr' => $f->name_fr, 'ar' => $f->name_ar ),
+				'sections' => array_map( static fn( $s ) => array( (int) $s->id, $s->designation, (float) $s->mass_kg_m ), Catalogue::sections( $f->code ) ),
+			);
+		}
+		return $out;
+	}
+
 	public static function init() {
 		add_filter( 'sm_theme_data_weight_family', array( __CLASS__, 'family' ), 10, 2 );
 		add_filter( 'sm_theme_data_weight_section', array( __CLASS__, 'section' ), 10, 2 );
 		add_filter( 'sm_theme_data_weight_calc', array( __CLASS__, 'calc' ), 10, 2 );
 		add_filter( 'sm_theme_data_weight_drawing', array( __CLASS__, 'drawing' ), 10, 2 );
+		// Cutting optimiser (0.4.0).
+		add_filter( 'sm_theme_data_cutting', static fn( $r, $args ) => null !== $r ? $r : \SM\WeightEngine\Cutting::optimize( \SM\WeightEngine\Cutting::read( (array) $args ) ), 10, 2 );
+		add_filter( 'sm_theme_data_cutting_input', static fn( $r, $args ) => null !== $r ? $r : \SM\WeightEngine\Cutting::read( (array) $args ), 10, 2 );
+		add_filter( 'sm_theme_data_cutting_sections', array( __CLASS__, 'cutting_sections' ) );
 		add_filter( 'sm_theme_data_weight_families', static fn( $r ) => null !== $r ? $r : array_values( array_map( array( Presenter::class, 'family' ), Catalogue::families() ) ) );
 		add_filter(
 			'sm_theme_data_weight_settings',

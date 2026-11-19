@@ -1,5 +1,10 @@
 # Changelog — sm-marketplace
 
+## 0.46.0 — 2026-11-19 (avec sm-weight-engine 0.4.0)
+
+- **Optimiseur de découpe** (page `/optimiseur-decoupe/`, gabarit `templates/cutting-optimizer.php`, composant `cutting-optimizer`, `assets/js/cutting.js`, `assets/css/37-cutting.css`) : barres du commerce, trait de scie, chute réutilisable dès…, pièces à couper (profilé puis dimension), « Coller une liste (Excel) », chutes déjà en stock (facultatif). Résultat : 4 chiffres clés, plan barre par barre (pièces en couleur, chutes hachurées, chutes réutilisables en jaune), demande de devis pré-remplie, PDF, impression, lien à partager. Formulaire GET (marche sans JavaScript).
+- Lien « Optimiseur de découpe » dans la barre du haut, le menu mobile et le pied de page.
+
 ## 0.45.1 — 2026-11-19
 
 - Page « Assistant IA » : carte **Rapport Business** annoncée (« Inclus dans la formule Business », « Bientôt », lien « Voir la formule Business ») ; aucun bouton d'utilisation avant la livraison de l'outil (étape 4).

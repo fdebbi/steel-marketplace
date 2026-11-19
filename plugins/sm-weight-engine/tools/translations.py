@@ -94,3 +94,31 @@ T = {
 "Unknown size.": ("Dimension inconnue.", "مقاس غير معروف."),
 }
 P = {}
+
+# 0.4.0: cutting optimiser.
+T.update({
+'Choose the profile and its size.': ('Choisissez le profilé et sa dimension.', 'اختر المقطع ومقاسه.'),
+'Give the length and the number of pieces.': ('Indiquez la longueur et le nombre de pièces.', 'أدخل الطول وعدد القطع.'),
+'Give the profile, the length and the number of offcuts.': ('Indiquez le profilé, la longueur et le nombre de chutes.', 'أدخل المقطع والطول وعدد البقايا.'),
+'A piece of %1$s m of %2$s is longer than the bars (%3$s m).': ('Une pièce de %1$s m en %2$s est plus longue que les barres (%3$s m).', 'قطعة بطول %1$s m من %2$s أطول من القضبان (%3$s m).'),
+'%1$s: %2$d pieces at most per profile.': ('%1$s : %2$d pièces au maximum par profilé.', '%1$s: %2$d قطعة كحد أقصى لكل مقطع.'),
+'Nothing to print: give the pieces to cut first.': ("Rien à imprimer : indiquez d'abord les pièces à couper.", 'لا شيء للطباعة: أدخل القطع المراد قصها أولاً.'),
+'Cutting plan': ('Plan de coupe', 'مخطط القص'),
+'Bars of %1$s m · saw kerf %2$d mm · offcuts kept from %3$s m': ('Barres de %1$s m · trait de scie %2$d mm · chutes gardées dès %3$s m', 'قضبان %1$s m · سمك القص %2$d mm · البقايا المحفوظة من %3$s m'),
+'Bars to buy: %1$d · Weight bought: %2$s kg · Offcuts: %3$s kg (%4$s %%)': ('Barres à acheter : %1$d · Poids acheté : %2$s kg · Chutes : %3$s kg (%4$s %%)', 'قضبان للشراء: %1$d · الوزن المشترى: %2$s kg · البقايا: %3$s kg (%4$s %%)'),
+'%1$s kg/m · offcuts %2$s kg (%3$s %%)': ('%1$s kg/m · chutes %2$s kg (%3$s %%)', '%1$s kg/m · بقايا %2$s kg (%3$s %%)'),
+'stock offcut': ('chute du stock', 'بقية من المخزون'),
+'new bar': ('barre neuve', 'قضيب جديد'),
+'* reusable offcut. Lengths in metres. Weights from the catalogue of the platform (theoretical weights).': ('* chute réutilisable. Longueurs en mètres. Poids du catalogue de la plateforme (poids théoriques).', '* بقية قابلة لإعادة الاستعمال. الأطوال بالمتر. الأوزان من كتالوج المنصة (أوزان نظرية).'),
+'Long list: this is the best plan found in the time given, not proven to be the best possible.': ("Liste longue : c'est le meilleur plan trouvé dans le temps donné, sans preuve qu'il soit le meilleur possible.", 'قائمة طويلة: هذا أفضل مخطط وُجد في الوقت المتاح، دون إثبات أنه الأفضل.'),
+'Your account cannot create requests for quotation.': ('Votre compte ne peut pas créer de demandes de devis.', 'لا يمكن لحسابك إنشاء طلبات عروض أسعار.'),
+'Nothing to order: give the pieces to cut first.': ("Rien à commander : indiquez d'abord les pièces à couper.", 'لا شيء للطلب: أدخل القطع المراد قصها أولاً.'),
+'The offcuts in stock are enough: there is no bar to buy.': ('Les chutes en stock suffisent : aucune barre à acheter.', 'البقايا في المخزون كافية: لا قضبان للشراء.'),
+'Bars according to a cutting plan': ('Barres selon un plan de coupe', 'قضبان حسب مخطط قص'),
+'Pieces to cut (cutting optimiser):': ("Pièces à couper (optimiseur de découpe) :", 'القطع المراد قصها (محسّن القص):'),
+'Request pre-filled with the bars of your cutting plan: check it before publishing.': ('Demande pré-remplie avec les barres de votre plan de coupe : vérifiez-la avant de publier.', 'طلب مُعبّأ بقضبان مخطط القص: راجعه قبل النشر.'),
+})
+P.update({
+('%1$s - %2$d bar of %3$s m', '%1$s - %2$d bars of %3$s m'): (['%1$s - %2$d barre de %3$s m', '%1$s - %2$d barres de %3$s m'], ['%1$s - %2$d قضيب %3$s m', '%1$s - قضيب واحد %3$s m', '%1$s - قضيبان %3$s m', '%1$s - %2$d قضبان %3$s m', '%1$s - %2$d قضيبًا %3$s m', '%1$s - %2$d قضيب %3$s m']),
+('%d offcut from the stock', '%d offcuts from the stock'): (['%d chute du stock', '%d chutes du stock'], ['%d بقية من المخزون', 'بقية واحدة من المخزون', 'بقيتان من المخزون', '%d بقايا من المخزون', '%d بقية من المخزون', '%d بقية من المخزون']),
+})

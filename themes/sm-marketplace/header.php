@@ -25,6 +25,7 @@ $sm_nav     = sm_theme_nav_items();
 			<p class="sm-header__tagline"><?php esc_html_e( 'The industrial marketplace for steel in Algeria', 'sm-marketplace' ); ?></p>
 			<nav class="sm-header__utility-links" aria-label="<?php esc_attr_e( 'Utility', 'sm-marketplace' ); ?>">
 				<a href="<?php echo esc_url( sm_page_url( 'weight' ) ); ?>"><?php sm_icon( 'scale' ); ?><?php esc_html_e( 'Weight calculator', 'sm-marketplace' ); ?></a>
+				<a href="<?php echo esc_url( sm_page_url( 'cutting' ) ); ?>"><?php sm_icon( 'ruler' ); ?><?php esc_html_e( 'Cutting optimiser', 'sm-marketplace' ); ?></a>
 				<a href="<?php echo esc_url( sm_page_url( 'price-index' ) ); ?>"><?php sm_icon( 'chart' ); ?><?php esc_html_e( 'Price index', 'sm-marketplace' ); ?></a>
 				<a href="<?php echo esc_url( sm_page_url( 'pricing' ) ); ?>"><?php esc_html_e( 'Plans', 'sm-marketplace' ); ?></a>
 				<a href="<?php echo esc_url( sm_page_url( 'contact' ) ); ?>"><?php esc_html_e( 'Contact', 'sm-marketplace' ); ?></a>
@@ -107,6 +108,7 @@ $sm_nav     = sm_theme_nav_items();
 			<a class="sm-drawer__link" href="<?php echo esc_url( sm_page_url( 'engineers' ) ); ?>"><?php sm_icon( 'hard-hat' ); ?><span><?php esc_html_e( 'Engineering', 'sm-marketplace' ); ?></span></a>
 			<a class="sm-drawer__link" href="<?php echo esc_url( sm_page_url( 'companies' ) ); ?>"><?php sm_icon( 'company' ); ?><span><?php esc_html_e( 'Company directory', 'sm-marketplace' ); ?></span></a>
 			<a class="sm-drawer__link" href="<?php echo esc_url( sm_page_url( 'weight' ) ); ?>"><?php sm_icon( 'scale' ); ?><span><?php esc_html_e( 'Weight calculator', 'sm-marketplace' ); ?></span></a>
+			<a class="sm-drawer__link" href="<?php echo esc_url( sm_page_url( 'cutting' ) ); ?>"><?php sm_icon( 'ruler' ); ?><span><?php esc_html_e( 'Cutting optimiser', 'sm-marketplace' ); ?></span></a>
 			<a class="sm-drawer__link" href="<?php echo esc_url( sm_page_url( 'price-index' ) ); ?>"><?php sm_icon( 'chart' ); ?><span><?php esc_html_e( 'Price index', 'sm-marketplace' ); ?></span></a>
 		</nav>
 		<div class="sm-drawer__foot" data-sm-usernav="drawer">

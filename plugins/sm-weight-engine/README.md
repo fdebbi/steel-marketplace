@@ -10,6 +10,10 @@ Extension de **Steel Marketplace** (Phase 3). Elle fournit :
 
 Nécessite **SM Core 0.2.0** ou plus. Version 0.1.0, données de référence `2026.11.1`.
 
+## Optimiseur de découpe (0.4.0)
+
+Page publique et gratuite du thème (`/optimiseur-decoupe/`). Pour chaque profilé, il place les pièces sur les barres du commerce et d'abord sur les chutes en stock, pour acheter le moins de barres neuves possible. Modèle : une barre de n pièces demande n − 1 traits de scie entre elles (et un dernier pour détacher la chute). Résultat : barres à acheter, plan barre par barre (barres identiques regroupées), chutes en m, kg et %, chutes réutilisables. Impression, PDF, lien à partager, demande de devis pré-remplie. Ce n'est pas de l'IA : le résultat est toujours le même.
+
 ## Installation
 
 1. Extensions → Ajouter → Téléverser `sm-weight-engine.zip`, puis Activer (SM Core doit être actif).

@@ -33,6 +33,7 @@ function sm_theme_page_definitions() {
 		'price-index' => array( 'indice-prix', 'Indice des prix', 'templates/price-index.php' ),
 		'weight'      => array( 'calcul-poids', 'Calculateur de poids', 'templates/weight-calculator.php' ),
 		'ai'          => array( 'assistant-ia', 'Assistant IA', 'templates/ai-assistant.php' ),
+		'cutting'     => array( 'optimiseur-decoupe', 'Optimiseur de découpe', 'templates/cutting-optimizer.php' ),
 		'pricing'     => array( 'tarifs', 'Tarifs', 'templates/pricing.php' ),
 		'login'       => array( 'connexion', 'Connexion', 'templates/auth-login.php' ),
 		'register'    => array( 'inscription', 'Inscription', 'templates/auth-register.php' ),
