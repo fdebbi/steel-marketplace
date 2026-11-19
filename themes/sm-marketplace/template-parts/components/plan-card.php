@@ -59,7 +59,7 @@ $saving = sm_plan_saving( $plan );
 		<?php foreach ( $labels as $key => $label ) : ?>
 			<?php
 			$v   = $limits[ $key ] ?? 0;
-			$yes = in_array( $key, array( 'contacts', 'featured' ), true );
+			$yes = in_array( $key, array( 'contacts', 'featured', 'stock_tools' ), true );
 			?>
 			<li class="<?php echo $yes && ! $v ? 'is-off' : ''; ?>">
 				<?php if ( $yes ) : ?>

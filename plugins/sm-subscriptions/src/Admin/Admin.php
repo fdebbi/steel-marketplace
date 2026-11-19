@@ -265,7 +265,7 @@ final class Admin {
 			'price_month' => __( 'Price per month (DA, tax incl.)', 'sm-subscriptions' ),
 			'price_year'  => __( 'Price per year (DA, tax incl.)', 'sm-subscriptions' ),
 		) + Plans::limit_labels();
-		$units  = array( 'weight_t' => ' t' );
+		$units  = array( 'weight_t' => ' t', 'stock_t' => ' t' );
 		self::form_open( 'smsub_plans' );
 		echo '<p>' . esc_html__( 'Empty or -1 = no limit. Changes apply at once to every account of the plan; accounts over a lowered limit keep what is online but cannot add more.', 'sm-subscriptions' ) . '</p>';
 		foreach ( $all as $class => $plans ) {
@@ -278,7 +278,7 @@ final class Admin {
 				echo '<tr><th>' . esc_html( $label . ( $units[ $k ] ?? '' ) ) . '</th>';
 				foreach ( $plans as $code => $p ) {
 					$name = 'plans[' . $class . '][' . $code . '][' . $k . ']';
-					if ( 'contacts' === $k ) {
+					if ( in_array( $k, array( 'contacts', 'stock_tools' ), true ) ) {
 						echo '<td><input type="checkbox" name="' . esc_attr( $name ) . '" value="1"' . checked( (int) $p[ $k ], 1, false ) . '></td>';
 					} elseif ( 'featured' === $k ) {
 						echo '<td><select name="' . esc_attr( $name ) . '"><option value="">—</option><option value="home"' . selected( $p[ $k ], 'home', false ) . '>' . esc_html__( 'Yes, in rotation', 'sm-subscriptions' ) . '</option></select></td>';

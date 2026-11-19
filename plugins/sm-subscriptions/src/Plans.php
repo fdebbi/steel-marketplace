@@ -23,21 +23,21 @@ final class Plans {
 
 	/** Limit keys, in display order. */
 	public static function limit_keys() {
-		return array( 'listings', 'weight_t', 'buildings', 'services', 'portfolio', 'rfq_offers', 'ai_credits', 'contacts', 'featured' );
+		return array( 'listings', 'weight_t', 'buildings', 'services', 'portfolio', 'rfq_offers', 'ai_credits', 'stock_t', 'stock_tools', 'contacts', 'featured' );
 	}
 
 	/** Default plans: class => code => data. */
 	public static function defaults() {
 		return array(
 			'company'      => array(
-				'free'     => array( 'price_month' => 0, 'price_year' => 0, 'listings' => 5, 'weight_t' => 10, 'buildings' => 1, 'services' => 1, 'portfolio' => 3, 'rfq_offers' => 3, 'ai_credits' => 0, 'contacts' => 0, 'featured' => '' ),
-				'pro'      => array( 'price_month' => 3500, 'price_year' => 35000, 'listings' => 40, 'weight_t' => 200, 'buildings' => 5, 'services' => 5, 'portfolio' => 20, 'rfq_offers' => -1, 'ai_credits' => 50, 'contacts' => 1, 'featured' => '' ),
-				'business' => array( 'price_month' => 9000, 'price_year' => 90000, 'listings' => 150, 'weight_t' => 1000, 'buildings' => 20, 'services' => 20, 'portfolio' => -1, 'rfq_offers' => -1, 'ai_credits' => 200, 'contacts' => 1, 'featured' => 'home' ),
+				'free'     => array( 'price_month' => 0, 'price_year' => 0, 'listings' => 5, 'weight_t' => 10, 'buildings' => 1, 'services' => 1, 'portfolio' => 3, 'rfq_offers' => 3, 'ai_credits' => 0, 'stock_t' => 20, 'stock_tools' => 0, 'contacts' => 0, 'featured' => '' ),
+				'pro'      => array( 'price_month' => 3500, 'price_year' => 35000, 'listings' => 40, 'weight_t' => 200, 'buildings' => 5, 'services' => 5, 'portfolio' => 20, 'rfq_offers' => -1, 'ai_credits' => 50, 'stock_t' => 500, 'stock_tools' => 1, 'contacts' => 1, 'featured' => '' ),
+				'business' => array( 'price_month' => 9000, 'price_year' => 90000, 'listings' => 150, 'weight_t' => 1000, 'buildings' => 20, 'services' => 20, 'portfolio' => -1, 'rfq_offers' => -1, 'ai_credits' => 200, 'stock_t' => -1, 'stock_tools' => 1, 'contacts' => 1, 'featured' => 'home' ),
 			),
 			'professional' => array(
-				'free'            => array( 'price_month' => 0, 'price_year' => 0, 'listings' => 3, 'weight_t' => 5, 'buildings' => 1, 'services' => 1, 'portfolio' => 3, 'rfq_offers' => 3, 'ai_credits' => 0, 'contacts' => 0, 'featured' => '' ),
-				'artisan_pro'     => array( 'price_month' => 1500, 'price_year' => 15000, 'listings' => 10, 'weight_t' => 30, 'buildings' => 2, 'services' => 3, 'portfolio' => 15, 'rfq_offers' => -1, 'ai_credits' => 30, 'contacts' => 1, 'featured' => '' ),
-				'artisan_premium' => array( 'price_month' => 3000, 'price_year' => 30000, 'listings' => 30, 'weight_t' => 100, 'buildings' => 5, 'services' => 8, 'portfolio' => -1, 'rfq_offers' => -1, 'ai_credits' => 80, 'contacts' => 1, 'featured' => 'home' ),
+				'free'            => array( 'price_month' => 0, 'price_year' => 0, 'listings' => 3, 'weight_t' => 5, 'buildings' => 1, 'services' => 1, 'portfolio' => 3, 'rfq_offers' => 3, 'ai_credits' => 0, 'stock_t' => 10, 'stock_tools' => 0, 'contacts' => 0, 'featured' => '' ),
+				'artisan_pro'     => array( 'price_month' => 1500, 'price_year' => 15000, 'listings' => 10, 'weight_t' => 30, 'buildings' => 2, 'services' => 3, 'portfolio' => 15, 'rfq_offers' => -1, 'ai_credits' => 30, 'stock_t' => 100, 'stock_tools' => 1, 'contacts' => 1, 'featured' => '' ),
+				'artisan_premium' => array( 'price_month' => 3000, 'price_year' => 30000, 'listings' => 30, 'weight_t' => 100, 'buildings' => 5, 'services' => 8, 'portfolio' => -1, 'rfq_offers' => -1, 'ai_credits' => 80, 'stock_t' => 300, 'stock_tools' => 1, 'contacts' => 1, 'featured' => 'home' ),
 			),
 		);
 	}
@@ -101,7 +101,7 @@ final class Plans {
 				foreach ( $def as $k => $v ) {
 					if ( 'featured' === $k ) {
 						$out[ $class ][ $code ][ $k ] = in_array( $row[ $k ] ?? '', array( '', 'home' ), true ) ? (string) ( $row[ $k ] ?? '' ) : '';
-					} elseif ( 'contacts' === $k ) {
+					} elseif ( in_array( $k, array( 'contacts', 'stock_tools' ), true ) ) {
 						$out[ $class ][ $code ][ $k ] = empty( $row[ $k ] ) ? 0 : 1;
 					} elseif ( in_array( $k, array( 'price_month', 'price_year' ), true ) ) {
 						$out[ $class ][ $code ][ $k ] = max( 0, (float) str_replace( array( ' ', ',' ), array( '', '.' ), (string) ( $row[ $k ] ?? $v ) ) );
@@ -117,7 +117,7 @@ final class Plans {
 
 	/** Labels of the limits. */
 	public static function limit_labels() {
-		return array(
+		$labels = array(
 			'listings'   => __( 'Listings online', 'sm-subscriptions' ),
 			'weight_t'   => __( 'Total weight online', 'sm-subscriptions' ),
 			'buildings'  => __( 'Buildings online', 'sm-subscriptions' ),
@@ -125,8 +125,15 @@ final class Plans {
 			'portfolio'  => __( 'Completed projects', 'sm-subscriptions' ),
 			'rfq_offers' => __( 'Answers to requests for quotation per month', 'sm-subscriptions' ),
 			'ai_credits' => __( 'AI credits per month', 'sm-subscriptions' ),
+			'stock_t'     => __( 'Warehouse (published or not)', 'sm-subscriptions' ),
+			'stock_tools' => __( 'Warehouse: price for a whole type and labels', 'sm-subscriptions' ),
 			'contacts'   => __( 'Phone, e-mail, WhatsApp and website visible', 'sm-subscriptions' ),
 			'featured'   => __( 'Featured on the home page', 'sm-subscriptions' ),
 		);
+		// 0.4.0: the warehouse lines only when SM Stock is active.
+		if ( ! defined( 'SM_STOCK_VERSION' ) ) {
+			unset( $labels['stock_t'], $labels['stock_tools'] );
+		}
+		return $labels;
 	}
 }

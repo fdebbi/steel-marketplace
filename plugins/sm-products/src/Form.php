@@ -80,7 +80,7 @@ final class Form {
 		if ( ! $min_photos ) {
 			$min_photos = Spec::auto_title( $spec['category'] ) && 'products' === ( $spec['category']->market ?? '' ) ? 0 : 1;
 		}
-		if ( 'draft' !== $intent && count( $photos ) < $min_photos ) {
+		if ( ! in_array( $intent, array( 'draft', 'stock' ), true ) && count( $photos ) < $min_photos ) {
 			/* translators: %d: number of photos. */
 			$errors['photos'] = 1 === $min_photos ? __( 'Add at least one photo of the product.', 'sm-products' ) : sprintf( _n( 'Add at least %d photo of the product.', 'Add at least %d photos of the product.', $min_photos, 'sm-products' ), $min_photos );
 		}
@@ -98,7 +98,22 @@ final class Form {
 		}
 
 		$status = 'draft';
-		if ( 'draft' !== $intent ) {
+		if ( 'stock' === $intent ) {
+			/**
+			 * Kept in the warehouse only (0.20.0, sm-stock): not on the market, so the
+			 * limits of published listings do not apply; the warehouse has its own.
+			 *
+			 * @param string $reason  '' to allow.
+			 * @param object $company Company.
+			 * @param float  $weight  Weight of the item (kg).
+			 * @param object $product Item being edited (null for a new one).
+			 */
+			$limit = (string) apply_filters( 'sm_products_stock_limit', '', $company, (float) ( $spec['data']['total_weight'] ?? 0 ), $product );
+			if ( $limit ) {
+				Forms::back( array( $limit ) );
+			}
+			$status = 'stock';
+		} elseif ( 'draft' !== $intent ) {
 			$limit = self::client_limit( $company, $product );
 			if ( ! $limit ) {
 				$limit = self::plan_limit( $company, $spec['data'] ?? array(), $product );
@@ -136,11 +151,15 @@ final class Form {
 			\SM\Core\Notifications\Notifications::notify_moderators( 'product.submitted', array( 'product_id' => $pid, 'company_id' => $company->id ) );
 		}
 		$messages = array(
+			'stock'     => __( 'Saved in your warehouse. It is not on the market: publish it when you want to sell it.', 'sm-products' ),
 			'draft'     => __( 'Draft saved. You can finish it later from "My listings".', 'sm-products' ),
 			'pending'   => __( 'Thank you. Your product will be visible after a quick check by the platform team.', 'sm-products' ),
 			'published' => __( 'Your product is published.', 'sm-products' ),
 		);
 		$target = 'draft' === $status ? Routes::url( 'account', array( 'view' => 'publish', 'edit' => $pid ) ) : Routes::url( 'account', array( 'view' => 'listings' ) );
+		if ( 'stock' === $status || ( 'stock' === $was && class_exists( '\\SM\\Stock\\Plugin' ) ) ) {
+			$target = Routes::url( 'account', array( 'view' => 'reuse' === ( Products::get( $pid )->market ?? '' ) ? 'stock-reuse' : 'stock' ) );
+		}
 		if ( $file_errors ) {
 			Forms::back( $file_errors, $messages[ $status ], $target );
 		}
@@ -224,12 +243,20 @@ final class Form {
 				Products::set_status( $p->id, 'sold' );
 				Forms::back( array(), __( 'Marked as sold. Buyers no longer see it.', 'sm-products' ) );
 				break;
+			case 'to_stock':
+				// 0.20.0: back to the warehouse (not on the market any more).
+				if ( ! in_array( $p->status, array( 'published', 'pending', 'paused', 'draft', 'expired' ), true ) ) {
+					Forms::back( array( __( 'This product cannot be put back in the warehouse.', 'sm-products' ) ) );
+				}
+				Products::set_status( $p->id, 'stock' );
+				Forms::back( array(), __( 'The product is in your warehouse only: buyers no longer see it.', 'sm-products' ) );
+				break;
 			case 'withdraw':
 				Products::set_status( $p->id, 'draft' );
 				Forms::back( array(), __( 'The product is withdrawn and saved as a draft.', 'sm-products' ) );
 				break;
 			case 'republish':
-				if ( ! in_array( $p->status, array( 'sold', 'expired', 'paused' ), true ) ) {
+				if ( ! in_array( $p->status, array( 'sold', 'expired', 'paused', 'stock' ), true ) ) {
 					Forms::back( array( __( 'This product cannot be published again from here. Edit it instead.', 'sm-products' ) ) );
 				}
 				$limit = self::client_limit( Companies::get( $p->company_id ), $p ) ?: self::plan_limit( Companies::get( $p->company_id ), (array) $p, null );
@@ -240,11 +267,13 @@ final class Form {
 				Products::set_status( $p->id, $status );
 				if ( 'pending' === $status ) {
 					\SM\Core\Notifications\Notifications::notify_moderators( 'product.submitted', array( 'product_id' => $p->id, 'company_id' => $p->company_id ) );
+				} elseif ( 'stock' === $p->status && ! current_user_can( 'sm_moderate' ) ) {
+					\SM\Core\Notifications\Notifications::notify_moderators( 'product.published', array( 'product_id' => $p->id, 'company_id' => $p->company_id ) );
 				}
 				Forms::back( array(), 'pending' === $status ? __( 'Sent for review again.', 'sm-products' ) : __( 'Your product is published.', 'sm-products' ) );
 				break;
 			case 'delete':
-				if ( ! in_array( $p->status, array( 'draft', 'rejected', 'sold', 'expired', 'paused' ), true ) ) {
+				if ( ! in_array( $p->status, array( 'draft', 'rejected', 'sold', 'expired', 'paused', 'stock' ), true ) ) {
 					Forms::back( array( __( 'Withdraw the product before deleting it.', 'sm-products' ) ) );
 				}
 				Products::delete( $p->id );

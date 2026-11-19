@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.48.0 — 2026-11-19 (avec sm-stock 0.1.0, sm-products 0.20.0, sm-subscriptions 0.4.0)
+
+- **Magasin** dans le compte (entreprises et professionnels) : onglets Neuf, Réemploi, Mouvements ; page « Prix pour tout un type ».
+- Composant `stock-warehouse` : chiffres clés et jauge de capacité, filtres, recherche (repère, profilé, emplacement), interrupteur « Sur le marché » (publier / garder en stock seulement), panneau repère + emplacement + correction de quantité avec motif, derniers mouvements, mise en évidence `?ref=` (QR des étiquettes). Réemploi : un repère par variante.
+- Boutons « Prix pour tout un type » et « Étiquettes (PDF) » verrouillés sans les outils de la formule.
+- Formulaire de publication : bouton « Garder en stock seulement » ; « Mes annonces » : statut « Au magasin seulement ».
+- Formules : capacité du magasin en tonnes et outils (oui / non). CSS `assets/css/38-stock.css` (préfixe `smst-`).
+
 ## 0.47.0 — 2026-11-19 (avec sm-weight-engine 0.5.0 et sm-products 0.19.0)
 
 - Optimiseur de découpe : « 3. Où chercher les barres ? » — Mon stock (bientôt, avec le Magasin), Marché ReuSteel (coché par défaut) avec ses filtres (nuance minimale, états acceptés, wilaya, lots entiers), barres neuves pour le reste. « 4. Chutes déjà à disposition » reste disponible.

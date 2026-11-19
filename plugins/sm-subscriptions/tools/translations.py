@@ -209,3 +209,9 @@ T.update({
 'Upgrade your plan to benefit from the AI assistant, or buy a pack of AI credits.': ("Améliorez votre formule pour bénéficier de l'assistant IA, ou achetez un pack de crédits IA.", 'رقِّ اشتراكك للاستفادة من مساعد الذكاء الاصطناعي، أو اشترِ باقة أرصدة.'),
 'You used all your AI credits this month. Upgrade your plan or buy a pack of AI credits.': ('Vous avez utilisé tous vos crédits IA ce mois-ci. Améliorez votre formule ou achetez un pack de crédits IA.', 'استعملت كل أرصدة الذكاء الاصطناعي لهذا الشهر. رقِّ اشتراكك أو اشترِ باقة أرصدة.'),
 })
+
+# 0.4.0: warehouse.
+T.update({
+'Warehouse (published or not)': ('Magasin (publié ou non)', 'المخزن (منشور أو لا)'),
+'Warehouse: price for a whole type and labels': ('Magasin : prix pour tout un type et étiquettes', 'المخزن: السعر لنوع كامل والملصقات'),
+})

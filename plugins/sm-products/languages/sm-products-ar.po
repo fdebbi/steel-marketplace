@@ -782,7 +782,7 @@ msgstr[5] "أضف %d صورة على الأقل للمنتج"
 msgid "Choose a category."
 msgstr "اختر فئة."
 
-#: src/Form.php:120
+#: src/Form.php:135
 msgid ""
 "Thank you. Your changes will be visible after a quick check by the platform "
 "team; meanwhile the current version stays online."
@@ -790,22 +790,28 @@ msgstr ""
 "شكرا. ستظهر تعديلاتك بعد مراجعة سريعة من فريق المنصة، وتبقى النسخة الحالية "
 "منشورة في الأثناء."
 
-#: src/Form.php:139
+#: src/Form.php:154
+msgid ""
+"Saved in your warehouse. It is not on the market: publish it when you want "
+"to sell it."
+msgstr "تم الحفظ في مخزنك. ليس في السوق: انشره متى أردت بيعه."
+
+#: src/Form.php:155
 msgid "Draft saved. You can finish it later from \"My listings\"."
 msgstr "تم حفظ المسودة. يمكنك إكمالها لاحقا من «إعلاناتي»."
 
-#: src/Form.php:140
+#: src/Form.php:156
 msgid ""
 "Thank you. Your product will be visible after a quick check by the platform "
 "team."
 msgstr "شكرا. سيظهر منتجك بعد مراجعة سريعة من فريق المنصة."
 
-#: src/Form.php:141 src/Form.php:244
+#: src/Form.php:157 src/Form.php:273
 msgid "Your product is published."
 msgstr "تم نشر منتجك."
 
 #. translators: %d: number of listings.
-#: src/Form.php:179
+#: src/Form.php:198
 msgid ""
 "A client account can have %d listing online at a time. Mark one as sold or "
 "withdraw it first, or open a company or professional account."
@@ -831,39 +837,47 @@ msgstr[5] ""
 "يمكن لحساب الزبون نشر %d إعلان في نفس الوقت. علّم أحدها كمباع أو اسحبه أولا،"
 " أو افتح حساب شركة أو مهني."
 
-#: src/Form.php:217
+#: src/Form.php:236
 msgid "You cannot change this product."
 msgstr "لا يمكنك تغيير هذا المنتج."
 
-#: src/Form.php:222
+#: src/Form.php:241
 msgid "Only a published product can be marked as sold."
 msgstr "لا يمكن وضع علامة «مباع» إلا على منتج منشور."
 
-#: src/Form.php:225
+#: src/Form.php:244
 msgid "Marked as sold. Buyers no longer see it."
 msgstr "تم وضع علامة «مباع». لم يعد المشترون يرونه."
 
-#: src/Form.php:229
+#: src/Form.php:249
+msgid "This product cannot be put back in the warehouse."
+msgstr "لا يمكن إرجاع هذا المنتج إلى المخزن."
+
+#: src/Form.php:252
+msgid "The product is in your warehouse only: buyers no longer see it."
+msgstr "المنتج في المخزن فقط: لم يعد المشترون يرونه."
+
+#: src/Form.php:256
 msgid "The product is withdrawn and saved as a draft."
 msgstr "تم سحب المنتج وحفظه كمسودة."
 
-#: src/Form.php:233
+#: src/Form.php:260
 msgid "This product cannot be published again from here. Edit it instead."
 msgstr "لا يمكن إعادة نشر هذا المنتج من هنا. عدّله بدلا من ذلك."
 
-#: src/Form.php:244
+#: src/Form.php:273
 msgid "Sent for review again."
 msgstr "أُعيد إرساله للمراجعة."
 
-#: src/Form.php:248
+#: src/Form.php:277
 msgid "Withdraw the product before deleting it."
 msgstr "اسحب المنتج قبل حذفه."
 
-#: src/Form.php:251
+#: src/Form.php:280
 msgid "Product deleted."
 msgstr "تم حذف المنتج."
 
-#: src/Form.php:254
+#: src/Form.php:283
 msgid "Unknown action."
 msgstr "إجراء غير معروف."
 

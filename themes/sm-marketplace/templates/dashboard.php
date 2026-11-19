@@ -118,6 +118,16 @@ if ( $is_eng ) {
 				'stats'    => __( 'Statistics', 'sm-marketplace' ),
 			),
 		),
+		// Warehouse (0.48.0, sm-stock): new and reused steel, published or in stock only.
+		'stock'    => ! $is_demo && true === sm_theme_data( 'stock_enabled' ) ? array(
+			'warehouse',
+			__( 'Warehouse', 'sm-marketplace' ),
+			array(
+				'stock'       => __( 'New steel', 'sm-marketplace' ),
+				'stock-reuse' => __( 'Reuse', 'sm-marketplace' ),
+				'stock-moves' => __( 'Movements', 'sm-marketplace' ),
+			),
+		) : null,
 		'buying'   => array(
 			'rfq',
 			__( 'Buying', 'sm-marketplace' ),
@@ -160,6 +170,9 @@ if ( $is_eng ) {
 		),
 	);
 	$hidden    = array( 'publish' => array( 'selling', __( 'Publish a listing', 'sm-marketplace' ) ) );
+	if ( ! empty( $groups['stock'] ) ) {
+		$hidden['stock-prices'] = array( 'stock', __( 'Price for a whole type', 'sm-marketplace' ) );
+	}
 	// Shortcuts under the "Publish a listing" button (0.17.1).
 	$shortcuts = array_filter(
 		array(

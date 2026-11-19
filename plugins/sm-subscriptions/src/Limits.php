@@ -25,6 +25,9 @@ final class Limits {
 		add_filter( 'sm_rfq_offer_limit', array( __CLASS__, 'rfq_offers' ), 10, 3 );
 		add_filter( 'sm_ai_plan_credits', '__return_true' );
 		add_filter( 'sm_ai_can_use', array( __CLASS__, 'ai_can_use' ), 10, 3 );
+		// Warehouse (0.4.0, sm-stock): capacity in tonnes and advanced tools per plan.
+		add_filter( 'sm_stock_capacity_kg', array( __CLASS__, 'stock_capacity' ), 10, 2 );
+		add_filter( 'sm_stock_tools', array( __CLASS__, 'stock_tools' ), 10, 2 );
 		add_filter( 'sm_ai_remaining', array( __CLASS__, 'ai_remaining' ), 10, 2 );
 		add_action( 'sm_ai_used', array( Credits::class, 'on_used' ), 10, 2 );
 		add_filter( 'sm_company_contacts_visible', array( __CLASS__, 'contacts' ), 10, 2 );
@@ -105,6 +108,16 @@ final class Limits {
 			return sprintf( _n( 'Your plan allows %1$d answer to requests for quotation per month. %2$s', 'Your plan allows %1$d answers to requests for quotation per month. %2$s', (int) $limit, 'sm-subscriptions' ), (int) $limit, __( 'Choose a higher plan in your account (Plan) to answer without limit.', 'sm-subscriptions' ) );
 		}
 		return $reason;
+	}
+
+	public static function stock_capacity( $kg, $company ) {
+		$limit = self::limit( $company, 'stock_t' );
+		return null === $limit || Plans::UNLIMITED === $limit ? $kg : (float) $limit * 1000;
+	}
+
+	public static function stock_tools( $ok, $company ) {
+		$plan = Subscriptions::plan_of( $company );
+		return $plan['has_plans'] ? ! empty( $plan['data']['stock_tools'] ) : $ok;
 	}
 
 	public static function ai_can_use( $ok, $feature, $company_id ) {

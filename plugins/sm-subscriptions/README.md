@@ -6,14 +6,14 @@ Si l'une de ces extensions est active dans une version plus ancienne, les pages 
 
 ## Formules (valeurs par défaut, modifiables)
 
-| Classe | Formule | Prix (DA TTC) | Annonces | Tonnage | Bâtiments | Services | Réalisations | Réponses devis / mois | IA / mois | Coordonnées | À la une |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Entreprise | Découverte | 0 | 5 | 10 t | 1 | 1 | 3 | 3 | 0 (achat de packs) | masquées | non |
-| Entreprise | Pro | 3 500 / mois, 35 000 / an | 40 | 200 t | 5 | 5 | 20 | illimité | 50 | visibles | non |
-| Entreprise | Business | 9 000 / mois, 90 000 / an | 150 | 1 000 t | 20 | 20 | illimité | illimité | 200 | visibles | rotation |
-| Professionnel | Gratuit | 0 | 3 | 5 t | 1 | 1 | 3 | 3 | 0 (achat de packs) | masquées | non |
-| Professionnel | Artisan Pro | 1 500 / mois, 15 000 / an | 10 | 30 t | 2 | 3 | 15 | illimité | 30 | visibles | non |
-| Professionnel | Artisan Premium | 3 000 / mois, 30 000 / an | 30 | 100 t | 5 | 8 | illimité | illimité | 80 | visibles | rotation |
+| Classe | Formule | Prix (DA TTC) | Annonces | Tonnage | Bâtiments | Services | Réalisations | Réponses devis / mois | IA / mois | Magasin | Coordonnées | À la une |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Entreprise | Découverte | 0 | 5 | 10 t | 1 | 1 | 3 | 3 | 0 (achat de packs) | 20 t, sans outils | masquées | non |
+| Entreprise | Pro | 3 500 / mois, 35 000 / an | 40 | 200 t | 5 | 5 | 20 | illimité | 50 | 500 t | visibles | non |
+| Entreprise | Business | 9 000 / mois, 90 000 / an | 150 | 1 000 t | 20 | 20 | illimité | illimité | 200 | illimité | visibles | rotation |
+| Professionnel | Gratuit | 0 | 3 | 5 t | 1 | 1 | 3 | 3 | 0 (achat de packs) | 10 t, sans outils | masquées | non |
+| Professionnel | Artisan Pro | 1 500 / mois, 15 000 / an | 10 | 30 t | 2 | 3 | 15 | illimité | 30 | 100 t | visibles | non |
+| Professionnel | Artisan Premium | 3 000 / mois, 30 000 / an | 30 | 100 t | 5 | 8 | illimité | illimité | 80 | 300 t | visibles | rotation |
 
 Clients et ingénieurs partenaires : pas de formule ; pas de crédit IA mensuel depuis 0.3.0 (filtre `sm_sub_no_plan_ai_credits`), achat de packs. La recherche intelligente est gratuite pour tous et ne consomme pas de crédit.
 
@@ -32,6 +32,7 @@ Le paiement en ligne (Chargily, CIB) viendra plus tard sur la même table de com
 | Extension | Filtre | Effet |
 | --- | --- | --- |
 | sm-products | `sm_products_publish_limit` | annonces, tonnage, bâtiments en ligne à la publication et à la republication |
+| sm-stock | `sm_stock_capacity_kg`, `sm_stock_tools` | capacité du magasin (publié ou non), prix pour tout un type et étiquettes |
 | sm-services | `sm_services_limit`, `sm_portfolio_limit` | pages de services, réalisations |
 | sm-rfq | `sm_rfq_offer_limit` | premières réponses aux demandes de devis du mois |
 | sm-ai | `sm_ai_plan_credits`, `sm_ai_can_use`, `sm_ai_remaining`, `sm_ai_used` | crédits du mois, puis crédits achetés |

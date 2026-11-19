@@ -32,6 +32,7 @@ $labels  = array(
 	'expired'   => __( 'Expired', 'sm-marketplace' ),
 	'paused'    => __( 'Paused (plan)', 'sm-marketplace' ),
 	'grouped'   => __( 'In a lot', 'sm-marketplace' ),
+	'stock'     => __( 'In the warehouse only', 'sm-marketplace' ),
 );
 $one = array(
 	'published' => __( 'Published', 'sm-marketplace' ),
@@ -42,6 +43,7 @@ $one = array(
 	'expired'   => __( 'Expired', 'sm-marketplace' ),
 	'paused'    => __( 'Paused (plan)', 'sm-marketplace' ),
 	'grouped'   => __( 'In a lot', 'sm-marketplace' ),
+	'stock'     => __( 'In the warehouse only', 'sm-marketplace' ),
 );
 // 0.37.0: published reuse listings can be grouped into one lot (not scrap, not a lot).
 $groupable = static fn( $item ) => 'reuse' === $market && 'published' === $item['status'] && 'reuse' === ( $item['market'] ?? '' ) && ! isset( $item['group_count'] ) && 'reuse-scrap' !== ( $item['category'] ?? '' );

@@ -1,0 +1,153 @@
+# Copyright (C) 2026 ReuSteel
+# This file is distributed under the Proprietary.
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Stock 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-stock\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-19T16:53:47+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: sm-stock\n"
+
+#. Plugin Name of the plugin
+#: sm-stock.php
+msgid "SM Stock"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: sm-stock.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr ""
+
+#. Description of the plugin
+#: sm-stock.php
+msgid "Warehouse of companies and professionals: every steel item they own, published on the market or kept in stock only (new and reused), with a reference and a location for each variant, quantity corrections, the history of movements (sales accepted on the platform are taken off automatically), prices changed for a whole type, printable labels with a QR code, and limits per plan. Requires SM Core and SM Products."
+msgstr ""
+
+#. Author of the plugin
+#: sm-stock.php
+msgid "ReuSteel"
+msgstr ""
+
+#: sm-stock.php:47
+msgid "SM Stock needs the SM Core and SM Products plugins. Activate them first."
+msgstr ""
+
+#: src/Actions.php:42
+msgid "This item is not in your warehouse."
+msgstr ""
+
+#: src/Actions.php:49
+#: src/Actions.php:60
+#: src/Actions.php:88
+#: src/Actions.php:108
+msgid "Your account has no warehouse."
+msgstr ""
+
+#: src/Actions.php:55
+msgid "Reference and location saved."
+msgstr ""
+
+#: src/Actions.php:65
+msgid "Give the new quantity (0 or more)."
+msgstr ""
+
+#: src/Actions.php:68
+msgid "Give the reason of the correction (inventory, damaged bar, sale outside the platform…)."
+msgstr ""
+
+#: src/Actions.php:79
+msgid "Quantity corrected. The movement is in the history."
+msgstr ""
+
+#: src/Actions.php:97
+msgid "Tick at least one product to change."
+msgstr ""
+
+#. translators: %d: number of products.
+#: src/Actions.php:101
+msgid "Price changed on %d product. Orders and offers already in progress keep their price."
+msgid_plural "Price changed on %d products. Orders and offers already in progress keep their price."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Items.php:138
+msgid "A reference has 1 to 20 letters, digits, dashes, dots or slashes."
+msgstr ""
+
+#. translators: %s: reference.
+#: src/Items.php:143
+msgid "The reference %s is already used in your warehouse."
+msgstr ""
+
+#: src/Items.php:188
+msgid "This variant is no longer in the item."
+msgstr ""
+
+#: src/Labels.php:40
+msgid "New"
+msgstr ""
+
+#: src/Labels.php:40
+msgid "New surplus"
+msgstr ""
+
+#: src/Labels.php:40
+msgid "Excellent"
+msgstr ""
+
+#: src/Labels.php:40
+msgid "Good"
+msgstr ""
+
+#: src/Labels.php:40
+msgid "To inspect"
+msgstr ""
+
+#: src/Labels.php:40
+msgid "Scrap"
+msgstr ""
+
+#: src/Labels.php:58
+msgid "No item in this warehouse."
+msgstr ""
+
+#: src/Limits.php:42
+msgid "The price for a whole type and the labels come with the paid plans. Choose a plan in your account (Plan)."
+msgstr ""
+
+#: src/Limits.php:51
+msgid "Only company and professional accounts have a warehouse."
+msgstr ""
+
+#. translators: 1: capacity in tonnes, 2: used in tonnes.
+#: src/Limits.php:62
+msgid "Your warehouse is full for your plan: %1$s t (%2$s t used). Nothing is deleted; choose a higher plan in your account (Plan) to add more."
+msgstr ""
+
+#: src/Moves.php:85
+msgid "whole lot"
+msgstr ""
+
+#: src/Plugin.php:40
+msgid "Item kept in the warehouse"
+msgstr ""
+
+#: src/Prices.php:27
+msgid "Prices changed by a seller"
+msgstr ""
+
+#. translators: 1: company, 2: number of listings, 3: what was changed.
+#: src/Prices.php:29
+msgid "%1$s changed the price of %2$d published listings at once (%3$s). The new prices are already online."
+msgstr ""
+
+#. translators: 1: old price, 2: new price.
+#: src/Prices.php:116
+msgid "%1$s → %2$s DA/kg"
+msgstr ""

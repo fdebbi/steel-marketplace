@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Warehouse of the account (0.48.0, sm-stock).
+   ========================================================================== */
+
+.smst { display: grid; gap: var(--sm-s4); min-inline-size: 0; }
+.smst-totals { display: grid; gap: var(--sm-s3); grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.smst-k { display: grid; gap: 2px; padding: var(--sm-s3) var(--sm-s4); background: var(--sm-surface); border: 1px solid var(--sm-line); border-radius: 14px; min-inline-size: 0; }
+.smst-k small { color: var(--sm-muted); font-size: var(--sm-fs-xs); }
+.smst-k b { font: 700 1.35rem/1.2 var(--sm-font-display); }
+.smst-k b .sm-weight__kg { display: block; font: 500 var(--sm-fs-xs) var(--sm-font, Inter, sans-serif); color: var(--sm-muted); }
+.smst-k.is-pub { border-color: color-mix(in srgb, var(--sm-accent) 40%, var(--sm-line)); }
+.smst-cap { margin: 0; }
+.smst-bar { flex-wrap: wrap; gap: var(--sm-s2) var(--sm-s3); align-items: center; }
+.smst-search { display: flex; gap: 6px; flex: 1 1 220px; max-inline-size: 360px; }
+.smst-search input { flex: 1; min-inline-size: 0; padding: 7px 10px; }
+.smst-actions { display: flex; flex-wrap: wrap; gap: var(--sm-s2); margin-inline-start: auto; }
+.smst-actions .is-locked { opacity: .7; }
+.smst-ref { font-family: var(--sm-font-mono, ui-monospace, monospace); font-size: var(--sm-fs-sm); background: var(--sm-bg); border: 1px solid var(--sm-line); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
+.smst-loc { display: inline-flex; align-items: center; gap: 4px; color: var(--sm-muted); font-size: var(--sm-fs-xs); }
+.smst-loc .sm-icon { inline-size: 13px; block-size: 13px; }
+.smst-table td small { display: block; color: var(--sm-muted); font-size: var(--sm-fs-xs); }
+.smst-table tr.is-hl td, .smst-vars li.is-hl { background: color-mix(in srgb, #FFD54A 16%, var(--sm-surface)); }
+.smst-links { font-size: var(--sm-fs-xs); margin-block-start: 4px; }
+.smst-links a { color: var(--sm-accent-ink); font-weight: 600; }
+.smst-switch-form { display: inline-block; margin: 0; }
+.smst-switch { display: inline-flex; align-items: center; gap: 8px; border: 0; background: none; padding: 0; cursor: pointer; font: 600 var(--sm-fs-sm) var(--sm-font, Inter, sans-serif); color: var(--sm-text); }
+.smst-switch i { position: relative; inline-size: 36px; block-size: 20px; border-radius: 999px; background: var(--sm-line-strong); flex: none; transition: background .2s; }
+.smst-switch i::after { content: ""; position: absolute; inset-block-start: 2px; inset-inline-start: 2px; inline-size: 16px; block-size: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgb(0 0 0 / .2); transition: inset-inline-start .2s; }
+.smst-switch.is-on i { background: var(--sm-accent); }
+.smst-switch.is-on i::after { inset-inline-start: 18px; }
+.smst-switch:focus-visible { outline: 2px solid var(--sm-accent); outline-offset: 3px; border-radius: 6px; }
+.smst-state { font-weight: 600; color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+.smst-edit { margin-block-start: 6px; }
+.smst-edit summary { cursor: pointer; font-size: var(--sm-fs-xs); font-weight: 700; color: var(--sm-accent-ink); }
+.smst-edit__body { display: grid; gap: var(--sm-s2); margin-block-start: var(--sm-s2); padding: var(--sm-s3); border: 1px dashed var(--sm-line); border-radius: 10px; background: var(--sm-bg); }
+.smst-mini { display: flex; flex-wrap: wrap; gap: var(--sm-s2); align-items: flex-end; margin: 0; }
+.smst-mini label { display: grid; gap: 2px; font-size: var(--sm-fs-xs); font-weight: 600; flex: 1 1 120px; }
+.smst-mini input { padding: 6px 9px; min-inline-size: 0; }
+.smst-hint { margin: 0; font-size: var(--sm-fs-xs); color: var(--sm-muted); }
+.smst-lots { display: grid; gap: var(--sm-s3); }
+.smst-lot { background: var(--sm-surface); border: 1px solid var(--sm-line); border-radius: 14px; padding: var(--sm-s3) var(--sm-s4); }
+.smst-lot__head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--sm-s2); }
+.smst-lot__head h3 { margin: 0; font-size: var(--sm-fs-md, 1rem); }
+.smst-lot__head p { margin: 2px 0 0; font-size: var(--sm-fs-sm); color: var(--sm-muted); }
+.smst-cond { font-weight: 600; color: var(--sm-text); }
+.smst-vars { list-style: none; margin: var(--sm-s2) 0 0; padding: 0; display: grid; }
+.smst-vars li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px var(--sm-s2); padding: var(--sm-s2) 0; border-block-start: 1px dashed var(--sm-line); }
+.smst-vars li .smst-edit { flex-basis: 100%; margin: 0; }
+.smst-var { font-size: var(--sm-fs-sm); }
+.smst-moves { display: grid; gap: var(--sm-s2); }
+.smst-moves__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sm-s2); flex-wrap: wrap; }
+.smst-moves__head .sm-panel__title { margin: 0; }
+.smst-mv { list-style: none; margin: 0; padding: 0; }
+.smst-mv li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--sm-s3); padding: var(--sm-s2) 0; border-block-start: 1px dashed var(--sm-line); font-size: var(--sm-fs-sm); align-items: baseline; }
+@media (max-width: 600px) { .smst-mv li { grid-template-columns: 1fr; gap: 2px; } }
+.smst-mv__when { color: var(--sm-muted); white-space: nowrap; font-size: var(--sm-fs-xs); }
+.smst-mv__chg { font-weight: 700; white-space: nowrap; }
+.smst-mv__chg.neg { color: var(--sm-danger, #B42318); }
+.smst-mv__chg.pos { color: var(--sm-accent-ink); }
+.smst-note { font-size: var(--sm-fs-xs); background: #FFF4D6; color: #7A5600; border-radius: 999px; padding: 1px 8px; font-weight: 700; }
+.smst-pager { display: flex; gap: var(--sm-s2); justify-content: flex-end; margin-block-start: var(--sm-s2); }
+.smst-prices { display: grid; gap: var(--sm-s3); }
+.smst-prices__form { display: grid; gap: var(--sm-s3); grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); align-items: end; }
+.smst-mode { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: var(--sm-s2) var(--sm-s3); align-items: center; grid-column: 1 / -1; }
+.smst-mode legend { font-weight: 600; font-size: var(--sm-fs-sm); margin-block-end: 4px; }
+.smst-mode input[name="value"] { max-inline-size: 160px; }

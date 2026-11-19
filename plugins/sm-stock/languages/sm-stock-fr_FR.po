@@ -1,0 +1,187 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM AI 0.1.0\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: sm-stock\n"
+
+#. Plugin Name of the plugin
+#: sm-stock.php
+msgid "SM Stock"
+msgstr "SM Stock"
+
+#. Plugin URI of the plugin
+#: sm-stock.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-stock.php
+msgid ""
+"Warehouse of companies and professionals: every steel item they own, "
+"published on the market or kept in stock only (new and reused), with a "
+"reference and a location for each variant, quantity corrections, the history"
+" of movements (sales accepted on the platform are taken off automatically), "
+"prices changed for a whole type, printable labels with a QR code, and limits"
+" per plan. Requires SM Core and SM Products."
+msgstr ""
+"Magasin des entreprises et des professionnels : tout leur acier, publié sur "
+"le marché ou gardé en stock seulement (neuf et réemploi), avec un repère et "
+"un emplacement pour chaque variante, les corrections de quantité, "
+"l'historique des mouvements (les ventes acceptées sur la plateforme sont "
+"déduites automatiquement), le prix pour tout un type, des étiquettes avec QR"
+" code et des limites par formule. Nécessite SM Core et SM Products."
+
+#. Author of the plugin
+#: sm-stock.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-stock.php:47
+msgid ""
+"SM Stock needs the SM Core and SM Products plugins. Activate them first."
+msgstr ""
+"SM Stock a besoin des extensions SM Core et SM Products. Activez-les "
+"d'abord."
+
+#: src/Actions.php:42
+msgid "This item is not in your warehouse."
+msgstr "Cet article n'est pas dans votre magasin."
+
+#: src/Actions.php:49 src/Actions.php:60 src/Actions.php:88
+#: src/Actions.php:108
+msgid "Your account has no warehouse."
+msgstr "Votre compte n'a pas de magasin."
+
+#: src/Actions.php:55
+msgid "Reference and location saved."
+msgstr "Repère et emplacement enregistrés."
+
+#: src/Actions.php:65
+msgid "Give the new quantity (0 or more)."
+msgstr "Indiquez la nouvelle quantité (0 ou plus)."
+
+#: src/Actions.php:68
+msgid ""
+"Give the reason of the correction (inventory, damaged bar, sale outside the "
+"platform…)."
+msgstr ""
+"Indiquez le motif de la correction (inventaire, barre abîmée, vente hors "
+"plateforme…)."
+
+#: src/Actions.php:79
+msgid "Quantity corrected. The movement is in the history."
+msgstr "Quantité corrigée. Le mouvement est dans l'historique."
+
+#: src/Actions.php:97
+msgid "Tick at least one product to change."
+msgstr "Cochez au moins un produit à modifier."
+
+#. translators: %d: number of products.
+#: src/Actions.php:101
+msgid ""
+"Price changed on %d product. Orders and offers already in progress keep "
+"their price."
+msgid_plural ""
+"Price changed on %d products. Orders and offers already in progress keep "
+"their price."
+msgstr[0] ""
+"Prix modifié sur %d produit. Les commandes et offres en cours gardent leur "
+"prix."
+msgstr[1] ""
+"Prix modifié sur %d produits. Les commandes et offres en cours gardent leur "
+"prix."
+
+#: src/Items.php:138
+msgid "A reference has 1 to 20 letters, digits, dashes, dots or slashes."
+msgstr ""
+"Un repère a 1 à 20 lettres, chiffres, tirets, points ou barres obliques."
+
+#. translators: %s: reference.
+#: src/Items.php:143
+msgid "The reference %s is already used in your warehouse."
+msgstr "Le repère %s est déjà utilisé dans votre magasin."
+
+#: src/Items.php:188
+msgid "This variant is no longer in the item."
+msgstr "Cette variante n'est plus dans l'article."
+
+#: src/Labels.php:40
+msgid "New"
+msgstr "Neuf"
+
+#: src/Labels.php:40
+msgid "New surplus"
+msgstr "Surplus neuf"
+
+#: src/Labels.php:40
+msgid "Excellent"
+msgstr "Excellent"
+
+#: src/Labels.php:40
+msgid "Good"
+msgstr "Bon"
+
+#: src/Labels.php:40
+msgid "To inspect"
+msgstr "À contrôler"
+
+#: src/Labels.php:40
+msgid "Scrap"
+msgstr "Ferraille"
+
+#: src/Labels.php:58
+msgid "No item in this warehouse."
+msgstr "Aucun article dans ce magasin."
+
+#: src/Limits.php:42
+msgid ""
+"The price for a whole type and the labels come with the paid plans. Choose a"
+" plan in your account (Plan)."
+msgstr ""
+"Le prix pour tout un type et les étiquettes sont inclus dans les formules "
+"payantes. Choisissez une formule dans votre compte (Abonnement)."
+
+#: src/Limits.php:51
+msgid "Only company and professional accounts have a warehouse."
+msgstr "Seuls les comptes entreprise et professionnel ont un magasin."
+
+#. translators: 1: capacity in tonnes, 2: used in tonnes.
+#: src/Limits.php:62
+msgid ""
+"Your warehouse is full for your plan: %1$s t (%2$s t used). Nothing is "
+"deleted; choose a higher plan in your account (Plan) to add more."
+msgstr ""
+"Votre magasin est plein pour votre formule : %1$s t (%2$s t utilisées). Rien"
+" n’est supprimé ; choisissez une formule supérieure dans votre compte "
+"(Abonnement) pour ajouter plus."
+
+#: src/Moves.php:85
+msgid "whole lot"
+msgstr "lot entier"
+
+#: src/Plugin.php:40
+msgid "Item kept in the warehouse"
+msgstr "Article gardé au magasin"
+
+#: src/Prices.php:27
+msgid "Prices changed by a seller"
+msgstr "Prix modifiés par un vendeur"
+
+#. translators: 1: company, 2: number of listings, 3: what was changed.
+#: src/Prices.php:29
+msgid ""
+"%1$s changed the price of %2$d published listings at once (%3$s). The new "
+"prices are already online."
+msgstr ""
+"%1$s a modifié d’un coup le prix de %2$d annonces publiées (%3$s). Les "
+"nouveaux prix sont déjà en ligne."
+
+#. translators: 1: old price, 2: new price.
+#: src/Prices.php:116
+msgid "%1$s → %2$s DA/kg"
+msgstr "%1$s → %2$s DA/kg"

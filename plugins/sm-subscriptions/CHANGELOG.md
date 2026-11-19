@@ -1,5 +1,10 @@
 # Changelog — sm-subscriptions
 
+## 0.4.0 — 2026-11-19 (pour sm-stock 0.1.0)
+
+- Formules : capacité du **Magasin** en tonnes (`stock_t`, publié ou non) et outils du magasin (`stock_tools` : prix pour tout un type, étiquettes). Par défaut : Entreprise Découverte 20 t sans outils, Pro 500 t, Business illimité ; Professionnel Gratuit 10 t sans outils, Artisan Pro 100 t, Artisan Premium 300 t.
+- Filtres `sm_stock_capacity_kg` et `sm_stock_tools` fournis à sm-stock. Lignes visibles seulement quand sm-stock est actif.
+
 ## 0.3.0 — 2026-11-19 (nécessite SM AI 0.2.0)
 
 - La **formule gratuite** (entreprises et professionnels) et les comptes sans formule (clients, ingénieurs partenaires) **n'ont plus de crédits IA mensuels** ; tous peuvent acheter des packs. Mois de transition : sur un site existant, les crédits gratuits de ce mois restent jusqu'au 1er du mois suivant (option `sm_sub_ai_grace`, migration DB v3) ; les valeurs réglées par l'administrateur pour la formule gratuite passent à 0.

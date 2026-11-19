@@ -460,3 +460,11 @@ Validé sur la maquette 0.37.
 - PDF : pied de page « Plan de coupe établi avec l'Optimiseur de découpe ReuSteel - reusteel.com/optimiseur-decoupe ».
 - Magasin (stock) validé pour plus tard (étape C) : une fiche unique article de stock / annonce, « Publier sur le marché » oui ou non, deux magasins (neuf, réemploi), baisse automatique du stock après une vente acceptée (corrigeable).
 
+
+## Magasin (stock) (2026-11-19)
+
+- Une seule fiche article de stock / annonce ; « Sur le marché » oui ou non (statut `stock` = invisible des acheteurs). Deux magasins : neuf et réemploi. Les ventes acceptées sont déduites automatiquement.
+- Repère chiffré automatique par entreprise (N-0042 neuf, R-0042 par variante du réemploi), modifiable ; emplacement facultatif ; étiquettes PDF avec QR code. Le repère est visible du vendeur (et de l'acheteur après acceptation : à venir).
+- Prix pour tout un type (ex. 135 DA/kg pour tous les IPE) : au kg ou en %, aperçu, exceptions décochables, commandes et offres en cours inchangées, un seul e-mail à l'administration.
+- Limite par formule en tonnes (publié ou non) ; outils (prix par type, étiquettes) réservés aux formules payantes. Entreprise : Découverte 20 t, Pro 500 t, Business illimité ; Professionnel : Gratuit 10 t, Artisan Pro 100 t, Premium 300 t. Magasin plein : refus d'ajout, rien n'est supprimé.
+- Les professionnels ont aussi un magasin ; un article gardé en stock seulement a un prix facultatif.

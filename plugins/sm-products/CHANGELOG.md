@@ -1,5 +1,11 @@
 # Changelog — sm-products
 
+## 0.20.0 — 2026-11-19 (pour sm-stock 0.1.0)
+
+- Nouveau statut `stock` : article dans le magasin du vendeur, invisible des acheteurs.
+- Formulaire : intention `stock` (« Garder en stock seulement ») — sans minimum de photos, limite par le filtre `sm_products_stock_limit( $reason, $company, $weight, $product )`, retour vers le Magasin (neuf ou réemploi).
+- Action `to_stock` (depuis publié, en attente, en pause, brouillon, expiré) ; « Publier » et « Supprimer » acceptés depuis `stock` ; la publication depuis le stock notifie `product.published`.
+
 ## 0.19.0 — 2026-11-19
 
 - `CuttingMarket` : offres du marché pour l'optimiseur de découpe (sm-weight-engine 0.5.0), filtre `sm_cutting_market_offers`. Annonces publiées des marchés neuf et réemploi (lignes d'inventaire comprises) pour une section : nuance, état, wilaya, ce qui peut être acheté (au détail ou en lot entier, selon les mêmes règles que « Acheter »), vendeur et lien. Les annonces du compte de l'utilisateur sont exclues.

@@ -601,13 +601,13 @@ function sm_service_tags( array $service ) {
  * featured are yes / no. Returns plain text.
  */
 function sm_plan_value( $key, $value ) {
-	if ( in_array( $key, array( 'contacts', 'featured' ), true ) ) {
+	if ( in_array( $key, array( 'contacts', 'featured', 'stock_tools' ), true ) ) {
 		return $value ? __( 'Yes', 'sm-marketplace' ) : __( 'No', 'sm-marketplace' );
 	}
 	if ( -1 === (int) $value ) {
 		return __( 'Unlimited', 'sm-marketplace' );
 	}
-	return 'weight_t' === $key ? sm_tonnes( (float) $value * 1000 ) : sm_number( $value );
+	return in_array( $key, array( 'weight_t', 'stock_t' ), true ) ? sm_tonnes( (float) $value * 1000 ) : sm_number( $value );
 }
 
 /** Saving of the yearly price against twelve months, or 0. */

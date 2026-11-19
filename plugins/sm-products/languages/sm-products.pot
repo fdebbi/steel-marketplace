@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Products 0.19.0\n"
+"Project-Id-Version: SM Products 0.20.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-products\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-19T15:17:21+00:00\n"
+"POT-Creation-Date: 2026-11-19T16:53:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-products\n"
@@ -716,63 +716,75 @@ msgstr[1] ""
 msgid "Choose a category."
 msgstr ""
 
-#: src/Form.php:120
+#: src/Form.php:135
 msgid "Thank you. Your changes will be visible after a quick check by the platform team; meanwhile the current version stays online."
 msgstr ""
 
-#: src/Form.php:139
+#: src/Form.php:154
+msgid "Saved in your warehouse. It is not on the market: publish it when you want to sell it."
+msgstr ""
+
+#: src/Form.php:155
 msgid "Draft saved. You can finish it later from \"My listings\"."
 msgstr ""
 
-#: src/Form.php:140
+#: src/Form.php:156
 msgid "Thank you. Your product will be visible after a quick check by the platform team."
 msgstr ""
 
-#: src/Form.php:141
-#: src/Form.php:244
+#: src/Form.php:157
+#: src/Form.php:273
 msgid "Your product is published."
 msgstr ""
 
 #. translators: %d: number of listings.
-#: src/Form.php:179
+#: src/Form.php:198
 msgid "A client account can have %d listing online at a time. Mark one as sold or withdraw it first, or open a company or professional account."
 msgid_plural "A client account can have %d listings online at a time. Mark one as sold or withdraw it first, or open a company or professional account."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Form.php:217
+#: src/Form.php:236
 msgid "You cannot change this product."
 msgstr ""
 
-#: src/Form.php:222
+#: src/Form.php:241
 msgid "Only a published product can be marked as sold."
 msgstr ""
 
-#: src/Form.php:225
+#: src/Form.php:244
 msgid "Marked as sold. Buyers no longer see it."
 msgstr ""
 
-#: src/Form.php:229
+#: src/Form.php:249
+msgid "This product cannot be put back in the warehouse."
+msgstr ""
+
+#: src/Form.php:252
+msgid "The product is in your warehouse only: buyers no longer see it."
+msgstr ""
+
+#: src/Form.php:256
 msgid "The product is withdrawn and saved as a draft."
 msgstr ""
 
-#: src/Form.php:233
+#: src/Form.php:260
 msgid "This product cannot be published again from here. Edit it instead."
 msgstr ""
 
-#: src/Form.php:244
+#: src/Form.php:273
 msgid "Sent for review again."
 msgstr ""
 
-#: src/Form.php:248
+#: src/Form.php:277
 msgid "Withdraw the product before deleting it."
 msgstr ""
 
-#: src/Form.php:251
+#: src/Form.php:280
 msgid "Product deleted."
 msgstr ""
 
-#: src/Form.php:254
+#: src/Form.php:283
 msgid "Unknown action."
 msgstr ""
 

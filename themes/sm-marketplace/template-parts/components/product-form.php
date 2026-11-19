@@ -231,6 +231,9 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 
 	<div class="smp-actions">
 		<button type="submit" class="sm-btn sm-btn--ghost" name="intent" value="draft"><?php esc_html_e( 'Save draft', 'sm-marketplace' ); ?></button>
+		<?php if ( ! $is_build && true === sm_theme_data( 'stock_enabled' ) && ( ! $edit || ! in_array( $edit['status'] ?? '', array( 'published', 'pending' ), true ) ) ) : ?>
+			<button type="submit" class="sm-btn sm-btn--ghost" name="intent" value="stock"><?php sm_icon( 'warehouse' ); ?><?php esc_html_e( 'Keep in stock only', 'sm-marketplace' ); ?></button>
+		<?php endif; ?>
 		<button type="submit" class="sm-btn sm-btn--accent" name="intent" value="submit"><?php sm_icon( 'check' ); ?><?php echo esc_html( ! empty( $ps['moderation'] ) ? __( 'Send for publication', 'sm-marketplace' ) : __( 'Publish', 'sm-marketplace' ) ); ?></button>
 	</div>
 	<?php if ( ! empty( $ps['moderation'] ) ) : ?>

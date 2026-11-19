@@ -358,3 +358,10 @@ T.update({
 "Add at least one length with its number of bars.": ("Ajoutez au moins une longueur avec son nombre de barres.", "أضف طولًا واحدًا على الأقل مع عدد قضبانه."),
 })
 P[("Add at least %d photo of the product.", "Add at least %d photos of the product.")] = (["Ajoutez au moins %d photo du produit.", "Ajoutez au moins %d photos du produit."], ["أضف %d صورة على الأقل للمنتج", "أضف صورة واحدة على الأقل للمنتج", "أضف صورتين على الأقل للمنتج", "أضف %d صور على الأقل للمنتج", "أضف %d صورة على الأقل للمنتج", "أضف %d صورة على الأقل للمنتج"])
+
+# 0.20.0: warehouse.
+T.update({
+'Saved in your warehouse. It is not on the market: publish it when you want to sell it.': ("Enregistré dans votre magasin. Il n'est pas sur le marché : publiez-le quand vous voulez le vendre.", 'تم الحفظ في مخزنك. ليس في السوق: انشره متى أردت بيعه.'),
+'This product cannot be put back in the warehouse.': ('Ce produit ne peut pas être remis au magasin.', 'لا يمكن إرجاع هذا المنتج إلى المخزن.'),
+'The product is in your warehouse only: buyers no longer see it.': ('Le produit est au magasin seulement : les acheteurs ne le voient plus.', 'المنتج في المخزن فقط: لم يعد المشترون يرونه.'),
+})

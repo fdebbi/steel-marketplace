@@ -1,0 +1,180 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM AI 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-stock\n"
+
+#. Plugin Name of the plugin
+#: sm-stock.php
+msgid "SM Stock"
+msgstr "SM Stock"
+
+#. Plugin URI of the plugin
+#: sm-stock.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-stock.php
+msgid ""
+"Warehouse of companies and professionals: every steel item they own, "
+"published on the market or kept in stock only (new and reused), with a "
+"reference and a location for each variant, quantity corrections, the history"
+" of movements (sales accepted on the platform are taken off automatically), "
+"prices changed for a whole type, printable labels with a QR code, and limits"
+" per plan. Requires SM Core and SM Products."
+msgstr ""
+"مخزن الشركات والمهنيين: كل فولاذهم، منشوراً في السوق أو محفوظاً في المخزون "
+"فقط (جديد ومعاد الاستعمال)، مع مرجع وموقع لكل نوع، وتصحيح الكميات، وسجل "
+"الحركات، والسعر لنوع كامل، وملصقات برمز QR، وحدود حسب الاشتراك. يتطلب SM "
+"Core وSM Products."
+
+#. Author of the plugin
+#: sm-stock.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-stock.php:47
+msgid ""
+"SM Stock needs the SM Core and SM Products plugins. Activate them first."
+msgstr "يحتاج SM Stock إلى الإضافتين SM Core وSM Products. فعّلهما أولاً."
+
+#: src/Actions.php:42
+msgid "This item is not in your warehouse."
+msgstr "هذا العنصر ليس في مخزنك."
+
+#: src/Actions.php:49 src/Actions.php:60 src/Actions.php:88
+#: src/Actions.php:108
+msgid "Your account has no warehouse."
+msgstr "حسابك ليس لديه مخزن."
+
+#: src/Actions.php:55
+msgid "Reference and location saved."
+msgstr "تم حفظ المرجع والموقع."
+
+#: src/Actions.php:65
+msgid "Give the new quantity (0 or more)."
+msgstr "أدخل الكمية الجديدة (0 أو أكثر)."
+
+#: src/Actions.php:68
+msgid ""
+"Give the reason of the correction (inventory, damaged bar, sale outside the "
+"platform…)."
+msgstr "أدخل سبب التصحيح (جرد، قضيب تالف، بيع خارج المنصة…)."
+
+#: src/Actions.php:79
+msgid "Quantity corrected. The movement is in the history."
+msgstr "تم تصحيح الكمية. الحركة مسجلة في السجل."
+
+#: src/Actions.php:97
+msgid "Tick at least one product to change."
+msgstr "حدد منتجاً واحداً على الأقل."
+
+#. translators: %d: number of products.
+#: src/Actions.php:101
+msgid ""
+"Price changed on %d product. Orders and offers already in progress keep "
+"their price."
+msgid_plural ""
+"Price changed on %d products. Orders and offers already in progress keep "
+"their price."
+msgstr[0] "تم تغيير سعر %d منتج. الطلبات والعروض الجارية تحتفظ بأسعارها."
+msgstr[1] "تم تغيير سعر منتج واحد. الطلبات والعروض الجارية تحتفظ بأسعارها."
+msgstr[2] "تم تغيير سعر منتجين. الطلبات والعروض الجارية تحتفظ بأسعارها."
+msgstr[3] "تم تغيير سعر %d منتجات. الطلبات والعروض الجارية تحتفظ بأسعارها."
+msgstr[4] "تم تغيير سعر %d منتجاً. الطلبات والعروض الجارية تحتفظ بأسعارها."
+msgstr[5] "تم تغيير سعر %d منتج. الطلبات والعروض الجارية تحتفظ بأسعارها."
+
+#: src/Items.php:138
+msgid "A reference has 1 to 20 letters, digits, dashes, dots or slashes."
+msgstr ""
+"يتكون المرجع من 1 إلى 20 حرفاً أو رقماً أو شرطة أو نقطة أو خطاً مائلاً."
+
+#. translators: %s: reference.
+#: src/Items.php:143
+msgid "The reference %s is already used in your warehouse."
+msgstr "المرجع %s مستعمل مسبقاً في مخزنك."
+
+#: src/Items.php:188
+msgid "This variant is no longer in the item."
+msgstr "هذا النوع لم يعد موجوداً في العنصر."
+
+#: src/Labels.php:40
+msgid "New"
+msgstr "جديد"
+
+#: src/Labels.php:40
+msgid "New surplus"
+msgstr "فائض جديد"
+
+#: src/Labels.php:40
+msgid "Excellent"
+msgstr "ممتاز"
+
+#: src/Labels.php:40
+msgid "Good"
+msgstr "جيد"
+
+#: src/Labels.php:40
+msgid "To inspect"
+msgstr "للفحص"
+
+#: src/Labels.php:40
+msgid "Scrap"
+msgstr "خردة"
+
+#: src/Labels.php:58
+msgid "No item in this warehouse."
+msgstr "لا توجد عناصر في هذا المخزن."
+
+#: src/Limits.php:42
+msgid ""
+"The price for a whole type and the labels come with the paid plans. Choose a"
+" plan in your account (Plan)."
+msgstr ""
+"السعر لنوع كامل والملصقات متاحة مع الاشتراكات المدفوعة. اختر اشتراكاً من "
+"حسابك (الاشتراك)."
+
+#: src/Limits.php:51
+msgid "Only company and professional accounts have a warehouse."
+msgstr "حسابات الشركات والمهنيين فقط لديها مخزن."
+
+#. translators: 1: capacity in tonnes, 2: used in tonnes.
+#: src/Limits.php:62
+msgid ""
+"Your warehouse is full for your plan: %1$s t (%2$s t used). Nothing is "
+"deleted; choose a higher plan in your account (Plan) to add more."
+msgstr ""
+"مخزنك ممتلئ حسب اشتراكك: %1$s t (%2$s t مستعملة). لا يُحذف شيء؛ اختر "
+"اشتراكاً أعلى من حسابك لإضافة المزيد."
+
+#: src/Moves.php:85
+msgid "whole lot"
+msgstr "الحصة كاملة"
+
+#: src/Plugin.php:40
+msgid "Item kept in the warehouse"
+msgstr "عنصر محفوظ في المخزن"
+
+#: src/Prices.php:27
+msgid "Prices changed by a seller"
+msgstr "أسعار عدّلها بائع"
+
+#. translators: 1: company, 2: number of listings, 3: what was changed.
+#: src/Prices.php:29
+msgid ""
+"%1$s changed the price of %2$d published listings at once (%3$s). The new "
+"prices are already online."
+msgstr ""
+"عدّل %1$s سعر %2$d إعلاناً منشوراً دفعة واحدة (%3$s). الأسعار الجديدة "
+"منشورة."
+
+#. translators: 1: old price, 2: new price.
+#: src/Prices.php:116
+msgid "%1$s → %2$s DA/kg"
+msgstr "%1$s → %2$s DA/kg"

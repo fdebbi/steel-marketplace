@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 final class Products {
 
 	const MODULE   = 'products'; // Default market; each product stores its own market.
-	const STATUSES = array( 'draft', 'pending', 'published', 'rejected', 'sold', 'expired', 'paused', 'grouped' ); // grouped (0.18.0): part of a lot (sm-reuse), sold with it only.
+	const STATUSES = array( 'draft', 'pending', 'published', 'rejected', 'sold', 'expired', 'paused', 'grouped', 'stock' ); // stock (0.20.0): in the seller's warehouse, not on the market (sm-stock). // grouped (0.18.0): part of a lot (sm-reuse), sold with it only.
 
 	public static function table() {
 		global $wpdb;

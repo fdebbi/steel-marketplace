@@ -1,0 +1,131 @@
+<?php
+/**
+ * SM Stock tests (test site only): wp eval-file wp-content/plugins/sm-stock/tests/run.php
+ *
+ * @package SM\Stock
+ */
+
+use SM\Core\Accounts\Companies;
+use SM\Products\Products;
+use SM\Stock\Items;
+use SM\Stock\Labels;
+use SM\Stock\Limits;
+use SM\Stock\Moves;
+use SM\Stock\Prices;
+
+defined( 'ABSPATH' ) || exit;
+
+$GLOBALS['smst_t'] = array( 'pass' => 0, 'fail' => 0, 'fails' => array() );
+function smst_assert( $cond, $label ) {
+	if ( $cond ) {
+		++$GLOBALS['smst_t']['pass'];
+		echo "  ✓ $label\n";
+	} else {
+		++$GLOBALS['smst_t']['fail'];
+		$GLOBALS['smst_t']['fails'][] = $label;
+		echo "  ✗ $label\n";
+	}
+}
+function smst_cleanup() {
+	global $wpdb;
+	require_once ABSPATH . 'wp-admin/includes/user.php';
+	foreach ( $wpdb->get_col( "SELECT id FROM {$wpdb->prefix}sm_companies WHERE name LIKE 'SMSTTEST %'" ) as $cid ) {
+		foreach ( array( 'sm_products', 'sm_stock_refs', 'sm_stock_moves' ) as $t ) {
+			$wpdb->delete( $wpdb->prefix . $t, array( 'company_id' => $cid ) );
+		}
+		foreach ( array( 'company_members', 'company_activities', 'verifications', 'notifications' ) as $t ) {
+			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}sm_{$t} WHERE company_id = %d", $cid ) ); // phpcs:ignore WordPress.DB
+		}
+		$wpdb->delete( $wpdb->prefix . 'sm_companies', array( 'id' => $cid ) );
+	}
+	foreach ( get_users( array( 'search' => 'smsttest-*', 'search_columns' => array( 'user_email' ) ) ) as $u ) {
+		wp_delete_user( $u->ID );
+	}
+}
+function smst_product( $cid, array $row ) {
+	global $wpdb;
+	$d = current_time( 'mysql', true );
+	$wpdb->insert( $wpdb->prefix . 'sm_products', $row + array( 'listing_id' => 'T' . wp_generate_password( 7, false ), 'company_id' => $cid, 'user_id' => 0, 'category' => 'profiles', 'created_at' => $d, 'updated_at' => $d ) );
+	return (int) $wpdb->insert_id;
+}
+
+smst_cleanup();
+$uid = wp_insert_user( array( 'user_login' => 'smsttest_a', 'user_email' => 'smsttest-a@example.test', 'user_pass' => wp_generate_password(), 'role' => 'sm_member' ) );
+$cid = Companies::create( array( 'account_class' => 'company', 'name' => 'SMSTTEST A', 'wilaya' => '28', 'phone' => '0550000000' ), $uid, array( 'supplier' ) );
+wp_set_current_user( $uid );
+$company = Companies::get( $cid );
+
+echo "\n1. Items, references and locations\n";
+$ipe = smst_product( $cid, array( 'market' => 'products', 'status' => 'published', 'family' => 'IPE', 'section_id' => 7, 'designation' => 'IPE 200', 'grade' => 'S275JR', 'qty_mode' => 'bars', 'length_mm' => 12000, 'pieces' => 10, 'unit_weight' => 268.32, 'total_weight' => 2683.2, 'price' => 230, 'price_unit' => 'kg', 'total_price' => 617136, 'price_per_kg' => 230 ) );
+$hea = smst_product( $cid, array( 'market' => 'products', 'status' => 'stock', 'family' => 'HEA', 'section_id' => 22, 'designation' => 'HEA 160', 'grade' => 'S275JR', 'qty_mode' => 'bars', 'length_mm' => 12000, 'pieces' => 12, 'unit_weight' => 365.28, 'total_weight' => 4383.36 ) );
+$lot = smst_product( $cid, array( 'market' => 'reuse', 'category' => 'reuse-offcuts', 'status' => 'stock', 'item_condition' => 'good', 'designation' => 'IPE 200 +1', 'qty_mode' => 'bars', 'pieces' => 9, 'total_weight' => 700.627, 'price' => 140, 'price_unit' => 'kg', 'total_price' => 98087.78, 'inventory' => wp_json_encode( array( array( 'family' => 'IPE', 'section_id' => 7, 'designation' => 'IPE 200', 'qty' => 6, 'length_mm' => 2500, 'kg_m' => 22.36, 'total' => 335.4 ), array( 'family' => 'HEA', 'section_id' => 22, 'designation' => 'HEA 160', 'qty' => 3, 'length_mm' => 4000, 'kg_m' => 30.436, 'total' => 365.227 ) ) ) ) );
+$new  = Items::products( $cid, 'products' );
+$refs = Items::ensure_refs( $cid, $new );
+smst_assert( 2 === count( $new ) && 'N-0001' === $refs[ $hea . '|' ]->ref && 'N-0002' === $refs[ $ipe . '|' ]->ref, 'new steel: one reference per item, N-0001, N-0002 (published and in stock only)' );
+$reuse = Items::products( $cid, 'reuse' );
+$rr    = Items::ensure_refs( $cid, $reuse );
+smst_assert( 2 === count( Items::variants( $reuse[0] ) ) && 'R-0001' === $rr[ $lot . '|-7-2500' ]->ref && 'R-0002' === $rr[ $lot . '|-22-4000' ]->ref, 'reuse: one reference per variant (profile and length), R-0001, R-0002' );
+smst_assert( true === Items::set_ref( $cid, $ipe, '', 'a-12', 'Hangar 2 – rack B' ) && 'A-12' === Items::refs( array( $ipe ) )[ $ipe . '|' ]->ref, 'reference changed by the seller (capital letters), location saved' );
+smst_assert( is_wp_error( Items::set_ref( $cid, $hea, '', 'A-12', '' ) ) && is_wp_error( Items::set_ref( $cid, $hea, '', 'bad ref!', '' ) ), 'same reference twice, or a wrong one: refused' );
+smst_assert( Moves::has( $ipe ) && Moves::has( $lot ), 'arrival of each item noted in the movements' );
+smst_assert( abs( Items::weight( $cid ) - ( 2683.2 + 4383.36 + 700.627 ) ) < 0.01, 'weight of the warehouse: new and reuse, published or not' );
+
+echo "\n2. Corrections\n";
+$res = Items::adjust( Products::get( $ipe ), '', 8 );
+$p   = Products::get( $ipe );
+smst_assert( 10.0 === (float) $res['before'] && 8 === $res['after'] && 8.0 === (float) $p->pieces && abs( $p->total_weight - 2146.56 ) < 0.01 && abs( $p->total_price - 2146.56 * 230 ) < 0.1, 'bars: 10 → 8, weight and total price follow' );
+$res = Items::adjust( Products::get( $lot ), '-7-2500', 4 );
+$p   = Products::get( $lot );
+smst_assert( 4 === $res['after'] && 7 === (int) $p->pieces && abs( $p->total_weight - ( 223.6 + 365.227 ) ) < 0.01, 'reuse line: 6 → 4 pieces, the lot follows (7 pieces, weight of the lines)' );
+smst_assert( is_wp_error( Items::adjust( Products::get( $lot ), '-99-100', 1 ) ), 'unknown variant: refused' );
+
+echo "\n3. Movements\n";
+SM\Products\Stock::take( $ipe, 'detail', 2, 'C-TEST' );
+$mv = Moves::recent( $cid, 5 );
+smst_assert( 'sale' === $mv[0]->kind && -2.0 === (float) $mv[0]->qty && 'C-TEST' === $mv[0]->ref && abs( (float) $mv[0]->kg + 536.64 ) < 0.01, 'sale accepted on the platform: taken off and noted (− 2 bars, − 536,6 kg, order ref)' );
+Products::set_status( $hea, 'published' );
+Products::set_status( $hea, 'stock' );
+$mv = Moves::recent( $cid, 2 );
+smst_assert( 'withdraw' === $mv[0]->kind && 'publish' === $mv[1]->kind, 'published, then kept in stock only: both noted' );
+
+echo "\n4. Limits of the plan\n";
+$used = Items::weight( $cid );
+$cap  = static fn( $kg, $c ) => $used + 500.0;
+add_filter( 'sm_stock_capacity_kg', $cap, 99, 2 );
+smst_assert( '' !== Limits::check( '', $company, 1000, null ) && '' === Limits::check( '', $company, 10, null ), 'capacity full but 500 kg: a new item of 1 t refused, 10 kg accepted' );
+smst_assert( '' === Limits::check( '', $company, (float) Products::get( $hea )->total_weight + 400, Products::get( $hea ) ), 'editing an item: its own weight is not counted twice' );
+remove_filter( 'sm_stock_capacity_kg', $cap, 99 );
+$none = static fn( $kg, $c ) => null;
+add_filter( 'sm_stock_capacity_kg', $none, 99, 2 );
+smst_assert( '' === Limits::check( '', $company, 99999, null ), 'without a plan limit: no limit' );
+remove_filter( 'sm_stock_capacity_kg', $none, 99 );
+smst_assert( 20000.0 === Limits::capacity( $company ) && false === Limits::tools( $company ), 'free company plan: 20 t, no advanced tools (sm-subscriptions)' );
+$client = (object) array( 'id' => 0, 'account_class' => 'client' );
+smst_assert( ! Limits::has_warehouse( $client ) && '' !== Limits::check( '', $client, 1, null ), 'client accounts have no warehouse' );
+
+echo "\n5. Price for a whole type\n";
+$ipe2 = smst_product( $cid, array( 'market' => 'products', 'status' => 'stock', 'family' => 'IPE', 'section_id' => 9, 'designation' => 'IPE 240', 'grade' => 'S235JR', 'qty_mode' => 'bars', 'length_mm' => 12000, 'pieces' => 2, 'unit_weight' => 368.52, 'total_weight' => 737.04 ) );
+$rows = Prices::preview( $cid, Prices::read( array( 'family' => 'IPE', 'mode' => 'price', 'value' => '135' ) ) );
+smst_assert( 2 === count( $rows ) && 230.0 === $rows[0]['old'] + $rows[1]['old'] - 0 && 135.0 === $rows[0]['new'], 'preview « 135 DA/kg for every IPE »: both IPE, old and new price (one not priced yet)' );
+smst_assert( 1 === count( Prices::preview( $cid, Prices::read( array( 'family' => 'IPE', 'grade' => 's275jr', 'mode' => 'price', 'value' => '135' ) ) ) ), 'with the grade S275JR: one product' );
+$n = Prices::apply( $cid, $rows );
+$p = Products::get( $ipe );
+smst_assert( 2 === $n && 135.0 === (float) $p->price && 135.0 === (float) $p->price_per_kg && abs( $p->total_price - 135 * $p->total_weight ) < 0.1, 'applied: price, price per kg and total price' );
+$rows = Prices::preview( $cid, Prices::read( array( 'family' => 'IPE', 'mode' => 'percent', 'value' => '+10' ) ) );
+smst_assert( 148.5 === $rows[0]['new'], '« + 10 % »: 135 → 148,5 DA/kg' );
+smst_assert( 'price' === Moves::recent( $cid, 1 )[0]->kind, 'price change noted in the movements' );
+
+echo "\n6. Labels\n";
+$qr = Labels::qr( 'https://reusteel.com/compte/magasin/?ref=N-0001' );
+smst_assert( count( $qr ) >= 21 && count( $qr ) === count( $qr[0] ) && $qr[0][0] && $qr[6][6] && ! $qr[7][7], 'QR code: square, finder patterns in the corners' );
+$pdf = Labels::pdf( $company, 'reuse' );
+smst_assert( 0 === strpos( $pdf, '%PDF-1.4' ) && false !== strpos( $pdf, 'R-0001' ), 'labels of the reuse warehouse as a PDF' );
+
+wp_set_current_user( 0 );
+smst_cleanup();
+$t = $GLOBALS['smst_t'];
+printf( "\n%d passed, %d failed\n", $t['pass'], $t['fail'] );
+if ( $t['fail'] ) {
+	echo "FAILED:\n  - " . implode( "\n  - ", $t['fails'] ) . "\n";
+	exit( 1 );
+}
