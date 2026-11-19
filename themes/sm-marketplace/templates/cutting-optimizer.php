@@ -24,7 +24,7 @@ get_header();
 <section class="sm-pagehead">
 	<div class="sm-container">
 		<?php sm_breadcrumb( array( array( __( 'Cutting optimiser', 'sm-marketplace' ), '' ) ) ); ?>
-		<h1 class="sm-pagehead__title smc-title"><?php esc_html_e( 'Cutting optimiser', 'sm-marketplace' ); ?> <span class="smc-free"><?php esc_html_e( 'Free · exact calculation', 'sm-marketplace' ); ?></span></h1>
+		<h1 class="sm-pagehead__title smcut-title"><?php esc_html_e( 'Cutting optimiser', 'sm-marketplace' ); ?> <span class="smcut-free"><?php esc_html_e( 'Free · exact calculation', 'sm-marketplace' ); ?></span></h1>
 		<p class="sm-pagehead__intro"><?php esc_html_e( 'Give your pieces profile by profile: the optimiser finds the cutting that leaves the fewest offcuts, bar by bar, and tells you how many bars to buy. Weights come from the catalogue of the platform.', 'sm-marketplace' ); ?></p>
 	</div>
 </section>
