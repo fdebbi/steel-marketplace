@@ -1,5 +1,15 @@
 # Changelog — sm-marketplace
 
+## 0.49.0 — 2026-11-20 (avec sm-weight-engine 0.6.0, sm-stock 0.2.0, sm-products 0.21.0)
+
+- Optimiseur de découpe : **Mon magasin** (coché par défaut pour les entreprises et professionnels) avec Acier neuf, Réemploi, « Ne pas prendre les articles publiés sur le marché ». Visiteur ou client : grisé, « Connectez-vous avec un compte entreprise ou professionnel ».
+- Résultat : chiffre « Dans mon magasin », section violette « Mon magasin » en premier (repère, état, nuance, emplacement, publié ou non, barres prises sur le total, pièces, « Voir dans le magasin »), bouton « Sortir n barres du magasin » avec confirmation ; « À acheter : Rien » quand tout vient du magasin.
+- « Chutes réutilisables » : liste cochée, emplacement, « Ajouter à mon magasin réemploi ».
+- Plan : étiquette « Mon magasin · N-0007 » sur chaque barre ; titre par profilé (magasin + marché + à acheter).
+- Mouvements : « Sortie pour découpe » et « Chutes de l'optimiseur ».
+- Détail d'une commande : « Repères dans votre magasin » (vendeur, avec l'emplacement) / « Repères pour l'enlèvement » (acheteur, après acceptation).
+- Messages affichés sur la page de l'optimiseur.
+
 ## 0.48.0 — 2026-11-19 (avec sm-stock 0.1.0, sm-products 0.20.0, sm-subscriptions 0.4.0)
 
 - **Magasin** dans le compte (entreprises et professionnels) : onglets Neuf, Réemploi, Mouvements ; page « Prix pour tout un type ».

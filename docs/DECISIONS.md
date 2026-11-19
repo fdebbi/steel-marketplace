@@ -468,3 +468,11 @@ Validé sur la maquette 0.37.
 - Prix pour tout un type (ex. 135 DA/kg pour tous les IPE) : au kg ou en %, aperçu, exceptions décochables, commandes et offres en cours inchangées, un seul e-mail à l'administration.
 - Limite par formule en tonnes (publié ou non) ; outils (prix par type, étiquettes) réservés aux formules payantes. Entreprise : Découverte 20 t, Pro 500 t, Business illimité ; Professionnel : Gratuit 10 t, Artisan Pro 100 t, Premium 300 t. Magasin plein : refus d'ajout, rien n'est supprimé.
 - Les professionnels ont aussi un magasin ; un article gardé en stock seulement a un prix facultatif.
+
+## Optimiseur : Mon magasin (2026-11-20)
+
+- Ordre : chutes saisies et magasin de l'entreprise, puis marché ReuSteel, puis barres neuves. « Mon magasin » coché par défaut (entreprises et professionnels) ; options neuf / réemploi / ne pas prendre les articles publiés.
+- Le calcul ne sort rien du stock : bouton « Sortir n barres du magasin » une fois la coupe faite (mouvement « Sortie pour découpe » avec le repère). Un article publié baisse d'autant et passe en vendu s'il ne reste rien.
+- Chutes réutilisables : « Ajouter à mon magasin réemploi », en stock seulement, repères R- automatiques ; état et nuance de la barre d'origine (neuf → surplus neuf), « Bon » pour les barres achetées ; capacité de la formule vérifiée.
+- Repère visible du vendeur (avec l'emplacement) et de l'acheteur après acceptation (sans l'emplacement) sur le détail de la commande.
+- Article en stock seulement : prix facultatif ; prix et photos demandés au moment de publier.

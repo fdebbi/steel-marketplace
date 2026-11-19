@@ -55,6 +55,13 @@ $c         = $d['seller_contacts'];
 			<div><dt><?php esc_html_e( 'Closes without an answer on', 'sm-marketplace' ); ?></dt><dd><?php echo esc_html( sm_date( $d['expires'] ) ); ?></dd></div>
 		<?php endif; ?>
 		<div><dt><?php echo esc_html( $is_seller ? __( 'Buyer', 'sm-marketplace' ) : __( 'Seller', 'sm-marketplace' ) ); ?></dt><dd><?php echo esc_html( $is_seller ? $d['buyer']['name'] : $d['seller']['name'] ); ?></dd></div>
+		<?php if ( ! empty( $d['stock_refs'] ) ) : // 0.49.0: references of the seller's warehouse (sm-stock). ?>
+			<div class="sm-dealview__refs"><dt><?php echo esc_html( $is_seller ? __( 'References in your warehouse', 'sm-marketplace' ) : __( 'References for the pickup', 'sm-marketplace' ) ); ?></dt><dd>
+				<?php foreach ( $d['stock_refs'] as $r ) : ?>
+					<span class="smcut-ref" dir="ltr"><?php echo esc_html( $r['ref'] ); ?></span> <?php echo esc_html( $r['designation'] . ( $r['length_mm'] ? ' · ' . sm_number( $r['length_mm'] / 1000, 2 ) . ' m' : '' ) . ( $r['location'] ? ' · ' . $r['location'] : '' ) ); ?><br>
+				<?php endforeach; ?>
+			</dd></div>
+		<?php endif; ?>
 	</dl>
 	<?php if ( $items ) : ?>
 		<ul class="sm-dealview__items" role="list">

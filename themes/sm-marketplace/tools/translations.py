@@ -2651,3 +2651,44 @@ P.update({
 ('%1$s bar × %2$s m', '%1$s bars × %2$s m'): (['%1$s barre × %2$s m', '%1$s barres × %2$s m'], ['%1$s قضيب × %2$s m', '%1$s قضيب × %2$s m', '%1$s قضيبان × %2$s m', '%1$s قضبان × %2$s m', '%1$s قضيبًا × %2$s m', '%1$s قضيب × %2$s m']),
 ('%1$s piece × %2$s m', '%1$s pieces × %2$s m'): (['%1$s pièce × %2$s m', '%1$s pièces × %2$s m'], ['%1$s قطعة × %2$s m', '%1$s قطعة × %2$s m', '%1$s قطعتان × %2$s m', '%1$s قطع × %2$s m', '%1$s قطعة × %2$s m', '%1$s قطعة × %2$s m']),
 })
+
+# 0.49.0: the warehouse in the cutting optimiser.
+T.update({
+'My warehouse': ('Mon magasin', 'مخزني'),
+'Searched first: your bars, published or kept in stock only.': ('Cherché en premier : vos barres, publiées ou en stock seulement.', 'يُبحث فيه أولاً: قضبانك، المنشورة أو المحفوظة في المخزون فقط.'),
+'Reuse (offcuts and variants)': ('Réemploi (chutes et variantes)', 'إعادة الاستعمال (بقايا وأنواع)'),
+'Do not take the items published on the market': ('Ne pas prendre les articles publiés sur le marché', 'عدم أخذ العناصر المنشورة في السوق'),
+'Only what is kept in stock only': ('Seulement ce qui est en stock seulement', 'فقط ما هو محفوظ في المخزون فقط'),
+'With a company or professional account.': ('Avec un compte entreprise ou professionnel.', 'بحساب شركة أو مهني.'),
+'Log in with a company or professional account': ('Connectez-vous avec un compte entreprise ou professionnel', 'سجّل الدخول بحساب شركة أو مهني'),
+'Listings of the other sellers: the same profile, the same length or the closest longer one.': ('Annonces des autres vendeurs : même profilé, longueur égale ou la plus proche au-dessus.', 'إعلانات البائعين الآخرين: نفس المقطع، بنفس الطول أو الأقرب الأطول.'),
+'In my warehouse': ('Dans mon magasin', 'في مخزني'),
+'published on the market': ('publié sur le marché', 'منشور في السوق'),
+'in stock only': ('en stock seulement', 'في المخزون فقط'),
+'%1$d bars of %2$d': ('%1$d barres sur %2$d', '%1$d قضبان من %2$d'),
+'pieces: %s': ('pièces : %s', 'القطع: %s'),
+'See in the warehouse': ('Voir dans le magasin', 'عرض في المخزن'),
+'When the cutting is done, take these bars out of the warehouse: the movement « Cutting » is noted with the reference. Nothing is taken out before.': ('Quand la coupe est faite, sortez ces barres du magasin : le mouvement « Sortie pour découpe » est noté avec le repère. Rien n’est sorti avant.', 'عند إتمام القص، أخرج هذه القضبان من المخزن: تُسجَّل حركة «إخراج للقص» مع المرجع. لا يُخرج شيء قبل ذلك.'),
+'from %s': ('de %s', 'من %s'),
+'bars of the marketplace': ('barres du marché', 'قضبان من السوق'),
+'offcuts at hand': ('chutes à disposition', 'بقايا متوفرة'),
+'new bars bought': ('barres neuves achetées', 'قضبان جديدة مشتراة'),
+'e.g. Hangar 2 – offcuts': ('ex. Hangar 2 – chutes', 'مثال: الحظيرة 2 – البقايا'),
+'Add to my reuse warehouse': ('Ajouter à mon magasin réemploi', 'إضافة إلى مخزن إعادة الاستعمال'),
+'Kept in stock only, with automatic references. Condition and grade of the bar they come from (« Good » for bought bars); you can change them in the warehouse.': ('En stock seulement, avec repères automatiques. État et nuance de la barre d’origine (« Bon » pour les barres achetées) ; modifiables dans le magasin.', 'في المخزون فقط، بمراجع تلقائية. الحالة والدرجة من القضيب الأصلي («جيد» للقضبان المشتراة)؛ يمكن تعديلها في المخزن.'),
+'Taken for a cutting': ('Sortie pour découpe', 'إخراج للقص'),
+'References in your warehouse': ('Repères dans votre magasin', 'المراجع في مخزنك'),
+'References for the pickup': ('Repères pour l’enlèvement', 'المراجع للاستلام'),
+})
+P.update({
+('%d reference', '%d references'): (['%d repère', '%d repères'], ['%d مرجع', 'مرجع واحد', 'مرجعان', '%d مراجع', '%d مرجعاً', '%d مرجع']),
+('%d reusable', '%d reusable'): (['%d réutilisable', '%d réutilisables'], ['%d قابلة لإعادة الاستعمال', 'واحدة قابلة لإعادة الاستعمال', 'اثنتان قابلتان لإعادة الاستعمال', '%d قابلة لإعادة الاستعمال', '%d قابلة لإعادة الاستعمال', '%d قابلة لإعادة الاستعمال']),
+('%d bar from my warehouse', '%d bars from my warehouse'): (['%d barre de mon magasin', '%d barres de mon magasin'], ['%d قضيب من مخزني', 'قضيب واحد من مخزني', 'قضيبان من مخزني', '%d قضبان من مخزني', '%d قضيبًا من مخزني', '%d قضيب من مخزني']),
+('Take %d bar out of your warehouse? The cutting is done.', 'Take %d bars out of your warehouse? The cutting is done.'): (['Sortir %d barre de votre magasin ? La coupe est faite.', 'Sortir %d barres de votre magasin ? La coupe est faite.'], ['إخراج %d قضيب من مخزنك؟ تم القص.', 'إخراج قضيب واحد من مخزنك؟ تم القص.', 'إخراج قضيبين من مخزنك؟ تم القص.', 'إخراج %d قضبان من مخزنك؟ تم القص.', 'إخراج %d قضيبًا من مخزنك؟ تم القص.', 'إخراج %d قضيب من مخزنك؟ تم القص.']),
+('Take %d bar out of the warehouse', 'Take %d bars out of the warehouse'): (['Sortir %d barre du magasin', 'Sortir %d barres du magasin'], ['إخراج %d قضيب من المخزن', 'إخراج قضيب واحد من المخزن', 'إخراج قضيبين من المخزن', 'إخراج %d قضبان من المخزن', 'إخراج %d قضيبًا من المخزن', 'إخراج %d قضيب من المخزن']),
+})
+T.update({
+'Nothing': ('Rien', 'لا شيء'),
+'No new bar needed': ('Aucune barre neuve nécessaire', 'لا حاجة لقضبان جديدة'),
+'Everything comes from your warehouse': ('Tout vient de votre magasin', 'كل شيء من مخزنك'),
+})

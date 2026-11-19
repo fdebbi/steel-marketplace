@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Products 0.20.0\n"
+"Project-Id-Version: SM Products 0.21.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-products\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-19T16:53:47+00:00\n"
+"POT-Creation-Date: 2026-11-19T23:00:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-products\n"
@@ -700,91 +700,102 @@ msgid "You published many products today. Try again tomorrow."
 msgstr ""
 
 #. translators: %d: number of photos.
-#: src/Form.php:85
+#: src/Form.php:88
 msgid "Add at least one photo of the product."
 msgstr ""
 
 #. translators: %d: number of photos.
-#: src/Form.php:85
+#: src/Form.php:88
 msgid "Add at least %d photo of the product."
 msgid_plural "Add at least %d photos of the product."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Form.php:88
+#: src/Form.php:91
 #: src/Spec.php:29
 msgid "Choose a category."
 msgstr ""
 
-#: src/Form.php:135
+#: src/Form.php:138
 msgid "Thank you. Your changes will be visible after a quick check by the platform team; meanwhile the current version stays online."
 msgstr ""
 
-#: src/Form.php:154
+#: src/Form.php:157
 msgid "Saved in your warehouse. It is not on the market: publish it when you want to sell it."
 msgstr ""
 
-#: src/Form.php:155
+#: src/Form.php:158
 msgid "Draft saved. You can finish it later from \"My listings\"."
 msgstr ""
 
-#: src/Form.php:156
+#: src/Form.php:159
 msgid "Thank you. Your product will be visible after a quick check by the platform team."
 msgstr ""
 
-#: src/Form.php:157
-#: src/Form.php:273
+#: src/Form.php:160
+#: src/Form.php:304
 msgid "Your product is published."
 msgstr ""
 
 #. translators: %d: number of listings.
-#: src/Form.php:198
+#: src/Form.php:201
 msgid "A client account can have %d listing online at a time. Mark one as sold or withdraw it first, or open a company or professional account."
 msgid_plural "A client account can have %d listings online at a time. Mark one as sold or withdraw it first, or open a company or professional account."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Form.php:236
+#: src/Form.php:241
+msgid "Give a price before publishing this item: open it with « Edit »."
+msgstr ""
+
+#. translators: %d: number of photos.
+#: src/Form.php:251
+msgid "Add at least %d photo before publishing this item: open it with « Edit »."
+msgid_plural "Add at least %d photos before publishing this item: open it with « Edit »."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Form.php:261
 msgid "You cannot change this product."
 msgstr ""
 
-#: src/Form.php:241
+#: src/Form.php:266
 msgid "Only a published product can be marked as sold."
 msgstr ""
 
-#: src/Form.php:244
+#: src/Form.php:269
 msgid "Marked as sold. Buyers no longer see it."
 msgstr ""
 
-#: src/Form.php:249
+#: src/Form.php:274
 msgid "This product cannot be put back in the warehouse."
 msgstr ""
 
-#: src/Form.php:252
+#: src/Form.php:277
 msgid "The product is in your warehouse only: buyers no longer see it."
 msgstr ""
 
-#: src/Form.php:256
+#: src/Form.php:281
 msgid "The product is withdrawn and saved as a draft."
 msgstr ""
 
-#: src/Form.php:260
+#: src/Form.php:285
 msgid "This product cannot be published again from here. Edit it instead."
 msgstr ""
 
-#: src/Form.php:273
+#: src/Form.php:304
 msgid "Sent for review again."
 msgstr ""
 
-#: src/Form.php:277
+#: src/Form.php:308
 msgid "Withdraw the product before deleting it."
 msgstr ""
 
-#: src/Form.php:280
+#: src/Form.php:311
 msgid "Product deleted."
 msgstr ""
 
-#: src/Form.php:283
+#: src/Form.php:314
 msgid "Unknown action."
 msgstr ""
 

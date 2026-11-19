@@ -5,7 +5,9 @@
  *  - stock         : one tab of the warehouse (args: tab new|reuse, filter, q):
  *                    items with their variants, references and locations, figures, limits;
  *  - stock_moves   : movements (args: page);
- *  - stock_prices  : preview of a price for a whole type (args: the selection).
+ *  - stock_prices  : preview of a price for a whole type (args: the selection);
+ *  - deal (sm-trade, 0.2.0): adds stock_refs, the references of the items sold —
+ *    for the seller always (with the location), for the buyer once accepted.
  *
  * @package SM\Stock
  */
@@ -27,6 +29,50 @@ final class Bridge {
 		add_filter( 'sm_theme_data_stock', array( __CLASS__, 'stock' ), 10, 2 );
 		add_filter( 'sm_theme_data_stock_moves', array( __CLASS__, 'moves' ), 10, 2 );
 		add_filter( 'sm_theme_data_stock_prices', array( __CLASS__, 'prices' ), 10, 2 );
+		add_filter( 'sm_theme_data_deal', array( __CLASS__, 'deal_refs' ), 20, 2 );
+	}
+
+	/** References of the items of an order or an offer (0.2.0). */
+	public static function deal_refs( $result, $args ) {
+		if ( ! is_array( $result ) || ! class_exists( '\SM\Trade\Deals' ) ) {
+			return $result;
+		}
+		$d = \SM\Trade\Deals::get( (int) ( $result['id'] ?? 0 ) );
+		if ( ! $d ) {
+			return $result;
+		}
+		$seller = 'seller' === ( $result['role'] ?? '' ) || current_user_can( 'sm_moderate' );
+		if ( ! $seller && 'accepted' !== $d->status ) {
+			return $result;
+		}
+		$p = \SM\Products\Products::get( (int) $d->product_id );
+		if ( ! $p || ! in_array( $p->market, Items::MARKETS, true ) ) {
+			return $result;
+		}
+		if ( 'sold' !== $p->status && Limits::has_warehouse( \SM\Core\Accounts\Companies::get( (int) $p->company_id ) ) ) {
+			Items::ensure_refs( (int) $p->company_id, array( $p ) ); // References even if the warehouse was never opened.
+		}
+		$refs  = Items::refs( array( (int) $p->id ) );
+		$items = \SM\Trade\Deals::items( $d );
+		$out   = array();
+		$add   = static function ( $r, $designation, $len ) use ( &$out, $seller ) {
+			if ( $r ) {
+				$out[] = array( 'ref' => (string) $r->ref, 'designation' => (string) $designation, 'length_mm' => (int) $len, 'location' => $seller ? (string) $r->location : '' );
+			}
+		};
+		if ( $items ) { // Bought by element: the references of these pieces.
+			foreach ( $items as $it ) {
+				$add( $refs[ $p->id . '|' . (string) $it['key'] ] ?? null, $it['designation'] ?? $p->designation, $it['length_mm'] ?? 0 );
+			}
+		} elseif ( $p->lines ) { // The whole lot.
+			foreach ( $p->lines as $l ) {
+				$add( $refs[ $p->id . '|' . Items::line_key( $l ) ] ?? null, $l['designation'] ?? $p->designation, $l['length_mm'] ?? 0 );
+			}
+		} else {
+			$add( $refs[ $p->id . '|' ] ?? null, $p->designation, $p->length_mm );
+		}
+		$result['stock_refs'] = $out;
+		return $result;
 	}
 
 	public static function stock( $result, $args ) {

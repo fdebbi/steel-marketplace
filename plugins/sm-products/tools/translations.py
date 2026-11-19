@@ -365,3 +365,11 @@ T.update({
 'This product cannot be put back in the warehouse.': ('Ce produit ne peut pas être remis au magasin.', 'لا يمكن إرجاع هذا المنتج إلى المخزن.'),
 'The product is in your warehouse only: buyers no longer see it.': ('Le produit est au magasin seulement : les acheteurs ne le voient plus.', 'المنتج في المخزن فقط: لم يعد المشترون يرونه.'),
 })
+
+# 0.21.0: price and photos asked when an item of the warehouse goes on the market.
+T.update({
+'Give a price before publishing this item: open it with « Edit ».': ('Indiquez un prix avant de publier cet article : ouvrez-le avec « Modifier ».', 'حدد سعراً قبل نشر هذا العنصر: افتحه عبر «تعديل».'),
+})
+P.update({
+('Add at least %d photo before publishing this item: open it with « Edit ».', 'Add at least %d photos before publishing this item: open it with « Edit ».'): (['Ajoutez au moins %d photo avant de publier cet article : ouvrez-le avec « Modifier ».', 'Ajoutez au moins %d photos avant de publier cet article : ouvrez-le avec « Modifier ».'], ['أضف %d صورة على الأقل قبل نشر هذا العنصر: افتحه عبر «تعديل».', 'أضف صورة واحدة على الأقل قبل نشر هذا العنصر: افتحه عبر «تعديل».', 'أضف صورتين على الأقل قبل نشر هذا العنصر: افتحه عبر «تعديل».', 'أضف %d صور على الأقل قبل نشر هذا العنصر: افتحه عبر «تعديل».', 'أضف %d صورة على الأقل قبل نشر هذا العنصر: افتحه عبر «تعديل».', 'أضف %d صورة على الأقل قبل نشر هذا العنصر: افتحه عبر «تعديل».']),
+})

@@ -2,6 +2,7 @@
 /**
  * Cutting optimiser: form (bars, pieces, offcuts in stock) and plan (0.46.0).
  * Data: cutting_sections, cutting_input, cutting (sm-weight-engine 0.4.0).
+ * 0.49.0: « My warehouse » first (sm-weight-engine 0.6.0, sm-stock 0.2.0): data stock_enabled.
  *
  * @var array $args { sections: array, input: array, result: array|null, raw: array }
  * @package SM_Marketplace
@@ -12,6 +13,7 @@ defined( 'ABSPATH' ) || exit;
 $secs  = (array) $args['sections'];
 $in    = (array) $args['input'];
 $res   = $args['result'];
+$wh    = ! empty( $args['warehouse'] );
 $lang  = sm_theme_current_language();
 $fam_of = array();
 foreach ( $secs as $code => $f ) {
@@ -25,7 +27,7 @@ $lens   = array( 6000, 12000 );
 $custom = ! in_array( $bar, $lens, true );
 $page   = sm_page_url( 'cutting' );
 $qs     = static function () use ( $in, $bar ) {
-	$q = array( 'bar' => $bar / 1000, 'kerf' => $in['kerf'], 'reuse' => $in['reuse'] / 1000, 'src' => 1, 'market' => empty( $in['market'] ) ? '' : 1, 'lots' => empty( $in['lots'] ) ? '' : 1, 'conds' => (array) ( $in['conds'] ?? array() ), 'grade_min' => (int) ( $in['grade_min'] ?? 0 ), 'wilaya' => (string) ( $in['wilaya'] ?? '' ) );
+	$q = array( 'bar' => $bar / 1000, 'kerf' => $in['kerf'], 'reuse' => $in['reuse'] / 1000, 'src' => 1, 'market' => empty( $in['market'] ) ? '' : 1, 'lots' => empty( $in['lots'] ) ? '' : 1, 'conds' => (array) ( $in['conds'] ?? array() ), 'grade_min' => (int) ( $in['grade_min'] ?? 0 ), 'wilaya' => (string) ( $in['wilaya'] ?? '' ), 'mine' => empty( $in['mine'] ) ? '' : 1, 'mine_new' => empty( $in['mine_new'] ) ? '' : 1, 'mine_reuse' => empty( $in['mine_reuse'] ) ? '' : 1, 'mine_unpublished' => empty( $in['mine_unpublished'] ) ? '' : 1 );
 	foreach ( array( 'lines' => 'rows', 'stock' => 'stock' ) as $k => $name ) {
 		foreach ( array_values( (array) ( $in[ $k ] ?? array() ) ) as $i => $l ) {
 			$q[ $name ][ $i ] = array( 'section' => $l['section'], 'length' => $l['length'] / 1000, 'qty' => $l['qty'] );
@@ -126,8 +128,23 @@ $js = array(
 			<input type="hidden" name="src" value="1">
 			<fieldset class="smcut-where">
 				<legend class="sm-panel__title"><?php esc_html_e( '3. Where to look for the bars?', 'sm-marketplace' ); ?></legend>
-				<label class="smcut-chk is-off"><input type="checkbox" disabled><span><?php esc_html_e( 'My stock (new / reuse)', 'sm-marketplace' ); ?> <em class="smcut-soon"><?php esc_html_e( 'soon', 'sm-marketplace' ); ?></em><small><?php esc_html_e( 'With the Warehouse of your account.', 'sm-marketplace' ); ?></small></span></label>
-				<label class="smcut-chk"><input type="checkbox" name="market" value="1" <?php checked( ! empty( $in['market'] ) ); ?> data-smcut-market><span><b><?php esc_html_e( 'ReuSteel marketplace', 'sm-marketplace' ); ?></b><small><?php esc_html_e( 'Published listings: the same profile, the same length or the closest longer one.', 'sm-marketplace' ); ?></small></span></label>
+				<?php if ( $wh ) : ?>
+					<label class="smcut-chk"><input type="checkbox" name="mine" value="1" <?php checked( ! empty( $in['mine'] ) ); ?> data-smcut-mine><span><b><?php esc_html_e( 'My warehouse', 'sm-marketplace' ); ?></b><small><?php esc_html_e( 'Searched first: your bars, published or kept in stock only.', 'sm-marketplace' ); ?></small></span></label>
+					<div class="smcut-filters is-st" data-smcut-minebox>
+						<label class="smcut-chk"><input type="checkbox" name="mine_new" value="1" <?php checked( ! empty( $in['mine_new'] ) ); ?>><span><?php esc_html_e( 'New steel', 'sm-marketplace' ); ?></span></label>
+						<label class="smcut-chk"><input type="checkbox" name="mine_reuse" value="1" <?php checked( ! empty( $in['mine_reuse'] ) ); ?>><span><?php esc_html_e( 'Reuse (offcuts and variants)', 'sm-marketplace' ); ?></span></label>
+						<label class="smcut-chk"><input type="checkbox" name="mine_unpublished" value="1" <?php checked( ! empty( $in['mine_unpublished'] ) ); ?>><span><?php esc_html_e( 'Do not take the items published on the market', 'sm-marketplace' ); ?><small><?php esc_html_e( 'Only what is kept in stock only', 'sm-marketplace' ); ?></small></span></label>
+					</div>
+				<?php else : ?>
+					<label class="smcut-chk is-off"><input type="checkbox" disabled><span><?php esc_html_e( 'My warehouse', 'sm-marketplace' ); ?><small>
+						<?php if ( is_user_logged_in() ) : ?>
+							<?php esc_html_e( 'With a company or professional account.', 'sm-marketplace' ); ?>
+						<?php else : ?>
+							<a href="<?php echo esc_url( sm_page_url( 'login' ) ); ?>"><?php esc_html_e( 'Log in with a company or professional account', 'sm-marketplace' ); ?></a>
+						<?php endif; ?>
+					</small></span></label>
+				<?php endif; ?>
+				<label class="smcut-chk"><input type="checkbox" name="market" value="1" <?php checked( ! empty( $in['market'] ) ); ?> data-smcut-market><span><b><?php esc_html_e( 'ReuSteel marketplace', 'sm-marketplace' ); ?></b><small><?php echo esc_html( $wh ? __( 'Listings of the other sellers: the same profile, the same length or the closest longer one.', 'sm-marketplace' ) : __( 'Published listings: the same profile, the same length or the closest longer one.', 'sm-marketplace' ) ); ?></small></span></label>
 				<div class="smcut-filters" data-smcut-filters>
 					<div class="sm-field">
 						<label for="smcut-grade"><?php esc_html_e( 'Minimum grade', 'sm-marketplace' ); ?></label>
@@ -194,15 +211,28 @@ $js = array(
 				$by    = implode( ' · ', array_map( static fn( $p ) => $p['new_bars'] . ' ' . $p['designation'], array_filter( $res['profiles'], static fn( $p ) => $p['new_bars'] > 0 ) ) );
 				$stock_used = array_sum( array_column( $res['profiles'], 'stock_used' ) );
 				?>
-				<?php if ( $t['market_bars'] > 0 ) : ?>
+				<?php if ( $t['market_bars'] > 0 || ! empty( $t['mine_bars'] ) ) : ?>
 				<div class="smcut-totals">
+					<?php if ( ! empty( $t['mine_bars'] ) ) : ?>
+						<div class="smcut-k is-st"><small><?php esc_html_e( 'In my warehouse', 'sm-marketplace' ); ?></small><b><?php echo esc_html( sprintf( /* translators: %d: bars. */ _n( '%d bar', '%d bars', $t['mine_bars'], 'sm-marketplace' ), $t['mine_bars'] ) ); ?></b><small><?php echo esc_html( sprintf( /* translators: %d: references. */ _n( '%d reference', '%d references', $t['mine_items'], 'sm-marketplace' ), $t['mine_items'] ) . ' · ' . sm_number( $t['mine_kg'], 1 ) . ' kg' ); ?></small></div>
+					<?php endif; ?>
+					<?php if ( $t['market_bars'] > 0 ) : ?>
 					<div class="smcut-k is-mk"><small><?php esc_html_e( 'On the marketplace', 'sm-marketplace' ); ?></small><b><?php echo esc_html( sprintf( /* translators: %d: bars. */ _n( '%d bar', '%d bars', $t['market_bars'], 'sm-marketplace' ), $t['market_bars'] ) ); ?></b><small><?php echo esc_html( sprintf( /* translators: %d: listings. */ _n( '%d listing', '%d listings', $t['market_offers'], 'sm-marketplace' ), $t['market_offers'] ) . ( $t['market_cost'] > 0 ? ' · ≈ ' . sm_money( $t['market_cost'] ) : '' ) ); ?></small></div>
+					<?php endif; ?>
+					<?php if ( $t['new_bars'] > 0 ) : ?>
 					<div class="smcut-k is-hl"><small><?php esc_html_e( 'To buy', 'sm-marketplace' ); ?></small><b><?php echo esc_html( sprintf( /* translators: %d: bars. */ _n( '%d bar', '%d bars', $t['new_bars'], 'sm-marketplace' ), $t['new_bars'] ) ); ?></b><small><?php echo esc_html( $by ); ?></small></div>
+					<?php else : ?>
+					<div class="smcut-k"><small><?php esc_html_e( 'To buy', 'sm-marketplace' ); ?></small><b><?php esc_html_e( 'Nothing', 'sm-marketplace' ); ?></b><small><?php echo esc_html( $t['market_bars'] > 0 ? __( 'No new bar needed', 'sm-marketplace' ) : __( 'Everything comes from your warehouse', 'sm-marketplace' ) ); ?></small></div>
+					<?php endif; ?>
+					<?php if ( ! ( $t['market_bars'] > 0 && ! empty( $t['mine_bars'] ) ) && $t['acquire_kg'] > 0 ) : ?>
 					<div class="smcut-k"><small><?php esc_html_e( 'Weight to acquire', 'sm-marketplace' ); ?></small><b><?php echo sm_kg( $t['acquire_kg'], 1 ); // phpcs:ignore WordPress.Security.EscapeOutput ?></b><small><?php echo esc_html( sprintf( /* translators: %s: weight of the pieces. */ __( 'pieces: %s kg', 'sm-marketplace' ), sm_number( $t['pieces_kg'], 1 ) ) ); ?></small></div>
-					<div class="smcut-k"><small><?php esc_html_e( 'Offcuts', 'sm-marketplace' ); ?></small><b><?php echo sm_kg( $t['scrap_kg'], 1 ); // phpcs:ignore WordPress.Security.EscapeOutput ?></b><small><?php echo esc_html( sprintf( /* translators: %s: percent. */ __( '%s %% of the bars used', 'sm-marketplace' ), sm_number( $t['scrap_pct'], 1 ) ) ); ?></small></div>
+					<?php endif; ?>
+					<div class="smcut-k"><small><?php esc_html_e( 'Offcuts', 'sm-marketplace' ); ?></small><b><?php echo sm_kg( $t['scrap_kg'], 1 ); // phpcs:ignore WordPress.Security.EscapeOutput ?></b><small><?php echo esc_html( sprintf( /* translators: %s: percent. */ __( '%s %% of the bars used', 'sm-marketplace' ), sm_number( $t['scrap_pct'], 1 ) ) . ( $t['reusable'] ? ' · ' . sprintf( /* translators: %d: reusable offcuts. */ _n( '%d reusable', '%d reusable', $t['reusable'], 'sm-marketplace' ), $t['reusable'] ) : '' ) ); ?></small></div>
 				</div>
+				<?php if ( $t['market_bars'] > 0 ) : ?>
 				<p class="smcut-snap"><?php sm_icon( 'clock' ); ?><span><?php echo esc_html( sprintf( /* translators: 1: date, 2: hour. */ __( 'Picture of the marketplace on %1$s at %2$s: listings can change and nothing is reserved. Prices are those shown by the sellers.', 'sm-marketplace' ), wp_date( 'd/m/Y', $res['at'] ), wp_date( 'H:i', $res['at'] ) ) ); ?></span></p>
-				<?php sm_component( 'cutting-sources', array( 'result' => $res, 'rfq' => add_query_arg( array_merge( array( 'action' => 'sm_weight_cut_rfq', 'lang' => $lang ), $qs() ), admin_url( 'admin-post.php' ) ) ) ); ?>
+				<?php endif; ?>
+				<?php sm_component( 'cutting-sources', array( 'result' => $res, 'warehouse' => $wh, 'rfq' => add_query_arg( array_merge( array( 'action' => 'sm_weight_cut_rfq', 'lang' => $lang ), $qs() ), admin_url( 'admin-post.php' ) ) ) ); ?>
 				<?php else : ?>
 				<?php if ( ! empty( $res['settings']['market'] ) ) : ?>
 					<p class="smcut-snap"><?php sm_icon( 'info' ); ?><span><?php esc_html_e( 'No listing of the marketplace fits these pieces with your filters: the plan uses new bars.', 'sm-marketplace' ); ?></span></p>
@@ -218,7 +248,7 @@ $js = array(
 				<?php
 				$offer_of = array();
 				foreach ( $res['profiles'] as $pp ) {
-					foreach ( $pp['market'] as $mo ) {
+					foreach ( array_merge( $pp['market'], $pp['mine'] ?? array() ) as $mo ) {
 						$offer_of[ $mo['key'] ] = $mo;
 					}
 				}
@@ -231,8 +261,21 @@ $js = array(
 					}
 					$all = array_values( array_unique( $all ) );
 					rsort( $all );
-					$title = $p['market_bars'] > 0
-						? $p['designation'] . ' — ' . sprintf( /* translators: %d: bars. */ _n( '%d bar from the marketplace', '%d bars from the marketplace', $p['market_bars'], 'sm-marketplace' ), $p['market_bars'] ) . ( $p['new_bars'] ? ' + ' . sprintf( /* translators: %d: bars. */ _n( '%d to buy', '%d to buy', $p['new_bars'], 'sm-marketplace' ), $p['new_bars'] ) : '' )
+					$parts = array();
+					if ( ! empty( $p['mine_bars'] ) ) {
+						/* translators: %d: bars. */
+						$parts[] = sprintf( _n( '%d bar from my warehouse', '%d bars from my warehouse', $p['mine_bars'], 'sm-marketplace' ), $p['mine_bars'] );
+					}
+					if ( $p['market_bars'] > 0 ) {
+						/* translators: %d: bars. */
+						$parts[] = sprintf( _n( '%d bar from the marketplace', '%d bars from the marketplace', $p['market_bars'], 'sm-marketplace' ), $p['market_bars'] );
+					}
+					if ( $parts && $p['new_bars'] ) {
+						/* translators: %d: bars. */
+						$parts[] = sprintf( _n( '%d to buy', '%d to buy', $p['new_bars'], 'sm-marketplace' ), $p['new_bars'] );
+					}
+					$title = $parts
+						? $p['designation'] . ' — ' . implode( ' + ', $parts )
 						: sprintf( /* translators: 1: profile, 2: number of bars, 3: bar length. */ _n( '%1$s — %2$d bar of %3$s m', '%1$s — %2$d bars of %3$s m', max( 1, $p['new_bars'] ), 'sm-marketplace' ), $p['designation'], $p['new_bars'], sm_number( $res['settings']['bar'] / 1000, 0 ) );
 					?>
 					<section class="smcut-prof">
@@ -247,10 +290,13 @@ $js = array(
 										<?php if ( 'market' === $b['source'] ) : ?>
 											<?php $mo = $offer_of[ $b['origin'] ] ?? array(); ?>
 											<?php echo esc_html( sprintf( /* translators: %s: length. */ __( 'bar of %s m', 'sm-marketplace' ), sm_number( $b['length'] / 1000, 2 ) ) ); ?> <span class="smcut-lbl is-mk"><?php echo esc_html( __( 'Marketplace', 'sm-marketplace' ) . ( ! empty( $mo['company'] ) ? ' · ' . $mo['company'] : '' ) ); ?></span>
+										<?php elseif ( 'mine' === $b['source'] ) : ?>
+											<?php $mo = $offer_of[ $b['origin'] ] ?? array(); ?>
+											<?php echo esc_html( sprintf( /* translators: %s: length. */ __( 'bar of %s m', 'sm-marketplace' ), sm_number( $b['length'] / 1000, 2 ) ) ); ?> <span class="smcut-lbl is-st"><?php echo esc_html( __( 'My warehouse', 'sm-marketplace' ) . ( ! empty( $mo['ref'] ) ? ' · ' . $mo['ref'] : '' ) ); ?></span>
 										<?php elseif ( 'stock' === $b['source'] ) : ?>
 											<?php echo esc_html( sprintf( /* translators: %s: length. */ __( 'offcut from the stock, %s m', 'sm-marketplace' ), sm_number( $b['length'] / 1000, 2 ) ) ); ?>
 										<?php else : ?>
-											<?php esc_html_e( 'new bar', 'sm-marketplace' ); ?><?php if ( $t['market_bars'] > 0 ) : ?> <span class="smcut-lbl is-by"><?php esc_html_e( 'To buy', 'sm-marketplace' ); ?></span><?php endif; ?>
+											<?php esc_html_e( 'new bar', 'sm-marketplace' ); ?><?php if ( $t['market_bars'] > 0 || ! empty( $t['mine_bars'] ) ) : ?> <span class="smcut-lbl is-by"><?php esc_html_e( 'To buy', 'sm-marketplace' ); ?></span><?php endif; ?>
 										<?php endif; ?>
 									</span>
 									<span>

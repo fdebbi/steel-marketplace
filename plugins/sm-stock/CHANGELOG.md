@@ -1,5 +1,13 @@
 # Changelog — sm-stock
 
+## 0.2.0 — 2026-11-20 (avec sm-weight-engine 0.6.0 et le thème 0.49.0)
+
+- **Magasin dans l'optimiseur de découpe** (`Cutting`) : filtre `sm_cutting_stock_offers` — barres du même profilé, neuves et variantes du réemploi, publiées ou en stock seulement (option), avec repère, emplacement, état, nuance. La ferraille n'est jamais proposée.
+- « Sortir n barres du magasin » (admin-post `sm_stock_cut_out`) : rien n'est sorti par le calcul ; une fois la coupe faite, les barres sont enlevées (mouvement `cutting` avec le repère), l'article passe en vendu s'il ne reste rien. Refus si le magasin n'a plus ces barres.
+- « Ajouter au magasin réemploi » (admin-post `sm_stock_add_offcuts`) : chutes réutilisables du plan, en stock seulement, un article par état et nuance, un repère R- par longueur, emplacement facultatif, mouvement `offcuts`. État et nuance de la barre d'origine (neuf → surplus neuf), « Bon » pour les barres achetées. Capacité de la formule vérifiée.
+- **Repère dans les commandes** (sm-trade) : la donnée `deal` reçoit `stock_refs` — pour le vendeur toujours (avec l'emplacement), pour l'acheteur après acceptation (sans l'emplacement).
+- `Actions::sold_if_empty()`. Tests : 44.
+
 ## 0.1.0 — 2026-11-19 (nécessite SM Products 0.20.0)
 
 - Magasin des entreprises et des professionnels : tout leur acier, publié sur le marché ou gardé en stock seulement (statut `stock` de sm-products), en deux magasins (neuf, réemploi). Une seule fiche par article : stock et annonce.

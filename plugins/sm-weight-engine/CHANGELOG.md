@@ -1,5 +1,13 @@
 # Changelog — sm-weight-engine
 
+## 0.6.0 — 2026-11-20 (avec sm-stock 0.2.0 et le thème 0.49.0)
+
+- Optimiseur : **Mon magasin** cherché en premier. Ordre : chutes saisies et magasin de l'entreprise (filtre `sm_cutting_stock_offers( $offers, $section, $filters )`, fourni par sm-stock), puis le marché pour les pièces restantes, puis les barres neuves. Chaque étape ne reçoit que ce que la précédente n'a pas placé (`Cutting::stages()`).
+- `Cutting::read()` : `mine` (coché par défaut), `mine_new`, `mine_reuse`, `mine_unpublished` (seulement ce qui est en stock seulement).
+- Résultat : `mine` par profilé (repère, emplacement, barres prises, pièces), totaux `mine_bars`, `mine_kg`, `mine_items` ; chutes réutilisables avec leur provenance (`offcuts` : profilé, longueur, nombre, repère, état, nuance) pour les ajouter au magasin.
+- Placement : une barre déjà entamée est remplie avant d'en prendre une nouvelle du stock (moins de barres sorties).
+- PDF : « De votre magasin : n barres », provenance « magasin 12,00 m · N-0007 » ; titre de profilé recomposé (magasin + marché + neuves + chutes).
+
 ## 0.5.0 — 2026-11-19 (avec sm-products 0.19.0 et le thème 0.47.0)
 
 - Optimiseur : recherche sur le **marché ReuSteel** avant d'acheter. Pour chaque profilé, les barres publiées (filtre `sm_cutting_market_offers`, fourni par sm-products) entrent dans le calcul : même profilé, longueur égale ou la plus proche au-dessus, puis l'annonce la moins chère au kg ; ce que le marché ne couvre pas devient des barres neuves à acheter.

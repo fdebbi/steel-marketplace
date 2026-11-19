@@ -7,6 +7,11 @@
  * improves it. Very long lists stop at a node limit: the plan is then the best
  * one found, and says so.
  *
+ * Order of the bars (0.6.0): the offcuts typed in the form and the warehouse
+ * of the company (filter sm_cutting_stock_offers, sm-stock) first, then the
+ * marketplace (sm_cutting_market_offers), then new bars to buy. Each stage only
+ * gets the pieces the previous one could not place.
+ *
  * Model: each cut costs the saw kerf; a bar holding n pieces needs n − 1 cuts
  * between them (a last cut separates the offcut when there is one). Lengths are
  * handled in millimetres. Weights come from the catalogue (mass per metre).
@@ -74,6 +79,11 @@ final class Cutting {
 			'conds'     => $sent ? $conds : self::DEFAULT_CONDITIONS,
 			'grade_min' => in_array( $grade, array( 235, 275, 355, 460 ), true ) ? $grade : 0,
 			'wilaya'    => preg_match( '/^\d{2}$/', (string) ( $raw['wilaya'] ?? '' ) ) ? (string) $raw['wilaya'] : '',
+			// The warehouse of the company (0.6.0): new and reused steel, published or not.
+			'mine'      => $sent ? ! empty( $raw['mine'] ) : true,
+			'mine_new'  => $sent ? ! empty( $raw['mine_new'] ) : true,
+			'mine_reuse' => $sent ? ! empty( $raw['mine_reuse'] ) : true,
+			'mine_unpublished' => $sent && ! empty( $raw['mine_unpublished'] ),
 		);
 	}
 
@@ -117,12 +127,18 @@ final class Cutting {
 			}
 			$profiles[] = $res;
 		}
-		$t = array( 'new_bars' => 0, 'bought_kg' => 0.0, 'pieces_kg' => 0.0, 'scrap_kg' => 0.0, 'used_kg' => 0.0, 'stock_used' => 0, 'reusable' => 0, 'reusable_items' => array(), 'market_bars' => 0, 'market_kg' => 0.0, 'market_cost' => 0.0, 'market_offers' => 0 );
+		$t = array( 'new_bars' => 0, 'bought_kg' => 0.0, 'pieces_kg' => 0.0, 'scrap_kg' => 0.0, 'used_kg' => 0.0, 'stock_used' => 0, 'reusable' => 0, 'reusable_items' => array(), 'market_bars' => 0, 'market_kg' => 0.0, 'market_cost' => 0.0, 'market_offers' => 0, 'mine_bars' => 0, 'mine_kg' => 0.0, 'mine_items' => 0, 'offcuts' => array() );
 		foreach ( $profiles as $p ) {
 			$t['new_bars']    += $p['new_bars'];
 			$t['market_bars'] += $p['market_bars'];
 			$t['market_kg']   += $p['market_kg'];
 			$t['market_offers'] += count( $p['market'] );
+			$t['mine_bars']   += $p['mine_bars'];
+			$t['mine_kg']     += $p['mine_kg'];
+			$t['mine_items']  += count( $p['mine'] );
+			foreach ( $p['offcuts'] as $o ) {
+				$t['offcuts'][] = $o;
+			}
 			foreach ( $p['market'] as $m ) {
 				$t['market_cost'] += $m['cost'];
 			}
@@ -143,7 +159,7 @@ final class Cutting {
 			'errors'   => $errors,
 			'profiles' => $profiles,
 			'totals'   => $t,
-			'settings' => array( 'bar' => $in['bar'], 'kerf' => $in['kerf'], 'reuse' => $in['reuse'], 'market' => ! empty( $in['market'] ) ),
+			'settings' => array( 'bar' => $in['bar'], 'kerf' => $in['kerf'], 'reuse' => $in['reuse'], 'market' => ! empty( $in['market'] ), 'mine' => ! empty( $in['mine'] ) ),
 			'at'       => time(),
 		);
 	}
@@ -177,8 +193,28 @@ final class Cutting {
 				$bins[] = array( 'length' => $len, 'source' => 'stock', 'origin' => '' );
 			}
 		}
+		$min_piece = $items ? min( $items ) : 0;
+		$n_items   = count( $items );
+		// Warehouse of the company (0.6.0): same section, published or kept in stock only.
+		$own = array();
+		if ( ! empty( $in['mine'] ) && ( ! empty( $in['mine_new'] ) || ! empty( $in['mine_reuse'] ) ) ) {
+			$mf = array( 'new' => ! empty( $in['mine_new'] ), 'reuse' => ! empty( $in['mine_reuse'] ), 'unpublished' => ! empty( $in['mine_unpublished'] ) );
+			foreach ( (array) apply_filters( 'sm_cutting_stock_offers', array(), $s, $mf ) as $o ) {
+				$own[ $o['key'] ] = $o;
+				foreach ( $o['lines'] as $l ) {
+					if ( $l['length'] < $min_piece ) {
+						continue;
+					}
+					$take = min( (int) $l['qty'], $n_items );
+					for ( $k = 0; $k < $take; $k++ ) {
+						$bins[] = array( 'length' => (int) $l['length'], 'source' => 'mine', 'origin' => $o['key'] );
+					}
+				}
+			}
+		}
 		// Marketplace (0.5.0): same section, bars at least as long as the shortest piece.
 		$offers = array();
+		$mk     = array();
 		if ( ! empty( $in['market'] ) ) {
 			$filters = array(
 				'grade_min'       => (int) $in['grade_min'],
@@ -187,8 +223,6 @@ final class Cutting {
 				'lots'            => ! empty( $in['lots'] ),
 				'exclude_company' => function_exists( 'sm_current_company' ) && sm_current_company() ? (int) sm_current_company()->id : 0,
 			);
-			$min_piece = $items ? min( $items ) : 0;
-			$n_items   = count( $items );
 			foreach ( (array) apply_filters( 'sm_cutting_market_offers', array(), $s, $filters ) as $o ) {
 				if ( ! empty( $o['lot'] ) && empty( $filters['lots'] ) ) {
 					continue; // Whole lots only when asked.
@@ -200,19 +234,21 @@ final class Cutting {
 					}
 					$take = min( (int) $l['qty'], $n_items );
 					for ( $k = 0; $k < $take; $k++ ) {
-						$bins[] = array( 'length' => (int) $l['length'], 'source' => 'market', 'origin' => $o['key'], 'price' => (float) $o['price_per_kg'] );
+						$mk[] = array( 'length' => (int) $l['length'], 'source' => 'market', 'origin' => $o['key'], 'price' => (float) $o['price_per_kg'] );
 					}
 				}
 			}
 		}
-		// Shortest first (the closest length fits first), then own stock, then the cheapest offer.
-		usort( $bins, static fn( $a, $b ) => array( $a['length'], 'stock' === $a['source'] ? 0 : 1, $a['price'] ?? 0 ) <=> array( $b['length'], 'stock' === $b['source'] ? 0 : 1, $b['price'] ?? 0 ) );
-		$plan = self::solve( $items, $bins, $bar, $kerf );
+		// Shortest first (the closest length fits first): the offcuts typed in the form, then the warehouse.
+		usort( $bins, static fn( $a, $b ) => array( $a['length'], 'stock' === $a['source'] ? 0 : 1 ) <=> array( $b['length'], 'stock' === $b['source'] ? 0 : 1 ) );
+		// Then the cheapest offer of the same length.
+		usort( $mk, static fn( $a, $b ) => array( $a['length'], $a['price'] ) <=> array( $b['length'], $b['price'] ) );
+		$plan = self::stages( $items, $bins, $mk, $bar, $kerf );
 
 		$kg_m   = (float) $s->mass_kg_m;
 		$bars   = array();
 		$reuse  = (int) $in['reuse'];
-		$out    = array( 'pieces_mm' => 0, 'used_mm' => 0, 'scrap_mm' => 0, 'new' => 0, 'stock' => 0, 'market_bars' => 0, 'market_mm' => 0, 'reusable' => 0, 'reusable_items' => array(), 'market' => array() );
+		$out    = array( 'pieces_mm' => 0, 'used_mm' => 0, 'scrap_mm' => 0, 'new' => 0, 'stock' => 0, 'market_bars' => 0, 'market_mm' => 0, 'mine_bars' => 0, 'mine_mm' => 0, 'reusable' => 0, 'reusable_items' => array(), 'offcuts' => array(), 'market' => array(), 'mine' => array() );
 		foreach ( $plan['bins'] as $b ) {
 			if ( ! $b['pieces'] ) {
 				continue;
@@ -229,8 +265,8 @@ final class Cutting {
 			if ( ! isset( $bars[ $key ] ) ) {
 				$bars[ $key ] = array( 'source' => $b['source'], 'origin' => $org, 'length' => $b['length'], 'pieces' => $b['pieces'], 'loss' => $loss, 'offcut' => $rest, 'reusable' => $can, 'count' => 0 );
 			}
-			if ( 'market' === $b['source'] ) {
-				$m = &$out['market'][ $org ];
+			if ( 'market' === $b['source'] || 'mine' === $b['source'] ) {
+				$m = &$out[ $b['source'] ][ $org ];
 				$m['bars'][ $b['length'] ] = ( $m['bars'][ $b['length'] ] ?? 0 ) + 1;
 				foreach ( $b['pieces'] as $pc ) {
 					$m['pieces'][ $pc ] = ( $m['pieces'][ $pc ] ?? 0 ) + 1;
@@ -247,17 +283,22 @@ final class Cutting {
 			} elseif ( 'market' === $b['source'] ) {
 				++$out['market_bars'];
 				$out['market_mm'] += $b['length'];
+			} elseif ( 'mine' === $b['source'] ) {
+				++$out['mine_bars'];
+				$out['mine_mm'] += $b['length'];
 			} else {
 				++$out['new'];
 			}
 			if ( $can ) {
 				++$out['reusable'];
 				$out['reusable_items'][ $rest ] = ( $out['reusable_items'][ $rest ] ?? 0 ) + 1;
+				$ok = $b['source'] . '|' . $org . '|' . $rest;
+				$out['offcuts'][ $ok ] = ( $out['offcuts'][ $ok ] ?? 0 ) + 1;
 			}
 		}
 		$bars = array_values( $bars );
-		$rank = array( 'stock' => 0, 'market' => 1, 'new' => 2 );
-		usort( $bars, static fn( $a, $b ) => array( $rank[ $a['source'] ] ?? 2, $a['origin'], $a['loss'] ) <=> array( $rank[ $b['source'] ] ?? 2, $b['origin'], $b['loss'] ) );
+		$rank = array( 'stock' => 0, 'mine' => 1, 'market' => 2, 'new' => 3 );
+		usort( $bars, static fn( $a, $b ) => array( $rank[ $a['source'] ] ?? 3, $a['origin'], $a['loss'] ) <=> array( $rank[ $b['source'] ] ?? 3, $b['origin'], $b['loss'] ) );
 		$new_mm = $out['new'] * $bar;
 		// What to take from each offer of the marketplace: bars, pieces cut, weight, estimated cost.
 		$market = array();
@@ -279,6 +320,39 @@ final class Cutting {
 				'cost'        => $o['lot'] ? (float) $o['lot_price'] : ( $o['price_per_kg'] > 0 ? round( $kg * $o['price_per_kg'] ) : 0.0 ),
 			);
 		}
+		// What to take from the warehouse: same shape, no price (the steel is already there).
+		$mine = array();
+		foreach ( $out['mine'] as $key => $m ) {
+			krsort( $m['bars'] );
+			krsort( $m['pieces'] );
+			$mine[] = $own[ $key ] + array(
+				'take_bars'   => $m['bars'],
+				'take_pieces' => $m['pieces'],
+				'take_count'  => array_sum( $m['bars'] ),
+				'take_kg'     => round( $m['mm'] / 1000 * $kg_m, 2 ),
+			);
+		}
+		// Reusable offcuts, with where they come from (to add them to the warehouse).
+		$offcuts = array();
+		foreach ( $out['offcuts'] as $ok => $n ) {
+			list( $src, $org, $mm ) = explode( '|', $ok );
+			$from      = 'mine' === $src ? ( $own[ $org ] ?? array() ) : ( 'market' === $src ? ( $offers[ $org ] ?? array() ) : array() );
+			$offcuts[] = array(
+				'section_id'  => (int) $s->id,
+				'family'      => $s->family,
+				'designation' => $s->designation,
+				'kg_m'        => $kg_m,
+				'length'      => (int) $mm,
+				'count'       => $n,
+				'kg'          => round( (int) $mm / 1000 * $kg_m * $n, 2 ),
+				'source'      => $src,
+				'origin'      => $org,
+				'ref'         => (string) ( $from['ref'] ?? '' ),
+				'condition'   => (string) ( $from['condition'] ?? '' ),
+				'grade'       => (string) ( $from['grade'] ?? '' ),
+			);
+		}
+		usort( $offcuts, static fn( $a, $b ) => $b['length'] <=> $a['length'] );
 		return array(
 			'section_id'     => (int) $s->id,
 			'family'         => $s->family,
@@ -291,6 +365,10 @@ final class Cutting {
 			'market_bars'    => $out['market_bars'],
 			'market_kg'      => round( $out['market_mm'] / 1000 * $kg_m, 2 ),
 			'market'         => $market,
+			'mine'           => $mine,
+			'mine_bars'      => $out['mine_bars'],
+			'mine_kg'        => round( $out['mine_mm'] / 1000 * $kg_m, 2 ),
+			'offcuts'        => $offcuts,
 			'stock_used'     => $out['stock'],
 			'stock_left'     => count( array_filter( $plan['bins'], static fn( $b ) => 'stock' === $b['source'] && ! $b['pieces'] ) ),
 			'offers_seen'    => count( $offers ),
@@ -306,6 +384,34 @@ final class Cutting {
 			'reusable_items' => $out['reusable_items'],
 			'optimal'        => $plan['optimal'],
 		);
+	}
+
+	/**
+	 * Own bars first (offcuts typed in the form, warehouse), then the marketplace
+	 * for the pieces left, then new bars. Unused bins are kept (offcuts not needed).
+	 *
+	 * @return array { bins, optimal }
+	 */
+	public static function stages( array $items, array $own, array $market, $bar, $kerf ) {
+		if ( ! $market ) {
+			return self::solve( $items, $own, $bar, $kerf );
+		}
+		$one = $own ? self::solve( $items, $own, $bar, $kerf ) : array( 'bins' => array(), 'optimal' => true );
+		$left = $own ? array() : $items;
+		$bins = array();
+		foreach ( $one['bins'] as $b ) {
+			if ( 'new' === $b['source'] ) {
+				$left = array_merge( $left, $b['pieces'] );
+			} else {
+				$bins[] = $b;
+			}
+		}
+		if ( ! $left ) {
+			return array( 'bins' => $bins, 'optimal' => $one['optimal'] );
+		}
+		rsort( $left );
+		$two = self::solve( $left, $market, $bar, $kerf );
+		return array( 'bins' => array_merge( $bins, $two['bins'] ), 'optimal' => $one['optimal'] && $two['optimal'] );
 	}
 
 	/**
@@ -326,10 +432,20 @@ final class Cutting {
 			$bins[] = array( 'source' => $b['source'], 'origin' => $b['origin'] ?? '', 'length' => $b['length'], 'rem' => $b['length'] + $kerf, 'pieces' => array() );
 		}
 		foreach ( $size as $i => $sz ) {
+			// Best fit among the bars already started; else the first unused one that fits
+			// (shortest first, as given): the fewest bars of the stock are taken (0.6.0).
 			$best = -1;
 			foreach ( $bins as $j => $b ) {
-				if ( $b['rem'] >= $sz && ( -1 === $best || $b['rem'] < $bins[ $best ]['rem'] ) ) {
+				if ( $b['pieces'] && $b['rem'] >= $sz && ( -1 === $best || $b['rem'] < $bins[ $best ]['rem'] ) ) {
 					$best = $j;
+				}
+			}
+			if ( -1 === $best ) {
+				foreach ( $bins as $j => $b ) {
+					if ( ! $b['pieces'] && 'new' !== $b['source'] && $b['rem'] >= $sz ) {
+						$best = $j;
+						break;
+					}
 				}
 			}
 			if ( -1 === $best ) {

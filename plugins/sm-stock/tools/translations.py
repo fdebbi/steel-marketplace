@@ -34,3 +34,15 @@ T = {
 P = {
 ('Price changed on %d product. Orders and offers already in progress keep their price.', 'Price changed on %d products. Orders and offers already in progress keep their price.'): (['Prix modifié sur %d produit. Les commandes et offres en cours gardent leur prix.', 'Prix modifié sur %d produits. Les commandes et offres en cours gardent leur prix.'], ['تم تغيير سعر %d منتج. الطلبات والعروض الجارية تحتفظ بأسعارها.', 'تم تغيير سعر منتج واحد. الطلبات والعروض الجارية تحتفظ بأسعارها.', 'تم تغيير سعر منتجين. الطلبات والعروض الجارية تحتفظ بأسعارها.', 'تم تغيير سعر %d منتجات. الطلبات والعروض الجارية تحتفظ بأسعارها.', 'تم تغيير سعر %d منتجاً. الطلبات والعروض الجارية تحتفظ بأسعارها.', 'تم تغيير سعر %d منتج. الطلبات والعروض الجارية تحتفظ بأسعارها.']),
 }
+
+# 0.2.0: the warehouse in the cutting optimiser.
+T.update({
+'%s: your warehouse no longer has these bars. Run the optimiser again.': ('%s : votre magasin n’a plus ces barres. Relancez l’optimiseur.', '%s: لم يعد مخزنك يحتوي على هذه القضبان. أعد تشغيل المحسّن.'),
+'There is no bar of your warehouse in this plan.': ('Aucune barre de votre magasin dans ce plan.', 'لا يوجد قضيب من مخزنك في هذه الخطة.'),
+'Cutting plan': ('Plan de coupe', 'خطة القص'),
+'Tick at least one offcut to add.': ('Cochez au moins une chute à ajouter.', 'حدد بقية واحدة على الأقل لإضافتها.'),
+})
+P.update({
+('%d bar taken out of your warehouse for the cutting. The movement is in the history.', '%d bars taken out of your warehouse for the cutting. The movements are in the history.'): (['%d barre sortie de votre magasin pour la découpe. Le mouvement est dans l’historique.', '%d barres sorties de votre magasin pour la découpe. Les mouvements sont dans l’historique.'], ['أُخرج %d قضيب من مخزنك للقص. الحركات في السجل.', 'أُخرج قضيب واحد من مخزنك للقص. الحركة في السجل.', 'أُخرج قضيبان من مخزنك للقص. الحركات في السجل.', 'أُخرجت %d قضبان من مخزنك للقص. الحركات في السجل.', 'أُخرج %d قضيبًا من مخزنك للقص. الحركات في السجل.', 'أُخرج %d قضيب من مخزنك للقص. الحركات في السجل.']),
+('%d offcut added to your reuse warehouse, kept in stock only.', '%d offcuts added to your reuse warehouse, kept in stock only.'): (['%d chute ajoutée à votre magasin réemploi, en stock seulement.', '%d chutes ajoutées à votre magasin réemploi, en stock seulement.'], ['أُضيفت %d بقية إلى مخزن إعادة الاستعمال، في المخزون فقط.', 'أُضيفت بقية واحدة إلى مخزن إعادة الاستعمال، في المخزون فقط.', 'أُضيفت بقيتان إلى مخزن إعادة الاستعمال، في المخزون فقط.', 'أُضيفت %d بقايا إلى مخزن إعادة الاستعمال، في المخزون فقط.', 'أُضيفت %d بقية إلى مخزن إعادة الاستعمال، في المخزون فقط.', 'أُضيفت %d بقية إلى مخزن إعادة الاستعمال، في المخزون فقط.']),
+})

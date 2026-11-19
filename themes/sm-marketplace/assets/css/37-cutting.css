@@ -121,3 +121,19 @@
 	.smcut-prof, .smcut-k { break-inside: avoid; }
 	.smcut-pc, .smcut-sc, .smcut-c0, .smcut-c1, .smcut-c2, .smcut-c3 { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+
+/* 0.49.0: my warehouse (violet) and the offcuts to keep */
+.smcut-filters.is-st { border-color: color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 30%, var(--sm-line)); background: color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 5%, var(--sm-surface)); margin-block-end: var(--sm-s2); }
+.smcut-filters.is-st .smcut-chk input { accent-color: var(--sm-ai-ink, #5B4BD8); }
+.smcut-k.is-st { border-color: #B9B2F5; background: color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 7%, var(--sm-surface)); }
+.smcut-src.is-st .smcut-dot { background: var(--sm-ai-ink, #5B4BD8); }
+.smcut-lbl.is-st { background: #EBE8FF; color: #4B3CC4; }
+.smcut-ref { font: 700 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; border: 1px solid var(--sm-line); border-radius: 6px; padding: 1px 6px; background: var(--sm-surface); vertical-align: middle; }
+.smcut-out { display: flex; flex-wrap: wrap; gap: var(--sm-s3); align-items: center; justify-content: space-between; margin-block-start: var(--sm-s2); padding: var(--sm-s3); border-radius: 12px; background: color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 7%, var(--sm-surface)); }
+.smcut-out p { margin: 0; flex: 1 1 260px; font-size: var(--sm-fs-sm); }
+.smcut-off { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: var(--sm-s2) var(--sm-s3); align-items: center; padding: var(--sm-s2) 0; border-block-start: 1px dashed var(--sm-line); font-size: var(--sm-fs-sm); cursor: pointer; }
+.smcut-off input[type="checkbox"] { inline-size: 18px; block-size: 18px; accent-color: var(--sm-accent); margin: 0; }
+.smcut-offform__go { display: flex; flex-wrap: wrap; gap: var(--sm-s3); align-items: flex-end; margin-block-start: var(--sm-s3); }
+.smcut-offform__go label { display: grid; gap: 4px; flex: 1 1 220px; font-size: var(--sm-fs-xs); font-weight: 600; }
+.smcut-offform .sm-muted { font-size: var(--sm-fs-xs); margin: var(--sm-s2) 0 0; }
+@media print { .smcut-out, .smcut-src.is-off { display: none !important; } }

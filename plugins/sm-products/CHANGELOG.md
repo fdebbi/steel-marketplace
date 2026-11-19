@@ -1,5 +1,10 @@
 # Changelog — sm-products
 
+## 0.21.0 — 2026-11-20
+
+- Article gardé **en stock seulement** : le prix est facultatif (demandé au moment de publier).
+- Publier depuis le magasin (`republish` depuis `stock`) : refus tant qu'il manque le prix ou les photos demandées par le marché (`Form::missing_to_publish()`), avec « ouvrez-le avec Modifier ».
+
 ## 0.20.0 — 2026-11-19 (pour sm-stock 0.1.0)
 
 - Nouveau statut `stock` : article dans le magasin du vendeur, invisible des acheteurs.

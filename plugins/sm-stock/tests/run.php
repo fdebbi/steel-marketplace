@@ -121,6 +121,79 @@ smst_assert( count( $qr ) >= 21 && count( $qr ) === count( $qr[0] ) && $qr[0][0]
 $pdf = Labels::pdf( $company, 'reuse' );
 smst_assert( 0 === strpos( $pdf, '%PDF-1.4' ) && false !== strpos( $pdf, 'R-0001' ), 'labels of the reuse warehouse as a PDF' );
 
+echo "\n7. The warehouse in the cutting optimiser (0.2.0)\n";
+$cut  = \SM\WeightEngine\Cutting::class;
+$s220 = 8; // IPE 220.
+$n12  = smst_product( $cid, array( 'market' => 'products', 'status' => 'stock', 'family' => 'IPE', 'section_id' => $s220, 'designation' => 'IPE 220', 'grade' => 'S275JR', 'qty_mode' => 'bars', 'length_mm' => 12000, 'pieces' => 3, 'unit_weight' => 314.35, 'total_weight' => 943.05 ) );
+$r62  = smst_product( $cid, array( 'market' => 'reuse', 'category' => 'reuse-offcuts', 'status' => 'published', 'item_condition' => 'excellent', 'designation' => 'IPE 220', 'qty_mode' => 'bars', 'pieces' => 2, 'total_weight' => 324.8, 'inventory' => wp_json_encode( array( array( 'family' => 'IPE', 'section_id' => $s220, 'designation' => 'IPE 220', 'qty' => 2, 'length_mm' => 6200, 'kg_m' => 26.196, 'total' => 324.83, 'grade' => 'S235JR' ) ) ) ) );
+$offers = \SM\Stock\Cutting::offers( array(), $s220, array( 'new' => true, 'reuse' => true ) );
+$keys   = wp_list_pluck( $offers, 'key' );
+smst_assert( 2 === count( $offers ) && in_array( 'P' . $n12 . ':', $keys, true ) && in_array( 'P' . $r62 . ':-' . $s220 . '-6200', $keys, true ), 'offers of the warehouse: the new bars and the reused variant of the same section, with their keys' );
+$o12 = $offers[ array_search( 'P' . $n12 . ':', $keys, true ) ];
+smst_assert( 0 === strpos( $o12['ref'], 'N-' ) && 'new' === $o12['condition'] && ! $o12['published'] && 3 === $o12['lines'][0]['qty'], 'with reference, condition, published or not, number of bars' );
+smst_assert( 1 === count( \SM\Stock\Cutting::offers( array(), $s220, array( 'new' => true, 'reuse' => true, 'unpublished' => true ) ) ) && 1 === count( \SM\Stock\Cutting::offers( array(), $s220, array( 'reuse' => true ) ) ), 'options: in stock only (the published lot left out), reuse only' );
+$in  = $cut::read( array( 'src' => 1, 'mine' => 1, 'mine_new' => 1, 'mine_reuse' => 1, 'rows' => array( array( 'section' => $s220, 'length' => '5,40', 'qty' => 4 ), array( 'section' => $s220, 'length' => '2,10', 'qty' => 2 ) ) ) );
+$res = $cut::optimize( $in );
+$t   = $res['totals'];
+smst_assert( $res['ok'] && 0 === $t['new_bars'] && $t['mine_bars'] >= 3 && 2 === $t['mine_items'], 'plan: the pieces come from the warehouse, nothing to buy (' . $t['mine_bars'] . ' bars, 2 references)' );
+$src = array_unique( array_column( $res['profiles'][0]['bars'], 'source' ) );
+smst_assert( array( 'mine' ) === array_values( $src ), 'every bar of the plan is labelled « mine »' );
+$no  = $cut::optimize( $cut::read( array( 'src' => 1, 'rows' => $in['lines'] ? array( array( 'section' => $s220, 'length' => '5,40', 'qty' => 4 ) ) : array() ) ) );
+smst_assert( 0 === $no['totals']['mine_bars'] && $no['totals']['new_bars'] > 0, 'box unticked: new bars only' );
+$off = $t['offcuts'];
+smst_assert( $off && $off[0]['ref'] && 'mine' === $off[0]['source'] && $off[0]['length'] >= 1000, 'reusable offcuts with their origin (reference ' . ( $off[0]['ref'] ?? '' ) . ', ' . ( $off[0]['length'] ?? 0 ) . ' mm)' );
+$take = array();
+foreach ( $res['profiles'][0]['mine'] as $m ) {
+	$take[ $m['key'] ] = $m['take_count'];
+}
+$before = (float) Products::get( $n12 )->pieces + (float) Products::get( $r62 )->pieces;
+$done   = \SM\Stock\Cutting::take_out( $company, $take );
+$after  = (float) Products::get( $n12 )->pieces + (float) Products::get( $r62 )->pieces;
+smst_assert( ! is_wp_error( $done ) && $done['bars'] === array_sum( $take ) && $before - $after === (float) array_sum( $take ), 'bars taken out of the warehouse once the cutting is done' );
+smst_assert( 'cutting' === Moves::recent( $cid, 1 )[0]->kind && '' !== Moves::recent( $cid, 1 )[0]->ref, 'movement « cutting » with the reference' );
+smst_assert( is_wp_error( \SM\Stock\Cutting::take_out( $company, array( 'P' . $n12 . ':' => 99 ) ) ), 'more bars than left: refused (run the optimiser again)' );
+smst_assert( is_wp_error( \SM\Stock\Cutting::take_out( $company, array( 'P' . $ipe2 . ':' => 1, 'P999999:' => 1 ) ) ), 'an item of another company or unknown: refused' );
+$add = \SM\Stock\Cutting::add( $company, array( array( 'section' => $s220, 'length' => 1194, 'count' => 2, 'condition' => 'new', 'grade' => 'S275JR' ), array( 'section' => $s220, 'length' => 1600, 'count' => 1, 'condition' => '', 'grade' => '' ) ), 'Hangar 2 – chutes' );
+$a1  = is_array( $add ) ? Products::get( $add['items'][0] ) : null;
+smst_assert( is_array( $add ) && 2 === count( $add['items'] ) && 3 === $add['pieces'], 'offcuts added: one item per condition and grade (2 items, 3 pieces)' );
+smst_assert( $a1 && 'stock' === $a1->status && 'reuse' === $a1->market && 'new_surplus' === $a1->item_condition && 'S275JR' === $a1->grade && 0.0 === (float) $a1->price, 'in stock only, reuse market, condition of the new bar → new surplus, its grade, no price yet' );
+$a2 = is_array( $add ) ? Products::get( $add['items'][1] ) : null;
+smst_assert( $a2 && 'good' === $a2->item_condition, 'offcut of a bought bar: condition « good »' );
+$rr = Items::refs( array( $a1->id ) );
+smst_assert( 1 === count( $rr ) && 0 === strpos( reset( $rr )->ref, 'R-' ) && 'Hangar 2 – chutes' === reset( $rr )->location && 'offcuts' === Moves::recent( $cid, 1 )[0]->kind, 'automatic reference R-, location, movement « offcuts »' );
+$cap = static fn( $kg, $c ) => Items::weight( $cid ) + 10.0;
+add_filter( 'sm_stock_capacity_kg', $cap, 99, 2 );
+smst_assert( is_wp_error( \SM\Stock\Cutting::add( $company, array( array( 'section' => $s220, 'length' => 3000, 'count' => 5 ) ) ) ), 'warehouse full: the offcuts are refused, nothing is added' );
+remove_filter( 'sm_stock_capacity_kg', $cap, 99 );
+
+echo "\n8. Publishing an item of the warehouse (sm-products 0.21.0)\n";
+smst_assert( '' !== \SM\Products\Form::missing_to_publish( $a1 ), 'no price yet: it cannot go on the market' );
+$GLOBALS['wpdb']->update( Products::table(), array( 'price' => 150 ), array( 'id' => $a1->id ) );
+smst_assert( false !== strpos( \SM\Products\Form::missing_to_publish( Products::get( $a1->id ) ), '2' ), 'priced, but the reuse market asks for 2 photos' );
+
+if ( class_exists( '\\SM\\Trade\\Deals' ) ) {
+	echo "\n9. Reference of the item in an order (sm-trade)\n";
+	$sp  = \SM\Products\Spec::build( array( 'wilaya' => '28', 'title' => array( 'fr' => 'Test magasin' ), 'price' => '200', 'price_unit' => 'kg', 'category' => 'profiles', 'family' => 'IPE', 'section' => 'IPE 200', 'bars' => '10' ) );
+	$pub = Products::save( 0, $cid, $uid, $sp, 'published' );
+	Items::ensure_refs( $cid, array( Products::get( $pub ) ) );
+	Items::set_ref( $cid, $pub, '', 'IPE-ORD', 'Hangar 9' );
+	$bu  = wp_insert_user( array( 'user_login' => 'smsttest_b', 'user_email' => 'smsttest-b@example.test', 'user_pass' => wp_generate_password(), 'role' => 'sm_member' ) );
+	Companies::create( array( 'account_class' => 'client', 'name' => 'SMSTTEST B', 'wilaya' => '28', 'phone' => '0550000001' ), $bu, array( 'client' ) );
+	$did = \SM\Trade\Deals::create( $pub, $bu, array( 'kind' => 'order', 'mode' => 'detail', 'quantity' => 2, 'name' => 'Test', 'phone' => '0550 00 00 01', 'email' => 'smsttest-b@example.test' ) );
+	wp_set_current_user( $bu );
+	$view = apply_filters( 'sm_theme_data_deal', null, array( 'id' => $did ) );
+	smst_assert( is_array( $view ) && empty( $view['stock_refs'] ), 'buyer: no reference before the order is accepted' );
+	wp_set_current_user( $uid );
+	$view = apply_filters( 'sm_theme_data_deal', null, array( 'id' => $did ) );
+	smst_assert( 'IPE-ORD' === ( $view['stock_refs'][0]['ref'] ?? '' ) && 'Hangar 9' === $view['stock_refs'][0]['location'], 'seller: the reference and the location' );
+	\SM\Trade\Deals::act( $did, $uid, 'accept' );
+	wp_set_current_user( $bu );
+	$view = apply_filters( 'sm_theme_data_deal', null, array( 'id' => $did ) );
+	smst_assert( 'IPE-ORD' === ( $view['stock_refs'][0]['ref'] ?? '' ) && '' === $view['stock_refs'][0]['location'], 'buyer, once accepted: the reference for the pickup, not the location' );
+	$GLOBALS['wpdb']->delete( \SM\Trade\Deals::table(), array( 'id' => $did ) );
+	$GLOBALS['wpdb']->delete( \SM\Trade\Deals::events_table(), array( 'deal_id' => $did ) );
+}
+
 wp_set_current_user( 0 );
 smst_cleanup();
 $t = $GLOBALS['smst_t'];

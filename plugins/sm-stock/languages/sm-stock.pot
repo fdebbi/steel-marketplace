@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Stock 0.1.0\n"
+"Project-Id-Version: SM Stock 0.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-stock\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-19T16:53:47+00:00\n"
+"POT-Creation-Date: 2026-11-19T23:00:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-stock\n"
@@ -39,40 +39,75 @@ msgid "SM Stock needs the SM Core and SM Products plugins. Activate them first."
 msgstr ""
 
 #: src/Actions.php:42
+#: src/Cutting.php:129
 msgid "This item is not in your warehouse."
 msgstr ""
 
-#: src/Actions.php:49
-#: src/Actions.php:60
-#: src/Actions.php:88
-#: src/Actions.php:108
+#: src/Actions.php:57
+#: src/Actions.php:68
+#: src/Actions.php:93
+#: src/Actions.php:113
+#: src/Cutting.php:159
+#: src/Cutting.php:247
 msgid "Your account has no warehouse."
 msgstr ""
 
-#: src/Actions.php:55
+#: src/Actions.php:63
 msgid "Reference and location saved."
 msgstr ""
 
-#: src/Actions.php:65
+#: src/Actions.php:73
 msgid "Give the new quantity (0 or more)."
 msgstr ""
 
-#: src/Actions.php:68
+#: src/Actions.php:76
 msgid "Give the reason of the correction (inventory, damaged bar, sale outside the platform…)."
 msgstr ""
 
-#: src/Actions.php:79
+#: src/Actions.php:84
 msgid "Quantity corrected. The movement is in the history."
 msgstr ""
 
-#: src/Actions.php:97
+#: src/Actions.php:102
 msgid "Tick at least one product to change."
 msgstr ""
 
 #. translators: %d: number of products.
-#: src/Actions.php:101
+#: src/Actions.php:106
 msgid "Price changed on %d product. Orders and offers already in progress keep their price."
 msgid_plural "Price changed on %d products. Orders and offers already in progress keep their price."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: item.
+#: src/Cutting.php:134
+msgid "%s: your warehouse no longer has these bars. Run the optimiser again."
+msgstr ""
+
+#: src/Cutting.php:139
+msgid "There is no bar of your warehouse in this plan."
+msgstr ""
+
+#: src/Cutting.php:148
+#: src/Cutting.php:229
+msgid "Cutting plan"
+msgstr ""
+
+#. translators: %d: number of bars.
+#: src/Cutting.php:166
+msgid "%d bar taken out of your warehouse for the cutting. The movement is in the history."
+msgid_plural "%d bars taken out of your warehouse for the cutting. The movements are in the history."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Cutting.php:191
+msgid "Tick at least one offcut to add."
+msgstr ""
+
+#. translators: %d: number of offcuts.
+#: src/Cutting.php:254
+msgid "%d offcut added to your reuse warehouse, kept in stock only."
+msgid_plural "%d offcuts added to your reuse warehouse, kept in stock only."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -134,7 +169,7 @@ msgstr ""
 msgid "whole lot"
 msgstr ""
 
-#: src/Plugin.php:40
+#: src/Plugin.php:41
 msgid "Item kept in the warehouse"
 msgstr ""
 

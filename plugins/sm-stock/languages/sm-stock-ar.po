@@ -44,39 +44,39 @@ msgid ""
 "SM Stock needs the SM Core and SM Products plugins. Activate them first."
 msgstr "يحتاج SM Stock إلى الإضافتين SM Core وSM Products. فعّلهما أولاً."
 
-#: src/Actions.php:42
+#: src/Actions.php:42 src/Cutting.php:129
 msgid "This item is not in your warehouse."
 msgstr "هذا العنصر ليس في مخزنك."
 
-#: src/Actions.php:49 src/Actions.php:60 src/Actions.php:88
-#: src/Actions.php:108
+#: src/Actions.php:57 src/Actions.php:68 src/Actions.php:93
+#: src/Actions.php:113 src/Cutting.php:159 src/Cutting.php:247
 msgid "Your account has no warehouse."
 msgstr "حسابك ليس لديه مخزن."
 
-#: src/Actions.php:55
+#: src/Actions.php:63
 msgid "Reference and location saved."
 msgstr "تم حفظ المرجع والموقع."
 
-#: src/Actions.php:65
+#: src/Actions.php:73
 msgid "Give the new quantity (0 or more)."
 msgstr "أدخل الكمية الجديدة (0 أو أكثر)."
 
-#: src/Actions.php:68
+#: src/Actions.php:76
 msgid ""
 "Give the reason of the correction (inventory, damaged bar, sale outside the "
 "platform…)."
 msgstr "أدخل سبب التصحيح (جرد، قضيب تالف، بيع خارج المنصة…)."
 
-#: src/Actions.php:79
+#: src/Actions.php:84
 msgid "Quantity corrected. The movement is in the history."
 msgstr "تم تصحيح الكمية. الحركة مسجلة في السجل."
 
-#: src/Actions.php:97
+#: src/Actions.php:102
 msgid "Tick at least one product to change."
 msgstr "حدد منتجاً واحداً على الأقل."
 
 #. translators: %d: number of products.
-#: src/Actions.php:101
+#: src/Actions.php:106
 msgid ""
 "Price changed on %d product. Orders and offers already in progress keep "
 "their price."
@@ -89,6 +89,49 @@ msgstr[2] "تم تغيير سعر منتجين. الطلبات والعروض ا
 msgstr[3] "تم تغيير سعر %d منتجات. الطلبات والعروض الجارية تحتفظ بأسعارها."
 msgstr[4] "تم تغيير سعر %d منتجاً. الطلبات والعروض الجارية تحتفظ بأسعارها."
 msgstr[5] "تم تغيير سعر %d منتج. الطلبات والعروض الجارية تحتفظ بأسعارها."
+
+#. translators: %s: item.
+#: src/Cutting.php:134
+msgid "%s: your warehouse no longer has these bars. Run the optimiser again."
+msgstr "%s: لم يعد مخزنك يحتوي على هذه القضبان. أعد تشغيل المحسّن."
+
+#: src/Cutting.php:139
+msgid "There is no bar of your warehouse in this plan."
+msgstr "لا يوجد قضيب من مخزنك في هذه الخطة."
+
+#: src/Cutting.php:148 src/Cutting.php:229
+msgid "Cutting plan"
+msgstr "خطة القص"
+
+#. translators: %d: number of bars.
+#: src/Cutting.php:166
+msgid ""
+"%d bar taken out of your warehouse for the cutting. The movement is in the "
+"history."
+msgid_plural ""
+"%d bars taken out of your warehouse for the cutting. The movements are in "
+"the history."
+msgstr[0] "أُخرج %d قضيب من مخزنك للقص. الحركات في السجل."
+msgstr[1] "أُخرج قضيب واحد من مخزنك للقص. الحركة في السجل."
+msgstr[2] "أُخرج قضيبان من مخزنك للقص. الحركات في السجل."
+msgstr[3] "أُخرجت %d قضبان من مخزنك للقص. الحركات في السجل."
+msgstr[4] "أُخرج %d قضيبًا من مخزنك للقص. الحركات في السجل."
+msgstr[5] "أُخرج %d قضيب من مخزنك للقص. الحركات في السجل."
+
+#: src/Cutting.php:191
+msgid "Tick at least one offcut to add."
+msgstr "حدد بقية واحدة على الأقل لإضافتها."
+
+#. translators: %d: number of offcuts.
+#: src/Cutting.php:254
+msgid "%d offcut added to your reuse warehouse, kept in stock only."
+msgid_plural "%d offcuts added to your reuse warehouse, kept in stock only."
+msgstr[0] "أُضيفت %d بقية إلى مخزن إعادة الاستعمال، في المخزون فقط."
+msgstr[1] "أُضيفت بقية واحدة إلى مخزن إعادة الاستعمال، في المخزون فقط."
+msgstr[2] "أُضيفت بقيتان إلى مخزن إعادة الاستعمال، في المخزون فقط."
+msgstr[3] "أُضيفت %d بقايا إلى مخزن إعادة الاستعمال، في المخزون فقط."
+msgstr[4] "أُضيفت %d بقية إلى مخزن إعادة الاستعمال، في المخزون فقط."
+msgstr[5] "أُضيفت %d بقية إلى مخزن إعادة الاستعمال، في المخزون فقط."
 
 #: src/Items.php:138
 msgid "A reference has 1 to 20 letters, digits, dashes, dots or slashes."
@@ -157,7 +200,7 @@ msgstr ""
 msgid "whole lot"
 msgstr "الحصة كاملة"
 
-#: src/Plugin.php:40
+#: src/Plugin.php:41
 msgid "Item kept in the warehouse"
 msgstr "عنصر محفوظ في المخزن"
 

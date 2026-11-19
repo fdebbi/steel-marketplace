@@ -59,6 +59,13 @@
 		mk.addEventListener( 'change', syncMk );
 		syncMk();
 	}
+	/* 0.49.0: the choices of the warehouse follow its box. */
+	var mi = root.querySelector( '[data-smcut-mine]' ), mbox = root.querySelector( '[data-smcut-minebox]' );
+	if ( mi && mbox ) {
+		var syncMi = function () { mbox.hidden = ! mi.checked; };
+		mi.addEventListener( 'change', syncMi );
+		syncMi();
+	}
 
 	/* « Other… » length of bar. */
 	var custom = root.querySelector( '.smcut-custom' );

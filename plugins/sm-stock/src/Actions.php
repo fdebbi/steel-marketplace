@@ -44,6 +44,14 @@ final class Actions {
 		return $p;
 	}
 
+	/** Nothing left: off the market and out of the warehouse. */
+	public static function sold_if_empty( $product_id ) {
+		$after = Products::get( $product_id );
+		if ( $after && 'sold' !== $after->status && $after->total_weight <= 0.0001 && ( ! $after->lines || 0 === (int) $after->pieces ) ) {
+			Products::set_status( $after->id, 'sold' );
+		}
+	}
+
 	public static function ref() {
 		Forms::begin( 'stock_ref' );
 		$c = self::company() ?: Forms::back( array( __( 'Your account has no warehouse.', 'sm-stock' ) ) );
@@ -72,10 +80,7 @@ final class Actions {
 			Forms::back( array( $res->get_error_message() ) );
 		}
 		Moves::add( (int) $c->id, (int) $p->id, 'adjust', Presenter::title_text( $p ), $res['after'] - $res['before'], $res['unit'], $res['kg'], $note );
-		$after = Products::get( $p->id );
-		if ( $after && $after->total_weight <= 0.0001 && ( ! $after->lines || 0 === (int) $after->pieces ) ) {
-			Products::set_status( $p->id, 'sold' ); // Nothing left: off the market and out of the warehouse.
-		}
+		self::sold_if_empty( $p->id );
 		Forms::back( array(), __( 'Quantity corrected. The movement is in the history.', 'sm-stock' ) );
 	}
 

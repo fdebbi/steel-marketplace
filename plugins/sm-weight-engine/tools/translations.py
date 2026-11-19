@@ -137,3 +137,13 @@ T.update({
 P.update({
 ('%d bar from the marketplace', '%d bars from the marketplace'): (['%d barre du marché', '%d barres du marché'], ['%d قضيب من السوق', 'قضيب واحد من السوق', 'قضيبان من السوق', '%d قضبان من السوق', '%d قضيبًا من السوق', '%d قضيب من السوق']),
 })
+
+# 0.6.0: the warehouse of the company in the cutting plan (PDF).
+T.update({
+'From your warehouse: %1$d bars (%2$s kg).': ('De votre magasin : %1$d barres (%2$s kg).', 'من مخزنك: %1$d قضبان (%2$s kg).'),
+'warehouse %s m': ('magasin %s m', 'المخزن %s m'),
+})
+P.update({
+('%d bar from your warehouse', '%d bars from your warehouse'): (['%d barre de votre magasin', '%d barres de votre magasin'], ['%d قضيب من مخزنك', 'قضيب واحد من مخزنك', 'قضيبان من مخزنك', '%d قضبان من مخزنك', '%d قضيبًا من مخزنك', '%d قضيب من مخزنك']),
+('%1$d bar of %2$s m', '%1$d bars of %2$s m'): (['%1$d barre de %2$s m', '%1$d barres de %2$s m'], ['%1$d قضيب بطول %2$s m', '%1$d قضيب بطول %2$s m', '%1$d قضيبان بطول %2$s m', '%1$d قضبان بطول %2$s m', '%1$d قضيبًا بطول %2$s m', '%1$d قضيب بطول %2$s m']),
+})

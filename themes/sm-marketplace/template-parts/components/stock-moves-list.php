@@ -15,7 +15,8 @@ $kinds = array(
 	'publish'  => __( 'Published on the market', 'sm-marketplace' ),
 	'withdraw' => __( 'Kept in stock only', 'sm-marketplace' ),
 	'price'    => __( 'Price changed', 'sm-marketplace' ),
-	'cutting'  => __( 'Offcuts of the optimiser', 'sm-marketplace' ),
+	'cutting'  => __( 'Taken for a cutting', 'sm-marketplace' ),
+	'offcuts'  => __( 'Offcuts of the optimiser', 'sm-marketplace' ),
 );
 $units = static function ( $q, $u ) {
 	$n = abs( $q );

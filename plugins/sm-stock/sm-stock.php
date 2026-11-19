@@ -3,7 +3,7 @@
  * Plugin Name:       SM Stock
  * Plugin URI:        https://github.com/fdebbi/steel-marketplace
  * Description:       Warehouse of companies and professionals: every steel item they own, published on the market or kept in stock only (new and reused), with a reference and a location for each variant, quantity corrections, the history of movements (sales accepted on the platform are taken off automatically), prices changed for a whole type, printable labels with a QR code, and limits per plan. Requires SM Core and SM Products.
- * Version:           0.1.0
+ * Version:           0.2.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Requires Plugins:  sm-core, sm-products
@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_STOCK_VERSION', '0.1.0' );
+define( 'SM_STOCK_VERSION', '0.2.0' );
 define( 'SM_STOCK_DB_VERSION', 1 );
 define( 'SM_STOCK_FILE', __FILE__ );
 define( 'SM_STOCK_DIR', __DIR__ );

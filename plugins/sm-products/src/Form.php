@@ -75,6 +75,9 @@ final class Form {
 		$file_errors = array_merge( $new['errors'], $snew['errors'] );
 
 		$errors = $spec['errors'];
+		if ( 'stock' === $intent ) {
+			unset( $errors['price'], $errors['lot_price'] ); // 0.21.0: the price is asked when the item goes on the market.
+		}
 		// Calculated new products show the section drawing (0.7.0); a market may ask for more photos (0.18.0: reuse, 2).
 		$min_photos = (int) ( $market['min_photos'] ?? 0 );
 		if ( ! $min_photos ) {
@@ -228,6 +231,28 @@ final class Form {
 		return $product && ( in_array( $aid, Media::get( 'product', $product->id, 'photo' ), true ) || in_array( $aid, Media::get( 'product', $product->id, 'sheet' ), true ) );
 	}
 
+	/**
+	 * What an item kept in the warehouse still needs before going on the market
+	 * (0.21.0): a price, and the photos the market asks for. '' when complete.
+	 */
+	public static function missing_to_publish( $p ) {
+		$lot = 'lot' === $p->sale_mode || 'lot' === $p->price_unit;
+		if ( ( $lot ? (float) $p->lot_price : (float) $p->price ) <= 0 ) {
+			return __( 'Give a price before publishing this item: open it with « Edit ».', 'sm-products' );
+		}
+		$cat    = Categories::get( $p->category );
+		$market = Markets::get( $p->market );
+		$min    = (int) ( $market['min_photos'] ?? 0 );
+		if ( ! $min ) {
+			$min = $cat && Spec::auto_title( $cat ) && 'products' === $p->market ? 0 : 1;
+		}
+		if ( count( Media::get( 'product', $p->id, 'photo' ) ) < $min ) {
+			/* translators: %d: number of photos. */
+			return sprintf( _n( 'Add at least %d photo before publishing this item: open it with « Edit ».', 'Add at least %d photos before publishing this item: open it with « Edit ».', $min, 'sm-products' ), $min );
+		}
+		return '';
+	}
+
 	public static function handle_action() {
 		Forms::begin( 'product_action' );
 		$p   = self::editable( absint( Forms::post( 'product_id' ) ) );
@@ -258,6 +283,12 @@ final class Form {
 			case 'republish':
 				if ( ! in_array( $p->status, array( 'sold', 'expired', 'paused', 'stock' ), true ) ) {
 					Forms::back( array( __( 'This product cannot be published again from here. Edit it instead.', 'sm-products' ) ) );
+				}
+				if ( 'stock' === $p->status ) {
+					$missing = self::missing_to_publish( $p );
+					if ( $missing ) {
+						Forms::back( array( $missing ) );
+					}
 				}
 				$limit = self::client_limit( Companies::get( $p->company_id ), $p ) ?: self::plan_limit( Companies::get( $p->company_id ), (array) $p, null );
 				if ( $limit ) {

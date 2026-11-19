@@ -780,22 +780,22 @@ msgid "You published many products today. Try again tomorrow."
 msgstr "Vous avez publié beaucoup de produits aujourd’hui. Réessayez demain."
 
 #. translators: %d: number of photos.
-#: src/Form.php:85
+#: src/Form.php:88
 msgid "Add at least one photo of the product."
 msgstr "Ajoutez au moins une photo du produit."
 
 #. translators: %d: number of photos.
-#: src/Form.php:85
+#: src/Form.php:88
 msgid "Add at least %d photo of the product."
 msgid_plural "Add at least %d photos of the product."
 msgstr[0] "Ajoutez au moins %d photo du produit."
 msgstr[1] "Ajoutez au moins %d photos du produit."
 
-#: src/Form.php:88 src/Spec.php:29
+#: src/Form.php:91 src/Spec.php:29
 msgid "Choose a category."
 msgstr "Choisissez une catégorie."
 
-#: src/Form.php:135
+#: src/Form.php:138
 msgid ""
 "Thank you. Your changes will be visible after a quick check by the platform "
 "team; meanwhile the current version stays online."
@@ -804,7 +804,7 @@ msgstr ""
 "l’équipe de la plateforme ; en attendant, la version actuelle reste en "
 "ligne."
 
-#: src/Form.php:154
+#: src/Form.php:157
 msgid ""
 "Saved in your warehouse. It is not on the market: publish it when you want "
 "to sell it."
@@ -812,13 +812,13 @@ msgstr ""
 "Enregistré dans votre magasin. Il n'est pas sur le marché : publiez-le quand"
 " vous voulez le vendre."
 
-#: src/Form.php:155
+#: src/Form.php:158
 msgid "Draft saved. You can finish it later from \"My listings\"."
 msgstr ""
 "Brouillon enregistré. Vous pourrez le terminer plus tard depuis « Mes "
 "annonces »."
 
-#: src/Form.php:156
+#: src/Form.php:159
 msgid ""
 "Thank you. Your product will be visible after a quick check by the platform "
 "team."
@@ -826,12 +826,12 @@ msgstr ""
 "Merci. Votre produit sera visible après une vérification rapide par l’équipe"
 " de la plateforme."
 
-#: src/Form.php:157 src/Form.php:273
+#: src/Form.php:160 src/Form.php:304
 msgid "Your product is published."
 msgstr "Votre produit est publié."
 
 #. translators: %d: number of listings.
-#: src/Form.php:198
+#: src/Form.php:201
 msgid ""
 "A client account can have %d listing online at a time. Mark one as sold or "
 "withdraw it first, or open a company or professional account."
@@ -847,48 +847,66 @@ msgstr[1] ""
 "comme vendue ou retirez-la d’abord, ou ouvrez un compte entreprise ou "
 "professionnel."
 
-#: src/Form.php:236
+#: src/Form.php:241
+msgid "Give a price before publishing this item: open it with « Edit »."
+msgstr ""
+"Indiquez un prix avant de publier cet article : ouvrez-le avec « Modifier »."
+
+#. translators: %d: number of photos.
+#: src/Form.php:251
+msgid ""
+"Add at least %d photo before publishing this item: open it with « Edit »."
+msgid_plural ""
+"Add at least %d photos before publishing this item: open it with « Edit »."
+msgstr[0] ""
+"Ajoutez au moins %d photo avant de publier cet article : ouvrez-le avec « "
+"Modifier »."
+msgstr[1] ""
+"Ajoutez au moins %d photos avant de publier cet article : ouvrez-le avec « "
+"Modifier »."
+
+#: src/Form.php:261
 msgid "You cannot change this product."
 msgstr "Vous ne pouvez pas modifier ce produit."
 
-#: src/Form.php:241
+#: src/Form.php:266
 msgid "Only a published product can be marked as sold."
 msgstr "Seul un produit publié peut être marqué comme vendu."
 
-#: src/Form.php:244
+#: src/Form.php:269
 msgid "Marked as sold. Buyers no longer see it."
 msgstr "Marqué comme vendu. Les acheteurs ne le voient plus."
 
-#: src/Form.php:249
+#: src/Form.php:274
 msgid "This product cannot be put back in the warehouse."
 msgstr "Ce produit ne peut pas être remis au magasin."
 
-#: src/Form.php:252
+#: src/Form.php:277
 msgid "The product is in your warehouse only: buyers no longer see it."
 msgstr ""
 "Le produit est au magasin seulement : les acheteurs ne le voient plus."
 
-#: src/Form.php:256
+#: src/Form.php:281
 msgid "The product is withdrawn and saved as a draft."
 msgstr "Le produit est retiré et enregistré comme brouillon."
 
-#: src/Form.php:260
+#: src/Form.php:285
 msgid "This product cannot be published again from here. Edit it instead."
 msgstr "Ce produit ne peut pas être republié d’ici. Modifiez-le plutôt."
 
-#: src/Form.php:273
+#: src/Form.php:304
 msgid "Sent for review again."
 msgstr "Renvoyé pour vérification."
 
-#: src/Form.php:277
+#: src/Form.php:308
 msgid "Withdraw the product before deleting it."
 msgstr "Retirez le produit avant de le supprimer."
 
-#: src/Form.php:280
+#: src/Form.php:311
 msgid "Product deleted."
 msgstr "Produit supprimé."
 
-#: src/Form.php:283
+#: src/Form.php:314
 msgid "Unknown action."
 msgstr "Action inconnue."
 
