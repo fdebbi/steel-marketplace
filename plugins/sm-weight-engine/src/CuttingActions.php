@@ -87,6 +87,11 @@ final class CuttingActions {
 		$head();
 		/* translators: 1: number of bars, 2: weight bought, 3: scrap weight, 4: scrap percent. */
 		$p->text( $x0, $y, sprintf( __( 'Bars to buy: %1$d · Weight bought: %2$s kg · Offcuts: %3$s kg (%4$s %%)', 'sm-weight-engine' ), (int) $t['new_bars'], self::num( $t['bought_kg'], 1 ), self::num( $t['scrap_kg'], 1 ), self::num( $t['scrap_pct'], 1 ) ), 11, true );
+		if ( ! empty( $t['market_bars'] ) ) {
+			$y += 15;
+			/* translators: 1: bars, 2: listings, 3: weight. */
+			$p->text( $x0, $y, sprintf( __( 'From the ReuSteel marketplace: %1$d bars in %2$d listings (%3$s kg) - picture of the marketplace at the time of the calculation, nothing is reserved.', 'sm-weight-engine' ), (int) $t['market_bars'], (int) $t['market_offers'], self::num( $t['market_kg'], 1 ) ), 9.5, false, array( 0.02, 0.45, 0.28 ) );
+		}
 		$y += 26;
 		$colors = array( array( 0.75, 0.93, 0.85 ), array( 0.84, 0.90, 1.0 ), array( 1.0, 0.89, 0.76 ), array( 0.93, 0.87, 1.0 ) );
 		foreach ( $r['profiles'] as $pr ) {
@@ -97,6 +102,11 @@ final class CuttingActions {
 			}
 			/* translators: 1: profile, 2: number of new bars, 3: bar length (m). */
 			$title = sprintf( _n( '%1$s - %2$d bar of %3$s m', '%1$s - %2$d bars of %3$s m', max( 1, (int) $pr['new_bars'] ), 'sm-weight-engine' ), $pr['designation'], (int) $pr['new_bars'], self::num( $set['bar'] / 1000 ) );
+			if ( ! empty( $pr['market_bars'] ) ) {
+				/* translators: %d: bars from the marketplace. */
+				$mk    = sprintf( _n( '%d bar from the marketplace', '%d bars from the marketplace', (int) $pr['market_bars'], 'sm-weight-engine' ), (int) $pr['market_bars'] );
+				$title = $pr['new_bars'] ? $title . ' + ' . $mk : $pr['designation'] . ' - ' . $mk;
+			}
 			if ( $pr['stock_used'] ) {
 				/* translators: %d: offcuts from the stock. */
 				$title .= ' + ' . sprintf( _n( '%d offcut from the stock', '%d offcuts from the stock', (int) $pr['stock_used'], 'sm-weight-engine' ), (int) $pr['stock_used'] );
@@ -113,7 +123,16 @@ final class CuttingActions {
 					$y = 46;
 					$head();
 				}
-				$src = 'stock' === $b['source'] ? __( 'stock offcut', 'sm-weight-engine' ) . ' ' . self::num( $b['length'] / 1000 ) . ' m' : __( 'new bar', 'sm-weight-engine' );
+				if ( 'market' === $b['source'] ) {
+					$co  = '';
+					foreach ( $pr['market'] as $mo ) {
+						$co = $mo['key'] === $b['origin'] ? $mo['company'] : $co;
+					}
+					/* translators: %s: length of the bar. */
+					$src = sprintf( __( 'marketplace %s m', 'sm-weight-engine' ), self::num( $b['length'] / 1000 ) ) . ( $co ? ' · ' . mb_substr( $co, 0, 18 ) : '' );
+				} else {
+					$src = 'stock' === $b['source'] ? __( 'stock offcut', 'sm-weight-engine' ) . ' ' . self::num( $b['length'] / 1000 ) . ' m' : __( 'new bar', 'sm-weight-engine' );
+				}
 				$y  += 8;
 				$p->text( $x0, $y + 9, '× ' . (int) $b['count'] . '  ' . $src, 8.5, true, array( 0.3, 0.35, 0.4 ) );
 				$bx    = $x0 + 150;

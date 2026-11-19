@@ -52,6 +52,14 @@
 		b.addEventListener( 'click', function () { addRow( b.getAttribute( 'data-smcut-add' ) ).querySelector( 'select' ).focus(); } );
 	} );
 
+	/* Filters of the marketplace follow its box. */
+	var mk = root.querySelector( '[data-smcut-market]' ), filt = root.querySelector( '[data-smcut-filters]' );
+	if ( mk && filt ) {
+		var syncMk = function () { filt.hidden = ! mk.checked; };
+		mk.addEventListener( 'change', syncMk );
+		syncMk();
+	}
+
 	/* « Other… » length of bar. */
 	var custom = root.querySelector( '.smcut-custom' );
 	function syncCustom() {

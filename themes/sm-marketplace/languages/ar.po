@@ -531,7 +531,7 @@ msgstr "AI"
 
 #: inc/template-tags.php:138 inc/template-tags.php:450
 #: inc/template-tags.php:510
-#: template-parts/components/cutting-optimizer.php:219
+#: template-parts/components/cutting-optimizer.php:286
 #: template-parts/components/product-tech.php:31
 #: template-parts/components/product-tech.php:568
 msgid "piece"
@@ -804,8 +804,10 @@ msgstr "حسب عرض السعر"
 msgid "From %s"
 msgstr "ابتداءً من %s"
 
-#: inc/template-tags.php:529 template-parts/dashboard/messages.php:14
-#: templates/styleguide.php:49
+#: inc/template-tags.php:529
+#: template-parts/components/cutting-optimizer.php:142
+#: template-parts/components/cutting-sources.php:14
+#: template-parts/dashboard/messages.php:14 templates/styleguide.php:49
 msgid "New"
 msgstr "جديد"
 
@@ -1011,7 +1013,7 @@ msgstr "الرتبة"
 #: template-parts/components/ai-result-document.php:25
 #: template-parts/components/cutting-optimizer.php:65
 #: template-parts/components/cutting-optimizer.php:108
-#: template-parts/components/cutting-optimizer.php:130
+#: template-parts/components/cutting-optimizer.php:164
 #: template-parts/components/listing-group.php:20
 #: template-parts/components/mission-request-form.php:214
 #: template-parts/components/product-lines.php:90
@@ -1082,7 +1084,7 @@ msgstr "لم تُحدَّد — اخترها في النموذج"
 #: template-parts/components/ai-result-listing.php:22
 #: template-parts/components/cutting-optimizer.php:52
 #: template-parts/components/cutting-optimizer.php:108
-#: template-parts/components/cutting-optimizer.php:130
+#: template-parts/components/cutting-optimizer.php:164
 #: template-parts/components/listing-inventory.php:56
 #: template-parts/components/listing-inventory.php:67
 #: template-parts/components/rfq-single.php:82
@@ -1664,7 +1666,7 @@ msgstr "المقطع…"
 
 #: template-parts/components/cutting-optimizer.php:58
 #: template-parts/components/cutting-optimizer.php:108
-#: template-parts/components/cutting-optimizer.php:130
+#: template-parts/components/cutting-optimizer.php:164
 #: template-parts/components/filter-panel.php:24
 #: template-parts/components/product-lines.php:79
 #: template-parts/components/weight-calculator.php:132
@@ -1726,7 +1728,7 @@ msgid "2. Pieces to cut"
 msgstr "2. القطع المراد قصها"
 
 #: template-parts/components/cutting-optimizer.php:108
-#: template-parts/components/cutting-optimizer.php:130
+#: template-parts/components/cutting-optimizer.php:164
 msgid "Qty"
 msgstr "العدد"
 
@@ -1736,7 +1738,7 @@ msgid "Number of pieces"
 msgstr "عدد القطع"
 
 #: template-parts/components/cutting-optimizer.php:118
-#: template-parts/components/cutting-optimizer.php:140
+#: template-parts/components/cutting-optimizer.php:174
 msgid "Add a line"
 msgstr "إضافة سطر"
 
@@ -1748,43 +1750,190 @@ msgstr "لصق قائمة (Excel)"
 msgid "Paste your list"
 msgstr "الصق قائمتك"
 
-#: template-parts/components/cutting-optimizer.php:127
-msgid "3. Offcuts already in stock (optional)"
-msgstr "3. بقايا موجودة في المخزون (اختياري)"
-
 #: template-parts/components/cutting-optimizer.php:128
+msgid "3. Where to look for the bars?"
+msgstr "3. أين نبحث عن القضبان؟"
+
+#: template-parts/components/cutting-optimizer.php:129
+msgid "My stock (new / reuse)"
+msgstr "مخزوني (جديد / إعادة استعمال)"
+
+#: template-parts/components/cutting-optimizer.php:129
+msgid "soon"
+msgstr "قريباً"
+
+#: template-parts/components/cutting-optimizer.php:129
+msgid "With the Warehouse of your account."
+msgstr "مع مخزن حسابك."
+
+#: template-parts/components/cutting-optimizer.php:130
+#: template-parts/components/cutting-sources.php:39
+msgid "ReuSteel marketplace"
+msgstr "سوق ReuSteel"
+
+#: template-parts/components/cutting-optimizer.php:130
+msgid ""
+"Published listings: the same profile, the same length or the closest longer "
+"one."
+msgstr "الإعلانات المنشورة: نفس المقطع، بنفس الطول أو الأقرب الأطول منه."
+
+#: template-parts/components/cutting-optimizer.php:133
+msgid "Minimum grade"
+msgstr "الدرجة الدنيا"
+
+#: template-parts/components/cutting-optimizer.php:135
+msgid "Any grade"
+msgstr "كل الدرجات"
+
+#: template-parts/components/cutting-optimizer.php:140
+msgid "Conditions accepted"
+msgstr "الحالات المقبولة"
+
+#: template-parts/components/cutting-optimizer.php:149
+#: template-parts/components/filter-panel.php:153
+#: template-parts/components/mission-request-form.php:410
+#: template-parts/components/product-form.php:193
+#: template-parts/dashboard/company.php:101
+#: template-parts/dashboard/engineer-missions.php:135
+#: template-parts/dashboard/engineer-missions.php:140
+#: template-parts/dashboard/engineer-partner.php:83
+#: template-parts/dashboard/portfolio.php:66
+#: template-parts/dashboard/publish.php:184 template-parts/directory.php:47
+#: templates/auth-register.php:76 templates/engineer-apply.php:169
+#: templates/front-page-template.php:49 templates/marketplace-engineers.php:93
+msgid "Wilaya"
+msgstr "الولاية"
+
+#: template-parts/components/cutting-optimizer.php:151
+#: template-parts/components/filter-panel.php:155
+#: template-parts/components/services-board.php:45
+#: template-parts/directory.php:49 templates/front-page-template.php:51
+#: templates/rfq-board.php:78
+msgid "All wilayas"
+msgstr "كل الولايات"
+
+#: template-parts/components/cutting-optimizer.php:155
+msgid "Also offer lots sold whole when they help"
+msgstr "اقتراح الحصص المباعة كاملة أيضاً إذا كانت مفيدة"
+
+#: template-parts/components/cutting-optimizer.php:157
+msgid "New bars for the rest"
+msgstr "قضبان جديدة للباقي"
+
+#: template-parts/components/cutting-optimizer.php:157
+msgid "Request for quotation pre-filled"
+msgstr "طلب عرض أسعار مُعبّأ"
+
+#: template-parts/components/cutting-optimizer.php:161
+msgid "4. Offcuts already at hand (optional)"
+msgstr "4. بقايا متوفرة لديك (اختياري)"
+
+#: template-parts/components/cutting-optimizer.php:162
 msgid "They are used first: you buy new bars only for what they cannot give."
 msgstr "تُستعمل أولاً: لا تشتري قضباناً جديدة إلا لما لا توفره."
 
-#: template-parts/components/cutting-optimizer.php:135
+#: template-parts/components/cutting-optimizer.php:169
 msgid "Number of offcuts"
 msgstr "عدد البقايا"
 
-#: template-parts/components/cutting-optimizer.php:143
+#: template-parts/components/cutting-optimizer.php:177
 msgid "Optimise the cutting"
 msgstr "تحسين القص"
 
-#: template-parts/components/cutting-optimizer.php:151
+#: template-parts/components/cutting-optimizer.php:185
 msgid ""
 "Give the pieces to cut and press « Optimise the cutting »: the plan appears "
 "here, bar by bar."
 msgstr "أدخل القطع واضغط « تحسين القص »: يظهر المخطط هنا قضيباً بقضيب."
 
-#: template-parts/components/cutting-optimizer.php:155
+#: template-parts/components/cutting-optimizer.php:189
 msgid ""
 "Some lines are incomplete or wrong: they are marked in the form and left out"
 " of the plan."
 msgstr ""
 "بعض الأسطر ناقصة أو خاطئة: هي مشار إليها في الاستمارة ومستبعدة من المخطط."
 
-#: template-parts/components/cutting-optimizer.php:164
+#: template-parts/components/cutting-optimizer.php:199
+msgid "On the marketplace"
+msgstr "في السوق"
+
+#. translators: %d: bars.
+#: template-parts/components/cutting-optimizer.php:199
+#: template-parts/components/cutting-optimizer.php:200
+msgid "%d bar"
+msgid_plural "%d bars"
+msgstr[0] "%d قضيب"
+msgstr[1] "قضيب واحد"
+msgstr[2] "قضيبان"
+msgstr[3] "%d قضبان"
+msgstr[4] "%d قضيبًا"
+msgstr[5] "%d قضيب"
+
+#. translators: %d: listings.
+#: template-parts/components/cutting-optimizer.php:199
+msgid "%d listing"
+msgid_plural "%d listings"
+msgstr[0] "%d إعلان"
+msgstr[1] "إعلان واحد"
+msgstr[2] "إعلانان"
+msgstr[3] "%d إعلانات"
+msgstr[4] "%d إعلانًا"
+msgstr[5] "%d إعلان"
+
+#. translators: %d: listings.
+#: template-parts/components/cutting-optimizer.php:200
+#: template-parts/components/cutting-optimizer.php:253
+msgid "To buy"
+msgstr "للشراء"
+
+#. translators: %d: bars.
+#: template-parts/components/cutting-optimizer.php:201
+msgid "Weight to acquire"
+msgstr "الوزن المطلوب اقتناؤه"
+
+#. translators: %s: weight of the pieces.
+#: template-parts/components/cutting-optimizer.php:201
+#: template-parts/components/cutting-optimizer.php:212
+msgid "pieces: %s kg"
+msgstr "القطع: %s kg"
+
+#. translators: %s: weight of the pieces.
+#: template-parts/components/cutting-optimizer.php:202
+#: template-parts/components/cutting-optimizer.php:213
+msgid "Offcuts"
+msgstr "البقايا"
+
+#. translators: %s: percent.
+#: template-parts/components/cutting-optimizer.php:202
+#: template-parts/components/cutting-optimizer.php:213
+msgid "%s %% of the bars used"
+msgstr "%s %% من القضبان المستعملة"
+
+#. translators: 1: date, 2: hour.
+#: template-parts/components/cutting-optimizer.php:204
+msgid ""
+"Picture of the marketplace on %1$s at %2$s: listings can change and nothing "
+"is reserved. Prices are those shown by the sellers."
+msgstr ""
+"صورة السوق بتاريخ %1$s على الساعة %2$s: قد تتغير الإعلانات ولا شيء محجوز. "
+"الأسعار هي التي يعرضها البائعون."
+
+#: template-parts/components/cutting-optimizer.php:208
+msgid ""
+"No listing of the marketplace fits these pieces with your filters: the plan "
+"uses new bars."
+msgstr ""
+"لا يوجد إعلان في السوق يناسب هذه القطع بالمرشحات المختارة: المخطط يستعمل "
+"قضباناً جديدة."
+
+#: template-parts/components/cutting-optimizer.php:211
 msgid "Bars to buy"
 msgstr "قضبان للشراء"
 
 #. translators: %d: offcuts used from the stock.
 #. translators: %d: offcuts from the stock.
-#: template-parts/components/cutting-optimizer.php:164
-#: template-parts/components/cutting-optimizer.php:182
+#: template-parts/components/cutting-optimizer.php:211
+#: template-parts/components/cutting-optimizer.php:240
 msgid "+ %d offcut from the stock"
 msgid_plural "+ %d offcuts from the stock"
 msgstr[0] "+ %d بقية من المخزون"
@@ -1795,32 +1944,39 @@ msgstr[4] "+ %d بقية من المخزون"
 msgstr[5] "+ %d بقية من المخزون"
 
 #. translators: %d: offcuts used from the stock.
-#: template-parts/components/cutting-optimizer.php:165
+#: template-parts/components/cutting-optimizer.php:212
 msgid "Weight bought"
 msgstr "الوزن المشترى"
 
-#. translators: %s: weight of the pieces.
-#: template-parts/components/cutting-optimizer.php:165
-msgid "pieces: %s kg"
-msgstr "القطع: %s kg"
-
-#. translators: %s: weight of the pieces.
-#: template-parts/components/cutting-optimizer.php:166
-msgid "Offcuts"
-msgstr "البقايا"
-
-#. translators: %s: percent.
-#: template-parts/components/cutting-optimizer.php:166
-msgid "%s %% of the bars used"
-msgstr "%s %% من القضبان المستعملة"
-
 #. translators: %s: length in m.
-#: template-parts/components/cutting-optimizer.php:167
+#: template-parts/components/cutting-optimizer.php:214
 msgid "Reusable offcuts (≥ %s m)"
 msgstr "بقايا قابلة لإعادة الاستعمال (≥ %s m)"
 
+#. translators: %d: bars.
+#: template-parts/components/cutting-optimizer.php:235
+msgid "%d bar from the marketplace"
+msgid_plural "%d bars from the marketplace"
+msgstr[0] "%d قضيب من السوق"
+msgstr[1] "قضيب واحد من السوق"
+msgstr[2] "قضيبان من السوق"
+msgstr[3] "%d قضبان من السوق"
+msgstr[4] "%d قضيبًا من السوق"
+msgstr[5] "%d قضيب من السوق"
+
+#. translators: %d: bars.
+#: template-parts/components/cutting-optimizer.php:235
+msgid "%d to buy"
+msgid_plural "%d to buy"
+msgstr[0] "%d للشراء"
+msgstr[1] "واحد للشراء"
+msgstr[2] "اثنان للشراء"
+msgstr[3] "%d للشراء"
+msgstr[4] "%d للشراء"
+msgstr[5] "%d للشراء"
+
 #. translators: 1: profile, 2: number of bars, 3: bar length.
-#: template-parts/components/cutting-optimizer.php:178
+#: template-parts/components/cutting-optimizer.php:236
 msgid "%1$s — %2$d bar of %3$s m"
 msgid_plural "%1$s — %2$d bars of %3$s m"
 msgstr[0] "%1$s — %2$d قضيب %3$s m"
@@ -1831,51 +1987,60 @@ msgstr[4] "%1$s — %2$d قضيبًا %3$s m"
 msgstr[5] "%1$s — %2$d قضيب %3$s m"
 
 #. translators: 1: kg/m, 2: pieces, 3: saw cuts.
-#: template-parts/components/cutting-optimizer.php:183
+#: template-parts/components/cutting-optimizer.php:241
 msgid "%1$s kg/m · %2$d pieces · %3$d saw cuts"
 msgstr "%1$s kg/m · %2$d قطعة · %3$d قصة"
 
 #. translators: %s: length.
-#: template-parts/components/cutting-optimizer.php:188
+#: template-parts/components/cutting-optimizer.php:249
+msgid "bar of %s m"
+msgstr "قضيب %s m"
+
+#. translators: %s: length.
+#: template-parts/components/cutting-optimizer.php:249
+msgid "Marketplace"
+msgstr "السوق"
+
+#. translators: %s: length.
+#: template-parts/components/cutting-optimizer.php:251
 msgid "offcut from the stock, %s m"
 msgstr "بقية من المخزون، %s m"
 
-#. translators: %s: length.
-#: template-parts/components/cutting-optimizer.php:188
+#: template-parts/components/cutting-optimizer.php:253
 msgid "new bar"
 msgstr "قضيب جديد"
 
 #. translators: %s: length.
-#: template-parts/components/cutting-optimizer.php:191
+#: template-parts/components/cutting-optimizer.php:258
 msgid "offcut %s m"
 msgstr "بقية %s m"
 
 #. translators: %s: length.
-#: template-parts/components/cutting-optimizer.php:191
+#: template-parts/components/cutting-optimizer.php:258
 msgid "%s m reusable"
 msgstr "%s m قابلة لإعادة الاستعمال"
 
-#: template-parts/components/cutting-optimizer.php:193
+#: template-parts/components/cutting-optimizer.php:260
 msgid "no offcut"
 msgstr "لا بقايا"
 
 #. translators: 1: metres, 2: kg.
-#: template-parts/components/cutting-optimizer.php:208
+#: template-parts/components/cutting-optimizer.php:275
 msgid "Bought: %1$s m · %2$s kg"
 msgstr "المشترى: %1$s m · %2$s kg"
 
 #. translators: 1: metres, 2: kg.
-#: template-parts/components/cutting-optimizer.php:209
+#: template-parts/components/cutting-optimizer.php:276
 msgid "Pieces: %1$s m · %2$s kg"
 msgstr "القطع: %1$s m · %2$s kg"
 
 #. translators: 1: metres, 2: kg, 3: percent.
-#: template-parts/components/cutting-optimizer.php:210
+#: template-parts/components/cutting-optimizer.php:277
 msgid "Offcuts: %1$s m · %2$s kg · %3$s %%"
 msgstr "البقايا: %1$s m · %2$s kg · %3$s %%"
 
 #. translators: %d: offcuts not used.
-#: template-parts/components/cutting-optimizer.php:211
+#: template-parts/components/cutting-optimizer.php:278
 msgid "%d offcut of the stock not needed"
 msgid_plural "%d offcuts of the stock not needed"
 msgstr[0] "%d بقية من المخزون غير مستعملة"
@@ -1885,22 +2050,22 @@ msgstr[3] "%d بقايا من المخزون غير مستعملة"
 msgstr[4] "%d بقية من المخزون غير مستعملة"
 msgstr[5] "%d بقية من المخزون غير مستعملة"
 
-#: template-parts/components/cutting-optimizer.php:214
+#: template-parts/components/cutting-optimizer.php:281
 msgid ""
 "Long list: this is the best plan found in the time given; a better one may "
 "exist."
 msgstr "قائمة طويلة: هذا أفضل مخطط وُجد في الوقت المتاح؛ قد يوجد أفضل."
 
-#: template-parts/components/cutting-optimizer.php:219
+#: template-parts/components/cutting-optimizer.php:286
 msgid "offcut (saw cuts included)"
 msgstr "بقية (مع سمك القص)"
 
-#: template-parts/components/cutting-optimizer.php:219
+#: template-parts/components/cutting-optimizer.php:286
 msgid "reusable offcut"
 msgstr "بقية قابلة لإعادة الاستعمال"
 
 #. translators: %d: number of bars.
-#: template-parts/components/cutting-optimizer.php:224
+#: template-parts/components/cutting-optimizer.php:291
 msgid "Create a request for quotation (%d bar)"
 msgid_plural "Create a request for quotation (%d bars)"
 msgstr[0] "إنشاء طلب عرض أسعار (%d قضيب)"
@@ -1910,18 +2075,70 @@ msgstr[3] "إنشاء طلب عرض أسعار (%d قضبان)"
 msgstr[4] "إنشاء طلب عرض أسعار (%d قضيبًا)"
 msgstr[5] "إنشاء طلب عرض أسعار (%d قضيب)"
 
-#: template-parts/components/cutting-optimizer.php:226
+#: template-parts/components/cutting-optimizer.php:293
 msgid "Download the PDF"
 msgstr "تحميل PDF"
 
-#: template-parts/components/cutting-optimizer.php:227
+#: template-parts/components/cutting-optimizer.php:294
 msgid "Print"
 msgstr "طباعة"
 
-#: template-parts/components/cutting-optimizer.php:228
+#: template-parts/components/cutting-optimizer.php:295
 #: templates/company-profile.php:256
 msgid "Copy the link"
 msgstr "نسخ الرابط"
+
+#. translators: %s: title of the listing.
+#: template-parts/components/cutting-sources.php:47
+msgid "Listing « %s »"
+msgstr "إعلان « %s »"
+
+#. translators: %s: title of the listing.
+#: template-parts/components/cutting-sources.php:48
+msgid "(verified)"
+msgstr "(موثّق)"
+
+#: template-parts/components/cutting-sources.php:55
+msgid "whole lot"
+msgstr "الحصة كاملة"
+
+#. translators: %d: bars of the lot not needed.
+#: template-parts/components/cutting-sources.php:58
+msgid "Sold as a whole lot only: you also get %d bar you do not need."
+msgid_plural "Sold as a whole lot only: you also get %d bars you do not need."
+msgstr[0] "يُباع كحصة كاملة فقط: تحصل أيضاً على %d قضيب لا تحتاجه."
+msgstr[1] "يُباع كحصة كاملة فقط: تحصل أيضاً على قضيب واحد لا تحتاجه."
+msgstr[2] "يُباع كحصة كاملة فقط: تحصل أيضاً على قضيبين لا تحتاجهما."
+msgstr[3] "يُباع كحصة كاملة فقط: تحصل أيضاً على %d قضبان لا تحتاجها."
+msgstr[4] "يُباع كحصة كاملة فقط: تحصل أيضاً على %d قضيبًا لا تحتاجها."
+msgstr[5] "يُباع كحصة كاملة فقط: تحصل أيضاً على %d قضيب لا تحتاجه."
+
+#. translators: %d: bars of the lot not needed.
+#: template-parts/components/cutting-sources.php:58
+msgid "Sold as a whole lot only."
+msgstr "يُباع كحصة كاملة فقط."
+
+#: template-parts/components/cutting-sources.php:62
+msgid "Buy / Make an offer"
+msgstr "شراء / تقديم عرض"
+
+#: template-parts/components/cutting-sources.php:63
+#: template-parts/components/mission-request-form.php:117
+msgid "See the listing"
+msgstr "عرض الإعلان"
+
+#: template-parts/components/cutting-sources.php:71
+msgid "To buy (new bars)"
+msgstr "للشراء (قضبان جديدة)"
+
+#. translators: %s: pieces, e.g. "12 × 3,95 m".
+#: template-parts/components/cutting-sources.php:76
+msgid "To cut %s"
+msgstr "لقص %s"
+
+#: template-parts/components/cutting-sources.php:80
+msgid "Make a request for quotation"
+msgstr "تقديم طلب عرض أسعار"
 
 #: template-parts/components/deal-list.php:21
 #: template-parts/components/filter-panel.php:121
@@ -2205,27 +2422,6 @@ msgstr "كلمة مفتاحية"
 #: template-parts/components/filter-panel.php:83
 msgid "hangar, poultry house…"
 msgstr "هنجر، مدجنة…"
-
-#: template-parts/components/filter-panel.php:153
-#: template-parts/components/mission-request-form.php:410
-#: template-parts/components/product-form.php:193
-#: template-parts/dashboard/company.php:101
-#: template-parts/dashboard/engineer-missions.php:135
-#: template-parts/dashboard/engineer-missions.php:140
-#: template-parts/dashboard/engineer-partner.php:83
-#: template-parts/dashboard/portfolio.php:66
-#: template-parts/dashboard/publish.php:184 template-parts/directory.php:47
-#: templates/auth-register.php:76 templates/engineer-apply.php:169
-#: templates/front-page-template.php:49 templates/marketplace-engineers.php:93
-msgid "Wilaya"
-msgstr "الولاية"
-
-#: template-parts/components/filter-panel.php:155
-#: template-parts/components/services-board.php:45
-#: template-parts/directory.php:49 templates/front-page-template.php:51
-#: templates/rfq-board.php:78
-msgid "All wilayas"
-msgstr "كل الولايات"
 
 #: template-parts/components/filter-panel.php:164
 msgid "Min. DA/kg"
@@ -2989,10 +3185,6 @@ msgstr "المشروع وأبعاده مأخوذة من الدراسة المس�
 #: template-parts/components/mission-request-form.php:114
 msgid "Building concerned by the inspection"
 msgstr "المبنى المعني بالمعاينة"
-
-#: template-parts/components/mission-request-form.php:117
-msgid "See the listing"
-msgstr "عرض الإعلان"
 
 #: template-parts/components/mission-request-form.php:120
 msgid ""

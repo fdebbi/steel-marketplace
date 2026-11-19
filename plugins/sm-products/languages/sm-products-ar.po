@@ -978,108 +978,108 @@ msgid ""
 "still available."
 msgstr "لم يعد «%s» معروضا. أعد نشره من «إعلاناتي» إن كان لا يزال متوفرا."
 
-#: src/Presenter.php:155
+#: src/Presenter.php:157
 msgid "Product type"
 msgstr "نوع المنتج"
 
-#: src/Presenter.php:157 src/Presenter.php:208
+#: src/Presenter.php:159 src/Presenter.php:210
 msgid "Designation"
 msgstr "التسمية"
 
-#: src/Presenter.php:158 src/Presenter.php:209
+#: src/Presenter.php:160 src/Presenter.php:211
 msgid "Steel grade"
 msgstr "درجة الفولاذ"
 
-#: src/Presenter.php:158 src/Presenter.php:209
+#: src/Presenter.php:160 src/Presenter.php:211
 msgid "Not specified"
 msgstr "غير محددة"
 
-#: src/Presenter.php:160
+#: src/Presenter.php:162
 msgid "Standard"
 msgstr "المعيار"
 
 #. translators: 1: hole diameter, 2: pitch, in mm.
-#: src/Presenter.php:175
+#: src/Presenter.php:177
 msgid "holes Ø%1$s, pitch %2$s"
 msgstr "ثقوب Ø%1$s، المسافة %2$s"
 
-#: src/Presenter.php:178
+#: src/Presenter.php:180
 msgid "Dimensions"
 msgstr "الأبعاد"
 
-#: src/Presenter.php:186
+#: src/Presenter.php:188
 msgid "Sizes × number"
 msgstr "المقاسات × العدد"
 
-#: src/Presenter.php:186
+#: src/Presenter.php:188
 msgid "Lengths × number"
 msgstr "الأطوال × العدد"
 
-#: src/Presenter.php:188
+#: src/Presenter.php:190
 msgid "Plate size"
 msgstr "مقاس الصفيحة"
 
-#: src/Presenter.php:190
+#: src/Presenter.php:192
 msgid "Weight of one sheet"
 msgstr "وزن الصفيحة الواحدة"
 
-#: src/Presenter.php:193
+#: src/Presenter.php:195
 msgid "Bar length"
 msgstr "طول القضبان"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:196
+#: src/Presenter.php:198
 msgid "%s plates"
 msgstr "%s صفائح"
 
 #. translators: %s: number of plates.
-#: src/Presenter.php:196
+#: src/Presenter.php:198
 msgid "%s bars"
 msgstr "%s قضبان"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:199 src/Presenter.php:211
+#: src/Presenter.php:201 src/Presenter.php:213
 msgid "Quantity"
 msgstr "الكمية"
 
-#: src/Presenter.php:202 src/Presenter.php:205
+#: src/Presenter.php:204 src/Presenter.php:207
 msgid "Weight per metre"
 msgstr "الوزن لكل متر"
 
 #. translators: %s: number of pieces.
-#: src/Presenter.php:211
+#: src/Presenter.php:213
 msgid "%s pieces in the lot"
 msgstr "%s قطعة في الدفعة"
 
-#: src/Presenter.php:214
+#: src/Presenter.php:216
 msgid "Weight of the lot"
 msgstr "وزن الدفعة"
 
-#: src/Presenter.php:236
+#: src/Presenter.php:238
 msgid "Available quantity"
 msgstr "الكمية المتوفرة"
 
-#: src/Presenter.php:242
+#: src/Presenter.php:244
 msgid "Condition"
 msgstr "الحالة"
 
-#: src/Presenter.php:250
+#: src/Presenter.php:252
 msgid "Yes"
 msgstr "نعم"
 
-#: src/Presenter.php:250
+#: src/Presenter.php:252
 msgid "No"
 msgstr "لا"
 
-#: src/Presenter.php:291
+#: src/Presenter.php:293
 msgid "m (linear)"
 msgstr "م.ط"
 
-#: src/Presenter.php:292
+#: src/Presenter.php:294
 msgid "pieces"
 msgstr "قطع"
 
-#: src/Presenter.php:293
+#: src/Presenter.php:295
 msgid "lot"
 msgstr "دفعة"
 

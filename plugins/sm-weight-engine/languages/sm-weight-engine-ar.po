@@ -397,25 +397,25 @@ msgstr ""
 msgid "This designation already exists in the family."
 msgstr "هذه التسمية موجودة مسبقا في العائلة."
 
-#: src/Cutting.php:80
+#: src/Cutting.php:92
 msgid "Choose the profile and its size."
 msgstr "اختر المقطع ومقاسه."
 
-#: src/Cutting.php:84
+#: src/Cutting.php:96
 msgid "Give the length and the number of pieces."
 msgstr "أدخل الطول وعدد القطع."
 
-#: src/Cutting.php:92
+#: src/Cutting.php:104
 msgid "Give the profile, the length and the number of offcuts."
 msgstr "أدخل المقطع والطول وعدد البقايا."
 
 #. translators: 1: piece length in m, 2: profile, 3: bar length in m.
-#: src/Cutting.php:143
+#: src/Cutting.php:163
 msgid "A piece of %1$s m of %2$s is longer than the bars (%3$s m)."
 msgstr "قطعة بطول %1$s m من %2$s أطول من القضبان (%3$s m)."
 
 #. translators: 1: profile, 2: maximum number of pieces.
-#: src/Cutting.php:151
+#: src/Cutting.php:171
 msgid "%1$s: %2$d pieces at most per profile."
 msgstr "%1$s: %2$d قطعة كحد أقصى لكل مقطع."
 
@@ -453,8 +453,16 @@ msgid ""
 msgstr ""
 "قضبان للشراء: %1$d · الوزن المشترى: %2$s kg · البقايا: %3$s kg (%4$s %%)"
 
+#. translators: 1: bars, 2: listings, 3: weight.
+#: src/CuttingActions.php:93
+msgid ""
+"From the ReuSteel marketplace: %1$d bars in %2$d listings (%3$s kg) - "
+"picture of the marketplace at the time of the calculation, nothing is "
+"reserved."
+msgstr "من سوق ReuSteel: %1$d قضيب في %2$d إعلان (%3$s kg)."
+
 #. translators: 1: profile, 2: number of new bars, 3: bar length (m).
-#: src/CuttingActions.php:99
+#: src/CuttingActions.php:104
 msgid "%1$s - %2$d bar of %3$s m"
 msgid_plural "%1$s - %2$d bars of %3$s m"
 msgstr[0] "%1$s - %2$d قضيب %3$s m"
@@ -464,8 +472,19 @@ msgstr[3] "%1$s - %2$d قضبان %3$s m"
 msgstr[4] "%1$s - %2$d قضيبًا %3$s m"
 msgstr[5] "%1$s - %2$d قضيب %3$s m"
 
+#. translators: %d: bars from the marketplace.
+#: src/CuttingActions.php:107
+msgid "%d bar from the marketplace"
+msgid_plural "%d bars from the marketplace"
+msgstr[0] "%d قضيب من السوق"
+msgstr[1] "قضيب واحد من السوق"
+msgstr[2] "قضيبان من السوق"
+msgstr[3] "%d قضبان من السوق"
+msgstr[4] "%d قضيبًا من السوق"
+msgstr[5] "%d قضيب من السوق"
+
 #. translators: %d: offcuts from the stock.
-#: src/CuttingActions.php:102
+#: src/CuttingActions.php:111
 msgid "%d offcut from the stock"
 msgid_plural "%d offcuts from the stock"
 msgstr[0] "%d بقية من المخزون"
@@ -476,19 +495,24 @@ msgstr[4] "%d بقية من المخزون"
 msgstr[5] "%d بقية من المخزون"
 
 #. translators: 1: kg per metre, 2: offcuts (kg), 3: percent.
-#: src/CuttingActions.php:106
+#: src/CuttingActions.php:115
 msgid "%1$s kg/m · offcuts %2$s kg (%3$s %%)"
 msgstr "%1$s kg/m · بقايا %2$s kg (%3$s %%)"
 
-#: src/CuttingActions.php:116
+#. translators: %s: length of the bar.
+#: src/CuttingActions.php:131
+msgid "marketplace %s m"
+msgstr "السوق %s m"
+
+#: src/CuttingActions.php:133
 msgid "stock offcut"
 msgstr "بقية من المخزون"
 
-#: src/CuttingActions.php:116
+#: src/CuttingActions.php:133
 msgid "new bar"
 msgstr "قضيب جديد"
 
-#: src/CuttingActions.php:145
+#: src/CuttingActions.php:163
 msgid ""
 "* reusable offcut. Lengths in metres. Weights from the catalogue of the "
 "platform (theoretical weights)."
@@ -496,34 +520,34 @@ msgstr ""
 "* بقية قابلة لإعادة الاستعمال. الأطوال بالمتر. الأوزان من كتالوج المنصة "
 "(أوزان نظرية)."
 
-#: src/CuttingActions.php:147
+#: src/CuttingActions.php:165
 msgid ""
 "Long list: this is the best plan found in the time given, not proven to be "
 "the best possible."
 msgstr ""
 "قائمة طويلة: هذا أفضل مخطط وُجد في الوقت المتاح، دون إثبات أنه الأفضل."
 
-#: src/CuttingActions.php:165
+#: src/CuttingActions.php:183
 msgid "Your account cannot create requests for quotation."
 msgstr "لا يمكن لحسابك إنشاء طلبات عروض أسعار."
 
-#: src/CuttingActions.php:169
+#: src/CuttingActions.php:187
 msgid "Nothing to order: give the pieces to cut first."
 msgstr "لا شيء للطلب: أدخل القطع المراد قصها أولاً."
 
-#: src/CuttingActions.php:187
+#: src/CuttingActions.php:205
 msgid "The offcuts in stock are enough: there is no bar to buy."
 msgstr "البقايا في المخزون كافية: لا قضبان للشراء."
 
-#: src/CuttingActions.php:191
+#: src/CuttingActions.php:209
 msgid "Bars according to a cutting plan"
 msgstr "قضبان حسب مخطط قص"
 
-#: src/CuttingActions.php:193
+#: src/CuttingActions.php:211
 msgid "Pieces to cut (cutting optimiser):"
 msgstr "القطع المراد قصها (محسّن القص):"
 
-#: src/CuttingActions.php:195
+#: src/CuttingActions.php:213
 msgid ""
 "Request pre-filled with the bars of your cutting plan: check it before "
 "publishing."

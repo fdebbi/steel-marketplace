@@ -452,3 +452,11 @@ Validé sur la maquette 0.37.
 - Valeurs par défaut validées : barres de 12 m (6 m ou autre au choix), trait de scie 3 mm, chute réutilisable dès 1 m.
 - Le plan s'imprime, se télécharge en PDF et peut devenir une demande de devis (barres à acheter). Le DQE IA alimentera la liste des pièces (étape 2, suite).
 
+## Optimiseur : marché, puis stock (2026-11-19)
+
+- Ordre de recherche validé : stock de l'entreprise (étape D, avec le Magasin), puis marché ReuSteel, puis barres neuves (demande de devis). Pour chaque pièce : le même profilé, puis la longueur égale ou la plus proche au-dessus ; à égalité, l'annonce qui laisse le moins de chutes puis la moins chère au kg.
+- Filtres du marché : nuance minimale, états acceptés (par défaut neuf, surplus neuf, excellent, bon ; « à inspecter » à cocher ; ferraille jamais), wilaya, lots entiers seulement si utiles (le reste du lot est signalé).
+- Le résultat est une photo du marché : rien n'est réservé ; prix = prix affiché par le vendeur ; nom du vendeur public, jamais ses coordonnées.
+- PDF : pied de page « Plan de coupe établi avec l'Optimiseur de découpe ReuSteel - reusteel.com/optimiseur-decoupe ».
+- Magasin (stock) validé pour plus tard (étape C) : une fiche unique article de stock / annonce, « Publier sur le marché » oui ou non, deux magasins (neuf, réemploi), baisse automatique du stock après une vente acceptée (corrigeable).
+

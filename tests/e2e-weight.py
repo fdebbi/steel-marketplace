@@ -121,6 +121,9 @@ with sync_playwright() as p:
     c.click('[data-smcut-pasteok]'); c.wait_for_timeout(300)
     filled = [rows.nth(i).locator('[data-smcut-section]').input_value() for i in range(4)]
     check(filled == [ipe, ipe, ipe, upn], 'list pasted from Excel: 4 lines filled, the unknown one left out')
+    check(c.locator('[data-smcut-market]').is_checked() and c.locator('[data-smcut-filters]').is_visible(), 'marketplace ticked by default, its filters shown')
+    c.uncheck('[data-smcut-market]')
+    check(not c.locator('[data-smcut-filters]').is_visible(), 'marketplace not ticked: filters hidden')
     c.click('.smcut-go'); c.wait_for_load_state()
     tot = c.inner_text('.smcut-totals')
     check(tot.startswith('Barres à acheter\n6') and '7,9 %' in tot, 'plan: 6 bars to buy, 7,9 %% of offcuts (%s)' % tot.split('\n')[1])
@@ -132,13 +135,23 @@ with sync_playwright() as p:
     path = dl.value.path()
     check(open(path, 'rb').read(8) == b'%PDF-1.4', 'PDF of the cutting plan downloaded')
     # Offcuts in stock.
-    c.goto(BASE + '/optimiseur-decoupe/?lang=fr&rows[0][section]=%s&rows[0][length]=2,40&rows[0][qty]=8&stock[0][section]=%s&stock[0][length]=4,90&stock[0][qty]=2' % (upn, upn))
+    c.goto(BASE + '/optimiseur-decoupe/?lang=fr&src=1&rows[0][section]=%s&rows[0][length]=2,40&rows[0][qty]=8&stock[0][section]=%s&stock[0][length]=4,90&stock[0][qty]=2' % (upn, upn))
     check('1' == c.inner_text('.smcut-k b').strip() and c.locator('.smcut-stock[open]').count() == 1, 'offcuts in stock used first: 1 new bar only')
+    # Marketplace (0.47.0): published IPE 200 bars of the test site.
+    c.goto(BASE + '/optimiseur-decoupe/?lang=fr&rows[0][section]=%s&rows[0][length]=2,40&rows[0][qty]=4&rows[1][section]=%s&rows[1][length]=5,10&rows[1][qty]=2' % (ipe, ipe))
+    check(c.locator('.smcut-src.is-mk .smcut-item').count() >= 1 and c.locator('.smcut-k.is-mk').count() == 1, 'marketplace: listings found for the pieces, shown first')
+    item = c.inner_text('.smcut-src.is-mk .smcut-item') if c.locator('.smcut-src.is-mk .smcut-item').count() else ''
+    check('Annonce «' in item and 'DA' in item and c.locator('.smcut-src.is-mk a[href*="/annonce/"]').count() >= 1, 'each listing: title, price shown, estimated cost, link to buy or make an offer')
+    check(c.locator('.smcut-snap').count() >= 1 and 'rien n’est réservé' in c.inner_text('.smcut-snap'), 'picture of the marketplace: nothing is reserved')
+    check(c.locator('.smcut-lbl.is-mk').count() >= 1, 'plan: the bars of the marketplace are labelled')
+    with c.expect_download() as dl2:
+        c.click('a[href*="sm_weight_cut_pdf"]')
+    check(open(dl2.value.path(), 'rb').read(8) == b'%PDF-1.4', 'PDF with the bars of the marketplace')
     # Request for quotation pre-filled (business account).
     com = wp('echo get_users(array("search"=>"e2e-com*","search_columns"=>array("user_email"),"orderby"=>"ID","order"=>"DESC"))[0]->user_email;')
     c.goto(BASE + '/connexion/?lang=fr'); c.fill('#l-user', com); c.fill('#l-pass', 'Acier-2026-test!')
     c.click('form:has(#l-user) button[type="submit"]'); c.wait_for_load_state()
-    c.goto(BASE + '/optimiseur-decoupe/?lang=fr&rows[0][section]=%s&rows[0][length]=5,10&rows[0][qty]=4' % ipe)
+    c.goto(BASE + '/optimiseur-decoupe/?lang=fr&src=1&rows[0][section]=%s&rows[0][length]=5,10&rows[0][qty]=4' % ipe)
     c.click('a[href*="sm_weight_cut_rfq"]'); c.wait_for_load_state()
     secs = c.locator('select[name^="lines["][name$="[section]"]')
     vals = [secs.nth(i).input_value() for i in range(secs.count())]

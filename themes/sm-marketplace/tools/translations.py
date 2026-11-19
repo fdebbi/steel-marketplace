@@ -2539,3 +2539,42 @@ P.update({
 ('%d offcut of the stock not needed', '%d offcuts of the stock not needed'): (['%d chute du stock non utilisée', '%d chutes du stock non utilisées'], ['%d بقية من المخزون غير مستعملة', 'بقية واحدة من المخزون غير مستعملة', 'بقيتان من المخزون غير مستعملتين', '%d بقايا من المخزون غير مستعملة', '%d بقية من المخزون غير مستعملة', '%d بقية من المخزون غير مستعملة']),
 ('Create a request for quotation (%d bar)', 'Create a request for quotation (%d bars)'): (['Créer une demande de devis (%d barre)', 'Créer une demande de devis (%d barres)'], ['إنشاء طلب عرض أسعار (%d قضيب)', 'إنشاء طلب عرض أسعار (قضيب واحد)', 'إنشاء طلب عرض أسعار (قضيبان)', 'إنشاء طلب عرض أسعار (%d قضبان)', 'إنشاء طلب عرض أسعار (%d قضيبًا)', 'إنشاء طلب عرض أسعار (%d قضيب)']),
 })
+
+# 0.47.0: optimiser with the marketplace.
+T.update({
+'3. Where to look for the bars?': ('3. Où chercher les barres ?', '3. أين نبحث عن القضبان؟'),
+'My stock (new / reuse)': ('Mon stock (neuf / réemploi)', 'مخزوني (جديد / إعادة استعمال)'),
+'soon': ('bientôt', 'قريباً'),
+'With the Warehouse of your account.': ('Avec le Magasin de votre compte.', 'مع مخزن حسابك.'),
+'ReuSteel marketplace': ('Marché ReuSteel', 'سوق ReuSteel'),
+'Published listings: the same profile, the same length or the closest longer one.': ('Annonces publiées : le même profilé, de longueur égale ou la plus proche au-dessus.', 'الإعلانات المنشورة: نفس المقطع، بنفس الطول أو الأقرب الأطول منه.'),
+'Minimum grade': ('Nuance minimale', 'الدرجة الدنيا'),
+'Any grade': ('Toutes nuances', 'كل الدرجات'),
+'Conditions accepted': ('États acceptés', 'الحالات المقبولة'),
+'Also offer lots sold whole when they help': ('Proposer aussi les lots vendus en entier s’ils servent', 'اقتراح الحصص المباعة كاملة أيضاً إذا كانت مفيدة'),
+'New bars for the rest': ('Barres neuves pour le reste', 'قضبان جديدة للباقي'),
+'Request for quotation pre-filled': ('Demande de devis pré-remplie', 'طلب عرض أسعار مُعبّأ'),
+'4. Offcuts already at hand (optional)': ('4. Chutes déjà à disposition (facultatif)', '4. بقايا متوفرة لديك (اختياري)'),
+'On the marketplace': ('Sur le marché', 'في السوق'),
+'To buy': ('À acheter', 'للشراء'),
+'Weight to acquire': ('Poids à acquérir', 'الوزن المطلوب اقتناؤه'),
+'Picture of the marketplace on %1$s at %2$s: listings can change and nothing is reserved. Prices are those shown by the sellers.': ('Photo du marché au %1$s à %2$s : les annonces peuvent changer, rien n’est réservé. Les prix sont ceux affichés par les vendeurs.', 'صورة السوق بتاريخ %1$s على الساعة %2$s: قد تتغير الإعلانات ولا شيء محجوز. الأسعار هي التي يعرضها البائعون.'),
+'No listing of the marketplace fits these pieces with your filters: the plan uses new bars.': ('Aucune annonce du marché ne convient à ces pièces avec vos filtres : le plan utilise des barres neuves.', 'لا يوجد إعلان في السوق يناسب هذه القطع بالمرشحات المختارة: المخطط يستعمل قضباناً جديدة.'),
+'bar of %s m': ('barre de %s m', 'قضيب %s m'),
+'Marketplace': ('Marché', 'السوق'),
+'Listing « %s »': ('Annonce « %s »', 'إعلان « %s »'),
+'(verified)': ('(vérifié)', '(موثّق)'),
+'whole lot': ('lot entier', 'الحصة كاملة'),
+'Sold as a whole lot only.': ('Vendu en lot entier uniquement.', 'يُباع كحصة كاملة فقط.'),
+'Buy / Make an offer': ('Acheter / Faire une offre', 'شراء / تقديم عرض'),
+'To buy (new bars)': ('À acheter (barres neuves)', 'للشراء (قضبان جديدة)'),
+'To cut %s': ('Pour couper %s', 'لقص %s'),
+'Make a request for quotation': ('Faire une demande de devis', 'تقديم طلب عرض أسعار'),
+})
+P.update({
+('%d bar', '%d bars'): (['%d barre', '%d barres'], ['%d قضيب', 'قضيب واحد', 'قضيبان', '%d قضبان', '%d قضيبًا', '%d قضيب']),
+('%d listing', '%d listings'): (['%d annonce', '%d annonces'], ['%d إعلان', 'إعلان واحد', 'إعلانان', '%d إعلانات', '%d إعلانًا', '%d إعلان']),
+('%d bar from the marketplace', '%d bars from the marketplace'): (['%d barre du marché', '%d barres du marché'], ['%d قضيب من السوق', 'قضيب واحد من السوق', 'قضيبان من السوق', '%d قضبان من السوق', '%d قضيبًا من السوق', '%d قضيب من السوق']),
+('%d to buy', '%d to buy'): (['%d à acheter', '%d à acheter'], ['%d للشراء', 'واحد للشراء', 'اثنان للشراء', '%d للشراء', '%d للشراء', '%d للشراء']),
+('Sold as a whole lot only: you also get %d bar you do not need.', 'Sold as a whole lot only: you also get %d bars you do not need.'): (['Vendu en lot entier uniquement : vous recevez aussi %d barre inutile.', 'Vendu en lot entier uniquement : vous recevez aussi %d barres inutiles.'], ['يُباع كحصة كاملة فقط: تحصل أيضاً على %d قضيب لا تحتاجه.', 'يُباع كحصة كاملة فقط: تحصل أيضاً على قضيب واحد لا تحتاجه.', 'يُباع كحصة كاملة فقط: تحصل أيضاً على قضيبين لا تحتاجهما.', 'يُباع كحصة كاملة فقط: تحصل أيضاً على %d قضبان لا تحتاجها.', 'يُباع كحصة كاملة فقط: تحصل أيضاً على %d قضيبًا لا تحتاجها.', 'يُباع كحصة كاملة فقط: تحصل أيضاً على %d قضيب لا تحتاجه.']),
+})

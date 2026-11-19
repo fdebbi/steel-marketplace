@@ -72,6 +72,48 @@
 .smcut-legend i { display: inline-block; inline-size: 12px; block-size: 12px; border-radius: 3px; vertical-align: -2px; margin-inline-end: 4px; }
 .smcut-actions { display: flex; flex-wrap: wrap; gap: var(--sm-s2); }
 
+/* Where to look for the bars (0.47.0) */
+.smcut-where { border: 0; padding: 0; margin: var(--sm-s2) 0 0; display: grid; gap: var(--sm-s2); }
+.smcut-where > legend { margin-block-end: var(--sm-s2); }
+.smcut-chk { display: flex; gap: var(--sm-s2); align-items: flex-start; font-size: var(--sm-fs-sm); margin: 0; cursor: pointer; }
+.smcut-chk input { margin-block-start: 3px; inline-size: 18px; block-size: 18px; accent-color: var(--sm-accent); flex: none; }
+.smcut-chk small { display: block; color: var(--sm-muted); font-size: var(--sm-fs-xs); }
+.smcut-chk.is-off { cursor: default; color: var(--sm-muted); }
+.smcut-chk.is-fixed { cursor: default; }
+.smcut-chk.is-fixed > .sm-icon { inline-size: 18px; block-size: 18px; color: var(--sm-accent-ink); flex: none; margin-block-start: 2px; }
+.smcut-soon { font: 700 10.5px/1.6 var(--sm-font, Inter, sans-serif); font-style: normal; background: color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 14%, var(--sm-surface)); color: var(--sm-ai-ink, #5B4BD8); border-radius: 999px; padding: 1px 7px; margin-inline-start: 4px; }
+.smcut-filters { display: grid; gap: var(--sm-s2); margin-inline-start: 26px; padding: var(--sm-s3); border: 1px solid color-mix(in srgb, var(--sm-accent) 30%, var(--sm-line)); background: color-mix(in srgb, var(--sm-accent) 5%, var(--sm-surface)); border-radius: 12px; }
+.smcut-filters[hidden] { display: none; }
+.smcut-filters .sm-field { margin: 0; }
+.smcut-conds { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.smcut-conds legend { font-weight: 600; font-size: var(--sm-fs-xs); margin-block-end: 4px; inline-size: 100%; }
+.smcut-conds label { cursor: pointer; }
+.smcut-conds input { position: absolute; opacity: 0; pointer-events: none; }
+.smcut-conds span { display: inline-block; border: 1.5px solid var(--sm-line); border-radius: 999px; padding: 2px 10px; font-size: var(--sm-fs-xs); font-weight: 600; background: var(--sm-surface); }
+.smcut-conds input:checked + span { background: var(--sm-primary); color: var(--sm-on-primary, #fff); border-color: var(--sm-primary); }
+.smcut-conds input:focus-visible + span { outline: 2px solid var(--sm-accent); outline-offset: 1px; }
+
+/* Sources of the bars */
+.smcut-k.is-mk { border-color: #9AD8BD; background: color-mix(in srgb, var(--sm-accent) 6%, var(--sm-surface)); }
+.smcut-snap { display: flex; gap: var(--sm-s2); align-items: flex-start; margin: 0; padding: var(--sm-s2) var(--sm-s3); border-radius: 10px; background: #FFF8E6; color: #7A5600; font-size: var(--sm-fs-xs); }
+.smcut-snap .sm-icon { flex: none; inline-size: 16px; block-size: 16px; margin-block-start: 1px; }
+.smcut-src { background: var(--sm-surface); border: 1px solid var(--sm-line); border-radius: 16px; padding: var(--sm-s3) var(--sm-s4); }
+.smcut-src h3 { margin: 0 0 var(--sm-s2); font-size: var(--sm-fs-md, 1rem); display: flex; align-items: center; gap: var(--sm-s2); }
+.smcut-dot { inline-size: 10px; block-size: 10px; border-radius: 50%; background: var(--sm-accent); }
+.smcut-src.is-by .smcut-dot { background: #F3C94B; }
+.smcut-item { display: grid; gap: var(--sm-s3); grid-template-columns: minmax(0, 1fr); padding: var(--sm-s3) 0; border-block-start: 1px dashed var(--sm-line); }
+@media (min-width: 720px) { .smcut-item { grid-template-columns: minmax(0, 1fr) auto; align-items: center; } }
+.smcut-item p { margin: 2px 0; font-size: var(--sm-fs-sm); }
+.smcut-item__big { font-weight: 700; font-size: var(--sm-fs-lg) !important; }
+.smcut-ver { color: var(--sm-accent-ink); font-weight: 600; }
+.smcut-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-block-start: 6px !important; }
+.smcut-meta span { background: var(--sm-bg); border-radius: 999px; padding: 2px 9px; font-size: var(--sm-fs-xs); font-weight: 600; }
+.smcut-lotnote { color: #7A5600; font-size: var(--sm-fs-xs) !important; }
+.smcut-item__acts { display: flex; flex-direction: column; gap: 6px; min-inline-size: 190px; }
+.smcut-lbl { font: 700 11px/1.6 var(--sm-font, Inter, sans-serif); border-radius: 999px; padding: 1px 8px; margin-inline-start: 4px; }
+.smcut-lbl.is-mk { background: var(--sm-accent-soft); color: var(--sm-accent-ink); }
+.smcut-lbl.is-by { background: #FFF1C9; color: #7A5600; }
+
 /* Dark mode of the account area does not apply here; print: the plan only. */
 @media print {
 	.sm-header, .sm-footer, .smcut-form, .smcut-actions, .sm-breadcrumb, .sm-pagehead__intro { display: none !important; }

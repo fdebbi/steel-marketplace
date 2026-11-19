@@ -128,3 +128,12 @@ T.update({
 'Cutting plan made with the ReuSteel cutting optimiser - %s': ("Plan de coupe établi avec l'Optimiseur de découpe ReuSteel - %s", 'Cutting plan - ReuSteel - %s'),
 'Indicative calculation to check before cutting · Theoretical weights from the catalogue · Page {page}/{pages}': ('Calcul indicatif à vérifier avant découpe · Poids théoriques du catalogue · Page {page}/{pages}', 'Calcul indicatif - Page {page}/{pages}'),
 })
+
+# 0.5.0: marketplace.
+T.update({
+'From the ReuSteel marketplace: %1$d bars in %2$d listings (%3$s kg) - picture of the marketplace at the time of the calculation, nothing is reserved.': ('Du marché ReuSteel : %1$d barres dans %2$d annonces (%3$s kg) - photo du marché au moment du calcul, rien n’est réservé.', 'من سوق ReuSteel: %1$d قضيب في %2$d إعلان (%3$s kg).'),
+'marketplace %s m': ('marché %s m', 'السوق %s m'),
+})
+P.update({
+('%d bar from the marketplace', '%d bars from the marketplace'): (['%d barre du marché', '%d barres du marché'], ['%d قضيب من السوق', 'قضيب واحد من السوق', 'قضيبان من السوق', '%d قضبان من السوق', '%d قضيبًا من السوق', '%d قضيب من السوق']),
+})

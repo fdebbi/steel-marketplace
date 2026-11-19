@@ -1,5 +1,10 @@
 # Changelog — sm-marketplace
 
+## 0.47.0 — 2026-11-19 (avec sm-weight-engine 0.5.0 et sm-products 0.19.0)
+
+- Optimiseur de découpe : « 3. Où chercher les barres ? » — Mon stock (bientôt, avec le Magasin), Marché ReuSteel (coché par défaut) avec ses filtres (nuance minimale, états acceptés, wilaya, lots entiers), barres neuves pour le reste. « 4. Chutes déjà à disposition » reste disponible.
+- Résultat par provenance (`cutting-sources`) : Marché ReuSteel (annonce, vendeur vérifié, wilaya, état et nuance, prix affiché, barres et poids pris, coût estimé, « Acheter / Faire une offre », « Voir l'annonce ») puis À acheter (barres neuves, demande de devis). Chiffres clés : sur le marché, à acheter, poids à acquérir, chutes. Rappel « photo du marché, rien n'est réservé ». Dans le plan, chaque barre porte sa provenance.
+
 ## 0.46.0 — 2026-11-19 (avec sm-weight-engine 0.4.0)
 
 - **Optimiseur de découpe** (page `/optimiseur-decoupe/`, gabarit `templates/cutting-optimizer.php`, composant `cutting-optimizer`, `assets/js/cutting.js`, `assets/css/37-cutting.css`) : barres du commerce, trait de scie, chute réutilisable dès…, pièces à couper (profilé puis dimension), « Coller une liste (Excel) », chutes déjà en stock (facultatif). Résultat : 4 chiffres clés, plan barre par barre (pièces en couleur, chutes hachurées, chutes réutilisables en jaune), demande de devis pré-remplie, PDF, impression, lien à partager. Formulaire GET (marche sans JavaScript).

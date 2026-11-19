@@ -1,5 +1,12 @@
 # Changelog — sm-weight-engine
 
+## 0.5.0 — 2026-11-19 (avec sm-products 0.19.0 et le thème 0.47.0)
+
+- Optimiseur : recherche sur le **marché ReuSteel** avant d'acheter. Pour chaque profilé, les barres publiées (filtre `sm_cutting_market_offers`, fourni par sm-products) entrent dans le calcul : même profilé, longueur égale ou la plus proche au-dessus, puis l'annonce la moins chère au kg ; ce que le marché ne couvre pas devient des barres neuves à acheter.
+- Filtres : nuance minimale, états acceptés (par défaut neuf, surplus neuf, excellent, bon ; jamais la ferraille), wilaya, lots vendus en entier (seulement si demandé ; le reste du lot est signalé). Les annonces de son propre compte ne sont pas proposées.
+- Résultat par annonce : barres prises, pièces coupées, poids, coût estimé (prix affiché × poids, ou prix du lot). PDF : provenance de chaque barre et rappel « photo du marché, rien n'est réservé ».
+- `Cutting::read()` : `src`, `market`, `lots`, `conds[]`, `grade_min`, `wilaya`. `Cutting::solve()` accepte des barres disponibles avec leur provenance.
+
 ## 0.4.1 — 2026-11-19
 
 - PDF du plan de coupe : pied de page sur chaque page — « Plan de coupe établi avec l'Optimiseur de découpe ReuSteel - reusteel.com/optimiseur-decoupe » (lien cliquable) et « Calcul indicatif à vérifier avant découpe · Poids théoriques du catalogue · Page x/y ». Le contenu s'arrête au-dessus du pied de page.

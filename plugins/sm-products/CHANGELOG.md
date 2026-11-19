@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.19.0 — 2026-11-19
+
+- `CuttingMarket` : offres du marché pour l'optimiseur de découpe (sm-weight-engine 0.5.0), filtre `sm_cutting_market_offers`. Annonces publiées des marchés neuf et réemploi (lignes d'inventaire comprises) pour une section : nuance, état, wilaya, ce qui peut être acheté (au détail ou en lot entier, selon les mêmes règles que « Acheter »), vendeur et lien. Les annonces du compte de l'utilisateur sont exclues.
+
 ## 0.18.3 — 2026-11-18
 
 - Administration : la suppression d'une annonce demande confirmation dans la fenêtre centrée de SM Core 0.8.6.

@@ -197,7 +197,7 @@ smw_section( 'Cutting optimiser (0.4.0)' );
 use SM\WeightEngine\Cutting;
 $ipe = Catalogue::find( 'IPE', 'IPE 200' );
 $upn = Catalogue::find( 'UPN', 'UPN 100' );
-$in  = Cutting::read( array( 'bar' => '12', 'kerf' => '3', 'reuse' => '1', 'rows' => array(
+$in  = Cutting::read( array( 'src' => 1, 'bar' => '12', 'kerf' => '3', 'reuse' => '1', 'rows' => array(
 	array( 'section' => $ipe->id, 'length' => '5,10', 'qty' => 4 ),
 	array( 'section' => $ipe->id, 'length' => '3,30', 'qty' => 6 ),
 	array( 'section' => $ipe->id, 'length' => '2,70', 'qty' => 2 ),
@@ -219,10 +219,33 @@ smw_assert( 12 === $pieces, 'every piece is placed once' );
 smw_near( $pi['bought_kg'], 48 * $ipe->mass_kg_m, 0.05 );
 smw_assert( abs( $pi['scrap_kg'] - 2.4 * $ipe->mass_kg_m ) < 0.05 && 5.0 === $pi['scrap_pct'], 'offcuts: 2,40 m of IPE 200 = 5,0 % of the bars' );
 smw_assert( 6 === $r['totals']['new_bars'] && 7.9 === $r['totals']['scrap_pct'], 'totals: 6 bars, 7,9 % of offcuts' );
-$r2 = Cutting::optimize( Cutting::read( array( 'rows' => array( array( 'section' => $upn->id, 'length' => '2,40', 'qty' => 8 ) ), 'stock' => array( array( 'section' => $upn->id, 'length' => '4,90', 'qty' => 2 ) ) ) ) );
+$r2 = Cutting::optimize( Cutting::read( array( 'src' => 1, 'rows' => array( array( 'section' => $upn->id, 'length' => '2,40', 'qty' => 8 ) ), 'stock' => array( array( 'section' => $upn->id, 'length' => '4,90', 'qty' => 2 ) ) ) ) );
 smw_assert( 1 === $r2['profiles'][0]['new_bars'] && 2 === $r2['profiles'][0]['stock_used'], 'offcuts in stock used first: 2 × 4,90 m take 4 pieces, 1 new bar' );
-$r3 = Cutting::optimize( Cutting::read( array( 'rows' => array( array( 'section' => $ipe->id, 'length' => '13', 'qty' => 1 ), array( 'section' => 0, 'length' => '2', 'qty' => 1 ) ) ) ) );
+$r3 = Cutting::optimize( Cutting::read( array( 'src' => 1, 'rows' => array( array( 'section' => $ipe->id, 'length' => '13', 'qty' => 1 ), array( 'section' => 0, 'length' => '2', 'qty' => 1 ) ) ) ) );
 smw_assert( ! $r3['ok'] && 2 === count( $r3['errors'] ), 'piece longer than the bar and missing profile: refused with a message' );
+// 0.5.0: offers of the marketplace (a fake one here, sm-products gives the real ones).
+$fake = static function ( $offers, $section ) use ( $ipe ) {
+	if ( (int) $section->id !== (int) $ipe->id ) {
+		return $offers;
+	}
+	$offers[] = array( 'key' => 'L900001', 'listing_id' => 900001, 'product_id' => 1, 'title' => 'IPE 200 test', 'url' => '#', 'company' => 'Métal Test', 'verified' => true, 'wilaya' => '31', 'condition' => 'excellent', 'grade' => 'S275JR', 'price_per_kg' => 145.0, 'lot_price' => 0.0, 'part' => true, 'lot' => false, 'lines' => array( array( 'length' => 5500, 'qty' => 30 ), array( 'length' => 9000, 'qty' => 1 ) ) );
+	$offers[] = array( 'key' => 'L900002', 'listing_id' => 900002, 'product_id' => 2, 'title' => 'IPE 200 lot', 'url' => '#', 'company' => 'Lot Test', 'verified' => false, 'wilaya' => '16', 'condition' => 'good', 'grade' => '', 'price_per_kg' => 0.0, 'lot_price' => 50000.0, 'part' => false, 'lot' => true, 'lines' => array( array( 'length' => 4000, 'qty' => 5 ) ) );
+	return $offers;
+};
+add_filter( 'sm_cutting_market_offers', $fake, 99, 2 );
+$rm = Cutting::optimize( Cutting::read( array( 'rows' => array( array( 'section' => $ipe->id, 'length' => '5,40', 'qty' => 30 ), array( 'section' => $ipe->id, 'length' => '3,95', 'qty' => 2 ) ) ) ) );
+$pm = $rm['profiles'][0];
+$by = array();
+foreach ( $pm['market'] as $mo ) {
+	$by[ $mo['key'] ] = $mo;
+}
+smw_assert( isset( $by['L900001'] ) && 30 === ( $by['L900001']['take_bars'][5500] ?? 0 ), 'marketplace: 30 pieces of 5,40 m cut from the 5,50 m bars (closest longer length)' );
+smw_assert( 0 === $pm['new_bars'] && isset( $by['L900002'] ) && $by['L900002']['lot'] && 3 === $by['L900002']['lot_rest'] && 50000.0 === $by['L900002']['cost'], 'the 2 × 3,95 m come from a lot sold whole: 3 bars of the lot not needed, lot price' );
+smw_assert( abs( $by['L900001']['cost'] - round( 30 * 5.5 * $ipe->mass_kg_m * 145 ) ) < 1, 'estimated cost = weight taken × price shown per kg' );
+$rn = Cutting::optimize( Cutting::read( array( 'src' => 1, 'lots' => '', 'market' => 1, 'conds' => array( 'new', 'excellent', 'good' ), 'rows' => array( array( 'section' => $ipe->id, 'length' => '3,95', 'qty' => 2 ) ) ) ) );
+smw_assert( ! array_filter( $rn['profiles'][0]['market'], static fn( $mo ) => $mo['lot'] ) && 2 === array_sum( array_map( static fn( $b ) => $b['count'] * count( $b['pieces'] ), $rn['profiles'][0]['bars'] ) ), 'whole lots not ticked: never used, every piece still placed' );
+remove_filter( 'sm_cutting_market_offers', $fake, 99 );
+smw_assert( 0 === Cutting::optimize( Cutting::read( array( 'src' => 1, 'rows' => array( array( 'section' => $ipe->id, 'length' => '5,40', 'qty' => 2 ) ) ) ) )['profiles'][0]['market_bars'], 'marketplace not ticked: new bars only' );
 $pdf = SM\WeightEngine\CuttingActions::render( $r );
 smw_assert( 0 === strpos( $pdf, '%PDF-1.4' ) && false !== strpos( $pdf, '%%EOF' ) && false !== strpos( $pdf, 'IPE 200' ), 'cutting plan as a PDF' );
 smw_assert( false !== strpos( $pdf, '/Subtype /Link' ) && false !== strpos( $pdf, 'optimiseur-decoupe' ) && false !== strpos( $pdf, '1/1' ), 'PDF footer: ReuSteel, clickable link to the optimiser, page number' );

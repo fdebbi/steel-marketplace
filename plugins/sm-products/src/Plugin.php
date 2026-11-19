@@ -38,6 +38,7 @@ final class Plugin {
 		Expiry::init();
 		Visits::init();
 		Theme\Bridge::init();
+		CuttingMarket::init();
 		Rest\Api::init();
 		if ( is_admin() ) {
 			Admin\Admin::init();

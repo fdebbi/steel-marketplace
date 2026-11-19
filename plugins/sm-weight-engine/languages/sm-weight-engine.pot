@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Weight Engine 0.4.1\n"
+"Project-Id-Version: SM Weight Engine 0.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-weight-engine\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-19T14:55:04+00:00\n"
+"POT-Creation-Date: 2026-11-19T15:17:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-weight-engine\n"
@@ -375,25 +375,25 @@ msgstr ""
 msgid "This designation already exists in the family."
 msgstr ""
 
-#: src/Cutting.php:80
+#: src/Cutting.php:92
 msgid "Choose the profile and its size."
 msgstr ""
 
-#: src/Cutting.php:84
+#: src/Cutting.php:96
 msgid "Give the length and the number of pieces."
 msgstr ""
 
-#: src/Cutting.php:92
+#: src/Cutting.php:104
 msgid "Give the profile, the length and the number of offcuts."
 msgstr ""
 
 #. translators: 1: piece length in m, 2: profile, 3: bar length in m.
-#: src/Cutting.php:143
+#: src/Cutting.php:163
 msgid "A piece of %1$s m of %2$s is longer than the bars (%3$s m)."
 msgstr ""
 
 #. translators: 1: profile, 2: maximum number of pieces.
-#: src/Cutting.php:151
+#: src/Cutting.php:171
 msgid "%1$s: %2$d pieces at most per profile."
 msgstr ""
 
@@ -425,62 +425,79 @@ msgstr ""
 msgid "Bars to buy: %1$d · Weight bought: %2$s kg · Offcuts: %3$s kg (%4$s %%)"
 msgstr ""
 
+#. translators: 1: bars, 2: listings, 3: weight.
+#: src/CuttingActions.php:93
+msgid "From the ReuSteel marketplace: %1$d bars in %2$d listings (%3$s kg) - picture of the marketplace at the time of the calculation, nothing is reserved."
+msgstr ""
+
 #. translators: 1: profile, 2: number of new bars, 3: bar length (m).
-#: src/CuttingActions.php:99
+#: src/CuttingActions.php:104
 msgid "%1$s - %2$d bar of %3$s m"
 msgid_plural "%1$s - %2$d bars of %3$s m"
 msgstr[0] ""
 msgstr[1] ""
 
+#. translators: %d: bars from the marketplace.
+#: src/CuttingActions.php:107
+msgid "%d bar from the marketplace"
+msgid_plural "%d bars from the marketplace"
+msgstr[0] ""
+msgstr[1] ""
+
 #. translators: %d: offcuts from the stock.
-#: src/CuttingActions.php:102
+#: src/CuttingActions.php:111
 msgid "%d offcut from the stock"
 msgid_plural "%d offcuts from the stock"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: kg per metre, 2: offcuts (kg), 3: percent.
-#: src/CuttingActions.php:106
+#: src/CuttingActions.php:115
 msgid "%1$s kg/m · offcuts %2$s kg (%3$s %%)"
 msgstr ""
 
-#: src/CuttingActions.php:116
+#. translators: %s: length of the bar.
+#: src/CuttingActions.php:131
+msgid "marketplace %s m"
+msgstr ""
+
+#: src/CuttingActions.php:133
 msgid "stock offcut"
 msgstr ""
 
-#: src/CuttingActions.php:116
+#: src/CuttingActions.php:133
 msgid "new bar"
 msgstr ""
 
-#: src/CuttingActions.php:145
+#: src/CuttingActions.php:163
 msgid "* reusable offcut. Lengths in metres. Weights from the catalogue of the platform (theoretical weights)."
 msgstr ""
 
-#: src/CuttingActions.php:147
+#: src/CuttingActions.php:165
 msgid "Long list: this is the best plan found in the time given, not proven to be the best possible."
 msgstr ""
 
-#: src/CuttingActions.php:165
+#: src/CuttingActions.php:183
 msgid "Your account cannot create requests for quotation."
 msgstr ""
 
-#: src/CuttingActions.php:169
+#: src/CuttingActions.php:187
 msgid "Nothing to order: give the pieces to cut first."
 msgstr ""
 
-#: src/CuttingActions.php:187
+#: src/CuttingActions.php:205
 msgid "The offcuts in stock are enough: there is no bar to buy."
 msgstr ""
 
-#: src/CuttingActions.php:191
+#: src/CuttingActions.php:209
 msgid "Bars according to a cutting plan"
 msgstr ""
 
-#: src/CuttingActions.php:193
+#: src/CuttingActions.php:211
 msgid "Pieces to cut (cutting optimiser):"
 msgstr ""
 
-#: src/CuttingActions.php:195
+#: src/CuttingActions.php:213
 msgid "Request pre-filled with the bars of your cutting plan: check it before publishing."
 msgstr ""
 
