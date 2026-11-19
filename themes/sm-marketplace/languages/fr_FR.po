@@ -6153,7 +6153,7 @@ msgstr "Articles"
 #. translators: 1: published, 2: in stock only.
 #: template-parts/components/stock-warehouse.php:101
 msgid "%1$s published · %2$s in stock only"
-msgstr "%1$s publiés · %2$s en stock seulement"
+msgstr "%1$s sur le marché · %2$s en stock seulement"
 
 #. translators: 1: published, 2: in stock only.
 #: template-parts/components/stock-warehouse.php:102

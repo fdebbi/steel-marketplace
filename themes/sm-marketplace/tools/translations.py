@@ -2605,7 +2605,7 @@ T.update({
 'Correct the quantity': ('Corriger la quantité', 'تصحيح الكمية'),
 'Sales accepted on ReuSteel are taken off automatically.': ('Les ventes acceptées sur ReuSteel sont déduites automatiquement.', 'المبيعات المقبولة على ReuSteel تُخصم تلقائياً.'),
 'Items': ('Articles', 'العناصر'),
-'%1$s published · %2$s in stock only': ('%1$s publiés · %2$s en stock seulement', '%1$s منشورة · %2$s في المخزون فقط'),
+'%1$s published · %2$s in stock only': ('%1$s sur le marché · %2$s en stock seulement', '%1$s منشورة · %2$s في المخزون فقط'),
 'Weight in stock': ('Poids en stock', 'الوزن في المخزون'),
 'value shown ≈ %s': ('valeur affichée ≈ %s', 'القيمة المعروضة ≈ %s'),
 'Not published': ('Non publié', 'غير منشور'),
