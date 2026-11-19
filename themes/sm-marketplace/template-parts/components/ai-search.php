@@ -20,7 +20,7 @@ if ( ! $ready && ! is_array( $info ) ) {
 		<div class="smai-understood">
 			<span class="smai-understood__icon" aria-hidden="true"><?php sm_icon( 'ai' ); ?></span>
 			<div>
-				<p class="smai-understood__title"><?php esc_html_e( 'Understood as', 'sm-marketplace' ); ?> <?php if ( ! empty( $info['simulation'] ) ) : ?><span class="smai-badge smai-badge--sim"><?php esc_html_e( 'Simulation', 'sm-marketplace' ); ?></span><?php endif; ?></p>
+				<p class="smai-understood__title"><?php esc_html_e( 'Understood as', 'sm-marketplace' ); ?> <?php sm_ai_badge( 'sm-ai-badge--sm' ); ?> <?php if ( ! empty( $info['simulation'] ) ) : ?><span class="smai-badge smai-badge--sim"><?php esc_html_e( 'Simulation', 'sm-marketplace' ); ?></span><?php endif; ?></p>
 				<?php if ( $info['chips'] ) : ?>
 					<ul class="smai-chips" role="list"><?php foreach ( $info['chips'] as $c ) : ?><li><?php echo esc_html( $c ); ?></li><?php endforeach; ?></ul>
 				<?php else : ?>
@@ -35,7 +35,8 @@ if ( ! $ready && ! is_array( $info ) ) {
 			<label class="screen-reader-text" for="smai-q"><?php esc_html_e( 'Describe what you need', 'sm-marketplace' ); ?></label>
 			<span class="smai-search__icon" aria-hidden="true"><?php sm_icon( 'ai' ); ?></span>
 			<input id="smai-q" name="q" dir="auto" maxlength="300" value="<?php echo esc_attr( is_array( $info ) ? (string) $info['query'] : '' ); ?>" placeholder="<?php esc_attr_e( 'Describe what you need, e.g. “used IPE 200 in Oran, at least 6 m”', 'sm-marketplace' ); ?>">
-			<button class="sm-btn sm-btn--accent" type="submit"><span data-sm-busy-label><?php esc_html_e( 'Smart search', 'sm-marketplace' ); ?></span></button>
+			<?php sm_ai_badge( 'smai-search__badge' ); ?>
+			<button class="sm-btn sm-btn--ai" type="submit"><span data-sm-busy-label><?php esc_html_e( 'Smart search', 'sm-marketplace' ); ?></span></button>
 		</form>
 	<?php endif; ?>
 </div>

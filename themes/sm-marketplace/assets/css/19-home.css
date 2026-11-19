@@ -107,7 +107,6 @@
 .sm-circular__n { font-family: var(--sm-font-display); color: var(--sm-accent); font-size: 1.75rem; font-weight: 700; line-height: 1; }
 
 /* Request for quotation + price index */
-.sm-home .sm-split__card--rfq { background: linear-gradient(160deg, #141C24, #0E141A); border-color: rgb(198 205 210 / .12); color: var(--sm-silver); }
 .sm-home .sm-split__card--index { background: radial-gradient(ellipse 70% 120% at 100% 0%, rgb(6 206 119 / .16), transparent 60%), var(--sm-graphite); border: 1px solid rgb(198 205 210 / .12); color: var(--sm-silver); }
 
 /* Featured companies and professionals */

@@ -111,6 +111,19 @@ with sync_playwright() as p:
     e.goto(BASE + '/compte/assistant-ia/?tool=recognize')
     check(e.locator('.smai-form').count() == 1, 'recognition available to engineers')
 
+    print('\nF0. Home "Tools" row and the AI mark (0.44.0)')
+    h = page(1280, 900)
+    h.goto(BASE + '/?lang=fr')
+    check(h.locator('.sm-tools .sm-tool--rfq').count() == 1 and h.locator('.sm-tool--ai').count() == 1 and h.locator('.sm-tool--index').count() == 1 and h.locator('.sm-split').count() == 0, 'home: tools row with the request for quotation, the AI assistant and the price index')
+    rfq_bg = h.evaluate('getComputedStyle(document.querySelector(".sm-tool--rfq")).backgroundColor')
+    check(rfq_bg == 'rgb(245, 247, 248)', 'home: the request for quotation card is light (%s)' % rfq_bg)
+    check(h.locator('.sm-tool--ai .sm-ai-badge').inner_text().strip() == 'IA', 'home: the AI card carries the "IA" mark')
+    href = h.get_attribute('.sm-tool--ai .sm-btn--ai', 'href') or ''
+    check('/recherche/' in href and href.endswith('#smai-q'), 'home: a visitor is sent to the smart search (%s)' % href)
+    h.goto(BASE + '/recherche/?lang=fr')
+    check(h.locator('.smai-search__form .sm-ai-badge').count() == 1 and h.locator('.smai-search__form .sm-btn--ai').count() == 1, 'smart search box carries the AI mark and the AI button')
+    h.close()
+
     print('\nF. Smart search (visitor, FR and AR)')
     v = page(390, 844)
     v.goto(BASE + '/recherche/')

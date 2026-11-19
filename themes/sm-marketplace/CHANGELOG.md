@@ -1,5 +1,14 @@
 # Changelog — sm-marketplace
 
+## 0.44.0 — 2026-11-19
+
+- Accueil : nouvelle rangée « Outils » juste sous « Tout l'acier, au même endroit » :
+  - **demande de devis en carré clair** (seul bloc clair de l'accueil sombre), avec les 3 étapes Décrivez / Recevez / Comparez, « Demander un devis » (formulaire du compte, ou connexion pour un visiteur) et « Voir les demandes ouvertes » ;
+  - **carré « Assistant ✦ IA »** (affiché seulement si SM AI est actif) : les 4 outils, le rappel « suggestions à vérifier, poids du moteur », « Essayer l'assistant » (recherche intelligente pour un visiteur, assistant du compte pour un membre) ;
+  - indice des prix (sombre). L'ancien bloc devis + indice du bas de page est supprimé.
+- Repère « ✦ IA » (`sm_ai_badge()`, couleur violet-bleu réservée à l'IA, `assets/css/36-tools-ai.css`) sur : la recherche intelligente (et son bouton), le menu « Assistant IA » de l'espace compte, le titre de chaque outil de l'assistant, les encadrés « Importer depuis un document » (demande de devis) et « Préparer avec l'IA » / « Remplir depuis mes photos ». Jamais sur le calcul des poids.
+- Page « Publier » : le texte « Bientôt : l'assistant IA… » est remplacé par le vrai lien « Remplir depuis mes photos » (affiché si l'assistant d'annonce est disponible pour le compte).
+
 ## 0.43.0 — 2026-11-18
 
 - Tous les messages s'ouvrent au centre de l'écran, au style de la plateforme (fenêtre de SM Core 0.8.6) :

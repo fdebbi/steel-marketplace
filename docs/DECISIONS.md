@@ -430,3 +430,10 @@ Validé sur la maquette 0.37.
 - Tous les messages (questions, réussite, avertissements, erreurs) s'ouvrent au centre de l'écran au style de la plateforme, sur le site et dans l'administration ReuSteel. Les messages de réussite se ferment seuls après 4 secondes ; les autres attendent un clic. Sans JavaScript, les bandeaux restent.
 - Informations manquantes : on emmène l'utilisateur à la case (défilement, curseur, case entourée, étape rouverte).
 - Offre au kg : le total s'affiche pendant la saisie ; le fournisseur peut le modifier ou l'arrondir au millier ; l'acheteur reçoit ce total et le prix au kg recalculé.
+
+## Rangée « Outils » et repère IA (2026-11-19)
+
+- Sur l'accueil sombre, la demande de devis est le **seul carré clair**, remonté juste sous les marchés : c'est l'action principale d'un acheteur.
+- Les outils IA portent tous le même repère « ✦ IA », dans une couleur réservée (violet → bleu) distincte du vert de la plateforme. Il n'apparaît que si le module IA est actif et seulement sur ce qui passe par l'IA (jamais sur le moteur de poids).
+- Le carré IA ne promet que les 4 outils existants et rappelle que ce sont des suggestions à vérifier ; aucun compteur n'est affiché sans vraies données.
+

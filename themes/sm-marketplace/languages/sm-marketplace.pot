@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.42.0\n"
+"Project-Id-Version: SM Marketplace 0.43.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-18T18:30:03+00:00\n"
+"POT-Creation-Date: 2026-11-19T00:40:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #: footer.php:22
 #: inc/menus.php:16
-#: inc/template-tags.php:264
+#: inc/template-tags.php:279
 #: templates/front-page-template.php:80
 #: templates/marketplace-products.php:15
 msgid "Steel products"
@@ -67,7 +67,7 @@ msgstr ""
 
 #: footer.php:23
 #: inc/menus.php:24
-#: inc/template-tags.php:265
+#: inc/template-tags.php:280
 #: templates/front-page-template.php:81
 #: templates/marketplace-reuse.php:15
 msgid "Steel reuse"
@@ -75,7 +75,7 @@ msgstr ""
 
 #: footer.php:24
 #: inc/menus.php:32
-#: inc/template-tags.php:266
+#: inc/template-tags.php:281
 #: templates/front-page-template.php:82
 #: templates/marketplace-buildings.php:15
 msgid "Steel buildings"
@@ -100,7 +100,7 @@ msgstr ""
 
 #: footer.php:31
 #: inc/menus.php:62
-#: inc/template-tags.php:267
+#: inc/template-tags.php:282
 #: template-parts/components/card-service.php:23
 #: templates/front-page-template.php:83
 #: templates/marketplace-services.php:17
@@ -113,7 +113,7 @@ msgstr ""
 #: header.php:77
 #: header.php:107
 #: inc/menus.php:63
-#: inc/template-tags.php:268
+#: inc/template-tags.php:283
 #: templates/front-page-template.php:84
 #: templates/marketplace-engineers.php:35
 #: templates/mission-request.php:23
@@ -196,7 +196,7 @@ msgid "Quick navigation"
 msgstr ""
 
 #: footer.php:56
-#: inc/template-tags.php:409
+#: inc/template-tags.php:424
 msgid "Home"
 msgstr ""
 
@@ -310,7 +310,7 @@ msgid "Hide"
 msgstr ""
 
 #: inc/assets.php:69
-#: inc/template-tags.php:562
+#: inc/template-tags.php:577
 msgid "Saved"
 msgstr ""
 
@@ -348,8 +348,8 @@ msgid "Undo"
 msgstr ""
 
 #: inc/assets.php:79
-#: inc/template-tags.php:566
-#: inc/template-tags.php:572
+#: inc/template-tags.php:581
+#: inc/template-tags.php:587
 #: template-parts/components/my-products.php:137
 #: template-parts/components/portfolio-grid.php:30
 #: template-parts/components/rfq-single.php:138
@@ -577,9 +577,17 @@ msgstr ""
 msgid "Top utility menu"
 msgstr ""
 
-#: inc/template-tags.php:123
-#: inc/template-tags.php:435
-#: inc/template-tags.php:495
+#: inc/template-tags.php:38
+msgid "Uses artificial intelligence: suggestions to check"
+msgstr ""
+
+#: inc/template-tags.php:40
+msgid "AI"
+msgstr ""
+
+#: inc/template-tags.php:138
+#: inc/template-tags.php:450
+#: inc/template-tags.php:510
 #: template-parts/components/product-tech.php:31
 #: template-parts/components/product-tech.php:568
 msgid "piece"
@@ -587,329 +595,329 @@ msgid_plural "pieces"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:124
-#: inc/template-tags.php:440
+#: inc/template-tags.php:139
+#: inc/template-tags.php:455
 msgid "lot"
 msgstr ""
 
 #. translators: %s: width of a flat bar in mm.
-#: inc/template-tags.php:169
+#: inc/template-tags.php:184
 msgid "Width %s mm"
 msgstr ""
 
-#: inc/template-tags.php:223
+#: inc/template-tags.php:238
 msgid "New unused surplus"
 msgstr ""
 
-#: inc/template-tags.php:224
+#: inc/template-tags.php:239
 msgid "Excellent used condition"
 msgstr ""
 
-#: inc/template-tags.php:225
+#: inc/template-tags.php:240
 msgid "Good used condition"
 msgstr ""
 
-#: inc/template-tags.php:226
+#: inc/template-tags.php:241
 msgid "Requires inspection or treatment"
 msgstr ""
 
-#: inc/template-tags.php:227
+#: inc/template-tags.php:242
 msgid "Scrap / recycling only"
 msgstr ""
 
-#: inc/template-tags.php:244
+#: inc/template-tags.php:259
 msgid "Actual weight"
 msgstr ""
 
-#: inc/template-tags.php:245
+#: inc/template-tags.php:260
 #: template-parts/components/product-tech.php:522
 msgid "Estimated weight"
 msgstr ""
 
-#: inc/template-tags.php:246
+#: inc/template-tags.php:261
 #: template-parts/components/listing-inventory.php:78
 #: template-parts/components/listing-inventory.php:79
 #: template-parts/components/product-tech.php:502
 msgid "Weight of the declared elements"
 msgstr ""
 
-#: inc/template-tags.php:248
+#: inc/template-tags.php:263
 #: template-parts/components/ai-result-document.php:25
 #: template-parts/components/rfq-single.php:33
 msgid "Theoretical weight"
 msgstr ""
 
-#: inc/template-tags.php:254
+#: inc/template-tags.php:269
 #: templates/styleguide.php:51
 msgid "actual"
 msgstr ""
 
-#: inc/template-tags.php:255
+#: inc/template-tags.php:270
 msgid "estimated"
 msgstr ""
 
-#: inc/template-tags.php:256
+#: inc/template-tags.php:271
 msgid "declared elements"
 msgstr ""
 
-#: inc/template-tags.php:258
+#: inc/template-tags.php:273
 #: templates/styleguide.php:52
 msgid "theoretical"
 msgstr ""
 
-#: inc/template-tags.php:289
+#: inc/template-tags.php:304
 msgid "Steel construction contractor"
 msgstr ""
 
-#: inc/template-tags.php:290
+#: inc/template-tags.php:305
 msgid "Manufacturing"
 msgstr ""
 
-#: inc/template-tags.php:291
+#: inc/template-tags.php:306
 msgid "Supply and distribution"
 msgstr ""
 
-#: inc/template-tags.php:292
+#: inc/template-tags.php:307
 msgid "Recycling and scrap"
 msgstr ""
 
-#: inc/template-tags.php:293
+#: inc/template-tags.php:308
 msgid "Dismantling and second-hand resale"
 msgstr ""
 
-#: inc/template-tags.php:296
+#: inc/template-tags.php:311
 msgid "Structural steel fabricator"
 msgstr ""
 
-#: inc/template-tags.php:297
+#: inc/template-tags.php:312
 msgid "Steel structure erector"
 msgstr ""
 
-#: inc/template-tags.php:298
+#: inc/template-tags.php:313
 msgid "Roofing and cladding installer"
 msgstr ""
 
-#: inc/template-tags.php:299
+#: inc/template-tags.php:314
 msgid "Welder"
 msgstr ""
 
-#: inc/template-tags.php:300
+#: inc/template-tags.php:315
 msgid "Boilermaker"
 msgstr ""
 
-#: inc/template-tags.php:301
+#: inc/template-tags.php:316
 msgid "Metalworker (locksmith)"
 msgstr ""
 
-#: inc/template-tags.php:302
+#: inc/template-tags.php:317
 msgid "Lifting and handling"
 msgstr ""
 
-#: inc/template-tags.php:303
+#: inc/template-tags.php:318
 msgid "Sandblasting and painting"
 msgstr ""
 
-#: inc/template-tags.php:307
+#: inc/template-tags.php:322
 #: template-parts/dashboard/company.php:41
 #: templates/auth-register.php:30
 msgid "Company"
 msgstr ""
 
-#: inc/template-tags.php:308
+#: inc/template-tags.php:323
 #: templates/auth-register.php:31
 #: templates/engineer-apply.php:305
 msgid "Professional"
 msgstr ""
 
-#: inc/template-tags.php:309
-#: inc/template-tags.php:312
+#: inc/template-tags.php:324
+#: inc/template-tags.php:327
 #: template-parts/dashboard/engineer-files.php:22
 #: templates/auth-register.php:32
 msgid "Client"
 msgstr ""
 
-#: inc/template-tags.php:310
-#: inc/template-tags.php:312
+#: inc/template-tags.php:325
+#: inc/template-tags.php:327
 msgid "Partner engineer"
 msgstr ""
 
-#: inc/template-tags.php:355
+#: inc/template-tags.php:370
 msgid "Not verified"
 msgstr ""
 
-#: inc/template-tags.php:356
+#: inc/template-tags.php:371
 #: template-parts/components/card-featured.php:35
 #: template-parts/directory.php:107
 #: templates/company-profile.php:98
 msgid "Account verified"
 msgstr ""
 
-#: inc/template-tags.php:358
+#: inc/template-tags.php:373
 #: template-parts/components/verification-steps.php:19
 msgid "Verified engineer"
 msgstr ""
 
-#: inc/template-tags.php:368
+#: inc/template-tags.php:383
 #: template-parts/components/verification-steps.php:17
 msgid "Verified professional"
 msgstr ""
 
-#: inc/template-tags.php:368
+#: inc/template-tags.php:383
 msgid "Verified company"
 msgstr ""
 
-#: inc/template-tags.php:375
+#: inc/template-tags.php:390
 msgid "just now"
 msgstr ""
 
 #. translators: %s: number of hours.
-#: inc/template-tags.php:380
+#: inc/template-tags.php:395
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s: number of days.
-#: inc/template-tags.php:384
+#: inc/template-tags.php:399
 msgid "%s day ago"
 msgid_plural "%s days ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:408
+#: inc/template-tags.php:423
 msgid "Breadcrumb"
 msgstr ""
 
-#: inc/template-tags.php:448
+#: inc/template-tags.php:463
 #: template-parts/components/my-products.php:28
 #: template-parts/components/my-products.php:38
 #: template-parts/dashboard/services.php:24
 msgid "Waiting for review"
 msgstr ""
 
-#: inc/template-tags.php:449
+#: inc/template-tags.php:464
 msgid "Open for offers"
 msgstr ""
 
-#: inc/template-tags.php:450
+#: inc/template-tags.php:465
 msgid "Awarded"
 msgstr ""
 
-#: inc/template-tags.php:451
+#: inc/template-tags.php:466
 #: template-parts/components/deal-list.php:23
 msgid "Closed"
 msgstr ""
 
-#: inc/template-tags.php:452
+#: inc/template-tags.php:467
 msgid "Deadline passed"
 msgstr ""
 
-#: inc/template-tags.php:453
+#: inc/template-tags.php:468
 #: template-parts/components/my-products.php:29
 #: template-parts/components/my-products.php:39
 #: template-parts/dashboard/services.php:26
 msgid "Changes requested"
 msgstr ""
 
-#: inc/template-tags.php:460
+#: inc/template-tags.php:475
 #: template-parts/dashboard/deal.php:53
 msgid "Sent"
 msgstr ""
 
-#: inc/template-tags.php:461
+#: inc/template-tags.php:476
 msgid "Shortlisted"
 msgstr ""
 
-#: inc/template-tags.php:462
-#: inc/template-tags.php:516
+#: inc/template-tags.php:477
+#: inc/template-tags.php:531
 #: template-parts/components/visits-list.php:20
 msgid "Accepted"
 msgstr ""
 
-#: inc/template-tags.php:463
+#: inc/template-tags.php:478
 msgid "Not retained"
 msgstr ""
 
-#: inc/template-tags.php:464
+#: inc/template-tags.php:479
 msgid "Withdrawn"
 msgstr ""
 
-#: inc/template-tags.php:490
+#: inc/template-tags.php:505
 msgid "project"
 msgstr ""
 
-#: inc/template-tags.php:496
+#: inc/template-tags.php:511
 msgid "hour"
 msgstr ""
 
-#: inc/template-tags.php:497
+#: inc/template-tags.php:512
 msgid "day"
 msgstr ""
 
-#: inc/template-tags.php:505
+#: inc/template-tags.php:520
 #: template-parts/components/service-form.php:124
 msgid "On quotation"
 msgstr ""
 
 #. translators: %s: price with unit.
-#: inc/template-tags.php:508
+#: inc/template-tags.php:523
 msgid "From %s"
 msgstr ""
 
-#: inc/template-tags.php:514
+#: inc/template-tags.php:529
 #: template-parts/dashboard/messages.php:14
 #: templates/styleguide.php:49
 msgid "New"
 msgstr ""
 
-#: inc/template-tags.php:515
+#: inc/template-tags.php:530
 #: templates/styleguide.php:48
 msgid "Quote sent"
 msgstr ""
 
-#: inc/template-tags.php:517
+#: inc/template-tags.php:532
 msgid "Quote declined"
 msgstr ""
 
-#: inc/template-tags.php:518
+#: inc/template-tags.php:533
 msgid "Declined by the provider"
 msgstr ""
 
-#: inc/template-tags.php:519
+#: inc/template-tags.php:534
 #: template-parts/components/visits-list.php:22
 msgid "Cancelled"
 msgstr ""
 
-#: inc/template-tags.php:564
+#: inc/template-tags.php:579
 msgid "Keep"
 msgstr ""
 
-#: inc/template-tags.php:570
+#: inc/template-tags.php:585
 #: templates/engineer-apply.php:124
 msgid "Replace"
 msgstr ""
 
-#: inc/template-tags.php:590
+#: inc/template-tags.php:605
 msgid "Yes"
 msgstr ""
 
-#: inc/template-tags.php:590
+#: inc/template-tags.php:605
 msgid "No"
 msgstr ""
 
-#: inc/template-tags.php:593
+#: inc/template-tags.php:608
 msgid "Unlimited"
 msgstr ""
 
 #. translators: %s: number of results.
-#: inc/template-tags.php:655
+#: inc/template-tags.php:670
 #: template-parts/components/filter-panel.php:186
 msgid "Show %s result"
 msgid_plural "Show %s results"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:730
+#: inc/template-tags.php:745
 msgid "Sign in to contact"
 msgstr ""
 
@@ -1125,7 +1133,7 @@ msgstr ""
 msgid "Describe what you need, e.g. “used IPE 200 in Oran, at least 6 m”"
 msgstr ""
 
-#: template-parts/components/ai-search.php:38
+#: template-parts/components/ai-search.php:39
 msgid "Smart search"
 msgstr ""
 
@@ -1406,7 +1414,7 @@ msgid "See the profile"
 msgstr ""
 
 #: template-parts/components/card-listing.php:28
-#: templates/front-page-template.php:189
+#: templates/front-page-template.php:236
 msgid "Featured"
 msgstr ""
 
@@ -3205,7 +3213,7 @@ msgid "Paused because it went beyond your plan. Nothing was deleted: publish it 
 msgstr ""
 
 #: template-parts/components/my-products.php:164
-#: templates/front-page-template.php:224
+#: templates/front-page-template.php:271
 msgid "See the plans"
 msgstr ""
 
@@ -6985,7 +6993,11 @@ msgid "Material certificates, drawings, inventory lists (PDF, DWG)."
 msgstr ""
 
 #: template-parts/dashboard/publish.php:173
-msgid "Soon: the AI assistant will suggest the category and description from your photos. You always confirm the technical data."
+msgid "Fill from my photos: the AI assistant suggests the category, the titles in French and Arabic and the description. You always confirm the technical data."
+msgstr ""
+
+#: template-parts/dashboard/publish.php:173
+msgid "Fill from my photos"
 msgstr ""
 
 #: template-parts/dashboard/publish.php:180
@@ -7494,7 +7506,7 @@ msgid "Widen your search, or publish a request for quotation so suppliers come t
 msgstr ""
 
 #: template-parts/marketplace-archive.php:110
-#: templates/front-page-template.php:151
+#: templates/front-page-template.php:133
 #: templates/single-listing.php:142
 #: templates/single-service.php:92
 #: templates/single-service.php:121
@@ -7837,6 +7849,7 @@ msgstr ""
 
 #: templates/dashboard.php:81
 #: templates/dashboard.php:147
+#: templates/front-page-template.php:140
 msgid "Assistant"
 msgstr ""
 
@@ -8427,68 +8440,72 @@ msgstr ""
 msgid "Design, calculation notes and inspection by verified engineers."
 msgstr ""
 
-#: templates/front-page-template.php:103
-msgid "Featured listings"
-msgstr ""
-
-#: templates/front-page-template.php:104
-msgid "See all"
-msgstr ""
-
-#: templates/front-page-template.php:117
-msgid "Latest reuse lots"
-msgstr ""
-
-#: templates/front-page-template.php:118
-msgid "Every lot shows its condition, its weight source and an automatic total price."
-msgstr ""
-
 #: templates/front-page-template.php:120
-msgid "Browse reuse"
+msgid "Tools"
 msgstr ""
 
-#: templates/front-page-template.php:133
-msgid "Circular economy"
+#: templates/front-page-template.php:121
+msgid "Buy faster, with the right tools"
 msgstr ""
 
-#: templates/front-page-template.php:134
-msgid "Dismantled steel still has a life"
-msgstr ""
-
-#: templates/front-page-template.php:135
-msgid "Every reuse lot shows its condition, its origin and its inventory. Buyers are invited to have the structure checked by a partner engineer."
-msgstr ""
-
-#: templates/front-page-template.php:138
-msgid "Dismantle"
-msgstr ""
-
-#: templates/front-page-template.php:138
-msgid "Inventory by profile, weight calculated"
-msgstr ""
-
-#: templates/front-page-template.php:139
-msgid "Check"
-msgstr ""
-
-#: templates/front-page-template.php:139
-msgid "Five condition classes, engineer advice"
-msgstr ""
-
-#: templates/front-page-template.php:140
-msgid "Resell"
-msgstr ""
-
-#: templates/front-page-template.php:140
-msgid "By the piece, by the kg or the whole lot"
-msgstr ""
-
-#: templates/front-page-template.php:149
+#: templates/front-page-template.php:125
 msgid "Publish one request, receive several offers"
 msgstr ""
 
-#: templates/front-page-template.php:150
-msgid "Describe profiles, quantities and delivery wilaya. Suppliers answer with a price per kg and a delivery time you can compare side by side."
+#: templates/front-page-template.php:126
+msgid "Describe profiles, quantities and delivery wilaya. Suppliers answer with a price per kg, the total amount and a delivery time."
+msgstr ""
+
+#: templates/front-page-template.php:128
+msgid "Describe"
+msgstr ""
+
+#: templates/front-page-template.php:128
+msgid "profiles, quantities, wilaya"
+msgstr ""
+
+#: templates/front-page-template.php:129
+msgid "Receive"
+msgstr ""
+
+#: templates/front-page-template.php:129
+msgid "the offers of the suppliers"
+msgstr ""
+
+#: templates/front-page-template.php:130
+msgid "Compare"
+msgstr ""
+
+#: templates/front-page-template.php:130
+msgid "price, total and delivery time"
+msgstr ""
+
+#: templates/front-page-template.php:134
+msgid "See the open requests"
+msgstr ""
+
+#: templates/front-page-template.php:142
+msgid "Search in one sentence (French, Arabic, darija)"
+msgstr ""
+
+#: templates/front-page-template.php:143
+msgid "Recognise a profile from a photo"
+msgstr ""
+
+#: templates/front-page-template.php:144
+msgid "Bill of quantities or PDF to a weighed request for quotation"
+msgstr ""
+
+#: templates/front-page-template.php:145
+msgid "Listing prepared from your photos"
+msgstr ""
+
+#: templates/front-page-template.php:147
+msgid "Suggestions to check. Weights always come from the weight engine."
+msgstr ""
+
+#: templates/front-page-template.php:149
+msgid "Try the assistant"
 msgstr ""
 
 #: templates/front-page-template.php:155
@@ -8500,100 +8517,156 @@ msgstr ""
 msgid "Average advertised prices per kg by profile, condition and wilaya, updated from live listings. Asking prices, not official market prices."
 msgstr ""
 
-#: templates/front-page-template.php:157
+#: templates/front-page-template.php:158
 msgid "Open the index"
 msgstr ""
 
-#: templates/front-page-template.php:164
+#: templates/front-page-template.php:167
+msgid "Featured listings"
+msgstr ""
+
+#: templates/front-page-template.php:168
+msgid "See all"
+msgstr ""
+
+#: templates/front-page-template.php:181
+msgid "Latest reuse lots"
+msgstr ""
+
+#: templates/front-page-template.php:182
+msgid "Every lot shows its condition, its weight source and an automatic total price."
+msgstr ""
+
+#: templates/front-page-template.php:184
+msgid "Browse reuse"
+msgstr ""
+
+#: templates/front-page-template.php:197
+msgid "Circular economy"
+msgstr ""
+
+#: templates/front-page-template.php:198
+msgid "Dismantled steel still has a life"
+msgstr ""
+
+#: templates/front-page-template.php:199
+msgid "Every reuse lot shows its condition, its origin and its inventory. Buyers are invited to have the structure checked by a partner engineer."
+msgstr ""
+
+#: templates/front-page-template.php:202
+msgid "Dismantle"
+msgstr ""
+
+#: templates/front-page-template.php:202
+msgid "Inventory by profile, weight calculated"
+msgstr ""
+
+#: templates/front-page-template.php:203
+msgid "Check"
+msgstr ""
+
+#: templates/front-page-template.php:203
+msgid "Five condition classes, engineer advice"
+msgstr ""
+
+#: templates/front-page-template.php:204
+msgid "Resell"
+msgstr ""
+
+#: templates/front-page-template.php:204
+msgid "By the piece, by the kg or the whole lot"
+msgstr ""
+
+#: templates/front-page-template.php:211
 msgid "Fabricators and engineers"
 msgstr ""
 
-#: templates/front-page-template.php:165
+#: templates/front-page-template.php:212
 msgid "All services"
 msgstr ""
 
-#: templates/front-page-template.php:176
+#: templates/front-page-template.php:223
 msgid "Featured companies"
 msgstr ""
 
-#: templates/front-page-template.php:176
+#: templates/front-page-template.php:223
 msgid "Latest companies"
 msgstr ""
 
-#: templates/front-page-template.php:176
+#: templates/front-page-template.php:223
 msgid "Manufacturers, distributors, recyclers and steel construction companies."
 msgstr ""
 
-#: templates/front-page-template.php:176
+#: templates/front-page-template.php:223
 msgid "See all companies"
 msgstr ""
 
-#: templates/front-page-template.php:177
+#: templates/front-page-template.php:224
 msgid "Featured professionals"
 msgstr ""
 
-#: templates/front-page-template.php:177
+#: templates/front-page-template.php:224
 msgid "Latest professionals"
 msgstr ""
 
-#: templates/front-page-template.php:177
+#: templates/front-page-template.php:224
 msgid "Welders, steel erectors, boilermakers and the other steel trades."
 msgstr ""
 
-#: templates/front-page-template.php:177
+#: templates/front-page-template.php:224
 msgid "See all professionals"
 msgstr ""
 
-#: templates/front-page-template.php:189
+#: templates/front-page-template.php:236
 msgid "New on the platform"
 msgstr ""
 
 #. translators: %s: platform name.
-#: templates/front-page-template.php:205
+#: templates/front-page-template.php:252
 msgid "Why %s?"
 msgstr ""
 
-#: templates/front-page-template.php:207
+#: templates/front-page-template.php:254
 msgid "Weight calculated"
 msgstr ""
 
-#: templates/front-page-template.php:207
+#: templates/front-page-template.php:254
 msgid "European section tables: the weight of every lot is calculated, never guessed by hand."
 msgstr ""
 
-#: templates/front-page-template.php:208
+#: templates/front-page-template.php:255
 msgid "Verified accounts"
 msgstr ""
 
-#: templates/front-page-template.php:208
+#: templates/front-page-template.php:255
 msgid "Every account is verified before it receives its badge."
 msgstr ""
 
-#: templates/front-page-template.php:209
+#: templates/front-page-template.php:256
 msgid "Partner engineers"
 msgstr ""
 
-#: templates/front-page-template.php:209
+#: templates/front-page-template.php:256
 msgid "Studies, calculation notes and inspections given by the platform."
 msgstr ""
 
-#: templates/front-page-template.php:210
+#: templates/front-page-template.php:257
 msgid "French, Arabic, English"
 msgstr ""
 
-#: templates/front-page-template.php:210
+#: templates/front-page-template.php:257
 msgid "The whole platform and its e-mails in your language."
 msgstr ""
 
-#: templates/front-page-template.php:219
+#: templates/front-page-template.php:266
 msgid "Sell your stock, surplus or used building"
 msgstr ""
 
-#: templates/front-page-template.php:220
+#: templates/front-page-template.php:267
 msgid "One business account to buy and sell. Engineers get a dedicated services account."
 msgstr ""
 
-#: templates/front-page-template.php:223
+#: templates/front-page-template.php:270
 msgid "Create a free account"
 msgstr ""
 

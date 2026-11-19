@@ -267,7 +267,7 @@ if ( $is_eng ) {
 			<ul>
 				<?php foreach ( $groups as $gkey => list( $icon, $label, $pages ) ) : ?>
 					<?php $cnt = $group_cnt( $gkey ); ?>
-					<li><a href="<?php echo esc_url( $link( array_key_first( $pages ) ) ); ?>" data-tip="<?php echo esc_attr( $label ); ?>" <?php echo $gkey === $group_key && 'publish' !== $view ? 'aria-current="page"' : ''; ?>><?php sm_icon( $icon ); ?><span class="sm-dash__label"><?php echo esc_html( $label ); ?></span>
+					<li><a href="<?php echo esc_url( $link( array_key_first( $pages ) ) ); ?>" data-tip="<?php echo esc_attr( $label ); ?>" <?php echo $gkey === $group_key && 'publish' !== $view ? 'aria-current="page"' : ''; ?>><?php sm_icon( $icon ); ?><span class="sm-dash__label"><?php echo esc_html( $label ); ?><?php if ( 'ai' === $gkey ) : ?> <?php sm_ai_badge( 'sm-ai-badge--sm' ); ?><?php endif; ?></span>
 						<?php if ( $cnt ) : ?><span class="sm-count"><?php echo esc_html( $cnt ); ?></span><?php endif; ?>
 					</a></li>
 				<?php endforeach; ?>

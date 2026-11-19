@@ -48,7 +48,7 @@ $base = sm_page_url( 'account', array( 'view' => 'ai' ) );
 
 	<section class="sm-panel smai-tool">
 		<div class="smai-tool__head">
-			<h2 class="sm-panel__title"><?php echo esc_html( $t['label'] ); ?></h2>
+			<h2 class="sm-panel__title"><?php echo esc_html( $t['label'] ); ?> <?php sm_ai_badge(); ?></h2>
 			<?php if ( $t['simulation'] ) : ?><span class="smai-badge smai-badge--sim"><?php esc_html_e( 'Simulation', 'sm-marketplace' ); ?></span><?php endif; ?>
 			<?php if ( null !== $t['remaining'] ) : ?>
 				<span class="smai-quota"><?php echo esc_html( sprintf( /* translators: %d: remaining uses. */ _n( '%d use left this month', '%d uses left this month', (int) $t['remaining'], 'sm-marketplace' ), (int) $t['remaining'] ) ); ?></span>
@@ -94,7 +94,7 @@ $base = sm_page_url( 'account', array( 'view' => 'ai' ) );
 					<?php sm_theme_error( 'notes' ); ?>
 				</div>
 				<div class="smp-actions">
-					<button class="sm-btn sm-btn--accent" type="submit"><?php sm_icon( 'ai' ); ?><span data-sm-busy-label><?php esc_html_e( 'Ask the assistant', 'sm-marketplace' ); ?></span></button>
+					<button class="sm-btn sm-btn--ai" type="submit"><?php sm_icon( 'ai' ); ?><span data-sm-busy-label><?php esc_html_e( 'Ask the assistant', 'sm-marketplace' ); ?></span></button>
 				</div>
 			</form>
 		<?php endif; ?>

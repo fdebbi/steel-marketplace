@@ -98,6 +98,70 @@ $services = sm_theme_services();
 	</div>
 </section>
 
+<?php
+/*
+ * Tools row (0.44.0), right under the markets: the request for quotation in a
+ * light card (the only light block of the home), the AI assistant when the
+ * module is active, and the price index.
+ */
+$sm_ai_on  = is_array( sm_theme_data( 'ai_tools' ) );
+$sm_logged = is_user_logged_in();
+$sm_rfq_new = $sm_logged ? sm_page_url( 'account', array( 'view' => 'rfq', 'new' => 1 ) ) : sm_page_url( 'login' );
+if ( $sm_logged ) {
+	$sm_ai_url = sm_page_url( 'account', array( 'view' => 'ai' ) );
+} elseif ( true === sm_theme_data( 'ai_search_ready' ) ) {
+	$sm_ai_url = sm_page_url( 'search' ) . '#smai-q';
+} else {
+	$sm_ai_url = sm_page_url( 'login' );
+}
+?>
+<section class="sm-home__band sm-home__band--tools" aria-labelledby="sm-tools-title">
+	<div class="sm-container sm-section">
+		<p class="sm-kicker"><?php esc_html_e( 'Tools', 'sm-marketplace' ); ?></p>
+		<h2 class="sm-home__h2" id="sm-tools-title"><?php esc_html_e( 'Buy faster, with the right tools', 'sm-marketplace' ); ?></h2>
+		<div class="sm-tools<?php echo $sm_ai_on ? ' sm-tools--3' : ''; ?>">
+			<div class="sm-tool sm-tool--rfq">
+				<span class="sm-tool__icon"><?php sm_icon( 'rfq' ); ?></span>
+				<h3><?php esc_html_e( 'Publish one request, receive several offers', 'sm-marketplace' ); ?></h3>
+				<p><?php esc_html_e( 'Describe profiles, quantities and delivery wilaya. Suppliers answer with a price per kg, the total amount and a delivery time.', 'sm-marketplace' ); ?></p>
+				<ol class="sm-tool__steps">
+					<li><b><?php esc_html_e( 'Describe', 'sm-marketplace' ); ?></b><span><?php esc_html_e( 'profiles, quantities, wilaya', 'sm-marketplace' ); ?></span></li>
+					<li><b><?php esc_html_e( 'Receive', 'sm-marketplace' ); ?></b><span><?php esc_html_e( 'the offers of the suppliers', 'sm-marketplace' ); ?></span></li>
+					<li><b><?php esc_html_e( 'Compare', 'sm-marketplace' ); ?></b><span><?php esc_html_e( 'price, total and delivery time', 'sm-marketplace' ); ?></span></li>
+				</ol>
+				<div class="sm-tool__actions">
+					<a class="sm-btn sm-btn--accent" href="<?php echo esc_url( $sm_rfq_new ); ?>"><?php esc_html_e( 'Request a quotation', 'sm-marketplace' ); ?><?php sm_icon( 'arrow-end' ); ?></a>
+					<a class="sm-tool__link" href="<?php echo esc_url( sm_page_url( 'rfq' ) ); ?>"><?php esc_html_e( 'See the open requests', 'sm-marketplace' ); ?></a>
+				</div>
+			</div>
+			<?php if ( $sm_ai_on ) : ?>
+				<div class="sm-tool sm-tool--ai">
+					<span class="sm-tool__icon"><?php sm_icon( 'ai' ); ?></span>
+					<h3><?php esc_html_e( 'Assistant', 'sm-marketplace' ); ?> <?php sm_ai_badge(); ?></h3>
+					<ul class="sm-tool__list">
+						<li><?php esc_html_e( 'Search in one sentence (French, Arabic, darija)', 'sm-marketplace' ); ?></li>
+						<li><?php esc_html_e( 'Recognise a profile from a photo', 'sm-marketplace' ); ?></li>
+						<li><?php esc_html_e( 'Bill of quantities or PDF to a weighed request for quotation', 'sm-marketplace' ); ?></li>
+						<li><?php esc_html_e( 'Listing prepared from your photos', 'sm-marketplace' ); ?></li>
+					</ul>
+					<small><?php esc_html_e( 'Suggestions to check. Weights always come from the weight engine.', 'sm-marketplace' ); ?></small>
+					<div class="sm-tool__actions">
+						<a class="sm-btn sm-btn--ai" href="<?php echo esc_url( $sm_ai_url ); ?>"><?php esc_html_e( 'Try the assistant', 'sm-marketplace' ); ?><?php sm_icon( 'arrow-end' ); ?></a>
+					</div>
+				</div>
+			<?php endif; ?>
+			<div class="sm-tool sm-tool--index">
+				<span class="sm-tool__icon"><?php sm_icon( 'chart' ); ?></span>
+				<h3><?php esc_html_e( 'Steel price index', 'sm-marketplace' ); ?></h3>
+				<p><?php esc_html_e( 'Average advertised prices per kg by profile, condition and wilaya, updated from live listings. Asking prices, not official market prices.', 'sm-marketplace' ); ?></p>
+				<div class="sm-tool__actions">
+					<a class="sm-btn sm-btn--ghost-light" href="<?php echo esc_url( sm_page_url( 'price-index' ) ); ?>"><?php esc_html_e( 'Open the index', 'sm-marketplace' ); ?></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
 <section class="sm-container sm-section">
 	<div class="sm-section__head">
 		<h2><?php esc_html_e( 'Featured listings', 'sm-marketplace' ); ?></h2>
@@ -139,23 +203,6 @@ $services = sm_theme_services();
 			<li><span class="sm-circular__n">02</span><strong><?php esc_html_e( 'Check', 'sm-marketplace' ); ?></strong><span><?php esc_html_e( 'Five condition classes, engineer advice', 'sm-marketplace' ); ?></span></li>
 			<li><span class="sm-circular__n">03</span><strong><?php esc_html_e( 'Resell', 'sm-marketplace' ); ?></strong><span><?php esc_html_e( 'By the piece, by the kg or the whole lot', 'sm-marketplace' ); ?></span></li>
 		</ol>
-	</div>
-</section>
-
-<section class="sm-container sm-section">
-	<div class="sm-split">
-		<div class="sm-split__card sm-split__card--rfq">
-			<?php sm_icon( 'rfq', 'sm-split__icon' ); ?>
-			<h2><?php esc_html_e( 'Publish one request, receive several offers', 'sm-marketplace' ); ?></h2>
-			<p><?php esc_html_e( 'Describe profiles, quantities and delivery wilaya. Suppliers answer with a price per kg and a delivery time you can compare side by side.', 'sm-marketplace' ); ?></p>
-			<a class="sm-btn sm-btn--accent" href="<?php echo esc_url( sm_page_url( 'rfq' ) ); ?>"><?php esc_html_e( 'Request a quotation', 'sm-marketplace' ); ?></a>
-		</div>
-		<div class="sm-split__card sm-split__card--index">
-			<?php sm_icon( 'chart', 'sm-split__icon' ); ?>
-			<h2><?php esc_html_e( 'Steel price index', 'sm-marketplace' ); ?></h2>
-			<p><?php esc_html_e( 'Average advertised prices per kg by profile, condition and wilaya, updated from live listings. Asking prices, not official market prices.', 'sm-marketplace' ); ?></p>
-			<a class="sm-btn sm-btn--ghost-light" href="<?php echo esc_url( sm_page_url( 'price-index' ) ); ?>"><?php esc_html_e( 'Open the index', 'sm-marketplace' ); ?></a>
-		</div>
 	</div>
 </section>
 

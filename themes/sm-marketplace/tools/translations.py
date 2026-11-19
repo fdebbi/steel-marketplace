@@ -2413,3 +2413,28 @@ T.update({
 'You can change this amount before sending.': ("Vous pouvez modifier ce montant avant d'envoyer.", 'يمكنك تعديل هذا المبلغ قبل الإرسال.'),
 'Only the buyer sees your offer: he receives this total and the price per kg.': ("Seul l'acheteur voit votre offre : il reçoit ce total et le prix au kg.", 'المشتري وحده يرى عرضك: يستلم هذا المجموع وسعر الكيلوغرام.'),
 })
+
+# 0.44.0: Tools row on the home, the "AI" mark.
+T.update({
+'AI': ('IA', 'AI'),
+'Uses artificial intelligence: suggestions to check': ("Utilise l'intelligence artificielle : suggestions à vérifier", 'يستعمل الذكاء الاصطناعي: اقتراحات يجب التحقق منها'),
+'Tools': ('Outils', 'أدوات'),
+'Buy faster, with the right tools': ('Achetez plus vite, avec les bons outils', 'اشترِ أسرع، بالأدوات المناسبة'),
+'Describe profiles, quantities and delivery wilaya. Suppliers answer with a price per kg, the total amount and a delivery time.': ('Décrivez profilés, quantités et wilaya de livraison. Les fournisseurs répondent avec un prix au kg, le montant total et un délai.', 'صِف المقاطع والكميات وولاية التسليم. يجيب الموردون بسعر الكيلوغرام والمبلغ الإجمالي ومدة التسليم.'),
+'Describe': ('Décrivez', 'صِف'),
+'profiles, quantities, wilaya': ('profilés, quantités, wilaya', 'المقاطع، الكميات، الولاية'),
+'Receive': ('Recevez', 'استلم'),
+'the offers of the suppliers': ('les offres des fournisseurs', 'عروض الموردين'),
+'Compare': ('Comparez', 'قارن'),
+'price, total and delivery time': ('prix, total et délai', 'السعر والمجموع ومدة التسليم'),
+'See the open requests': ('Voir les demandes ouvertes', 'عرض الطلبات المفتوحة'),
+'Assistant': ('Assistant', 'المساعد'),
+'Search in one sentence (French, Arabic, darija)': ('Recherche en une phrase (français, arabe, darija)', 'البحث بجملة واحدة (فرنسية، عربية، دارجة)'),
+'Recognise a profile from a photo': ('Reconnaître un profilé sur photo', 'التعرف على مقطع من صورة'),
+'Bill of quantities or PDF to a weighed request for quotation': ('Métré ou PDF transformé en demande de devis pesée', 'كشف كميات أو PDF يتحول إلى طلب عرض أسعار موزون'),
+'Listing prepared from your photos': ('Annonce pré-remplie depuis vos photos', 'إعلان مُعدّ من صورك'),
+'Suggestions to check. Weights always come from the weight engine.': ('Des suggestions à vérifier. Les poids viennent toujours du moteur de calcul.', 'اقتراحات يجب التحقق منها. الأوزان تأتي دائماً من محرك حساب الوزن.'),
+'Try the assistant': ("Essayer l'assistant", 'جرّب المساعد'),
+'Fill from my photos: the AI assistant suggests the category, the titles in French and Arabic and the description. You always confirm the technical data.': ("Remplir depuis mes photos : l'assistant IA propose la catégorie, les titres en français et en arabe et la description. Vous confirmez toujours les données techniques.", 'املأ من صوري: يقترح مساعد الذكاء الاصطناعي الفئة والعناوين بالفرنسية والعربية والوصف. أنت تؤكد دائماً المعطيات التقنية.'),
+'Fill from my photos': ('Remplir depuis mes photos', 'املأ من صوري'),
+})

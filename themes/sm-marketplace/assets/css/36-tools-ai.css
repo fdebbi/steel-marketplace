@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Home "Tools" row and the "✦ AI" mark (0.44.0).
+   The request for quotation is the only light card of the dark home; the AI
+   colour (violet to blue) is kept for the AI tools only.
+   ========================================================================== */
+
+:root {
+	--sm-ai-1: #7C6CF2;
+	--sm-ai-2: #3AA0F0;
+	--sm-ai-grad: linear-gradient(90deg, var(--sm-ai-1), var(--sm-ai-2));
+	--sm-ai-ink: #5B4BD8;
+}
+
+/* The mark */
+.sm-ai-badge { display: inline-flex; align-items: center; gap: 3px; padding: 2px 8px 2px 6px; border-radius: 999px; background: var(--sm-ai-grad); color: #fff; font: 800 11px/1.4 var(--sm-font, Inter, sans-serif); letter-spacing: .05em; vertical-align: middle; white-space: nowrap; flex: none; }
+.sm-ai-badge .sm-icon { inline-size: 11px; block-size: 11px; }
+.sm-ai-badge--sm { padding: 1px 6px 1px 5px; font-size: 10px; }
+.sm-ai-badge--sm .sm-icon { inline-size: 10px; block-size: 10px; }
+
+/* AI buttons */
+.sm-btn--ai { background: var(--sm-ai-grad); color: #fff; border-color: transparent; }
+.sm-btn--ai:hover { filter: brightness(1.08); color: #fff; }
+.sm-btn--ai-outline { background: var(--sm-surface); color: var(--sm-ai-ink); border-color: color-mix(in srgb, var(--sm-ai-1) 60%, transparent); }
+.sm-btn--ai-outline:hover { background: color-mix(in srgb, var(--sm-ai-1) 8%, var(--sm-surface)); color: var(--sm-ai-ink); }
+
+/* AI callout (forms), smart search and assistant: same colour as the mark */
+.smai-callout { border-color: color-mix(in srgb, var(--sm-ai-1) 40%, var(--sm-line)); background: linear-gradient(135deg, color-mix(in srgb, var(--sm-ai-1) 9%, var(--sm-surface)), var(--sm-surface) 70%); }
+.smai-callout__icon { background: var(--sm-ai-grad); color: #fff; }
+.smai-search__form { border-color: color-mix(in srgb, var(--sm-ai-1) 45%, var(--sm-line)); }
+.smai-search__form:focus-within { border-color: var(--sm-ai-1); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sm-ai-1) 22%, transparent); }
+.smai-search__icon, .smai-understood__icon { color: var(--sm-ai-ink); }
+.smai-search__badge { margin-inline-end: 2px; }
+@media (max-width: 560px) { .smai-search__badge { display: none; } }
+.smai-tab__icon { background: color-mix(in srgb, var(--sm-ai-1) 12%, var(--sm-surface)); color: var(--sm-ai-ink); }
+.smai-tab.is-current { border-color: var(--sm-ai-1); box-shadow: 0 0 0 1px var(--sm-ai-1) inset; }
+.smai-tool__head .sm-panel__title { display: flex; align-items: center; gap: var(--sm-s2); }
+
+/* Home: Tools row */
+.sm-tools { display: grid; gap: var(--sm-s4); }
+@media (min-width: 900px) {
+	.sm-tools { grid-template-columns: 1.35fr 1fr; }
+	.sm-tools--3 { grid-template-columns: 1.35fr 1fr 1fr; }
+}
+@media (min-width: 640px) and (max-width: 899px) {
+	.sm-tools--3 { grid-template-columns: 1fr 1fr; }
+	.sm-tools--3 .sm-tool--rfq { grid-column: 1 / -1; }
+}
+.sm-tool { position: relative; display: flex; flex-direction: column; gap: var(--sm-s2); padding: var(--sm-s5); border-radius: 18px; overflow: hidden; min-inline-size: 0; }
+.sm-tool h3 { margin: 0; font-family: var(--sm-font-display); font-size: var(--sm-fs-xl); line-height: 1.2; display: flex; flex-wrap: wrap; align-items: center; gap: var(--sm-s2); }
+.sm-tool p { margin: 0; font-size: var(--sm-fs-sm); }
+.sm-tool__icon { display: grid; place-items: center; inline-size: 44px; block-size: 44px; border-radius: 12px; margin-block-end: var(--sm-s1); }
+.sm-tool__icon .sm-icon { inline-size: 22px; block-size: 22px; }
+.sm-tool__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sm-s3) var(--sm-s4); margin-block-start: auto; padding-block-start: var(--sm-s3); }
+
+/* Request for quotation: light card */
+.sm-tool--rfq { background: #F5F7F8; color: #111820; border: 1px solid #fff; box-shadow: 0 24px 60px -20px rgb(0 0 0 / .55); }
+.sm-tool--rfq h3 { color: #111820; }
+.sm-tool--rfq p { color: #4A5560; }
+.sm-tool--rfq .sm-tool__icon { background: #DCF7EA; color: #037A46; }
+.sm-tool__steps { list-style: none; margin: var(--sm-s2) 0 0; padding: 0; display: grid; gap: var(--sm-s2); grid-template-columns: repeat(3, minmax(0, 1fr)); counter-reset: smt; }
+.sm-tool__steps li { counter-increment: smt; display: grid; gap: 2px; align-content: start; padding: var(--sm-s2) var(--sm-s3); background: #fff; border: 1px solid #DDE3E7; border-radius: 10px; font-size: var(--sm-fs-xs); color: #4A5560; }
+.sm-tool__steps li::before { content: counter(smt); color: #037A46; font-weight: 800; }
+.sm-tool__steps b { color: #111820; font-size: var(--sm-fs-sm); }
+@media (max-width: 480px) { .sm-tool__steps { grid-template-columns: 1fr; } .sm-tool__steps li { grid-template-columns: auto auto 1fr; gap: 6px; align-items: baseline; } }
+.sm-tool__link { color: #111820; font-weight: 600; font-size: var(--sm-fs-sm); text-decoration: underline; text-underline-offset: 3px; }
+.sm-tool__link:hover { color: #037A46; }
+.sm-tool--rfq .sm-btn:focus-visible, .sm-tool__link:focus-visible { outline: 2px solid #037A46; outline-offset: 2px; }
+
+/* AI card */
+.sm-tool--ai { background: radial-gradient(120% 90% at 100% 0%, rgb(124 108 242 / .35), transparent 60%), linear-gradient(160deg, #151A2C, #0E1220); border: 1px solid rgb(124 108 242 / .45); color: #B9C0D6; }
+.sm-tool--ai h3 { color: #fff; }
+.sm-tool--ai .sm-tool__icon { background: var(--sm-ai-grad); color: #fff; }
+.sm-tool__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; font-size: var(--sm-fs-sm); }
+.sm-tool__list li { position: relative; padding-inline-start: 18px; }
+.sm-tool__list li::before { content: "✦"; position: absolute; inset-inline-start: 0; color: #A99CFF; }
+.sm-tool--ai small { color: #8A93AE; font-size: var(--sm-fs-xs); }
+
+/* Price index */
+.sm-tool--index { background: radial-gradient(ellipse 70% 120% at 100% 0%, rgb(6 206 119 / .16), transparent 60%), var(--sm-graphite, #111820); border: 1px solid rgb(198 205 210 / .12); color: var(--sm-silver); }
+.sm-tool--index h3 { color: var(--sm-white, #fff); }
+.sm-tool--index p { color: #A7B0B8; }
+.sm-tool--index .sm-tool__icon { background: rgb(6 206 119 / .14); color: var(--sm-accent); }
+
+/* Dark mode of the account area: outline AI buttons stay readable */
+html[data-sm-theme="dark"] .sm-is-account .sm-btn--ai-outline { background: transparent; color: #C7BFFF; }
+html[data-sm-theme="dark"] .sm-is-account .sm-btn--ai-outline:hover { background: rgb(124 108 242 / .14); color: #fff; }

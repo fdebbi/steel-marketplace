@@ -27,6 +27,21 @@ function sm_get_icon( $name, $class = '', $label = '' ) {
 }
 
 /**
+ * The "✦ AI" mark (0.44.0): one look, in the AI colour only, on every tool that
+ * uses the AI assistant (sm-ai), so users know what goes through the AI.
+ * Never on the weight engine or other plain calculations.
+ */
+function sm_ai_badge( $class = '' ) {
+	printf(
+		'<span class="%1$s" title="%2$s">%3$s<span>%4$s</span></span>',
+		esc_attr( trim( 'sm-ai-badge ' . $class ) ),
+		esc_attr__( 'Uses artificial intelligence: suggestions to check', 'sm-marketplace' ),
+		sm_get_icon( 'ai' ), // phpcs:ignore WordPress.Security.EscapeOutput
+		esc_html__( 'AI', 'sm-marketplace' )
+	);
+}
+
+/**
  * Render a component from template-parts/components/{name}.php with $args.
  * Plugins and child themes can override a component through the sm_component_path filter.
  */

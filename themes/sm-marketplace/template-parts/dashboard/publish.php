@@ -170,7 +170,7 @@ $steps = array(
 			<strong><?php esc_html_e( 'Add technical documents (optional)', 'sm-marketplace' ); ?></strong>
 			<small><?php esc_html_e( 'Material certificates, drawings, inventory lists (PDF, DWG).', 'sm-marketplace' ); ?></small>
 		</label>
-		<p class="sm-callout sm-callout--ai"><?php sm_icon( 'ai' ); ?><span><?php esc_html_e( 'Soon: the AI assistant will suggest the category and description from your photos. You always confirm the technical data.', 'sm-marketplace' ); ?></span></p>
+		<?php sm_component( 'ai-callout', array( 'tool' => 'listing', 'text' => __( 'Fill from my photos: the AI assistant suggests the category, the titles in French and Arabic and the description. You always confirm the technical data.', 'sm-marketplace' ), 'button' => __( 'Fill from my photos', 'sm-marketplace' ) ) ); ?>
 	</section>
 
 	<section class="sm-panel sm-step" data-step="3" hidden>

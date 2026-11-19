@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_THEME_VERSION', '0.43.0' );
+define( 'SM_THEME_VERSION', '0.44.0' );
 define( 'SM_THEME_DIR', get_template_directory() );
 define( 'SM_THEME_URI', get_template_directory_uri() );
 
