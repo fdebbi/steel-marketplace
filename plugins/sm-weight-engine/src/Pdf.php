@@ -16,8 +16,17 @@ final class Pdf {
 	const W = 842; // A4 landscape, points.
 	const H = 595;
 
-	private $pages = array();
-	private $ops   = '';
+	private $pages  = array();
+	private $ops    = '';
+	private $footer = null;
+
+	/**
+	 * Footer of every page (0.4.1): a bold line, a small line with "{page}" and
+	 * "{pages}", and a clickable link on the first line.
+	 */
+	public function footer( $line, $small, $url ) {
+		$this->footer = array( $line, $small, $url );
+	}
 
 	public function page() {
 		if ( '' !== $this->ops ) {
@@ -61,6 +70,20 @@ final class Pdf {
 		$objs[] = '<< /Type /Catalog /Pages 2 0 R >>';
 		$kids   = array();
 		$n      = count( $this->pages );
+		$annots = array();
+		if ( $this->footer ) {
+			list( $line, $small, $url ) = $this->footer;
+			foreach ( $this->pages as $i => $content ) {
+				$this->ops = '';
+				$this->rect( 40, self::H - 44, self::W - 80, 0.6, array( 0.85, 0.87, 0.89 ) );
+				$this->text( 40, self::H - 30, $line, 8.5, true, array( 0.2, 0.25, 0.3 ) );
+				$this->text( 40, self::H - 18, strtr( $small, array( '{page}' => $i + 1, '{pages}' => $n ) ), 7.5, false, array( 0.45, 0.5, 0.55 ) );
+				$this->pages[ $i ] = $content . $this->ops;
+				$w                 = min( self::W - 80, $this->width( $line, 8.5 ) );
+				$annots[ $i ]      = sprintf( '<< /Type /Annot /Subtype /Link /Rect [40 %.2F %.2F %.2F] /Border [0 0 0] /A << /S /URI /URI (%s) >> >>', self::H - 33, 40 + $w, self::H - 21, $this->encode( $url ) );
+			}
+			$this->ops = '';
+		}
 		for ( $i = 0; $i < $n; $i++ ) {
 			$kids[] = ( 5 + 2 * $i ) . ' 0 R';
 		}
@@ -68,8 +91,12 @@ final class Pdf {
 		$objs[] = '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>';
 		$objs[] = '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>';
 		foreach ( $this->pages as $i => $content ) {
-			$objs[] = '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ' . self::W . ' ' . self::H . '] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents ' . ( 6 + 2 * $i ) . ' 0 R >>';
+			$annot  = isset( $annots[ $i ] ) ? ' /Annots [' . ( 5 + 2 * $n + $i ) . ' 0 R]' : '';
+			$objs[] = '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ' . self::W . ' ' . self::H . '] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents ' . ( 6 + 2 * $i ) . ' 0 R' . $annot . ' >>';
 			$objs[] = '<< /Length ' . strlen( $content ) . " >>\nstream\n" . $content . "\nendstream";
+		}
+		foreach ( $annots as $a ) {
+			$objs[] = $a;
 		}
 		$pdf  = "%PDF-1.4\n%\xE2\xE3\xCF\xD3\n";
 		$offs = array();

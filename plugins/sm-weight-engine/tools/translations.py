@@ -122,3 +122,9 @@ P.update({
 ('%1$s - %2$d bar of %3$s m', '%1$s - %2$d bars of %3$s m'): (['%1$s - %2$d barre de %3$s m', '%1$s - %2$d barres de %3$s m'], ['%1$s - %2$d قضيب %3$s m', '%1$s - قضيب واحد %3$s m', '%1$s - قضيبان %3$s m', '%1$s - %2$d قضبان %3$s m', '%1$s - %2$d قضيبًا %3$s m', '%1$s - %2$d قضيب %3$s m']),
 ('%d offcut from the stock', '%d offcuts from the stock'): (['%d chute du stock', '%d chutes du stock'], ['%d بقية من المخزون', 'بقية واحدة من المخزون', 'بقيتان من المخزون', '%d بقايا من المخزون', '%d بقية من المخزون', '%d بقية من المخزون']),
 })
+
+# 0.4.1: footer of the PDF.
+T.update({
+'Cutting plan made with the ReuSteel cutting optimiser - %s': ("Plan de coupe établi avec l'Optimiseur de découpe ReuSteel - %s", 'Cutting plan - ReuSteel - %s'),
+'Indicative calculation to check before cutting · Theoretical weights from the catalogue · Page {page}/{pages}': ('Calcul indicatif à vérifier avant découpe · Poids théoriques du catalogue · Page {page}/{pages}', 'Calcul indicatif - Page {page}/{pages}'),
+})

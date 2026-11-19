@@ -225,6 +225,7 @@ $r3 = Cutting::optimize( Cutting::read( array( 'rows' => array( array( 'section'
 smw_assert( ! $r3['ok'] && 2 === count( $r3['errors'] ), 'piece longer than the bar and missing profile: refused with a message' );
 $pdf = SM\WeightEngine\CuttingActions::render( $r );
 smw_assert( 0 === strpos( $pdf, '%PDF-1.4' ) && false !== strpos( $pdf, '%%EOF' ) && false !== strpos( $pdf, 'IPE 200' ), 'cutting plan as a PDF' );
+smw_assert( false !== strpos( $pdf, '/Subtype /Link' ) && false !== strpos( $pdf, 'optimiseur-decoupe' ) && false !== strpos( $pdf, '1/1' ), 'PDF footer: ReuSteel, clickable link to the optimiser, page number' );
 
 $t = $GLOBALS['smw_t'];
 printf( "\n%d passed, %d failed\n", $t['pass'], $t['fail'] );

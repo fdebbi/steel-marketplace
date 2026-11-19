@@ -1,5 +1,9 @@
 # Changelog — sm-weight-engine
 
+## 0.4.1 — 2026-11-19
+
+- PDF du plan de coupe : pied de page sur chaque page — « Plan de coupe établi avec l'Optimiseur de découpe ReuSteel - reusteel.com/optimiseur-decoupe » (lien cliquable) et « Calcul indicatif à vérifier avant découpe · Poids théoriques du catalogue · Page x/y ». Le contenu s'arrête au-dessus du pied de page.
+
 ## 0.4.0 — 2026-11-19
 
 - **Optimiseur de découpe** (`Cutting`) : pièces par profilé, barres du commerce (6 m, 12 m ou autre), trait de scie, longueur à partir de laquelle une chute est réutilisable, **chutes déjà en stock** utilisées en premier. Calcul exact, sans IA : « best fit decreasing » puis recherche bornée qui prouve le plus petit nombre de barres neuves (ou s'arrête à 1 000 000 d'essais sur une très longue liste et le signale). 40 lignes, 300 pièces par profilé au plus. Poids depuis le catalogue (kg/m).

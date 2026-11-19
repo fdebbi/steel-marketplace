@@ -62,6 +62,15 @@ final class CuttingActions {
 	/** Draw the plan. */
 	public static function render( array $r ) {
 		$p   = new Pdf();
+		$url = function_exists( 'sm_url' ) ? (string) sm_url( 'cutting' ) : '';
+		$url = $url && false === strpos( $url, '#' ) && home_url( '/' ) !== $url ? $url : home_url( '/optimiseur-decoupe/' );
+		$p->footer(
+			/* translators: %s: address of the optimiser page. */
+			sprintf( __( 'Cutting plan made with the ReuSteel cutting optimiser - %s', 'sm-weight-engine' ), preg_replace( '#^https?://(www\.)?#', '', untrailingslashit( $url ) ) ),
+			/* translators: {page} and {pages} stay as they are (page numbers). */
+			__( 'Indicative calculation to check before cutting · Theoretical weights from the catalogue · Page {page}/{pages}', 'sm-weight-engine' ),
+			$url
+		);
 		$x0  = 40;
 		$w   = Pdf::W - 80;
 		$y   = 46;
@@ -81,7 +90,7 @@ final class CuttingActions {
 		$y += 26;
 		$colors = array( array( 0.75, 0.93, 0.85 ), array( 0.84, 0.90, 1.0 ), array( 1.0, 0.89, 0.76 ), array( 0.93, 0.87, 1.0 ) );
 		foreach ( $r['profiles'] as $pr ) {
-			if ( $y > Pdf::H - 90 ) {
+			if ( $y > Pdf::H - 120 ) {
 				$p->page();
 				$y = 46;
 				$head();
@@ -99,7 +108,7 @@ final class CuttingActions {
 			$lens  = array_values( array_unique( array_merge( ...array_map( static fn( $b ) => $b['pieces'], $pr['bars'] ) ) ) );
 			rsort( $lens );
 			foreach ( $pr['bars'] as $b ) {
-				if ( $y > Pdf::H - 50 ) {
+				if ( $y > Pdf::H - 84 ) {
 					$p->page();
 					$y = 46;
 					$head();
@@ -129,7 +138,7 @@ final class CuttingActions {
 			}
 			$y += 16;
 		}
-		if ( $y > Pdf::H - 40 ) {
+		if ( $y > Pdf::H - 70 ) {
 			$p->page();
 			$y = 46;
 		}

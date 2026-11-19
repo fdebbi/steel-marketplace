@@ -419,30 +419,42 @@ msgstr "قطعة بطول %1$s m من %2$s أطول من القضبان (%3$s m)
 msgid "%1$s: %2$d pieces at most per profile."
 msgstr "%1$s: %2$d قطعة كحد أقصى لكل مقطع."
 
-#: src/CuttingActions.php:41
+#: src/CuttingActions.php:49
 msgid "Nothing to print: give the pieces to cut first."
 msgstr "لا شيء للطباعة: أدخل القطع المراد قصها أولاً."
 
-#: src/CuttingActions.php:63
+#. translators: %s: address of the optimiser page.
+#: src/CuttingActions.php:69
+msgid "Cutting plan made with the ReuSteel cutting optimiser - %s"
+msgstr "Cutting plan - ReuSteel - %s"
+
+#. translators: {page} and {pages} stay as they are (page numbers).
+#: src/CuttingActions.php:71
+msgid ""
+"Indicative calculation to check before cutting · Theoretical weights from "
+"the catalogue · Page {page}/{pages}"
+msgstr "Calcul indicatif - Page {page}/{pages}"
+
+#: src/CuttingActions.php:80
 msgid "Cutting plan"
 msgstr "مخطط القص"
 
 #. translators: 1: bar length (m), 2: saw kerf (mm), 3: reusable offcut length
 #. (m).
-#: src/CuttingActions.php:67
+#: src/CuttingActions.php:84
 msgid "Bars of %1$s m · saw kerf %2$d mm · offcuts kept from %3$s m"
 msgstr "قضبان %1$s m · سمك القص %2$d mm · البقايا المحفوظة من %3$s m"
 
 #. translators: 1: number of bars, 2: weight bought, 3: scrap weight, 4: scrap
 #. percent.
-#: src/CuttingActions.php:72
+#: src/CuttingActions.php:89
 msgid ""
 "Bars to buy: %1$d · Weight bought: %2$s kg · Offcuts: %3$s kg (%4$s %%)"
 msgstr ""
 "قضبان للشراء: %1$d · الوزن المشترى: %2$s kg · البقايا: %3$s kg (%4$s %%)"
 
 #. translators: 1: profile, 2: number of new bars, 3: bar length (m).
-#: src/CuttingActions.php:82
+#: src/CuttingActions.php:99
 msgid "%1$s - %2$d bar of %3$s m"
 msgid_plural "%1$s - %2$d bars of %3$s m"
 msgstr[0] "%1$s - %2$d قضيب %3$s m"
@@ -453,7 +465,7 @@ msgstr[4] "%1$s - %2$d قضيبًا %3$s m"
 msgstr[5] "%1$s - %2$d قضيب %3$s m"
 
 #. translators: %d: offcuts from the stock.
-#: src/CuttingActions.php:85
+#: src/CuttingActions.php:102
 msgid "%d offcut from the stock"
 msgid_plural "%d offcuts from the stock"
 msgstr[0] "%d بقية من المخزون"
@@ -464,19 +476,19 @@ msgstr[4] "%d بقية من المخزون"
 msgstr[5] "%d بقية من المخزون"
 
 #. translators: 1: kg per metre, 2: offcuts (kg), 3: percent.
-#: src/CuttingActions.php:89
+#: src/CuttingActions.php:106
 msgid "%1$s kg/m · offcuts %2$s kg (%3$s %%)"
 msgstr "%1$s kg/m · بقايا %2$s kg (%3$s %%)"
 
-#: src/CuttingActions.php:99
+#: src/CuttingActions.php:116
 msgid "stock offcut"
 msgstr "بقية من المخزون"
 
-#: src/CuttingActions.php:99
+#: src/CuttingActions.php:116
 msgid "new bar"
 msgstr "قضيب جديد"
 
-#: src/CuttingActions.php:128
+#: src/CuttingActions.php:145
 msgid ""
 "* reusable offcut. Lengths in metres. Weights from the catalogue of the "
 "platform (theoretical weights)."
@@ -484,34 +496,34 @@ msgstr ""
 "* بقية قابلة لإعادة الاستعمال. الأطوال بالمتر. الأوزان من كتالوج المنصة "
 "(أوزان نظرية)."
 
-#: src/CuttingActions.php:130
+#: src/CuttingActions.php:147
 msgid ""
 "Long list: this is the best plan found in the time given, not proven to be "
 "the best possible."
 msgstr ""
 "قائمة طويلة: هذا أفضل مخطط وُجد في الوقت المتاح، دون إثبات أنه الأفضل."
 
-#: src/CuttingActions.php:144
+#: src/CuttingActions.php:165
 msgid "Your account cannot create requests for quotation."
 msgstr "لا يمكن لحسابك إنشاء طلبات عروض أسعار."
 
-#: src/CuttingActions.php:148
+#: src/CuttingActions.php:169
 msgid "Nothing to order: give the pieces to cut first."
 msgstr "لا شيء للطلب: أدخل القطع المراد قصها أولاً."
 
-#: src/CuttingActions.php:166
+#: src/CuttingActions.php:187
 msgid "The offcuts in stock are enough: there is no bar to buy."
 msgstr "البقايا في المخزون كافية: لا قضبان للشراء."
 
-#: src/CuttingActions.php:170
+#: src/CuttingActions.php:191
 msgid "Bars according to a cutting plan"
 msgstr "قضبان حسب مخطط قص"
 
-#: src/CuttingActions.php:172
+#: src/CuttingActions.php:193
 msgid "Pieces to cut (cutting optimiser):"
 msgstr "القطع المراد قصها (محسّن القص):"
 
-#: src/CuttingActions.php:174
+#: src/CuttingActions.php:195
 msgid ""
 "Request pre-filled with the bars of your cutting plan: check it before "
 "publishing."
