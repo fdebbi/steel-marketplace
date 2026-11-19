@@ -104,16 +104,10 @@ $services = sm_theme_services();
  * light card (the only light block of the home), the AI assistant when the
  * module is active, and the price index.
  */
-$sm_ai_on  = is_array( sm_theme_data( 'ai_tools' ) );
-$sm_logged = is_user_logged_in();
+$sm_ai_on   = is_array( sm_theme_data( 'ai_catalog' ) );
+$sm_logged  = is_user_logged_in();
 $sm_rfq_new = $sm_logged ? sm_page_url( 'account', array( 'view' => 'rfq', 'new' => 1 ) ) : sm_page_url( 'login' );
-if ( $sm_logged ) {
-	$sm_ai_url = sm_page_url( 'account', array( 'view' => 'ai' ) );
-} elseif ( true === sm_theme_data( 'ai_search_ready' ) ) {
-	$sm_ai_url = sm_page_url( 'search' ) . '#smai-q';
-} else {
-	$sm_ai_url = sm_page_url( 'login' );
-}
+$sm_ai_url  = sm_page_url( 'ai' ); // Public page of the AI tools (0.45.0).
 ?>
 <section class="sm-home__band sm-home__band--tools" aria-labelledby="sm-tools-title">
 	<div class="sm-container sm-section">

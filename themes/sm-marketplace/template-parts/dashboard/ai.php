@@ -57,7 +57,7 @@ $base = sm_page_url( 'account', array( 'view' => 'ai' ) );
 		<p class="sm-muted"><?php echo esc_html( $intro[ $tool ] ?? '' ); ?></p>
 
 		<?php if ( ! $t['available'] ) : ?>
-			<div class="sm-notice sm-notice--warn"><?php sm_icon( 'lock' ); ?><p><?php echo esc_html( $t['reason'] ); ?></p></div>
+			<?php sm_component( 'ai-gate', array( 'state' => $t['state'] ?? 'blocked', 'reason' => $t['reason'] ) ); ?>
 		<?php else : ?>
 			<?php sm_theme_form_open( 'ai_run', array( 'class' => 'sm-form smai-form', 'enctype' => 'multipart/form-data', 'data-sm-busy' => __( 'The assistant is working… (up to a minute)', 'sm-marketplace' ) ) ); ?>
 				<input type="hidden" name="tool" value="<?php echo esc_attr( $tool ); ?>">

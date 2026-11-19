@@ -1,8 +1,10 @@
 <?php
 /**
- * AI credits. Every account gets the credits of its plan each month (free
- * accounts too); bought credits are kept until used and are only used once the
- * monthly credits are spent. One credit = one use of an AI service.
+ * AI credits. Every account gets the credits of its plan each month; since
+ * 0.3.0 the free plan and the accounts without plans get none (they can buy
+ * packs). Bought credits are kept until used and are only used once the
+ * monthly credits are spent. One credit = one use of an AI service; the smart
+ * search is free (sm-ai 0.2.0).
  *
  * @package SM\Subscriptions
  */
@@ -15,8 +17,11 @@ defined( 'ABSPATH' ) || exit;
 
 final class Credits {
 
-	/** Monthly credits of accounts without a plan (clients, partner engineers). */
-	const NO_PLAN_MONTHLY = 5;
+	/** Monthly credits of accounts without a plan (clients, partner engineers): none since 0.3.0. */
+	const NO_PLAN_MONTHLY = 0;
+
+	/** Option of the transition month: the free credits of before stay until this date (0.3.0). */
+	const GRACE_OPTION = 'sm_sub_ai_grace';
 
 	public static function table() {
 		global $wpdb;
@@ -38,10 +43,25 @@ final class Credits {
 	public static function monthly( $company ) {
 		$plan = Subscriptions::plan_of( $company );
 		if ( ! $plan['has_plans'] ) {
-			return (int) apply_filters( 'sm_sub_no_plan_ai_credits', self::NO_PLAN_MONTHLY );
+			return max( (int) apply_filters( 'sm_sub_no_plan_ai_credits', self::NO_PLAN_MONTHLY ), self::grace( 'no_plan' ) );
 		}
 		$n = (int) $plan['data']['ai_credits'];
-		return Plans::UNLIMITED === $n ? PHP_INT_MAX : $n;
+		if ( Plans::UNLIMITED === $n ) {
+			return PHP_INT_MAX;
+		}
+		return 'free' === $plan['code'] ? max( $n, self::grace( $plan['class'] ) ) : $n;
+	}
+
+	/**
+	 * Free credits kept until the end of the month when the free plan lost its
+	 * credits (0.3.0): the accounts keep what they were promised this month.
+	 */
+	public static function grace( $key ) {
+		$g = get_option( self::GRACE_OPTION );
+		if ( ! is_array( $g ) || empty( $g['until'] ) || time() >= (int) $g['until'] ) {
+			return 0;
+		}
+		return (int) ( $g['credits'][ $key ] ?? 0 );
 	}
 
 	/** Credits used since the 1st of the month (all AI services). */

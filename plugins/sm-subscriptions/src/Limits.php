@@ -113,7 +113,10 @@ final class Limits {
 		}
 		$st = Credits::status( (int) $company_id );
 		if ( $st['total_left'] <= 0 ) {
-			return new \WP_Error( 'sm_ai_credits', __( 'You used all your AI credits. Buy a pack of credits in AI assistant → AI credits.', 'sm-subscriptions' ) );
+			if ( $st['monthly'] <= 0 ) {
+				return new \WP_Error( 'sm_ai_plan', __( 'Upgrade your plan to benefit from the AI assistant, or buy a pack of AI credits.', 'sm-subscriptions' ) );
+			}
+			return new \WP_Error( 'sm_ai_credits', __( 'You used all your AI credits this month. Upgrade your plan or buy a pack of AI credits.', 'sm-subscriptions' ) );
 		}
 		return $ok;
 	}

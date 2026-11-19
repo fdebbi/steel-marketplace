@@ -203,3 +203,9 @@ T.update({
 "Until then, the figures that depend on them are left out of the plan pages and the limits they control are not applied.": ("En attendant, les chiffres qui en dépendent n’apparaissent pas sur les pages d’abonnement et les limites qu’elles contrôlent ne sont pas appliquées.", "إلى ذلك الحين، لا تظهر الأرقام المرتبطة بها في صفحات الاشتراك ولا تُطبّق الحدود التي تتحكم فيها."),
 "%1$s: version %2$s installed, %3$s or later needed.": ("%1$s : version %2$s installée, %3$s ou plus récente nécessaire.", "%1$s: الإصدار %2$s مثبت، والمطلوب %3$s أو أحدث."),
 })
+
+# 0.3.0
+T.update({
+'Upgrade your plan to benefit from the AI assistant, or buy a pack of AI credits.': ("Améliorez votre formule pour bénéficier de l'assistant IA, ou achetez un pack de crédits IA.", 'رقِّ اشتراكك للاستفادة من مساعد الذكاء الاصطناعي، أو اشترِ باقة أرصدة.'),
+'You used all your AI credits this month. Upgrade your plan or buy a pack of AI credits.': ('Vous avez utilisé tous vos crédits IA ce mois-ci. Améliorez votre formule ou achetez un pack de crédits IA.', 'استعملت كل أرصدة الذكاء الاصطناعي لهذا الشهر. رقِّ اشتراكك أو اشترِ باقة أرصدة.'),
+})

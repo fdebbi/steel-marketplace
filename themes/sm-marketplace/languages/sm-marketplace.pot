@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.43.0\n"
+"Project-Id-Version: SM Marketplace 0.45.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-19T00:40:07+00:00\n"
+"POT-Creation-Date: 2026-11-19T10:46:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -165,6 +165,7 @@ msgid "Plans"
 msgstr ""
 
 #: footer.php:43
+#: template-parts/components/ai-gate.php:24
 #: template-parts/components/buy-box.php:233
 #: template-parts/components/enquiry-form.php:46
 #: template-parts/components/rfq-single.php:158
@@ -204,6 +205,7 @@ msgstr ""
 #: header.php:53
 #: template-parts/directory.php:53
 #: template-parts/header-actions.php:13
+#: templates/ai-assistant.php:23
 #: templates/front-page-template.php:57
 #: templates/marketplace-engineers.php:100
 msgid "Search"
@@ -221,7 +223,7 @@ msgid "Invoicing"
 msgstr ""
 
 #: footer.php:63
-#: template-parts/components/product-form.php:230
+#: template-parts/components/product-form.php:234
 #: template-parts/dashboard/publish.php:211
 #: template-parts/header-actions.php:34
 #: templates/styleguide.php:34
@@ -344,6 +346,7 @@ msgid "Will be replaced when you save"
 msgstr ""
 
 #: inc/assets.php:78
+#: template-parts/components/ai-describe-button.php:38
 msgid "Undo"
 msgstr ""
 
@@ -514,21 +517,21 @@ msgstr ""
 msgid "Show demo listings when no marketplace plugin provides data"
 msgstr ""
 
-#: inc/demo/installer.php:107
 #: inc/demo/installer.php:108
-#: inc/demo/installer.php:122
+#: inc/demo/installer.php:109
+#: inc/demo/installer.php:123
 msgid "SM Pages"
 msgstr ""
 
-#: inc/demo/installer.php:119
+#: inc/demo/installer.php:120
 msgid "Missing pages were created."
 msgstr ""
 
-#: inc/demo/installer.php:123
+#: inc/demo/installer.php:124
 msgid "Pages used by the theme templates. Existing pages are never overwritten."
 msgstr ""
 
-#: inc/demo/installer.php:131
+#: inc/demo/installer.php:132
 msgid "Create missing pages"
 msgstr ""
 
@@ -953,20 +956,99 @@ msgstr ""
 msgid "Uncertain"
 msgstr ""
 
-#: template-parts/components/ai-result-document.php:12
-msgid "pcs"
+#: template-parts/components/ai-describe-button.php:20
+#: template-parts/components/ai-describe-button.php:49
+#: templates/ai-assistant.php:70
+msgid "Write with the AI"
 msgstr ""
 
-#: template-parts/components/ai-result-document.php:16
-msgid "Steel items found"
+#: template-parts/components/ai-describe-button.php:31
+msgid "The AI is writing…"
 msgstr ""
 
+#: template-parts/components/ai-describe-button.php:32
+msgid "Replace your description?"
+msgstr ""
+
+#: template-parts/components/ai-describe-button.php:33
+msgid "The AI writes a new description from the information of your listing. You can undo it."
+msgstr ""
+
+#: template-parts/components/ai-describe-button.php:34
+msgid "Write a new description"
+msgstr ""
+
+#. translators: %s: AI credits left.
+#: template-parts/components/ai-describe-button.php:36
+msgid "Text proposed from the information of your listing: check it and change it freely. 1 credit used · %s left."
+msgstr ""
+
+#: template-parts/components/ai-describe-button.php:37
+msgid "Text proposed from the information of your listing: check it and change it freely. 1 credit used."
+msgstr ""
+
+#: template-parts/components/ai-describe-button.php:39
+msgid "The AI could not write the description. Try again in a moment."
+msgstr ""
+
+#: template-parts/components/ai-describe-button.php:40
 #: template-parts/components/ai-result-document.php:17
 #: template-parts/components/ai-result-listing.php:17
 #: template-parts/components/ai-result-recognize.php:16
 #: template-parts/components/ai-search.php:23
 #: template-parts/dashboard/ai.php:52
 msgid "Simulation"
+msgstr ""
+
+#: template-parts/components/ai-describe-button.php:41
+msgid "Upgrade your plan to benefit from the AI assistant, or buy a pack of AI credits."
+msgstr ""
+
+#: template-parts/components/ai-describe-button.php:42
+#: template-parts/components/ai-gate.php:27
+#: template-parts/components/my-products.php:164
+#: templates/front-page-template.php:265
+msgid "See the plans"
+msgstr ""
+
+#: template-parts/components/ai-describe-button.php:44
+#: template-parts/components/ai-gate.php:28
+msgid "Buy credits"
+msgstr ""
+
+#: template-parts/components/ai-gate.php:22
+msgid "Sign in to use this tool."
+msgstr ""
+
+#: template-parts/components/ai-gate.php:23
+#: template-parts/components/enquiry-form.php:45
+#: template-parts/components/rfq-single.php:157
+#: template-parts/drawer-foot.php:16
+#: template-parts/header-actions.php:31
+#: templates/auth-login.php:17
+#: templates/auth-login.php:39
+#: templates/auth-register.php:101
+#: templates/company-profile.php:311
+#: templates/engineer-apply.php:163
+#: templates/mission-request.php:40
+#: templates/single-service.php:130
+msgid "Sign in"
+msgstr ""
+
+#: template-parts/components/ai-gate.php:26
+msgid "Upgrade your plan"
+msgstr ""
+
+#: template-parts/components/ai-gate.php:26
+msgid "to benefit from the AI assistant, or buy a pack of AI credits."
+msgstr ""
+
+#: template-parts/components/ai-result-document.php:12
+msgid "pcs"
+msgstr ""
+
+#: template-parts/components/ai-result-document.php:16
+msgid "Steel items found"
 msgstr ""
 
 #: template-parts/components/ai-result-document.php:21
@@ -1414,7 +1496,7 @@ msgid "See the profile"
 msgstr ""
 
 #: template-parts/components/card-listing.php:28
-#: templates/front-page-template.php:236
+#: templates/front-page-template.php:230
 msgid "Featured"
 msgstr ""
 
@@ -1541,9 +1623,9 @@ msgstr ""
 #: template-parts/components/my-products.php:180
 #: template-parts/components/plate-fields.php:219
 #: template-parts/components/product-form.php:132
-#: template-parts/components/product-form.php:137
-#: template-parts/components/product-form.php:174
-#: template-parts/components/product-form.php:201
+#: template-parts/components/product-form.php:138
+#: template-parts/components/product-form.php:178
+#: template-parts/components/product-form.php:205
 #: template-parts/components/product-tech.php:70
 #: template-parts/components/product-tech.php:79
 #: template-parts/components/product-tech.php:167
@@ -1766,20 +1848,6 @@ msgstr ""
 msgid "Sign in or create a free account to contact companies on the platform."
 msgstr ""
 
-#: template-parts/components/enquiry-form.php:45
-#: template-parts/components/rfq-single.php:157
-#: template-parts/drawer-foot.php:16
-#: template-parts/header-actions.php:31
-#: templates/auth-login.php:17
-#: templates/auth-login.php:39
-#: templates/auth-register.php:101
-#: templates/company-profile.php:311
-#: templates/engineer-apply.php:163
-#: templates/mission-request.php:40
-#: templates/single-service.php:130
-msgid "Sign in"
-msgstr ""
-
 #: template-parts/components/enquiry-form.php:50
 #: templates/dashboard.php:47
 msgid "This user has no company account"
@@ -1896,7 +1964,7 @@ msgstr ""
 
 #: template-parts/components/filter-panel.php:153
 #: template-parts/components/mission-request-form.php:410
-#: template-parts/components/product-form.php:189
+#: template-parts/components/product-form.php:193
 #: template-parts/dashboard/company.php:101
 #: template-parts/dashboard/engineer-missions.php:135
 #: template-parts/dashboard/engineer-missions.php:140
@@ -2269,7 +2337,7 @@ msgstr ""
 
 #: template-parts/components/listing-place.php:27
 #: template-parts/components/mission-request-form.php:407
-#: template-parts/components/product-form.php:185
+#: template-parts/components/product-form.php:189
 #: templates/company-profile.php:222
 #: templates/single-listing.php:81
 msgid "Location"
@@ -3102,6 +3170,7 @@ msgstr ""
 #: template-parts/dashboard/listings.php:25
 #: template-parts/dashboard/overview.php:196
 #: template-parts/drawer-foot.php:11
+#: templates/ai-assistant.php:24
 #: templates/dashboard.php:162
 #: templates/dashboard.php:257
 #: templates/front-page-template.php:27
@@ -3210,11 +3279,6 @@ msgstr ""
 
 #: template-parts/components/my-products.php:164
 msgid "Paused because it went beyond your plan. Nothing was deleted: publish it again when there is room, or choose a higher plan."
-msgstr ""
-
-#: template-parts/components/my-products.php:164
-#: templates/front-page-template.php:271
-msgid "See the plans"
 msgstr ""
 
 #: template-parts/components/my-products.php:176
@@ -3747,58 +3811,58 @@ msgstr ""
 msgid "Title in Arabic"
 msgstr ""
 
-#: template-parts/components/product-form.php:137
+#: template-parts/components/product-form.php:138
 #: template-parts/dashboard/publish.php:153
 msgid "Description and technical notes"
 msgstr ""
 
-#: template-parts/components/product-form.php:145
+#: template-parts/components/product-form.php:149
 msgid "Photos and technical sheet"
 msgstr ""
 
 #. translators: %d: number of photos.
-#: template-parts/components/product-form.php:148
+#: template-parts/components/product-form.php:152
 msgid "At least %d photos: they come first on the listing page. Show the whole lot, the condition of the surfaces and the ends."
 msgstr ""
 
-#: template-parts/components/product-form.php:150
+#: template-parts/components/product-form.php:154
 msgid "Photos are optional: without a photo, the listing shows the standard drawing of the section. A real photo of your stock is still recommended, buyers trust it more."
 msgstr ""
 
-#: template-parts/components/product-form.php:157
+#: template-parts/components/product-form.php:161
 #: template-parts/dashboard/publish.php:163
 msgid "Take or add photos"
 msgstr ""
 
 #. translators: 1: number of photos, 2: size in MB.
-#: template-parts/components/product-form.php:161
+#: template-parts/components/product-form.php:165
 msgid "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole building, the frames, the connections and the roof."
 msgstr ""
 
 #. translators: 1: number of photos, 2: size in MB.
-#: template-parts/components/product-form.php:161
+#: template-parts/components/product-form.php:165
 msgid "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole lot, the condition of the surfaces and the ends."
 msgstr ""
 
 #. translators: 1: number of photos, 2: size in MB.
-#: template-parts/components/product-form.php:161
+#: template-parts/components/product-form.php:165
 msgid "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the section, the markings and the stock."
 msgstr ""
 
-#: template-parts/components/product-form.php:174
+#: template-parts/components/product-form.php:178
 msgid "Add the technical sheet (PDF)"
 msgstr ""
 
 #. translators: %d: size in MB.
-#: template-parts/components/product-form.php:178
+#: template-parts/components/product-form.php:182
 msgid "Manufacturer data sheet, certificate of inspection (up to 3 PDF, %d MB each). Buyers can download it."
 msgstr ""
 
-#: template-parts/components/product-form.php:189
+#: template-parts/components/product-form.php:193
 msgid "Wilaya where the product is"
 msgstr ""
 
-#: template-parts/components/product-form.php:191
+#: template-parts/components/product-form.php:195
 #: template-parts/components/product-lines.php:67
 #: template-parts/components/product-lines.php:81
 #: template-parts/components/product-tech.php:83
@@ -3813,48 +3877,48 @@ msgstr ""
 msgid "Choose…"
 msgstr ""
 
-#: template-parts/components/product-form.php:201
+#: template-parts/components/product-form.php:205
 msgid "Address or place name"
 msgstr ""
 
-#: template-parts/components/product-form.php:202
+#: template-parts/components/product-form.php:206
 msgid "e.g. industrial zone"
 msgstr ""
 
-#: template-parts/components/product-form.php:212
+#: template-parts/components/product-form.php:216
 msgid "Exact position of the building"
 msgstr ""
 
-#: template-parts/components/product-form.php:212
+#: template-parts/components/product-form.php:216
 msgid "Exact position"
 msgstr ""
 
-#: template-parts/components/product-form.php:213
+#: template-parts/components/product-form.php:217
 msgid "Choose the wilaya: the map opens on it. Then drag the marker (or click the map) to the exact place, or use your current location if you are on site."
 msgstr ""
 
-#: template-parts/components/product-form.php:214
+#: template-parts/components/product-form.php:218
 msgid "Show the map to the public"
 msgstr ""
 
-#: template-parts/components/product-form.php:215
+#: template-parts/components/product-form.php:219
 msgid "Unticked: the public only sees the address (commune, wilaya). The map is shown to a buyer after you accept his visit request."
 msgstr ""
 
-#: template-parts/components/product-form.php:222
+#: template-parts/components/product-form.php:226
 msgid "Place it on the map (optional)"
 msgstr ""
 
-#: template-parts/components/product-form.php:229
+#: template-parts/components/product-form.php:233
 #: template-parts/dashboard/publish.php:209
 msgid "Save draft"
 msgstr ""
 
-#: template-parts/components/product-form.php:230
+#: template-parts/components/product-form.php:234
 msgid "Send for publication"
 msgstr ""
 
-#: template-parts/components/product-form.php:233
+#: template-parts/components/product-form.php:237
 msgid "The platform team checks each product (usually within a working day) before it is shown to buyers."
 msgstr ""
 
@@ -5147,6 +5211,7 @@ msgstr ""
 #: template-parts/dashboard/portfolio.php:13
 #: template-parts/dashboard/rfq.php:19
 #: template-parts/dashboard/services.php:19
+#: templates/ai-assistant.php:40
 msgid "This module is not active yet."
 msgstr ""
 
@@ -5525,6 +5590,8 @@ msgid "The counters start again on the 1st of each month."
 msgstr ""
 
 #: template-parts/dashboard/ai.php:16
+#: templates/ai-assistant.php:32
+#: templates/ai-assistant.php:40
 #: templates/dashboard.php:79
 #: templates/dashboard.php:145
 msgid "AI assistant"
@@ -7506,7 +7573,7 @@ msgid "Widen your search, or publish a request for quotation so suppliers come t
 msgstr ""
 
 #: template-parts/marketplace-archive.php:110
-#: templates/front-page-template.php:133
+#: templates/front-page-template.php:127
 #: templates/single-listing.php:142
 #: templates/single-service.php:92
 #: templates/single-service.php:121
@@ -7524,6 +7591,79 @@ msgstr[1] ""
 #: template-parts/notif-panel.php:35
 msgid "Unread"
 msgstr ""
+
+#. Template Name of the theme
+msgid "SM — AI assistant"
+msgstr ""
+
+#: templates/ai-assistant.php:23
+msgid "Write what you need in one sentence, in French, Arabic or darija: the search turns it into filters and shows the matching listings."
+msgstr ""
+
+#: templates/ai-assistant.php:23
+msgid "“20 used IPE 200 delivered to Oran”"
+msgstr ""
+
+#: templates/ai-assistant.php:24
+msgid "In the publication form, the AI sums up what you entered and writes a clear, detailed description. You change it as you like before publishing."
+msgstr ""
+
+#: templates/ai-assistant.php:24
+msgid "Publication form"
+msgstr ""
+
+#: templates/ai-assistant.php:25
+msgid "One or two photos (end view if possible, with a tape measure): up to 4 possible profiles, checked against the catalogue, and the questions that remove the doubt."
+msgstr ""
+
+#: templates/ai-assistant.php:25
+msgid "Recognise a profile"
+msgstr ""
+
+#: templates/ai-assistant.php:26
+msgid "A bill of quantities or a list of profiles (PDF or photo): the steel items are extracted, weighed by the weight engine and turned into a request for quotation."
+msgstr ""
+
+#: templates/ai-assistant.php:26
+msgid "Analyse a document"
+msgstr ""
+
+#: templates/ai-assistant.php:27
+msgid "Photos of your steel and a few words: the assistant proposes the category, the profile, the titles in French and Arabic and the description of a new listing."
+msgstr ""
+
+#: templates/ai-assistant.php:27
+msgid "Prepare a listing"
+msgstr ""
+
+#: templates/ai-assistant.php:33
+#: templates/dashboard.php:81
+#: templates/dashboard.php:147
+#: templates/front-page-template.php:134
+msgid "Assistant"
+msgstr ""
+
+#: templates/ai-assistant.php:34
+msgid "Tools that save you time: search, describe, recognise, list. They give suggestions to check: weights always come from the weight engine and the AI never replaces an engineer."
+msgstr ""
+
+#: templates/ai-assistant.php:57
+msgid "Free · for everybody"
+msgstr ""
+
+#. translators: %d: AI credits per use.
+#: templates/ai-assistant.php:59
+msgid "%d credit per use"
+msgid_plural "%d credits per use"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: AI credits left.
+#: templates/ai-assistant.php:67
+msgid "%d credit left"
+msgid_plural "%d credits left"
+msgstr[0] ""
+msgstr[1] ""
 
 #. Template Name of the theme
 msgid "SM — Sign in"
@@ -7845,12 +7985,6 @@ msgstr ""
 
 #: templates/dashboard.php:76
 msgid "Files and plans"
-msgstr ""
-
-#: templates/dashboard.php:81
-#: templates/dashboard.php:147
-#: templates/front-page-template.php:140
-msgid "Assistant"
 msgstr ""
 
 #: templates/dashboard.php:90
@@ -8440,233 +8574,233 @@ msgstr ""
 msgid "Design, calculation notes and inspection by verified engineers."
 msgstr ""
 
-#: templates/front-page-template.php:120
+#: templates/front-page-template.php:114
 msgid "Tools"
 msgstr ""
 
-#: templates/front-page-template.php:121
+#: templates/front-page-template.php:115
 msgid "Buy faster, with the right tools"
 msgstr ""
 
-#: templates/front-page-template.php:125
+#: templates/front-page-template.php:119
 msgid "Publish one request, receive several offers"
 msgstr ""
 
-#: templates/front-page-template.php:126
+#: templates/front-page-template.php:120
 msgid "Describe profiles, quantities and delivery wilaya. Suppliers answer with a price per kg, the total amount and a delivery time."
 msgstr ""
 
-#: templates/front-page-template.php:128
+#: templates/front-page-template.php:122
 msgid "Describe"
 msgstr ""
 
-#: templates/front-page-template.php:128
+#: templates/front-page-template.php:122
 msgid "profiles, quantities, wilaya"
 msgstr ""
 
-#: templates/front-page-template.php:129
+#: templates/front-page-template.php:123
 msgid "Receive"
 msgstr ""
 
-#: templates/front-page-template.php:129
+#: templates/front-page-template.php:123
 msgid "the offers of the suppliers"
 msgstr ""
 
-#: templates/front-page-template.php:130
+#: templates/front-page-template.php:124
 msgid "Compare"
 msgstr ""
 
-#: templates/front-page-template.php:130
+#: templates/front-page-template.php:124
 msgid "price, total and delivery time"
 msgstr ""
 
-#: templates/front-page-template.php:134
+#: templates/front-page-template.php:128
 msgid "See the open requests"
 msgstr ""
 
-#: templates/front-page-template.php:142
+#: templates/front-page-template.php:136
 msgid "Search in one sentence (French, Arabic, darija)"
 msgstr ""
 
-#: templates/front-page-template.php:143
+#: templates/front-page-template.php:137
 msgid "Recognise a profile from a photo"
 msgstr ""
 
-#: templates/front-page-template.php:144
+#: templates/front-page-template.php:138
 msgid "Bill of quantities or PDF to a weighed request for quotation"
 msgstr ""
 
-#: templates/front-page-template.php:145
+#: templates/front-page-template.php:139
 msgid "Listing prepared from your photos"
 msgstr ""
 
-#: templates/front-page-template.php:147
+#: templates/front-page-template.php:141
 msgid "Suggestions to check. Weights always come from the weight engine."
 msgstr ""
 
-#: templates/front-page-template.php:149
+#: templates/front-page-template.php:143
 msgid "Try the assistant"
 msgstr ""
 
-#: templates/front-page-template.php:155
+#: templates/front-page-template.php:149
 #: templates/price-index.php:18
 msgid "Steel price index"
 msgstr ""
 
-#: templates/front-page-template.php:156
+#: templates/front-page-template.php:150
 msgid "Average advertised prices per kg by profile, condition and wilaya, updated from live listings. Asking prices, not official market prices."
 msgstr ""
 
-#: templates/front-page-template.php:158
+#: templates/front-page-template.php:152
 msgid "Open the index"
 msgstr ""
 
-#: templates/front-page-template.php:167
+#: templates/front-page-template.php:161
 msgid "Featured listings"
 msgstr ""
 
-#: templates/front-page-template.php:168
+#: templates/front-page-template.php:162
 msgid "See all"
 msgstr ""
 
-#: templates/front-page-template.php:181
+#: templates/front-page-template.php:175
 msgid "Latest reuse lots"
 msgstr ""
 
-#: templates/front-page-template.php:182
+#: templates/front-page-template.php:176
 msgid "Every lot shows its condition, its weight source and an automatic total price."
 msgstr ""
 
-#: templates/front-page-template.php:184
+#: templates/front-page-template.php:178
 msgid "Browse reuse"
 msgstr ""
 
-#: templates/front-page-template.php:197
+#: templates/front-page-template.php:191
 msgid "Circular economy"
 msgstr ""
 
-#: templates/front-page-template.php:198
+#: templates/front-page-template.php:192
 msgid "Dismantled steel still has a life"
 msgstr ""
 
-#: templates/front-page-template.php:199
+#: templates/front-page-template.php:193
 msgid "Every reuse lot shows its condition, its origin and its inventory. Buyers are invited to have the structure checked by a partner engineer."
 msgstr ""
 
-#: templates/front-page-template.php:202
+#: templates/front-page-template.php:196
 msgid "Dismantle"
 msgstr ""
 
-#: templates/front-page-template.php:202
+#: templates/front-page-template.php:196
 msgid "Inventory by profile, weight calculated"
 msgstr ""
 
-#: templates/front-page-template.php:203
+#: templates/front-page-template.php:197
 msgid "Check"
 msgstr ""
 
-#: templates/front-page-template.php:203
+#: templates/front-page-template.php:197
 msgid "Five condition classes, engineer advice"
 msgstr ""
 
-#: templates/front-page-template.php:204
+#: templates/front-page-template.php:198
 msgid "Resell"
 msgstr ""
 
-#: templates/front-page-template.php:204
+#: templates/front-page-template.php:198
 msgid "By the piece, by the kg or the whole lot"
 msgstr ""
 
-#: templates/front-page-template.php:211
+#: templates/front-page-template.php:205
 msgid "Fabricators and engineers"
 msgstr ""
 
-#: templates/front-page-template.php:212
+#: templates/front-page-template.php:206
 msgid "All services"
 msgstr ""
 
-#: templates/front-page-template.php:223
+#: templates/front-page-template.php:217
 msgid "Featured companies"
 msgstr ""
 
-#: templates/front-page-template.php:223
+#: templates/front-page-template.php:217
 msgid "Latest companies"
 msgstr ""
 
-#: templates/front-page-template.php:223
+#: templates/front-page-template.php:217
 msgid "Manufacturers, distributors, recyclers and steel construction companies."
 msgstr ""
 
-#: templates/front-page-template.php:223
+#: templates/front-page-template.php:217
 msgid "See all companies"
 msgstr ""
 
-#: templates/front-page-template.php:224
+#: templates/front-page-template.php:218
 msgid "Featured professionals"
 msgstr ""
 
-#: templates/front-page-template.php:224
+#: templates/front-page-template.php:218
 msgid "Latest professionals"
 msgstr ""
 
-#: templates/front-page-template.php:224
+#: templates/front-page-template.php:218
 msgid "Welders, steel erectors, boilermakers and the other steel trades."
 msgstr ""
 
-#: templates/front-page-template.php:224
+#: templates/front-page-template.php:218
 msgid "See all professionals"
 msgstr ""
 
-#: templates/front-page-template.php:236
+#: templates/front-page-template.php:230
 msgid "New on the platform"
 msgstr ""
 
 #. translators: %s: platform name.
-#: templates/front-page-template.php:252
+#: templates/front-page-template.php:246
 msgid "Why %s?"
 msgstr ""
 
-#: templates/front-page-template.php:254
+#: templates/front-page-template.php:248
 msgid "Weight calculated"
 msgstr ""
 
-#: templates/front-page-template.php:254
+#: templates/front-page-template.php:248
 msgid "European section tables: the weight of every lot is calculated, never guessed by hand."
 msgstr ""
 
-#: templates/front-page-template.php:255
+#: templates/front-page-template.php:249
 msgid "Verified accounts"
 msgstr ""
 
-#: templates/front-page-template.php:255
+#: templates/front-page-template.php:249
 msgid "Every account is verified before it receives its badge."
 msgstr ""
 
-#: templates/front-page-template.php:256
+#: templates/front-page-template.php:250
 msgid "Partner engineers"
 msgstr ""
 
-#: templates/front-page-template.php:256
+#: templates/front-page-template.php:250
 msgid "Studies, calculation notes and inspections given by the platform."
 msgstr ""
 
-#: templates/front-page-template.php:257
+#: templates/front-page-template.php:251
 msgid "French, Arabic, English"
 msgstr ""
 
-#: templates/front-page-template.php:257
+#: templates/front-page-template.php:251
 msgid "The whole platform and its e-mails in your language."
 msgstr ""
 
-#: templates/front-page-template.php:266
+#: templates/front-page-template.php:260
 msgid "Sell your stock, surplus or used building"
 msgstr ""
 
-#: templates/front-page-template.php:267
+#: templates/front-page-template.php:261
 msgid "One business account to buy and sell. Engineers get a dedicated services account."
 msgstr ""
 
-#: templates/front-page-template.php:270
+#: templates/front-page-template.php:264
 msgid "Create a free account"
 msgstr ""
 

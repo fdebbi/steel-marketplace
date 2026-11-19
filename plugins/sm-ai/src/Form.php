@@ -3,7 +3,8 @@
  * Form handlers of the AI assistant (admin-post):
  *  - sm_ai_run    : listing assistant, profile recognition, document analysis → result page;
  *  - sm_ai_search : smart search → marketplace search with the filters understood;
- *  - sm_ai_use    : open the listing or request for quotation form pre-filled with a result.
+ *  - sm_ai_use    : open the listing or request for quotation form pre-filled with a result;
+ *  - sm_ai_describe (admin-ajax, 0.2.0): description of a listing from the facts of the publication form.
  * Results are kept 2 hours for the user who asked (transient), never published as is.
  *
  * @package SM\Ai
@@ -26,6 +27,43 @@ final class Form {
 		add_action( 'admin_post_sm_ai_use', array( __CLASS__, 'use_result' ) );
 		add_action( 'admin_post_sm_ai_search', array( __CLASS__, 'search' ) );
 		add_action( 'admin_post_nopriv_sm_ai_search', array( __CLASS__, 'search' ) );
+		add_action( 'wp_ajax_sm_ai_describe', array( __CLASS__, 'describe' ) );
+		add_action( 'wp_ajax_nopriv_sm_ai_describe', array( __CLASS__, 'describe' ) );
+	}
+
+	/** Where a refusal leads: login, upgrade (no credit left) or nothing to do. */
+	public static function state_of( $error ) {
+		if ( ! is_wp_error( $error ) ) {
+			return 'ok';
+		}
+		if ( ! is_user_logged_in() ) {
+			return 'login';
+		}
+		return in_array( $error->get_error_code(), array( 'sm_ai_credits', 'sm_ai_plan' ), true ) ? 'upgrade' : 'blocked';
+	}
+
+	/** Description writer: JSON answer for the publication form. */
+	public static function describe() {
+		if ( ! check_ajax_referer( 'sm_ai_describe', 'nonce', false ) ) {
+			wp_send_json_error( array( 'message' => __( 'The page has expired. Reload it and try again.', 'sm-ai' ), 'state' => 'blocked' ), 403 );
+		}
+		$facts = Features\Describe::facts( array( 'facts' => wp_unslash( (string) ( $_POST['facts'] ?? '' ) ) ) ); // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput
+		if ( mb_strlen( $facts ) < 15 ) {
+			wp_send_json_error( array( 'message' => __( 'Fill in the product first (category, profile, quantity…): the description is written from it.', 'sm-ai' ), 'state' => 'blocked' ) );
+		}
+		$res = Gateway::run( 'describe', array( 'facts' => $facts ) );
+		if ( is_wp_error( $res ) ) {
+			wp_send_json_error( array( 'message' => $res->get_error_message(), 'state' => self::state_of( $res ) ) );
+		}
+		$company = sm_current_company();
+		AuditLog::add( 'ai.used', 'ai', 0, array( 'feature' => 'describe' ), null, $company ? (int) $company->id : 0 );
+		wp_send_json_success(
+			array(
+				'description' => $res['description'],
+				'simulation'  => ! empty( $res['_meta']['simulation'] ),
+				'remaining'   => Gateway::remaining( 'describe', $company ),
+			)
+		);
 	}
 
 	private static function account_url( array $args ) {

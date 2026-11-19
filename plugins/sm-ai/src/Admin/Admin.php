@@ -41,6 +41,7 @@ final class Admin {
 			'recognize' => __( 'Profile recognition', 'sm-ai' ),
 			'search'    => __( 'Smart search', 'sm-ai' ),
 			'document'  => __( 'Document analysis', 'sm-ai' ),
+			'describe'  => __( 'Listing description', 'sm-ai' ),
 			'test'      => __( 'Connection test', 'sm-ai' ),
 		);
 	}

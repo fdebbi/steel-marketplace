@@ -126,11 +126,24 @@ smsub_assert( 'rejected' === Orders::get( $o3->id )->status && 'pro' === Subscri
 
 echo "\n4. AI credits\n";
 global $wpdb;
+$grace_before = get_option( Credits::GRACE_OPTION, null );
+delete_option( Credits::GRACE_OPTION );
+$st = Credits::status( $c_cli );
+smsub_assert( 0 === $st['monthly'] && 0 === $st['total_left'], 'since 0.3.0 an account without a plan has no monthly AI credit' );
+$e = Limits::ai_can_use( true, 'listing', $c_cli );
+smsub_assert( is_wp_error( $e ) && 'sm_ai_plan' === $e->get_error_code(), 'no credit in the plan: « upgrade your plan or buy credits »' );
+update_option( Credits::GRACE_OPTION, array( 'until' => time() + DAY_IN_SECONDS, 'credits' => array( 'no_plan' => 5, 'company' => 5, 'professional' => 5 ) ), false );
+smsub_assert( 5 === Credits::status( $c_cli )['monthly'], 'transition month: the 5 free credits stay until the 1st of next month' );
+update_option( Credits::GRACE_OPTION, array( 'until' => time() - 1, 'credits' => array( 'no_plan' => 5 ) ), false );
+smsub_assert( 0 === Credits::status( $c_cli )['monthly'], 'after the transition month: no free credit' );
+null === $grace_before ? delete_option( Credits::GRACE_OPTION ) : update_option( Credits::GRACE_OPTION, $grace_before, false );
+$saved_grace = get_option( Credits::GRACE_OPTION, null );
+delete_option( Credits::GRACE_OPTION );
 for ( $i = 0; $i < 5; $i++ ) {
 	$wpdb->insert( $wpdb->prefix . 'sm_ai_usage', array( 'feature' => 'listing', 'company_id' => $c_cli, 'status' => 'ok', 'created_at' => current_time( 'mysql', true ) ) );
 }
-$st = Credits::status( $c_cli );
-smsub_assert( 5 === $st['monthly'] && 5 === $st['used'] && 0 === $st['total_left'], 'a client gets 5 credits a month; all used' );
+$wpdb->insert( $wpdb->prefix . 'sm_ai_usage', array( 'feature' => 'search', 'company_id' => $c_cli, 'status' => 'ok', 'created_at' => current_time( 'mysql', true ) ) );
+smsub_assert( 5 === Credits::status( $c_cli )['used'], 'the smart search is free: it does not count as a credit' );
 smsub_assert( is_wp_error( Limits::ai_can_use( true, 'listing', $c_cli ) ), 'no credit left: the AI refuses' );
 $po = Orders::get( Orders::create( Companies::get( $c_cli ), $u_cli, 'pack', 'ai50' ) );
 smsub_assert( 1000.0 === (float) $po->amount_ttc, 'a client can buy a pack of 50 credits (1 000 DA)' );
@@ -140,6 +153,7 @@ $wpdb->insert( $wpdb->prefix . 'sm_ai_usage', array( 'feature' => 'listing', 'co
 Credits::on_used( 'listing', $c_cli );
 smsub_assert( 49 === Credits::balance( $c_cli ), 'beyond the monthly credits, one bought credit is used' );
 smsub_assert( 50 === Credits::status( $c_co )['monthly'], 'Pro: 50 credits a month' );
+null === $saved_grace ? delete_option( Credits::GRACE_OPTION ) : update_option( Credits::GRACE_OPTION, $saved_grace, false );
 
 echo "\n5. End of a plan: over-limit listings paused, oldest first\n";
 for ( $i = 0; $i < 4; $i++ ) {

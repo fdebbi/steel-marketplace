@@ -111,3 +111,10 @@ T = {
 P = {
 ("Send %d file at most.", "Send %d files at most."): (["Envoyez %d fichier au maximum.", "Envoyez %d fichiers au maximum."], ["أرسل %d ملف كحد أقصى.", "أرسل ملفًا واحدًا كحد أقصى.", "أرسل ملفين كحد أقصى.", "أرسل %d ملفات كحد أقصى.", "أرسل %d ملفًا كحد أقصى.", "أرسل %d ملف كحد أقصى."]),
 }
+
+# 0.2.0
+T.update({
+'Listing description': ("Rédaction de l'annonce", 'كتابة وصف الإعلان'),
+'The page has expired. Reload it and try again.': ('La page a expiré. Rechargez-la et réessayez.', 'انتهت صلاحية الصفحة. أعد تحميلها وحاول مجدداً.'),
+'Fill in the product first (category, profile, quantity…): the description is written from it.': ("Remplissez d'abord le produit (catégorie, profilé, quantité…) : la description est rédigée à partir de ces informations.", 'املأ معلومات المنتج أولاً (الفئة، المقطع، الكمية…): يُكتب الوصف انطلاقاً منها.'),
+})

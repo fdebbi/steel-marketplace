@@ -437,3 +437,12 @@ Validé sur la maquette 0.37.
 - Les outils IA portent tous le même repère « ✦ IA », dans une couleur réservée (violet → bleu) distincte du vert de la plateforme. Il n'apparaît que si le module IA est actif et seulement sur ce qui passe par l'IA (jamais sur le moteur de poids).
 - Le carré IA ne promet que les 4 outils existants et rappelle que ce sont des suggestions à vérifier ; aucun compteur n'est affiché sans vraies données.
 
+## Outils IA : page publique, crédits, feuille de route (2026-11-19)
+
+- « Essayer l'assistant » ouvre une page publique des outils IA. Visiteur : description visible, « Connectez-vous pour utiliser cet outil ». Membre sans crédit : « Améliorez votre formule… ou achetez un pack de crédits ». Membre avec crédits : il utilise l'outil.
+- Tous les outils IA consomment des crédits (1 par utilisation), disponibles à l'achat pour tous. La formule gratuite n'inclut plus de crédits (les crédits du mois en cours restent jusqu'au 1er du mois suivant).
+- Exceptions : la **recherche intelligente** est gratuite pour tous (limites par jour) ; le **Rapport Business** est réservé à la formule Business et ne consomme pas de crédit.
+- Feuille de route validée : (1) page publique, recherche gratuite, rédaction de la description ; (2) optimiseur de découpe — calcul exact, gratuit, ouvert à tous, pas d'IA — puis DQE IA (articles de charpente extraits par l'IA, barres de 12 m et poids calculés par le moteur) ; (3) reconnaissance de profilé au début de la publication, état de l'acier proposé par l'IA pour le réemploi (suggestion à confirmer) ; (4) Rapport Business.
+- DQE à partir d'un plan : remplacé pour l'instant par une mission d'ingénieur (fiabilité).
+- Règle interne du Rapport Business (jamais affichée telle quelle) : prix affichés et comptages seulement, au moins 5 sources par moyenne, aucune donnée d'utilisateur ni montant de transaction.
+

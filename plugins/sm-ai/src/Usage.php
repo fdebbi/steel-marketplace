@@ -55,10 +55,12 @@ final class Usage {
 		return (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM ' . self::table() . " WHERE company_id = %d AND feature = %s AND status = 'ok' AND created_at >= %s", $company_id, $feature, self::month_start() ) ); // phpcs:ignore WordPress.DB
 	}
 
-	/** Successful calls of a company this month, all features (AI credits used, 0.1.3). */
+	/** Successful calls of a company this month that use AI credits (0.1.3; the free smart search is not counted since 0.2.0). */
 	public static function company_month_total( $company_id ) {
 		global $wpdb;
-		return (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM ' . self::table() . " WHERE company_id = %d AND status = 'ok' AND feature <> 'test' AND created_at >= %s", $company_id, self::month_start() ) ); // phpcs:ignore WordPress.DB
+		$free = Gateway::free_features();
+		$in   = implode( ',', array_fill( 0, count( $free ), '%s' ) );
+		return (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM ' . self::table() . " WHERE company_id = %d AND status = 'ok' AND feature NOT IN ($in) AND created_at >= %s", array_merge( array( $company_id ), $free, array( self::month_start() ) ) ) ); // phpcs:ignore WordPress.DB
 	}
 
 	/** Calls of a user today (all features). */

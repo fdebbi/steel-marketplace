@@ -43,7 +43,7 @@ msgstr "ReuSteel"
 msgid "SM AI needs the SM Core plugin. Activate it first."
 msgstr "يتطلب SM AI إضافة SM Core. فعّلها أولًا."
 
-#: src/Admin/Admin.php:31 src/Admin/Admin.php:54 src/Plugin.php:36
+#: src/Admin/Admin.php:31 src/Admin/Admin.php:55 src/Plugin.php:36
 msgid "AI assistant"
 msgstr "المساعد الذكي"
 
@@ -63,24 +63,28 @@ msgstr "البحث الذكي"
 msgid "Document analysis"
 msgstr "تحليل الوثائق"
 
-#: src/Admin/Admin.php:44
+#: src/Admin/Admin.php:44 src/Features/Describe.php:27
+msgid "Listing description"
+msgstr "كتابة وصف الإعلان"
+
+#: src/Admin/Admin.php:45
 msgid "Connection test"
 msgstr "اختبار الاتصال"
 
-#: src/Admin/Admin.php:56
+#: src/Admin/Admin.php:57
 msgid "Saved."
 msgstr "تم الحفظ."
 
-#: src/Admin/Admin.php:60
+#: src/Admin/Admin.php:61
 msgid "Connection works: the provider answered."
 msgstr "الاتصال يعمل: أجاب المزوّد."
 
 #. translators: %s: error.
-#: src/Admin/Admin.php:60
+#: src/Admin/Admin.php:61
 msgid "Connection failed: %s"
 msgstr "فشل الاتصال: %s"
 
-#: src/Admin/Admin.php:64
+#: src/Admin/Admin.php:65
 msgid ""
 "The AI gives suggestions that users confirm. It never gives weights "
 "(computed by the weight engine), never replaces engineering calculations, "
@@ -90,19 +94,19 @@ msgstr ""
 "(يحسبها محرك الأوزان) ولا يعوّض الحسابات الهندسية ولا التحقق الإنشائي ولا "
 "الشهادات."
 
-#: src/Admin/Admin.php:66
+#: src/Admin/Admin.php:67
 msgid "Providers and services"
 msgstr "المزوّدون والخدمات"
 
-#: src/Admin/Admin.php:66
+#: src/Admin/Admin.php:67
 msgid "Consumption"
 msgstr "الاستهلاك"
 
-#: src/Admin/Admin.php:79
+#: src/Admin/Admin.php:80
 msgid "Providers"
 msgstr "المزوّدون"
 
-#: src/Admin/Admin.php:80
+#: src/Admin/Admin.php:81
 msgid ""
 "Keys are stored encrypted and never shown again. For more safety, define "
 "them in wp-config.php: SM_AI_ANTHROPIC_KEY, SM_AI_OPENAI_KEY. Prices (US "
@@ -114,250 +118,251 @@ msgstr ""
 " مليون رمز، كما ينشرها المزوّد) تُستعمل فقط لتقدير التكاليف وتطبيق الميزانية"
 " الشهرية."
 
-#: src/Admin/Admin.php:81 src/Admin/Admin.php:107
+#: src/Admin/Admin.php:82 src/Admin/Admin.php:108
 msgid "Provider"
 msgstr "المزوّد"
 
-#: src/Admin/Admin.php:81
+#: src/Admin/Admin.php:82
 msgid "API key"
 msgstr "مفتاح API"
 
-#: src/Admin/Admin.php:81
+#: src/Admin/Admin.php:82
 msgid "Model"
 msgstr "النموذج"
 
-#: src/Admin/Admin.php:81
+#: src/Admin/Admin.php:82
 msgid "Price in / out ($ per 1M tokens)"
 msgstr "سعر الإدخال / الإخراج ($ لكل مليون رمز)"
 
-#: src/Admin/Admin.php:86
+#: src/Admin/Admin.php:87
 msgid "Base URL"
 msgstr "العنوان الأساسي"
 
-#: src/Admin/Admin.php:90
+#: src/Admin/Admin.php:91
 msgid "Defined in wp-config.php"
 msgstr "معرّف في wp-config.php"
 
-#: src/Admin/Admin.php:92
+#: src/Admin/Admin.php:93
 msgid "Paste the key"
 msgstr "الصق المفتاح"
 
-#: src/Admin/Admin.php:94
+#: src/Admin/Admin.php:95
 msgid "Remove the key"
 msgstr "حذف المفتاح"
 
-#: src/Admin/Admin.php:97
+#: src/Admin/Admin.php:98
 msgid "Model name of the provider"
 msgstr "اسم النموذج لدى المزوّد"
 
-#: src/Admin/Admin.php:101
+#: src/Admin/Admin.php:102
 msgid "Default provider"
 msgstr "المزوّد الافتراضي"
 
-#: src/Admin/Admin.php:101
+#: src/Admin/Admin.php:102
 msgid "— none (AI off) —"
 msgstr "— لا شيء (الذكاء الاصطناعي متوقف) —"
 
-#: src/Admin/Admin.php:107
+#: src/Admin/Admin.php:108
 msgid "Services"
 msgstr "الخدمات"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:107 src/Admin/Admin.php:156 src/Admin/Admin.php:170
+#: src/Admin/Admin.php:108 src/Admin/Admin.php:157 src/Admin/Admin.php:171
 msgid "Service"
 msgstr "الخدمة"
 
-#: src/Admin/Admin.php:107
+#: src/Admin/Admin.php:108
 msgid "On"
 msgstr "مفعّل"
 
-#: src/Admin/Admin.php:107
+#: src/Admin/Admin.php:108
 msgid "Model (empty = the provider's)"
 msgstr "النموذج (فارغ = نموذج المزوّد)"
 
-#: src/Admin/Admin.php:107
+#: src/Admin/Admin.php:108
 msgid "Uses per company per month"
 msgstr "الاستعمالات لكل مؤسسة شهريًا"
 
-#: src/Admin/Admin.php:107
+#: src/Admin/Admin.php:108
 msgid "Visitors: uses per day"
 msgstr "الزوار: الاستعمالات يوميًا"
 
-#: src/Admin/Admin.php:107 src/Admin/Admin.php:170
+#: src/Admin/Admin.php:108 src/Admin/Admin.php:171
 msgid "State"
 msgstr "الحالة"
 
-#: src/Admin/Admin.php:113
+#: src/Admin/Admin.php:114
 msgid "Default"
 msgstr "الافتراضي"
 
-#: src/Admin/Admin.php:118
+#: src/Admin/Admin.php:119
 msgid "0 = no limit"
 msgstr "0 = بلا حد"
 
-#: src/Admin/Admin.php:120
+#: src/Admin/Admin.php:121
 msgid "Not available (no provider, key or model)"
 msgstr "غير متاح (لا مزوّد أو مفتاح أو نموذج)"
 
-#: src/Admin/Admin.php:124
+#: src/Admin/Admin.php:125
 msgid "Limits"
 msgstr "الحدود"
 
-#: src/Admin/Admin.php:126
+#: src/Admin/Admin.php:127
 msgid "Monthly budget (US dollars, 0 = no limit)"
 msgstr "الميزانية الشهرية (دولار أمريكي، 0 = بلا حد)"
 
-#: src/Admin/Admin.php:127
+#: src/Admin/Admin.php:128
 msgid "Uses per user per day"
 msgstr "الاستعمالات لكل مستخدم يوميًا"
 
-#: src/Admin/Admin.php:128
+#: src/Admin/Admin.php:129
 msgid "Maximum length of an answer (tokens)"
 msgstr "أقصى طول للإجابة (رموز)"
 
-#: src/Admin/Admin.php:129
+#: src/Admin/Admin.php:130
 msgid "Photos per request"
 msgstr "الصور لكل طلب"
 
-#: src/Admin/Admin.php:130
+#: src/Admin/Admin.php:131
 msgid "Largest photo (MB)"
 msgstr "أكبر حجم للصورة (ميغابايت)"
 
-#: src/Admin/Admin.php:131
+#: src/Admin/Admin.php:132
 msgid "Largest document (MB)"
 msgstr "أكبر حجم للوثيقة (ميغابايت)"
 
-#: src/Admin/Admin.php:132
+#: src/Admin/Admin.php:133
 msgid "Waiting time for an answer (seconds)"
 msgstr "مدة انتظار الإجابة (ثوانٍ)"
 
-#: src/Admin/Admin.php:133
+#: src/Admin/Admin.php:134
 msgid "Keep the consumption log (days)"
 msgstr "مدة الاحتفاظ بسجل الاستهلاك (أيام)"
 
-#: src/Admin/Admin.php:140
+#: src/Admin/Admin.php:141
 msgid "Test the connection"
 msgstr "اختبار الاتصال"
 
-#: src/Admin/Admin.php:146
+#: src/Admin/Admin.php:147
 msgid "Sends a tiny request (a few tokens) with the saved key and model."
 msgstr "يرسل طلبًا صغيرًا جدًا (بضعة رموز) بالمفتاح والنموذج المحفوظين."
 
 #. translators: %s: month.
-#: src/Admin/Admin.php:154
+#: src/Admin/Admin.php:155
 msgid "This month (%s)"
 msgstr "هذا الشهر (%s)"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:155
+#: src/Admin/Admin.php:156
 msgid "Estimated cost: %s $"
 msgstr "التكلفة التقديرية: %s $"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:156
+#: src/Admin/Admin.php:157
 msgid "Answers"
 msgstr "الإجابات"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:156
+#: src/Admin/Admin.php:157
 msgid "Errors"
 msgstr "الأخطاء"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:156
+#: src/Admin/Admin.php:157
 msgid "Refused (limits)"
 msgstr "مرفوضة (الحدود)"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:156
+#: src/Admin/Admin.php:157
 msgid "Tokens in / out"
 msgstr "الرموز إدخال / إخراج"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:156
+#: src/Admin/Admin.php:157
 msgid "Estimated cost ($)"
 msgstr "التكلفة التقديرية ($)"
 
-#: src/Admin/Admin.php:163
+#: src/Admin/Admin.php:164
 msgid "Companies using it the most"
 msgstr "المؤسسات الأكثر استعمالًا"
 
-#: src/Admin/Admin.php:170
+#: src/Admin/Admin.php:171
 msgid "Last calls"
 msgstr "آخر الطلبات"
 
-#: src/Admin/Admin.php:170
+#: src/Admin/Admin.php:171
 msgid "Date"
 msgstr "التاريخ"
 
-#: src/Admin/Admin.php:170
+#: src/Admin/Admin.php:171
 msgid "Provider · model"
 msgstr "المزوّد · النموذج"
 
-#: src/Admin/Admin.php:170
+#: src/Admin/Admin.php:171
 msgid "Company"
 msgstr "المؤسسة"
 
-#: src/Admin/Admin.php:170
+#: src/Admin/Admin.php:171
 msgid "Tokens"
 msgstr "الرموز"
 
-#: src/Admin/Admin.php:170
+#: src/Admin/Admin.php:171
 msgid "Time"
 msgstr "المدة"
 
-#: src/Admin/Admin.php:177
+#: src/Admin/Admin.php:178
 msgid "Visitor"
 msgstr "زائر"
 
-#: src/Admin/Admin.php:185 src/Admin/Admin.php:196
+#: src/Admin/Admin.php:186 src/Admin/Admin.php:197
 msgid "You cannot change these settings."
 msgstr "لا يمكنك تغيير هذه الإعدادات."
+
+#: src/Features/Describe.php:32 src/Features/Recognize.php:28
+#: src/Gateway.php:56
+msgid "Sign in to use the AI assistant."
+msgstr "سجّل الدخول لاستعمال المساعد الذكي."
+
+#: src/Features/Describe.php:35 src/Features/Listing.php:43
+msgid "Sign in with a business account to use the listing assistant."
+msgstr "سجّل الدخول بحساب مؤسسة لاستعمال مساعد الإعلان."
+
+#: src/Features/Describe.php:38 src/Features/Listing.php:46
+msgid "Your account cannot publish listings."
+msgstr "لا يمكن لحسابك نشر إعلانات."
 
 #: src/Features/Document.php:31
 msgid "Sign in with your company account to analyse a document."
 msgstr "سجّل الدخول بحساب مؤسستك لتحليل وثيقة."
 
-#: src/Features/Listing.php:43
-msgid "Sign in with a business account to use the listing assistant."
-msgstr "سجّل الدخول بحساب مؤسسة لاستعمال مساعد الإعلان."
-
-#: src/Features/Listing.php:46
-msgid "Your account cannot publish listings."
-msgstr "لا يمكن لحسابك نشر إعلانات."
-
-#: src/Features/Recognize.php:28 src/Gateway.php:55
-msgid "Sign in to use the AI assistant."
-msgstr "سجّل الدخول لاستعمال المساعد الذكي."
-
 #: src/Features/Recognize.php:30
 msgid "The weight engine is not active."
 msgstr "محرك الأوزان غير مفعّل."
 
-#: src/Features/Search.php:32
+#: src/Features/Search.php:37
 msgid "The marketplace is not active."
 msgstr "السوق غير مفعّل."
 
 #. translators: %s: metres.
-#: src/Features/Search.php:110
+#: src/Features/Search.php:115
 msgid "≥ %s m"
 msgstr "≥ %s م"
 
 #. translators: %s: pieces.
-#: src/Features/Search.php:114
+#: src/Features/Search.php:119
 msgid "≥ %s pieces"
 msgstr "≥ %s قطعة"
 
 #. translators: %s: price.
-#: src/Features/Search.php:118
+#: src/Features/Search.php:123
 msgid "≤ %s DA/kg"
 msgstr "≤ %s دج/كغ"
 
-#: src/Features/Search.php:121
+#: src/Features/Search.php:126
 msgid "Assembled"
 msgstr "مركّب"
 
-#: src/Features/Search.php:121
+#: src/Features/Search.php:126
 msgid "Dismantled"
 msgstr "مفكّك"
 
@@ -394,27 +399,39 @@ msgstr "أرسل وثيقة PDF أو صورة (JPG، PNG، WebP)."
 msgid "A photo is too large (%d MB at most)."
 msgstr "إحدى الصور كبيرة جدًا (%d ميغابايت كحد أقصى)."
 
-#: src/Form.php:39
+#: src/Form.php:48
+msgid "The page has expired. Reload it and try again."
+msgstr "انتهت صلاحية الصفحة. أعد تحميلها وحاول مجدداً."
+
+#: src/Form.php:52
+msgid ""
+"Fill in the product first (category, profile, quantity…): the description is"
+" written from it."
+msgstr ""
+"املأ معلومات المنتج أولاً (الفئة، المقطع، الكمية…): يُكتب الوصف انطلاقاً "
+"منها."
+
+#: src/Form.php:77
 msgid "Choose an AI tool."
 msgstr "اختر أداة ذكاء اصطناعي."
 
-#: src/Form.php:51
+#: src/Form.php:89
 msgid "Add at least one photo of the profile."
 msgstr "أضف صورة واحدة على الأقل للمقطع."
 
-#: src/Form.php:54
+#: src/Form.php:92
 msgid "Add the document to analyse (PDF or photo)."
 msgstr "أضف الوثيقة المراد تحليلها (PDF أو صورة)."
 
-#: src/Form.php:57
+#: src/Form.php:95
 msgid "Add photos or describe the product in a few words."
 msgstr "أضف صورًا أو صِف المنتج في بضع كلمات."
 
-#: src/Form.php:84
+#: src/Form.php:122
 msgid "This suggestion expired. Run the assistant again."
 msgstr "انتهت صلاحية هذا الاقتراح. أعد تشغيل المساعد."
 
-#: src/Form.php:86
+#: src/Form.php:124
 msgid ""
 "Form pre-filled by the AI assistant: check every field before publishing. "
 "The weight is computed by the weight engine."
@@ -422,49 +439,49 @@ msgstr ""
 "نموذج مُعبّأ مسبقًا من المساعد الذكي: تحقّق من كل حقل قبل النشر. يحسب محرك "
 "الأوزان الوزن."
 
-#: src/Form.php:93
+#: src/Form.php:131
 msgid "Your account cannot create requests for quotation."
 msgstr "لا يمكن لحسابك إنشاء طلبات عروض أسعار."
 
-#: src/Form.php:98
+#: src/Form.php:136
 msgid "Nothing to use from this result."
 msgstr "لا شيء يمكن استعماله من هذه النتيجة."
 
-#: src/Gateway.php:47
+#: src/Gateway.php:48
 msgid "This AI service is not available."
 msgstr "خدمة الذكاء الاصطناعي هذه غير متاحة."
 
-#: src/Gateway.php:51
+#: src/Gateway.php:52
 msgid "The AI assistant is not configured yet. Try again later."
 msgstr "المساعد الذكي غير مُعدّ بعد. أعد المحاولة لاحقًا."
 
-#: src/Gateway.php:67
+#: src/Gateway.php:71
 msgid ""
 "The AI assistant has reached its monthly limit. It will be available again "
 "next month."
 msgstr "بلغ المساعد الذكي حدّه الشهري. سيكون متاحًا من جديد الشهر المقبل."
 
-#: src/Gateway.php:71
+#: src/Gateway.php:75
 msgid "You used the AI assistant many times today. Try again tomorrow."
 msgstr "استعملت المساعد الذكي كثيرًا اليوم. أعد المحاولة غدًا."
 
-#: src/Gateway.php:75
+#: src/Gateway.php:79
 msgid "Your company used all its requests of this month for this AI service."
 msgstr "استهلكت مؤسستك كل طلباتها لهذا الشهر في خدمة الذكاء الاصطناعي هذه."
 
-#: src/Gateway.php:78
+#: src/Gateway.php:82
 msgid "Create a free account to keep using the smart search today."
 msgstr "أنشئ حسابًا مجانيًا لمواصلة استعمال البحث الذكي اليوم."
 
-#: src/Gateway.php:136
+#: src/Gateway.php:155
 msgid "The AI service did not answer. Try again in a moment."
 msgstr "لم تُجب خدمة الذكاء الاصطناعي. أعد المحاولة بعد لحظة."
 
-#: src/Gateway.php:141
+#: src/Gateway.php:160
 msgid "The AI answer could not be read. Try again."
 msgstr "تعذّرت قراءة إجابة الذكاء الاصطناعي. أعد المحاولة."
 
-#: src/Gateway.php:171
+#: src/Gateway.php:192
 msgid "Give the model name first."
 msgstr "أدخل اسم النموذج أولًا."
 
@@ -476,10 +493,10 @@ msgstr "تم تعديل إعدادات الذكاء الاصطناعي"
 msgid "AI assistant used"
 msgstr "استعمال المساعد الذكي"
 
-#: src/Settings.php:78
+#: src/Settings.php:79
 msgid "OpenAI-compatible API"
 msgstr "واجهة متوافقة مع OpenAI"
 
-#: src/Settings.php:81
+#: src/Settings.php:82
 msgid "Simulation (tests, no real AI)"
 msgstr "محاكاة (اختبارات، بدون ذكاء اصطناعي حقيقي)"

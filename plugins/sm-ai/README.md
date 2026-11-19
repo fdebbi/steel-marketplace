@@ -30,7 +30,8 @@ Extension de **ReuSteel** (Phase 9). Nécessite **SM Core 0.5.0**. Utilise, quan
 | --- | --- | --- |
 | Assistant d'annonce | Comptes entreprise pouvant publier | À partir de photos et de notes : marché, catégorie, profilé du catalogue, nuance, état, titres et description FR/AR, informations manquantes. Bouton « Créer l'annonce » : formulaire pré-rempli. |
 | Reconnaissance de profilé | Comptes connectés (ingénieurs compris) | Jusqu'à 4 profilés possibles avec confiance et raison, vérifiés au catalogue (masse linéique du catalogue), questions pour lever le doute ; liens « Le peser » et « Le trouver sur la plateforme ». |
-| Recherche intelligente | Tout le monde | Une phrase (FR, AR, darija) devient des filtres : marché, catégorie, désignation, wilaya, état, longueur, quantité, prix maximal. « Compris comme » affiché sur les résultats ; recherche simple en cas d'échec. |
+| Recherche intelligente | Tout le monde, **gratuite** (0.2.0) | Une phrase (FR, AR, darija) devient des filtres : marché, catégorie, désignation, wilaya, état, longueur, quantité, prix maximal. « Compris comme » affiché sur les résultats ; recherche simple en cas d'échec. |
+| Rédaction de l'annonce (0.2.0) | Comptes pouvant publier | « Rédiger avec l'IA » dans le formulaire de publication : description écrite uniquement à partir des informations saisies ; le vendeur la modifie ou l'annule. |
 | Analyse de document | Comptes connectés | PDF ou photo (métré, liste de profilés, cahier des charges) : articles extraits, profilés du catalogue reconnus et **pesés par le moteur** ; bouton « Créer une demande de devis » (lignes pesées et autres articles dans la description). |
 
 ## Administration (*SM → Assistant IA*)

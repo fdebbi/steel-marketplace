@@ -35,6 +35,11 @@ abstract class Feature {
 	/** JSON text a plausible model would return (simulation provider). */
 	abstract public static function simulate( array $input );
 
+	/** AI credits used by one call (0 = free, e.g. the smart search; 0.2.0). */
+	public static function credits() {
+		return 1;
+	}
+
 	/** Visitors without an account may use it. */
 	public static function public_feature() {
 		return false;

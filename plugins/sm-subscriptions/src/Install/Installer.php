@@ -8,12 +8,19 @@
 
 namespace SM\Subscriptions\Install;
 
+use SM\Subscriptions\Credits;
+use SM\Subscriptions\Plans;
+
 defined( 'ABSPATH' ) || exit;
 
 final class Installer {
 
 	public static function activate() {
+		$from = (int) get_option( 'sm_subscriptions_db_version', 0 );
 		self::migrate();
+		if ( $from > 0 && $from < 3 ) {
+			self::free_ai_credits_off();
+		}
 		update_option( 'sm_subscriptions_db_version', SM_SUBSCRIPTIONS_DB_VERSION, false );
 	}
 
@@ -21,6 +28,26 @@ final class Installer {
 		if ( (int) get_option( 'sm_subscriptions_db_version', 0 ) < SM_SUBSCRIPTIONS_DB_VERSION ) {
 			self::activate();
 		}
+	}
+
+	/**
+	 * 0.3.0: the free plan and the accounts without plans have no AI credits any
+	 * more. The credits they had this month stay until the 1st of next month.
+	 */
+	public static function free_ai_credits_off() {
+		$saved   = (array) get_option( Plans::OPTION, array() );
+		$credits = array( 'no_plan' => 5 );
+		foreach ( array( 'company', 'professional' ) as $class ) {
+			$credits[ $class ] = isset( $saved[ $class ]['free']['ai_credits'] ) ? (int) $saved[ $class ]['free']['ai_credits'] : 5;
+			if ( isset( $saved[ $class ]['free'] ) ) {
+				$saved[ $class ]['free']['ai_credits'] = 0;
+			}
+		}
+		if ( $saved ) {
+			update_option( Plans::OPTION, $saved, false );
+		}
+		$next = new \DateTimeImmutable( 'first day of next month midnight', wp_timezone() );
+		update_option( Credits::GRACE_OPTION, array( 'until' => $next->getTimestamp(), 'credits' => $credits ), false );
 	}
 
 	public static function migrate() {

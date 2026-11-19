@@ -28,6 +28,11 @@ final class Search extends Feature {
 		return true;
 	}
 
+	/** Free for everybody (limits per day only): it never uses AI credits. */
+	public static function credits() {
+		return 0;
+	}
+
 	public static function allowed( $company ) {
 		return Catalog::has_products() ? true : new \WP_Error( 'sm_ai_products', __( 'The marketplace is not active.', 'sm-ai' ) );
 	}

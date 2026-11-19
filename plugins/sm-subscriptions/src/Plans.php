@@ -30,12 +30,12 @@ final class Plans {
 	public static function defaults() {
 		return array(
 			'company'      => array(
-				'free'     => array( 'price_month' => 0, 'price_year' => 0, 'listings' => 5, 'weight_t' => 10, 'buildings' => 1, 'services' => 1, 'portfolio' => 3, 'rfq_offers' => 3, 'ai_credits' => 5, 'contacts' => 0, 'featured' => '' ),
+				'free'     => array( 'price_month' => 0, 'price_year' => 0, 'listings' => 5, 'weight_t' => 10, 'buildings' => 1, 'services' => 1, 'portfolio' => 3, 'rfq_offers' => 3, 'ai_credits' => 0, 'contacts' => 0, 'featured' => '' ),
 				'pro'      => array( 'price_month' => 3500, 'price_year' => 35000, 'listings' => 40, 'weight_t' => 200, 'buildings' => 5, 'services' => 5, 'portfolio' => 20, 'rfq_offers' => -1, 'ai_credits' => 50, 'contacts' => 1, 'featured' => '' ),
 				'business' => array( 'price_month' => 9000, 'price_year' => 90000, 'listings' => 150, 'weight_t' => 1000, 'buildings' => 20, 'services' => 20, 'portfolio' => -1, 'rfq_offers' => -1, 'ai_credits' => 200, 'contacts' => 1, 'featured' => 'home' ),
 			),
 			'professional' => array(
-				'free'            => array( 'price_month' => 0, 'price_year' => 0, 'listings' => 3, 'weight_t' => 5, 'buildings' => 1, 'services' => 1, 'portfolio' => 3, 'rfq_offers' => 3, 'ai_credits' => 5, 'contacts' => 0, 'featured' => '' ),
+				'free'            => array( 'price_month' => 0, 'price_year' => 0, 'listings' => 3, 'weight_t' => 5, 'buildings' => 1, 'services' => 1, 'portfolio' => 3, 'rfq_offers' => 3, 'ai_credits' => 0, 'contacts' => 0, 'featured' => '' ),
 				'artisan_pro'     => array( 'price_month' => 1500, 'price_year' => 15000, 'listings' => 10, 'weight_t' => 30, 'buildings' => 2, 'services' => 3, 'portfolio' => 15, 'rfq_offers' => -1, 'ai_credits' => 30, 'contacts' => 1, 'featured' => '' ),
 				'artisan_premium' => array( 'price_month' => 3000, 'price_year' => 30000, 'listings' => 30, 'weight_t' => 100, 'buildings' => 5, 'services' => 8, 'portfolio' => -1, 'rfq_offers' => -1, 'ai_credits' => 80, 'contacts' => 1, 'featured' => 'home' ),
 			),

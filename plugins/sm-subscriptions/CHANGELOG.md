@@ -1,5 +1,11 @@
 # Changelog — sm-subscriptions
 
+## 0.3.0 — 2026-11-19 (nécessite SM AI 0.2.0)
+
+- La **formule gratuite** (entreprises et professionnels) et les comptes sans formule (clients, ingénieurs partenaires) **n'ont plus de crédits IA mensuels** ; tous peuvent acheter des packs. Mois de transition : sur un site existant, les crédits gratuits de ce mois restent jusqu'au 1er du mois suivant (option `sm_sub_ai_grace`, migration DB v3) ; les valeurs réglées par l'administrateur pour la formule gratuite passent à 0.
+- Sans crédit : « Améliorez votre formule pour bénéficier de l'assistant IA, ou achetez un pack de crédits IA » (code `sm_ai_plan`) ; crédits du mois épuisés : `sm_ai_credits`.
+- La recherche intelligente ne consomme plus de crédit (SM AI 0.2.0).
+
 ## 0.2.1 — 2026-11-18
 
 - Administration : « Arrêter » une formule demande confirmation dans la fenêtre centrée de SM Core 0.8.6.

@@ -4,7 +4,9 @@
  *  - ai_tools  : the assistant tools for the current visitor (available or why not, remaining uses, limits);
  *  - ai_result : a result of the current user (token);
  *  - ai_search : what the smart search understood (token of the results page);
- *  - ai_search_ready : whether the smart search box can be shown.
+ *  - ai_search_ready : whether the smart search box can be shown;
+ *  - ai_catalog : every AI service for the public page (0.2.0): state ok|login|upgrade|blocked, credits per use;
+ *  - ai_describe : the description writer of the publication form (0.2.0).
  *
  * @package SM\Ai
  */
@@ -25,6 +27,58 @@ final class Bridge {
 		add_filter( 'sm_theme_data_ai_result', array( __CLASS__, 'result' ), 10, 2 );
 		add_filter( 'sm_theme_data_ai_search', array( __CLASS__, 'search' ), 10, 2 );
 		add_filter( 'sm_theme_data_ai_search_ready', static fn( $r ) => null !== $r ? $r : true === Gateway::check( 'search' ) );
+		add_filter( 'sm_theme_data_ai_catalog', array( __CLASS__, 'catalog' ), 10, 2 );
+		add_filter( 'sm_theme_data_ai_describe', array( __CLASS__, 'describe' ), 10, 2 );
+	}
+
+	/** One service for the interface: available now, or why not and what to do. */
+	private static function service( $id, $company ) {
+		$class = Gateway::feature( $id );
+		$f     = Settings::feature( $id );
+		if ( ! $class || ! $f || empty( $f['enabled'] ) ) {
+			return null;
+		}
+		$ok = Gateway::check( $id, $company );
+		if ( is_wp_error( $ok ) && in_array( $ok->get_error_code(), array( 'sm_ai_off', 'sm_ai_config', 'sm_ai_products', 'sm_ai_engine' ), true ) ) {
+			return null; // Not offered on this site.
+		}
+		return array(
+			'id'        => $id,
+			'label'     => $class::label(),
+			'credits'   => (int) $class::credits(),
+			'state'     => Form::state_of( $ok ),
+			'reason'    => is_wp_error( $ok ) ? $ok->get_error_message() : '',
+			'remaining' => Gateway::remaining( $id, $company ),
+		);
+	}
+
+	public static function catalog( $result, $args ) {
+		if ( null !== $result ) {
+			return $result;
+		}
+		$company = sm_current_company();
+		$out     = array();
+		foreach ( array( 'search', 'describe', 'recognize', 'document', 'listing' ) as $id ) {
+			$s = self::service( $id, $company );
+			if ( $s ) {
+				$out[ $id ] = $s;
+			}
+		}
+		return $out ? array( 'services' => $out, 'logged_in' => is_user_logged_in(), 'has_company' => (bool) $company ) : null;
+	}
+
+	public static function describe( $result, $args ) {
+		if ( null !== $result ) {
+			return $result;
+		}
+		$s = self::service( 'describe', sm_current_company() );
+		if ( ! $s ) {
+			return null;
+		}
+		return $s + array(
+			'ajax'  => admin_url( 'admin-ajax.php' ),
+			'nonce' => wp_create_nonce( 'sm_ai_describe' ),
+		);
 	}
 
 	public static function tools( $result, $args ) {
@@ -43,6 +97,7 @@ final class Bridge {
 				'label'      => $class::label(),
 				'available'  => true === $ok,
 				'reason'     => is_wp_error( $ok ) ? $ok->get_error_message() : '',
+				'state'      => Form::state_of( $ok ),
 				'remaining'  => Gateway::remaining( $id, $company ),
 				'quota'      => ( $f = Settings::feature( $id ) ) && $f['per_company_month'] > 0 ? (int) $f['per_company_month'] : null,
 				'used'       => $company ? \SM\Ai\Usage::company_month( (int) $company->id, $id ) : 0,

@@ -8,14 +8,14 @@ Si l'une de ces extensions est active dans une version plus ancienne, les pages 
 
 | Classe | Formule | Prix (DA TTC) | Annonces | Tonnage | Bâtiments | Services | Réalisations | Réponses devis / mois | IA / mois | Coordonnées | À la une |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Entreprise | Découverte | 0 | 5 | 10 t | 1 | 1 | 3 | 3 | 5 | masquées | non |
+| Entreprise | Découverte | 0 | 5 | 10 t | 1 | 1 | 3 | 3 | 0 (achat de packs) | masquées | non |
 | Entreprise | Pro | 3 500 / mois, 35 000 / an | 40 | 200 t | 5 | 5 | 20 | illimité | 50 | visibles | non |
 | Entreprise | Business | 9 000 / mois, 90 000 / an | 150 | 1 000 t | 20 | 20 | illimité | illimité | 200 | visibles | rotation |
-| Professionnel | Gratuit | 0 | 3 | 5 t | 1 | 1 | 3 | 3 | 5 | masquées | non |
+| Professionnel | Gratuit | 0 | 3 | 5 t | 1 | 1 | 3 | 3 | 0 (achat de packs) | masquées | non |
 | Professionnel | Artisan Pro | 1 500 / mois, 15 000 / an | 10 | 30 t | 2 | 3 | 15 | illimité | 30 | visibles | non |
 | Professionnel | Artisan Premium | 3 000 / mois, 30 000 / an | 30 | 100 t | 5 | 8 | illimité | illimité | 80 | visibles | rotation |
 
-Clients et ingénieurs partenaires : pas de formule ; 5 crédits IA par mois (filtre `sm_sub_no_plan_ai_credits`) et achat de packs.
+Clients et ingénieurs partenaires : pas de formule ; pas de crédit IA mensuel depuis 0.3.0 (filtre `sm_sub_no_plan_ai_credits`), achat de packs. La recherche intelligente est gratuite pour tous et ne consomme pas de crédit.
 
 Les bâtiments sont comptés en nombre, à part du tonnage. Les prix et toutes les limites se modifient dans **SM → Abonnements → Prix et limites** (vide ou -1 = illimité).
 

@@ -209,7 +209,8 @@ if ( Settings::simulation_allowed() ) {
 	$in['default_provider'] = 'simulation';
 	$in['features']['listing']['enabled'] = 1;
 	$in['features']['listing']['per_company_month'] = 30;
-	foreach ( array( 'listing', 'recognize', 'search', 'document' ) as $f ) {
+	foreach ( array( 'listing', 'recognize', 'search', 'document', 'describe' ) as $f ) {
+		$in['features'][ $f ]['enabled']  = 1;
 		$in['features'][ $f ]['provider'] = '';
 	}
 	Settings::save( $in );
@@ -220,6 +221,21 @@ if ( Settings::simulation_allowed() ) {
 	smai_assert( 'reuse' === $r['filters']['market'] && '31' === $r['filters']['wilaya'] && 'IPE 200' === $r['filters']['q'], 'simulation: smart search' );
 	$st = Usage::month_stats();
 	smai_assert( $st['document']['ok'] >= 1 && $st['listing']['blocked'] >= 1, 'monthly statistics per service' );
+
+	// 0.2.0: description writer, free smart search.
+	$cid    = (int) sm_current_company()->id;
+	$before_total = Usage::company_month_total( $cid );
+	$r = Gateway::run( 'search', array( 'q' => 'HEA 160' ) );
+	smai_assert( is_array( $r ) && Usage::company_month_total( $cid ) === $before_total, 'smart search is free: no AI credit counted' );
+	smai_assert( in_array( 'search', Gateway::free_features(), true ) && ! in_array( 'describe', Gateway::free_features(), true ), 'free services: search only (and the connection test)' );
+	$r = Gateway::run( 'describe', array( 'facts' => "Catégorie: Poutrelles IPE\nProfilé: IPE 200\nNombre de barres: 24\nLongueur: 6 m" ) );
+	smai_assert( is_array( $r ) && false !== strpos( $r['description'], 'IPE 200' ) && Usage::company_month_total( $cid ) === $before_total + 1, 'description written from the facts of the form, 1 credit' );
+	$c = SM\Ai\Features\Describe::clean( array( 'description' => 'Beau lot. Appelez le 0550 12 34 56 ou ecrire a vente@exemple.dz, voir https://exemple.dz/lot' ), array() );
+	smai_assert( false === strpos( $c['description'], '0550' ) && false === strpos( $c['description'], '@' ) && false === strpos( $c['description'], 'http' ), 'no phone, e-mail or link kept in a description' );
+	wp_set_current_user( 0 );
+	$e = Gateway::check( 'describe' );
+	smai_assert( is_wp_error( $e ) && 'login' === SM\Ai\Form::state_of( $e ), 'visitor: the description writer asks to sign in' );
+	wp_set_current_user( $u_seller );
 } else {
 	echo "  (SM_AI_SIMULATION not set: simulation tests skipped)\n";
 }

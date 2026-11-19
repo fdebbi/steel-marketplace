@@ -28,6 +28,7 @@ final class Gateway {
 				'recognize' => Features\Recognize::class,
 				'search'    => Features\Search::class,
 				'document'  => Features\Document::class,
+				'describe'  => Features\Describe::class,
 			)
 		);
 	}
@@ -58,9 +59,12 @@ final class Gateway {
 		if ( is_wp_error( $ok ) ) {
 			return $ok;
 		}
-		$ok = apply_filters( 'sm_ai_can_use', true, $id, $company ? (int) $company->id : 0 );
-		if ( is_wp_error( $ok ) ) {
-			return $ok;
+		// Free services (smart search) never ask for credits (0.2.0).
+		if ( $class::credits() > 0 ) {
+			$ok = apply_filters( 'sm_ai_can_use', true, $id, $company ? (int) $company->id : 0 );
+			if ( is_wp_error( $ok ) ) {
+				return $ok;
+			}
 		}
 		$s = Settings::all();
 		if ( $s['monthly_budget'] > 0 && Usage::month_cost() >= $s['monthly_budget'] ) {
@@ -80,9 +84,24 @@ final class Gateway {
 		return true;
 	}
 
+	/** Services that never use AI credits (0.2.0). */
+	public static function free_features() {
+		$out = array( 'test' );
+		foreach ( self::features() as $id => $class ) {
+			if ( 0 === (int) $class::credits() ) {
+				$out[] = $id;
+			}
+		}
+		return $out;
+	}
+
 	/** Remaining uses this month for the company (null = no limit). */
 	public static function remaining( $id, $company ) {
 		$f = Settings::feature( $id );
+		$class = self::feature( $id );
+		if ( $class && 0 === (int) $class::credits() ) {
+			return null;
+		}
 		if ( $company && apply_filters( 'sm_ai_plan_credits', false ) ) {
 			return apply_filters( 'sm_ai_remaining', null, $company ); // Credits of the plan, all services together.
 		}
@@ -142,7 +161,9 @@ final class Gateway {
 		}
 		Usage::log( $log + array( 'status' => 'ok' ) );
 		/** One AI credit used (sm-subscriptions counts the plan credits and the bought ones). */
-		do_action( 'sm_ai_used', $id, $company ? (int) $company->id : 0 );
+		if ( $class::credits() > 0 ) {
+			do_action( 'sm_ai_used', $id, $company ? (int) $company->id : 0 );
+		}
 		$out          = $class::clean( $json, $input );
 		$out['_meta'] = array( 'feature' => $id, 'provider' => $provider, 'simulation' => 'simulation' === $provider, 'lang' => $lang, 'at' => time() );
 		return $out;

@@ -1,5 +1,15 @@
 # Changelog — sm-marketplace
 
+## 0.45.0 — 2026-11-19 (avec sm-ai 0.2.0 et sm-subscriptions 0.3.0)
+
+- **Page publique « Assistant IA »** (`/assistant-ia/`, gabarit `templates/ai-assistant.php`, créée à la mise à jour du thème) : chaque outil avec ce qu'il fait, son coût (« Gratuit · pour tous » ou « 1 crédit par utilisation ») et où il se trouve. Selon la situation (composant `ai-gate`) :
+  - visiteur : bouton grisé, « Connectez-vous pour utiliser cet outil. » + Se connecter · Créer un compte ;
+  - membre sans crédit : « Améliorez votre formule pour bénéficier de l'assistant IA, ou achetez un pack de crédits IA. » + Voir les abonnements · Acheter des crédits ;
+  - membre avec crédits : il ouvre l'outil et voit ses crédits restants.
+  La recherche intelligente reste ouverte à tous. Le même message remplace le bandeau « verrouillé » de l'assistant du compte.
+- Accueil : « Essayer l'assistant » ouvre cette page (avant : la recherche pour un visiteur, l'assistant du compte pour un membre).
+- Formulaire de publication : **« ✦ Rédiger avec l'IA »** au-dessus de la description (`ai-describe-button`, `assets/js/ai-describe.js`). Les informations saisies et les chiffres déjà calculés sont envoyés ; le texte arrive dans le champ, modifiable, avec « Annuler » pour revenir au texte précédent ; confirmation avant de remplacer une description existante. Sans crédit ou sans compte, le bouton mène à la page de l'assistant.
+
 ## 0.44.0 — 2026-11-19
 
 - Accueil : nouvelle rangée « Outils » juste sous « Tout l'acier, au même endroit » :

@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Subscriptions 0.1.0\n"
+"Project-Id-Version: SM Subscriptions 0.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-subscriptions\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-12T18:32:54+00:00\n"
+"POT-Creation-Date: 2026-11-19T10:40:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-subscriptions\n"
@@ -483,8 +483,12 @@ msgstr[1] ""
 msgid "Choose a higher plan in your account (Plan) to answer without limit."
 msgstr ""
 
-#: src/Limits.php:116
-msgid "You used all your AI credits. Buy a pack of credits in AI assistant → AI credits."
+#: src/Limits.php:117
+msgid "Upgrade your plan to benefit from the AI assistant, or buy a pack of AI credits."
+msgstr ""
+
+#: src/Limits.php:119
+msgid "You used all your AI credits this month. Upgrade your plan or buy a pack of AI credits."
 msgstr ""
 
 #. translators: %d: number of listings or service pages.
@@ -513,7 +517,7 @@ msgid "Your payment for %s is confirmed. Your invoice is in your account."
 msgstr ""
 
 #: src/Notifications.php:60
-#: src/Orders.php:290
+#: src/Orders.php:300
 msgid "Payment not accepted"
 msgstr ""
 
@@ -553,89 +557,89 @@ msgstr ""
 msgid "Thank you for joining early: your account gets the plan %1$s free for %2$d months, and you will keep its price afterwards."
 msgstr ""
 
-#: src/Orders.php:50
+#: src/Orders.php:51
 msgid "This plan cannot be ordered."
 msgstr ""
 
 #. translators: 1: plan name, 2: "1 month" or "1 year".
-#: src/Orders.php:59
-#: src/Orders.php:105
+#: src/Orders.php:60
+#: src/Orders.php:115
 msgid "Plan %1$s — %2$s"
 msgstr ""
 
 #. translators: 1: plan name, 2: "1 month" or "1 year".
-#: src/Orders.php:59
-#: src/Orders.php:105
+#: src/Orders.php:60
+#: src/Orders.php:115
 msgid "1 month"
 msgstr ""
 
 #. translators: 1: plan name, 2: "1 month" or "1 year".
-#: src/Orders.php:59
-#: src/Orders.php:105
+#: src/Orders.php:60
+#: src/Orders.php:115
 msgid "1 year"
 msgstr ""
 
 #. translators: %d: number of AI credits.
-#: src/Orders.php:68
-#: src/Orders.php:111
+#: src/Orders.php:69
+#: src/Orders.php:121
 msgid "%d AI credits"
 msgstr ""
 
-#: src/Orders.php:71
+#: src/Orders.php:72
 msgid "This credit pack does not exist."
 msgstr ""
 
-#: src/Orders.php:76
+#: src/Orders.php:77
 msgid "Options are for your listings online."
 msgstr ""
 
 #. translators: %s: listing title.
-#: src/Orders.php:81
-#: src/Orders.php:121
+#: src/Orders.php:82
+#: src/Orders.php:131
 msgid "Back to the top: %s"
 msgstr ""
 
 #. translators: 1: listing title, 2: number of days.
-#: src/Orders.php:83
-#: src/Orders.php:123
+#: src/Orders.php:84
+#: src/Orders.php:133
 msgid "\"Urgent\" badge, %2$d days: %1$s"
 msgstr ""
 
 #. translators: 1: listing title, 2: number of days.
-#: src/Orders.php:85
-#: src/Orders.php:125
+#: src/Orders.php:86
+#: src/Orders.php:135
 msgid "Featured listing, %2$d days: %1$s"
 msgstr ""
 
-#: src/Orders.php:88
+#: src/Orders.php:89
 msgid "This option is not offered."
 msgstr ""
 
-#: src/Orders.php:92
+#: src/Orders.php:102
 msgid "Unknown order."
 msgstr ""
 
-#: src/Orders.php:206
+#: src/Orders.php:216
 msgid "This order is already closed."
 msgstr ""
 
-#: src/Orders.php:210
+#: src/Orders.php:220
 msgid "The account of this order no longer exists."
 msgstr ""
 
-#: src/Orders.php:287
+#: src/Orders.php:297
 msgid "Waiting for payment"
 msgstr ""
 
-#: src/Orders.php:288
+#: src/Orders.php:298
 msgid "Payment being checked"
 msgstr ""
 
-#: src/Orders.php:289
+#: src/Orders.php:299
 msgid "Paid"
 msgstr ""
 
-#: src/Orders.php:291
+#: src/Orders.php:301
 msgid "Cancelled"
 msgstr ""
 

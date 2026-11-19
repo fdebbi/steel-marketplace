@@ -84,3 +84,38 @@
 /* Dark mode of the account area: outline AI buttons stay readable */
 html[data-sm-theme="dark"] .sm-is-account .sm-btn--ai-outline { background: transparent; color: #C7BFFF; }
 html[data-sm-theme="dark"] .sm-is-account .sm-btn--ai-outline:hover { background: rgb(124 108 242 / .14); color: #fff; }
+
+/* Public page of the AI tools (0.45.0) */
+.smai-page__title { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sm-s2); }
+.smai-page__title .sm-ai-badge { font-size: 13px; padding: 4px 11px 4px 9px; }
+.smai-cards { display: grid; gap: var(--sm-s4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.smai-card { display: flex; flex-direction: column; gap: var(--sm-s2); padding: var(--sm-s5); background: var(--sm-surface); border: 1px solid var(--sm-line); border-radius: 16px; min-inline-size: 0; scroll-margin-block-start: 110px; }
+.smai-card:target { border-color: var(--sm-ai-1); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sm-ai-1) 20%, transparent); }
+.smai-card__icon { display: grid; place-items: center; inline-size: 44px; block-size: 44px; border-radius: 12px; background: color-mix(in srgb, var(--sm-ai-1) 12%, var(--sm-surface)); color: var(--sm-ai-ink); }
+.smai-card__title { margin: 0; font-size: var(--sm-fs-lg); }
+.smai-card p { margin: 0; font-size: var(--sm-fs-sm); color: var(--sm-muted); }
+.smai-card__ex { padding: var(--sm-s2) var(--sm-s3); border-radius: var(--sm-radius); background: var(--sm-bg); }
+.smai-card__meta { display: flex; flex-wrap: wrap; gap: var(--sm-s2); }
+.smai-card__meta span { padding: 2px 9px; border-radius: 999px; background: var(--sm-bg); font-size: var(--sm-fs-xs); font-weight: 600; color: var(--sm-text); }
+.smai-card__meta .is-free { background: var(--sm-accent-soft); color: var(--sm-accent-ink); }
+.smai-card__foot { margin-block-start: auto; padding-block-start: var(--sm-s3); border-block-start: 1px dashed var(--sm-line); display: grid; gap: var(--sm-s2); }
+.smai-card__off { background: var(--sm-bg); color: var(--sm-muted); border-color: transparent; cursor: not-allowed; }
+.smai-card__left { font-size: var(--sm-fs-xs) !important; }
+
+/* Why a tool cannot be used, and what to do */
+.smai-gate { display: flex; gap: var(--sm-s2); align-items: flex-start; margin: 0; font-size: var(--sm-fs-sm); color: var(--sm-text); }
+.smai-gate > .sm-icon { flex: none; inline-size: 16px; block-size: 16px; margin-block-start: 3px; color: var(--sm-muted); }
+.smai-gate--upgrade > .sm-icon { color: var(--sm-ai-ink); }
+.smai-gate a { color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.smai-tool .smai-gate { padding: var(--sm-s3) var(--sm-s4); border-radius: var(--sm-radius-lg); background: color-mix(in srgb, var(--sm-ai-1) 7%, var(--sm-surface)); border: 1px solid color-mix(in srgb, var(--sm-ai-1) 30%, var(--sm-line)); }
+
+/* « Write with the AI » on a description */
+.smai-desc-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sm-s2); }
+.smai-desc-head label { margin: 0; }
+.smai-desc-btn { gap: 6px; }
+.smai-desc-btn .sm-icon { inline-size: 16px; block-size: 16px; }
+textarea.is-ai { border-color: color-mix(in srgb, var(--sm-ai-1) 55%, var(--sm-line)); background: color-mix(in srgb, var(--sm-ai-1) 4%, var(--sm-surface)); }
+textarea[aria-busy="true"] { opacity: .6; }
+.smai-desc-note { margin: 6px 0 0; font-size: var(--sm-fs-xs); color: var(--sm-muted); }
+.smai-desc-note::before { content: "✦ "; color: var(--sm-ai-1); }
+.smai-desc-note__undo { border: 0; background: none; padding: 0; color: var(--sm-text); font: inherit; font-weight: 600; text-decoration: underline; cursor: pointer; }

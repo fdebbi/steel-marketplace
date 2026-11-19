@@ -2438,3 +2438,37 @@ T.update({
 'Fill from my photos: the AI assistant suggests the category, the titles in French and Arabic and the description. You always confirm the technical data.': ("Remplir depuis mes photos : l'assistant IA propose la catégorie, les titres en français et en arabe et la description. Vous confirmez toujours les données techniques.", 'املأ من صوري: يقترح مساعد الذكاء الاصطناعي الفئة والعناوين بالفرنسية والعربية والوصف. أنت تؤكد دائماً المعطيات التقنية.'),
 'Fill from my photos': ('Remplir depuis mes photos', 'املأ من صوري'),
 })
+
+# 0.44.1: public page of the AI tools, « Write with the AI ».
+T.update({
+'Write with the AI': ("Rédiger avec l'IA", 'اكتب بالذكاء الاصطناعي'),
+'The AI is writing…': ("L'IA rédige…", 'الذكاء الاصطناعي يكتب…'),
+'Replace your description?': ('Remplacer votre description ?', 'استبدال وصفك؟'),
+'The AI writes a new description from the information of your listing. You can undo it.': ("L'IA rédige une nouvelle description à partir des informations de votre annonce. Vous pourrez annuler.", 'يكتب الذكاء الاصطناعي وصفاً جديداً من معلومات إعلانك. يمكنك التراجع.'),
+'Write a new description': ('Rédiger une nouvelle description', 'كتابة وصف جديد'),
+'Text proposed from the information of your listing: check it and change it freely. 1 credit used · %s left.': ('Texte proposé à partir des informations de votre annonce : vérifiez-le et modifiez-le librement. 1 crédit utilisé · %s restants.', 'نص مقترح من معلومات إعلانك: راجعه وعدّله بحرية. تم استعمال رصيد واحد · المتبقي %s.'),
+'Text proposed from the information of your listing: check it and change it freely. 1 credit used.': ('Texte proposé à partir des informations de votre annonce : vérifiez-le et modifiez-le librement. 1 crédit utilisé.', 'نص مقترح من معلومات إعلانك: راجعه وعدّله بحرية. تم استعمال رصيد واحد.'),
+'The AI could not write the description. Try again in a moment.': ("L'IA n'a pas pu rédiger la description. Réessayez dans un instant.", 'لم يتمكن الذكاء الاصطناعي من كتابة الوصف. أعد المحاولة بعد قليل.'),
+'Upgrade your plan to benefit from the AI assistant, or buy a pack of AI credits.': ("Améliorez votre formule pour bénéficier de l'assistant IA, ou achetez un pack de crédits IA.", 'رقِّ اشتراكك للاستفادة من مساعد الذكاء الاصطناعي، أو اشترِ باقة أرصدة.'),
+'Buy credits': ('Acheter des crédits', 'شراء أرصدة'),
+'Sign in to use this tool.': ('Connectez-vous pour utiliser cet outil.', 'سجّل الدخول لاستعمال هذه الأداة.'),
+'Upgrade your plan': ('Améliorez votre formule', 'رقِّ اشتراكك'),
+'to benefit from the AI assistant, or buy a pack of AI credits.': ("pour bénéficier de l'assistant IA, ou achetez un pack de crédits IA.", 'للاستفادة من مساعد الذكاء الاصطناعي، أو اشترِ باقة أرصدة.'),
+'SM — AI assistant': ('SM — Assistant IA', 'SM — مساعد الذكاء الاصطناعي'),
+'Write what you need in one sentence, in French, Arabic or darija: the search turns it into filters and shows the matching listings.': ('Écrivez votre besoin en une phrase, en français, en arabe ou en darija : la recherche le transforme en filtres et affiche les annonces qui correspondent.', 'اكتب حاجتك في جملة واحدة، بالفرنسية أو العربية أو الدارجة: يحوّلها البحث إلى مرشحات ويعرض الإعلانات المطابقة.'),
+'“20 used IPE 200 delivered to Oran”': ('« 20 IPE 200 d’occasion livrés à Oran »', '« 20 IPE 200 مستعملة مع التوصيل إلى وهران »'),
+'In the publication form, the AI sums up what you entered and writes a clear, detailed description. You change it as you like before publishing.': ("Dans le formulaire de publication, l'IA résume ce que vous avez saisi et rédige une description claire et détaillée. Vous la modifiez librement avant de publier.", 'في استمارة النشر، يلخص الذكاء الاصطناعي ما أدخلته ويكتب وصفاً واضحاً ومفصلاً. تعدّله كما تشاء قبل النشر.'),
+'Publication form': ('Formulaire de publication', 'استمارة النشر'),
+'One or two photos (end view if possible, with a tape measure): up to 4 possible profiles, checked against the catalogue, and the questions that remove the doubt.': ('Une ou deux photos (de face si possible, avec un mètre visible) : jusqu’à 4 profilés possibles, vérifiés au catalogue, et les questions qui lèvent le doute.', 'صورة أو صورتان (من الواجهة إن أمكن، مع شريط قياس): حتى 4 مقاطع محتملة، متحقق منها في الكتالوج، والأسئلة التي تزيل الشك.'),
+'Recognise a profile': ('Reconnaître un profilé', 'التعرف على مقطع'),
+'A bill of quantities or a list of profiles (PDF or photo): the steel items are extracted, weighed by the weight engine and turned into a request for quotation.': ('Un métré ou une liste de profilés (PDF ou photo) : les articles en acier sont extraits, pesés par le moteur de poids et transformés en demande de devis.', 'كشف كميات أو قائمة مقاطع (PDF أو صورة): تُستخرج عناصر الفولاذ وتوزن بمحرك الوزن وتتحول إلى طلب عرض أسعار.'),
+'Analyse a document': ('Analyser un document', 'تحليل وثيقة'),
+'Photos of your steel and a few words: the assistant proposes the category, the profile, the titles in French and Arabic and the description of a new listing.': ("Des photos de votre acier et quelques mots : l'assistant propose la catégorie, le profilé, les titres en français et en arabe et la description d'une nouvelle annonce.", 'صور فولاذك وبضع كلمات: يقترح المساعد الفئة والمقطع والعناوين بالفرنسية والعربية ووصف إعلان جديد.'),
+'Prepare a listing': ('Préparer une annonce', 'إعداد إعلان'),
+'Tools that save you time: search, describe, recognise, list. They give suggestions to check: weights always come from the weight engine and the AI never replaces an engineer.': ('Des outils qui vous font gagner du temps : rechercher, décrire, reconnaître, lister. Ce sont des suggestions à vérifier : les poids viennent toujours du moteur de calcul et l’IA ne remplace pas un ingénieur.', 'أدوات توفر لك الوقت: البحث، الوصف، التعرف، الجرد. هي اقتراحات يجب التحقق منها: الأوزان تأتي دائماً من محرك الوزن والذكاء الاصطناعي لا يعوّض المهندس.'),
+'Free · for everybody': ('Gratuit · pour tous', 'مجاني · للجميع'),
+})
+P.update({
+('%d credit per use', '%d credits per use'): (['%d crédit par utilisation', '%d crédits par utilisation'], ['%d رصيد لكل استعمال', 'رصيد واحد لكل استعمال', 'رصيدان لكل استعمال', '%d أرصدة لكل استعمال', '%d رصيدًا لكل استعمال', '%d رصيد لكل استعمال']),
+('%d credit left', '%d credits left'): (['%d crédit restant', '%d crédits restants'], ['%d رصيد متبقٍ', 'رصيد واحد متبقٍ', 'رصيدان متبقيان', '%d أرصدة متبقية', '%d رصيدًا متبقيًا', '%d رصيد متبقٍ']),
+})

@@ -134,8 +134,12 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 		</div>
 		<?php endif; ?>
 		<div class="sm-field">
-			<label for="smp-desc"><?php esc_html_e( 'Description and technical notes', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
+			<div class="smai-desc-head">
+				<label for="smp-desc"><?php esc_html_e( 'Description and technical notes', 'sm-marketplace' ); ?> <small class="sm-optional"><?php esc_html_e( 'optional', 'sm-marketplace' ); ?></small></label>
+				<?php sm_component( 'ai-describe-button', array( 'target' => 'smp-desc' ) ); ?>
+			</div>
 			<textarea id="smp-desc" name="description" rows="5" dir="auto" maxlength="4000"><?php echo esc_textarea( (string) ( $state['description'] ?? '' ) ); ?></textarea>
+			<p class="smai-desc-note" data-smai-desc-note hidden></p>
 			<?php sm_theme_error( 'description' ); ?>
 		</div>
 	<?php if ( ! $steps_build ) : ?>
