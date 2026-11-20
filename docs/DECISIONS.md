@@ -518,3 +518,4 @@ Validé sur la maquette 0.37.
 
 - La recherche de l'accueil n'a plus la wilaya (filtre des résultats seulement).
 - Les chiffres de l'accueil sont les vrais (sm-products) : jamais de chiffres de démonstration sur le site.
+- Promesse de l'accueil : « Nous donnons une nouvelle vie à l’acier… » (titre) et « …et transformons les ressources usagées en valeur et en opportunités durables. » (sous-titre), textes du client en arabe, français et anglais.

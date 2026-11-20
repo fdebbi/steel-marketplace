@@ -1,5 +1,9 @@
 # Changelog — sm-marketplace
 
+## 0.54.2 — 2026-11-21
+
+- Accueil, nouvelle promesse : « Nous donnons **une nouvelle vie** à l’acier… » (titre) puis « …et transformons les ressources usagées en valeur et en opportunités durables. » (sous-titre) ; en arabe « نمنح الفولاذ حياة جديدة... » / « ...ونحوّل الموارد المستعملة إلى قيمة وفرص متجددة. », en anglais « We give steel a new life… ».
+
 ## 0.54.1 — 2026-11-21
 
 - Accueil : la recherche n'a plus le choix de la wilaya (profilé ou produit, marché, Rechercher) ; la wilaya reste dans les filtres des résultats. Les chiffres viennent de sm-products 0.22.1 (plus de chiffres de démonstration).

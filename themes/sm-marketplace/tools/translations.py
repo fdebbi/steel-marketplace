@@ -2883,3 +2883,10 @@ T.update({
 'See the market': ('Voir le marché', 'عرض السوق'),
 'Types with listings': ('Types avec des annonces', 'أنواع بها إعلانات'),
 })
+
+# 0.54.2 — Promise of the home page.
+T.update({
+'We give steel %s…': ('Nous donnons %s à l’acier…', 'نمنح الفولاذ %s...'),
+'a new life': ('une nouvelle vie', 'حياة جديدة'),
+'…transforming used resources into value and new opportunities.': ('…et transformons les ressources usagées en valeur et en opportunités durables.', '...ونحوّل الموارد المستعملة إلى قيمة وفرص متجددة.'),
+})

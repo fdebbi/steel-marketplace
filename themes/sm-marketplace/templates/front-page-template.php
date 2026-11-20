@@ -19,8 +19,9 @@ $services = sm_theme_services();
 	<div class="sm-container sm-hero__inner">
 		<div class="sm-hero__copy">
 			<p class="sm-hero__pill"><span aria-hidden="true"></span><?php esc_html_e( 'The industrial steel marketplace in Algeria', 'sm-marketplace' ); ?></p>
-			<h1 class="sm-hero__title"><?php esc_html_e( 'The future of steel commerce', 'sm-marketplace' ); ?> <span class="sm-hero__glow"><?php esc_html_e( 'starts here.', 'sm-marketplace' ); ?></span></h1>
-			<p class="sm-hero__lead"><?php esc_html_e( 'Buy, sell, reuse and recycle steel. Verified companies, weights calculated automatically, partner engineers.', 'sm-marketplace' ); ?></p>
+			<?php // 0.54.2: the promise of ReuSteel (title, then the rest of the sentence). ?>
+			<h1 class="sm-hero__title"><?php echo wp_kses( sprintf( /* translators: %s: « a new life », highlighted. */ esc_html__( 'We give steel %s…', 'sm-marketplace' ), '<span class="sm-hero__glow">' . esc_html__( 'a new life', 'sm-marketplace' ) . '</span>' ), array( 'span' => array( 'class' => true ) ) ); ?></h1>
+			<p class="sm-hero__lead"><?php esc_html_e( '…transforming used resources into value and new opportunities.', 'sm-marketplace' ); ?></p>
 			<div class="sm-hero__ctas">
 				<a class="sm-btn sm-btn--accent sm-btn--lg sm-hero__cta" href="<?php echo esc_url( sm_page_url( 'search' ) ); ?>"><?php esc_html_e( 'Explore the marketplace', 'sm-marketplace' ); ?><?php sm_icon( 'arrow-end' ); ?></a>
 				<?php if ( is_user_logged_in() ) : ?>
