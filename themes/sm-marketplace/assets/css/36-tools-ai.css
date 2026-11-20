@@ -124,6 +124,7 @@ textarea[aria-busy="true"] { opacity: .6; }
 .smai-card--soon { background: linear-gradient(160deg, color-mix(in srgb, #FFD54A 8%, var(--sm-surface)), var(--sm-surface) 60%); }
 .smai-card--soon .smai-card__icon { background: #FFF4D6; color: #7A5600; }
 .smai-card__meta .is-biz { background: #FFF4D6; color: #7A5600; }
+.smai-card__meta .is-free { background: color-mix(in srgb, #06CE77 16%, var(--sm-surface)); color: #037a46; }
 .smai-card__meta .is-soon { background: color-mix(in srgb, var(--sm-ai-1) 14%, var(--sm-surface)); color: var(--sm-ai-ink); }
 
 /* 0.51.0: waiting for the AI — one screen for every AI tool. */
@@ -155,7 +156,7 @@ textarea[aria-busy="true"] { opacity: .6; }
 .smaip__tool.is-ai-waiting { min-height: 190px; }
 .smaip__out:empty { display: none; }
 .smaip__cands { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 4px; }
-.smaip__cand { display: grid; gap: 4px; align-content: start; padding: 10px 12px; border: 1px solid var(--sm-border); border-radius: 10px; background: var(--sm-surface); }
+.smaip__cand { display: grid; gap: 4px; align-content: start; padding: 10px 12px; border: 1px solid var(--sm-line); border-radius: 10px; background: var(--sm-surface); }
 .smaip__cand strong { font-size: var(--sm-fs-md, 1rem); }
 .smaip__cand small { color: var(--sm-muted); font-size: var(--sm-fs-xs); }
 .smaip__cand .sm-btn { justify-self: start; margin-top: 4px; }
@@ -163,7 +164,7 @@ textarea[aria-busy="true"] { opacity: .6; }
 .smaip__cand.is-chosen .sm-btn { color: var(--sm-success, #16a34a); border-color: currentColor; }
 .smaip__cand.is-off { opacity: .7; }
 .smaip__lvl { font-size: var(--sm-fs-sm); color: var(--sm-muted); }
-.smaip__bar { display: block; height: 5px; border-radius: 3px; background: var(--sm-border); overflow: hidden; }
+.smaip__bar { display: block; height: 5px; border-radius: 3px; background: var(--sm-line); overflow: hidden; }
 .smaip__bar i { display: block; height: 100%; background: var(--sm-success, #16a34a); }
 .smaip__other { font-size: var(--sm-fs-xs); color: var(--sm-muted); }
 .smaip__checked { grid-column: 1 / -1; margin: 0; font-size: var(--sm-fs-xs); color: var(--sm-muted); }
@@ -175,7 +176,7 @@ textarea[aria-busy="true"] { opacity: .6; }
 .smaip__sugg { padding: 12px 14px; border: 1px solid color-mix(in srgb, var(--sm-ai-1) 35%, transparent); border-radius: 10px; background: var(--sm-surface); }
 .smaip__h { margin: 0 0 8px; font-weight: 600; }
 .smaip__chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.smaip__chip { padding: 4px 10px; border: 1px solid var(--sm-border); border-radius: 999px; font-size: var(--sm-fs-sm); color: var(--sm-muted); }
+.smaip__chip { padding: 4px 10px; border: 1px solid var(--sm-line); border-radius: 999px; font-size: var(--sm-fs-sm); color: var(--sm-muted); }
 .smaip__chip.is-on { background: var(--sm-text); color: var(--sm-surface); border-color: var(--sm-text); font-weight: 600; }
 .smaip__acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .smaip__done { margin: 0; color: var(--sm-success, #16a34a); font-weight: 600; font-size: var(--sm-fs-sm); }

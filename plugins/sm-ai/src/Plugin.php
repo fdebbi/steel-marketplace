@@ -36,6 +36,7 @@ final class Plugin {
 		add_filter( 'sm_mail_event_groups', static fn( $g ) => $g + array( 'ai' => __( 'AI assistant', 'sm-ai' ) ) );
 		Theme\Bridge::init();
 		add_action( 'sm_core_daily', array( Usage::class, 'purge' ) );
+		add_filter( 'sm_ai_report_summary', array( Features\Report::class, 'summary' ), 10, 3 ); // 0.6.0: Business report (sm-insights).
 		if ( is_admin() ) {
 			Admin\Admin::init();
 		}

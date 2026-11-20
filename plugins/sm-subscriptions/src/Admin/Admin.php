@@ -278,7 +278,7 @@ final class Admin {
 				echo '<tr><th>' . esc_html( $label . ( $units[ $k ] ?? '' ) ) . '</th>';
 				foreach ( $plans as $code => $p ) {
 					$name = 'plans[' . $class . '][' . $code . '][' . $k . ']';
-					if ( in_array( $k, array( 'contacts', 'stock_tools' ), true ) ) {
+					if ( in_array( $k, array( 'contacts', 'stock_tools', 'report' ), true ) ) {
 						echo '<td><input type="checkbox" name="' . esc_attr( $name ) . '" value="1"' . checked( (int) $p[ $k ], 1, false ) . '></td>';
 					} elseif ( 'featured' === $k ) {
 						echo '<td><select name="' . esc_attr( $name ) . '"><option value="">—</option><option value="home"' . selected( $p[ $k ], 'home', false ) . '>' . esc_html__( 'Yes, in rotation', 'sm-subscriptions' ) . '</option></select></td>';

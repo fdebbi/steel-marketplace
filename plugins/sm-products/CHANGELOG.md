@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.22.0 — 2026-11-20 (pour sm-insights 0.1.0)
+
+- Action `sm_products_searched( { market, family, designation, q, wilaya } )` à la première page d'une recherche du catalogue (type, dimension ou texte) : sm-insights la compte pour le Rapport Business, sans savoir qui cherche.
+
 ## 0.21.0 — 2026-11-20
 
 - Article gardé **en stock seulement** : le prix est facultatif (demandé au moment de publier).

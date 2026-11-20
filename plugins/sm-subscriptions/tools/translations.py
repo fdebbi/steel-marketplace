@@ -215,3 +215,8 @@ T.update({
 'Warehouse (published or not)': ('Magasin (publié ou non)', 'المخزن (منشور أو لا)'),
 'Warehouse: price for a whole type and labels': ('Magasin : prix pour tout un type et étiquettes', 'المخزن: السعر لنوع كامل والملصقات'),
 })
+
+# 0.5.0 — Business report.
+T.update({
+'Business report of the market': ('Rapport Business du marché', 'تقرير الأعمال عن السوق'),
+})

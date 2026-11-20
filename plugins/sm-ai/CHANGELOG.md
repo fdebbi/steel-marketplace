@@ -1,5 +1,9 @@
 # Changelog — sm-ai
 
+## 0.6.0 — 2026-11-20 (pour sm-insights 0.1.0)
+
+- Service **« Résumé du Rapport Business »** (`report`, gratuit : pas de crédit) et filtre `sm_ai_report_summary( null, $figures, $lang )` → 3 ou 4 points écrits uniquement à partir des chiffres de la plateforme ; « prix demandés », jamais de nombre de ventes (retiré s'il en écrit un), aucun nom d'entreprise, pas de tendance sur un seul bâtiment.
+
 ## 0.5.0 — 2026-11-20 (avec le thème 0.52.0)
 
 - **Service « État de l'acier »** (`condition`, 1 crédit, 30 par entreprise et par mois par défaut) : depuis les photos d'un lot de réemploi, suggestion d'état (excellent, bon, à contrôler, ferraille) et de surface (propre, rouille superficielle, peint, galvanisé, corrosion importante), ce que l'IA voit et ce qu'elle ne peut pas voir. Jamais « excellent » sans photos nettes de près (sinon « à contrôler ») ; une estimation visuelle, jamais une inspection.

@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.51.0\n"
+"Project-Id-Version: SM Marketplace 0.53.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-20T13:00:07+00:00\n"
+"POT-Creation-Date: 2026-11-20T14:05:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -84,6 +84,7 @@ msgstr ""
 #: footer.php:25
 #: inc/menus.php:47
 #: template-parts/components/rfq-single.php:45
+#: template-parts/dashboard/report.php:134
 #: template-parts/dashboard/rfq.php:19
 #: templates/rfq-board.php:54
 #: templates/rfq-board.php:57
@@ -247,7 +248,7 @@ msgstr ""
 
 #: footer.php:67
 #: templates/dashboard.php:87
-#: templates/dashboard.php:164
+#: templates/dashboard.php:166
 #: templates/engineer-apply.php:307
 msgid "Account"
 msgstr ""
@@ -279,6 +280,7 @@ msgstr ""
 #: template-parts/dashboard/listings.php:46
 #: template-parts/dashboard/publish.php:35
 #: template-parts/dashboard/publish.php:51
+#: template-parts/dashboard/report.php:68
 #: templates/front-page-template.php:40
 #: templates/rfq-board.php:72
 msgid "Market"
@@ -296,13 +298,13 @@ msgid "IPE 200, HEA, tube 100×50, hangar…"
 msgstr ""
 
 #: header.php:86
-#: templates/dashboard.php:298
+#: templates/dashboard.php:300
 msgid "Menu"
 msgstr ""
 
 #: header.php:89
 #: inc/assets.php:66
-#: templates/dashboard.php:257
+#: templates/dashboard.php:259
 msgid "Close menu"
 msgstr ""
 
@@ -1153,6 +1155,7 @@ msgstr ""
 #: template-parts/components/rfq-single.php:86
 #: template-parts/dashboard/publish.php:128
 #: template-parts/dashboard/publish.php:132
+#: template-parts/dashboard/report.php:150
 #: template-parts/dashboard/settings.php:20
 #: template-parts/dashboard/stock-prices.php:37
 msgid "Profile"
@@ -1301,6 +1304,9 @@ msgstr ""
 #: template-parts/components/cutting-optimizer.php:177
 #: template-parts/components/cutting-sources.php:57
 #: template-parts/dashboard/publish.php:54
+#: template-parts/dashboard/report.php:97
+#: template-parts/dashboard/report.php:151
+#: template-parts/dashboard/report.php:200
 #: templates/dashboard.php:126
 msgid "New steel"
 msgstr ""
@@ -1308,6 +1314,9 @@ msgstr ""
 #: template-parts/components/ai-doc-review.php:154
 #: template-parts/components/cutting-sources.php:57
 #: template-parts/components/my-products.php:23
+#: template-parts/dashboard/report.php:98
+#: template-parts/dashboard/report.php:152
+#: template-parts/dashboard/report.php:200
 #: templates/dashboard.php:127
 msgid "Reuse"
 msgstr ""
@@ -1864,7 +1873,7 @@ msgstr ""
 #: template-parts/drawer-foot.php:13
 #: template-parts/header-actions.php:26
 #: templates/contact.php:64
-#: templates/dashboard.php:164
+#: templates/dashboard.php:166
 msgid "My account"
 msgstr ""
 
@@ -1919,7 +1928,7 @@ msgstr ""
 
 #: template-parts/components/card-engineer.php:39
 #: template-parts/dashboard/studies.php:218
-#: templates/dashboard.php:180
+#: templates/dashboard.php:182
 #: templates/marketplace-engineers.php:41
 #: templates/marketplace-engineers.php:112
 #: templates/mission-request.php:23
@@ -4131,6 +4140,7 @@ msgid "Send"
 msgstr ""
 
 #: template-parts/components/my-products.php:24
+#: template-parts/dashboard/report.php:99
 msgid "Buildings"
 msgstr ""
 
@@ -4202,8 +4212,8 @@ msgstr ""
 #: template-parts/dashboard/overview.php:196
 #: template-parts/drawer-foot.php:11
 #: templates/ai-assistant.php:24
-#: templates/dashboard.php:172
-#: templates/dashboard.php:270
+#: templates/dashboard.php:174
+#: templates/dashboard.php:272
 #: templates/front-page-template.php:27
 msgid "Publish a listing"
 msgstr ""
@@ -4366,7 +4376,7 @@ msgstr ""
 #: template-parts/components/order-history.php:23
 #: template-parts/components/order-history.php:33
 #: template-parts/dashboard/invoice.php:50
-#: templates/dashboard.php:186
+#: templates/dashboard.php:188
 msgid "Order"
 msgstr ""
 
@@ -4405,7 +4415,7 @@ msgstr ""
 #: template-parts/dashboard/engineer-files.php:25
 #: template-parts/dashboard/invoice.php:38
 #: template-parts/dashboard/invoice.php:47
-#: templates/dashboard.php:187
+#: templates/dashboard.php:189
 msgid "Invoice"
 msgstr ""
 
@@ -4627,7 +4637,7 @@ msgstr ""
 
 #: template-parts/components/price-block.php:63
 #: template-parts/components/price-block.php:94
-#: templates/dashboard.php:265
+#: templates/dashboard.php:267
 msgid "Available"
 msgstr ""
 
@@ -5717,6 +5727,7 @@ msgid "Send your offer"
 msgstr ""
 
 #: template-parts/components/rfq-offer-form.php:44
+#: template-parts/dashboard/report.php:155
 msgid "Your price"
 msgstr ""
 
@@ -6231,6 +6242,7 @@ msgstr ""
 #: template-parts/dashboard/ai.php:16
 #: template-parts/dashboard/offers.php:13
 #: template-parts/dashboard/portfolio.php:13
+#: template-parts/dashboard/report.php:22
 #: template-parts/dashboard/rfq.php:19
 #: template-parts/dashboard/services.php:19
 #: templates/ai-assistant.php:40
@@ -6463,7 +6475,7 @@ msgid "With the paid plans"
 msgstr ""
 
 #: template-parts/components/stock-warehouse.php:136
-#: templates/dashboard.php:174
+#: templates/dashboard.php:176
 msgid "Price for a whole type"
 msgstr ""
 
@@ -7644,7 +7656,7 @@ msgstr ""
 #: template-parts/header-actions.php:20
 #: template-parts/notif-panel.php:15
 #: template-parts/notif-panel.php:17
-#: templates/dashboard.php:185
+#: templates/dashboard.php:187
 msgid "Notifications"
 msgstr ""
 
@@ -7821,6 +7833,7 @@ msgid "Verified"
 msgstr ""
 
 #: template-parts/dashboard/overview.php:95
+#: template-parts/dashboard/report.php:67
 msgid "Period"
 msgstr ""
 
@@ -8308,6 +8321,181 @@ msgstr ""
 msgid "Weight and total price are calculated by the weight engine (Phase 3)."
 msgstr ""
 
+#: template-parts/dashboard/report.php:22
+#: templates/ai-assistant.php:83
+#: templates/dashboard.php:162
+msgid "Business report"
+msgstr ""
+
+#: template-parts/dashboard/report.php:28
+msgid "The Business report is included in the Business plan"
+msgstr ""
+
+#: template-parts/dashboard/report.php:29
+msgid "Every day: the average asked prices of new and reused steel, the steel on sale (new, reuse, buildings), the most searched and best-selling profiles, what is asked and little offered, by region — with a summary written by the AI. No credit is used."
+msgstr ""
+
+#: template-parts/dashboard/report.php:30
+msgid "Move to the Business plan"
+msgstr ""
+
+#: template-parts/dashboard/report.php:53
+msgid "not enough listings"
+msgstr ""
+
+#: template-parts/dashboard/report.php:59
+msgid "Business plan"
+msgstr ""
+
+#: template-parts/dashboard/report.php:60
+#: templates/ai-assistant.php:85
+msgid "No credit"
+msgstr ""
+
+#. translators: 1: start date, 2: end date.
+#: template-parts/dashboard/report.php:61
+msgid "From %1$s to %2$s"
+msgstr ""
+
+#. translators: %s: date.
+#: template-parts/dashboard/report.php:61
+msgid "updated on %s"
+msgstr ""
+
+#. translators: %s: date.
+#: template-parts/dashboard/report.php:61
+msgid "prices asked by the sellers on ReuSteel, not sale prices."
+msgstr ""
+
+#: template-parts/dashboard/report.php:64
+msgid "Report filters"
+msgstr ""
+
+#: template-parts/dashboard/report.php:69
+msgid "Region"
+msgstr ""
+
+#: template-parts/dashboard/report.php:80
+msgid "Download as PDF"
+msgstr ""
+
+#: template-parts/dashboard/report.php:86
+msgid "What to remember"
+msgstr ""
+
+#: template-parts/dashboard/report.php:94
+msgid "Steel on the market"
+msgstr ""
+
+#. translators: %s: tonnes.
+#: template-parts/dashboard/report.php:104
+msgid "%s t of steel on sale"
+msgstr ""
+
+#: template-parts/dashboard/report.php:119
+msgid "in all"
+msgstr ""
+
+#: template-parts/dashboard/report.php:132
+msgid "Listings online"
+msgstr ""
+
+#: template-parts/dashboard/report.php:133
+msgid "Searches"
+msgstr ""
+
+#: template-parts/dashboard/report.php:135
+msgid "Buildings on sale"
+msgstr ""
+
+#. translators: %s: currency.
+#: template-parts/dashboard/report.php:144
+msgid "Average asked prices (%s/kg)"
+msgstr ""
+
+#: template-parts/dashboard/report.php:146
+msgid "Not enough listings yet for an average on this choice."
+msgstr ""
+
+#: template-parts/dashboard/report.php:151
+#: template-parts/dashboard/report.php:154
+msgid "Change over the period"
+msgstr ""
+
+#: template-parts/dashboard/report.php:153
+msgid "Reuse gap"
+msgstr ""
+
+#. translators: 1: type, 2: new or reuse.
+#: template-parts/dashboard/report.php:192
+msgid "%1$s, %2$s: average asked price over 12 months"
+msgstr ""
+
+#. translators: 1: type, 2: new or reuse.
+#: template-parts/dashboard/report.php:192
+msgid "new"
+msgstr ""
+
+#. translators: 1: type, 2: new or reuse.
+#: template-parts/dashboard/report.php:192
+msgid "reuse"
+msgstr ""
+
+#: template-parts/dashboard/report.php:209
+msgid "Click on a type to see its sizes and its curve over 12 months. An average is shown only when there are enough listings."
+msgstr ""
+
+#: template-parts/dashboard/report.php:215
+msgid "Best-selling"
+msgstr ""
+
+#: template-parts/dashboard/report.php:219
+msgid "No sale accepted on this choice yet."
+msgstr ""
+
+#: template-parts/dashboard/report.php:223
+msgid "Most searched"
+msgstr ""
+
+#: template-parts/dashboard/report.php:231
+msgid "Searches of the catalogue and lines of the requests for quotation."
+msgstr ""
+
+#: template-parts/dashboard/report.php:233
+msgid "The searches are counted from now: this list fills up with time."
+msgstr ""
+
+#: template-parts/dashboard/report.php:240
+msgid "Asked, little offered"
+msgstr ""
+
+#. translators: 1: searches and requests, 2: listings.
+#: template-parts/dashboard/report.php:244
+msgid "%1$s searches and requests, %2$s listings"
+msgstr ""
+
+#. translators: %s: tonnes.
+#: template-parts/dashboard/report.php:246
+msgid "You have %s t of it"
+msgstr ""
+
+#: template-parts/dashboard/report.php:251
+msgid "Nothing stands out on this choice for now."
+msgstr ""
+
+#: template-parts/dashboard/report.php:255
+msgid "By region (listings · requests)"
+msgstr ""
+
+#. translators: %s: percentage.
+#: template-parts/dashboard/report.php:258
+msgid "Reuse: %s %% of the weight"
+msgstr ""
+
+#: template-parts/dashboard/report.php:264
+msgid "No company name, no quantity or amount of sale: only asked prices, weights on sale and numbers of listings, searches and requests. « Your price » and « You have » are seen by you only."
+msgstr ""
+
 #: template-parts/dashboard/rfq.php:35
 #: template-parts/dashboard/rfq.php:38
 #: templates/rfq-board.php:60
@@ -8690,7 +8878,7 @@ msgid "Verify your contact details first."
 msgstr ""
 
 #: template-parts/dashboard/verification.php:33
-#: templates/dashboard.php:312
+#: templates/dashboard.php:314
 msgid "Enter the code"
 msgstr ""
 
@@ -8767,7 +8955,7 @@ msgid "Trade"
 msgstr ""
 
 #: template-parts/directory.php:67
-#: templates/dashboard.php:167
+#: templates/dashboard.php:169
 #: templates/engineer-apply.php:91
 msgid "Verification"
 msgstr ""
@@ -8837,7 +9025,7 @@ msgid "See the whole directory"
 msgstr ""
 
 #: template-parts/drawer-foot.php:14
-#: templates/dashboard.php:290
+#: templates/dashboard.php:292
 #: templates/engineer-apply.php:75
 msgid "Sign out"
 msgstr ""
@@ -8985,23 +9173,19 @@ msgid_plural "%d credits per use"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/ai-assistant.php:79
-msgid "Business report"
+#: templates/ai-assistant.php:84
+msgid "Follow your market like a pro: every day, the average asked prices of new and reused steel, the steel on sale, the most searched and best-selling profiles and what is asked and little offered, by region, with a summary written by the AI."
 msgstr ""
 
-#: templates/ai-assistant.php:80
-msgid "Follow your market like a pro. Every week or every month, receive the most requested and most searched products, the average advertised prices of new steel, reuse and buildings, and the trends by wilaya, to set your prices and choose your stock at the right time."
-msgstr ""
-
-#: templates/ai-assistant.php:81
+#: templates/ai-assistant.php:85
 msgid "Included in the Business plan"
 msgstr ""
 
-#: templates/ai-assistant.php:81
-msgid "Soon"
+#: templates/ai-assistant.php:88
+msgid "Open the report"
 msgstr ""
 
-#: templates/ai-assistant.php:83
+#: templates/ai-assistant.php:90
 msgid "See the Business plan"
 msgstr ""
 
@@ -9340,12 +9524,12 @@ msgid "Files and plans"
 msgstr ""
 
 #: templates/dashboard.php:90
-#: templates/dashboard.php:168
+#: templates/dashboard.php:170
 msgid "Settings"
 msgstr ""
 
 #: templates/dashboard.php:103
-#: templates/dashboard.php:166
+#: templates/dashboard.php:168
 msgid "Company profile"
 msgstr ""
 
@@ -9410,99 +9594,99 @@ msgstr ""
 msgid "Engineering studies"
 msgstr ""
 
-#: templates/dashboard.php:161
+#: templates/dashboard.php:163
 msgid "Plan"
 msgstr ""
 
-#: templates/dashboard.php:179
+#: templates/dashboard.php:181
 msgid "Add a service"
 msgstr ""
 
-#: templates/dashboard.php:184
+#: templates/dashboard.php:186
 msgid "Verify your account"
 msgstr ""
 
-#: templates/dashboard.php:188
+#: templates/dashboard.php:190
 msgid "Order or offer"
 msgstr ""
 
-#: templates/dashboard.php:236
+#: templates/dashboard.php:238
 msgid "See my partner profile"
 msgstr ""
 
-#: templates/dashboard.php:239
+#: templates/dashboard.php:241
 msgid "See my public profile"
 msgstr ""
 
-#: templates/dashboard.php:242
+#: templates/dashboard.php:244
 msgid "See my profile"
 msgstr ""
 
-#: templates/dashboard.php:246
+#: templates/dashboard.php:248
 msgid "Account menu"
 msgstr ""
 
-#: templates/dashboard.php:256
+#: templates/dashboard.php:258
 msgid "Collapse the menu"
 msgstr ""
 
-#: templates/dashboard.php:256
+#: templates/dashboard.php:258
 msgid "Expand the menu"
 msgstr ""
 
-#: templates/dashboard.php:263
+#: templates/dashboard.php:265
 msgid "Available for new missions"
 msgstr ""
 
-#: templates/dashboard.php:263
+#: templates/dashboard.php:265
 msgid "Unavailable for new missions"
 msgstr ""
 
-#: templates/dashboard.php:265
+#: templates/dashboard.php:267
 msgid "Unavailable"
 msgstr ""
 
-#: templates/dashboard.php:265
+#: templates/dashboard.php:267
 msgid "New missions can be offered to you"
 msgstr ""
 
-#: templates/dashboard.php:265
+#: templates/dashboard.php:267
 msgid "No new mission is offered to you"
 msgstr ""
 
-#: templates/dashboard.php:279
+#: templates/dashboard.php:281
 msgid "Dashboard"
 msgstr ""
 
-#: templates/dashboard.php:289
+#: templates/dashboard.php:291
 msgid "Dark mode"
 msgstr ""
 
-#: templates/dashboard.php:308
+#: templates/dashboard.php:310
 msgid "Demo partner engineer account."
 msgstr ""
 
-#: templates/dashboard.php:308
+#: templates/dashboard.php:310
 msgid "Demo company account."
 msgstr ""
 
-#: templates/dashboard.php:308
+#: templates/dashboard.php:310
 msgid "Switch to the company dashboard"
 msgstr ""
 
-#: templates/dashboard.php:308
+#: templates/dashboard.php:310
 msgid "Switch to the engineer dashboard"
 msgstr ""
 
-#: templates/dashboard.php:312
+#: templates/dashboard.php:314
 msgid "Verify your account with the 6-digit code to publish and answer requests."
 msgstr ""
 
-#: templates/dashboard.php:343
+#: templates/dashboard.php:345
 msgid "This section arrives with its plugin"
 msgstr ""
 
-#: templates/dashboard.php:344
+#: templates/dashboard.php:346
 msgid "The layout is ready; the content will be provided by the corresponding marketplace plugin."
 msgstr ""
 

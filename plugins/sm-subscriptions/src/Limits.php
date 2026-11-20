@@ -28,6 +28,7 @@ final class Limits {
 		// Warehouse (0.4.0, sm-stock): capacity in tonnes and advanced tools per plan.
 		add_filter( 'sm_stock_capacity_kg', array( __CLASS__, 'stock_capacity' ), 10, 2 );
 		add_filter( 'sm_stock_tools', array( __CLASS__, 'stock_tools' ), 10, 2 );
+		add_filter( 'sm_insights_access', array( __CLASS__, 'report' ), 10, 2 ); // 0.5.0: Business report (sm-insights).
 		add_filter( 'sm_ai_remaining', array( __CLASS__, 'ai_remaining' ), 10, 2 );
 		add_action( 'sm_ai_used', array( Credits::class, 'on_used' ), 10, 2 );
 		add_filter( 'sm_company_contacts_visible', array( __CLASS__, 'contacts' ), 10, 2 );
@@ -118,6 +119,12 @@ final class Limits {
 	public static function stock_tools( $ok, $company ) {
 		$plan = Subscriptions::plan_of( $company );
 		return $plan['has_plans'] ? ! empty( $plan['data']['stock_tools'] ) : $ok;
+	}
+
+	/** Business report (0.5.0): the plans that include it (Business by default). */
+	public static function report( $ok, $company ) {
+		$plan = Subscriptions::plan_of( $company );
+		return $plan['has_plans'] ? ! empty( $plan['data']['report'] ) : $ok;
 	}
 
 	public static function ai_can_use( $ok, $feature, $company_id ) {

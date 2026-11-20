@@ -158,6 +158,8 @@ if ( $is_eng ) {
 				'ai-credits' => __( 'AI credits', 'sm-marketplace' ),
 			),
 		) : null,
+		// Business report (0.53.0, sm-insights): every company; the plan is offered on the page.
+		'report'   => ! $is_demo && true === sm_theme_data( 'insights_enabled' ) ? array( 'chart', __( 'Business report', 'sm-marketplace' ), array( 'report' => __( 'Business report', 'sm-marketplace' ) ) ) : null,
 		'plan'     => 'client' === $class ? null : array( 'card', __( 'Plan', 'sm-marketplace' ), array( 'plan' => __( 'Plan', 'sm-marketplace' ) ) ),
 		'account'  => array(
 			'client' === $class ? 'user' : 'company',

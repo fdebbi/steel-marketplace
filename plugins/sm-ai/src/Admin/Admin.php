@@ -44,6 +44,7 @@ final class Admin {
 			'describe'  => __( 'Listing description', 'sm-ai' ),
 			'cutlist'   => __( 'Read a document (DQE AI)', 'sm-ai' ),
 			'condition' => __( 'Condition of the steel', 'sm-ai' ),
+			'report'    => __( 'Business report summary', 'sm-ai' ),
 			'test'      => __( 'Connection test', 'sm-ai' ),
 		);
 	}

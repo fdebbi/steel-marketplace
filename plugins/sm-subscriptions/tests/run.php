@@ -189,6 +189,16 @@ wp_set_current_user( 0 );
 smsub_assert( SM\Subscriptions\Compat::ready( 'products' ) && SM\Subscriptions\Compat::ready( 'core' ) && array() === SM\Subscriptions\Compat::outdated(), 'plugins in the needed versions' );
 smsub_assert( ! SM\Subscriptions\Compat::ready( 'nothing' ), 'unknown plugin is not ready' );
 
+// 0.5.0: Business report (sm-insights): Business plan only, the administrator can change it.
+list( , $c_rep ) = smsub_account( 'report', 'company', array( 'supplier' ) );
+smsub_assert( false === apply_filters( 'sm_insights_access', true, Companies::get( $c_rep ) ), 'Business report: not in the Discovery plan' );
+Subscriptions::activate( $c_rep, 'pro', 1 );
+smsub_assert( false === apply_filters( 'sm_insights_access', true, Companies::get( $c_rep ) ), 'Business report: not in the Pro plan' );
+Subscriptions::activate( $c_rep, 'business', 1 );
+smsub_assert( true === apply_filters( 'sm_insights_access', true, Companies::get( $c_rep ) ), 'Business report: included in the Business plan' );
+smsub_assert( 1 === Plans::all()['company']['business']['report'] && 0 === Plans::all()['professional']['artisan_premium']['report'], 'plans: report ticked for Business only by default' );
+smsub_assert( ! defined( 'SM_INSIGHTS_VERSION' ) || isset( Plans::limit_labels()['report'] ), 'admin: the « Business report » line of the plans' );
+
 smsub_cleanup();
 null === $settings_before ? delete_option( Settings::OPTION ) : update_option( Settings::OPTION, $settings_before, false );
 $t = $GLOBALS['smsub_t'];

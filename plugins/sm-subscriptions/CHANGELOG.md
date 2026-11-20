@@ -1,5 +1,9 @@
 # Changelog — sm-subscriptions
 
+## 0.5.0 — 2026-11-20 (pour sm-insights 0.1.0)
+
+- Formules : case **« Rapport Business du marché »** (`report`), cochée pour Entreprise Business seulement par défaut ; filtre `sm_insights_access` fourni à sm-insights. Ligne visible seulement quand sm-insights est actif.
+
 ## 0.4.0 — 2026-11-19 (pour sm-stock 0.1.0)
 
 - Formules : capacité du **Magasin** en tonnes (`stock_t`, publié ou non) et outils du magasin (`stock_tools` : prix pour tout un type, étiquettes). Par défaut : Entreprise Découverte 20 t sans outils, Pro 500 t, Business illimité ; Professionnel Gratuit 10 t sans outils, Artisan Pro 100 t, Artisan Premium 300 t.

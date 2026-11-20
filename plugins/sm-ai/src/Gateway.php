@@ -31,6 +31,7 @@ final class Gateway {
 				'describe'  => Features\Describe::class,
 				'cutlist'   => Features\Cutlist::class,
 				'condition' => Features\Condition::class,
+				'report'    => Features\Report::class,
 			)
 		);
 	}

@@ -1,0 +1,111 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Insights 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-insights\n"
+
+#. Plugin Name of the plugin
+#: sm-insights.php
+msgid "SM Insights"
+msgstr "SM Insights"
+
+#. Plugin URI of the plugin
+#: sm-insights.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-insights.php
+msgid ""
+"Business report of the steel market (Business plan): average asked prices "
+"per type of profile, new and reused, steel put on sale (new, reuse, "
+"buildings), the most searched and best-selling profiles (ranking only), what"
+" is in demand and little offered, figures per region, and a summary written "
+"by the AI from these figures. Only asked prices, weights on sale and counts "
+"of listings, searches and requests: no company name, no quantity or amount "
+"of sale. Requires SM Core and SM Products."
+msgstr ""
+"تقرير الأعمال عن سوق الفولاذ (اشتراك Business): متوسط الأسعار المطلوبة حسب "
+"نوع المقطع، جديد ومعاد الاستعمال، والفولاذ المعروض للبيع، والمقاطع الأكثر "
+"بحثاً والأكثر مبيعاً (ترتيب فقط)، وما هو مطلوب وقليل العرض، وأرقام حسب "
+"المنطقة، وملخص يكتبه الذكاء الاصطناعي. لا اسم لأي شركة ولا كمية أو مبلغ بيع."
+" يتطلب SM Core وSM Products."
+
+#. Author of the plugin
+#: sm-insights.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-insights.php:47
+msgid ""
+"SM Insights needs the SM Core and SM Products plugins. Activate them first."
+msgstr "يحتاج SM Insights إلى الإضافتين SM Core وSM Products. فعّلهما أولاً."
+
+#: src/Regions.php:30
+msgid "Centre"
+msgstr "الوسط"
+
+#: src/Regions.php:31
+msgid "East"
+msgstr "الشرق"
+
+#: src/Regions.php:32
+msgid "West"
+msgstr "الغرب"
+
+#: src/Regions.php:33
+msgid "South"
+msgstr "الجنوب"
+
+#. translators: %s: type of profile.
+#: src/Report.php:153
+msgid "%s (all sizes)"
+msgstr "%s (كل المقاسات)"
+
+#. translators: %s: type of profile.
+#: src/Report.php:446
+msgid "Your %s are shown at the average price of the market."
+msgstr "تُعرض %s الخاصة بك بمتوسط سعر السوق."
+
+#. translators: 1: type of profile, 2: percentage.
+#: src/Report.php:449
+msgid "Your %1$s are shown %2$s %% above the average of the market."
+msgstr "تُعرض %1$s الخاصة بك أعلى من متوسط السوق بـ %2$s %%."
+
+#. translators: 1: type of profile, 2: percentage.
+#: src/Report.php:449
+msgid "Your %1$s are shown %2$s %% below the average of the market."
+msgstr "تُعرض %1$s الخاصة بك أقل من متوسط السوق بـ %2$s %%."
+
+#: src/Theme/Bridge.php:43
+msgid "30 days"
+msgstr "30 يوماً"
+
+#: src/Theme/Bridge.php:44
+msgid "3 months"
+msgstr "3 أشهر"
+
+#: src/Theme/Bridge.php:45
+msgid "12 months"
+msgstr "12 شهراً"
+
+#: src/Theme/Bridge.php:48
+msgid "All"
+msgstr "الكل"
+
+#: src/Theme/Bridge.php:49
+msgid "New"
+msgstr "جديد"
+
+#: src/Theme/Bridge.php:50
+msgid "Reuse"
+msgstr "إعادة الاستعمال"
+
+#: src/Theme/Bridge.php:52
+msgid "Algeria"
+msgstr "الجزائر"

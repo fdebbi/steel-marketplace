@@ -499,3 +499,13 @@ Validé sur la maquette 0.37.
 - Deux boutons ✦ IA en tête de l'étape 2, à partir des photos du formulaire : « Reconnaître depuis mes photos » (catégories du moteur, pas les tôles) et « Évaluer l'état depuis mes photos » (réemploi seulement, pas la Ferraille). 1 crédit par appel, attente IA commune.
 - Rien n'est rempli sans clic : « Choisir » (type et dimension, le poids vient du moteur de poids, profilés vérifiés dans le catalogue), « Appliquer » (état et surface) ou « Ignorer ».
 - L'état reste la déclaration du vendeur : estimation visuelle, pas une inspection ; jamais « Excellent » sans photos nettes de près (sinon « À contrôler ») ; lien vers une inspection par un ingénieur vérifié. Si l'IA voit de la ferraille, elle propose la catégorie Ferraille.
+
+## Rapport Business (2026-11-20)
+
+- Réservé à la formule Business (case de la formule, réglable par l'administrateur), sans crédit IA. Page du compte « Rapport Business », visible de toute entreprise (la formule est proposée sur la page).
+- Filtres : période 30 jours / 3 mois / 12 mois, marché Tous / Neuf / Réemploi, région Algérie / Centre / Est / Ouest / Sud (4 grandes zones ; la wilaya plus tard).
+- Contenu : résumé IA « Ce qu'il faut retenir » à côté d'un cercle animé des poids mis en vente (neuf, réemploi, bâtiments, avec %), annonces, recherches, demandes de devis, bâtiments en vente, prix moyens demandés par famille (détail par dimension et courbe 12 mois au clic), les plus vendus, les plus recherchés, demandé et peu proposé, par région.
+- **Aucune quantité de vente affichée** : ni nombre de ventes acceptées, ni nombre par profilé ; « Les plus vendus » est un classement seulement ; l'IA ne peut pas en écrire.
+- Le cercle suit la période et la région et montre toujours les trois marchés.
+- Recherches comptées sans savoir qui cherche (profilé, marché, wilaya, jour) ; le compteur démarre à la livraison.
+- Calcul une fois par jour ; PDF par l'impression du navigateur (l'arabe y est correct).

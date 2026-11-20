@@ -84,6 +84,22 @@ final class Bridge {
 				'page'      => (int) ( $args['page'] ?? 1 ),
 			)
 		);
+		/*
+		 * 0.22.0: a search of the catalogue (first page, a type or a size asked) for the
+		 * Business report (sm-insights counts it, without knowing who searched).
+		 */
+		if ( (int) ( $args['page'] ?? 1 ) <= 1 && ( ! empty( $args['family'] ) || ! empty( $args['designation'] ) || ! empty( $args['q'] ) ) ) {
+			do_action(
+				'sm_products_searched',
+				array(
+					'market'      => $markets,
+					'family'      => strtoupper( sanitize_key( (string) ( $args['family'] ?? '' ) ) ),
+					'designation' => sanitize_text_field( (string) ( $args['designation'] ?? '' ) ),
+					'q'           => sanitize_text_field( (string) ( $args['q'] ?? '' ) ),
+					'wilaya'      => preg_replace( '/\D/', '', (string) ( $args['wilaya'] ?? '' ) ),
+				)
+			);
+		}
 		$ids    = wp_list_pluck( $q['items'], 'id' );
 		$texts  = Translations::get_many( 'product', $ids );
 		$photos = Media::first_many( 'product', $ids );

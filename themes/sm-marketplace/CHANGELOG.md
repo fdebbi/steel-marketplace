@@ -1,5 +1,18 @@
 # Changelog — sm-marketplace
 
+## 0.53.0 — 2026-11-20 (avec sm-insights 0.1.0, sm-ai 0.6.0, sm-subscriptions 0.5.0, sm-products 0.22.0)
+
+- **Rapport Business** (`template-parts/dashboard/report.php`, `assets/css/39-report.css`, `assets/js/report.js`), menu « Rapport Business » de toute entreprise (`/compte/rapport-business/`) :
+  - formule sans le rapport : « Le Rapport Business est inclus dans la formule Business » et « Passer à la formule Business » ;
+  - filtres période / marché / région (liens), « Télécharger en PDF » (impression du navigateur : menu et filtres masqués, toutes les langues) ;
+  - « Ce qu'il faut retenir » (✦ IA) à côté du **cercle animé** de l'acier sur le marché (neuf, réemploi, bâtiments : t et %, total au centre ; immobile si les animations sont réduites et à l'impression) ;
+  - annonces en ligne, recherches, demandes de devis, bâtiments en vente — pas de nombre de ventes ;
+  - prix moyens demandés (DA/kg) : neuf, évolution, réemploi, écart, votre prix ; un type s'ouvre sur ses dimensions et sa courbe 12 mois ; « pas assez d'annonces » ;
+  - les plus vendus (classement seulement), les plus recherchés (barres), demandé et peu proposé (« Vous en avez … t »), par région.
+- Page Assistant IA : carte « Rapport Business » avec « Ouvrir le rapport » (formule Business) ou « Voir la formule Business » ; « Sans crédit ».
+- Carte des formules : ligne « Rapport Business du marché ».
+- Formulaire de publication : bordures des pastilles de l'aide IA (variable `--sm-line`).
+
 ## 0.52.0 — 2026-11-20 (avec sm-ai 0.5.0)
 
 - **Formulaire de publication — aide IA depuis les photos** (composant `ai-photo-tools`, `assets/js/ai-photo.js`), en tête de l'étape 2, hors de la partie rafraîchie :

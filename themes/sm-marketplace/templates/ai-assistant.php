@@ -73,14 +73,22 @@ $sm_tools = array(
 					</div>
 				</article>
 			<?php endforeach; ?>
-			<?php // Business report (0.45.1): announced, built in step 4 — no button until it works. ?>
+			<?php
+			// Business report (0.53.0, sm-insights): open it with the Business plan, else see the plan.
+			$biz = sm_theme_data( 'insights_enabled' ) ? sm_theme_data( 'insights_report', array() ) : null;
+			$biz_ok = is_array( $biz ) && 'ok' === ( $biz['state'] ?? '' );
+			?>
 			<article class="smai-card smai-card--soon" id="ai-business">
 				<span class="smai-card__icon"><?php sm_icon( 'chart' ); ?></span>
 				<h2 class="smai-card__title"><?php esc_html_e( 'Business report', 'sm-marketplace' ); ?></h2>
-				<p><?php esc_html_e( 'Follow your market like a pro. Every week or every month, receive the most requested and most searched products, the average advertised prices of new steel, reuse and buildings, and the trends by wilaya, to set your prices and choose your stock at the right time.', 'sm-marketplace' ); ?></p>
-				<p class="smai-card__meta"><span class="is-biz"><?php esc_html_e( 'Included in the Business plan', 'sm-marketplace' ); ?></span><span class="is-soon"><?php esc_html_e( 'Soon', 'sm-marketplace' ); ?></span></p>
+				<p><?php esc_html_e( 'Follow your market like a pro: every day, the average asked prices of new and reused steel, the steel on sale, the most searched and best-selling profiles and what is asked and little offered, by region, with a summary written by the AI.', 'sm-marketplace' ); ?></p>
+				<p class="smai-card__meta"><span class="is-biz"><?php esc_html_e( 'Included in the Business plan', 'sm-marketplace' ); ?></span><span class="is-free"><?php esc_html_e( 'No credit', 'sm-marketplace' ); ?></span></p>
 				<div class="smai-card__foot">
-					<a class="sm-btn sm-btn--ai-outline sm-btn--block" href="<?php echo esc_url( sm_page_url( 'pricing' ) ); ?>"><?php esc_html_e( 'See the Business plan', 'sm-marketplace' ); ?></a>
+					<?php if ( $biz_ok ) : ?>
+						<a class="sm-btn sm-btn--ai sm-btn--block" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'report' ) ) ); ?>"><?php esc_html_e( 'Open the report', 'sm-marketplace' ); ?><?php sm_icon( 'arrow-end' ); ?></a>
+					<?php else : ?>
+						<a class="sm-btn sm-btn--ai-outline sm-btn--block" href="<?php echo esc_url( is_user_logged_in() ? sm_page_url( 'account', array( 'view' => 'plan' ) ) : sm_page_url( 'pricing' ) ); ?>"><?php esc_html_e( 'See the Business plan', 'sm-marketplace' ); ?></a>
+					<?php endif; ?>
 				</div>
 			</article>
 		</div>

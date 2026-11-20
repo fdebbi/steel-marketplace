@@ -154,3 +154,9 @@ T.update({
 'Condition of the steel': ('État de l’acier', 'حالة الفولاذ'),
 'Add your photos first (Photos part of the form): the AI looks at them.': ('Ajoutez d’abord vos photos (partie Photos du formulaire) : l’IA les regarde.', 'أضف صورك أولاً (قسم الصور في الاستمارة): الذكاء الاصطناعي يفحصها.'),
 })
+
+# 0.6.0 — Business report summary.
+T.update({
+'Business report summary': ('Résumé du Rapport Business', 'ملخص تقرير الأعمال'),
+'Sign in with a business account to use the AI assistant.': ('Connectez-vous avec un compte professionnel pour utiliser l’assistant IA.', 'سجّل الدخول بحساب مهني لاستخدام المساعد الذكي.'),
+})

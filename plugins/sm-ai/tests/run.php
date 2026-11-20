@@ -209,7 +209,7 @@ if ( Settings::simulation_allowed() ) {
 	$in['default_provider'] = 'simulation';
 	$in['features']['listing']['enabled'] = 1;
 	$in['features']['listing']['per_company_month'] = 30;
-	foreach ( array( 'listing', 'recognize', 'search', 'document', 'describe', 'cutlist', 'condition' ) as $f ) {
+	foreach ( array( 'listing', 'recognize', 'search', 'document', 'describe', 'cutlist', 'condition', 'report' ) as $f ) {
 		$in['features'][ $f ]['enabled']  = 1;
 		$in['features'][ $f ]['provider'] = '';
 	}
@@ -294,6 +294,18 @@ if ( Settings::simulation_allowed() ) {
 	smai_assert( is_array( $d ) && ! isset( $d['tools']['condition'] ) && isset( $d['tools']['recognize'] ), 'service off: not offered in the form' );
 	$in['features']['condition']['enabled'] = 1;
 	Settings::save( $in );
+
+	smai_section( '8. Summary of the Business report (0.6.0)' );
+	$R = 'SM\\Ai\\Features\\Report';
+	smai_assert( 0 === $R::credits() && in_array( 'report', Gateway::free_features(), true ), 'free: no AI credit (the report belongs to the Business plan)' );
+	$c = $R::clean( array( 'points' => array( 'Les IPE montent de 3 %.', 'Il y a eu 41 ventes de IPE 200.', 'IPE 200 : 12 sales this month', 'Le réemploi fait 22 % du poids.' ) ), array() );
+	smai_assert( array( 'Les IPE montent de 3 %.', 'Le réemploi fait 22 % du poids.' ) === $c['points'], 'a number of sales written by the model is dropped' );
+	$n   = Usage::company_month_total( $cid );
+	$pts = apply_filters( 'sm_ai_report_summary', null, array( 'prices' => array( array( 'label' => 'IPE', 'new_change' => 3.1 ) ), 'top_searched' => array( 'IPE 200' ), 'weights' => array( 'reuse_pct' => 22 ) ), 'fr' );
+	smai_assert( is_array( $pts ) && 3 === count( $pts ) && Usage::company_month_total( $cid ) === $n, 'filter sm_ai_report_summary: points from the figures, no credit counted' );
+	wp_set_current_user( 0 );
+	smai_assert( is_wp_error( apply_filters( 'sm_ai_report_summary', null, array(), 'fr' ) ), 'visitor: refused' );
+	wp_set_current_user( $u_seller );
 } else {
 	echo "  (SM_AI_SIMULATION not set: simulation tests skipped)\n";
 }
