@@ -1,5 +1,15 @@
 # Changelog — sm-ai
 
+## 0.3.0 — 2026-11-20 (avec sm-weight-engine 0.7.0 et le thème 0.50.0)
+
+- **DQE IA** (service `cutlist`, 1 crédit) : un document (DQE, devis, bon de commande, métré, marché) en Excel (.xlsx), CSV, PDF ou photo devient la liste de l'optimiseur de découpe. Les plans ne sont pas lus (plus tard).
+  - Barres : profilé vérifié dans le catalogue, longueur d'une pièce, nombre. « Sûr » seulement si tout est écrit ; « à vérifier » si le profilé est inconnu, la longueur ou le nombre manque, la ligne est déduite par l'IA, ou la source est une photo.
+  - Quantités en mètres sans longueurs de pièces, et tôles et platines (épaisseur, longueur × largeur, nombre ; poids par le moteur de poids) : vers la demande de devis.
+  - Lignes hors charpente seulement comptées. Photo illisible : dit, et le crédit est utilisé.
+- `Sheets` : Excel (toutes les feuilles, chaînes partagées) et CSV (« ; » ou « , ») lus en tableau texte ; jamais gardés. `Files::read( …, $sheets )`.
+- admin-post `sm_ai_cutlist` : lecture puis retour à l'optimiseur (`?ai=jeton`, résultat gardé 2 h pour l'utilisateur). Donnée du thème `ai_cutlist` (état, crédits restants, résultat). Carte sur la page des outils IA.
+- Une fonctionnalité peut demander plus de jetons de réponse (`max_tokens()`).
+
 ## 0.2.0 — 2026-11-19
 
 - Nouveau service **Rédaction de l'annonce** (`describe`) : dans le formulaire de publication, « Rédiger avec l'IA » écrit la description à partir de ce que le vendeur a saisi (champs du formulaire et chiffres calculés par la plateforme). Le modèle n'utilise que ces informations ; téléphone, e-mail et liens sont retirés. Appel `admin-ajax` `sm_ai_describe` (jeton), 1 crédit.

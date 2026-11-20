@@ -25,7 +25,8 @@ defined( 'ABSPATH' ) || exit;
 
 final class Cutting {
 
-	const MAX_LINES        = 40;
+	const MAX_LINES        = 80;
+	const MAX_EXTRAS       = 40; // Plates and quantities in metres (0.7.0).
 	const MAX_STOCK_LINES  = 40;
 	const MAX_PIECES       = 300; // Per profile.
 	const MAX_NODES        = 1000000; // Per profile.
@@ -64,6 +65,43 @@ final class Cutting {
 			}
 			return $out;
 		};
+		// Lines checked in the DQE IA (0.7.0): the ticked ones are added.
+		$lines = $read( $raw['rows'] ?? array(), self::MAX_LINES );
+		foreach ( array_slice( (array) ( $raw['ai_bar'] ?? array() ), 0, self::MAX_LINES ) as $r ) {
+			if ( is_array( $r ) && ! empty( $r['on'] ) && count( $lines ) < self::MAX_LINES ) {
+				$lines = array_merge( $lines, $read( array( $r ), 1 ) );
+			}
+		}
+		$plates = array();
+		foreach ( array( 'plates' => false, 'ai_plate' => true ) as $key => $tick ) {
+			foreach ( array_slice( (array) ( $raw[ $key ] ?? array() ), 0, self::MAX_EXTRAS ) as $r ) {
+				$r = (array) $r;
+				if ( ( $tick && empty( $r['on'] ) ) || count( $plates ) >= self::MAX_EXTRAS ) {
+					continue;
+				}
+				$t = round( (float) str_replace( ',', '.', (string) ( $r['t'] ?? 0 ) ), 1 );
+				$l = absint( $r['l'] ?? 0 );
+				$w = absint( $r['w'] ?? 0 );
+				$q = absint( $r['qty'] ?? 0 );
+				if ( $t > 0 && $t <= 200 && $l > 0 && $l <= 12000 && $w > 0 && $w <= 3000 && $q > 0 ) {
+					$plates[] = array( 't' => $t, 'l' => $l, 'w' => $w, 'qty' => min( 10000, $q ), 'label' => mb_substr( sanitize_text_field( (string) ( $r['label'] ?? '' ) ), 0, 80 ) );
+				}
+			}
+		}
+		$lin = array();
+		foreach ( array( 'lin' => false, 'ai_lin' => true ) as $key => $tick ) {
+			foreach ( array_slice( (array) ( $raw[ $key ] ?? array() ), 0, self::MAX_EXTRAS ) as $r ) {
+				$r = (array) $r;
+				if ( ( $tick && empty( $r['on'] ) ) || count( $lin ) >= self::MAX_EXTRAS ) {
+					continue;
+				}
+				$sid = absint( $r['section'] ?? 0 );
+				$m   = round( (float) str_replace( ',', '.', (string) ( $r['m'] ?? 0 ) ), 2 );
+				if ( $sid && $m > 0 && $m <= 100000 ) {
+					$lin[] = array( 'section' => $sid, 'm' => $m, 'label' => mb_substr( sanitize_text_field( (string) ( $r['label'] ?? '' ) ), 0, 80 ) );
+				}
+			}
+		}
 		// Where to look for bars (0.5.0). Without the form marker "src", the defaults apply.
 		$sent  = isset( $raw['src'] );
 		$conds = array_values( array_intersect( array_map( 'sanitize_key', (array) ( $raw['conds'] ?? array() ) ), self::CONDITIONS ) );
@@ -72,7 +110,9 @@ final class Cutting {
 			'bar'       => max( 1000, min( 24000, $bar ) ),
 			'kerf'      => $kerf,
 			'reuse'     => max( 0, min( 24000, $reuse ) ),
-			'lines'     => $read( $raw['rows'] ?? array(), self::MAX_LINES ),
+			'lines'     => $lines,
+			'plates'    => $plates,
+			'lin'       => $lin,
 			'stock'     => $read( $raw['stock'] ?? array(), self::MAX_STOCK_LINES ),
 			'market'    => $sent ? ! empty( $raw['market'] ) : true,
 			'lots'      => $sent ? ! empty( $raw['lots'] ) : true,
@@ -159,9 +199,39 @@ final class Cutting {
 			'errors'   => $errors,
 			'profiles' => $profiles,
 			'totals'   => $t,
+			'extras'   => self::extras( $in ),
 			'settings' => array( 'bar' => $in['bar'], 'kerf' => $in['kerf'], 'reuse' => $in['reuse'], 'market' => ! empty( $in['market'] ), 'mine' => ! empty( $in['mine'] ) ),
 			'at'       => time(),
 		);
+	}
+
+	/**
+	 * What goes to the request for quotation without a cutting plan (0.7.0): plates
+	 * (weight from the calculator) and quantities given in metres (bars of the
+	 * chosen length, rounded up, and their weight).
+	 */
+	public static function extras( array $in ) {
+		$out = array( 'plates' => array(), 'linear' => array(), 'kg' => 0.0 );
+		foreach ( (array) ( $in['plates'] ?? array() ) as $p ) {
+			$c  = Calculator::calculate( array( 'family' => 'PLATE', 'dims' => array( 't' => $p['t'] ), 'length' => $p['l'], 'width' => $p['w'], 'bars' => $p['qty'] ) );
+			$kg = is_wp_error( $c ) ? 0.0 : round( (float) $c['total_kg'], 2 );
+			$out['plates'][] = $p + array( 'kg' => $kg );
+			$out['kg']      += $kg;
+		}
+		$bar = (int) ( $in['bar'] ?? self::DEFAULT_BAR_MM );
+		foreach ( (array) ( $in['lin'] ?? array() ) as $l ) {
+			$s = Catalogue::get( $l['section'] );
+			if ( ! $s ) {
+				continue;
+			}
+			$n  = (int) ceil( $l['m'] * 1000 / $bar );
+			$c  = Calculator::calculate( array( 'family' => $s->family, 'section' => $s->id, 'length' => $bar, 'bars' => $n ) );
+			$kg = is_wp_error( $c ) ? 0.0 : round( (float) $c['total_kg'], 2 );
+			$out['linear'][] = $l + array( 'family' => $s->family, 'designation' => $s->designation, 'bars' => $n, 'bar' => $bar, 'kg' => $kg );
+			$out['kg']      += $kg;
+		}
+		$out['kg'] = round( $out['kg'], 2 );
+		return $out;
 	}
 
 	/** One profile: plan, groups of identical bars, figures. */

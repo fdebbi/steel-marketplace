@@ -2,6 +2,8 @@
 /**
  * Cutting optimiser: form (bars, pieces, offcuts in stock) and plan (0.46.0).
  * Data: cutting_sections, cutting_input, cutting (sm-weight-engine 0.4.0).
+ * 0.50.0: DQE IA (sm-ai 0.3.0, data ai_cutlist): import a document, check, add; plates and
+ *         quantities in metres go to the request for quotation (sm-weight-engine 0.7.0).
  * 0.49.0: « My warehouse » first (sm-weight-engine 0.6.0, sm-stock 0.2.0): data stock_enabled.
  *
  * @var array $args { sections: array, input: array, result: array|null, raw: array }
@@ -14,6 +16,7 @@ $secs  = (array) $args['sections'];
 $in    = (array) $args['input'];
 $res   = $args['result'];
 $wh    = ! empty( $args['warehouse'] );
+$ai    = is_array( $args['ai'] ?? null ) ? $args['ai'] : null; // DQE IA: state, credits, result to check.
 $lang  = sm_theme_current_language();
 $fam_of = array();
 foreach ( $secs as $code => $f ) {
@@ -33,6 +36,12 @@ $qs     = static function () use ( $in, $bar ) {
 			$q[ $name ][ $i ] = array( 'section' => $l['section'], 'length' => $l['length'] / 1000, 'qty' => $l['qty'] );
 		}
 	}
+	foreach ( array_values( (array) ( $in['plates'] ?? array() ) ) as $i => $pl ) {
+		$q['plates'][ $i ] = array( 't' => $pl['t'], 'l' => $pl['l'], 'w' => $pl['w'], 'qty' => $pl['qty'], 'label' => $pl['label'] );
+	}
+	foreach ( array_values( (array) ( $in['lin'] ?? array() ) ) as $i => $li ) {
+		$q['lin'][ $i ] = array( 'section' => $li['section'], 'm' => $li['m'], 'label' => $li['label'] );
+	}
 	return $q;
 };
 $errs = array();
@@ -41,6 +50,18 @@ if ( is_array( $res ) ) {
 		$errs[ $e['kind'] ][ $e['row'] ] = $e['message'];
 	}
 }
+
+/* Hidden fields for a nested query (keeps the settings and the list). */
+$hidden = static function ( array $q, $prefix = '' ) use ( &$hidden ) {
+	foreach ( $q as $k => $v ) {
+		$name = '' === $prefix ? (string) $k : $prefix . '[' . $k . ']';
+		if ( is_array( $v ) ) {
+			$hidden( $v, $name );
+		} elseif ( '' !== (string) $v ) {
+			echo '<input type="hidden" name="' . esc_attr( $name ) . '" value="' . esc_attr( (string) $v ) . '">';
+		}
+	}
+};
 
 /* One row of the form: family, size, length, number. */
 $row = static function ( $name, $i, $l, $count_label ) use ( $secs, $fam_of, $m, $lang, $errs ) {
@@ -106,6 +127,28 @@ $js = array(
 			</div>
 
 			<h2 class="sm-panel__title smcut-h"><?php esc_html_e( '2. Pieces to cut', 'sm-marketplace' ); ?></h2>
+			<?php if ( $ai ) : ?>
+				<div class="smcut-import" id="smcut-import">
+					<p class="smcut-import__title"><?php sm_ai_badge(); ?> <b><?php esc_html_e( 'Import a document', 'sm-marketplace' ); ?></b></p>
+					<p class="smcut-import__sub"><?php esc_html_e( 'Bill of quantities, quotation, purchase order, take-off, tender', 'sm-marketplace' ); ?><br><?php echo esc_html( sprintf( /* translators: %d: AI credits. */ _n( 'Excel, PDF or photo · %d AI credit', 'Excel, PDF or photo · %d AI credits', max( 1, (int) $ai['credits'] ), 'sm-marketplace' ), max( 1, (int) $ai['credits'] ) ) ); ?></p>
+					<?php if ( 'ok' === $ai['state'] ) : ?>
+						<div class="smcut-import__go">
+							<label class="sm-btn sm-btn--ai sm-btn--sm"><input type="file" name="document" form="smcut-ai-form" accept=".xlsx,.csv,.pdf,image/*" data-smcut-aifile hidden><?php esc_html_e( 'Choose the file', 'sm-marketplace' ); ?></label>
+							<label class="sm-btn sm-btn--ai-outline sm-btn--sm"><input type="file" name="photo" form="smcut-ai-form" accept="image/*" capture="environment" data-smcut-aifile hidden><?php sm_icon( 'camera' ); ?><span><?php esc_html_e( 'Take a photo', 'sm-marketplace' ); ?></span></label>
+							<button class="sm-btn sm-btn--ghost sm-btn--sm smcut-import__send" type="submit" form="smcut-ai-form" data-smcut-aisend><?php esc_html_e( 'Read the document', 'sm-marketplace' ); ?></button>
+						</div>
+						<p class="smcut-import__busy" data-smcut-aibusy hidden><?php esc_html_e( 'Reading the document… it can take up to a minute.', 'sm-marketplace' ); ?></p>
+						<small><?php esc_html_e( 'Photo: flat, with good light. Plans will come later.', 'sm-marketplace' ); ?><?php if ( null !== $ai['remaining'] ) : ?> · <?php echo esc_html( sprintf( /* translators: %d: credits left. */ _n( '%d credit left', '%d credits left', (int) $ai['remaining'], 'sm-marketplace' ), (int) $ai['remaining'] ) ); ?><?php endif; ?></small>
+					<?php elseif ( 'login' === $ai['state'] ) : ?>
+						<p class="smcut-import__why"><a href="<?php echo esc_url( sm_page_url( 'login' ) ); ?>"><?php esc_html_e( 'Log in to use this tool', 'sm-marketplace' ); ?></a></p>
+					<?php elseif ( 'upgrade' === $ai['state'] ) : ?>
+						<p class="smcut-import__why"><?php echo esc_html( $ai['reason'] ); ?> <a href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'plan' ) ) ); ?>"><?php esc_html_e( 'See the plans and the AI credit packs', 'sm-marketplace' ); ?></a></p>
+					<?php else : ?>
+						<p class="smcut-import__why"><?php echo esc_html( $ai['reason'] ); ?></p>
+					<?php endif; ?>
+				</div>
+				<p class="smcut-import__or"><?php esc_html_e( 'or type the pieces:', 'sm-marketplace' ); ?></p>
+			<?php endif; ?>
 			<table class="smcut-table" data-smcut-table="rows">
 				<thead><tr><th><?php esc_html_e( 'Profile', 'sm-marketplace' ); ?></th><th><?php esc_html_e( 'Size', 'sm-marketplace' ); ?></th><th><?php esc_html_e( 'Length', 'sm-marketplace' ); ?></th><th><?php esc_html_e( 'Qty', 'sm-marketplace' ); ?></th></tr></thead>
 				<tbody>
@@ -126,6 +169,7 @@ $js = array(
 			</div>
 
 			<input type="hidden" name="src" value="1">
+			<?php $hidden( array_intersect_key( $qs(), array( 'plates' => 1, 'lin' => 1 ) ) ); // Plates and metres of the DQE stay with the list. ?>
 			<fieldset class="smcut-where">
 				<legend class="sm-panel__title"><?php esc_html_e( '3. Where to look for the bars?', 'sm-marketplace' ); ?></legend>
 				<?php if ( $wh ) : ?>
@@ -198,13 +242,23 @@ $js = array(
 			<button class="sm-btn sm-btn--accent sm-btn--block smcut-go" type="submit"><?php esc_html_e( 'Optimise the cutting', 'sm-marketplace' ); ?></button>
 		</section>
 	</form>
+	<?php if ( $ai && 'ok' === $ai['state'] ) : ?>
+		<?php sm_theme_form_open( 'ai_cutlist', array( 'id' => 'smcut-ai-form', 'class' => 'smcut-aiform', 'enctype' => 'multipart/form-data' ) ); ?>
+			<input type="hidden" name="back" value="<?php echo esc_url( add_query_arg( array_merge( $qs(), 'fr' !== $lang ? array( 'lang' => $lang ) : array() ), $page ) ); ?>">
+		</form>
+	<?php endif; ?>
 
 	<div class="smcut-result" id="smcut-result">
+		<?php if ( $ai && ! empty( $ai['result'] ) ) : ?>
+			<?php sm_component( 'cutting-ai-review', array( 'ai' => $ai['result'], 'sections' => $secs, 'fam_of' => $fam_of, 'page' => $page, 'query' => array_merge( $qs(), 'fr' !== $lang ? array( 'lang' => $lang ) : array() ), 'bar' => $bar, 'hidden' => $hidden ) ); ?>
+		<?php endif; ?>
 		<?php if ( ! is_array( $res ) ) : ?>
+			<?php if ( ! ( $ai && ! empty( $ai['result'] ) ) ) : ?>
 			<div class="smcut-empty">
 				<?php sm_icon( 'ruler' ); ?>
 				<p><?php esc_html_e( 'Give the pieces to cut and press « Optimise the cutting »: the plan appears here, bar by bar.', 'sm-marketplace' ); ?></p>
 			</div>
+			<?php endif; ?>
 		<?php else : ?>
 			<?php if ( $res['errors'] ) : ?>
 				<div class="sm-notice sm-notice--warn"><?php sm_icon( 'alert' ); ?><p><?php esc_html_e( 'Some lines are incomplete or wrong: they are marked in the form and left out of the plan.', 'sm-marketplace' ); ?></p></div>
@@ -345,6 +399,24 @@ $js = array(
 					<button type="button" class="sm-btn sm-btn--ghost" data-smcut-copy="<?php echo esc_url( add_query_arg( $q, $page ) ); ?>"><?php esc_html_e( 'Copy the link', 'sm-marketplace' ); ?></button>
 				</div>
 			<?php endif; ?>
+		<?php
+		$x = $res['extras'] ?? array( 'plates' => array(), 'linear' => array() );
+		if ( $x['plates'] || $x['linear'] ) :
+			?>
+			<section class="smcut-src is-x">
+				<h3><span class="smcut-dot"></span><?php esc_html_e( 'Without a cutting plan: to the request for quotation', 'sm-marketplace' ); ?></h3>
+				<?php foreach ( $x['linear'] as $l ) : ?>
+					<div class="smcut-xrow"><span><b><?php echo esc_html( $l['designation'] ); ?></b> · <?php echo esc_html( sprintf( /* translators: 1: metres, 2: bars, 3: bar length. */ __( '%1$s m → %2$d bars of %3$s m', 'sm-marketplace' ), sm_number( $l['m'], 2 ), $l['bars'], sm_number( $l['bar'] / 1000, 0 ) ) ); ?><?php echo $l['label'] ? ' · ' . esc_html( $l['label'] ) : ''; ?></span><span><?php echo esc_html( sm_number( $l['kg'], 1 ) . ' kg' ); ?></span></div>
+				<?php endforeach; ?>
+				<?php foreach ( $x['plates'] as $pl ) : ?>
+					<div class="smcut-xrow"><span><b><?php echo esc_html( sprintf( /* translators: %s: thickness. */ __( 'Plate %s mm', 'sm-marketplace' ), sm_number( $pl['t'], fmod( $pl['t'], 1 ) ? 1 : 0 ) ) ); ?></b> · <?php echo esc_html( $pl['l'] . ' × ' . $pl['w'] . ' mm × ' . $pl['qty'] ); ?><?php echo $pl['label'] ? ' · ' . esc_html( $pl['label'] ) : ''; ?></span><span><?php echo esc_html( sm_number( $pl['kg'], 1 ) . ' kg' ); ?></span></div>
+				<?php endforeach; ?>
+				<p class="sm-muted"><?php esc_html_e( 'Weights from the catalogue of the platform. These pieces are not in the cutting plan of the bars.', 'sm-marketplace' ); ?></p>
+				<?php if ( ! $res['profiles'] || 0 === (int) ( $res['totals']['new_bars'] ?? 0 ) ) : ?>
+					<a class="sm-btn sm-btn--accent" href="<?php echo esc_url( add_query_arg( array_merge( array( 'action' => 'sm_weight_cut_rfq', 'lang' => $lang ), $qs() ), admin_url( 'admin-post.php' ) ) ); ?>"><?php esc_html_e( 'Create the request for quotation', 'sm-marketplace' ); ?></a>
+				<?php endif; ?>
+			</section>
+		<?php endif; ?>
 		<?php endif; ?>
 	</div>
 </div>

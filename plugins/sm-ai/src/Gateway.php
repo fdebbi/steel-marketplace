@@ -29,6 +29,7 @@ final class Gateway {
 				'search'    => Features\Search::class,
 				'document'  => Features\Document::class,
 				'describe'  => Features\Describe::class,
+				'cutlist'   => Features\Cutlist::class,
 			)
 		);
 	}
@@ -134,7 +135,7 @@ final class Gateway {
 			'system'     => $class::system( $lang ),
 			'parts'      => $class::parts( $input ),
 			'model'      => $model,
-			'max_tokens' => (int) Settings::get( 'max_tokens' ),
+			'max_tokens' => max( (int) Settings::get( 'max_tokens' ), method_exists( $class, 'max_tokens' ) ? (int) $class::max_tokens() : 0 ),
 			'simulate'   => static fn() => $class::simulate( $input ),
 		);
 		$t0  = microtime( true );

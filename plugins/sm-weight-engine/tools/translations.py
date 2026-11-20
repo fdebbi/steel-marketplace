@@ -147,3 +147,13 @@ P.update({
 ('%d bar from your warehouse', '%d bars from your warehouse'): (['%d barre de votre magasin', '%d barres de votre magasin'], ['%d قضيب من مخزنك', 'قضيب واحد من مخزنك', 'قضيبان من مخزنك', '%d قضبان من مخزنك', '%d قضيبًا من مخزنك', '%d قضيب من مخزنك']),
 ('%1$d bar of %2$s m', '%1$d bars of %2$s m'): (['%1$d barre de %2$s m', '%1$d barres de %2$s m'], ['%1$d قضيب بطول %2$s m', '%1$d قضيب بطول %2$s m', '%1$d قضيبان بطول %2$s m', '%1$d قضبان بطول %2$s m', '%1$d قضيبًا بطول %2$s m', '%1$d قضيب بطول %2$s m']),
 })
+
+# 0.7.0: plates and quantities in metres (DQE IA).
+T.update({
+'Without a cutting plan (request for quotation)': ('Sans plan de coupe (demande de devis)', 'دون خطة قص (طلب عرض سعر)'),
+'%1$s: %2$s m -> %3$d bars of %4$s m (%5$s kg)': ('%1$s : %2$s m -> %3$d barres de %4$s m (%5$s kg)', '%1$s: %2$s m -> %3$d قضبان بطول %4$s m (%5$s kg)'),
+'Plate %1$s mm, %2$s × %3$s mm × %4$d (%5$s kg)': ('Tôle %1$s mm, %2$s × %3$s mm × %4$d (%5$s kg)', 'صفيحة %1$s mm، %2$s × %3$s mm × %4$d (%5$s kg)'),
+'%1$s: %2$s m (no cutting plan)': ('%1$s : %2$s m (sans plan de coupe)', '%1$s: %2$s m (دون خطة قص)'),
+'Plates:': ('Tôles :', 'الصفائح:'),
+'Plates': ('Tôles', 'الصفائح'),
+})

@@ -140,3 +140,41 @@
 .smcut-stocknote { display: flex; gap: var(--sm-s2); align-items: flex-start; margin: 0; padding: var(--sm-s2) var(--sm-s3); border-radius: 10px; background: color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 7%, var(--sm-surface)); font-size: var(--sm-fs-xs); }
 .smcut-stocknote .sm-icon { flex: none; inline-size: 16px; block-size: 16px; margin-block-start: 1px; color: var(--sm-ai-ink, #5B4BD8); }
 .smcut-stocknote a { font-weight: 700; }
+
+/* 0.50.0: DQE IA */
+.smcut-import { display: grid; gap: 6px; justify-items: center; text-align: center; padding: var(--sm-s3); border: 2px dashed color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 45%, var(--sm-line)); border-radius: 14px; background: color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 5%, var(--sm-surface)); }
+.smcut-import p { margin: 0; }
+.smcut-import__title { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.smcut-import__sub, .smcut-import small { font-size: var(--sm-fs-xs); color: var(--sm-muted); }
+.smcut-import__go { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.smcut-import__go label { cursor: pointer; }
+.smcut-import__busy { font-weight: 700; color: var(--sm-ai-ink, #5B4BD8); font-size: var(--sm-fs-sm); }
+.smcut-import__why { font-size: var(--sm-fs-sm); }
+.smcut-import__why a { font-weight: 700; }
+.smcut-import__or { margin: var(--sm-s2) 0 0; font-size: var(--sm-fs-xs); color: var(--sm-muted); }
+.smcut-aiform { display: none; }
+.smcut-ai { background: var(--sm-surface); border: 1px solid color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 45%, var(--sm-line)); border-radius: 16px; padding: var(--sm-s3) var(--sm-s4); display: grid; gap: var(--sm-s2); }
+.smcut-ai h3 { margin: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: var(--sm-fs-md, 1rem); }
+.smcut-ai h4 { margin: var(--sm-s3) 0 4px; font-size: var(--sm-fs-sm); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.smcut-ai__lead { margin: 0; font-size: var(--sm-fs-sm); }
+.smcut-ai .smcut-meta .is-ok { background: var(--sm-accent-soft); color: var(--sm-accent-ink); }
+.smcut-ai .smcut-meta .is-wa { background: #FFF1C9; color: #7A5600; }
+.smcut-ai__scroll { overflow-x: auto; }
+.smcut-ai__table { inline-size: 100%; border-collapse: collapse; font-size: var(--sm-fs-sm); min-inline-size: 560px; }
+.smcut-ai__table th { text-align: start; font-size: 11px; text-transform: uppercase; color: var(--sm-muted); padding: 6px; border-block-end: 1px solid var(--sm-line); }
+.smcut-ai__table td { padding: 6px; border-block-end: 1px dashed var(--sm-line); vertical-align: top; }
+.smcut-ai__table td small { display: block; color: var(--sm-muted); font-size: 11.5px; }
+.smcut-ai__table tr.is-wa td { background: color-mix(in srgb, #FFD54A 7%, var(--sm-surface)); }
+.smcut-ai__table input[type="checkbox"] { inline-size: 18px; block-size: 18px; accent-color: var(--sm-accent); }
+.smcut-ai__table input:not([type]), .smcut-ai__table input[inputmode], .smcut-ai__table select { min-block-size: 34px; padding: 4px 6px; border: 1px solid var(--sm-line); border-radius: 8px; background: var(--sm-surface); font: inherit; max-inline-size: 110px; }
+.smcut-ai__sec { display: flex; gap: 4px; }
+.smcut-ai__lw { white-space: nowrap; }
+.smcut-ai__lw input { max-inline-size: 64px !important; }
+.smcut-ai__why { color: #7A5600 !important; font-weight: 600; }
+.smcut-ai__ign summary { cursor: pointer; font-size: var(--sm-fs-xs); color: var(--sm-muted); }
+.smcut-ai__ign p { font-size: var(--sm-fs-xs); color: var(--sm-muted); margin: 4px 0 0; }
+.smcut-ai__go { display: flex; flex-wrap: wrap; gap: var(--sm-s2); align-items: center; margin-block-start: var(--sm-s2); }
+.smcut-ai__go small { color: var(--sm-muted); font-size: var(--sm-fs-xs); }
+.smcut-src.is-x .smcut-dot { background: #F3C94B; }
+.smcut-xrow { display: flex; justify-content: space-between; gap: var(--sm-s3); padding: 6px 0; border-block-start: 1px dashed var(--sm-line); font-size: var(--sm-fs-sm); }
+@media print { .smcut-ai, .smcut-import { display: none !important; } }

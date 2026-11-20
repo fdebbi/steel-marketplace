@@ -22,9 +22,10 @@ final class Files {
 	 * @param string $field   Field name.
 	 * @param bool   $pdf     Accept PDF.
 	 * @param int    $max     Maximum number of files.
+	 * @param bool   $sheets  Accept Excel and CSV, sent as text (0.3.0).
 	 * @return array|\WP_Error List of parts.
 	 */
-	public static function read( $field, $pdf = false, $max = 3 ) {
+	public static function read( $field, $pdf = false, $max = 3, $sheets = false ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- the form handler checked the nonce.
 		$f = $_FILES[ $field ] ?? null;
 		if ( ! $f || empty( $f['name'] ) ) {
@@ -46,7 +47,7 @@ final class Files {
 		}
 		$parts = array();
 		foreach ( $list as $file ) {
-			$part = self::part( $file, $pdf );
+			$part = self::part( $file, $pdf, $sheets );
 			if ( is_wp_error( $part ) ) {
 				return $part;
 			}
@@ -55,12 +56,23 @@ final class Files {
 		return $parts;
 	}
 
-	public static function part( array $file, $pdf ) {
+	public static function part( array $file, $pdf, $sheets = false ) {
 		if ( UPLOAD_ERR_OK !== (int) $file['error'] || ! is_uploaded_file( $file['tmp_name'] ) && ! ( defined( 'SM_AI_TESTING' ) && SM_AI_TESTING && is_readable( $file['tmp_name'] ) ) ) {
 			return new \WP_Error( 'sm_ai_upload', __( 'The file could not be received. Try again.', 'sm-ai' ) );
 		}
+		$s = Settings::all();
+		if ( $sheets ) {
+			$kind = Sheets::kind( $file['tmp_name'], (string) $file['name'] );
+			if ( $kind ) {
+				if ( (int) $file['size'] > $s['pdf_mb'] * MB_IN_BYTES ) {
+					/* translators: %d: megabytes. */
+					return new \WP_Error( 'sm_ai_size', sprintf( __( 'The document is too large (%d MB at most).', 'sm-ai' ), $s['pdf_mb'] ) );
+				}
+				$text = Sheets::text( $file['tmp_name'], $kind );
+				return is_wp_error( $text ) ? $text : array( 'type' => 'text', 'sheet' => true, 'name' => sanitize_file_name( (string) $file['name'] ), 'text' => "Spreadsheet « " . sanitize_file_name( (string) $file['name'] ) . " » (row number | cells):\n" . $text );
+			}
+		}
 		$mime = self::mime( $file['tmp_name'] );
-		$s    = Settings::all();
 		if ( 'application/pdf' === $mime ) {
 			if ( ! $pdf ) {
 				return new \WP_Error( 'sm_ai_type', __( 'Send photos (JPG, PNG, WebP).', 'sm-ai' ) );
@@ -72,7 +84,7 @@ final class Files {
 			return array( 'type' => 'pdf', 'name' => sanitize_file_name( (string) $file['name'] ), 'data' => base64_encode( (string) file_get_contents( $file['tmp_name'] ) ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions, WordPress.PHP.DiscouragedPHPFunctions
 		}
 		if ( ! in_array( $mime, self::IMAGE_TYPES, true ) ) {
-			return new \WP_Error( 'sm_ai_type', $pdf ? __( 'Send a PDF document or a photo (JPG, PNG, WebP).', 'sm-ai' ) : __( 'Send photos (JPG, PNG, WebP).', 'sm-ai' ) );
+			return new \WP_Error( 'sm_ai_type', $sheets ? __( 'Send an Excel file (.xlsx, .csv), a PDF or a photo (JPG, PNG, WebP).', 'sm-ai' ) : ( $pdf ? __( 'Send a PDF document or a photo (JPG, PNG, WebP).', 'sm-ai' ) : __( 'Send photos (JPG, PNG, WebP).', 'sm-ai' ) ) );
 		}
 		if ( (int) $file['size'] > $s['image_mb'] * MB_IN_BYTES ) {
 			/* translators: %d: megabytes. */

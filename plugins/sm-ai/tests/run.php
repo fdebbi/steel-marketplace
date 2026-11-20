@@ -209,7 +209,7 @@ if ( Settings::simulation_allowed() ) {
 	$in['default_provider'] = 'simulation';
 	$in['features']['listing']['enabled'] = 1;
 	$in['features']['listing']['per_company_month'] = 30;
-	foreach ( array( 'listing', 'recognize', 'search', 'document', 'describe' ) as $f ) {
+	foreach ( array( 'listing', 'recognize', 'search', 'document', 'describe', 'cutlist' ) as $f ) {
 		$in['features'][ $f ]['enabled']  = 1;
 		$in['features'][ $f ]['provider'] = '';
 	}
@@ -235,6 +235,34 @@ if ( Settings::simulation_allowed() ) {
 	wp_set_current_user( 0 );
 	$e = Gateway::check( 'describe' );
 	smai_assert( is_wp_error( $e ) && 'login' === SM\Ai\Form::state_of( $e ), 'visitor: the description writer asks to sign in' );
+	wp_set_current_user( $u_seller );
+
+	echo "\nDQE IA for the cutting optimiser (0.3.0)\n";
+	$fx   = __DIR__ . '/fixtures/';
+	$xlsx = SM\Ai\Sheets::text( $fx . 'dqe-test.xlsx', SM\Ai\Sheets::kind( $fx . 'dqe-test.xlsx', 'dqe-test.xlsx' ) );
+	smai_assert( is_string( $xlsx ) && false !== strpos( $xlsx, 'Poteaux HEA 200' ) && false !== strpos( $xlsx, 'Platines 300x250' ) && false !== strpos( $xlsx, 'Tôle TN40' ), 'Excel read as a table, every sheet (shared strings and numbers)' );
+	$csv = SM\Ai\Sheets::text( $fx . 'dqe-test.csv', SM\Ai\Sheets::kind( $fx . 'dqe-test.csv', 'dqe-test.csv' ) );
+	smai_assert( is_string( $csv ) && false !== strpos( $csv, 'Pannes IPE 120 L=6m | u | 28' ), 'CSV with « ; » read as a table' );
+	smai_assert( '' === SM\Ai\Sheets::kind( $fx . 'dqe-test.xlsx', 'dqe.pdf' ), 'a file is a spreadsheet only by its content and its name' );
+	$before_total = Usage::company_month_total( $cid );
+	$r = Gateway::run( 'cutlist', array( 'files' => array( array( 'type' => 'text', 'sheet' => true, 'text' => $xlsx ) ), 'name' => 'dqe-test.xlsx' ) );
+	$b = is_array( $r ) ? array_column( $r['bars'], null, 'line' ) : array();
+	smai_assert( is_array( $r ) && 5 === count( $r['bars'] ) && Usage::company_month_total( $cid ) === $before_total + 1, 'document read: 5 lines of bars, 1 credit' );
+	smai_assert( $b && $b['12']['sure'] && 'HEA 200' === $b['12']['section']['designation'] && 6.5 === $b['12']['length_m'] && 12 === $b['12']['quantity'], 'a written line is « sure »: HEA 200, 6,50 m × 12 (checked against the catalogue)' );
+	smai_assert( ! $b['14']['sure'] && in_array( 'deduced', $b['14']['why'], true ), 'a line deduced by the AI (half rafters) is « to check »' );
+	smai_assert( ! $b['19']['sure'] && null === $b['19']['section'] && in_array( 'section', $b['19']['why'], true ), 'a profile not in the catalogue (UAP) is « to check », to be chosen' );
+	smai_assert( ! $b['22']['sure'] && in_array( 'length', $b['22']['why'], true ), 'a missing length is « to check »' );
+	smai_assert( 1 === count( $r['linear'] ) && 84.0 === (float) $r['linear'][0]['metres'] && 'IPE 160' === $r['linear'][0]['section']['designation'], 'quantity in metres kept apart (84 m of IPE 160)' );
+	$pl = $r['plates'];
+	smai_assert( 3 === count( $pl ) && $pl[0]['sure'] && abs( $pl[0]['kg'] - 105.98 ) < 0.1 && ! $pl[2]['sure'] && 0.0 === $pl[2]['kg'], 'plates: 12 × 300 × 250 × 15 = 106,0 kg by the weight engine; missing dimensions: to check, no weight' );
+	smai_assert( 36 === $r['ignored'] && ! $r['photo'] && ! $r['unreadable'], 'lines that are not steel framing only counted' );
+	$r = Gateway::run( 'cutlist', array( 'files' => array( array( 'type' => 'image', 'mime' => 'image/jpeg', 'data' => '' ) ), 'name' => 'photo.jpg' ) );
+	smai_assert( is_array( $r ) && $r['photo'] && ! array_filter( array_column( $r['bars'], 'sure' ) ) && ! array_filter( array_column( $r['plates'], 'sure' ) ), 'photo: every line is « to check »' );
+	$n = Usage::company_month_total( $cid );
+	$r = Gateway::run( 'cutlist', array( 'files' => array( array( 'type' => 'image', 'mime' => 'image/jpeg', 'data' => '' ) ), 'name' => 'flou.jpg' ) );
+	smai_assert( is_array( $r ) && $r['unreadable'] && ! $r['bars'] && Usage::company_month_total( $cid ) === $n + 1, 'unreadable photo: said so, and the credit is used' );
+	wp_set_current_user( 0 );
+	smai_assert( 'login' === SM\Ai\Form::state_of( Gateway::check( 'cutlist' ) ), 'visitor: asked to sign in' );
 	wp_set_current_user( $u_seller );
 } else {
 	echo "  (SM_AI_SIMULATION not set: simulation tests skipped)\n";

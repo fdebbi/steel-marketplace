@@ -1,5 +1,11 @@
 # Changelog — sm-weight-engine
 
+## 0.7.0 — 2026-11-20 (avec sm-ai 0.3.0 et le thème 0.50.0)
+
+- `Cutting::read()` : lignes du DQE IA cochées (`ai_bar[]`, `ai_plate[]`, `ai_lin[]`) ajoutées à la liste ; **tôles** (`plates[]` : épaisseur, longueur, largeur, nombre) et **quantités en mètres** (`lin[]` : profilé, mètres) gardées dans l'adresse de la page. Jusqu'à 80 lignes de pièces.
+- `Cutting::extras()` : poids des tôles par le calculateur ; mètres → barres de la longueur choisie (arrondi au-dessus) et leur poids.
+- Demande de devis : les mètres deviennent des lignes de barres ; les tôles vont dans la description avec leur poids (demande au kg s'il n'y a que des tôles). PDF : « Sans plan de coupe (demande de devis) ».
+
 ## 0.6.0 — 2026-11-20 (avec sm-stock 0.2.0 et le thème 0.49.0)
 
 - Optimiseur : **Mon magasin** cherché en premier. Ordre : chutes saisies et magasin de l'entreprise (filtre `sm_cutting_stock_offers( $offers, $section, $filters )`, fourni par sm-stock), puis le marché pour les pièces restantes, puis les barres neuves. Chaque étape ne reçoit que ce que la précédente n'a pas placé (`Cutting::stages()`).

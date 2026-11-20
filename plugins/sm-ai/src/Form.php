@@ -4,7 +4,8 @@
  *  - sm_ai_run    : listing assistant, profile recognition, document analysis → result page;
  *  - sm_ai_search : smart search → marketplace search with the filters understood;
  *  - sm_ai_use    : open the listing or request for quotation form pre-filled with a result;
- *  - sm_ai_describe (admin-ajax, 0.2.0): description of a listing from the facts of the publication form.
+ *  - sm_ai_describe (admin-ajax, 0.2.0): description of a listing from the facts of the publication form;
+ *  - sm_ai_cutlist (0.3.0): DQE IA — pieces of a document for the cutting optimiser → back to the optimiser.
  * Results are kept 2 hours for the user who asked (transient), never published as is.
  *
  * @package SM\Ai
@@ -29,6 +30,60 @@ final class Form {
 		add_action( 'admin_post_nopriv_sm_ai_search', array( __CLASS__, 'search' ) );
 		add_action( 'wp_ajax_sm_ai_describe', array( __CLASS__, 'describe' ) );
 		add_action( 'wp_ajax_nopriv_sm_ai_describe', array( __CLASS__, 'describe' ) );
+		add_action( 'admin_post_sm_ai_cutlist', array( __CLASS__, 'cutlist' ) );
+		add_action( 'admin_post_nopriv_sm_ai_cutlist', array( __CLASS__, 'cutlist' ) );
+	}
+
+	/** Page of the optimiser to go back to (same site only). */
+	private static function cut_back() {
+		$fallback = Language::url_for( sm_url( 'cutting' ), Language::current() );
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Forms::begin().
+		$back = isset( $_POST['back'] ) ? esc_url_raw( wp_unslash( (string) $_POST['back'] ) ) : '';
+		$back = remove_query_arg( array( 'ai', 'sm_n' ), wp_validate_redirect( $back, $fallback ) );
+		return $back;
+	}
+
+	/**
+	 * DQE IA: read the document (Excel, CSV, PDF or photo), keep the result 2 hours
+	 * for this user and go back to the optimiser, where the user checks it.
+	 * The credit is used once the AI has read the document (even if unreadable).
+	 */
+	public static function cutlist() {
+		Forms::begin( 'ai_cutlist' );
+		$back = self::cut_back();
+		if ( ! is_user_logged_in() ) {
+			wp_safe_redirect( Language::url_for( sm_url( 'login' ), Language::current() ) );
+			exit;
+		}
+		$name  = '';
+		$field = ! empty( $_FILES['document']['name'] ) ? 'document' : 'photo'; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$files = Files::read( $field, 'document' === $field, 1, 'document' === $field );
+		if ( ! is_wp_error( $files ) && $files ) {
+			$name = sanitize_file_name( (string) ( $_FILES[ $field ]['name'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput
+		}
+		if ( is_wp_error( $files ) ) {
+			Forms::back( array( $files->get_error_message() ), '', $back . '#smcut-ai' );
+		}
+		if ( ! $files ) {
+			Forms::back( array( __( 'Choose the document: Excel, PDF or a photo.', 'sm-ai' ) ), '', $back . '#smcut-ai' );
+		}
+		$res = Gateway::run( 'cutlist', array( 'files' => $files, 'name' => $name ) );
+		if ( is_wp_error( $res ) ) {
+			Forms::back( array( $res->get_error_message() ), '', $back . '#smcut-ai' );
+		}
+		$company = sm_current_company();
+		AuditLog::add( 'ai.used', 'ai', 0, array( 'feature' => 'cutlist' ), null, $company ? (int) $company->id : 0 );
+		$token = wp_generate_password( 16, false );
+		set_transient( 'sm_ai_c_' . $token, array( 'user' => get_current_user_id(), 'result' => $res ), 2 * HOUR_IN_SECONDS );
+		wp_safe_redirect( add_query_arg( 'ai', $token, $back ) . '#smcut-ai' );
+		exit;
+	}
+
+	/** A DQE result of the current user, or null. */
+	public static function cutlist_result( $token ) {
+		$token = preg_replace( '/[^A-Za-z0-9]/', '', (string) $token );
+		$r     = '' !== $token ? get_transient( 'sm_ai_c_' . $token ) : false;
+		return is_array( $r ) && get_current_user_id() && (int) $r['user'] === get_current_user_id() ? $r['result'] : null;
 	}
 
 	/** Where a refusal leads: login, upgrade (no credit left) or nothing to do. */

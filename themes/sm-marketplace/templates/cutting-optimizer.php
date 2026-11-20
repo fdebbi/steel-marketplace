@@ -34,10 +34,10 @@ get_header();
 		sm_component( 'empty-state', array( 'icon' => 'ruler', 'title' => __( 'The cutting optimiser is not available yet.', 'sm-marketplace' ) ) );
 	} else {
 		$sm_in  = (array) sm_theme_data( 'cutting_input', $sm_raw );
-		$sm_run = ! empty( $sm_in['lines'] );
+		$sm_run = ! empty( $sm_in['lines'] ) || ! empty( $sm_in['plates'] ) || ! empty( $sm_in['lin'] );
 		$sm_res = $sm_run ? sm_theme_data( 'cutting', $sm_raw ) : null;
 		sm_theme_notices();
-		sm_component( 'cutting-optimizer', array( 'sections' => $sm_secs, 'input' => $sm_in, 'result' => $sm_res, 'raw' => $sm_raw, 'warehouse' => (bool) sm_theme_data( 'stock_enabled' ) ) );
+		sm_component( 'cutting-optimizer', array( 'sections' => $sm_secs, 'input' => $sm_in, 'result' => $sm_res, 'raw' => $sm_raw, 'warehouse' => (bool) sm_theme_data( 'stock_enabled' ), 'ai' => sm_theme_data( 'ai_cutlist', array( 'token' => (string) sm_theme_query_arg( 'ai', '' ) ) ) ) );
 	}
 	?>
 </div>

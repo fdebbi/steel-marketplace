@@ -115,7 +115,7 @@ msgstr "Annuaire des professionnels"
 msgid "Weight calculator"
 msgstr "Calculateur de poids"
 
-#: footer.php:36 header.php:28 header.php:111
+#: footer.php:36 header.php:28 header.php:111 templates/ai-assistant.php:25
 #: templates/cutting-optimizer.php:26 templates/cutting-optimizer.php:27
 msgid "Cutting optimiser"
 msgstr "Optimiseur de découpe"
@@ -552,7 +552,7 @@ msgstr "IA"
 
 #: inc/template-tags.php:138 inc/template-tags.php:450
 #: inc/template-tags.php:510
-#: template-parts/components/cutting-optimizer.php:336
+#: template-parts/components/cutting-optimizer.php:390
 #: template-parts/components/product-tech.php:31
 #: template-parts/components/product-tech.php:568
 msgid "piece"
@@ -815,7 +815,7 @@ msgid "From %s"
 msgstr "À partir de %s"
 
 #: inc/template-tags.php:529
-#: template-parts/components/cutting-optimizer.php:159
+#: template-parts/components/cutting-optimizer.php:203
 #: template-parts/components/cutting-sources.php:17
 #: template-parts/components/stock-warehouse.php:23
 #: template-parts/dashboard/messages.php:14
@@ -907,7 +907,7 @@ msgstr "Incertain"
 
 #: template-parts/components/ai-describe-button.php:20
 #: template-parts/components/ai-describe-button.php:49
-#: templates/ai-assistant.php:70
+#: templates/ai-assistant.php:71
 msgid "Write with the AI"
 msgstr "Rédiger avec l'IA"
 
@@ -1031,9 +1031,12 @@ msgid "Grade"
 msgstr "Nuance"
 
 #: template-parts/components/ai-result-document.php:25
-#: template-parts/components/cutting-optimizer.php:67
-#: template-parts/components/cutting-optimizer.php:110
-#: template-parts/components/cutting-optimizer.php:184
+#: template-parts/components/cutting-ai-review.php:58
+#: template-parts/components/cutting-ai-review.php:84
+#: template-parts/components/cutting-ai-review.php:123
+#: template-parts/components/cutting-optimizer.php:88
+#: template-parts/components/cutting-optimizer.php:153
+#: template-parts/components/cutting-optimizer.php:228
 #: template-parts/components/listing-group.php:20
 #: template-parts/components/mission-request-form.php:214
 #: template-parts/components/product-lines.php:90
@@ -1105,9 +1108,10 @@ msgid "Not found — choose it on the form"
 msgstr "Non trouvée — à choisir dans le formulaire"
 
 #: template-parts/components/ai-result-listing.php:22
-#: template-parts/components/cutting-optimizer.php:54
-#: template-parts/components/cutting-optimizer.php:110
-#: template-parts/components/cutting-optimizer.php:184
+#: template-parts/components/cutting-ai-review.php:71
+#: template-parts/components/cutting-optimizer.php:75
+#: template-parts/components/cutting-optimizer.php:153
+#: template-parts/components/cutting-optimizer.php:228
 #: template-parts/components/listing-inventory.php:56
 #: template-parts/components/listing-inventory.php:67
 #: template-parts/components/rfq-single.php:82
@@ -1186,6 +1190,7 @@ msgid "A simple keyword search was done instead."
 msgstr "Une recherche simple par mots-clés a été faite à la place."
 
 #: template-parts/components/ai-search.php:23
+#: template-parts/components/cutting-ai-review.php:58
 msgid "Understood as"
 msgstr "Compris comme"
 
@@ -1674,25 +1679,230 @@ msgstr "Choisir"
 msgid "Choose the wilaya first"
 msgstr "Choisissez d'abord la wilaya"
 
-#: template-parts/components/cutting-optimizer.php:55
+#: template-parts/components/cutting-ai-review.php:22
+msgid "profile not found in the catalogue: choose it"
+msgstr "profilé absent du catalogue : choisissez-le"
+
+#: template-parts/components/cutting-ai-review.php:23
+msgid "length missing"
+msgstr "longueur absente"
+
+#: template-parts/components/cutting-ai-review.php:24
+msgid "number missing"
+msgstr "nombre absent"
+
+#: template-parts/components/cutting-ai-review.php:25
+msgid "deduced by the AI, not written"
+msgstr "déduit par l’IA, pas écrit"
+
+#: template-parts/components/cutting-ai-review.php:26
+msgid "read on a photo"
+msgstr "lu sur une photo"
+
+#: template-parts/components/cutting-ai-review.php:27
+msgid "dimensions missing"
+msgstr "dimensions absentes"
+
+#. translators: %s: file name.
+#: template-parts/components/cutting-ai-review.php:40
+msgid "Document « %s »"
+msgstr "Document « %s »"
+
+#. translators: %s: file name.
+#: template-parts/components/cutting-ai-review.php:40
+msgid "Your document"
+msgstr "Votre document"
+
+#: template-parts/components/cutting-ai-review.php:42
+msgid ""
+"The document could not be read. For a photo: take it again flat, with more "
+"light, the whole table in the picture. The AI credit has been used."
+msgstr ""
+"Le document n’a pas pu être lu. Pour une photo : reprenez-la bien à plat, "
+"avec plus de lumière, tout le tableau dans l’image. Le crédit IA a été "
+"utilisé."
+
+#: template-parts/components/cutting-ai-review.php:43
+msgid "Try another document"
+msgstr "Essayer un autre document"
+
+#: template-parts/components/cutting-ai-review.php:45
+msgid ""
+"Read on a photo: every line is to check. Tick what is right: nothing is "
+"added without you."
+msgstr ""
+"Lu sur une photo : toutes les lignes sont à vérifier. Cochez ce qui est "
+"juste : rien n’est ajouté sans vous."
+
+#: template-parts/components/cutting-ai-review.php:45
+msgid "Check what the AI understood: nothing is added without you."
+msgstr "Vérifiez ce que l’IA a compris : rien n’est ajouté sans vous."
+
+#. translators: %d: lines.
+#: template-parts/components/cutting-ai-review.php:47
+msgid "%d sure line"
+msgid_plural "%d sure lines"
+msgstr[0] "%d ligne sûre"
+msgstr[1] "%d lignes sûres"
+
+#. translators: %d: lines.
+#: template-parts/components/cutting-ai-review.php:48
+msgid "%d to check"
+msgid_plural "%d to check"
+msgstr[0] "%d à vérifier"
+msgstr[1] "%d à vérifier"
+
+#. translators: %d: lines.
+#: template-parts/components/cutting-ai-review.php:49
+msgid "%d in metres"
+msgid_plural "%d in metres"
+msgstr[0] "%d en mètres linéaires"
+msgstr[1] "%d en mètres linéaires"
+
+#. translators: %d: lines.
+#: template-parts/components/cutting-ai-review.php:50
+msgid "%d plate line"
+msgid_plural "%d plate lines"
+msgstr[0] "%d ligne de tôles"
+msgstr[1] "%d lignes de tôles"
+
+#. translators: %d: lines.
+#: template-parts/components/cutting-ai-review.php:51
+#: template-parts/components/cutting-ai-review.php:135
+msgid "%d line not steel framing, left out"
+msgid_plural "%d lines not steel framing, left out"
+msgstr[0] "%d ligne hors charpente, ignorée"
+msgstr[1] "%d lignes hors charpente, ignorées"
+
+#: template-parts/components/cutting-ai-review.php:58
+#: template-parts/components/cutting-ai-review.php:115
+msgid "Line of the document"
+msgstr "Ligne du document"
+
+#: template-parts/components/cutting-ai-review.php:58
+#: template-parts/components/cutting-ai-review.php:115
+#: template-parts/components/cutting-optimizer.php:153
+#: template-parts/components/cutting-optimizer.php:228
+msgid "Qty"
+msgstr "Nombre"
+
+#: template-parts/components/cutting-ai-review.php:67
+#: template-parts/components/cutting-ai-review.php:120
+msgid "Add this line"
+msgstr "Ajouter cette ligne"
+
+#. translators: %s: line.
+#: template-parts/components/cutting-ai-review.php:68
+#: template-parts/components/cutting-ai-review.php:121
+msgid "line %s"
+msgstr "ligne %s"
+
+#: template-parts/components/cutting-ai-review.php:72
+#: template-parts/components/cutting-optimizer.php:76
 msgid "Profile…"
 msgstr "Profilé…"
 
-#: template-parts/components/cutting-optimizer.php:60
-#: template-parts/components/cutting-optimizer.php:110
-#: template-parts/components/cutting-optimizer.php:184
+#: template-parts/components/cutting-ai-review.php:75
+#: template-parts/components/cutting-optimizer.php:81
+#: template-parts/components/cutting-optimizer.php:153
+#: template-parts/components/cutting-optimizer.php:228
 #: template-parts/components/filter-panel.php:24
 #: template-parts/components/product-lines.php:79
 #: template-parts/components/weight-calculator.php:132
 msgid "Size"
 msgstr "Dimension"
 
-#: template-parts/components/cutting-optimizer.php:61
-#: template-parts/components/cutting-optimizer.php:79
+#: template-parts/components/cutting-ai-review.php:76
+#: template-parts/components/cutting-optimizer.php:82
+#: template-parts/components/cutting-optimizer.php:100
 msgid "Size…"
 msgstr "Dimension…"
 
-#: template-parts/components/cutting-optimizer.php:80
+#: template-parts/components/cutting-ai-review.php:85
+#: template-parts/components/cutting-ai-review.php:124
+#: template-parts/components/cutting-optimizer.php:158
+#: template-parts/dashboard/publish.php:91 templates/single-listing.php:66
+msgid "Number of pieces"
+msgstr "Nombre de pièces"
+
+#: template-parts/components/cutting-ai-review.php:94
+msgid "In metres, without piece lengths"
+msgstr "En mètres, sans longueurs de pièces"
+
+#: template-parts/components/cutting-ai-review.php:94
+#: template-parts/components/cutting-ai-review.php:112
+msgid "to the request for quotation"
+msgstr "vers la demande de devis"
+
+#. translators: 1: bars, 2: bar length.
+#: template-parts/components/cutting-ai-review.php:101
+msgid "→ %1$d bars of %2$s m"
+msgstr "→ %1$d barres de %2$s m"
+
+#: template-parts/components/cutting-ai-review.php:112
+#: template-parts/components/weight-calculator.php:38
+msgid "Plates"
+msgstr "Tôles"
+
+#. translators: %s: line.
+#: template-parts/components/cutting-ai-review.php:115
+#: template-parts/components/cutting-ai-review.php:122
+#: template-parts/components/filter-panel.php:25
+#: template-parts/components/plate-fields.php:98
+#: template-parts/components/section-sheet.php:26
+#: template-parts/components/weight-calculator.php:132
+msgid "Thickness"
+msgstr "Épaisseur"
+
+#: template-parts/components/cutting-ai-review.php:115
+msgid "Length × width"
+msgstr "Longueur × largeur"
+
+#: template-parts/components/cutting-ai-review.php:115
+#: template-parts/components/product-rows.php:45
+#: template-parts/components/rfq-single.php:33
+#: template-parts/components/stock-warehouse.php:152
+#: template-parts/components/stock-warehouse.php:163
+#: template-parts/dashboard/listings.php:33
+#: template-parts/dashboard/listings.php:47
+#: template-parts/dashboard/publish.php:98
+msgid "Weight"
+msgstr "Poids"
+
+#: template-parts/components/cutting-ai-review.php:123
+#: template-parts/components/section-sheet.php:21
+msgid "Width"
+msgstr "Largeur"
+
+#: template-parts/components/cutting-ai-review.php:131
+msgid ""
+"Weight from the catalogue of the platform. Plates are not in the cutting "
+"plan of the bars."
+msgstr ""
+"Poids calculé avec le catalogue de la plateforme. Les tôles ne vont pas dans"
+" le plan de coupe des barres."
+
+#: template-parts/components/cutting-ai-review.php:139
+msgid "Add the ticked lines"
+msgstr "Ajouter les lignes cochées"
+
+#: template-parts/components/cutting-ai-review.php:140
+#: template-parts/components/listing-place.php:102
+#: template-parts/components/rfq-form.php:139
+#: template-parts/components/service-form.php:158
+#: template-parts/dashboard/portfolio.php:87
+msgid "Cancel"
+msgstr "Annuler"
+
+#: template-parts/components/cutting-ai-review.php:141
+msgid ""
+"Suggestion of the AI, to check · 1 credit used for the reading · the file is"
+" not kept"
+msgstr ""
+"Suggestion de l’IA à vérifier · 1 crédit utilisé à la lecture · le fichier "
+"n’est pas gardé"
+
+#: template-parts/components/cutting-optimizer.php:101
 msgid ""
 "One line per piece: profile, length in m, number. For example: IPE 200 ; "
 "5,10 ; 4"
@@ -1700,120 +1910,168 @@ msgstr ""
 "Une ligne par pièce : profilé, longueur en m, nombre. Par exemple : IPE 200 "
 "; 5,10 ; 4"
 
-#: template-parts/components/cutting-optimizer.php:81
+#: template-parts/components/cutting-optimizer.php:102
 msgid "Add these pieces"
 msgstr "Ajouter ces pièces"
 
 #. translators: %d: lines not understood.
-#: template-parts/components/cutting-optimizer.php:83
+#: template-parts/components/cutting-optimizer.php:104
 msgid "%d line(s) not understood were left out."
 msgstr "%d ligne(s) non comprise(s) ont été ignorée(s)."
 
-#: template-parts/components/cutting-optimizer.php:84
+#: template-parts/components/cutting-optimizer.php:105
 msgid "Link copied."
 msgstr "Lien copié."
 
-#: template-parts/components/cutting-optimizer.php:92
+#: template-parts/components/cutting-optimizer.php:113
 msgid "1. Commercial bars"
 msgstr "1. Barres du commerce"
 
-#: template-parts/components/cutting-optimizer.php:94
+#: template-parts/components/cutting-optimizer.php:115
 msgid "Length of the bars"
 msgstr "Longueur des barres"
 
-#: template-parts/components/cutting-optimizer.php:99
+#: template-parts/components/cutting-optimizer.php:120
 #: template-parts/components/plate-fields.php:103
 #: template-parts/components/product-tech.php:107
 msgid "Other…"
 msgstr "Autre…"
 
-#: template-parts/components/cutting-optimizer.php:101
+#: template-parts/components/cutting-optimizer.php:122
 msgid "Other length of bar"
 msgstr "Autre longueur de barre"
 
-#: template-parts/components/cutting-optimizer.php:104
+#: template-parts/components/cutting-optimizer.php:125
 msgid "Saw kerf"
 msgstr "Trait de scie"
 
-#: template-parts/components/cutting-optimizer.php:105
+#: template-parts/components/cutting-optimizer.php:126
 msgid "Offcut kept from"
 msgstr "Chute réutilisable dès"
 
-#: template-parts/components/cutting-optimizer.php:108
+#: template-parts/components/cutting-optimizer.php:129
 msgid "2. Pieces to cut"
 msgstr "2. Pièces à couper"
 
-#: template-parts/components/cutting-optimizer.php:110
-#: template-parts/components/cutting-optimizer.php:184
-msgid "Qty"
-msgstr "Nombre"
+#: template-parts/components/cutting-optimizer.php:132
+#: templates/ai-assistant.php:25
+msgid "Import a document"
+msgstr "Importer un document"
 
-#: template-parts/components/cutting-optimizer.php:115
-#: template-parts/dashboard/publish.php:91 templates/single-listing.php:66
-msgid "Number of pieces"
-msgstr "Nombre de pièces"
+#: template-parts/components/cutting-optimizer.php:133
+msgid "Bill of quantities, quotation, purchase order, take-off, tender"
+msgstr "DQE, devis, bon de commande, métré, marché"
 
-#: template-parts/components/cutting-optimizer.php:120
-#: template-parts/components/cutting-optimizer.php:194
+#. translators: %d: AI credits.
+#: template-parts/components/cutting-optimizer.php:133
+msgid "Excel, PDF or photo · %d AI credit"
+msgid_plural "Excel, PDF or photo · %d AI credits"
+msgstr[0] "Excel, PDF ou photo · %d crédit IA"
+msgstr[1] "Excel, PDF ou photo · %d crédits IA"
+
+#: template-parts/components/cutting-optimizer.php:136
+msgid "Choose the file"
+msgstr "Choisir le fichier"
+
+#: template-parts/components/cutting-optimizer.php:137
+msgid "Take a photo"
+msgstr "Prendre une photo"
+
+#: template-parts/components/cutting-optimizer.php:138
+msgid "Read the document"
+msgstr "Lire le document"
+
+#: template-parts/components/cutting-optimizer.php:140
+msgid "Reading the document… it can take up to a minute."
+msgstr "Lecture du document… cela peut prendre une minute."
+
+#: template-parts/components/cutting-optimizer.php:141
+msgid "Photo: flat, with good light. Plans will come later."
+msgstr ""
+"Photo : bien à plat, avec de la lumière. Les plans viendront plus tard."
+
+#. translators: %d: credits left.
+#. translators: %d: AI credits left.
+#: template-parts/components/cutting-optimizer.php:141
+#: templates/ai-assistant.php:68
+msgid "%d credit left"
+msgid_plural "%d credits left"
+msgstr[0] "%d crédit restant"
+msgstr[1] "%d crédits restants"
+
+#: template-parts/components/cutting-optimizer.php:143
+msgid "Log in to use this tool"
+msgstr "Connectez-vous pour utiliser cet outil"
+
+#: template-parts/components/cutting-optimizer.php:145
+msgid "See the plans and the AI credit packs"
+msgstr "Voir les formules et les packs de crédits IA"
+
+#: template-parts/components/cutting-optimizer.php:150
+msgid "or type the pieces:"
+msgstr "ou saisissez les pièces :"
+
+#: template-parts/components/cutting-optimizer.php:163
+#: template-parts/components/cutting-optimizer.php:238
 msgid "Add a line"
 msgstr "Ajouter une ligne"
 
-#: template-parts/components/cutting-optimizer.php:120
+#: template-parts/components/cutting-optimizer.php:163
 msgid "Paste a list (Excel)"
 msgstr "Coller une liste (Excel)"
 
-#: template-parts/components/cutting-optimizer.php:122
+#: template-parts/components/cutting-optimizer.php:165
 msgid "Paste your list"
 msgstr "Collez votre liste"
 
-#: template-parts/components/cutting-optimizer.php:130
+#: template-parts/components/cutting-optimizer.php:174
 msgid "3. Where to look for the bars?"
 msgstr "3. Où chercher les barres ?"
 
 #. translators: %s: length.
-#: template-parts/components/cutting-optimizer.php:132
-#: template-parts/components/cutting-optimizer.php:139
-#: template-parts/components/cutting-optimizer.php:299
+#: template-parts/components/cutting-optimizer.php:176
+#: template-parts/components/cutting-optimizer.php:183
+#: template-parts/components/cutting-optimizer.php:353
 #: template-parts/components/cutting-sources.php:51
 msgid "My warehouse"
 msgstr "Mon magasin"
 
-#: template-parts/components/cutting-optimizer.php:132
+#: template-parts/components/cutting-optimizer.php:176
 msgid "Searched first: your bars, published or kept in stock only."
 msgstr "Cherché en premier : vos barres, publiées ou en stock seulement."
 
-#: template-parts/components/cutting-optimizer.php:134
+#: template-parts/components/cutting-optimizer.php:178
 #: template-parts/components/cutting-sources.php:57
 #: template-parts/dashboard/publish.php:54 templates/dashboard.php:126
 msgid "New steel"
 msgstr "Acier neuf"
 
-#: template-parts/components/cutting-optimizer.php:135
+#: template-parts/components/cutting-optimizer.php:179
 msgid "Reuse (offcuts and variants)"
 msgstr "Réemploi (chutes et variantes)"
 
-#: template-parts/components/cutting-optimizer.php:136
+#: template-parts/components/cutting-optimizer.php:180
 msgid "Do not take the items published on the market"
 msgstr "Ne pas prendre les articles publiés sur le marché"
 
-#: template-parts/components/cutting-optimizer.php:136
+#: template-parts/components/cutting-optimizer.php:180
 msgid "Only what is kept in stock only"
 msgstr "Seulement ce qui est en stock seulement"
 
-#: template-parts/components/cutting-optimizer.php:141
+#: template-parts/components/cutting-optimizer.php:185
 msgid "With a company or professional account."
 msgstr "Avec un compte entreprise ou professionnel."
 
-#: template-parts/components/cutting-optimizer.php:143
+#: template-parts/components/cutting-optimizer.php:187
 msgid "Log in with a company or professional account"
 msgstr "Connectez-vous avec un compte entreprise ou professionnel"
 
-#: template-parts/components/cutting-optimizer.php:147
+#: template-parts/components/cutting-optimizer.php:191
 #: template-parts/components/cutting-sources.php:78
 msgid "ReuSteel marketplace"
 msgstr "Marché ReuSteel"
 
-#: template-parts/components/cutting-optimizer.php:147
+#: template-parts/components/cutting-optimizer.php:191
 msgid ""
 "Listings of the other sellers: the same profile, the same length or the "
 "closest longer one."
@@ -1821,7 +2079,7 @@ msgstr ""
 "Annonces des autres vendeurs : même profilé, longueur égale ou la plus "
 "proche au-dessus."
 
-#: template-parts/components/cutting-optimizer.php:147
+#: template-parts/components/cutting-optimizer.php:191
 msgid ""
 "Published listings: the same profile, the same length or the closest longer "
 "one."
@@ -1829,19 +2087,19 @@ msgstr ""
 "Annonces publiées : le même profilé, de longueur égale ou la plus proche au-"
 "dessus."
 
-#: template-parts/components/cutting-optimizer.php:150
+#: template-parts/components/cutting-optimizer.php:194
 msgid "Minimum grade"
 msgstr "Nuance minimale"
 
-#: template-parts/components/cutting-optimizer.php:152
+#: template-parts/components/cutting-optimizer.php:196
 msgid "Any grade"
 msgstr "Toutes nuances"
 
-#: template-parts/components/cutting-optimizer.php:157
+#: template-parts/components/cutting-optimizer.php:201
 msgid "Conditions accepted"
 msgstr "États acceptés"
 
-#: template-parts/components/cutting-optimizer.php:166
+#: template-parts/components/cutting-optimizer.php:210
 #: template-parts/components/filter-panel.php:153
 #: template-parts/components/mission-request-form.php:410
 #: template-parts/components/product-form.php:193
@@ -1856,7 +2114,7 @@ msgstr "États acceptés"
 msgid "Wilaya"
 msgstr "Wilaya"
 
-#: template-parts/components/cutting-optimizer.php:168
+#: template-parts/components/cutting-optimizer.php:212
 #: template-parts/components/filter-panel.php:155
 #: template-parts/components/services-board.php:45
 #: template-parts/directory.php:49 templates/front-page-template.php:51
@@ -1864,45 +2122,45 @@ msgstr "Wilaya"
 msgid "All wilayas"
 msgstr "Toutes les wilayas"
 
-#: template-parts/components/cutting-optimizer.php:172
+#: template-parts/components/cutting-optimizer.php:216
 msgid "Also offer lots sold whole when they help"
 msgstr "Proposer aussi les lots vendus en entier s’ils servent"
 
-#: template-parts/components/cutting-optimizer.php:174
+#: template-parts/components/cutting-optimizer.php:218
 msgid "New bars for the rest"
 msgstr "Barres neuves pour le reste"
 
-#: template-parts/components/cutting-optimizer.php:174
+#: template-parts/components/cutting-optimizer.php:218
 msgid "Request for quotation pre-filled"
 msgstr "Demande de devis pré-remplie"
 
-#: template-parts/components/cutting-optimizer.php:178
+#: template-parts/components/cutting-optimizer.php:222
 msgid "Your offcuts are in your warehouse: they are searched first."
 msgstr "Vos chutes sont dans votre magasin : elles sont cherchées en premier."
 
-#: template-parts/components/cutting-optimizer.php:178
+#: template-parts/components/cutting-optimizer.php:222
 msgid "Add offcuts to the warehouse"
 msgstr "Ajouter des chutes au magasin"
 
-#: template-parts/components/cutting-optimizer.php:181
+#: template-parts/components/cutting-optimizer.php:225
 msgid "4. Offcuts already at hand (optional)"
 msgstr "4. Chutes déjà à disposition (facultatif)"
 
-#: template-parts/components/cutting-optimizer.php:182
+#: template-parts/components/cutting-optimizer.php:226
 msgid "They are used first: you buy new bars only for what they cannot give."
 msgstr ""
 "Elles sont utilisées en premier : vous n'achetez des barres neuves que pour "
 "ce qu'elles ne peuvent pas donner."
 
-#: template-parts/components/cutting-optimizer.php:189
+#: template-parts/components/cutting-optimizer.php:233
 msgid "Number of offcuts"
 msgstr "Nombre de chutes"
 
-#: template-parts/components/cutting-optimizer.php:198
+#: template-parts/components/cutting-optimizer.php:242
 msgid "Optimise the cutting"
 msgstr "Optimiser la découpe"
 
-#: template-parts/components/cutting-optimizer.php:206
+#: template-parts/components/cutting-optimizer.php:259
 msgid ""
 "Give the pieces to cut and press « Optimise the cutting »: the plan appears "
 "here, bar by bar."
@@ -1910,7 +2168,7 @@ msgstr ""
 "Indiquez les pièces à couper et appuyez sur « Optimiser la découpe » : le "
 "plan apparaît ici, barre par barre."
 
-#: template-parts/components/cutting-optimizer.php:210
+#: template-parts/components/cutting-optimizer.php:264
 msgid ""
 "Some lines are incomplete or wrong: they are marked in the form and left out"
 " of the plan."
@@ -1918,86 +2176,86 @@ msgstr ""
 "Certaines lignes sont incomplètes ou fausses : elles sont signalées dans le "
 "formulaire et laissées hors du plan."
 
-#: template-parts/components/cutting-optimizer.php:221
+#: template-parts/components/cutting-optimizer.php:275
 msgid "In my warehouse"
 msgstr "Dans mon magasin"
 
 #. translators: %d: bars.
-#: template-parts/components/cutting-optimizer.php:221
-#: template-parts/components/cutting-optimizer.php:224
-#: template-parts/components/cutting-optimizer.php:227
+#: template-parts/components/cutting-optimizer.php:275
+#: template-parts/components/cutting-optimizer.php:278
+#: template-parts/components/cutting-optimizer.php:281
 msgid "%d bar"
 msgid_plural "%d bars"
 msgstr[0] "%d barre"
 msgstr[1] "%d barres"
 
 #. translators: %d: references.
-#: template-parts/components/cutting-optimizer.php:221
+#: template-parts/components/cutting-optimizer.php:275
 msgid "%d reference"
 msgid_plural "%d references"
 msgstr[0] "%d repère"
 msgstr[1] "%d repères"
 
-#: template-parts/components/cutting-optimizer.php:224
+#: template-parts/components/cutting-optimizer.php:278
 msgid "On the marketplace"
 msgstr "Sur le marché"
 
 #. translators: %d: listings.
-#: template-parts/components/cutting-optimizer.php:224
+#: template-parts/components/cutting-optimizer.php:278
 msgid "%d listing"
 msgid_plural "%d listings"
 msgstr[0] "%d annonce"
 msgstr[1] "%d annonces"
 
-#: template-parts/components/cutting-optimizer.php:227
-#: template-parts/components/cutting-optimizer.php:229
-#: template-parts/components/cutting-optimizer.php:303
+#: template-parts/components/cutting-optimizer.php:281
+#: template-parts/components/cutting-optimizer.php:283
+#: template-parts/components/cutting-optimizer.php:357
 msgid "To buy"
 msgstr "À acheter"
 
-#: template-parts/components/cutting-optimizer.php:229
+#: template-parts/components/cutting-optimizer.php:283
 msgid "Nothing"
 msgstr "Rien"
 
-#: template-parts/components/cutting-optimizer.php:229
+#: template-parts/components/cutting-optimizer.php:283
 msgid "No new bar needed"
 msgstr "Aucune barre neuve nécessaire"
 
-#: template-parts/components/cutting-optimizer.php:229
+#: template-parts/components/cutting-optimizer.php:283
 msgid "Everything comes from your warehouse"
 msgstr "Tout vient de votre magasin"
 
-#: template-parts/components/cutting-optimizer.php:232
+#: template-parts/components/cutting-optimizer.php:286
 msgid "Weight to acquire"
 msgstr "Poids à acquérir"
 
 #. translators: %s: weight of the pieces.
-#: template-parts/components/cutting-optimizer.php:232
-#: template-parts/components/cutting-optimizer.php:246
+#: template-parts/components/cutting-optimizer.php:286
+#: template-parts/components/cutting-optimizer.php:300
 msgid "pieces: %s kg"
 msgstr "pièces : %s kg"
 
 #. translators: %s: weight of the pieces.
-#: template-parts/components/cutting-optimizer.php:234
-#: template-parts/components/cutting-optimizer.php:247
+#: template-parts/components/cutting-optimizer.php:288
+#: template-parts/components/cutting-optimizer.php:301
 msgid "Offcuts"
 msgstr "Chutes"
 
 #. translators: %s: percent.
-#: template-parts/components/cutting-optimizer.php:234
-#: template-parts/components/cutting-optimizer.php:247
+#: template-parts/components/cutting-optimizer.php:288
+#: template-parts/components/cutting-optimizer.php:301
 msgid "%s %% of the bars used"
 msgstr "%s %% des barres utilisées"
 
 #. translators: %d: reusable offcuts.
-#: template-parts/components/cutting-optimizer.php:234
+#: template-parts/components/cutting-optimizer.php:288
 msgid "%d reusable"
 msgid_plural "%d reusable"
 msgstr[0] "%d réutilisable"
 msgstr[1] "%d réutilisables"
 
 #. translators: 1: date, 2: hour.
-#: template-parts/components/cutting-optimizer.php:237
+#: template-parts/components/cutting-optimizer.php:291
 msgid ""
 "Picture of the marketplace on %1$s at %2$s: listings can change and nothing "
 "is reserved. Prices are those shown by the sellers."
@@ -2005,7 +2263,7 @@ msgstr ""
 "Photo du marché au %1$s à %2$s : les annonces peuvent changer, rien n’est "
 "réservé. Les prix sont ceux affichés par les vendeurs."
 
-#: template-parts/components/cutting-optimizer.php:242
+#: template-parts/components/cutting-optimizer.php:296
 msgid ""
 "No listing of the marketplace fits these pieces with your filters: the plan "
 "uses new bars."
@@ -2013,120 +2271,120 @@ msgstr ""
 "Aucune annonce du marché ne convient à ces pièces avec vos filtres : le plan"
 " utilise des barres neuves."
 
-#: template-parts/components/cutting-optimizer.php:245
+#: template-parts/components/cutting-optimizer.php:299
 msgid "Bars to buy"
 msgstr "Barres à acheter"
 
 #. translators: %d: offcuts used from the stock.
 #. translators: %d: offcuts from the stock.
-#: template-parts/components/cutting-optimizer.php:245
-#: template-parts/components/cutting-optimizer.php:287
+#: template-parts/components/cutting-optimizer.php:299
+#: template-parts/components/cutting-optimizer.php:341
 msgid "+ %d offcut from the stock"
 msgid_plural "+ %d offcuts from the stock"
 msgstr[0] "+ %d chute du stock"
 msgstr[1] "+ %d chutes du stock"
 
 #. translators: %d: offcuts used from the stock.
-#: template-parts/components/cutting-optimizer.php:246
+#: template-parts/components/cutting-optimizer.php:300
 msgid "Weight bought"
 msgstr "Poids acheté"
 
 #. translators: %s: length in m.
-#: template-parts/components/cutting-optimizer.php:248
+#: template-parts/components/cutting-optimizer.php:302
 #: template-parts/components/cutting-sources.php:127
 msgid "Reusable offcuts (≥ %s m)"
 msgstr "Chutes réutilisables (≥ %s m)"
 
 #. translators: %d: bars.
-#: template-parts/components/cutting-optimizer.php:271
+#: template-parts/components/cutting-optimizer.php:325
 msgid "%d bar from my warehouse"
 msgid_plural "%d bars from my warehouse"
 msgstr[0] "%d barre de mon magasin"
 msgstr[1] "%d barres de mon magasin"
 
 #. translators: %d: bars.
-#: template-parts/components/cutting-optimizer.php:275
+#: template-parts/components/cutting-optimizer.php:329
 msgid "%d bar from the marketplace"
 msgid_plural "%d bars from the marketplace"
 msgstr[0] "%d barre du marché"
 msgstr[1] "%d barres du marché"
 
 #. translators: %d: bars.
-#: template-parts/components/cutting-optimizer.php:279
+#: template-parts/components/cutting-optimizer.php:333
 msgid "%d to buy"
 msgid_plural "%d to buy"
 msgstr[0] "%d à acheter"
 msgstr[1] "%d à acheter"
 
 #. translators: 1: profile, 2: number of bars, 3: bar length.
-#: template-parts/components/cutting-optimizer.php:283
+#: template-parts/components/cutting-optimizer.php:337
 msgid "%1$s — %2$d bar of %3$s m"
 msgid_plural "%1$s — %2$d bars of %3$s m"
 msgstr[0] "%1$s — %2$d barre de %3$s m"
 msgstr[1] "%1$s — %2$d barres de %3$s m"
 
 #. translators: 1: kg/m, 2: pieces, 3: saw cuts.
-#: template-parts/components/cutting-optimizer.php:288
+#: template-parts/components/cutting-optimizer.php:342
 msgid "%1$s kg/m · %2$d pieces · %3$d saw cuts"
 msgstr "%1$s kg/m · %2$d pièces · %3$d traits de scie"
 
 #. translators: %s: length.
-#: template-parts/components/cutting-optimizer.php:296
-#: template-parts/components/cutting-optimizer.php:299
+#: template-parts/components/cutting-optimizer.php:350
+#: template-parts/components/cutting-optimizer.php:353
 msgid "bar of %s m"
 msgstr "barre de %s m"
 
 #. translators: %s: length.
-#: template-parts/components/cutting-optimizer.php:296
+#: template-parts/components/cutting-optimizer.php:350
 msgid "Marketplace"
 msgstr "Marché"
 
 #. translators: %s: length.
-#: template-parts/components/cutting-optimizer.php:301
+#: template-parts/components/cutting-optimizer.php:355
 msgid "offcut from the stock, %s m"
 msgstr "chute du stock, %s m"
 
-#: template-parts/components/cutting-optimizer.php:303
+#: template-parts/components/cutting-optimizer.php:357
 msgid "new bar"
 msgstr "barre neuve"
 
 #. translators: %s: length.
-#: template-parts/components/cutting-optimizer.php:308
+#: template-parts/components/cutting-optimizer.php:362
 msgid "offcut %s m"
 msgstr "chute %s m"
 
 #. translators: %s: length.
-#: template-parts/components/cutting-optimizer.php:308
+#: template-parts/components/cutting-optimizer.php:362
 msgid "%s m reusable"
 msgstr "%s m réutilisable"
 
-#: template-parts/components/cutting-optimizer.php:310
+#: template-parts/components/cutting-optimizer.php:364
 msgid "no offcut"
 msgstr "aucune chute"
 
 #. translators: 1: metres, 2: kg.
-#: template-parts/components/cutting-optimizer.php:325
+#: template-parts/components/cutting-optimizer.php:379
 msgid "Bought: %1$s m · %2$s kg"
 msgstr "Acheté : %1$s m · %2$s kg"
 
 #. translators: 1: metres, 2: kg.
-#: template-parts/components/cutting-optimizer.php:326
+#: template-parts/components/cutting-optimizer.php:380
 msgid "Pieces: %1$s m · %2$s kg"
 msgstr "Pièces : %1$s m · %2$s kg"
 
 #. translators: 1: metres, 2: kg, 3: percent.
-#: template-parts/components/cutting-optimizer.php:327
+#: template-parts/components/cutting-optimizer.php:381
 msgid "Offcuts: %1$s m · %2$s kg · %3$s %%"
 msgstr "Chutes : %1$s m · %2$s kg · %3$s %%"
 
 #. translators: %d: offcuts not used.
-#: template-parts/components/cutting-optimizer.php:328
+#: template-parts/components/cutting-optimizer.php:382
 msgid "%d offcut of the stock not needed"
 msgid_plural "%d offcuts of the stock not needed"
 msgstr[0] "%d chute du stock non utilisée"
 msgstr[1] "%d chutes du stock non utilisées"
 
-#: template-parts/components/cutting-optimizer.php:331
+#: template-parts/components/cutting-optimizer.php:385
 msgid ""
 "Long list: this is the best plan found in the time given; a better one may "
 "exist."
@@ -2134,33 +2392,59 @@ msgstr ""
 "Liste longue : c'est le meilleur plan trouvé dans le temps donné ; il peut "
 "en exister un meilleur."
 
-#: template-parts/components/cutting-optimizer.php:336
+#: template-parts/components/cutting-optimizer.php:390
 msgid "offcut (saw cuts included)"
 msgstr "chute (traits de scie compris)"
 
-#: template-parts/components/cutting-optimizer.php:336
+#: template-parts/components/cutting-optimizer.php:390
 msgid "reusable offcut"
 msgstr "chute réutilisable"
 
 #. translators: %d: number of bars.
-#: template-parts/components/cutting-optimizer.php:341
+#: template-parts/components/cutting-optimizer.php:395
 msgid "Create a request for quotation (%d bar)"
 msgid_plural "Create a request for quotation (%d bars)"
 msgstr[0] "Créer une demande de devis (%d barre)"
 msgstr[1] "Créer une demande de devis (%d barres)"
 
-#: template-parts/components/cutting-optimizer.php:343
+#: template-parts/components/cutting-optimizer.php:397
 msgid "Download the PDF"
 msgstr "Télécharger le PDF"
 
-#: template-parts/components/cutting-optimizer.php:344
+#: template-parts/components/cutting-optimizer.php:398
 msgid "Print"
 msgstr "Imprimer"
 
-#: template-parts/components/cutting-optimizer.php:345
+#: template-parts/components/cutting-optimizer.php:399
 #: templates/company-profile.php:256
 msgid "Copy the link"
 msgstr "Copier le lien"
+
+#: template-parts/components/cutting-optimizer.php:407
+msgid "Without a cutting plan: to the request for quotation"
+msgstr "Sans plan de coupe : vers la demande de devis"
+
+#. translators: 1: metres, 2: bars, 3: bar length.
+#: template-parts/components/cutting-optimizer.php:409
+msgid "%1$s m → %2$d bars of %3$s m"
+msgstr "%1$s m → %2$d barres de %3$s m"
+
+#. translators: %s: thickness.
+#: template-parts/components/cutting-optimizer.php:412
+msgid "Plate %s mm"
+msgstr "Tôle %s mm"
+
+#: template-parts/components/cutting-optimizer.php:414
+msgid ""
+"Weights from the catalogue of the platform. These pieces are not in the "
+"cutting plan of the bars."
+msgstr ""
+"Poids calculés avec le catalogue de la plateforme. Ces pièces ne sont pas "
+"dans le plan de coupe des barres."
+
+#: template-parts/components/cutting-optimizer.php:416
+msgid "Create the request for quotation"
+msgstr "Créer la demande de devis"
 
 #: template-parts/components/cutting-sources.php:57
 #: template-parts/components/my-products.php:23 templates/dashboard.php:127
@@ -2540,13 +2824,6 @@ msgstr "Famille"
 #: template-parts/components/rfq-single.php:24
 msgid "Designation"
 msgstr "Désignation"
-
-#: template-parts/components/filter-panel.php:25
-#: template-parts/components/plate-fields.php:98
-#: template-parts/components/section-sheet.php:26
-#: template-parts/components/weight-calculator.php:132
-msgid "Thickness"
-msgstr "Épaisseur"
 
 #: template-parts/components/filter-panel.php:26
 msgid "Min. length"
@@ -3056,13 +3333,6 @@ msgstr "Heure"
 #: template-parts/components/listing-place.php:99
 msgid "Number of people, questions…"
 msgstr "Nombre de personnes, questions…"
-
-#: template-parts/components/listing-place.php:102
-#: template-parts/components/rfq-form.php:139
-#: template-parts/components/service-form.php:158
-#: template-parts/dashboard/portfolio.php:87
-msgid "Cancel"
-msgstr "Annuler"
 
 #: template-parts/components/listing-product.php:34
 msgid "Products"
@@ -4745,16 +5015,6 @@ msgstr "Une ligne par format de morceau."
 msgid "One row per length."
 msgstr "Une ligne par longueur."
 
-#: template-parts/components/product-rows.php:45
-#: template-parts/components/rfq-single.php:33
-#: template-parts/components/stock-warehouse.php:152
-#: template-parts/components/stock-warehouse.php:163
-#: template-parts/dashboard/listings.php:33
-#: template-parts/dashboard/listings.php:47
-#: template-parts/dashboard/publish.php:98
-msgid "Weight"
-msgstr "Poids"
-
 #: template-parts/components/product-rows.php:74
 msgid "Add a size"
 msgstr "Ajouter un format"
@@ -5773,10 +6033,6 @@ msgstr "Poids, si connu"
 msgid "Leg"
 msgstr "Aile"
 
-#: template-parts/components/section-sheet.php:21
-msgid "Width"
-msgstr "Largeur"
-
 #: template-parts/components/section-sheet.php:22
 msgid "Outside diameter"
 msgstr "Diamètre extérieur"
@@ -6117,7 +6373,7 @@ msgstr "Demandes de service"
 #: template-parts/dashboard/ai.php:16 template-parts/dashboard/offers.php:13
 #: template-parts/dashboard/portfolio.php:13
 #: template-parts/dashboard/rfq.php:19
-#: template-parts/dashboard/services.php:19 templates/ai-assistant.php:40
+#: template-parts/dashboard/services.php:19 templates/ai-assistant.php:41
 msgid "This module is not active yet."
 msgstr "Ce module n’est pas encore actif."
 
@@ -6589,10 +6845,6 @@ msgstr "Tubes"
 msgid "Flats and bars"
 msgstr "Fers plats et barres"
 
-#: template-parts/components/weight-calculator.php:38
-msgid "Plates"
-msgstr "Tôles"
-
 #: template-parts/components/weight-calculator.php:46
 msgid "Web tw"
 msgstr "Âme tw"
@@ -6747,8 +6999,8 @@ msgstr[1] "%d utilisations, sans limite mensuelle"
 msgid "The counters start again on the 1st of each month."
 msgstr "Les compteurs repartent le 1er de chaque mois."
 
-#: template-parts/dashboard/ai.php:16 templates/ai-assistant.php:32
-#: templates/ai-assistant.php:40 templates/dashboard.php:79
+#: template-parts/dashboard/ai.php:16 templates/ai-assistant.php:33
+#: templates/ai-assistant.php:41 templates/dashboard.php:79
 #: templates/dashboard.php:155
 msgid "AI assistant"
 msgstr "Assistant IA"
@@ -9085,6 +9337,18 @@ msgstr "Formulaire de publication"
 
 #: templates/ai-assistant.php:25
 msgid ""
+"A bill of quantities, a quotation or a take-off (Excel, PDF or photo): the "
+"AI lists the bars to cut, the plates and the quantities in metres. You "
+"check, then the cutting optimiser does the rest: your warehouse, the "
+"marketplace, the bars to buy."
+msgstr ""
+"Un DQE, un devis ou un métré (Excel, PDF ou photo) : l’IA liste les barres à"
+" couper, les tôles et les quantités en mètres. Vous vérifiez, puis "
+"l’optimiseur de découpe fait le reste : votre magasin, le marché, les barres"
+" à acheter."
+
+#: templates/ai-assistant.php:26
+msgid ""
 "One or two photos (end view if possible, with a tape measure): up to 4 "
 "possible profiles, checked against the catalogue, and the questions that "
 "remove the doubt."
@@ -9093,11 +9357,11 @@ msgstr ""
 "profilés possibles, vérifiés au catalogue, et les questions qui lèvent le "
 "doute."
 
-#: templates/ai-assistant.php:25
+#: templates/ai-assistant.php:26
 msgid "Recognise a profile"
 msgstr "Reconnaître un profilé"
 
-#: templates/ai-assistant.php:26
+#: templates/ai-assistant.php:27
 msgid ""
 "A bill of quantities or a list of profiles (PDF or photo): the steel items "
 "are extracted, weighed by the weight engine and turned into a request for "
@@ -9107,11 +9371,11 @@ msgstr ""
 "sont extraits, pesés par le moteur de poids et transformés en demande de "
 "devis."
 
-#: templates/ai-assistant.php:26
+#: templates/ai-assistant.php:27
 msgid "Analyse a document"
 msgstr "Analyser un document"
 
-#: templates/ai-assistant.php:27
+#: templates/ai-assistant.php:28
 msgid ""
 "Photos of your steel and a few words: the assistant proposes the category, "
 "the profile, the titles in French and Arabic and the description of a new "
@@ -9121,16 +9385,16 @@ msgstr ""
 "catégorie, le profilé, les titres en français et en arabe et la description "
 "d'une nouvelle annonce."
 
-#: templates/ai-assistant.php:27
+#: templates/ai-assistant.php:28
 msgid "Prepare a listing"
 msgstr "Préparer une annonce"
 
-#: templates/ai-assistant.php:33 templates/dashboard.php:81
+#: templates/ai-assistant.php:34 templates/dashboard.php:81
 #: templates/dashboard.php:157 templates/front-page-template.php:134
 msgid "Assistant"
 msgstr "Assistant"
 
-#: templates/ai-assistant.php:34
+#: templates/ai-assistant.php:35
 msgid ""
 "Tools that save you time: search, describe, recognise, list. They give "
 "suggestions to check: weights always come from the weight engine and the AI "
@@ -9140,29 +9404,22 @@ msgstr ""
 " lister. Ce sont des suggestions à vérifier : les poids viennent toujours du"
 " moteur de calcul et l’IA ne remplace pas un ingénieur."
 
-#: templates/ai-assistant.php:57
+#: templates/ai-assistant.php:58
 msgid "Free · for everybody"
 msgstr "Gratuit · pour tous"
 
 #. translators: %d: AI credits per use.
-#: templates/ai-assistant.php:59
+#: templates/ai-assistant.php:60
 msgid "%d credit per use"
 msgid_plural "%d credits per use"
 msgstr[0] "%d crédit par utilisation"
 msgstr[1] "%d crédits par utilisation"
 
-#. translators: %d: AI credits left.
-#: templates/ai-assistant.php:67
-msgid "%d credit left"
-msgid_plural "%d credits left"
-msgstr[0] "%d crédit restant"
-msgstr[1] "%d crédits restants"
-
-#: templates/ai-assistant.php:79
+#: templates/ai-assistant.php:80
 msgid "Business report"
 msgstr "Rapport Business"
 
-#: templates/ai-assistant.php:80
+#: templates/ai-assistant.php:81
 msgid ""
 "Follow your market like a pro. Every week or every month, receive the most "
 "requested and most searched products, the average advertised prices of new "
@@ -9174,15 +9431,15 @@ msgstr ""
 " du neuf, du réemploi et des bâtiments, et les tendances par wilaya, pour "
 "fixer vos prix et choisir votre stock au bon moment."
 
-#: templates/ai-assistant.php:81
+#: templates/ai-assistant.php:82
 msgid "Included in the Business plan"
 msgstr "Inclus dans la formule Business"
 
-#: templates/ai-assistant.php:81
+#: templates/ai-assistant.php:82
 msgid "Soon"
 msgstr "Bientôt"
 
-#: templates/ai-assistant.php:83
+#: templates/ai-assistant.php:84
 msgid "See the Business plan"
 msgstr "Voir la formule Business"
 

@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 final class Settings {
 
 	const OPTION   = 'sm_ai_settings';
-	const FEATURES = array( 'listing', 'recognize', 'search', 'document', 'describe' );
+	const FEATURES = array( 'listing', 'recognize', 'search', 'document', 'describe', 'cutlist' );
 
 	public static function defaults() {
 		return array(
@@ -34,6 +34,7 @@ final class Settings {
 				'search'    => array( 'enabled' => 1, 'provider' => '', 'model' => '', 'per_company_month' => 300, 'visitors_per_ip_day' => 10 ),
 				'document'  => array( 'enabled' => 1, 'provider' => '', 'model' => '', 'per_company_month' => 10 ),
 				'describe'  => array( 'enabled' => 1, 'provider' => '', 'model' => '', 'per_company_month' => 60 ),
+				'cutlist'   => array( 'enabled' => 1, 'provider' => '', 'model' => '', 'per_company_month' => 20 ),
 			),
 			'per_user_day'     => 40,
 			'monthly_budget'   => 0,

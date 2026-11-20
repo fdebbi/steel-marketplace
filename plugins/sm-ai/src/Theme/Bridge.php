@@ -29,6 +29,23 @@ final class Bridge {
 		add_filter( 'sm_theme_data_ai_search_ready', static fn( $r ) => null !== $r ? $r : true === Gateway::check( 'search' ) );
 		add_filter( 'sm_theme_data_ai_catalog', array( __CLASS__, 'catalog' ), 10, 2 );
 		add_filter( 'sm_theme_data_ai_describe', array( __CLASS__, 'describe' ), 10, 2 );
+		add_filter( 'sm_theme_data_ai_cutlist', array( __CLASS__, 'cutlist' ), 10, 2 );
+	}
+
+	/**
+	 * DQE IA in the cutting optimiser (0.3.0): the service (state ok/login/upgrade/blocked,
+	 * credits left) and, with args token, the result to check. null when not offered.
+	 */
+	public static function cutlist( $result, $args ) {
+		if ( null !== $result ) {
+			return $result;
+		}
+		$s = self::service( 'cutlist', sm_current_company() );
+		if ( ! $s ) {
+			return null;
+		}
+		$token = (string) ( $args['token'] ?? '' );
+		return $s + array( 'result' => '' !== $token ? Form::cutlist_result( $token ) : null );
 	}
 
 	/** One service for the interface: available now, or why not and what to do. */
@@ -58,7 +75,7 @@ final class Bridge {
 		}
 		$company = sm_current_company();
 		$out     = array();
-		foreach ( array( 'search', 'describe', 'recognize', 'document', 'listing' ) as $id ) {
+		foreach ( array( 'search', 'describe', 'cutlist', 'recognize', 'document', 'listing' ) as $id ) {
 			$s = self::service( $id, $company );
 			if ( $s ) {
 				$out[ $id ] = $s;

@@ -59,6 +59,22 @@
 		mk.addEventListener( 'change', syncMk );
 		syncMk();
 	}
+	/* 0.50.0: DQE IA — a file chosen is sent at once (the button stays for browsers without JavaScript). */
+	var aiForm = document.getElementById( 'smcut-ai-form' ), busy = root.querySelector( '[data-smcut-aibusy]' );
+	$$( '[data-smcut-aifile]', root ).forEach( function ( inp ) {
+		inp.addEventListener( 'change', function () {
+			if ( ! inp.files || ! inp.files.length || ! aiForm ) { return; }
+			$$( '[data-smcut-aifile]', root ).forEach( function ( o ) { if ( o !== inp ) { o.value = ''; } } );
+			if ( busy ) { busy.hidden = false; }
+			$$( '[data-smcut-aisend]', root ).forEach( function ( b ) { b.disabled = true; } );
+			if ( aiForm.requestSubmit ) { aiForm.requestSubmit(); } else { aiForm.submit(); }
+		} );
+	} );
+	if ( aiForm ) {
+		aiForm.addEventListener( 'submit', function () { if ( busy ) { busy.hidden = false; } } );
+		$$( '[data-smcut-aisend]', root ).forEach( function ( b ) { b.hidden = true; } ); // The file is sent as soon as it is chosen.
+	}
+
 	/* 0.49.0: the choices of the warehouse follow its box. */
 	var mi = root.querySelector( '[data-smcut-mine]' ), mbox = root.querySelector( '[data-smcut-minebox]' );
 	if ( mi && mbox ) {

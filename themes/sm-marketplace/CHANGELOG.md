@@ -1,5 +1,12 @@
 # Changelog — sm-marketplace
 
+## 0.50.0 — 2026-11-20 (avec sm-ai 0.3.0 et sm-weight-engine 0.7.0)
+
+- Optimiseur : **« Importer un document »** (✦ IA, 1 crédit) au début de « 2. Pièces à couper » — « Choisir le fichier » (Excel, PDF, photo) et « Prendre une photo » ; le fichier part dès qu'il est choisi (« Lecture du document… »). Visiteur : « Connectez-vous pour utiliser cet outil » ; sans crédit : la raison et le lien vers les formules et packs.
+- **Vérification** (composant `cutting-ai-review`) : barres avec profilé, dimension, longueur et nombre modifiables, « sûr » cochées et « à vérifier » décochées avec la raison ; « En mètres, sans longueurs de pièces » et « Tôles » vers la demande de devis ; lignes hors charpente ; « Ajouter les lignes cochées » garde la liste déjà saisie et les réglages. Document illisible : conseil pour reprendre la photo.
+- Résultat : « Sans plan de coupe : vers la demande de devis » (mètres → barres, tôles avec leur poids), bouton de demande de devis même sans barre à acheter.
+- Page des outils IA : carte « DQE pour l'optimiseur de découpe ».
+
 ## 0.49.2 — 2026-11-20
 
 - Téléphones (360–390 px) : plus de défilement de côté.

@@ -480,3 +480,10 @@ Validé sur la maquette 0.37.
 ## Optimiseur : point 4 (2026-11-20)
 
 - Comptes avec magasin : plus de « Chutes déjà à disposition » (doublon avec Mon magasin, risque de compter deux fois) ; lien « Ajouter des chutes au magasin ». Visiteurs et clients : point 4 conservé, « Mon magasin » visible mais désactivé. Lien partagé avec des chutes saisies : affichées.
+
+## DQE IA (2026-11-20)
+
+- Documents seulement (DQE, devis, bon de commande, métré, marché) en Excel, PDF ou photo ; les plans viendront plus tard.
+- Rien n'est ajouté sans l'utilisateur : lignes « sûres » cochées, « à vérifier » décochées (profilé absent du catalogue, longueur ou nombre absent, ligne déduite par l'IA, source photo).
+- Tôles et platines : extraites dans une liste séparée, poids par le moteur, vers la demande de devis (pas dans le plan de coupe des barres ; optimiseur de tôles plus tard). Quantités en mètres : barres à acheter.
+- 1 crédit à la lecture, toujours utilisé (même si la photo est illisible ou si l'utilisateur annule). Le fichier n'est pas gardé.

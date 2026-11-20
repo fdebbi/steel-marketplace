@@ -250,6 +250,26 @@ $pdf = SM\WeightEngine\CuttingActions::render( $r );
 smw_assert( 0 === strpos( $pdf, '%PDF-1.4' ) && false !== strpos( $pdf, '%%EOF' ) && false !== strpos( $pdf, 'IPE 200' ), 'cutting plan as a PDF' );
 smw_assert( false !== strpos( $pdf, '/Subtype /Link' ) && false !== strpos( $pdf, 'optimiseur-decoupe' ) && false !== strpos( $pdf, '1/1' ), 'PDF footer: ReuSteel, clickable link to the optimiser, page number' );
 
+smw_section( '13. Lines of the DQE IA, plates and quantities in metres (0.7.0)' );
+$in = Cutting::read(
+	array(
+		'src'      => 1,
+		'rows'     => array( array( 'section' => $ipe->id, 'length' => '5,40', 'qty' => 2 ) ),
+		'ai_bar'   => array( array( 'on' => 1, 'section' => $ipe->id, 'length' => '3,95', 'qty' => 3 ), array( 'section' => $ipe->id, 'length' => '2', 'qty' => 9 ) ),
+		'ai_plate' => array( array( 'on' => 1, 't' => '15', 'l' => 300, 'w' => 250, 'qty' => 12, 'label' => 'Platines' ), array( 't' => '10', 'l' => 200, 'w' => 200, 'qty' => 4 ) ),
+		'ai_lin'   => array( array( 'on' => 1, 'section' => $ipe->id, 'm' => '84', 'label' => 'Sablières' ) ),
+	)
+);
+smw_assert( 2 === count( $in['lines'] ) && 3950 === $in['lines'][1]['length'] && 1 === count( $in['plates'] ) && 1 === count( $in['lin'] ), 'only the ticked lines of the DQE are added (bars, plates, metres)' );
+$rx = Cutting::optimize( $in );
+$x  = $rx['extras'];
+smw_assert( smw_near( $x['plates'][0]['kg'], 105.98, 0.05 ), 'plate 300 × 250 × 15 × 12 = 106,0 kg (calculator)' );
+smw_assert( 7 === $x['linear'][0]['bars'] && smw_near( $x['linear'][0]['kg'], 7 * 12 * (float) $ipe->mass_kg_m, 0.5 ), '84 m → 7 bars of 12 m, weight from the catalogue' );
+$kept = Cutting::read( array( 'src' => 1, 'plates' => array( array( 't' => '15', 'l' => 300, 'w' => 250, 'qty' => 12 ) ), 'lin' => array( array( 'section' => $ipe->id, 'm' => '84' ) ) ) );
+smw_assert( 1 === count( $kept['plates'] ) && 1 === count( $kept['lin'] ) && ! $kept['lines'], 'plates and metres kept in the address of the page (link, PDF, request)' );
+$pdf = SM\WeightEngine\CuttingActions::render( $rx );
+smw_assert( false !== strpos( $pdf, 'Plate 15 mm' ) || false !== strpos( $pdf, '15 mm' ), 'PDF: the pieces without a cutting plan are listed' );
+
 $t = $GLOBALS['smw_t'];
 printf( "\n%d passed, %d failed\n", $t['pass'], $t['fail'] );
 if ( $t['fail'] ) {

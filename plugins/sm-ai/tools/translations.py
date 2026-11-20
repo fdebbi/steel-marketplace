@@ -118,3 +118,15 @@ T.update({
 'The page has expired. Reload it and try again.': ('La page a expiré. Rechargez-la et réessayez.', 'انتهت صلاحية الصفحة. أعد تحميلها وحاول مجدداً.'),
 'Fill in the product first (category, profile, quantity…): the description is written from it.': ("Remplissez d'abord le produit (catégorie, profilé, quantité…) : la description est rédigée à partir de ces informations.", 'املأ معلومات المنتج أولاً (الفئة، المقطع، الكمية…): يُكتب الوصف انطلاقاً منها.'),
 })
+
+# 0.3.0: DQE IA.
+T.update({
+'DQE for the cutting optimiser': ('DQE pour l’optimiseur de découpe', 'كشف الكميات لمحسّن القص'),
+'Sign in to use this tool.': ('Connectez-vous pour utiliser cet outil.', 'سجّل الدخول لاستعمال هذه الأداة.'),
+'Your account is not complete: finish your profile to use the AI tools.': ('Votre compte n’est pas complet : terminez votre profil pour utiliser les outils IA.', 'حسابك غير مكتمل: أكمل ملفك لاستعمال أدوات الذكاء الاصطناعي.'),
+'Send an Excel file (.xlsx, .csv), a PDF or a photo (JPG, PNG, WebP).': ('Envoyez un fichier Excel (.xlsx, .csv), un PDF ou une photo (JPG, PNG, WebP).', 'أرسل ملف Excel (.xlsx أو .csv) أو PDF أو صورة (JPG، PNG، WebP).'),
+'Choose the document: Excel, PDF or a photo.': ('Choisissez le document : Excel, PDF ou une photo.', 'اختر المستند: Excel أو PDF أو صورة.'),
+'The spreadsheet is empty.': ('Le tableur est vide.', 'جدول البيانات فارغ.'),
+'Excel files cannot be read on this server: send a PDF or a CSV.': ('Les fichiers Excel ne peuvent pas être lus sur ce serveur : envoyez un PDF ou un CSV.', 'لا يمكن قراءة ملفات Excel على هذا الخادم: أرسل PDF أو CSV.'),
+'This Excel file cannot be read.': ('Ce fichier Excel ne peut pas être lu.', 'لا يمكن قراءة ملف Excel هذا.'),
+})

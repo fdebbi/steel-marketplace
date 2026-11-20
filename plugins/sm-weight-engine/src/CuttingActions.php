@@ -176,6 +176,32 @@ final class CuttingActions {
 			}
 			$y += 16;
 		}
+		// 0.7.0: what goes to the request for quotation without a cutting plan.
+		$x = $r['extras'] ?? array( 'plates' => array(), 'linear' => array() );
+		if ( $x['plates'] || $x['linear'] ) {
+			if ( $y > Pdf::H - 90 ) {
+				$p->page();
+				$y = 46;
+				$head();
+			}
+			$p->text( $x0, $y, __( 'Without a cutting plan (request for quotation)', 'sm-weight-engine' ), 11, true );
+			$y += 15;
+			foreach ( $x['linear'] as $l ) {
+				/* translators: 1: profile, 2: metres, 3: bars, 4: bar length, 5: weight. */
+				$p->text( $x0, $y, sprintf( __( '%1$s: %2$s m -> %3$d bars of %4$s m (%5$s kg)', 'sm-weight-engine' ), $l['designation'], self::num( $l['m'] ), $l['bars'], self::num( $l['bar'] / 1000 ), self::num( $l['kg'], 1 ) ), 9 );
+				$y += 13;
+			}
+			foreach ( $x['plates'] as $pl ) {
+				/* translators: 1: thickness, 2: length, 3: width, 4: number, 5: weight. */
+				$p->text( $x0, $y, sprintf( __( 'Plate %1$s mm, %2$s × %3$s mm × %4$d (%5$s kg)', 'sm-weight-engine' ), self::num( $pl['t'], fmod( $pl['t'], 1 ) ? 1 : 0 ), $pl['l'], $pl['w'], $pl['qty'], self::num( $pl['kg'], 1 ) ), 9 );
+				$y += 13;
+				if ( $y > Pdf::H - 60 ) {
+					$p->page();
+					$y = 46;
+				}
+			}
+			$y += 10;
+		}
 		if ( $y > Pdf::H - 70 ) {
 			$p->page();
 			$y = 46;
@@ -203,7 +229,8 @@ final class CuttingActions {
 			Forms::back( array( __( 'Your account cannot create requests for quotation.', 'sm-weight-engine' ) ) );
 		}
 		$r = Cutting::optimize( $in );
-		if ( ! $r['profiles'] ) {
+		$x = $r['extras'];
+		if ( ! $r['profiles'] && ! $x['plates'] && ! $x['linear'] ) {
 			Forms::back( array( __( 'Nothing to order: give the pieces to cut first.', 'sm-weight-engine' ) ) );
 		}
 		$lines = array();
@@ -221,15 +248,32 @@ final class CuttingActions {
 			krsort( $pieces, SORT_NUMERIC );
 			$desc[] = $p['designation'] . ' : ' . implode( ', ', array_map( static fn( $l, $n ) => $n . ' × ' . self::num( $l / 1000 ) . ' m', array_keys( $pieces ), $pieces ) );
 		}
-		if ( ! $lines ) {
+		// 0.7.0: quantities given in metres (bars to buy) and plates (in the description, with their weight).
+		foreach ( $x['linear'] as $l ) {
+			$lines[] = array( 'family' => $l['family'], 'section' => (string) $l['section'], 'qty' => (string) $l['bars'], 'length' => (string) ( $l['bar'] / 1000 ) );
+			/* translators: 1: profile, 2: metres. */
+			$desc[] = sprintf( __( '%1$s: %2$s m (no cutting plan)', 'sm-weight-engine' ), $l['designation'], self::num( $l['m'] ) );
+		}
+		$pl = array();
+		foreach ( $x['plates'] as $p ) {
+			/* translators: 1: thickness, 2: length, 3: width, 4: number, 5: weight. */
+			$pl[] = sprintf( __( 'Plate %1$s mm, %2$s × %3$s mm × %4$d (%5$s kg)', 'sm-weight-engine' ), self::num( $p['t'], fmod( $p['t'], 1 ) ? 1 : 0 ), $p['l'], $p['w'], $p['qty'], self::num( $p['kg'], 1 ) ) . ( '' !== $p['label'] ? ' - ' . $p['label'] : '' );
+		}
+		if ( ! $lines && ! $pl ) {
 			Forms::back( array( __( 'The offcuts in stock are enough: there is no bar to buy.', 'sm-weight-engine' ) ) );
 		}
 		$values = array(
 			'market'      => 'products',
 			'title'       => array( $lang => __( 'Bars according to a cutting plan', 'sm-weight-engine' ) ),
 			'lines'       => $lines,
-			'description' => __( 'Pieces to cut (cutting optimiser):', 'sm-weight-engine' ) . "\n- " . implode( "\n- ", $desc ),
+			'description' => ( $desc ? __( 'Pieces to cut (cutting optimiser):', 'sm-weight-engine' ) . "\n- " . implode( "\n- ", $desc ) : '' )
+				. ( $pl ? ( $desc ? "\n\n" : '' ) . __( 'Plates:', 'sm-weight-engine' ) . "\n- " . implode( "\n- ", $pl ) : '' ),
 		);
+		if ( ! $lines ) { // Plates only: the request is by weight.
+			$values['designation'] = __( 'Plates', 'sm-weight-engine' );
+			$values['quantity']    = (string) round( $x['kg'] );
+			$values['unit']        = 'kg';
+		}
 		Forms::prefill( $values, Language::url_for( sm_url( 'account', array( 'view' => 'rfq', 'new' => 1 ) ), $lang ), __( 'Request pre-filled with the bars of your cutting plan: check it before publishing.', 'sm-weight-engine' ) );
 	}
 }
