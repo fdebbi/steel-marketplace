@@ -65,13 +65,10 @@
 		inp.addEventListener( 'change', function () {
 			if ( ! inp.files || ! inp.files.length || ! aiForm ) { return; }
 			$$( '[data-smcut-aifile]', root ).forEach( function ( o ) { if ( o !== inp ) { o.value = ''; } } );
-			if ( busy ) { busy.hidden = false; }
-			$$( '[data-smcut-aisend]', root ).forEach( function ( b ) { b.disabled = true; } );
-			if ( aiForm.requestSubmit ) { aiForm.requestSubmit(); } else { aiForm.submit(); }
+			if ( aiForm.requestSubmit ) { aiForm.requestSubmit(); } else { aiForm.submit(); } // The common AI waiting screen shows (main.js).
 		} );
 	} );
 	if ( aiForm ) {
-		aiForm.addEventListener( 'submit', function () { if ( busy ) { busy.hidden = false; } } );
 		$$( '[data-smcut-aisend]', root ).forEach( function ( b ) { b.hidden = true; } ); // The file is sent as soon as it is chosen.
 	}
 

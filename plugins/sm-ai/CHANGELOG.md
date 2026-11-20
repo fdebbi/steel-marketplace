@@ -1,5 +1,11 @@
 # Changelog — sm-ai
 
+## 0.4.0 — 2026-11-20 (avec sm-stock 0.3.0 et le thème 0.51.0)
+
+- **« Lire un document (DQE IA) »** : un seul outil (remplace « Analyser un document » dans l'assistant) — DQE, devis, bon de commande, bon de livraison, facture, inventaire, marché. Après vérification, trois destinations (admin-post `sm_ai_doc_use`) : optimiseur de découpe (lignes ajoutées à sa liste), demande de devis (formulaire pré-rempli, publié par l'utilisateur), magasin (filtre `sm_ai_doc_to_stock`, sm-stock).
+- **Poids** : une ligne donnée par son poids total (ou en mètres) reçoit des barres de 12 m (modifiables) et le nombre calculé avec le poids au mètre du catalogue — valeur exacte, arrondie au-dessus pour acheter, au plus proche pour le magasin ; « calculé depuis le poids », à vérifier. Nombre et poids écrits : la longueur d'une barre est calculée. Les mètres sont traités comme un poids (plus de liste « en mètres » à part).
+- La lecture garde la page d'origine et la destination proposée (`for` : cutting, rfq, stock). Donnée `ai_cutlist` : `for`, `token`, `can_rfq`, `warehouse`.
+
 ## 0.3.0 — 2026-11-20 (avec sm-weight-engine 0.7.0 et le thème 0.50.0)
 
 - **DQE IA** (service `cutlist`, 1 crédit) : un document (DQE, devis, bon de commande, métré, marché) en Excel (.xlsx), CSV, PDF ou photo devient la liste de l'optimiseur de découpe. Les plans ne sont pas lus (plus tard).

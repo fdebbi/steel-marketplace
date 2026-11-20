@@ -5,7 +5,8 @@
  *  - sm_ai_search : smart search → marketplace search with the filters understood;
  *  - sm_ai_use    : open the listing or request for quotation form pre-filled with a result;
  *  - sm_ai_describe (admin-ajax, 0.2.0): description of a listing from the facts of the publication form;
- *  - sm_ai_cutlist (0.3.0): DQE IA — pieces of a document for the cutting optimiser → back to the optimiser.
+ *  - sm_ai_cutlist (0.3.0): read a document (DQE IA) → back to the page that asked, with the lines to check;
+ *  - sm_ai_doc_use (0.4.0): the lines checked go to the cutting optimiser, a request for quotation or the warehouse.
  * Results are kept 2 hours for the user who asked (transient), never published as is.
  *
  * @package SM\Ai
@@ -32,6 +33,7 @@ final class Form {
 		add_action( 'wp_ajax_nopriv_sm_ai_describe', array( __CLASS__, 'describe' ) );
 		add_action( 'admin_post_sm_ai_cutlist', array( __CLASS__, 'cutlist' ) );
 		add_action( 'admin_post_nopriv_sm_ai_cutlist', array( __CLASS__, 'cutlist' ) );
+		add_action( 'admin_post_sm_ai_doc_use', array( __CLASS__, 'doc_use' ) );
 	}
 
 	/** Page of the optimiser to go back to (same site only). */
@@ -74,16 +76,161 @@ final class Form {
 		$company = sm_current_company();
 		AuditLog::add( 'ai.used', 'ai', 0, array( 'feature' => 'cutlist' ), null, $company ? (int) $company->id : 0 );
 		$token = wp_generate_password( 16, false );
-		set_transient( 'sm_ai_c_' . $token, array( 'user' => get_current_user_id(), 'result' => $res ), 2 * HOUR_IN_SECONDS );
+		$for = sanitize_key( (string) Forms::post( 'for' ) );
+		set_transient( 'sm_ai_c_' . $token, array( 'user' => get_current_user_id(), 'result' => $res, 'back' => $back, 'for' => in_array( $for, array( 'cutting', 'rfq', 'stock' ), true ) ? $for : '' ), 2 * HOUR_IN_SECONDS );
 		wp_safe_redirect( add_query_arg( 'ai', $token, $back ) . '#smcut-ai' );
 		exit;
 	}
 
 	/** A DQE result of the current user, or null. */
 	public static function cutlist_result( $token ) {
+		$r = self::cutlist_entry( $token );
+		return $r ? $r['result'] : null;
+	}
+
+	/** The stored reading (result, back, for) of the current user, or null. */
+	public static function cutlist_entry( $token ) {
 		$token = preg_replace( '/[^A-Za-z0-9]/', '', (string) $token );
 		$r     = '' !== $token ? get_transient( 'sm_ai_c_' . $token ) : false;
-		return is_array( $r ) && get_current_user_id() && (int) $r['user'] === get_current_user_id() ? $r['result'] : null;
+		return is_array( $r ) && get_current_user_id() && (int) $r['user'] === get_current_user_id() ? $r : null;
+	}
+
+	/**
+	 * Lines ticked in the check: bars {family, section, length (m), qty, qty_stock,
+	 * doc_kg, text} and plates {t, l, w, qty, label}, read from the form.
+	 */
+	public static function checked_lines() {
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Forms::begin() in the handler.
+		$raw = static fn( $k ) => isset( $_POST[ $k ] ) && is_array( $_POST[ $k ] ) ? map_deep( wp_unslash( $_POST[ $k ] ), 'sanitize_text_field' ) : array();
+		// phpcs:enable
+		$num  = static fn( $v ) => (float) str_replace( array( ',', ' ' ), array( '.', '' ), (string) $v );
+		$bars = array();
+		foreach ( array_slice( $raw( 'ai_bar' ), 0, 80 ) as $r ) {
+			if ( ! is_array( $r ) || empty( $r['on'] ) ) {
+				continue;
+			}
+			$sid = absint( $r['section'] ?? 0 );
+			$s   = $sid && class_exists( '\SM\WeightEngine\Catalogue' ) ? \SM\WeightEngine\Catalogue::get( $sid ) : null;
+			$len = round( $num( $r['length'] ?? 0 ), 3 );
+			$qty = absint( $r['qty'] ?? 0 );
+			if ( ! $s || $len <= 0 || $len > 24 || ! $qty ) {
+				continue;
+			}
+			$bars[] = array(
+				'family'    => $s->family,
+				'section'   => (int) $s->id,
+				'designation' => $s->designation,
+				'length'    => $len,
+				'qty'       => min( 10000, $qty ),
+				'qty_stock' => min( 10000, max( 1, absint( $r['qty_stock'] ?? $qty ) ) ),
+				'doc_kg'    => max( 0, round( $num( $r['doc_kg'] ?? 0 ), 1 ) ),
+				'text'      => mb_substr( (string) ( $r['text'] ?? '' ), 0, 120 ),
+			);
+		}
+		$plates = array();
+		foreach ( array_slice( $raw( 'ai_plate' ), 0, 40 ) as $r ) {
+			if ( ! is_array( $r ) || empty( $r['on'] ) ) {
+				continue;
+			}
+			$t = round( $num( $r['t'] ?? 0 ), 1 );
+			$l = absint( $r['l'] ?? 0 );
+			$w = absint( $r['w'] ?? 0 );
+			$q = absint( $r['qty'] ?? 0 );
+			if ( $t > 0 && $t <= 200 && $l > 0 && $l <= 12000 && $w > 0 && $w <= 3000 && $q > 0 ) {
+				$plates[] = array( 't' => $t, 'l' => $l, 'w' => $w, 'qty' => min( 10000, $q ), 'label' => mb_substr( (string) ( $r['label'] ?? '' ), 0, 80 ) );
+			}
+		}
+		return array( $bars, $plates );
+	}
+
+	/** Lines checked → cutting optimiser, request for quotation or warehouse (0.4.0). */
+	public static function doc_use() {
+		Forms::begin( 'ai_doc_use' );
+		$entry = self::cutlist_entry( Forms::post( 'r' ) );
+		if ( ! $entry ) {
+			Forms::back( array( __( 'This reading expired. Read the document again.', 'sm-ai' ) ) );
+		}
+		list( $bars, $plates ) = self::checked_lines();
+		if ( ! $bars && ! $plates ) {
+			Forms::back( array( __( 'Tick at least one complete line (profile, length and number).', 'sm-ai' ) ) );
+		}
+		$lang = Language::current();
+		$dest = sanitize_key( (string) Forms::post( 'dest' ) );
+		if ( 'cutting' === $dest ) {
+			// Back to the optimiser that asked (its list and settings), or a new one; the lines are added.
+			$back = (string) $entry['back'];
+			$base = false !== strpos( $back, wp_parse_url( sm_url( 'cutting' ), PHP_URL_PATH ) ) ? $back : Language::url_for( sm_url( 'cutting' ), $lang );
+			$q    = array();
+			wp_parse_str( (string) wp_parse_url( $base, PHP_URL_QUERY ), $q );
+			$rows = array_values( (array) ( $q['rows'] ?? array() ) );
+			foreach ( $bars as $b ) {
+				$rows[] = array( 'family' => $b['family'], 'section' => $b['section'], 'length' => $b['length'], 'qty' => $b['qty'] );
+			}
+			$pl = array_values( (array) ( $q['plates'] ?? array() ) );
+			foreach ( $plates as $p ) {
+				$pl[] = $p;
+			}
+			$q['rows']   = $rows;
+			$q['plates'] = $pl;
+			$q['src']    = $q['src'] ?? 1;
+			$q           = array_merge( array( 'market' => 1, 'mine' => 1, 'mine_new' => 1, 'mine_reuse' => 1, 'lots' => 1, 'conds' => array( 'new', 'new_surplus', 'excellent', 'good' ) ), $q );
+			wp_safe_redirect( strtok( $base, '?' ) . '?' . http_build_query( $q ) . '#smcut-result' );
+			exit;
+		}
+		if ( 'rfq' === $dest ) {
+			if ( ! sm_can( 'rfq.create' ) ) {
+				Forms::back( array( __( 'Your account cannot create requests for quotation.', 'sm-ai' ) ) );
+			}
+			$lines = array();
+			$notes = array();
+			foreach ( array_slice( $bars, 0, 30 ) as $b ) {
+				$lines[] = array( 'family' => $b['family'], 'section' => (string) $b['section'], 'qty' => (string) $b['qty'], 'length' => (string) $b['length'] );
+				if ( $b['doc_kg'] > 0 ) {
+					/* translators: 1: profile, 2: weight written, 3: bars, 4: length. */
+					$notes[] = sprintf( __( '%1$s: %2$s kg in the document (%3$d bars of %4$s m)', 'sm-ai' ), $b['designation'], number_format_i18n( $b['doc_kg'], 0 ), $b['qty'], number_format_i18n( $b['length'], 2 ) );
+				}
+			}
+			foreach ( $plates as $p ) {
+				/* translators: 1: thickness, 2: length, 3: width, 4: number. */
+				$notes[] = sprintf( __( 'Plate %1$s mm, %2$d × %3$d mm × %4$d', 'sm-ai' ), number_format_i18n( $p['t'], fmod( $p['t'], 1 ) ? 1 : 0 ), $p['l'], $p['w'], $p['qty'] ) . ( '' !== $p['label'] ? ' - ' . $p['label'] : '' );
+			}
+			$r     = $entry['result'];
+			$title = '' !== (string) ( $r['summary'] ?? '' ) ? mb_substr( rtrim( (string) $r['summary'], '.' ), 0, 100 ) : __( 'Request according to a document', 'sm-ai' );
+			$v     = array(
+				'market'      => 'products',
+				'title'       => array( $lang => $title ),
+				'lines'       => $lines,
+				'description' => $notes ? __( 'From the document:', 'sm-ai' ) . "\n- " . implode( "\n- ", $notes ) : '',
+			);
+			if ( ! $lines ) {
+				$v['designation'] = __( 'Plates', 'sm-ai' );
+				$v['quantity']    = '';
+				$v['unit']        = 'kg';
+			}
+			Forms::prefill( $v, Language::url_for( sm_url( 'account', array( 'view' => 'rfq', 'new' => 1 ) ), $lang ), __( 'Request pre-filled from your document: check every line before publishing. Weights are computed by the weight engine.', 'sm-ai' ) );
+		}
+		if ( 'stock' === $dest ) {
+			$opts = array( 'market' => 'reuse' === Forms::post( 'stock_market' ) ? 'reuse' : 'new', 'location' => mb_substr( sanitize_text_field( (string) Forms::post( 'location' ) ), 0, 120 ) );
+			/**
+			 * The warehouse (sm-stock 0.3.0) takes the lines: WP_Error, or { items, url }.
+			 *
+			 * @param mixed  $done    null when no warehouse.
+			 * @param object $company Company.
+			 * @param array  $bars    Bars (qty_stock, doc_kg…).
+			 * @param array  $plates  Plates.
+			 * @param array  $opts    market new|reuse, location.
+			 */
+			$done = apply_filters( 'sm_ai_doc_to_stock', null, sm_current_company(), $bars, $plates, $opts );
+			if ( null === $done ) {
+				Forms::back( array( __( 'Your account has no warehouse.', 'sm-ai' ) ) );
+			}
+			if ( is_wp_error( $done ) ) {
+				Forms::back( array( $done->get_error_message() ) );
+			}
+			/* translators: %d: lines. */
+			Forms::back( array(), sprintf( _n( '%d line added to your warehouse, kept in stock only.', '%d lines added to your warehouse, kept in stock only.', count( $done['items'] ), 'sm-ai' ), count( $done['items'] ) ), $done['url'] );
+		}
+		Forms::back( array( __( 'Choose what to do with the lines.', 'sm-ai' ) ) );
 	}
 
 	/** Where a refusal leads: login, upgrade (no credit left) or nothing to do. */

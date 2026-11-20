@@ -30,7 +30,7 @@ $icons  = array( 'listing' => 'package', 'recognize' => 'camera', 'document' => 
 $intro  = array(
 	'listing'   => __( 'Send photos of your steel and a few words: the assistant proposes the category, the profile, the title in French and Arabic and the description, and tells you what is missing. You check everything before publishing.', 'sm-marketplace' ),
 	'recognize' => __( 'Not sure which profile it is? Send one or two photos (end view if possible): the assistant proposes the possible profiles, checked against the catalogue.', 'sm-marketplace' ),
-	'document'  => __( 'Send a bill of quantities, a list of profiles or a specification (PDF or photo): the assistant extracts the steel items; the weight engine weighs the known profiles and you can create a request for quotation.', 'sm-marketplace' ),
+	'document'  => __( 'Bill of quantities, quotation, purchase order, delivery note, invoice, inventory or tender (Excel, PDF or photo): the AI reads the profiles and the plates. You check, then you choose: cutting optimiser, request for quotation or your warehouse.', 'sm-marketplace' ),
 );
 $base = sm_page_url( 'account', array( 'view' => 'ai' ) );
 ?>
@@ -58,8 +58,26 @@ $base = sm_page_url( 'account', array( 'view' => 'ai' ) );
 
 		<?php if ( ! $t['available'] ) : ?>
 			<?php sm_component( 'ai-gate', array( 'state' => $t['state'] ?? 'blocked', 'reason' => $t['reason'] ) ); ?>
+		<?php elseif ( 'document' === $tool ) : // 0.51.0: « Read a document » (DQE IA): one reading, three destinations. ?>
+			<?php
+			$for  = sanitize_key( (string) sm_theme_query_arg( 'for', '' ) );
+			$back = add_query_arg( array_filter( array( 'tool' => 'document', 'for' => $for ) ), $base );
+			sm_theme_form_open( 'ai_cutlist', array( 'class' => 'sm-form smai-form', 'enctype' => 'multipart/form-data' ) + sm_ai_wait_attrs( __( 'The AI is reading your document…', 'sm-marketplace' ) ) );
+			?>
+				<input type="hidden" name="back" value="<?php echo esc_url( $back ); ?>">
+				<input type="hidden" name="for" value="<?php echo esc_attr( $for ); ?>">
+				<label class="sm-upload" data-sm-upload>
+					<input type="file" name="document" accept=".xlsx,.csv,.pdf,image/*" required>
+					<?php sm_icon( 'file', 'sm-upload__icon' ); ?>
+					<strong><?php esc_html_e( 'Choose the document', 'sm-marketplace' ); ?></strong>
+					<small><?php echo esc_html( sprintf( /* translators: %d: MB. */ __( 'Excel (.xlsx, .csv), PDF or photo, %d MB at most. Plans will come later.', 'sm-marketplace' ), (int) $ai['pdf_mb'] ) ); ?></small>
+				</label>
+				<div class="smp-actions">
+					<button class="sm-btn sm-btn--ai" type="submit"><?php sm_icon( 'ai' ); ?><span><?php esc_html_e( 'Read the document', 'sm-marketplace' ); ?></span></button>
+				</div>
+			</form>
 		<?php else : ?>
-			<?php sm_theme_form_open( 'ai_run', array( 'class' => 'sm-form smai-form', 'enctype' => 'multipart/form-data', 'data-sm-busy' => __( 'The assistant is working… (up to a minute)', 'sm-marketplace' ) ) ); ?>
+			<?php sm_theme_form_open( 'ai_run', array( 'class' => 'sm-form smai-form', 'enctype' => 'multipart/form-data' ) + sm_ai_wait_attrs( 'recognize' === $tool ? __( 'The AI is looking at your photos…', 'sm-marketplace' ) : __( 'The AI is preparing your listing…', 'sm-marketplace' ) ) ); ?>
 				<input type="hidden" name="tool" value="<?php echo esc_attr( $tool ); ?>">
 				<?php if ( 'listing' === $tool && count( $ai['markets'] ) > 1 ) : ?>
 					<div class="sm-field">
@@ -100,6 +118,18 @@ $base = sm_page_url( 'account', array( 'view' => 'ai' ) );
 		<?php endif; ?>
 	</section>
 
+	<?php
+	if ( 'document' === $tool ) :
+		$doc = sm_theme_data( 'ai_cutlist', array( 'token' => (string) sm_theme_query_arg( 'ai', '' ) ) );
+		if ( is_array( $doc ) && ! empty( $doc['result'] ) ) :
+			?>
+			<section id="sm-ai-result" class="smai-result" aria-live="polite">
+				<?php sm_component( 'ai-doc-review', array( 'ai' => $doc, 'sections' => (array) sm_theme_data( 'cutting_sections' ) ) ); ?>
+			</section>
+			<?php
+		endif;
+	endif;
+	?>
 	<?php if ( $result ) : ?>
 		<section id="sm-ai-result" class="smai-result" aria-live="polite">
 			<?php sm_component( 'ai-result-' . $tool, array( 'result' => $result, 'can_rfq' => ! empty( $ai['can_rfq'] ) ) ); ?>

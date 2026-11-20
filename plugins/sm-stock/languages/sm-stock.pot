@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Stock 0.2.0\n"
+"Project-Id-Version: SM Stock 0.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-stock\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-19T23:00:22+00:00\n"
+"POT-Creation-Date: 2026-11-20T11:13:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-stock\n"
@@ -105,11 +105,24 @@ msgid "Tick at least one offcut to add."
 msgstr ""
 
 #. translators: %d: number of offcuts.
-#: src/Cutting.php:254
+#: src/Cutting.php:256
 msgid "%d offcut added to your reuse warehouse, kept in stock only."
 msgid_plural "%d offcuts added to your reuse warehouse, kept in stock only."
 msgstr[0] ""
 msgstr[1] ""
+
+#. translators: %s: what is wrong.
+#: src/Documents.php:101
+msgid "A line cannot be added: %s"
+msgstr ""
+
+#: src/Documents.php:107
+msgid "No line can go in the warehouse."
+msgstr ""
+
+#: src/Documents.php:118
+msgid "Read from a document"
+msgstr ""
 
 #: src/Items.php:138
 msgid "A reference has 1 to 20 letters, digits, dashes, dots or slashes."
@@ -169,7 +182,7 @@ msgstr ""
 msgid "whole lot"
 msgstr ""
 
-#: src/Plugin.php:41
+#: src/Plugin.php:42
 msgid "Item kept in the warehouse"
 msgstr ""
 

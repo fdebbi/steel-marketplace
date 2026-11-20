@@ -44,8 +44,15 @@ final class Bridge {
 		if ( ! $s ) {
 			return null;
 		}
-		$token = (string) ( $args['token'] ?? '' );
-		return $s + array( 'result' => '' !== $token ? Form::cutlist_result( $token ) : null );
+		$token = preg_replace( '/[^A-Za-z0-9]/', '', (string) ( $args['token'] ?? '' ) );
+		$entry = '' !== $token ? Form::cutlist_entry( $token ) : null;
+		return $s + array(
+			'result'    => $entry ? $entry['result'] : null,
+			'for'       => $entry ? $entry['for'] : '',
+			'token'     => $entry ? $token : '',
+			'can_rfq'   => sm_can( 'rfq.create' ),
+			'warehouse' => (bool) apply_filters( 'sm_theme_data_stock_enabled', null ),
+		);
 	}
 
 	/** One service for the interface: available now, or why not and what to do. */
@@ -75,7 +82,7 @@ final class Bridge {
 		}
 		$company = sm_current_company();
 		$out     = array();
-		foreach ( array( 'search', 'describe', 'cutlist', 'recognize', 'document', 'listing' ) as $id ) {
+		foreach ( array( 'search', 'describe', 'cutlist', 'recognize', 'listing' ) as $id ) { // 0.4.0: « document » is read by the DQE IA (cutlist).
 			$s = self::service( $id, $company );
 			if ( $s ) {
 				$out[ $id ] = $s;
@@ -105,12 +112,15 @@ final class Bridge {
 		$company = sm_current_company();
 		$s       = Settings::all();
 		$out     = array();
-		foreach ( array( 'listing', 'recognize', 'document' ) as $id ) {
+		// 0.4.0: the « document » tab reads with the DQE IA (one tool: cutting, request, warehouse).
+		foreach ( array( 'listing', 'recognize', 'document' ) as $tab ) {
+			$id    = 'document' === $tab ? 'cutlist' : $tab;
 			$class = Gateway::feature( $id );
 			$ok    = Gateway::check( $id, $company );
 			list( $provider ) = Settings::route( $id );
-			$out[ $id ] = array(
-				'id'         => $id,
+			$out[ $tab ] = array(
+				'id'         => $tab,
+				'feature'    => $id,
 				'label'      => $class::label(),
 				'available'  => true === $ok,
 				'reason'     => is_wp_error( $ok ) ? $ok->get_error_message() : '',

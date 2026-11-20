@@ -178,3 +178,23 @@
 .smcut-src.is-x .smcut-dot { background: #F3C94B; }
 .smcut-xrow { display: flex; justify-content: space-between; gap: var(--sm-s3); padding: 6px 0; border-block-start: 1px dashed var(--sm-line); font-size: var(--sm-fs-sm); }
 @media print { .smcut-ai, .smcut-import { display: none !important; } }
+
+/* 0.51.0: « Read a document » — weight column, destinations, entries */
+.smdoc-calc { color: #7A5600 !important; font-weight: 600; white-space: nowrap; }
+.smdoc-kg small { display: block; }
+.smdoc-note { font-size: var(--sm-fs-xs); margin: 4px 0 0; }
+.smdoc-what { margin-block-start: var(--sm-s4) !important; }
+.smdoc-dest { display: grid; gap: var(--sm-s3); grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.smdoc-d { display: grid; gap: 6px; align-content: start; padding: var(--sm-s3); border: 1.5px solid var(--sm-line); border-radius: 14px; background: var(--sm-surface); }
+.smdoc-d b { display: flex; align-items: center; gap: 6px; }
+.smdoc-d p { margin: 0; font-size: var(--sm-fs-xs); color: var(--sm-muted); }
+.smdoc-d .sm-btn { margin-block-start: auto; }
+.smdoc-d.is-st { border-color: color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 40%, var(--sm-line)); background: color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 4%, var(--sm-surface)); }
+.smdoc-d.is-for { border-color: var(--sm-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sm-accent) 18%, transparent); }
+.smdoc-seg { display: flex; gap: 6px; flex-wrap: wrap; }
+.smdoc-seg label { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--sm-line); border-radius: 999px; padding: 2px 10px; font-size: var(--sm-fs-xs); font-weight: 600; cursor: pointer; }
+.smdoc-loc { display: grid; gap: 2px; font-size: var(--sm-fs-xs); font-weight: 600; }
+.smdoc-loc input { min-block-size: 36px; padding: 4px 8px; border: 1px solid var(--sm-line); border-radius: 8px; font: inherit; }
+.smdoc-foot { margin: var(--sm-s2) 0 0; color: var(--sm-muted); }
+.smdoc-entry { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: var(--sm-s3); border: 1px dashed color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 45%, var(--sm-line)); border-radius: 12px; background: color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 4%, var(--sm-surface)); margin: 0 0 var(--sm-s4); font-size: var(--sm-fs-sm); }
+.smai-result .smdoc { margin-block-start: var(--sm-s4); }

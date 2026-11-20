@@ -42,7 +42,7 @@ final class Admin {
 			'search'    => __( 'Smart search', 'sm-ai' ),
 			'document'  => __( 'Document analysis', 'sm-ai' ),
 			'describe'  => __( 'Listing description', 'sm-ai' ),
-			'cutlist'   => __( 'DQE for the cutting optimiser', 'sm-ai' ),
+			'cutlist'   => __( 'Read a document (DQE AI)', 'sm-ai' ),
 			'test'      => __( 'Connection test', 'sm-ai' ),
 		);
 	}

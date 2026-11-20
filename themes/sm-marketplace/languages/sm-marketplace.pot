@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.50.0\n"
+"Project-Id-Version: SM Marketplace 0.51.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-20T10:01:03+00:00\n"
+"POT-Creation-Date: 2026-11-20T11:15:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #: footer.php:22
 #: inc/menus.php:16
-#: inc/template-tags.php:279
+#: inc/template-tags.php:295
 #: templates/front-page-template.php:80
 #: templates/marketplace-products.php:15
 msgid "Steel products"
@@ -67,7 +67,7 @@ msgstr ""
 
 #: footer.php:23
 #: inc/menus.php:24
-#: inc/template-tags.php:280
+#: inc/template-tags.php:296
 #: templates/front-page-template.php:81
 #: templates/marketplace-reuse.php:15
 msgid "Steel reuse"
@@ -75,7 +75,7 @@ msgstr ""
 
 #: footer.php:24
 #: inc/menus.php:32
-#: inc/template-tags.php:281
+#: inc/template-tags.php:297
 #: templates/front-page-template.php:82
 #: templates/marketplace-buildings.php:15
 msgid "Steel buildings"
@@ -100,7 +100,7 @@ msgstr ""
 
 #: footer.php:31
 #: inc/menus.php:62
-#: inc/template-tags.php:282
+#: inc/template-tags.php:298
 #: template-parts/components/card-service.php:23
 #: templates/front-page-template.php:83
 #: templates/marketplace-services.php:17
@@ -113,7 +113,7 @@ msgstr ""
 #: header.php:78
 #: header.php:108
 #: inc/menus.php:63
-#: inc/template-tags.php:283
+#: inc/template-tags.php:299
 #: templates/front-page-template.php:84
 #: templates/marketplace-engineers.php:35
 #: templates/mission-request.php:23
@@ -147,7 +147,6 @@ msgstr ""
 #: footer.php:36
 #: header.php:28
 #: header.php:111
-#: templates/ai-assistant.php:25
 #: templates/cutting-optimizer.php:26
 #: templates/cutting-optimizer.php:27
 msgid "Cutting optimiser"
@@ -206,7 +205,7 @@ msgid "Quick navigation"
 msgstr ""
 
 #: footer.php:57
-#: inc/template-tags.php:424
+#: inc/template-tags.php:440
 msgid "Home"
 msgstr ""
 
@@ -272,9 +271,9 @@ msgstr ""
 #: header.php:47
 #: template-parts/components/filter-panel.php:88
 #: template-parts/components/product-form.php:66
-#: template-parts/components/rfq-form.php:48
+#: template-parts/components/rfq-form.php:54
 #: template-parts/components/rfq-single.php:21
-#: template-parts/dashboard/ai.php:66
+#: template-parts/dashboard/ai.php:84
 #: template-parts/dashboard/listings.php:32
 #: template-parts/dashboard/listings.php:46
 #: template-parts/dashboard/publish.php:35
@@ -323,7 +322,7 @@ msgid "Hide"
 msgstr ""
 
 #: inc/assets.php:69
-#: inc/template-tags.php:577
+#: inc/template-tags.php:593
 msgid "Saved"
 msgstr ""
 
@@ -362,8 +361,8 @@ msgid "Undo"
 msgstr ""
 
 #: inc/assets.php:79
-#: inc/template-tags.php:581
-#: inc/template-tags.php:587
+#: inc/template-tags.php:597
+#: inc/template-tags.php:603
 #: template-parts/components/my-products.php:139
 #: template-parts/components/portfolio-grid.php:30
 #: template-parts/components/rfq-single.php:138
@@ -591,17 +590,25 @@ msgstr ""
 msgid "Top utility menu"
 msgstr ""
 
-#: inc/template-tags.php:38
+#: inc/template-tags.php:43
+msgid "It can take up to a minute. Do not close the page."
+msgstr ""
+
+#: inc/template-tags.php:44
+msgid "The answer is taking longer: please wait a little more."
+msgstr ""
+
+#: inc/template-tags.php:54
 msgid "Uses artificial intelligence: suggestions to check"
 msgstr ""
 
-#: inc/template-tags.php:40
+#: inc/template-tags.php:56
 msgid "AI"
 msgstr ""
 
-#: inc/template-tags.php:138
-#: inc/template-tags.php:450
-#: inc/template-tags.php:510
+#: inc/template-tags.php:154
+#: inc/template-tags.php:466
+#: inc/template-tags.php:526
 #: template-parts/components/cutting-optimizer.php:390
 #: template-parts/components/product-tech.php:31
 #: template-parts/components/product-tech.php:568
@@ -610,200 +617,200 @@ msgid_plural "pieces"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:139
-#: inc/template-tags.php:455
+#: inc/template-tags.php:155
+#: inc/template-tags.php:471
 msgid "lot"
 msgstr ""
 
 #. translators: %s: width of a flat bar in mm.
-#: inc/template-tags.php:184
+#: inc/template-tags.php:200
 msgid "Width %s mm"
 msgstr ""
 
-#: inc/template-tags.php:238
+#: inc/template-tags.php:254
 msgid "New unused surplus"
 msgstr ""
 
-#: inc/template-tags.php:239
+#: inc/template-tags.php:255
 msgid "Excellent used condition"
 msgstr ""
 
-#: inc/template-tags.php:240
+#: inc/template-tags.php:256
 msgid "Good used condition"
 msgstr ""
 
-#: inc/template-tags.php:241
+#: inc/template-tags.php:257
 msgid "Requires inspection or treatment"
 msgstr ""
 
-#: inc/template-tags.php:242
+#: inc/template-tags.php:258
 msgid "Scrap / recycling only"
 msgstr ""
 
-#: inc/template-tags.php:259
+#: inc/template-tags.php:275
 msgid "Actual weight"
 msgstr ""
 
-#: inc/template-tags.php:260
+#: inc/template-tags.php:276
 #: template-parts/components/product-tech.php:522
 msgid "Estimated weight"
 msgstr ""
 
-#: inc/template-tags.php:261
+#: inc/template-tags.php:277
 #: template-parts/components/listing-inventory.php:78
 #: template-parts/components/listing-inventory.php:79
 #: template-parts/components/product-tech.php:502
 msgid "Weight of the declared elements"
 msgstr ""
 
-#: inc/template-tags.php:263
+#: inc/template-tags.php:279
 #: template-parts/components/ai-result-document.php:25
 #: template-parts/components/rfq-single.php:33
 msgid "Theoretical weight"
 msgstr ""
 
-#: inc/template-tags.php:269
+#: inc/template-tags.php:285
 #: templates/styleguide.php:51
 msgid "actual"
 msgstr ""
 
-#: inc/template-tags.php:270
+#: inc/template-tags.php:286
 msgid "estimated"
 msgstr ""
 
-#: inc/template-tags.php:271
+#: inc/template-tags.php:287
 msgid "declared elements"
 msgstr ""
 
-#: inc/template-tags.php:273
+#: inc/template-tags.php:289
 #: templates/styleguide.php:52
 msgid "theoretical"
 msgstr ""
 
-#: inc/template-tags.php:304
+#: inc/template-tags.php:320
 msgid "Steel construction contractor"
 msgstr ""
 
-#: inc/template-tags.php:305
+#: inc/template-tags.php:321
 msgid "Manufacturing"
 msgstr ""
 
-#: inc/template-tags.php:306
+#: inc/template-tags.php:322
 msgid "Supply and distribution"
 msgstr ""
 
-#: inc/template-tags.php:307
+#: inc/template-tags.php:323
 msgid "Recycling and scrap"
 msgstr ""
 
-#: inc/template-tags.php:308
+#: inc/template-tags.php:324
 msgid "Dismantling and second-hand resale"
 msgstr ""
 
-#: inc/template-tags.php:311
+#: inc/template-tags.php:327
 msgid "Structural steel fabricator"
 msgstr ""
 
-#: inc/template-tags.php:312
+#: inc/template-tags.php:328
 msgid "Steel structure erector"
 msgstr ""
 
-#: inc/template-tags.php:313
+#: inc/template-tags.php:329
 msgid "Roofing and cladding installer"
 msgstr ""
 
-#: inc/template-tags.php:314
+#: inc/template-tags.php:330
 msgid "Welder"
 msgstr ""
 
-#: inc/template-tags.php:315
+#: inc/template-tags.php:331
 msgid "Boilermaker"
 msgstr ""
 
-#: inc/template-tags.php:316
+#: inc/template-tags.php:332
 msgid "Metalworker (locksmith)"
 msgstr ""
 
-#: inc/template-tags.php:317
+#: inc/template-tags.php:333
 msgid "Lifting and handling"
 msgstr ""
 
-#: inc/template-tags.php:318
+#: inc/template-tags.php:334
 msgid "Sandblasting and painting"
 msgstr ""
 
-#: inc/template-tags.php:322
+#: inc/template-tags.php:338
 #: template-parts/dashboard/company.php:41
 #: templates/auth-register.php:30
 msgid "Company"
 msgstr ""
 
-#: inc/template-tags.php:323
+#: inc/template-tags.php:339
 #: templates/auth-register.php:31
 #: templates/engineer-apply.php:305
 msgid "Professional"
 msgstr ""
 
-#: inc/template-tags.php:324
-#: inc/template-tags.php:327
+#: inc/template-tags.php:340
+#: inc/template-tags.php:343
 #: template-parts/dashboard/engineer-files.php:22
 #: templates/auth-register.php:32
 msgid "Client"
 msgstr ""
 
-#: inc/template-tags.php:325
-#: inc/template-tags.php:327
+#: inc/template-tags.php:341
+#: inc/template-tags.php:343
 msgid "Partner engineer"
 msgstr ""
 
-#: inc/template-tags.php:370
+#: inc/template-tags.php:386
 msgid "Not verified"
 msgstr ""
 
-#: inc/template-tags.php:371
+#: inc/template-tags.php:387
 #: template-parts/components/card-featured.php:35
 #: template-parts/directory.php:107
 #: templates/company-profile.php:98
 msgid "Account verified"
 msgstr ""
 
-#: inc/template-tags.php:373
+#: inc/template-tags.php:389
 #: template-parts/components/verification-steps.php:19
 msgid "Verified engineer"
 msgstr ""
 
-#: inc/template-tags.php:383
+#: inc/template-tags.php:399
 #: template-parts/components/verification-steps.php:17
 msgid "Verified professional"
 msgstr ""
 
-#: inc/template-tags.php:383
+#: inc/template-tags.php:399
 msgid "Verified company"
 msgstr ""
 
-#: inc/template-tags.php:390
+#: inc/template-tags.php:406
 msgid "just now"
 msgstr ""
 
 #. translators: %s: number of hours.
-#: inc/template-tags.php:395
+#: inc/template-tags.php:411
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s: number of days.
-#: inc/template-tags.php:399
+#: inc/template-tags.php:415
 msgid "%s day ago"
 msgid_plural "%s days ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:423
+#: inc/template-tags.php:439
 msgid "Breadcrumb"
 msgstr ""
 
-#: inc/template-tags.php:463
+#: inc/template-tags.php:479
 #: template-parts/components/my-products.php:28
 #: template-parts/components/my-products.php:39
 #: template-parts/components/stock-warehouse.php:46
@@ -811,77 +818,77 @@ msgstr ""
 msgid "Waiting for review"
 msgstr ""
 
-#: inc/template-tags.php:464
+#: inc/template-tags.php:480
 msgid "Open for offers"
 msgstr ""
 
-#: inc/template-tags.php:465
+#: inc/template-tags.php:481
 msgid "Awarded"
 msgstr ""
 
-#: inc/template-tags.php:466
+#: inc/template-tags.php:482
 #: template-parts/components/deal-list.php:23
 msgid "Closed"
 msgstr ""
 
-#: inc/template-tags.php:467
+#: inc/template-tags.php:483
 msgid "Deadline passed"
 msgstr ""
 
-#: inc/template-tags.php:468
+#: inc/template-tags.php:484
 #: template-parts/components/my-products.php:29
 #: template-parts/components/my-products.php:40
 #: template-parts/dashboard/services.php:26
 msgid "Changes requested"
 msgstr ""
 
-#: inc/template-tags.php:475
+#: inc/template-tags.php:491
 #: template-parts/dashboard/deal.php:53
 msgid "Sent"
 msgstr ""
 
-#: inc/template-tags.php:476
+#: inc/template-tags.php:492
 msgid "Shortlisted"
 msgstr ""
 
-#: inc/template-tags.php:477
-#: inc/template-tags.php:531
+#: inc/template-tags.php:493
+#: inc/template-tags.php:547
 #: template-parts/components/visits-list.php:20
 msgid "Accepted"
 msgstr ""
 
-#: inc/template-tags.php:478
+#: inc/template-tags.php:494
 msgid "Not retained"
 msgstr ""
 
-#: inc/template-tags.php:479
+#: inc/template-tags.php:495
 msgid "Withdrawn"
 msgstr ""
 
-#: inc/template-tags.php:505
+#: inc/template-tags.php:521
 msgid "project"
 msgstr ""
 
-#: inc/template-tags.php:511
+#: inc/template-tags.php:527
 msgid "hour"
 msgstr ""
 
-#: inc/template-tags.php:512
+#: inc/template-tags.php:528
 msgid "day"
 msgstr ""
 
-#: inc/template-tags.php:520
+#: inc/template-tags.php:536
 #: template-parts/components/service-form.php:124
 msgid "On quotation"
 msgstr ""
 
 #. translators: %s: price with unit.
-#: inc/template-tags.php:523
+#: inc/template-tags.php:539
 msgid "From %s"
 msgstr ""
 
-#: inc/template-tags.php:529
-#: template-parts/components/cutting-optimizer.php:203
+#: inc/template-tags.php:545
+#: template-parts/components/cutting-optimizer.php:202
 #: template-parts/components/cutting-sources.php:17
 #: template-parts/components/stock-warehouse.php:23
 #: template-parts/dashboard/messages.php:14
@@ -891,59 +898,59 @@ msgstr ""
 msgid "New"
 msgstr ""
 
-#: inc/template-tags.php:530
+#: inc/template-tags.php:546
 #: templates/styleguide.php:48
 msgid "Quote sent"
 msgstr ""
 
-#: inc/template-tags.php:532
+#: inc/template-tags.php:548
 msgid "Quote declined"
 msgstr ""
 
-#: inc/template-tags.php:533
+#: inc/template-tags.php:549
 msgid "Declined by the provider"
 msgstr ""
 
-#: inc/template-tags.php:534
+#: inc/template-tags.php:550
 #: template-parts/components/visits-list.php:22
 msgid "Cancelled"
 msgstr ""
 
-#: inc/template-tags.php:579
+#: inc/template-tags.php:595
 msgid "Keep"
 msgstr ""
 
-#: inc/template-tags.php:585
+#: inc/template-tags.php:601
 #: templates/engineer-apply.php:124
 msgid "Replace"
 msgstr ""
 
-#: inc/template-tags.php:605
+#: inc/template-tags.php:621
 msgid "Yes"
 msgstr ""
 
-#: inc/template-tags.php:605
+#: inc/template-tags.php:621
 msgid "No"
 msgstr ""
 
-#: inc/template-tags.php:608
+#: inc/template-tags.php:624
 msgid "Unlimited"
 msgstr ""
 
 #. translators: %s: number of results.
-#: inc/template-tags.php:670
+#: inc/template-tags.php:686
 #: template-parts/components/filter-panel.php:186
 msgid "Show %s result"
 msgid_plural "Show %s results"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:745
+#: inc/template-tags.php:761
 msgid "Sign in to contact"
 msgstr ""
 
 #: index.php:21
-#: template-parts/components/stock-warehouse.php:144
+#: template-parts/components/stock-warehouse.php:145
 msgid "Nothing here yet"
 msgstr ""
 
@@ -977,7 +984,7 @@ msgstr ""
 
 #: template-parts/components/ai-describe-button.php:20
 #: template-parts/components/ai-describe-button.php:49
-#: templates/ai-assistant.php:71
+#: templates/ai-assistant.php:70
 msgid "Write with the AI"
 msgstr ""
 
@@ -1036,6 +1043,297 @@ msgstr ""
 msgid "Buy credits"
 msgstr ""
 
+#: template-parts/components/ai-doc-review.php:29
+msgid "profile not found in the catalogue: choose it"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:30
+msgid "length missing"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:31
+msgid "number missing"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:32
+msgid "deduced by the AI, not written"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:33
+msgid "read on a photo"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:34
+msgid "dimensions missing"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:35
+msgid "computed from the weight"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:36
+msgid "computed from the metres"
+msgstr ""
+
+#. translators: 1: exact number of bars, 2: bars to buy, 3: bars for the warehouse.
+#: template-parts/components/ai-doc-review.php:45
+msgid "%1$s bars → %2$s (warehouse: %3$s)"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:49
+#: template-parts/components/ai-doc-review.php:84
+#: template-parts/components/cutting-optimizer.php:82
+#: template-parts/components/cutting-optimizer.php:100
+msgid "Size…"
+msgstr ""
+
+#. translators: %s: file name.
+#: template-parts/components/ai-doc-review.php:50
+msgid "Document « %s »"
+msgstr ""
+
+#. translators: %s: file name.
+#: template-parts/components/ai-doc-review.php:50
+msgid "Your document"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:52
+msgid "The document could not be read. For a photo: take it again flat, with more light, the whole table in the picture. The AI credit has been used."
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:54
+msgid "Read on a photo: every line is to check. Tick what is right: nothing is saved without you."
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:54
+msgid "Check what the AI understood: nothing is saved without you."
+msgstr ""
+
+#. translators: %d: lines.
+#: template-parts/components/ai-doc-review.php:56
+msgid "%d sure line"
+msgid_plural "%d sure lines"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: lines.
+#: template-parts/components/ai-doc-review.php:57
+msgid "%d to check"
+msgid_plural "%d to check"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: lines.
+#: template-parts/components/ai-doc-review.php:58
+#: template-parts/components/ai-doc-review.php:132
+msgid "%d line not steel framing, left out"
+msgid_plural "%d lines not steel framing, left out"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/components/ai-doc-review.php:65
+#: template-parts/components/ai-doc-review.php:113
+msgid "Line of the document"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:65
+#: template-parts/components/ai-doc-review.php:79
+#: template-parts/components/ai-result-listing.php:22
+#: template-parts/components/cutting-optimizer.php:75
+#: template-parts/components/cutting-optimizer.php:152
+#: template-parts/components/cutting-optimizer.php:227
+#: template-parts/components/listing-inventory.php:56
+#: template-parts/components/listing-inventory.php:67
+#: template-parts/components/rfq-single.php:82
+#: template-parts/components/rfq-single.php:86
+#: template-parts/dashboard/publish.php:128
+#: template-parts/dashboard/publish.php:132
+#: template-parts/dashboard/settings.php:20
+#: template-parts/dashboard/stock-prices.php:37
+msgid "Profile"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:65
+#: template-parts/components/ai-doc-review.php:91
+#: template-parts/components/ai-doc-review.php:121
+#: template-parts/components/ai-result-document.php:25
+#: template-parts/components/cutting-optimizer.php:88
+#: template-parts/components/cutting-optimizer.php:152
+#: template-parts/components/cutting-optimizer.php:227
+#: template-parts/components/listing-group.php:20
+#: template-parts/components/mission-request-form.php:214
+#: template-parts/components/product-lines.php:90
+#: template-parts/components/product-tech.php:338
+#: template-parts/components/product-tech.php:412
+#: template-parts/components/weight-calculator.php:221
+#: templates/single-listing.php:64
+msgid "Length"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:65
+#: template-parts/components/ai-doc-review.php:113
+#: template-parts/components/cutting-optimizer.php:152
+#: template-parts/components/cutting-optimizer.php:227
+msgid "Qty"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:65
+#: template-parts/components/ai-doc-review.php:113
+#: template-parts/components/product-rows.php:45
+#: template-parts/components/rfq-single.php:33
+#: template-parts/components/stock-warehouse.php:153
+#: template-parts/components/stock-warehouse.php:164
+#: template-parts/dashboard/listings.php:33
+#: template-parts/dashboard/listings.php:47
+#: template-parts/dashboard/publish.php:98
+msgid "Weight"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:75
+#: template-parts/components/ai-doc-review.php:118
+msgid "Add this line"
+msgstr ""
+
+#. translators: %s: line.
+#: template-parts/components/ai-doc-review.php:76
+#: template-parts/components/ai-doc-review.php:119
+msgid "line %s"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:80
+#: template-parts/components/cutting-optimizer.php:76
+msgid "Profile…"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:83
+#: template-parts/components/cutting-optimizer.php:81
+#: template-parts/components/cutting-optimizer.php:152
+#: template-parts/components/cutting-optimizer.php:227
+#: template-parts/components/filter-panel.php:24
+#: template-parts/components/product-lines.php:79
+#: template-parts/components/weight-calculator.php:132
+msgid "Size"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:92
+#: template-parts/components/ai-doc-review.php:122
+#: template-parts/components/cutting-optimizer.php:157
+#: template-parts/dashboard/publish.php:91
+#: templates/single-listing.php:66
+msgid "Number of pieces"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:96
+msgid "from the document"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:97
+msgid "computed"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:106
+msgid "Mass per metre from the catalogue of the platform. Changing the length recomputes the number."
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:110
+#: template-parts/components/weight-calculator.php:38
+msgid "Plates"
+msgstr ""
+
+#. translators: %s: line.
+#: template-parts/components/ai-doc-review.php:113
+#: template-parts/components/ai-doc-review.php:120
+#: template-parts/components/filter-panel.php:25
+#: template-parts/components/plate-fields.php:98
+#: template-parts/components/section-sheet.php:26
+#: template-parts/components/weight-calculator.php:132
+msgid "Thickness"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:113
+msgid "Length × width"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:121
+#: template-parts/components/section-sheet.php:21
+msgid "Width"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:135
+msgid "What to do with the ticked lines?"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:138
+#: template-parts/components/cutting-optimizer.php:241
+msgid "Optimise the cutting"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:139
+msgid "The bars go to the list of the optimiser (number rounded up); plates to the request for quotation."
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:140
+msgid "Open the optimiser"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:144
+msgid "Request for quotation"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:145
+msgid "Form pre-filled: bars as lines, plates and weights in the description. You publish after checking."
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:146
+msgid "Prepare the request"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:151
+msgid "Add to my warehouse"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:153
+#: template-parts/components/cutting-optimizer.php:177
+#: template-parts/components/cutting-sources.php:57
+#: template-parts/dashboard/publish.php:54
+#: templates/dashboard.php:126
+msgid "New steel"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:154
+#: template-parts/components/cutting-sources.php:57
+#: template-parts/components/my-products.php:23
+#: templates/dashboard.php:127
+msgid "Reuse"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:156
+msgid "Kept in stock only, automatic references, weight of the document kept, number rounded to the nearest."
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:157
+#: template-parts/components/cutting-sources.php:141
+#: template-parts/components/listing-place.php:27
+#: template-parts/components/mission-request-form.php:407
+#: template-parts/components/product-form.php:189
+#: template-parts/components/stock-warehouse.php:82
+#: templates/company-profile.php:222
+#: templates/single-listing.php:81
+msgid "Location"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:157
+msgid "e.g. Hangar 1"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:158
+msgid "Add to the warehouse"
+msgstr ""
+
+#: template-parts/components/ai-doc-review.php:162
+msgid "Suggestion of the AI, to check · 1 credit used for the reading · the file is not kept. Listings: from the warehouse, « On the market » item by item."
+msgstr ""
+
 #: template-parts/components/ai-gate.php:22
 msgid "Sign in to use this tool."
 msgstr ""
@@ -1076,8 +1374,8 @@ msgid "No steel item was found in this document."
 msgstr ""
 
 #: template-parts/components/ai-result-document.php:25
-#: template-parts/components/stock-warehouse.php:150
-#: template-parts/components/stock-warehouse.php:161
+#: template-parts/components/stock-warehouse.php:151
+#: template-parts/components/stock-warehouse.php:162
 msgid "Item"
 msgstr ""
 
@@ -1089,31 +1387,14 @@ msgid "Grade"
 msgstr ""
 
 #: template-parts/components/ai-result-document.php:25
-#: template-parts/components/cutting-ai-review.php:58
-#: template-parts/components/cutting-ai-review.php:84
-#: template-parts/components/cutting-ai-review.php:123
-#: template-parts/components/cutting-optimizer.php:88
-#: template-parts/components/cutting-optimizer.php:153
-#: template-parts/components/cutting-optimizer.php:228
-#: template-parts/components/listing-group.php:20
-#: template-parts/components/mission-request-form.php:214
-#: template-parts/components/product-lines.php:90
-#: template-parts/components/product-tech.php:338
-#: template-parts/components/product-tech.php:412
-#: template-parts/components/weight-calculator.php:221
-#: templates/single-listing.php:64
-msgid "Length"
-msgstr ""
-
-#: template-parts/components/ai-result-document.php:25
 #: template-parts/components/buy-box.php:91
-#: template-parts/components/rfq-form.php:71
+#: template-parts/components/rfq-form.php:77
 #: template-parts/components/rfq-single.php:30
 #: template-parts/components/rfq-single.php:82
 #: template-parts/components/rfq-single.php:87
 #: template-parts/components/rfq-tech.php:54
-#: template-parts/components/stock-warehouse.php:151
-#: template-parts/components/stock-warehouse.php:162
+#: template-parts/components/stock-warehouse.php:152
+#: template-parts/components/stock-warehouse.php:163
 #: template-parts/components/weight-calculator.php:203
 #: template-parts/dashboard/deal.php:48
 #: template-parts/dashboard/publish.php:128
@@ -1151,29 +1432,13 @@ msgstr ""
 
 #: template-parts/components/ai-result-listing.php:21
 #: template-parts/components/product-form.php:64
-#: template-parts/components/rfq-form.php:56
+#: template-parts/components/rfq-form.php:62
 #: template-parts/dashboard/publish.php:67
 msgid "Category"
 msgstr ""
 
 #: template-parts/components/ai-result-listing.php:21
 msgid "Not found — choose it on the form"
-msgstr ""
-
-#: template-parts/components/ai-result-listing.php:22
-#: template-parts/components/cutting-ai-review.php:71
-#: template-parts/components/cutting-optimizer.php:75
-#: template-parts/components/cutting-optimizer.php:153
-#: template-parts/components/cutting-optimizer.php:228
-#: template-parts/components/listing-inventory.php:56
-#: template-parts/components/listing-inventory.php:67
-#: template-parts/components/rfq-single.php:82
-#: template-parts/components/rfq-single.php:86
-#: template-parts/dashboard/publish.php:128
-#: template-parts/dashboard/publish.php:132
-#: template-parts/dashboard/settings.php:20
-#: template-parts/dashboard/stock-prices.php:37
-msgid "Profile"
 msgstr ""
 
 #. translators: %s: kg/m.
@@ -1232,7 +1497,6 @@ msgid "A simple keyword search was done instead."
 msgstr ""
 
 #: template-parts/components/ai-search.php:23
-#: template-parts/components/cutting-ai-review.php:58
 msgid "Understood as"
 msgstr ""
 
@@ -1241,7 +1505,7 @@ msgid "No precise filter: all listings are shown."
 msgstr ""
 
 #: template-parts/components/ai-search.php:34
-msgid "Searching…"
+msgid "The AI is searching…"
 msgstr ""
 
 #: template-parts/components/ai-search.php:35
@@ -1668,12 +1932,12 @@ msgstr ""
 #: template-parts/components/product-tech.php:167
 #: template-parts/components/product-tech.php:435
 #: template-parts/components/product-tech.php:456
-#: template-parts/components/rfq-form.php:56
-#: template-parts/components/rfq-form.php:83
-#: template-parts/components/rfq-form.php:92
-#: template-parts/components/rfq-form.php:110
-#: template-parts/components/rfq-form.php:114
-#: template-parts/components/rfq-form.php:132
+#: template-parts/components/rfq-form.php:62
+#: template-parts/components/rfq-form.php:89
+#: template-parts/components/rfq-form.php:98
+#: template-parts/components/rfq-form.php:116
+#: template-parts/components/rfq-form.php:120
+#: template-parts/components/rfq-form.php:138
 #: template-parts/components/rfq-offer-form.php:56
 #: template-parts/components/rfq-offer-form.php:88
 #: template-parts/components/rfq-offer-form.php:92
@@ -1687,8 +1951,8 @@ msgstr ""
 #: template-parts/components/service-request-form.php:47
 #: template-parts/components/service-request-row.php:87
 #: template-parts/components/visits-list.php:80
-#: template-parts/dashboard/ai.php:66
-#: template-parts/dashboard/ai.php:92
+#: template-parts/dashboard/ai.php:84
+#: template-parts/dashboard/ai.php:110
 #: template-parts/dashboard/portfolio.php:48
 #: template-parts/dashboard/portfolio.php:54
 #: template-parts/dashboard/portfolio.php:74
@@ -1714,213 +1978,6 @@ msgstr ""
 #: template-parts/components/commune-field.php:33
 #: template-parts/components/commune-field.php:34
 msgid "Choose the wilaya first"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:22
-msgid "profile not found in the catalogue: choose it"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:23
-msgid "length missing"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:24
-msgid "number missing"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:25
-msgid "deduced by the AI, not written"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:26
-msgid "read on a photo"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:27
-msgid "dimensions missing"
-msgstr ""
-
-#. translators: %s: file name.
-#: template-parts/components/cutting-ai-review.php:40
-msgid "Document « %s »"
-msgstr ""
-
-#. translators: %s: file name.
-#: template-parts/components/cutting-ai-review.php:40
-msgid "Your document"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:42
-msgid "The document could not be read. For a photo: take it again flat, with more light, the whole table in the picture. The AI credit has been used."
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:43
-msgid "Try another document"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:45
-msgid "Read on a photo: every line is to check. Tick what is right: nothing is added without you."
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:45
-msgid "Check what the AI understood: nothing is added without you."
-msgstr ""
-
-#. translators: %d: lines.
-#: template-parts/components/cutting-ai-review.php:47
-msgid "%d sure line"
-msgid_plural "%d sure lines"
-msgstr[0] ""
-msgstr[1] ""
-
-#. translators: %d: lines.
-#: template-parts/components/cutting-ai-review.php:48
-msgid "%d to check"
-msgid_plural "%d to check"
-msgstr[0] ""
-msgstr[1] ""
-
-#. translators: %d: lines.
-#: template-parts/components/cutting-ai-review.php:49
-msgid "%d in metres"
-msgid_plural "%d in metres"
-msgstr[0] ""
-msgstr[1] ""
-
-#. translators: %d: lines.
-#: template-parts/components/cutting-ai-review.php:50
-msgid "%d plate line"
-msgid_plural "%d plate lines"
-msgstr[0] ""
-msgstr[1] ""
-
-#. translators: %d: lines.
-#: template-parts/components/cutting-ai-review.php:51
-#: template-parts/components/cutting-ai-review.php:135
-msgid "%d line not steel framing, left out"
-msgid_plural "%d lines not steel framing, left out"
-msgstr[0] ""
-msgstr[1] ""
-
-#: template-parts/components/cutting-ai-review.php:58
-#: template-parts/components/cutting-ai-review.php:115
-msgid "Line of the document"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:58
-#: template-parts/components/cutting-ai-review.php:115
-#: template-parts/components/cutting-optimizer.php:153
-#: template-parts/components/cutting-optimizer.php:228
-msgid "Qty"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:67
-#: template-parts/components/cutting-ai-review.php:120
-msgid "Add this line"
-msgstr ""
-
-#. translators: %s: line.
-#: template-parts/components/cutting-ai-review.php:68
-#: template-parts/components/cutting-ai-review.php:121
-msgid "line %s"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:72
-#: template-parts/components/cutting-optimizer.php:76
-msgid "Profile…"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:75
-#: template-parts/components/cutting-optimizer.php:81
-#: template-parts/components/cutting-optimizer.php:153
-#: template-parts/components/cutting-optimizer.php:228
-#: template-parts/components/filter-panel.php:24
-#: template-parts/components/product-lines.php:79
-#: template-parts/components/weight-calculator.php:132
-msgid "Size"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:76
-#: template-parts/components/cutting-optimizer.php:82
-#: template-parts/components/cutting-optimizer.php:100
-msgid "Size…"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:85
-#: template-parts/components/cutting-ai-review.php:124
-#: template-parts/components/cutting-optimizer.php:158
-#: template-parts/dashboard/publish.php:91
-#: templates/single-listing.php:66
-msgid "Number of pieces"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:94
-msgid "In metres, without piece lengths"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:94
-#: template-parts/components/cutting-ai-review.php:112
-msgid "to the request for quotation"
-msgstr ""
-
-#. translators: 1: bars, 2: bar length.
-#: template-parts/components/cutting-ai-review.php:101
-msgid "→ %1$d bars of %2$s m"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:112
-#: template-parts/components/weight-calculator.php:38
-msgid "Plates"
-msgstr ""
-
-#. translators: %s: line.
-#: template-parts/components/cutting-ai-review.php:115
-#: template-parts/components/cutting-ai-review.php:122
-#: template-parts/components/filter-panel.php:25
-#: template-parts/components/plate-fields.php:98
-#: template-parts/components/section-sheet.php:26
-#: template-parts/components/weight-calculator.php:132
-msgid "Thickness"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:115
-msgid "Length × width"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:115
-#: template-parts/components/product-rows.php:45
-#: template-parts/components/rfq-single.php:33
-#: template-parts/components/stock-warehouse.php:152
-#: template-parts/components/stock-warehouse.php:163
-#: template-parts/dashboard/listings.php:33
-#: template-parts/dashboard/listings.php:47
-#: template-parts/dashboard/publish.php:98
-msgid "Weight"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:123
-#: template-parts/components/section-sheet.php:21
-msgid "Width"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:131
-msgid "Weight from the catalogue of the platform. Plates are not in the cutting plan of the bars."
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:139
-msgid "Add the ticked lines"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:140
-#: template-parts/components/listing-place.php:102
-#: template-parts/components/rfq-form.php:139
-#: template-parts/components/service-form.php:158
-#: template-parts/dashboard/portfolio.php:87
-msgid "Cancel"
-msgstr ""
-
-#: template-parts/components/cutting-ai-review.php:141
-msgid "Suggestion of the AI, to check · 1 credit used for the reading · the file is not kept"
 msgstr ""
 
 #: template-parts/components/cutting-optimizer.php:101
@@ -1971,7 +2028,6 @@ msgid "2. Pieces to cut"
 msgstr ""
 
 #: template-parts/components/cutting-optimizer.php:132
-#: templates/ai-assistant.php:25
 msgid "Import a document"
 msgstr ""
 
@@ -1995,120 +2051,110 @@ msgid "Take a photo"
 msgstr ""
 
 #: template-parts/components/cutting-optimizer.php:138
+#: template-parts/dashboard/ai.php:76
 msgid "Read the document"
 msgstr ""
 
 #: template-parts/components/cutting-optimizer.php:140
-msgid "Reading the document… it can take up to a minute."
-msgstr ""
-
-#: template-parts/components/cutting-optimizer.php:141
 msgid "Photo: flat, with good light. Plans will come later."
 msgstr ""
 
 #. translators: %d: credits left.
 #. translators: %d: AI credits left.
-#: template-parts/components/cutting-optimizer.php:141
-#: templates/ai-assistant.php:68
+#: template-parts/components/cutting-optimizer.php:140
+#: templates/ai-assistant.php:67
 msgid "%d credit left"
 msgid_plural "%d credits left"
 msgstr[0] ""
 msgstr[1] ""
 
-#: template-parts/components/cutting-optimizer.php:143
+#: template-parts/components/cutting-optimizer.php:142
 msgid "Log in to use this tool"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:145
+#: template-parts/components/cutting-optimizer.php:144
 msgid "See the plans and the AI credit packs"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:150
+#: template-parts/components/cutting-optimizer.php:149
 msgid "or type the pieces:"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:163
-#: template-parts/components/cutting-optimizer.php:238
+#: template-parts/components/cutting-optimizer.php:162
+#: template-parts/components/cutting-optimizer.php:237
 msgid "Add a line"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:163
+#: template-parts/components/cutting-optimizer.php:162
 msgid "Paste a list (Excel)"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:165
+#: template-parts/components/cutting-optimizer.php:164
 msgid "Paste your list"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:174
+#: template-parts/components/cutting-optimizer.php:173
 msgid "3. Where to look for the bars?"
 msgstr ""
 
 #. translators: %s: length.
-#: template-parts/components/cutting-optimizer.php:176
-#: template-parts/components/cutting-optimizer.php:183
+#: template-parts/components/cutting-optimizer.php:175
+#: template-parts/components/cutting-optimizer.php:182
 #: template-parts/components/cutting-optimizer.php:353
 #: template-parts/components/cutting-sources.php:51
 msgid "My warehouse"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:176
+#: template-parts/components/cutting-optimizer.php:175
 msgid "Searched first: your bars, published or kept in stock only."
 msgstr ""
 
 #: template-parts/components/cutting-optimizer.php:178
-#: template-parts/components/cutting-sources.php:57
-#: template-parts/dashboard/publish.php:54
-#: templates/dashboard.php:126
-msgid "New steel"
-msgstr ""
-
-#: template-parts/components/cutting-optimizer.php:179
 msgid "Reuse (offcuts and variants)"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:180
+#: template-parts/components/cutting-optimizer.php:179
 msgid "Do not take the items published on the market"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:180
+#: template-parts/components/cutting-optimizer.php:179
 msgid "Only what is kept in stock only"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:185
+#: template-parts/components/cutting-optimizer.php:184
 msgid "With a company or professional account."
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:187
+#: template-parts/components/cutting-optimizer.php:186
 msgid "Log in with a company or professional account"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:191
+#: template-parts/components/cutting-optimizer.php:190
 #: template-parts/components/cutting-sources.php:78
 msgid "ReuSteel marketplace"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:191
+#: template-parts/components/cutting-optimizer.php:190
 msgid "Listings of the other sellers: the same profile, the same length or the closest longer one."
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:191
+#: template-parts/components/cutting-optimizer.php:190
 msgid "Published listings: the same profile, the same length or the closest longer one."
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:194
+#: template-parts/components/cutting-optimizer.php:193
 msgid "Minimum grade"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:196
+#: template-parts/components/cutting-optimizer.php:195
 msgid "Any grade"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:201
+#: template-parts/components/cutting-optimizer.php:200
 msgid "Conditions accepted"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:210
+#: template-parts/components/cutting-optimizer.php:209
 #: template-parts/components/filter-panel.php:153
 #: template-parts/components/mission-request-form.php:410
 #: template-parts/components/product-form.php:193
@@ -2126,7 +2172,7 @@ msgstr ""
 msgid "Wilaya"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:212
+#: template-parts/components/cutting-optimizer.php:211
 #: template-parts/components/filter-panel.php:155
 #: template-parts/components/services-board.php:45
 #: template-parts/directory.php:49
@@ -2135,40 +2181,41 @@ msgstr ""
 msgid "All wilayas"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:216
+#: template-parts/components/cutting-optimizer.php:215
 msgid "Also offer lots sold whole when they help"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:218
+#: template-parts/components/cutting-optimizer.php:217
 msgid "New bars for the rest"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:218
+#: template-parts/components/cutting-optimizer.php:217
 msgid "Request for quotation pre-filled"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:222
+#: template-parts/components/cutting-optimizer.php:221
 msgid "Your offcuts are in your warehouse: they are searched first."
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:222
+#: template-parts/components/cutting-optimizer.php:221
 msgid "Add offcuts to the warehouse"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:225
+#: template-parts/components/cutting-optimizer.php:224
 msgid "4. Offcuts already at hand (optional)"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:226
+#: template-parts/components/cutting-optimizer.php:225
 msgid "They are used first: you buy new bars only for what they cannot give."
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:233
+#: template-parts/components/cutting-optimizer.php:232
 msgid "Number of offcuts"
 msgstr ""
 
-#: template-parts/components/cutting-optimizer.php:242
-msgid "Optimise the cutting"
+#: template-parts/components/cutting-optimizer.php:245
+#: template-parts/dashboard/ai.php:65
+msgid "The AI is reading your document…"
 msgstr ""
 
 #: template-parts/components/cutting-optimizer.php:259
@@ -2433,12 +2480,6 @@ msgstr ""
 msgid "Create the request for quotation"
 msgstr ""
 
-#: template-parts/components/cutting-sources.php:57
-#: template-parts/components/my-products.php:23
-#: templates/dashboard.php:127
-msgid "Reuse"
-msgstr ""
-
 #: template-parts/components/cutting-sources.php:58
 msgid "published on the market"
 msgstr ""
@@ -2511,8 +2552,8 @@ msgstr ""
 
 #: template-parts/components/cutting-sources.php:102
 #: template-parts/components/mission-request-form.php:117
-#: template-parts/components/stock-warehouse.php:167
-#: template-parts/components/stock-warehouse.php:184
+#: template-parts/components/stock-warehouse.php:168
+#: template-parts/components/stock-warehouse.php:185
 msgid "See the listing"
 msgstr ""
 
@@ -2547,16 +2588,6 @@ msgstr ""
 #. translators: %s: reference.
 #: template-parts/components/cutting-sources.php:132
 msgid "new bars bought"
-msgstr ""
-
-#: template-parts/components/cutting-sources.php:141
-#: template-parts/components/listing-place.php:27
-#: template-parts/components/mission-request-form.php:407
-#: template-parts/components/product-form.php:189
-#: template-parts/components/stock-warehouse.php:82
-#: templates/company-profile.php:222
-#: templates/single-listing.php:81
-msgid "Location"
 msgstr ""
 
 #: template-parts/components/cutting-sources.php:141
@@ -3121,7 +3152,7 @@ msgstr ""
 #: template-parts/components/listing-group.php:43
 #: template-parts/components/listing-group.php:65
 #: template-parts/components/product-rows.php:70
-#: template-parts/components/stock-moves-list.php:29
+#: template-parts/components/stock-moves-list.php:30
 #: template-parts/components/stock-warehouse.php:39
 msgid "%s piece"
 msgid_plural "%s pieces"
@@ -3277,6 +3308,13 @@ msgstr ""
 
 #: template-parts/components/listing-place.php:99
 msgid "Number of people, questions…"
+msgstr ""
+
+#: template-parts/components/listing-place.php:102
+#: template-parts/components/rfq-form.php:145
+#: template-parts/components/service-form.php:158
+#: template-parts/dashboard/portfolio.php:87
+msgid "Cancel"
 msgstr ""
 
 #: template-parts/components/listing-product.php:34
@@ -3583,7 +3621,7 @@ msgid "Place and sending"
 msgstr ""
 
 #: template-parts/components/mission-request-form.php:133
-#: template-parts/components/rfq-form.php:45
+#: template-parts/components/rfq-form.php:51
 msgid "What do you need?"
 msgstr ""
 
@@ -4071,8 +4109,8 @@ msgstr ""
 #: template-parts/components/my-products.php:123
 #: template-parts/components/portfolio-grid.php:27
 #: template-parts/components/rfq-single.php:127
-#: template-parts/components/stock-warehouse.php:167
-#: template-parts/components/stock-warehouse.php:184
+#: template-parts/components/stock-warehouse.php:168
+#: template-parts/components/stock-warehouse.php:185
 #: template-parts/dashboard/listings.php:52
 #: template-parts/dashboard/rfq.php:57
 #: template-parts/dashboard/services.php:58
@@ -4412,8 +4450,8 @@ msgstr ""
 #: template-parts/components/product-tech.php:554
 #: template-parts/components/product-tech.php:617
 #: template-parts/components/rfq-offer-form.php:51
-#: template-parts/components/stock-warehouse.php:153
-#: template-parts/components/stock-warehouse.php:164
+#: template-parts/components/stock-warehouse.php:154
+#: template-parts/components/stock-warehouse.php:165
 #: template-parts/dashboard/studies.php:109
 #: templates/single-service.php:68
 msgid "Price"
@@ -4473,7 +4511,7 @@ msgstr ""
 #. translators: %s: number of pieces.
 #: template-parts/components/price-block.php:98
 #: template-parts/components/product-rows.php:70
-#: template-parts/components/stock-moves-list.php:25
+#: template-parts/components/stock-moves-list.php:26
 msgid "%s bar"
 msgid_plural "%s bars"
 msgstr[0] ""
@@ -4624,7 +4662,7 @@ msgid "Description, photos and technical sheet"
 msgstr ""
 
 #: template-parts/components/product-form.php:121
-#: template-parts/components/rfq-form.php:76
+#: template-parts/components/rfq-form.php:82
 msgid "Title and description"
 msgstr ""
 
@@ -4637,7 +4675,7 @@ msgid "The title is created automatically from the product: type and size, steel
 msgstr ""
 
 #: template-parts/components/product-form.php:127
-#: template-parts/components/rfq-form.php:78
+#: template-parts/components/rfq-form.php:84
 #: template-parts/dashboard/publish.php:145
 msgid "Title in French"
 msgstr ""
@@ -4655,7 +4693,7 @@ msgid "e.g. IPE 200 S275JR new, 12 m bars"
 msgstr ""
 
 #: template-parts/components/product-form.php:132
-#: template-parts/components/rfq-form.php:83
+#: template-parts/components/rfq-form.php:89
 msgid "Title in Arabic"
 msgstr ""
 
@@ -4716,8 +4754,8 @@ msgstr ""
 #: template-parts/components/product-tech.php:83
 #: template-parts/components/product-tech.php:169
 #: template-parts/components/product-tech.php:274
-#: template-parts/components/rfq-form.php:50
-#: template-parts/components/rfq-form.php:104
+#: template-parts/components/rfq-form.php:56
+#: template-parts/components/rfq-form.php:110
 #: template-parts/components/service-form.php:57
 #: template-parts/components/service-request-form.php:28
 #: template-parts/components/weight-calculator.php:139
@@ -5424,87 +5462,95 @@ msgstr ""
 msgid "Import from a document"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:58
+#: template-parts/components/rfq-form.php:45
+msgid "A bill of quantities, a quotation or a purchase order?"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:45
+msgid "Fill from a document"
+msgstr ""
+
+#: template-parts/components/rfq-form.php:64
 msgid "Any category"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:79
+#: template-parts/components/rfq-form.php:85
 msgid "e.g. IPE 270 beams for a hangar, delivery on site"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:87
+#: template-parts/components/rfq-form.php:93
 #: template-parts/components/rfq-single.php:101
 msgid "Technical description"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:88
+#: template-parts/components/rfq-form.php:94
 msgid "Steel grade, standard, finish, tolerances, certificates, cutting…"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:92
+#: template-parts/components/rfq-form.php:98
 #: template-parts/components/rfq-single.php:104
 msgid "Additional notes"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:93
+#: template-parts/components/rfq-form.php:99
 msgid "Site access, unloading, invoicing…"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:99
+#: template-parts/components/rfq-form.php:105
 msgid "Delivery and deadline"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:102
+#: template-parts/components/rfq-form.php:108
 #: templates/rfq-board.php:77
 msgid "Delivery wilaya"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:110
+#: template-parts/components/rfq-form.php:116
 msgid "Delivery place"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:111
+#: template-parts/components/rfq-form.php:117
 msgid "Town, industrial zone, site"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:114
+#: template-parts/components/rfq-form.php:120
 #: template-parts/components/rfq-single.php:37
 #: template-parts/components/service-request-row.php:43
 msgid "Needed by"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:119
+#: template-parts/components/rfq-form.php:125
 #: template-parts/components/rfq-single.php:40
 msgid "Offers accepted until"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:127
+#: template-parts/components/rfq-form.php:133
 #: template-parts/components/rfq-single.php:108
 msgid "Drawings and documents"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:132
+#: template-parts/components/rfq-form.php:138
 msgid "Attach drawings, a bill of materials or photos"
 msgstr ""
 
 #. translators: 1: files, 2: MB.
-#: template-parts/components/rfq-form.php:133
+#: template-parts/components/rfq-form.php:139
 msgid "PDF or images, up to %1$d files of %2$d MB. Export DWG/DXF drawings to PDF."
 msgstr ""
 
-#: template-parts/components/rfq-form.php:135
+#: template-parts/components/rfq-form.php:141
 msgid "Documents are shown only to signed-in companies."
 msgstr ""
 
-#: template-parts/components/rfq-form.php:140
+#: template-parts/components/rfq-form.php:146
 msgid "Save the request"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:140
+#: template-parts/components/rfq-form.php:146
 msgid "Publish my request"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:143
+#: template-parts/components/rfq-form.php:149
 msgid "The platform team checks each request before it is shown to suppliers."
 msgstr ""
 
@@ -6055,7 +6101,7 @@ msgstr ""
 #: template-parts/dashboard/portfolio.php:13
 #: template-parts/dashboard/rfq.php:19
 #: template-parts/dashboard/services.php:19
-#: templates/ai-assistant.php:41
+#: templates/ai-assistant.php:40
 msgid "This module is not active yet."
 msgstr ""
 
@@ -6151,8 +6197,12 @@ msgstr ""
 msgid "Offcuts of the optimiser"
 msgstr ""
 
+#: template-parts/components/stock-moves-list.php:20
+msgid "Read from a document"
+msgstr ""
+
 #: template-parts/components/stock-warehouse.php:18
-#: template-parts/components/stock-warehouse.php:146
+#: template-parts/components/stock-warehouse.php:147
 #: templates/dashboard.php:124
 msgid "Warehouse"
 msgstr ""
@@ -6201,8 +6251,8 @@ msgid "Reference, location, quantity"
 msgstr ""
 
 #: template-parts/components/stock-warehouse.php:81
-#: template-parts/components/stock-warehouse.php:149
-#: template-parts/components/stock-warehouse.php:160
+#: template-parts/components/stock-warehouse.php:150
+#: template-parts/components/stock-warehouse.php:161
 msgid "Reference"
 msgstr ""
 
@@ -6290,29 +6340,33 @@ msgid "Labels (PDF)"
 msgstr ""
 
 #: template-parts/components/stock-warehouse.php:139
+msgid "Add from a document"
+msgstr ""
+
+#: template-parts/components/stock-warehouse.php:140
 msgid "Add to the stock"
 msgstr ""
 
-#: template-parts/components/stock-warehouse.php:144
+#: template-parts/components/stock-warehouse.php:145
 msgid "Add your offcuts and reused steel: publish them or keep them in stock only."
 msgstr ""
 
-#: template-parts/components/stock-warehouse.php:144
+#: template-parts/components/stock-warehouse.php:145
 msgid "Add your new steel: publish it on the market or keep it in stock only."
 msgstr ""
 
-#: template-parts/components/stock-warehouse.php:154
-#: template-parts/components/stock-warehouse.php:165
+#: template-parts/components/stock-warehouse.php:155
+#: template-parts/components/stock-warehouse.php:166
 #: template-parts/dashboard/stock-prices.php:71
 #: template-parts/dashboard/stock-prices.php:77
 msgid "On the market"
 msgstr ""
 
-#: template-parts/components/stock-warehouse.php:203
+#: template-parts/components/stock-warehouse.php:204
 msgid "Last movements"
 msgstr ""
 
-#: template-parts/components/stock-warehouse.php:203
+#: template-parts/components/stock-warehouse.php:204
 msgid "All the movements"
 msgstr ""
 
@@ -6628,8 +6682,8 @@ msgid "The counters start again on the 1st of each month."
 msgstr ""
 
 #: template-parts/dashboard/ai.php:16
-#: templates/ai-assistant.php:33
-#: templates/ai-assistant.php:41
+#: templates/ai-assistant.php:32
+#: templates/ai-assistant.php:40
 #: templates/dashboard.php:79
 #: templates/dashboard.php:155
 msgid "AI assistant"
@@ -6644,7 +6698,7 @@ msgid "Not sure which profile it is? Send one or two photos (end view if possibl
 msgstr ""
 
 #: template-parts/dashboard/ai.php:33
-msgid "Send a bill of quantities, a list of profiles or a specification (PDF or photo): the assistant extracts the steel items; the weight engine weighs the known profiles and you can create a request for quotation."
+msgid "Bill of quantities, quotation, purchase order, delivery note, invoice, inventory or tender (Excel, PDF or photo): the AI reads the profiles and the plates. You check, then you choose: cutting optimiser, request for quotation or your warehouse."
 msgstr ""
 
 #: template-parts/dashboard/ai.php:38
@@ -6662,61 +6716,71 @@ msgid_plural "%d uses left this month"
 msgstr[0] ""
 msgstr[1] ""
 
-#: template-parts/dashboard/ai.php:62
-msgid "The assistant is working… (up to a minute)"
-msgstr ""
-
-#: template-parts/dashboard/ai.php:68
-msgid "Let the assistant propose"
-msgstr ""
-
-#: template-parts/dashboard/ai.php:77
+#: template-parts/dashboard/ai.php:72
+#: template-parts/dashboard/ai.php:95
 msgid "Choose the document"
 msgstr ""
 
 #. translators: %d: MB.
-#: template-parts/dashboard/ai.php:78
+#: template-parts/dashboard/ai.php:73
+msgid "Excel (.xlsx, .csv), PDF or photo, %d MB at most. Plans will come later."
+msgstr ""
+
+#: template-parts/dashboard/ai.php:80
+msgid "The AI is looking at your photos…"
+msgstr ""
+
+#: template-parts/dashboard/ai.php:80
+msgid "The AI is preparing your listing…"
+msgstr ""
+
+#: template-parts/dashboard/ai.php:86
+msgid "Let the assistant propose"
+msgstr ""
+
+#. translators: %d: MB.
+#: template-parts/dashboard/ai.php:96
 msgid "PDF or photo, %d MB at most."
 msgstr ""
 
-#: template-parts/dashboard/ai.php:85
+#: template-parts/dashboard/ai.php:103
 msgid "Add photos of the profile"
 msgstr ""
 
-#: template-parts/dashboard/ai.php:85
+#: template-parts/dashboard/ai.php:103
 msgid "Add photos of the product"
 msgstr ""
 
 #. translators: 1: photos, 2: MB.
-#: template-parts/dashboard/ai.php:86
+#: template-parts/dashboard/ai.php:104
 msgid "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each)."
 msgstr ""
 
-#: template-parts/dashboard/ai.php:92
+#: template-parts/dashboard/ai.php:110
 msgid "What are you looking for in it?"
 msgstr ""
 
-#: template-parts/dashboard/ai.php:92
+#: template-parts/dashboard/ai.php:110
 msgid "Your notes"
 msgstr ""
 
-#: template-parts/dashboard/ai.php:92
+#: template-parts/dashboard/ai.php:110
 msgid "recommended"
 msgstr ""
 
-#: template-parts/dashboard/ai.php:93
+#: template-parts/dashboard/ai.php:111
 msgid "e.g. 12 bars HEA 160 S355JR, new, 12 m, stored under shelter in Rouiba"
 msgstr ""
 
-#: template-parts/dashboard/ai.php:93
+#: template-parts/dashboard/ai.php:111
 msgid "e.g. height about 20 cm, found on a dismantled hangar"
 msgstr ""
 
-#: template-parts/dashboard/ai.php:93
+#: template-parts/dashboard/ai.php:111
 msgid "e.g. only the structure, not the roofing"
 msgstr ""
 
-#: template-parts/dashboard/ai.php:97
+#: template-parts/dashboard/ai.php:115
 msgid "Ask the assistant"
 msgstr ""
 
@@ -8748,7 +8812,11 @@ msgid "Publication form"
 msgstr ""
 
 #: templates/ai-assistant.php:25
-msgid "A bill of quantities, a quotation or a take-off (Excel, PDF or photo): the AI lists the bars to cut, the plates and the quantities in metres. You check, then the cutting optimiser does the rest: your warehouse, the marketplace, the bars to buy."
+msgid "Bill of quantities, quotation, purchase order, delivery note, invoice or inventory (Excel, PDF or photo): the AI reads the profiles and the plates, with their weight. You check, then you choose: cutting optimiser, request for quotation or your warehouse."
+msgstr ""
+
+#: templates/ai-assistant.php:25
+msgid "Read a document"
 msgstr ""
 
 #: templates/ai-assistant.php:26
@@ -8760,60 +8828,52 @@ msgid "Recognise a profile"
 msgstr ""
 
 #: templates/ai-assistant.php:27
-msgid "A bill of quantities or a list of profiles (PDF or photo): the steel items are extracted, weighed by the weight engine and turned into a request for quotation."
-msgstr ""
-
-#: templates/ai-assistant.php:27
-msgid "Analyse a document"
-msgstr ""
-
-#: templates/ai-assistant.php:28
 msgid "Photos of your steel and a few words: the assistant proposes the category, the profile, the titles in French and Arabic and the description of a new listing."
 msgstr ""
 
-#: templates/ai-assistant.php:28
+#: templates/ai-assistant.php:27
 msgid "Prepare a listing"
 msgstr ""
 
-#: templates/ai-assistant.php:34
+#: templates/ai-assistant.php:33
 #: templates/dashboard.php:81
 #: templates/dashboard.php:157
 #: templates/front-page-template.php:134
 msgid "Assistant"
 msgstr ""
 
-#: templates/ai-assistant.php:35
+#: templates/ai-assistant.php:34
 msgid "Tools that save you time: search, describe, recognise, list. They give suggestions to check: weights always come from the weight engine and the AI never replaces an engineer."
 msgstr ""
 
-#: templates/ai-assistant.php:58
+#: templates/ai-assistant.php:57
 msgid "Free · for everybody"
 msgstr ""
 
 #. translators: %d: AI credits per use.
-#: templates/ai-assistant.php:60
+#: templates/ai-assistant.php:59
 msgid "%d credit per use"
 msgid_plural "%d credits per use"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/ai-assistant.php:80
+#: templates/ai-assistant.php:79
 msgid "Business report"
 msgstr ""
 
-#: templates/ai-assistant.php:81
+#: templates/ai-assistant.php:80
 msgid "Follow your market like a pro. Every week or every month, receive the most requested and most searched products, the average advertised prices of new steel, reuse and buildings, and the trends by wilaya, to set your prices and choose your stock at the right time."
 msgstr ""
 
-#: templates/ai-assistant.php:82
+#: templates/ai-assistant.php:81
 msgid "Included in the Business plan"
 msgstr ""
 
-#: templates/ai-assistant.php:82
+#: templates/ai-assistant.php:81
 msgid "Soon"
 msgstr ""
 
-#: templates/ai-assistant.php:84
+#: templates/ai-assistant.php:83
 msgid "See the Business plan"
 msgstr ""
 

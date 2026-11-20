@@ -929,6 +929,57 @@
 		} );
 	} );
 
+	/*
+	 * Waiting for the AI (0.51.0): forms [data-sm-ai-wait="title"] cover their tool (or
+	 * [data-sm-ai-scope] selector) with a common screen: animated mark, title, sub-title,
+	 * indeterminate bar, file name and seconds; the buttons are blocked (one credit).
+	 */
+	window.smAiWait = function ( scope, title, sub, slow, file ) {
+		if ( ! scope ) { return function () {}; }
+		var box = document.createElement( 'div' );
+		box.className = 'sm-aiwait';
+		box.setAttribute( 'role', 'status' );
+		box.setAttribute( 'aria-live', 'polite' );
+		box.innerHTML = '<div class="sm-aiwait__in"><span class="sm-aiwait__orb" aria-hidden="true"><span>✦</span></span><p class="sm-aiwait__t"></p><p class="sm-aiwait__s"></p><span class="sm-aiwait__bar" aria-hidden="true"><i></i></span><p class="sm-aiwait__c"></p></div>';
+		box.querySelector( '.sm-aiwait__t' ).textContent = title;
+		box.querySelector( '.sm-aiwait__s' ).textContent = sub || '';
+		if ( 'static' === getComputedStyle( scope ).position ) { scope.style.position = 'relative'; }
+		scope.classList.add( 'is-ai-waiting' );
+		scope.appendChild( box );
+		var t0 = Date.now(), c = box.querySelector( '.sm-aiwait__c' ), s = box.querySelector( '.sm-aiwait__s' );
+		var tick = function () {
+			var n = Math.round( ( Date.now() - t0 ) / 1000 );
+			c.textContent = ( file ? '« ' + file + ' » · ' : '' ) + n + ' s';
+			if ( n >= 60 && slow ) { s.textContent = slow; }
+		};
+		tick();
+		var timer = setInterval( tick, 1000 );
+		return function () { clearInterval( timer ); box.remove(); scope.classList.remove( 'is-ai-waiting' ); };
+	};
+	document.querySelectorAll( 'form[data-sm-ai-wait]' ).forEach( function ( form ) {
+		form.addEventListener( 'submit', function ( ev ) {
+			if ( form.getAttribute( 'aria-busy' ) === 'true' ) { ev.preventDefault(); return; } // Never twice.
+			form.setAttribute( 'aria-busy', 'true' );
+			var sel = form.getAttribute( 'data-sm-ai-scope' );
+			var scope = ( sel && document.querySelector( sel ) ) || form.closest( '.sm-panel, section' ) || form;
+			var file = '';
+			form.querySelectorAll( 'input[type="file"]' ).forEach( function ( f ) { if ( f.files && f.files[0] ) { file = f.files[0].name; } } );
+			if ( form.id ) {
+				document.querySelectorAll( 'input[type="file"][form="' + form.id + '"]' ).forEach( function ( f ) { if ( f.files && f.files[0] ) { file = f.files[0].name; } } );
+				document.querySelectorAll( 'button[form="' + form.id + '"]' ).forEach( function ( b ) { b.disabled = true; } );
+			}
+			form.querySelectorAll( 'button[type="submit"]' ).forEach( function ( b ) { b.disabled = true; } );
+			window.smAiWait( scope, form.getAttribute( 'data-sm-ai-wait' ), form.getAttribute( 'data-sm-ai-sub' ), form.getAttribute( 'data-sm-ai-slow' ), file );
+		} );
+	} );
+	// Back from the history (bfcache): no waiting screen left.
+	window.addEventListener( 'pageshow', function ( e ) {
+		if ( e.persisted ) {
+			document.querySelectorAll( '.sm-aiwait' ).forEach( function ( b ) { b.remove(); } );
+			document.querySelectorAll( 'form[data-sm-ai-wait]' ).forEach( function ( f ) { f.removeAttribute( 'aria-busy' ); f.querySelectorAll( 'button' ).forEach( function ( b ) { b.disabled = false; } ); } );
+		}
+	} );
+
 	/* Simple tabs (pricing page): buttons [data-sm-tab] show the panel #plans-{key}. */
 	document.querySelectorAll( '[role="tablist"]' ).forEach( function ( list ) {
 		var tabs = list.querySelectorAll( '[data-sm-tab]' );

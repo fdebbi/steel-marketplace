@@ -67,9 +67,9 @@ msgstr "تحليل الوثائق"
 msgid "Listing description"
 msgstr "كتابة وصف الإعلان"
 
-#: src/Admin/Admin.php:45 src/Features/Cutlist.php:32
-msgid "DQE for the cutting optimiser"
-msgstr "كشف الكميات لمحسّن القص"
+#: src/Admin/Admin.php:45 src/Features/Cutlist.php:36
+msgid "Read a document (DQE AI)"
+msgstr "قراءة مستند (كشف الكميات بالذكاء الاصطناعي)"
 
 #: src/Admin/Admin.php:46
 msgid "Connection test"
@@ -322,15 +322,15 @@ msgstr "زائر"
 msgid "You cannot change these settings."
 msgstr "لا يمكنك تغيير هذه الإعدادات."
 
-#: src/Features/Cutlist.php:37
+#: src/Features/Cutlist.php:41
 msgid "Sign in to use this tool."
 msgstr "سجّل الدخول لاستعمال هذه الأداة."
 
-#: src/Features/Cutlist.php:40
+#: src/Features/Cutlist.php:44
 msgid "Your account is not complete: finish your profile to use the AI tools."
 msgstr "حسابك غير مكتمل: أكمل ملفك لاستعمال أدوات الذكاء الاصطناعي."
 
-#: src/Features/Cutlist.php:43 src/Gateway.php:49
+#: src/Features/Cutlist.php:47 src/Gateway.php:49
 msgid "This AI service is not available."
 msgstr "خدمة الذكاء الاصطناعي هذه غير متاحة."
 
@@ -419,15 +419,76 @@ msgstr "أرسل وثيقة PDF أو صورة (JPG، PNG، WebP)."
 msgid "A photo is too large (%d MB at most)."
 msgstr "إحدى الصور كبيرة جدًا (%d ميغابايت كحد أقصى)."
 
-#: src/Form.php:68
+#: src/Form.php:70
 msgid "Choose the document: Excel, PDF or a photo."
 msgstr "اختر المستند: Excel أو PDF أو صورة."
 
-#: src/Form.php:103
+#: src/Form.php:151
+msgid "This reading expired. Read the document again."
+msgstr "انتهت صلاحية هذه القراءة. أعد قراءة المستند."
+
+#: src/Form.php:155
+msgid "Tick at least one complete line (profile, length and number)."
+msgstr "حدد سطراً كاملاً واحداً على الأقل (المقطع، الطول والعدد)."
+
+#: src/Form.php:182 src/Form.php:333
+msgid "Your account cannot create requests for quotation."
+msgstr "لا يمكن لحسابك إنشاء طلبات عروض أسعار."
+
+#. translators: 1: profile, 2: weight written, 3: bars, 4: length.
+#: src/Form.php:190
+msgid "%1$s: %2$s kg in the document (%3$d bars of %4$s m)"
+msgstr "%1$s: %2$s kg في المستند (%3$d قضبان بطول %4$s m)"
+
+#. translators: 1: thickness, 2: length, 3: width, 4: number.
+#: src/Form.php:195
+msgid "Plate %1$s mm, %2$d × %3$d mm × %4$d"
+msgstr "صفيحة %1$s mm، %2$d × %3$d mm × %4$d"
+
+#: src/Form.php:198
+msgid "Request according to a document"
+msgstr "طلب حسب مستند"
+
+#: src/Form.php:203
+msgid "From the document:"
+msgstr "حسب المستند:"
+
+#: src/Form.php:206
+msgid "Plates"
+msgstr "الصفائح"
+
+#: src/Form.php:210
+msgid ""
+"Request pre-filled from your document: check every line before publishing. "
+"Weights are computed by the weight engine."
+msgstr ""
+"طلب مملوء مسبقاً من مستندك: تحقق من كل سطر قبل النشر. الأوزان محسوبة بمحرك "
+"الأوزان."
+
+#: src/Form.php:225
+msgid "Your account has no warehouse."
+msgstr "حسابك ليس لديه مخزن."
+
+#. translators: %d: lines.
+#: src/Form.php:231
+msgid "%d line added to your warehouse, kept in stock only."
+msgid_plural "%d lines added to your warehouse, kept in stock only."
+msgstr[0] "أُضيف %d سطر إلى مخزنك، في المخزون فقط."
+msgstr[1] "أُضيف سطر واحد إلى مخزنك، في المخزون فقط."
+msgstr[2] "أُضيف سطران إلى مخزنك، في المخزون فقط."
+msgstr[3] "أُضيفت %d أسطر إلى مخزنك، في المخزون فقط."
+msgstr[4] "أُضيف %d سطراً إلى مخزنك، في المخزون فقط."
+msgstr[5] "أُضيف %d سطر إلى مخزنك، في المخزون فقط."
+
+#: src/Form.php:233
+msgid "Choose what to do with the lines."
+msgstr "اختر ما تفعله بالأسطر."
+
+#: src/Form.php:250
 msgid "The page has expired. Reload it and try again."
 msgstr "انتهت صلاحية الصفحة. أعد تحميلها وحاول مجدداً."
 
-#: src/Form.php:107
+#: src/Form.php:254
 msgid ""
 "Fill in the product first (category, profile, quantity…): the description is"
 " written from it."
@@ -435,27 +496,27 @@ msgstr ""
 "املأ معلومات المنتج أولاً (الفئة، المقطع، الكمية…): يُكتب الوصف انطلاقاً "
 "منها."
 
-#: src/Form.php:132
+#: src/Form.php:279
 msgid "Choose an AI tool."
 msgstr "اختر أداة ذكاء اصطناعي."
 
-#: src/Form.php:144
+#: src/Form.php:291
 msgid "Add at least one photo of the profile."
 msgstr "أضف صورة واحدة على الأقل للمقطع."
 
-#: src/Form.php:147
+#: src/Form.php:294
 msgid "Add the document to analyse (PDF or photo)."
 msgstr "أضف الوثيقة المراد تحليلها (PDF أو صورة)."
 
-#: src/Form.php:150
+#: src/Form.php:297
 msgid "Add photos or describe the product in a few words."
 msgstr "أضف صورًا أو صِف المنتج في بضع كلمات."
 
-#: src/Form.php:177
+#: src/Form.php:324
 msgid "This suggestion expired. Run the assistant again."
 msgstr "انتهت صلاحية هذا الاقتراح. أعد تشغيل المساعد."
 
-#: src/Form.php:179
+#: src/Form.php:326
 msgid ""
 "Form pre-filled by the AI assistant: check every field before publishing. "
 "The weight is computed by the weight engine."
@@ -463,11 +524,7 @@ msgstr ""
 "نموذج مُعبّأ مسبقًا من المساعد الذكي: تحقّق من كل حقل قبل النشر. يحسب محرك "
 "الأوزان الوزن."
 
-#: src/Form.php:186
-msgid "Your account cannot create requests for quotation."
-msgstr "لا يمكن لحسابك إنشاء طلبات عروض أسعار."
-
-#: src/Form.php:191
+#: src/Form.php:338
 msgid "Nothing to use from this result."
 msgstr "لا شيء يمكن استعماله من هذه النتيجة."
 

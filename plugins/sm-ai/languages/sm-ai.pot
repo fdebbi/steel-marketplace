@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM AI 0.3.0\n"
+"Project-Id-Version: SM AI 0.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-ai\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-20T10:01:04+00:00\n"
+"POT-Creation-Date: 2026-11-20T11:13:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-ai\n"
@@ -70,8 +70,8 @@ msgid "Listing description"
 msgstr ""
 
 #: src/Admin/Admin.php:45
-#: src/Features/Cutlist.php:32
-msgid "DQE for the cutting optimiser"
+#: src/Features/Cutlist.php:36
+msgid "Read a document (DQE AI)"
 msgstr ""
 
 #: src/Admin/Admin.php:46
@@ -316,15 +316,15 @@ msgstr ""
 msgid "You cannot change these settings."
 msgstr ""
 
-#: src/Features/Cutlist.php:37
+#: src/Features/Cutlist.php:41
 msgid "Sign in to use this tool."
 msgstr ""
 
-#: src/Features/Cutlist.php:40
+#: src/Features/Cutlist.php:44
 msgid "Your account is not complete: finish your profile to use the AI tools."
 msgstr ""
 
-#: src/Features/Cutlist.php:43
+#: src/Features/Cutlist.php:47
 #: src/Gateway.php:49
 msgid "This AI service is not available."
 msgstr ""
@@ -415,47 +415,97 @@ msgstr ""
 msgid "A photo is too large (%d MB at most)."
 msgstr ""
 
-#: src/Form.php:68
+#: src/Form.php:70
 msgid "Choose the document: Excel, PDF or a photo."
 msgstr ""
 
-#: src/Form.php:103
-msgid "The page has expired. Reload it and try again."
+#: src/Form.php:151
+msgid "This reading expired. Read the document again."
 msgstr ""
 
-#: src/Form.php:107
-msgid "Fill in the product first (category, profile, quantity…): the description is written from it."
+#: src/Form.php:155
+msgid "Tick at least one complete line (profile, length and number)."
 msgstr ""
 
-#: src/Form.php:132
-msgid "Choose an AI tool."
-msgstr ""
-
-#: src/Form.php:144
-msgid "Add at least one photo of the profile."
-msgstr ""
-
-#: src/Form.php:147
-msgid "Add the document to analyse (PDF or photo)."
-msgstr ""
-
-#: src/Form.php:150
-msgid "Add photos or describe the product in a few words."
-msgstr ""
-
-#: src/Form.php:177
-msgid "This suggestion expired. Run the assistant again."
-msgstr ""
-
-#: src/Form.php:179
-msgid "Form pre-filled by the AI assistant: check every field before publishing. The weight is computed by the weight engine."
-msgstr ""
-
-#: src/Form.php:186
+#: src/Form.php:182
+#: src/Form.php:333
 msgid "Your account cannot create requests for quotation."
 msgstr ""
 
-#: src/Form.php:191
+#. translators: 1: profile, 2: weight written, 3: bars, 4: length.
+#: src/Form.php:190
+msgid "%1$s: %2$s kg in the document (%3$d bars of %4$s m)"
+msgstr ""
+
+#. translators: 1: thickness, 2: length, 3: width, 4: number.
+#: src/Form.php:195
+msgid "Plate %1$s mm, %2$d × %3$d mm × %4$d"
+msgstr ""
+
+#: src/Form.php:198
+msgid "Request according to a document"
+msgstr ""
+
+#: src/Form.php:203
+msgid "From the document:"
+msgstr ""
+
+#: src/Form.php:206
+msgid "Plates"
+msgstr ""
+
+#: src/Form.php:210
+msgid "Request pre-filled from your document: check every line before publishing. Weights are computed by the weight engine."
+msgstr ""
+
+#: src/Form.php:225
+msgid "Your account has no warehouse."
+msgstr ""
+
+#. translators: %d: lines.
+#: src/Form.php:231
+msgid "%d line added to your warehouse, kept in stock only."
+msgid_plural "%d lines added to your warehouse, kept in stock only."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Form.php:233
+msgid "Choose what to do with the lines."
+msgstr ""
+
+#: src/Form.php:250
+msgid "The page has expired. Reload it and try again."
+msgstr ""
+
+#: src/Form.php:254
+msgid "Fill in the product first (category, profile, quantity…): the description is written from it."
+msgstr ""
+
+#: src/Form.php:279
+msgid "Choose an AI tool."
+msgstr ""
+
+#: src/Form.php:291
+msgid "Add at least one photo of the profile."
+msgstr ""
+
+#: src/Form.php:294
+msgid "Add the document to analyse (PDF or photo)."
+msgstr ""
+
+#: src/Form.php:297
+msgid "Add photos or describe the product in a few words."
+msgstr ""
+
+#: src/Form.php:324
+msgid "This suggestion expired. Run the assistant again."
+msgstr ""
+
+#: src/Form.php:326
+msgid "Form pre-filled by the AI assistant: check every field before publishing. The weight is computed by the weight engine."
+msgstr ""
+
+#: src/Form.php:338
 msgid "Nothing to use from this result."
 msgstr ""
 

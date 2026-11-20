@@ -123,7 +123,7 @@ msgid "Tick at least one offcut to add."
 msgstr "حدد بقية واحدة على الأقل لإضافتها."
 
 #. translators: %d: number of offcuts.
-#: src/Cutting.php:254
+#: src/Cutting.php:256
 msgid "%d offcut added to your reuse warehouse, kept in stock only."
 msgid_plural "%d offcuts added to your reuse warehouse, kept in stock only."
 msgstr[0] "أُضيفت %d بقية إلى مخزن إعادة الاستعمال، في المخزون فقط."
@@ -132,6 +132,19 @@ msgstr[2] "أُضيفت بقيتان إلى مخزن إعادة الاستعما
 msgstr[3] "أُضيفت %d بقايا إلى مخزن إعادة الاستعمال، في المخزون فقط."
 msgstr[4] "أُضيفت %d بقية إلى مخزن إعادة الاستعمال، في المخزون فقط."
 msgstr[5] "أُضيفت %d بقية إلى مخزن إعادة الاستعمال، في المخزون فقط."
+
+#. translators: %s: what is wrong.
+#: src/Documents.php:101
+msgid "A line cannot be added: %s"
+msgstr "لا يمكن إضافة سطر: %s"
+
+#: src/Documents.php:107
+msgid "No line can go in the warehouse."
+msgstr "لا يمكن إدخال أي سطر إلى المخزن."
+
+#: src/Documents.php:118
+msgid "Read from a document"
+msgstr "مقروء من مستند"
 
 #: src/Items.php:138
 msgid "A reference has 1 to 20 letters, digits, dashes, dots or slashes."
@@ -200,7 +213,7 @@ msgstr ""
 msgid "whole lot"
 msgstr "الحصة كاملة"
 
-#: src/Plugin.php:41
+#: src/Plugin.php:42
 msgid "Item kept in the warehouse"
 msgstr "عنصر محفوظ في المخزن"
 

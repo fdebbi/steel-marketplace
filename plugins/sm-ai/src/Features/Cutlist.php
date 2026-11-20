@@ -1,10 +1,14 @@
 <?php
 /**
- * DQE IA (0.3.0): the pieces of a document (bill of quantities, quotation,
- * purchase order, take-off, public tender) for the cutting optimiser.
- *  - bars: profile, length of one piece, number → the list of pieces to cut;
- *  - linear: quantities given only in metres → bars to buy (request for quotation);
- *  - plates: thickness, length × width, number → request for quotation;
+ * Read a document — DQE IA (0.3.0, one tool since 0.4.0): the steel of a document
+ * (bill of quantities, quotation, purchase order, delivery note, invoice,
+ * inventory, tender), then the user chooses: cutting optimiser, request for
+ * quotation, or the warehouse.
+ *  - bars: profile, length of one piece, number. A line given only by its weight
+ *    or in metres gets 12 m bars (changeable) and the number computed from the
+ *    mass per metre of the catalogue: exact value, rounded up to buy, to the
+ *    nearest for the warehouse (which keeps the weight of the document);
+ *  - plates: thickness, length × width, number (weight from the engine);
  *  - other lines (concrete, roofing, paint…) are only counted.
  * Every profile is checked against the catalogue; weights come from the weight
  * engine. A line the AI deduced instead of read, a document sent as a photo,
@@ -29,7 +33,7 @@ final class Cutlist extends Feature {
 	}
 
 	public static function label() {
-		return __( 'DQE for the cutting optimiser', 'sm-ai' );
+		return __( 'Read a document (DQE AI)', 'sm-ai' );
 	}
 
 	public static function allowed( $company ) {
@@ -54,13 +58,13 @@ final class Cutlist extends Feature {
 		return "You read documents of steel construction (bill of quantities, quotation, purchase order, take-off, tender) and list the steel pieces to cut from bars, for a cutting optimiser.\n"
 			. self::common_rules( $lang )
 			. "- One entry per line of the document that is steel framing. Copy the text of the line (text) and its number or position (line).\n"
-			. "- bars: profiles cut from bars (IPE, HEA, HEB, UPN, angles, tubes, flats…): family code, designation as written, length of ONE piece in metres, number of pieces. If the length or the number is not written, leave it 0. If you deduced it (e.g. a span split in two halves, a number of frames multiplied), set deduced=true and explain in note.\n"
-			. "- linear: profiles given only as a total length in metres (ml), with no piece length: family, designation, metres.\n"
+			. "- bars: profiles in bars (IPE, HEA, HEB, UPN, angles, tubes, flats…): family code, designation as written, length of ONE piece in metres, number of pieces, and weight_kg = the TOTAL weight of the line if it is written (else 0). If the length or the number is not written, leave it 0. If you deduced it (e.g. a span split in two halves, a number of frames multiplied), set deduced=true and explain in note.\n"
+			. "- linear: profiles given only as a total length in metres (ml), with no piece length and no weight: family, designation, metres.\n"
 			. "- plates: plates, base plates, gussets, stiffeners: thickness_mm, length_mm, width_mm, number. Leave 0 what is not written; deduced=true if deduced.\n"
 			. "- ignored: number of lines that are not steel framing (concrete, roofing sheets, paint, bolts, labour…) and up to 5 short examples.\n"
 			. "- unreadable=true only if the document cannot be read (blurred photo, not a steel document); then lists are empty.\n"
 			. "- Never compute weights or prices. Do not total lines.\n"
-			. "JSON keys: summary (1 sentence), unreadable, bars (list of {line, text, family, designation, length_m, quantity, deduced, note}), linear (list of {line, text, family, designation, metres}), plates (list of {line, text, thickness_mm, length_mm, width_mm, quantity, deduced, note}), ignored (number), ignored_examples (list).\n\n"
+			. "JSON keys: summary (1 sentence), unreadable, bars (list of {line, text, family, designation, length_m, quantity, weight_kg, deduced, note}), linear (list of {line, text, family, designation, metres}), plates (list of {line, text, thickness_mm, length_mm, width_mm, quantity, deduced, note}), ignored (number), ignored_examples (list).\n\n"
 			. Catalog::context( array( 'families' ) );
 	}
 
@@ -99,67 +103,95 @@ final class Cutlist extends Feature {
 		return class_exists( '\SM\Core\Modules' ) ? \SM\Core\Modules::service( 'weight' ) : null;
 	}
 
+	/** Default length of a bar when the document gives only a weight or metres (m). */
+	const DEFAULT_LENGTH = 12.0;
+
+	/**
+	 * One line of bars. origin: written (length and number), weight (total weight
+	 * written), metres (total length written). For weight and metres: exact number of
+	 * bars, quantity rounded up (to buy), qty_stock to the nearest (warehouse).
+	 */
+	public static function bar( array $it, $photo, $eng ) {
+		$des    = self::str( $it['designation'] ?? '', 60 );
+		$s      = self::find( $it['family'] ?? '', $des );
+		$len    = round( self::num( $it['length_m'] ?? 0, 24 ), 3 );
+		$qty    = self::num( $it['quantity'] ?? 0, 10000 );
+		$qty    = floor( $qty ) === $qty ? (int) $qty : 0;
+		$doc_kg = round( self::num( $it['weight_kg'] ?? 0, 10000000 ), 1 );
+		$metres = round( self::num( $it['metres'] ?? 0, 100000 ), 2 );
+		$kg_m   = $s ? (float) $s->mass_kg_m : 0.0;
+		$origin = 'written';
+		$exact  = null;
+		$why    = array();
+		if ( ( ! $len || ! $qty ) && $kg_m > 0 && ( $doc_kg > 0 || $metres > 0 ) ) {
+			if ( $doc_kg > 0 && $qty && ! $len ) {
+				$len = round( $doc_kg / ( $kg_m * $qty ), 2 ); // Number and weight written: length of one bar.
+				$len = $len > 0 && $len <= 24 ? $len : 0;
+			}
+			if ( ! $len ) {
+				$len = self::DEFAULT_LENGTH;
+			}
+			$exact  = $doc_kg > 0 ? $doc_kg / ( $kg_m * $len ) : $metres / $len;
+			$exact  = round( $exact, 2 );
+			$qty    = (int) ceil( $exact - 0.005 );
+			$origin = $doc_kg > 0 ? 'weight' : 'metres';
+			$why[]  = $origin;
+		}
+		if ( ! $s ) {
+			$why[] = 'section';
+		}
+		if ( ! $len ) {
+			$why[] = 'length';
+		}
+		if ( ! $qty ) {
+			$why[] = 'quantity';
+		}
+		if ( ! empty( $it['deduced'] ) ) {
+			$why[] = 'deduced';
+		}
+		if ( $photo ) {
+			$why[] = 'photo';
+		}
+		$kg = 0.0;
+		if ( $s && $eng && $len && $qty ) {
+			$c  = $eng->calculate( array( 'family' => $s->family, 'section' => $s->id, 'length' => $len * 1000, 'bars' => $qty ) );
+			$kg = is_wp_error( $c ) ? 0.0 : round( (float) $c['total_kg'], 1 );
+		}
+		return array(
+			'line'        => self::str( $it['line'] ?? '', 20 ),
+			'text'        => self::str( $it['text'] ?? '', 160 ),
+			'designation' => $des,
+			'section'     => $s ? self::section_data( $s ) : null,
+			'length_m'    => $len,
+			'quantity'    => $qty,
+			'qty_stock'   => null === $exact ? $qty : max( 1, (int) round( $exact ) ),
+			'exact'       => $exact,
+			'origin'      => $origin,
+			'doc_kg'      => $doc_kg,
+			'metres'      => $metres,
+			'kg'          => $kg,
+			'sure'        => ! $why,
+			'why'         => array_values( array_unique( $why ) ),
+			'note'        => self::str( $it['note'] ?? '', 160 ),
+		);
+	}
+
 	public static function clean( array $j, array $input ) {
 		$photo = self::is_photo( $input );
 		$eng   = self::engine();
-		$bars  = array();
+		$bars = array();
 		foreach ( array_slice( (array) ( $j['bars'] ?? array() ), 0, self::MAX_LINES ) as $it ) {
-			if ( ! is_array( $it ) ) {
-				continue;
+			if ( is_array( $it ) ) {
+				$bars[] = self::bar( $it, $photo, $eng );
 			}
-			$des  = self::str( $it['designation'] ?? '', 60 );
-			$s    = self::find( $it['family'] ?? '', $des );
-			$len  = round( self::num( $it['length_m'] ?? 0, 24 ), 3 );
-			$qty  = self::num( $it['quantity'] ?? 0, 10000 );
-			$qty  = floor( $qty ) === $qty ? (int) $qty : 0;
-			$why  = array();
-			if ( ! $s ) {
-				$why[] = 'section';
+		}
+		// 0.4.0: quantities in metres become bars of 12 m (changeable), like a weight.
+		foreach ( array_slice( (array) ( $j['linear'] ?? array() ), 0, 30 ) as $it ) {
+			if ( is_array( $it ) && self::num( $it['metres'] ?? 0, 100000 ) > 0 ) {
+				$bars[] = self::bar( array( 'line' => $it['line'] ?? '', 'text' => $it['text'] ?? '', 'family' => $it['family'] ?? '', 'designation' => $it['designation'] ?? '', 'metres' => $it['metres'] ), $photo, $eng );
 			}
-			if ( ! $len ) {
-				$why[] = 'length';
-			}
-			if ( ! $qty ) {
-				$why[] = 'quantity';
-			}
-			if ( ! empty( $it['deduced'] ) ) {
-				$why[] = 'deduced';
-			}
-			if ( $photo ) {
-				$why[] = 'photo';
-			}
-			$bars[] = array(
-				'line'        => self::str( $it['line'] ?? '', 20 ),
-				'text'        => self::str( $it['text'] ?? '', 160 ),
-				'designation' => $des,
-				'section'     => $s ? self::section_data( $s ) : null,
-				'length_m'    => $len,
-				'quantity'    => $qty,
-				'sure'        => ! $why,
-				'why'         => $why,
-				'note'        => self::str( $it['note'] ?? '', 160 ),
-			);
 		}
 		$linear = array();
-		foreach ( array_slice( (array) ( $j['linear'] ?? array() ), 0, 30 ) as $it ) {
-			if ( ! is_array( $it ) ) {
-				continue;
-			}
-			$des = self::str( $it['designation'] ?? '', 60 );
-			$s   = self::find( $it['family'] ?? '', $des );
-			$m   = round( self::num( $it['metres'] ?? 0, 100000 ), 2 );
-			if ( ! $m ) {
-				continue;
-			}
-			$linear[] = array(
-				'line'        => self::str( $it['line'] ?? '', 20 ),
-				'text'        => self::str( $it['text'] ?? '', 160 ),
-				'designation' => $des,
-				'section'     => $s ? self::section_data( $s ) : null,
-				'metres'      => $m,
-				'sure'        => $s && ! $photo,
-			);
-		}
 		$plates = array();
 		foreach ( array_slice( (array) ( $j['plates'] ?? array() ), 0, 30 ) as $it ) {
 			if ( ! is_array( $it ) ) {
@@ -227,6 +259,7 @@ final class Cutlist extends Feature {
 					array( 'line' => '17', 'text' => 'Pannes IPE 120 L=6m', 'family' => 'IPE', 'designation' => 'IPE 120', 'length_m' => 6, 'quantity' => 28, 'deduced' => false, 'note' => '' ),
 					array( 'line' => '19', 'text' => 'Lisses UAP 100 x 6,00', 'family' => 'UAP', 'designation' => 'UAP 100', 'length_m' => 6, 'quantity' => 16, 'deduced' => false, 'note' => 'UAP' ),
 					array( 'line' => '22', 'text' => 'Contreventement cornière 60x6', 'family' => 'L', 'designation' => 'L 60x60x6', 'length_m' => 0, 'quantity' => 8, 'deduced' => false, 'note' => 'longueur absente' ),
+					array( 'line' => '24', 'text' => 'IPE 200 : 3 500 kg', 'family' => 'IPE', 'designation' => 'IPE 200', 'length_m' => 0, 'quantity' => 0, 'weight_kg' => 3500, 'deduced' => false, 'note' => '' ),
 				),
 				'linear'           => array(
 					array( 'line' => '25', 'text' => 'Sablières IPE 160 : 84 ml', 'family' => 'IPE', 'designation' => 'IPE 160', 'metres' => 84 ),

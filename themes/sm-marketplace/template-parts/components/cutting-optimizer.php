@@ -137,7 +137,6 @@ $js = array(
 							<label class="sm-btn sm-btn--ai-outline sm-btn--sm"><input type="file" name="photo" form="smcut-ai-form" accept="image/*" capture="environment" data-smcut-aifile hidden><?php sm_icon( 'camera' ); ?><span><?php esc_html_e( 'Take a photo', 'sm-marketplace' ); ?></span></label>
 							<button class="sm-btn sm-btn--ghost sm-btn--sm smcut-import__send" type="submit" form="smcut-ai-form" data-smcut-aisend><?php esc_html_e( 'Read the document', 'sm-marketplace' ); ?></button>
 						</div>
-						<p class="smcut-import__busy" data-smcut-aibusy hidden><?php esc_html_e( 'Reading the document… it can take up to a minute.', 'sm-marketplace' ); ?></p>
 						<small><?php esc_html_e( 'Photo: flat, with good light. Plans will come later.', 'sm-marketplace' ); ?><?php if ( null !== $ai['remaining'] ) : ?> · <?php echo esc_html( sprintf( /* translators: %d: credits left. */ _n( '%d credit left', '%d credits left', (int) $ai['remaining'], 'sm-marketplace' ), (int) $ai['remaining'] ) ); ?><?php endif; ?></small>
 					<?php elseif ( 'login' === $ai['state'] ) : ?>
 						<p class="smcut-import__why"><a href="<?php echo esc_url( sm_page_url( 'login' ) ); ?>"><?php esc_html_e( 'Log in to use this tool', 'sm-marketplace' ); ?></a></p>
@@ -243,14 +242,15 @@ $js = array(
 		</section>
 	</form>
 	<?php if ( $ai && 'ok' === $ai['state'] ) : ?>
-		<?php sm_theme_form_open( 'ai_cutlist', array( 'id' => 'smcut-ai-form', 'class' => 'smcut-aiform', 'enctype' => 'multipart/form-data' ) ); ?>
+		<?php sm_theme_form_open( 'ai_cutlist', array( 'id' => 'smcut-ai-form', 'class' => 'smcut-aiform', 'enctype' => 'multipart/form-data' ) + sm_ai_wait_attrs( __( 'The AI is reading your document…', 'sm-marketplace' ), '.smcut-form > .sm-panel' ) ); ?>
+			<input type="hidden" name="for" value="cutting">
 			<input type="hidden" name="back" value="<?php echo esc_url( add_query_arg( array_merge( $qs(), 'fr' !== $lang ? array( 'lang' => $lang ) : array() ), $page ) ); ?>">
 		</form>
 	<?php endif; ?>
 
 	<div class="smcut-result" id="smcut-result">
 		<?php if ( $ai && ! empty( $ai['result'] ) ) : ?>
-			<?php sm_component( 'cutting-ai-review', array( 'ai' => $ai['result'], 'sections' => $secs, 'fam_of' => $fam_of, 'page' => $page, 'query' => array_merge( $qs(), 'fr' !== $lang ? array( 'lang' => $lang ) : array() ), 'bar' => $bar, 'hidden' => $hidden ) ); ?>
+			<?php sm_component( 'ai-doc-review', array( 'ai' => $ai, 'sections' => $secs ) ); ?>
 		<?php endif; ?>
 		<?php if ( ! is_array( $res ) ) : ?>
 			<?php if ( ! ( $ai && ! empty( $ai['result'] ) ) ) : ?>

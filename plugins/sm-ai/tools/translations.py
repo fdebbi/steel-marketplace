@@ -130,3 +130,21 @@ T.update({
 'Excel files cannot be read on this server: send a PDF or a CSV.': ('Les fichiers Excel ne peuvent pas être lus sur ce serveur : envoyez un PDF ou un CSV.', 'لا يمكن قراءة ملفات Excel على هذا الخادم: أرسل PDF أو CSV.'),
 'This Excel file cannot be read.': ('Ce fichier Excel ne peut pas être lu.', 'لا يمكن قراءة ملف Excel هذا.'),
 })
+
+# 0.4.0: « Read a document », three destinations.
+T.update({
+'Read a document (DQE AI)': ('Lire un document (DQE IA)', 'قراءة مستند (كشف الكميات بالذكاء الاصطناعي)'),
+'This reading expired. Read the document again.': ('Cette lecture a expiré. Relisez le document.', 'انتهت صلاحية هذه القراءة. أعد قراءة المستند.'),
+'Tick at least one complete line (profile, length and number).': ('Cochez au moins une ligne complète (profilé, longueur et nombre).', 'حدد سطراً كاملاً واحداً على الأقل (المقطع، الطول والعدد).'),
+'%1$s: %2$s kg in the document (%3$d bars of %4$s m)': ('%1$s : %2$s kg au document (%3$d barres de %4$s m)', '%1$s: %2$s kg في المستند (%3$d قضبان بطول %4$s m)'),
+'Plate %1$s mm, %2$d × %3$d mm × %4$d': ('Tôle %1$s mm, %2$d × %3$d mm × %4$d', 'صفيحة %1$s mm، %2$d × %3$d mm × %4$d'),
+'Request according to a document': ('Demande selon un document', 'طلب حسب مستند'),
+'From the document:': ('D’après le document :', 'حسب المستند:'),
+'Plates': ('Tôles', 'الصفائح'),
+'Request pre-filled from your document: check every line before publishing. Weights are computed by the weight engine.': ('Demande pré-remplie depuis votre document : vérifiez chaque ligne avant de publier. Les poids sont calculés par le moteur de poids.', 'طلب مملوء مسبقاً من مستندك: تحقق من كل سطر قبل النشر. الأوزان محسوبة بمحرك الأوزان.'),
+'Your account has no warehouse.': ('Votre compte n’a pas de magasin.', 'حسابك ليس لديه مخزن.'),
+'Choose what to do with the lines.': ('Choisissez quoi faire des lignes.', 'اختر ما تفعله بالأسطر.'),
+})
+P.update({
+('%d line added to your warehouse, kept in stock only.', '%d lines added to your warehouse, kept in stock only.'): (['%d ligne ajoutée à votre magasin, en stock seulement.', '%d lignes ajoutées à votre magasin, en stock seulement.'], ['أُضيف %d سطر إلى مخزنك، في المخزون فقط.', 'أُضيف سطر واحد إلى مخزنك، في المخزون فقط.', 'أُضيف سطران إلى مخزنك، في المخزون فقط.', 'أُضيفت %d أسطر إلى مخزنك، في المخزون فقط.', 'أُضيف %d سطراً إلى مخزنك، في المخزون فقط.', 'أُضيف %d سطر إلى مخزنك، في المخزون فقط.']),
+})

@@ -69,11 +69,20 @@
 		var idle = label ? label.textContent : '';
 		var before = null;
 
+		var timer = null;
 		function busy( on ) {
 			btn.disabled = on;
 			btn.classList.toggle( 'is-busy', on );
-			if ( label ) { label.textContent = on ? T.busy : idle; }
+			target.classList.toggle( 'is-ai-writing', on );
 			target.setAttribute( 'aria-busy', on ? 'true' : 'false' );
+			clearInterval( timer );
+			if ( ! label ) { return; }
+			if ( ! on ) { label.textContent = idle; return; }
+			// 0.51.0: seconds counter while the AI writes (the button stays blocked: one credit).
+			var t0 = Date.now();
+			var tick = function () { label.textContent = T.busy + ' ' + Math.round( ( Date.now() - t0 ) / 1000 ) + ' s'; };
+			tick();
+			timer = setInterval( tick, 1000 );
 		}
 
 		function showNote( text ) {

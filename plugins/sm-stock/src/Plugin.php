@@ -36,6 +36,7 @@ final class Plugin {
 		Prices::init();
 		Actions::init();
 		Cutting::init();
+		Documents::init();
 		Theme\Bridge::init();
 		add_filter( 'sm_dashboard_view_slugs', static fn( $slugs ) => array_merge( $slugs, array( 'stock' => 'magasin', 'stock-reuse' => 'magasin-reemploi', 'stock-moves' => 'magasin-mouvements', 'stock-prices' => 'magasin-prix' ) ) );
 		add_filter( 'sm_activity_labels', static fn( $l ) => $l + array( 'product.stock' => __( 'Item kept in the warehouse', 'sm-stock' ) ) );

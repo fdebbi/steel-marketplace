@@ -125,3 +125,24 @@ textarea[aria-busy="true"] { opacity: .6; }
 .smai-card--soon .smai-card__icon { background: #FFF4D6; color: #7A5600; }
 .smai-card__meta .is-biz { background: #FFF4D6; color: #7A5600; }
 .smai-card__meta .is-soon { background: color-mix(in srgb, var(--sm-ai-1) 14%, var(--sm-surface)); color: var(--sm-ai-ink); }
+
+/* 0.51.0: waiting for the AI — one screen for every AI tool. */
+.sm-aiwait { position: absolute; inset: 0; z-index: 20; display: grid; place-items: start center; align-content: start; padding: var(--sm-s4); text-align: center; background: color-mix(in srgb, var(--sm-surface) 88%, transparent); backdrop-filter: blur(2px); border-radius: inherit; }
+.sm-aiwait__in { display: grid; justify-items: center; gap: 6px; max-inline-size: 320px; position: sticky; inset-block-start: 28vh; } /* Stays in view in a tall tool. */
+.sm-aiwait p { margin: 0; }
+.sm-aiwait__orb { inline-size: 64px; block-size: 64px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--sm-ai-1, #7C6CF2), var(--sm-ai-2, #3B82F6), var(--sm-ai-1, #7C6CF2)); box-shadow: 0 0 0 8px color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 14%, transparent); animation: sm-aiwait-spin 1.6s linear infinite; margin-block-end: 6px; }
+.sm-aiwait__orb span { inline-size: 46px; block-size: 46px; border-radius: 50%; background: var(--sm-surface); display: grid; place-items: center; font-size: 20px; color: var(--sm-ai-ink, #5B4BD8); animation: sm-aiwait-spin 1.6s linear infinite reverse; }
+.sm-aiwait__t { font-weight: 800; font-size: var(--sm-fs-md, 1rem); }
+.sm-aiwait__s { color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+.sm-aiwait__bar { display: block; inline-size: 220px; max-inline-size: 100%; block-size: 6px; border-radius: 9px; background: color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 14%, var(--sm-surface)); overflow: hidden; margin-block-start: 6px; }
+.sm-aiwait__bar i { display: block; inline-size: 40%; block-size: 100%; border-radius: 9px; background: linear-gradient(90deg, var(--sm-ai-1, #7C6CF2), var(--sm-ai-2, #3B82F6)); animation: sm-aiwait-bar 1.4s ease-in-out infinite; }
+.sm-aiwait__c { font: 600 var(--sm-fs-xs) var(--sm-font, Inter, sans-serif); color: var(--sm-muted); }
+.sm-btn.is-busy { cursor: progress; }
+.sm-btn.is-busy::before { content: ""; inline-size: 14px; block-size: 14px; border-radius: 50%; border: 2px solid currentColor; border-inline-end-color: transparent; animation: sm-aiwait-spin .8s linear infinite; }
+@keyframes sm-aiwait-spin { to { transform: rotate(360deg); } }
+@keyframes sm-aiwait-bar { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
+[dir="rtl"] .sm-aiwait__bar i { animation-direction: reverse; }
+@media (prefers-reduced-motion: reduce) { .sm-aiwait__orb, .sm-aiwait__orb span, .sm-aiwait__bar i, .sm-btn.is-busy::before { animation: none; } .sm-aiwait__bar i { inline-size: 100%; opacity: .5; } }
+.is-ai-writing { background-image: linear-gradient(100deg, transparent 30%, color-mix(in srgb, var(--sm-ai-1, #7C6CF2) 10%, transparent) 50%, transparent 70%) !important; background-size: 300% 100% !important; animation: sm-aiwait-shine 1.6s linear infinite; }
+@keyframes sm-aiwait-shine { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+@media (prefers-reduced-motion: reduce) { .is-ai-writing { animation: none; } }

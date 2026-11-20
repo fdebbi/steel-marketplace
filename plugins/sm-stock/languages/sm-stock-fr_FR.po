@@ -129,11 +129,24 @@ msgid "Tick at least one offcut to add."
 msgstr "Cochez au moins une chute à ajouter."
 
 #. translators: %d: number of offcuts.
-#: src/Cutting.php:254
+#: src/Cutting.php:256
 msgid "%d offcut added to your reuse warehouse, kept in stock only."
 msgid_plural "%d offcuts added to your reuse warehouse, kept in stock only."
 msgstr[0] "%d chute ajoutée à votre magasin réemploi, en stock seulement."
 msgstr[1] "%d chutes ajoutées à votre magasin réemploi, en stock seulement."
+
+#. translators: %s: what is wrong.
+#: src/Documents.php:101
+msgid "A line cannot be added: %s"
+msgstr "Une ligne ne peut pas être ajoutée : %s"
+
+#: src/Documents.php:107
+msgid "No line can go in the warehouse."
+msgstr "Aucune ligne ne peut aller au magasin."
+
+#: src/Documents.php:118
+msgid "Read from a document"
+msgstr "Lu dans un document"
 
 #: src/Items.php:138
 msgid "A reference has 1 to 20 letters, digits, dashes, dots or slashes."
@@ -203,7 +216,7 @@ msgstr ""
 msgid "whole lot"
 msgstr "lot entier"
 
-#: src/Plugin.php:41
+#: src/Plugin.php:42
 msgid "Item kept in the warehouse"
 msgstr "Article gardé au magasin"
 

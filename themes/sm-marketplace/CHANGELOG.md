@@ -1,5 +1,12 @@
 # Changelog — sm-marketplace
 
+## 0.51.0 — 2026-11-20 (avec sm-ai 0.4.0 et sm-stock 0.3.0)
+
+- **Lire un document (DQE IA)** : vérification commune (composant `ai-doc-review`, remplace `cutting-ai-review`) avec **colonne Poids** (« du document » ou « calculé ») ; pour une ligne donnée par son poids, la longueur (12 m, liste 6 / 12) recalcule le nombre (`assets/js/ai-review.js`) : « 13,04 barres → 14 (au magasin : 13) ». Trois destinations : Optimiser la découpe, Demande de devis, Ajouter à mon magasin (Neuf / Réemploi, emplacement) ; celle de la page d'origine est mise en avant.
+- Entrées : assistant IA (onglet « Lire un document », Excel/PDF/photo), optimiseur, formulaire de demande de devis (« Remplir depuis un document »), Magasin (« Ajouter depuis un document »). Page des outils IA : carte « Lire un document ».
+- **Attente de l'IA** commune (`sm_ai_wait_attrs()`, `window.smAiWait`) : voile sur l'outil, repère ✦ animé, « L'IA lit votre document… Cela peut prendre jusqu'à une minute. Ne fermez pas la page. », barre indéterminée, nom du fichier et secondes ; après 60 s « La réponse tarde » ; boutons bloqués (un seul crédit) ; mouvement réduit respecté. Appliquée à la lecture de document, à la reconnaissance, à l'assistant d'annonce et à la recherche intelligente ; « L'IA rédige… 6 s » et reflet dans le champ pour la description.
+- Mouvements du magasin : « Lu dans un document ».
+
 ## 0.50.0 — 2026-11-20 (avec sm-ai 0.3.0 et sm-weight-engine 0.7.0)
 
 - Optimiseur : **« Importer un document »** (✦ IA, 1 crédit) au début de « 2. Pièces à couper » — « Choisir le fichier » (Excel, PDF, photo) et « Prendre une photo » ; le fichier part dès qu'il est choisi (« Lecture du document… »). Visiteur : « Connectez-vous pour utiliser cet outil » ; sans crédit : la raison et le lien vers les formules et packs.

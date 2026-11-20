@@ -17,6 +17,7 @@ $kinds = array(
 	'price'    => __( 'Price changed', 'sm-marketplace' ),
 	'cutting'  => __( 'Taken for a cutting', 'sm-marketplace' ),
 	'offcuts'  => __( 'Offcuts of the optimiser', 'sm-marketplace' ),
+	'document' => __( 'Read from a document', 'sm-marketplace' ),
 );
 $units = static function ( $q, $u ) {
 	$n = abs( $q );

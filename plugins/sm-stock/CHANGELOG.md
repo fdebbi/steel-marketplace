@@ -1,5 +1,9 @@
 # Changelog — sm-stock
 
+## 0.3.0 — 2026-11-20 (avec sm-ai 0.4.0)
+
+- **Ajout depuis un document** (`Documents`, filtre `sm_ai_doc_to_stock`) : bon de livraison, facture, inventaire → un article par ligne, en stock seulement, sans prix, repère automatique, emplacement facultatif, Neuf ou Réemploi (état « Bon », origine « Fin de stock »). Ligne donnée par son poids : nombre arrondi au plus proche et **poids du document gardé** (poids réel). Tôles comprises. Capacité de la formule vérifiée pour tout le document. Mouvement « Lu dans un document ».
+
 ## 0.2.0 — 2026-11-20 (avec sm-weight-engine 0.6.0 et le thème 0.49.0)
 
 - **Magasin dans l'optimiseur de découpe** (`Cutting`) : filtre `sm_cutting_stock_offers` — barres du même profilé, neuves et variantes du réemploi, publiées ou en stock seulement (option), avec repère, emplacement, état, nuance. La ferraille n'est jamais proposée.

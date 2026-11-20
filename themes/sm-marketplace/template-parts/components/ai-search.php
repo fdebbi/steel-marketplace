@@ -31,7 +31,7 @@ if ( ! $ready && ! is_array( $info ) ) {
 		</div>
 	<?php endif; ?>
 	<?php if ( $ready ) : ?>
-		<?php sm_theme_form_open( 'ai_search', array( 'class' => 'smai-search__form', 'role' => 'search', 'data-sm-busy' => __( 'Searching…', 'sm-marketplace' ) ) ); ?>
+		<?php sm_theme_form_open( 'ai_search', array( 'class' => 'smai-search__form', 'role' => 'search' ) + sm_ai_wait_attrs( __( 'The AI is searching…', 'sm-marketplace' ) ) ); ?>
 			<label class="screen-reader-text" for="smai-q"><?php esc_html_e( 'Describe what you need', 'sm-marketplace' ); ?></label>
 			<span class="smai-search__icon" aria-hidden="true"><?php sm_icon( 'ai' ); ?></span>
 			<input id="smai-q" name="q" dir="auto" maxlength="300" value="<?php echo esc_attr( is_array( $info ) ? (string) $info['query'] : '' ); ?>" placeholder="<?php esc_attr_e( 'Describe what you need, e.g. “used IPE 200 in Oran, at least 6 m”', 'sm-marketplace' ); ?>">

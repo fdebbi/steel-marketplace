@@ -46,3 +46,10 @@ P.update({
 ('%d bar taken out of your warehouse for the cutting. The movement is in the history.', '%d bars taken out of your warehouse for the cutting. The movements are in the history.'): (['%d barre sortie de votre magasin pour la découpe. Le mouvement est dans l’historique.', '%d barres sorties de votre magasin pour la découpe. Les mouvements sont dans l’historique.'], ['أُخرج %d قضيب من مخزنك للقص. الحركات في السجل.', 'أُخرج قضيب واحد من مخزنك للقص. الحركة في السجل.', 'أُخرج قضيبان من مخزنك للقص. الحركات في السجل.', 'أُخرجت %d قضبان من مخزنك للقص. الحركات في السجل.', 'أُخرج %d قضيبًا من مخزنك للقص. الحركات في السجل.', 'أُخرج %d قضيب من مخزنك للقص. الحركات في السجل.']),
 ('%d offcut added to your reuse warehouse, kept in stock only.', '%d offcuts added to your reuse warehouse, kept in stock only.'): (['%d chute ajoutée à votre magasin réemploi, en stock seulement.', '%d chutes ajoutées à votre magasin réemploi, en stock seulement.'], ['أُضيفت %d بقية إلى مخزن إعادة الاستعمال، في المخزون فقط.', 'أُضيفت بقية واحدة إلى مخزن إعادة الاستعمال، في المخزون فقط.', 'أُضيفت بقيتان إلى مخزن إعادة الاستعمال، في المخزون فقط.', 'أُضيفت %d بقايا إلى مخزن إعادة الاستعمال، في المخزون فقط.', 'أُضيفت %d بقية إلى مخزن إعادة الاستعمال، في المخزون فقط.', 'أُضيفت %d بقية إلى مخزن إعادة الاستعمال، في المخزون فقط.']),
 })
+
+# 0.3.0: lines of a document added to the warehouse.
+T.update({
+'A line cannot be added: %s': ('Une ligne ne peut pas être ajoutée : %s', 'لا يمكن إضافة سطر: %s'),
+'No line can go in the warehouse.': ('Aucune ligne ne peut aller au magasin.', 'لا يمكن إدخال أي سطر إلى المخزن.'),
+'Read from a document': ('Lu dans un document', 'مقروء من مستند'),
+})

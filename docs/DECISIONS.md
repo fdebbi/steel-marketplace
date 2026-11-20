@@ -487,3 +487,9 @@ Validé sur la maquette 0.37.
 - Rien n'est ajouté sans l'utilisateur : lignes « sûres » cochées, « à vérifier » décochées (profilé absent du catalogue, longueur ou nombre absent, ligne déduite par l'IA, source photo).
 - Tôles et platines : extraites dans une liste séparée, poids par le moteur, vers la demande de devis (pas dans le plan de coupe des barres ; optimiseur de tôles plus tard). Quantités en mètres : barres à acheter.
 - 1 crédit à la lecture, toujours utilisé (même si la photo est illisible ou si l'utilisateur annule). Le fichier n'est pas gardé.
+
+## Lire un document (DQE IA) : un outil, trois destinations (2026-11-20)
+
+- Un seul outil « Lire un document (DQE IA) » remplace « Analyser un document » : optimiseur de découpe, demande de devis (pré-remplie, publiée par l'utilisateur), magasin (en stock seulement ; documents adaptés : bon de livraison, facture, inventaire). Les annonces passent par le magasin (« Sur le marché » article par article), jamais publiées en masse depuis un document.
+- Colonne Poids : ligne donnée par son poids → barres de 12 m (modifiables), nombre = poids ÷ (poids au mètre × longueur) ; arrondi au-dessus pour acheter (devis, découpe), au plus proche pour le magasin, qui garde le poids du document. Ligne « calculé depuis le poids », à vérifier.
+- Indicateur d'attente commun à tous les outils IA : sans faux pourcentage, compteur de secondes, boutons bloqués (un seul crédit), message après 60 s, mouvement réduit respecté.

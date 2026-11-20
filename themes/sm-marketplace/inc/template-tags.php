@@ -31,6 +31,22 @@ function sm_get_icon( $name, $class = '', $label = '' ) {
  * uses the AI assistant (sm-ai), so users know what goes through the AI.
  * Never on the weight engine or other plain calculations.
  */
+/**
+ * Attributes of a form whose answer comes from the AI (0.51.0): on submit, a common
+ * waiting screen covers the tool (or $scope, a CSS selector): « ✦ » animated, the
+ * title, « up to a minute », seconds counter, button blocked (one credit only).
+ */
+function sm_ai_wait_attrs( $title, $scope = '' ) {
+	return array_filter(
+		array(
+			'data-sm-ai-wait'  => $title,
+			'data-sm-ai-sub'   => __( 'It can take up to a minute. Do not close the page.', 'sm-marketplace' ),
+			'data-sm-ai-slow'  => __( 'The answer is taking longer: please wait a little more.', 'sm-marketplace' ),
+			'data-sm-ai-scope' => $scope,
+		)
+	);
+}
+
 function sm_ai_badge( $class = '' ) {
 	printf(
 		'<span class="%1$s" title="%2$s">%3$s<span>%4$s</span></span>',
