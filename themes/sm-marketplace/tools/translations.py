@@ -2692,3 +2692,7 @@ T.update({
 'No new bar needed': ('Aucune barre neuve nécessaire', 'لا حاجة لقضبان جديدة'),
 'Everything comes from your warehouse': ('Tout vient de votre magasin', 'كل شيء من مخزنك'),
 })
+T.update({
+'Your offcuts are in your warehouse: they are searched first.': ('Vos chutes sont dans votre magasin : elles sont cherchées en premier.', 'بقاياك موجودة في مخزنك: يُبحث فيها أولاً.'),
+'Add offcuts to the warehouse': ('Ajouter des chutes au magasin', 'إضافة بقايا إلى المخزن'),
+})

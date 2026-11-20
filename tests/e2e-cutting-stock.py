@@ -35,6 +35,7 @@ with sync_playwright() as p:
     v = b.new_page(viewport={'width': 1280, 'height': 900})
     v.goto(URL)
     check(v.locator('.smcut-chk.is-off:has-text("Mon magasin") a[href*="connexion"]').count() == 1 and v.locator('.smcut-src.is-st').count() == 0, 'visitor: « My warehouse » off, with a link to log in')
+    check(v.locator('details.smcut-stock').count() == 1 and v.locator('.smcut-stocknote').count() == 0, 'visitor: « 4. Offcuts already at hand » kept')
 
     pg = b.new_page(viewport={'width': 1280, 'height': 900})
     pg.on('pageerror', lambda e: errors.append(str(e)))
@@ -44,6 +45,10 @@ with sync_playwright() as p:
     print('\nA. The warehouse first')
     pg.goto(URL)
     check(pg.locator('input[name="mine"]').is_checked() and pg.locator('[data-smcut-minebox]').is_visible(), 'company: « My warehouse » ticked by default, with its choices')
+    check(pg.locator('details.smcut-stock').count() == 0 and pg.locator('.smcut-stocknote a[href*="magasin-reemploi"]').count() == 1, 'company: no section 4, the offcuts are in the warehouse (link to add some)')
+    pg.goto(URL + '&stock[0][family]=IPE&stock[0][section]=%s&stock[0][length]=3&stock[0][qty]=1' % SID)
+    check(pg.locator('details.smcut-stock[open]').count() == 1, 'shared link with offcuts typed in: section 4 shown, so the plan stays the same')
+    pg.goto(URL)
     src = pg.locator('.smcut-src.is-st')
     check(src.count() == 1 and 'N-' in src.inner_text() and 'R-' in src.inner_text(), 'result « My warehouse » first, with the references (new and reuse)')
     check(pg.locator('.smcut-k.is-st').count() == 1 and pg.locator('.smcut-lbl.is-st').count() >= 2, 'figure « In my warehouse » and bars of the plan labelled « My warehouse · ref »')

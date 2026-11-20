@@ -174,6 +174,9 @@ $js = array(
 				<p class="smcut-chk is-fixed"><?php sm_icon( 'check' ); ?><span><?php esc_html_e( 'New bars for the rest', 'sm-marketplace' ); ?><small><?php esc_html_e( 'Request for quotation pre-filled', 'sm-marketplace' ); ?></small></span></p>
 			</fieldset>
 
+			<?php if ( $wh && ! $stock ) : // 0.49.1: with a warehouse, the offcuts are in it (section 4 only for visitors, clients, or a shared link that has some). ?>
+				<p class="smcut-stocknote"><?php sm_icon( 'info' ); ?><span><?php esc_html_e( 'Your offcuts are in your warehouse: they are searched first.', 'sm-marketplace' ); ?> <a href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'stock-reuse' ) ) ); ?>"><?php esc_html_e( 'Add offcuts to the warehouse', 'sm-marketplace' ); ?></a></span></p>
+			<?php else : ?>
 			<details class="smcut-stock"<?php echo $stock ? ' open' : ''; ?>>
 				<summary><?php esc_html_e( '4. Offcuts already at hand (optional)', 'sm-marketplace' ); ?></summary>
 				<p class="sm-muted"><?php esc_html_e( 'They are used first: you buy new bars only for what they cannot give.', 'sm-marketplace' ); ?></p>
@@ -190,6 +193,7 @@ $js = array(
 				</table>
 				<p class="smcut-add"><button type="button" class="sm-link" data-smcut-add="stock"><?php sm_icon( 'plus' ); ?><?php esc_html_e( 'Add a line', 'sm-marketplace' ); ?></button></p>
 			</details>
+			<?php endif; ?>
 
 			<button class="sm-btn sm-btn--accent sm-btn--block smcut-go" type="submit"><?php esc_html_e( 'Optimise the cutting', 'sm-marketplace' ); ?></button>
 		</section>

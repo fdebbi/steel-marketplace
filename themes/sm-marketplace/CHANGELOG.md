@@ -1,5 +1,9 @@
 # Changelog — sm-marketplace
 
+## 0.49.1 — 2026-11-20
+
+- Optimiseur : « 4. Chutes déjà à disposition » n'apparaît plus pour les comptes qui ont un magasin (entreprises, professionnels) : à la place, « Vos chutes sont dans votre magasin : elles sont cherchées en premier » et le lien « Ajouter des chutes au magasin ». Les visiteurs et les clients gardent le point 4 et voient « Mon magasin » désactivé. Un lien partagé qui contient des chutes saisies les affiche toujours (le plan reste le même).
+
 ## 0.49.0 — 2026-11-20 (avec sm-weight-engine 0.6.0, sm-stock 0.2.0, sm-products 0.21.0)
 
 - Optimiseur de découpe : **Mon magasin** (coché par défaut pour les entreprises et professionnels) avec Acier neuf, Réemploi, « Ne pas prendre les articles publiés sur le marché ». Visiteur ou client : grisé, « Connectez-vous avec un compte entreprise ou professionnel ».

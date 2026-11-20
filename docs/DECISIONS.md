@@ -476,3 +476,7 @@ Validé sur la maquette 0.37.
 - Chutes réutilisables : « Ajouter à mon magasin réemploi », en stock seulement, repères R- automatiques ; état et nuance de la barre d'origine (neuf → surplus neuf), « Bon » pour les barres achetées ; capacité de la formule vérifiée.
 - Repère visible du vendeur (avec l'emplacement) et de l'acheteur après acceptation (sans l'emplacement) sur le détail de la commande.
 - Article en stock seulement : prix facultatif ; prix et photos demandés au moment de publier.
+
+## Optimiseur : point 4 (2026-11-20)
+
+- Comptes avec magasin : plus de « Chutes déjà à disposition » (doublon avec Mon magasin, risque de compter deux fois) ; lien « Ajouter des chutes au magasin ». Visiteurs et clients : point 4 conservé, « Mon magasin » visible mais désactivé. Lien partagé avec des chutes saisies : affichées.
