@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM AI 0.4.0\n"
+"Project-Id-Version: SM AI 0.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-ai\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-20T11:13:05+00:00\n"
+"POT-Creation-Date: 2026-11-20T13:00:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-ai\n"
@@ -39,7 +39,7 @@ msgid "SM AI needs the SM Core plugin. Activate it first."
 msgstr ""
 
 #: src/Admin/Admin.php:31
-#: src/Admin/Admin.php:56
+#: src/Admin/Admin.php:57
 #: src/Plugin.php:36
 msgid "AI assistant"
 msgstr ""
@@ -75,245 +75,263 @@ msgid "Read a document (DQE AI)"
 msgstr ""
 
 #: src/Admin/Admin.php:46
+#: src/Features/Condition.php:26
+msgid "Condition of the steel"
+msgstr ""
+
+#: src/Admin/Admin.php:47
 msgid "Connection test"
 msgstr ""
 
-#: src/Admin/Admin.php:58
+#: src/Admin/Admin.php:59
 msgid "Saved."
 msgstr ""
 
-#: src/Admin/Admin.php:62
+#: src/Admin/Admin.php:63
 msgid "Connection works: the provider answered."
 msgstr ""
 
 #. translators: %s: error.
-#: src/Admin/Admin.php:62
+#: src/Admin/Admin.php:63
 msgid "Connection failed: %s"
 msgstr ""
 
-#: src/Admin/Admin.php:66
+#: src/Admin/Admin.php:67
 msgid "The AI gives suggestions that users confirm. It never gives weights (computed by the weight engine), never replaces engineering calculations, structural checks or certifications."
 msgstr ""
 
-#: src/Admin/Admin.php:68
+#: src/Admin/Admin.php:69
 msgid "Providers and services"
 msgstr ""
 
-#: src/Admin/Admin.php:68
+#: src/Admin/Admin.php:69
 msgid "Consumption"
 msgstr ""
 
-#: src/Admin/Admin.php:81
+#: src/Admin/Admin.php:82
 msgid "Providers"
 msgstr ""
 
-#: src/Admin/Admin.php:82
+#: src/Admin/Admin.php:83
 msgid "Keys are stored encrypted and never shown again. For more safety, define them in wp-config.php: SM_AI_ANTHROPIC_KEY, SM_AI_OPENAI_KEY. Prices (US dollars per million tokens, as published by the provider) only serve the cost estimates and the monthly budget."
 msgstr ""
 
-#: src/Admin/Admin.php:83
-#: src/Admin/Admin.php:109
+#: src/Admin/Admin.php:84
+#: src/Admin/Admin.php:110
 msgid "Provider"
 msgstr ""
 
-#: src/Admin/Admin.php:83
+#: src/Admin/Admin.php:84
 msgid "API key"
 msgstr ""
 
-#: src/Admin/Admin.php:83
+#: src/Admin/Admin.php:84
 msgid "Model"
 msgstr ""
 
-#: src/Admin/Admin.php:83
+#: src/Admin/Admin.php:84
 msgid "Price in / out ($ per 1M tokens)"
 msgstr ""
 
-#: src/Admin/Admin.php:88
+#: src/Admin/Admin.php:89
 msgid "Base URL"
 msgstr ""
 
-#: src/Admin/Admin.php:92
+#: src/Admin/Admin.php:93
 msgid "Defined in wp-config.php"
 msgstr ""
 
-#: src/Admin/Admin.php:94
+#: src/Admin/Admin.php:95
 msgid "Paste the key"
 msgstr ""
 
-#: src/Admin/Admin.php:96
+#: src/Admin/Admin.php:97
 msgid "Remove the key"
 msgstr ""
 
-#: src/Admin/Admin.php:99
+#: src/Admin/Admin.php:100
 msgid "Model name of the provider"
 msgstr ""
 
-#: src/Admin/Admin.php:103
+#: src/Admin/Admin.php:104
 msgid "Default provider"
 msgstr ""
 
-#: src/Admin/Admin.php:103
+#: src/Admin/Admin.php:104
 msgid "— none (AI off) —"
 msgstr ""
 
-#: src/Admin/Admin.php:109
+#: src/Admin/Admin.php:110
 msgid "Services"
 msgstr ""
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:109
-#: src/Admin/Admin.php:158
-#: src/Admin/Admin.php:172
+#: src/Admin/Admin.php:110
+#: src/Admin/Admin.php:159
+#: src/Admin/Admin.php:173
 msgid "Service"
 msgstr ""
 
-#: src/Admin/Admin.php:109
+#: src/Admin/Admin.php:110
 msgid "On"
 msgstr ""
 
-#: src/Admin/Admin.php:109
+#: src/Admin/Admin.php:110
 msgid "Model (empty = the provider's)"
 msgstr ""
 
-#: src/Admin/Admin.php:109
+#: src/Admin/Admin.php:110
 msgid "Uses per company per month"
 msgstr ""
 
-#: src/Admin/Admin.php:109
+#: src/Admin/Admin.php:110
 msgid "Visitors: uses per day"
 msgstr ""
 
-#: src/Admin/Admin.php:109
-#: src/Admin/Admin.php:172
+#: src/Admin/Admin.php:110
+#: src/Admin/Admin.php:173
 msgid "State"
 msgstr ""
 
-#: src/Admin/Admin.php:115
+#: src/Admin/Admin.php:116
 msgid "Default"
 msgstr ""
 
-#: src/Admin/Admin.php:120
+#: src/Admin/Admin.php:121
 msgid "0 = no limit"
 msgstr ""
 
-#: src/Admin/Admin.php:122
+#: src/Admin/Admin.php:123
 msgid "Not available (no provider, key or model)"
 msgstr ""
 
-#: src/Admin/Admin.php:126
+#: src/Admin/Admin.php:127
 msgid "Limits"
 msgstr ""
 
-#: src/Admin/Admin.php:128
+#: src/Admin/Admin.php:129
 msgid "Monthly budget (US dollars, 0 = no limit)"
 msgstr ""
 
-#: src/Admin/Admin.php:129
+#: src/Admin/Admin.php:130
 msgid "Uses per user per day"
 msgstr ""
 
-#: src/Admin/Admin.php:130
+#: src/Admin/Admin.php:131
 msgid "Maximum length of an answer (tokens)"
 msgstr ""
 
-#: src/Admin/Admin.php:131
+#: src/Admin/Admin.php:132
 msgid "Photos per request"
 msgstr ""
 
-#: src/Admin/Admin.php:132
+#: src/Admin/Admin.php:133
 msgid "Largest photo (MB)"
 msgstr ""
 
-#: src/Admin/Admin.php:133
+#: src/Admin/Admin.php:134
 msgid "Largest document (MB)"
 msgstr ""
 
-#: src/Admin/Admin.php:134
+#: src/Admin/Admin.php:135
 msgid "Waiting time for an answer (seconds)"
 msgstr ""
 
-#: src/Admin/Admin.php:135
+#: src/Admin/Admin.php:136
 msgid "Keep the consumption log (days)"
 msgstr ""
 
-#: src/Admin/Admin.php:142
+#: src/Admin/Admin.php:143
 msgid "Test the connection"
 msgstr ""
 
-#: src/Admin/Admin.php:148
+#: src/Admin/Admin.php:149
 msgid "Sends a tiny request (a few tokens) with the saved key and model."
 msgstr ""
 
 #. translators: %s: month.
-#: src/Admin/Admin.php:156
+#: src/Admin/Admin.php:157
 msgid "This month (%s)"
 msgstr ""
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:157
+#: src/Admin/Admin.php:158
 msgid "Estimated cost: %s $"
 msgstr ""
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:158
+#: src/Admin/Admin.php:159
 msgid "Answers"
 msgstr ""
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:158
+#: src/Admin/Admin.php:159
 msgid "Errors"
 msgstr ""
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:158
+#: src/Admin/Admin.php:159
 msgid "Refused (limits)"
 msgstr ""
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:158
+#: src/Admin/Admin.php:159
 msgid "Tokens in / out"
 msgstr ""
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:158
+#: src/Admin/Admin.php:159
 msgid "Estimated cost ($)"
 msgstr ""
 
-#: src/Admin/Admin.php:165
+#: src/Admin/Admin.php:166
 msgid "Companies using it the most"
 msgstr ""
 
-#: src/Admin/Admin.php:172
+#: src/Admin/Admin.php:173
 msgid "Last calls"
 msgstr ""
 
-#: src/Admin/Admin.php:172
+#: src/Admin/Admin.php:173
 msgid "Date"
 msgstr ""
 
-#: src/Admin/Admin.php:172
+#: src/Admin/Admin.php:173
 msgid "Provider · model"
 msgstr ""
 
-#: src/Admin/Admin.php:172
+#: src/Admin/Admin.php:173
 msgid "Company"
 msgstr ""
 
-#: src/Admin/Admin.php:172
+#: src/Admin/Admin.php:173
 msgid "Tokens"
 msgstr ""
 
-#: src/Admin/Admin.php:172
+#: src/Admin/Admin.php:173
 msgid "Time"
 msgstr ""
 
-#: src/Admin/Admin.php:179
+#: src/Admin/Admin.php:180
 msgid "Visitor"
 msgstr ""
 
-#: src/Admin/Admin.php:187
-#: src/Admin/Admin.php:198
+#: src/Admin/Admin.php:188
+#: src/Admin/Admin.php:199
 msgid "You cannot change these settings."
+msgstr ""
+
+#: src/Features/Condition.php:31
+#: src/Features/Describe.php:32
+#: src/Features/Recognize.php:28
+#: src/Gateway.php:58
+msgid "Sign in to use the AI assistant."
+msgstr ""
+
+#: src/Features/Condition.php:34
+#: src/Features/Describe.php:35
+#: src/Features/Listing.php:43
+msgid "Sign in with a business account to use the listing assistant."
 msgstr ""
 
 #: src/Features/Cutlist.php:41
@@ -325,19 +343,8 @@ msgid "Your account is not complete: finish your profile to use the AI tools."
 msgstr ""
 
 #: src/Features/Cutlist.php:47
-#: src/Gateway.php:49
+#: src/Gateway.php:50
 msgid "This AI service is not available."
-msgstr ""
-
-#: src/Features/Describe.php:32
-#: src/Features/Recognize.php:28
-#: src/Gateway.php:57
-msgid "Sign in to use the AI assistant."
-msgstr ""
-
-#: src/Features/Describe.php:35
-#: src/Features/Listing.php:43
-msgid "Sign in with a business account to use the listing assistant."
 msgstr ""
 
 #: src/Features/Describe.php:38
@@ -415,129 +422,134 @@ msgstr ""
 msgid "A photo is too large (%d MB at most)."
 msgstr ""
 
-#: src/Form.php:70
+#: src/Form.php:48
+#: src/Form.php:297
+msgid "The page has expired. Reload it and try again."
+msgstr ""
+
+#: src/Form.php:71
+msgid "Add your photos first (Photos part of the form): the AI looks at them."
+msgstr ""
+
+#: src/Form.php:117
 msgid "Choose the document: Excel, PDF or a photo."
 msgstr ""
 
-#: src/Form.php:151
+#: src/Form.php:198
 msgid "This reading expired. Read the document again."
 msgstr ""
 
-#: src/Form.php:155
+#: src/Form.php:202
 msgid "Tick at least one complete line (profile, length and number)."
 msgstr ""
 
-#: src/Form.php:182
-#: src/Form.php:333
+#: src/Form.php:229
+#: src/Form.php:380
 msgid "Your account cannot create requests for quotation."
 msgstr ""
 
 #. translators: 1: profile, 2: weight written, 3: bars, 4: length.
-#: src/Form.php:190
+#: src/Form.php:237
 msgid "%1$s: %2$s kg in the document (%3$d bars of %4$s m)"
 msgstr ""
 
 #. translators: 1: thickness, 2: length, 3: width, 4: number.
-#: src/Form.php:195
+#: src/Form.php:242
 msgid "Plate %1$s mm, %2$d × %3$d mm × %4$d"
 msgstr ""
 
-#: src/Form.php:198
+#: src/Form.php:245
 msgid "Request according to a document"
 msgstr ""
 
-#: src/Form.php:203
+#: src/Form.php:250
 msgid "From the document:"
 msgstr ""
 
-#: src/Form.php:206
+#: src/Form.php:253
 msgid "Plates"
 msgstr ""
 
-#: src/Form.php:210
+#: src/Form.php:257
 msgid "Request pre-filled from your document: check every line before publishing. Weights are computed by the weight engine."
 msgstr ""
 
-#: src/Form.php:225
+#: src/Form.php:272
 msgid "Your account has no warehouse."
 msgstr ""
 
 #. translators: %d: lines.
-#: src/Form.php:231
+#: src/Form.php:278
 msgid "%d line added to your warehouse, kept in stock only."
 msgid_plural "%d lines added to your warehouse, kept in stock only."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Form.php:233
+#: src/Form.php:280
 msgid "Choose what to do with the lines."
 msgstr ""
 
-#: src/Form.php:250
-msgid "The page has expired. Reload it and try again."
-msgstr ""
-
-#: src/Form.php:254
+#: src/Form.php:301
 msgid "Fill in the product first (category, profile, quantity…): the description is written from it."
 msgstr ""
 
-#: src/Form.php:279
+#: src/Form.php:326
 msgid "Choose an AI tool."
 msgstr ""
 
-#: src/Form.php:291
+#: src/Form.php:338
 msgid "Add at least one photo of the profile."
 msgstr ""
 
-#: src/Form.php:294
+#: src/Form.php:341
 msgid "Add the document to analyse (PDF or photo)."
 msgstr ""
 
-#: src/Form.php:297
+#: src/Form.php:344
 msgid "Add photos or describe the product in a few words."
 msgstr ""
 
-#: src/Form.php:324
+#: src/Form.php:371
 msgid "This suggestion expired. Run the assistant again."
 msgstr ""
 
-#: src/Form.php:326
+#: src/Form.php:373
 msgid "Form pre-filled by the AI assistant: check every field before publishing. The weight is computed by the weight engine."
 msgstr ""
 
-#: src/Form.php:338
+#: src/Form.php:385
 msgid "Nothing to use from this result."
 msgstr ""
 
-#: src/Gateway.php:53
+#: src/Gateway.php:54
 msgid "The AI assistant is not configured yet. Try again later."
 msgstr ""
 
-#: src/Gateway.php:72
+#: src/Gateway.php:73
 msgid "The AI assistant has reached its monthly limit. It will be available again next month."
 msgstr ""
 
-#: src/Gateway.php:76
+#: src/Gateway.php:77
 msgid "You used the AI assistant many times today. Try again tomorrow."
 msgstr ""
 
-#: src/Gateway.php:80
+#: src/Gateway.php:81
 msgid "Your company used all its requests of this month for this AI service."
 msgstr ""
 
-#: src/Gateway.php:83
+#: src/Gateway.php:84
 msgid "Create a free account to keep using the smart search today."
 msgstr ""
 
-#: src/Gateway.php:156
+#: src/Gateway.php:157
 msgid "The AI service did not answer. Try again in a moment."
 msgstr ""
 
-#: src/Gateway.php:161
+#: src/Gateway.php:162
 msgid "The AI answer could not be read. Try again."
 msgstr ""
 
-#: src/Gateway.php:193
+#: src/Gateway.php:194
 msgid "Give the model name first."
 msgstr ""
 
@@ -549,11 +561,11 @@ msgstr ""
 msgid "AI assistant used"
 msgstr ""
 
-#: src/Settings.php:80
+#: src/Settings.php:81
 msgid "OpenAI-compatible API"
 msgstr ""
 
-#: src/Settings.php:83
+#: src/Settings.php:84
 msgid "Simulation (tests, no real AI)"
 msgstr ""
 

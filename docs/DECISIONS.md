@@ -493,3 +493,9 @@ Validé sur la maquette 0.37.
 - Un seul outil « Lire un document (DQE IA) » remplace « Analyser un document » : optimiseur de découpe, demande de devis (pré-remplie, publiée par l'utilisateur), magasin (en stock seulement ; documents adaptés : bon de livraison, facture, inventaire). Les annonces passent par le magasin (« Sur le marché » article par article), jamais publiées en masse depuis un document.
 - Colonne Poids : ligne donnée par son poids → barres de 12 m (modifiables), nombre = poids ÷ (poids au mètre × longueur) ; arrondi au-dessus pour acheter (devis, découpe), au plus proche pour le magasin, qui garde le poids du document. Ligne « calculé depuis le poids », à vérifier.
 - Indicateur d'attente commun à tous les outils IA : sans faux pourcentage, compteur de secondes, boutons bloqués (un seul crédit), message après 60 s, mouvement réduit respecté.
+
+## Aide IA dans le formulaire de publication (2026-11-20)
+
+- Deux boutons ✦ IA en tête de l'étape 2, à partir des photos du formulaire : « Reconnaître depuis mes photos » (catégories du moteur, pas les tôles) et « Évaluer l'état depuis mes photos » (réemploi seulement, pas la Ferraille). 1 crédit par appel, attente IA commune.
+- Rien n'est rempli sans clic : « Choisir » (type et dimension, le poids vient du moteur de poids, profilés vérifiés dans le catalogue), « Appliquer » (état et surface) ou « Ignorer ».
+- L'état reste la déclaration du vendeur : estimation visuelle, pas une inspection ; jamais « Excellent » sans photos nettes de près (sinon « À contrôler ») ; lien vers une inspection par un ingénieur vérifié. Si l'IA voit de la ferraille, elle propose la catégorie Ferraille.

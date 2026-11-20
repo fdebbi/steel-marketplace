@@ -148,3 +148,9 @@ T.update({
 P.update({
 ('%d line added to your warehouse, kept in stock only.', '%d lines added to your warehouse, kept in stock only.'): (['%d ligne ajoutée à votre magasin, en stock seulement.', '%d lignes ajoutées à votre magasin, en stock seulement.'], ['أُضيف %d سطر إلى مخزنك، في المخزون فقط.', 'أُضيف سطر واحد إلى مخزنك، في المخزون فقط.', 'أُضيف سطران إلى مخزنك، في المخزون فقط.', 'أُضيفت %d أسطر إلى مخزنك، في المخزون فقط.', 'أُضيف %d سطراً إلى مخزنك، في المخزون فقط.', 'أُضيف %d سطر إلى مخزنك، في المخزون فقط.']),
 })
+
+# 0.5.0 — photo tools of the publication form.
+T.update({
+'Condition of the steel': ('État de l’acier', 'حالة الفولاذ'),
+'Add your photos first (Photos part of the form): the AI looks at them.': ('Ajoutez d’abord vos photos (partie Photos du formulaire) : l’IA les regarde.', 'أضف صورك أولاً (قسم الصور في الاستمارة): الذكاء الاصطناعي يفحصها.'),
+})

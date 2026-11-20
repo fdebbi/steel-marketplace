@@ -81,9 +81,10 @@
 		return q;
 	}
 
-	function refresh( changed ) {
+	function refresh( changed, extra ) {
 		var url = form.getAttribute( 'data-smp-partial' );
 		var q = query( changed );
+		if ( extra ) { Object.keys( extra ).forEach( function ( k ) { q.set( k, extra[ k ] ); } ); }
 		if ( ctrl ) { ctrl.abort(); }
 		ctrl = 'AbortController' in window ? new AbortController() : null;
 		var block = tech();
@@ -115,6 +116,16 @@
 				if ( 'AbortError' !== e.name ) { block.removeAttribute( 'aria-busy' ); }
 			} );
 	}
+
+	/**
+	 * Set technical values from outside (0.52.0, AI photo tools): { family, section }.
+	 * A new type clears what belongs to the old one, as a click would.
+	 */
+	window.smpSet = function ( values ) {
+		if ( ! tech() || ! values ) { return; }
+		clearTimeout( timer );
+		refresh( values.family ? { name: 'family', value: values.family } : null, values );
+	};
 
 	function inTech( el ) { return tech() && tech().contains( el ); }
 

@@ -6,7 +6,9 @@
  *  - sm_ai_use    : open the listing or request for quotation form pre-filled with a result;
  *  - sm_ai_describe (admin-ajax, 0.2.0): description of a listing from the facts of the publication form;
  *  - sm_ai_cutlist (0.3.0): read a document (DQE IA) → back to the page that asked, with the lines to check;
- *  - sm_ai_doc_use (0.4.0): the lines checked go to the cutting optimiser, a request for quotation or the warehouse.
+ *  - sm_ai_doc_use (0.4.0): the lines checked go to the cutting optimiser, a request for quotation or the warehouse;
+ *  - sm_ai_form_photo (admin-ajax, 0.5.0): in the publication form, recognise the profile or suggest the
+ *    condition of reused steel from the photos of the form (new files and photos already saved).
  * Results are kept 2 hours for the user who asked (transient), never published as is.
  *
  * @package SM\Ai
@@ -34,6 +36,51 @@ final class Form {
 		add_action( 'admin_post_sm_ai_cutlist', array( __CLASS__, 'cutlist' ) );
 		add_action( 'admin_post_nopriv_sm_ai_cutlist', array( __CLASS__, 'cutlist' ) );
 		add_action( 'admin_post_sm_ai_doc_use', array( __CLASS__, 'doc_use' ) );
+		add_action( 'wp_ajax_sm_ai_form_photo', array( __CLASS__, 'form_photo' ) );
+	}
+
+	/**
+	 * Recognise the profile, or suggest the condition, from the photos of the
+	 * publication form. JSON: { tool, result, remaining } or { message, state }.
+	 */
+	public static function form_photo() {
+		if ( ! check_ajax_referer( 'sm_ai_form_photo', 'nonce', false ) ) {
+			wp_send_json_error( array( 'message' => __( 'The page has expired. Reload it and try again.', 'sm-ai' ), 'state' => 'blocked' ), 403 );
+		}
+		$tool = 'condition' === sanitize_key( (string) ( $_POST['tool'] ?? '' ) ) ? 'condition' : 'recognize'; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$s    = Settings::all();
+		$max  = (int) $s['max_images'];
+		$parts = array();
+		// Photos already saved with the listing (or uploaded before by this user).
+		foreach ( array_slice( array_map( 'absint', (array) ( $_POST['keep'] ?? array() ) ), 0, $max ) as $aid ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			if ( ! $aid || 'attachment' !== get_post_type( $aid ) || (int) get_post_field( 'post_author', $aid ) !== get_current_user_id() ) {
+				continue;
+			}
+			$path = get_attached_file( $aid );
+			$mime = $path && is_readable( $path ) ? Files::mime( $path ) : '';
+			if ( in_array( $mime, Files::IMAGE_TYPES, true ) ) {
+				$parts[] = Files::image( $path, $mime );
+			}
+		}
+		$new = Files::read( 'photos', false, max( 0, $max - count( $parts ) ) );
+		if ( is_wp_error( $new ) ) {
+			wp_send_json_error( array( 'message' => $new->get_error_message(), 'state' => 'blocked' ) );
+		}
+		$parts = array_slice( array_merge( $parts, $new ), 0, $max );
+		if ( ! $parts ) {
+			wp_send_json_error( array( 'message' => __( 'Add your photos first (Photos part of the form): the AI looks at them.', 'sm-ai' ), 'state' => 'blocked' ) );
+		}
+		$res = Gateway::run( $tool, array( 'files' => $parts, 'notes' => '' ) );
+		if ( is_wp_error( $res ) ) {
+			wp_send_json_error( array( 'message' => $res->get_error_message(), 'state' => self::state_of( $res ) ) );
+		}
+		$company = sm_current_company();
+		AuditLog::add( 'ai.used', 'ai', 0, array( 'feature' => $tool, 'where' => 'form' ), null, $company ? (int) $company->id : 0 );
+		if ( 'recognize' === $tool ) {
+			$res['candidates'] = array_slice( $res['candidates'], 0, 3 );
+		}
+		unset( $res['_meta'] );
+		wp_send_json_success( array( 'tool' => $tool, 'result' => $res, 'remaining' => Gateway::remaining( $tool, $company ) ) );
 	}
 
 	/** Page of the optimiser to go back to (same site only). */

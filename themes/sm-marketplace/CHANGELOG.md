@@ -1,5 +1,13 @@
 # Changelog — sm-marketplace
 
+## 0.52.0 — 2026-11-20 (avec sm-ai 0.5.0)
+
+- **Formulaire de publication — aide IA depuis les photos** (composant `ai-photo-tools`, `assets/js/ai-photo.js`), en tête de l'étape 2, hors de la partie rafraîchie :
+  - **« Reconnaître depuis mes photos · 1 crédit »** (catégories du moteur, pas les tôles) : jusqu'à 3 profilés du catalogue (Probable / Possible / Peu probable, barre de confiance, raison), « Choisir » remplit le type et la dimension (le poids vient du moteur de poids) ; les questions « Pour lever le doute » ; un profilé d'une autre catégorie est montré sans bouton.
+  - **« Évaluer l'état depuis mes photos · 1 crédit »** (réemploi, pas la Ferraille) : suggestion d'état et d'état de surface, « Ce que l'IA voit » / « Ce qu'elle ne peut pas voir », « Appliquer « … » et la surface » ou « Ignorer » ; si elle voit de la ferraille : lien vers la catégorie Ferraille. Avertissement permanent « Estimation visuelle, pas une inspection » avec le lien Ingénierie.
+  - Rien n'est rempli sans clic. Photos utilisées : celles gardées (`keep_photos[]`) et les nouvelles du champ Photos ; sans photo : « Ajoutez d'abord vos photos ». Attente IA commune sur l'outil, bouton bloqué pendant l'appel, crédits restants affichés.
+- `product-form.js` : `window.smpSet( { family, section } )` met à jour la partie technique comme un clic (un autre type efface ce qui appartenait à l'ancien).
+
 ## 0.51.0 — 2026-11-20 (avec sm-ai 0.4.0 et sm-stock 0.3.0)
 
 - **Lire un document (DQE IA)** : vérification commune (composant `ai-doc-review`, remplace `cutting-ai-review`) avec **colonne Poids** (« du document » ou « calculé ») ; pour une ligne donnée par son poids, la longueur (12 m, liste 6 / 12) recalcule le nombre (`assets/js/ai-review.js`) : « 13,04 barres → 14 (au magasin : 13) ». Trois destinations : Optimiser la découpe, Demande de devis, Ajouter à mon magasin (Neuf / Réemploi, emplacement) ; celle de la page d'origine est mise en avant.

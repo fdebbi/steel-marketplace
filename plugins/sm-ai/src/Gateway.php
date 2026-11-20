@@ -30,6 +30,7 @@ final class Gateway {
 				'document'  => Features\Document::class,
 				'describe'  => Features\Describe::class,
 				'cutlist'   => Features\Cutlist::class,
+				'condition' => Features\Condition::class,
 			)
 		);
 	}

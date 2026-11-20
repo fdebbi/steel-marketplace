@@ -1,5 +1,11 @@
 # Changelog — sm-ai
 
+## 0.5.0 — 2026-11-20 (avec le thème 0.52.0)
+
+- **Service « État de l'acier »** (`condition`, 1 crédit, 30 par entreprise et par mois par défaut) : depuis les photos d'un lot de réemploi, suggestion d'état (excellent, bon, à contrôler, ferraille) et de surface (propre, rouille superficielle, peint, galvanisé, corrosion importante), ce que l'IA voit et ce qu'elle ne peut pas voir. Jamais « excellent » sans photos nettes de près (sinon « à contrôler ») ; une estimation visuelle, jamais une inspection.
+- **Photos du formulaire de publication** : admin-ajax `sm_ai_form_photo` (clé `sm_ai_form_photo`) pour `recognize` (3 profilés au plus) et `condition` ; photos gardées de l'utilisateur (`keep[]`, vérifiées : pièces jointes à lui) et nouveaux fichiers (`photos[]`). Réponse JSON `{ tool, result, remaining }` ou `{ message, state }`.
+- Donnée du thème `ai_form_photo` : outils offerts, état (ok / login / upgrade / blocked), crédits, adresse et clé de l'appel.
+
 ## 0.4.0 — 2026-11-20 (avec sm-stock 0.3.0 et le thème 0.51.0)
 
 - **« Lire un document (DQE IA) »** : un seul outil (remplace « Analyser un document » dans l'assistant) — DQE, devis, bon de commande, bon de livraison, facture, inventaire, marché. Après vérification, trois destinations (admin-post `sm_ai_doc_use`) : optimiseur de découpe (lignes ajoutées à sa liste), demande de devis (formulaire pré-rempli, publié par l'utilisateur), magasin (filtre `sm_ai_doc_to_stock`, sm-stock).

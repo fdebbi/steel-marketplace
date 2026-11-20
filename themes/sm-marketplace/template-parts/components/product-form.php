@@ -113,6 +113,7 @@ wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js
 	<?php else : ?>
 	<section class="sm-panel smp-step">
 		<h2 class="smw-step__title"><span class="smw-step__n">2</span><?php echo esc_html( sm_t( $cat['name'] ) ); ?> — <?php esc_html_e( 'technical data, quantity and price', 'sm-marketplace' ); ?></h2>
+		<?php sm_component( 'ai-photo-tools', array( 'category' => $cat, 'slug' => $cat_slug, 'market' => $market ) ); // 0.52.0: outside the refreshed part. ?>
 		<?php sm_component( 'product-tech', array( 'state' => $state, 'category' => $cat, 'market' => $mk ) ); ?>
 	</section>
 	<?php endif; ?>

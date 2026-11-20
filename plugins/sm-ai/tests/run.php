@@ -209,7 +209,7 @@ if ( Settings::simulation_allowed() ) {
 	$in['default_provider'] = 'simulation';
 	$in['features']['listing']['enabled'] = 1;
 	$in['features']['listing']['per_company_month'] = 30;
-	foreach ( array( 'listing', 'recognize', 'search', 'document', 'describe', 'cutlist' ) as $f ) {
+	foreach ( array( 'listing', 'recognize', 'search', 'document', 'describe', 'cutlist', 'condition' ) as $f ) {
 		$in['features'][ $f ]['enabled']  = 1;
 		$in['features'][ $f ]['provider'] = '';
 	}
@@ -269,6 +269,31 @@ if ( Settings::simulation_allowed() ) {
 	wp_set_current_user( 0 );
 	smai_assert( 'login' === SM\Ai\Form::state_of( Gateway::check( 'cutlist' ) ), 'visitor: asked to sign in' );
 	wp_set_current_user( $u_seller );
+
+	smai_section( '7. Photos of the publication form: condition of reused steel (0.5.0)' );
+	$C = 'SM\\Ai\\Features\\Condition';
+	$c = $C::clean( array( 'condition' => 'excellent', 'surface' => 'clean', 'close_photos' => false, 'confidence' => 0.9, 'sees' => array( 'a' ), 'cannot_see' => array() ), array() );
+	smai_assert( 'inspection' === $c['condition'], '« excellent » without clear close photos becomes « to inspect »' );
+	$c = $C::clean( array( 'condition' => 'excellent', 'surface' => 'clean', 'close_photos' => true, 'confidence' => 0.9 ), array() );
+	smai_assert( 'excellent' === $c['condition'] && 'clean' === $c['surface'], '« excellent » kept with clear close photos' );
+	$c = $C::clean( array( 'condition' => 'perfect', 'surface' => 'shiny', 'confidence' => 4, 'sees' => array_fill( 0, 9, 'x' ) ), array() );
+	smai_assert( 'inspection' === $c['condition'] && '' === $c['surface'] && $c['confidence'] <= 1 && count( $c['sees'] ) <= 5, 'unknown condition: to inspect; unknown surface dropped; confidence and lists bounded' );
+	$n = Usage::company_month_total( $cid );
+	$r = Gateway::run( 'condition', array( 'files' => array( array( 'type' => 'image', 'mime' => 'image/jpeg', 'data' => '' ) ), 'notes' => '' ) );
+	smai_assert( is_array( $r ) && 'good' === $r['condition'] && 'light_rust' === $r['surface'] && $r['sees'] && $r['cannot_see'] && Usage::company_month_total( $cid ) === $n + 1, 'simulation: good, light surface rust, what is seen and not seen; one use counted' );
+	$d = apply_filters( 'sm_theme_data_ai_form_photo', null, array() );
+	smai_assert( is_array( $d ) && isset( $d['tools']['recognize'], $d['tools']['condition'] ) && 'ok' === $d['tools']['condition']['state'] && 1 === $d['tools']['condition']['credits'] && wp_verify_nonce( $d['nonce'], 'sm_ai_form_photo' ), 'theme data: both photo tools, state, credits, ajax key' );
+	wp_set_current_user( 0 );
+	$d = apply_filters( 'sm_theme_data_ai_form_photo', null, array() );
+	smai_assert( ! is_array( $d ) || 'login' === $d['tools']['condition']['state'], 'visitor: asked to sign in' );
+	wp_set_current_user( $u_seller );
+	$in = get_option( Settings::OPTION );
+	$in['features']['condition']['enabled'] = 0;
+	Settings::save( $in );
+	$d = apply_filters( 'sm_theme_data_ai_form_photo', null, array() );
+	smai_assert( is_array( $d ) && ! isset( $d['tools']['condition'] ) && isset( $d['tools']['recognize'] ), 'service off: not offered in the form' );
+	$in['features']['condition']['enabled'] = 1;
+	Settings::save( $in );
 } else {
 	echo "  (SM_AI_SIMULATION not set: simulation tests skipped)\n";
 }

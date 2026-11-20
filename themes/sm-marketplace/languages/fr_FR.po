@@ -94,8 +94,9 @@ msgid "Fabrication & installation"
 msgstr "Fabrication et montage"
 
 #: footer.php:32 header.php:78 header.php:108 inc/menus.php:63
-#: inc/template-tags.php:299 templates/front-page-template.php:84
-#: templates/marketplace-engineers.php:35 templates/mission-request.php:23
+#: inc/template-tags.php:299 template-parts/components/ai-photo-tools.php:95
+#: templates/front-page-template.php:84 templates/marketplace-engineers.php:35
+#: templates/mission-request.php:23
 msgid "Engineering"
 msgstr "Ingénierie"
 
@@ -181,7 +182,7 @@ msgstr "Mes missions"
 msgid "Invoicing"
 msgstr "Facturation"
 
-#: footer.php:64 template-parts/components/product-form.php:237
+#: footer.php:64 template-parts/components/product-form.php:238
 #: template-parts/components/stock-warehouse.php:67
 #: template-parts/dashboard/publish.php:211
 #: template-parts/header-actions.php:34 templates/styleguide.php:34
@@ -542,11 +543,11 @@ msgstr "Menu du pied de page"
 msgid "Top utility menu"
 msgstr "Menu utilitaire supérieur"
 
-#: inc/template-tags.php:43
+#: inc/template-tags.php:43 template-parts/components/ai-photo-tools.php:45
 msgid "It can take up to a minute. Do not close the page."
 msgstr "Cela peut prendre jusqu’à une minute. Ne fermez pas la page."
 
-#: inc/template-tags.php:44
+#: inc/template-tags.php:44 template-parts/components/ai-photo-tools.php:46
 msgid "The answer is taking longer: please wait a little more."
 msgstr "La réponse tarde : patientez encore un peu."
 
@@ -902,10 +903,12 @@ msgid "Requests for quotation compared side by side"
 msgstr "Devis comparés côte à côte"
 
 #: template-parts/components/ai-confidence.php:13
+#: template-parts/components/ai-photo-tools.php:47
 msgid "Likely"
 msgstr "Probable"
 
 #: template-parts/components/ai-confidence.php:13
+#: template-parts/components/ai-photo-tools.php:48
 msgid "Possible"
 msgstr "Possible"
 
@@ -1285,7 +1288,7 @@ msgstr ""
 #: template-parts/components/cutting-sources.php:141
 #: template-parts/components/listing-place.php:27
 #: template-parts/components/mission-request-form.php:407
-#: template-parts/components/product-form.php:189
+#: template-parts/components/product-form.php:190
 #: template-parts/components/stock-warehouse.php:82
 #: templates/company-profile.php:222 templates/single-listing.php:81
 msgid "Location"
@@ -1330,6 +1333,162 @@ msgstr "Améliorez votre formule"
 #: template-parts/components/ai-gate.php:26
 msgid "to benefit from the AI assistant, or buy a pack of AI credits."
 msgstr "pour bénéficier de l'assistant IA, ou achetez un pack de crédits IA."
+
+#: template-parts/components/ai-photo-tools.php:36
+msgid "Clean"
+msgstr "Propre"
+
+#: template-parts/components/ai-photo-tools.php:37
+msgid "Light surface rust"
+msgstr "Rouille superficielle"
+
+#: template-parts/components/ai-photo-tools.php:38
+msgid "Painted"
+msgstr "Peint"
+
+#: template-parts/components/ai-photo-tools.php:39
+msgid "Galvanised"
+msgstr "Galvanisé"
+
+#: template-parts/components/ai-photo-tools.php:40
+msgid "Heavy corrosion"
+msgstr "Corrosion importante"
+
+#: template-parts/components/ai-photo-tools.php:43
+#: template-parts/dashboard/ai.php:80
+msgid "The AI is looking at your photos…"
+msgstr "L’IA regarde vos photos…"
+
+#: template-parts/components/ai-photo-tools.php:44
+msgid "The AI is looking at the condition…"
+msgstr "L’IA examine l’état de l’acier…"
+
+#: template-parts/components/ai-photo-tools.php:49
+msgid "Unlikely"
+msgstr "Peu probable"
+
+#: template-parts/components/ai-photo-tools.php:50
+#: template-parts/components/plan-card.php:82 templates/engineer-apply.php:254
+msgid "Choose"
+msgstr "Choisir"
+
+#: template-parts/components/ai-photo-tools.php:51
+msgid "Chosen"
+msgstr "Choisi"
+
+#: template-parts/components/ai-photo-tools.php:52
+msgid "size to choose"
+msgstr "dimension à choisir"
+
+#: template-parts/components/ai-photo-tools.php:53
+msgid "not in this category"
+msgstr "pas dans cette catégorie"
+
+#: template-parts/components/ai-photo-tools.php:54
+msgid ""
+"No profile of the catalogue recognised: take a photo of the end, with a tape"
+" measure."
+msgstr ""
+"Aucun profilé du catalogue reconnu : prenez une photo de l’extrémité, avec "
+"un mètre."
+
+#: template-parts/components/ai-photo-tools.php:55
+msgid "To remove the doubt:"
+msgstr "Pour lever le doute :"
+
+#: template-parts/components/ai-photo-tools.php:56
+msgid "Profiles checked against the catalogue of ReuSteel."
+msgstr "Profilés vérifiés dans le catalogue ReuSteel."
+
+#: template-parts/components/ai-photo-tools.php:57
+msgid "Suggestion of the AI — to confirm by you"
+msgstr "Suggestion de l’IA — à confirmer par vous"
+
+#: template-parts/components/ai-photo-tools.php:58
+msgid "Surface seen"
+msgstr "État de surface vu"
+
+#: template-parts/components/ai-photo-tools.php:59
+msgid "What the AI sees:"
+msgstr "Ce que l’IA voit :"
+
+#: template-parts/components/ai-photo-tools.php:60
+msgid "What it cannot see:"
+msgstr "Ce qu’elle ne peut pas voir :"
+
+#: template-parts/components/ai-photo-tools.php:61
+msgid "remaining thickness, deformations, welds, grade"
+msgstr "épaisseur restante, déformations, soudures, nuance"
+
+#. translators: %s: condition.
+#: template-parts/components/ai-photo-tools.php:63
+msgid "Apply « %s » and the surface"
+msgstr "Appliquer « %s » et la surface"
+
+#: template-parts/components/ai-photo-tools.php:64
+msgid "Ignore"
+msgstr "Ignorer"
+
+#: template-parts/components/ai-photo-tools.php:65
+msgid "Applied: check it in the form."
+msgstr "Appliqué : vérifiez-le dans le formulaire."
+
+#: template-parts/components/ai-photo-tools.php:66
+msgid "This steel looks good for recycling: publish it in the Scrap category?"
+msgstr ""
+"Cet acier semble bon pour le recyclage : le publier dans la catégorie "
+"Ferraille ?"
+
+#: template-parts/components/ai-photo-tools.php:67
+msgid "credits left: %d"
+msgstr "crédits restants : %d"
+
+#: template-parts/components/ai-photo-tools.php:68
+msgid "The AI service did not answer. Try again in a moment."
+msgstr "Le service IA n’a pas répondu. Réessayez dans un instant."
+
+#: template-parts/components/ai-photo-tools.php:77
+msgid "Sign in to use the AI assistant."
+msgstr "Connectez-vous pour utiliser l’assistant IA."
+
+#. translators: %d: credits.
+#: template-parts/components/ai-photo-tools.php:84
+msgid "Recognise from my photos · %d credit"
+msgid_plural "Recognise from my photos · %d credits"
+msgstr[0] "Reconnaître depuis mes photos · %d crédit"
+msgstr[1] "Reconnaître depuis mes photos · %d crédits"
+
+#. translators: %d: credits.
+#: template-parts/components/ai-photo-tools.php:85
+msgid ""
+"Uses the photos of the form (end view with a tape measure if possible)."
+msgstr ""
+"Utilise les photos du formulaire (vue en bout avec un mètre si possible)."
+
+#. translators: %d: credits.
+#: template-parts/components/ai-photo-tools.php:92
+msgid "Assess the condition from my photos · %d credit"
+msgid_plural "Assess the condition from my photos · %d credits"
+msgstr[0] "Évaluer l’état depuis mes photos · %d crédit"
+msgstr[1] "Évaluer l’état depuis mes photos · %d crédits"
+
+#. translators: %d: credits.
+#: template-parts/components/ai-photo-tools.php:93
+msgid ""
+"Uses the photos of the form (close views of the surfaces and of the ends)."
+msgstr ""
+"Utilise les photos du formulaire (vues de près des surfaces et des "
+"extrémités)."
+
+#: template-parts/components/ai-photo-tools.php:95
+msgid ""
+"Visual estimate, not an inspection: the condition stays your statement. For "
+"a reuse in a structure, ask for an inspection by an engineer verified on "
+"ReuSteel."
+msgstr ""
+"Estimation visuelle, pas une inspection : l’état reste votre déclaration. "
+"Pour une réutilisation en structure, demandez une inspection par un "
+"ingénieur vérifié sur ReuSteel."
 
 #: template-parts/components/ai-result-document.php:12
 msgid "pcs"
@@ -1918,10 +2077,10 @@ msgstr "Commune"
 #: template-parts/components/mission-request-form.php:463
 #: template-parts/components/my-products.php:182
 #: template-parts/components/plate-fields.php:219
-#: template-parts/components/product-form.php:132
-#: template-parts/components/product-form.php:138
-#: template-parts/components/product-form.php:178
-#: template-parts/components/product-form.php:205
+#: template-parts/components/product-form.php:133
+#: template-parts/components/product-form.php:139
+#: template-parts/components/product-form.php:179
+#: template-parts/components/product-form.php:206
 #: template-parts/components/product-tech.php:70
 #: template-parts/components/product-tech.php:79
 #: template-parts/components/product-tech.php:167
@@ -2161,7 +2320,7 @@ msgstr "États acceptés"
 #: template-parts/components/cutting-optimizer.php:209
 #: template-parts/components/filter-panel.php:153
 #: template-parts/components/mission-request-form.php:410
-#: template-parts/components/product-form.php:193
+#: template-parts/components/product-form.php:194
 #: template-parts/dashboard/company.php:101
 #: template-parts/dashboard/engineer-missions.php:135
 #: template-parts/dashboard/engineer-missions.php:140
@@ -3123,7 +3282,7 @@ msgstr "Documents techniques"
 #: template-parts/components/listing-building.php:135
 #: template-parts/components/listing-product.php:173
 #: template-parts/components/mission-request-form.php:444
-#: template-parts/components/product-form.php:121
+#: template-parts/components/product-form.php:122
 #: template-parts/dashboard/invoice.php:65 templates/single-listing.php:215
 #: templates/single-service.php:99
 msgid "Description"
@@ -4439,10 +4598,6 @@ msgstr "Votre compte revient à cette formule à la fin d’une période payée.
 msgid "Start free"
 msgstr "Commencer gratuitement"
 
-#: template-parts/components/plan-card.php:82 templates/engineer-apply.php:254
-msgid "Choose"
-msgstr "Choisir"
-
 #: template-parts/components/plan-card.php:85
 msgid "Free, without time limit."
 msgstr "Gratuit, sans limite de durée."
@@ -4809,16 +4964,16 @@ msgstr "Choisissez la catégorie du produit pour afficher son formulaire."
 msgid "technical data, quantity and price"
 msgstr "données techniques, quantité et prix"
 
-#: template-parts/components/product-form.php:121
+#: template-parts/components/product-form.php:122
 msgid "Description, photos and technical sheet"
 msgstr "Description, photos et fiche technique"
 
-#: template-parts/components/product-form.php:121
+#: template-parts/components/product-form.php:122
 #: template-parts/components/rfq-form.php:76
 msgid "Title and description"
 msgstr "Titre et description"
 
-#: template-parts/components/product-form.php:124
+#: template-parts/components/product-form.php:125
 msgid ""
 "The title is created automatically from the product: type, diameter and "
 "length, class and finish (for example \"Boulons M16 × 60 · 8.8 · Galvanisé à"
@@ -4828,7 +4983,7 @@ msgstr ""
 "longueur, classe et finition (par exemple « Boulons M16 × 60 · 8.8 · "
 "Galvanisé à chaud »), en français et en arabe."
 
-#: template-parts/components/product-form.php:124
+#: template-parts/components/product-form.php:125
 msgid ""
 "The title is created automatically from the product: type and size, steel "
 "grade and length (for example \"IPE 200 · S275JR · 12 m\"), in French and in"
@@ -4838,40 +4993,40 @@ msgstr ""
 "nuance d’acier et longueur (par exemple « IPE 200 · S275JR · 12 m »), en "
 "français et en arabe."
 
-#: template-parts/components/product-form.php:127
+#: template-parts/components/product-form.php:128
 #: template-parts/components/rfq-form.php:78
 #: template-parts/dashboard/publish.php:145
 msgid "Title in French"
 msgstr "Titre en français"
 
-#: template-parts/components/product-form.php:128
+#: template-parts/components/product-form.php:129
 msgid "e.g. Industrial hangar 40 × 20 m, assembled"
 msgstr "ex. Hangar industriel 40 × 20 m, monté"
 
-#: template-parts/components/product-form.php:128
+#: template-parts/components/product-form.php:129
 msgid "e.g. IPE and HEA offcuts, 2 to 4 m, good condition"
 msgstr "ex. chutes IPE et HEA, 2 à 4 m, bon état"
 
-#: template-parts/components/product-form.php:128
+#: template-parts/components/product-form.php:129
 msgid "e.g. IPE 200 S275JR new, 12 m bars"
 msgstr "ex. IPE 200 S275JR neuves, barres de 12 m"
 
-#: template-parts/components/product-form.php:132
+#: template-parts/components/product-form.php:133
 #: template-parts/components/rfq-form.php:83
 msgid "Title in Arabic"
 msgstr "Titre en arabe"
 
-#: template-parts/components/product-form.php:138
+#: template-parts/components/product-form.php:139
 #: template-parts/dashboard/publish.php:153
 msgid "Description and technical notes"
 msgstr "Description et notes techniques"
 
-#: template-parts/components/product-form.php:149
+#: template-parts/components/product-form.php:150
 msgid "Photos and technical sheet"
 msgstr "Photos et fiche technique"
 
 #. translators: %d: number of photos.
-#: template-parts/components/product-form.php:152
+#: template-parts/components/product-form.php:153
 msgid ""
 "At least %d photos: they come first on the listing page. Show the whole lot,"
 " the condition of the surfaces and the ends."
@@ -4879,7 +5034,7 @@ msgstr ""
 "%d photos au minimum : elles s’affichent en premier sur la fiche. Montrez "
 "l’ensemble du lot, l’état des surfaces et les extrémités."
 
-#: template-parts/components/product-form.php:154
+#: template-parts/components/product-form.php:155
 msgid ""
 "Photos are optional: without a photo, the listing shows the standard drawing"
 " of the section. A real photo of your stock is still recommended, buyers "
@@ -4889,13 +5044,13 @@ msgstr ""
 "standard du profilé. Une vraie photo de votre stock reste conseillée, les "
 "acheteurs lui font davantage confiance."
 
-#: template-parts/components/product-form.php:161
+#: template-parts/components/product-form.php:162
 #: template-parts/dashboard/publish.php:163
 msgid "Take or add photos"
 msgstr "Prendre ou ajouter des photos"
 
 #. translators: 1: number of photos, 2: size in MB.
-#: template-parts/components/product-form.php:165
+#: template-parts/components/product-form.php:166
 msgid ""
 "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole building, "
 "the frames, the connections and the roof."
@@ -4904,7 +5059,7 @@ msgstr ""
 "entier, les portiques, les assemblages et la toiture."
 
 #. translators: 1: number of photos, 2: size in MB.
-#: template-parts/components/product-form.php:165
+#: template-parts/components/product-form.php:166
 msgid ""
 "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the whole lot, the "
 "condition of the surfaces and the ends."
@@ -4913,7 +5068,7 @@ msgstr ""
 "entier, l’état des surfaces et les extrémités."
 
 #. translators: 1: number of photos, 2: size in MB.
-#: template-parts/components/product-form.php:165
+#: template-parts/components/product-form.php:166
 msgid ""
 "Up to %1$d photos (JPG, PNG, WebP, %2$d MB each). Show the section, the "
 "markings and the stock."
@@ -4921,12 +5076,12 @@ msgstr ""
 "Jusqu’à %1$d photos (JPG, PNG, WebP, %2$d Mo chacune). Montrez la section, "
 "les marquages et le stock."
 
-#: template-parts/components/product-form.php:178
+#: template-parts/components/product-form.php:179
 msgid "Add the technical sheet (PDF)"
 msgstr "Ajouter la fiche technique (PDF)"
 
 #. translators: %d: size in MB.
-#: template-parts/components/product-form.php:182
+#: template-parts/components/product-form.php:183
 msgid ""
 "Manufacturer data sheet, certificate of inspection (up to 3 PDF, %d MB "
 "each). Buyers can download it."
@@ -4934,11 +5089,11 @@ msgstr ""
 "Fiche du fabricant, certificat de réception (jusqu’à 3 PDF de %d Mo). Les "
 "acheteurs pourront la télécharger."
 
-#: template-parts/components/product-form.php:193
+#: template-parts/components/product-form.php:194
 msgid "Wilaya where the product is"
 msgstr "Wilaya où se trouve le produit"
 
-#: template-parts/components/product-form.php:195
+#: template-parts/components/product-form.php:196
 #: template-parts/components/product-lines.php:67
 #: template-parts/components/product-lines.php:81
 #: template-parts/components/product-tech.php:83
@@ -4954,23 +5109,23 @@ msgstr "Wilaya où se trouve le produit"
 msgid "Choose…"
 msgstr "Choisir…"
 
-#: template-parts/components/product-form.php:205
+#: template-parts/components/product-form.php:206
 msgid "Address or place name"
 msgstr "Adresse ou lieu-dit"
 
-#: template-parts/components/product-form.php:206
+#: template-parts/components/product-form.php:207
 msgid "e.g. industrial zone"
 msgstr "ex. zone industrielle"
 
-#: template-parts/components/product-form.php:216
+#: template-parts/components/product-form.php:217
 msgid "Exact position of the building"
 msgstr "Position exacte du bâtiment"
 
-#: template-parts/components/product-form.php:216
+#: template-parts/components/product-form.php:217
 msgid "Exact position"
 msgstr "Position exacte"
 
-#: template-parts/components/product-form.php:217
+#: template-parts/components/product-form.php:218
 msgid ""
 "Choose the wilaya: the map opens on it. Then drag the marker (or click the "
 "map) to the exact place, or use your current location if you are on site."
@@ -4979,11 +5134,11 @@ msgstr ""
 "(ou cliquez sur la carte) jusqu’à l’endroit exact, ou utilisez votre "
 "position actuelle si vous êtes sur place."
 
-#: template-parts/components/product-form.php:218
+#: template-parts/components/product-form.php:219
 msgid "Show the map to the public"
 msgstr "Afficher la carte au public"
 
-#: template-parts/components/product-form.php:219
+#: template-parts/components/product-form.php:220
 msgid ""
 "Unticked: the public only sees the address (commune, wilaya). The map is "
 "shown to a buyer after you accept his visit request."
@@ -4991,25 +5146,25 @@ msgstr ""
 "Décoché : le public voit seulement l’adresse (commune, wilaya). La carte est"
 " montrée à un acheteur après votre accord à sa demande de visite."
 
-#: template-parts/components/product-form.php:226
+#: template-parts/components/product-form.php:227
 msgid "Place it on the map (optional)"
 msgstr "Le placer sur la carte (facultatif)"
 
-#: template-parts/components/product-form.php:233
+#: template-parts/components/product-form.php:234
 #: template-parts/dashboard/publish.php:209
 msgid "Save draft"
 msgstr "Enregistrer le brouillon"
 
-#: template-parts/components/product-form.php:235
+#: template-parts/components/product-form.php:236
 #: template-parts/components/stock-warehouse.php:67
 msgid "Keep in stock only"
 msgstr "Garder en stock seulement"
 
-#: template-parts/components/product-form.php:237
+#: template-parts/components/product-form.php:238
 msgid "Send for publication"
 msgstr "Envoyer pour publication"
 
-#: template-parts/components/product-form.php:240
+#: template-parts/components/product-form.php:241
 msgid ""
 "The platform team checks each product (usually within a working day) before "
 "it is shown to buyers."
@@ -7130,10 +7285,6 @@ msgid ""
 msgstr ""
 "Excel (.xlsx, .csv), PDF ou photo, %d Mo au plus. Les plans viendront plus "
 "tard."
-
-#: template-parts/dashboard/ai.php:80
-msgid "The AI is looking at your photos…"
-msgstr "L’IA regarde vos photos…"
 
 #: template-parts/dashboard/ai.php:80
 msgid "The AI is preparing your listing…"

@@ -2786,3 +2786,43 @@ T.update({
 T.update({
 'A bill of quantities, a quotation or a purchase order? The AI reads it (Excel, PDF or photo) and fills the rows for you.': ('Un DQE, un devis ou un bon de commande ? L’IA le lit (Excel, PDF ou photo) et remplit les lignes pour vous.', 'كشف كميات أو عرض سعر أو أمر شراء؟ يقرؤه الذكاء الاصطناعي (Excel أو PDF أو صورة) ويملأ الأسطر عنك.'),
 })
+
+# 0.52.0 — AI photo tools of the publication form.
+T.update({
+'Clean': ('Propre', 'نظيف'),
+'Light surface rust': ('Rouille superficielle', 'صدأ سطحي'),
+'Painted': ('Peint', 'مدهون'),
+'Galvanised': ('Galvanisé', 'مُغلفن'),
+'Heavy corrosion': ('Corrosion importante', 'تآكل كبير'),
+'The AI is looking at your photos…': ('L’IA regarde vos photos…', 'الذكاء الاصطناعي يفحص صورك…'),
+'The AI is looking at the condition…': ('L’IA examine l’état de l’acier…', 'الذكاء الاصطناعي يفحص حالة الفولاذ…'),
+'Likely': ('Probable', 'مرجّح'),
+'Possible': ('Possible', 'ممكن'),
+'Unlikely': ('Peu probable', 'غير مرجّح'),
+'Choose': ('Choisir', 'اختيار'),
+'Chosen': ('Choisi', 'تم الاختيار'),
+'size to choose': ('dimension à choisir', 'المقاس يُختار'),
+'not in this category': ('pas dans cette catégorie', 'ليس في هذه الفئة'),
+'No profile of the catalogue recognised: take a photo of the end, with a tape measure.': ('Aucun profilé du catalogue reconnu : prenez une photo de l’extrémité, avec un mètre.', 'لم يُتعرّف على أي مقطع من الكتالوج: التقط صورة لطرف القطعة مع شريط قياس.'),
+'To remove the doubt:': ('Pour lever le doute :', 'لإزالة الشك:'),
+'Profiles checked against the catalogue of ReuSteel.': ('Profilés vérifiés dans le catalogue ReuSteel.', 'مقاطع تم التحقق منها في كتالوج ReuSteel.'),
+'Suggestion of the AI — to confirm by you': ('Suggestion de l’IA — à confirmer par vous', 'اقتراح الذكاء الاصطناعي — يؤكده أنت'),
+'Surface seen': ('État de surface vu', 'حالة السطح المرئية'),
+'What the AI sees:': ('Ce que l’IA voit :', 'ما يراه الذكاء الاصطناعي:'),
+'What it cannot see:': ('Ce qu’elle ne peut pas voir :', 'ما لا يمكنه رؤيته:'),
+'remaining thickness, deformations, welds, grade': ('épaisseur restante, déformations, soudures, nuance', 'السماكة المتبقية، التشوهات، اللحامات، الرتبة'),
+'Apply « %s » and the surface': ('Appliquer « %s » et la surface', 'تطبيق « %s » وحالة السطح'),
+'Ignore': ('Ignorer', 'تجاهل'),
+'Applied: check it in the form.': ('Appliqué : vérifiez-le dans le formulaire.', 'تم التطبيق: تحقق منه في الاستمارة.'),
+'This steel looks good for recycling: publish it in the Scrap category?': ('Cet acier semble bon pour le recyclage : le publier dans la catégorie Ferraille ?', 'يبدو هذا الفولاذ صالحاً للرسكلة: نشره في فئة الخردة؟'),
+'credits left: %d': ('crédits restants : %d', 'الأرصدة المتبقية: %d'),
+'The AI service did not answer. Try again in a moment.': ('Le service IA n’a pas répondu. Réessayez dans un instant.', 'لم تستجب خدمة الذكاء الاصطناعي. أعد المحاولة بعد لحظة.'),
+'Sign in to use the AI assistant.': ('Connectez-vous pour utiliser l’assistant IA.', 'سجّل الدخول لاستخدام المساعد الذكي.'),
+'Uses the photos of the form (end view with a tape measure if possible).': ('Utilise les photos du formulaire (vue en bout avec un mètre si possible).', 'يستعمل صور الاستمارة (صورة لطرف القطعة مع شريط قياس إن أمكن).'),
+'Uses the photos of the form (close views of the surfaces and of the ends).': ('Utilise les photos du formulaire (vues de près des surfaces et des extrémités).', 'يستعمل صور الاستمارة (صور قريبة للأسطح والأطراف).'),
+'Visual estimate, not an inspection: the condition stays your statement. For a reuse in a structure, ask for an inspection by an engineer verified on ReuSteel.': ('Estimation visuelle, pas une inspection : l’état reste votre déclaration. Pour une réutilisation en structure, demandez une inspection par un ingénieur vérifié sur ReuSteel.', 'تقدير بصري وليس فحصاً: تبقى الحالة تصريحك أنت. لإعادة الاستعمال في هيكل، اطلب فحصاً من مهندس موثّق على ReuSteel.'),
+})
+P.update({
+('Recognise from my photos · %d credit', 'Recognise from my photos · %d credits'): (['Reconnaître depuis mes photos · %d crédit', 'Reconnaître depuis mes photos · %d crédits'], ['التعرّف من صوري · %d رصيد', 'التعرّف من صوري · رصيد واحد', 'التعرّف من صوري · رصيدان', 'التعرّف من صوري · %d أرصدة', 'التعرّف من صوري · %d رصيداً', 'التعرّف من صوري · %d رصيد']),
+('Assess the condition from my photos · %d credit', 'Assess the condition from my photos · %d credits'): (['Évaluer l’état depuis mes photos · %d crédit', 'Évaluer l’état depuis mes photos · %d crédits'], ['تقييم الحالة من صوري · %d رصيد', 'تقييم الحالة من صوري · رصيد واحد', 'تقييم الحالة من صوري · رصيدان', 'تقييم الحالة من صوري · %d أرصدة', 'تقييم الحالة من صوري · %d رصيداً', 'تقييم الحالة من صوري · %d رصيد']),
+})

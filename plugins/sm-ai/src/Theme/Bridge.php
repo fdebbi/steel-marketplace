@@ -30,6 +30,26 @@ final class Bridge {
 		add_filter( 'sm_theme_data_ai_catalog', array( __CLASS__, 'catalog' ), 10, 2 );
 		add_filter( 'sm_theme_data_ai_describe', array( __CLASS__, 'describe' ), 10, 2 );
 		add_filter( 'sm_theme_data_ai_cutlist', array( __CLASS__, 'cutlist' ), 10, 2 );
+		add_filter( 'sm_theme_data_ai_form_photo', array( __CLASS__, 'form_photo' ), 10, 2 );
+	}
+
+	/**
+	 * Photo tools of the publication form (0.5.0): recognize (profile) and condition
+	 * (reused steel) — state of each, credits, and the address and key of the call.
+	 */
+	public static function form_photo( $result, $args ) {
+		if ( null !== $result ) {
+			return $result;
+		}
+		$company = sm_current_company();
+		$out     = array();
+		foreach ( array( 'recognize', 'condition' ) as $id ) {
+			$s = self::service( $id, $company );
+			if ( $s ) {
+				$out[ $id ] = $s;
+			}
+		}
+		return $out ? array( 'tools' => $out, 'ajax' => admin_url( 'admin-ajax.php' ), 'nonce' => wp_create_nonce( 'sm_ai_form_photo' ) ) : null;
 	}
 
 	/**
