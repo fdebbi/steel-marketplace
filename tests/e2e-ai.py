@@ -50,7 +50,7 @@ with sync_playwright() as p:
     check(a.locator('input[type="password"][name="providers[anthropic][key]"]').count() == 1 and a.locator('input[name="providers[openai][base_url]"]').count() == 1, 'key fields (password type) for Anthropic and OpenAI-compatible APIs')
     a.select_option('select[name="default_provider"]', 'simulation')
     a.click('form:has(input[value="sm_ai_settings"]) #submit'); a.wait_for_load_state()
-    check(a.locator('select[name="default_provider"]').input_value() == 'simulation' and a.locator('.wrap td span[style*="065f46"]').count() == 5, 'simulation chosen: the 5 services available')
+    check(a.locator('select[name="default_provider"]').input_value() == 'simulation' and a.locator('.wrap td span[style*="065f46"]').count() == 6, 'simulation chosen: the 6 services available (DQE IA since 0.3.0)')
     a.click('form:has(input[value="simulation"]) button'); a.wait_for_load_state()
     check(a.locator('.notice-success').count() >= 1 and 'test=ok' in a.url, 'connection test')
     a.screenshot(path=os.path.join(OUT, 'admin-ai-settings.png'), full_page=True)
