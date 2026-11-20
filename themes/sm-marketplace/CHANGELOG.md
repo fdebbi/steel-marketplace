@@ -1,5 +1,15 @@
 # Changelog — sm-marketplace
 
+## 0.54.0 — 2026-11-20
+
+- **« Explorer la marketplace »** (page de tous les marchés, `/recherche/`), au niveau des pages de chaque marché :
+  - titre « Explorer la marketplace » quand on arrive sans recherche (« Résultats de recherche » après un mot-clé) ;
+  - 3 cartes de marché (Produits sidérurgiques, Réemploi, Bâtiments : couleur, description, nombre d'annonces, « Voir le marché ») ; sur téléphone, une ligne compacte par marché ;
+  - « Types avec des annonces » : les types de tous les marchés qui ont des annonces, du plus fourni au moins fourni, avec l'étiquette du marché ; un type ouvre la page de son marché déjà filtrée ;
+  - panneau Filtres : « Type de produit » groupé par marché ; choisir un marché ouvre sa page (mot-clé, wilaya, prix, vente et vendeurs vérifiés gardés).
+  - Après une recherche par mot-clé, les cartes du haut laissent la place aux résultats (les types restent dans le panneau).
+- `sm_theme_explore()` (contrat de données) ; `type-tiles` accepte `href`, `tag` et `market`.
+
 ## 0.53.0 — 2026-11-20 (avec sm-insights 0.1.0, sm-ai 0.6.0, sm-subscriptions 0.5.0, sm-products 0.22.0)
 
 - **Rapport Business** (`template-parts/dashboard/report.php`, `assets/css/39-report.css`, `assets/js/report.js`), menu « Rapport Business » de toute entreprise (`/compte/rapport-business/`) :

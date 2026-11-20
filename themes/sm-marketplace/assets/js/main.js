@@ -196,6 +196,19 @@
 	if ( filters ) {
 		filters.addEventListener( 'click', function ( e ) { if ( e.target === filters ) { setFilters( false ); } } );
 	}
+	/* Page of every market (0.54.0): choosing a market opens its page, with its types and filters. */
+	$$( 'input[data-sm-market-page]' ).forEach( function ( r ) {
+		r.addEventListener( 'change', function () {
+			if ( ! r.checked ) { return; }
+			var form = r.form, u = new URL( r.getAttribute( 'data-sm-market-page' ), window.location.href );
+			[ 'q', 'wilaya', 'price_min', 'price_max', 'sale', 'verified', 'lang', 'sort', 'display' ].forEach( function ( k ) {
+				var f = form && form.elements[ k ];
+				var v = f ? ( f.type === 'checkbox' ? ( f.checked ? f.value : '' ) : ( f.value !== undefined ? f.value : '' ) ) : '';
+				if ( v ) { u.searchParams.set( k, v ); }
+			} );
+			window.location.href = u.toString();
+		} );
+	} );
 	/* Live count of the filter panel; empty fields left out of the address (0.24.0). */
 	$$( 'form[data-sm-count]' ).forEach( function ( form ) {
 		var btn = form.querySelector( '[data-sm-count-label]' );

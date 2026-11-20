@@ -509,3 +509,7 @@ Validé sur la maquette 0.37.
 - Le cercle suit la période et la région et montre toujours les trois marchés.
 - Recherches comptées sans savoir qui cherche (profilé, marché, wilaya, jour) ; le compteur démarre à la livraison.
 - Calcul une fois par jour ; PDF par l'impression du navigateur (l'arabe y est correct).
+
+## Explorer la marketplace (2026-11-20)
+
+- « Explorer la marketplace » (accueil) mène à la page de tous les marchés, mise au niveau des pages de chaque marché : 3 cartes de marché, les types qui ont des annonces (avec l'étiquette du marché), « Type de produit » groupé par marché dans les filtres ; un type ou un marché choisi ouvre la page de ce marché avec tous ses filtres.

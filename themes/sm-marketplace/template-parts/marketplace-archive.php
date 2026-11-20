@@ -20,6 +20,22 @@ $cats     = 'search' === $market ? array() : sm_theme_categories( $market );
 $facets   = 'search' === $market ? array() : sm_theme_data( 'listing_facets', array( 'market' => $market, 'category' => $category, 'family' => sm_theme_query_arg( 'family' ) ) );
 $tabs     = (array) ( $facets['tabs'] ?? array() );
 
+/*
+ * 0.54.0: « Explore the marketplace » — the page of every market shows the three
+ * markets and the types that have listings (each opens its market page, already
+ * filtered), and the panel offers the type of product grouped by market.
+ */
+$explore  = array();
+$browsing = false;
+if ( 'search' === $market ) {
+	$explore  = sm_theme_explore();
+	$browsing = '' === (string) sm_theme_query_arg( 'q' ) && '' === (string) sm_theme_query_arg( 'market' );
+	if ( $browsing ) {
+		$args['title'] = __( 'Explore the marketplace', 'sm-marketplace' );
+		$args['intro'] = __( 'New steel, reuse and steel buildings from all over Algeria: choose a market or a type, or search directly.', 'sm-marketplace' );
+	}
+}
+
 $crumbs = array( array( $args['title'], $category ? $action : '' ) );
 if ( $category && isset( $cats[ $category ] ) ) {
 	$crumbs[] = array( sm_t( $cats[ $category ] ), '' );
@@ -37,7 +53,27 @@ if ( $category && isset( $cats[ $category ] ) ) {
 				<a class="sm-btn sm-btn--accent" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'publish', 'market' => $market ) ) ); ?>"><?php sm_icon( 'plus' ); ?><?php esc_html_e( 'Publish here', 'sm-marketplace' ); ?></a>
 			<?php endif; ?>
 		</div>
-		<?php if ( $tabs ) : ?>
+		<?php if ( $explore && $browsing ) : // After a search by keyword, the results come first (the types stay in the panel). ?>
+			<ul class="sm-markets">
+				<?php foreach ( $explore['markets'] as $key => $m ) : ?>
+					<li>
+						<a class="sm-market sm-market--<?php echo esc_attr( $key ); ?>" href="<?php echo esc_url( $m['url'] ); ?>">
+							<span class="sm-market__icon" aria-hidden="true"><?php sm_icon( $m['icon'] ); ?></span>
+							<span class="sm-market__text">
+								<strong><?php echo esc_html( $m['label'] ); ?></strong>
+								<small><?php echo esc_html( $m['text'] ); ?></small>
+								<b><?php echo esc_html( 0 === $m['count'] ? __( 'No listing yet', 'sm-marketplace' ) : sprintf( /* translators: %s: number of listings. */ _n( '%s listing', '%s listings', $m['count'], 'sm-marketplace' ), sm_number( $m['count'] ) ) ); ?></b>
+							</span>
+							<span class="sm-market__go"><?php esc_html_e( 'See the market', 'sm-marketplace' ); ?><?php sm_icon( 'arrow-end' ); ?></span>
+						</a>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+			<?php if ( $explore['types'] ) : ?>
+				<p class="sm-markets__sub"><?php esc_html_e( 'Types with listings', 'sm-marketplace' ); ?></p>
+				<?php sm_component( 'type-tiles', array( 'tabs' => $explore['types'], 'current' => '', 'action' => $action ) ); ?>
+			<?php endif; ?>
+		<?php elseif ( $tabs ) : ?>
 			<?php sm_component( 'type-tiles', array( 'tabs' => $tabs, 'current' => (string) ( $facets['category'] ?? '' ), 'action' => $action ) ); ?>
 		<?php elseif ( $cats ) : ?>
 			<ul class="sm-catpills" aria-label="<?php esc_attr_e( 'Categories', 'sm-marketplace' ); ?>">
@@ -55,7 +91,7 @@ if ( $category && isset( $cats[ $category ] ) ) {
 </div>
 
 <div class="sm-container sm-results">
-	<?php sm_component( 'filter-panel', array( 'market' => $market, 'action' => $action, 'total' => $result['total'], 'facets' => $facets ) ); ?>
+	<?php sm_component( 'filter-panel', array( 'market' => $market, 'action' => $action, 'total' => $result['total'], 'facets' => $facets, 'explore' => $explore ) ); ?>
 
 	<div class="sm-results__main">
 		<div class="sm-toolbar">

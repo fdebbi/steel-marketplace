@@ -2871,3 +2871,15 @@ T.update({
 'Follow your market like a pro: every day, the average asked prices of new and reused steel, the steel on sale, the most searched and best-selling profiles and what is asked and little offered, by region, with a summary written by the AI.': ('Suivez votre marché comme un pro : chaque jour, les prix moyens demandés de l’acier neuf et de réemploi, l’acier mis en vente, les profilés les plus recherchés et les plus vendus et ce qui est demandé et peu proposé, par région, avec un résumé écrit par l’IA.', 'تابع سوقك كمحترف: كل يوم، متوسط الأسعار المطلوبة للفولاذ الجديد والمعاد استعماله، والفولاذ المعروض، والمقاطع الأكثر بحثاً والأكثر مبيعاً، وما هو مطلوب وقليل العرض، حسب المنطقة، مع ملخص يكتبه الذكاء الاصطناعي.'),
 'Open the report': ('Ouvrir le rapport', 'فتح التقرير'),
 })
+
+# 0.54.0 — Explore the marketplace.
+T.update({
+'New steel priced per kilogram': ('Acier neuf au kilo', 'فولاذ جديد بالكيلوغرام'),
+'Offcuts, surplus, used steel, scrap': ('Chutes, surplus, occasion, ferraille', 'بقايا، فائض، مستعمل، خردة'),
+'Hangars assembled or dismantled': ('Hangars montés ou démontés', 'هناجر مركّبة أو مفككة'),
+'Type of product': ('Type de produit', 'نوع المنتج'),
+'A type opens the page of its market, with all its filters.': ('Un type ouvre la page de son marché, avec tous ses filtres.', 'يفتح كل نوع صفحة سوقه بكل مرشحاتها.'),
+'New steel, reuse and steel buildings from all over Algeria: choose a market or a type, or search directly.': ('Acier neuf, réemploi et bâtiments métalliques de toute l’Algérie : choisissez un marché ou un type, ou cherchez directement.', 'فولاذ جديد وإعادة استعمال ومبانٍ معدنية من كل الجزائر: اختر سوقاً أو نوعاً، أو ابحث مباشرة.'),
+'See the market': ('Voir le marché', 'عرض السوق'),
+'Types with listings': ('Types avec des annonces', 'أنواع بها إعلانات'),
+})

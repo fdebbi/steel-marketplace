@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-20T14:05:20+00:00\n"
+"POT-Creation-Date: 2026-11-20T18:45:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -271,7 +271,7 @@ msgid "Open menu"
 msgstr ""
 
 #: header.php:47
-#: template-parts/components/filter-panel.php:88
+#: template-parts/components/filter-panel.php:110
 #: template-parts/components/product-form.php:66
 #: template-parts/components/rfq-form.php:48
 #: template-parts/components/rfq-single.php:21
@@ -287,7 +287,7 @@ msgid "Market"
 msgstr ""
 
 #: header.php:48
-#: template-parts/components/filter-panel.php:92
+#: template-parts/components/filter-panel.php:114
 #: templates/front-page-template.php:42
 #: templates/rfq-board.php:73
 msgid "All markets"
@@ -528,6 +528,46 @@ msgstr ""
 
 #: inc/customizer.php:115
 msgid "Show demo listings when no marketplace plugin provides data"
+msgstr ""
+
+#: inc/data-contract.php:97
+msgid "New steel priced per kilogram"
+msgstr ""
+
+#: inc/data-contract.php:97
+#: inc/template-tags.php:545
+#: template-parts/components/cutting-optimizer.php:202
+#: template-parts/components/cutting-sources.php:17
+#: template-parts/components/stock-warehouse.php:23
+#: template-parts/dashboard/messages.php:14
+#: template-parts/dashboard/stock-prices.php:71
+#: template-parts/dashboard/stock-prices.php:79
+#: templates/styleguide.php:49
+msgid "New"
+msgstr ""
+
+#: inc/data-contract.php:98
+msgid "Offcuts, surplus, used steel, scrap"
+msgstr ""
+
+#: inc/data-contract.php:98
+#: template-parts/components/ai-doc-review.php:154
+#: template-parts/components/cutting-sources.php:57
+#: template-parts/components/my-products.php:23
+#: template-parts/dashboard/report.php:98
+#: template-parts/dashboard/report.php:152
+#: template-parts/dashboard/report.php:200
+#: templates/dashboard.php:127
+msgid "Reuse"
+msgstr ""
+
+#: inc/data-contract.php:99
+msgid "Hangars assembled or dismantled"
+msgstr ""
+
+#: inc/data-contract.php:99
+#: template-parts/dashboard/publish.php:56
+msgid "Building"
 msgstr ""
 
 #: inc/demo/installer.php:109
@@ -892,17 +932,6 @@ msgstr ""
 msgid "From %s"
 msgstr ""
 
-#: inc/template-tags.php:545
-#: template-parts/components/cutting-optimizer.php:202
-#: template-parts/components/cutting-sources.php:17
-#: template-parts/components/stock-warehouse.php:23
-#: template-parts/dashboard/messages.php:14
-#: template-parts/dashboard/stock-prices.php:71
-#: template-parts/dashboard/stock-prices.php:79
-#: templates/styleguide.php:49
-msgid "New"
-msgstr ""
-
 #: inc/template-tags.php:546
 #: templates/styleguide.php:48
 msgid "Quote sent"
@@ -944,7 +973,7 @@ msgstr ""
 
 #. translators: %s: number of results.
 #: inc/template-tags.php:686
-#: template-parts/components/filter-panel.php:186
+#: template-parts/components/filter-panel.php:208
 msgid "Show %s result"
 msgid_plural "Show %s results"
 msgstr[0] ""
@@ -1309,16 +1338,6 @@ msgstr ""
 #: template-parts/dashboard/report.php:200
 #: templates/dashboard.php:126
 msgid "New steel"
-msgstr ""
-
-#: template-parts/components/ai-doc-review.php:154
-#: template-parts/components/cutting-sources.php:57
-#: template-parts/components/my-products.php:23
-#: template-parts/dashboard/report.php:98
-#: template-parts/dashboard/report.php:152
-#: template-parts/dashboard/report.php:200
-#: templates/dashboard.php:127
-msgid "Reuse"
 msgstr ""
 
 #: template-parts/components/ai-doc-review.php:156
@@ -2309,7 +2328,7 @@ msgid "Conditions accepted"
 msgstr ""
 
 #: template-parts/components/cutting-optimizer.php:209
-#: template-parts/components/filter-panel.php:153
+#: template-parts/components/filter-panel.php:175
 #: template-parts/components/mission-request-form.php:410
 #: template-parts/components/product-form.php:194
 #: template-parts/dashboard/company.php:101
@@ -2327,7 +2346,7 @@ msgid "Wilaya"
 msgstr ""
 
 #: template-parts/components/cutting-optimizer.php:211
-#: template-parts/components/filter-panel.php:155
+#: template-parts/components/filter-panel.php:177
 #: template-parts/components/services-board.php:45
 #: template-parts/directory.php:49
 #: templates/front-page-template.php:51
@@ -2757,9 +2776,9 @@ msgid "Kept in stock only, with automatic references. Condition and grade of the
 msgstr ""
 
 #: template-parts/components/deal-list.php:21
-#: template-parts/components/filter-panel.php:121
-#: template-parts/components/filter-panel.php:131
-#: template-parts/components/filter-panel.php:172
+#: template-parts/components/filter-panel.php:143
+#: template-parts/components/filter-panel.php:153
+#: template-parts/components/filter-panel.php:194
 #: template-parts/components/my-products.php:21
 #: template-parts/components/my-products.php:69
 #: template-parts/components/service-requests-list.php:20
@@ -2768,7 +2787,7 @@ msgstr ""
 #: template-parts/dashboard/listings.php:20
 #: template-parts/dashboard/rfq.php:29
 #: template-parts/directory.php:62
-#: template-parts/marketplace-archive.php:44
+#: template-parts/marketplace-archive.php:78
 #: templates/marketplace-engineers.php:88
 msgid "All"
 msgstr ""
@@ -2818,13 +2837,13 @@ msgid "Your answer is awaited"
 msgstr ""
 
 #: template-parts/components/deal-list.php:56
-#: template-parts/components/filter-panel.php:172
+#: template-parts/components/filter-panel.php:194
 msgid "Whole lot"
 msgstr ""
 
 #: template-parts/components/deal-list.php:66
 #: template-parts/directory.php:122
-#: template-parts/marketplace-archive.php:97
+#: template-parts/marketplace-archive.php:131
 #: templates/rfq-board.php:101
 msgid "Pagination"
 msgstr ""
@@ -3001,7 +3020,7 @@ msgstr ""
 #: template-parts/components/filter-panel.php:44
 #: template-parts/components/filter-panel.php:52
 #: template-parts/directory.php:59
-#: template-parts/marketplace-archive.php:69
+#: template-parts/marketplace-archive.php:103
 msgid "Filters"
 msgstr ""
 
@@ -3016,39 +3035,48 @@ msgstr ""
 
 #: template-parts/components/filter-panel.php:73
 #: template-parts/components/filter-panel.php:76
+#: template-parts/components/filter-panel.php:89
 msgid "All types"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:82
+#: template-parts/components/filter-panel.php:88
+msgid "Type of product"
+msgstr ""
+
+#: template-parts/components/filter-panel.php:100
+msgid "A type opens the page of its market, with all its filters."
+msgstr ""
+
+#: template-parts/components/filter-panel.php:104
 #: template-parts/components/services-board.php:40
 msgid "Keyword"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:83
+#: template-parts/components/filter-panel.php:105
 msgid "hangar, poultry house…"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:164
+#: template-parts/components/filter-panel.php:186
 msgid "Min. DA/kg"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:165
+#: template-parts/components/filter-panel.php:187
 msgid "Max. DA/kg"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:170
+#: template-parts/components/filter-panel.php:192
 msgid "Sale"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:172
+#: template-parts/components/filter-panel.php:194
 msgid "By quantity"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:178
+#: template-parts/components/filter-panel.php:200
 msgid "Verified sellers only"
 msgstr ""
 
-#: template-parts/components/filter-panel.php:182
+#: template-parts/components/filter-panel.php:204
 #: templates/styleguide.php:37
 msgid "Reset"
 msgstr ""
@@ -6523,18 +6551,20 @@ msgid "Show every type"
 msgstr ""
 
 #. translators: %s: number of listings.
-#: template-parts/components/type-tiles.php:63
+#: template-parts/components/type-tiles.php:64
+#: template-parts/marketplace-archive.php:63
 msgid "No listing yet"
 msgstr ""
 
 #. translators: %s: number of listings.
-#: template-parts/components/type-tiles.php:63
+#: template-parts/components/type-tiles.php:64
+#: template-parts/marketplace-archive.php:63
 msgid "%s listing"
 msgid_plural "%s listings"
 msgstr[0] ""
 msgstr[1] ""
 
-#: template-parts/components/type-tiles.php:68
+#: template-parts/components/type-tiles.php:69
 msgid "Remove this type: show every listing"
 msgstr ""
 
@@ -8239,10 +8269,6 @@ msgid "Offcuts, surplus, used, scrap"
 msgstr ""
 
 #: template-parts/dashboard/publish.php:56
-msgid "Building"
-msgstr ""
-
-#: template-parts/dashboard/publish.php:56
 msgid "Warehouse, hangar, kit"
 msgstr ""
 
@@ -8991,7 +9017,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: template-parts/directory.php:84
-#: template-parts/marketplace-archive.php:75
+#: template-parts/marketplace-archive.php:109
 #: templates/rfq-board.php:81
 msgid "Sort by"
 msgstr ""
@@ -9039,55 +9065,72 @@ msgstr ""
 msgid "Administration"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:37
+#: template-parts/marketplace-archive.php:32
+#: templates/front-page-template.php:25
+msgid "Explore the marketplace"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:33
+msgid "New steel, reuse and steel buildings from all over Algeria: choose a market or a type, or search directly."
+msgstr ""
+
+#: template-parts/marketplace-archive.php:51
 msgid "Publish here"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:43
+#: template-parts/marketplace-archive.php:65
+msgid "See the market"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:71
+msgid "Types with listings"
+msgstr ""
+
+#: template-parts/marketplace-archive.php:77
 msgid "Categories"
 msgstr ""
 
 #. translators: %s: number of listings.
-#: template-parts/marketplace-archive.php:65
+#: template-parts/marketplace-archive.php:99
 msgid "<strong>%s</strong> listing"
 msgid_plural "<strong>%s</strong> listings"
 msgstr[0] ""
 msgstr[1] ""
 
-#: template-parts/marketplace-archive.php:78
+#: template-parts/marketplace-archive.php:112
 #: templates/rfq-board.php:82
 msgid "Most recent"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:79
+#: template-parts/marketplace-archive.php:113
 msgid "Price per kg: low to high"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:80
+#: template-parts/marketplace-archive.php:114
 msgid "Price per kg: high to low"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:83
+#: template-parts/marketplace-archive.php:117
 msgid "Display"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:84
+#: template-parts/marketplace-archive.php:118
 msgid "Grid"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:85
+#: template-parts/marketplace-archive.php:119
 msgid "List"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:108
+#: template-parts/marketplace-archive.php:142
 msgid "No listing matches these filters"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:109
+#: template-parts/marketplace-archive.php:143
 msgid "Widen your search, or publish a request for quotation so suppliers come to you."
 msgstr ""
 
-#: template-parts/marketplace-archive.php:110
+#: template-parts/marketplace-archive.php:144
 #: templates/front-page-template.php:127
 #: templates/single-listing.php:142
 #: templates/single-service.php:92
@@ -10063,10 +10106,6 @@ msgstr ""
 
 #: templates/front-page-template.php:23
 msgid "Buy, sell, reuse and recycle steel. Verified companies, weights calculated automatically, partner engineers."
-msgstr ""
-
-#: templates/front-page-template.php:25
-msgid "Explore the marketplace"
 msgstr ""
 
 #. translators: %s: platform name.

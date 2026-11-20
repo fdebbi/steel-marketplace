@@ -78,6 +78,28 @@ $fid = static fn( $key ) => 'f-' . trim( preg_replace( '/[^a-z0-9]+/', '-', $key
 					</div>
 				</div>
 			<?php endif; ?>
+			<?php
+			// 0.54.0: on the page of every market, the type of product grouped by market (each opens its market page).
+			$explore = (array) ( $args['explore'] ?? array() );
+			if ( ! empty( $explore['groups'] ) ) :
+				$all_n = array_sum( array_column( $explore['markets'], 'count' ) );
+				?>
+				<div class="sm-filters__type sm-filters__type--all">
+					<p class="sm-filters__typelabel"><?php esc_html_e( 'Type of product', 'sm-marketplace' ); ?></p>
+					<div class="sm-fchips__list"><span class="sm-fchip-link is-current" aria-current="true"><?php esc_html_e( 'All types', 'sm-marketplace' ); ?> <small dir="ltr"><?php echo esc_html( sm_number( $all_n ) ); ?></small></span></div>
+					<?php foreach ( $explore['groups'] as $g ) : ?>
+						<?php if ( $g['types'] ) : ?>
+							<p class="sm-filters__group"><?php echo esc_html( $g['label'] ); ?></p>
+							<div class="sm-fchips__list">
+								<?php foreach ( $g['types'] as $t ) : ?>
+									<a class="sm-fchip-link" href="<?php echo esc_url( $t['href'] ); ?>"><?php echo esc_html( $t['label'] ); ?> <small dir="ltr"><?php echo esc_html( sm_number( (int) $t['count'] ) ); ?></small></a>
+								<?php endforeach; ?>
+							</div>
+						<?php endif; ?>
+					<?php endforeach; ?>
+					<p class="sm-filters__hint"><?php esc_html_e( 'A type opens the page of its market, with all its filters.', 'sm-marketplace' ); ?></p>
+				</div>
+			<?php endif; ?>
 			<div class="sm-field">
 				<label for="f-q"><?php esc_html_e( 'Keyword', 'sm-marketplace' ); ?></label>
 				<input id="f-q" type="search" name="q" value="<?php echo esc_attr( $q( 'q' ) ); ?>" placeholder="<?php echo esc_attr( 'buildings' === $market ? __( 'hangar, poultry house…', 'sm-marketplace' ) : 'IPE 200' ); ?>" dir="auto">
@@ -87,7 +109,7 @@ $fid = static fn( $key ) => 'f-' . trim( preg_replace( '/[^a-z0-9]+/', '-', $key
 				<fieldset class="sm-field">
 					<legend><?php esc_html_e( 'Market', 'sm-marketplace' ); ?></legend>
 					<?php foreach ( array_slice( sm_market_labels(), 0, 3, true ) as $key => $label ) : ?>
-						<label class="sm-check"><input type="radio" name="market" value="<?php echo esc_attr( $key ); ?>" <?php checked( $q( 'market' ), $key ); ?>><span><?php echo esc_html( $label ); ?></span></label>
+						<label class="sm-check"><input type="radio" name="market" value="<?php echo esc_attr( $key ); ?>" <?php checked( $q( 'market' ), $key ); ?> data-sm-market-page="<?php echo esc_url( sm_page_url( $key ) ); ?>"><span><?php echo esc_html( $label ); ?></span></label>
 					<?php endforeach; ?>
 					<label class="sm-check"><input type="radio" name="market" value="" <?php checked( $q( 'market' ), '' ); ?>><span><?php esc_html_e( 'All markets', 'sm-marketplace' ); ?></span></label>
 				</fieldset>

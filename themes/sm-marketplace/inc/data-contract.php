@@ -84,3 +84,47 @@ function sm_theme_query_arg( $key, $default = '' ) {
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only filters.
 	return isset( $_GET[ $key ] ) ? sanitize_text_field( wp_unslash( $_GET[ $key ] ) ) : $default;
 }
+
+/**
+ * « Explore the marketplace » (0.54.0): the three markets with their number of
+ * listings online, and the types that have listings across markets (most listings
+ * first), each pointing to its market page filtered on it. Empty without plugins.
+ *
+ * @return array{ markets: array, types: array, groups: array }|array()
+ */
+function sm_theme_explore() {
+	$info  = array(
+		'products'  => array( 'layers', __( 'New steel priced per kilogram', 'sm-marketplace' ), __( 'New steel', 'sm-marketplace' ) ),
+		'reuse'     => array( 'recycle', __( 'Offcuts, surplus, used steel, scrap', 'sm-marketplace' ), __( 'Reuse', 'sm-marketplace' ) ),
+		'buildings' => array( 'warehouse', __( 'Hangars assembled or dismantled', 'sm-marketplace' ), __( 'Building', 'sm-marketplace' ) ),
+	);
+	$names = sm_market_labels();
+	$out   = array( 'markets' => array(), 'types' => array(), 'groups' => array() );
+	foreach ( $info as $key => $i ) {
+		$f = sm_theme_data( 'listing_facets', array( 'market' => $key, 'category' => '', 'family' => '' ) );
+		if ( ! is_array( $f ) || empty( $f['tabs'] ) ) {
+			continue;
+		}
+		$url   = sm_page_url( $key );
+		$total = 0;
+		$group = array();
+		foreach ( (array) $f['tabs'] as $t ) {
+			if ( '' === (string) $t['slug'] ) {
+				$total = (int) $t['count'];
+				continue;
+			}
+			if ( (int) $t['count'] > 0 ) {
+				$tile             = $t + array( 'href' => add_query_arg( 'category', $t['slug'], $url ), 'tag' => $i[2], 'market' => $key );
+				$out['types'][]   = $tile;
+				$group[]          = $tile;
+			}
+		}
+		$out['markets'][ $key ] = array( 'label' => $names[ $key ], 'text' => $i[1], 'icon' => $i[0], 'count' => $total, 'url' => $url );
+		$out['groups'][ $key ]  = array( 'label' => $i[2], 'types' => $group, 'url' => $url );
+	}
+	if ( ! $out['markets'] ) {
+		return array();
+	}
+	usort( $out['types'], static fn( $a, $b ) => (int) $b['count'] <=> (int) $a['count'] );
+	return $out;
+}

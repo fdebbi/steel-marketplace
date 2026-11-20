@@ -211,7 +211,7 @@ msgstr "روابط مفيدة"
 msgid "Open menu"
 msgstr "فتح القائمة"
 
-#: header.php:47 template-parts/components/filter-panel.php:88
+#: header.php:47 template-parts/components/filter-panel.php:110
 #: template-parts/components/product-form.php:66
 #: template-parts/components/rfq-form.php:48
 #: template-parts/components/rfq-single.php:21
@@ -224,7 +224,7 @@ msgstr "فتح القائمة"
 msgid "Market"
 msgstr "السوق"
 
-#: header.php:48 template-parts/components/filter-panel.php:92
+#: header.php:48 template-parts/components/filter-panel.php:114
 #: templates/front-page-template.php:42 templates/rfq-board.php:73
 msgid "All markets"
 msgstr "كل الأسواق"
@@ -461,6 +461,41 @@ msgstr "اسم العلامة (يظهر عند غياب الشعار)"
 #: inc/customizer.php:115
 msgid "Show demo listings when no marketplace plugin provides data"
 msgstr "عرض إعلانات تجريبية ما دامت إضافات السوق لا توفر بيانات"
+
+#: inc/data-contract.php:97
+msgid "New steel priced per kilogram"
+msgstr "فولاذ جديد بالكيلوغرام"
+
+#: inc/data-contract.php:97 inc/template-tags.php:545
+#: template-parts/components/cutting-optimizer.php:202
+#: template-parts/components/cutting-sources.php:17
+#: template-parts/components/stock-warehouse.php:23
+#: template-parts/dashboard/messages.php:14
+#: template-parts/dashboard/stock-prices.php:71
+#: template-parts/dashboard/stock-prices.php:79 templates/styleguide.php:49
+msgid "New"
+msgstr "جديد"
+
+#: inc/data-contract.php:98
+msgid "Offcuts, surplus, used steel, scrap"
+msgstr "بقايا، فائض، مستعمل، خردة"
+
+#: inc/data-contract.php:98 template-parts/components/ai-doc-review.php:154
+#: template-parts/components/cutting-sources.php:57
+#: template-parts/components/my-products.php:23
+#: template-parts/dashboard/report.php:98
+#: template-parts/dashboard/report.php:152
+#: template-parts/dashboard/report.php:200 templates/dashboard.php:127
+msgid "Reuse"
+msgstr "إعادة الاستخدام"
+
+#: inc/data-contract.php:99
+msgid "Hangars assembled or dismantled"
+msgstr "هناجر مركّبة أو مفككة"
+
+#: inc/data-contract.php:99 template-parts/dashboard/publish.php:56
+msgid "Building"
+msgstr "مبنى"
 
 #: inc/demo/installer.php:109 inc/demo/installer.php:110
 #: inc/demo/installer.php:124
@@ -817,16 +852,6 @@ msgstr "حسب عرض السعر"
 msgid "From %s"
 msgstr "ابتداءً من %s"
 
-#: inc/template-tags.php:545
-#: template-parts/components/cutting-optimizer.php:202
-#: template-parts/components/cutting-sources.php:17
-#: template-parts/components/stock-warehouse.php:23
-#: template-parts/dashboard/messages.php:14
-#: template-parts/dashboard/stock-prices.php:71
-#: template-parts/dashboard/stock-prices.php:79 templates/styleguide.php:49
-msgid "New"
-msgstr "جديد"
-
 #: inc/template-tags.php:546 templates/styleguide.php:48
 msgid "Quote sent"
 msgstr "أُرسل العرض"
@@ -864,7 +889,7 @@ msgid "Unlimited"
 msgstr "غير محدود"
 
 #. translators: %s: number of results.
-#: inc/template-tags.php:686 template-parts/components/filter-panel.php:186
+#: inc/template-tags.php:686 template-parts/components/filter-panel.php:208
 msgid "Show %s result"
 msgid_plural "Show %s results"
 msgstr[0] "عرض %s نتيجة"
@@ -1271,15 +1296,6 @@ msgstr "إضافة إلى مخزني"
 #: template-parts/dashboard/report.php:200 templates/dashboard.php:126
 msgid "New steel"
 msgstr "فولاذ جديد"
-
-#: template-parts/components/ai-doc-review.php:154
-#: template-parts/components/cutting-sources.php:57
-#: template-parts/components/my-products.php:23
-#: template-parts/dashboard/report.php:98
-#: template-parts/dashboard/report.php:152
-#: template-parts/dashboard/report.php:200 templates/dashboard.php:127
-msgid "Reuse"
-msgstr "إعادة الاستخدام"
 
 #: template-parts/components/ai-doc-review.php:156
 msgid ""
@@ -2334,7 +2350,7 @@ msgid "Conditions accepted"
 msgstr "الحالات المقبولة"
 
 #: template-parts/components/cutting-optimizer.php:209
-#: template-parts/components/filter-panel.php:153
+#: template-parts/components/filter-panel.php:175
 #: template-parts/components/mission-request-form.php:410
 #: template-parts/components/product-form.php:194
 #: template-parts/dashboard/company.php:101
@@ -2349,7 +2365,7 @@ msgid "Wilaya"
 msgstr "الولاية"
 
 #: template-parts/components/cutting-optimizer.php:211
-#: template-parts/components/filter-panel.php:155
+#: template-parts/components/filter-panel.php:177
 #: template-parts/components/services-board.php:45
 #: template-parts/directory.php:49 templates/front-page-template.php:51
 #: templates/rfq-board.php:78
@@ -2860,9 +2876,9 @@ msgstr ""
 "للقضبان المشتراة)؛ يمكن تعديلها في المخزن."
 
 #: template-parts/components/deal-list.php:21
-#: template-parts/components/filter-panel.php:121
-#: template-parts/components/filter-panel.php:131
-#: template-parts/components/filter-panel.php:172
+#: template-parts/components/filter-panel.php:143
+#: template-parts/components/filter-panel.php:153
+#: template-parts/components/filter-panel.php:194
 #: template-parts/components/my-products.php:21
 #: template-parts/components/my-products.php:69
 #: template-parts/components/service-requests-list.php:20
@@ -2870,7 +2886,7 @@ msgstr ""
 #: template-parts/components/stock-warehouse.php:118
 #: template-parts/dashboard/listings.php:20
 #: template-parts/dashboard/rfq.php:29 template-parts/directory.php:62
-#: template-parts/marketplace-archive.php:44
+#: template-parts/marketplace-archive.php:78
 #: templates/marketplace-engineers.php:88
 msgid "All"
 msgstr "الكل"
@@ -2922,12 +2938,12 @@ msgid "Your answer is awaited"
 msgstr "ردك منتظر"
 
 #: template-parts/components/deal-list.php:56
-#: template-parts/components/filter-panel.php:172
+#: template-parts/components/filter-panel.php:194
 msgid "Whole lot"
 msgstr "الحصة كاملة"
 
 #: template-parts/components/deal-list.php:66 template-parts/directory.php:122
-#: template-parts/marketplace-archive.php:97 templates/rfq-board.php:101
+#: template-parts/marketplace-archive.php:131 templates/rfq-board.php:101
 msgid "Pagination"
 msgstr "ترقيم الصفحات"
 
@@ -3109,7 +3125,7 @@ msgstr "مركّب أو مفكّك"
 
 #: template-parts/components/filter-panel.php:44
 #: template-parts/components/filter-panel.php:52
-#: template-parts/directory.php:59 template-parts/marketplace-archive.php:69
+#: template-parts/directory.php:59 template-parts/marketplace-archive.php:103
 msgid "Filters"
 msgstr "التصفية"
 
@@ -3124,39 +3140,48 @@ msgstr "النوع"
 
 #: template-parts/components/filter-panel.php:73
 #: template-parts/components/filter-panel.php:76
+#: template-parts/components/filter-panel.php:89
 msgid "All types"
 msgstr "كل الأنواع"
 
-#: template-parts/components/filter-panel.php:82
+#: template-parts/components/filter-panel.php:88
+msgid "Type of product"
+msgstr "نوع المنتج"
+
+#: template-parts/components/filter-panel.php:100
+msgid "A type opens the page of its market, with all its filters."
+msgstr "يفتح كل نوع صفحة سوقه بكل مرشحاتها."
+
+#: template-parts/components/filter-panel.php:104
 #: template-parts/components/services-board.php:40
 msgid "Keyword"
 msgstr "كلمة مفتاحية"
 
-#: template-parts/components/filter-panel.php:83
+#: template-parts/components/filter-panel.php:105
 msgid "hangar, poultry house…"
 msgstr "هنجر، مدجنة…"
 
-#: template-parts/components/filter-panel.php:164
+#: template-parts/components/filter-panel.php:186
 msgid "Min. DA/kg"
 msgstr "الأدنى دج/kg"
 
-#: template-parts/components/filter-panel.php:165
+#: template-parts/components/filter-panel.php:187
 msgid "Max. DA/kg"
 msgstr "الأقصى دج/kg"
 
-#: template-parts/components/filter-panel.php:170
+#: template-parts/components/filter-panel.php:192
 msgid "Sale"
 msgstr "البيع"
 
-#: template-parts/components/filter-panel.php:172
+#: template-parts/components/filter-panel.php:194
 msgid "By quantity"
 msgstr "بالتجزئة"
 
-#: template-parts/components/filter-panel.php:178
+#: template-parts/components/filter-panel.php:200
 msgid "Verified sellers only"
 msgstr "البائعون الموثقون فقط"
 
-#: template-parts/components/filter-panel.php:182 templates/styleguide.php:37
+#: template-parts/components/filter-panel.php:204 templates/styleguide.php:37
 msgid "Reset"
 msgstr "إعادة الضبط"
 
@@ -6898,12 +6923,14 @@ msgid "Show every type"
 msgstr "عرض كل الأنواع"
 
 #. translators: %s: number of listings.
-#: template-parts/components/type-tiles.php:63
+#: template-parts/components/type-tiles.php:64
+#: template-parts/marketplace-archive.php:63
 msgid "No listing yet"
 msgstr "لا إعلانات بعد"
 
 #. translators: %s: number of listings.
-#: template-parts/components/type-tiles.php:63
+#: template-parts/components/type-tiles.php:64
+#: template-parts/marketplace-archive.php:63
 msgid "%s listing"
 msgid_plural "%s listings"
 msgstr[0] "لا إعلانات"
@@ -6913,7 +6940,7 @@ msgstr[3] "%s إعلانات"
 msgstr[4] "%s إعلانا"
 msgstr[5] "%s إعلان"
 
-#: template-parts/components/type-tiles.php:68
+#: template-parts/components/type-tiles.php:69
 msgid "Remove this type: show every listing"
 msgstr "إزالة هذا النوع: عرض كل الإعلانات"
 
@@ -8796,10 +8823,6 @@ msgid "Offcuts, surplus, used, scrap"
 msgstr "بقايا، فائض، مستعمل، خردة"
 
 #: template-parts/dashboard/publish.php:56
-msgid "Building"
-msgstr "مبنى"
-
-#: template-parts/dashboard/publish.php:56
 msgid "Warehouse, hangar, kit"
 msgstr "مستودع، هنغار، هيكل جاهز"
 
@@ -9615,7 +9638,7 @@ msgstr[3] "%d مؤسسات"
 msgstr[4] "%d مؤسسة"
 msgstr[5] "%d مؤسسة"
 
-#: template-parts/directory.php:84 template-parts/marketplace-archive.php:75
+#: template-parts/directory.php:84 template-parts/marketplace-archive.php:109
 #: templates/rfq-board.php:81
 msgid "Sort by"
 msgstr "ترتيب حسب"
@@ -9661,16 +9684,37 @@ msgstr "الإعلانات المحفوظة"
 msgid "Administration"
 msgstr "الإدارة"
 
-#: template-parts/marketplace-archive.php:37
+#: template-parts/marketplace-archive.php:32
+#: templates/front-page-template.php:25
+msgid "Explore the marketplace"
+msgstr "استكشف السوق"
+
+#: template-parts/marketplace-archive.php:33
+msgid ""
+"New steel, reuse and steel buildings from all over Algeria: choose a market "
+"or a type, or search directly."
+msgstr ""
+"فولاذ جديد وإعادة استعمال ومبانٍ معدنية من كل الجزائر: اختر سوقاً أو نوعاً، "
+"أو ابحث مباشرة."
+
+#: template-parts/marketplace-archive.php:51
 msgid "Publish here"
 msgstr "انشر هنا"
 
-#: template-parts/marketplace-archive.php:43
+#: template-parts/marketplace-archive.php:65
+msgid "See the market"
+msgstr "عرض السوق"
+
+#: template-parts/marketplace-archive.php:71
+msgid "Types with listings"
+msgstr "أنواع بها إعلانات"
+
+#: template-parts/marketplace-archive.php:77
 msgid "Categories"
 msgstr "الفئات"
 
 #. translators: %s: number of listings.
-#: template-parts/marketplace-archive.php:65
+#: template-parts/marketplace-archive.php:99
 msgid "<strong>%s</strong> listing"
 msgid_plural "<strong>%s</strong> listings"
 msgstr[0] "<strong>%s</strong> إعلان"
@@ -9680,41 +9724,41 @@ msgstr[3] "<strong>%s</strong> إعلانات"
 msgstr[4] "<strong>%s</strong> إعلانا"
 msgstr[5] "<strong>%s</strong> إعلان"
 
-#: template-parts/marketplace-archive.php:78 templates/rfq-board.php:82
+#: template-parts/marketplace-archive.php:112 templates/rfq-board.php:82
 msgid "Most recent"
 msgstr "الأحدث"
 
-#: template-parts/marketplace-archive.php:79
+#: template-parts/marketplace-archive.php:113
 msgid "Price per kg: low to high"
 msgstr "السعر للكيلوغرام: تصاعدي"
 
-#: template-parts/marketplace-archive.php:80
+#: template-parts/marketplace-archive.php:114
 msgid "Price per kg: high to low"
 msgstr "السعر للكيلوغرام: تنازلي"
 
-#: template-parts/marketplace-archive.php:83
+#: template-parts/marketplace-archive.php:117
 msgid "Display"
 msgstr "العرض"
 
-#: template-parts/marketplace-archive.php:84
+#: template-parts/marketplace-archive.php:118
 msgid "Grid"
 msgstr "شبكة"
 
-#: template-parts/marketplace-archive.php:85
+#: template-parts/marketplace-archive.php:119
 msgid "List"
 msgstr "قائمة"
 
-#: template-parts/marketplace-archive.php:108
+#: template-parts/marketplace-archive.php:142
 msgid "No listing matches these filters"
 msgstr "لا يوجد إعلان يطابق هذه التصفية"
 
-#: template-parts/marketplace-archive.php:109
+#: template-parts/marketplace-archive.php:143
 msgid ""
 "Widen your search, or publish a request for quotation so suppliers come to "
 "you."
 msgstr "وسّع بحثك أو انشر طلب عرض سعر ليأتيك الموردون."
 
-#: template-parts/marketplace-archive.php:110
+#: template-parts/marketplace-archive.php:144
 #: templates/front-page-template.php:127 templates/single-listing.php:142
 #: templates/single-service.php:92 templates/single-service.php:121
 #: templates/styleguide.php:36
@@ -10784,10 +10828,6 @@ msgid ""
 msgstr ""
 "اشترِ، بِع، أعد استعمال الحديد وأعد تدويره. مؤسسات موثَّقة، وزن محسوب "
 "تلقائيًا، ومهندسون شركاء."
-
-#: templates/front-page-template.php:25
-msgid "Explore the marketplace"
-msgstr "استكشف السوق"
 
 #. translators: %s: platform name.
 #: templates/front-page-template.php:29

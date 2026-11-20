@@ -4,7 +4,7 @@
  * name and its number of listings online. No "All" tile: clicking the chosen tile again
  * (it shows a ×) goes back to every listing; "All types" is also in the filter panel.
  *
- * @var array $args { tabs: list of { slug, label, icon, count }, current: string, action: string }
+ * @var array $args { tabs: list of { slug, label, icon, count, href?, tag?, market? }, current: string, action: string }
  * @package SM_Marketplace
  */
 
@@ -43,7 +43,7 @@ $by_slug = array(
 		<?php foreach ( $tabs as $t ) : ?>
 			<?php
 			$is   = (string) $t['slug'] === $current;
-			$href = sm_theme_tab_url( $args['action'], $is ? '' : $t['slug'] );
+			$href = ! empty( $t['href'] ) ? $t['href'] : sm_theme_tab_url( $args['action'], $is ? '' : $t['slug'] ); // 0.54.0: a type of another market page.
 			$n    = (int) $t['count'];
 			?>
 			<li>
@@ -58,6 +58,7 @@ $by_slug = array(
 					<span class="sm-typetile__text">
 						<strong><?php echo esc_html( $t['label'] ); ?></strong>
 						<small>
+							<?php if ( ! empty( $t['tag'] ) ) : ?><em class="sm-typetile__tag sm-typetile__tag--<?php echo esc_attr( $t['market'] ?? '' ); ?>"><?php echo esc_html( $t['tag'] ); ?></em><?php endif; ?>
 							<?php
 							/* translators: %s: number of listings. */
 							echo esc_html( 0 === $n ? __( 'No listing yet', 'sm-marketplace' ) : sprintf( _n( '%s listing', '%s listings', $n, 'sm-marketplace' ), sm_number( $n ) ) );
