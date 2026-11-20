@@ -45,15 +45,6 @@ $services = sm_theme_services();
 						<?php endforeach; ?>
 					</select>
 				</div>
-				<div class="sm-hero__field">
-					<label for="hero-wilaya"><?php esc_html_e( 'Wilaya', 'sm-marketplace' ); ?></label>
-					<select id="hero-wilaya" name="wilaya">
-						<option value=""><?php esc_html_e( 'All wilayas', 'sm-marketplace' ); ?></option>
-						<?php foreach ( sm_theme_wilayas() as $code => $name ) : ?>
-							<option value="<?php echo esc_attr( $code ); ?>"><?php echo esc_html( sm_t( $name ) ); ?></option>
-						<?php endforeach; ?>
-					</select>
-				</div>
 				<button class="sm-btn sm-btn--accent sm-btn--lg" type="submit"><?php sm_icon( 'search' ); ?><span><?php esc_html_e( 'Search', 'sm-marketplace' ); ?></span></button>
 			</form>
 

@@ -1,5 +1,9 @@
 # Changelog — sm-marketplace
 
+## 0.54.1 — 2026-11-21
+
+- Accueil : la recherche n'a plus le choix de la wilaya (profilé ou produit, marché, Rechercher) ; la wilaya reste dans les filtres des résultats. Les chiffres viennent de sm-products 0.22.1 (plus de chiffres de démonstration).
+
 ## 0.54.0 — 2026-11-20
 
 - **« Explorer la marketplace »** (page de tous les marchés, `/recherche/`), au niveau des pages de chaque marché :

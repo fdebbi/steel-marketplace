@@ -26,6 +26,7 @@ final class Bridge {
 		add_filter( 'sm_theme_data_listings', array( __CLASS__, 'listings' ), 10, 2 );
 		add_filter( 'sm_theme_data_listing_facets', static fn( $r, $a ) => \SM\Products\Facets::get( sanitize_key( (string) ( $a['market'] ?? 'products' ) ), sanitize_key( (string) ( $a['category'] ?? '' ) ), sanitize_text_field( (string) ( $a['family'] ?? '' ) ) ), 10, 2 );
 		add_filter( 'sm_theme_data_listing', array( __CLASS__, 'listing' ), 10, 2 );
+		add_filter( 'sm_theme_data_stats', array( __CLASS__, 'stats' ) ); // 0.22.1: real figures of the home page.
 		add_filter( 'sm_theme_data_account_stock', array( __CLASS__, 'account_stock' ), 10, 2 );
 		add_filter( 'sm_theme_data_categories', array( __CLASS__, 'categories' ), 10, 2 );
 		add_filter( 'sm_theme_data_product_categories', array( __CLASS__, 'product_categories' ), 10, 2 );
@@ -458,6 +459,31 @@ final class Bridge {
 		}
 		$out['kg']    = round( $out['kg'], 1 );
 		$out['value'] = round( $out['value'], 2 );
+		return $out;
+	}
+
+	/**
+	 * Figures of the home page (0.22.1): listings online in every market, active
+	 * selling accounts (companies and professionals), steel offered for reuse (kg).
+	 * Real figures only; kept one hour.
+	 */
+	public static function stats( $result ) {
+		if ( null !== $result ) {
+			return $result;
+		}
+		$got = get_transient( 'sm_products_home_stats' );
+		if ( is_array( $got ) ) {
+			return $got;
+		}
+		global $wpdb;
+		$t   = $wpdb->prefix . 'sm_products';
+		$out = array(
+			'listings'  => (int) $wpdb->get_var( "SELECT COUNT(*) FROM $t WHERE status = 'published'" ), // phpcs:ignore WordPress.DB
+			'companies' => (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}sm_companies WHERE status = 'active' AND account_class IN ('company','professional')" ), // phpcs:ignore WordPress.DB
+			'reuse_kg'  => (float) $wpdb->get_var( "SELECT COALESCE(SUM(total_weight), 0) FROM $t WHERE status = 'published' AND market = 'reuse'" ), // phpcs:ignore WordPress.DB
+			'wilayas'   => (int) $wpdb->get_var( "SELECT COUNT(DISTINCT wilaya) FROM $t WHERE status = 'published' AND wilaya <> ''" ), // phpcs:ignore WordPress.DB
+		);
+		set_transient( 'sm_products_home_stats', $out, HOUR_IN_SECONDS );
 		return $out;
 	}
 }

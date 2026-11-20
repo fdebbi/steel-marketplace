@@ -513,3 +513,8 @@ Validé sur la maquette 0.37.
 ## Explorer la marketplace (2026-11-20)
 
 - « Explorer la marketplace » (accueil) mène à la page de tous les marchés, mise au niveau des pages de chaque marché : 3 cartes de marché, les types qui ont des annonces (avec l'étiquette du marché), « Type de produit » groupé par marché dans les filtres ; un type ou un marché choisi ouvre la page de ce marché avec tous ses filtres.
+
+## Accueil (2026-11-21)
+
+- La recherche de l'accueil n'a plus la wilaya (filtre des résultats seulement).
+- Les chiffres de l'accueil sont les vrais (sm-products) : jamais de chiffres de démonstration sur le site.

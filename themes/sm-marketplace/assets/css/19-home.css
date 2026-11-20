@@ -131,7 +131,7 @@
 .sm-is-home .sm-tabbar { background: rgb(8 11 14 / .94); border-block-start-color: rgb(198 205 210 / .1); box-shadow: none; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
 .sm-is-home .sm-tabbar a:not([aria-current]) { color: var(--sm-steel); }
 
-/* Desktop hero search: icon-only button so the three fields keep their labels readable */
+/* Desktop hero search: icon-only button so the fields keep their labels readable */
 @media (min-width: 1024px) {
 	.sm-hero--galaxy .sm-hero__search .sm-btn { inline-size: 52px; padding: 0; justify-content: center; }
 	.sm-hero--galaxy .sm-hero__search .sm-btn span { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

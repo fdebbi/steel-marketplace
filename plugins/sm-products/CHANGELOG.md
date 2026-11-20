@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.22.1 — 2026-11-21
+
+- **Vrais chiffres de l'accueil** (donnée `stats`) : annonces en ligne de tous les marchés, comptes vendeurs actifs (entreprises et professionnels), acier proposé au réemploi (kg), wilayas ; gardés une heure. Avant, aucune extension ne les fournissait et l'accueil montrait les chiffres de démonstration du thème.
+
 ## 0.22.0 — 2026-11-20 (pour sm-insights 0.1.0)
 
 - Action `sm_products_searched( { market, family, designation, q, wilaya } )` à la première page d'une recherche du catalogue (type, dimension ou texte) : sm-insights la compte pour le Rapport Business, sans savoir qui cherche.

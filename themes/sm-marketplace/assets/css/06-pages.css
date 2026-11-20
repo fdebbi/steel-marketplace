@@ -19,7 +19,7 @@
 .sm-hero__field select { padding-inline-end: 28px !important; background-position: right 0 center; }
 .sm-hero__search .sm-btn { margin: 4px; }
 @media (min-width: 768px) {
-	.sm-hero__search { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr) auto; align-items: center; gap: 0; }
+	.sm-hero__search { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) auto; align-items: center; gap: 0; } /* 0.54.1: keyword and market (no wilaya on the home page). */
 	.sm-hero__field + .sm-hero__field { border-inline-start: 1px solid var(--sm-line); }
 	.sm-hero__field select { font-size: 15px; padding-inline-end: 22px !important; }
 }
@@ -230,9 +230,4 @@
 @media (min-width: 1024px) { .sm-rfq { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: start; } }
 .sm-rfq__list { display: grid; gap: var(--sm-s3); }
 
-/* Tablet hero search: keyword on its own row, filters + button below. */
-@media (min-width: 768px) and (max-width: 1023px) {
-	.sm-hero__search { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; }
-	.sm-hero__field--q { grid-column: 1 / -1; border-block-end: 1px solid var(--sm-line); }
-	.sm-hero__field--q + .sm-hero__field { border-inline-start: 0; }
-}
+/* Tablet hero search (0.54.1): keyword, market and button on one row. */
