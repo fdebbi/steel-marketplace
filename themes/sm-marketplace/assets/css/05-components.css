@@ -143,7 +143,7 @@
 .sm-filters .sm-condition { font-size: var(--sm-fs-sm); }
 
 @media (max-width: 1023px) {
-	.sm-filters { position: fixed; inset: 0; z-index: 85; visibility: hidden; }
+	.sm-filters { position: fixed; inset: 0; z-index: 85; visibility: hidden; overflow: hidden; } /* 0.49.2: the closed panel does not widen the page. */
 	.sm-filters::before { content: ""; position: absolute; inset: 0; background: rgb(15 23 42 / .5); opacity: 0; transition: opacity .2s; }
 	.sm-filters__form { position: absolute; inset-block: 0; inset-inline-end: 0; inline-size: 100%; background: var(--sm-surface); transform: translateX(100%); transition: transform .25s ease-out; }
 	.sm-filters.is-open { visibility: visible; }
@@ -158,7 +158,7 @@
 }
 
 /* Results layout and toolbar */
-.sm-results { display: grid; gap: var(--sm-s5); padding-block: var(--sm-s4) var(--sm-s6); }
+.sm-results { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sm-s5); padding-block: var(--sm-s4) var(--sm-s6); } /* 0.49.2: minmax(0) — the toolbar never widens a phone screen. */
 @media (min-width: 1024px) { .sm-results { grid-template-columns: 280px minmax(0, 1fr); padding-block-start: var(--sm-s5); } }
 .sm-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sm-s3); margin-block-end: var(--sm-s4); }
 .sm-toolbar__count { margin: 0; color: var(--sm-muted); }
@@ -173,7 +173,7 @@
 .sm-viewtoggle a[aria-current] { background: var(--sm-primary); color: var(--sm-on-dark); }
 @media (max-width: 520px) { .sm-toolbar__controls { inline-size: 100%; } .sm-toolbar__filters { flex: 1; } .sm-sort { flex: 1.4; } .sm-sort select { inline-size: 100%; } }
 
-.sm-pagination { display: flex; justify-content: center; gap: var(--sm-s2); margin-block-start: var(--sm-s6); }
+.sm-pagination { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sm-s2); margin-block-start: var(--sm-s6); }
 .sm-pagination a { display: grid; place-items: center; min-inline-size: 44px; block-size: 44px; border-radius: var(--sm-radius-sm); border: 1px solid var(--sm-line-strong); background: var(--sm-surface); text-decoration: none; font-weight: 600; }
 .sm-pagination a[aria-current] { background: var(--sm-primary); color: var(--sm-on-dark); border-color: var(--sm-primary); }
 

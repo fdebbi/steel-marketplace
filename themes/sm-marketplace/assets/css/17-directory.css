@@ -78,7 +78,7 @@
 .smd-toggle[aria-pressed="true"] .smd-toggle__box { background: var(--sm-accent); border-color: var(--sm-accent); color: var(--sm-on-accent); }
 .smd-filters__other { margin: var(--sm-s2) 0 0; font-size: var(--sm-fs-sm); }
 
-.smd-main { flex: 999 1 560px; min-inline-size: 0; display: grid; gap: var(--sm-s4); }
+.smd-main { flex: 999 1 560px; min-inline-size: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sm-s4); }
 .smd-type { display: flex; gap: var(--sm-s3); align-items: center; padding: var(--sm-s3); border-radius: 16px; background: var(--sm-surface); border: 1px solid var(--sm-line); }
 .smd-type img { flex: none; inline-size: 112px; block-size: 84px; object-fit: cover; border-radius: 12px; }
 .smd-type h2 { margin: 0; font-size: var(--sm-fs-md, 1rem); font-weight: 800; }
@@ -89,7 +89,13 @@
 .smd-sort select { min-block-size: 40px; padding-inline: 10px; border: 1px solid var(--sm-line); border-radius: 10px; background: var(--sm-surface); color: var(--sm-text); font: inherit; }
 
 .smd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--sm-s3); }
-@media (max-width: 599px) { .smd-grid { grid-template-columns: 1fr; } }
+@media (max-width: 599px) {
+	.smd-grid { grid-template-columns: minmax(0, 1fr); } /* 0.49.2: a long name or button never widens the page. */
+	.smd-bar { align-items: stretch; }
+	.smd-sort { flex: 1 1 100%; white-space: normal; }
+	.smd-sort select { flex: 1; min-inline-size: 0; }
+	.smd-card { min-inline-size: 0; }
+}
 .smd-card { display: flex; gap: var(--sm-s3); align-items: flex-start; padding: var(--sm-s3) var(--sm-s4); background: var(--sm-surface); border: 1px solid var(--sm-line); border-radius: 16px; }
 .smd-card__logo { flex: none; display: grid; place-items: center; overflow: hidden; inline-size: 64px; block-size: 64px; border-radius: 14px; background: var(--sm-primary-soft); color: var(--sm-primary); font-weight: 800; font-size: 1.2rem; }
 .smd-card__logo img { inline-size: 100%; block-size: 100%; object-fit: contain; background: #fff; }

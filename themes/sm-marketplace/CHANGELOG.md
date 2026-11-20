@@ -1,5 +1,11 @@
 # Changelog — sm-marketplace
 
+## 0.49.2 — 2026-11-20
+
+- Téléphones (360–390 px) : plus de défilement de côté.
+  - Annuaire des entreprises : colonne des résultats limitée à l'écran (`minmax(0, 1fr)`), « Trier par » sous le nombre d'entreprises, numéros de page qui passent à la ligne (`.sm-pagination` en `flex-wrap`, utile à toutes les listes longues).
+  - Listes des marchés (bâtiments…) : colonne des résultats limitée à l'écran ; le panneau des filtres fermé ne compte plus dans la largeur.
+
 ## 0.49.1 — 2026-11-20
 
 - Optimiseur : « 4. Chutes déjà à disposition » n'apparaît plus pour les comptes qui ont un magasin (entreprises, professionnels) : à la place, « Vos chutes sont dans votre magasin : elles sont cherchées en premier » et le lien « Ajouter des chutes au magasin ». Les visiteurs et les clients gardent le point 4 et voient « Mon magasin » désactivé. Un lien partagé qui contient des chutes saisies les affiche toujours (le plan reste le même).
