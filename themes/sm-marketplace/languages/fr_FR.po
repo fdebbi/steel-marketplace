@@ -215,7 +215,7 @@ msgstr "Ouvrir le menu"
 
 #: header.php:47 template-parts/components/filter-panel.php:88
 #: template-parts/components/product-form.php:66
-#: template-parts/components/rfq-form.php:54
+#: template-parts/components/rfq-form.php:48
 #: template-parts/components/rfq-single.php:21
 #: template-parts/dashboard/ai.php:84 template-parts/dashboard/listings.php:32
 #: template-parts/dashboard/listings.php:46
@@ -1358,7 +1358,7 @@ msgstr "Nuance"
 
 #: template-parts/components/ai-result-document.php:25
 #: template-parts/components/buy-box.php:91
-#: template-parts/components/rfq-form.php:77
+#: template-parts/components/rfq-form.php:71
 #: template-parts/components/rfq-single.php:30
 #: template-parts/components/rfq-single.php:82
 #: template-parts/components/rfq-single.php:87
@@ -1407,7 +1407,7 @@ msgstr "Annonce proposée"
 
 #: template-parts/components/ai-result-listing.php:21
 #: template-parts/components/product-form.php:64
-#: template-parts/components/rfq-form.php:62
+#: template-parts/components/rfq-form.php:56
 #: template-parts/dashboard/publish.php:67
 msgid "Category"
 msgstr "Catégorie"
@@ -1927,12 +1927,12 @@ msgstr "Commune"
 #: template-parts/components/product-tech.php:167
 #: template-parts/components/product-tech.php:435
 #: template-parts/components/product-tech.php:456
-#: template-parts/components/rfq-form.php:62
-#: template-parts/components/rfq-form.php:89
-#: template-parts/components/rfq-form.php:98
-#: template-parts/components/rfq-form.php:116
-#: template-parts/components/rfq-form.php:120
-#: template-parts/components/rfq-form.php:138
+#: template-parts/components/rfq-form.php:56
+#: template-parts/components/rfq-form.php:83
+#: template-parts/components/rfq-form.php:92
+#: template-parts/components/rfq-form.php:110
+#: template-parts/components/rfq-form.php:114
+#: template-parts/components/rfq-form.php:132
 #: template-parts/components/rfq-offer-form.php:56
 #: template-parts/components/rfq-offer-form.php:88
 #: template-parts/components/rfq-offer-form.php:92
@@ -3381,7 +3381,7 @@ msgid "Number of people, questions…"
 msgstr "Nombre de personnes, questions…"
 
 #: template-parts/components/listing-place.php:102
-#: template-parts/components/rfq-form.php:145
+#: template-parts/components/rfq-form.php:139
 #: template-parts/components/service-form.php:158
 #: template-parts/dashboard/portfolio.php:87
 msgid "Cancel"
@@ -3716,7 +3716,7 @@ msgid "Place and sending"
 msgstr "Lieu et envoi"
 
 #: template-parts/components/mission-request-form.php:133
-#: template-parts/components/rfq-form.php:51
+#: template-parts/components/rfq-form.php:45
 msgid "What do you need?"
 msgstr "De quoi avez-vous besoin ?"
 
@@ -4814,7 +4814,7 @@ msgid "Description, photos and technical sheet"
 msgstr "Description, photos et fiche technique"
 
 #: template-parts/components/product-form.php:121
-#: template-parts/components/rfq-form.php:82
+#: template-parts/components/rfq-form.php:76
 msgid "Title and description"
 msgstr "Titre et description"
 
@@ -4839,7 +4839,7 @@ msgstr ""
 "français et en arabe."
 
 #: template-parts/components/product-form.php:127
-#: template-parts/components/rfq-form.php:84
+#: template-parts/components/rfq-form.php:78
 #: template-parts/dashboard/publish.php:145
 msgid "Title in French"
 msgstr "Titre en français"
@@ -4857,7 +4857,7 @@ msgid "e.g. IPE 200 S275JR new, 12 m bars"
 msgstr "ex. IPE 200 S275JR neuves, barres de 12 m"
 
 #: template-parts/components/product-form.php:132
-#: template-parts/components/rfq-form.php:89
+#: template-parts/components/rfq-form.php:83
 msgid "Title in Arabic"
 msgstr "Titre en arabe"
 
@@ -4944,8 +4944,8 @@ msgstr "Wilaya où se trouve le produit"
 #: template-parts/components/product-tech.php:83
 #: template-parts/components/product-tech.php:169
 #: template-parts/components/product-tech.php:274
-#: template-parts/components/rfq-form.php:56
-#: template-parts/components/rfq-form.php:110
+#: template-parts/components/rfq-form.php:50
+#: template-parts/components/rfq-form.php:104
 #: template-parts/components/service-form.php:57
 #: template-parts/components/service-request-form.php:28
 #: template-parts/components/weight-calculator.php:139
@@ -5740,107 +5740,99 @@ msgstr ""
 
 #: template-parts/components/rfq-form.php:39
 msgid ""
-"You have a bill of quantities or a list of profiles? The AI assistant reads "
-"it and fills the rows for you."
+"A bill of quantities, a quotation or a purchase order? The AI reads it "
+"(Excel, PDF or photo) and fills the rows for you."
 msgstr ""
-"Vous avez un métré ou une liste de profilés ? L’assistant IA le lit et "
-"remplit les lignes pour vous."
+"Un DQE, un devis ou un bon de commande ? L’IA le lit (Excel, PDF ou photo) "
+"et remplit les lignes pour vous."
 
 #: template-parts/components/rfq-form.php:39
-msgid "Import from a document"
-msgstr "Importer depuis un document"
-
-#: template-parts/components/rfq-form.php:45
-msgid "A bill of quantities, a quotation or a purchase order?"
-msgstr "Un DQE, un devis ou un bon de commande ?"
-
-#: template-parts/components/rfq-form.php:45
 msgid "Fill from a document"
 msgstr "Remplir depuis un document"
 
-#: template-parts/components/rfq-form.php:64
+#: template-parts/components/rfq-form.php:58
 msgid "Any category"
 msgstr "Toutes catégories"
 
-#: template-parts/components/rfq-form.php:85
+#: template-parts/components/rfq-form.php:79
 msgid "e.g. IPE 270 beams for a hangar, delivery on site"
 msgstr "ex. Poutrelles IPE 270 pour hangar, livraison chantier"
 
-#: template-parts/components/rfq-form.php:93
+#: template-parts/components/rfq-form.php:87
 #: template-parts/components/rfq-single.php:101
 msgid "Technical description"
 msgstr "Description technique"
 
-#: template-parts/components/rfq-form.php:94
+#: template-parts/components/rfq-form.php:88
 msgid "Steel grade, standard, finish, tolerances, certificates, cutting…"
 msgstr "Nuance, norme, finition, tolérances, certificats, découpe…"
 
-#: template-parts/components/rfq-form.php:98
+#: template-parts/components/rfq-form.php:92
 #: template-parts/components/rfq-single.php:104
 msgid "Additional notes"
 msgstr "Notes complémentaires"
 
-#: template-parts/components/rfq-form.php:99
+#: template-parts/components/rfq-form.php:93
 msgid "Site access, unloading, invoicing…"
 msgstr "Accès au chantier, déchargement, facturation…"
 
-#: template-parts/components/rfq-form.php:105
+#: template-parts/components/rfq-form.php:99
 msgid "Delivery and deadline"
 msgstr "Livraison et délai"
 
-#: template-parts/components/rfq-form.php:108 templates/rfq-board.php:77
+#: template-parts/components/rfq-form.php:102 templates/rfq-board.php:77
 msgid "Delivery wilaya"
 msgstr "Wilaya de livraison"
 
-#: template-parts/components/rfq-form.php:116
+#: template-parts/components/rfq-form.php:110
 msgid "Delivery place"
 msgstr "Lieu de livraison"
 
-#: template-parts/components/rfq-form.php:117
+#: template-parts/components/rfq-form.php:111
 msgid "Town, industrial zone, site"
 msgstr "Ville, zone industrielle, chantier"
 
-#: template-parts/components/rfq-form.php:120
+#: template-parts/components/rfq-form.php:114
 #: template-parts/components/rfq-single.php:37
 #: template-parts/components/service-request-row.php:43
 msgid "Needed by"
 msgstr "Date souhaitée"
 
-#: template-parts/components/rfq-form.php:125
+#: template-parts/components/rfq-form.php:119
 #: template-parts/components/rfq-single.php:40
 msgid "Offers accepted until"
 msgstr "Offres acceptées jusqu’au"
 
-#: template-parts/components/rfq-form.php:133
+#: template-parts/components/rfq-form.php:127
 #: template-parts/components/rfq-single.php:108
 msgid "Drawings and documents"
 msgstr "Plans et documents"
 
-#: template-parts/components/rfq-form.php:138
+#: template-parts/components/rfq-form.php:132
 msgid "Attach drawings, a bill of materials or photos"
 msgstr "Joindre des plans, une nomenclature ou des photos"
 
 #. translators: 1: files, 2: MB.
-#: template-parts/components/rfq-form.php:139
+#: template-parts/components/rfq-form.php:133
 msgid ""
 "PDF or images, up to %1$d files of %2$d MB. Export DWG/DXF drawings to PDF."
 msgstr ""
 "PDF ou images, jusqu’à %1$d fichiers de %2$d Mo. Exportez les plans DWG/DXF "
 "en PDF."
 
-#: template-parts/components/rfq-form.php:141
+#: template-parts/components/rfq-form.php:135
 msgid "Documents are shown only to signed-in companies."
 msgstr "Les documents ne sont visibles que par les entreprises connectées."
 
-#: template-parts/components/rfq-form.php:146
+#: template-parts/components/rfq-form.php:140
 msgid "Save the request"
 msgstr "Enregistrer la demande"
 
-#: template-parts/components/rfq-form.php:146
+#: template-parts/components/rfq-form.php:140
 msgid "Publish my request"
 msgstr "Publier ma demande"
 
-#: template-parts/components/rfq-form.php:149
+#: template-parts/components/rfq-form.php:143
 msgid "The platform team checks each request before it is shown to suppliers."
 msgstr ""
 "L’équipe de la plateforme vérifie chaque demande avant de la montrer aux "

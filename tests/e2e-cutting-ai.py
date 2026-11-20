@@ -84,7 +84,7 @@ try:
 
         print('\nC. To a request for quotation')
         pg.goto(BASE + '/compte/mes-devis/?lang=fr&new=1')
-        check(pg.locator('.smdoc-entry a[href*="for=rfq"]').count() == 1, 'request form: « Fill from a document »')
+        check(pg.locator('.smai-callout a[href*="for=rfq"]').count() == 1, 'request form: « Fill from a document »')
         pg.goto(ACC + '&for=rfq')
         with pg.expect_navigation():
             pg.set_input_files('form:has(input[name="for"]) input[name="document"]', XLSX)

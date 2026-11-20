@@ -36,13 +36,7 @@ $cats    = (array) ( $set['categories'] ?? array() );
 wp_enqueue_script( 'sm-product-form', SM_THEME_URI . '/assets/js/product-form.js', array(), sm_theme_asset_version( 'assets/js/product-form.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 ?>
 <?php if ( ! $edit && ! $old ) : ?>
-	<?php sm_component( 'ai-callout', array( 'tool' => 'document', 'text' => __( 'You have a bill of quantities or a list of profiles? The AI assistant reads it and fills the rows for you.', 'sm-marketplace' ), 'button' => __( 'Import from a document', 'sm-marketplace' ) ) ); ?>
-<?php endif; ?>
-<?php
-$ai_doc = $edit_id ? null : sm_theme_data( 'ai_cutlist' ); // 0.51.0: fill the request from a document (DQE IA).
-if ( is_array( $ai_doc ) ) :
-	?>
-	<p class="smdoc-entry"><?php sm_ai_badge(); ?> <span><?php esc_html_e( 'A bill of quantities, a quotation or a purchase order?', 'sm-marketplace' ); ?></span> <a class="sm-btn sm-btn--ai-outline sm-btn--sm" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'ai', 'tool' => 'document', 'for' => 'rfq' ) ) ); ?>"><?php esc_html_e( 'Fill from a document', 'sm-marketplace' ); ?></a></p>
+	<?php sm_component( 'ai-callout', array( 'tool' => 'document', 'text' => __( 'A bill of quantities, a quotation or a purchase order? The AI reads it (Excel, PDF or photo) and fills the rows for you.', 'sm-marketplace' ), 'button' => __( 'Fill from a document', 'sm-marketplace' ), 'for' => 'rfq' ) ); ?>
 <?php endif; ?>
 <?php sm_theme_form_open( 'rfq_save', array( 'class' => 'sm-form smp-form smq-form', 'enctype' => 'multipart/form-data', 'data-smp' => '', 'data-smp-partial' => add_query_arg( 'smq_partial', '1', $base ) ) ); ?>
 	<input type="hidden" name="rfq_id" value="<?php echo esc_attr( $v( 'rfq_id' ) ); ?>">

@@ -2783,3 +2783,6 @@ T.update({
 'Bill of quantities, quotation, purchase order, delivery note, invoice or inventory (Excel, PDF or photo): the AI reads the profiles and the plates, with their weight. You check, then you choose: cutting optimiser, request for quotation or your warehouse.': ('DQE, devis, bon de commande, bon de livraison, facture ou inventaire (Excel, PDF ou photo) : l’IA lit les profilés et les tôles, avec leur poids. Vous vérifiez, puis vous choisissez : optimiseur de découpe, demande de devis ou votre magasin.', 'كشف كميات، عرض سعر، أمر شراء، وصل تسليم، فاتورة أو جرد (Excel أو PDF أو صورة): يقرأ الذكاء الاصطناعي المقاطع والصفائح مع أوزانها. تتحقق، ثم تختار: محسّن القص، طلب عرض سعر أو مخزنك.'),
 'Read a document': ('Lire un document', 'قراءة مستند'),
 })
+T.update({
+'A bill of quantities, a quotation or a purchase order? The AI reads it (Excel, PDF or photo) and fills the rows for you.': ('Un DQE, un devis ou un bon de commande ? L’IA le lit (Excel, PDF ou photo) et remplit les lignes pour vous.', 'كشف كميات أو عرض سعر أو أمر شراء؟ يقرؤه الذكاء الاصطناعي (Excel أو PDF أو صورة) ويملأ الأسطر عنك.'),
+})

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-20T11:15:19+00:00\n"
+"POT-Creation-Date: 2026-11-20T11:41:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -271,7 +271,7 @@ msgstr ""
 #: header.php:47
 #: template-parts/components/filter-panel.php:88
 #: template-parts/components/product-form.php:66
-#: template-parts/components/rfq-form.php:54
+#: template-parts/components/rfq-form.php:48
 #: template-parts/components/rfq-single.php:21
 #: template-parts/dashboard/ai.php:84
 #: template-parts/dashboard/listings.php:32
@@ -1388,7 +1388,7 @@ msgstr ""
 
 #: template-parts/components/ai-result-document.php:25
 #: template-parts/components/buy-box.php:91
-#: template-parts/components/rfq-form.php:77
+#: template-parts/components/rfq-form.php:71
 #: template-parts/components/rfq-single.php:30
 #: template-parts/components/rfq-single.php:82
 #: template-parts/components/rfq-single.php:87
@@ -1432,7 +1432,7 @@ msgstr ""
 
 #: template-parts/components/ai-result-listing.php:21
 #: template-parts/components/product-form.php:64
-#: template-parts/components/rfq-form.php:62
+#: template-parts/components/rfq-form.php:56
 #: template-parts/dashboard/publish.php:67
 msgid "Category"
 msgstr ""
@@ -1932,12 +1932,12 @@ msgstr ""
 #: template-parts/components/product-tech.php:167
 #: template-parts/components/product-tech.php:435
 #: template-parts/components/product-tech.php:456
-#: template-parts/components/rfq-form.php:62
-#: template-parts/components/rfq-form.php:89
-#: template-parts/components/rfq-form.php:98
-#: template-parts/components/rfq-form.php:116
-#: template-parts/components/rfq-form.php:120
-#: template-parts/components/rfq-form.php:138
+#: template-parts/components/rfq-form.php:56
+#: template-parts/components/rfq-form.php:83
+#: template-parts/components/rfq-form.php:92
+#: template-parts/components/rfq-form.php:110
+#: template-parts/components/rfq-form.php:114
+#: template-parts/components/rfq-form.php:132
 #: template-parts/components/rfq-offer-form.php:56
 #: template-parts/components/rfq-offer-form.php:88
 #: template-parts/components/rfq-offer-form.php:92
@@ -3311,7 +3311,7 @@ msgid "Number of people, questions…"
 msgstr ""
 
 #: template-parts/components/listing-place.php:102
-#: template-parts/components/rfq-form.php:145
+#: template-parts/components/rfq-form.php:139
 #: template-parts/components/service-form.php:158
 #: template-parts/dashboard/portfolio.php:87
 msgid "Cancel"
@@ -3621,7 +3621,7 @@ msgid "Place and sending"
 msgstr ""
 
 #: template-parts/components/mission-request-form.php:133
-#: template-parts/components/rfq-form.php:51
+#: template-parts/components/rfq-form.php:45
 msgid "What do you need?"
 msgstr ""
 
@@ -4662,7 +4662,7 @@ msgid "Description, photos and technical sheet"
 msgstr ""
 
 #: template-parts/components/product-form.php:121
-#: template-parts/components/rfq-form.php:82
+#: template-parts/components/rfq-form.php:76
 msgid "Title and description"
 msgstr ""
 
@@ -4675,7 +4675,7 @@ msgid "The title is created automatically from the product: type and size, steel
 msgstr ""
 
 #: template-parts/components/product-form.php:127
-#: template-parts/components/rfq-form.php:84
+#: template-parts/components/rfq-form.php:78
 #: template-parts/dashboard/publish.php:145
 msgid "Title in French"
 msgstr ""
@@ -4693,7 +4693,7 @@ msgid "e.g. IPE 200 S275JR new, 12 m bars"
 msgstr ""
 
 #: template-parts/components/product-form.php:132
-#: template-parts/components/rfq-form.php:89
+#: template-parts/components/rfq-form.php:83
 msgid "Title in Arabic"
 msgstr ""
 
@@ -4754,8 +4754,8 @@ msgstr ""
 #: template-parts/components/product-tech.php:83
 #: template-parts/components/product-tech.php:169
 #: template-parts/components/product-tech.php:274
-#: template-parts/components/rfq-form.php:56
-#: template-parts/components/rfq-form.php:110
+#: template-parts/components/rfq-form.php:50
+#: template-parts/components/rfq-form.php:104
 #: template-parts/components/service-form.php:57
 #: template-parts/components/service-request-form.php:28
 #: template-parts/components/weight-calculator.php:139
@@ -5455,102 +5455,94 @@ msgid "This request already has offers: it can no longer be edited. Close it and
 msgstr ""
 
 #: template-parts/components/rfq-form.php:39
-msgid "You have a bill of quantities or a list of profiles? The AI assistant reads it and fills the rows for you."
+msgid "A bill of quantities, a quotation or a purchase order? The AI reads it (Excel, PDF or photo) and fills the rows for you."
 msgstr ""
 
 #: template-parts/components/rfq-form.php:39
-msgid "Import from a document"
-msgstr ""
-
-#: template-parts/components/rfq-form.php:45
-msgid "A bill of quantities, a quotation or a purchase order?"
-msgstr ""
-
-#: template-parts/components/rfq-form.php:45
 msgid "Fill from a document"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:64
+#: template-parts/components/rfq-form.php:58
 msgid "Any category"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:85
+#: template-parts/components/rfq-form.php:79
 msgid "e.g. IPE 270 beams for a hangar, delivery on site"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:93
+#: template-parts/components/rfq-form.php:87
 #: template-parts/components/rfq-single.php:101
 msgid "Technical description"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:94
+#: template-parts/components/rfq-form.php:88
 msgid "Steel grade, standard, finish, tolerances, certificates, cutting…"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:98
+#: template-parts/components/rfq-form.php:92
 #: template-parts/components/rfq-single.php:104
 msgid "Additional notes"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:99
+#: template-parts/components/rfq-form.php:93
 msgid "Site access, unloading, invoicing…"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:105
+#: template-parts/components/rfq-form.php:99
 msgid "Delivery and deadline"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:108
+#: template-parts/components/rfq-form.php:102
 #: templates/rfq-board.php:77
 msgid "Delivery wilaya"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:116
+#: template-parts/components/rfq-form.php:110
 msgid "Delivery place"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:117
+#: template-parts/components/rfq-form.php:111
 msgid "Town, industrial zone, site"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:120
+#: template-parts/components/rfq-form.php:114
 #: template-parts/components/rfq-single.php:37
 #: template-parts/components/service-request-row.php:43
 msgid "Needed by"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:125
+#: template-parts/components/rfq-form.php:119
 #: template-parts/components/rfq-single.php:40
 msgid "Offers accepted until"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:133
+#: template-parts/components/rfq-form.php:127
 #: template-parts/components/rfq-single.php:108
 msgid "Drawings and documents"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:138
+#: template-parts/components/rfq-form.php:132
 msgid "Attach drawings, a bill of materials or photos"
 msgstr ""
 
 #. translators: 1: files, 2: MB.
-#: template-parts/components/rfq-form.php:139
+#: template-parts/components/rfq-form.php:133
 msgid "PDF or images, up to %1$d files of %2$d MB. Export DWG/DXF drawings to PDF."
 msgstr ""
 
-#: template-parts/components/rfq-form.php:141
+#: template-parts/components/rfq-form.php:135
 msgid "Documents are shown only to signed-in companies."
 msgstr ""
 
-#: template-parts/components/rfq-form.php:146
+#: template-parts/components/rfq-form.php:140
 msgid "Save the request"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:146
+#: template-parts/components/rfq-form.php:140
 msgid "Publish my request"
 msgstr ""
 
-#: template-parts/components/rfq-form.php:149
+#: template-parts/components/rfq-form.php:143
 msgid "The platform team checks each request before it is shown to suppliers."
 msgstr ""
 
