@@ -205,8 +205,7 @@ final class Pages {
 		$price = self::price( $item );
 		$desc .= ' ' . $price['text'];
 		if ( '' !== $wilaya ) {
-			/* translators: %s: wilaya. */
-			$desc .= ' ' . sprintf( __( 'Wilaya of %s.', 'sm-seo' ), $wilaya );
+			$desc .= ' ' . self::wilaya_phrase( $wilaya );
 		}
 		$m['description'] = Text::cut( $desc, 300 );
 		$m['og_type']     = 'product';
@@ -226,6 +225,17 @@ final class Pages {
 		$m['crumbs'][] = array( $name, $m['canonical'] );
 		$m['schema'][] = Schema::product( $item, $name, $m, $price );
 		return $m;
+	}
+
+	/** « Wilaya de M'Sila. » / « Wilaya d'Alger. » (0.1.1: elision before a vowel in French). */
+	public static function wilaya_phrase( $wilaya ) {
+		$first = remove_accents( mb_substr( (string) $wilaya, 0, 1 ) );
+		if ( preg_match( '/^[aeiouy]$/i', $first ) ) {
+			/* translators: %s: wilaya whose name starts with a vowel (French: « Wilaya d’Alger. »). */
+			return sprintf( _x( 'Wilaya of %s.', 'before a vowel', 'sm-seo' ), $wilaya );
+		}
+		/* translators: %s: wilaya. */
+		return sprintf( __( 'Wilaya of %s.', 'sm-seo' ), $wilaya );
 	}
 
 	/**

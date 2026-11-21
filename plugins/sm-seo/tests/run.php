@@ -53,6 +53,15 @@ smseo_assert( 'Abc def ghijkl…' === Text::cut( 'Abc def ghijkl mnopq', 16 ), '
 smseo_assert( "10,7" === Text::number( 10.7 ) && "2\u{202F}300\u{202F}000" === Text::number( 2300000, 0 ), 'numbers written like the theme' );
 smseo_assert( 'b' === Text::pick( array( 'fr' => '', 'ar' => 'b' ) ), 'multilingual field: fallback to another language' );
 
+echo "\nWilaya (0.1.1)\n";
+\SM\Core\I18n\Language::with_language(
+	'fr',
+	static function () {
+		smseo_assert( 'Wilaya d’Alger.' === Pages::wilaya_phrase( 'Alger' ) && 'Wilaya d’El Bayadh.' === Pages::wilaya_phrase( 'El Bayadh' ), 'French: « Wilaya d’Alger », « d’El Bayadh »' );
+		smseo_assert( "Wilaya de M'Sila." === Pages::wilaya_phrase( "M'Sila" ) && 'Wilaya de Tlemcen.' === Pages::wilaya_phrase( 'Tlemcen' ), 'French: « Wilaya de M’Sila », « de Tlemcen »' );
+	}
+);
+
 echo "\nAsked price\n";
 $p = Pages::price( array( 'price_unit' => 'kg', 'price_per_kg' => 230, 'sale_mode' => 'kg' ) );
 smseo_assert( $p['per_kg'] && 230.0 === (float) $p['price'] && false !== strpos( $p['text'], '230' ), 'per kg' );

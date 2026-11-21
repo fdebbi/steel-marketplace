@@ -1,5 +1,9 @@
 # Changelog — sm-seo
 
+## 0.1.1 — 2026-11-21
+
+- Description des annonces en français : « Wilaya **d'**Alger », « d'Oran », « d'El Bayadh » devant une voyelle (« Wilaya de M'Sila » ailleurs). Vérifié sur reusteel.com après la mise en ligne de la 0.58.1.
+
 ## 0.1.0 — 2026-11-21 (avec le thème 0.57.0)
 
 - Première version : **référencement dans les moteurs de recherche et les IA**.

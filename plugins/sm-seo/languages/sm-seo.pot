@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM SEO 0.1.0\n"
+"Project-Id-Version: SM SEO 0.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-seo\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-21T15:55:27+00:00\n"
+"POT-Creation-Date: 2026-11-21T19:47:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-seo\n"
@@ -286,7 +286,7 @@ msgid "Engineering services by verified partner engineers, delivered by the plat
 msgstr ""
 
 #: src/Pages.php:130
-#: src/Pages.php:333
+#: src/Pages.php:343
 #: src/Schema.php:115
 msgid "Algeria"
 msgstr ""
@@ -306,71 +306,77 @@ msgstr ""
 msgid "dismantled"
 msgstr ""
 
+#. translators: %s: wilaya whose name starts with a vowel (French: « Wilaya d’Alger. »).
+#: src/Pages.php:235
+msgctxt "before a vowel"
+msgid "Wilaya of %s."
+msgstr ""
+
 #. translators: %s: wilaya.
-#: src/Pages.php:209
+#: src/Pages.php:238
 msgid "Wilaya of %s."
 msgstr ""
 
 #. translators: 1: price per kilogram, 2: price of the whole lot.
-#: src/Pages.php:244
+#: src/Pages.php:254
 msgid "Price asked by the seller: %1$s DA/kg, or %2$s DA for the whole lot."
 msgstr ""
 
 #. translators: %s: price per kilogram.
-#: src/Pages.php:247
+#: src/Pages.php:257
 msgid "Price asked by the seller: %s DA/kg."
 msgstr ""
 
 #. translators: %s: price of the lot.
-#: src/Pages.php:253
+#: src/Pages.php:263
 msgid "Price of the lot asked by the seller: %s DA."
 msgstr ""
 
-#: src/Pages.php:255
+#: src/Pages.php:265
 msgid "Price on request."
 msgstr ""
 
 #. translators: %s: wilaya.
-#: src/Pages.php:271
+#: src/Pages.php:281
 msgid "steel professional in %s"
 msgstr ""
 
 #. translators: %s: wilaya.
-#: src/Pages.php:271
+#: src/Pages.php:281
 msgid "steel company in %s"
 msgstr ""
 
-#: src/Pages.php:273
+#: src/Pages.php:283
 msgid "steel professional"
 msgstr ""
 
-#: src/Pages.php:273
+#: src/Pages.php:283
 msgid "steel company"
 msgstr ""
 
 #. translators: 1: name of the company, 2: « steel company in M'Sila ».
-#: src/Pages.php:278
+#: src/Pages.php:288
 msgid "%1$s, %2$s on ReuSteel. Contact through the platform."
 msgstr ""
 
-#: src/Pages.php:286
+#: src/Pages.php:296
 msgid "Professionals"
 msgstr ""
 
-#: src/Pages.php:286
+#: src/Pages.php:296
 msgid "Companies"
 msgstr ""
 
-#: src/Pages.php:322
+#: src/Pages.php:332
 msgid "all Algeria"
 msgstr ""
 
 #. translators: %s: wilayas served.
-#: src/Pages.php:324
+#: src/Pages.php:334
 msgid "Served: %s."
 msgstr ""
 
-#: src/Pages.php:327
+#: src/Pages.php:337
 msgid "Services"
 msgstr ""
 

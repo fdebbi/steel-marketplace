@@ -71,6 +71,7 @@ T = {
 'assembled': ('monté', 'مركّب'),
 'dismantled': ('démonté', 'مفكك'),
 'Wilaya of %s.': ('Wilaya de %s.', 'ولاية %s.'),
+('before a vowel', 'Wilaya of %s.'): ('Wilaya d’%s.', 'ولاية %s.'),
 'Price asked by the seller: %1$s DA/kg, or %2$s DA for the whole lot.': ('Prix demandé par le vendeur : %1$s DA/kg, ou %2$s DA pour tout le lot.', 'السعر الذي يطلبه البائع: %1$s DA/kg، أو %2$s DA للحصة كاملة.'),
 'Price asked by the seller: %s DA/kg.': ('Prix demandé par le vendeur : %s DA/kg.', 'السعر الذي يطلبه البائع: %s DA/kg.'),
 'Price of the lot asked by the seller: %s DA.': ('Prix du lot demandé par le vendeur : %s DA.', 'سعر الحصة الذي يطلبه البائع: %s DA.'),

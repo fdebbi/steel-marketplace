@@ -13,7 +13,7 @@ langs = {
 missing = set()
 for code, (idx, plural, name) in langs.items():
     po = polib.POFile()
-    po.metadata = {'Project-Id-Version': 'SM SEO 0.1.0', 'Language': code, 'MIME-Version': '1.0',
+    po.metadata = {'Project-Id-Version': 'SM SEO 0.1.1', 'Language': code, 'MIME-Version': '1.0',
                    'Content-Type': 'text/plain; charset=UTF-8', 'Content-Transfer-Encoding': '8bit', 'Plural-Forms': plural,
                    'X-Domain': 'sm-seo'}
     for e in pot:
@@ -23,9 +23,9 @@ for code, (idx, plural, name) in langs.items():
             forms = val[idx]
             po.append(polib.POEntry(msgid=e.msgid, msgid_plural=e.msgid_plural, msgstr_plural={i: f for i, f in enumerate(forms)}, occurrences=e.occurrences, comment=e.comment))
         else:
-            val = T.get(e.msgid)
+            val = T.get((e.msgctxt, e.msgid)) if e.msgctxt else T.get(e.msgid)
             if not val: missing.add(e.msgid); continue
-            po.append(polib.POEntry(msgid=e.msgid, msgstr=val[idx], occurrences=e.occurrences, comment=e.comment))
+            po.append(polib.POEntry(msgid=e.msgid, msgctxt=e.msgctxt, msgstr=val[idx], occurrences=e.occurrences, comment=e.comment))
     po.save(os.path.join(root, 'languages', f'sm-seo-{code}.po'))
     po.save_as_mofile(os.path.join(root, 'languages', f'sm-seo-{code}.mo'))
     print(code, len(po), 'entries,', f'{po.percent_translated()}% translated')
