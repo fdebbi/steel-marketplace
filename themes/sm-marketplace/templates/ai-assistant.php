@@ -81,7 +81,7 @@ $sm_tools = array(
 				<span class="smai-card__icon"><?php sm_icon( 'chart' ); ?></span>
 				<h2 class="smai-card__title"><?php esc_html_e( 'Business report', 'sm-marketplace' ); ?></h2>
 				<p><?php esc_html_e( 'Follow your market like a pro: every day, the average asked prices of new and reused steel, the steel on sale, the most searched and best-selling profiles and what is asked and little offered, by region, with a summary written by the AI.', 'sm-marketplace' ); ?></p>
-				<p class="smai-card__meta"><span class="is-biz"><?php esc_html_e( 'Included in the Business plan', 'sm-marketplace' ); ?></span><span class="is-free"><?php esc_html_e( 'No credit', 'sm-marketplace' ); ?></span></p>
+				<p class="smai-card__meta"><span class="is-biz"><?php esc_html_e( 'Included in the Business plan', 'sm-marketplace' ); ?></span></p>
 				<div class="smai-card__foot">
 					<?php if ( $biz_ok ) : ?>
 						<a class="sm-btn sm-btn--ai sm-btn--block" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'report' ) ) ); ?>"><?php esc_html_e( 'Open the report', 'sm-marketplace' ); ?><?php sm_icon( 'arrow-end' ); ?></a>

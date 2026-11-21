@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-21T08:24:28+00:00\n"
+"POT-Creation-Date: 2026-11-21T09:40:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -84,7 +84,7 @@ msgstr ""
 #: footer.php:25
 #: inc/menus.php:47
 #: template-parts/components/rfq-single.php:45
-#: template-parts/dashboard/report.php:134
+#: template-parts/dashboard/report.php:133
 #: template-parts/dashboard/rfq.php:19
 #: templates/rfq-board.php:54
 #: templates/rfq-board.php:57
@@ -280,7 +280,7 @@ msgstr ""
 #: template-parts/dashboard/listings.php:46
 #: template-parts/dashboard/publish.php:35
 #: template-parts/dashboard/publish.php:51
-#: template-parts/dashboard/report.php:68
+#: template-parts/dashboard/report.php:67
 #: templates/front-page-template.php:41
 #: templates/rfq-board.php:72
 msgid "Market"
@@ -539,9 +539,9 @@ msgstr ""
 #: template-parts/components/cutting-optimizer.php:177
 #: template-parts/components/cutting-sources.php:57
 #: template-parts/dashboard/publish.php:54
-#: template-parts/dashboard/report.php:97
-#: template-parts/dashboard/report.php:151
-#: template-parts/dashboard/report.php:200
+#: template-parts/dashboard/report.php:96
+#: template-parts/dashboard/report.php:150
+#: template-parts/dashboard/report.php:199
 #: templates/dashboard.php:126
 msgid "New steel"
 msgstr ""
@@ -554,9 +554,9 @@ msgstr ""
 #: template-parts/components/ai-doc-review.php:154
 #: template-parts/components/cutting-sources.php:57
 #: template-parts/components/my-products.php:23
-#: template-parts/dashboard/report.php:98
-#: template-parts/dashboard/report.php:152
-#: template-parts/dashboard/report.php:200
+#: template-parts/dashboard/report.php:97
+#: template-parts/dashboard/report.php:151
+#: template-parts/dashboard/report.php:199
 #: templates/dashboard.php:127
 msgid "Reuse"
 msgstr ""
@@ -1207,7 +1207,7 @@ msgstr ""
 #: template-parts/components/rfq-single.php:86
 #: template-parts/dashboard/publish.php:128
 #: template-parts/dashboard/publish.php:132
-#: template-parts/dashboard/report.php:150
+#: template-parts/dashboard/report.php:149
 #: template-parts/dashboard/settings.php:20
 #: template-parts/dashboard/stock-prices.php:37
 msgid "Profile"
@@ -4168,7 +4168,7 @@ msgid "Send"
 msgstr ""
 
 #: template-parts/components/my-products.php:24
-#: template-parts/dashboard/report.php:99
+#: template-parts/dashboard/report.php:98
 msgid "Buildings"
 msgstr ""
 
@@ -5755,7 +5755,7 @@ msgid "Send your offer"
 msgstr ""
 
 #: template-parts/components/rfq-offer-form.php:44
-#: template-parts/dashboard/report.php:155
+#: template-parts/dashboard/report.php:154
 msgid "Your price"
 msgstr ""
 
@@ -7863,7 +7863,7 @@ msgid "Verified"
 msgstr ""
 
 #: template-parts/dashboard/overview.php:95
-#: template-parts/dashboard/report.php:67
+#: template-parts/dashboard/report.php:66
 msgid "Period"
 msgstr ""
 
@@ -8358,7 +8358,7 @@ msgid "The Business report is included in the Business plan"
 msgstr ""
 
 #: template-parts/dashboard/report.php:29
-msgid "Every day: the average asked prices of new and reused steel, the steel on sale (new, reuse, buildings), the most searched and best-selling profiles, what is asked and little offered, by region — with a summary written by the AI. No credit is used."
+msgid "Every day: the average asked prices of new and reused steel, the steel on sale (new, reuse, buildings), the most searched and best-selling profiles, what is asked and little offered, by region — with a summary written by the AI."
 msgstr ""
 
 #: template-parts/dashboard/report.php:30
@@ -8373,152 +8373,147 @@ msgstr ""
 msgid "Business plan"
 msgstr ""
 
-#: template-parts/dashboard/report.php:60
-#: templates/ai-assistant.php:84
-msgid "No credit"
-msgstr ""
-
 #. translators: 1: start date, 2: end date.
-#: template-parts/dashboard/report.php:61
+#: template-parts/dashboard/report.php:60
 msgid "From %1$s to %2$s"
 msgstr ""
 
 #. translators: %s: date.
-#: template-parts/dashboard/report.php:61
+#: template-parts/dashboard/report.php:60
 msgid "updated on %s"
 msgstr ""
 
 #. translators: %s: date.
-#: template-parts/dashboard/report.php:61
+#: template-parts/dashboard/report.php:60
 msgid "prices asked by the sellers on ReuSteel, not sale prices."
 msgstr ""
 
-#: template-parts/dashboard/report.php:64
+#: template-parts/dashboard/report.php:63
 msgid "Report filters"
 msgstr ""
 
-#: template-parts/dashboard/report.php:69
+#: template-parts/dashboard/report.php:68
 msgid "Region"
 msgstr ""
 
-#: template-parts/dashboard/report.php:80
+#: template-parts/dashboard/report.php:79
 msgid "Download as PDF"
 msgstr ""
 
-#: template-parts/dashboard/report.php:86
+#: template-parts/dashboard/report.php:85
 msgid "What to remember"
 msgstr ""
 
-#: template-parts/dashboard/report.php:94
+#: template-parts/dashboard/report.php:93
 msgid "Steel on the market"
 msgstr ""
 
 #. translators: %s: tonnes.
-#: template-parts/dashboard/report.php:104
+#: template-parts/dashboard/report.php:103
 msgid "%s t of steel on sale"
 msgstr ""
 
-#: template-parts/dashboard/report.php:119
+#: template-parts/dashboard/report.php:118
 msgid "in all"
 msgstr ""
 
-#: template-parts/dashboard/report.php:132
+#: template-parts/dashboard/report.php:131
 msgid "Listings online"
 msgstr ""
 
-#: template-parts/dashboard/report.php:133
+#: template-parts/dashboard/report.php:132
 msgid "Searches"
 msgstr ""
 
-#: template-parts/dashboard/report.php:135
+#: template-parts/dashboard/report.php:134
 msgid "Buildings on sale"
 msgstr ""
 
 #. translators: %s: currency.
-#: template-parts/dashboard/report.php:144
+#: template-parts/dashboard/report.php:143
 msgid "Average asked prices (%s/kg)"
 msgstr ""
 
-#: template-parts/dashboard/report.php:146
+#: template-parts/dashboard/report.php:145
 msgid "Not enough listings yet for an average on this choice."
 msgstr ""
 
-#: template-parts/dashboard/report.php:151
-#: template-parts/dashboard/report.php:154
+#: template-parts/dashboard/report.php:150
+#: template-parts/dashboard/report.php:153
 msgid "Change over the period"
 msgstr ""
 
-#: template-parts/dashboard/report.php:153
+#: template-parts/dashboard/report.php:152
 msgid "Reuse gap"
 msgstr ""
 
 #. translators: 1: type, 2: new or reuse.
-#: template-parts/dashboard/report.php:192
+#: template-parts/dashboard/report.php:191
 msgid "%1$s, %2$s: average asked price over 12 months"
 msgstr ""
 
 #. translators: 1: type, 2: new or reuse.
-#: template-parts/dashboard/report.php:192
+#: template-parts/dashboard/report.php:191
 msgid "new"
 msgstr ""
 
 #. translators: 1: type, 2: new or reuse.
-#: template-parts/dashboard/report.php:192
+#: template-parts/dashboard/report.php:191
 msgid "reuse"
 msgstr ""
 
-#: template-parts/dashboard/report.php:209
+#: template-parts/dashboard/report.php:208
 msgid "Click on a type to see its sizes and its curve over 12 months. An average is shown only when there are enough listings."
 msgstr ""
 
-#: template-parts/dashboard/report.php:215
+#: template-parts/dashboard/report.php:214
 msgid "Best-selling"
 msgstr ""
 
-#: template-parts/dashboard/report.php:219
+#: template-parts/dashboard/report.php:218
 msgid "No sale accepted on this choice yet."
 msgstr ""
 
-#: template-parts/dashboard/report.php:223
+#: template-parts/dashboard/report.php:222
 msgid "Most searched"
 msgstr ""
 
-#: template-parts/dashboard/report.php:231
+#: template-parts/dashboard/report.php:230
 msgid "Searches of the catalogue and lines of the requests for quotation."
 msgstr ""
 
-#: template-parts/dashboard/report.php:233
+#: template-parts/dashboard/report.php:232
 msgid "The searches are counted from now: this list fills up with time."
 msgstr ""
 
-#: template-parts/dashboard/report.php:240
+#: template-parts/dashboard/report.php:239
 msgid "Asked, little offered"
 msgstr ""
 
 #. translators: 1: searches and requests, 2: listings.
-#: template-parts/dashboard/report.php:244
+#: template-parts/dashboard/report.php:243
 msgid "%1$s searches and requests, %2$s listings"
 msgstr ""
 
 #. translators: %s: tonnes.
-#: template-parts/dashboard/report.php:246
+#: template-parts/dashboard/report.php:245
 msgid "You have %s t of it"
 msgstr ""
 
-#: template-parts/dashboard/report.php:251
+#: template-parts/dashboard/report.php:250
 msgid "Nothing stands out on this choice for now."
 msgstr ""
 
-#: template-parts/dashboard/report.php:255
+#: template-parts/dashboard/report.php:254
 msgid "By region (listings · requests)"
 msgstr ""
 
 #. translators: %s: percentage.
-#: template-parts/dashboard/report.php:258
+#: template-parts/dashboard/report.php:257
 msgid "Reuse: %s %% of the weight"
 msgstr ""
 
-#: template-parts/dashboard/report.php:264
+#: template-parts/dashboard/report.php:263
 msgid "No company name, no quantity or amount of sale: only asked prices, weights on sale and numbers of listings, searches and requests. « Your price » and « You have » are seen by you only."
 msgstr ""
 

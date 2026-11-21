@@ -140,7 +140,7 @@ with sync_playwright() as p:
     h.goto(BASE + '/assistant-ia/?lang=fr')
     st = h.eval_on_selector_all('.smai-card', 'e => e.map(x => x.id + ":" + x.dataset.state)')
     check('ai-search:ok' in st and 'ai-describe:login' in st and 'ai-recognize:login' in st, 'AI page, visitor: the smart search is free, the other tools ask to sign in (%s)' % ', '.join(st))
-    check(h.locator('#ai-business .is-soon').count() == 0 and h.locator('#ai-business .is-free').count() == 1 and h.locator('#ai-business a[href*="tarifs"]').count() == 1 and h.locator('#ai-business .sm-btn--ai').count() == 0, 'Business report (0.53.0), visitor: Business plan, no credit, « See the Business plan »')
+    check(h.locator('#ai-business .is-soon').count() == 0 and h.locator('#ai-business .is-free').count() == 0 and h.locator('#ai-business a[href*="tarifs"]').count() == 1 and h.locator('#ai-business .sm-btn--ai').count() == 0, 'Business report (0.56.0), visitor: Business plan (no « No credit »), « See the Business plan »')
     check(h.locator('#ai-recognize .smai-gate a[href*="connexion"]').count() == 1 and h.locator('#ai-search .is-free').count() == 1, 'visitor: « Sign in to use this tool », search marked free')
     h.goto(BASE + '/recherche/?lang=fr')
     check(h.locator('.smai-search__form .sm-ai-badge').count() == 1 and h.locator('.smai-search__form .sm-btn--ai').count() == 1, 'smart search box carries the AI mark and the AI button')

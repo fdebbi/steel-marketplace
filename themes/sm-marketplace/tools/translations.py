@@ -2905,3 +2905,8 @@ T.update({
 P.update({
 ('%d credit', '%d credits'): (['%d crédit', '%d crédits'], ['%d رصيد', 'رصيد واحد', 'رصيدان', '%d أرصدة', '%d رصيداً', '%d رصيد']),
 })
+
+# 0.56.0 — « No credit » removed.
+T.update({
+'Every day: the average asked prices of new and reused steel, the steel on sale (new, reuse, buildings), the most searched and best-selling profiles, what is asked and little offered, by region — with a summary written by the AI.': ('Chaque jour : les prix moyens demandés de l’acier neuf et de réemploi, l’acier mis en vente (neuf, réemploi, bâtiments), les profilés les plus recherchés et les plus vendus, ce qui est demandé et peu proposé, par région — avec un résumé écrit par l’IA.', 'كل يوم: متوسط الأسعار المطلوبة للفولاذ الجديد والمعاد استعماله، والفولاذ المعروض للبيع (جديد، إعادة استعمال، مبانٍ)، والمقاطع الأكثر بحثاً والأكثر مبيعاً، وما هو مطلوب وقليل العرض، حسب المنطقة — مع ملخص يكتبه الذكاء الاصطناعي.'),
+})

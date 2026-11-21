@@ -945,7 +945,10 @@
 	/*
 	 * Waiting for the AI (0.51.0): forms [data-sm-ai-wait="title"] cover their tool (or
 	 * [data-sm-ai-scope] selector) with a common screen: animated mark, title, sub-title,
-	 * indeterminate bar, file name and seconds; the buttons are blocked (one credit).
+	 * file name and seconds; the buttons are blocked (one credit).
+	 * 0.56.0: one circle (mauve ring that turns, ✦ that grows and shrinks), no bar; in
+	 * a low zone (search bar, button of a form) the circle and the text sit side by side
+	 * inside it (.is-compact), so nothing spills over the page.
 	 */
 	window.smAiWait = function ( scope, title, sub, slow, file ) {
 		if ( ! scope ) { return function () {}; }
@@ -953,7 +956,8 @@
 		box.className = 'sm-aiwait';
 		box.setAttribute( 'role', 'status' );
 		box.setAttribute( 'aria-live', 'polite' );
-		box.innerHTML = '<div class="sm-aiwait__in"><span class="sm-aiwait__orb" aria-hidden="true"><span>✦</span></span><p class="sm-aiwait__t"></p><p class="sm-aiwait__s"></p><span class="sm-aiwait__bar" aria-hidden="true"><i></i></span><p class="sm-aiwait__c"></p></div>';
+		box.innerHTML = '<div class="sm-aiwait__in"><span class="sm-aiwait__orb" aria-hidden="true"><span>✦</span></span><span class="sm-aiwait__txt"><span class="sm-aiwait__t"></span><span class="sm-aiwait__s"></span><span class="sm-aiwait__c"></span></span></div>';
+		if ( scope.getBoundingClientRect().height < 200 ) { box.classList.add( 'is-compact' ); }
 		box.querySelector( '.sm-aiwait__t' ).textContent = title;
 		box.querySelector( '.sm-aiwait__s' ).textContent = sub || '';
 		if ( 'static' === getComputedStyle( scope ).position ) { scope.style.position = 'relative'; }

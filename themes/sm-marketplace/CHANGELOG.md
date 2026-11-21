@@ -1,5 +1,10 @@
 # Changelog — sm-marketplace
 
+## 0.56.0 — 2026-11-21
+
+- **Attente de l'IA** : un seul cercle — l'anneau mauve tourne, l'icône ✦ au centre grossit et rétrécit ; plus de barre d'avancement. Dans une zone basse (barre de recherche intelligente, bouton d'un formulaire), le cercle et le texte se placent côte à côte **dans la zone** (`.is-compact`) : plus de texte qui déborde sur les annonces. Animations arrêtées si l'utilisateur les réduit.
+- « Sans crédit » retiré de la carte Rapport Business (page Assistant IA), du haut du rapport et du texte de la formule.
+
 ## 0.55.0 — 2026-11-21 (avec sm-ai 0.7.0)
 
 - Le prix d'un outil IA affiché là où on l'utilise suit le prix réglé dans l'administration : `sm_ai_price()` (« 1 crédit », « 3 crédits », « Gratuit ») sur « Reconnaître depuis mes photos », « Évaluer l'état », l'import de l'optimiseur, la rédaction de la description et la lecture d'un document (plus de « 1 crédit » écrit en dur).

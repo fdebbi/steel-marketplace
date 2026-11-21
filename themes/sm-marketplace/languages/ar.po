@@ -74,7 +74,7 @@ msgid "Steel buildings"
 msgstr "المباني الفولاذية"
 
 #: footer.php:25 inc/menus.php:47 template-parts/components/rfq-single.php:45
-#: template-parts/dashboard/report.php:134 template-parts/dashboard/rfq.php:19
+#: template-parts/dashboard/report.php:133 template-parts/dashboard/rfq.php:19
 #: templates/rfq-board.php:54 templates/rfq-board.php:57
 msgid "Requests for quotation"
 msgstr "طلبات عروض الأسعار"
@@ -219,7 +219,7 @@ msgstr "فتح القائمة"
 #: template-parts/dashboard/listings.php:46
 #: template-parts/dashboard/publish.php:35
 #: template-parts/dashboard/publish.php:51
-#: template-parts/dashboard/report.php:68 templates/front-page-template.php:41
+#: template-parts/dashboard/report.php:67 templates/front-page-template.php:41
 #: templates/rfq-board.php:72
 msgid "Market"
 msgstr "السوق"
@@ -470,9 +470,9 @@ msgstr "فولاذ جديد بالكيلوغرام"
 #: template-parts/components/cutting-optimizer.php:177
 #: template-parts/components/cutting-sources.php:57
 #: template-parts/dashboard/publish.php:54
-#: template-parts/dashboard/report.php:97
-#: template-parts/dashboard/report.php:151
-#: template-parts/dashboard/report.php:200 templates/dashboard.php:126
+#: template-parts/dashboard/report.php:96
+#: template-parts/dashboard/report.php:150
+#: template-parts/dashboard/report.php:199 templates/dashboard.php:126
 msgid "New steel"
 msgstr "فولاذ جديد"
 
@@ -483,9 +483,9 @@ msgstr "بقايا، فائض، مستعمل، خردة"
 #: inc/data-contract.php:98 template-parts/components/ai-doc-review.php:154
 #: template-parts/components/cutting-sources.php:57
 #: template-parts/components/my-products.php:23
-#: template-parts/dashboard/report.php:98
-#: template-parts/dashboard/report.php:152
-#: template-parts/dashboard/report.php:200 templates/dashboard.php:127
+#: template-parts/dashboard/report.php:97
+#: template-parts/dashboard/report.php:151
+#: template-parts/dashboard/report.php:199 templates/dashboard.php:127
 msgid "Reuse"
 msgstr "إعادة الاستخدام"
 
@@ -964,7 +964,7 @@ msgstr "غير مؤكد"
 
 #: template-parts/components/ai-describe-button.php:20
 #: template-parts/components/ai-describe-button.php:50
-#: templates/ai-assistant.php:70
+#: templates/ai-assistant.php:69
 msgid "Write with the AI"
 msgstr "اكتب بالذكاء الاصطناعي"
 
@@ -1160,7 +1160,7 @@ msgstr "سطر المستند"
 #: template-parts/components/rfq-single.php:86
 #: template-parts/dashboard/publish.php:128
 #: template-parts/dashboard/publish.php:132
-#: template-parts/dashboard/report.php:150
+#: template-parts/dashboard/report.php:149
 #: template-parts/dashboard/settings.php:20
 #: template-parts/dashboard/stock-prices.php:37
 msgid "Profile"
@@ -2244,7 +2244,7 @@ msgstr "الصورة: مستوية وبإضاءة جيدة. المخططات ل�
 #. translators: %d: credits left.
 #. translators: %d: AI credits left.
 #: template-parts/components/cutting-optimizer.php:140
-#: templates/ai-assistant.php:67
+#: templates/ai-assistant.php:66
 msgid "%d credit left"
 msgid_plural "%d credits left"
 msgstr[0] "%d رصيد متبقٍ"
@@ -4323,7 +4323,7 @@ msgid "Send"
 msgstr "إرسال"
 
 #: template-parts/components/my-products.php:24
-#: template-parts/dashboard/report.php:99
+#: template-parts/dashboard/report.php:98
 msgid "Buildings"
 msgstr "المباني"
 
@@ -6058,7 +6058,7 @@ msgid "Send your offer"
 msgstr "أرسل عرضك"
 
 #: template-parts/components/rfq-offer-form.php:44
-#: template-parts/dashboard/report.php:155
+#: template-parts/dashboard/report.php:154
 msgid "Your price"
 msgstr "سعرك"
 
@@ -8340,7 +8340,7 @@ msgid "Verified"
 msgstr "موثّق"
 
 #: template-parts/dashboard/overview.php:95
-#: template-parts/dashboard/report.php:67
+#: template-parts/dashboard/report.php:66
 msgid "Period"
 msgstr "الفترة"
 
@@ -8900,7 +8900,7 @@ msgstr "السعر المطلوب (دج)"
 msgid "Weight and total price are calculated by the weight engine (Phase 3)."
 msgstr "يحسب محرك الأوزان الوزن والسعر الإجمالي (المرحلة 3)."
 
-#: template-parts/dashboard/report.php:22 templates/ai-assistant.php:83
+#: template-parts/dashboard/report.php:22 templates/ai-assistant.php:82
 #: templates/dashboard.php:162
 msgid "Business report"
 msgstr "تقرير الأعمال"
@@ -8914,12 +8914,12 @@ msgid ""
 "Every day: the average asked prices of new and reused steel, the steel on "
 "sale (new, reuse, buildings), the most searched and best-selling profiles, "
 "what is asked and little offered, by region — with a summary written by the "
-"AI. No credit is used."
+"AI."
 msgstr ""
 "كل يوم: متوسط الأسعار المطلوبة للفولاذ الجديد والمعاد استعماله، والفولاذ "
 "المعروض للبيع (جديد، إعادة استعمال، مبانٍ)، والمقاطع الأكثر بحثاً والأكثر "
 "مبيعاً، وما هو مطلوب وقليل العرض، حسب المنطقة — مع ملخص يكتبه الذكاء "
-"الاصطناعي. لا يُستعمل أي رصيد."
+"الاصطناعي."
 
 #: template-parts/dashboard/report.php:30
 msgid "Move to the Business plan"
@@ -8933,100 +8933,96 @@ msgstr "إعلانات غير كافية"
 msgid "Business plan"
 msgstr "اشتراك Business"
 
-#: template-parts/dashboard/report.php:60 templates/ai-assistant.php:85
-msgid "No credit"
-msgstr "بدون رصيد"
-
 #. translators: 1: start date, 2: end date.
-#: template-parts/dashboard/report.php:61
+#: template-parts/dashboard/report.php:60
 msgid "From %1$s to %2$s"
 msgstr "من %1$s إلى %2$s"
 
 #. translators: %s: date.
-#: template-parts/dashboard/report.php:61
+#: template-parts/dashboard/report.php:60
 msgid "updated on %s"
 msgstr "حُدّث في %s"
 
 #. translators: %s: date.
-#: template-parts/dashboard/report.php:61
+#: template-parts/dashboard/report.php:60
 msgid "prices asked by the sellers on ReuSteel, not sale prices."
 msgstr "أسعار يطلبها البائعون على ReuSteel، وليست أسعار بيع."
 
-#: template-parts/dashboard/report.php:64
+#: template-parts/dashboard/report.php:63
 msgid "Report filters"
 msgstr "مرشحات التقرير"
 
-#: template-parts/dashboard/report.php:69
+#: template-parts/dashboard/report.php:68
 msgid "Region"
 msgstr "المنطقة"
 
-#: template-parts/dashboard/report.php:80
+#: template-parts/dashboard/report.php:79
 msgid "Download as PDF"
 msgstr "تنزيل بصيغة PDF"
 
-#: template-parts/dashboard/report.php:86
+#: template-parts/dashboard/report.php:85
 msgid "What to remember"
 msgstr "ما يجب تذكره"
 
-#: template-parts/dashboard/report.php:94
+#: template-parts/dashboard/report.php:93
 msgid "Steel on the market"
 msgstr "الفولاذ في السوق"
 
 #. translators: %s: tonnes.
-#: template-parts/dashboard/report.php:104
+#: template-parts/dashboard/report.php:103
 msgid "%s t of steel on sale"
 msgstr "%s t من الفولاذ المعروض للبيع"
 
-#: template-parts/dashboard/report.php:119
+#: template-parts/dashboard/report.php:118
 msgid "in all"
 msgstr "في المجموع"
 
-#: template-parts/dashboard/report.php:132
+#: template-parts/dashboard/report.php:131
 msgid "Listings online"
 msgstr "الإعلانات المنشورة"
 
-#: template-parts/dashboard/report.php:133
+#: template-parts/dashboard/report.php:132
 msgid "Searches"
 msgstr "عمليات البحث"
 
-#: template-parts/dashboard/report.php:135
+#: template-parts/dashboard/report.php:134
 msgid "Buildings on sale"
 msgstr "المباني المعروضة للبيع"
 
 #. translators: %s: currency.
-#: template-parts/dashboard/report.php:144
+#: template-parts/dashboard/report.php:143
 msgid "Average asked prices (%s/kg)"
 msgstr "متوسط الأسعار المطلوبة (%s/kg)"
 
-#: template-parts/dashboard/report.php:146
+#: template-parts/dashboard/report.php:145
 msgid "Not enough listings yet for an average on this choice."
 msgstr "لا توجد إعلانات كافية بعد لحساب متوسط لهذا الاختيار."
 
-#: template-parts/dashboard/report.php:151
-#: template-parts/dashboard/report.php:154
+#: template-parts/dashboard/report.php:150
+#: template-parts/dashboard/report.php:153
 msgid "Change over the period"
 msgstr "التطور"
 
-#: template-parts/dashboard/report.php:153
+#: template-parts/dashboard/report.php:152
 msgid "Reuse gap"
 msgstr "فارق إعادة الاستعمال"
 
 #. translators: 1: type, 2: new or reuse.
-#: template-parts/dashboard/report.php:192
+#: template-parts/dashboard/report.php:191
 msgid "%1$s, %2$s: average asked price over 12 months"
 msgstr "%1$s، %2$s: متوسط السعر المطلوب خلال 12 شهراً"
 
 #. translators: 1: type, 2: new or reuse.
-#: template-parts/dashboard/report.php:192
+#: template-parts/dashboard/report.php:191
 msgid "new"
 msgstr "جديد"
 
 #. translators: 1: type, 2: new or reuse.
-#: template-parts/dashboard/report.php:192
+#: template-parts/dashboard/report.php:191
 msgid "reuse"
 msgstr "إعادة استعمال"
 
-#: template-parts/dashboard/report.php:209
+#: template-parts/dashboard/report.php:208
 msgid ""
 "Click on a type to see its sizes and its curve over 12 months. An average is"
 " shown only when there are enough listings."
@@ -9034,54 +9030,54 @@ msgstr ""
 "انقر على نوع لرؤية مقاساته ومنحناه خلال 12 شهراً. لا يظهر المتوسط إلا عند "
 "وجود إعلانات كافية."
 
-#: template-parts/dashboard/report.php:215
+#: template-parts/dashboard/report.php:214
 msgid "Best-selling"
 msgstr "الأكثر مبيعاً"
 
-#: template-parts/dashboard/report.php:219
+#: template-parts/dashboard/report.php:218
 msgid "No sale accepted on this choice yet."
 msgstr "لا يوجد بيع مقبول لهذا الاختيار بعد."
 
-#: template-parts/dashboard/report.php:223
+#: template-parts/dashboard/report.php:222
 msgid "Most searched"
 msgstr "الأكثر بحثاً"
 
-#: template-parts/dashboard/report.php:231
+#: template-parts/dashboard/report.php:230
 msgid "Searches of the catalogue and lines of the requests for quotation."
 msgstr "عمليات البحث في الكتالوج وأسطر طلبات عروض الأسعار."
 
-#: template-parts/dashboard/report.php:233
+#: template-parts/dashboard/report.php:232
 msgid "The searches are counted from now: this list fills up with time."
 msgstr "تُحسب عمليات البحث ابتداءً من الآن: تمتلئ هذه القائمة مع الوقت."
 
-#: template-parts/dashboard/report.php:240
+#: template-parts/dashboard/report.php:239
 msgid "Asked, little offered"
 msgstr "مطلوب وقليل العرض"
 
 #. translators: 1: searches and requests, 2: listings.
-#: template-parts/dashboard/report.php:244
+#: template-parts/dashboard/report.php:243
 msgid "%1$s searches and requests, %2$s listings"
 msgstr "%1$s عمليات بحث وطلبات، %2$s إعلانات"
 
 #. translators: %s: tonnes.
-#: template-parts/dashboard/report.php:246
+#: template-parts/dashboard/report.php:245
 msgid "You have %s t of it"
 msgstr "لديك منه %s t"
 
-#: template-parts/dashboard/report.php:251
+#: template-parts/dashboard/report.php:250
 msgid "Nothing stands out on this choice for now."
 msgstr "لا شيء بارز لهذا الاختيار حالياً."
 
-#: template-parts/dashboard/report.php:255
+#: template-parts/dashboard/report.php:254
 msgid "By region (listings · requests)"
 msgstr "حسب المنطقة (إعلانات · طلبات)"
 
 #. translators: %s: percentage.
-#: template-parts/dashboard/report.php:258
+#: template-parts/dashboard/report.php:257
 msgid "Reuse: %s %% of the weight"
 msgstr "إعادة الاستعمال: %s %% من الوزن"
 
-#: template-parts/dashboard/report.php:264
+#: template-parts/dashboard/report.php:263
 msgid ""
 "No company name, no quantity or amount of sale: only asked prices, weights "
 "on sale and numbers of listings, searches and requests. « Your price » and «"
@@ -9857,22 +9853,11 @@ msgstr ""
 "أدوات توفر لك الوقت: البحث، الوصف، التعرف، الجرد. هي اقتراحات يجب التحقق "
 "منها: الأوزان تأتي دائماً من محرك الوزن والذكاء الاصطناعي لا يعوّض المهندس."
 
-#: templates/ai-assistant.php:57
+#: templates/ai-assistant.php:58
 msgid "Free · for everybody"
 msgstr "مجاني · للجميع"
 
-#. translators: %d: AI credits per use.
-#: templates/ai-assistant.php:59
-msgid "%d credit per use"
-msgid_plural "%d credits per use"
-msgstr[0] "%d رصيد لكل استعمال"
-msgstr[1] "رصيد واحد لكل استعمال"
-msgstr[2] "رصيدان لكل استعمال"
-msgstr[3] "%d أرصدة لكل استعمال"
-msgstr[4] "%d رصيدًا لكل استعمال"
-msgstr[5] "%d رصيد لكل استعمال"
-
-#: templates/ai-assistant.php:84
+#: templates/ai-assistant.php:83
 msgid ""
 "Follow your market like a pro: every day, the average asked prices of new "
 "and reused steel, the steel on sale, the most searched and best-selling "
@@ -9883,15 +9868,15 @@ msgstr ""
 "استعماله، والفولاذ المعروض، والمقاطع الأكثر بحثاً والأكثر مبيعاً، وما هو "
 "مطلوب وقليل العرض، حسب المنطقة، مع ملخص يكتبه الذكاء الاصطناعي."
 
-#: templates/ai-assistant.php:85
+#: templates/ai-assistant.php:84
 msgid "Included in the Business plan"
 msgstr "مُدرج في اشتراك Business"
 
-#: templates/ai-assistant.php:88
+#: templates/ai-assistant.php:87
 msgid "Open the report"
 msgstr "فتح التقرير"
 
-#: templates/ai-assistant.php:90
+#: templates/ai-assistant.php:89
 msgid "See the Business plan"
 msgstr "عرض اشتراك Business"
 

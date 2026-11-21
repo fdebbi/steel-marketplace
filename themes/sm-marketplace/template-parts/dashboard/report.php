@@ -26,7 +26,7 @@ if ( 'ok' !== $d['state'] ) : ?>
 	<section class="sm-panel smbr-upgrade">
 		<span class="smbr-upgrade__icon"><?php sm_icon( 'chart' ); ?></span>
 		<h2><?php esc_html_e( 'The Business report is included in the Business plan', 'sm-marketplace' ); ?></h2>
-		<p><?php esc_html_e( 'Every day: the average asked prices of new and reused steel, the steel on sale (new, reuse, buildings), the most searched and best-selling profiles, what is asked and little offered, by region — with a summary written by the AI. No credit is used.', 'sm-marketplace' ); ?></p>
+		<p><?php esc_html_e( 'Every day: the average asked prices of new and reused steel, the steel on sale (new, reuse, buildings), the most searched and best-selling profiles, what is asked and little offered, by region — with a summary written by the AI.', 'sm-marketplace' ); ?></p>
 		<a class="sm-btn sm-btn--primary" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'plan' ) ) ); ?>"><?php esc_html_e( 'Move to the Business plan', 'sm-marketplace' ); ?><?php sm_icon( 'arrow-end' ); ?></a>
 	</section>
 	<?php
@@ -57,7 +57,6 @@ wp_enqueue_script( 'sm-report', SM_THEME_URI . '/assets/js/report.js', array(), 
 <div class="smbr">
 	<p class="smbr-sub">
 		<span class="smbr-badge"><?php esc_html_e( 'Business plan', 'sm-marketplace' ); ?></span>
-		<span class="smbr-badge is-free"><?php esc_html_e( 'No credit', 'sm-marketplace' ); ?></span>
 		<span><?php echo esc_html( sprintf( /* translators: 1: start date, 2: end date. */ __( 'From %1$s to %2$s', 'sm-marketplace' ), sm_date( $r['from'] ), sm_date( $r['to'] ) ) ); ?> · <?php echo esc_html( sprintf( /* translators: %s: date. */ __( 'updated on %s', 'sm-marketplace' ), sm_date( gmdate( 'Y-m-d', (int) $r['at'] ) ) ) ); ?> · <?php esc_html_e( 'prices asked by the sellers on ReuSteel, not sale prices.', 'sm-marketplace' ); ?></span>
 	</p>
 

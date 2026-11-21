@@ -526,3 +526,4 @@ Validé sur la maquette 0.37.
 - Valeur d'un crédit = pack le moins cher au crédit ; taux de change saisi par l'administrateur.
 - Plus tard : paliers pour « Lire un document » selon le nombre de pages.
 - Le prix d'un outil IA se lit dans son bouton seulement (pas sous les boutons, pas sur la page des outils) ; « Gratuit » et « Inclus dans la formule Business » restent comme étiquettes.
+- Attente de l'IA : un cercle (anneau mauve qui tourne, ✦ qui pulse au centre), sans barre ; dans une zone basse, le cercle et le texte restent dans la zone. « Sans crédit » n'est plus affiché.
