@@ -1,5 +1,9 @@
 # Changelog — sm-marketplace
 
+## 0.58.1 — 2026-11-21
+
+- Retrait de deux captures d'écran de test laissées par erreur à la racine du thème (`wait.png`, `doc-review.png`, environ 1 Mo) : aucune page ne les utilisait. Aucun autre changement.
+
 ## 0.58.0 — 2026-11-21 (avec sm-core 0.9.0, sm-products 0.23.0, sm-services 0.4.0)
 
 - **Liens des annonces** : `sm_page_url()` garde l'adresse faite par les extensions (`/annonce/ipe-200-s275jr-msila-552/`) au lieu d'y rajouter les arguments (les liens étaient `/annonce/552/?id=552`, une deuxième adresse pour la même page).
