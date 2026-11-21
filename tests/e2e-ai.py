@@ -166,7 +166,7 @@ with sync_playwright() as p:
     print('\nG. Limits and consumption')
     if wp('echo class_exists("SM\\Subscriptions\\Credits") ? "yes" : "no";') == 'yes':
         # With sm-subscriptions (Phase 10) the credits of the plan replace the quotas per tool: use them all.
-        wp('$c = SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","%s")->ID); $st = SM\\Subscriptions\\Credits::status($c); global $wpdb; for ($i = 0; $i < $st["monthly_left"]; $i++) { $wpdb->insert($wpdb->prefix."sm_ai_usage", array("feature"=>"listing","company_id"=>$c->id,"status"=>"ok","created_at"=>current_time("mysql", true))); } if ($st["bought"]) { SM\\Subscriptions\\Credits::add($c->id, -$st["bought"], "test"); }' % com)
+        wp('$c = SM\\Core\\Accounts\\Companies::for_user(get_user_by("email","%s")->ID); $st = SM\\Subscriptions\\Credits::status($c); global $wpdb; for ($i = 0; $i < $st["monthly_left"]; $i++) { $wpdb->insert($wpdb->prefix."sm_ai_usage", array("feature"=>"listing","company_id"=>$c->id,"status"=>"ok","credits"=>1,"created_at"=>current_time("mysql", true))); } if ($st["bought"]) { SM\\Subscriptions\\Credits::add($c->id, -$st["bought"], "test"); }' % com)
         s.goto(BASE + '/compte/assistant-ia/?tool=listing')
         check(s.locator('.smai-form').count() == 0 and 'crédits IA' in s.inner_text('.smai-tool'), 'AI credits used: tool locked with the reason')
     else:

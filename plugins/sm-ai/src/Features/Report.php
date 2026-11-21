@@ -73,17 +73,19 @@ final class Report extends Feature {
 	public static function simulate( array $input ) {
 		$f   = (array) ( $input['figures'] ?? array() );
 		$pts = array();
-		foreach ( (array) ( $f['prices'] ?? array() ) as $row ) {
+		// Keys of the figures sent by sm-insights (Summary::facts), or the short test ones.
+		foreach ( (array) ( $f['prices_DA_kg'] ?? $f['prices'] ?? array() ) as $row ) {
 			if ( isset( $row['new_change'] ) && null !== $row['new_change'] ) {
 				$pts[] = sprintf( 'Prix demandés des %s : %s %% sur la période.', $row['label'], str_replace( '.', ',', (string) $row['new_change'] ) );
 				break;
 			}
 		}
 		if ( ! empty( $f['top_searched'][0] ) ) {
-			$pts[] = sprintf( '%s est le plus recherché.', $f['top_searched'][0] );
+			$pts[] = sprintf( '%s est le plus recherché.', preg_replace( '/:\s*\d+$/', '', (string) $f['top_searched'][0] ) );
 		}
-		if ( isset( $f['weights']['reuse_pct'] ) ) {
-			$pts[] = sprintf( 'Le réemploi représente %s %% du poids mis en vente.', str_replace( '.', ',', (string) $f['weights']['reuse_pct'] ) );
+		$reuse = $f['weights_on_sale']['reuse_pct'] ?? ( $f['weights']['reuse_pct'] ?? null );
+		if ( null !== $reuse ) {
+			$pts[] = sprintf( 'Le réemploi représente %s %% du poids mis en vente.', str_replace( '.', ',', (string) $reuse ) );
 		}
 		$pts[] = 'Il y a eu 12 ventes de IPE 200.'; // Must be dropped by clean().
 		return wp_json_encode( array( 'points' => $pts ) );

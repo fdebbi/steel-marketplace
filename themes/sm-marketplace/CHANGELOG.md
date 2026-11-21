@@ -3,6 +3,7 @@
 ## 0.55.0 — 2026-11-21 (avec sm-ai 0.7.0)
 
 - Le prix d'un outil IA affiché là où on l'utilise suit le prix réglé dans l'administration : `sm_ai_price()` (« 1 crédit », « 3 crédits », « Gratuit ») sur « Reconnaître depuis mes photos », « Évaluer l'état », l'import de l'optimiseur, la rédaction de la description et la lecture d'un document (plus de « 1 crédit » écrit en dur).
+- **Le prix se lit dans le bouton de l'outil, nulle part ailleurs** : « Lire le document · 1 crédit », « Demander à l'assistant · 1 crédit », « Rédiger avec l'IA · 1 crédit », « Reconnaître depuis mes photos · 1 crédit »… ; plus de prix sous les boutons (import de l'optimiseur) ni sur la page « Assistant IA » (les étiquettes « Gratuit » et « Inclus dans la formule Business » restent).
 
 ## 0.54.2 — 2026-11-21
 

@@ -130,12 +130,12 @@ $js = array(
 			<?php if ( $ai ) : ?>
 				<div class="smcut-import" id="smcut-import">
 					<p class="smcut-import__title"><?php sm_ai_badge(); ?> <b><?php esc_html_e( 'Import a document', 'sm-marketplace' ); ?></b></p>
-					<p class="smcut-import__sub"><?php esc_html_e( 'Bill of quantities, quotation, purchase order, take-off, tender', 'sm-marketplace' ); ?><br><?php echo esc_html( __( 'Excel, PDF or photo', 'sm-marketplace' ) . ' · ' . sm_ai_price( $ai['credits'] ) ); ?></p>
+					<p class="smcut-import__sub"><?php esc_html_e( 'Bill of quantities, quotation, purchase order, take-off, tender', 'sm-marketplace' ); ?><br><?php esc_html_e( 'Excel, PDF or photo', 'sm-marketplace' ); ?></p>
 					<?php if ( 'ok' === $ai['state'] ) : ?>
 						<div class="smcut-import__go">
 							<label class="sm-btn sm-btn--ai sm-btn--sm"><input type="file" name="document" form="smcut-ai-form" accept=".xlsx,.csv,.pdf,image/*" data-smcut-aifile hidden><?php esc_html_e( 'Choose the file', 'sm-marketplace' ); ?></label>
 							<label class="sm-btn sm-btn--ai-outline sm-btn--sm"><input type="file" name="photo" form="smcut-ai-form" accept="image/*" capture="environment" data-smcut-aifile hidden><?php sm_icon( 'camera' ); ?><span><?php esc_html_e( 'Take a photo', 'sm-marketplace' ); ?></span></label>
-							<button class="sm-btn sm-btn--ghost sm-btn--sm smcut-import__send" type="submit" form="smcut-ai-form" data-smcut-aisend><?php esc_html_e( 'Read the document', 'sm-marketplace' ); ?></button>
+							<button class="sm-btn sm-btn--ghost sm-btn--sm smcut-import__send" type="submit" form="smcut-ai-form" data-smcut-aisend><?php echo esc_html( __( 'Read the document', 'sm-marketplace' ) . ' · ' . sm_ai_price( $ai['credits'] ) ); ?></button>
 						</div>
 						<small><?php esc_html_e( 'Photo: flat, with good light. Plans will come later.', 'sm-marketplace' ); ?><?php if ( null !== $ai['remaining'] ) : ?> · <?php echo esc_html( sprintf( /* translators: %d: credits left. */ _n( '%d credit left', '%d credits left', (int) $ai['remaining'], 'sm-marketplace' ), (int) $ai['remaining'] ) ); ?><?php endif; ?></small>
 					<?php elseif ( 'login' === $ai['state'] ) : ?>

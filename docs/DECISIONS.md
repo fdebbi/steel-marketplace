@@ -525,3 +525,4 @@ Validé sur la maquette 0.37.
 - Chaque outil a un prix fixe en crédits, réglé dans l'administration (onglet « Coûts et marge ») ; l'utilisateur le voit avant de cliquer. Le coût réel (tokens × prix du fournisseur) ne sert qu'à l'administration : marge par outil, conseil de prix, budget mensuel (alerte e-mail, pause des outils payants ou simple avertissement à 100 %).
 - Valeur d'un crédit = pack le moins cher au crédit ; taux de change saisi par l'administrateur.
 - Plus tard : paliers pour « Lire un document » selon le nombre de pages.
+- Le prix d'un outil IA se lit dans son bouton seulement (pas sous les boutons, pas sur la page des outils) ; « Gratuit » et « Inclus dans la formule Business » restent comme étiquettes.

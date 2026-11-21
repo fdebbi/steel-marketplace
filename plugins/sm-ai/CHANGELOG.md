@@ -4,6 +4,7 @@
 
 - **Prix de chaque outil en crédits, réglable** (onglet « Coûts et marge ») ; par défaut 1 crédit, recherche intelligente et résumé du Rapport Business gratuits. `Gateway::credits()`, `Settings::credits()` ; chaque appel garde le prix qu'il avait (colonne `credits` de `sm_ai_usage`, base v2 ; les anciens appels payants comptent 1 crédit). Les crédits du mois = somme des prix des appels.
 - **Onglet « Coûts et marge »** : valeur d'un crédit (filtre `sm_ai_credit_value`, sm-subscriptions : le pack le moins cher au crédit), taux de change saisi par l'administrateur (aucun taux inventé : sans taux, pas de marge), marge visée, budget mensuel avec alerte e-mail (80 % par défaut) et, à 100 %, pause des outils payants ou simple avertissement ; ce mois-ci (coût réel, budget, crédits, marge, outils sous la marge) ; par outil (prix, utilisations, coût réel moyen, rapporte, marge, conseil « Passer à n crédits ») ; 6 derniers mois. Le budget quitte l'onglet Fournisseurs.
+- Donnée `ai_tools` : prix de chaque onglet (`credits`) pour son bouton. Simulation du résumé du Rapport Business alignée sur les chiffres envoyés par sm-insights.
 - Filtre `sm_ai_can_use( $ok, $id, $company_id, $credits )` et action `sm_ai_used( $id, $company_id, $credits )` avec le prix de l'outil.
 
 ## 0.6.0 — 2026-11-20 (pour sm-insights 0.1.0)

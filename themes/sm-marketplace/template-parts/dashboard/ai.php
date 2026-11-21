@@ -73,7 +73,7 @@ $base = sm_page_url( 'account', array( 'view' => 'ai' ) );
 					<small><?php echo esc_html( sprintf( /* translators: %d: MB. */ __( 'Excel (.xlsx, .csv), PDF or photo, %d MB at most. Plans will come later.', 'sm-marketplace' ), (int) $ai['pdf_mb'] ) ); ?></small>
 				</label>
 				<div class="smp-actions">
-					<button class="sm-btn sm-btn--ai" type="submit"><?php sm_icon( 'ai' ); ?><span><?php esc_html_e( 'Read the document', 'sm-marketplace' ); ?></span></button>
+					<button class="sm-btn sm-btn--ai" type="submit"><?php sm_icon( 'ai' ); ?><span><?php echo esc_html( __( 'Read the document', 'sm-marketplace' ) . ' · ' . sm_ai_price( $t['credits'] ?? 1 ) ); ?></span></button>
 				</div>
 			</form>
 		<?php else : ?>
@@ -112,7 +112,7 @@ $base = sm_page_url( 'account', array( 'view' => 'ai' ) );
 					<?php sm_theme_error( 'notes' ); ?>
 				</div>
 				<div class="smp-actions">
-					<button class="sm-btn sm-btn--ai" type="submit"><?php sm_icon( 'ai' ); ?><span data-sm-busy-label><?php esc_html_e( 'Ask the assistant', 'sm-marketplace' ); ?></span></button>
+					<button class="sm-btn sm-btn--ai" type="submit"><?php sm_icon( 'ai' ); ?><span data-sm-busy-label><?php echo esc_html( __( 'Ask the assistant', 'sm-marketplace' ) . ' · ' . sm_ai_price( $t['credits'] ?? 1 ) ); ?></span></button>
 				</div>
 			</form>
 		<?php endif; ?>

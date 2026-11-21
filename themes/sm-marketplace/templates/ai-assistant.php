@@ -53,10 +53,9 @@ $sm_tools = array(
 					<p><?php echo esc_html( $text ); ?></p>
 					<?php if ( $example ) : ?><p class="smai-card__ex" dir="auto"><?php echo esc_html( $example ); ?></p><?php endif; ?>
 					<p class="smai-card__meta">
+						<?php // 0.55.0: no price here — it is shown on the button where the tool is used. ?>
 						<?php if ( 0 === (int) $s['credits'] ) : ?>
 							<span class="is-free"><?php esc_html_e( 'Free · for everybody', 'sm-marketplace' ); ?></span>
-						<?php else : ?>
-							<span><?php echo esc_html( sprintf( /* translators: %d: AI credits per use. */ _n( '%d credit per use', '%d credits per use', (int) $s['credits'], 'sm-marketplace' ), (int) $s['credits'] ) ); ?></span>
 						<?php endif; ?>
 						<?php if ( $where ) : ?><span><?php echo esc_html( $where ); ?></span><?php endif; ?>
 					</p>

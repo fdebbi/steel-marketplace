@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.54.2\n"
+"Project-Id-Version: SM Marketplace 0.55.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-21T08:15:47+00:00\n"
+"POT-Creation-Date: 2026-11-21T08:24:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -1042,7 +1042,7 @@ msgstr ""
 
 #: template-parts/components/ai-describe-button.php:20
 #: template-parts/components/ai-describe-button.php:50
-#: templates/ai-assistant.php:70
+#: templates/ai-assistant.php:69
 msgid "Write with the AI"
 msgstr ""
 
@@ -2237,7 +2237,7 @@ msgstr ""
 #. translators: %d: credits left.
 #. translators: %d: AI credits left.
 #: template-parts/components/cutting-optimizer.php:140
-#: templates/ai-assistant.php:67
+#: templates/ai-assistant.php:66
 msgid "%d credit left"
 msgid_plural "%d credits left"
 msgstr[0] ""
@@ -8348,7 +8348,7 @@ msgid "Weight and total price are calculated by the weight engine (Phase 3)."
 msgstr ""
 
 #: template-parts/dashboard/report.php:22
-#: templates/ai-assistant.php:83
+#: templates/ai-assistant.php:82
 #: templates/dashboard.php:162
 msgid "Business report"
 msgstr ""
@@ -8374,7 +8374,7 @@ msgid "Business plan"
 msgstr ""
 
 #: template-parts/dashboard/report.php:60
-#: templates/ai-assistant.php:85
+#: templates/ai-assistant.php:84
 msgid "No credit"
 msgstr ""
 
@@ -9205,30 +9205,23 @@ msgstr ""
 msgid "Tools that save you time: search, describe, recognise, list. They give suggestions to check: weights always come from the weight engine and the AI never replaces an engineer."
 msgstr ""
 
-#: templates/ai-assistant.php:57
+#: templates/ai-assistant.php:58
 msgid "Free · for everybody"
 msgstr ""
 
-#. translators: %d: AI credits per use.
-#: templates/ai-assistant.php:59
-msgid "%d credit per use"
-msgid_plural "%d credits per use"
-msgstr[0] ""
-msgstr[1] ""
-
-#: templates/ai-assistant.php:84
+#: templates/ai-assistant.php:83
 msgid "Follow your market like a pro: every day, the average asked prices of new and reused steel, the steel on sale, the most searched and best-selling profiles and what is asked and little offered, by region, with a summary written by the AI."
 msgstr ""
 
-#: templates/ai-assistant.php:85
+#: templates/ai-assistant.php:84
 msgid "Included in the Business plan"
 msgstr ""
 
-#: templates/ai-assistant.php:88
+#: templates/ai-assistant.php:87
 msgid "Open the report"
 msgstr ""
 
-#: templates/ai-assistant.php:90
+#: templates/ai-assistant.php:89
 msgid "See the Business plan"
 msgstr ""
 

@@ -47,4 +47,4 @@ $cfg = array(
 	),
 );
 ?>
-<button type="button" class="sm-btn sm-btn--ai-outline sm-btn--sm smai-desc-btn" data-smai-describe="<?php echo esc_attr( wp_json_encode( $cfg ) ); ?>"><?php sm_icon( 'ai' ); ?><span data-smai-describe-label><?php esc_html_e( 'Write with the AI', 'sm-marketplace' ); ?></span><?php sm_ai_badge( 'sm-ai-badge--sm' ); ?></button>
+<button type="button" class="sm-btn sm-btn--ai-outline sm-btn--sm smai-desc-btn" data-smai-describe="<?php echo esc_attr( wp_json_encode( $cfg ) ); ?>"><?php sm_icon( 'ai' ); ?><span data-smai-describe-label><?php echo esc_html( __( 'Write with the AI', 'sm-marketplace' ) . ' · ' . sm_ai_price( $d['credits'] ) ); ?></span><?php sm_ai_badge( 'sm-ai-badge--sm' ); ?></button>

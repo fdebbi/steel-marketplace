@@ -146,6 +146,7 @@ final class Bridge {
 				'reason'     => is_wp_error( $ok ) ? $ok->get_error_message() : '',
 				'state'      => Form::state_of( $ok ),
 				'remaining'  => Gateway::remaining( $id, $company ),
+				'credits'    => Gateway::credits( $id ), // 0.7.0: price shown on the button.
 				'quota'      => ( $f = Settings::feature( $id ) ) && $f['per_company_month'] > 0 ? (int) $f['per_company_month'] : null,
 				'used'       => $company ? \SM\Ai\Usage::company_month( (int) $company->id, $id ) : 0,
 				'simulation' => 'simulation' === $provider,
