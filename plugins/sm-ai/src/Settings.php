@@ -40,6 +40,11 @@ final class Settings {
 			),
 			'per_user_day'     => 40,
 			'monthly_budget'   => 0,
+			// 0.7.0: costs and margin (wp-admin → AI assistant → Costs and margin).
+			'budget_alert'     => 80,     // % of the monthly budget that sends an e-mail.
+			'budget_mode'      => 'pause', // At 100 %: 'pause' the services that use credits, or 'warn' only.
+			'usd_rate'         => 0,      // 1 US dollar in DA, typed by the administrator (0 = margin not computed).
+			'target_margin'    => 50,     // Margin aimed at, in %.
 			'max_tokens'       => 1500,
 			'image_mb'         => 8,
 			'pdf_mb'           => 10,
@@ -68,6 +73,36 @@ final class Settings {
 
 	public static function feature( $id ) {
 		return self::all()['features'][ $id ] ?? null;
+	}
+
+	/**
+	 * Price of a service in AI credits (0.7.0): set by the administrator, else the
+	 * default of the service (1; the smart search and the Business report are free).
+	 */
+	public static function credits( $id ) {
+		$f = self::all()['features'][ $id ] ?? array();
+		if ( isset( $f['credits'] ) && '' !== $f['credits'] ) {
+			return max( 0, min( 50, (int) $f['credits'] ) );
+		}
+		$class = Gateway::features()[ $id ] ?? null;
+		return $class ? (int) $class::credits() : 0;
+	}
+
+	/** Save the tab « Costs and margin » (0.7.0): prices in credits, rate, margin, budget. */
+	public static function save_costs( array $in ) {
+		$out = self::all();
+		foreach ( self::FEATURES as $f ) {
+			if ( isset( $in['credits'][ $f ] ) && '' !== (string) $in['credits'][ $f ] ) {
+				$out['features'][ $f ]['credits'] = max( 0, min( 50, (int) $in['credits'][ $f ] ) );
+			}
+		}
+		$out['usd_rate']       = max( 0, min( 100000, (float) str_replace( ',', '.', (string) ( $in['usd_rate'] ?? 0 ) ) ) );
+		$out['target_margin']  = max( 0, min( 95, (int) ( $in['target_margin'] ?? 50 ) ) );
+		$out['monthly_budget'] = max( 0, (float) str_replace( ',', '.', (string) ( $in['monthly_budget'] ?? 0 ) ) );
+		$out['budget_alert']   = max( 10, min( 100, (int) ( $in['budget_alert'] ?? 80 ) ) );
+		$out['budget_mode']    = 'warn' === ( $in['budget_mode'] ?? '' ) ? 'warn' : 'pause';
+		update_option( self::OPTION, $out, false );
+		return $out;
 	}
 
 	/** The simulation provider (no external call) is offered only when SM_AI_SIMULATION is true in wp-config.php. */
@@ -160,7 +195,9 @@ final class Settings {
 		foreach ( array( 'per_user_day' => array( 1, 10000 ), 'max_tokens' => array( 300, 8000 ), 'image_mb' => array( 1, 20 ), 'pdf_mb' => array( 1, 32 ), 'max_images' => array( 1, 5 ), 'timeout' => array( 10, 180 ), 'retention' => array( 30, 3650 ) ) as $k => $r ) {
 			$out[ $k ] = max( $r[0], min( $r[1], (int) ( $in[ $k ] ?? $d[ $k ] ) ) );
 		}
-		$out['monthly_budget'] = max( 0, (float) ( $in['monthly_budget'] ?? 0 ) );
+		if ( isset( $in['monthly_budget'] ) ) { // Since 0.7.0 on the tab « Costs and margin ».
+			$out['monthly_budget'] = max( 0, (float) $in['monthly_budget'] );
+		}
 		update_option( self::OPTION, $out, false );
 		return $out;
 	}

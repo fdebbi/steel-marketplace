@@ -58,17 +58,17 @@ msgstr ""
 msgid "Marketplaces"
 msgstr "الأسواق"
 
-#: footer.php:22 inc/menus.php:16 inc/template-tags.php:295
+#: footer.php:22 inc/menus.php:16 inc/template-tags.php:308
 #: templates/front-page-template.php:72 templates/marketplace-products.php:15
 msgid "Steel products"
 msgstr "المنتجات الفولاذية"
 
-#: footer.php:23 inc/menus.php:24 inc/template-tags.php:296
+#: footer.php:23 inc/menus.php:24 inc/template-tags.php:309
 #: templates/front-page-template.php:73 templates/marketplace-reuse.php:15
 msgid "Steel reuse"
 msgstr "إعادة استعمال الفولاذ"
 
-#: footer.php:24 inc/menus.php:32 inc/template-tags.php:297
+#: footer.php:24 inc/menus.php:32 inc/template-tags.php:310
 #: templates/front-page-template.php:74 templates/marketplace-buildings.php:15
 msgid "Steel buildings"
 msgstr "المباني الفولاذية"
@@ -85,7 +85,7 @@ msgstr "طلبات عروض الأسعار"
 msgid "Services"
 msgstr "الخدمات"
 
-#: footer.php:31 inc/menus.php:62 inc/template-tags.php:298
+#: footer.php:31 inc/menus.php:62 inc/template-tags.php:311
 #: template-parts/components/card-service.php:23
 #: templates/front-page-template.php:75 templates/marketplace-services.php:17
 #: templates/marketplace-services.php:20 templates/single-service.php:44
@@ -93,7 +93,7 @@ msgid "Fabrication & installation"
 msgstr "التصنيع والتركيب"
 
 #: footer.php:32 header.php:78 header.php:108 inc/menus.php:63
-#: inc/template-tags.php:299 template-parts/components/ai-photo-tools.php:95
+#: inc/template-tags.php:312 template-parts/components/ai-photo-tools.php:95
 #: templates/front-page-template.php:76 templates/marketplace-engineers.php:35
 #: templates/mission-request.php:23
 msgid "Engineering"
@@ -158,7 +158,7 @@ msgstr "الأسعار المعروضة يحددها البائعون وليست
 msgid "Quick navigation"
 msgstr "تنقل سريع"
 
-#: footer.php:57 inc/template-tags.php:440
+#: footer.php:57 inc/template-tags.php:453
 msgid "Home"
 msgstr "الرئيسية"
 
@@ -254,7 +254,7 @@ msgstr "إظهار"
 msgid "Hide"
 msgstr "إخفاء"
 
-#: inc/assets.php:69 inc/template-tags.php:593
+#: inc/assets.php:69 inc/template-tags.php:606
 msgid "Saved"
 msgstr "تم الحفظ"
 
@@ -287,11 +287,11 @@ msgstr "سيُحذف عند الحفظ"
 msgid "Will be replaced when you save"
 msgstr "سيُستبدل عند الحفظ"
 
-#: inc/assets.php:78 template-parts/components/ai-describe-button.php:38
+#: inc/assets.php:78 template-parts/components/ai-describe-button.php:39
 msgid "Undo"
 msgstr "تراجع"
 
-#: inc/assets.php:79 inc/template-tags.php:597 inc/template-tags.php:603
+#: inc/assets.php:79 inc/template-tags.php:610 inc/template-tags.php:616
 #: template-parts/components/my-products.php:139
 #: template-parts/components/portfolio-grid.php:30
 #: template-parts/components/rfq-single.php:138
@@ -568,16 +568,31 @@ msgstr "قد يستغرق ذلك دقيقة. لا تغلق الصفحة."
 msgid "The answer is taking longer: please wait a little more."
 msgstr "الإجابة تتأخر: انتظر قليلاً بعد."
 
-#: inc/template-tags.php:54
+#: inc/template-tags.php:57
+msgid "Free"
+msgstr "مجاني"
+
+#. translators: %d: AI credits.
+#: inc/template-tags.php:60
+msgid "%d credit"
+msgid_plural "%d credits"
+msgstr[0] "%d رصيد"
+msgstr[1] "رصيد واحد"
+msgstr[2] "رصيدان"
+msgstr[3] "%d أرصدة"
+msgstr[4] "%d رصيداً"
+msgstr[5] "%d رصيد"
+
+#: inc/template-tags.php:67
 msgid "Uses artificial intelligence: suggestions to check"
 msgstr "يستعمل الذكاء الاصطناعي: اقتراحات يجب التحقق منها"
 
-#: inc/template-tags.php:56
+#: inc/template-tags.php:69
 msgid "AI"
 msgstr "AI"
 
-#: inc/template-tags.php:154 inc/template-tags.php:466
-#: inc/template-tags.php:526
+#: inc/template-tags.php:167 inc/template-tags.php:479
+#: inc/template-tags.php:539
 #: template-parts/components/cutting-optimizer.php:390
 #: template-parts/components/product-tech.php:31
 #: template-parts/components/product-tech.php:568
@@ -590,173 +605,173 @@ msgstr[3] "قطع"
 msgstr[4] "قطعة"
 msgstr[5] "قطعة"
 
-#: inc/template-tags.php:155 inc/template-tags.php:471
+#: inc/template-tags.php:168 inc/template-tags.php:484
 msgid "lot"
 msgstr "دفعة"
 
 #. translators: %s: width of a flat bar in mm.
-#: inc/template-tags.php:200
+#: inc/template-tags.php:213
 msgid "Width %s mm"
 msgstr "العرض %s مم"
 
-#: inc/template-tags.php:254
+#: inc/template-tags.php:267
 msgid "New unused surplus"
 msgstr "فائض جديد غير مستعمل"
 
-#: inc/template-tags.php:255
+#: inc/template-tags.php:268
 msgid "Excellent used condition"
 msgstr "مستعمل، حالة ممتازة"
 
-#: inc/template-tags.php:256
+#: inc/template-tags.php:269
 msgid "Good used condition"
 msgstr "مستعمل، حالة جيدة"
 
-#: inc/template-tags.php:257
+#: inc/template-tags.php:270
 msgid "Requires inspection or treatment"
 msgstr "يحتاج فحصا أو معالجة"
 
-#: inc/template-tags.php:258
+#: inc/template-tags.php:271
 msgid "Scrap / recycling only"
 msgstr "خردة / للرسكلة فقط"
 
-#: inc/template-tags.php:275
+#: inc/template-tags.php:288
 msgid "Actual weight"
 msgstr "الوزن الفعلي"
 
-#: inc/template-tags.php:276 template-parts/components/product-tech.php:522
+#: inc/template-tags.php:289 template-parts/components/product-tech.php:522
 msgid "Estimated weight"
 msgstr "وزن تقديري"
 
-#: inc/template-tags.php:277
+#: inc/template-tags.php:290
 #: template-parts/components/listing-inventory.php:78
 #: template-parts/components/listing-inventory.php:79
 #: template-parts/components/product-tech.php:502
 msgid "Weight of the declared elements"
 msgstr "وزن العناصر المصرّح بها"
 
-#: inc/template-tags.php:279
+#: inc/template-tags.php:292
 #: template-parts/components/ai-result-document.php:25
 #: template-parts/components/rfq-single.php:33
 msgid "Theoretical weight"
 msgstr "الوزن النظري"
 
-#: inc/template-tags.php:285 templates/styleguide.php:51
+#: inc/template-tags.php:298 templates/styleguide.php:51
 msgid "actual"
 msgstr "فعلي"
 
-#: inc/template-tags.php:286
+#: inc/template-tags.php:299
 msgid "estimated"
 msgstr "تقديري"
 
-#: inc/template-tags.php:287
+#: inc/template-tags.php:300
 msgid "declared elements"
 msgstr "العناصر المصرّح بها"
 
-#: inc/template-tags.php:289 templates/styleguide.php:52
+#: inc/template-tags.php:302 templates/styleguide.php:52
 msgid "theoretical"
 msgstr "نظري"
 
-#: inc/template-tags.php:320
+#: inc/template-tags.php:333
 msgid "Steel construction contractor"
 msgstr "إنجاز المنشآت المعدنية"
 
-#: inc/template-tags.php:321
+#: inc/template-tags.php:334
 msgid "Manufacturing"
 msgstr "التصنيع"
 
-#: inc/template-tags.php:322
+#: inc/template-tags.php:335
 msgid "Supply and distribution"
 msgstr "التوريد والتوزيع"
 
-#: inc/template-tags.php:323
+#: inc/template-tags.php:336
 msgid "Recycling and scrap"
 msgstr "رسكلة الحديد والخردة"
 
-#: inc/template-tags.php:324
+#: inc/template-tags.php:337
 msgid "Dismantling and second-hand resale"
 msgstr "التفكيك وإعادة بيع المستعمل"
 
-#: inc/template-tags.php:327
+#: inc/template-tags.php:340
 msgid "Structural steel fabricator"
 msgstr "صانع الهياكل المعدنية"
 
-#: inc/template-tags.php:328
+#: inc/template-tags.php:341
 msgid "Steel structure erector"
 msgstr "مركّب الهياكل المعدنية"
 
-#: inc/template-tags.php:329
+#: inc/template-tags.php:342
 msgid "Roofing and cladding installer"
 msgstr "مركّب الأسقف والبارداج"
 
-#: inc/template-tags.php:330
+#: inc/template-tags.php:343
 msgid "Welder"
 msgstr "لحّام"
 
-#: inc/template-tags.php:331
+#: inc/template-tags.php:344
 msgid "Boilermaker"
 msgstr "حرفي تشكيل الصفائح المعدنية"
 
-#: inc/template-tags.php:332
+#: inc/template-tags.php:345
 msgid "Metalworker (locksmith)"
 msgstr "حدّاد فني"
 
-#: inc/template-tags.php:333
+#: inc/template-tags.php:346
 msgid "Lifting and handling"
 msgstr "الرفع والمناولة"
 
-#: inc/template-tags.php:334
+#: inc/template-tags.php:347
 msgid "Sandblasting and painting"
 msgstr "السفع بالرمل والطلاء"
 
-#: inc/template-tags.php:338 template-parts/dashboard/company.php:41
+#: inc/template-tags.php:351 template-parts/dashboard/company.php:41
 #: templates/auth-register.php:30
 msgid "Company"
 msgstr "المؤسسة"
 
-#: inc/template-tags.php:339 templates/auth-register.php:31
+#: inc/template-tags.php:352 templates/auth-register.php:31
 #: templates/engineer-apply.php:305
 msgid "Professional"
 msgstr "مهني"
 
-#: inc/template-tags.php:340 inc/template-tags.php:343
+#: inc/template-tags.php:353 inc/template-tags.php:356
 #: template-parts/dashboard/engineer-files.php:22
 #: templates/auth-register.php:32
 msgid "Client"
 msgstr "زبون"
 
-#: inc/template-tags.php:341 inc/template-tags.php:343
+#: inc/template-tags.php:354 inc/template-tags.php:356
 msgid "Partner engineer"
 msgstr "مهندس شريك"
 
-#: inc/template-tags.php:386
+#: inc/template-tags.php:399
 msgid "Not verified"
 msgstr "غير موثق"
 
-#: inc/template-tags.php:387 template-parts/components/card-featured.php:35
+#: inc/template-tags.php:400 template-parts/components/card-featured.php:35
 #: template-parts/directory.php:107 templates/company-profile.php:98
 msgid "Account verified"
 msgstr "حساب موثّق"
 
-#: inc/template-tags.php:389
+#: inc/template-tags.php:402
 #: template-parts/components/verification-steps.php:19
 msgid "Verified engineer"
 msgstr "مهندس موثق"
 
-#: inc/template-tags.php:399
+#: inc/template-tags.php:412
 #: template-parts/components/verification-steps.php:17
 msgid "Verified professional"
 msgstr "مهني موثّق"
 
-#: inc/template-tags.php:399
+#: inc/template-tags.php:412
 msgid "Verified company"
 msgstr "مؤسسة موثّقة"
 
-#: inc/template-tags.php:406
+#: inc/template-tags.php:419
 msgid "just now"
 msgstr "الآن"
 
 #. translators: %s: number of hours.
-#: inc/template-tags.php:411
+#: inc/template-tags.php:424
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] "منذ أقل من ساعة"
@@ -767,7 +782,7 @@ msgstr[4] "منذ %s ساعة"
 msgstr[5] "منذ %s ساعة"
 
 #. translators: %s: number of days.
-#: inc/template-tags.php:415
+#: inc/template-tags.php:428
 msgid "%s day ago"
 msgid_plural "%s days ago"
 msgstr[0] "اليوم"
@@ -777,82 +792,82 @@ msgstr[3] "منذ %s أيام"
 msgstr[4] "منذ %s يوما"
 msgstr[5] "منذ %s يوم"
 
-#: inc/template-tags.php:439
+#: inc/template-tags.php:452
 msgid "Breadcrumb"
 msgstr "مسار التنقل"
 
-#: inc/template-tags.php:479 template-parts/components/my-products.php:28
+#: inc/template-tags.php:492 template-parts/components/my-products.php:28
 #: template-parts/components/my-products.php:39
 #: template-parts/components/stock-warehouse.php:46
 #: template-parts/dashboard/services.php:24
 msgid "Waiting for review"
 msgstr "في انتظار المراجعة"
 
-#: inc/template-tags.php:480
+#: inc/template-tags.php:493
 msgid "Open for offers"
 msgstr "مفتوح للعروض"
 
-#: inc/template-tags.php:481
+#: inc/template-tags.php:494
 msgid "Awarded"
 msgstr "مُسند"
 
-#: inc/template-tags.php:482 template-parts/components/deal-list.php:23
+#: inc/template-tags.php:495 template-parts/components/deal-list.php:23
 msgid "Closed"
 msgstr "مغلق"
 
-#: inc/template-tags.php:483
+#: inc/template-tags.php:496
 msgid "Deadline passed"
 msgstr "انتهى الأجل"
 
-#: inc/template-tags.php:484 template-parts/components/my-products.php:29
+#: inc/template-tags.php:497 template-parts/components/my-products.php:29
 #: template-parts/components/my-products.php:40
 #: template-parts/dashboard/services.php:26
 msgid "Changes requested"
 msgstr "تعديلات مطلوبة"
 
-#: inc/template-tags.php:491 template-parts/dashboard/deal.php:53
+#: inc/template-tags.php:504 template-parts/dashboard/deal.php:53
 msgid "Sent"
 msgstr "مُرسل"
 
-#: inc/template-tags.php:492
+#: inc/template-tags.php:505
 msgid "Shortlisted"
 msgstr "في القائمة المختصرة"
 
-#: inc/template-tags.php:493 inc/template-tags.php:547
+#: inc/template-tags.php:506 inc/template-tags.php:560
 #: template-parts/components/visits-list.php:20
 msgid "Accepted"
 msgstr "مقبول"
 
-#: inc/template-tags.php:494
+#: inc/template-tags.php:507
 msgid "Not retained"
 msgstr "غير مختار"
 
-#: inc/template-tags.php:495
+#: inc/template-tags.php:508
 msgid "Withdrawn"
 msgstr "مسحوب"
 
-#: inc/template-tags.php:521
+#: inc/template-tags.php:534
 msgid "project"
 msgstr "مشروع"
 
-#: inc/template-tags.php:527
+#: inc/template-tags.php:540
 msgid "hour"
 msgstr "ساعة"
 
-#: inc/template-tags.php:528
+#: inc/template-tags.php:541
 msgid "day"
 msgstr "يوم"
 
-#: inc/template-tags.php:536 template-parts/components/service-form.php:124
+#: inc/template-tags.php:549 template-parts/components/service-form.php:124
 msgid "On quotation"
 msgstr "حسب عرض السعر"
 
 #. translators: %s: price with unit.
-#: inc/template-tags.php:539
+#: inc/template-tags.php:552
 msgid "From %s"
 msgstr "ابتداءً من %s"
 
-#: inc/template-tags.php:545
+#: inc/template-tags.php:558
 #: template-parts/components/cutting-optimizer.php:202
 #: template-parts/components/cutting-sources.php:17
 #: template-parts/components/stock-warehouse.php:23
@@ -862,44 +877,44 @@ msgstr "ابتداءً من %s"
 msgid "New"
 msgstr "جديد"
 
-#: inc/template-tags.php:546 templates/styleguide.php:48
+#: inc/template-tags.php:559 templates/styleguide.php:48
 msgid "Quote sent"
 msgstr "أُرسل العرض"
 
-#: inc/template-tags.php:548
+#: inc/template-tags.php:561
 msgid "Quote declined"
 msgstr "عرض السعر مرفوض"
 
-#: inc/template-tags.php:549
+#: inc/template-tags.php:562
 msgid "Declined by the provider"
 msgstr "اعتذر مقدم الخدمة"
 
-#: inc/template-tags.php:550 template-parts/components/visits-list.php:22
+#: inc/template-tags.php:563 template-parts/components/visits-list.php:22
 msgid "Cancelled"
 msgstr "ملغى"
 
-#: inc/template-tags.php:595
+#: inc/template-tags.php:608
 msgid "Keep"
 msgstr "الإبقاء"
 
-#: inc/template-tags.php:601 templates/engineer-apply.php:124
+#: inc/template-tags.php:614 templates/engineer-apply.php:124
 msgid "Replace"
 msgstr "استبدال"
 
-#: inc/template-tags.php:621
+#: inc/template-tags.php:634
 msgid "Yes"
 msgstr "نعم"
 
-#: inc/template-tags.php:621
+#: inc/template-tags.php:634
 msgid "No"
 msgstr "لا"
 
-#: inc/template-tags.php:624
+#: inc/template-tags.php:637
 msgid "Unlimited"
 msgstr "غير محدود"
 
 #. translators: %s: number of results.
-#: inc/template-tags.php:686 template-parts/components/filter-panel.php:208
+#: inc/template-tags.php:699 template-parts/components/filter-panel.php:208
 msgid "Show %s result"
 msgid_plural "Show %s results"
 msgstr[0] "عرض %s نتيجة"
@@ -909,7 +924,7 @@ msgstr[3] "عرض %s نتائج"
 msgstr[4] "عرض %s نتيجة"
 msgstr[5] "عرض %s نتيجة"
 
-#: inc/template-tags.php:761
+#: inc/template-tags.php:774
 msgid "Sign in to contact"
 msgstr "سجّل الدخول للتواصل"
 
@@ -948,7 +963,7 @@ msgid "Uncertain"
 msgstr "غير مؤكد"
 
 #: template-parts/components/ai-describe-button.php:20
-#: template-parts/components/ai-describe-button.php:49
+#: template-parts/components/ai-describe-button.php:50
 #: templates/ai-assistant.php:70
 msgid "Write with the AI"
 msgstr "اكتب بالذكاء الاصطناعي"
@@ -971,26 +986,27 @@ msgstr "يكتب الذكاء الاصطناعي وصفاً جديداً من م
 msgid "Write a new description"
 msgstr "كتابة وصف جديد"
 
-#. translators: %s: AI credits left.
+#. translators: 1: price of the tool (« 1 credit »), 2: AI credits left.
 #: template-parts/components/ai-describe-button.php:36
 msgid ""
 "Text proposed from the information of your listing: check it and change it "
-"freely. 1 credit used · %s left."
+"freely. %1$s used · %2$s left."
 msgstr ""
-"نص مقترح من معلومات إعلانك: راجعه وعدّله بحرية. تم استعمال رصيد واحد · "
-"المتبقي %s."
+"نص مقترح من معلومات إعلانك: تحقق منه وعدّله بحرية. استُعمل %1$s · يتبقى "
+"%2$s."
 
-#: template-parts/components/ai-describe-button.php:37
+#. translators: %s: price of the tool (« 1 credit »).
+#: template-parts/components/ai-describe-button.php:38
 msgid ""
 "Text proposed from the information of your listing: check it and change it "
-"freely. 1 credit used."
-msgstr "نص مقترح من معلومات إعلانك: راجعه وعدّله بحرية. تم استعمال رصيد واحد."
+"freely. %s used."
+msgstr "نص مقترح من معلومات إعلانك: تحقق منه وعدّله بحرية. استُعمل %s."
 
-#: template-parts/components/ai-describe-button.php:39
+#: template-parts/components/ai-describe-button.php:40
 msgid "The AI could not write the description. Try again in a moment."
 msgstr "لم يتمكن الذكاء الاصطناعي من كتابة الوصف. أعد المحاولة بعد قليل."
 
-#: template-parts/components/ai-describe-button.php:40
+#: template-parts/components/ai-describe-button.php:41
 #: template-parts/components/ai-result-document.php:17
 #: template-parts/components/ai-result-listing.php:17
 #: template-parts/components/ai-result-recognize.php:16
@@ -999,14 +1015,14 @@ msgstr "لم يتمكن الذكاء الاصطناعي من كتابة الوص
 msgid "Simulation"
 msgstr "محاكاة"
 
-#: template-parts/components/ai-describe-button.php:41
+#: template-parts/components/ai-describe-button.php:42
 msgid ""
 "Upgrade your plan to benefit from the AI assistant, or buy a pack of AI "
 "credits."
 msgstr ""
 "رقِّ اشتراكك للاستفادة من مساعد الذكاء الاصطناعي، أو اشترِ باقة أرصدة."
 
-#: template-parts/components/ai-describe-button.php:42
+#: template-parts/components/ai-describe-button.php:43
 #: template-parts/components/ai-gate.php:27
 #: template-parts/components/my-products.php:166
 #: template-parts/dashboard/stock-prices.php:22
@@ -1014,7 +1030,7 @@ msgstr ""
 msgid "See the plans"
 msgstr "عرض الاشتراكات"
 
-#: template-parts/components/ai-describe-button.php:44
+#: template-parts/components/ai-describe-button.php:45
 #: template-parts/components/ai-gate.php:28
 msgid "Buy credits"
 msgstr "شراء أرصدة"
@@ -1077,10 +1093,11 @@ msgstr "مستندك"
 #: template-parts/components/ai-doc-review.php:52
 msgid ""
 "The document could not be read. For a photo: take it again flat, with more "
-"light, the whole table in the picture. The AI credit has been used."
+"light, the whole table in the picture. The AI credits of the reading have "
+"been used."
 msgstr ""
-"تعذّرت قراءة المستند. بالنسبة للصورة: أعد التقاطها مستوية، بإضاءة أكثر، مع "
-"الجدول كاملاً. تم استعمال رصيد الذكاء الاصطناعي."
+"تعذّرت قراءة الوثيقة. بالنسبة للصورة: أعد التقاطها مسطّحة، بإضاءة أكبر، "
+"والجدول كاملاً في الصورة. استُعملت أرصدة القراءة."
 
 #: template-parts/components/ai-doc-review.php:54
 msgid ""
@@ -1322,13 +1339,14 @@ msgstr "مثال: الحظيرة 1"
 msgid "Add to the warehouse"
 msgstr "إضافة إلى المخزن"
 
+#. translators: %s: price of the reading (« 1 credit »).
 #: template-parts/components/ai-doc-review.php:162
 msgid ""
-"Suggestion of the AI, to check · 1 credit used for the reading · the file is"
-" not kept. Listings: from the warehouse, « On the market » item by item."
+"Suggestion of the AI, to check · %s used for the reading · the file is not "
+"kept. Listings: from the warehouse, « On the market » item by item."
 msgstr ""
-"اقتراح من الذكاء الاصطناعي للتحقق · رصيد واحد عند القراءة · لا يُحتفظ "
-"بالملف. الإعلانات: من المخزن، «في السوق» عنصراً بعنصر."
+"اقتراح الذكاء الاصطناعي، يجب التحقق منه · استُعمل %s للقراءة · لا يُحتفظ "
+"بالملف. الإعلانات: من المخزن، « في السوق » مادة بمادة."
 
 #: template-parts/components/ai-gate.php:22
 msgid "Sign in to use this tool."
@@ -1467,35 +1485,19 @@ msgstr "لم تستجب خدمة الذكاء الاصطناعي. أعد الم�
 msgid "Sign in to use the AI assistant."
 msgstr "سجّل الدخول لاستخدام المساعد الذكي."
 
-#. translators: %d: credits.
 #: template-parts/components/ai-photo-tools.php:84
-msgid "Recognise from my photos · %d credit"
-msgid_plural "Recognise from my photos · %d credits"
-msgstr[0] "التعرّف من صوري · %d رصيد"
-msgstr[1] "التعرّف من صوري · رصيد واحد"
-msgstr[2] "التعرّف من صوري · رصيدان"
-msgstr[3] "التعرّف من صوري · %d أرصدة"
-msgstr[4] "التعرّف من صوري · %d رصيداً"
-msgstr[5] "التعرّف من صوري · %d رصيد"
+msgid "Recognise from my photos"
+msgstr "التعرّف من صوري"
 
-#. translators: %d: credits.
 #: template-parts/components/ai-photo-tools.php:85
 msgid ""
 "Uses the photos of the form (end view with a tape measure if possible)."
 msgstr "يستعمل صور الاستمارة (صورة لطرف القطعة مع شريط قياس إن أمكن)."
 
-#. translators: %d: credits.
 #: template-parts/components/ai-photo-tools.php:92
-msgid "Assess the condition from my photos · %d credit"
-msgid_plural "Assess the condition from my photos · %d credits"
-msgstr[0] "تقييم الحالة من صوري · %d رصيد"
-msgstr[1] "تقييم الحالة من صوري · رصيد واحد"
-msgstr[2] "تقييم الحالة من صوري · رصيدان"
-msgstr[3] "تقييم الحالة من صوري · %d أرصدة"
-msgstr[4] "تقييم الحالة من صوري · %d رصيداً"
-msgstr[5] "تقييم الحالة من صوري · %d رصيد"
+msgid "Assess the condition from my photos"
+msgstr "تقييم الحالة من صوري"
 
-#. translators: %d: credits.
 #: template-parts/components/ai-photo-tools.php:93
 msgid ""
 "Uses the photos of the form (close views of the surfaces and of the ends)."
@@ -2218,16 +2220,9 @@ msgstr "استيراد مستند"
 msgid "Bill of quantities, quotation, purchase order, take-off, tender"
 msgstr "كشف الكميات، عرض سعر، أمر شراء، قياسات، صفقة"
 
-#. translators: %d: AI credits.
 #: template-parts/components/cutting-optimizer.php:133
-msgid "Excel, PDF or photo · %d AI credit"
-msgid_plural "Excel, PDF or photo · %d AI credits"
-msgstr[0] "Excel أو PDF أو صورة · %d رصيد"
-msgstr[1] "Excel أو PDF أو صورة · رصيد واحد"
-msgstr[2] "Excel أو PDF أو صورة · رصيدان"
-msgstr[3] "Excel أو PDF أو صورة · %d أرصدة"
-msgstr[4] "Excel أو PDF أو صورة · %d رصيداً"
-msgstr[5] "Excel أو PDF أو صورة · %d رصيد"
+msgid "Excel, PDF or photo"
+msgstr "Excel أو PDF أو صورة"
 
 #: template-parts/components/cutting-optimizer.php:136
 msgid "Choose the file"
@@ -7233,11 +7228,11 @@ msgstr[5] ""
 
 #: template-parts/dashboard/ai-credits.php:45
 msgid ""
-"One use of an AI tool takes one credit. The credits of the month start again"
-" on the 1st."
+"Each AI tool shows its price in credits on its button. The credits of the "
+"month are used first and start again on the 1st."
 msgstr ""
-"كل استعمال لأداة ذكاء اصطناعي يستهلك رصيدا واحدا. يتجدد رصيد الشهر في اليوم "
-"الأول."
+"كل أداة ذكاء اصطناعي تعرض سعرها بالأرصدة على زرّها. تُستعمل أرصدة الشهر "
+"أولاً وتتجدد في اليوم الأول."
 
 #: template-parts/dashboard/ai-credits.php:70
 msgid ""

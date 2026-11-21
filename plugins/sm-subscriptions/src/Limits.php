@@ -24,13 +24,14 @@ final class Limits {
 		add_filter( 'sm_portfolio_limit', array( __CLASS__, 'portfolio' ), 10, 3 );
 		add_filter( 'sm_rfq_offer_limit', array( __CLASS__, 'rfq_offers' ), 10, 3 );
 		add_filter( 'sm_ai_plan_credits', '__return_true' );
-		add_filter( 'sm_ai_can_use', array( __CLASS__, 'ai_can_use' ), 10, 3 );
+		add_filter( 'sm_ai_can_use', array( __CLASS__, 'ai_can_use' ), 10, 4 );
+		add_filter( 'sm_ai_credit_value', array( Credits::class, 'value' ) ); // 0.5.1: value of one credit (DA) for the costs of sm-ai.
 		// Warehouse (0.4.0, sm-stock): capacity in tonnes and advanced tools per plan.
 		add_filter( 'sm_stock_capacity_kg', array( __CLASS__, 'stock_capacity' ), 10, 2 );
 		add_filter( 'sm_stock_tools', array( __CLASS__, 'stock_tools' ), 10, 2 );
 		add_filter( 'sm_insights_access', array( __CLASS__, 'report' ), 10, 2 ); // 0.5.0: Business report (sm-insights).
 		add_filter( 'sm_ai_remaining', array( __CLASS__, 'ai_remaining' ), 10, 2 );
-		add_action( 'sm_ai_used', array( Credits::class, 'on_used' ), 10, 2 );
+		add_action( 'sm_ai_used', array( Credits::class, 'on_used' ), 10, 3 );
 		add_filter( 'sm_company_contacts_visible', array( __CLASS__, 'contacts' ), 10, 2 );
 		add_filter( 'sm_company_featured', array( __CLASS__, 'featured' ), 10, 2 );
 		add_action( 'sm_subscription_ended', array( __CLASS__, 'enforce' ), 10, 1 );
@@ -127,7 +128,7 @@ final class Limits {
 		return $plan['has_plans'] ? ! empty( $plan['data']['report'] ) : $ok;
 	}
 
-	public static function ai_can_use( $ok, $feature, $company_id ) {
+	public static function ai_can_use( $ok, $feature, $company_id, $credits = 1 ) {
 		if ( is_wp_error( $ok ) || ! $company_id ) {
 			return $ok;
 		}
@@ -137,6 +138,10 @@ final class Limits {
 				return new \WP_Error( 'sm_ai_plan', __( 'Upgrade your plan to benefit from the AI assistant, or buy a pack of AI credits.', 'sm-subscriptions' ) );
 			}
 			return new \WP_Error( 'sm_ai_credits', __( 'You used all your AI credits this month. Upgrade your plan or buy a pack of AI credits.', 'sm-subscriptions' ) );
+		}
+		if ( $st['total_left'] < max( 1, (int) $credits ) ) { // 0.5.1: a tool can cost several credits.
+			/* translators: 1: credits of the tool, 2: credits left. */
+			return new \WP_Error( 'sm_ai_credits', sprintf( __( 'This tool uses %1$s credits and you have %2$s left. Buy a pack of AI credits or upgrade your plan.', 'sm-subscriptions' ), (int) $credits, (int) $st['total_left'] ) );
 		}
 		return $ok;
 	}

@@ -47,6 +47,19 @@ function sm_ai_wait_attrs( $title, $scope = '' ) {
 	);
 }
 
+/**
+ * Price of an AI tool where it is used (0.55.0): « 1 credit », « 3 credits », or
+ * « Free ». The price is set by the administrator (sm-ai 0.7.0).
+ */
+function sm_ai_price( $credits ) {
+	$credits = (int) $credits;
+	if ( $credits <= 0 ) {
+		return __( 'Free', 'sm-marketplace' );
+	}
+	/* translators: %d: AI credits. */
+	return sprintf( _n( '%d credit', '%d credits', $credits, 'sm-marketplace' ), $credits );
+}
+
 function sm_ai_badge( $class = '' ) {
 	printf(
 		'<span class="%1$s" title="%2$s">%3$s<span>%4$s</span></span>',

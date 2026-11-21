@@ -82,14 +82,40 @@ final class Credits {
 		return array( 'monthly' => $monthly, 'used' => $used, 'monthly_left' => $left, 'bought' => $bought, 'total_left' => PHP_INT_MAX === $monthly ? PHP_INT_MAX : $left + $bought );
 	}
 
-	/** After a use: once the monthly credits are spent, one bought credit is taken. */
-	public static function on_used( $feature, $company_id ) {
+	/**
+	 * After a use: the credits of the month go first, then the bought ones
+	 * (0.5.1: a tool can cost several credits; the log already counts this use).
+	 */
+	public static function on_used( $feature, $company_id, $credits = 1 ) {
 		if ( ! $company_id ) {
 			return;
 		}
 		$company = Companies::get( (int) $company_id );
-		if ( $company && self::used_month( (int) $company_id ) > self::monthly( $company ) && self::balance( (int) $company_id ) > 0 ) {
-			self::add( (int) $company_id, -1, 'used:' . sanitize_key( $feature ) );
+		if ( ! $company ) {
+			return;
 		}
+		$credits = max( 1, (int) $credits );
+		$monthly = self::monthly( $company );
+		if ( PHP_INT_MAX === $monthly ) {
+			return;
+		}
+		$before = self::used_month( (int) $company_id ) - $credits; // Used before this call.
+		$left   = max( 0, $monthly - $before );                      // Credits of the month that were left.
+		$take   = min( max( 0, $credits - $left ), self::balance( (int) $company_id ) );
+		if ( $take > 0 ) {
+			self::add( (int) $company_id, -$take, 'used:' . sanitize_key( $feature ) );
+		}
+	}
+
+	/** Value of one AI credit in DA (0.5.1): the cheapest pack per credit; 0 without packs. */
+	public static function value( $value = 0 ) {
+		$best = 0.0;
+		foreach ( (array) Settings::all()['packs'] as $p ) {
+			if ( (int) $p['credits'] > 0 && (float) $p['price'] > 0 ) {
+				$v    = (float) $p['price'] / (int) $p['credits'];
+				$best = $best > 0 ? min( $best, $v ) : $v;
+			}
+		}
+		return $best > 0 ? round( $best, 2 ) : $value;
 	}
 }

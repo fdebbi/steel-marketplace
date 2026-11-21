@@ -15,6 +15,7 @@ use SM\Ai\Features\Document;
 use SM\Ai\Features\Listing;
 use SM\Ai\Features\Recognize;
 use SM\Ai\Features\Search;
+use SM\Ai\Costs;
 use SM\Ai\Gateway;
 use SM\Ai\Providers\Anthropic;
 use SM\Ai\Providers\OpenAI;
@@ -306,6 +307,49 @@ if ( Settings::simulation_allowed() ) {
 	wp_set_current_user( 0 );
 	smai_assert( is_wp_error( apply_filters( 'sm_ai_report_summary', null, array(), 'fr' ) ), 'visitor: refused' );
 	wp_set_current_user( $u_seller );
+
+	smai_section( '9. Price of each tool in credits, costs and margin (0.7.0)' );
+	$keep = get_option( Settings::OPTION );
+	smai_assert( 1 === Gateway::credits( 'listing' ) && 0 === Gateway::credits( 'search' ) && 0 === Gateway::credits( 'report' ), 'default prices: 1 credit, the smart search and the Business report free' );
+	Settings::save_costs( array( 'credits' => array( 'report' => 2, 'cutlist' => '3' ), 'usd_rate' => '270', 'target_margin' => 50, 'monthly_budget' => 0, 'budget_alert' => 80, 'budget_mode' => 'pause' ) );
+	smai_assert( 2 === Gateway::credits( 'report' ) && 3 === Gateway::credits( 'cutlist' ) && 1 === Gateway::credits( 'listing' ) && ! in_array( 'report', Gateway::free_features(), true ), 'prices set by the administrator; the others unchanged' );
+	$enabled = Settings::all()['features']['listing']['enabled'];
+	smai_assert( 1 === (int) $enabled && 270.0 === (float) Settings::get( 'usd_rate' ), 'saving the prices does not touch the services (still on)' );
+	$asked = null;
+	$spy   = static function ( $ok, $f, $c, $credits = 1 ) use ( &$asked ) { $asked = $credits; return true; };
+	add_filter( 'sm_ai_can_use', $spy, 99, 4 );
+	$used = null;
+	$on   = static function ( $f, $c, $credits = 1 ) use ( &$used ) { $used = $credits; };
+	add_action( 'sm_ai_used', $on, 99, 3 );
+	$n = Usage::company_month_total( $cid );
+	$r = Gateway::run( 'report', array( 'figures' => array( 'top_searched' => array( 'IPE 200' ) ) ) );
+	smai_assert( ! is_wp_error( $r ) && 2 === $asked && 2 === $used && Usage::company_month_total( $cid ) === $n + 2, 'a tool of 2 credits: 2 credits asked, used and counted for the month' );
+	$row = $wpdb->get_row( "SELECT credits FROM {$wpdb->prefix}sm_ai_usage ORDER BY id DESC LIMIT 1" );
+	smai_assert( 2 === (int) $row->credits, 'each call keeps the price it had' );
+	remove_filter( 'sm_ai_can_use', $spy, 99 );
+	remove_action( 'sm_ai_used', $on, 99 );
+	$cost = Costs::by_feature();
+	smai_assert( isset( $cost['report'] ) && $cost['report']['uses'] >= 1 && 2 === $cost['report']['price'] && null !== $cost['report']['income'], 'costs per service: uses, price, income per use' );
+	$wpdb->insert( $wpdb->prefix . 'sm_ai_usage', array( 'feature' => 'cutlist', 'company_id' => $cid, 'status' => 'ok', 'credits' => 3, 'cost' => 0.5, 'created_at' => current_time( 'mysql', true ) ) );
+	$cut = Costs::by_feature()['cutlist'];
+	// Real cost in DA of the service against 3 credits: under the 50 % aimed at → the fewest credits that reach it.
+	$cv = Costs::credit_value();
+	if ( $cv > 0 ) {
+		smai_assert( $cut['margin'] < 50 && is_array( $cut['advice'] ) && $cut['advice']['credits'] === max( 4, (int) ceil( $cut['avg_da'] / ( $cv * 0.5 ) - 1e-9 ) ) && $cut['advice']['margin'] >= 50, 'a service under the margin aimed at: advice of the credits that reach it (' . $cut['advice']['credits'] . ')' );
+	}
+	$t = Costs::totals();
+	smai_assert( $t['cost'] >= 0.5 && null !== $t['cost_da'] && $t['under'] >= 1, 'totals of the month: cost in $ and DA, services under the margin' );
+	Settings::save_costs( array( 'usd_rate' => '', 'monthly_budget' => '0.1', 'budget_alert' => 80, 'budget_mode' => 'pause' ) );
+	smai_assert( null === Costs::by_feature()['cutlist']['margin'], 'without an exchange rate, no margin (no rate invented)' );
+	delete_option( Costs::ALERT_OPTION );
+	Costs::watch_budget();
+	$sent = get_option( Costs::ALERT_OPTION );
+	smai_assert( is_array( $sent ) && wp_date( 'Y-m' ) === ( $sent['full'] ?? '' ), 'budget reached: one e-mail to the administrators for the month' );
+	smai_assert( 'sm_ai_budget' === ( is_wp_error( $e = Gateway::check( 'cutlist' ) ) ? $e->get_error_code() : '' ) && ! is_wp_error( Gateway::check( 'search' ) ), 'at 100 % (pause): the tools that use credits pause, the free ones keep working' );
+	Settings::save_costs( array( 'monthly_budget' => '0.1', 'budget_mode' => 'warn' ) );
+	smai_assert( ! ( is_wp_error( $e = Gateway::check( 'cutlist' ) ) && 'sm_ai_budget' === $e->get_error_code() ), 'at 100 % (warn only): the tools keep working' );
+	update_option( Settings::OPTION, $keep, false );
+	delete_option( Costs::ALERT_OPTION );
 } else {
 	echo "  (SM_AI_SIMULATION not set: simulation tests skipped)\n";
 }

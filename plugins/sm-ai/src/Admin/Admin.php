@@ -8,6 +8,7 @@
 
 namespace SM\Ai\Admin;
 
+use SM\Ai\Costs;
 use SM\Ai\Gateway;
 use SM\Ai\Settings;
 use SM\Ai\Usage;
@@ -25,6 +26,7 @@ final class Admin {
 		add_action( 'admin_menu', array( __CLASS__, 'menu' ), 25 );
 		add_action( 'admin_post_sm_ai_settings', array( __CLASS__, 'save' ) );
 		add_action( 'admin_post_sm_ai_test', array( __CLASS__, 'test' ) );
+		add_action( 'admin_post_sm_ai_costs', array( __CLASS__, 'save_costs' ) ); // 0.7.0
 	}
 
 	public static function menu() {
@@ -67,11 +69,15 @@ final class Admin {
 		// phpcs:enable
 		echo '<p>' . esc_html__( 'The AI gives suggestions that users confirm. It never gives weights (computed by the weight engine), never replaces engineering calculations, structural checks or certifications.', 'sm-ai' ) . '</p>';
 		echo '<nav class="nav-tab-wrapper">';
-		foreach ( array( 'settings' => __( 'Providers and services', 'sm-ai' ), 'usage' => __( 'Consumption', 'sm-ai' ) ) as $k => $l ) {
+		foreach ( array( 'settings' => __( 'Providers and services', 'sm-ai' ), 'usage' => __( 'Consumption', 'sm-ai' ), 'costs' => __( 'Costs and margin', 'sm-ai' ) ) as $k => $l ) {
 			echo '<a class="nav-tab' . ( $k === $tab ? ' nav-tab-active' : '' ) . '" href="' . esc_url( self::url( array( 'tab' => $k ) ) ) . '">' . esc_html( $l ) . '</a>';
 		}
 		echo '</nav>';
-		'usage' === $tab ? self::usage() : self::settings();
+		if ( 'costs' === $tab ) {
+			self::costs();
+		} else {
+			'usage' === $tab ? self::usage() : self::settings();
+		}
 		echo '</div>';
 	}
 
@@ -127,7 +133,6 @@ final class Admin {
 
 		echo '<h2>' . esc_html__( 'Limits', 'sm-ai' ) . '</h2><table class="form-table"><tbody>';
 		$fields = array(
-			'monthly_budget' => array( __( 'Monthly budget (US dollars, 0 = no limit)', 'sm-ai' ), 'step="0.01" min="0"' ),
 			'per_user_day'   => array( __( 'Uses per user per day', 'sm-ai' ), 'min="1"' ),
 			'max_tokens'     => array( __( 'Maximum length of an answer (tokens)', 'sm-ai' ), 'min="300" max="8000"' ),
 			'max_images'     => array( __( 'Photos per request', 'sm-ai' ), 'min="1" max="5"' ),
@@ -182,6 +187,78 @@ final class Admin {
 			echo '<td>' . esc_html( $r->status ) . ( $r->error ? '<br><span class="description">' . esc_html( $r->error ) . '</span>' : '' ) . '</td><td>' . esc_html( $r->tokens_in . ' / ' . $r->tokens_out ) . '</td><td>' . esc_html( number_format_i18n( $r->duration_ms / 1000, 1 ) ) . ' s</td></tr>';
 		}
 		echo '</tbody></table>';
+	}
+
+	/**
+	 * Tab « Costs and margin » (0.7.0): basis of the calculation, this month,
+	 * price of each service in credits with its real margin, last 6 months.
+	 */
+	private static function costs() {
+		$s     = Settings::all();
+		$value = Costs::credit_value();
+		$rate  = Costs::rate();
+		$fl    = self::labels();
+		$rows  = Costs::by_feature();
+		$t     = Costs::totals();
+		$n     = static fn( $v, $d = 0 ) => number_format_i18n( (float) $v, $d );
+		$css   = 'style="width:90px"';
+		echo '<style>.smai-k{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:14px 0}.smai-k div{background:#fff;border:1px solid #c3c4c7;padding:10px 12px}.smai-k small{display:block;color:#646970}.smai-k b{font-size:20px}.smai-ok{color:#00a32a;font-weight:600}.smai-bad{color:#d63638;font-weight:600}.smai-sug{background:#fcf9e8;border:1px solid #dba617;border-radius:3px;padding:1px 6px}.smai-meter{height:10px;background:#f0f0f1;border-radius:5px;overflow:hidden;margin-top:6px}.smai-meter i{display:block;height:100%;background:#2271b1}.smai-costs td.n,.smai-costs th.n{text-align:right}</style>';
+		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="sm_ai_costs">';
+		wp_nonce_field( 'sm_ai_costs' );
+		echo '<h2>' . esc_html__( 'Basis of the calculation', 'sm-ai' ) . '</h2><table class="form-table"><tbody>';
+		echo '<tr><th>' . esc_html__( 'Value of one credit', 'sm-ai' ) . '</th><td>' . ( $value > 0 ? '<strong>' . esc_html( $n( $value, 2 ) . ' DA' ) . '</strong> <span class="description">' . esc_html__( '— price per credit of the cheapest pack per credit, the least favourable case for the margin (Subscriptions → Packs).', 'sm-ai' ) . '</span>' : '<span class="description">' . esc_html__( 'Unknown: no pack of AI credits (SM Subscriptions).', 'sm-ai' ) . '</span>' ) . '</td></tr>';
+		echo '<tr><th><label for="smai-rate">' . esc_html__( 'Exchange rate (1 $ in DA)', 'sm-ai' ) . '</label></th><td><input id="smai-rate" name="usd_rate" type="number" step="0.01" min="0" ' . $css . ' value="' . esc_attr( $rate > 0 ? $rate : '' ) . '" placeholder="—"> <span class="description">' . esc_html__( 'Typed by you; without it the margin is not computed.', 'sm-ai' ) . '</span></td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		echo '<tr><th><label for="smai-aim">' . esc_html__( 'Margin aimed at', 'sm-ai' ) . '</label></th><td><input id="smai-aim" name="target_margin" type="number" min="0" max="95" ' . $css . ' value="' . esc_attr( $s['target_margin'] ) . '"> %</td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		echo '<tr><th><label for="smai-bud">' . esc_html__( 'AI budget of the platform per month', 'sm-ai' ) . '</label></th><td><input id="smai-bud" name="monthly_budget" type="number" step="0.01" min="0" ' . $css . ' value="' . esc_attr( $s['monthly_budget'] ) . '"> $ <span class="description">' . esc_html__( '0 = no budget', 'sm-ai' ) . '</span> &nbsp; ' . esc_html__( 'E-mail alert at', 'sm-ai' ) . ' <input name="budget_alert" type="number" min="10" max="100" style="width:70px" value="' . esc_attr( $s['budget_alert'] ) . '"> % &nbsp; ' . esc_html__( 'At 100 %:', 'sm-ai' ) . ' <select name="budget_mode"><option value="pause"' . selected( $s['budget_mode'], 'pause', false ) . '>' . esc_html__( 'Pause the AI tools that use credits', 'sm-ai' ) . '</option><option value="warn"' . selected( $s['budget_mode'], 'warn', false ) . '>' . esc_html__( 'Warn only', 'sm-ai' ) . '</option></select></td></tr>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		echo '</tbody></table>';
+
+		echo '<h2>' . esc_html( sprintf( /* translators: %s: month. */ __( 'This month (%s)', 'sm-ai' ), wp_date( 'F Y' ) ) ) . '</h2><div class="smai-k">';
+		echo '<div><small>' . esc_html__( 'Real AI cost', 'sm-ai' ) . '</small><b>' . esc_html( $n( $t['cost'], 2 ) . ' $' ) . '</b>' . ( null !== $t['cost_da'] ? '<br><span class="description">≈ ' . esc_html( $n( $t['cost_da'] ) . ' DA' ) . '</span>' : '' ) . '</div>';
+		echo '<div><small>' . esc_html__( 'Budget used', 'sm-ai' ) . '</small><b>' . ( null === $t['budget_used'] ? '—' : esc_html( $n( $t['budget_used'], 0 ) . ' %' ) ) . '</b>' . ( null === $t['budget_used'] ? '' : '<div class="smai-meter"><i style="width:' . esc_attr( (string) min( 100, $t['budget_used'] ) ) . '%"></i></div>' ) . '</div>';
+		echo '<div><small>' . esc_html__( 'Credits used', 'sm-ai' ) . '</small><b>' . esc_html( $n( $t['credits'] ) ) . '</b>' . ( null !== $t['income'] ? '<br><span class="description">≈ ' . esc_html( $n( $t['income'] ) . ' DA' ) . '</span>' : '' ) . '</div>';
+		echo '<div><small>' . esc_html__( 'Margin', 'sm-ai' ) . '</small><b class="' . ( null !== $t['margin'] && $t['margin'] < (int) $s['target_margin'] ? 'smai-bad' : 'smai-ok' ) . '">' . ( null === $t['margin'] ? '—' : esc_html( ( $t['margin'] >= 0 ? '+' : '' ) . $n( $t['margin'], 1 ) . ' %' ) ) . '</b>' . ( null !== $t['margin_da'] ? '<br><span class="description">≈ ' . esc_html( $n( $t['margin_da'] ) . ' DA' ) . '</span>' : '' ) . '</div>';
+		echo '<div><small>' . esc_html__( 'Services under the margin aimed at', 'sm-ai' ) . '</small><b>' . esc_html( (string) $t['under'] ) . '</b></div></div>';
+		if ( $rate <= 0 ) {
+			echo '<p class="description">' . esc_html__( 'Type the exchange rate to see the costs in DA and the margins.', 'sm-ai' ) . '</p>';
+		}
+
+		echo '<h2>' . esc_html__( 'Price of each service and real margin', 'sm-ai' ) . '</h2><table class="widefat striped smai-costs"><thead><tr><th>' . esc_html__( 'Service', 'sm-ai' ) . '</th><th class="n">' . esc_html__( 'Price (credits)', 'sm-ai' ) . '</th><th class="n">' . esc_html__( 'Uses', 'sm-ai' ) . '</th><th class="n">' . esc_html__( 'Average real cost', 'sm-ai' ) . '</th><th class="n">' . esc_html__( 'Income per use', 'sm-ai' ) . '</th><th class="n">' . esc_html__( 'Margin', 'sm-ai' ) . '</th><th>' . esc_html__( 'Advice', 'sm-ai' ) . '</th></tr></thead><tbody>';
+		foreach ( $rows as $f => $r ) {
+			$off = empty( $s['features'][ $f ]['enabled'] );
+			echo '<tr><td>' . esc_html( $fl[ $f ] ?? $f ) . ( $off ? ' <span class="description">(' . esc_html__( 'off', 'sm-ai' ) . ')</span>' : '' ) . '</td>';
+			echo '<td class="n"><input type="number" min="0" max="50" style="width:70px" name="credits[' . esc_attr( $f ) . ']" value="' . esc_attr( (string) $r['price'] ) . '">' . ( 0 === $r['price'] ? ' <span class="description">' . esc_html__( 'free', 'sm-ai' ) . '</span>' : '' ) . '</td>';
+			echo '<td class="n">' . esc_html( $n( $r['uses'] ) ) . '</td>';
+			echo '<td class="n">' . ( null === $r['avg_usd'] ? '—' : esc_html( $n( $r['avg_usd'], 4 ) . ' $' . ( null !== $r['avg_da'] ? ' · ' . $n( $r['avg_da'], 1 ) . ' DA' : '' ) ) ) . '</td>';
+			echo '<td class="n">' . ( null === $r['income'] ? '—' : esc_html( $n( $r['income'], 2 ) . ' DA' ) ) . '</td>';
+			if ( 0 === $r['price'] ) {
+				echo '<td class="n">' . ( null !== $r['cost_da'] && $r['uses'] ? esc_html( sprintf( /* translators: %s: amount in DA. */ __( 'cost: %s DA', 'sm-ai' ), $n( $r['cost_da'] ) ) ) : '—' ) . '</td><td class="description">' . esc_html( 'report' === $f ? __( 'Included in the Business plan', 'sm-ai' ) : __( 'Free (commercial choice)', 'sm-ai' ) ) . '</td></tr>';
+				continue;
+			}
+			echo '<td class="n">' . ( null === $r['margin'] ? '—' : '<span class="' . ( null !== $r['advice'] ? 'smai-bad' : 'smai-ok' ) . '">' . esc_html( ( $r['margin'] >= 0 ? '+' : '' ) . $n( $r['margin'], 1 ) . ' %' ) . '</span>' ) . '</td>';
+			echo '<td>' . ( null !== $r['advice'] ? '<span class="smai-sug">' . esc_html( sprintf( /* translators: 1: credits, 2: margin. */ __( 'Move to %1$s credits → %2$s %%', 'sm-ai' ), $r['advice']['credits'], ( $r['advice']['margin'] >= 0 ? '+' : '' ) . $n( $r['advice']['margin'], 1 ) ) ) . '</span>' : ( null === $r['margin'] ? '' : '<span class="smai-ok">' . esc_html__( 'Good', 'sm-ai' ) . '</span>' ) ) . '</td></tr>';
+		}
+		echo '</tbody></table><p class="description">' . esc_html__( 'The new price shows at once on the buttons of the tool. The advice aims at the margin you chose; you decide. Each use keeps the price it had when it was made.', 'sm-ai' ) . '</p>';
+		submit_button( __( 'Save', 'sm-ai' ) );
+		echo '</form>';
+
+		echo '<h2>' . esc_html__( 'Last 6 months', 'sm-ai' ) . '</h2><table class="widefat striped smai-costs"><thead><tr><th>' . esc_html__( 'Month', 'sm-ai' ) . '</th><th class="n">' . esc_html__( 'AI cost', 'sm-ai' ) . '</th><th class="n">' . esc_html__( 'Credits used', 'sm-ai' ) . '</th><th class="n">' . esc_html__( 'Margin', 'sm-ai' ) . '</th><th class="n">' . esc_html__( 'Budget', 'sm-ai' ) . '</th></tr></thead><tbody>';
+		foreach ( Costs::months( 6 ) as $ym ) {
+			$m = Costs::totals( $ym );
+			echo '<tr><td>' . esc_html( wp_date( 'F Y', strtotime( $ym . '-15' ) ) ) . '</td><td class="n">' . esc_html( $n( $m['cost'], 2 ) . ' $' ) . '</td><td class="n">' . esc_html( $n( $m['credits'] ) . ( null !== $m['income'] ? ' · ' . $n( $m['income'] ) . ' DA' : '' ) ) . '</td><td class="n">' . ( null === $m['margin'] ? '—' : esc_html( ( $m['margin'] >= 0 ? '+' : '' ) . $n( $m['margin'], 1 ) . ' %' ) ) . '</td><td class="n">' . ( null === $m['budget_used'] ? '—' : esc_html( $n( $m['budget_used'], 0 ) . ' %' ) ) . '</td></tr>';
+		}
+		echo '</tbody></table>';
+		echo '<p class="description">' . esc_html__( 'The user always sees a fixed price in credits before the click; the real cost (tokens of each call × prices of the provider, tab Providers and services) only serves here. The credits included in the plans count at the value of the credits of the packs.', 'sm-ai' ) . '</p>';
+	}
+
+	public static function save_costs() {
+		if ( ! current_user_can( self::CAP ) ) {
+			wp_die( esc_html__( 'You cannot change these settings.', 'sm-ai' ) );
+		}
+		check_admin_referer( 'sm_ai_costs' );
+		Settings::save_costs( (array) wp_unslash( $_POST ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput -- sanitized in Settings::save_costs().
+		AuditLog::add( 'ai.costs', 'settings', 0, array() );
+		wp_safe_redirect( self::url( array( 'tab' => 'costs', 'updated' => 1 ) ) );
+		exit;
 	}
 
 	public static function save() {

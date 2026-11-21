@@ -41,7 +41,7 @@ final class Usage {
 		return (int) $wpdb->insert_id;
 	}
 
-	private static function month_start() {
+	public static function month_start() {
 		return get_gmt_from_date( wp_date( 'Y-m-01 00:00:00' ) );
 	}
 
@@ -55,12 +55,10 @@ final class Usage {
 		return (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM ' . self::table() . " WHERE company_id = %d AND feature = %s AND status = 'ok' AND created_at >= %s", $company_id, $feature, self::month_start() ) ); // phpcs:ignore WordPress.DB
 	}
 
-	/** Successful calls of a company this month that use AI credits (0.1.3; the free smart search is not counted since 0.2.0). */
+	/** AI credits used by a company this month (0.7.0: each call keeps the price it had; free services are 0). */
 	public static function company_month_total( $company_id ) {
 		global $wpdb;
-		$free = Gateway::free_features();
-		$in   = implode( ',', array_fill( 0, count( $free ), '%s' ) );
-		return (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COUNT(*) FROM ' . self::table() . " WHERE company_id = %d AND status = 'ok' AND feature NOT IN ($in) AND created_at >= %s", array_merge( array( $company_id ), $free, array( self::month_start() ) ) ) ); // phpcs:ignore WordPress.DB
+		return (int) $wpdb->get_var( $wpdb->prepare( 'SELECT COALESCE(SUM(credits),0) FROM ' . self::table() . " WHERE company_id = %d AND status = 'ok' AND created_at >= %s", $company_id, self::month_start() ) ); // phpcs:ignore WordPress.DB
 	}
 
 	/** Calls of a user today (all features). */

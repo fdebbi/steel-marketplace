@@ -130,7 +130,7 @@ $js = array(
 			<?php if ( $ai ) : ?>
 				<div class="smcut-import" id="smcut-import">
 					<p class="smcut-import__title"><?php sm_ai_badge(); ?> <b><?php esc_html_e( 'Import a document', 'sm-marketplace' ); ?></b></p>
-					<p class="smcut-import__sub"><?php esc_html_e( 'Bill of quantities, quotation, purchase order, take-off, tender', 'sm-marketplace' ); ?><br><?php echo esc_html( sprintf( /* translators: %d: AI credits. */ _n( 'Excel, PDF or photo · %d AI credit', 'Excel, PDF or photo · %d AI credits', max( 1, (int) $ai['credits'] ), 'sm-marketplace' ), max( 1, (int) $ai['credits'] ) ) ); ?></p>
+					<p class="smcut-import__sub"><?php esc_html_e( 'Bill of quantities, quotation, purchase order, take-off, tender', 'sm-marketplace' ); ?><br><?php echo esc_html( __( 'Excel, PDF or photo', 'sm-marketplace' ) . ' · ' . sm_ai_price( $ai['credits'] ) ); ?></p>
 					<?php if ( 'ok' === $ai['state'] ) : ?>
 						<div class="smcut-import__go">
 							<label class="sm-btn sm-btn--ai sm-btn--sm"><input type="file" name="document" form="smcut-ai-form" accept=".xlsx,.csv,.pdf,image/*" data-smcut-aifile hidden><?php esc_html_e( 'Choose the file', 'sm-marketplace' ); ?></label>

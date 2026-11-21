@@ -140,7 +140,7 @@ null === $grace_before ? delete_option( Credits::GRACE_OPTION ) : update_option(
 $saved_grace = get_option( Credits::GRACE_OPTION, null );
 delete_option( Credits::GRACE_OPTION );
 for ( $i = 0; $i < 5; $i++ ) {
-	$wpdb->insert( $wpdb->prefix . 'sm_ai_usage', array( 'feature' => 'listing', 'company_id' => $c_cli, 'status' => 'ok', 'created_at' => current_time( 'mysql', true ) ) );
+	$wpdb->insert( $wpdb->prefix . 'sm_ai_usage', array( 'feature' => 'listing', 'company_id' => $c_cli, 'status' => 'ok', 'credits' => 1, 'created_at' => current_time( 'mysql', true ) ) );
 }
 $wpdb->insert( $wpdb->prefix . 'sm_ai_usage', array( 'feature' => 'search', 'company_id' => $c_cli, 'status' => 'ok', 'created_at' => current_time( 'mysql', true ) ) );
 smsub_assert( 5 === Credits::status( $c_cli )['used'], 'the smart search is free: it does not count as a credit' );
@@ -149,9 +149,15 @@ $po = Orders::get( Orders::create( Companies::get( $c_cli ), $u_cli, 'pack', 'ai
 smsub_assert( 1000.0 === (float) $po->amount_ttc, 'a client can buy a pack of 50 credits (1 000 DA)' );
 Orders::approve( $po );
 smsub_assert( 50 === Credits::balance( $c_cli ) && true === Limits::ai_can_use( true, 'listing', $c_cli ), 'credits added: the AI works again' );
-$wpdb->insert( $wpdb->prefix . 'sm_ai_usage', array( 'feature' => 'listing', 'company_id' => $c_cli, 'status' => 'ok', 'created_at' => current_time( 'mysql', true ) ) );
+$wpdb->insert( $wpdb->prefix . 'sm_ai_usage', array( 'feature' => 'listing', 'company_id' => $c_cli, 'status' => 'ok', 'credits' => 1, 'created_at' => current_time( 'mysql', true ) ) );
 Credits::on_used( 'listing', $c_cli );
 smsub_assert( 49 === Credits::balance( $c_cli ), 'beyond the monthly credits, one bought credit is used' );
+// 0.5.1: a tool priced 3 credits by the administrator takes 3 bought credits.
+$wpdb->insert( $wpdb->prefix . 'sm_ai_usage', array( 'feature' => 'cutlist', 'company_id' => $c_cli, 'status' => 'ok', 'credits' => 3, 'created_at' => current_time( 'mysql', true ) ) );
+Credits::on_used( 'cutlist', $c_cli, 3 );
+smsub_assert( 46 === Credits::balance( $c_cli ) && 9 === Credits::status( $c_cli )['used'], 'a tool of 3 credits: 3 bought credits taken, 9 credits used this month' );
+smsub_assert( true === Limits::ai_can_use( true, 'cutlist', $c_cli, 3 ) && is_wp_error( Limits::ai_can_use( true, 'cutlist', $c_cli, 47 ) ), 'enough credits for the price of the tool, else refused with the price' );
+smsub_assert( 16.67 === Credits::value(), 'value of one credit for the costs of sm-ai: the cheapest pack per credit (2 500 DA / 150)' );
 smsub_assert( 50 === Credits::status( $c_co )['monthly'], 'Pro: 50 credits a month' );
 null === $saved_grace ? delete_option( Credits::GRACE_OPTION ) : update_option( Credits::GRACE_OPTION, $saved_grace, false );
 

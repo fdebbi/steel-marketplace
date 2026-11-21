@@ -17,8 +17,14 @@ final class Installer {
 	}
 
 	public static function maybe_upgrade() {
-		if ( (int) get_option( 'sm_ai_db_version', 0 ) < SM_AI_DB_VERSION ) {
+		$was = (int) get_option( 'sm_ai_db_version', 0 );
+		if ( $was < SM_AI_DB_VERSION ) {
 			self::activate();
+			if ( $was > 0 && $was < 2 ) {
+				// 0.7.0: credits charged per call; before, every successful paid call cost 1 credit.
+				global $wpdb;
+				$wpdb->query( "UPDATE {$wpdb->prefix}sm_ai_usage SET credits = 1 WHERE status = 'ok' AND credits = 0 AND feature NOT IN ('search','report','test')" ); // phpcs:ignore WordPress.DB
+			}
 		}
 	}
 
@@ -40,6 +46,7 @@ final class Installer {
 				tokens_in int(10) unsigned NOT NULL DEFAULT 0,
 				tokens_out int(10) unsigned NOT NULL DEFAULT 0,
 				cost decimal(12,6) NOT NULL DEFAULT 0,
+				credits smallint(5) unsigned NOT NULL DEFAULT 0,
 				duration_ms int(10) unsigned NOT NULL DEFAULT 0,
 				error varchar(255) NOT NULL DEFAULT '',
 				created_at datetime NOT NULL,

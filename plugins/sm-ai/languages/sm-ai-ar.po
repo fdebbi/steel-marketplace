@@ -43,60 +43,60 @@ msgstr "ReuSteel"
 msgid "SM AI needs the SM Core plugin. Activate it first."
 msgstr "يتطلب SM AI إضافة SM Core. فعّلها أولًا."
 
-#: src/Admin/Admin.php:31 src/Admin/Admin.php:58 src/Plugin.php:36
+#: src/Admin/Admin.php:33 src/Admin/Admin.php:60 src/Plugin.php:36
 msgid "AI assistant"
 msgstr "المساعد الذكي"
 
-#: src/Admin/Admin.php:40 src/Features/Listing.php:24
+#: src/Admin/Admin.php:42 src/Features/Listing.php:24
 msgid "Listing assistant"
 msgstr "مساعد الإعلان"
 
-#: src/Admin/Admin.php:41 src/Features/Recognize.php:23
+#: src/Admin/Admin.php:43 src/Features/Recognize.php:23
 msgid "Profile recognition"
 msgstr "التعرف على المقطع"
 
-#: src/Admin/Admin.php:42 src/Features/Search.php:24
+#: src/Admin/Admin.php:44 src/Features/Search.php:24
 msgid "Smart search"
 msgstr "البحث الذكي"
 
-#: src/Admin/Admin.php:43 src/Features/Document.php:26
+#: src/Admin/Admin.php:45 src/Features/Document.php:26
 msgid "Document analysis"
 msgstr "تحليل الوثائق"
 
-#: src/Admin/Admin.php:44 src/Features/Describe.php:27
+#: src/Admin/Admin.php:46 src/Features/Describe.php:27
 msgid "Listing description"
 msgstr "كتابة وصف الإعلان"
 
-#: src/Admin/Admin.php:45 src/Features/Cutlist.php:36
+#: src/Admin/Admin.php:47 src/Features/Cutlist.php:36
 msgid "Read a document (DQE AI)"
 msgstr "قراءة مستند (كشف الكميات بالذكاء الاصطناعي)"
 
-#: src/Admin/Admin.php:46 src/Features/Condition.php:26
+#: src/Admin/Admin.php:48 src/Features/Condition.php:26
 msgid "Condition of the steel"
 msgstr "حالة الفولاذ"
 
-#: src/Admin/Admin.php:47 src/Features/Report.php:26
+#: src/Admin/Admin.php:49 src/Features/Report.php:26
 msgid "Business report summary"
 msgstr "ملخص تقرير الأعمال"
 
-#: src/Admin/Admin.php:48
+#: src/Admin/Admin.php:50
 msgid "Connection test"
 msgstr "اختبار الاتصال"
 
-#: src/Admin/Admin.php:60
+#: src/Admin/Admin.php:62
 msgid "Saved."
 msgstr "تم الحفظ."
 
-#: src/Admin/Admin.php:64
+#: src/Admin/Admin.php:66
 msgid "Connection works: the provider answered."
 msgstr "الاتصال يعمل: أجاب المزوّد."
 
 #. translators: %s: error.
-#: src/Admin/Admin.php:64
+#: src/Admin/Admin.php:66
 msgid "Connection failed: %s"
 msgstr "فشل الاتصال: %s"
 
-#: src/Admin/Admin.php:68
+#: src/Admin/Admin.php:70
 msgid ""
 "The AI gives suggestions that users confirm. It never gives weights "
 "(computed by the weight engine), never replaces engineering calculations, "
@@ -106,19 +106,23 @@ msgstr ""
 "(يحسبها محرك الأوزان) ولا يعوّض الحسابات الهندسية ولا التحقق الإنشائي ولا "
 "الشهادات."
 
-#: src/Admin/Admin.php:70
+#: src/Admin/Admin.php:72
 msgid "Providers and services"
 msgstr "المزوّدون والخدمات"
 
-#: src/Admin/Admin.php:70
+#: src/Admin/Admin.php:72
 msgid "Consumption"
 msgstr "الاستهلاك"
 
-#: src/Admin/Admin.php:83
+#: src/Admin/Admin.php:72
+msgid "Costs and margin"
+msgstr "التكاليف والهامش"
+
+#: src/Admin/Admin.php:89
 msgid "Providers"
 msgstr "المزوّدون"
 
-#: src/Admin/Admin.php:84
+#: src/Admin/Admin.php:90
 msgid ""
 "Keys are stored encrypted and never shown again. For more safety, define "
 "them in wp-config.php: SM_AI_ANTHROPIC_KEY, SM_AI_OPENAI_KEY. Prices (US "
@@ -130,205 +134,410 @@ msgstr ""
 " مليون رمز، كما ينشرها المزوّد) تُستعمل فقط لتقدير التكاليف وتطبيق الميزانية"
 " الشهرية."
 
-#: src/Admin/Admin.php:85 src/Admin/Admin.php:111
+#: src/Admin/Admin.php:91 src/Admin/Admin.php:117
 msgid "Provider"
 msgstr "المزوّد"
 
-#: src/Admin/Admin.php:85
+#: src/Admin/Admin.php:91
 msgid "API key"
 msgstr "مفتاح API"
 
-#: src/Admin/Admin.php:85
+#: src/Admin/Admin.php:91
 msgid "Model"
 msgstr "النموذج"
 
-#: src/Admin/Admin.php:85
+#: src/Admin/Admin.php:91
 msgid "Price in / out ($ per 1M tokens)"
 msgstr "سعر الإدخال / الإخراج ($ لكل مليون رمز)"
 
-#: src/Admin/Admin.php:90
+#: src/Admin/Admin.php:96
 msgid "Base URL"
 msgstr "العنوان الأساسي"
 
-#: src/Admin/Admin.php:94
+#: src/Admin/Admin.php:100
 msgid "Defined in wp-config.php"
 msgstr "معرّف في wp-config.php"
 
-#: src/Admin/Admin.php:96
+#: src/Admin/Admin.php:102
 msgid "Paste the key"
 msgstr "الصق المفتاح"
 
-#: src/Admin/Admin.php:98
+#: src/Admin/Admin.php:104
 msgid "Remove the key"
 msgstr "حذف المفتاح"
 
-#: src/Admin/Admin.php:101
+#: src/Admin/Admin.php:107
 msgid "Model name of the provider"
 msgstr "اسم النموذج لدى المزوّد"
 
-#: src/Admin/Admin.php:105
+#: src/Admin/Admin.php:111
 msgid "Default provider"
 msgstr "المزوّد الافتراضي"
 
-#: src/Admin/Admin.php:105
+#: src/Admin/Admin.php:111
 msgid "— none (AI off) —"
 msgstr "— لا شيء (الذكاء الاصطناعي متوقف) —"
 
-#: src/Admin/Admin.php:111
+#: src/Admin/Admin.php:117
 msgid "Services"
 msgstr "الخدمات"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:111 src/Admin/Admin.php:160 src/Admin/Admin.php:174
+#: src/Admin/Admin.php:117 src/Admin/Admin.php:165 src/Admin/Admin.php:179
+#: src/Admin/Admin.php:225
 msgid "Service"
 msgstr "الخدمة"
 
-#: src/Admin/Admin.php:111
+#: src/Admin/Admin.php:117
 msgid "On"
 msgstr "مفعّل"
 
-#: src/Admin/Admin.php:111
+#: src/Admin/Admin.php:117
 msgid "Model (empty = the provider's)"
 msgstr "النموذج (فارغ = نموذج المزوّد)"
 
-#: src/Admin/Admin.php:111
+#: src/Admin/Admin.php:117
 msgid "Uses per company per month"
 msgstr "الاستعمالات لكل مؤسسة شهريًا"
 
-#: src/Admin/Admin.php:111
+#: src/Admin/Admin.php:117
 msgid "Visitors: uses per day"
 msgstr "الزوار: الاستعمالات يوميًا"
 
-#: src/Admin/Admin.php:111 src/Admin/Admin.php:174
+#: src/Admin/Admin.php:117 src/Admin/Admin.php:179
 msgid "State"
 msgstr "الحالة"
 
-#: src/Admin/Admin.php:117
+#: src/Admin/Admin.php:123
 msgid "Default"
 msgstr "الافتراضي"
 
-#: src/Admin/Admin.php:122
+#: src/Admin/Admin.php:128
 msgid "0 = no limit"
 msgstr "0 = بلا حد"
 
-#: src/Admin/Admin.php:124
+#: src/Admin/Admin.php:130
 msgid "Not available (no provider, key or model)"
 msgstr "غير متاح (لا مزوّد أو مفتاح أو نموذج)"
 
-#: src/Admin/Admin.php:128
+#: src/Admin/Admin.php:134
 msgid "Limits"
 msgstr "الحدود"
 
-#: src/Admin/Admin.php:130
-msgid "Monthly budget (US dollars, 0 = no limit)"
-msgstr "الميزانية الشهرية (دولار أمريكي، 0 = بلا حد)"
-
-#: src/Admin/Admin.php:131
+#: src/Admin/Admin.php:136
 msgid "Uses per user per day"
 msgstr "الاستعمالات لكل مستخدم يوميًا"
 
-#: src/Admin/Admin.php:132
+#: src/Admin/Admin.php:137
 msgid "Maximum length of an answer (tokens)"
 msgstr "أقصى طول للإجابة (رموز)"
 
-#: src/Admin/Admin.php:133
+#: src/Admin/Admin.php:138
 msgid "Photos per request"
 msgstr "الصور لكل طلب"
 
-#: src/Admin/Admin.php:134
+#: src/Admin/Admin.php:139
 msgid "Largest photo (MB)"
 msgstr "أكبر حجم للصورة (ميغابايت)"
 
-#: src/Admin/Admin.php:135
+#: src/Admin/Admin.php:140
 msgid "Largest document (MB)"
 msgstr "أكبر حجم للوثيقة (ميغابايت)"
 
-#: src/Admin/Admin.php:136
+#: src/Admin/Admin.php:141
 msgid "Waiting time for an answer (seconds)"
 msgstr "مدة انتظار الإجابة (ثوانٍ)"
 
-#: src/Admin/Admin.php:137
+#: src/Admin/Admin.php:142
 msgid "Keep the consumption log (days)"
 msgstr "مدة الاحتفاظ بسجل الاستهلاك (أيام)"
 
-#: src/Admin/Admin.php:144
+#: src/Admin/Admin.php:149
 msgid "Test the connection"
 msgstr "اختبار الاتصال"
 
-#: src/Admin/Admin.php:150
+#: src/Admin/Admin.php:155
 msgid "Sends a tiny request (a few tokens) with the saved key and model."
 msgstr "يرسل طلبًا صغيرًا جدًا (بضعة رموز) بالمفتاح والنموذج المحفوظين."
 
 #. translators: %s: month.
-#: src/Admin/Admin.php:158
+#: src/Admin/Admin.php:163 src/Admin/Admin.php:215
 msgid "This month (%s)"
 msgstr "هذا الشهر (%s)"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:159
+#: src/Admin/Admin.php:164
 msgid "Estimated cost: %s $"
 msgstr "التكلفة التقديرية: %s $"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:160
+#: src/Admin/Admin.php:165
 msgid "Answers"
 msgstr "الإجابات"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:160
+#: src/Admin/Admin.php:165
 msgid "Errors"
 msgstr "الأخطاء"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:160
+#: src/Admin/Admin.php:165
 msgid "Refused (limits)"
 msgstr "مرفوضة (الحدود)"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:160
+#: src/Admin/Admin.php:165
 msgid "Tokens in / out"
 msgstr "الرموز إدخال / إخراج"
 
 #. translators: %s: amount.
-#: src/Admin/Admin.php:160
+#: src/Admin/Admin.php:165
 msgid "Estimated cost ($)"
 msgstr "التكلفة التقديرية ($)"
 
-#: src/Admin/Admin.php:167
+#: src/Admin/Admin.php:172
 msgid "Companies using it the most"
 msgstr "المؤسسات الأكثر استعمالًا"
 
-#: src/Admin/Admin.php:174
+#: src/Admin/Admin.php:179
 msgid "Last calls"
 msgstr "آخر الطلبات"
 
-#: src/Admin/Admin.php:174
+#: src/Admin/Admin.php:179
 msgid "Date"
 msgstr "التاريخ"
 
-#: src/Admin/Admin.php:174
+#: src/Admin/Admin.php:179
 msgid "Provider · model"
 msgstr "المزوّد · النموذج"
 
-#: src/Admin/Admin.php:174
+#: src/Admin/Admin.php:179
 msgid "Company"
 msgstr "المؤسسة"
 
-#: src/Admin/Admin.php:174
+#: src/Admin/Admin.php:179
 msgid "Tokens"
 msgstr "الرموز"
 
-#: src/Admin/Admin.php:174
+#: src/Admin/Admin.php:179
 msgid "Time"
 msgstr "المدة"
 
-#: src/Admin/Admin.php:181
+#: src/Admin/Admin.php:186
 msgid "Visitor"
 msgstr "زائر"
 
-#: src/Admin/Admin.php:189 src/Admin/Admin.php:200
+#: src/Admin/Admin.php:208
+msgid "Basis of the calculation"
+msgstr "أساس الحساب"
+
+#: src/Admin/Admin.php:209
+msgid "Value of one credit"
+msgstr "قيمة الرصيد الواحد"
+
+#: src/Admin/Admin.php:209
+msgid ""
+"— price per credit of the cheapest pack per credit, the least favourable "
+"case for the margin (Subscriptions → Packs)."
+msgstr ""
+"— سعر الرصيد في الباقة الأرخص للرصيد، أسوأ حالة للهامش (الاشتراكات ← "
+"الباقات)."
+
+#: src/Admin/Admin.php:209
+msgid "Unknown: no pack of AI credits (SM Subscriptions)."
+msgstr "غير معروفة: لا توجد باقة أرصدة (SM Subscriptions)."
+
+#: src/Admin/Admin.php:210
+msgid "Exchange rate (1 $ in DA)"
+msgstr "سعر الصرف (1 $ بالدينار)"
+
+#: src/Admin/Admin.php:210
+msgid "Typed by you; without it the margin is not computed."
+msgstr "تُدخله أنت؛ بدونه لا يُحسب الهامش."
+
+#: src/Admin/Admin.php:211
+msgid "Margin aimed at"
+msgstr "الهامش المستهدف"
+
+#: src/Admin/Admin.php:212
+msgid "AI budget of the platform per month"
+msgstr "ميزانية الذكاء الاصطناعي للمنصة شهرياً"
+
+#: src/Admin/Admin.php:212
+msgid "0 = no budget"
+msgstr "0 = بدون ميزانية"
+
+#: src/Admin/Admin.php:212
+msgid "E-mail alert at"
+msgstr "تنبيه بالبريد عند"
+
+#: src/Admin/Admin.php:212
+msgid "At 100 %:"
+msgstr "عند 100 %:"
+
+#: src/Admin/Admin.php:212
+msgid "Pause the AI tools that use credits"
+msgstr "إيقاف أدوات الذكاء الاصطناعي المدفوعة مؤقتاً"
+
+#: src/Admin/Admin.php:212
+msgid "Warn only"
+msgstr "التنبيه فقط"
+
+#. translators: %s: month.
+#: src/Admin/Admin.php:216
+msgid "Real AI cost"
+msgstr "التكلفة الحقيقية للذكاء الاصطناعي"
+
+#: src/Admin/Admin.php:217
+msgid "Budget used"
+msgstr "الميزانية المستعملة"
+
+#: src/Admin/Admin.php:218 src/Admin/Admin.php:244
+msgid "Credits used"
+msgstr "الأرصدة المستعملة"
+
+#: src/Admin/Admin.php:219 src/Admin/Admin.php:225 src/Admin/Admin.php:244
+msgid "Margin"
+msgstr "الهامش"
+
+#: src/Admin/Admin.php:220
+msgid "Services under the margin aimed at"
+msgstr "أدوات تحت الهامش المستهدف"
+
+#: src/Admin/Admin.php:222
+msgid "Type the exchange rate to see the costs in DA and the margins."
+msgstr "أدخل سعر الصرف لرؤية التكاليف بالدينار والهوامش."
+
+#: src/Admin/Admin.php:225
+msgid "Price of each service and real margin"
+msgstr "سعر كل أداة والهامش الحقيقي"
+
+#: src/Admin/Admin.php:225
+msgid "Price (credits)"
+msgstr "السعر (أرصدة)"
+
+#: src/Admin/Admin.php:225
+msgid "Uses"
+msgstr "الاستعمالات"
+
+#: src/Admin/Admin.php:225
+msgid "Average real cost"
+msgstr "متوسط التكلفة الحقيقية"
+
+#: src/Admin/Admin.php:225
+msgid "Income per use"
+msgstr "العائد لكل استعمال"
+
+#: src/Admin/Admin.php:225
+msgid "Advice"
+msgstr "نصيحة"
+
+#: src/Admin/Admin.php:228
+msgid "off"
+msgstr "معطّل"
+
+#: src/Admin/Admin.php:229
+msgid "free"
+msgstr "مجاني"
+
+#. translators: %s: amount in DA.
+#: src/Admin/Admin.php:234
+msgid "cost: %s DA"
+msgstr "التكلفة: %s DA"
+
+#. translators: %s: amount in DA.
+#: src/Admin/Admin.php:234
+msgid "Included in the Business plan"
+msgstr "مشمول في اشتراك Business"
+
+#. translators: %s: amount in DA.
+#: src/Admin/Admin.php:234
+msgid "Free (commercial choice)"
+msgstr "مجاني (اختيار تجاري)"
+
+#. translators: 1: credits, 2: margin.
+#: src/Admin/Admin.php:238
+msgid "Move to %1$s credits → %2$s %%"
+msgstr "الانتقال إلى %1$s أرصدة ← %2$s %%"
+
+#. translators: 1: credits, 2: margin.
+#: src/Admin/Admin.php:238
+msgid "Good"
+msgstr "جيد"
+
+#: src/Admin/Admin.php:240
+msgid ""
+"The new price shows at once on the buttons of the tool. The advice aims at "
+"the margin you chose; you decide. Each use keeps the price it had when it "
+"was made."
+msgstr ""
+"يظهر السعر الجديد فوراً على أزرار الأداة. النصيحة تستهدف الهامش الذي اخترته؛"
+" القرار لك. يحتفظ كل استعمال بالسعر الذي كان له."
+
+#: src/Admin/Admin.php:241
+msgid "Save"
+msgstr "حفظ"
+
+#: src/Admin/Admin.php:244
+msgid "Last 6 months"
+msgstr "آخر 6 أشهر"
+
+#: src/Admin/Admin.php:244
+msgid "Month"
+msgstr "الشهر"
+
+#: src/Admin/Admin.php:244
+msgid "AI cost"
+msgstr "تكلفة الذكاء الاصطناعي"
+
+#: src/Admin/Admin.php:244
+msgid "Budget"
+msgstr "الميزانية"
+
+#: src/Admin/Admin.php:250
+msgid ""
+"The user always sees a fixed price in credits before the click; the real "
+"cost (tokens of each call × prices of the provider, tab Providers and "
+"services) only serves here. The credits included in the plans count at the "
+"value of the credits of the packs."
+msgstr ""
+"يرى المستخدم دائماً سعراً ثابتاً بالأرصدة قبل النقر؛ التكلفة الحقيقية (رموز "
+"كل طلب × أسعار المزوّد) تُستعمل هنا فقط. تُحسب الأرصدة المشمولة في "
+"الاشتراكات بقيمة أرصدة الباقات."
+
+#: src/Admin/Admin.php:255 src/Admin/Admin.php:266 src/Admin/Admin.php:277
 msgid "You cannot change these settings."
 msgstr "لا يمكنك تغيير هذه الإعدادات."
+
+#: src/Costs.php:166
+msgid "AI assistant: the monthly budget is reached"
+msgstr "المساعد الذكي: تم بلوغ الميزانية الشهرية"
+
+#: src/Costs.php:166
+msgid "AI assistant: alert on the monthly budget"
+msgstr "المساعد الذكي: تنبيه حول الميزانية الشهرية"
+
+#. translators: 1: percentage, 2: budget in dollars.
+#: src/Costs.php:167
+msgid "The AI costs of this month reach %1$s %% of the budget (%2$s $)."
+msgstr ""
+"بلغت تكاليف الذكاء الاصطناعي لهذا الشهر %1$s %% من الميزانية (%2$s $)."
+
+#: src/Costs.php:169
+msgid ""
+"The AI tools that use credits are paused until the 1st of next month (free "
+"tools keep working). You can raise the budget."
+msgstr ""
+"الأدوات المدفوعة متوقفة حتى أول الشهر القادم (الأدوات المجانية تعمل). يمكنك "
+"رفع الميزانية."
+
+#: src/Costs.php:169
+msgid "The AI tools keep working (warning only)."
+msgstr "تواصل الأدوات العمل (تنبيه فقط)."
+
+#: src/Costs.php:171
+msgid "See the costs and the margin"
+msgstr "عرض التكاليف والهامش"
 
 #: src/Features/Condition.php:31 src/Features/Describe.php:32
 #: src/Features/Recognize.php:28 src/Gateway.php:59
@@ -549,33 +758,33 @@ msgstr "لا شيء يمكن استعماله من هذه النتيجة."
 msgid "The AI assistant is not configured yet. Try again later."
 msgstr "المساعد الذكي غير مُعدّ بعد. أعد المحاولة لاحقًا."
 
-#: src/Gateway.php:74
+#: src/Gateway.php:76
 msgid ""
 "The AI assistant has reached its monthly limit. It will be available again "
 "next month."
 msgstr "بلغ المساعد الذكي حدّه الشهري. سيكون متاحًا من جديد الشهر المقبل."
 
-#: src/Gateway.php:78
+#: src/Gateway.php:80
 msgid "You used the AI assistant many times today. Try again tomorrow."
 msgstr "استعملت المساعد الذكي كثيرًا اليوم. أعد المحاولة غدًا."
 
-#: src/Gateway.php:82
+#: src/Gateway.php:84
 msgid "Your company used all its requests of this month for this AI service."
 msgstr "استهلكت مؤسستك كل طلباتها لهذا الشهر في خدمة الذكاء الاصطناعي هذه."
 
-#: src/Gateway.php:85
+#: src/Gateway.php:87
 msgid "Create a free account to keep using the smart search today."
 msgstr "أنشئ حسابًا مجانيًا لمواصلة استعمال البحث الذكي اليوم."
 
-#: src/Gateway.php:158
+#: src/Gateway.php:165
 msgid "The AI service did not answer. Try again in a moment."
 msgstr "لم تُجب خدمة الذكاء الاصطناعي. أعد المحاولة بعد لحظة."
 
-#: src/Gateway.php:163
+#: src/Gateway.php:170
 msgid "The AI answer could not be read. Try again."
 msgstr "تعذّرت قراءة إجابة الذكاء الاصطناعي. أعد المحاولة."
 
-#: src/Gateway.php:195
+#: src/Gateway.php:204
 msgid "Give the model name first."
 msgstr "أدخل اسم النموذج أولًا."
 
@@ -587,11 +796,11 @@ msgstr "تم تعديل إعدادات الذكاء الاصطناعي"
 msgid "AI assistant used"
 msgstr "استعمال المساعد الذكي"
 
-#: src/Settings.php:82
+#: src/Settings.php:117
 msgid "OpenAI-compatible API"
 msgstr "واجهة متوافقة مع OpenAI"
 
-#: src/Settings.php:85
+#: src/Settings.php:120
 msgid "Simulation (tests, no real AI)"
 msgstr "محاكاة (اختبارات، بدون ذكاء اصطناعي حقيقي)"
 

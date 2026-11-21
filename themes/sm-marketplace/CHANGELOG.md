@@ -1,5 +1,9 @@
 # Changelog — sm-marketplace
 
+## 0.55.0 — 2026-11-21 (avec sm-ai 0.7.0)
+
+- Le prix d'un outil IA affiché là où on l'utilise suit le prix réglé dans l'administration : `sm_ai_price()` (« 1 crédit », « 3 crédits », « Gratuit ») sur « Reconnaître depuis mes photos », « Évaluer l'état », l'import de l'optimiseur, la rédaction de la description et la lecture d'un document (plus de « 1 crédit » écrit en dur).
+
 ## 0.54.2 — 2026-11-21
 
 - Accueil, nouvelle promesse : « Nous donnons **une nouvelle vie** à l’acier… » (titre) puis « …et transformons les ressources usagées en valeur et en opportunités durables. » (sous-titre) ; en arabe « نمنح الفولاذ حياة جديدة... » / « ...ونحوّل الموارد المستعملة إلى قيمة وفرص متجددة. », en anglais « We give steel a new life… ».

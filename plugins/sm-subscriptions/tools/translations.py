@@ -220,3 +220,8 @@ T.update({
 T.update({
 'Business report of the market': ('Rapport Business du marché', 'تقرير الأعمال عن السوق'),
 })
+
+# 0.5.1 — Tools of several credits.
+T.update({
+'This tool uses %1$s credits and you have %2$s left. Buy a pack of AI credits or upgrade your plan.': ('Cet outil utilise %1$s crédits et il vous en reste %2$s. Achetez un pack de crédits IA ou passez à une formule supérieure.', 'تستعمل هذه الأداة %1$s أرصدة ويتبقى لك %2$s. اشترِ باقة أرصدة أو رقِّ اشتراكك.'),
+})

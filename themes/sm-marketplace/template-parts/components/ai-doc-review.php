@@ -49,7 +49,7 @@ wp_enqueue_script( 'sm-ai-review', SM_THEME_URI . '/assets/js/ai-review.js', arr
 <section class="smcut-ai smdoc" id="smcut-ai" data-smdoc="<?php echo esc_attr( wp_json_encode( array( 'sections' => array_map( static fn( $f ) => array_map( static fn( $s ) => array( $s[0], $s[1] ), $f['sections'] ), $secs ), 'i18n' => $i18n + array( 'size' => __( 'Size…', 'sm-marketplace' ) ) ) ) ); ?>">
 	<h3><?php sm_ai_badge(); ?> <span><?php echo esc_html( '' !== ( $r['name'] ?? '' ) ? sprintf( /* translators: %s: file name. */ __( 'Document « %s »', 'sm-marketplace' ), $r['name'] ) : __( 'Your document', 'sm-marketplace' ) ); ?></span></h3>
 	<?php if ( ! empty( $r['unreadable'] ) ) : ?>
-		<div class="sm-notice sm-notice--warn"><?php sm_icon( 'alert' ); ?><p><?php esc_html_e( 'The document could not be read. For a photo: take it again flat, with more light, the whole table in the picture. The AI credit has been used.', 'sm-marketplace' ); ?></p></div>
+		<div class="sm-notice sm-notice--warn"><?php sm_icon( 'alert' ); ?><p><?php esc_html_e( 'The document could not be read. For a photo: take it again flat, with more light, the whole table in the picture. The AI credits of the reading have been used.', 'sm-marketplace' ); ?></p></div>
 	<?php else : ?>
 		<p class="smcut-ai__lead"><?php echo esc_html( ! empty( $r['photo'] ) ? __( 'Read on a photo: every line is to check. Tick what is right: nothing is saved without you.', 'sm-marketplace' ) : __( 'Check what the AI understood: nothing is saved without you.', 'sm-marketplace' ) ); ?><?php echo '' !== ( $r['summary'] ?? '' ) ? ' ' . esc_html( $r['summary'] ) : ''; ?></p>
 		<p class="smcut-meta">
@@ -159,7 +159,7 @@ wp_enqueue_script( 'sm-ai-review', SM_THEME_URI . '/assets/js/ai-review.js', arr
 					</div>
 				<?php endif; ?>
 			</div>
-			<p class="smdoc-foot"><small><?php esc_html_e( 'Suggestion of the AI, to check · 1 credit used for the reading · the file is not kept. Listings: from the warehouse, « On the market » item by item.', 'sm-marketplace' ); ?></small></p>
+			<p class="smdoc-foot"><small><?php echo esc_html( sprintf( /* translators: %s: price of the reading (« 1 credit »). */ __( 'Suggestion of the AI, to check · %s used for the reading · the file is not kept. Listings: from the warehouse, « On the market » item by item.', 'sm-marketplace' ), sm_ai_price( $ai['credits'] ?? 1 ) ) ); ?></small></p>
 		</form>
 	<?php endif; ?>
 </section>

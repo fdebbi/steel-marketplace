@@ -519,3 +519,9 @@ Validé sur la maquette 0.37.
 - La recherche de l'accueil n'a plus la wilaya (filtre des résultats seulement).
 - Les chiffres de l'accueil sont les vrais (sm-products) : jamais de chiffres de démonstration sur le site.
 - Promesse de l'accueil : « Nous donnons une nouvelle vie à l’acier… » (titre) et « …et transformons les ressources usagées en valeur et en opportunités durables. » (sous-titre), textes du client en arabe, français et anglais.
+
+## Prix des outils IA et marge (2026-11-21)
+
+- Chaque outil a un prix fixe en crédits, réglé dans l'administration (onglet « Coûts et marge ») ; l'utilisateur le voit avant de cliquer. Le coût réel (tokens × prix du fournisseur) ne sert qu'à l'administration : marge par outil, conseil de prix, budget mensuel (alerte e-mail, pause des outils payants ou simple avertissement à 100 %).
+- Valeur d'un crédit = pack le moins cher au crédit ; taux de change saisi par l'administrateur.
+- Plus tard : paliers pour « Lire un document » selon le nombre de pages.

@@ -62,15 +62,17 @@ final class Gateway {
 		if ( is_wp_error( $ok ) ) {
 			return $ok;
 		}
-		// Free services (smart search) never ask for credits (0.2.0).
-		if ( $class::credits() > 0 ) {
-			$ok = apply_filters( 'sm_ai_can_use', true, $id, $company ? (int) $company->id : 0 );
+		// Free services (smart search) never ask for credits (0.2.0); the price is set by the administrator (0.7.0).
+		$credits = self::credits( $id );
+		if ( $credits > 0 ) {
+			$ok = apply_filters( 'sm_ai_can_use', true, $id, $company ? (int) $company->id : 0, $credits );
 			if ( is_wp_error( $ok ) ) {
 				return $ok;
 			}
 		}
 		$s = Settings::all();
-		if ( $s['monthly_budget'] > 0 && Usage::month_cost() >= $s['monthly_budget'] ) {
+		// Monthly budget of the platform: at 100 %, the services that use credits pause (or only a warning, 0.7.0).
+		if ( $s['monthly_budget'] > 0 && 'warn' !== $s['budget_mode'] && $credits > 0 && Usage::month_cost() >= $s['monthly_budget'] ) {
 			return new \WP_Error( 'sm_ai_budget', __( 'The AI assistant has reached its monthly limit. It will be available again next month.', 'sm-ai' ) );
 		}
 		if ( is_user_logged_in() ) {
@@ -87,11 +89,16 @@ final class Gateway {
 		return true;
 	}
 
+	/** Price of a service in AI credits (0.7.0, set in wp-admin). */
+	public static function credits( $id ) {
+		return Settings::credits( $id );
+	}
+
 	/** Services that never use AI credits (0.2.0). */
 	public static function free_features() {
 		$out = array( 'test' );
 		foreach ( self::features() as $id => $class ) {
-			if ( 0 === (int) $class::credits() ) {
+			if ( 0 === self::credits( $id ) ) {
 				$out[] = $id;
 			}
 		}
@@ -102,7 +109,7 @@ final class Gateway {
 	public static function remaining( $id, $company ) {
 		$f = Settings::feature( $id );
 		$class = self::feature( $id );
-		if ( $class && 0 === (int) $class::credits() ) {
+		if ( $class && 0 === self::credits( $id ) ) {
 			return null;
 		}
 		if ( $company && apply_filters( 'sm_ai_plan_credits', false ) ) {
@@ -162,11 +169,13 @@ final class Gateway {
 			Usage::log( $log + array( 'status' => 'error', 'error' => 'invalid_json: ' . mb_substr( $res['text'], 0, 120 ) ) );
 			return new \WP_Error( 'sm_ai_answer', __( 'The AI answer could not be read. Try again.', 'sm-ai' ) );
 		}
-		Usage::log( $log + array( 'status' => 'ok' ) );
-		/** One AI credit used (sm-subscriptions counts the plan credits and the bought ones). */
-		if ( $class::credits() > 0 ) {
-			do_action( 'sm_ai_used', $id, $company ? (int) $company->id : 0 );
+		$credits = self::credits( $id );
+		Usage::log( $log + array( 'status' => 'ok', 'credits' => $company ? $credits : 0 ) );
+		/** AI credits used (sm-subscriptions counts the plan credits and the bought ones; since 0.7.0 the price of the service). */
+		if ( $credits > 0 ) {
+			do_action( 'sm_ai_used', $id, $company ? (int) $company->id : 0, $credits );
 		}
+		Costs::watch_budget();
 		$out          = $class::clean( $json, $input );
 		$out['_meta'] = array( 'feature' => $id, 'provider' => $provider, 'simulation' => 'simulation' === $provider, 'lang' => $lang, 'at' => time() );
 		return $out;

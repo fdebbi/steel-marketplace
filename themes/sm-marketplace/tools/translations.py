@@ -2890,3 +2890,18 @@ T.update({
 'a new life': ('une nouvelle vie', 'حياة جديدة'),
 '…transforming used resources into value and new opportunities.': ('…et transformons les ressources usagées en valeur et en opportunités durables.', '...ونحوّل الموارد المستعملة إلى قيمة وفرص متجددة.'),
 })
+
+# 0.55.0 — Price of the AI tools set by the administrator (sm-ai 0.7.0).
+T.update({
+'Text proposed from the information of your listing: check it and change it freely. %1$s used · %2$s left.': ('Texte proposé à partir des informations de votre annonce : vérifiez-le et modifiez-le librement. %1$s utilisé(s) · %2$s restant(s).', 'نص مقترح من معلومات إعلانك: تحقق منه وعدّله بحرية. استُعمل %1$s · يتبقى %2$s.'),
+'Text proposed from the information of your listing: check it and change it freely. %s used.': ('Texte proposé à partir des informations de votre annonce : vérifiez-le et modifiez-le librement. %s utilisé(s).', 'نص مقترح من معلومات إعلانك: تحقق منه وعدّله بحرية. استُعمل %s.'),
+'The document could not be read. For a photo: take it again flat, with more light, the whole table in the picture. The AI credits of the reading have been used.': ('Le document n’a pas pu être lu. Pour une photo : reprenez-la à plat, avec plus de lumière, tout le tableau dans l’image. Les crédits IA de la lecture ont été utilisés.', 'تعذّرت قراءة الوثيقة. بالنسبة للصورة: أعد التقاطها مسطّحة، بإضاءة أكبر، والجدول كاملاً في الصورة. استُعملت أرصدة القراءة.'),
+'Suggestion of the AI, to check · %s used for the reading · the file is not kept. Listings: from the warehouse, « On the market » item by item.': ('Suggestion de l’IA, à vérifier · %s utilisé(s) pour la lecture · le fichier n’est pas gardé. Annonces : depuis le magasin, « Sur le marché » article par article.', 'اقتراح الذكاء الاصطناعي، يجب التحقق منه · استُعمل %s للقراءة · لا يُحتفظ بالملف. الإعلانات: من المخزن، « في السوق » مادة بمادة.'),
+'Recognise from my photos': ('Reconnaître depuis mes photos', 'التعرّف من صوري'),
+'Assess the condition from my photos': ('Évaluer l’état depuis mes photos', 'تقييم الحالة من صوري'),
+'Excel, PDF or photo': ('Excel, PDF ou photo', 'Excel أو PDF أو صورة'),
+'Each AI tool shows its price in credits on its button. The credits of the month are used first and start again on the 1st.': ('Chaque outil IA affiche son prix en crédits sur son bouton. Les crédits du mois sont utilisés en premier et repartent le 1er.', 'كل أداة ذكاء اصطناعي تعرض سعرها بالأرصدة على زرّها. تُستعمل أرصدة الشهر أولاً وتتجدد في اليوم الأول.'),
+})
+P.update({
+('%d credit', '%d credits'): (['%d crédit', '%d crédits'], ['%d رصيد', 'رصيد واحد', 'رصيدان', '%d أرصدة', '%d رصيداً', '%d رصيد']),
+})

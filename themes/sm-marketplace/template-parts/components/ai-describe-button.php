@@ -32,9 +32,10 @@ $cfg = array(
 		'replace'   => __( 'Replace your description?', 'sm-marketplace' ),
 		'replaceTx' => __( 'The AI writes a new description from the information of your listing. You can undo it.', 'sm-marketplace' ),
 		'replaceOk' => __( 'Write a new description', 'sm-marketplace' ),
-		/* translators: %s: AI credits left. */
-		'done'      => __( 'Text proposed from the information of your listing: check it and change it freely. 1 credit used · %s left.', 'sm-marketplace' ),
-		'doneNoLeft' => __( 'Text proposed from the information of your listing: check it and change it freely. 1 credit used.', 'sm-marketplace' ),
+		/* translators: 1: price of the tool (« 1 credit »), 2: AI credits left. */
+		'done'      => sprintf( __( 'Text proposed from the information of your listing: check it and change it freely. %1$s used · %2$s left.', 'sm-marketplace' ), sm_ai_price( $d['credits'] ), '%s' ),
+		/* translators: %s: price of the tool (« 1 credit »). */
+		'doneNoLeft' => sprintf( __( 'Text proposed from the information of your listing: check it and change it freely. %s used.', 'sm-marketplace' ), sm_ai_price( $d['credits'] ) ),
 		'undo'      => __( 'Undo', 'sm-marketplace' ),
 		'error'     => __( 'The AI could not write the description. Try again in a moment.', 'sm-marketplace' ),
 		'simulation' => __( 'Simulation', 'sm-marketplace' ),

@@ -42,7 +42,7 @@ if ( is_array( $sub ) && isset( $sub['credits'] ) ) :
 				echo esc_html( sprintf( _n( 'Bought credits left: %d. They are used once the credits of the month are spent, and they do not expire.', 'Bought credits left: %d. They are used once the credits of the month are spent, and they do not expire.', (int) $cr['bought'], 'sm-marketplace' ), (int) $cr['bought'] ) );
 				?>
 			</p>
-			<p class="sm-help"><?php esc_html_e( 'One use of an AI tool takes one credit. The credits of the month start again on the 1st.', 'sm-marketplace' ); ?></p>
+			<p class="sm-help"><?php esc_html_e( 'Each AI tool shows its price in credits on its button. The credits of the month are used first and start again on the 1st.', 'sm-marketplace' ); ?></p>
 		<?php endif; ?>
 	</section>
 

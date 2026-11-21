@@ -452,12 +452,12 @@ msgstr "لا يمكن إلغاء هذا الطلب."
 msgid "Order cancelled."
 msgstr "تم إلغاء الطلب."
 
-#: src/Limits.php:51
+#: src/Limits.php:52
 msgid "Choose a higher plan in your account (Plan) or take a listing offline."
 msgstr "اختر اشتراكا أعلى من حسابك (الاشتراك) أو اسحب إعلانا."
 
 #. translators: 1: plan name, 2: number of buildings, 3: hint.
-#: src/Limits.php:66
+#: src/Limits.php:67
 msgid "Your plan %1$s allows %2$d building online. %3$s"
 msgid_plural "Your plan %1$s allows %2$d buildings online. %3$s"
 msgstr[0] "يسمح اشتراكك %1$s بـ %2$d بناية منشورة. %3$s"
@@ -468,7 +468,7 @@ msgstr[4] "يسمح اشتراكك %1$s بـ %2$d بناية منشورة. %3$s"
 msgstr[5] "يسمح اشتراكك %1$s بـ %2$d بناية منشورة. %3$s"
 
 #. translators: 1: plan name, 2: number of listings, 3: hint.
-#: src/Limits.php:72
+#: src/Limits.php:73
 msgid "Your plan %1$s allows %2$d listing online. %3$s"
 msgid_plural "Your plan %1$s allows %2$d listings online. %3$s"
 msgstr[0] "يسمح اشتراكك %1$s بـ %2$d إعلان منشور. %3$s"
@@ -480,7 +480,7 @@ msgstr[5] "يسمح اشتراكك %1$s بـ %2$d إعلان منشور. %3$s"
 
 #. translators: 1: plan name, 2: tonnes allowed, 3: tonnes already online, 4:
 #. hint.
-#: src/Limits.php:77
+#: src/Limits.php:78
 msgid ""
 "Your plan %1$s allows %2$s t of steel online in total; you already have %3$s"
 " t online. %4$s"
@@ -489,7 +489,7 @@ msgstr ""
 "%4$s"
 
 #. translators: 1: number of pages, 2: hint.
-#: src/Limits.php:91
+#: src/Limits.php:92
 msgid "Your plan allows %1$d service page. %2$s"
 msgid_plural "Your plan allows %1$d service pages. %2$s"
 msgstr[0] "يسمح اشتراكك بـ %1$d صفحة خدمات. %2$s"
@@ -501,12 +501,12 @@ msgstr[5] "يسمح اشتراكك بـ %1$d صفحة خدمات. %2$s"
 
 #. translators: 1: number of pages, 2: hint.
 #. translators: 1: number of projects, 2: hint.
-#: src/Limits.php:91 src/Limits.php:100
+#: src/Limits.php:92 src/Limits.php:101
 msgid "Choose a higher plan in your account (Plan)."
 msgstr "اختر اشتراكا أعلى من حسابك (الاشتراك)."
 
 #. translators: 1: number of projects, 2: hint.
-#: src/Limits.php:100
+#: src/Limits.php:101
 msgid "Your plan allows %1$d completed project. %2$s"
 msgid_plural "Your plan allows %1$d completed projects. %2$s"
 msgstr[0] "يسمح اشتراكك بـ %1$d إنجاز. %2$s"
@@ -517,7 +517,7 @@ msgstr[4] "يسمح اشتراكك بـ %1$d إنجاز. %2$s"
 msgstr[5] "يسمح اشتراكك بـ %1$d إنجاز. %2$s"
 
 #. translators: 1: number of answers, 2: hint.
-#: src/Limits.php:109
+#: src/Limits.php:110
 msgid "Your plan allows %1$d answer to requests for quotation per month. %2$s"
 msgid_plural ""
 "Your plan allows %1$d answers to requests for quotation per month. %2$s"
@@ -529,24 +529,33 @@ msgstr[4] "يسمح اشتراكك بـ %1$d رد على طلبات الأسعا
 msgstr[5] "يسمح اشتراكك بـ %1$d رد على طلبات الأسعار شهريا. %2$s"
 
 #. translators: 1: number of answers, 2: hint.
-#: src/Limits.php:109
+#: src/Limits.php:110
 msgid "Choose a higher plan in your account (Plan) to answer without limit."
 msgstr "اختر اشتراكا أعلى من حسابك (الاشتراك) للرد بلا حدود."
 
-#: src/Limits.php:137
+#: src/Limits.php:138
 msgid ""
 "Upgrade your plan to benefit from the AI assistant, or buy a pack of AI "
 "credits."
 msgstr ""
 "رقِّ اشتراكك للاستفادة من مساعد الذكاء الاصطناعي، أو اشترِ باقة أرصدة."
 
-#: src/Limits.php:139
+#: src/Limits.php:140
 msgid ""
 "You used all your AI credits this month. Upgrade your plan or buy a pack of "
 "AI credits."
 msgstr ""
 "استعملت كل أرصدة الذكاء الاصطناعي لهذا الشهر. رقِّ اشتراكك أو اشترِ باقة "
 "أرصدة."
+
+#. translators: 1: credits of the tool, 2: credits left.
+#: src/Limits.php:144
+msgid ""
+"This tool uses %1$s credits and you have %2$s left. Buy a pack of AI credits"
+" or upgrade your plan."
+msgstr ""
+"تستعمل هذه الأداة %1$s أرصدة ويتبقى لك %2$s. اشترِ باقة أرصدة أو رقِّ "
+"اشتراكك."
 
 #. translators: %d: number of listings or service pages.
 #: src/Notifications.php:31

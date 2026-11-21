@@ -1,5 +1,10 @@
 # Changelog — sm-subscriptions
 
+## 0.5.1 — 2026-11-21 (pour sm-ai 0.7.0)
+
+- Outils de plusieurs crédits : refus avec le prix quand il ne reste pas assez de crédits ; après l'appel, les crédits du mois d'abord, puis le bon nombre de crédits achetés.
+- Filtre `sm_ai_credit_value` : valeur d'un crédit en DA = pack le moins cher au crédit (pour les coûts et la marge de sm-ai).
+
 ## 0.5.0 — 2026-11-20 (pour sm-insights 0.1.0)
 
 - Formules : case **« Rapport Business du marché »** (`report`), cochée pour Entreprise Business seulement par défaut ; filtre `sm_insights_access` fourni à sm-insights. Ligne visible seulement quand sm-insights est actif.

@@ -89,7 +89,7 @@ final class Bridge {
 		return array(
 			'id'        => $id,
 			'label'     => $class::label(),
-			'credits'   => (int) $class::credits(),
+			'credits'   => Gateway::credits( $id ),
 			'state'     => Form::state_of( $ok ),
 			'reason'    => is_wp_error( $ok ) ? $ok->get_error_message() : '',
 			'remaining' => Gateway::remaining( $id, $company ),

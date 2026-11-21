@@ -81,7 +81,7 @@ $locked = static function ( $t ) {
 	<?php if ( $recognize ) : ?>
 		<?php $t = $ai['tools']['recognize']; ?>
 		<div class="smaip__tool" data-smaip-tool="recognize">
-			<button type="button" class="sm-btn sm-btn--ai-outline sm-btn--sm" data-smaip-run="recognize" <?php disabled( 'ok' !== $t['state'] ); ?>><?php sm_ai_badge( 'sm-ai-badge--sm' ); ?><span><?php echo esc_html( sprintf( /* translators: %d: credits. */ _n( 'Recognise from my photos · %d credit', 'Recognise from my photos · %d credits', max( 1, (int) $t['credits'] ), 'sm-marketplace' ), max( 1, (int) $t['credits'] ) ) ); ?></span></button>
+			<button type="button" class="sm-btn sm-btn--ai-outline sm-btn--sm" data-smaip-run="recognize" <?php disabled( 'ok' !== $t['state'] ); ?>><?php sm_ai_badge( 'sm-ai-badge--sm' ); ?><span><?php echo esc_html( __( 'Recognise from my photos', 'sm-marketplace' ) . ' · ' . sm_ai_price( $t['credits'] ) ); ?></span></button>
 			<small><?php echo esc_html( $locked( $t ) ?: __( 'Uses the photos of the form (end view with a tape measure if possible).', 'sm-marketplace' ) ); ?></small>
 			<div class="smaip__out" data-smaip-out aria-live="polite"></div>
 		</div>
@@ -89,7 +89,7 @@ $locked = static function ( $t ) {
 	<?php if ( $condition ) : ?>
 		<?php $t = $ai['tools']['condition']; ?>
 		<div class="smaip__tool" data-smaip-tool="condition">
-			<button type="button" class="sm-btn sm-btn--ai-outline sm-btn--sm" data-smaip-run="condition" <?php disabled( 'ok' !== $t['state'] ); ?>><?php sm_ai_badge( 'sm-ai-badge--sm' ); ?><span><?php echo esc_html( sprintf( /* translators: %d: credits. */ _n( 'Assess the condition from my photos · %d credit', 'Assess the condition from my photos · %d credits', max( 1, (int) $t['credits'] ), 'sm-marketplace' ), max( 1, (int) $t['credits'] ) ) ); ?></span></button>
+			<button type="button" class="sm-btn sm-btn--ai-outline sm-btn--sm" data-smaip-run="condition" <?php disabled( 'ok' !== $t['state'] ); ?>><?php sm_ai_badge( 'sm-ai-badge--sm' ); ?><span><?php echo esc_html( __( 'Assess the condition from my photos', 'sm-marketplace' ) . ' · ' . sm_ai_price( $t['credits'] ) ); ?></span></button>
 			<small><?php echo esc_html( $locked( $t ) ?: __( 'Uses the photos of the form (close views of the surfaces and of the ends).', 'sm-marketplace' ) ); ?></small>
 			<div class="smaip__out" data-smaip-out aria-live="polite"></div>
 			<p class="smaip__warn"><?php sm_icon( 'info' ); ?><span><?php esc_html_e( 'Visual estimate, not an inspection: the condition stays your statement. For a reuse in a structure, ask for an inspection by an engineer verified on ReuSteel.', 'sm-marketplace' ); ?> <a href="<?php echo esc_url( sm_page_url( 'engineers' ) ); ?>"><?php esc_html_e( 'Engineering', 'sm-marketplace' ); ?></a></span></p>
