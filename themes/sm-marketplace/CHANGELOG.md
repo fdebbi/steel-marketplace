@@ -1,5 +1,10 @@
 # Changelog — sm-marketplace
 
+## 0.58.0 — 2026-11-21 (avec sm-core 0.9.0, sm-products 0.23.0, sm-services 0.4.0)
+
+- **Liens des annonces** : `sm_page_url()` garde l'adresse faite par les extensions (`/annonce/ipe-200-s275jr-msila-552/`) au lieu d'y rajouter les arguments (les liens étaient `/annonce/552/?id=552`, une deuxième adresse pour la même page).
+- **Vitesse** : les 3 premières cartes d'une liste (2 en affichage liste) et la photo principale d'une annonce sont chargées tout de suite et en priorité (`fetchpriority="high"`) ; les suivantes quand elles arrivent à l'écran.
+
 ## 0.57.0 — 2026-11-21 (avec sm-seo 0.1.0)
 
 - Avec l'extension **SM SEO**, la page d'une annonce n'écrit plus son propre aperçu de partage (og:title, og:image) : l'extension écrit toutes les balises du `<head>` (titre, description, adresse canonique, aperçus, données structurées). Sans l'extension, l'aperçu du thème reste.

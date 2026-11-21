@@ -125,8 +125,8 @@ if ( $category && isset( $cats[ $category ] ) ) {
 
 		<?php if ( $result['items'] ) : ?>
 			<div class="sm-grid sm-grid--<?php echo esc_attr( $layout ); ?>">
-				<?php foreach ( $result['items'] as $item ) : ?>
-					<?php sm_component( 'card-listing', array( 'item' => $item, 'layout' => $layout ) ); ?>
+				<?php foreach ( array_values( $result['items'] ) as $i => $item ) : ?>
+					<?php sm_component( 'card-listing', array( 'item' => $item, 'layout' => $layout, 'eager' => $i < ( 'list' === $layout ? 2 : 3 ) ) ); ?>
 				<?php endforeach; ?>
 			</div>
 			<?php if ( $result['pages'] > 1 ) : ?>

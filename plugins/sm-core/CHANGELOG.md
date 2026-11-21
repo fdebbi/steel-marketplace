@@ -1,5 +1,11 @@
 # Changelog — sm-core
 
+## 0.9.0 — 2026-11-21 (avec sm-products 0.23.0, sm-services 0.4.0 et le thème 0.58.0)
+
+- **Adresses lisibles des annonces** : `/annonce/ipe-200-s275jr-msila-552/`. Le nom est fait **une fois**, à la première publication (colonne `slug` de l'index des annonces, base v7), et ne change plus ; le numéro à la fin trouve l'annonce. `/annonce/552/`, `?id=552` et un ancien nom redirigent en **301** vers l'adresse lisible, dans la langue de la page. Les annonces publiées avant reçoivent leur nom la première fois que leur adresse est demandée (filtre `sm_listing_slug_source`). Brouillon, en attente, au magasin : pas de nom, l'adresse reste `/annonce/{numéro}/`.
+- **Photos plus légères** : une photo JPEG envoyée par un champ « photos » du site est enregistrée en **WebP** avec toutes ses tailles (environ 25 à 35 % plus légère) quand le serveur sait l'écrire ; logos, fichiers joints, fiches techniques et anciennes photos inchangés (filtre `sm_core_webp`).
+- **Sécurité** : en-têtes `X-Content-Type-Options`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy`, `Permissions-Policy` (caméra et position pour le site seulement) — filtre `sm_core_security_headers` ; liste des utilisateurs de l'API REST fermée aux visiteurs et pages `?author=` en « introuvable » (les identifiants ne sont plus donnés) ; XML-RPC coupé (filtre `sm_core_xmlrpc`) ; version de WordPress retirée des pages.
+
 ## 0.8.6 — 2026-11-18
 
 - Fenêtre de message centrée commune (`assets/js/sm-dialog.js`, `assets/css/sm-dialog.css`, `Support\Dialog`) : `smDialog.open()` (question, action définitive en rouge, réussite qui se ferme seule, avertissement, lignes cliquables) et tout bouton `data-sm-confirm`. Enregistrée pour le site (le thème l'utilise) et chargée sur les pages ReuSteel de l'administration, où les questions et les messages « Enregistré » s'ouvrent aussi au centre.

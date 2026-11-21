@@ -77,6 +77,7 @@ final class Installer {
 				created_at datetime NOT NULL,
 				updated_at datetime NOT NULL,
 				published_at datetime DEFAULT NULL,
+				slug varchar(120) NOT NULL DEFAULT '',
 				PRIMARY KEY  (id),
 				KEY kind_status (kind,status,published_at),
 				KEY company_status (company_id,status)

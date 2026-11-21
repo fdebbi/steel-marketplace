@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.23.0 — 2026-11-21 (avec sm-core 0.9.0)
+
+- Nom de l'adresse lisible d'une annonce, donné à sm-core à la première publication : désignation et nuance pour l'acier neuf du catalogue (« IPE 200 S275JR »), titre français du vendeur pour le réemploi et les bâtiments, puis la wilaya. Les annonces publiées avant le reçoivent la première fois que leur adresse est demandée.
+
 ## 0.22.1 — 2026-11-21
 
 - **Vrais chiffres de l'accueil** (donnée `stats`) : annonces en ligne de tous les marchés, comptes vendeurs actifs (entreprises et professionnels), acier proposé au réemploi (kg), wilayas ; gardés une heure. Avant, aucune extension ne les fournissait et l'accueil montrait les chiffres de démonstration du thème.

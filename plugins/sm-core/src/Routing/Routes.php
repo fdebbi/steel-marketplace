@@ -2,7 +2,9 @@
 /**
  * Clean URLs for the pages the theme creates, and access rules.
  *
- *   /annonce/302/          listing detail     (query var sm_id)
+ *   /annonce/ipe-200-s275jr-msila-302/   listing detail (query var sm_id; 0.9.0: the
+ *                          name before the number is read-only, /annonce/302/ and
+ *                          ?id=302 are sent there with a 301)
  *   /entreprise/acier-x/   company profile    (query var sm_c)
  *   /compte/annonces/      dashboard view     (query var sm_view)
  *
@@ -55,6 +57,7 @@ final class Routes {
 		add_action( 'add_option_sm_theme_pages', array( __CLASS__, 'schedule_flush' ) );
 		add_action( 'init', array( __CLASS__, 'maybe_flush' ), 99 );
 		add_action( 'template_redirect', array( __CLASS__, 'access_rules' ), 5 );
+		add_action( 'template_redirect', array( __CLASS__, 'listing_address' ), 1 );
 		add_filter( 'sm_page_url', array( __CLASS__, 'filter_page_url' ), 10, 3 );
 	}
 
@@ -74,7 +77,7 @@ final class Routes {
 		$company = self::page_path( 'company' );
 		$account = self::page_path( 'account' );
 		if ( $listing ) {
-			add_rewrite_rule( '^' . preg_quote( $listing, '#' ) . '/([0-9]+)/?$', 'index.php?page_id=' . self::page_id( 'listing' ) . '&sm_id=$matches[1]', 'top' );
+			add_rewrite_rule( '^' . preg_quote( $listing, '#' ) . '/(?:[a-z0-9-]*-)?([0-9]+)/?$', 'index.php?page_id=' . self::page_id( 'listing' ) . '&sm_id=$matches[1]', 'top' );
 		}
 		if ( $company ) {
 			add_rewrite_rule( '^' . preg_quote( $company, '#' ) . '/([a-z0-9-]+)/?$', 'index.php?page_id=' . self::page_id( 'company' ) . '&sm_c=$matches[1]', 'top' );
@@ -123,7 +126,8 @@ final class Routes {
 		$pretty = (bool) get_option( 'permalink_structure' );
 
 		if ( $pretty && 'listing' === $key && ! empty( $args['id'] ) ) {
-			$base = trailingslashit( $base ) . absint( $args['id'] ) . '/';
+			$slug = \SM\Core\Listings\Index::slug( absint( $args['id'] ) );
+			$base = trailingslashit( $base ) . ( '' !== $slug ? $slug . '-' : '' ) . absint( $args['id'] ) . '/';
 			unset( $args['id'] );
 		} elseif ( $pretty && 'company' === $key && ! empty( $args['c'] ) ) {
 			$base = trailingslashit( $base ) . sanitize_title( $args['c'] ) . '/';
@@ -140,6 +144,40 @@ final class Routes {
 
 	public static function filter_page_url( $url, $key, $args ) {
 		return self::url( $key, (array) $args );
+	}
+
+	/**
+	 * One address per listing (0.9.0): /annonce/552/, ?id=552 or an old name are
+	 * sent to /annonce/{name}-552/ with a 301 (links already shared keep working).
+	 */
+	public static function listing_address() {
+		if ( 'GET' !== ( $_SERVER['REQUEST_METHOD'] ?? 'GET' ) || ! get_option( 'permalink_structure' ) || ! is_page() || (int) get_queried_object_id() !== self::page_id( 'listing' ) ) {
+			return;
+		}
+		$id = absint( get_query_var( 'sm_id' ) );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$by_arg = ! $id && isset( $_GET['id'] );
+		if ( $by_arg ) {
+			$id = absint( wp_unslash( $_GET['id'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		}
+		if ( ! $id || ! \SM\Core\Listings\Index::get( $id ) ) {
+			return;
+		}
+		$slug   = \SM\Core\Listings\Index::slug( $id );
+		$wanted = ( '' !== $slug ? $slug . '-' : '' ) . $id;
+		$asked  = basename( untrailingslashit( (string) ( $GLOBALS['wp']->request ?? '' ) ) );
+		if ( ! $by_arg && $asked === $wanted ) {
+			return;
+		}
+		$args = array();
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		foreach ( (array) $_GET as $k => $v ) {
+			if ( 'id' !== $k && is_scalar( $v ) ) {
+				$args[ sanitize_key( $k ) ] = sanitize_text_field( wp_unslash( (string) $v ) );
+			}
+		}
+		wp_safe_redirect( self::url( 'listing', array_merge( $args, array( 'id' => $id ) ) ), 301 );
+		exit;
 	}
 
 	/** Login required for the dashboard; signed-in users skip login/register pages. */

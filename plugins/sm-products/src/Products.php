@@ -288,6 +288,38 @@ final class Products {
 		return true;
 	}
 
+	/**
+	 * Words of the readable address of a listing (sm-core makes the slug once):
+	 * « IPE 200 S275JR M'Sila » for new steel of the catalogue, the French title of
+	 * the seller otherwise, then the wilaya.
+	 */
+	public static function slug_source( $p ) {
+		$words = '';
+		if ( 'products' === $p->market && ! empty( $p->family ) && '' !== (string) $p->designation ) {
+			$words = trim( $p->designation . ' ' . $p->grade );
+		} else {
+			$t     = Translations::get( 'product', $p->id );
+			$words = trim( (string) ( $t['title']['fr'] ?? '' ) );
+			if ( '' === $words || ! preg_match( '/[a-z0-9]/i', $words ) ) {
+				$words = trim( $p->designation . ' ' . $p->grade );
+			}
+		}
+		if ( '' === $words ) {
+			return '';
+		}
+		$wilaya = class_exists( '\SM\Core\Accounts\Wilayas' ) && $p->wilaya ? (string) \SM\Core\Accounts\Wilayas::name( $p->wilaya, 'fr' ) : '';
+		return trim( $words . ' ' . $wilaya );
+	}
+
+	/** Older listings (before 0.23.0): their slug is made the first time their address is asked. */
+	public static function filter_slug_source( $source, $row ) {
+		if ( '' !== $source || ! in_array( $row->module ?? '', array( 'products', 'reuse', 'buildings' ), true ) ) {
+			return $source;
+		}
+		$p = self::get( (int) $row->entity_id );
+		return $p ? self::slug_source( $p ) : $source;
+	}
+
 	/** Keep the cross-market index in step. */
 	public static function index( $id ) {
 		global $wpdb;
@@ -311,6 +343,7 @@ final class Products {
 				'total_weight' => $p->total_weight,
 				'status'       => $p->status,
 				'published_at' => $p->published_at,
+				'slug_source'  => 'published' === $p->status ? self::slug_source( $p ) : '', // 0.23.0: made once, at the first publication.
 			)
 		);
 		if ( $listing_id !== $p->listing_id ) {

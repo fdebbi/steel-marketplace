@@ -34,7 +34,7 @@ $drawing = ! empty( $item['image_drawing'] ) || ( $slide && $first['src'] === $s
 ?>
 <div class="sm-gallery" data-sm-gallery>
 	<figure class="sm-gallery__main<?php echo $drawing ? ' is-drawing' : ''; ?><?php echo $first['sheet'] ? ' has-sheet' : ''; ?>" data-sm-gallery-figure>
-		<img src="<?php echo esc_url( $first['src'] ); ?>" alt="<?php echo esc_attr( sm_t( $item['title'] ) ); ?>" width="1280" height="960" data-sm-gallery-main>
+		<img src="<?php echo esc_url( $first['src'] ); ?>" alt="<?php echo esc_attr( sm_t( $item['title'] ) ); ?>" width="1280" height="960" fetchpriority="high" decoding="async" data-sm-gallery-main>
 		<?php if ( $sheet ) : ?>
 			<div class="sm-gallery__sheet" data-sm-gallery-sheet<?php echo $first['sheet'] ? '' : ' hidden'; ?>><?php sm_component( 'section-sheet', array( 'sheet' => $sheet ) ); ?></div>
 		<?php endif; ?>

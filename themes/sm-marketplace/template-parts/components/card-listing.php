@@ -2,7 +2,7 @@
 /**
  * Listing card for products, reuse items and buildings.
  *
- * @var array $args { item: array, layout?: 'grid'|'list' }
+ * @var array $args { item: array, layout?: 'grid'|'list', eager?: bool (0.58.0: first cards of a list, photo loaded at once and first) }
  * @package SM_Marketplace
  */
 
@@ -19,7 +19,7 @@ $market  = $item['market'];
 ?>
 <article class="sm-card sm-card--listing sm-card--<?php echo esc_attr( $market ); ?>">
 	<a class="sm-card__media<?php echo ! empty( $item['image_drawing'] ) ? ' is-drawing' : ''; ?>" href="<?php echo esc_url( $url ); ?>" tabindex="-1" aria-hidden="true">
-		<img src="<?php echo esc_url( sm_image_url( $item['image'] ?? '' ) ); ?>" alt="" loading="lazy" decoding="async" width="640" height="480">
+		<img src="<?php echo esc_url( sm_image_url( $item['image'] ?? '' ) ); ?>" alt="" <?php echo empty( $args['eager'] ) ? 'loading="lazy"' : 'fetchpriority="high"'; ?> decoding="async" width="640" height="480">
 		<?php if ( count( (array) ( $item['photos'] ?? array() ) ) > 1 ) : ?>
 			<span class="sm-card__more" dir="ltr"><?php sm_icon( 'camera' ); ?><?php echo esc_html( count( $item['photos'] ) ); ?></span>
 		<?php endif; ?>

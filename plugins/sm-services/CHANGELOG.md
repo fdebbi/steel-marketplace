@@ -1,5 +1,9 @@
 # Changelog — sm-services
 
+## 0.4.0 — 2026-11-21 (avec sm-core 0.9.0)
+
+- **Adresse lisible** des pages de service : `/service/decoupe-plasma-oran-12/` (nom du service + wilaya de l'entreprise), fait une fois à la publication (colonne `slug`, base v5) ; `/service/12/` et `?id=12` redirigent en 301.
+
 ## 0.3.6 — 2026-11-12 (Phase 10)
 
 - Filtres `sm_services_limit` (pages de services) et `sm_portfolio_limit` (réalisations) à l'enregistrement.

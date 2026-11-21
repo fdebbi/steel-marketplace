@@ -163,6 +163,7 @@ final class Installer {
 				featured tinyint(1) NOT NULL DEFAULT 0,
 				published_at datetime DEFAULT NULL,
 				updated_at datetime DEFAULT NULL,
+				slug varchar(120) NOT NULL DEFAULT '',
 				PRIMARY KEY  (id),
 				UNIQUE KEY module_entity (module,entity_id),
 				KEY status_module (status,module,published_at),

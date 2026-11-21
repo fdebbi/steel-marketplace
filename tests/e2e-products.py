@@ -115,7 +115,7 @@ with sync_playwright() as p:
     print('\nD. Public pages')
     pub = b.new_page(viewport={'width': 1280, 'height': 900})
     pub.goto(BASE + '/produits/?category=profiles')
-    CARD = '.sm-card--listing:has(a[href*="/annonce/%s/"])' % lid
+    CARD = '.sm-card--listing:has(a[href$="-%s/"], a[href$="/annonce/%s/"])' % (lid, lid)
     check(pub.locator(CARD).count() == 1 and TITLE in txt(pub, CARD), 'listed in the products market under its generated title')
     pub.goto(BASE + '/annonce/%s/' % lid)
     spec = pub.locator('.sm-spec').text_content()

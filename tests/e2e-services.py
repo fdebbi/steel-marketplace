@@ -82,7 +82,7 @@ with sync_playwright() as p:
     fp.fill('#sms-price', '120'); fp.select_option('#sms-unit', 'kg')
     fp.set_input_files('input[name="photos[]"]', os.path.join(FIX, 'photo.jpg'))
     fp.click('.sms-form button[type="submit"]'); fp.wait_for_load_state()
-    m = re.search(r'/service/(\d+)/', fp.url); sid = m.group(1) if m else ''
+    m = re.search(r'/service/(?:[a-z0-9-]*-)?(\d+)/', fp.url); sid = m.group(1) if m else ''
     check(sid and 'enregistrée' in txt(fp, '.sm-notice--success') and fp.locator('.sms-detail .smq-actions a:has-text("Modifier")').count() == 1, 'service saved; provider taken to the page, with his own actions')
     fp.goto(BASE + '/compte/services/')
     check('Soudage' in txt(fp, '.smp-list') and 'Publié' in txt(fp, '.smp-list'), 'listed as published in "My services", titled with the service name')
@@ -145,7 +145,7 @@ with sync_playwright() as p:
     check(pub.locator('#smc-references .sms-ref:has-text("%s")' % TAG).count() == 1 and pub.locator('.smc-tabs a[href="#smc-references"]').count() == 1, 'professional profile shows the completed projects')
     pub.screenshot(path=os.path.join(OUT, 'professional-profile-1280.png'), full_page=True)
     pub.click('#smc-references .sms-ref__zoom')
-    check(pub.locator('dialog.sm-lightbox[open] img[src$=".jpg"]').count() == 1, 'clicking a completed-project photo opens it large')
+    check(pub.locator('dialog.sm-lightbox[open] img[src$=".jpg"], dialog.sm-lightbox[open] img[src$=".webp"]').count() == 1, 'clicking a completed-project photo opens it large')
     pub.screenshot(path=os.path.join(OUT, 'project-photo-1280.png'))
     pub.keyboard.press('Escape')
     check(pub.locator('dialog.sm-lightbox[open]').count() == 0, 'Escape closes the photo viewer')

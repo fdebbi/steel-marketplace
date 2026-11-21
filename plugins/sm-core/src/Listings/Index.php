@@ -8,6 +8,12 @@
  * The market plugins keep their own detailed tables and call sync() whenever
  * a listing changes.
  *
+ * Readable address (0.9.0): /annonce/ipe-200-s275jr-msila-552/. The name is made
+ * once, from the « slug_source » given by the market at the first publication (or later
+ * through the filter sm_listing_slug_source for the older listings), and never
+ * changes after: the address stays stable for the search engines. The number at
+ * the end finds the listing, so an old or wrong name never breaks a link.
+ *
  * @package SM\Core
  */
 
@@ -33,7 +39,12 @@ final class Index {
 		$table = sm_table( 'listing_index' );
 		$row   = array_intersect_key( $fields, array_flip( self::FIELDS ) );
 		$row['updated_at'] = current_time( 'mysql', true );
-		$id    = (int) $wpdb->get_var( $wpdb->prepare( "SELECT id FROM {$table} WHERE module = %s AND entity_id = %d", $module, $entity_id ) ); // phpcs:ignore WordPress.DB
+		$slug  = self::make_slug( (string) ( $fields['slug_source'] ?? '' ) );
+		$old   = $wpdb->get_row( $wpdb->prepare( "SELECT id, slug FROM {$table} WHERE module = %s AND entity_id = %d", $module, $entity_id ) ); // phpcs:ignore WordPress.DB
+		$id    = $old ? (int) $old->id : 0;
+		if ( '' !== $slug && ( ! $old || '' === (string) $old->slug ) ) {
+			$row['slug'] = $slug; // Made once, never changed after.
+		}
 		if ( $id ) {
 			$wpdb->update( $table, $row, array( 'id' => $id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		} else {
@@ -61,6 +72,46 @@ final class Index {
 			wp_cache_set( 'listing_' . (int) $id, $row ? $row : 0, 'sm', HOUR_IN_SECONDS );
 		}
 		return $row ? $row : null;
+	}
+
+	/**
+	 * Name of a listing in its address ('' when none can be made). Older listings
+	 * get theirs the first time their address is asked (filter sm_listing_slug_source).
+	 */
+	public static function slug( $id ) {
+		$row = self::get( $id );
+		if ( ! $row ) {
+			return '';
+		}
+		$slug = (string) ( $row->slug ?? '' );
+		// Not yet public (draft, waiting, in the store): no name yet, the address is /annonce/{id}/.
+		if ( '' === $slug && ! in_array( (string) $row->status, array( 'draft', 'pending', 'stock', 'rejected' ), true ) ) {
+			$slug = self::make_slug( (string) apply_filters( 'sm_listing_slug_source', '', $row ) );
+			if ( '' !== $slug ) {
+				global $wpdb;
+				$wpdb->update( sm_table( 'listing_index' ), array( 'slug' => $slug ), array( 'id' => (int) $row->id ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+				wp_cache_delete( 'listing_' . (int) $row->id, 'sm' );
+			}
+		}
+		return $slug;
+	}
+
+	/** « IPE 200 S275JR M'Sila » → « ipe-200-s275jr-msila » (latin letters, 80 characters at most). */
+	public static function make_slug( $text ) {
+		$text = trim( (string) $text );
+		if ( '' === $text ) {
+			return '';
+		}
+		$text = str_replace( array( '’', "'", '×' ), array( '', '', 'x' ), $text );
+		$slug = sanitize_title( remove_accents( $text ) );
+		$slug = preg_replace( '/[^a-z0-9-]+/', '', strtolower( rawurldecode( $slug ) ) );
+		$slug = trim( preg_replace( '/-+/', '-', $slug ), '-' );
+		if ( strlen( $slug ) > 80 ) {
+			$slug = substr( $slug, 0, 80 );
+			$cut  = strrpos( $slug, '-' );
+			$slug = $cut > 40 ? substr( $slug, 0, $cut ) : $slug;
+		}
+		return trim( $slug, '-' );
 	}
 
 	public static function find( $module, $entity_id ) {

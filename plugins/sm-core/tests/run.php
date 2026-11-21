@@ -571,6 +571,42 @@ $pt = $cm::point( '19', 'Setif' );
 sm_assert( $pt && abs( $pt[0] - 36.19 ) < 0.05 && abs( $pt[1] - 5.41 ) < 0.05, 'centre of Sétif for the maps' );
 sm_assert( null !== $cm::find( '68', 'Bou Saada' ) && null === $cm::find( '28', 'Bou Saada' ), 'Bou Saâda in its new wilaya (68)' );
 
+sm_section( 'Readable addresses (0.9.0)' );
+$ix = \SM\Core\Listings\Index::class;
+sm_assert( 'ipe-200-s275jr-msila' === $ix::make_slug( "IPE 200 S275JR M'Sila" ), 'IPE 200 S275JR M\'Sila → ipe-200-s275jr-msila' );
+sm_assert( 'hangar-40-x-20-monte-bejaia' === $ix::make_slug( 'Hangar 40 × 20 monté Béjaïa' ), 'accents and × written in latin letters' );
+sm_assert( '' === $ix::make_slug( 'عارضة' ) && strlen( $ix::make_slug( str_repeat( 'profile ', 30 ) ) ) <= 80, 'Arabic only → no name; 80 characters at most' );
+$lid = $ix::sync( 'zztest', 990001, array( 'company_id' => 0, 'status' => 'draft', 'slug_source' => '' ) );
+sm_assert( '' === $ix::slug( $lid ), 'draft: no name, address /annonce/{id}/' );
+$ix::sync( 'zztest', 990001, array( 'status' => 'published', 'slug_source' => 'IPE 300 Oran' ) );
+sm_assert( 'ipe-300-oran' === $ix::slug( $lid ), 'named at the publication' );
+$ix::sync( 'zztest', 990001, array( 'status' => 'published', 'slug_source' => 'HEA 100 Alger' ) );
+sm_assert( 'ipe-300-oran' === $ix::slug( $lid ), 'the name never changes after (stable address)' );
+if ( get_option( 'permalink_structure' ) ) {
+	sm_assert( (bool) preg_match( '#/ipe-300-oran-' . $lid . '/$#', \SM\Core\Routing\Routes::url( 'listing', array( 'id' => $lid ) ) ), 'address /annonce/ipe-300-oran-{id}/' );
+}
+$ix::remove( 'zztest', 990001 );
+
+sm_section( 'Security and photos (0.9.0)' );
+$h = \SM\Core\Security\Hardening::header_list();
+sm_assert( 'nosniff' === $h['X-Content-Type-Options'] && 'SAMEORIGIN' === $h['X-Frame-Options'] && false !== strpos( $h['Permissions-Policy'], 'camera=(self)' ), 'security headers (camera and position kept for the site)' );
+wp_set_current_user( 0 );
+$routes = rest_get_server()->get_routes();
+sm_assert( ! isset( $routes['/wp/v2/users'] ), 'visitor: no REST list of the users (names not given away)' );
+sm_assert( false === apply_filters( 'xmlrpc_enabled', true ), 'XML-RPC off' );
+$fmt = \SM\Core\Content\ImageFormat::class;
+sm_assert( array() === $fmt::output_format( array() ), 'outside a photo field: formats unchanged' );
+$fmt::begin( 'photos' );
+$out = $fmt::output_format( array() );
+$fmt::end();
+sm_assert( ! $fmt::enabled() || 'image/webp' === ( $out['image/jpeg'] ?? '' ), 'photos: JPEG saved in WebP (when the server can)' );
+$fmt::begin( 'logo' );
+sm_assert( array() === $fmt::output_format( array() ), 'logo: stays as sent (e-mails)' );
+$fmt::end();
+$fmt::begin( 'files' );
+sm_assert( array() === $fmt::output_format( array() ), 'attached files: sent as they are' );
+$fmt::end();
+
 sm_test_cleanup();
 
 $t = $GLOBALS['sm_t'];

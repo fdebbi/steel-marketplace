@@ -202,7 +202,7 @@ with sync_playwright() as p:
     print('\nD. Public pages')
     pub = b.new_page(viewport={'width': 1280, 'height': 900}, reduced_motion='reduce')
     pub.goto(BASE + '/batiments/')
-    ca = '.sm-card--listing:has(a[href*="/annonce/%s/"])' % la; cd = '.sm-card--listing:has(a[href*="/annonce/%s/"])' % ld
+    ca = '.sm-card--listing:has(a[href$="-%s/"], a[href$="/annonce/%s/"])' % (la, la); cd = '.sm-card--listing:has(a[href$="-%s/"], a[href$="/annonce/%s/"])' % (ld, ld)
     check(pub.locator(ca).count() == 1 and pub.locator(cd).count() == 1, 'both buildings listed in the buildings market')
     check('800 m²' in txt(pub, ca) and '40 × 20 × 6 m' in txt(pub, ca), 'card: dimensions and area')
     pub.goto(BASE + '/batiments/?mode=dismantled')
@@ -335,7 +335,7 @@ with sync_playwright() as p:
     check('vendu par élément' in pb.lower() and 'prix du bâtiment complet' not in pb.lower() and '38 pièces' in txt(pub, '.smb-stock'), 'accepted: 38 pieces left, the whole-building sale is closed, the listing is sold by element')
     bp.goto(BASE + '/annonce/%s/' % la)
     bp.click('.smb-insp a'); bp.wait_for_load_state()
-    check('/demander-une-etude/' in bp.url and bp.locator('.smx-only[data-part="expertise"] input[name="services[]"][value="expertise"]').count() == 1 and bp.input_value('#m-title').startswith('Inspection : Hangars') and '40 × 20 × 6 m' in bp.input_value('#m-desc') and ('/annonce/%s/' % la) in bp.input_value('#m-desc') and '40 × 20 × 6 m' in txt(bp, '.sme-pre'), 'inspection request: service ticked, building, dimensions and link already filled in')
+    check('/demander-une-etude/' in bp.url and bp.locator('.smx-only[data-part="expertise"] input[name="services[]"][value="expertise"]').count() == 1 and bp.input_value('#m-title').startswith('Inspection : Hangars') and '40 × 20 × 6 m' in bp.input_value('#m-desc') and re.search(r'/annonce/([a-z0-9-]+-)?%s/' % la, bp.input_value('#m-desc')) and '40 × 20 × 6 m' in txt(bp, '.sme-pre'), 'inspection request: service ticked, building, dimensions and link already filled in')
     check('Wilaya où vous voulez remonter' in txt(bp, 'label[for="m-wilaya"]') and bp.input_value('#m-wilaya') == '', 'the buyer only adds where the building will be reassembled')
     check(bp.is_checked('input[name="project_type"][value="industrial"]') and bp.is_checked('input[name="part"][value="expertise"]') and bp.input_value('#smx-exp_w') == '20', 'type of project already chosen from the category of the building (industrial), part "expertise", approximate dimensions filled in (0.39.0)')
     bp.click('.smx-chip:has(input[value="existing"])')

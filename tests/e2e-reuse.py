@@ -143,7 +143,7 @@ with sync_playwright() as p:
     print('\nD. Public pages')
     pub = b.new_page(viewport={'width': 1280, 'height': 900}, reduced_motion='reduce')
     pub.goto(BASE + '/reemploi/')
-    card = '.sm-card--listing:has(a[href*="/annonce/%s/"])' % lid
+    card = '.sm-card--listing:has(a[href$="-%s/"], a[href$="/annonce/%s/"])' % (lid, lid)
     check(pub.locator(card).count() == 1, 'listed in the reuse market')
     pub.goto(BASE + '/reemploi/?condition=excellent')
     check(pub.locator(card).count() == 0, 'condition filter')

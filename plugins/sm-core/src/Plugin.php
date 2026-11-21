@@ -30,6 +30,8 @@ final class Plugin {
 		Notifications\Notifications::init();
 		Enquiries\Enquiries::init();
 		Listings\Index::init();
+		Security\Hardening::init(); // 0.9.0
+		Content\ImageFormat::init(); // 0.9.0
 		Audit\AuditLog::init();
 		Mail\Activity::init();
 		Mail\Contact::init();

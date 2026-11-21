@@ -538,3 +538,12 @@ Validé sur la maquette 0.37.
 - **Robots des IA : choix A** — les moteurs de recherche IA (ChatGPT Search, Perplexity, Claude…) peuvent lire et citer les pages publiques ; les robots qui collectent des textes pour entraîner des modèles (GPTBot, Google-Extended, ClaudeBot, CCBot…) sont refusés. Modifiable dans SM → SEO. `llms.txt` publié.
 - Réglages SM → SEO : robots des IA, image de partage par défaut, codes de validation Google Search Console et Bing Webmaster Tools.
 - Phase 2 à décider : adresses lisibles des annonces (`/annonce/ipe-200-s275jr-alger-101/`), vitesse (images WebP). Phase 3 : pages de contenu (seulement avec de vraies annonces), guides.
+
+## Référencement phase 2, vitesse et sécurité (2026-11-21)
+
+- Le client laisse le choix de la meilleure solution (« rapide, fluide, visible et sécurisé »).
+- **Adresses lisibles** : `/annonce/{nom}-{numéro}/` et `/service/{nom}-{numéro}/` ; nom fait une fois à la première publication (jamais modifié ensuite, pour la stabilité dans Google), en lettres latines pour les trois langues ; anciennes adresses en 301 (liens partagés et e-mails déjà envoyés intacts).
+- **Photos en WebP** à l'envoi (champs photos seulement) ; anciennes photos non converties (pas de conversion en masse sur l'hébergement mutualisé) ; logos laissés tels quels (e-mails).
+- Premières photos visibles chargées en priorité ; pas d'extension de cache en plus (cache LiteSpeed de Hostinger), pas de CDN payant.
+- **Sécurité** : en-têtes de sécurité, identifiants des utilisateurs non publiés (API REST, `?author=`), XML-RPC coupé, version de WordPress masquée.
+

@@ -66,6 +66,7 @@ final class Media {
 		require_once ABSPATH . 'wp-admin/includes/image.php';
 		require_once ABSPATH . 'wp-admin/includes/media.php';
 		$files = $_FILES[ $field ]; // phpcs:ignore WordPress.Security
+		ImageFormat::begin( $field ); // 0.9.0: photos in WebP.
 		foreach ( $files['name'] as $i => $name ) {
 			if ( UPLOAD_ERR_NO_FILE === (int) $files['error'][ $i ] ) {
 				continue;
@@ -102,6 +103,7 @@ final class Media {
 			}
 			$out['ids'][] = (int) $id;
 		}
+		ImageFormat::end();
 		return $out;
 	}
 }

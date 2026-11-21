@@ -253,11 +253,12 @@ function sm_tonnes( $kg ) {
  */
 function sm_page_url( $key, $args = array() ) {
 	$url = apply_filters( 'sm_page_url', '', $key, $args );
-	if ( ! $url ) {
-		$map     = get_option( 'sm_theme_pages', array() );
-		$page_id = $map[ $key ] ?? 0;
-		$url     = $page_id ? get_permalink( $page_id ) : home_url( '/' );
+	if ( $url ) {
+		return $url; // 0.58.0: the routing plugins already place the arguments (/annonce/{name}-552/, not /annonce/552/?id=552).
 	}
+	$map     = get_option( 'sm_theme_pages', array() );
+	$page_id = $map[ $key ] ?? 0;
+	$url     = $page_id ? get_permalink( $page_id ) : home_url( '/' );
 	return $args ? add_query_arg( $args, $url ) : $url;
 }
 
