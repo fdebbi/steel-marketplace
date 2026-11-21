@@ -1,5 +1,10 @@
 # Changelog — sm-marketplace
 
+## 0.56.1 — 2026-11-21
+
+- **Correction (téléphone)** : sur l'accueil, le titre et le texte des cartes « Marchés » se superposaient depuis 0.54.0 — les cartes de « Explorer la marketplace » reprenaient les mêmes noms de styles (`sm-market`). Elles ont maintenant les leurs (`sm-xmarket`) ; l'accueil retrouve son aspect.
+- Test visuel : page « Explorer la marketplace » ajoutée, et contrôle « titre et texte d'une carte dessinés l'un sur l'autre » (cartes Marchés, marchés d'Explorer, types, outils IA).
+
 ## 0.56.0 — 2026-11-21
 
 - **Attente de l'IA** : un seul cercle — l'anneau mauve tourne, l'icône ✦ au centre grossit et rétrécit ; plus de barre d'avancement. Dans une zone basse (barre de recherche intelligente, bouton d'un formulaire), le cercle et le texte se placent côte à côte **dans la zone** (`.is-compact`) : plus de texte qui déborde sur les annonces. Animations arrêtées si l'utilisateur les réduit.

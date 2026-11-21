@@ -54,23 +54,23 @@ if ( $category && isset( $cats[ $category ] ) ) {
 			<?php endif; ?>
 		</div>
 		<?php if ( $explore && $browsing ) : // After a search by keyword, the results come first (the types stay in the panel). ?>
-			<ul class="sm-markets">
+			<ul class="sm-xmarkets">
 				<?php foreach ( $explore['markets'] as $key => $m ) : ?>
 					<li>
-						<a class="sm-market sm-market--<?php echo esc_attr( $key ); ?>" href="<?php echo esc_url( $m['url'] ); ?>">
-							<span class="sm-market__icon" aria-hidden="true"><?php sm_icon( $m['icon'] ); ?></span>
-							<span class="sm-market__text">
+						<a class="sm-xmarket sm-xmarket--<?php echo esc_attr( $key ); ?>" href="<?php echo esc_url( $m['url'] ); ?>">
+							<span class="sm-xmarket__icon" aria-hidden="true"><?php sm_icon( $m['icon'] ); ?></span>
+							<span class="sm-xmarket__text">
 								<strong><?php echo esc_html( $m['label'] ); ?></strong>
 								<small><?php echo esc_html( $m['text'] ); ?></small>
 								<b><?php echo esc_html( 0 === $m['count'] ? __( 'No listing yet', 'sm-marketplace' ) : sprintf( /* translators: %s: number of listings. */ _n( '%s listing', '%s listings', $m['count'], 'sm-marketplace' ), sm_number( $m['count'] ) ) ); ?></b>
 							</span>
-							<span class="sm-market__go"><?php esc_html_e( 'See the market', 'sm-marketplace' ); ?><?php sm_icon( 'arrow-end' ); ?></span>
+							<span class="sm-xmarket__go"><?php esc_html_e( 'See the market', 'sm-marketplace' ); ?><?php sm_icon( 'arrow-end' ); ?></span>
 						</a>
 					</li>
 				<?php endforeach; ?>
 			</ul>
 			<?php if ( $explore['types'] ) : ?>
-				<p class="sm-markets__sub"><?php esc_html_e( 'Types with listings', 'sm-marketplace' ); ?></p>
+				<p class="sm-xmarkets__sub"><?php esc_html_e( 'Types with listings', 'sm-marketplace' ); ?></p>
 				<?php sm_component( 'type-tiles', array( 'tabs' => $explore['types'], 'current' => '', 'action' => $action ) ); ?>
 			<?php endif; ?>
 		<?php elseif ( $tabs ) : ?>

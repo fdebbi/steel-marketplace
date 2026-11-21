@@ -6,6 +6,7 @@ For every page x language (fr, ar) x width (360…1440 px) it:
   - checks <html dir> matches the language,
   - detects horizontal overflow (document wider than the viewport) and names the
     widest offending elements,
+  - detects a title and its text drawn over each other in the cards (0.56.1),
   - saves a full-page screenshot.
 Writes report.json and prints a summary. Exit code 1 if any check fails.
 
@@ -24,6 +25,7 @@ WIDTHS = [360, 390, 430, 768, 1024, 1280, 1440]
 # name: (path, account) — account None = visitor, 'com' = business, 'eng' = engineering.
 PAGES = {
     'home': '/',
+    'explore': '/recherche/',
     'products': '/produits/',
     'reuse': '/reemploi/',
     'buildings': '/batiments/',
@@ -99,6 +101,29 @@ OVERFLOW_JS = """() => {
   return { vw, sw, dir: document.documentElement.dir, lang: document.documentElement.lang, offenders };
 }"""
 
+# Title and text of a card drawn over each other (0.56.1: the home « Markets » cards).
+OVERLAP_PAIRS = [
+    ('.sm-market', '.sm-market__label', '.sm-market__desc'),
+    ('.sm-xmarket', '.sm-xmarket__text strong', '.sm-xmarket__text small'),
+    ('.sm-xmarket', '.sm-xmarket__text strong', '.sm-xmarket__text b'),
+    ('.sm-typetile', '.sm-typetile__text strong', '.sm-typetile__text small'),
+    ('.smai-card', '.smai-card__title', ':scope > p'),
+]
+OVERLAP_JS = """(pairs) => {
+  const out = [];
+  const hit = (a, b) => a.width && b.width && a.height && b.height && a.left < b.right - 1 && b.left < a.right - 1 && a.top < b.bottom - 1 && b.top < a.bottom - 1;
+  for (const [box, x, y] of pairs) {
+    for (const c of document.querySelectorAll(box)) {
+      const a = c.querySelector(x), b = c.querySelector(y);
+      // The drawn text (a range), not the box: a squeezed box can be 0 wide while its text spills over.
+      const rect = (el) => { const r = document.createRange(); r.selectNodeContents(el); return r.getBoundingClientRect(); };
+      if (a && b && hit(rect(a), rect(b))) { out.push(box + ': ' + a.textContent.trim().slice(0, 30)); }
+      if (out.length > 4) return out;
+    }
+  }
+  return out;
+}"""
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     results, failures = [], 0
@@ -119,8 +144,9 @@ def main():
                     page.goto(url, wait_until='networkidle')
                     page.evaluate('document.fonts.ready')
                     info = page.evaluate(OVERFLOW_JS)
+                    info['overlaps'] = page.evaluate(OVERLAP_JS, OVERLAP_PAIRS)
                     expected_dir = 'rtl' if lang == 'ar' else 'ltr'
-                    ok = info['sw'] <= info['vw'] + 1 and info['dir'] == expected_dir
+                    ok = info['sw'] <= info['vw'] + 1 and info['dir'] == expected_dir and not info['overlaps']
                     failures += 0 if ok else 1
                     shot = os.path.join(OUT, f'{name}-{lang}-{width}.png')
                     page.screenshot(path=shot, full_page=True)
@@ -132,7 +158,7 @@ def main():
     print(f'{len(results) - failures}/{len(results)} checks passed')
     for r in results:
         if not r['ok']:
-            print('FAIL', r['page'], r['lang'], r['width'], 'dir=' + r['dir'], f"scroll {r['sw']}>{r['vw']}", r['offenders'][:4])
+            print('FAIL', r['page'], r['lang'], r['width'], 'dir=' + r['dir'], f"scroll {r['sw']}>{r['vw']}", r['offenders'][:4], ('overlap: ' + '; '.join(r['overlaps'])) if r['overlaps'] else '')
     sys.exit(1 if failures else 0)
 
 if __name__ == '__main__':
