@@ -1,0 +1,526 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM SEO 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-seo\n"
+
+#. Plugin Name of the plugin
+#: sm-seo.php
+msgid "SM SEO"
+msgstr "SM SEO"
+
+#. Plugin URI of the plugin
+#: sm-seo.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-seo.php
+msgid ""
+"Search engines and AI search: title and description of each page from the "
+"real data, canonical address, pages kept out of the index (account, search "
+"with filters, expired listings), XML sitemaps of the listings, companies, "
+"categories and services in French, Arabic and English, structured data "
+"(product and asked price, company, engineering services, breadcrumb), link "
+"previews, robots.txt and llms.txt. Never a review, a rating, a market price "
+"or a data source. Requires SM Core."
+msgstr ""
+"محركات البحث والبحث بالذكاء الاصطناعي: عنوان ووصف كل صفحة من البيانات "
+"الحقيقية، العنوان الأساسي، صفحات خارج الفهرسة (الحساب، البحث بالمرشحات، "
+"الإعلانات المنتهية)، خرائط موقع XML للإعلانات والشركات والفئات والخدمات "
+"بالفرنسية والعربية والإنجليزية، بيانات منظمة (المنتج والسعر المطلوب، الشركة،"
+" الخدمات الهندسية، مسار التنقل)، معاينات المشاركة، robots.txt وllms.txt. لا "
+"تقييمات ولا نجوم ولا سعر سوق ولا مصدر بيانات أبدا. يتطلب SM Core."
+
+#. Author of the plugin
+#: sm-seo.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-seo.php:45
+msgid "SM SEO needs the SM Core plugin. Activate it first."
+msgstr "يحتاج SM SEO إلى الإضافة SM Core. فعّلها أولا."
+
+#: src/Admin/Admin.php:24
+msgid "SEO"
+msgstr "تحسين الظهور (SEO)"
+
+#: src/Admin/Admin.php:29
+msgid "Search engines and AI"
+msgstr "محركات البحث والذكاء الاصطناعي"
+
+#: src/Admin/Admin.php:32
+msgid "Settings saved."
+msgstr "تم حفظ الإعدادات."
+
+#: src/Admin/Admin.php:35
+msgid ""
+"The search engines are asked not to index the site (Settings → Reading). "
+"Untick « Discourage search engines » when the site goes live."
+msgstr ""
+"يُطلب من محركات البحث عدم فهرسة الموقع (الإعدادات ← القراءة). ألغِ تحديد « "
+"عدم تشجيع محركات البحث » عند إطلاق الموقع."
+
+#: src/Admin/Admin.php:38
+msgid ""
+"A robots.txt file exists at the root of the site: it replaces the one "
+"written by this plugin. Delete it to use the choice below."
+msgstr ""
+"يوجد ملف robots.txt في جذر الموقع: وهو يحل محل الملف الذي تكتبه هذه الإضافة."
+" احذفه لاستعمال الاختيار أدناه."
+
+#: src/Admin/Admin.php:42
+msgid "AI bots"
+msgstr "روبوتات الذكاء الاصطناعي"
+
+#: src/Admin/Admin.php:44
+msgid "Allow the AI search engines (advised)"
+msgstr "السماح لمحركات البحث بالذكاء الاصطناعي (مستحسن)"
+
+#: src/Admin/Admin.php:44
+msgid ""
+"ChatGPT search, Perplexity, Claude… may read and quote the public pages. The"
+" bots that collect texts to train AI models are refused."
+msgstr ""
+"يمكن لبحث ChatGPT وPerplexity وClaude… قراءة الصفحات العامة والاستشهاد بها. "
+"تُرفض الروبوتات التي تجمع النصوص لتدريب نماذج الذكاء الاصطناعي."
+
+#: src/Admin/Admin.php:45
+msgid "Also allow the training of AI models"
+msgstr "السماح أيضا بتدريب نماذج الذكاء الاصطناعي"
+
+#: src/Admin/Admin.php:45
+msgid ""
+"Every bot reads the public pages, including the collection of texts to train"
+" models."
+msgstr ""
+"تقرأ كل الروبوتات الصفحات العامة، بما في ذلك جمع النصوص لتدريب النماذج."
+
+#: src/Admin/Admin.php:46
+msgid "Refuse every AI bot"
+msgstr "رفض كل روبوتات الذكاء الاصطناعي"
+
+#: src/Admin/Admin.php:46
+msgid "The AI assistants will not be able to quote the site."
+msgstr "لن تتمكن المساعدات الذكية من الاستشهاد بالموقع."
+
+#: src/Admin/Admin.php:51
+msgid ""
+"Google and Bing search are not concerned: they always read the public pages."
+" The account pages are closed to every bot."
+msgstr ""
+"بحث Google وBing غير معني: فهما يقرآن الصفحات العامة دائما. صفحات الحساب "
+"مغلقة أمام كل الروبوتات."
+
+#: src/Admin/Admin.php:52
+msgid "Default share image"
+msgstr "صورة المشاركة الافتراضية"
+
+#: src/Admin/Admin.php:52
+msgid ""
+"Address of an image of 1200 × 630 pixels, shown when a page without a photo "
+"is shared. Empty: the logo or the icon of the site."
+msgstr ""
+"عنوان صورة بحجم 1200 × 630 بكسل، تظهر عند مشاركة صفحة بلا صورة. فارغ: شعار "
+"الموقع أو أيقونته."
+
+#: src/Admin/Admin.php:53
+msgid "Google Search Console"
+msgstr "Google Search Console"
+
+#: src/Admin/Admin.php:53
+msgid ""
+"Verification code (method « HTML tag »): paste the code or the whole tag."
+msgstr "رمز التحقق (طريقة « وسم HTML »): الصق الرمز أو الوسم كاملا."
+
+#: src/Admin/Admin.php:54
+msgid "Bing Webmaster Tools"
+msgstr "Bing Webmaster Tools"
+
+#: src/Admin/Admin.php:54
+msgid ""
+"Verification code (meta tag msvalidate.01): paste the code or the whole tag."
+msgstr "رمز التحقق (وسم meta msvalidate.01): الصق الرمز أو الوسم كاملا."
+
+#: src/Admin/Admin.php:57
+msgid "Addresses to give to the search engines"
+msgstr "عناوين تُقدَّم لمحركات البحث"
+
+#: src/Admin/Admin.php:58
+msgid "Sitemap (to submit in Search Console and Bing Webmaster Tools)"
+msgstr "خريطة الموقع (تُرسل في Search Console وBing Webmaster Tools)"
+
+#: src/Admin/Admin.php:58
+msgid "llms.txt (description of the site for the AI assistants)"
+msgstr "llms.txt (وصف الموقع للمساعدات الذكية)"
+
+#: src/Admin/Admin.php:67
+msgid "You are not allowed to do this."
+msgstr "غير مسموح لك بالقيام بهذا."
+
+#: src/Pages.php:17
+msgid "Explore the steel marketplace"
+msgstr "استكشف سوق الفولاذ"
+
+#: src/Pages.php:17
+msgid ""
+"New steel, steel reuse and steel buildings for sale in Algeria, by type of "
+"product and by wilaya, with the weight computed and the price asked by the "
+"sellers."
+msgstr ""
+"فولاذ جديد وفولاذ لإعادة الاستعمال ومبانٍ فولاذية للبيع في الجزائر، حسب نوع "
+"المنتج والولاية، مع الوزن المحسوب والسعر الذي يطلبه البائعون."
+
+#: src/Pages.php:18
+msgid "New steel: beams, tubes, plates and bars"
+msgstr "فولاذ جديد: عوارض وأنابيب وصفائح وقضبان"
+
+#: src/Pages.php:18
+msgid ""
+"Listings of new steel in Algeria: profiles, tubes, plates and bars, with the"
+" weight computed from the standard catalogue and the price per kilogram "
+"asked by the sellers."
+msgstr ""
+"إعلانات الفولاذ الجديد في الجزائر: مقاطع وأنابيب وصفائح وقضبان، مع الوزن "
+"المحسوب من الكتالوج المعياري وسعر الكيلوغرام الذي يطلبه البائعون."
+
+#: src/Pages.php:19
+msgid "Steel reuse: offcuts, surplus and used steel"
+msgstr "إعادة استعمال الفولاذ: بقايا وفائض وفولاذ مستعمل"
+
+#: src/Pages.php:19
+msgid ""
+"Offcuts, surplus, used steel and scrap for sale in Algeria, with the "
+"condition stated by the seller and the weight computed."
+msgstr ""
+"بقايا وفائض وفولاذ مستعمل وخردة للبيع في الجزائر، مع الحالة التي يصرّح بها "
+"البائع والوزن المحسوب."
+
+#: src/Pages.php:20
+msgid "Steel buildings for sale: hangars assembled or dismantled"
+msgstr "مبانٍ فولاذية للبيع: هناجر مركّبة أو مفككة"
+
+#: src/Pages.php:20
+msgid ""
+"Hangars and steel buildings for sale in Algeria, assembled or dismantled: "
+"dimensions, structure and price asked by the seller."
+msgstr ""
+"هناجر ومبانٍ فولاذية للبيع في الجزائر، مركّبة أو مفككة: الأبعاد والهيكل "
+"والسعر الذي يطلبه البائع."
+
+#: src/Pages.php:21
+msgid "Services around steel"
+msgstr "خدمات حول الفولاذ"
+
+#: src/Pages.php:21
+msgid ""
+"Companies that offer services around steel in Algeria. Send your request "
+"through the platform."
+msgstr "شركات تقدّم خدمات حول الفولاذ في الجزائر. أرسل طلبك عبر المنصة."
+
+#: src/Pages.php:22
+msgid "Engineering services for steel structures"
+msgstr "خدمات هندسية للهياكل الفولاذية"
+
+#: src/Pages.php:22
+msgid ""
+"Engineering studies by verified partner engineers, delivered by the "
+"platform: one quote, one contact."
+msgstr ""
+"دراسات ينجزها مهندسون شركاء موثَّقون وتسلّمها المنصة: عرض سعر واحد ومحاور "
+"واحد."
+
+#: src/Pages.php:23
+msgid "Steel companies in Algeria"
+msgstr "شركات الفولاذ في الجزائر"
+
+#: src/Pages.php:23
+msgid ""
+"Directory of the companies that sell steel on ReuSteel, by activity and by "
+"wilaya."
+msgstr "دليل الشركات التي تبيع الفولاذ على ReuSteel، حسب النشاط والولاية."
+
+#: src/Pages.php:24
+msgid "Steel professionals in Algeria"
+msgstr "مهنيو الفولاذ في الجزائر"
+
+#: src/Pages.php:24
+msgid ""
+"Directory of the professionals of steel on ReuSteel, by activity and by "
+"wilaya."
+msgstr "دليل مهنيي الفولاذ على ReuSteel، حسب النشاط والولاية."
+
+#: src/Pages.php:25
+msgid "Requests for quotes for steel"
+msgstr "طلبات عروض أسعار الفولاذ"
+
+#: src/Pages.php:25
+msgid ""
+"Requests for quotes published by buyers of steel in Algeria: answer with "
+"your offer."
+msgstr "طلبات عروض أسعار ينشرها مشترو الفولاذ في الجزائر: أجب بعرضك."
+
+#: src/Pages.php:26
+msgid "Prices of steel asked on ReuSteel"
+msgstr "أسعار الفولاذ المطلوبة على ReuSteel"
+
+#: src/Pages.php:26
+msgid "Prices asked by the sellers on ReuSteel, per type of steel, in DA/kg."
+msgstr "الأسعار التي يطلبها البائعون على ReuSteel، حسب نوع الفولاذ، بـ DA/kg."
+
+#: src/Pages.php:27
+msgid "Plans and prices"
+msgstr "الاشتراكات والأسعار"
+
+#: src/Pages.php:27
+msgid ""
+"The plans of ReuSteel for the sellers of steel and what each plan includes."
+msgstr "اشتراكات ReuSteel لبائعي الفولاذ وما يتضمنه كل اشتراك."
+
+#: src/Pages.php:28
+msgid "Contact"
+msgstr "اتصل بنا"
+
+#: src/Pages.php:28
+msgid "Contact the ReuSteel team."
+msgstr "تواصل مع فريق ReuSteel."
+
+#: src/Pages.php:29
+msgid "Steel weight calculator"
+msgstr "حاسبة وزن الفولاذ"
+
+#: src/Pages.php:29
+msgid ""
+"Compute the weight of beams, tubes, plates and bars from the standard "
+"catalogue. Free, in French, Arabic and English."
+msgstr ""
+"احسب وزن العوارض والأنابيب والصفائح والقضبان من الكتالوج المعياري. مجانا، "
+"بالفرنسية والعربية والإنجليزية."
+
+#: src/Pages.php:30
+msgid "AI assistant for steel"
+msgstr "مساعد الذكاء الاصطناعي للفولاذ"
+
+#: src/Pages.php:30
+msgid "The AI tools of ReuSteel for buying and selling steel."
+msgstr "أدوات الذكاء الاصطناعي في ReuSteel لشراء الفولاذ وبيعه."
+
+#: src/Pages.php:31
+msgid "Cutting optimiser for steel bars"
+msgstr "محسّن قص قضبان الفولاذ"
+
+#: src/Pages.php:31
+msgid "Plan the cutting of your steel bars to reduce the offcuts."
+msgstr "خطّط لقص قضبان الفولاذ لتقليل البقايا."
+
+#: src/Pages.php:32
+msgid "Become a partner engineer"
+msgstr "كن مهندسا شريكا"
+
+#: src/Pages.php:32
+msgid ""
+"Engineers and design offices: join the network of ReuSteel and carry out "
+"studies of steel structures."
+msgstr ""
+"المهندسون ومكاتب الدراسات: انضموا إلى شبكة ReuSteel وأنجزوا دراسات الهياكل "
+"الفولاذية."
+
+#: src/Pages.php:38
+msgid "We give steel a new life"
+msgstr "نمنح الفولاذ حياة جديدة"
+
+#: src/Pages.php:41
+msgid ""
+"We give steel a new life… transforming used resources into value and new "
+"opportunities."
+msgstr ""
+"نمنح الفولاذ حياة جديدة... ونحوّل الموارد المستعملة إلى قيمة وفرص متجددة."
+
+#: src/Pages.php:41
+msgid "New steel, steel reuse and steel buildings for sale in Algeria."
+msgstr "فولاذ جديد وفولاذ لإعادة الاستعمال ومبانٍ فولاذية للبيع في الجزائر."
+
+#. translators: 1: type of product, 2: market.
+#: src/Pages.php:86
+msgid ""
+"%1$s for sale in Algeria (%2$s): listings with the weight computed and the "
+"price asked by the sellers."
+msgstr ""
+"%1$s للبيع في الجزائر (%2$s): إعلانات مع الوزن المحسوب والسعر الذي يطلبه "
+"البائعون."
+
+#. translators: 1: family of profiles (IPE, HEA…), 2: market.
+#: src/Pages.php:96
+msgid ""
+"%1$s profiles for sale in Algeria (%2$s): sizes, steel grades, weight "
+"computed and price asked by the sellers."
+msgstr ""
+"مقاطع %1$s للبيع في الجزائر (%2$s): المقاسات والرتب والوزن المحسوب والسعر "
+"الذي يطلبه البائعون."
+
+#. translators: %s: list of the engineering services.
+#: src/Pages.php:123
+msgid ""
+"Engineering services by verified partner engineers, delivered by the "
+"platform: %s. One quote, one contact."
+msgstr ""
+"خدمات هندسية ينجزها مهندسون شركاء موثَّقون وتسلّمها المنصة: %s. عرض سعر واحد"
+" ومحاور واحد."
+
+#: src/Pages.php:130 src/Pages.php:333 src/Schema.php:115
+msgid "Algeria"
+msgstr "الجزائر"
+
+#. translators: 1: number of bars, 2: length in metres.
+#: src/Pages.php:174
+msgid "%1$s bar of %2$s m"
+msgid_plural "%1$s bars of %2$s m"
+msgstr[0] "%1$s قضيب بطول %2$s م"
+msgstr[1] "%1$s قضيب بطول %2$s م"
+msgstr[2] "%1$s قضيبان بطول %2$s م"
+msgstr[3] "%1$s قضبان بطول %2$s م"
+msgstr[4] "%1$s قضيبا بطول %2$s م"
+msgstr[5] "%1$s قضيب بطول %2$s م"
+
+#: src/Pages.php:185
+msgid "assembled"
+msgstr "مركّب"
+
+#: src/Pages.php:185
+msgid "dismantled"
+msgstr "مفكك"
+
+#. translators: %s: wilaya.
+#: src/Pages.php:209
+msgid "Wilaya of %s."
+msgstr "ولاية %s."
+
+#. translators: 1: price per kilogram, 2: price of the whole lot.
+#: src/Pages.php:244
+msgid "Price asked by the seller: %1$s DA/kg, or %2$s DA for the whole lot."
+msgstr "السعر الذي يطلبه البائع: %1$s DA/kg، أو %2$s DA للحصة كاملة."
+
+#. translators: %s: price per kilogram.
+#: src/Pages.php:247
+msgid "Price asked by the seller: %s DA/kg."
+msgstr "السعر الذي يطلبه البائع: %s DA/kg."
+
+#. translators: %s: price of the lot.
+#: src/Pages.php:253
+msgid "Price of the lot asked by the seller: %s DA."
+msgstr "سعر الحصة الذي يطلبه البائع: %s DA."
+
+#: src/Pages.php:255
+msgid "Price on request."
+msgstr "السعر عند الطلب."
+
+#. translators: %s: wilaya.
+#: src/Pages.php:271
+msgid "steel professional in %s"
+msgstr "مهني في الفولاذ بـ %s"
+
+#. translators: %s: wilaya.
+#: src/Pages.php:271
+msgid "steel company in %s"
+msgstr "شركة فولاذ بـ %s"
+
+#: src/Pages.php:273
+msgid "steel professional"
+msgstr "مهني في الفولاذ"
+
+#: src/Pages.php:273
+msgid "steel company"
+msgstr "شركة فولاذ"
+
+#. translators: 1: name of the company, 2: « steel company in M'Sila ».
+#: src/Pages.php:278
+msgid "%1$s, %2$s on ReuSteel. Contact through the platform."
+msgstr "%1$s، %2$s على ReuSteel. التواصل عبر المنصة."
+
+#: src/Pages.php:286
+msgid "Professionals"
+msgstr "المهنيون"
+
+#: src/Pages.php:286
+msgid "Companies"
+msgstr "الشركات"
+
+#: src/Pages.php:322
+msgid "all Algeria"
+msgstr "كل الجزائر"
+
+#. translators: %s: wilayas served.
+#: src/Pages.php:324
+msgid "Served: %s."
+msgstr "المناطق المخدومة: %s."
+
+#: src/Pages.php:327
+msgid "Services"
+msgstr "الخدمات"
+
+#: src/Schema.php:36
+msgid "Home"
+msgstr "الرئيسية"
+
+#: src/Schema.php:75
+msgid "Steel grade"
+msgstr "رتبة الفولاذ"
+
+#: src/Schema.php:78
+msgid "Length"
+msgstr "الطول"
+
+#: src/Schema.php:81
+msgid "Number of bars"
+msgstr "عدد القضبان"
+
+#: src/Schema.php:84
+msgid "Area"
+msgstr "المساحة"
+
+#. translators: %s: weight in tonnes.
+#: src/Text.php:90
+msgid "about %s t"
+msgstr "حوالي %s طن"
+
+#. translators: %s: weight in kilograms.
+#: src/Text.php:93
+msgid "about %s kg"
+msgstr "حوالي %s kg"
+
+#: src/Text.php:109
+msgid "New steel"
+msgstr "فولاذ جديد"
+
+#: src/Text.php:110
+msgid "Steel reuse"
+msgstr "إعادة استعمال الفولاذ"
+
+#: src/Text.php:111
+msgid "Steel buildings"
+msgstr "المباني الفولاذية"
+
+#: src/Text.php:118
+msgid "New unused surplus"
+msgstr "فائض جديد غير مستعمل"
+
+#: src/Text.php:119
+msgid "Excellent used condition"
+msgstr "مستعمل، حالة ممتازة"
+
+#: src/Text.php:120
+msgid "Good used condition"
+msgstr "مستعمل، حالة جيدة"
+
+#: src/Text.php:121
+msgid "Requires inspection or treatment"
+msgstr "يحتاج فحصا أو معالجة"
+
+#: src/Text.php:122
+msgid "Scrap / recycling only"
+msgstr "خردة / للرسكلة فقط"

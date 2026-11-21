@@ -1,5 +1,10 @@
 # Changelog — sm-marketplace
 
+## 0.57.0 — 2026-11-21 (avec sm-seo 0.1.0)
+
+- Avec l'extension **SM SEO**, la page d'une annonce n'écrit plus son propre aperçu de partage (og:title, og:image) : l'extension écrit toutes les balises du `<head>` (titre, description, adresse canonique, aperçus, données structurées). Sans l'extension, l'aperçu du thème reste.
+- Les liens hreflang fr / ar / en / x-default restent écrits par le thème.
+
 ## 0.56.1 — 2026-11-21
 
 - **Correction (téléphone)** : sur l'accueil, le titre et le texte des cartes « Marchés » se superposaient depuis 0.54.0 — les cartes de « Explorer la marketplace » reprenaient les mêmes noms de styles (`sm-market`). Elles ont maintenant les leurs (`sm-xmarket`) ; l'accueil retrouve son aspect.

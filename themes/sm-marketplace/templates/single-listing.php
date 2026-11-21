@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
 $item = sm_theme_listing( sm_theme_route( 'id' ) );
 if ( ! $item ) {
 	status_header( 404 );
-} else {
+} elseif ( ! defined( 'SM_SEO_VERSION' ) ) { // 0.57.0: with SM SEO, the plugin writes every tag of the head.
 	// Link previews (WhatsApp, Facebook): title, and the first photo or the PNG drawing of the section.
 	add_action(
 		'wp_head',

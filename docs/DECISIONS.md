@@ -527,3 +527,14 @@ Validé sur la maquette 0.37.
 - Plus tard : paliers pour « Lire un document » selon le nombre de pages.
 - Le prix d'un outil IA se lit dans son bouton seulement (pas sous les boutons, pas sur la page des outils) ; « Gratuit » et « Inclus dans la formule Business » restent comme étiquettes.
 - Attente de l'IA : un cercle (anneau mauve qui tourne, ✦ qui pulse au centre), sans barre ; dans une zone basse, le cercle et le texte restent dans la zone. « Sans crédit » n'est plus affiché.
+
+## Référencement — SEO et recherche par IA, phase 1 (2026-11-21)
+
+- Toute la logique dans une extension **sm-seo** (pas Yoast ni RankMath : ils ne voient pas les tables des annonces) ; le thème garde seulement les liens hreflang.
+- Titre et description de chaque page construits à partir des vraies données (annonce : désignation, nuance, barres, poids, prix demandé, wilaya), en français, arabe et anglais.
+- Indexées : accueil, Explorer, marchés et types de produit (`?category=`, `?family=`), annonces publiées, entreprises et professionnels qui ont une annonce, un service ou une présentation, services, **services d'ingénierie** (présentés comme services de la plateforme), outils (calcul de poids, optimiseur…). Hors index : compte, connexion, inscription, formulaire « Demander une étude », recherches avec texte / filtres / tri, annonces vendues, en pause ou expirées, demandes de devis une par une. **Aucune page d'ingénieur partenaire.**
+- Données structurées : Produit + Offre (prix **demandé par le vendeur** en DZD, au kilo ou au lot, état déclaré, date de fin de l'annonce, wilaya), Organisation, WebSite + recherche, fil d'Ariane, services d'ingénierie. Jamais d'avis, de note en étoiles, de prix du marché, de source de données, de téléphone, d'e-mail ni d'adresse exacte ; le vendeur n'est nommé que si sa page est publique.
+- Plans du site XML (`wp-sitemap.xml`) : pages, types de produit, annonces par marché, entreprises, services — chaque adresse dans les 3 langues ; utilisateurs et taxonomies retirés.
+- **Robots des IA : choix A** — les moteurs de recherche IA (ChatGPT Search, Perplexity, Claude…) peuvent lire et citer les pages publiques ; les robots qui collectent des textes pour entraîner des modèles (GPTBot, Google-Extended, ClaudeBot, CCBot…) sont refusés. Modifiable dans SM → SEO. `llms.txt` publié.
+- Réglages SM → SEO : robots des IA, image de partage par défaut, codes de validation Google Search Console et Bing Webmaster Tools.
+- Phase 2 à décider : adresses lisibles des annonces (`/annonce/ipe-200-s275jr-alger-101/`), vitesse (images WebP). Phase 3 : pages de contenu (seulement avec de vraies annonces), guides.

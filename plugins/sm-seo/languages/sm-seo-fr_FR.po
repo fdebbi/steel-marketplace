@@ -1,0 +1,549 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM SEO 0.1.0\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: sm-seo\n"
+
+#. Plugin Name of the plugin
+#: sm-seo.php
+msgid "SM SEO"
+msgstr "SM SEO"
+
+#. Plugin URI of the plugin
+#: sm-seo.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-seo.php
+msgid ""
+"Search engines and AI search: title and description of each page from the "
+"real data, canonical address, pages kept out of the index (account, search "
+"with filters, expired listings), XML sitemaps of the listings, companies, "
+"categories and services in French, Arabic and English, structured data "
+"(product and asked price, company, engineering services, breadcrumb), link "
+"previews, robots.txt and llms.txt. Never a review, a rating, a market price "
+"or a data source. Requires SM Core."
+msgstr ""
+"Moteurs de recherche et recherche par IA : titre et description de chaque "
+"page à partir des vraies données, adresse canonique, pages gardées hors de "
+"l'index (compte, recherche avec filtres, annonces expirées), plans du site "
+"XML des annonces, entreprises, catégories et services en français, arabe et "
+"anglais, données structurées (produit et prix demandé, entreprise, services "
+"d'ingénierie, fil d'Ariane), aperçus de partage, robots.txt et llms.txt. "
+"Jamais d'avis, de note, de prix du marché ni de source de données. Nécessite"
+" SM Core."
+
+#. Author of the plugin
+#: sm-seo.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-seo.php:45
+msgid "SM SEO needs the SM Core plugin. Activate it first."
+msgstr "SM SEO a besoin de l'extension SM Core. Activez-la d'abord."
+
+#: src/Admin/Admin.php:24
+msgid "SEO"
+msgstr "SEO"
+
+#: src/Admin/Admin.php:29
+msgid "Search engines and AI"
+msgstr "Moteurs de recherche et IA"
+
+#: src/Admin/Admin.php:32
+msgid "Settings saved."
+msgstr "Réglages enregistrés."
+
+#: src/Admin/Admin.php:35
+msgid ""
+"The search engines are asked not to index the site (Settings → Reading). "
+"Untick « Discourage search engines » when the site goes live."
+msgstr ""
+"Les moteurs de recherche sont priés de ne pas indexer le site (Réglages → "
+"Lecture). Décochez « Demander aux moteurs de recherche de ne pas indexer ce "
+"site » à la mise en ligne."
+
+#: src/Admin/Admin.php:38
+msgid ""
+"A robots.txt file exists at the root of the site: it replaces the one "
+"written by this plugin. Delete it to use the choice below."
+msgstr ""
+"Un fichier robots.txt existe à la racine du site : il remplace celui écrit "
+"par cette extension. Supprimez-le pour utiliser le choix ci-dessous."
+
+#: src/Admin/Admin.php:42
+msgid "AI bots"
+msgstr "Robots des IA"
+
+#: src/Admin/Admin.php:44
+msgid "Allow the AI search engines (advised)"
+msgstr "Autoriser les moteurs de recherche IA (conseillé)"
+
+#: src/Admin/Admin.php:44
+msgid ""
+"ChatGPT search, Perplexity, Claude… may read and quote the public pages. The"
+" bots that collect texts to train AI models are refused."
+msgstr ""
+"ChatGPT Search, Perplexity, Claude… peuvent lire et citer les pages "
+"publiques. Les robots qui collectent des textes pour entraîner les modèles "
+"d'IA sont refusés."
+
+#: src/Admin/Admin.php:45
+msgid "Also allow the training of AI models"
+msgstr "Autoriser aussi l'entraînement des modèles d'IA"
+
+#: src/Admin/Admin.php:45
+msgid ""
+"Every bot reads the public pages, including the collection of texts to train"
+" models."
+msgstr ""
+"Tous les robots lisent les pages publiques, y compris la collecte de textes "
+"pour entraîner des modèles."
+
+#: src/Admin/Admin.php:46
+msgid "Refuse every AI bot"
+msgstr "Refuser tous les robots des IA"
+
+#: src/Admin/Admin.php:46
+msgid "The AI assistants will not be able to quote the site."
+msgstr "Les assistants IA ne pourront pas citer le site."
+
+#: src/Admin/Admin.php:51
+msgid ""
+"Google and Bing search are not concerned: they always read the public pages."
+" The account pages are closed to every bot."
+msgstr ""
+"La recherche Google et Bing n'est pas concernée : elles lisent toujours les "
+"pages publiques. Les pages du compte sont fermées à tous les robots."
+
+#: src/Admin/Admin.php:52
+msgid "Default share image"
+msgstr "Image de partage par défaut"
+
+#: src/Admin/Admin.php:52
+msgid ""
+"Address of an image of 1200 × 630 pixels, shown when a page without a photo "
+"is shared. Empty: the logo or the icon of the site."
+msgstr ""
+"Adresse d'une image de 1200 × 630 pixels, affichée quand on partage une page"
+" sans photo. Vide : le logo ou l'icône du site."
+
+#: src/Admin/Admin.php:53
+msgid "Google Search Console"
+msgstr "Google Search Console"
+
+#: src/Admin/Admin.php:53
+msgid ""
+"Verification code (method « HTML tag »): paste the code or the whole tag."
+msgstr ""
+"Code de validation (méthode « Balise HTML ») : collez le code ou toute la "
+"balise."
+
+#: src/Admin/Admin.php:54
+msgid "Bing Webmaster Tools"
+msgstr "Bing Webmaster Tools"
+
+#: src/Admin/Admin.php:54
+msgid ""
+"Verification code (meta tag msvalidate.01): paste the code or the whole tag."
+msgstr ""
+"Code de validation (balise meta msvalidate.01) : collez le code ou toute la "
+"balise."
+
+#: src/Admin/Admin.php:57
+msgid "Addresses to give to the search engines"
+msgstr "Adresses à donner aux moteurs de recherche"
+
+#: src/Admin/Admin.php:58
+msgid "Sitemap (to submit in Search Console and Bing Webmaster Tools)"
+msgstr ""
+"Plan du site (à soumettre dans Search Console et Bing Webmaster Tools)"
+
+#: src/Admin/Admin.php:58
+msgid "llms.txt (description of the site for the AI assistants)"
+msgstr "llms.txt (description du site pour les assistants IA)"
+
+#: src/Admin/Admin.php:67
+msgid "You are not allowed to do this."
+msgstr "Vous n'êtes pas autorisé à faire cela."
+
+#: src/Pages.php:17
+msgid "Explore the steel marketplace"
+msgstr "Explorer la marketplace de l'acier"
+
+#: src/Pages.php:17
+msgid ""
+"New steel, steel reuse and steel buildings for sale in Algeria, by type of "
+"product and by wilaya, with the weight computed and the price asked by the "
+"sellers."
+msgstr ""
+"Acier neuf, réemploi de l'acier et bâtiments métalliques à vendre en "
+"Algérie, par type de produit et par wilaya, avec le poids calculé et le prix"
+" demandé par les vendeurs."
+
+#: src/Pages.php:18
+msgid "New steel: beams, tubes, plates and bars"
+msgstr "Acier neuf : poutrelles, tubes, tôles et barres"
+
+#: src/Pages.php:18
+msgid ""
+"Listings of new steel in Algeria: profiles, tubes, plates and bars, with the"
+" weight computed from the standard catalogue and the price per kilogram "
+"asked by the sellers."
+msgstr ""
+"Annonces d'acier neuf en Algérie : profilés, tubes, tôles et barres, avec le"
+" poids calculé d'après le catalogue normalisé et le prix au kilo demandé par"
+" les vendeurs."
+
+#: src/Pages.php:19
+msgid "Steel reuse: offcuts, surplus and used steel"
+msgstr "Réemploi de l'acier : chutes, surplus et acier d'occasion"
+
+#: src/Pages.php:19
+msgid ""
+"Offcuts, surplus, used steel and scrap for sale in Algeria, with the "
+"condition stated by the seller and the weight computed."
+msgstr ""
+"Chutes, surplus, acier d'occasion et ferraille à vendre en Algérie, avec "
+"l'état déclaré par le vendeur et le poids calculé."
+
+#: src/Pages.php:20
+msgid "Steel buildings for sale: hangars assembled or dismantled"
+msgstr "Bâtiments métalliques à vendre : hangars montés ou démontés"
+
+#: src/Pages.php:20
+msgid ""
+"Hangars and steel buildings for sale in Algeria, assembled or dismantled: "
+"dimensions, structure and price asked by the seller."
+msgstr ""
+"Hangars et bâtiments métalliques à vendre en Algérie, montés ou démontés : "
+"dimensions, structure et prix demandé par le vendeur."
+
+#: src/Pages.php:21
+msgid "Services around steel"
+msgstr "Services autour de l'acier"
+
+#: src/Pages.php:21
+msgid ""
+"Companies that offer services around steel in Algeria. Send your request "
+"through the platform."
+msgstr ""
+"Des entreprises qui proposent des services autour de l'acier en Algérie. "
+"Envoyez votre demande par la plateforme."
+
+#: src/Pages.php:22
+msgid "Engineering services for steel structures"
+msgstr "Services d'ingénierie pour les structures métalliques"
+
+#: src/Pages.php:22
+msgid ""
+"Engineering studies by verified partner engineers, delivered by the "
+"platform: one quote, one contact."
+msgstr ""
+"Des études réalisées par des ingénieurs partenaires vérifiés, livrées par la"
+" plateforme : un seul devis, un seul interlocuteur."
+
+#: src/Pages.php:23
+msgid "Steel companies in Algeria"
+msgstr "Entreprises de l'acier en Algérie"
+
+#: src/Pages.php:23
+msgid ""
+"Directory of the companies that sell steel on ReuSteel, by activity and by "
+"wilaya."
+msgstr ""
+"Annuaire des entreprises qui vendent de l'acier sur ReuSteel, par activité "
+"et par wilaya."
+
+#: src/Pages.php:24
+msgid "Steel professionals in Algeria"
+msgstr "Professionnels de l'acier en Algérie"
+
+#: src/Pages.php:24
+msgid ""
+"Directory of the professionals of steel on ReuSteel, by activity and by "
+"wilaya."
+msgstr ""
+"Annuaire des professionnels de l'acier sur ReuSteel, par activité et par "
+"wilaya."
+
+#: src/Pages.php:25
+msgid "Requests for quotes for steel"
+msgstr "Demandes de devis d'acier"
+
+#: src/Pages.php:25
+msgid ""
+"Requests for quotes published by buyers of steel in Algeria: answer with "
+"your offer."
+msgstr ""
+"Demandes de devis publiées par des acheteurs d'acier en Algérie : répondez "
+"avec votre offre."
+
+#: src/Pages.php:26
+msgid "Prices of steel asked on ReuSteel"
+msgstr "Prix de l'acier demandés sur ReuSteel"
+
+#: src/Pages.php:26
+msgid "Prices asked by the sellers on ReuSteel, per type of steel, in DA/kg."
+msgstr ""
+"Prix demandés par les vendeurs sur ReuSteel, par type d'acier, en DA/kg."
+
+#: src/Pages.php:27
+msgid "Plans and prices"
+msgstr "Formules et tarifs"
+
+#: src/Pages.php:27
+msgid ""
+"The plans of ReuSteel for the sellers of steel and what each plan includes."
+msgstr ""
+"Les formules de ReuSteel pour les vendeurs d'acier et ce que chaque formule "
+"comprend."
+
+#: src/Pages.php:28
+msgid "Contact"
+msgstr "Contact"
+
+#: src/Pages.php:28
+msgid "Contact the ReuSteel team."
+msgstr "Contactez l'équipe ReuSteel."
+
+#: src/Pages.php:29
+msgid "Steel weight calculator"
+msgstr "Calculateur de poids de l’acier"
+
+#: src/Pages.php:29
+msgid ""
+"Compute the weight of beams, tubes, plates and bars from the standard "
+"catalogue. Free, in French, Arabic and English."
+msgstr ""
+"Calculez le poids des poutrelles, tubes, tôles et barres d'après le "
+"catalogue normalisé. Gratuit, en français, arabe et anglais."
+
+#: src/Pages.php:30
+msgid "AI assistant for steel"
+msgstr "Assistant IA pour l'acier"
+
+#: src/Pages.php:30
+msgid "The AI tools of ReuSteel for buying and selling steel."
+msgstr "Les outils IA de ReuSteel pour acheter et vendre de l'acier."
+
+#: src/Pages.php:31
+msgid "Cutting optimiser for steel bars"
+msgstr "Optimiseur de découpe des barres d'acier"
+
+#: src/Pages.php:31
+msgid "Plan the cutting of your steel bars to reduce the offcuts."
+msgstr "Planifiez la découpe de vos barres d'acier pour réduire les chutes."
+
+#: src/Pages.php:32
+msgid "Become a partner engineer"
+msgstr "Devenir ingénieur partenaire"
+
+#: src/Pages.php:32
+msgid ""
+"Engineers and design offices: join the network of ReuSteel and carry out "
+"studies of steel structures."
+msgstr ""
+"Ingénieurs et bureaux d'études : rejoignez le réseau de ReuSteel et réalisez"
+" des études de structures métalliques."
+
+#: src/Pages.php:38
+msgid "We give steel a new life"
+msgstr "Nous donnons une nouvelle vie à l’acier"
+
+#: src/Pages.php:41
+msgid ""
+"We give steel a new life… transforming used resources into value and new "
+"opportunities."
+msgstr ""
+"Nous donnons une nouvelle vie à l’acier… et transformons les ressources "
+"usagées en valeur et en opportunités durables."
+
+#: src/Pages.php:41
+msgid "New steel, steel reuse and steel buildings for sale in Algeria."
+msgstr ""
+"Acier neuf, réemploi de l'acier et bâtiments métalliques à vendre en "
+"Algérie."
+
+#. translators: 1: type of product, 2: market.
+#: src/Pages.php:86
+msgid ""
+"%1$s for sale in Algeria (%2$s): listings with the weight computed and the "
+"price asked by the sellers."
+msgstr ""
+"%1$s à vendre en Algérie (%2$s) : annonces avec le poids calculé et le prix "
+"demandé par les vendeurs."
+
+#. translators: 1: family of profiles (IPE, HEA…), 2: market.
+#: src/Pages.php:96
+msgid ""
+"%1$s profiles for sale in Algeria (%2$s): sizes, steel grades, weight "
+"computed and price asked by the sellers."
+msgstr ""
+"Profilés %1$s à vendre en Algérie (%2$s) : dimensions, nuances, poids "
+"calculé et prix demandé par les vendeurs."
+
+#. translators: %s: list of the engineering services.
+#: src/Pages.php:123
+msgid ""
+"Engineering services by verified partner engineers, delivered by the "
+"platform: %s. One quote, one contact."
+msgstr ""
+"Services d'ingénierie réalisés par des ingénieurs partenaires vérifiés, "
+"livrés par la plateforme : %s. Un seul devis, un seul interlocuteur."
+
+#: src/Pages.php:130 src/Pages.php:333 src/Schema.php:115
+msgid "Algeria"
+msgstr "Algérie"
+
+#. translators: 1: number of bars, 2: length in metres.
+#: src/Pages.php:174
+msgid "%1$s bar of %2$s m"
+msgid_plural "%1$s bars of %2$s m"
+msgstr[0] "%1$s barre de %2$s m"
+msgstr[1] "%1$s barres de %2$s m"
+
+#: src/Pages.php:185
+msgid "assembled"
+msgstr "monté"
+
+#: src/Pages.php:185
+msgid "dismantled"
+msgstr "démonté"
+
+#. translators: %s: wilaya.
+#: src/Pages.php:209
+msgid "Wilaya of %s."
+msgstr "Wilaya de %s."
+
+#. translators: 1: price per kilogram, 2: price of the whole lot.
+#: src/Pages.php:244
+msgid "Price asked by the seller: %1$s DA/kg, or %2$s DA for the whole lot."
+msgstr ""
+"Prix demandé par le vendeur : %1$s DA/kg, ou %2$s DA pour tout le lot."
+
+#. translators: %s: price per kilogram.
+#: src/Pages.php:247
+msgid "Price asked by the seller: %s DA/kg."
+msgstr "Prix demandé par le vendeur : %s DA/kg."
+
+#. translators: %s: price of the lot.
+#: src/Pages.php:253
+msgid "Price of the lot asked by the seller: %s DA."
+msgstr "Prix du lot demandé par le vendeur : %s DA."
+
+#: src/Pages.php:255
+msgid "Price on request."
+msgstr "Prix sur demande."
+
+#. translators: %s: wilaya.
+#: src/Pages.php:271
+msgid "steel professional in %s"
+msgstr "professionnel de l'acier à %s"
+
+#. translators: %s: wilaya.
+#: src/Pages.php:271
+msgid "steel company in %s"
+msgstr "entreprise de l'acier à %s"
+
+#: src/Pages.php:273
+msgid "steel professional"
+msgstr "professionnel de l'acier"
+
+#: src/Pages.php:273
+msgid "steel company"
+msgstr "entreprise de l'acier"
+
+#. translators: 1: name of the company, 2: « steel company in M'Sila ».
+#: src/Pages.php:278
+msgid "%1$s, %2$s on ReuSteel. Contact through the platform."
+msgstr "%1$s, %2$s sur ReuSteel. Contact par la plateforme."
+
+#: src/Pages.php:286
+msgid "Professionals"
+msgstr "Professionnels"
+
+#: src/Pages.php:286
+msgid "Companies"
+msgstr "Entreprises"
+
+#: src/Pages.php:322
+msgid "all Algeria"
+msgstr "toute l'Algérie"
+
+#. translators: %s: wilayas served.
+#: src/Pages.php:324
+msgid "Served: %s."
+msgstr "Zone desservie : %s."
+
+#: src/Pages.php:327
+msgid "Services"
+msgstr "Services"
+
+#: src/Schema.php:36
+msgid "Home"
+msgstr "Accueil"
+
+#: src/Schema.php:75
+msgid "Steel grade"
+msgstr "Nuance d’acier"
+
+#: src/Schema.php:78
+msgid "Length"
+msgstr "Longueur"
+
+#: src/Schema.php:81
+msgid "Number of bars"
+msgstr "Nombre de barres"
+
+#: src/Schema.php:84
+msgid "Area"
+msgstr "Surface"
+
+#. translators: %s: weight in tonnes.
+#: src/Text.php:90
+msgid "about %s t"
+msgstr "environ %s t"
+
+#. translators: %s: weight in kilograms.
+#: src/Text.php:93
+msgid "about %s kg"
+msgstr "environ %s kg"
+
+#: src/Text.php:109
+msgid "New steel"
+msgstr "Acier neuf"
+
+#: src/Text.php:110
+msgid "Steel reuse"
+msgstr "Réemploi de l’acier"
+
+#: src/Text.php:111
+msgid "Steel buildings"
+msgstr "Bâtiments métalliques"
+
+#: src/Text.php:118
+msgid "New unused surplus"
+msgstr "Surplus neuf jamais utilisé"
+
+#: src/Text.php:119
+msgid "Excellent used condition"
+msgstr "Occasion, excellent état"
+
+#: src/Text.php:120
+msgid "Good used condition"
+msgstr "Occasion, bon état"
+
+#: src/Text.php:121
+msgid "Requires inspection or treatment"
+msgstr "À contrôler ou à traiter"
+
+#: src/Text.php:122
+msgid "Scrap / recycling only"
+msgstr "Ferraille / recyclage uniquement"
