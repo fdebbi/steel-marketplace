@@ -547,3 +547,9 @@ Validé sur la maquette 0.37.
 - Premières photos visibles chargées en priorité ; pas d'extension de cache en plus (cache LiteSpeed de Hostinger), pas de CDN payant.
 - **Sécurité** : en-têtes de sécurité, identifiants des utilisateurs non publiés (API REST, `?author=`), XML-RPC coupé, version de WordPress masquée.
 
+## Référencement phase 3 — catalogue des profilés (2026-11-21)
+
+- Ordre validé : 1) pages du catalogue, 2) pages « type × wilaya » seulement avec au moins 3 vraies annonces, 3) guides relus et validés par le client, 4) questions fréquentes.
+- Maquette validée (m062) : une page par taille (`/catalogue/ipe-200/`) et par famille (`/catalogue/ipe/`), adresse `/catalogue/` choisie, phrase « Le poids réel peut varier selon les tolérances de laminage » validée par le client (ingénieur).
+- Valeurs du moteur de poids seulement (dimensions normalisées, 7 850 kg/m³), jamais la source des données ; pas de page pour les tôles ; pas de prix dans les données structurées du catalogue ; l'affichage d'une page du catalogue n'est pas compté comme une recherche dans le Rapport Business.
+

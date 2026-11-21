@@ -3,7 +3,7 @@
  * Plugin Name:       SM SEO
  * Plugin URI:        https://github.com/fdebbi/steel-marketplace
  * Description:       Search engines and AI search: title and description of each page from the real data, canonical address, pages kept out of the index (account, search with filters, expired listings), XML sitemaps of the listings, companies, categories and services in French, Arabic and English, structured data (product and asked price, company, engineering services, breadcrumb), link previews, robots.txt and llms.txt. Never a review, a rating, a market price or a data source. Requires SM Core.
- * Version:           0.1.1
+ * Version:           0.2.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Requires Plugins:  sm-core
@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SM_SEO_VERSION', '0.1.1' );
+define( 'SM_SEO_VERSION', '0.2.0' );
 define( 'SM_SEO_FILE', __FILE__ );
 define( 'SM_SEO_DIR', __DIR__ );
 

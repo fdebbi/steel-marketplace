@@ -189,6 +189,7 @@ final class Catalogue {
 
 	public static function flush() {
 		wp_cache_delete( 'families', self::GROUP );
+		wp_cache_delete( 'catalogue_map', self::GROUP ); // 0.8.0: names of the public catalogue pages.
 		foreach ( array_keys( require SM_WEIGHT_DIR . '/data/families.php' ) as $code ) {
 			wp_cache_delete( 'sections_' . $code, self::GROUP );
 		}

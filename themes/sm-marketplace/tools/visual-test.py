@@ -26,6 +26,7 @@ WIDTHS = [360, 390, 430, 768, 1024, 1280, 1440]
 PAGES = {
     'home': '/',
     'explore': '/recherche/',
+    'catalogue': '/catalogue/ipe-200/',
     'products': '/produits/',
     'reuse': '/reemploi/',
     'buildings': '/batiments/',

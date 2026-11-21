@@ -270,6 +270,31 @@ smw_assert( 1 === count( $kept['plates'] ) && 1 === count( $kept['lin'] ) && ! $
 $pdf = SM\WeightEngine\CuttingActions::render( $rx );
 smw_assert( false !== strpos( $pdf, 'Plate 15 mm' ) || false !== strpos( $pdf, '15 mm' ), 'PDF: the pieces without a cutting plan are listed' );
 
+smw_section( '14. Public pages of the catalogue (0.8.0)' );
+$cp = \SM\WeightEngine\CataloguePages::class;
+smw_assert( 'ipe-200' === $cp::slug( 'IPE 200' ) && 'chs-48-3x3-2' === $cp::slug( 'CHS 48.3x3.2' ) && 'l-120x80x8' === $cp::slug( 'L 120x80x8' ), 'names: ipe-200, chs-48-3x3-2, l-120x80x8' );
+$fams = $cp::families();
+smw_assert( isset( $fams['IPE'], $fams['CHS'] ) && ! isset( $fams['PLATE'] ), 'families with pages: not the plates' );
+$total = 0;
+foreach ( $fams as $code => $f ) {
+	$total += count( Catalogue::sections( $code ) );
+}
+smw_assert( count( $cp::map() ) === $total, 'one page per size, no two sizes with the same name (' . $total . ')' );
+$sec = apply_filters( 'sm_theme_data_catalogue', null, array( 'slug' => 'ipe-200' ) );
+smw_assert( is_array( $sec ) && 'section' === $sec['kind'] && smw_near( $sec['kg_m'], 22.36, 0.01 ) && smw_near( $sec['kg_12'], 268.3, 0.05 ) && smw_near( $sec['m_per_t'], 44.7, 0.05 ), 'IPE 200: 22,36 kg/m, 268,3 kg the bar of 12 m, 44,7 m per tonne (engine values)' );
+smw_assert( 'IPE 180' === $sec['prev']['designation'] && 'IPE 220' === $sec['next']['designation'] && false !== strpos( $sec['drawing'], '<svg' ), 'neighbouring sizes and drawing' );
+smw_assert( ! isset( $sec['source'] ) && false === stripos( wp_json_encode( $sec ), 'stad' ) && false === stripos( wp_json_encode( $sec ), 'ferpinta' ), 'never the source of the data' );
+$fam = apply_filters( 'sm_theme_data_catalogue', null, array( 'slug' => 'ipe' ) );
+smw_assert( is_array( $fam ) && 'family' === $fam['kind'] && 18 === count( $fam['rows'] ) && 'IPE beams' === $fam['name']['en'], 'family IPE: 18 sizes, names in 3 languages' );
+$idx = apply_filters( 'sm_theme_data_catalogue', null, array() );
+smw_assert( 'index' === $idx['kind'] && isset( $idx['groups']['beams'], $idx['groups']['tubes'] ), 'catalogue page: families by group' );
+smw_assert( null === apply_filters( 'sm_theme_data_catalogue', null, array( 'slug' => 'zz-999' ) ) && null === apply_filters( 'sm_theme_data_catalogue', null, array( 'slug' => 'plate' ) ), 'unknown name or plates: not found' );
+if ( $cp::page_id() && get_option( 'permalink_structure' ) ) {
+	smw_assert( (bool) preg_match( '#/catalogue/ipe-200/$#', $cp::url( 'ipe-200' ) ), 'address /catalogue/ipe-200/' );
+	$ps = \SM\WeightEngine\Presenter::section( Catalogue::find( 'IPE', 'IPE 200' ) );
+	smw_assert( (bool) preg_match( '#/catalogue/ipe-200/$#', $ps['catalogue_url'] ), 'the calculator links to the page of the size' );
+}
+
 $t = $GLOBALS['smw_t'];
 printf( "\n%d passed, %d failed\n", $t['pass'], $t['fail'] );
 if ( $t['fail'] ) {

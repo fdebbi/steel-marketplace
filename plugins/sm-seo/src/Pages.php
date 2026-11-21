@@ -147,6 +147,112 @@ final class Pages {
 		return $m;
 	}
 
+	/**
+	 * Catalogue of sections (0.2.0, sm-weight-engine 0.8.0): the families, a family
+	 * (table of its sizes) or a size (weight per metre, bars, dimensions). Values of
+	 * the weight engine only; the questions in the data are the ones shown on the page.
+	 */
+	public static function catalogue( array $m, $slug ) {
+		$d = Text::data( 'catalogue', array( 'slug' => $slug ) );
+		$m['canonical'] = Text::url( 'catalogue', array( 'slug' => $slug ) );
+		if ( ! is_array( $d ) ) {
+			$m['index'] = false;
+			return $m;
+		}
+		$cat_name    = get_the_title( Text::page_id( 'catalogue' ) ) ?: __( 'Catalogue of sections', 'sm-seo' );
+		$m['crumbs'] = array( array( $cat_name, Text::url( 'catalogue' ) ) );
+		if ( 'index' === $d['kind'] ) {
+			$m['title']       = __( 'Catalogue of steel sections: weight and dimensions', 'sm-seo' );
+			$m['description'] = __( 'Weight per metre and dimensions of the standard steel sections: IPE, HEA and HEB beams, UPN channels, angles, tubes and bars. Free, in French, Arabic and English.', 'sm-seo' );
+			$m['crumbs']      = array( array( $cat_name, $m['canonical'] ) );
+			return $m;
+		}
+		if ( 'family' === $d['kind'] ) {
+			$name             = Text::pick( $d['name'] );
+			/* translators: %s: family of sections, e.g. IPE beams. */
+			$m['title']       = sprintf( __( '%s: weight per metre and dimensions', 'sm-seo' ), $name );
+			/* translators: 1: number of sizes, 2: family, 3: first size, 4: last size. */
+			$m['description'] = sprintf( __( 'Table of the %1$d sizes of %2$s, from %3$s to %4$s: weight per metre, weight of a bar of 12 m and dimensions.', 'sm-seo' ), (int) $d['count'], $name, $d['first'], $d['last'] );
+			$m['crumbs'][]    = array( $name, $m['canonical'] );
+			$m['schema'][]    = array(
+				'@type'           => 'ItemList',
+				'name'            => $m['title'],
+				'numberOfItems'   => count( $d['rows'] ),
+				'itemListElement' => array_map(
+					static fn( $r, $i ) => array( '@type' => 'ListItem', 'position' => $i + 1, 'name' => $r['designation'], 'url' => Text::in_lang( $r['url'], Text::lang() ) ),
+					$d['rows'],
+					array_keys( $d['rows'] )
+				),
+			);
+			return $m;
+		}
+		// A size.
+		$name   = (string) $d['designation'];
+		$family = Text::pick( $d['family']['name'] );
+		$kgm    = Text::number( $d['kg_m'], 2 );
+		/* translators: %s: section, e.g. IPE 200. */
+		$m['title'] = sprintf( __( '%s: weight per metre and dimensions', 'sm-seo' ), $name );
+		$dims       = array();
+		foreach ( (array) $d['dims'] as $k => $v ) {
+			if ( in_array( $k, array( 'r', 'r1', 'r2' ), true ) || (float) $v <= 0 ) {
+				continue;
+			}
+			$dims[] = ( 'd' === $k ? 'D' : $k ) . ' ' . Text::number( $v ) . ' mm';
+		}
+		/* translators: 1: section, 2: weight per metre, 3: weight of a bar of 12 m, 4: weight of a bar of 6 m, 5: dimensions. */
+		$m['description'] = Text::cut( sprintf( __( '%1$s: %2$s kg per metre, %3$s kg for a bar of 12 m, %4$s kg for 6 m. Dimensions: %5$s. Drawing, calculator and listings in progress.', 'sm-seo' ), $name, $kgm, Text::number( $d['kg_12'], 1 ), Text::number( $d['kg_6'], 1 ), implode( ', ', $dims ) ), 300 );
+		$m['crumbs'][]    = array( $family, Text::url( 'catalogue', array( 'slug' => strtolower( $d['family']['code'] ) ) ) );
+		$m['crumbs'][]    = array( $name, $m['canonical'] );
+		$props            = array(
+			array( '@type' => 'PropertyValue', 'name' => __( 'Weight per metre', 'sm-seo' ), 'value' => round( (float) $d['kg_m'], 2 ), 'unitText' => 'kg/m' ),
+			array( '@type' => 'PropertyValue', 'name' => __( 'Cross-section area', 'sm-seo' ), 'value' => round( (float) $d['area_mm2'] / 100, 2 ), 'unitCode' => 'CMK' ),
+		);
+		foreach ( (array) $d['dims'] as $k => $v ) {
+			if ( (float) $v > 0 ) {
+				$props[] = array( '@type' => 'PropertyValue', 'name' => 'd' === $k ? 'D' : (string) $k, 'value' => (float) $v, 'unitCode' => 'MMT' );
+			}
+		}
+		$product = array(
+			'@type'              => 'Product',
+			'name'               => $name,
+			'category'           => $family,
+			'url'                => $m['canonical'],
+			'description'        => $m['description'],
+			'additionalProperty' => $props,
+		);
+		if ( '' !== (string) $d['family']['standard'] ) {
+			$product['additionalProperty'][] = array( '@type' => 'PropertyValue', 'name' => __( 'Standard', 'sm-seo' ), 'value' => (string) $d['family']['standard'] );
+		}
+		$m['schema'][] = $product;
+		// The two questions shown on the page, with the same answers.
+		$m['schema'][] = array(
+			'@type'      => 'FAQPage',
+			'mainEntity' => array(
+				array(
+					'@type'          => 'Question',
+					/* translators: %s: section. */
+					'name'           => sprintf( __( 'How much does a bar of %s of 12 m weigh?', 'sm-seo' ), $name ),
+					'acceptedAnswer' => array(
+						'@type' => 'Answer',
+						/* translators: 1: weight of the bar, 2: weight per metre. */
+						'text'  => sprintf( __( 'About %1$s kg (%2$s kg/m × 12 m), theoretical weight from the standard dimensions.', 'sm-seo' ), Text::number( $d['kg_12'], 1 ), $kgm ),
+					),
+				),
+				array(
+					'@type'          => 'Question',
+					/* translators: %s: section. */
+					'name'           => sprintf( __( 'How many metres of %s in one tonne?', 'sm-seo' ), $name ),
+					'acceptedAnswer' => array(
+						'@type' => 'Answer',
+						/* translators: 1: metres, 2: weight per metre. */
+						'text'  => sprintf( __( 'About %1$s m (1 000 kg ÷ %2$s kg/m).', 'sm-seo' ), Text::number( $d['m_per_t'], 1 ), $kgm ),
+					),
+				),
+			),
+		);
+		return $m;
+	}
+
 	/** Detail of a listing: product, reuse or building. */
 	public static function listing( array $m, $id ) {
 		$item = $id ? Text::data( 'listing', array( 'id' => $id, 'no_count' => true ) ) : null;

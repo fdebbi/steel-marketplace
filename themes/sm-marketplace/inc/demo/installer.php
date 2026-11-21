@@ -32,6 +32,7 @@ function sm_theme_page_definitions() {
 		'rfq'         => array( 'demandes-de-devis', 'Demandes de devis', 'templates/rfq-board.php' ),
 		'price-index' => array( 'indice-prix', 'Indice des prix', 'templates/price-index.php' ),
 		'weight'      => array( 'calcul-poids', 'Calculateur de poids', 'templates/weight-calculator.php' ),
+		'catalogue'   => array( 'catalogue', 'Catalogue des profilés', 'templates/catalogue.php' ), // 0.59.0
 		'ai'          => array( 'assistant-ia', 'Assistant IA', 'templates/ai-assistant.php' ),
 		'cutting'     => array( 'optimiseur-decoupe', 'Optimiseur de découpe', 'templates/cutting-optimizer.php' ),
 		'pricing'     => array( 'tarifs', 'Tarifs', 'templates/pricing.php' ),

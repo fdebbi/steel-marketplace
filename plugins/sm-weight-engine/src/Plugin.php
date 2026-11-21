@@ -36,6 +36,7 @@ final class Plugin {
 
 		Rest\Api::init();
 		Theme\Bridge::init();
+		CataloguePages::init(); // 0.8.0: public pages of the catalogue.
 		CuttingActions::init();
 		if ( is_admin() ) {
 			Admin\Admin::init();

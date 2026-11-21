@@ -124,6 +124,7 @@ final class Robots {
 		$tools   = array(
 			'engineers' => array( 'Engineering services', 'Studies of steel structures, one quote and one contact: the platform.' ),
 			'services'  => array( 'Services around steel', 'Services offered by companies of the marketplace.' ),
+			'catalogue' => array( 'Catalogue of steel sections', 'Weight per metre and dimensions of every standard size (IPE, HEA, HEB, UPN, angles, tubes, bars), one page per size.' ),
 			'weight'    => array( 'Steel weight calculator', 'Weight of beams, tubes, plates and bars from the standard catalogue.' ),
 			'cutting'   => array( 'Cutting optimiser', 'Plan the cutting of steel bars to reduce the offcuts.' ),
 			'companies' => array( 'Companies directory', 'Companies that sell steel, by activity and by wilaya.' ),

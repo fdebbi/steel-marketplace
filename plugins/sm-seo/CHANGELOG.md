@@ -1,5 +1,10 @@
 # Changelog — sm-seo
 
+## 0.2.0 — 2026-11-21 (avec sm-weight-engine 0.8.0, thème 0.59.0)
+
+- **Catalogue des profilés** : titre, description (valeurs réelles : kg/m, barres de 6 et 12 m, dimensions), adresse canonique, données structurées (Product avec ses dimensions sans prix, FAQPage des deux questions affichées, liste des tailles d'une famille, fil d'Ariane). Taille inconnue : hors index.
+- Plan du site `smcatalogue` : page du catalogue, familles et tailles, dans les 3 langues. `llms.txt` : lien vers le catalogue.
+
 ## 0.1.1 — 2026-11-21
 
 - Description des annonces en français : « Wilaya **d'**Alger », « d'Oran », « d'El Bayadh » devant une voyelle (« Wilaya de M'Sila » ailleurs). Vérifié sur reusteel.com après la mise en ligne de la 0.58.1.

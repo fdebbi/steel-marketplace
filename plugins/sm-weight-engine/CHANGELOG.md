@@ -1,5 +1,11 @@
 # Changelog — sm-weight-engine
 
+## 0.8.0 — 2026-11-21 (avec le thème 0.59.0, sm-seo 0.2.0)
+
+- **Pages publiques du catalogue** (`CataloguePages`) : `/catalogue/` (familles), `/catalogue/ipe/` (tableau des tailles d'une famille), `/catalogue/ipe-200/` (une taille : poids au mètre, barres de 6 et 12 m, mètres par tonne, aire, dessin coté, tailles voisines, lien vers le calculateur). Environ 1 180 tailles, 15 familles ; pas de page pour les tôles. Valeurs du moteur seulement, jamais la source des données.
+- Donnée `catalogue` du contrat (`sm_theme_data_catalogue`, `slug`), adresse `sm_page_url( 'catalogue', [ 'slug' => … ] )`, variable `sm_cat`, règle de réécriture sur la page « catalogue » du thème.
+- `Presenter::section()` donne `catalogue_url` (le calculateur renvoie vers la page de la taille). Noms anglais des familles.
+
 ## 0.7.0 — 2026-11-20 (avec sm-ai 0.3.0 et le thème 0.50.0)
 
 - `Cutting::read()` : lignes du DQE IA cochées (`ai_bar[]`, `ai_plate[]`, `ai_lin[]`) ajoutées à la liste ; **tôles** (`plates[]` : épaisseur, longueur, largeur, nombre) et **quantités en mètres** (`lin[]` : profilé, mètres) gardées dans l'adresse de la page. Jusqu'à 80 lignes de pièces.

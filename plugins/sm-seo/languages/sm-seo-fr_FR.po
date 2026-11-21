@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: SM SEO 0.1.1\n"
+"Project-Id-Version: SM SEO 0.2.0\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -398,98 +398,177 @@ msgstr ""
 "Services d'ingénierie réalisés par des ingénieurs partenaires vérifiés, "
 "livrés par la plateforme : %s. Un seul devis, un seul interlocuteur."
 
-#: src/Pages.php:130 src/Pages.php:343 src/Schema.php:115
+#: src/Pages.php:130 src/Pages.php:449 src/Schema.php:115
 msgid "Algeria"
 msgstr "Algérie"
 
+#: src/Pages.php:162
+msgid "Catalogue of sections"
+msgstr "Catalogue des profilés"
+
+#: src/Pages.php:165
+msgid "Catalogue of steel sections: weight and dimensions"
+msgstr "Catalogue des profilés en acier : poids et dimensions"
+
+#: src/Pages.php:166
+msgid ""
+"Weight per metre and dimensions of the standard steel sections: IPE, HEA and"
+" HEB beams, UPN channels, angles, tubes and bars. Free, in French, Arabic "
+"and English."
+msgstr ""
+"Poids au mètre et dimensions des profilés en acier normalisés : poutrelles "
+"IPE, HEA et HEB, profilés UPN, cornières, tubes et barres. Gratuit, en "
+"français, arabe et anglais."
+
+#. translators: %s: family of sections, e.g. IPE beams.
+#. translators: %s: section, e.g. IPE 200.
+#: src/Pages.php:173 src/Pages.php:194
+msgid "%s: weight per metre and dimensions"
+msgstr "%s : poids au mètre et dimensions"
+
+#. translators: 1: number of sizes, 2: family, 3: first size, 4: last size.
+#: src/Pages.php:175
+msgid ""
+"Table of the %1$d sizes of %2$s, from %3$s to %4$s: weight per metre, weight"
+" of a bar of 12 m and dimensions."
+msgstr ""
+"Tableau des %1$d tailles de %2$s, de %3$s à %4$s : poids au mètre, poids "
+"d’une barre de 12 m et dimensions."
+
+#. translators: 1: section, 2: weight per metre, 3: weight of a bar of 12 m,
+#. 4: weight of a bar of 6 m, 5: dimensions.
+#: src/Pages.php:203
+msgid ""
+"%1$s: %2$s kg per metre, %3$s kg for a bar of 12 m, %4$s kg for 6 m. "
+"Dimensions: %5$s. Drawing, calculator and listings in progress."
+msgstr ""
+"%1$s : %2$s kg par mètre, %3$s kg pour une barre de 12 m, %4$s kg pour 6 m. "
+"Dimensions : %5$s. Dessin coté, calculateur et annonces en cours."
+
+#: src/Pages.php:207
+msgid "Weight per metre"
+msgstr "Poids au mètre"
+
+#: src/Pages.php:208
+msgid "Cross-section area"
+msgstr "Aire de la section"
+
+#: src/Pages.php:224
+msgid "Standard"
+msgstr "Norme"
+
+#. translators: %s: section.
+#: src/Pages.php:234
+msgid "How much does a bar of %s of 12 m weigh?"
+msgstr "Combien pèse une barre de %s de 12 m ?"
+
+#. translators: 1: weight of the bar, 2: weight per metre.
+#: src/Pages.php:238
+msgid ""
+"About %1$s kg (%2$s kg/m × 12 m), theoretical weight from the standard "
+"dimensions."
+msgstr ""
+"Environ %1$s kg (%2$s kg/m × 12 m), poids théorique d’après les dimensions "
+"normalisées."
+
+#. translators: %s: section.
+#: src/Pages.php:244
+msgid "How many metres of %s in one tonne?"
+msgstr "Combien de mètres de %s dans une tonne ?"
+
+#. translators: 1: metres, 2: weight per metre.
+#: src/Pages.php:248
+msgid "About %1$s m (1 000 kg ÷ %2$s kg/m)."
+msgstr "Environ %1$s m (1 000 kg ÷ %2$s kg/m)."
+
 #. translators: 1: number of bars, 2: length in metres.
-#: src/Pages.php:174
+#: src/Pages.php:280
 msgid "%1$s bar of %2$s m"
 msgid_plural "%1$s bars of %2$s m"
 msgstr[0] "%1$s barre de %2$s m"
 msgstr[1] "%1$s barres de %2$s m"
 
-#: src/Pages.php:185
+#: src/Pages.php:291
 msgid "assembled"
 msgstr "monté"
 
-#: src/Pages.php:185
+#: src/Pages.php:291
 msgid "dismantled"
 msgstr "démonté"
 
 #. translators: %s: wilaya whose name starts with a vowel (French: « Wilaya
 #. d’Alger. »).
-#: src/Pages.php:235
+#: src/Pages.php:341
 msgctxt "before a vowel"
 msgid "Wilaya of %s."
 msgstr "Wilaya d’%s."
 
 #. translators: %s: wilaya.
-#: src/Pages.php:238
+#: src/Pages.php:344
 msgid "Wilaya of %s."
 msgstr "Wilaya de %s."
 
 #. translators: 1: price per kilogram, 2: price of the whole lot.
-#: src/Pages.php:254
+#: src/Pages.php:360
 msgid "Price asked by the seller: %1$s DA/kg, or %2$s DA for the whole lot."
 msgstr ""
 "Prix demandé par le vendeur : %1$s DA/kg, ou %2$s DA pour tout le lot."
 
 #. translators: %s: price per kilogram.
-#: src/Pages.php:257
+#: src/Pages.php:363
 msgid "Price asked by the seller: %s DA/kg."
 msgstr "Prix demandé par le vendeur : %s DA/kg."
 
 #. translators: %s: price of the lot.
-#: src/Pages.php:263
+#: src/Pages.php:369
 msgid "Price of the lot asked by the seller: %s DA."
 msgstr "Prix du lot demandé par le vendeur : %s DA."
 
-#: src/Pages.php:265
+#: src/Pages.php:371
 msgid "Price on request."
 msgstr "Prix sur demande."
 
 #. translators: %s: wilaya.
-#: src/Pages.php:281
+#: src/Pages.php:387
 msgid "steel professional in %s"
 msgstr "professionnel de l'acier à %s"
 
 #. translators: %s: wilaya.
-#: src/Pages.php:281
+#: src/Pages.php:387
 msgid "steel company in %s"
 msgstr "entreprise de l'acier à %s"
 
-#: src/Pages.php:283
+#: src/Pages.php:389
 msgid "steel professional"
 msgstr "professionnel de l'acier"
 
-#: src/Pages.php:283
+#: src/Pages.php:389
 msgid "steel company"
 msgstr "entreprise de l'acier"
 
 #. translators: 1: name of the company, 2: « steel company in M'Sila ».
-#: src/Pages.php:288
+#: src/Pages.php:394
 msgid "%1$s, %2$s on ReuSteel. Contact through the platform."
 msgstr "%1$s, %2$s sur ReuSteel. Contact par la plateforme."
 
-#: src/Pages.php:296
+#: src/Pages.php:402
 msgid "Professionals"
 msgstr "Professionnels"
 
-#: src/Pages.php:296
+#: src/Pages.php:402
 msgid "Companies"
 msgstr "Entreprises"
 
-#: src/Pages.php:332
+#: src/Pages.php:438
 msgid "all Algeria"
 msgstr "toute l'Algérie"
 
 #. translators: %s: wilayas served.
-#: src/Pages.php:334
+#: src/Pages.php:440
 msgid "Served: %s."
 msgstr "Zone desservie : %s."
 
-#: src/Pages.php:337
+#: src/Pages.php:443
 msgid "Services"
 msgstr "Services"
 

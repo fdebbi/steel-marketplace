@@ -56,6 +56,9 @@ final class Presenter {
 			'mass_published' => $s->mass_published,
 			'origin'         => $s->origin,
 		);
+		// 0.8.0: its public page in the catalogue (not for the plates).
+		$fam_obj              = Catalogue::family( $s->family );
+		$out['catalogue_url'] = $fam_obj && 'plate' !== $fam_obj->shape && 'active' === $s->status && CataloguePages::page_id() ? CataloguePages::url( CataloguePages::slug( $s->designation ) ) : '';
 		if ( $with_drawing ) {
 			$fam            = Catalogue::family( $s->family );
 			$out['drawing'] = $fam ? Drawing::svg( $fam->shape, $s->dims, array( 'title' => $s->designation ) ) : '';

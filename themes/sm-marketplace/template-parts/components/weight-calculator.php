@@ -188,6 +188,9 @@ $m    = static fn( $mm ) => sm_number( $mm / 1000, fmod( $mm, 1000 ) ? 2 : 0 ) .
 							</dl>
 							<?php if ( $section && ! empty( $section['source'] ) ) : ?>
 								<p class="smw-source"><?php sm_icon( 'file' ); ?><span><?php echo esc_html( $section['source']['standard'] ); // 0.36.0: the standard only, never the source of the data. ?></span></p>
+								<?php if ( ! empty( $section['catalogue_url'] ) ) : ?>
+									<p class="smw-source"><?php sm_icon( 'link' ); ?><a href="<?php echo esc_url( $section['catalogue_url'] ); ?>"><?php echo esc_html( sprintf( /* translators: %s: section, e.g. IPE 200. */ __( 'Page of %s in the catalogue', 'sm-marketplace' ), $section['designation'] ) ); ?></a></p><?php // 0.59.0 ?>
+								<?php endif; ?>
 							<?php elseif ( $typed ) : ?>
 								<p class="smw-source"><?php sm_icon( 'file' ); ?><span><?php echo esc_html( $family['standard'] ); ?></span></p>
 							<?php endif; ?>

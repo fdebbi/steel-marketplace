@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.23.1 — 2026-11-21
+
+- Donnée `listings` : argument `silent` — la lecture des annonces d'une page du catalogue n'est pas comptée comme une recherche dans le Rapport Business.
+
 ## 0.23.0 — 2026-11-21 (avec sm-core 0.9.0)
 
 - Nom de l'adresse lisible d'une annonce, donné à sm-core à la première publication : désignation et nuance pour l'acier neuf du catalogue (« IPE 200 S275JR »), titre français du vendeur pour le réemploi et les bâtiments, puis la wilaya. Les annonces publiées avant le reçoivent la première fois que leur adresse est demandée.

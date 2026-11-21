@@ -123,6 +123,10 @@ final class Context {
 				$m = Pages::service( $m, absint( get_query_var( 'sm_id' ) ? get_query_var( 'sm_id' ) : ( $args['id'] ?? 0 ) ) );
 				$args = array();
 				break;
+			case 'catalogue':
+				$m    = Pages::catalogue( $m, sanitize_title( (string) ( get_query_var( 'sm_cat' ) ? get_query_var( 'sm_cat' ) : ( $args['sm_cat'] ?? '' ) ) ) );
+				$args = array();
+				break;
 			case 'rfq':
 				if ( get_query_var( 'sm_id' ) || ! empty( $args['id'] ) ) {
 					$m['index']     = false; // A request of a buyer: not for the search engines.

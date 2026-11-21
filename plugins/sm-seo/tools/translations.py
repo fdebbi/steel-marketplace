@@ -108,3 +108,20 @@ P = {
     ('%1$s قضيب بطول %2$s م', '%1$s قضيب بطول %2$s م', '%1$s قضيبان بطول %2$s م', '%1$s قضبان بطول %2$s م', '%1$s قضيبا بطول %2$s م', '%1$s قضيب بطول %2$s م'),
 ),
 }
+
+# 0.2.0 — catalogue of sections.
+T.update({
+'Catalogue of sections': ('Catalogue des profilés', 'كتالوج المقاطع'),
+'Catalogue of steel sections: weight and dimensions': ('Catalogue des profilés en acier : poids et dimensions', 'كتالوج المقاطع الفولاذية: الوزن والأبعاد'),
+'Weight per metre and dimensions of the standard steel sections: IPE, HEA and HEB beams, UPN channels, angles, tubes and bars. Free, in French, Arabic and English.': ('Poids au mètre et dimensions des profilés en acier normalisés : poutrelles IPE, HEA et HEB, profilés UPN, cornières, tubes et barres. Gratuit, en français, arabe et anglais.', 'الوزن للمتر وأبعاد المقاطع الفولاذية المعيارية: عوارض IPE وHEA وHEB ومجاري UPN والزوايا والأنابيب والقضبان. مجانًا، بالفرنسية والعربية والإنجليزية.'),
+'%s: weight per metre and dimensions': ('%s : poids au mètre et dimensions', '%s: الوزن للمتر والأبعاد'),
+'Table of the %1$d sizes of %2$s, from %3$s to %4$s: weight per metre, weight of a bar of 12 m and dimensions.': ('Tableau des %1$d tailles de %2$s, de %3$s à %4$s : poids au mètre, poids d’une barre de 12 m et dimensions.', 'جدول المقاسات الـ%1$d من %2$s، من %3$s إلى %4$s: الوزن للمتر ووزن قضيب 12 م والأبعاد.'),
+'%1$s: %2$s kg per metre, %3$s kg for a bar of 12 m, %4$s kg for 6 m. Dimensions: %5$s. Drawing, calculator and listings in progress.': ('%1$s : %2$s kg par mètre, %3$s kg pour une barre de 12 m, %4$s kg pour 6 m. Dimensions : %5$s. Dessin coté, calculateur et annonces en cours.', '%1$s: %2$s kg للمتر، %3$s kg لقضيب 12 م، %4$s kg لـ6 م. الأبعاد: %5$s. رسم بالأبعاد وحاسبة وإعلانات حالية.'),
+'Weight per metre': ('Poids au mètre', 'الوزن للمتر'),
+'Cross-section area': ('Aire de la section', 'مساحة المقطع'),
+'Standard': ('Norme', 'المعيار'),
+'How much does a bar of %s of 12 m weigh?': ('Combien pèse une barre de %s de 12 m ?', 'كم يزن قضيب %s بطول 12 م؟'),
+'About %1$s kg (%2$s kg/m × 12 m), theoretical weight from the standard dimensions.': ('Environ %1$s kg (%2$s kg/m × 12 m), poids théorique d’après les dimensions normalisées.', 'حوالي %1$s kg (%2$s kg/m × 12 م)، وزن نظري حسب الأبعاد المعيارية.'),
+'How many metres of %s in one tonne?': ('Combien de mètres de %s dans une tonne ?', 'كم مترًا من %s في الطن؟'),
+'About %1$s m (1 000 kg ÷ %2$s kg/m).': ('Environ %1$s m (1 000 kg ÷ %2$s kg/m).', 'حوالي %1$s م (1000 kg ÷ %2$s kg/m).'),
+})

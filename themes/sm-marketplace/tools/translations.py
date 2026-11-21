@@ -2910,3 +2910,45 @@ P.update({
 T.update({
 'Every day: the average asked prices of new and reused steel, the steel on sale (new, reuse, buildings), the most searched and best-selling profiles, what is asked and little offered, by region — with a summary written by the AI.': ('Chaque jour : les prix moyens demandés de l’acier neuf et de réemploi, l’acier mis en vente (neuf, réemploi, bâtiments), les profilés les plus recherchés et les plus vendus, ce qui est demandé et peu proposé, par région — avec un résumé écrit par l’IA.', 'كل يوم: متوسط الأسعار المطلوبة للفولاذ الجديد والمعاد استعماله، والفولاذ المعروض للبيع (جديد، إعادة استعمال، مبانٍ)، والمقاطع الأكثر بحثاً والأكثر مبيعاً، وما هو مطلوب وقليل العرض، حسب المنطقة — مع ملخص يكتبه الذكاء الاصطناعي.'),
 })
+# 0.59.0 — catalogue of sections (public pages).
+T.update({
+'Catalogue of sections': ('Catalogue des profilés', 'كتالوج المقاطع'),
+'%s: weight and dimensions': ('%s : poids et dimensions', '%s: الوزن والأبعاد'),
+'Weight per metre and dimensions of the %1$d sizes of %2$s, from %3$s to %4$s. Choose a size for its drawing, its calculator and the listings in progress.': ('Poids au mètre et dimensions des %1$d tailles de %2$s, de %3$s à %4$s. Choisissez une taille pour son dessin coté, son calculateur et les annonces en cours.', 'الوزن للمتر وأبعاد المقاسات الـ%1$d من %2$s، من %3$s إلى %4$s. اختر مقاسًا لرؤية رسمه بالأبعاد وحاسبته والإعلانات الحالية.'),
+'Section': ('Profilé', 'المقطع'),
+'Bar of 12 m (kg)': ('Barre de 12 m (kg)', 'قضيب 12 م (kg)'),
+'Theoretical weight computed from the standard dimensions, steel at %s kg/m³. The real weight can vary with the rolling tolerances.': ('Poids théorique calculé d’après les dimensions normalisées, acier à %s kg/m³. Le poids réel peut varier selon les tolérances de laminage.', 'وزن نظري محسوب حسب الأبعاد المعيارية، فولاذ بكثافة %s kg/m³. قد يختلف الوزن الحقيقي حسب تفاوتات الدرفلة.'),
+'Other families of sections': ('Autres familles de profilés', 'عائلات مقاطع أخرى'),
+'Hollow sections': ('Tubes', 'الأنابيب'),
+'Catalogue of steel sections: weight and dimensions': ('Catalogue des profilés en acier : poids et dimensions', 'كتالوج المقاطع الفولاذية: الوزن والأبعاد'),
+'Weight per metre and dimensions of the standard sections: beams, channels, angles, tubes and bars. Choose a family, then a size for its drawing, its calculator and the listings in progress.': ('Poids au mètre et dimensions des profilés normalisés : poutrelles, profilés en U, cornières, tubes et barres. Choisissez une famille, puis une taille pour son dessin coté, son calculateur et les annonces en cours.', 'الوزن للمتر وأبعاد المقاطع المعيارية: العوارض والمجاري والزوايا والأنابيب والقضبان. اختر عائلة ثم مقاسًا لرؤية رسمه بالأبعاد وحاسبته والإعلانات الحالية.'),
+'Plates and other sizes: weight calculator': ('Tôles et autres dimensions : calculateur de poids', 'الصفائح ومقاسات أخرى: حاسبة الوزن'),
+'%1$s: <strong>%2$s per metre</strong>, that is %3$s for a bar of 12 m.': ('%1$s : <strong>%2$s par mètre</strong>, soit %3$s pour une barre de 12 m.', '%1$s: <strong>%2$s للمتر</strong>، أي %3$s لقضيب بطول 12 م.'),
+'Bar of 6 m': ('Barre de 6 m', 'قضيب 6 م'),
+'Bar of 12 m': ('Barre de 12 m', 'قضيب 12 م'),
+'Drawing with dimensions': ('Dessin coté', 'الرسم مع الأبعاد'),
+'Compute the weight': ('Calculer le poids', 'احسب الوزن'),
+'Full calculator (cutting, several sections)': ('Calculateur complet (découpe, plusieurs profilés)', 'الحاسبة الكاملة (القص، عدة مقاطع)'),
+'Listings of %s in progress': ('Annonces de %s en cours', 'إعلانات %s الحالية'),
+'Request a quote for %s': ('Demander un devis %s', 'اطلب عرض سعر %s'),
+'No listing of %s for the moment.': ('Aucune annonce de %s pour le moment.', 'لا توجد إعلانات %s حاليًا.'),
+'Ask the sellers for a quote, or publish your stock.': ('Demandez un devis aux vendeurs, ou publiez votre stock.', 'اطلب عرض سعر من البائعين، أو انشر مخزونك.'),
+'Neighbouring sizes': ('Tailles voisines', 'المقاسات المجاورة'),
+'Smaller': ('Plus petit', 'أصغر'),
+'Larger': ('Plus grand', 'أكبر'),
+'How much does a bar of %s of 12 m weigh?': ('Combien pèse une barre de %s de 12 m ?', 'كم يزن قضيب %s بطول 12 م؟'),
+'About %1$s (%2$s kg/m × 12 m), theoretical weight from the standard dimensions.': ('Environ %1$s (%2$s kg/m × 12 m), poids théorique d’après les dimensions normalisées.', 'حوالي %1$s (%2$s kg/m × 12 م)، وزن نظري حسب الأبعاد المعيارية.'),
+'How many metres of %s in one tonne?': ('Combien de mètres de %s dans une tonne ?', 'كم مترًا من %s في الطن؟'),
+'About %1$s m (1 000 kg ÷ %2$s kg/m).': ('Environ %1$s m (1 000 kg ÷ %2$s kg/m).', 'حوالي %1$s م (1000 kg ÷ %2$s kg/m).'),
+'SM — Catalogue of sections': ('SM — Catalogue des profilés', 'SM — كتالوج المقاطع'),
+'This section is not in the catalogue': ('Ce profilé n’est pas dans le catalogue', 'هذا المقطع غير موجود في الكتالوج'),
+'Choose a family of sections to see the sizes, their weight and their dimensions.': ('Choisissez une famille de profilés pour voir les tailles, leur poids et leurs dimensions.', 'اختر عائلة مقاطع لرؤية المقاسات ووزنها وأبعادها.'),
+'See the catalogue': ('Voir le catalogue', 'عرض الكتالوج'),
+})
+P.update({
+('%d size', '%d sizes'): (['%d taille', '%d tailles'], ['%d مقاس', 'مقاس واحد', 'مقاسان', '%d مقاسات', '%d مقاسًا', '%d مقاس']),
+('See the %d listing', 'See the %d listings'): (['Voir l’annonce', 'Voir les %d annonces'], ['عرض %d إعلان', 'عرض الإعلان', 'عرض الإعلانين', 'عرض %d إعلانات', 'عرض %d إعلانًا', 'عرض %d إعلان']),
+})
+T.update({
+'Page of %s in the catalogue': ('Fiche %s du catalogue', 'صفحة %s في الكتالوج'),
+})

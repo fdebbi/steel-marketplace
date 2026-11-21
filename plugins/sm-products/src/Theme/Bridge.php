@@ -89,7 +89,7 @@ final class Bridge {
 		 * 0.22.0: a search of the catalogue (first page, a type or a size asked) for the
 		 * Business report (sm-insights counts it, without knowing who searched).
 		 */
-		if ( (int) ( $args['page'] ?? 1 ) <= 1 && ( ! empty( $args['family'] ) || ! empty( $args['designation'] ) || ! empty( $args['q'] ) ) ) {
+		if ( empty( $args['silent'] ) && (int) ( $args['page'] ?? 1 ) <= 1 && ( ! empty( $args['family'] ) || ! empty( $args['designation'] ) || ! empty( $args['q'] ) ) ) { // 0.23.1: « silent » = not a search (catalogue pages).
 			do_action(
 				'sm_products_searched',
 				array(

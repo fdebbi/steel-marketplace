@@ -1,5 +1,10 @@
 # Changelog — sm-marketplace
 
+## 0.59.0 — 2026-11-21 (avec sm-weight-engine 0.8.0, sm-seo 0.2.0, sm-products 0.23.1)
+
+- **Catalogue des profilés** (page « catalogue », gabarit `templates/catalogue.php`, `template-parts/catalogue/{index,family,section}.php`, `40-catalogue-pages.css`, `catalogue.js`) : familles, tableau d'une famille, page d'une taille (chiffres clés, dessin coté, petit calculateur, annonces en cours en neuf et réemploi ou « aucune annonce » avec « Demander un devis », tailles voisines, deux questions). Maquette validée (m062).
+- Liens : pied de page « Catalogue des profilés », calculateur de poids → « Fiche IPE 200 du catalogue ».
+
 ## 0.58.1 — 2026-11-21
 
 - Retrait de deux captures d'écran de test laissées par erreur à la racine du thème (`wait.png`, `doc-review.png`, environ 1 Mo) : aucune page ne les utilisait. Aucun autre changement.
