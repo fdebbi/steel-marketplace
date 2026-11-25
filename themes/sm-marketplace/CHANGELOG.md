@@ -4,6 +4,7 @@
 
 - **Catalogue des profilés** (page « catalogue », gabarit `templates/catalogue.php`, `template-parts/catalogue/{index,family,section}.php`, `40-catalogue-pages.css`, `catalogue.js`) : familles, tableau d'une famille, page d'une taille (chiffres clés, dessin coté, petit calculateur, annonces en cours en neuf et réemploi ou « aucune annonce » avec « Demander un devis », tailles voisines, deux questions). Maquette validée (m062).
 - Liens : pied de page « Catalogue des profilés », calculateur de poids → « Fiche IPE 200 du catalogue ».
+- Téléphone (360 à 430 px) : les longs libellés de boutons passent à la ligne, aucune page du catalogue ne déborde (test visuel 966/966).
 
 ## 0.58.1 — 2026-11-21
 

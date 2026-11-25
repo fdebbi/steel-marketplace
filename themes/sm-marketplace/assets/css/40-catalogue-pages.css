@@ -73,3 +73,7 @@
 .smk-faq summary { font-weight: 600; cursor: pointer; }
 .smk-faq p { margin: var(--sm-s2) 0 0; color: var(--sm-text); }
 .smk-family__body .sm-tech { white-space: normal; overflow-wrap: anywhere; }
+/* Phones: long button labels wrap, the columns never grow wider than the screen. */
+.smk-grid > *, .smk-side, .smk-card { min-width: 0; }
+.smk-card .sm-btn, .smk-actions .sm-btn { white-space: normal; text-align: center; max-width: 100%; }
+.smk-calc input { width: min(120px, 100%); }
