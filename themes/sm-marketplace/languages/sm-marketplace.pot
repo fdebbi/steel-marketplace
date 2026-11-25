@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.59.0\n"
+"Project-Id-Version: SM Marketplace 0.60.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-21T22:48:50+00:00\n"
+"POT-Creation-Date: 2026-11-25T20:16:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -201,7 +201,7 @@ msgstr ""
 #: templates/company-profile.php:245
 #: templates/contact.php:23
 #: templates/contact.php:32
-#: templates/single-listing.php:271
+#: templates/single-listing.php:274
 msgid "Contact"
 msgstr ""
 
@@ -1293,6 +1293,7 @@ msgstr ""
 
 #. translators: %s: section.
 #: template-parts/catalogue/section.php:118
+#: template-parts/landing.php:93
 msgid "Ask the sellers for a quote, or publish your stock."
 msgstr ""
 
@@ -1665,6 +1666,7 @@ msgstr ""
 #: template-parts/components/stock-warehouse.php:82
 #: templates/company-profile.php:222
 #: templates/single-listing.php:81
+#: templates/single-listing.php:83
 msgid "Location"
 msgstr ""
 
@@ -2049,7 +2051,7 @@ msgstr ""
 #: template-parts/components/buy-box.php:83
 #: template-parts/components/listing-building.php:185
 #: template-parts/components/listing-product.php:232
-#: templates/single-listing.php:137
+#: templates/single-listing.php:140
 msgid "Make an offer"
 msgstr ""
 
@@ -2258,6 +2260,7 @@ msgstr ""
 #. translators: %d: years.
 #: template-parts/components/card-featured.php:41
 #: template-parts/directory.php:115
+#: template-parts/landing.php:99
 #: templates/company-profile.php:194
 #: templates/company-profile.php:243
 #: templates/company-profile.php:267
@@ -2290,7 +2293,7 @@ msgstr ""
 #: template-parts/components/product-tech.php:493
 #: template-parts/dashboard/publish.php:112
 #: templates/single-listing.php:49
-#: templates/single-listing.php:118
+#: templates/single-listing.php:121
 msgid "Assembled"
 msgstr ""
 
@@ -2300,7 +2303,7 @@ msgstr ""
 #: template-parts/components/product-tech.php:494
 #: template-parts/dashboard/publish.php:113
 #: templates/single-listing.php:49
-#: templates/single-listing.php:118
+#: templates/single-listing.php:121
 msgid "Dismantled"
 msgstr ""
 
@@ -3083,7 +3086,7 @@ msgstr ""
 #: template-parts/dashboard/listings.php:20
 #: template-parts/dashboard/rfq.php:29
 #: template-parts/directory.php:62
-#: template-parts/marketplace-archive.php:80
+#: template-parts/marketplace-archive.php:89
 #: templates/marketplace-engineers.php:88
 msgid "All"
 msgstr ""
@@ -3139,7 +3142,7 @@ msgstr ""
 
 #: template-parts/components/deal-list.php:66
 #: template-parts/directory.php:122
-#: template-parts/marketplace-archive.php:133
+#: template-parts/marketplace-archive.php:142
 #: templates/rfq-board.php:101
 msgid "Pagination"
 msgstr ""
@@ -3228,8 +3231,8 @@ msgstr ""
 #: template-parts/components/enquiry-form.php:26
 #: template-parts/components/listing-building.php:188
 #: template-parts/components/listing-product.php:235
-#: templates/single-listing.php:138
-#: templates/single-listing.php:140
+#: templates/single-listing.php:141
+#: templates/single-listing.php:143
 msgid "Contact the seller"
 msgstr ""
 
@@ -3316,7 +3319,7 @@ msgstr ""
 #: template-parts/components/filter-panel.php:44
 #: template-parts/components/filter-panel.php:52
 #: template-parts/directory.php:59
-#: template-parts/marketplace-archive.php:105
+#: template-parts/marketplace-archive.php:114
 msgid "Filters"
 msgstr ""
 
@@ -3471,7 +3474,7 @@ msgid "condition, roof, covering, cladding…"
 msgstr ""
 
 #: template-parts/components/listing-building.php:65
-#: templates/single-listing.php:206
+#: templates/single-listing.php:209
 msgid "Structural element inventory"
 msgstr ""
 
@@ -3488,13 +3491,13 @@ msgstr ""
 
 #: template-parts/components/listing-building.php:89
 #: template-parts/components/listing-product.php:154
-#: templates/single-listing.php:209
+#: templates/single-listing.php:212
 msgid "Unit weights come from the platform’s standard section tables. The theoretical weight excludes bolts, plates and welds."
 msgstr ""
 
 #: template-parts/components/listing-building.php:96
 #: template-parts/components/product-tech.php:181
-#: templates/single-listing.php:186
+#: templates/single-listing.php:189
 msgid "What the price includes"
 msgstr ""
 
@@ -3536,7 +3539,7 @@ msgstr ""
 
 #: template-parts/components/listing-building.php:124
 #: template-parts/components/listing-product.php:162
-#: templates/single-listing.php:175
+#: templates/single-listing.php:178
 msgid "Technical documents"
 msgstr ""
 
@@ -3545,20 +3548,20 @@ msgstr ""
 #: template-parts/components/mission-request-form.php:444
 #: template-parts/components/product-form.php:122
 #: template-parts/dashboard/invoice.php:65
-#: templates/single-listing.php:215
+#: templates/single-listing.php:218
 #: templates/single-service.php:99
 msgid "Description"
 msgstr ""
 
 #: template-parts/components/listing-building.php:137
 #: template-parts/components/listing-product.php:175
-#: templates/single-listing.php:217
+#: templates/single-listing.php:220
 msgid "No description. Ask the seller for details with the Contact button."
 msgstr ""
 
 #: template-parts/components/listing-building.php:141
 #: template-parts/components/listing-product.php:179
-#: templates/single-listing.php:221
+#: templates/single-listing.php:224
 msgid "Shown in the language the seller wrote it in."
 msgstr ""
 
@@ -3590,13 +3593,13 @@ msgstr ""
 #: template-parts/components/stock-warehouse.php:83
 #: template-parts/dashboard/company.php:149
 #: template-parts/dashboard/settings.php:43
-#: templates/single-listing.php:144
+#: templates/single-listing.php:147
 msgid "Save"
 msgstr ""
 
 #: template-parts/components/listing-building.php:194
 #: template-parts/components/listing-product.php:241
-#: templates/single-listing.php:145
+#: templates/single-listing.php:148
 msgid "Share"
 msgstr ""
 
@@ -3613,7 +3616,7 @@ msgstr ""
 #: template-parts/components/listing-group.php:16
 #: template-parts/components/listing-product.php:120
 #: template-parts/components/listing-product.php:129
-#: templates/single-listing.php:206
+#: templates/single-listing.php:209
 msgid "Lot inventory"
 msgstr ""
 
@@ -3851,7 +3854,7 @@ msgstr ""
 
 #: template-parts/components/listing-product.php:227
 #: template-parts/dashboard/ai-credits.php:61
-#: templates/single-listing.php:136
+#: templates/single-listing.php:139
 msgid "Buy"
 msgstr ""
 
@@ -5962,7 +5965,7 @@ msgstr ""
 
 #. translators: %d: days.
 #: template-parts/components/rfq-my-offer.php:20
-#: templates/single-listing.php:198
+#: templates/single-listing.php:201
 msgid "included"
 msgstr ""
 
@@ -6744,13 +6747,13 @@ msgstr ""
 
 #. translators: %s: number of listings.
 #: template-parts/components/type-tiles.php:64
-#: template-parts/marketplace-archive.php:65
+#: template-parts/marketplace-archive.php:74
 msgid "No listing yet"
 msgstr ""
 
 #. translators: %s: number of listings.
 #: template-parts/components/type-tiles.php:64
-#: template-parts/marketplace-archive.php:65
+#: template-parts/marketplace-archive.php:74
 msgid "%s listing"
 msgid_plural "%s listings"
 msgstr[0] ""
@@ -8224,6 +8227,7 @@ msgid "Account and plan"
 msgstr ""
 
 #: template-parts/dashboard/overview.php:242
+#: template-parts/landing.php:85
 msgid "Listings"
 msgstr ""
 
@@ -8603,6 +8607,7 @@ msgid "in all"
 msgstr ""
 
 #: template-parts/dashboard/report.php:131
+#: template-parts/landing.php:65
 msgid "Listings online"
 msgstr ""
 
@@ -9197,7 +9202,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: template-parts/directory.php:84
-#: template-parts/marketplace-archive.php:111
+#: template-parts/marketplace-archive.php:120
 #: templates/rfq-board.php:81
 msgid "Sort by"
 msgstr ""
@@ -9245,74 +9250,134 @@ msgstr ""
 msgid "Administration"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:34
+#. translators: 1: type of product or market, 2: wilaya (e.g. « Profilés à M'Sila »).
+#: template-parts/landing.php:20
+msgid "%1$s in %2$s"
+msgstr ""
+
+#. translators: 1: number of listings, 2: type or market, 3: wilaya, 4: weight.
+#: template-parts/landing.php:42
+msgid "%1$s listing of %2$s in the wilaya of %3$s, about %4$s offered."
+msgid_plural "%1$s listings of %2$s in the wilaya of %3$s, about %4$s offered."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: lowest asked price, 2: highest asked price.
+#: template-parts/landing.php:50
+msgid "Prices asked by the sellers: from %1$s to %2$s DA/kg."
+msgstr ""
+
+#. translators: 1: type or market, 2: wilaya.
+#: template-parts/landing.php:53
+msgid "No listing of %1$s in the wilaya of %2$s for the moment."
+msgstr ""
+
+#: template-parts/landing.php:58
+#: template-parts/marketplace-archive.php:62
+msgid "Publish here"
+msgstr ""
+
+#: template-parts/landing.php:66
+msgid "Weight offered"
+msgstr ""
+
+#: template-parts/landing.php:68
+msgid "Asked prices"
+msgstr ""
+
+#: template-parts/landing.php:71
+msgid "Last update"
+msgstr ""
+
+#: template-parts/landing.php:77
+msgid "Sizes offered"
+msgstr ""
+
+#. translators: %s: number of listings.
+#: template-parts/landing.php:97
+msgid "See the %s listing with the filters"
+msgid_plural "See the %s listings with the filters"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: type or market.
+#: template-parts/landing.php:103
+msgid "%s in other wilayas"
+msgstr ""
+
+#. translators: %s: wilaya.
+#: template-parts/landing.php:112
+msgid "Other products in %s"
+msgstr ""
+
+#: template-parts/landing.php:120
+msgid "Prices asked by the sellers in their listings, not sale prices. The range is shown from 3 listings with a price."
+msgstr ""
+
+#: template-parts/marketplace-archive.php:43
 #: templates/front-page-template.php:26
 msgid "Explore the marketplace"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:35
+#: template-parts/marketplace-archive.php:44
 msgid "New steel, reuse and steel buildings from all over Algeria: choose a market or a type, or search directly."
 msgstr ""
 
-#: template-parts/marketplace-archive.php:53
-msgid "Publish here"
-msgstr ""
-
-#: template-parts/marketplace-archive.php:67
+#: template-parts/marketplace-archive.php:76
 msgid "See the market"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:73
+#: template-parts/marketplace-archive.php:82
 msgid "Types with listings"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:79
+#: template-parts/marketplace-archive.php:88
 msgid "Categories"
 msgstr ""
 
 #. translators: %s: number of listings.
-#: template-parts/marketplace-archive.php:101
+#: template-parts/marketplace-archive.php:110
 msgid "<strong>%s</strong> listing"
 msgid_plural "<strong>%s</strong> listings"
 msgstr[0] ""
 msgstr[1] ""
 
-#: template-parts/marketplace-archive.php:114
+#: template-parts/marketplace-archive.php:123
 #: templates/rfq-board.php:82
 msgid "Most recent"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:115
+#: template-parts/marketplace-archive.php:124
 msgid "Price per kg: low to high"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:116
+#: template-parts/marketplace-archive.php:125
 msgid "Price per kg: high to low"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:119
+#: template-parts/marketplace-archive.php:128
 msgid "Display"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:120
+#: template-parts/marketplace-archive.php:129
 msgid "Grid"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:121
+#: template-parts/marketplace-archive.php:130
 msgid "List"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:144
+#: template-parts/marketplace-archive.php:153
 msgid "No listing matches these filters"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:145
+#: template-parts/marketplace-archive.php:154
 msgid "Widen your search, or publish a request for quotation so suppliers come to you."
 msgstr ""
 
-#: template-parts/marketplace-archive.php:146
+#: template-parts/marketplace-archive.php:155
 #: templates/front-page-template.php:119
-#: templates/single-listing.php:142
+#: templates/single-listing.php:145
 #: templates/single-service.php:92
 #: templates/single-service.php:121
 #: templates/styleguide.php:36
@@ -10977,59 +11042,66 @@ msgstr ""
 msgid "Weight source"
 msgstr ""
 
-#: templates/single-listing.php:91
+#. translators: 1: number of listings, 2: wilaya.
+#: templates/single-listing.php:83
+msgid "%1$s listing of this type in %2$s"
+msgid_plural "%1$s listings of this type in %2$s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/single-listing.php:94
 msgid "This product has been sold."
 msgstr ""
 
-#: templates/single-listing.php:92
+#: templates/single-listing.php:95
 msgid "This listing has expired."
 msgstr ""
 
-#: templates/single-listing.php:93
+#: templates/single-listing.php:96
 msgid "Preview: this product is waiting for review and is not visible to buyers yet."
 msgstr ""
 
-#: templates/single-listing.php:94
+#: templates/single-listing.php:97
 msgid "Preview of a draft: not visible to buyers."
 msgstr ""
 
-#: templates/single-listing.php:95
+#: templates/single-listing.php:98
 msgid "Preview: changes were requested; not visible to buyers."
 msgstr ""
 
-#: templates/single-listing.php:160
+#: templates/single-listing.php:163
 msgid "Technical specifications"
 msgstr ""
 
-#: templates/single-listing.php:190
+#: templates/single-listing.php:193
 msgid "Dismantling"
 msgstr ""
 
-#: templates/single-listing.php:191
+#: templates/single-listing.php:194
 msgid "Transport"
 msgstr ""
 
-#: templates/single-listing.php:192
+#: templates/single-listing.php:195
 msgid "Reinstallation"
 msgstr ""
 
-#: templates/single-listing.php:193
+#: templates/single-listing.php:196
 msgid "Foundations and accessories"
 msgstr ""
 
-#: templates/single-listing.php:198
+#: templates/single-listing.php:201
 msgid "not included"
 msgstr ""
 
-#: templates/single-listing.php:235
+#: templates/single-listing.php:238
 msgid "Planning a structural reuse? Have the elements checked by a verified engineer before installation."
 msgstr ""
 
-#: templates/single-listing.php:235
+#: templates/single-listing.php:238
 msgid "Find an engineer"
 msgstr ""
 
-#: templates/single-listing.php:260
+#: templates/single-listing.php:263
 msgid "Similar listings"
 msgstr ""
 

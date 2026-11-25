@@ -306,6 +306,33 @@ null === $pi_set ? delete_option( \SM\Products\PriceTrend::OPTION ) : update_opt
 null === $pi_refs ? delete_option( \SM\Products\PriceTrend::REFS ) : update_option( \SM\Products\PriceTrend::REFS, $pi_refs );
 \SM\Products\PriceTrend::flush();
 
+echo "\nPages « type × wilaya » (0.24.0)\n";
+$L = \SM\Products\Landing::class;
+smp_assert( 'msila' === $L::wilaya_slug( '28' ) && 'bordj-bou-arreridj' === $L::wilaya_slug( '34' ) && '28' === $L::wilaya_code( 'msila' ), "names of the wilayas in latin letters: msila, bordj-bou-arreridj" );
+$pages = $L::pages();
+$ok    = true;
+foreach ( $L::groups( 1 ) as $g ) {
+	$in = in_array( array( $g[0], $g[1], $g[2] ), $pages, true );
+	if ( $in !== ( $g[3] >= $L::MIN ) && isset( \SM\Products\Categories::labels( $g[0] )[ $g[1] ] ) ) {
+		$ok = false;
+	}
+}
+smp_assert( $ok, 'a type × wilaya page exists for Google only from 3 published listings (' . count( $pages ) . ' pages)' );
+$big = null;
+foreach ( $L::groups() as $g ) {
+	if ( '' !== $g[1] && isset( \SM\Products\Categories::labels( $g[0] )[ $g[1] ] ) ) {
+		$big = $g;
+		break;
+	}
+}
+if ( $big ) {
+	$d = apply_filters( 'sm_theme_data_landing', null, array( 'market' => $big[0], 'category' => $big[1], 'wilaya' => $L::wilaya_slug( $big[2] ) ) );
+	smp_assert( is_array( $d ) && $d['count'] === $big[3] && $d['index'] && count( $d['items'] ) === min( 12, $big[3] ), 'data: real number of listings, indexed, listings shown' );
+	smp_assert( null === $d['prices'] || ( $d['prices']['n'] >= 3 && $d['prices']['min'] <= $d['prices']['max'] ), 'price range only from 3 listings with a price per kg' );
+	smp_assert( (bool) preg_match( '#/' . $big[1] . '/' . $L::wilaya_slug( $big[2] ) . '/$#', $d['url'] ), 'address /{market}/{type}/{wilaya}/' );
+}
+smp_assert( null === apply_filters( 'sm_theme_data_landing', null, array( 'market' => 'products', 'category' => 'zzz', 'wilaya' => 'msila' ) ) && null === apply_filters( 'sm_theme_data_landing', null, array( 'market' => 'products', 'category' => '', 'wilaya' => 'atlantis' ) ), 'unknown type or wilaya: not found' );
+
 smp_cleanup();
 $t = $GLOBALS['smp_t'];
 printf( "\n%d passed, %d failed\n", $t['pass'], $t['fail'] );

@@ -9,6 +9,15 @@
 defined( 'ABSPATH' ) || exit;
 
 $market   = $args['market'];
+// 0.60.0: page « type × wilaya » (/produits/profiles/msila/), its own layout.
+if ( 'search' !== $market && get_query_var( 'sm_lw' ) ) {
+	$landing = sm_theme_data( 'landing', array( 'market' => $market, 'category' => get_query_var( 'sm_lcat' ), 'wilaya' => get_query_var( 'sm_lw' ) ) );
+	if ( is_array( $landing ) ) {
+		get_template_part( 'template-parts/landing', null, array( 'data' => $landing, 'title' => $args['title'] ) );
+		return;
+	}
+	status_header( 404 );
+}
 $action   = sm_page_url( 'search' === $market ? 'search' : $market );
 $page_num = max( 1, (int) sm_theme_query_arg( 'pg', 1 ) );
 $query    = sm_theme_listing_query( $market, $page_num );

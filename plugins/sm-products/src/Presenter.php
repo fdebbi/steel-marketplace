@@ -90,7 +90,8 @@ final class Presenter {
 
 	/** Details only needed on the product page. */
 	public static function detail( $p ) {
-		$out           = self::listing( $p );
+		$out            = self::listing( $p );
+		$out['landing'] = Landing::for_listing( $p ); // 0.24.0: page « type × wilaya » of the listing (3 listings or more).
 		$out['sheets'] = array();
 		foreach ( Media::get( 'product', $p->id, 'sheet' ) as $aid ) {
 			$file            = get_attached_file( $aid );

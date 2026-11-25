@@ -1,5 +1,11 @@
 # Changelog — sm-products
 
+## 0.24.0 — 2026-11-25 (avec sm-seo 0.3.0, thème 0.60.0)
+
+- **Pages « type × wilaya »** (`Landing`) : `/produits/profiles/msila/` (un type d'un marché dans une wilaya) et `/reemploi/msila/` (tout un marché dans une wilaya). Vrais chiffres seulement : nombre d'annonces, poids, fourchette des prix demandés au kilo (à partir de 3 annonces avec un prix), dernière mise à jour, tailles proposées (pages du catalogue), même type dans les autres wilayas, autres types de la wilaya.
+- Une page n'est donnée aux moteurs de recherche qu'à partir de **3 annonces publiées** (`Landing::MIN`) ; nom de la wilaya en lettres latines, le même dans les 3 langues. Donnée `landing`, variables `sm_lcat` / `sm_lw`.
+- Fiche d'une annonce : `landing` (lien « N annonces de ce type à M'Sila » quand la page existe).
+
 ## 0.23.1 — 2026-11-21
 
 - Donnée `listings` : argument `silent` — la lecture des annonces d'une page du catalogue n'est pas comptée comme une recherche dans le Rapport Business.

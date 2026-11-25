@@ -44,6 +44,9 @@ final class Sitemaps {
 		if ( class_exists( '\\SM\\WeightEngine\\CataloguePages' ) && Text::page_id( 'catalogue' ) ) {
 			wp_register_sitemap_provider( 'smcatalogue', new Sitemap\Catalogue() ); // 0.2.0
 		}
+		if ( class_exists( '\\SM\\Products\\Landing' ) ) {
+			wp_register_sitemap_provider( 'smlanding', new Sitemap\Landing() ); // 0.3.0
+		}
 		if ( self::table_exists( $GLOBALS['wpdb']->prefix . 'sm_services' ) ) {
 			wp_register_sitemap_provider( 'smservices', new Sitemap\Services() );
 		}

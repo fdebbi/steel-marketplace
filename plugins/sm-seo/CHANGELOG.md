@@ -1,5 +1,10 @@
 # Changelog — sm-seo
 
+## 0.3.0 — 2026-11-25 (avec sm-products 0.24.0, thème 0.60.0)
+
+- Pages « type × wilaya » : titre (« Profilés à M'Sila – Acier neuf »), description avec les vrais chiffres, adresse canonique, liste des annonces et fil d'Ariane en données structurées ; hors index sous 3 annonces.
+- Plan du site `smlanding` : seulement les pages d'au moins 3 annonces, dans les 3 langues.
+
 ## 0.2.0 — 2026-11-21 (avec sm-weight-engine 0.8.0, thème 0.59.0)
 
 - **Catalogue des profilés** : titre, description (valeurs réelles : kg/m, barres de 6 et 12 m, dimensions), adresse canonique, données structurées (Product avec ses dimensions sans prix, FAQPage des deux questions affichées, liste des tailles d'une famille, fil d'Ariane). Taille inconnue : hors index.

@@ -123,6 +123,16 @@ final class Context {
 				$m = Pages::service( $m, absint( get_query_var( 'sm_id' ) ? get_query_var( 'sm_id' ) : ( $args['id'] ?? 0 ) ) );
 				$args = array();
 				break;
+			case 'products':
+			case 'reuse':
+			case 'buildings':
+				if ( get_query_var( 'sm_lw' ) ) { // 0.3.0: page « type × wilaya ».
+					$m    = Pages::landing( $m, $key, (string) get_query_var( 'sm_lcat' ), (string) get_query_var( 'sm_lw' ) );
+					$args = array();
+					break;
+				}
+				$m = Pages::page( $m, $key, $args );
+				break;
 			case 'catalogue':
 				$m    = Pages::catalogue( $m, sanitize_title( (string) ( get_query_var( 'sm_cat' ) ? get_query_var( 'sm_cat' ) : ( $args['sm_cat'] ?? '' ) ) ) );
 				$args = array();

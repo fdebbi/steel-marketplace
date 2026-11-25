@@ -77,3 +77,13 @@
 .smk-grid > *, .smk-side, .smk-card { min-width: 0; }
 .smk-card .sm-btn, .smk-actions .sm-btn { white-space: normal; text-align: center; max-width: 100%; }
 .smk-calc input { width: min(120px, 100%); }
+
+/* Pages « type × wilaya » (0.60.0): same blocks as the catalogue, plus link chips. */
+.sml-h { font-size: var(--sm-fs-md); margin: var(--sm-s5) 0 var(--sm-s3); }
+.sml-chips { display: flex; flex-wrap: wrap; gap: var(--sm-s2); list-style: none; margin: 0; padding: 0; }
+.sml-chips a { display: inline-flex; align-items: baseline; gap: 6px; background: var(--sm-surface); border: 1px solid var(--sm-line); border-radius: 999px; padding: 6px 14px; color: var(--sm-text); text-decoration: none; font-size: var(--sm-fs-sm); }
+.sml-chips a:hover { border-color: var(--sm-primary); }
+.sml-chips small { color: var(--sm-muted); }
+.sml-chips em { font-style: normal; color: var(--sm-muted); }
+.sml-empty { color: var(--sm-muted); }
+.sml .smk-kpi small + b + small { margin-top: 2px; }

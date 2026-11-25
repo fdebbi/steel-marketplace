@@ -151,7 +151,7 @@ msgstr "إنشاء حساب"
 
 #: footer.php:46 header.php:31 templates/company-profile.php:230
 #: templates/company-profile.php:245 templates/contact.php:23
-#: templates/contact.php:32 templates/single-listing.php:271
+#: templates/contact.php:32 templates/single-listing.php:274
 msgid "Contact"
 msgstr "اتصل بنا"
 
@@ -1236,7 +1236,7 @@ msgid "No listing of %s for the moment."
 msgstr "لا توجد إعلانات %s حاليًا."
 
 #. translators: %s: section.
-#: template-parts/catalogue/section.php:118
+#: template-parts/catalogue/section.php:118 template-parts/landing.php:93
 msgid "Ask the sellers for a quote, or publish your stock."
 msgstr "اطلب عرض سعر من البائعين، أو انشر مخزونك."
 
@@ -1650,6 +1650,7 @@ msgstr ""
 #: template-parts/components/product-form.php:190
 #: template-parts/components/stock-warehouse.php:82
 #: templates/company-profile.php:222 templates/single-listing.php:81
+#: templates/single-listing.php:83
 msgid "Location"
 msgstr "الموقع"
 
@@ -2055,7 +2056,7 @@ msgstr "الشراء بهذا السعر"
 #: template-parts/components/buy-box.php:83
 #: template-parts/components/listing-building.php:185
 #: template-parts/components/listing-product.php:232
-#: templates/single-listing.php:137
+#: templates/single-listing.php:140
 msgid "Make an offer"
 msgstr "تقديم عرض"
 
@@ -2280,8 +2281,9 @@ msgstr "اطلب دراسة"
 
 #. translators: %d: years.
 #: template-parts/components/card-featured.php:41
-#: template-parts/directory.php:115 templates/company-profile.php:194
-#: templates/company-profile.php:243 templates/company-profile.php:267
+#: template-parts/directory.php:115 template-parts/landing.php:99
+#: templates/company-profile.php:194 templates/company-profile.php:243
+#: templates/company-profile.php:267
 msgid "Request a quote"
 msgstr "طلب عرض سعر"
 
@@ -2310,7 +2312,7 @@ msgstr "حفظ الإعلان"
 #: template-parts/components/listing-building.php:165
 #: template-parts/components/product-tech.php:493
 #: template-parts/dashboard/publish.php:112 templates/single-listing.php:49
-#: templates/single-listing.php:118
+#: templates/single-listing.php:121
 msgid "Assembled"
 msgstr "مركّب"
 
@@ -2319,7 +2321,7 @@ msgstr "مركّب"
 #: template-parts/components/listing-building.php:165
 #: template-parts/components/product-tech.php:494
 #: template-parts/dashboard/publish.php:113 templates/single-listing.php:49
-#: templates/single-listing.php:118
+#: templates/single-listing.php:121
 msgid "Dismantled"
 msgstr "مفكك"
 
@@ -3197,7 +3199,7 @@ msgstr ""
 #: template-parts/components/stock-warehouse.php:118
 #: template-parts/dashboard/listings.php:20
 #: template-parts/dashboard/rfq.php:29 template-parts/directory.php:62
-#: template-parts/marketplace-archive.php:80
+#: template-parts/marketplace-archive.php:89
 #: templates/marketplace-engineers.php:88
 msgid "All"
 msgstr "الكل"
@@ -3254,7 +3256,7 @@ msgid "Whole lot"
 msgstr "الحصة كاملة"
 
 #: template-parts/components/deal-list.php:66 template-parts/directory.php:122
-#: template-parts/marketplace-archive.php:133 templates/rfq-board.php:101
+#: template-parts/marketplace-archive.php:142 templates/rfq-board.php:101
 msgid "Pagination"
 msgstr "ترقيم الصفحات"
 
@@ -3352,7 +3354,7 @@ msgstr "التواصل مع %s"
 #: template-parts/components/enquiry-form.php:26
 #: template-parts/components/listing-building.php:188
 #: template-parts/components/listing-product.php:235
-#: templates/single-listing.php:138 templates/single-listing.php:140
+#: templates/single-listing.php:141 templates/single-listing.php:143
 msgid "Contact the seller"
 msgstr "التواصل مع البائع"
 
@@ -3436,7 +3438,7 @@ msgstr "مركّب أو مفكّك"
 
 #: template-parts/components/filter-panel.php:44
 #: template-parts/components/filter-panel.php:52
-#: template-parts/directory.php:59 template-parts/marketplace-archive.php:105
+#: template-parts/directory.php:59 template-parts/marketplace-archive.php:114
 msgid "Filters"
 msgstr "التصفية"
 
@@ -3592,7 +3594,7 @@ msgid "condition, roof, covering, cladding…"
 msgstr "الحالة، السقف، التغطية، الكسوة…"
 
 #: template-parts/components/listing-building.php:65
-#: templates/single-listing.php:206
+#: templates/single-listing.php:209
 msgid "Structural element inventory"
 msgstr "جرد العناصر الإنشائية"
 
@@ -3609,7 +3611,7 @@ msgstr "عرض تفاصيل الجرد"
 
 #: template-parts/components/listing-building.php:89
 #: template-parts/components/listing-product.php:154
-#: templates/single-listing.php:209
+#: templates/single-listing.php:212
 msgid ""
 "Unit weights come from the platform’s standard section tables. The "
 "theoretical weight excludes bolts, plates and welds."
@@ -3619,7 +3621,7 @@ msgstr ""
 
 #: template-parts/components/listing-building.php:96
 #: template-parts/components/product-tech.php:181
-#: templates/single-listing.php:186
+#: templates/single-listing.php:189
 msgid "What the price includes"
 msgstr "ما يشمله السعر"
 
@@ -3661,7 +3663,7 @@ msgstr "الأساسات والملحقات: غير مشمولة"
 
 #: template-parts/components/listing-building.php:124
 #: template-parts/components/listing-product.php:162
-#: templates/single-listing.php:175
+#: templates/single-listing.php:178
 msgid "Technical documents"
 msgstr "الوثائق التقنية"
 
@@ -3669,20 +3671,20 @@ msgstr "الوثائق التقنية"
 #: template-parts/components/listing-product.php:173
 #: template-parts/components/mission-request-form.php:444
 #: template-parts/components/product-form.php:122
-#: template-parts/dashboard/invoice.php:65 templates/single-listing.php:215
+#: template-parts/dashboard/invoice.php:65 templates/single-listing.php:218
 #: templates/single-service.php:99
 msgid "Description"
 msgstr "الوصف"
 
 #: template-parts/components/listing-building.php:137
 #: template-parts/components/listing-product.php:175
-#: templates/single-listing.php:217
+#: templates/single-listing.php:220
 msgid "No description. Ask the seller for details with the Contact button."
 msgstr "لا يوجد وصف. اطلب التفاصيل من البائع عبر زر التواصل."
 
 #: template-parts/components/listing-building.php:141
 #: template-parts/components/listing-product.php:179
-#: templates/single-listing.php:221
+#: templates/single-listing.php:224
 msgid "Shown in the language the seller wrote it in."
 msgstr "معروض باللغة التي كتب بها البائع."
 
@@ -3713,13 +3715,13 @@ msgstr "عرض سعر"
 #: template-parts/components/listing-product.php:240
 #: template-parts/components/stock-warehouse.php:83
 #: template-parts/dashboard/company.php:149
-#: template-parts/dashboard/settings.php:43 templates/single-listing.php:144
+#: template-parts/dashboard/settings.php:43 templates/single-listing.php:147
 msgid "Save"
 msgstr "حفظ"
 
 #: template-parts/components/listing-building.php:194
 #: template-parts/components/listing-product.php:241
-#: templates/single-listing.php:145
+#: templates/single-listing.php:148
 msgid "Share"
 msgstr "مشاركة"
 
@@ -3736,7 +3738,7 @@ msgstr "الصورة %d"
 #: template-parts/components/listing-group.php:16
 #: template-parts/components/listing-product.php:120
 #: template-parts/components/listing-product.php:129
-#: templates/single-listing.php:206
+#: templates/single-listing.php:209
 msgid "Lot inventory"
 msgstr "جرد الدفعة"
 
@@ -3986,7 +3988,7 @@ msgid "Brand new"
 msgstr "جديد"
 
 #: template-parts/components/listing-product.php:227
-#: template-parts/dashboard/ai-credits.php:61 templates/single-listing.php:136
+#: template-parts/dashboard/ai-credits.php:61 templates/single-listing.php:139
 msgid "Buy"
 msgstr "شراء"
 
@@ -6289,7 +6291,7 @@ msgstr "عرضك"
 
 #. translators: %d: days.
 #: template-parts/components/rfq-my-offer.php:20
-#: templates/single-listing.php:198
+#: templates/single-listing.php:201
 msgid "included"
 msgstr "مشمول"
 
@@ -7134,13 +7136,13 @@ msgstr "عرض كل الأنواع"
 
 #. translators: %s: number of listings.
 #: template-parts/components/type-tiles.php:64
-#: template-parts/marketplace-archive.php:65
+#: template-parts/marketplace-archive.php:74
 msgid "No listing yet"
 msgstr "لا إعلانات بعد"
 
 #. translators: %s: number of listings.
 #: template-parts/components/type-tiles.php:64
-#: template-parts/marketplace-archive.php:65
+#: template-parts/marketplace-archive.php:74
 msgid "%s listing"
 msgid_plural "%s listings"
 msgstr[0] "لا إعلانات"
@@ -8748,7 +8750,7 @@ msgstr "ليس لديك أي إعلان بعد."
 msgid "Account and plan"
 msgstr "الحساب والاشتراك"
 
-#: template-parts/dashboard/overview.php:242
+#: template-parts/dashboard/overview.php:242 template-parts/landing.php:85
 msgid "Listings"
 msgstr "الإعلانات"
 
@@ -9186,7 +9188,7 @@ msgstr "%s t من الفولاذ المعروض للبيع"
 msgid "in all"
 msgstr "في المجموع"
 
-#: template-parts/dashboard/report.php:131
+#: template-parts/dashboard/report.php:131 template-parts/landing.php:65
 msgid "Listings online"
 msgstr "الإعلانات المنشورة"
 
@@ -9837,7 +9839,7 @@ msgstr[3] "%d مؤسسات"
 msgstr[4] "%d مؤسسة"
 msgstr[5] "%d مؤسسة"
 
-#: template-parts/directory.php:84 template-parts/marketplace-archive.php:111
+#: template-parts/directory.php:84 template-parts/marketplace-archive.php:120
 #: templates/rfq-board.php:81
 msgid "Sort by"
 msgstr "ترتيب حسب"
@@ -9883,12 +9885,90 @@ msgstr "الإعلانات المحفوظة"
 msgid "Administration"
 msgstr "الإدارة"
 
-#: template-parts/marketplace-archive.php:34
+#. translators: 1: type of product or market, 2: wilaya (e.g. « Profilés à
+#. M'Sila »).
+#: template-parts/landing.php:20
+msgid "%1$s in %2$s"
+msgstr "%1$s في %2$s"
+
+#. translators: 1: number of listings, 2: type or market, 3: wilaya, 4:
+#. weight.
+#: template-parts/landing.php:42
+msgid "%1$s listing of %2$s in the wilaya of %3$s, about %4$s offered."
+msgid_plural ""
+"%1$s listings of %2$s in the wilaya of %3$s, about %4$s offered."
+msgstr[0] "%1$s إعلان من %2$s في ولاية %3$s، حوالي %4$s معروضة."
+msgstr[1] "إعلان واحد من %2$s في ولاية %3$s، حوالي %4$s معروضة."
+msgstr[2] "إعلانان من %2$s في ولاية %3$s، حوالي %4$s معروضة."
+msgstr[3] "%1$s إعلانات من %2$s في ولاية %3$s، حوالي %4$s معروضة."
+msgstr[4] "%1$s إعلانًا من %2$s في ولاية %3$s، حوالي %4$s معروضة."
+msgstr[5] "%1$s إعلان من %2$s في ولاية %3$s، حوالي %4$s معروضة."
+
+#. translators: 1: lowest asked price, 2: highest asked price.
+#: template-parts/landing.php:50
+msgid "Prices asked by the sellers: from %1$s to %2$s DA/kg."
+msgstr "الأسعار التي يطلبها البائعون: من %1$s إلى %2$s DA/kg."
+
+#. translators: 1: type or market, 2: wilaya.
+#: template-parts/landing.php:53
+msgid "No listing of %1$s in the wilaya of %2$s for the moment."
+msgstr "لا توجد إعلانات من %1$s في ولاية %2$s حاليًا."
+
+#: template-parts/landing.php:58 template-parts/marketplace-archive.php:62
+msgid "Publish here"
+msgstr "انشر هنا"
+
+#: template-parts/landing.php:66
+msgid "Weight offered"
+msgstr "الوزن المعروض"
+
+#: template-parts/landing.php:68
+msgid "Asked prices"
+msgstr "الأسعار المطلوبة"
+
+#: template-parts/landing.php:71
+msgid "Last update"
+msgstr "آخر تحديث"
+
+#: template-parts/landing.php:77
+msgid "Sizes offered"
+msgstr "المقاسات المعروضة"
+
+#. translators: %s: number of listings.
+#: template-parts/landing.php:97
+msgid "See the %s listing with the filters"
+msgid_plural "See the %s listings with the filters"
+msgstr[0] "عرض %s إعلان مع المرشحات"
+msgstr[1] "عرض الإعلان مع المرشحات"
+msgstr[2] "عرض الإعلانين مع المرشحات"
+msgstr[3] "عرض %s إعلانات مع المرشحات"
+msgstr[4] "عرض %s إعلانًا مع المرشحات"
+msgstr[5] "عرض %s إعلان مع المرشحات"
+
+#. translators: %s: type or market.
+#: template-parts/landing.php:103
+msgid "%s in other wilayas"
+msgstr "%s في ولايات أخرى"
+
+#. translators: %s: wilaya.
+#: template-parts/landing.php:112
+msgid "Other products in %s"
+msgstr "منتجات أخرى في %s"
+
+#: template-parts/landing.php:120
+msgid ""
+"Prices asked by the sellers in their listings, not sale prices. The range is"
+" shown from 3 listings with a price."
+msgstr ""
+"أسعار يطلبها البائعون في إعلاناتهم وليست أسعار بيع. يظهر المجال ابتداءً من 3"
+" إعلانات بسعر."
+
+#: template-parts/marketplace-archive.php:43
 #: templates/front-page-template.php:26
 msgid "Explore the marketplace"
 msgstr "استكشف السوق"
 
-#: template-parts/marketplace-archive.php:35
+#: template-parts/marketplace-archive.php:44
 msgid ""
 "New steel, reuse and steel buildings from all over Algeria: choose a market "
 "or a type, or search directly."
@@ -9896,24 +9976,20 @@ msgstr ""
 "فولاذ جديد وإعادة استعمال ومبانٍ معدنية من كل الجزائر: اختر سوقاً أو نوعاً، "
 "أو ابحث مباشرة."
 
-#: template-parts/marketplace-archive.php:53
-msgid "Publish here"
-msgstr "انشر هنا"
-
-#: template-parts/marketplace-archive.php:67
+#: template-parts/marketplace-archive.php:76
 msgid "See the market"
 msgstr "عرض السوق"
 
-#: template-parts/marketplace-archive.php:73
+#: template-parts/marketplace-archive.php:82
 msgid "Types with listings"
 msgstr "أنواع بها إعلانات"
 
-#: template-parts/marketplace-archive.php:79
+#: template-parts/marketplace-archive.php:88
 msgid "Categories"
 msgstr "الفئات"
 
 #. translators: %s: number of listings.
-#: template-parts/marketplace-archive.php:101
+#: template-parts/marketplace-archive.php:110
 msgid "<strong>%s</strong> listing"
 msgid_plural "<strong>%s</strong> listings"
 msgstr[0] "<strong>%s</strong> إعلان"
@@ -9923,42 +9999,42 @@ msgstr[3] "<strong>%s</strong> إعلانات"
 msgstr[4] "<strong>%s</strong> إعلانا"
 msgstr[5] "<strong>%s</strong> إعلان"
 
-#: template-parts/marketplace-archive.php:114 templates/rfq-board.php:82
+#: template-parts/marketplace-archive.php:123 templates/rfq-board.php:82
 msgid "Most recent"
 msgstr "الأحدث"
 
-#: template-parts/marketplace-archive.php:115
+#: template-parts/marketplace-archive.php:124
 msgid "Price per kg: low to high"
 msgstr "السعر للكيلوغرام: تصاعدي"
 
-#: template-parts/marketplace-archive.php:116
+#: template-parts/marketplace-archive.php:125
 msgid "Price per kg: high to low"
 msgstr "السعر للكيلوغرام: تنازلي"
 
-#: template-parts/marketplace-archive.php:119
+#: template-parts/marketplace-archive.php:128
 msgid "Display"
 msgstr "العرض"
 
-#: template-parts/marketplace-archive.php:120
+#: template-parts/marketplace-archive.php:129
 msgid "Grid"
 msgstr "شبكة"
 
-#: template-parts/marketplace-archive.php:121
+#: template-parts/marketplace-archive.php:130
 msgid "List"
 msgstr "قائمة"
 
-#: template-parts/marketplace-archive.php:144
+#: template-parts/marketplace-archive.php:153
 msgid "No listing matches these filters"
 msgstr "لا يوجد إعلان يطابق هذه التصفية"
 
-#: template-parts/marketplace-archive.php:145
+#: template-parts/marketplace-archive.php:154
 msgid ""
 "Widen your search, or publish a request for quotation so suppliers come to "
 "you."
 msgstr "وسّع بحثك أو انشر طلب عرض سعر ليأتيك الموردون."
 
-#: template-parts/marketplace-archive.php:146
-#: templates/front-page-template.php:119 templates/single-listing.php:142
+#: template-parts/marketplace-archive.php:155
+#: templates/front-page-template.php:119 templates/single-listing.php:145
 #: templates/single-service.php:92 templates/single-service.php:121
 #: templates/styleguide.php:36
 msgid "Request a quotation"
@@ -11828,64 +11904,75 @@ msgstr "التشطيب"
 msgid "Weight source"
 msgstr "مصدر الوزن"
 
-#: templates/single-listing.php:91
+#. translators: 1: number of listings, 2: wilaya.
+#: templates/single-listing.php:83
+msgid "%1$s listing of this type in %2$s"
+msgid_plural "%1$s listings of this type in %2$s"
+msgstr[0] "%1$s إعلان من هذا النوع في %2$s"
+msgstr[1] "إعلان واحد من هذا النوع في %2$s"
+msgstr[2] "إعلانان من هذا النوع في %2$s"
+msgstr[3] "%1$s إعلانات من هذا النوع في %2$s"
+msgstr[4] "%1$s إعلانًا من هذا النوع في %2$s"
+msgstr[5] "%1$s إعلان من هذا النوع في %2$s"
+
+#: templates/single-listing.php:94
 msgid "This product has been sold."
 msgstr "تم بيع هذا المنتج."
 
-#: templates/single-listing.php:92
+#: templates/single-listing.php:95
 msgid "This listing has expired."
 msgstr "انتهت صلاحية هذا الإعلان."
 
-#: templates/single-listing.php:93
+#: templates/single-listing.php:96
 msgid ""
 "Preview: this product is waiting for review and is not visible to buyers "
 "yet."
 msgstr "معاينة: هذا المنتج في انتظار المراجعة وغير ظاهر للمشترين بعد."
 
-#: templates/single-listing.php:94
+#: templates/single-listing.php:97
 msgid "Preview of a draft: not visible to buyers."
 msgstr "معاينة مسودة: غير ظاهرة للمشترين."
 
-#: templates/single-listing.php:95
+#: templates/single-listing.php:98
 msgid "Preview: changes were requested; not visible to buyers."
 msgstr "معاينة: طُلبت تعديلات؛ غير ظاهر للمشترين."
 
-#: templates/single-listing.php:160
+#: templates/single-listing.php:163
 msgid "Technical specifications"
 msgstr "المواصفات التقنية"
 
-#: templates/single-listing.php:190
+#: templates/single-listing.php:193
 msgid "Dismantling"
 msgstr "التفكيك"
 
-#: templates/single-listing.php:191
+#: templates/single-listing.php:194
 msgid "Transport"
 msgstr "النقل"
 
-#: templates/single-listing.php:192
+#: templates/single-listing.php:195
 msgid "Reinstallation"
 msgstr "إعادة التركيب"
 
-#: templates/single-listing.php:193
+#: templates/single-listing.php:196
 msgid "Foundations and accessories"
 msgstr "الأساسات والملحقات"
 
-#: templates/single-listing.php:198
+#: templates/single-listing.php:201
 msgid "not included"
 msgstr "غير مشمول"
 
-#: templates/single-listing.php:235
+#: templates/single-listing.php:238
 msgid ""
 "Planning a structural reuse? Have the elements checked by a verified "
 "engineer before installation."
 msgstr ""
 "تنوي إعادة استعمال إنشائي؟ اطلب فحص العناصر من مهندس موثق قبل التركيب."
 
-#: templates/single-listing.php:235
+#: templates/single-listing.php:238
 msgid "Find an engineer"
 msgstr "ابحث عن مهندس"
 
-#: templates/single-listing.php:260
+#: templates/single-listing.php:263
 msgid "Similar listings"
 msgstr "إعلانات مشابهة"
 

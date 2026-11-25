@@ -27,6 +27,7 @@ PAGES = {
     'home': '/',
     'explore': '/recherche/',
     'catalogue': '/catalogue/ipe-200/',
+    'landing': '/produits/profiles/msila/',
     'products': '/produits/',
     'reuse': '/reemploi/',
     'buildings': '/batiments/',

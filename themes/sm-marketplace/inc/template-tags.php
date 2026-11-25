@@ -187,6 +187,7 @@ function sm_kses_tech( $html ) {
 			'bdi'    => array( 'dir' => true, 'class' => true ),
 			'small'  => array(),
 			'strong' => array(),
+			'a'      => array( 'href' => true ), // 0.60.0: link to the page « type × wilaya ».
 		)
 	);
 }

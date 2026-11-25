@@ -54,7 +54,7 @@ with sync_playwright() as p:
     check(norm(pg.locator('[data-smk-kg]').inner_text()) in ('1,34 t', '1,34 t'), 'calculator: 6 m × 10 bars = 1,34 t (%s)' % norm(pg.locator('[data-smk-kg]').inner_text()))
     check(pg.locator('.smk-offers .sm-card--listing').count() > 0 or pg.locator('.smk-empty').count() == 1, 'listings of IPE 200 in progress, or « no listing » with « Request a quote »')
     if pg.locator('.smk-empty').count():
-        check(pg.locator('.smk-empty a[href*="view=rfq"]').count() == 1, 'no listing: « Request a quote for IPE 200 »')
+        check(pg.locator('.smk-empty a:has-text("Demander un devis")').count() == 1, 'no listing: « Request a quote for IPE 200 »')
     check(searched() == before, 'viewing the page is not counted as a search (Business report)')
     check(pg.locator('.smk-near__prev').inner_text().find('IPE 180') >= 0 and pg.locator('.smk-near__next').inner_text().find('IPE 220') >= 0, 'neighbouring sizes IPE 180 and IPE 220')
     check(pg.locator('.smk-faq details').count() == 2 and '268,3' in norm(pg.locator('.smk-faq').inner_text()), 'two questions with the computed answers')

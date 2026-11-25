@@ -2952,3 +2952,23 @@ P.update({
 T.update({
 'Page of %s in the catalogue': ('Fiche %s du catalogue', 'صفحة %s في الكتالوج'),
 })
+# 0.60.0 — pages « type × wilaya ».
+T.update({
+'%1$s in %2$s': ('%1$s à %2$s', '%1$s في %2$s'),
+'Prices asked by the sellers: from %1$s to %2$s DA/kg.': ('Prix demandés par les vendeurs : de %1$s à %2$s DA/kg.', 'الأسعار التي يطلبها البائعون: من %1$s إلى %2$s DA/kg.'),
+'No listing of %1$s in the wilaya of %2$s for the moment.': ('Aucune annonce de %1$s dans la wilaya de %2$s pour le moment.', 'لا توجد إعلانات من %1$s في ولاية %2$s حاليًا.'),
+'Weight offered': ('Poids proposé', 'الوزن المعروض'),
+'Asked prices': ('Prix demandés', 'الأسعار المطلوبة'),
+'Last update': ('Mise à jour', 'آخر تحديث'),
+'Sizes offered': ('Tailles proposées', 'المقاسات المعروضة'),
+'%s in other wilayas': ('%s dans d’autres wilayas', '%s في ولايات أخرى'),
+'Other products in %s': ('Autres produits à %s', 'منتجات أخرى في %s'),
+'Prices asked by the sellers in their listings, not sale prices. The range is shown from 3 listings with a price.': ('Prix demandés par les vendeurs dans leurs annonces, pas des prix de vente. La fourchette s’affiche à partir de 3 annonces avec un prix.', 'أسعار يطلبها البائعون في إعلاناتهم وليست أسعار بيع. يظهر المجال ابتداءً من 3 إعلانات بسعر.'),
+})
+P.update({
+('%1$s listing of %2$s in the wilaya of %3$s, about %4$s offered.', '%1$s listings of %2$s in the wilaya of %3$s, about %4$s offered.'): (['%1$s annonce de %2$s dans la wilaya de %3$s, environ %4$s proposées.', '%1$s annonces de %2$s dans la wilaya de %3$s, environ %4$s proposées.'], ['%1$s إعلان من %2$s في ولاية %3$s، حوالي %4$s معروضة.', 'إعلان واحد من %2$s في ولاية %3$s، حوالي %4$s معروضة.', 'إعلانان من %2$s في ولاية %3$s، حوالي %4$s معروضة.', '%1$s إعلانات من %2$s في ولاية %3$s، حوالي %4$s معروضة.', '%1$s إعلانًا من %2$s في ولاية %3$s، حوالي %4$s معروضة.', '%1$s إعلان من %2$s في ولاية %3$s، حوالي %4$s معروضة.']),
+('See the %s listing with the filters', 'See the %s listings with the filters'): (['Voir l’annonce avec les filtres', 'Voir les %s annonces avec les filtres'], ['عرض %s إعلان مع المرشحات', 'عرض الإعلان مع المرشحات', 'عرض الإعلانين مع المرشحات', 'عرض %s إعلانات مع المرشحات', 'عرض %s إعلانًا مع المرشحات', 'عرض %s إعلان مع المرشحات']),
+})
+P.update({
+('%1$s listing of this type in %2$s', '%1$s listings of this type in %2$s'): (['%1$s annonce de ce type à %2$s', '%1$s annonces de ce type à %2$s'], ['%1$s إعلان من هذا النوع في %2$s', 'إعلان واحد من هذا النوع في %2$s', 'إعلانان من هذا النوع في %2$s', '%1$s إعلانات من هذا النوع في %2$s', '%1$s إعلانًا من هذا النوع في %2$s', '%1$s إعلان من هذا النوع في %2$s']),
+})

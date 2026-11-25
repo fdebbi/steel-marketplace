@@ -39,6 +39,7 @@ final class Plugin {
 		Visits::init();
 		Theme\Bridge::init();
 		CuttingMarket::init();
+		Landing::init(); // 0.24.0: pages « type × wilaya ».
 		add_filter( 'sm_listing_slug_source', array( Products::class, 'filter_slug_source' ), 10, 2 );
 		Rest\Api::init();
 		if ( is_admin() ) {

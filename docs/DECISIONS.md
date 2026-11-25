@@ -553,3 +553,9 @@ Validé sur la maquette 0.37.
 - Maquette validée (m062) : une page par taille (`/catalogue/ipe-200/`) et par famille (`/catalogue/ipe/`), adresse `/catalogue/` choisie, phrase « Le poids réel peut varier selon les tolérances de laminage » validée par le client (ingénieur).
 - Valeurs du moteur de poids seulement (dimensions normalisées, 7 850 kg/m³), jamais la source des données ; pas de page pour les tôles ; pas de prix dans les données structurées du catalogue ; l'affichage d'une page du catalogue n'est pas compté comme une recherche dans le Rapport Business.
 
+## Référencement phase 3, étape 2 — pages « type × wilaya » (2026-11-25)
+
+- Maquette m063 validée. Seuil validé : **3 annonces publiées** pour qu'une page soit donnée à Google (en dessous : hors index et hors plan du site) ; fourchette de prix à partir de 3 annonces avec un prix au kilo.
+- Adresses validées : `/produits/profiles/msila/` et `/reemploi/msila/`, nom de la wilaya en lettres latines, identique dans les 3 langues.
+- Vrais chiffres seulement (nombre, poids, prix demandés, date) ; jamais de prix du marché ni de note ; la recherche avec filtres reste hors index.
+

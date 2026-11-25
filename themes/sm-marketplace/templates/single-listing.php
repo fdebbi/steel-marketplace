@@ -79,6 +79,9 @@ if ( in_array( $item['weight_source'], array( 'actual', 'theoretical', 'estimate
 }
 $sm_place = implode( ', ', array_filter( array( (string) ( $item['commune'] ?? '' ), sm_t( $wilayas[ $item['wilaya'] ] ?? '' ) ) ) );
 $specs[ __( 'Location', 'sm-marketplace' ) ]      = esc_html( $sm_place );
+if ( ! empty( $item['landing']['url'] ) ) { // 0.60.0: the other listings of this type in the wilaya.
+	$specs[ __( 'Location', 'sm-marketplace' ) ] .= ' · <a href="' . esc_url( $item['landing']['url'] ) . '">' . esc_html( sprintf( /* translators: 1: number of listings, 2: wilaya. */ _n( '%1$s listing of this type in %2$s', '%1$s listings of this type in %2$s', (int) $item['landing']['count'], 'sm-marketplace' ), sm_number( $item['landing']['count'] ), sm_t( $wilayas[ $item['wilaya'] ] ?? '' ) ) ) . '</a>';
+}
 
 $similar = sm_theme_listings( array( 'market' => $market, 'per_page' => 4 ) )['items'];
 $similar = array_values( array_filter( $similar, static fn( $s ) => $s['id'] !== $item['id'] ) );

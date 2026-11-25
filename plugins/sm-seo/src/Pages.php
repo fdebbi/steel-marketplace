@@ -148,6 +148,54 @@ final class Pages {
 	}
 
 	/**
+	 * Page « type × wilaya » (0.3.0, sm-products 0.24.0): /produits/profiles/msila/.
+	 * Indexed only from 3 published listings; real figures in the description.
+	 */
+	public static function landing( array $m, $market, $cat, $wslug ) {
+		$d = Text::data( 'landing', array( 'market' => $market, 'category' => $cat, 'wilaya' => $wslug ) );
+		if ( ! is_array( $d ) ) {
+			$m['index']     = false;
+			$m['canonical'] = Text::url( $market );
+			return $m;
+		}
+		$m['canonical'] = (string) $d['url'];
+		$m['index']     = (bool) $d['index'];
+		$wname          = Text::pick( $d['w_name'] );
+		$mlabel         = Text::market_label( $market );
+		$what           = $d['category'] ? Text::pick( $d['cat_name'] ) : $mlabel;
+		/* translators: 1: type of product or market, 2: wilaya (e.g. « Profilés à M'Sila »). */
+		$title       = sprintf( __( '%1$s in %2$s', 'sm-seo' ), $what, $wname );
+		$m['title']  = $d['category'] ? $title . ' – ' . $mlabel : $title;
+		$parts       = array();
+		if ( $d['count'] ) {
+			$kg      = (float) $d['kg'];
+			$weight  = $kg >= 1000 ? sprintf( __( 'about %s t', 'sm-seo' ), Text::number( round( $kg / 1000, 1 ) ) ) : sprintf( __( 'about %s kg', 'sm-seo' ), Text::number( round( $kg ), 0 ) );
+			/* translators: 1: number of listings, 2: type or market, 3: wilaya, 4: weight. */
+			$parts[] = sprintf( _n( '%1$s listing of %2$s in the wilaya of %3$s, %4$s offered.', '%1$s listings of %2$s in the wilaya of %3$s, %4$s offered.', (int) $d['count'], 'sm-seo' ), Text::number( $d['count'], 0 ), mb_strtolower( $what ), $wname, $weight );
+			if ( $d['prices'] ) {
+				/* translators: 1: lowest asked price, 2: highest asked price. */
+				$parts[] = sprintf( __( 'Prices asked by the sellers: from %1$s to %2$s DA/kg.', 'sm-seo' ), Text::number( $d['prices']['min'] ), Text::number( $d['prices']['max'] ) );
+			}
+		}
+		$parts[]          = __( 'Contact the sellers or request a quote through ReuSteel.', 'sm-seo' );
+		$m['description'] = Text::cut( implode( ' ', $parts ), 300 );
+		$market_url       = Text::url( $market );
+		$m['crumbs']      = array( array( $mlabel, $market_url ) );
+		if ( $d['category'] ) {
+			$m['crumbs'][] = array( Text::pick( $d['cat_name'] ), add_query_arg( 'category', $d['category'], $market_url ) );
+		}
+		$m['crumbs'][] = array( $wname, $m['canonical'] );
+		$list          = array();
+		foreach ( array_values( (array) $d['items'] ) as $i => $item ) {
+			$list[] = array( '@type' => 'ListItem', 'position' => $i + 1, 'name' => Text::pick( $item['title'] ?? '' ), 'url' => Text::url( 'listing', array( 'id' => (int) $item['id'] ) ) );
+		}
+		if ( $list ) {
+			$m['schema'][] = array( '@type' => 'ItemList', 'name' => $title, 'numberOfItems' => (int) $d['count'], 'itemListElement' => $list );
+		}
+		return $m;
+	}
+
+	/**
 	 * Catalogue of sections (0.2.0, sm-weight-engine 0.8.0): the families, a family
 	 * (table of its sizes) or a size (weight per metre, bars, dimensions). Values of
 	 * the weight engine only; the questions in the data are the ones shown on the page.

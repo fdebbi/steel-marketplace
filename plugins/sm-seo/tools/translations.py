@@ -125,3 +125,15 @@ T.update({
 'How many metres of %s in one tonne?': ('Combien de mètres de %s dans une tonne ?', 'كم مترًا من %s في الطن؟'),
 'About %1$s m (1 000 kg ÷ %2$s kg/m).': ('Environ %1$s m (1 000 kg ÷ %2$s kg/m).', 'حوالي %1$s م (1000 kg ÷ %2$s kg/m).'),
 })
+# 0.3.0 — pages « type × wilaya ».
+T.update({
+'%1$s in %2$s': ('%1$s à %2$s', '%1$s في %2$s'),
+'Prices asked by the sellers: from %1$s to %2$s DA/kg.': ('Prix demandés par les vendeurs : de %1$s à %2$s DA/kg.', 'الأسعار التي يطلبها البائعون: من %1$s إلى %2$s DA/kg.'),
+'Contact the sellers or request a quote through ReuSteel.': ('Contactez les vendeurs ou demandez un devis par ReuSteel.', 'تواصل مع البائعين أو اطلب عرض سعر عبر ReuSteel.'),
+})
+P.update({
+('%1$s listing of %2$s in the wilaya of %3$s, %4$s offered.', '%1$s listings of %2$s in the wilaya of %3$s, %4$s offered.'): (
+    ('%1$s annonce de %2$s dans la wilaya de %3$s, %4$s proposées.', '%1$s annonces de %2$s dans la wilaya de %3$s, %4$s proposées.'),
+    ('%1$s إعلان من %2$s في ولاية %3$s، %4$s معروضة.', 'إعلان واحد من %2$s في ولاية %3$s، %4$s معروضة.', 'إعلانان من %2$s في ولاية %3$s، %4$s معروضة.', '%1$s إعلانات من %2$s في ولاية %3$s، %4$s معروضة.', '%1$s إعلانًا من %2$s في ولاية %3$s، %4$s معروضة.', '%1$s إعلان من %2$s في ولاية %3$s، %4$s معروضة.'),
+),
+})
