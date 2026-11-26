@@ -170,8 +170,8 @@ final class Pages {
 		if ( $d['count'] ) {
 			$kg      = (float) $d['kg'];
 			$weight  = $kg >= 1000 ? sprintf( __( 'about %s t', 'sm-seo' ), Text::number( round( $kg / 1000, 1 ) ) ) : sprintf( __( 'about %s kg', 'sm-seo' ), Text::number( round( $kg ), 0 ) );
-			/* translators: 1: number of listings, 2: type or market, 3: wilaya, 4: weight. */
-			$parts[] = sprintf( _n( '%1$s listing of %2$s in the wilaya of %3$s, %4$s offered.', '%1$s listings of %2$s in the wilaya of %3$s, %4$s offered.', (int) $d['count'], 'sm-seo' ), Text::number( $d['count'], 0 ), mb_strtolower( $what ), $wname, $weight );
+			/* translators: 1: number of listings, 2: type or market, 3: « in the wilaya of … », 4: weight. */
+			$parts[] = sprintf( _n( '%1$s listing of %2$s %3$s, %4$s offered.', '%1$s listings of %2$s %3$s, %4$s offered.', (int) $d['count'], 'sm-seo' ), Text::number( $d['count'], 0 ), mb_strtolower( $what ), self::in_wilaya( $wname ), $weight );
 			if ( $d['prices'] ) {
 				/* translators: 1: lowest asked price, 2: highest asked price. */
 				$parts[] = sprintf( __( 'Prices asked by the sellers: from %1$s to %2$s DA/kg.', 'sm-seo' ), Text::number( $d['prices']['min'] ), Text::number( $d['prices']['max'] ) );
@@ -382,6 +382,16 @@ final class Pages {
 	}
 
 	/** « Wilaya de M'Sila. » / « Wilaya d'Alger. » (0.1.1: elision before a vowel in French). */
+	/** « dans la wilaya de M'Sila », « dans la wilaya d’Alger » (0.3.1). */
+	public static function in_wilaya( $wilaya ) {
+		if ( preg_match( '/^[aeiouy]/i', remove_accents( (string) $wilaya ) ) ) {
+			/* translators: %s: wilaya whose name starts with a vowel (French: « dans la wilaya d’Alger »). */
+			return sprintf( _x( 'in the wilaya of %s', 'before a vowel', 'sm-seo' ), $wilaya );
+		}
+		/* translators: %s: wilaya. */
+		return sprintf( __( 'in the wilaya of %s', 'sm-seo' ), $wilaya );
+	}
+
 	public static function wilaya_phrase( $wilaya ) {
 		$first = remove_accents( mb_substr( (string) $wilaya, 0, 1 ) );
 		if ( preg_match( '/^[aeiouy]$/i', $first ) ) {

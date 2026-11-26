@@ -1,5 +1,10 @@
 # Changelog — sm-seo
 
+## 0.3.1 — 2026-11-26 (avec sm-products 0.24.1, thème 0.60.1) — vérification sur reusteel.com
+
+- Description des pages « type × wilaya » : « dans la wilaya d’Alger » (élision devant une voyelle : Alger, Oran, Adrar, El Oued, Aïn Defla…) au lieu de « de Alger » (`Pages::in_wilaya`).
+- Plan du site des pages : chaque adresse une seule fois (`/tarifs/` était listé deux fois sur le site en ligne).
+
 ## 0.3.0 — 2026-11-25 (avec sm-products 0.24.0, thème 0.60.0)
 
 - Pages « type × wilaya » : titre (« Profilés à M'Sila – Acier neuf »), description avec les vrais chiffres, adresse canonique, liste des annonces et fil d'Ariane en données structurées ; hors index sous 3 annonces.

@@ -1,5 +1,9 @@
 # Changelog — sm-products
 
+## 0.24.1 — 2026-11-26 (avec sm-seo 0.3.1, thème 0.60.1)
+
+- Fiche d'une annonce : quand son type a moins de 3 annonces dans la wilaya, le lien mène à la page de tout le marché dans la wilaya (si elle en a au moins 3). `landing` reçoit `scope` (`type` | `market`).
+
 ## 0.24.0 — 2026-11-25 (avec sm-seo 0.3.0, thème 0.60.0)
 
 - **Pages « type × wilaya »** (`Landing`) : `/produits/profiles/msila/` (un type d'un marché dans une wilaya) et `/reemploi/msila/` (tout un marché dans une wilaya). Vrais chiffres seulement : nombre d'annonces, poids, fourchette des prix demandés au kilo (à partir de 3 annonces avec un prix), dernière mise à jour, tailles proposées (pages du catalogue), même type dans les autres wilayas, autres types de la wilaya.

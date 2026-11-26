@@ -1,5 +1,11 @@
 # Changelog — sm-marketplace
 
+## 0.60.1 — 2026-11-26 (avec sm-products 0.24.1, sm-seo 0.3.1)
+
+- Pages « type × wilaya » : « dans la wilaya d’Alger » (élision devant une voyelle) au lieu de « de Alger ».
+- Fiche d'une annonce : lien « N annonces à Alger » vers la page de tout le marché quand le type a moins de 3 annonces dans la wilaya.
+- `tools/compile-translations.py` accepte les contextes (`msgctxt`).
+
 ## 0.60.0 — 2026-11-25 (avec sm-products 0.24.0, sm-seo 0.3.0)
 
 - **Pages « type × wilaya »** (`template-parts/landing.php`, maquette m063 validée) : titre « Profilés à M'Sila », phrase avec les vrais chiffres, 4 chiffres clés, tailles proposées (vers le catalogue), annonces, « Voir les N annonces avec les filtres », « Demander un devis », même type dans d'autres wilayas, autres produits de la wilaya, rappel « prix demandés, pas des prix de vente ».

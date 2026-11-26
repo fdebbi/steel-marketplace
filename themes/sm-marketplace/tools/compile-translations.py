@@ -23,9 +23,9 @@ for code, (idx, plural, name) in langs.items():
             forms = val[idx]
             po.append(polib.POEntry(msgid=e.msgid, msgid_plural=e.msgid_plural, msgstr_plural={i: f for i, f in enumerate(forms)}, occurrences=e.occurrences, comment=e.comment))
         else:
-            val = T.get(e.msgid)
+            val = T.get((e.msgctxt, e.msgid)) if e.msgctxt else T.get(e.msgid)
             if not val: missing.add(e.msgid); continue
-            po.append(polib.POEntry(msgid=e.msgid, msgstr=val[idx], occurrences=e.occurrences, comment=e.comment))
+            po.append(polib.POEntry(msgid=e.msgid, msgctxt=e.msgctxt, msgstr=val[idx], occurrences=e.occurrences, comment=e.comment))
     po.save(os.path.join(root, 'languages', f'sm-marketplace-{code}.po'))
     po.save_as_mofile(os.path.join(root, 'languages', f'sm-marketplace-{code}.mo'))
     # Themes load {locale}.mo from their own languages folder.

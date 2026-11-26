@@ -80,7 +80,14 @@ if ( in_array( $item['weight_source'], array( 'actual', 'theoretical', 'estimate
 $sm_place = implode( ', ', array_filter( array( (string) ( $item['commune'] ?? '' ), sm_t( $wilayas[ $item['wilaya'] ] ?? '' ) ) ) );
 $specs[ __( 'Location', 'sm-marketplace' ) ]      = esc_html( $sm_place );
 if ( ! empty( $item['landing']['url'] ) ) { // 0.60.0: the other listings of this type in the wilaya.
-	$specs[ __( 'Location', 'sm-marketplace' ) ] .= ' · <a href="' . esc_url( $item['landing']['url'] ) . '">' . esc_html( sprintf( /* translators: 1: number of listings, 2: wilaya. */ _n( '%1$s listing of this type in %2$s', '%1$s listings of this type in %2$s', (int) $item['landing']['count'], 'sm-marketplace' ), sm_number( $item['landing']['count'] ), sm_t( $wilayas[ $item['wilaya'] ] ?? '' ) ) ) . '</a>';
+	$lw    = sm_t( $wilayas[ $item['wilaya'] ] ?? '' );
+	$ln    = (int) $item['landing']['count'];
+	$ltext = 'market' === ( $item['landing']['scope'] ?? 'type' ) // 0.60.1: page of the whole market when the type has fewer than 3 listings.
+		/* translators: 1: number of listings, 2: wilaya. */
+		? sprintf( _n( '%1$s listing in %2$s', '%1$s listings in %2$s', $ln, 'sm-marketplace' ), sm_number( $ln ), $lw )
+		/* translators: 1: number of listings, 2: wilaya. */
+		: sprintf( _n( '%1$s listing of this type in %2$s', '%1$s listings of this type in %2$s', $ln, 'sm-marketplace' ), sm_number( $ln ), $lw );
+	$specs[ __( 'Location', 'sm-marketplace' ) ] .= ' · <a href="' . esc_url( $item['landing']['url'] ) . '">' . esc_html( $ltext ) . '</a>';
 }
 
 $similar = sm_theme_listings( array( 'market' => $market, 'per_page' => 4 ) )['items'];

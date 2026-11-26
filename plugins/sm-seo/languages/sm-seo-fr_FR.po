@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: SM SEO 0.3.0\n"
+"Project-Id-Version: SM SEO 0.3.1\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -398,7 +398,7 @@ msgstr ""
 "Services d'ingénierie réalisés par des ingénieurs partenaires vérifiés, "
 "livrés par la plateforme : %s. Un seul devis, un seul interlocuteur."
 
-#: src/Pages.php:130 src/Pages.php:497 src/Schema.php:115
+#: src/Pages.php:130 src/Pages.php:507 src/Schema.php:115
 msgid "Algeria"
 msgstr "Algérie"
 
@@ -418,13 +418,13 @@ msgstr "environ %s t"
 msgid "about %s kg"
 msgstr "environ %s kg"
 
-#. translators: 1: number of listings, 2: type or market, 3: wilaya, 4:
-#. weight.
+#. translators: 1: number of listings, 2: type or market, 3: « in the wilaya
+#. of … », 4: weight.
 #: src/Pages.php:174
-msgid "%1$s listing of %2$s in the wilaya of %3$s, %4$s offered."
-msgid_plural "%1$s listings of %2$s in the wilaya of %3$s, %4$s offered."
-msgstr[0] "%1$s annonce de %2$s dans la wilaya de %3$s, %4$s proposées."
-msgstr[1] "%1$s annonces de %2$s dans la wilaya de %3$s, %4$s proposées."
+msgid "%1$s listing of %2$s %3$s, %4$s offered."
+msgid_plural "%1$s listings of %2$s %3$s, %4$s offered."
+msgstr[0] "%1$s annonce de %2$s %3$s, %4$s proposées."
+msgstr[1] "%1$s annonces de %2$s %3$s, %4$s proposées."
 
 #. translators: 1: lowest asked price, 2: highest asked price.
 #: src/Pages.php:177
@@ -529,79 +529,91 @@ msgstr "monté"
 msgid "dismantled"
 msgstr "démonté"
 
+#. translators: %s: wilaya whose name starts with a vowel (French: « dans la
+#. wilaya d’Alger »).
+#: src/Pages.php:389
+msgctxt "before a vowel"
+msgid "in the wilaya of %s"
+msgstr "dans la wilaya d’%s"
+
+#. translators: %s: wilaya.
+#: src/Pages.php:392
+msgid "in the wilaya of %s"
+msgstr "dans la wilaya de %s"
+
 #. translators: %s: wilaya whose name starts with a vowel (French: « Wilaya
 #. d’Alger. »).
-#: src/Pages.php:389
+#: src/Pages.php:399
 msgctxt "before a vowel"
 msgid "Wilaya of %s."
 msgstr "Wilaya d’%s."
 
 #. translators: %s: wilaya.
-#: src/Pages.php:392
+#: src/Pages.php:402
 msgid "Wilaya of %s."
 msgstr "Wilaya de %s."
 
 #. translators: 1: price per kilogram, 2: price of the whole lot.
-#: src/Pages.php:408
+#: src/Pages.php:418
 msgid "Price asked by the seller: %1$s DA/kg, or %2$s DA for the whole lot."
 msgstr ""
 "Prix demandé par le vendeur : %1$s DA/kg, ou %2$s DA pour tout le lot."
 
 #. translators: %s: price per kilogram.
-#: src/Pages.php:411
+#: src/Pages.php:421
 msgid "Price asked by the seller: %s DA/kg."
 msgstr "Prix demandé par le vendeur : %s DA/kg."
 
 #. translators: %s: price of the lot.
-#: src/Pages.php:417
+#: src/Pages.php:427
 msgid "Price of the lot asked by the seller: %s DA."
 msgstr "Prix du lot demandé par le vendeur : %s DA."
 
-#: src/Pages.php:419
+#: src/Pages.php:429
 msgid "Price on request."
 msgstr "Prix sur demande."
 
 #. translators: %s: wilaya.
-#: src/Pages.php:435
+#: src/Pages.php:445
 msgid "steel professional in %s"
 msgstr "professionnel de l'acier à %s"
 
 #. translators: %s: wilaya.
-#: src/Pages.php:435
+#: src/Pages.php:445
 msgid "steel company in %s"
 msgstr "entreprise de l'acier à %s"
 
-#: src/Pages.php:437
+#: src/Pages.php:447
 msgid "steel professional"
 msgstr "professionnel de l'acier"
 
-#: src/Pages.php:437
+#: src/Pages.php:447
 msgid "steel company"
 msgstr "entreprise de l'acier"
 
 #. translators: 1: name of the company, 2: « steel company in M'Sila ».
-#: src/Pages.php:442
+#: src/Pages.php:452
 msgid "%1$s, %2$s on ReuSteel. Contact through the platform."
 msgstr "%1$s, %2$s sur ReuSteel. Contact par la plateforme."
 
-#: src/Pages.php:450
+#: src/Pages.php:460
 msgid "Professionals"
 msgstr "Professionnels"
 
-#: src/Pages.php:450
+#: src/Pages.php:460
 msgid "Companies"
 msgstr "Entreprises"
 
-#: src/Pages.php:486
+#: src/Pages.php:496
 msgid "all Algeria"
 msgstr "toute l'Algérie"
 
 #. translators: %s: wilayas served.
-#: src/Pages.php:488
+#: src/Pages.php:498
 msgid "Served: %s."
 msgstr "Zone desservie : %s."
 
-#: src/Pages.php:491
+#: src/Pages.php:501
 msgid "Services"
 msgstr "Services"
 

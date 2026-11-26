@@ -68,6 +68,18 @@ with sync_playwright() as p:
     r = pg.goto(BASE + mp + '?lang=fr')
     check(r.status == 200 and ' à ' in pg.locator('h1').inner_text(), 'whole market in the wilaya: %s' % mp)
 
+    # 0.60.1: elision before a vowel, and a listing whose type has fewer than 3 listings → page of the whole market.
+    vw = wp('$L = SM\\Products\\Landing::class; foreach ($L::groups() as $g) { $n = SM\\Core\\Accounts\\Wilayas::all(true)[$g[2]]["fr"] ?? ""; if (preg_match("/^[aeiouy]/i", remove_accents($n))) { echo $L::url($g[0], $g[1], $g[2]); break; } }')
+    if vw:
+        pg.goto(BASE + re.sub(r'^https?://[^/]+', '', vw) + '?lang=fr')
+        intro = norm(pg.locator('.sm-pagehead__intro').inner_text()) + ' ' + norm(pg.locator('meta[name=description]').get_attribute('content'))
+        check('wilaya d’' in intro and 'wilaya de A' not in intro and 'wilaya de O' not in intro and 'wilaya de E' not in intro, 'elision: « dans la wilaya d’… » (%s)' % vw)
+    fb = wp('$L = SM\\Products\\Landing::class; foreach ($L::groups(1) as $g) { if ("" !== $g[1] && $g[3] < 3) { $m = $L::url($g[0], "", $g[2]); global $wpdb; $id = $wpdb->get_var($wpdb->prepare("SELECT id FROM {$wpdb->prefix}sm_listing_index WHERE module=%s AND category=%s AND wilaya=%s AND status=\'published\' LIMIT 1", $g[0], $g[1], $g[2])); if ($id && $m) { echo $id . " " . $m; break; } } }')
+    if fb:
+        fid, furl = fb.split(' ', 1)
+        pg.goto(BASE + '/annonce/%s/?lang=fr' % fid)
+        check(pg.locator('a[href$="%s"]' % re.sub(r'^https?://[^/]+', '', furl)).count() >= 1, 'type with fewer than 3 listings: listing → page of the whole market (%s)' % furl)
+
     print('\nC. Arabic, phone')
     m = b.new_page(viewport={'width': 390, 'height': 844})
     m.goto(BASE + '/ar' + path)

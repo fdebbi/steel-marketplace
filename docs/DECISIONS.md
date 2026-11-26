@@ -558,4 +558,5 @@ Validé sur la maquette 0.37.
 - Maquette m063 validée. Seuil validé : **3 annonces publiées** pour qu'une page soit donnée à Google (en dessous : hors index et hors plan du site) ; fourchette de prix à partir de 3 annonces avec un prix au kilo.
 - Adresses validées : `/produits/profiles/msila/` et `/reemploi/msila/`, nom de la wilaya en lettres latines, identique dans les 3 langues.
 - Vrais chiffres seulement (nombre, poids, prix demandés, date) ; jamais de prix du marché ni de note ; la recherche avec filtres reste hors index.
+- 2026-11-26 (vérification en ligne, validé) : élision « dans la wilaya d’Alger » ; une annonce dont le type a moins de 3 annonces dans la wilaya renvoie vers la page de tout le marché dans la wilaya (si elle en a au moins 3) ; chaque adresse une seule fois dans le plan du site.
 

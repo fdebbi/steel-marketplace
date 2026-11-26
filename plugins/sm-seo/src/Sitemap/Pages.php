@@ -55,7 +55,17 @@ final class Pages extends \WP_Sitemaps_Provider {
 		foreach ( $others as $id ) {
 			$list = array_merge( $list, Sitemaps::entries( (string) get_permalink( $id ), (string) get_post_field( 'post_modified_gmt', $id ) ) );
 		}
-		return $list;
+		// Each address once (a page of the marketplace may also exist as a plain page with the same address, 0.3.1).
+		$seen = array();
+		$out  = array();
+		foreach ( $list as $e ) {
+			if ( isset( $seen[ $e['loc'] ] ) ) {
+				continue;
+			}
+			$seen[ $e['loc'] ] = true;
+			$out[]             = $e;
+		}
+		return $out;
 	}
 
 	public function get_max_num_pages( $object_subtype = '' ) {

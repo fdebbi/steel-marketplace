@@ -25,6 +25,12 @@ if ( $d['category'] ) {
 }
 $crumbs[] = array( $wname, '' );
 $rfq      = sm_page_url( 'account', array( 'view' => 'rfq', 'new' => 1 ) );
+// « dans la wilaya de M'Sila », « dans la wilaya d’Alger » (elision before a vowel, 0.60.1).
+$in_w     = preg_match( '/^[aeiouy]/i', remove_accents( $wname ) )
+	/* translators: %s: wilaya whose name starts with a vowel (French: « dans la wilaya d’Alger »). */
+	? sprintf( _x( 'in the wilaya of %s', 'before a vowel', 'sm-marketplace' ), $wname )
+	/* translators: %s: wilaya. */
+	: sprintf( __( 'in the wilaya of %s', 'sm-marketplace' ), $wname );
 $t        = (float) $d['kg'] >= 1000 ? sm_number( $d['kg'] / 1000, 1 ) . "\u{00A0}t" : sm_number( $d['kg'] ) . "\u{00A0}kg";
 ?>
 <section class="sm-pagehead sm-pagehead--<?php echo esc_attr( $d['market'] ); ?>">
@@ -38,11 +44,11 @@ $t        = (float) $d['kg'] >= 1000 ? sm_number( $d['kg'] / 1000, 1 ) . "\u{00A
 					if ( $d['count'] ) {
 						echo esc_html(
 							sprintf(
-								/* translators: 1: number of listings, 2: type or market, 3: wilaya, 4: weight. */
-								_n( '%1$s listing of %2$s in the wilaya of %3$s, about %4$s offered.', '%1$s listings of %2$s in the wilaya of %3$s, about %4$s offered.', $d['count'], 'sm-marketplace' ),
+								/* translators: 1: number of listings, 2: type or market, 3: « in the wilaya of … », 4: weight. */
+								_n( '%1$s listing of %2$s %3$s, about %4$s offered.', '%1$s listings of %2$s %3$s, about %4$s offered.', $d['count'], 'sm-marketplace' ),
 								sm_number( $d['count'] ),
 								mb_strtolower( $what ),
-								$wname,
+								$in_w,
 								$t
 							)
 						);
@@ -50,7 +56,7 @@ $t        = (float) $d['kg'] >= 1000 ? sm_number( $d['kg'] / 1000, 1 ) . "\u{00A
 							echo ' ' . esc_html( sprintf( /* translators: 1: lowest asked price, 2: highest asked price. */ __( 'Prices asked by the sellers: from %1$s to %2$s DA/kg.', 'sm-marketplace' ), sm_number( $d['prices']['min'] ), sm_number( $d['prices']['max'] ) ) );
 						}
 					} else {
-						echo esc_html( sprintf( /* translators: 1: type or market, 2: wilaya. */ __( 'No listing of %1$s in the wilaya of %2$s for the moment.', 'sm-marketplace' ), mb_strtolower( $what ), $wname ) );
+						echo esc_html( sprintf( /* translators: 1: type or market, 2: wilaya. */ __( 'No listing of %1$s %2$s for the moment.', 'sm-marketplace' ), mb_strtolower( $what ), $in_w ) );
 					}
 					?>
 				</p>

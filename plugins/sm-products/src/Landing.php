@@ -256,11 +256,19 @@ final class Landing {
 			return null;
 		}
 		global $wpdb;
-		$n = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}sm_listing_index WHERE module = %s AND category = %s AND wilaya = %s AND status = 'published'", $p->market, $p->category, $p->wilaya ) ); // phpcs:ignore WordPress.DB
-		if ( $n < self::MIN || '' === self::wilaya_slug( $p->wilaya ) ) {
+		if ( '' === self::wilaya_slug( $p->wilaya ) ) {
 			return null;
 		}
-		return array( 'url' => self::url( $p->market, $p->category, $p->wilaya ), 'count' => $n );
+		$n = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}sm_listing_index WHERE module = %s AND category = %s AND wilaya = %s AND status = 'published'", $p->market, $p->category, $p->wilaya ) ); // phpcs:ignore WordPress.DB
+		if ( $n >= self::MIN ) {
+			return array( 'url' => self::url( $p->market, $p->category, $p->wilaya ), 'count' => $n, 'scope' => 'type' );
+		}
+		// 0.24.1: fewer than 3 listings of this type → the page of the whole market in the wilaya.
+		$n = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}sm_listing_index WHERE module = %s AND wilaya = %s AND status = 'published'", $p->market, $p->wilaya ) ); // phpcs:ignore WordPress.DB
+		if ( $n < self::MIN ) {
+			return null;
+		}
+		return array( 'url' => self::url( $p->market, '', $p->wilaya ), 'count' => $n, 'scope' => 'market' );
 	}
 
 	private static function names( $code ) {

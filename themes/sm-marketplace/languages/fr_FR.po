@@ -59,17 +59,17 @@ msgstr ""
 msgid "Marketplaces"
 msgstr "Marchés"
 
-#: footer.php:22 inc/menus.php:16 inc/template-tags.php:309
+#: footer.php:22 inc/menus.php:16 inc/template-tags.php:310
 #: templates/front-page-template.php:72 templates/marketplace-products.php:15
 msgid "Steel products"
 msgstr "Produits sidérurgiques"
 
-#: footer.php:23 inc/menus.php:24 inc/template-tags.php:310
+#: footer.php:23 inc/menus.php:24 inc/template-tags.php:311
 #: templates/front-page-template.php:73 templates/marketplace-reuse.php:15
 msgid "Steel reuse"
 msgstr "Réemploi de l’acier"
 
-#: footer.php:24 inc/menus.php:32 inc/template-tags.php:311
+#: footer.php:24 inc/menus.php:32 inc/template-tags.php:312
 #: templates/front-page-template.php:74 templates/marketplace-buildings.php:15
 msgid "Steel buildings"
 msgstr "Bâtiments métalliques"
@@ -86,7 +86,7 @@ msgstr "Demandes de devis"
 msgid "Services"
 msgstr "Services"
 
-#: footer.php:31 inc/menus.php:62 inc/template-tags.php:312
+#: footer.php:31 inc/menus.php:62 inc/template-tags.php:313
 #: template-parts/components/card-service.php:23
 #: templates/front-page-template.php:75 templates/marketplace-services.php:17
 #: templates/marketplace-services.php:20 templates/single-service.php:44
@@ -94,7 +94,7 @@ msgid "Fabrication & installation"
 msgstr "Fabrication et montage"
 
 #: footer.php:32 header.php:78 header.php:108 inc/menus.php:63
-#: inc/template-tags.php:313 template-parts/components/ai-photo-tools.php:95
+#: inc/template-tags.php:314 template-parts/components/ai-photo-tools.php:95
 #: templates/front-page-template.php:76 templates/marketplace-engineers.php:35
 #: templates/mission-request.php:23
 msgid "Engineering"
@@ -152,7 +152,7 @@ msgstr "Créer un compte"
 
 #: footer.php:46 header.php:31 templates/company-profile.php:230
 #: templates/company-profile.php:245 templates/contact.php:23
-#: templates/contact.php:32 templates/single-listing.php:274
+#: templates/contact.php:32 templates/single-listing.php:281
 msgid "Contact"
 msgstr "Contact"
 
@@ -167,7 +167,7 @@ msgstr ""
 msgid "Quick navigation"
 msgstr "Navigation rapide"
 
-#: footer.php:58 inc/template-tags.php:454
+#: footer.php:58 inc/template-tags.php:455
 msgid "Home"
 msgstr "Accueil"
 
@@ -263,7 +263,7 @@ msgstr "Afficher"
 msgid "Hide"
 msgstr "Masquer"
 
-#: inc/assets.php:69 inc/template-tags.php:607
+#: inc/assets.php:69 inc/template-tags.php:608
 msgid "Saved"
 msgstr "Enregistrée"
 
@@ -300,7 +300,7 @@ msgstr "Sera remplacé à l’enregistrement"
 msgid "Undo"
 msgstr "Annuler"
 
-#: inc/assets.php:79 inc/template-tags.php:611 inc/template-tags.php:617
+#: inc/assets.php:79 inc/template-tags.php:612 inc/template-tags.php:618
 #: template-parts/components/my-products.php:139
 #: template-parts/components/portfolio-grid.php:30
 #: template-parts/components/rfq-single.php:138
@@ -612,8 +612,8 @@ msgstr "Utilise l'intelligence artificielle : suggestions à vérifier"
 msgid "AI"
 msgstr "IA"
 
-#: inc/template-tags.php:167 inc/template-tags.php:480
-#: inc/template-tags.php:540
+#: inc/template-tags.php:167 inc/template-tags.php:481
+#: inc/template-tags.php:541
 #: template-parts/components/cutting-optimizer.php:390
 #: template-parts/components/product-tech.php:31
 #: template-parts/components/product-tech.php:568
@@ -622,261 +622,261 @@ msgid_plural "pieces"
 msgstr[0] "pièce"
 msgstr[1] "pièces"
 
-#: inc/template-tags.php:168 inc/template-tags.php:485
+#: inc/template-tags.php:168 inc/template-tags.php:486
 msgid "lot"
 msgstr "lot"
 
 #. translators: %s: width of a flat bar in mm.
-#: inc/template-tags.php:213
+#: inc/template-tags.php:214
 msgid "Width %s mm"
 msgstr "Largeur %s mm"
 
-#: inc/template-tags.php:268
+#: inc/template-tags.php:269
 msgid "New unused surplus"
 msgstr "Surplus neuf jamais utilisé"
 
-#: inc/template-tags.php:269
+#: inc/template-tags.php:270
 msgid "Excellent used condition"
 msgstr "Occasion, excellent état"
 
-#: inc/template-tags.php:270
+#: inc/template-tags.php:271
 msgid "Good used condition"
 msgstr "Occasion, bon état"
 
-#: inc/template-tags.php:271
+#: inc/template-tags.php:272
 msgid "Requires inspection or treatment"
 msgstr "À contrôler ou à traiter"
 
-#: inc/template-tags.php:272
+#: inc/template-tags.php:273
 msgid "Scrap / recycling only"
 msgstr "Ferraille / recyclage uniquement"
 
-#: inc/template-tags.php:289
+#: inc/template-tags.php:290
 msgid "Actual weight"
 msgstr "Poids réel"
 
-#: inc/template-tags.php:290 template-parts/components/product-tech.php:522
+#: inc/template-tags.php:291 template-parts/components/product-tech.php:522
 msgid "Estimated weight"
 msgstr "Poids estimé"
 
-#: inc/template-tags.php:291
+#: inc/template-tags.php:292
 #: template-parts/components/listing-inventory.php:78
 #: template-parts/components/listing-inventory.php:79
 #: template-parts/components/product-tech.php:502
 msgid "Weight of the declared elements"
 msgstr "Poids des éléments déclarés"
 
-#: inc/template-tags.php:293
+#: inc/template-tags.php:294
 #: template-parts/components/ai-result-document.php:25
 #: template-parts/components/rfq-single.php:33
 msgid "Theoretical weight"
 msgstr "Poids théorique"
 
-#: inc/template-tags.php:299 templates/styleguide.php:51
+#: inc/template-tags.php:300 templates/styleguide.php:51
 msgid "actual"
 msgstr "réel"
 
-#: inc/template-tags.php:300
+#: inc/template-tags.php:301
 msgid "estimated"
 msgstr "estimé"
 
-#: inc/template-tags.php:301
+#: inc/template-tags.php:302
 msgid "declared elements"
 msgstr "éléments déclarés"
 
-#: inc/template-tags.php:303 templates/styleguide.php:52
+#: inc/template-tags.php:304 templates/styleguide.php:52
 msgid "theoretical"
 msgstr "théorique"
 
-#: inc/template-tags.php:334
+#: inc/template-tags.php:335
 msgid "Steel construction contractor"
 msgstr "Réalisation de constructions métalliques"
 
-#: inc/template-tags.php:335
+#: inc/template-tags.php:336
 msgid "Manufacturing"
 msgstr "Fabrication"
 
-#: inc/template-tags.php:336
+#: inc/template-tags.php:337
 msgid "Supply and distribution"
 msgstr "Fourniture et distribution"
 
-#: inc/template-tags.php:337
+#: inc/template-tags.php:338
 msgid "Recycling and scrap"
 msgstr "Recyclage et ferraille"
 
-#: inc/template-tags.php:338
+#: inc/template-tags.php:339
 msgid "Dismantling and second-hand resale"
 msgstr "Démontage et revente d’occasion"
 
-#: inc/template-tags.php:341
+#: inc/template-tags.php:342
 msgid "Structural steel fabricator"
 msgstr "Charpentier métallique"
 
-#: inc/template-tags.php:342
+#: inc/template-tags.php:343
 msgid "Steel structure erector"
 msgstr "Monteur de charpente"
 
-#: inc/template-tags.php:343
+#: inc/template-tags.php:344
 msgid "Roofing and cladding installer"
 msgstr "Poseur couverture et bardage"
 
-#: inc/template-tags.php:344
+#: inc/template-tags.php:345
 msgid "Welder"
 msgstr "Soudeur"
 
-#: inc/template-tags.php:345
+#: inc/template-tags.php:346
 msgid "Boilermaker"
 msgstr "Chaudronnier"
 
-#: inc/template-tags.php:346
+#: inc/template-tags.php:347
 msgid "Metalworker (locksmith)"
 msgstr "Serrurier-métallier"
 
-#: inc/template-tags.php:347
+#: inc/template-tags.php:348
 msgid "Lifting and handling"
 msgstr "Levage et manutention"
 
-#: inc/template-tags.php:348
+#: inc/template-tags.php:349
 msgid "Sandblasting and painting"
 msgstr "Sablage et peinture"
 
-#: inc/template-tags.php:352 template-parts/dashboard/company.php:41
+#: inc/template-tags.php:353 template-parts/dashboard/company.php:41
 #: templates/auth-register.php:30
 msgid "Company"
 msgstr "Entreprise"
 
-#: inc/template-tags.php:353 templates/auth-register.php:31
+#: inc/template-tags.php:354 templates/auth-register.php:31
 #: templates/engineer-apply.php:305
 msgid "Professional"
 msgstr "Professionnel"
 
-#: inc/template-tags.php:354 inc/template-tags.php:357
+#: inc/template-tags.php:355 inc/template-tags.php:358
 #: template-parts/dashboard/engineer-files.php:22
 #: templates/auth-register.php:32
 msgid "Client"
 msgstr "Client"
 
-#: inc/template-tags.php:355 inc/template-tags.php:357
+#: inc/template-tags.php:356 inc/template-tags.php:358
 msgid "Partner engineer"
 msgstr "Ingénieur partenaire"
 
-#: inc/template-tags.php:400
+#: inc/template-tags.php:401
 msgid "Not verified"
 msgstr "Non vérifié"
 
-#: inc/template-tags.php:401 template-parts/components/card-featured.php:35
+#: inc/template-tags.php:402 template-parts/components/card-featured.php:35
 #: template-parts/directory.php:107 templates/company-profile.php:98
 msgid "Account verified"
 msgstr "Compte vérifié"
 
-#: inc/template-tags.php:403
+#: inc/template-tags.php:404
 #: template-parts/components/verification-steps.php:19
 msgid "Verified engineer"
 msgstr "Ingénieur vérifié"
 
-#: inc/template-tags.php:413
+#: inc/template-tags.php:414
 #: template-parts/components/verification-steps.php:17
 msgid "Verified professional"
 msgstr "Professionnel vérifié"
 
-#: inc/template-tags.php:413
+#: inc/template-tags.php:414
 msgid "Verified company"
 msgstr "Entreprise vérifiée"
 
-#: inc/template-tags.php:420
+#: inc/template-tags.php:421
 msgid "just now"
 msgstr "à l’instant"
 
 #. translators: %s: number of hours.
-#: inc/template-tags.php:425
+#: inc/template-tags.php:426
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] "il y a %s heure"
 msgstr[1] "il y a %s heures"
 
 #. translators: %s: number of days.
-#: inc/template-tags.php:429
+#: inc/template-tags.php:430
 msgid "%s day ago"
 msgid_plural "%s days ago"
 msgstr[0] "il y a %s jour"
 msgstr[1] "il y a %s jours"
 
-#: inc/template-tags.php:453
+#: inc/template-tags.php:454
 msgid "Breadcrumb"
 msgstr "Fil d’Ariane"
 
-#: inc/template-tags.php:493 template-parts/components/my-products.php:28
+#: inc/template-tags.php:494 template-parts/components/my-products.php:28
 #: template-parts/components/my-products.php:39
 #: template-parts/components/stock-warehouse.php:46
 #: template-parts/dashboard/services.php:24
 msgid "Waiting for review"
 msgstr "En attente de vérification"
 
-#: inc/template-tags.php:494
+#: inc/template-tags.php:495
 msgid "Open for offers"
 msgstr "Ouverte aux offres"
 
-#: inc/template-tags.php:495
+#: inc/template-tags.php:496
 msgid "Awarded"
 msgstr "Attribuée"
 
-#: inc/template-tags.php:496 template-parts/components/deal-list.php:23
+#: inc/template-tags.php:497 template-parts/components/deal-list.php:23
 msgid "Closed"
 msgstr "Clôturée"
 
-#: inc/template-tags.php:497
+#: inc/template-tags.php:498
 msgid "Deadline passed"
 msgstr "Délai dépassé"
 
-#: inc/template-tags.php:498 template-parts/components/my-products.php:29
+#: inc/template-tags.php:499 template-parts/components/my-products.php:29
 #: template-parts/components/my-products.php:40
 #: template-parts/dashboard/services.php:26
 msgid "Changes requested"
 msgstr "Modifications demandées"
 
-#: inc/template-tags.php:505 template-parts/dashboard/deal.php:53
+#: inc/template-tags.php:506 template-parts/dashboard/deal.php:53
 msgid "Sent"
 msgstr "Envoyée"
 
-#: inc/template-tags.php:506
+#: inc/template-tags.php:507
 msgid "Shortlisted"
 msgstr "Présélectionnée"
 
-#: inc/template-tags.php:507 inc/template-tags.php:561
+#: inc/template-tags.php:508 inc/template-tags.php:562
 #: template-parts/components/visits-list.php:20
 msgid "Accepted"
 msgstr "Acceptée"
 
-#: inc/template-tags.php:508
+#: inc/template-tags.php:509
 msgid "Not retained"
 msgstr "Non retenue"
 
-#: inc/template-tags.php:509
+#: inc/template-tags.php:510
 msgid "Withdrawn"
 msgstr "Retirée"
 
-#: inc/template-tags.php:535
+#: inc/template-tags.php:536
 msgid "project"
 msgstr "projet"
 
-#: inc/template-tags.php:541
+#: inc/template-tags.php:542
 msgid "hour"
 msgstr "heure"
 
-#: inc/template-tags.php:542
+#: inc/template-tags.php:543
 msgid "day"
 msgstr "jour"
 
-#: inc/template-tags.php:550 template-parts/components/service-form.php:124
+#: inc/template-tags.php:551 template-parts/components/service-form.php:124
 msgid "On quotation"
 msgstr "Sur devis"
 
 #. translators: %s: price with unit.
-#: inc/template-tags.php:553
+#: inc/template-tags.php:554
 msgid "From %s"
 msgstr "À partir de %s"
 
-#: inc/template-tags.php:559
+#: inc/template-tags.php:560
 #: template-parts/components/cutting-optimizer.php:202
 #: template-parts/components/cutting-sources.php:17
 #: template-parts/components/stock-warehouse.php:23
@@ -886,50 +886,50 @@ msgstr "À partir de %s"
 msgid "New"
 msgstr "Nouvelle"
 
-#: inc/template-tags.php:560 templates/styleguide.php:48
+#: inc/template-tags.php:561 templates/styleguide.php:48
 msgid "Quote sent"
 msgstr "Devis envoyé"
 
-#: inc/template-tags.php:562
+#: inc/template-tags.php:563
 msgid "Quote declined"
 msgstr "Devis refusé"
 
-#: inc/template-tags.php:563
+#: inc/template-tags.php:564
 msgid "Declined by the provider"
 msgstr "Déclinée par le prestataire"
 
-#: inc/template-tags.php:564 template-parts/components/visits-list.php:22
+#: inc/template-tags.php:565 template-parts/components/visits-list.php:22
 msgid "Cancelled"
 msgstr "Annulée"
 
-#: inc/template-tags.php:609
+#: inc/template-tags.php:610
 msgid "Keep"
 msgstr "Garder"
 
-#: inc/template-tags.php:615 templates/engineer-apply.php:124
+#: inc/template-tags.php:616 templates/engineer-apply.php:124
 msgid "Replace"
 msgstr "Remplacer"
 
-#: inc/template-tags.php:635
+#: inc/template-tags.php:636
 msgid "Yes"
 msgstr "Oui"
 
-#: inc/template-tags.php:635
+#: inc/template-tags.php:636
 msgid "No"
 msgstr "Non"
 
-#: inc/template-tags.php:638
+#: inc/template-tags.php:639
 msgid "Unlimited"
 msgstr "Illimité"
 
 #. translators: %s: number of results.
-#: inc/template-tags.php:700 template-parts/components/filter-panel.php:208
+#: inc/template-tags.php:701 template-parts/components/filter-panel.php:208
 msgid "Show %s result"
 msgid_plural "Show %s results"
 msgstr[0] "Afficher %s résultat"
 msgstr[1] "Afficher %s résultats"
 
-#: inc/template-tags.php:775
+#: inc/template-tags.php:776
 msgid "Sign in to contact"
 msgstr "Connectez-vous pour contacter"
 
@@ -1231,7 +1231,7 @@ msgid "No listing of %s for the moment."
 msgstr "Aucune annonce de %s pour le moment."
 
 #. translators: %s: section.
-#: template-parts/catalogue/section.php:118 template-parts/landing.php:93
+#: template-parts/catalogue/section.php:118 template-parts/landing.php:99
 msgid "Ask the sellers for a quote, or publish your stock."
 msgstr "Demandez un devis aux vendeurs, ou publiez votre stock."
 
@@ -1646,7 +1646,7 @@ msgstr ""
 #: template-parts/components/product-form.php:190
 #: template-parts/components/stock-warehouse.php:82
 #: templates/company-profile.php:222 templates/single-listing.php:81
-#: templates/single-listing.php:83
+#: templates/single-listing.php:90
 msgid "Location"
 msgstr "Localisation"
 
@@ -2064,7 +2064,7 @@ msgstr "Acheter à ce prix"
 #: template-parts/components/buy-box.php:83
 #: template-parts/components/listing-building.php:185
 #: template-parts/components/listing-product.php:232
-#: templates/single-listing.php:140
+#: templates/single-listing.php:147
 msgid "Make an offer"
 msgstr "Faire une offre"
 
@@ -2286,7 +2286,7 @@ msgstr "Demander une étude"
 
 #. translators: %d: years.
 #: template-parts/components/card-featured.php:41
-#: template-parts/directory.php:115 template-parts/landing.php:99
+#: template-parts/directory.php:115 template-parts/landing.php:105
 #: templates/company-profile.php:194 templates/company-profile.php:243
 #: templates/company-profile.php:267
 msgid "Request a quote"
@@ -2317,7 +2317,7 @@ msgstr "Enregistrer l’annonce"
 #: template-parts/components/listing-building.php:165
 #: template-parts/components/product-tech.php:493
 #: template-parts/dashboard/publish.php:112 templates/single-listing.php:49
-#: templates/single-listing.php:121
+#: templates/single-listing.php:128
 msgid "Assembled"
 msgstr "Monté"
 
@@ -2326,7 +2326,7 @@ msgstr "Monté"
 #: template-parts/components/listing-building.php:165
 #: template-parts/components/product-tech.php:494
 #: template-parts/dashboard/publish.php:113 templates/single-listing.php:49
-#: templates/single-listing.php:121
+#: templates/single-listing.php:128
 msgid "Dismantled"
 msgstr "Démonté"
 
@@ -3310,7 +3310,7 @@ msgstr "Contacter %s"
 #: template-parts/components/enquiry-form.php:26
 #: template-parts/components/listing-building.php:188
 #: template-parts/components/listing-product.php:235
-#: templates/single-listing.php:141 templates/single-listing.php:143
+#: templates/single-listing.php:148 templates/single-listing.php:150
 msgid "Contact the seller"
 msgstr "Contacter le vendeur"
 
@@ -3556,7 +3556,7 @@ msgid "condition, roof, covering, cladding…"
 msgstr "état, toiture, couverture, bardage…"
 
 #: template-parts/components/listing-building.php:65
-#: templates/single-listing.php:209
+#: templates/single-listing.php:216
 msgid "Structural element inventory"
 msgstr "Inventaire des éléments de structure"
 
@@ -3573,7 +3573,7 @@ msgstr "Voir le détail de l’inventaire"
 
 #: template-parts/components/listing-building.php:89
 #: template-parts/components/listing-product.php:154
-#: templates/single-listing.php:212
+#: templates/single-listing.php:219
 msgid ""
 "Unit weights come from the platform’s standard section tables. The "
 "theoretical weight excludes bolts, plates and welds."
@@ -3583,7 +3583,7 @@ msgstr ""
 
 #: template-parts/components/listing-building.php:96
 #: template-parts/components/product-tech.php:181
-#: templates/single-listing.php:189
+#: templates/single-listing.php:196
 msgid "What the price includes"
 msgstr "Ce que comprend le prix"
 
@@ -3625,7 +3625,7 @@ msgstr "Fondations et accessoires : non compris"
 
 #: template-parts/components/listing-building.php:124
 #: template-parts/components/listing-product.php:162
-#: templates/single-listing.php:178
+#: templates/single-listing.php:185
 msgid "Technical documents"
 msgstr "Documents techniques"
 
@@ -3633,14 +3633,14 @@ msgstr "Documents techniques"
 #: template-parts/components/listing-product.php:173
 #: template-parts/components/mission-request-form.php:444
 #: template-parts/components/product-form.php:122
-#: template-parts/dashboard/invoice.php:65 templates/single-listing.php:218
+#: template-parts/dashboard/invoice.php:65 templates/single-listing.php:225
 #: templates/single-service.php:99
 msgid "Description"
 msgstr "Description"
 
 #: template-parts/components/listing-building.php:137
 #: template-parts/components/listing-product.php:175
-#: templates/single-listing.php:220
+#: templates/single-listing.php:227
 msgid "No description. Ask the seller for details with the Contact button."
 msgstr ""
 "Pas de description. Demandez des détails au vendeur avec le bouton "
@@ -3648,7 +3648,7 @@ msgstr ""
 
 #: template-parts/components/listing-building.php:141
 #: template-parts/components/listing-product.php:179
-#: templates/single-listing.php:224
+#: templates/single-listing.php:231
 msgid "Shown in the language the seller wrote it in."
 msgstr "Affiché dans la langue de rédaction du vendeur."
 
@@ -3679,13 +3679,13 @@ msgstr "Devis"
 #: template-parts/components/listing-product.php:240
 #: template-parts/components/stock-warehouse.php:83
 #: template-parts/dashboard/company.php:149
-#: template-parts/dashboard/settings.php:43 templates/single-listing.php:147
+#: template-parts/dashboard/settings.php:43 templates/single-listing.php:154
 msgid "Save"
 msgstr "Enregistrer"
 
 #: template-parts/components/listing-building.php:194
 #: template-parts/components/listing-product.php:241
-#: templates/single-listing.php:148
+#: templates/single-listing.php:155
 msgid "Share"
 msgstr "Partager"
 
@@ -3702,7 +3702,7 @@ msgstr "Photo %d"
 #: template-parts/components/listing-group.php:16
 #: template-parts/components/listing-product.php:120
 #: template-parts/components/listing-product.php:129
-#: templates/single-listing.php:209
+#: templates/single-listing.php:216
 msgid "Lot inventory"
 msgstr "Inventaire du lot"
 
@@ -3950,7 +3950,7 @@ msgid "Brand new"
 msgstr "Neuf"
 
 #: template-parts/components/listing-product.php:227
-#: template-parts/dashboard/ai-credits.php:61 templates/single-listing.php:139
+#: template-parts/dashboard/ai-credits.php:61 templates/single-listing.php:146
 msgid "Buy"
 msgstr "Acheter"
 
@@ -6289,7 +6289,7 @@ msgstr "Votre offre"
 
 #. translators: %d: days.
 #: template-parts/components/rfq-my-offer.php:20
-#: templates/single-listing.php:201
+#: templates/single-listing.php:208
 msgid "included"
 msgstr "inclus"
 
@@ -8745,7 +8745,7 @@ msgstr "Vous n’avez pas encore d’annonce."
 msgid "Account and plan"
 msgstr "Compte et abonnement"
 
-#: template-parts/dashboard/overview.php:242 template-parts/landing.php:85
+#: template-parts/dashboard/overview.php:242 template-parts/landing.php:91
 msgid "Listings"
 msgstr "Annonces"
 
@@ -9181,7 +9181,7 @@ msgstr "%s t d’acier en vente"
 msgid "in all"
 msgstr "au total"
 
-#: template-parts/dashboard/report.php:131 template-parts/landing.php:65
+#: template-parts/dashboard/report.php:131 template-parts/landing.php:71
 msgid "Listings online"
 msgstr "Annonces en ligne"
 
@@ -9901,65 +9901,74 @@ msgstr "Administration"
 msgid "%1$s in %2$s"
 msgstr "%1$s à %2$s"
 
-#. translators: 1: number of listings, 2: type or market, 3: wilaya, 4:
-#. weight.
-#: template-parts/landing.php:42
-msgid "%1$s listing of %2$s in the wilaya of %3$s, about %4$s offered."
-msgid_plural ""
-"%1$s listings of %2$s in the wilaya of %3$s, about %4$s offered."
-msgstr[0] ""
-"%1$s annonce de %2$s dans la wilaya de %3$s, environ %4$s proposées."
-msgstr[1] ""
-"%1$s annonces de %2$s dans la wilaya de %3$s, environ %4$s proposées."
+#. translators: %s: wilaya whose name starts with a vowel (French: « dans la
+#. wilaya d’Alger »).
+#: template-parts/landing.php:31
+msgctxt "before a vowel"
+msgid "in the wilaya of %s"
+msgstr "dans la wilaya d’%s"
+
+#. translators: %s: wilaya.
+#: template-parts/landing.php:33
+msgid "in the wilaya of %s"
+msgstr "dans la wilaya de %s"
+
+#. translators: 1: number of listings, 2: type or market, 3: « in the wilaya
+#. of … », 4: weight.
+#: template-parts/landing.php:48
+msgid "%1$s listing of %2$s %3$s, about %4$s offered."
+msgid_plural "%1$s listings of %2$s %3$s, about %4$s offered."
+msgstr[0] "%1$s annonce de %2$s %3$s, environ %4$s proposées."
+msgstr[1] "%1$s annonces de %2$s %3$s, environ %4$s proposées."
 
 #. translators: 1: lowest asked price, 2: highest asked price.
-#: template-parts/landing.php:50
+#: template-parts/landing.php:56
 msgid "Prices asked by the sellers: from %1$s to %2$s DA/kg."
 msgstr "Prix demandés par les vendeurs : de %1$s à %2$s DA/kg."
 
 #. translators: 1: type or market, 2: wilaya.
-#: template-parts/landing.php:53
-msgid "No listing of %1$s in the wilaya of %2$s for the moment."
-msgstr "Aucune annonce de %1$s dans la wilaya de %2$s pour le moment."
+#: template-parts/landing.php:59
+msgid "No listing of %1$s %2$s for the moment."
+msgstr "Aucune annonce de %1$s %2$s pour le moment."
 
-#: template-parts/landing.php:58 template-parts/marketplace-archive.php:62
+#: template-parts/landing.php:64 template-parts/marketplace-archive.php:62
 msgid "Publish here"
 msgstr "Publier ici"
 
-#: template-parts/landing.php:66
+#: template-parts/landing.php:72
 msgid "Weight offered"
 msgstr "Poids proposé"
 
-#: template-parts/landing.php:68
+#: template-parts/landing.php:74
 msgid "Asked prices"
 msgstr "Prix demandés"
 
-#: template-parts/landing.php:71
+#: template-parts/landing.php:77
 msgid "Last update"
 msgstr "Mise à jour"
 
-#: template-parts/landing.php:77
+#: template-parts/landing.php:83
 msgid "Sizes offered"
 msgstr "Tailles proposées"
 
 #. translators: %s: number of listings.
-#: template-parts/landing.php:97
+#: template-parts/landing.php:103
 msgid "See the %s listing with the filters"
 msgid_plural "See the %s listings with the filters"
 msgstr[0] "Voir l’annonce avec les filtres"
 msgstr[1] "Voir les %s annonces avec les filtres"
 
 #. translators: %s: type or market.
-#: template-parts/landing.php:103
+#: template-parts/landing.php:109
 msgid "%s in other wilayas"
 msgstr "%s dans d’autres wilayas"
 
 #. translators: %s: wilaya.
-#: template-parts/landing.php:112
+#: template-parts/landing.php:118
 msgid "Other products in %s"
 msgstr "Autres produits à %s"
 
-#: template-parts/landing.php:120
+#: template-parts/landing.php:126
 msgid ""
 "Prices asked by the sellers in their listings, not sale prices. The range is"
 " shown from 3 listings with a price."
@@ -10036,7 +10045,7 @@ msgstr ""
 "fournisseurs viendront à vous."
 
 #: template-parts/marketplace-archive.php:155
-#: templates/front-page-template.php:119 templates/single-listing.php:145
+#: templates/front-page-template.php:119 templates/single-listing.php:152
 #: templates/single-service.php:92 templates/single-service.php:121
 #: templates/styleguide.php:36
 msgid "Request a quotation"
@@ -11976,21 +11985,28 @@ msgid "Weight source"
 msgstr "Origine du poids"
 
 #. translators: 1: number of listings, 2: wilaya.
-#: templates/single-listing.php:83
+#: templates/single-listing.php:87
+msgid "%1$s listing in %2$s"
+msgid_plural "%1$s listings in %2$s"
+msgstr[0] "%1$s annonce à %2$s"
+msgstr[1] "%1$s annonces à %2$s"
+
+#. translators: 1: number of listings, 2: wilaya.
+#: templates/single-listing.php:89
 msgid "%1$s listing of this type in %2$s"
 msgid_plural "%1$s listings of this type in %2$s"
 msgstr[0] "%1$s annonce de ce type à %2$s"
 msgstr[1] "%1$s annonces de ce type à %2$s"
 
-#: templates/single-listing.php:94
+#: templates/single-listing.php:101
 msgid "This product has been sold."
 msgstr "Ce produit a été vendu."
 
-#: templates/single-listing.php:95
+#: templates/single-listing.php:102
 msgid "This listing has expired."
 msgstr "Cette annonce a expiré."
 
-#: templates/single-listing.php:96
+#: templates/single-listing.php:103
 msgid ""
 "Preview: this product is waiting for review and is not visible to buyers "
 "yet."
@@ -11998,40 +12014,40 @@ msgstr ""
 "Aperçu : ce produit attend sa vérification et n’est pas encore visible des "
 "acheteurs."
 
-#: templates/single-listing.php:97
+#: templates/single-listing.php:104
 msgid "Preview of a draft: not visible to buyers."
 msgstr "Aperçu d’un brouillon : non visible des acheteurs."
 
-#: templates/single-listing.php:98
+#: templates/single-listing.php:105
 msgid "Preview: changes were requested; not visible to buyers."
 msgstr ""
 "Aperçu : des modifications ont été demandées ; non visible des acheteurs."
 
-#: templates/single-listing.php:163
+#: templates/single-listing.php:170
 msgid "Technical specifications"
 msgstr "Caractéristiques techniques"
 
-#: templates/single-listing.php:193
+#: templates/single-listing.php:200
 msgid "Dismantling"
 msgstr "Démontage"
 
-#: templates/single-listing.php:194
+#: templates/single-listing.php:201
 msgid "Transport"
 msgstr "Transport"
 
-#: templates/single-listing.php:195
+#: templates/single-listing.php:202
 msgid "Reinstallation"
 msgstr "Remontage"
 
-#: templates/single-listing.php:196
+#: templates/single-listing.php:203
 msgid "Foundations and accessories"
 msgstr "Fondations et accessoires"
 
-#: templates/single-listing.php:201
+#: templates/single-listing.php:208
 msgid "not included"
 msgstr "non inclus"
 
-#: templates/single-listing.php:238
+#: templates/single-listing.php:245
 msgid ""
 "Planning a structural reuse? Have the elements checked by a verified "
 "engineer before installation."
@@ -12039,11 +12055,11 @@ msgstr ""
 "Réemploi structurel prévu ? Faites contrôler les éléments par un ingénieur "
 "vérifié avant montage."
 
-#: templates/single-listing.php:238
+#: templates/single-listing.php:245
 msgid "Find an engineer"
 msgstr "Trouver un ingénieur"
 
-#: templates/single-listing.php:263
+#: templates/single-listing.php:270
 msgid "Similar listings"
 msgstr "Annonces similaires"
 
