@@ -5,6 +5,8 @@
 - Pages « type × wilaya » : « dans la wilaya d’Alger » (élision devant une voyelle) au lieu de « de Alger ».
 - Fiche d'une annonce : lien « N annonces à Alger » vers la page de tout le marché quand le type a moins de 3 annonces dans la wilaya.
 - `tools/compile-translations.py` accepte les contextes (`msgctxt`).
+- Un seul prix demandé : « Prix demandé par les vendeurs : 170 DA/kg » au lieu de « de 170 à 170 DA/kg ».
+- Poids proposé en arabe : « طن » au lieu de « t ».
 
 ## 0.60.0 — 2026-11-25 (avec sm-products 0.24.0, sm-seo 0.3.0)
 

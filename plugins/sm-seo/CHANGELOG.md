@@ -4,6 +4,7 @@
 
 - Description des pages « type × wilaya » : « dans la wilaya d’Alger » (élision devant une voyelle : Alger, Oran, Adrar, El Oued, Aïn Defla…) au lieu de « de Alger » (`Pages::in_wilaya`).
 - Plan du site des pages : chaque adresse une seule fois (`/tarifs/` était listé deux fois sur le site en ligne).
+- Un seul prix demandé (tous les vendeurs au même prix) : « Prix demandé par les vendeurs : 170 DA/kg » au lieu de « de 170 à 170 DA/kg ».
 
 ## 0.3.0 — 2026-11-25 (avec sm-products 0.24.0, thème 0.60.0)
 

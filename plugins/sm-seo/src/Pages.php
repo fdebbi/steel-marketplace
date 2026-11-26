@@ -174,7 +174,10 @@ final class Pages {
 			$parts[] = sprintf( _n( '%1$s listing of %2$s %3$s, %4$s offered.', '%1$s listings of %2$s %3$s, %4$s offered.', (int) $d['count'], 'sm-seo' ), Text::number( $d['count'], 0 ), mb_strtolower( $what ), self::in_wilaya( $wname ), $weight );
 			if ( $d['prices'] ) {
 				/* translators: 1: lowest asked price, 2: highest asked price. */
-				$parts[] = sprintf( __( 'Prices asked by the sellers: from %1$s to %2$s DA/kg.', 'sm-seo' ), Text::number( $d['prices']['min'] ), Text::number( $d['prices']['max'] ) );
+				$parts[] = $d['prices']['min'] < $d['prices']['max']
+					? sprintf( __( 'Prices asked by the sellers: from %1$s to %2$s DA/kg.', 'sm-seo' ), Text::number( $d['prices']['min'] ), Text::number( $d['prices']['max'] ) )
+					/* translators: %s: asked price, the same for all the sellers (0.3.1). */
+					: sprintf( __( 'Price asked by the sellers: %s DA/kg.', 'sm-seo' ), Text::number( $d['prices']['min'] ) );
 			}
 		}
 		$parts[]          = __( 'Contact the sellers or request a quote through ReuSteel.', 'sm-seo' );

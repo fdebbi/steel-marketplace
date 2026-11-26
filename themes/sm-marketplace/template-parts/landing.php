@@ -31,7 +31,7 @@ $in_w     = preg_match( '/^[aeiouy]/i', remove_accents( $wname ) )
 	? sprintf( _x( 'in the wilaya of %s', 'before a vowel', 'sm-marketplace' ), $wname )
 	/* translators: %s: wilaya. */
 	: sprintf( __( 'in the wilaya of %s', 'sm-marketplace' ), $wname );
-$t        = (float) $d['kg'] >= 1000 ? sm_number( $d['kg'] / 1000, 1 ) . "\u{00A0}t" : sm_number( $d['kg'] ) . "\u{00A0}kg";
+$t        = (float) $d['kg'] >= 1000 ? sm_number( $d['kg'] / 1000, 1 ) . "\u{00A0}" . ( 'ar' === sm_theme_current_language() ? 'طن' : 't' ) : sm_number( $d['kg'] ) . "\u{00A0}kg"; // 0.60.1: « طن » in Arabic.
 ?>
 <section class="sm-pagehead sm-pagehead--<?php echo esc_attr( $d['market'] ); ?>">
 	<div class="sm-container">
@@ -53,7 +53,13 @@ $t        = (float) $d['kg'] >= 1000 ? sm_number( $d['kg'] / 1000, 1 ) . "\u{00A
 							)
 						);
 						if ( $d['prices'] ) {
-							echo ' ' . esc_html( sprintf( /* translators: 1: lowest asked price, 2: highest asked price. */ __( 'Prices asked by the sellers: from %1$s to %2$s DA/kg.', 'sm-marketplace' ), sm_number( $d['prices']['min'] ), sm_number( $d['prices']['max'] ) ) );
+							echo ' ' . esc_html(
+								$d['prices']['min'] < $d['prices']['max']
+									/* translators: 1: lowest asked price, 2: highest asked price. */
+									? sprintf( __( 'Prices asked by the sellers: from %1$s to %2$s DA/kg.', 'sm-marketplace' ), sm_number( $d['prices']['min'] ), sm_number( $d['prices']['max'] ) )
+									/* translators: %s: asked price, the same for all the sellers (0.60.1). */
+									: sprintf( __( 'Price asked by the sellers: %s DA/kg.', 'sm-marketplace' ), sm_number( $d['prices']['min'] ) )
+							);
 						}
 					} else {
 						echo esc_html( sprintf( /* translators: 1: type or market, 2: wilaya. */ __( 'No listing of %1$s %2$s for the moment.', 'sm-marketplace' ), mb_strtolower( $what ), $in_w ) );

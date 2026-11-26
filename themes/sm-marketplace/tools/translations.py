@@ -2956,6 +2956,7 @@ T.update({
 T.update({
 '%1$s in %2$s': ('%1$s à %2$s', '%1$s في %2$s'),
 'Prices asked by the sellers: from %1$s to %2$s DA/kg.': ('Prix demandés par les vendeurs : de %1$s à %2$s DA/kg.', 'الأسعار التي يطلبها البائعون: من %1$s إلى %2$s DA/kg.'),
+'Price asked by the sellers: %s DA/kg.': ('Prix demandé par les vendeurs : %s DA/kg.', 'السعر الذي يطلبه البائعون: %s DA/kg.'),
 'No listing of %1$s %2$s for the moment.': ('Aucune annonce de %1$s %2$s pour le moment.', 'لا توجد إعلانات من %1$s %2$s حاليًا.'),
 'in the wilaya of %s': ('dans la wilaya de %s', 'في ولاية %s'),
 ('before a vowel', 'in the wilaya of %s'): ('dans la wilaya d’%s', 'في ولاية %s'),

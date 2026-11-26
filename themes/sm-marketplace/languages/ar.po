@@ -1236,7 +1236,7 @@ msgid "No listing of %s for the moment."
 msgstr "لا توجد إعلانات %s حاليًا."
 
 #. translators: %s: section.
-#: template-parts/catalogue/section.php:118 template-parts/landing.php:99
+#: template-parts/catalogue/section.php:118 template-parts/landing.php:105
 msgid "Ask the sellers for a quote, or publish your stock."
 msgstr "اطلب عرض سعر من البائعين، أو انشر مخزونك."
 
@@ -2281,7 +2281,7 @@ msgstr "اطلب دراسة"
 
 #. translators: %d: years.
 #: template-parts/components/card-featured.php:41
-#: template-parts/directory.php:115 template-parts/landing.php:105
+#: template-parts/directory.php:115 template-parts/landing.php:111
 #: templates/company-profile.php:194 templates/company-profile.php:243
 #: templates/company-profile.php:267
 msgid "Request a quote"
@@ -8750,7 +8750,7 @@ msgstr "ليس لديك أي إعلان بعد."
 msgid "Account and plan"
 msgstr "الحساب والاشتراك"
 
-#: template-parts/dashboard/overview.php:242 template-parts/landing.php:91
+#: template-parts/dashboard/overview.php:242 template-parts/landing.php:97
 msgid "Listings"
 msgstr "الإعلانات"
 
@@ -9188,7 +9188,7 @@ msgstr "%s t من الفولاذ المعروض للبيع"
 msgid "in all"
 msgstr "في المجموع"
 
-#: template-parts/dashboard/report.php:131 template-parts/landing.php:71
+#: template-parts/dashboard/report.php:131 template-parts/landing.php:77
 msgid "Listings online"
 msgstr "الإعلانات المنشورة"
 
@@ -9916,37 +9916,42 @@ msgstr[4] "%1$s إعلانًا من %2$s %3$s، حوالي %4$s معروضة."
 msgstr[5] "%1$s إعلان من %2$s %3$s، حوالي %4$s معروضة."
 
 #. translators: 1: lowest asked price, 2: highest asked price.
-#: template-parts/landing.php:56
+#: template-parts/landing.php:59
 msgid "Prices asked by the sellers: from %1$s to %2$s DA/kg."
 msgstr "الأسعار التي يطلبها البائعون: من %1$s إلى %2$s DA/kg."
 
+#. translators: %s: asked price, the same for all the sellers (0.60.1).
+#: template-parts/landing.php:61
+msgid "Price asked by the sellers: %s DA/kg."
+msgstr "السعر الذي يطلبه البائعون: %s DA/kg."
+
 #. translators: 1: type or market, 2: wilaya.
-#: template-parts/landing.php:59
+#: template-parts/landing.php:65
 msgid "No listing of %1$s %2$s for the moment."
 msgstr "لا توجد إعلانات من %1$s %2$s حاليًا."
 
-#: template-parts/landing.php:64 template-parts/marketplace-archive.php:62
+#: template-parts/landing.php:70 template-parts/marketplace-archive.php:62
 msgid "Publish here"
 msgstr "انشر هنا"
 
-#: template-parts/landing.php:72
+#: template-parts/landing.php:78
 msgid "Weight offered"
 msgstr "الوزن المعروض"
 
-#: template-parts/landing.php:74
+#: template-parts/landing.php:80
 msgid "Asked prices"
 msgstr "الأسعار المطلوبة"
 
-#: template-parts/landing.php:77
+#: template-parts/landing.php:83
 msgid "Last update"
 msgstr "آخر تحديث"
 
-#: template-parts/landing.php:83
+#: template-parts/landing.php:89
 msgid "Sizes offered"
 msgstr "المقاسات المعروضة"
 
 #. translators: %s: number of listings.
-#: template-parts/landing.php:103
+#: template-parts/landing.php:109
 msgid "See the %s listing with the filters"
 msgid_plural "See the %s listings with the filters"
 msgstr[0] "عرض %s إعلان مع المرشحات"
@@ -9957,16 +9962,16 @@ msgstr[4] "عرض %s إعلانًا مع المرشحات"
 msgstr[5] "عرض %s إعلان مع المرشحات"
 
 #. translators: %s: type or market.
-#: template-parts/landing.php:109
+#: template-parts/landing.php:115
 msgid "%s in other wilayas"
 msgstr "%s في ولايات أخرى"
 
 #. translators: %s: wilaya.
-#: template-parts/landing.php:118
+#: template-parts/landing.php:124
 msgid "Other products in %s"
 msgstr "منتجات أخرى في %s"
 
-#: template-parts/landing.php:126
+#: template-parts/landing.php:132
 msgid ""
 "Prices asked by the sellers in their listings, not sale prices. The range is"
 " shown from 3 listings with a price."

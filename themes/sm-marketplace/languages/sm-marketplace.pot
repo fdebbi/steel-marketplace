@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-26T07:28:14+00:00\n"
+"POT-Creation-Date: 2026-11-26T07:36:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -1293,7 +1293,7 @@ msgstr ""
 
 #. translators: %s: section.
 #: template-parts/catalogue/section.php:118
-#: template-parts/landing.php:99
+#: template-parts/landing.php:105
 msgid "Ask the sellers for a quote, or publish your stock."
 msgstr ""
 
@@ -2260,7 +2260,7 @@ msgstr ""
 #. translators: %d: years.
 #: template-parts/components/card-featured.php:41
 #: template-parts/directory.php:115
-#: template-parts/landing.php:105
+#: template-parts/landing.php:111
 #: templates/company-profile.php:194
 #: templates/company-profile.php:243
 #: templates/company-profile.php:267
@@ -8227,7 +8227,7 @@ msgid "Account and plan"
 msgstr ""
 
 #: template-parts/dashboard/overview.php:242
-#: template-parts/landing.php:91
+#: template-parts/landing.php:97
 msgid "Listings"
 msgstr ""
 
@@ -8607,7 +8607,7 @@ msgid "in all"
 msgstr ""
 
 #: template-parts/dashboard/report.php:131
-#: template-parts/landing.php:71
+#: template-parts/landing.php:77
 msgid "Listings online"
 msgstr ""
 
@@ -9274,54 +9274,59 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: lowest asked price, 2: highest asked price.
-#: template-parts/landing.php:56
+#: template-parts/landing.php:59
 msgid "Prices asked by the sellers: from %1$s to %2$s DA/kg."
 msgstr ""
 
+#. translators: %s: asked price, the same for all the sellers (0.60.1).
+#: template-parts/landing.php:61
+msgid "Price asked by the sellers: %s DA/kg."
+msgstr ""
+
 #. translators: 1: type or market, 2: wilaya.
-#: template-parts/landing.php:59
+#: template-parts/landing.php:65
 msgid "No listing of %1$s %2$s for the moment."
 msgstr ""
 
-#: template-parts/landing.php:64
+#: template-parts/landing.php:70
 #: template-parts/marketplace-archive.php:62
 msgid "Publish here"
 msgstr ""
 
-#: template-parts/landing.php:72
+#: template-parts/landing.php:78
 msgid "Weight offered"
 msgstr ""
 
-#: template-parts/landing.php:74
+#: template-parts/landing.php:80
 msgid "Asked prices"
 msgstr ""
 
-#: template-parts/landing.php:77
+#: template-parts/landing.php:83
 msgid "Last update"
 msgstr ""
 
-#: template-parts/landing.php:83
+#: template-parts/landing.php:89
 msgid "Sizes offered"
 msgstr ""
 
 #. translators: %s: number of listings.
-#: template-parts/landing.php:103
+#: template-parts/landing.php:109
 msgid "See the %s listing with the filters"
 msgid_plural "See the %s listings with the filters"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s: type or market.
-#: template-parts/landing.php:109
+#: template-parts/landing.php:115
 msgid "%s in other wilayas"
 msgstr ""
 
 #. translators: %s: wilaya.
-#: template-parts/landing.php:118
+#: template-parts/landing.php:124
 msgid "Other products in %s"
 msgstr ""
 
-#: template-parts/landing.php:126
+#: template-parts/landing.php:132
 msgid "Prices asked by the sellers in their listings, not sale prices. The range is shown from 3 listings with a price."
 msgstr ""
 

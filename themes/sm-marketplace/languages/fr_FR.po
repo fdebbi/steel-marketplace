@@ -1231,7 +1231,7 @@ msgid "No listing of %s for the moment."
 msgstr "Aucune annonce de %s pour le moment."
 
 #. translators: %s: section.
-#: template-parts/catalogue/section.php:118 template-parts/landing.php:99
+#: template-parts/catalogue/section.php:118 template-parts/landing.php:105
 msgid "Ask the sellers for a quote, or publish your stock."
 msgstr "Demandez un devis aux vendeurs, ou publiez votre stock."
 
@@ -2286,7 +2286,7 @@ msgstr "Demander une étude"
 
 #. translators: %d: years.
 #: template-parts/components/card-featured.php:41
-#: template-parts/directory.php:115 template-parts/landing.php:105
+#: template-parts/directory.php:115 template-parts/landing.php:111
 #: templates/company-profile.php:194 templates/company-profile.php:243
 #: templates/company-profile.php:267
 msgid "Request a quote"
@@ -8745,7 +8745,7 @@ msgstr "Vous n’avez pas encore d’annonce."
 msgid "Account and plan"
 msgstr "Compte et abonnement"
 
-#: template-parts/dashboard/overview.php:242 template-parts/landing.php:91
+#: template-parts/dashboard/overview.php:242 template-parts/landing.php:97
 msgid "Listings"
 msgstr "Annonces"
 
@@ -9181,7 +9181,7 @@ msgstr "%s t d’acier en vente"
 msgid "in all"
 msgstr "au total"
 
-#: template-parts/dashboard/report.php:131 template-parts/landing.php:71
+#: template-parts/dashboard/report.php:131 template-parts/landing.php:77
 msgid "Listings online"
 msgstr "Annonces en ligne"
 
@@ -9922,53 +9922,58 @@ msgstr[0] "%1$s annonce de %2$s %3$s, environ %4$s proposées."
 msgstr[1] "%1$s annonces de %2$s %3$s, environ %4$s proposées."
 
 #. translators: 1: lowest asked price, 2: highest asked price.
-#: template-parts/landing.php:56
+#: template-parts/landing.php:59
 msgid "Prices asked by the sellers: from %1$s to %2$s DA/kg."
 msgstr "Prix demandés par les vendeurs : de %1$s à %2$s DA/kg."
 
+#. translators: %s: asked price, the same for all the sellers (0.60.1).
+#: template-parts/landing.php:61
+msgid "Price asked by the sellers: %s DA/kg."
+msgstr "Prix demandé par les vendeurs : %s DA/kg."
+
 #. translators: 1: type or market, 2: wilaya.
-#: template-parts/landing.php:59
+#: template-parts/landing.php:65
 msgid "No listing of %1$s %2$s for the moment."
 msgstr "Aucune annonce de %1$s %2$s pour le moment."
 
-#: template-parts/landing.php:64 template-parts/marketplace-archive.php:62
+#: template-parts/landing.php:70 template-parts/marketplace-archive.php:62
 msgid "Publish here"
 msgstr "Publier ici"
 
-#: template-parts/landing.php:72
+#: template-parts/landing.php:78
 msgid "Weight offered"
 msgstr "Poids proposé"
 
-#: template-parts/landing.php:74
+#: template-parts/landing.php:80
 msgid "Asked prices"
 msgstr "Prix demandés"
 
-#: template-parts/landing.php:77
+#: template-parts/landing.php:83
 msgid "Last update"
 msgstr "Mise à jour"
 
-#: template-parts/landing.php:83
+#: template-parts/landing.php:89
 msgid "Sizes offered"
 msgstr "Tailles proposées"
 
 #. translators: %s: number of listings.
-#: template-parts/landing.php:103
+#: template-parts/landing.php:109
 msgid "See the %s listing with the filters"
 msgid_plural "See the %s listings with the filters"
 msgstr[0] "Voir l’annonce avec les filtres"
 msgstr[1] "Voir les %s annonces avec les filtres"
 
 #. translators: %s: type or market.
-#: template-parts/landing.php:109
+#: template-parts/landing.php:115
 msgid "%s in other wilayas"
 msgstr "%s dans d’autres wilayas"
 
 #. translators: %s: wilaya.
-#: template-parts/landing.php:118
+#: template-parts/landing.php:124
 msgid "Other products in %s"
 msgstr "Autres produits à %s"
 
-#: template-parts/landing.php:126
+#: template-parts/landing.php:132
 msgid ""
 "Prices asked by the sellers in their listings, not sale prices. The range is"
 " shown from 3 listings with a price."
