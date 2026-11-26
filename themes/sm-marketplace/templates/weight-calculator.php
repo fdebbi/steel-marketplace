@@ -37,6 +37,7 @@ get_header();
 		<?php sm_breadcrumb( array( array( __( 'Weight calculator', 'sm-marketplace' ), '' ) ) ); ?>
 		<h1 class="sm-pagehead__title"><?php esc_html_e( 'Steel weight calculator', 'sm-marketplace' ); ?></h1>
 		<p class="sm-pagehead__intro"><?php esc_html_e( 'Choose a section, its size and the quantity: the weight is calculated from the European standard tables. You can also start from a total weight to know how many bars it makes.', 'sm-marketplace' ); ?></p>
+		<?php sm_guide_links( 'weight' ); // 0.61.0 ?>
 	</div>
 </section>
 <div class="sm-container sm-section">

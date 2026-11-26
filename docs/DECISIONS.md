@@ -560,3 +560,10 @@ Validé sur la maquette 0.37.
 - Vrais chiffres seulement (nombre, poids, prix demandés, date) ; jamais de prix du marché ni de note ; la recherche avec filtres reste hors index.
 - 2026-11-26 (vérification en ligne, validé) : élision « dans la wilaya d’Alger » ; une annonce dont le type a moins de 3 annonces dans la wilaya renvoie vers la page de tout le marché dans la wilaya (si elle en a au moins 3) ; chaque adresse une seule fois dans le plan du site.
 
+
+## Référencement phase 3, étape 3 — guides (2026-11-26)
+
+- Sujets validés et ordre : 3) acheter de l'acier de réemploi, 5) bâtiment métallique d'occasion, 6) réduire les chutes (barres de 6 m et 12 m), 4) vendre ses chutes et surplus. Guides 1 et 2 (poids IPE/HEA/HEB, choisir un profilé) non retenus pour l'instant.
+- Chaque guide relu et validé par le client en français, puis traduit en arabe et en anglais. Aucun prix du marché, aucune statistique ; l'exemple chiffré du guide 6 vient du vrai calcul de l'optimiseur (6 pièces de 3,90 m : 6 barres de 6 m ou 2 barres de 12 m).
+- Correction : tout compte peut publier une annonce de réemploi ou de bâtiment, sauf les ingénieurs partenaires (matrice des droits de SM Core).
+- Maquette validée : `/guides/` et `/guides/{nom}/`, sommaire, outils liés, liste de vérification, autres guides. Plugin séparé `sm-guides` (le thème n'affiche que) ; texte en Markdown simple dans l'administration, 3 langues ; liens depuis les outils et le pied de page.

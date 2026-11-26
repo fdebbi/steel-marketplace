@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-26T07:36:26+00:00\n"
+"POT-Creation-Date: 2026-11-26T13:56:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -60,6 +60,7 @@ msgstr ""
 #: footer.php:22
 #: inc/menus.php:16
 #: inc/template-tags.php:310
+#: inc/template-tags.php:824
 #: templates/front-page-template.php:72
 #: templates/marketplace-products.php:15
 msgid "Steel products"
@@ -68,6 +69,7 @@ msgstr ""
 #: footer.php:23
 #: inc/menus.php:24
 #: inc/template-tags.php:311
+#: inc/template-tags.php:823
 #: templates/front-page-template.php:73
 #: templates/marketplace-reuse.php:15
 msgid "Steel reuse"
@@ -76,6 +78,7 @@ msgstr ""
 #: footer.php:24
 #: inc/menus.php:32
 #: inc/template-tags.php:312
+#: inc/template-tags.php:825
 #: templates/front-page-template.php:74
 #: templates/marketplace-buildings.php:15
 msgid "Steel buildings"
@@ -83,6 +86,8 @@ msgstr ""
 
 #: footer.php:25
 #: inc/menus.php:47
+#: inc/template-tags.php:816
+#: inc/template-tags.php:831
 #: template-parts/components/rfq-single.php:45
 #: template-parts/dashboard/report.php:133
 #: template-parts/dashboard/rfq.php:19
@@ -102,6 +107,8 @@ msgstr ""
 #: footer.php:31
 #: inc/menus.php:62
 #: inc/template-tags.php:313
+#: inc/template-tags.php:815
+#: inc/template-tags.php:830
 #: template-parts/components/card-service.php:23
 #: templates/front-page-template.php:75
 #: templates/marketplace-services.php:17
@@ -115,6 +122,7 @@ msgstr ""
 #: header.php:108
 #: inc/menus.php:63
 #: inc/template-tags.php:314
+#: inc/template-tags.php:829
 #: template-parts/components/ai-photo-tools.php:95
 #: templates/front-page-template.php:76
 #: templates/marketplace-engineers.php:35
@@ -142,11 +150,15 @@ msgstr ""
 #: footer.php:35
 #: header.php:27
 #: header.php:110
+#: inc/template-tags.php:811
+#: inc/template-tags.php:826
 #: templates/weight-calculator.php:37
 msgid "Weight calculator"
 msgstr ""
 
 #: footer.php:36
+#: inc/template-tags.php:812
+#: inc/template-tags.php:827
 #: template-parts/catalogue/family.php:27
 #: template-parts/catalogue/index.php:22
 #: template-parts/catalogue/section.php:51
@@ -156,6 +168,8 @@ msgstr ""
 #: footer.php:37
 #: header.php:28
 #: header.php:111
+#: inc/template-tags.php:813
+#: inc/template-tags.php:828
 #: templates/cutting-optimizer.php:26
 #: templates/cutting-optimizer.php:27
 msgid "Cutting optimiser"
@@ -182,6 +196,12 @@ msgid "Plans"
 msgstr ""
 
 #: footer.php:45
+#: template-parts/guides/guide.php:32
+#: template-parts/guides/index.php:15
+msgid "Guides"
+msgstr ""
+
+#: footer.php:46
 #: template-parts/components/ai-gate.php:24
 #: template-parts/components/buy-box.php:233
 #: template-parts/components/enquiry-form.php:46
@@ -195,7 +215,7 @@ msgstr ""
 msgid "Create an account"
 msgstr ""
 
-#: footer.php:46
+#: footer.php:47
 #: header.php:31
 #: templates/company-profile.php:230
 #: templates/company-profile.php:245
@@ -205,20 +225,20 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: footer.php:52
+#: footer.php:53
 msgid "Advertised prices are set by sellers and are not official market prices."
 msgstr ""
 
-#: footer.php:57
+#: footer.php:58
 msgid "Quick navigation"
 msgstr ""
 
-#: footer.php:58
+#: footer.php:59
 #: inc/template-tags.php:455
 msgid "Home"
 msgstr ""
 
-#: footer.php:59
+#: footer.php:60
 #: header.php:54
 #: template-parts/components/stock-warehouse.php:132
 #: template-parts/directory.php:53
@@ -229,18 +249,18 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: footer.php:62
+#: footer.php:63
 #: template-parts/header-actions.php:36
 #: templates/dashboard.php:74
 msgid "My missions"
 msgstr ""
 
-#: footer.php:63
+#: footer.php:64
 #: templates/dashboard.php:75
 msgid "Invoicing"
 msgstr ""
 
-#: footer.php:65
+#: footer.php:66
 #: template-parts/components/product-form.php:238
 #: template-parts/components/stock-warehouse.php:67
 #: template-parts/dashboard/publish.php:211
@@ -249,11 +269,11 @@ msgstr ""
 msgid "Publish"
 msgstr ""
 
-#: footer.php:66
+#: footer.php:67
 msgid "Enquiries"
 msgstr ""
 
-#: footer.php:68
+#: footer.php:69
 #: templates/dashboard.php:87
 #: templates/dashboard.php:166
 #: templates/engineer-apply.php:307
@@ -577,21 +597,21 @@ msgstr ""
 msgid "Building"
 msgstr ""
 
-#: inc/demo/installer.php:110
 #: inc/demo/installer.php:111
-#: inc/demo/installer.php:125
+#: inc/demo/installer.php:112
+#: inc/demo/installer.php:126
 msgid "SM Pages"
 msgstr ""
 
-#: inc/demo/installer.php:122
+#: inc/demo/installer.php:123
 msgid "Missing pages were created."
 msgstr ""
 
-#: inc/demo/installer.php:126
+#: inc/demo/installer.php:127
 msgid "Pages used by the theme templates. Existing pages are never overwritten."
 msgstr ""
 
-#: inc/demo/installer.php:134
+#: inc/demo/installer.php:135
 msgid "Create missing pages"
 msgstr ""
 
@@ -1011,6 +1031,67 @@ msgstr[1] ""
 #: inc/template-tags.php:776
 msgid "Sign in to contact"
 msgstr ""
+
+#: inc/template-tags.php:808
+msgid "Steel reuse listings"
+msgstr ""
+
+#: inc/template-tags.php:809
+msgid "Steel products listings"
+msgstr ""
+
+#: inc/template-tags.php:810
+msgid "Steel buildings listings"
+msgstr ""
+
+#: inc/template-tags.php:814
+msgid "Engineering: request an inspection"
+msgstr ""
+
+#: inc/template-tags.php:838
+msgid "See the reuse listings"
+msgstr ""
+
+#: inc/template-tags.php:839
+msgid "See the steel products"
+msgstr ""
+
+#: inc/template-tags.php:840
+#: template-parts/components/visits-list.php:37
+msgid "See the steel buildings"
+msgstr ""
+
+#: inc/template-tags.php:841
+msgid "Open the weight calculator"
+msgstr ""
+
+#: inc/template-tags.php:842
+msgid "See the catalogue of sections"
+msgstr ""
+
+#: inc/template-tags.php:843
+msgid "Open the cutting optimiser"
+msgstr ""
+
+#: inc/template-tags.php:844
+msgid "Request an engineering study"
+msgstr ""
+
+#: inc/template-tags.php:845
+msgid "Find a service"
+msgstr ""
+
+#: inc/template-tags.php:846
+#: template-parts/dashboard/offers.php:23
+#: templates/rfq-board.php:20
+msgid "See the requests for quotation"
+msgstr ""
+
+#: inc/template-tags.php:857
+msgid "Guide:"
+msgid_plural "Guides:"
+msgstr[0] ""
+msgstr[1] ""
 
 #: index.php:21
 #: template-parts/components/stock-warehouse.php:145
@@ -3086,7 +3167,7 @@ msgstr ""
 #: template-parts/dashboard/listings.php:20
 #: template-parts/dashboard/rfq.php:29
 #: template-parts/directory.php:62
-#: template-parts/marketplace-archive.php:89
+#: template-parts/marketplace-archive.php:90
 #: templates/marketplace-engineers.php:88
 msgid "All"
 msgstr ""
@@ -3142,7 +3223,7 @@ msgstr ""
 
 #: template-parts/components/deal-list.php:66
 #: template-parts/directory.php:122
-#: template-parts/marketplace-archive.php:142
+#: template-parts/marketplace-archive.php:143
 #: templates/rfq-board.php:101
 msgid "Pagination"
 msgstr ""
@@ -3319,7 +3400,7 @@ msgstr ""
 #: template-parts/components/filter-panel.php:44
 #: template-parts/components/filter-panel.php:52
 #: template-parts/directory.php:59
-#: template-parts/marketplace-archive.php:114
+#: template-parts/marketplace-archive.php:115
 msgid "Filters"
 msgstr ""
 
@@ -6747,13 +6828,13 @@ msgstr ""
 
 #. translators: %s: number of listings.
 #: template-parts/components/type-tiles.php:64
-#: template-parts/marketplace-archive.php:74
+#: template-parts/marketplace-archive.php:75
 msgid "No listing yet"
 msgstr ""
 
 #. translators: %s: number of listings.
 #: template-parts/components/type-tiles.php:64
-#: template-parts/marketplace-archive.php:74
+#: template-parts/marketplace-archive.php:75
 msgid "%s listing"
 msgid_plural "%s listings"
 msgstr[0] ""
@@ -6833,10 +6914,6 @@ msgstr ""
 
 #: template-parts/components/visits-list.php:37
 msgid "Open the listing of a building or of a lot and use \"Ask for a visit\"."
-msgstr ""
-
-#: template-parts/components/visits-list.php:37
-msgid "See the steel buildings"
 msgstr ""
 
 #: template-parts/components/visits-list.php:38
@@ -7912,11 +7989,6 @@ msgstr ""
 
 #: template-parts/dashboard/offers.php:23
 msgid "Browse the open requests and send your price and delivery time."
-msgstr ""
-
-#: template-parts/dashboard/offers.php:23
-#: templates/rfq-board.php:20
-msgid "See the requests for quotation"
 msgstr ""
 
 #: template-parts/dashboard/offers.php:41
@@ -9202,7 +9274,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: template-parts/directory.php:84
-#: template-parts/marketplace-archive.php:120
+#: template-parts/marketplace-archive.php:121
 #: templates/rfq-board.php:81
 msgid "Sort by"
 msgstr ""
@@ -9239,6 +9311,71 @@ msgstr ""
 #: templates/dashboard.php:292
 #: templates/engineer-apply.php:75
 msgid "Sign out"
+msgstr ""
+
+#: template-parts/guides/card.php:25
+msgid "Read the guide"
+msgstr ""
+
+#. translators: %d: number of sections of a guide.
+#: template-parts/guides/card.php:25
+msgid "%d section"
+msgid_plural "%d sections"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: list of tools of the site.
+#: template-parts/guides/card.php:27
+msgid "Linked tools: %s"
+msgstr ""
+
+#. translators: %s: date.
+#: template-parts/guides/guide.php:38
+msgid "Updated on %s"
+msgstr ""
+
+#: template-parts/guides/guide.php:40
+msgid "Also in"
+msgstr ""
+
+#: template-parts/guides/guide.php:47
+msgid "This guide is not written in your language yet: here is the French text."
+msgstr ""
+
+#: template-parts/guides/guide.php:56
+#: template-parts/guides/guide.php:59
+#: template-parts/guides/guide.php:60
+msgid "In this guide"
+msgstr ""
+
+#: template-parts/guides/guide.php:66
+msgid "Linked tools"
+msgstr ""
+
+#: template-parts/guides/guide.php:81
+msgid "Other guides"
+msgstr ""
+
+#: template-parts/guides/index.php:16
+msgid "Steel guides"
+msgstr ""
+
+#: template-parts/guides/index.php:17
+msgid "Practical guides to buy, sell and order steel in Algeria: what to check, how to read a listing, how to cut less. Each guide links to the tools of the site."
+msgstr ""
+
+#: template-parts/guides/index.php:27
+#: templates/guides.php:27
+msgid "No guide for the moment"
+msgstr ""
+
+#: template-parts/guides/index.php:28
+#: templates/guides.php:28
+msgid "The guides explain how to buy, sell and order steel on ReuSteel."
+msgstr ""
+
+#: template-parts/guides/index.php:38
+msgid "The guides describe how ReuSteel works and practical methods. They give no market price and no statistics."
 msgstr ""
 
 #: template-parts/header-actions.php:14
@@ -9289,7 +9426,7 @@ msgid "No listing of %1$s %2$s for the moment."
 msgstr ""
 
 #: template-parts/landing.php:70
-#: template-parts/marketplace-archive.php:62
+#: template-parts/marketplace-archive.php:63
 msgid "Publish here"
 msgstr ""
 
@@ -9339,59 +9476,59 @@ msgstr ""
 msgid "New steel, reuse and steel buildings from all over Algeria: choose a market or a type, or search directly."
 msgstr ""
 
-#: template-parts/marketplace-archive.php:76
+#: template-parts/marketplace-archive.php:77
 msgid "See the market"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:82
+#: template-parts/marketplace-archive.php:83
 msgid "Types with listings"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:88
+#: template-parts/marketplace-archive.php:89
 msgid "Categories"
 msgstr ""
 
 #. translators: %s: number of listings.
-#: template-parts/marketplace-archive.php:110
+#: template-parts/marketplace-archive.php:111
 msgid "<strong>%s</strong> listing"
 msgid_plural "<strong>%s</strong> listings"
 msgstr[0] ""
 msgstr[1] ""
 
-#: template-parts/marketplace-archive.php:123
+#: template-parts/marketplace-archive.php:124
 #: templates/rfq-board.php:82
 msgid "Most recent"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:124
+#: template-parts/marketplace-archive.php:125
 msgid "Price per kg: low to high"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:125
+#: template-parts/marketplace-archive.php:126
 msgid "Price per kg: high to low"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:128
+#: template-parts/marketplace-archive.php:129
 msgid "Display"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:129
+#: template-parts/marketplace-archive.php:130
 msgid "Grid"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:130
+#: template-parts/marketplace-archive.php:131
 msgid "List"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:153
+#: template-parts/marketplace-archive.php:154
 msgid "No listing matches these filters"
 msgstr ""
 
-#: template-parts/marketplace-archive.php:154
+#: template-parts/marketplace-archive.php:155
 msgid "Widen your search, or publish a request for quotation so suppliers come to you."
 msgstr ""
 
-#: template-parts/marketplace-archive.php:155
+#: template-parts/marketplace-archive.php:156
 #: templates/front-page-template.php:119
 #: templates/single-listing.php:152
 #: templates/single-service.php:92
@@ -9776,6 +9913,7 @@ msgid "You will receive an acknowledgement by e-mail. We answer as soon as possi
 msgstr ""
 
 #: templates/contact.php:38
+#: templates/guides.php:29
 msgid "Back to the home page"
 msgstr ""
 
@@ -9815,7 +9953,7 @@ msgstr ""
 msgid "Give your pieces profile by profile: the optimiser finds the cutting that leaves the fewest offcuts, bar by bar, and tells you how many bars to buy. Weights come from the catalogue of the platform."
 msgstr ""
 
-#: templates/cutting-optimizer.php:34
+#: templates/cutting-optimizer.php:35
 msgid "The cutting optimiser is not available yet."
 msgstr ""
 
@@ -10654,6 +10792,18 @@ msgstr ""
 
 #: templates/front-page-template.php:256
 msgid "Create a free account"
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — Guides"
+msgstr ""
+
+#: templates/guides.php:27
+msgid "This guide does not exist"
+msgstr ""
+
+#: templates/guides.php:29
+msgid "See the guides"
 msgstr ""
 
 #. Template Name of the theme

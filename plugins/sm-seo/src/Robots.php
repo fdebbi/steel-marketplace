@@ -127,6 +127,7 @@ final class Robots {
 			'catalogue' => array( 'Catalogue of steel sections', 'Weight per metre and dimensions of every standard size (IPE, HEA, HEB, UPN, angles, tubes, bars), one page per size.' ),
 			'weight'    => array( 'Steel weight calculator', 'Weight of beams, tubes, plates and bars from the standard catalogue.' ),
 			'cutting'   => array( 'Cutting optimiser', 'Plan the cutting of steel bars to reduce the offcuts.' ),
+			'guides'    => array( 'Guides', 'Practical guides: buying reused steel, used steel buildings, ordering bars to cut less, selling offcuts. Methods only, no market price.' ),
 			'companies' => array( 'Companies directory', 'Companies that sell steel, by activity and by wilaya.' ),
 			'rfq'       => array( 'Requests for quotes', 'Requests published by buyers of steel.' ),
 			'pricing'   => array( 'Plans and prices', 'Plans for the sellers.' ),

@@ -106,6 +106,21 @@ foreach ( $eng as $slug ) {
 }
 smseo_assert( ! $leak, 'no partner engineer and no client in the sitemap' );
 
+if ( class_exists( '\\SM\\Guides\\Pages' ) ) { // 0.4.0
+	echo "\nGuides\n";
+	$m = Pages::guides( array( 'index' => true, 'schema' => array(), 'crumbs' => array() ), 'acheter-acier-reemploi' );
+	$art = array_values( array_filter( $m['schema'], static fn( $x ) => 'Article' === ( $x['@type'] ?? '' ) ) );
+	smseo_assert( $m['index'] && $art && 'article' === $m['og_type'] && false !== strpos( $m['canonical'], '/guides/acheter-acier-reemploi/' ), 'guide: indexed, Article, canonical address' );
+	smseo_assert( $art && false === strpos( wp_json_encode( $art[0] ), 'DA/kg' ) && ! isset( $art[0]['offers'] ), 'Article without any price' );
+	smseo_assert( 2 === count( $m['crumbs'] ) && '' !== $m['description'], 'breadcrumb Guides > guide, description from the summary' );
+	$x = Pages::guides( array( 'index' => true, 'schema' => array(), 'crumbs' => array() ), 'nexiste-pas' );
+	smseo_assert( false === $x['index'], 'unknown guide: not indexed' );
+	$l = $providers['smguides'] ?? null;
+	$locs = $l ? array_column( $l->get_url_list( 1 ), 'loc' ) : array();
+	smseo_assert( count( $locs ) === count( Text::langs() ) * ( 1 + count( \SM\Guides\Guides::published() ) ), 'sitemap of the guides: the list and each guide, in each language (' . count( $locs ) . ')' );
+	smseo_assert( false !== strpos( (string) Robots::llms(), '/guides/' ), 'llms.txt: the guides' );
+}
+
 if ( null === $saved ) {
 	delete_option( Settings::OPTION );
 } else {

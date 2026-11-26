@@ -801,3 +801,63 @@ function sm_theme_communes_data() {
 	}
 	echo '<script type="application/json" id="sm-communes-data">' . wp_json_encode( $out, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP ) . '</script>';
 }
+
+/** Names of the pages of the site a guide links to (0.61.0, sm-guides). */
+function sm_guide_tool_labels() {
+	return array(
+		'reuse'     => __( 'Steel reuse listings', 'sm-marketplace' ),
+		'products'  => __( 'Steel products listings', 'sm-marketplace' ),
+		'buildings' => __( 'Steel buildings listings', 'sm-marketplace' ),
+		'weight'    => __( 'Weight calculator', 'sm-marketplace' ),
+		'catalogue' => __( 'Catalogue of sections', 'sm-marketplace' ),
+		'cutting'   => __( 'Cutting optimiser', 'sm-marketplace' ),
+		'engineers' => __( 'Engineering: request an inspection', 'sm-marketplace' ),
+		'services'  => __( 'Fabrication & installation', 'sm-marketplace' ),
+		'rfq'       => __( 'Requests for quotation', 'sm-marketplace' ),
+	);
+}
+
+/** Short names of the same pages (cards of the guides). */
+function sm_guide_tool_short() {
+	return array(
+		'reuse'     => __( 'Steel reuse', 'sm-marketplace' ),
+		'products'  => __( 'Steel products', 'sm-marketplace' ),
+		'buildings' => __( 'Steel buildings', 'sm-marketplace' ),
+		'weight'    => __( 'Weight calculator', 'sm-marketplace' ),
+		'catalogue' => __( 'Catalogue of sections', 'sm-marketplace' ),
+		'cutting'   => __( 'Cutting optimiser', 'sm-marketplace' ),
+		'engineers' => __( 'Engineering', 'sm-marketplace' ),
+		'services'  => __( 'Fabrication & installation', 'sm-marketplace' ),
+		'rfq'       => __( 'Requests for quotation', 'sm-marketplace' ),
+	);
+}
+
+/** Text of the main button of a guide (its first tool). */
+function sm_guide_cta_labels() {
+	return array(
+		'reuse'     => __( 'See the reuse listings', 'sm-marketplace' ),
+		'products'  => __( 'See the steel products', 'sm-marketplace' ),
+		'buildings' => __( 'See the steel buildings', 'sm-marketplace' ),
+		'weight'    => __( 'Open the weight calculator', 'sm-marketplace' ),
+		'catalogue' => __( 'See the catalogue of sections', 'sm-marketplace' ),
+		'cutting'   => __( 'Open the cutting optimiser', 'sm-marketplace' ),
+		'engineers' => __( 'Request an engineering study', 'sm-marketplace' ),
+		'services'  => __( 'Find a service', 'sm-marketplace' ),
+		'rfq'       => __( 'See the requests for quotation', 'sm-marketplace' ),
+	);
+}
+
+/** « Guide: … » links under the title of a page of the site (0.61.0). $key: sm_page_url key of the page. */
+function sm_guide_links( $key ) {
+	$list = sm_theme_data( 'guides', array( 'for' => $key ) );
+	if ( empty( $list ) || ! is_array( $list ) || isset( $list['kind'] ) ) {
+		return;
+	}
+	echo '<p class="sm-guidelinks">' . sm_get_icon( 'file' ); // phpcs:ignore WordPress.Security.EscapeOutput
+	echo '<span>' . esc_html( _n( 'Guide:', 'Guides:', count( $list ), 'sm-marketplace' ) ) . '</span> ';
+	$links = array();
+	foreach ( $list as $g ) {
+		$links[] = '<a href="' . esc_url( $g['url'] ) . '">' . esc_html( $g['title'] ) . '</a>';
+	}
+	echo implode( '<span aria-hidden="true"> · </span>', $links ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above.
+}

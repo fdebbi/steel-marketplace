@@ -1,0 +1,174 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Guides 0.1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"X-Domain: sm-guides\n"
+
+#. Plugin Name of the plugin
+#: sm-guides.php
+msgid "SM Guides"
+msgstr "SM Guides"
+
+#. Plugin URI of the plugin
+#: sm-guides.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-guides.php
+msgid ""
+"Practical guides of ReuSteel in French, Arabic and English (buying reused "
+"steel, used steel buildings, ordering bars to cut less, selling offcuts): "
+"written in the administration, shown at /guides/ with a table of contents "
+"and links to the tools of the site. Methods and how the site works only: no "
+"market price, no statistics. Requires SM Core."
+msgstr ""
+"أدلة ReuSteel العملية بالفرنسية والعربية والإنجليزية (شراء فولاذ إعادة "
+"الاستعمال، المباني الفولاذية المستعملة، طلب القضبان لتقليل البقايا، بيع "
+"البقايا): تُكتب في الإدارة وتُعرض في ‎/guides/‎ مع فهرس وروابط إلى أدوات "
+"الموقع. مناهج وطريقة عمل الموقع فقط: لا أسعار سوق ولا إحصائيات. يتطلب SM "
+"Core."
+
+#. Author of the plugin
+#: sm-guides.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-guides.php:48
+msgid "SM Guides needs the SM Core plugin. Activate it first."
+msgstr "تحتاج SM Guides إلى إضافة SM Core. فعّلها أولًا."
+
+#: src/Admin/Editor.php:25
+msgid "Title of the guide in French"
+msgstr "عنوان الدليل بالفرنسية"
+
+#: src/Admin/Editor.php:30
+msgid "Steel reuse"
+msgstr "إعادة استعمال الفولاذ"
+
+#: src/Admin/Editor.php:31
+msgid "Steel products"
+msgstr "المنتجات الفولاذية"
+
+#: src/Admin/Editor.php:32
+msgid "Steel buildings"
+msgstr "المباني الفولاذية"
+
+#: src/Admin/Editor.php:33
+msgid "Weight calculator"
+msgstr "حاسبة الوزن"
+
+#: src/Admin/Editor.php:34
+msgid "Catalogue of sections"
+msgstr "كتالوج المقاطع"
+
+#: src/Admin/Editor.php:35
+msgid "Cutting optimiser"
+msgstr "مُحسِّن القص"
+
+#: src/Admin/Editor.php:36
+msgid "Engineering"
+msgstr "الهندسة"
+
+#: src/Admin/Editor.php:37
+msgid "Fabrication and erection services"
+msgstr "خدمات التصنيع والتركيب"
+
+#: src/Admin/Editor.php:38
+msgid "Requests for quotes"
+msgstr "طلبات عروض الأسعار"
+
+#: src/Admin/Editor.php:43
+msgid "Texts of the guide"
+msgstr "نصوص الدليل"
+
+#: src/Admin/Editor.php:44
+msgid "Pages of the site linked"
+msgstr "صفحات الموقع المرتبطة"
+
+#. translators: %s: language.
+#: src/Admin/Editor.php:57
+msgid "Title (%s)"
+msgstr "العنوان (%s)"
+
+#: src/Admin/Editor.php:60
+msgid "Topic (short label on the card)"
+msgstr "الموضوع (تسمية قصيرة على البطاقة)"
+
+#: src/Admin/Editor.php:62
+msgid "Short text of the card (one line)"
+msgstr "نص البطاقة القصير (سطر واحد)"
+
+#: src/Admin/Editor.php:64
+msgid "Summary (under the title, and description for the search engines)"
+msgstr "الملخص (تحت العنوان، ووصف لمحركات البحث)"
+
+#: src/Admin/Editor.php:66
+msgid "Text of the guide"
+msgstr "نص الدليل"
+
+#: src/Admin/Editor.php:68
+msgid ""
+"## Title of a section (it goes in the table of contents) · **bold** · - item"
+" of a list · 1. step · - [ ] point of the checklist · | column | column | "
+"for a table · [text](https://…) for a link. A guide is shown in a language "
+"only when its title and its text are written in that language; otherwise the"
+" French text is shown there."
+msgstr ""
+"## عنوان قسم (يظهر في الفهرس) · **عريض** · - عنصر قائمة · 1. خطوة · - [ ] "
+"بند في قائمة التحقق · | عمود | عمود | لجدول · [نص](https://…) لرابط. لا "
+"يُعرض الدليل بلغة إلا إذا كُتب عنوانه ونصه بتلك اللغة؛ وإلا يُعرض النص "
+"الفرنسي."
+
+#: src/Admin/Editor.php:70
+msgid "See the guide on the site"
+msgstr "عرض الدليل على الموقع"
+
+#: src/Admin/Editor.php:78
+msgid ""
+"Shown beside the guide; the first one ticked is the main button. The guide "
+"is also proposed on these pages."
+msgstr ""
+"تُعرض بجانب الدليل؛ أول صفحة محددة هي الزر الرئيسي. ويُقترح الدليل أيضًا في "
+"هذه الصفحات."
+
+#: src/Admin/Editor.php:102
+msgid "Languages"
+msgstr "اللغات"
+
+#: src/Admin/Editor.php:103
+msgid "Sections"
+msgstr "الأقسام"
+
+#: src/Admin/Editor.php:104
+msgid "Order"
+msgstr "الترتيب"
+
+#: src/Guides.php:31 src/Guides.php:35
+msgid "Guides"
+msgstr "الأدلة"
+
+#: src/Guides.php:32
+msgid "Guide"
+msgstr "دليل"
+
+#: src/Guides.php:33
+msgid "Add a guide"
+msgstr "إضافة دليل"
+
+#: src/Guides.php:34
+msgid "Edit the guide"
+msgstr "تعديل الدليل"
+
+#: src/Guides.php:36
+msgid "Search the guides"
+msgstr "البحث في الأدلة"
+
+#: src/Guides.php:37
+msgid "No guide."
+msgstr "لا يوجد دليل."

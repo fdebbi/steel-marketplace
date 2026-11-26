@@ -199,6 +199,59 @@ final class Pages {
 	}
 
 	/**
+	 * Guides (0.4.0, sm-guides 0.1.0): the list, or a guide with its summary as the
+	 * description and an Article. A guide shown in French because it is not written in
+	 * the language of the address is kept out of the index (same text as the French page).
+	 */
+	public static function guides( array $m, $slug ) {
+		$d              = Text::data( 'guides', array( 'slug' => $slug ) );
+		$m['canonical'] = Text::url( 'guides', array( 'slug' => $slug ) );
+		if ( ! is_array( $d ) || empty( $d['kind'] ) ) {
+			$m['index'] = false;
+			return $m;
+		}
+		$name        = get_the_title( Text::page_id( 'guides' ) ) ?: __( 'Guides', 'sm-seo' );
+		$m['crumbs'] = array( array( $name, Text::url( 'guides' ) ) );
+		if ( 'index' === $d['kind'] ) {
+			$m['title']       = __( 'Steel guides: buy, sell and order steel', 'sm-seo' );
+			$m['description'] = __( 'Practical guides to buy, sell and order steel in Algeria: what to check before buying reused steel, used steel buildings, ordering bars to cut less, selling offcuts.', 'sm-seo' );
+			$m['schema'][]    = array(
+				'@type'           => 'ItemList',
+				'name'            => $m['title'],
+				'numberOfItems'   => count( $d['items'] ),
+				'itemListElement' => array_map(
+					static fn( $g, $i ) => array( '@type' => 'ListItem', 'position' => $i + 1, 'name' => $g['title'], 'url' => $g['url'] ),
+					$d['items'],
+					array_keys( $d['items'] )
+				),
+			);
+			return $m;
+		}
+		$m['title']       = (string) $d['title'];
+		$m['description'] = Text::cut( (string) $d['summary'], 300 );
+		$m['og_type']     = 'article';
+		$m['crumbs'][]    = array( (string) $d['title'], $m['canonical'] );
+		if ( ! empty( $d['fallback'] ) ) {
+			$m['index'] = false;
+			return $m;
+		}
+		$org           = Schema::organization();
+		$m['schema'][] = array(
+			'@type'         => 'Article',
+			'headline'      => Text::cut( (string) $d['title'], 110 ),
+			'description'   => $m['description'],
+			'inLanguage'    => Text::lang(),
+			'url'           => $m['canonical'],
+			'datePublished' => gmdate( 'c', strtotime( $d['published'] . ' UTC' ) ),
+			'dateModified'  => gmdate( 'c', strtotime( $d['updated'] . ' UTC' ) ),
+			'author'        => array( '@type' => 'Organization', 'name' => $org['name'], 'url' => $org['url'] ),
+			'publisher'     => $org,
+			'mainEntityOfPage' => $m['canonical'],
+		);
+		return $m;
+	}
+
+	/**
 	 * Catalogue of sections (0.2.0, sm-weight-engine 0.8.0): the families, a family
 	 * (table of its sizes) or a size (weight per metre, bars, dimensions). Values of
 	 * the weight engine only; the questions in the data are the ones shown on the page.

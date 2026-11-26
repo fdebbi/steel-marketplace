@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 final class Sitemaps {
 
 	/** Pages of the marketplace that are not in the sitemap (private, or shown with an id). */
-	const SKIP_KEYS = array( 'listing', 'company', 'service', 'styleguide', 'catalogue' ); // catalogue: its own sitemap.
+	const SKIP_KEYS = array( 'listing', 'company', 'service', 'styleguide', 'catalogue', 'guides' ); // catalogue, guides: their own sitemap.
 
 	public static function init() {
 		add_filter( 'wp_sitemaps_add_provider', array( __CLASS__, 'core_provider' ), 10, 2 );
@@ -43,6 +43,9 @@ final class Sitemaps {
 		wp_register_sitemap_provider( 'smcompanies', new Sitemap\Companies() );
 		if ( class_exists( '\\SM\\WeightEngine\\CataloguePages' ) && Text::page_id( 'catalogue' ) ) {
 			wp_register_sitemap_provider( 'smcatalogue', new Sitemap\Catalogue() ); // 0.2.0
+		}
+		if ( class_exists( '\\SM\\Guides\\Pages' ) && Text::page_id( 'guides' ) ) {
+			wp_register_sitemap_provider( 'smguides', new Sitemap\Guides() ); // 0.4.0
 		}
 		if ( class_exists( '\\SM\\Products\\Landing' ) ) {
 			wp_register_sitemap_provider( 'smlanding', new Sitemap\Landing() ); // 0.3.0

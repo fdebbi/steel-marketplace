@@ -1,0 +1,176 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SM Guides 0.1.0\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: sm-guides\n"
+
+#. Plugin Name of the plugin
+#: sm-guides.php
+msgid "SM Guides"
+msgstr "SM Guides"
+
+#. Plugin URI of the plugin
+#: sm-guides.php
+msgid "https://github.com/fdebbi/steel-marketplace"
+msgstr "https://github.com/fdebbi/steel-marketplace"
+
+#. Description of the plugin
+#: sm-guides.php
+msgid ""
+"Practical guides of ReuSteel in French, Arabic and English (buying reused "
+"steel, used steel buildings, ordering bars to cut less, selling offcuts): "
+"written in the administration, shown at /guides/ with a table of contents "
+"and links to the tools of the site. Methods and how the site works only: no "
+"market price, no statistics. Requires SM Core."
+msgstr ""
+"Guides pratiques de ReuSteel en français, arabe et anglais (acheter de "
+"l'acier de réemploi, bâtiments métalliques d'occasion, commander ses barres "
+"pour réduire les chutes, vendre ses chutes) : écrits dans l'administration, "
+"affichés dans /guides/ avec un sommaire et des liens vers les outils du "
+"site. Méthodes et fonctionnement du site seulement : aucun prix du marché, "
+"aucune statistique. Nécessite SM Core."
+
+#. Author of the plugin
+#: sm-guides.php
+msgid "ReuSteel"
+msgstr "ReuSteel"
+
+#: sm-guides.php:48
+msgid "SM Guides needs the SM Core plugin. Activate it first."
+msgstr "SM Guides a besoin de l'extension SM Core. Activez-la d'abord."
+
+#: src/Admin/Editor.php:25
+msgid "Title of the guide in French"
+msgstr "Titre du guide en français"
+
+#: src/Admin/Editor.php:30
+msgid "Steel reuse"
+msgstr "Réemploi de l'acier"
+
+#: src/Admin/Editor.php:31
+msgid "Steel products"
+msgstr "Produits sidérurgiques"
+
+#: src/Admin/Editor.php:32
+msgid "Steel buildings"
+msgstr "Bâtiments métalliques"
+
+#: src/Admin/Editor.php:33
+msgid "Weight calculator"
+msgstr "Calculateur de poids"
+
+#: src/Admin/Editor.php:34
+msgid "Catalogue of sections"
+msgstr "Catalogue des profilés"
+
+#: src/Admin/Editor.php:35
+msgid "Cutting optimiser"
+msgstr "Optimiseur de découpe"
+
+#: src/Admin/Editor.php:36
+msgid "Engineering"
+msgstr "Ingénierie"
+
+#: src/Admin/Editor.php:37
+msgid "Fabrication and erection services"
+msgstr "Services de fabrication et de montage"
+
+#: src/Admin/Editor.php:38
+msgid "Requests for quotes"
+msgstr "Demandes de devis"
+
+#: src/Admin/Editor.php:43
+msgid "Texts of the guide"
+msgstr "Textes du guide"
+
+#: src/Admin/Editor.php:44
+msgid "Pages of the site linked"
+msgstr "Pages du site liées"
+
+#. translators: %s: language.
+#: src/Admin/Editor.php:57
+msgid "Title (%s)"
+msgstr "Titre (%s)"
+
+#: src/Admin/Editor.php:60
+msgid "Topic (short label on the card)"
+msgstr "Thème (étiquette courte sur la carte)"
+
+#: src/Admin/Editor.php:62
+msgid "Short text of the card (one line)"
+msgstr "Texte court de la carte (une ligne)"
+
+#: src/Admin/Editor.php:64
+msgid "Summary (under the title, and description for the search engines)"
+msgstr "Résumé (sous le titre, et description pour les moteurs de recherche)"
+
+#: src/Admin/Editor.php:66
+msgid "Text of the guide"
+msgstr "Texte du guide"
+
+#: src/Admin/Editor.php:68
+msgid ""
+"## Title of a section (it goes in the table of contents) · **bold** · - item"
+" of a list · 1. step · - [ ] point of the checklist · | column | column | "
+"for a table · [text](https://…) for a link. A guide is shown in a language "
+"only when its title and its text are written in that language; otherwise the"
+" French text is shown there."
+msgstr ""
+"## Titre d'une section (il va dans le sommaire) · **gras** · - élément d'une"
+" liste · 1. étape · - [ ] point de la liste de vérification · | colonne | "
+"colonne | pour un tableau · [texte](https://…) pour un lien. Un guide n'est "
+"affiché dans une langue que si son titre et son texte sont écrits dans cette"
+" langue ; sinon le texte français y est affiché."
+
+#: src/Admin/Editor.php:70
+msgid "See the guide on the site"
+msgstr "Voir le guide sur le site"
+
+#: src/Admin/Editor.php:78
+msgid ""
+"Shown beside the guide; the first one ticked is the main button. The guide "
+"is also proposed on these pages."
+msgstr ""
+"Affichées à côté du guide ; la première cochée est le bouton principal. Le "
+"guide est aussi proposé sur ces pages."
+
+#: src/Admin/Editor.php:102
+msgid "Languages"
+msgstr "Langues"
+
+#: src/Admin/Editor.php:103
+msgid "Sections"
+msgstr "Sections"
+
+#: src/Admin/Editor.php:104
+msgid "Order"
+msgstr "Ordre"
+
+#: src/Guides.php:31 src/Guides.php:35
+msgid "Guides"
+msgstr "Guides"
+
+#: src/Guides.php:32
+msgid "Guide"
+msgstr "Guide"
+
+#: src/Guides.php:33
+msgid "Add a guide"
+msgstr "Ajouter un guide"
+
+#: src/Guides.php:34
+msgid "Edit the guide"
+msgstr "Modifier le guide"
+
+#: src/Guides.php:36
+msgid "Search the guides"
+msgstr "Chercher dans les guides"
+
+#: src/Guides.php:37
+msgid "No guide."
+msgstr "Aucun guide."

@@ -140,3 +140,9 @@ P.update({
     ('%1$s إعلان من %2$s %3$s، %4$s معروضة.', 'إعلان واحد من %2$s %3$s، %4$s معروضة.', 'إعلانان من %2$s %3$s، %4$s معروضة.', '%1$s إعلانات من %2$s %3$s، %4$s معروضة.', '%1$s إعلانًا من %2$s %3$s، %4$s معروضة.', '%1$s إعلان من %2$s %3$s، %4$s معروضة.'),
 ),
 })
+# 0.4.0: guides (sm-guides).
+T.update({
+'Guides': ('Guides', 'الأدلة'),
+'Steel guides: buy, sell and order steel': ("Guides de l'acier : acheter, vendre et commander", 'أدلة الفولاذ: الشراء والبيع والطلب'),
+'Practical guides to buy, sell and order steel in Algeria: what to check before buying reused steel, used steel buildings, ordering bars to cut less, selling offcuts.': ("Guides pratiques pour acheter, vendre et commander l'acier en Algérie : quoi vérifier avant d'acheter de l'acier de réemploi, les bâtiments métalliques d'occasion, commander ses barres pour réduire les chutes, vendre ses chutes.", 'أدلة عملية لشراء الفولاذ وبيعه وطلبه في الجزائر: ما يجب التحقق منه قبل شراء فولاذ إعادة الاستعمال، المباني الفولاذية المستعملة، طلب القضبان لتقليل البقايا، بيع البقايا.'),
+})

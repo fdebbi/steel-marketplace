@@ -1,5 +1,11 @@
 # Changelog — sm-seo
 
+## 0.4.0 — 2026-11-26 (avec sm-guides 0.1.0, thème 0.61.0)
+
+- Guides (`/guides/` et `/guides/{nom}/`) : titre, description tirée du résumé du guide, adresse canonique, fil d'Ariane, données « Article » (sans aucun prix) ; liste des guides en « ItemList ».
+- Un guide affiché en français à une adresse /ar/ ou /en/ parce qu'il n'est pas écrit dans cette langue : hors index.
+- Plan du site `smguides` : la liste des guides et chaque guide dans les langues où il est écrit ; `llms.txt` cite les guides.
+
 ## 0.3.1 — 2026-11-26 (avec sm-products 0.24.1, thème 0.60.1) — vérification sur reusteel.com
 
 - Description des pages « type × wilaya » : « dans la wilaya d’Alger » (élision devant une voyelle : Alger, Oran, Adrar, El Oued, Aïn Defla…) au lieu de « de Alger » (`Pages::in_wilaya`).

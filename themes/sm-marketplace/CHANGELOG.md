@@ -1,5 +1,11 @@
 # Changelog — sm-marketplace
 
+## 0.61.0 — 2026-11-26 (avec sm-guides 0.1.0, sm-seo 0.4.0)
+
+- Guides (maquette validée le 2026-11-26) : page `/guides/` (une carte par guide : thème, titre, texte court, nombre de sections, outils liés) et page d'un guide (résumé, date, autres langues, sommaire à droite et replié sur téléphone, outils liés, bouton principal, liste de vérification, autres guides). Page « Guides » créée par l'installation des pages (`templates/guides.php`).
+- Liens « Guide : … » sous le titre de l'optimiseur de découpe, du calculateur de poids et des marchés (réemploi, bâtiments) ; lien « Guides » dans le pied de page (Plateforme).
+- Styles `assets/css/41-guides.css` ; 30 nouvelles chaînes traduites (FR, AR).
+
 ## 0.60.1 — 2026-11-26 (avec sm-products 0.24.1, sm-seo 0.3.1)
 
 - Pages « type × wilaya » : « dans la wilaya d’Alger » (élision devant une voyelle) au lieu de « de Alger ».

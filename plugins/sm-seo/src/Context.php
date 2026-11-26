@@ -137,6 +137,10 @@ final class Context {
 				$m    = Pages::catalogue( $m, sanitize_title( (string) ( get_query_var( 'sm_cat' ) ? get_query_var( 'sm_cat' ) : ( $args['sm_cat'] ?? '' ) ) ) );
 				$args = array();
 				break;
+			case 'guides': // 0.4.0 (sm-guides).
+				$m    = Pages::guides( $m, sanitize_title( (string) ( get_query_var( 'sm_guide' ) ? get_query_var( 'sm_guide' ) : ( $args['sm_guide'] ?? '' ) ) ) );
+				$args = array();
+				break;
 			case 'rfq':
 				if ( get_query_var( 'sm_id' ) || ! empty( $args['id'] ) ) {
 					$m['index']     = false; // A request of a buyer: not for the search engines.

@@ -57,6 +57,7 @@ if ( $category && isset( $cats[ $category ] ) ) {
 			<div>
 				<h1 class="sm-pagehead__title"><?php echo esc_html( $category && isset( $cats[ $category ] ) ? sm_t( $cats[ $category ] ) : $args['title'] ); ?></h1>
 				<p class="sm-pagehead__intro"><?php echo esc_html( $args['intro'] ); ?></p>
+				<?php if ( 'search' !== $market ) { sm_guide_links( $market ); } // 0.61.0 ?>
 			</div>
 			<?php if ( 'search' !== $market ) : ?>
 				<a class="sm-btn sm-btn--accent" href="<?php echo esc_url( sm_page_url( 'account', array( 'view' => 'publish', 'market' => $market ) ) ); ?>"><?php sm_icon( 'plus' ); ?><?php esc_html_e( 'Publish here', 'sm-marketplace' ); ?></a>
