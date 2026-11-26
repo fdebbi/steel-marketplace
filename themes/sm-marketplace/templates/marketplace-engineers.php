@@ -116,6 +116,7 @@ $steps     = array(
 	<?php if ( is_array( $data ) && $data['open'] && ! $data['enabled'] ) : ?>
 		<p class="sme-partner"><?php esc_html_e( 'Are you a structural engineer?', 'sm-marketplace' ); ?> <a class="sm-link" href="<?php echo esc_url( $data['apply_url'] ); ?>"><?php esc_html_e( 'Become a partner engineer', 'sm-marketplace' ); ?></a></p>
 	<?php endif; ?>
+	<?php sm_faq_block( 'engineers' ); // 0.62.0 ?>
 </div>
 <?php
 get_footer();

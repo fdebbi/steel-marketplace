@@ -26,18 +26,18 @@ msgid ""
 "real data, canonical address, pages kept out of the index (account, search "
 "with filters, expired listings), XML sitemaps of the listings, companies, "
 "categories and services in French, Arabic and English, structured data "
-"(product and asked price, company, engineering services, breadcrumb), link "
-"previews, robots.txt and llms.txt. Never a review, a rating, a market price "
-"or a data source. Requires SM Core."
+"(product and asked price, company, engineering services, frequently asked "
+"questions, breadcrumb), link previews, robots.txt and llms.txt. Never a "
+"review, a rating, a market price or a data source. Requires SM Core."
 msgstr ""
 "Moteurs de recherche et recherche par IA : titre et description de chaque "
 "page à partir des vraies données, adresse canonique, pages gardées hors de "
 "l'index (compte, recherche avec filtres, annonces expirées), plans du site "
 "XML des annonces, entreprises, catégories et services en français, arabe et "
 "anglais, données structurées (produit et prix demandé, entreprise, services "
-"d'ingénierie, fil d'Ariane), aperçus de partage, robots.txt et llms.txt. "
-"Jamais d'avis, de note, de prix du marché ni de source de données. Nécessite"
-" SM Core."
+"d'ingénierie, questions fréquentes, fil d'Ariane), aperçus de partage, "
+"robots.txt et llms.txt. Jamais d'avis, de note, de prix du marché ni de "
+"source de données. Nécessite SM Core."
 
 #. Author of the plugin
 #: sm-seo.php
@@ -342,10 +342,22 @@ msgid "Plan the cutting of your steel bars to reduce the offcuts."
 msgstr "Planifiez la découpe de vos barres d'acier pour réduire les chutes."
 
 #: src/Pages.php:32
+msgid "Frequently asked questions"
+msgstr "Questions fréquentes"
+
+#: src/Pages.php:32
+msgid ""
+"Answers on how ReuSteel works: accounts, listings, requests for quotation, "
+"engineering studies, tools and languages. No market price."
+msgstr ""
+"Réponses sur le fonctionnement de ReuSteel : comptes, annonces, demandes de "
+"devis, études d'ingénierie, outils et langues. Aucun prix du marché."
+
+#: src/Pages.php:33
 msgid "Become a partner engineer"
 msgstr "Devenir ingénieur partenaire"
 
-#: src/Pages.php:32
+#: src/Pages.php:33
 msgid ""
 "Engineers and design offices: join the network of ReuSteel and carry out "
 "studies of steel structures."
@@ -353,11 +365,11 @@ msgstr ""
 "Ingénieurs et bureaux d'études : rejoignez le réseau de ReuSteel et réalisez"
 " des études de structures métalliques."
 
-#: src/Pages.php:38
+#: src/Pages.php:39
 msgid "We give steel a new life"
 msgstr "Nous donnons une nouvelle vie à l’acier"
 
-#: src/Pages.php:41
+#: src/Pages.php:42
 msgid ""
 "We give steel a new life… transforming used resources into value and new "
 "opportunities."
@@ -365,14 +377,14 @@ msgstr ""
 "Nous donnons une nouvelle vie à l’acier… et transformons les ressources "
 "usagées en valeur et en opportunités durables."
 
-#: src/Pages.php:41
+#: src/Pages.php:42
 msgid "New steel, steel reuse and steel buildings for sale in Algeria."
 msgstr ""
 "Acier neuf, réemploi de l'acier et bâtiments métalliques à vendre en "
 "Algérie."
 
 #. translators: 1: type of product, 2: market.
-#: src/Pages.php:86
+#: src/Pages.php:87
 msgid ""
 "%1$s for sale in Algeria (%2$s): listings with the weight computed and the "
 "price asked by the sellers."
@@ -381,7 +393,7 @@ msgstr ""
 "demandé par les vendeurs."
 
 #. translators: 1: family of profiles (IPE, HEA…), 2: market.
-#: src/Pages.php:96
+#: src/Pages.php:97
 msgid ""
 "%1$s profiles for sale in Algeria (%2$s): sizes, steel grades, weight "
 "computed and price asked by the sellers."
@@ -390,7 +402,7 @@ msgstr ""
 "calculé et prix demandé par les vendeurs."
 
 #. translators: %s: list of the engineering services.
-#: src/Pages.php:123
+#: src/Pages.php:124
 msgid ""
 "Engineering services by verified partner engineers, delivered by the "
 "platform: %s. One quote, one contact."
@@ -398,56 +410,56 @@ msgstr ""
 "Services d'ingénierie réalisés par des ingénieurs partenaires vérifiés, "
 "livrés par la plateforme : %s. Un seul devis, un seul interlocuteur."
 
-#: src/Pages.php:130 src/Pages.php:563 src/Schema.php:115
+#: src/Pages.php:131 src/Pages.php:598 src/Schema.php:115
 msgid "Algeria"
 msgstr "Algérie"
 
 #. translators: 1: type of product or market, 2: wilaya (e.g. « Profilés à
 #. M'Sila »).
-#: src/Pages.php:167
+#: src/Pages.php:168
 msgid "%1$s in %2$s"
 msgstr "%1$s à %2$s"
 
 #. translators: %s: weight in tonnes.
-#: src/Pages.php:172 src/Text.php:90
+#: src/Pages.php:173 src/Text.php:90
 msgid "about %s t"
 msgstr "environ %s t"
 
 #. translators: %s: weight in kilograms.
-#: src/Pages.php:172 src/Text.php:93
+#: src/Pages.php:173 src/Text.php:93
 msgid "about %s kg"
 msgstr "environ %s kg"
 
 #. translators: 1: number of listings, 2: type or market, 3: « in the wilaya
 #. of … », 4: weight.
-#: src/Pages.php:174
+#: src/Pages.php:175
 msgid "%1$s listing of %2$s %3$s, %4$s offered."
 msgid_plural "%1$s listings of %2$s %3$s, %4$s offered."
 msgstr[0] "%1$s annonce de %2$s %3$s, %4$s proposées."
 msgstr[1] "%1$s annonces de %2$s %3$s, %4$s proposées."
 
-#: src/Pages.php:178
+#: src/Pages.php:179
 msgid "Prices asked by the sellers: from %1$s to %2$s DA/kg."
 msgstr "Prix demandés par les vendeurs : de %1$s à %2$s DA/kg."
 
 #. translators: %s: asked price, the same for all the sellers (0.3.1).
-#: src/Pages.php:180
+#: src/Pages.php:181
 msgid "Price asked by the sellers: %s DA/kg."
 msgstr "Prix demandé par les vendeurs : %s DA/kg."
 
-#: src/Pages.php:183
+#: src/Pages.php:184
 msgid "Contact the sellers or request a quote through ReuSteel."
 msgstr "Contactez les vendeurs ou demandez un devis par ReuSteel."
 
-#: src/Pages.php:213
+#: src/Pages.php:248
 msgid "Guides"
 msgstr "Guides"
 
-#: src/Pages.php:216
+#: src/Pages.php:251
 msgid "Steel guides: buy, sell and order steel"
 msgstr "Guides de l'acier : acheter, vendre et commander"
 
-#: src/Pages.php:217
+#: src/Pages.php:252
 msgid ""
 "Practical guides to buy, sell and order steel in Algeria: what to check "
 "before buying reused steel, used steel buildings, ordering bars to cut less,"
@@ -457,15 +469,15 @@ msgstr ""
 " vérifier avant d'acheter de l'acier de réemploi, les bâtiments métalliques "
 "d'occasion, commander ses barres pour réduire les chutes, vendre ses chutes."
 
-#: src/Pages.php:266
+#: src/Pages.php:301
 msgid "Catalogue of sections"
 msgstr "Catalogue des profilés"
 
-#: src/Pages.php:269
+#: src/Pages.php:304
 msgid "Catalogue of steel sections: weight and dimensions"
 msgstr "Catalogue des profilés en acier : poids et dimensions"
 
-#: src/Pages.php:270
+#: src/Pages.php:305
 msgid ""
 "Weight per metre and dimensions of the standard steel sections: IPE, HEA and"
 " HEB beams, UPN channels, angles, tubes and bars. Free, in French, Arabic "
@@ -477,12 +489,12 @@ msgstr ""
 
 #. translators: %s: family of sections, e.g. IPE beams.
 #. translators: %s: section, e.g. IPE 200.
-#: src/Pages.php:277 src/Pages.php:298
+#: src/Pages.php:312 src/Pages.php:333
 msgid "%s: weight per metre and dimensions"
 msgstr "%s : poids au mètre et dimensions"
 
 #. translators: 1: number of sizes, 2: family, 3: first size, 4: last size.
-#: src/Pages.php:279
+#: src/Pages.php:314
 msgid ""
 "Table of the %1$d sizes of %2$s, from %3$s to %4$s: weight per metre, weight"
 " of a bar of 12 m and dimensions."
@@ -492,7 +504,7 @@ msgstr ""
 
 #. translators: 1: section, 2: weight per metre, 3: weight of a bar of 12 m,
 #. 4: weight of a bar of 6 m, 5: dimensions.
-#: src/Pages.php:307
+#: src/Pages.php:342
 msgid ""
 "%1$s: %2$s kg per metre, %3$s kg for a bar of 12 m, %4$s kg for 6 m. "
 "Dimensions: %5$s. Drawing, calculator and listings in progress."
@@ -500,25 +512,25 @@ msgstr ""
 "%1$s : %2$s kg par mètre, %3$s kg pour une barre de 12 m, %4$s kg pour 6 m. "
 "Dimensions : %5$s. Dessin coté, calculateur et annonces en cours."
 
-#: src/Pages.php:311
+#: src/Pages.php:346
 msgid "Weight per metre"
 msgstr "Poids au mètre"
 
-#: src/Pages.php:312
+#: src/Pages.php:347
 msgid "Cross-section area"
 msgstr "Aire de la section"
 
-#: src/Pages.php:328
+#: src/Pages.php:363
 msgid "Standard"
 msgstr "Norme"
 
 #. translators: %s: section.
-#: src/Pages.php:338
+#: src/Pages.php:373
 msgid "How much does a bar of %s of 12 m weigh?"
 msgstr "Combien pèse une barre de %s de 12 m ?"
 
 #. translators: 1: weight of the bar, 2: weight per metre.
-#: src/Pages.php:342
+#: src/Pages.php:377
 msgid ""
 "About %1$s kg (%2$s kg/m × 12 m), theoretical weight from the standard "
 "dimensions."
@@ -527,115 +539,115 @@ msgstr ""
 "normalisées."
 
 #. translators: %s: section.
-#: src/Pages.php:348
+#: src/Pages.php:383
 msgid "How many metres of %s in one tonne?"
 msgstr "Combien de mètres de %s dans une tonne ?"
 
 #. translators: 1: metres, 2: weight per metre.
-#: src/Pages.php:352
+#: src/Pages.php:387
 msgid "About %1$s m (1 000 kg ÷ %2$s kg/m)."
 msgstr "Environ %1$s m (1 000 kg ÷ %2$s kg/m)."
 
 #. translators: 1: number of bars, 2: length in metres.
-#: src/Pages.php:384
+#: src/Pages.php:419
 msgid "%1$s bar of %2$s m"
 msgid_plural "%1$s bars of %2$s m"
 msgstr[0] "%1$s barre de %2$s m"
 msgstr[1] "%1$s barres de %2$s m"
 
-#: src/Pages.php:395
+#: src/Pages.php:430
 msgid "assembled"
 msgstr "monté"
 
-#: src/Pages.php:395
+#: src/Pages.php:430
 msgid "dismantled"
 msgstr "démonté"
 
 #. translators: %s: wilaya whose name starts with a vowel (French: « dans la
 #. wilaya d’Alger »).
-#: src/Pages.php:445
+#: src/Pages.php:480
 msgctxt "before a vowel"
 msgid "in the wilaya of %s"
 msgstr "dans la wilaya d’%s"
 
 #. translators: %s: wilaya.
-#: src/Pages.php:448
+#: src/Pages.php:483
 msgid "in the wilaya of %s"
 msgstr "dans la wilaya de %s"
 
 #. translators: %s: wilaya whose name starts with a vowel (French: « Wilaya
 #. d’Alger. »).
-#: src/Pages.php:455
+#: src/Pages.php:490
 msgctxt "before a vowel"
 msgid "Wilaya of %s."
 msgstr "Wilaya d’%s."
 
 #. translators: %s: wilaya.
-#: src/Pages.php:458
+#: src/Pages.php:493
 msgid "Wilaya of %s."
 msgstr "Wilaya de %s."
 
 #. translators: 1: price per kilogram, 2: price of the whole lot.
-#: src/Pages.php:474
+#: src/Pages.php:509
 msgid "Price asked by the seller: %1$s DA/kg, or %2$s DA for the whole lot."
 msgstr ""
 "Prix demandé par le vendeur : %1$s DA/kg, ou %2$s DA pour tout le lot."
 
 #. translators: %s: price per kilogram.
-#: src/Pages.php:477
+#: src/Pages.php:512
 msgid "Price asked by the seller: %s DA/kg."
 msgstr "Prix demandé par le vendeur : %s DA/kg."
 
 #. translators: %s: price of the lot.
-#: src/Pages.php:483
+#: src/Pages.php:518
 msgid "Price of the lot asked by the seller: %s DA."
 msgstr "Prix du lot demandé par le vendeur : %s DA."
 
-#: src/Pages.php:485
+#: src/Pages.php:520
 msgid "Price on request."
 msgstr "Prix sur demande."
 
 #. translators: %s: wilaya.
-#: src/Pages.php:501
+#: src/Pages.php:536
 msgid "steel professional in %s"
 msgstr "professionnel de l'acier à %s"
 
 #. translators: %s: wilaya.
-#: src/Pages.php:501
+#: src/Pages.php:536
 msgid "steel company in %s"
 msgstr "entreprise de l'acier à %s"
 
-#: src/Pages.php:503
+#: src/Pages.php:538
 msgid "steel professional"
 msgstr "professionnel de l'acier"
 
-#: src/Pages.php:503
+#: src/Pages.php:538
 msgid "steel company"
 msgstr "entreprise de l'acier"
 
 #. translators: 1: name of the company, 2: « steel company in M'Sila ».
-#: src/Pages.php:508
+#: src/Pages.php:543
 msgid "%1$s, %2$s on ReuSteel. Contact through the platform."
 msgstr "%1$s, %2$s sur ReuSteel. Contact par la plateforme."
 
-#: src/Pages.php:516
+#: src/Pages.php:551
 msgid "Professionals"
 msgstr "Professionnels"
 
-#: src/Pages.php:516
+#: src/Pages.php:551
 msgid "Companies"
 msgstr "Entreprises"
 
-#: src/Pages.php:552
+#: src/Pages.php:587
 msgid "all Algeria"
 msgstr "toute l'Algérie"
 
 #. translators: %s: wilayas served.
-#: src/Pages.php:554
+#: src/Pages.php:589
 msgid "Served: %s."
 msgstr "Zone desservie : %s."
 
-#: src/Pages.php:557
+#: src/Pages.php:592
 msgid "Services"
 msgstr "Services"
 

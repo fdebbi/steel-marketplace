@@ -13,7 +13,7 @@ langs = {
 missing = set()
 for code, (idx, plural, name) in langs.items():
     po = polib.POFile()
-    po.metadata = {'Project-Id-Version': 'SM Guides 0.1.0', 'Language': code, 'MIME-Version': '1.0',
+    po.metadata = {'Project-Id-Version': 'SM Guides 0.2.0', 'Language': code, 'MIME-Version': '1.0',
                    'Content-Type': 'text/plain; charset=UTF-8', 'Content-Transfer-Encoding': '8bit', 'Plural-Forms': plural,
                    'X-Domain': 'sm-guides'}
     for e in pot:

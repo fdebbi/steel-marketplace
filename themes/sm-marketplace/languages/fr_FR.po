@@ -153,7 +153,12 @@ msgstr "Abonnements"
 msgid "Guides"
 msgstr "Guides"
 
-#: footer.php:46 template-parts/components/ai-gate.php:24
+#: footer.php:46 inc/template-tags.php:910 templates/faq.php:46
+#: templates/faq.php:47
+msgid "Frequently asked questions"
+msgstr "Questions fréquentes"
+
+#: footer.php:47 template-parts/components/ai-gate.php:24
 #: template-parts/components/buy-box.php:233
 #: template-parts/components/enquiry-form.php:46
 #: template-parts/components/rfq-single.php:158
@@ -163,28 +168,28 @@ msgstr "Guides"
 msgid "Create an account"
 msgstr "Créer un compte"
 
-#: footer.php:47 header.php:31 templates/company-profile.php:230
+#: footer.php:48 header.php:31 templates/company-profile.php:230
 #: templates/company-profile.php:245 templates/contact.php:23
 #: templates/contact.php:32 templates/single-listing.php:281
 msgid "Contact"
 msgstr "Contact"
 
-#: footer.php:53
+#: footer.php:54
 msgid ""
 "Advertised prices are set by sellers and are not official market prices."
 msgstr ""
 "Les prix affichés sont fixés par les vendeurs et ne sont pas des prix "
 "officiels du marché."
 
-#: footer.php:58
+#: footer.php:59
 msgid "Quick navigation"
 msgstr "Navigation rapide"
 
-#: footer.php:59 inc/template-tags.php:455
+#: footer.php:60 inc/template-tags.php:455
 msgid "Home"
 msgstr "Accueil"
 
-#: footer.php:60 header.php:54
+#: footer.php:61 header.php:54
 #: template-parts/components/stock-warehouse.php:132
 #: template-parts/directory.php:53 template-parts/header-actions.php:13
 #: templates/ai-assistant.php:23 templates/front-page-template.php:49
@@ -192,27 +197,27 @@ msgstr "Accueil"
 msgid "Search"
 msgstr "Rechercher"
 
-#: footer.php:63 template-parts/header-actions.php:36
+#: footer.php:64 template-parts/header-actions.php:36
 #: templates/dashboard.php:74
 msgid "My missions"
 msgstr "Mes missions"
 
-#: footer.php:64 templates/dashboard.php:75
+#: footer.php:65 templates/dashboard.php:75
 msgid "Invoicing"
 msgstr "Facturation"
 
-#: footer.php:66 template-parts/components/product-form.php:238
+#: footer.php:67 template-parts/components/product-form.php:238
 #: template-parts/components/stock-warehouse.php:67
 #: template-parts/dashboard/publish.php:211
 #: template-parts/header-actions.php:34 templates/styleguide.php:34
 msgid "Publish"
 msgstr "Publier"
 
-#: footer.php:67
+#: footer.php:68
 msgid "Enquiries"
 msgstr "Demandes"
 
-#: footer.php:69 templates/dashboard.php:87 templates/dashboard.php:166
+#: footer.php:70 templates/dashboard.php:87 templates/dashboard.php:166
 #: templates/engineer-apply.php:307
 msgid "Account"
 msgstr "Compte"
@@ -534,23 +539,23 @@ msgstr "Hangars montés ou démontés"
 msgid "Building"
 msgstr "Bâtiment"
 
-#: inc/demo/installer.php:111 inc/demo/installer.php:112
-#: inc/demo/installer.php:126
+#: inc/demo/installer.php:112 inc/demo/installer.php:113
+#: inc/demo/installer.php:127
 msgid "SM Pages"
 msgstr "Pages SM"
 
-#: inc/demo/installer.php:123
+#: inc/demo/installer.php:124
 msgid "Missing pages were created."
 msgstr "Les pages manquantes ont été créées."
 
-#: inc/demo/installer.php:127
+#: inc/demo/installer.php:128
 msgid ""
 "Pages used by the theme templates. Existing pages are never overwritten."
 msgstr ""
 "Pages utilisées par les gabarits du thème. Les pages existantes ne sont "
 "jamais écrasées."
 
-#: inc/demo/installer.php:135
+#: inc/demo/installer.php:136
 msgid "Create missing pages"
 msgstr "Créer les pages manquantes"
 
@@ -1004,6 +1009,26 @@ msgid "Guide:"
 msgid_plural "Guides:"
 msgstr[0] "Guide :"
 msgstr[1] "Guides :"
+
+#: inc/template-tags.php:895
+msgid "Frequently asked questions about steel reuse"
+msgstr "Questions fréquentes sur le réemploi"
+
+#: inc/template-tags.php:896
+msgid "Frequently asked questions about steel buildings"
+msgstr "Questions fréquentes sur les bâtiments métalliques"
+
+#: inc/template-tags.php:897
+msgid "Frequently asked questions about engineering"
+msgstr "Questions fréquentes sur l'ingénierie"
+
+#: inc/template-tags.php:898
+msgid "Frequently asked questions about requests for quotation"
+msgstr "Questions fréquentes sur les demandes de devis"
+
+#: inc/template-tags.php:912
+msgid "All the questions"
+msgstr "Toutes les questions"
 
 #: index.php:21 template-parts/components/stock-warehouse.php:145
 msgid "Nothing here yet"
@@ -9972,7 +9997,7 @@ msgstr "Outils liés : %s"
 msgid "Updated on %s"
 msgstr "Mis à jour le %s"
 
-#: template-parts/guides/guide.php:40
+#: template-parts/guides/guide.php:40 templates/faq.php:50
 msgid "Also in"
 msgstr "Aussi en"
 
@@ -11294,6 +11319,54 @@ msgstr "Confirmer et envoyer"
 #: templates/engineer-apply.php:326
 msgid "Send my application again"
 msgstr "Renvoyer ma candidature"
+
+#. Template Name of the theme
+msgid "SM — FAQ"
+msgstr "SM — FAQ"
+
+#: templates/faq.php:23
+msgid "No question for the moment"
+msgstr "Aucune question pour le moment"
+
+#: templates/faq.php:24
+msgid "Write to the ReuSteel team: we answer by e-mail."
+msgstr "Écrivez à l'équipe ReuSteel : nous répondons par e-mail."
+
+#: templates/faq.php:25 templates/faq.php:76
+msgid "Contact the team"
+msgstr "Contacter l'équipe"
+
+#: templates/faq.php:48
+msgid ""
+"Short answers to the questions we are asked most: accounts, listings, "
+"quotes, engineering and tools. To go further, each answer leads to the right"
+" guide or page."
+msgstr ""
+"Les réponses courtes aux questions qu'on nous pose le plus : comptes, "
+"annonces, devis, ingénierie et outils. Pour aller plus loin, chaque réponse "
+"renvoie au bon guide ou à la bonne page."
+
+#: templates/faq.php:52
+msgid "Themes"
+msgstr "Thèmes"
+
+#: templates/faq.php:70
+msgid "Answers on how ReuSteel works. No market price and no statistics."
+msgstr ""
+"Réponses sur le fonctionnement de ReuSteel. Aucun prix du marché ni "
+"statistique."
+
+#: templates/faq.php:74
+msgid "Can’t find your answer?"
+msgstr "Vous ne trouvez pas votre réponse ?"
+
+#: templates/faq.php:75
+msgid "Write to us: the ReuSteel team answers by e-mail."
+msgstr "Écrivez-nous : l'équipe ReuSteel vous répond par e-mail."
+
+#: templates/faq.php:80
+msgid "Practical guides"
+msgstr "Guides pratiques"
 
 #. Template Name of the theme
 msgid "SM — Home"

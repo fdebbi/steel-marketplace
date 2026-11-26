@@ -152,7 +152,12 @@ msgstr "الاشتراكات"
 msgid "Guides"
 msgstr "الأدلة"
 
-#: footer.php:46 template-parts/components/ai-gate.php:24
+#: footer.php:46 inc/template-tags.php:910 templates/faq.php:46
+#: templates/faq.php:47
+msgid "Frequently asked questions"
+msgstr "الأسئلة الشائعة"
+
+#: footer.php:47 template-parts/components/ai-gate.php:24
 #: template-parts/components/buy-box.php:233
 #: template-parts/components/enquiry-form.php:46
 #: template-parts/components/rfq-single.php:158
@@ -162,26 +167,26 @@ msgstr "الأدلة"
 msgid "Create an account"
 msgstr "إنشاء حساب"
 
-#: footer.php:47 header.php:31 templates/company-profile.php:230
+#: footer.php:48 header.php:31 templates/company-profile.php:230
 #: templates/company-profile.php:245 templates/contact.php:23
 #: templates/contact.php:32 templates/single-listing.php:281
 msgid "Contact"
 msgstr "اتصل بنا"
 
-#: footer.php:53
+#: footer.php:54
 msgid ""
 "Advertised prices are set by sellers and are not official market prices."
 msgstr "الأسعار المعروضة يحددها البائعون وليست أسعار سوق رسمية."
 
-#: footer.php:58
+#: footer.php:59
 msgid "Quick navigation"
 msgstr "تنقل سريع"
 
-#: footer.php:59 inc/template-tags.php:455
+#: footer.php:60 inc/template-tags.php:455
 msgid "Home"
 msgstr "الرئيسية"
 
-#: footer.php:60 header.php:54
+#: footer.php:61 header.php:54
 #: template-parts/components/stock-warehouse.php:132
 #: template-parts/directory.php:53 template-parts/header-actions.php:13
 #: templates/ai-assistant.php:23 templates/front-page-template.php:49
@@ -189,27 +194,27 @@ msgstr "الرئيسية"
 msgid "Search"
 msgstr "بحث"
 
-#: footer.php:63 template-parts/header-actions.php:36
+#: footer.php:64 template-parts/header-actions.php:36
 #: templates/dashboard.php:74
 msgid "My missions"
 msgstr "مهامي"
 
-#: footer.php:64 templates/dashboard.php:75
+#: footer.php:65 templates/dashboard.php:75
 msgid "Invoicing"
 msgstr "الفوترة"
 
-#: footer.php:66 template-parts/components/product-form.php:238
+#: footer.php:67 template-parts/components/product-form.php:238
 #: template-parts/components/stock-warehouse.php:67
 #: template-parts/dashboard/publish.php:211
 #: template-parts/header-actions.php:34 templates/styleguide.php:34
 msgid "Publish"
 msgstr "نشر"
 
-#: footer.php:67
+#: footer.php:68
 msgid "Enquiries"
 msgstr "الاستفسارات"
 
-#: footer.php:69 templates/dashboard.php:87 templates/dashboard.php:166
+#: footer.php:70 templates/dashboard.php:87 templates/dashboard.php:166
 #: templates/engineer-apply.php:307
 msgid "Account"
 msgstr "الحساب"
@@ -516,22 +521,22 @@ msgstr "هناجر مركّبة أو مفككة"
 msgid "Building"
 msgstr "مبنى"
 
-#: inc/demo/installer.php:111 inc/demo/installer.php:112
-#: inc/demo/installer.php:126
+#: inc/demo/installer.php:112 inc/demo/installer.php:113
+#: inc/demo/installer.php:127
 msgid "SM Pages"
 msgstr "صفحات SM"
 
-#: inc/demo/installer.php:123
+#: inc/demo/installer.php:124
 msgid "Missing pages were created."
 msgstr "تم إنشاء الصفحات الناقصة."
 
-#: inc/demo/installer.php:127
+#: inc/demo/installer.php:128
 msgid ""
 "Pages used by the theme templates. Existing pages are never overwritten."
 msgstr ""
 "الصفحات التي تستعملها قوالب القالب. لا يتم استبدال الصفحات الموجودة أبدا."
 
-#: inc/demo/installer.php:135
+#: inc/demo/installer.php:136
 msgid "Create missing pages"
 msgstr "إنشاء الصفحات الناقصة"
 
@@ -1009,6 +1014,26 @@ msgstr[2] "دليلان:"
 msgstr[3] "أدلة:"
 msgstr[4] "أدلة:"
 msgstr[5] "أدلة:"
+
+#: inc/template-tags.php:895
+msgid "Frequently asked questions about steel reuse"
+msgstr "أسئلة شائعة حول إعادة الاستعمال"
+
+#: inc/template-tags.php:896
+msgid "Frequently asked questions about steel buildings"
+msgstr "أسئلة شائعة حول المباني الفولاذية"
+
+#: inc/template-tags.php:897
+msgid "Frequently asked questions about engineering"
+msgstr "أسئلة شائعة حول الهندسة"
+
+#: inc/template-tags.php:898
+msgid "Frequently asked questions about requests for quotation"
+msgstr "أسئلة شائعة حول طلبات عروض الأسعار"
+
+#: inc/template-tags.php:912
+msgid "All the questions"
+msgstr "كل الأسئلة"
 
 #: index.php:21 template-parts/components/stock-warehouse.php:145
 msgid "Nothing here yet"
@@ -9970,7 +9995,7 @@ msgstr "أدوات مرتبطة: %s"
 msgid "Updated on %s"
 msgstr "حُدّث في %s"
 
-#: template-parts/guides/guide.php:40
+#: template-parts/guides/guide.php:40 templates/faq.php:50
 msgid "Also in"
 msgstr "متوفر أيضًا بـ"
 
@@ -11246,6 +11271,52 @@ msgstr "تأكيد وإرسال"
 #: templates/engineer-apply.php:326
 msgid "Send my application again"
 msgstr "أعد إرسال ترشحي"
+
+#. Template Name of the theme
+msgid "SM — FAQ"
+msgstr "SM — الأسئلة الشائعة"
+
+#: templates/faq.php:23
+msgid "No question for the moment"
+msgstr "لا توجد أسئلة حاليًا"
+
+#: templates/faq.php:24
+msgid "Write to the ReuSteel team: we answer by e-mail."
+msgstr "راسل فريق ReuSteel: نرد عليك بالبريد الإلكتروني."
+
+#: templates/faq.php:25 templates/faq.php:76
+msgid "Contact the team"
+msgstr "اتصل بالفريق"
+
+#: templates/faq.php:48
+msgid ""
+"Short answers to the questions we are asked most: accounts, listings, "
+"quotes, engineering and tools. To go further, each answer leads to the right"
+" guide or page."
+msgstr ""
+"إجابات قصيرة عن أكثر الأسئلة تكرارًا: الحسابات، الإعلانات، عروض الأسعار، "
+"الهندسة والأدوات. لمعرفة المزيد، تحيلك كل إجابة إلى الدليل أو الصفحة "
+"المناسبة."
+
+#: templates/faq.php:52
+msgid "Themes"
+msgstr "المواضيع"
+
+#: templates/faq.php:70
+msgid "Answers on how ReuSteel works. No market price and no statistics."
+msgstr "إجابات عن طريقة عمل ReuSteel. لا أسعار سوق ولا إحصائيات."
+
+#: templates/faq.php:74
+msgid "Can’t find your answer?"
+msgstr "لم تجد إجابتك؟"
+
+#: templates/faq.php:75
+msgid "Write to us: the ReuSteel team answers by e-mail."
+msgstr "راسلنا: يرد عليك فريق ReuSteel بالبريد الإلكتروني."
+
+#: templates/faq.php:80
+msgid "Practical guides"
+msgstr "أدلة عملية"
 
 #. Template Name of the theme
 msgid "SM — Home"

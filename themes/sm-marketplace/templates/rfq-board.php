@@ -116,5 +116,6 @@ $new_url = is_user_logged_in() ? sm_page_url( 'account', array( 'view' => 'rfq',
 		<a class="sm-btn sm-btn--accent sm-btn--block" href="<?php echo esc_url( $new_url ); ?>"><?php sm_icon( 'plus' ); ?><?php esc_html_e( 'New request', 'sm-marketplace' ); ?></a>
 	</aside>
 </div>
+<div class="sm-container"><?php sm_faq_block( 'rfq' ); // 0.62.0 ?></div>
 <?php
 get_footer();

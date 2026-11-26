@@ -5,6 +5,7 @@
  * @package SM\Guides
  */
 
+use SM\Guides\Faq;
 use SM\Guides\Guides;
 use SM\Guides\Install\Installer;
 use SM\Guides\Markdown;
@@ -81,5 +82,63 @@ $fallback = \SM\Core\I18n\Language::with_language( 'en', static fn() => Pages::d
 smg_assert( true === $fallback['fallback'] && false !== strpos( $fallback['html'], 'état déclaré' ), 'shown in French at the English address, marked fallback' );
 $en['body']['en'] = $saved_body;
 Guides::save_fields( $id, $en );
+
+echo "\nFrequently asked questions (0.2.0)\n";
+$qs = Faq::published();
+smg_assert( 23 === count( $qs ), 'the 23 validated questions (' . count( $qs ) . ')' );
+$all3 = true;
+foreach ( $qs as $p ) {
+	$all3 = $all3 && array( 'fr', 'ar', 'en' ) === Faq::languages( $p );
+}
+smg_assert( $all3, 'each question written in French, Arabic and English' );
+$txt = '';
+foreach ( $qs as $p ) {
+	$txt .= implode( ' ', Faq::fields( $p )['answer'] ) . ' ' . implode( ' ', Faq::fields( $p )['question'] );
+}
+smg_assert( false === strpos( $txt, 'réglage' ) && false === strpos( $txt, '[page' ) && false === strpos( $txt, 'relecture' ), 'no review note and no [réglage] / [page] marker' );
+smg_assert( ! preg_match( '/\d[\d\s]*DA\b/u', $txt ), 'no price in the answers' );
+$d = Faq::data( null, array() );
+smg_assert( 'faq' === $d['kind'] && 6 === count( $d['groups'] ) && 'account' === $d['groups'][0]['key'] && 3 === count( $d['groups'][0]['items'] ), '6 themes in their order, 3 questions about the account' );
+smg_assert( array( 3, 4, 5, 4, 3, 4 ) === array_map( static fn( $g ) => count( $g['items'] ), $d['groups'] ), 'questions per theme: 3, 4, 5, 4, 3, 4' );
+$want = array(
+	'reuse'     => array( 'qui-peut-publier', 'declarer-etat-reemploi', 'verifier-lot' ),
+	'buildings' => array( 'qui-peut-publier', 'verifier-lot', 'demander-etude-inspection' ),
+	'engineers' => array( 'demander-etude-inspection', 'ingenieur-sans-coordonnees', 'ingenieur-verifie' ),
+	'rfq'       => array( 'demander-devis', 'qui-voit-offres', 'prix-da-kg' ),
+);
+foreach ( $want as $k => $slugs ) {
+	smg_assert( $slugs === wp_list_pluck( Faq::data( null, array( 'for' => $k ) )['items'], 'slug' ), "questions at the bottom of the page $k" );
+}
+smg_assert( array() === Faq::data( null, array( 'for' => 'weight' ) )['items'], 'no question on a page that has none' );
+$all = array_merge( ...array_map( static fn( $g ) => $g['items'], $d['groups'] ) );
+$by  = array_column( $all, null, 'slug' );
+smg_assert( false !== strpos( $by['declarer-etat-reemploi']['answer'], 'href="' . Pages::url( 'acheter-acier-reemploi' ) . '"' ), 'link to a guide (guide:name)' );
+smg_assert( (bool) preg_match( '#<a href="[^"]+/contact/">Contact</a>#', $by['contacter-equipe']['answer'] ), 'link to a page of the site (page:contact)' );
+smg_assert( 4 === substr_count( $by['annonce-pas-encore-visible']['answer'], '<li>' ), 'list of the 4 statuses' );
+smg_assert( 'Hors lien et page' === Faq::links( 'Hors [lien](guide:nexiste-pas) et [page](page:nexiste-pas)' ), 'unknown guide or page: the text alone' );
+smg_assert( false === strpos( Markdown::render( Faq::links( '[x](guide:nexiste-pas)' ) )['html'], '<a' ), 'unknown guide: no link' );
+$ar = \SM\Core\I18n\Language::with_language( 'ar', static fn() => Faq::data( null, array( 'for' => 'rfq' ) ) );
+smg_assert( 'لماذا الأسعار بـ <bdi>DA/kg</bdi>؟' === $ar['items'][2]['q_html'], 'Arabic: DA/kg isolated (<bdi>) in the question' );
+smg_assert( false !== strpos( Faq::isolate( '<p>التسميات (IPE 200، S275JR) و <a href="https://x/">رابط</a> &amp;</p>', 'ar' ), '(<bdi>IPE 200</bdi>، <bdi>S275JR</bdi>) و <a href="https://x/">رابط</a> &amp;' ), 'Arabic: Latin words isolated, links and entities kept' );
+smg_assert( 'IPE 200' === Faq::isolate( 'IPE 200', 'fr' ), 'French and English: text unchanged' );
+smg_assert( false === strpos( $by['prix-da-kg']['text'], '<' ) && false === strpos( $by['qui-peut-sinscrire']['text'], '&#039;' ), 'plain text of the answer (search engines)' );
+
+$q0 = $qs[0];
+$t0 = $q0->post_title;
+wp_update_post( array( 'ID' => $q0->ID, 'post_title' => 'Question modifiée' ) );
+delete_option( 'sm_guides_faq_seed' );
+smg_assert( 0 === Installer::seed_faq() && 'Question modifiée' === get_the_title( $q0->ID ), 'installation again: an existing question is never written over' );
+wp_update_post( array( 'ID' => $q0->ID, 'post_title' => $t0 ) );
+smg_assert( $t0 === get_post_field( 'post_title', $q0->ID ), 'title restored' );
+
+$f = Faq::fields( $q0 );
+$saved_en = $f;
+$f['answer']['en'] = '';
+Faq::save_fields( $q0->ID, $f );
+$fb = \SM\Core\I18n\Language::with_language( 'en', static fn() => Faq::data( null, array() ) );
+smg_assert( true === $fb['groups'][0]['items'][0]['fallback'] && 'fr' === $fb['groups'][0]['items'][0]['lang'], 'without its English answer: shown in French at the English address, marked fallback' );
+Faq::save_fields( $q0->ID, $saved_en );
+$parsed = Installer::parse_faq( "## Thème\n\n### Une question ?\n\nRéponse **une**.\n\n- a\n- b\n\n## Autre\n\n### Deux ?\n\nRéponse deux." );
+smg_assert( 2 === count( $parsed ) && 'Une question ?' === $parsed[0]['q'] && "Réponse **une**.\n\n- a\n- b" === $parsed[0]['a'] && 'Réponse deux.' === $parsed[1]['a'], 'reading of data/faq: questions and answers, themes skipped' );
 
 printf( "\n%d/%d passed\n", $GLOBALS['smg_t']['pass'], $GLOBALS['smg_t']['pass'] + $GLOBALS['smg_t']['fail'] );

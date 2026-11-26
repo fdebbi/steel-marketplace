@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Guides 0.1.0\n"
+"Project-Id-Version: SM Guides 0.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-guides\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-26T13:55:38+00:00\n"
+"POT-Creation-Date: 2026-11-26T20:45:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-guides\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: sm-guides.php
-msgid "Practical guides of ReuSteel in French, Arabic and English (buying reused steel, used steel buildings, ordering bars to cut less, selling offcuts): written in the administration, shown at /guides/ with a table of contents and links to the tools of the site. Methods and how the site works only: no market price, no statistics. Requires SM Core."
+msgid "Practical guides of ReuSteel in French, Arabic and English (buying reused steel, used steel buildings, ordering bars to cut less, selling offcuts): written in the administration, shown at /guides/ with a table of contents and links to the tools of the site. Frequently asked questions on how the site works, shown at /faq/ and at the bottom of the pages they concern. Methods and how the site works only: no market price, no statistics. Requires SM Core."
 msgstr ""
 
 #. Author of the plugin
@@ -34,7 +34,7 @@ msgstr ""
 msgid "ReuSteel"
 msgstr ""
 
-#: sm-guides.php:48
+#: sm-guides.php:50
 msgid "SM Guides needs the SM Core plugin. Activate it first."
 msgstr ""
 
@@ -43,6 +43,7 @@ msgid "Title of the guide in French"
 msgstr ""
 
 #: src/Admin/Editor.php:30
+#: src/Admin/FaqEditor.php:29
 msgid "Steel reuse"
 msgstr ""
 
@@ -51,6 +52,7 @@ msgid "Steel products"
 msgstr ""
 
 #: src/Admin/Editor.php:32
+#: src/Admin/FaqEditor.php:30
 msgid "Steel buildings"
 msgstr ""
 
@@ -67,6 +69,7 @@ msgid "Cutting optimiser"
 msgstr ""
 
 #: src/Admin/Editor.php:36
+#: src/Admin/FaqEditor.php:31
 msgid "Engineering"
 msgstr ""
 
@@ -75,6 +78,7 @@ msgid "Fabrication and erection services"
 msgstr ""
 
 #: src/Admin/Editor.php:38
+#: src/Admin/FaqEditor.php:32
 msgid "Requests for quotes"
 msgstr ""
 
@@ -120,6 +124,7 @@ msgid "Shown beside the guide; the first one ticked is the main button. The guid
 msgstr ""
 
 #: src/Admin/Editor.php:102
+#: src/Admin/FaqEditor.php:110
 msgid "Languages"
 msgstr ""
 
@@ -128,7 +133,82 @@ msgid "Sections"
 msgstr ""
 
 #: src/Admin/Editor.php:104
+#: src/Admin/FaqEditor.php:112
 msgid "Order"
+msgstr ""
+
+#: src/Admin/FaqEditor.php:24
+msgid "Question in French"
+msgstr ""
+
+#: src/Admin/FaqEditor.php:43
+msgid "Question and answer"
+msgstr ""
+
+#: src/Admin/FaqEditor.php:44
+msgid "Theme and pages"
+msgstr ""
+
+#. translators: %s: language.
+#: src/Admin/FaqEditor.php:57
+msgid "Question (%s)"
+msgstr ""
+
+#. translators: %s: language.
+#: src/Admin/FaqEditor.php:61
+msgid "Answer (%s)"
+msgstr ""
+
+#: src/Admin/FaqEditor.php:65
+msgid "Short answers, on how the site works only: no market price, no statistics. **bold** · *italic* · - item of a list · [text](https://…) for a link · [text](guide:name-of-the-guide) for a guide · [text](page:contact) for a page of the site (reuse, buildings, engineers, rfq, catalogue, weight, cutting, contact, mission-request, engineer-apply…). A question is shown in a language only when its question and its answer are written in that language; otherwise the French text is shown there."
+msgstr ""
+
+#: src/Admin/FaqEditor.php:67
+msgid "See the question on the site"
+msgstr ""
+
+#: src/Admin/FaqEditor.php:73
+#: src/Admin/FaqEditor.php:109
+msgid "Theme"
+msgstr ""
+
+#: src/Admin/FaqEditor.php:78
+msgid "Also shown at the bottom of these pages"
+msgstr ""
+
+#. translators: %d: number of questions.
+#: src/Admin/FaqEditor.php:83
+msgid "At most %d questions per page, in the order of the questions (Attributes → Order)."
+msgstr ""
+
+#: src/Admin/FaqEditor.php:111
+msgid "Pages"
+msgstr ""
+
+#: src/Faq.php:54
+#: src/Faq.php:56
+#: src/Faq.php:59
+msgid "Frequently asked questions"
+msgstr ""
+
+#: src/Faq.php:55
+msgid "Question"
+msgstr ""
+
+#: src/Faq.php:57
+msgid "Add a question"
+msgstr ""
+
+#: src/Faq.php:58
+msgid "Edit the question"
+msgstr ""
+
+#: src/Faq.php:60
+msgid "Search the questions"
+msgstr ""
+
+#: src/Faq.php:61
+msgid "No question."
 msgstr ""
 
 #: src/Guides.php:31

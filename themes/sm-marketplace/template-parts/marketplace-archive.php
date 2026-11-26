@@ -161,3 +161,6 @@ if ( $category && isset( $cats[ $category ] ) ) {
 		<?php endif; ?>
 	</div>
 </div>
+<?php if ( in_array( $market, array( 'reuse', 'buildings' ), true ) ) : ?>
+	<div class="sm-container"><?php sm_faq_block( $market ); // 0.62.0 ?></div>
+<?php endif; ?>

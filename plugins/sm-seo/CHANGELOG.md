@@ -1,5 +1,10 @@
 # Changelog — sm-seo
 
+## 0.5.0 — 2026-11-26 (avec sm-guides 0.2.0, thème 0.62.0)
+
+- Page `/faq/` : titre, description, adresse canonique, fil d'Ariane et données « FAQPage » avec les questions et réponses affichées, dans la langue de la page (texte simple, sans HTML) ; une question affichée en français à une adresse /ar/ ou /en/ n'y est pas reprise.
+- `/faq/` dans le plan du site des pages (3 langues, hreflang) ; `llms.txt` cite les questions fréquentes.
+
 ## 0.4.0 — 2026-11-26 (avec sm-guides 0.1.0, thème 0.61.0)
 
 - Guides (`/guides/` et `/guides/{nom}/`) : titre, description tirée du résumé du guide, adresse canonique, fil d'Ariane, données « Article » (sans aucun prix) ; liste des guides en « ItemList ».

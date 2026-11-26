@@ -3,7 +3,7 @@ T = {
 'SM Guides': ('SM Guides', 'SM Guides'),
 'https://github.com/fdebbi/steel-marketplace': ('https://github.com/fdebbi/steel-marketplace', 'https://github.com/fdebbi/steel-marketplace'),
 'ReuSteel': ('ReuSteel', 'ReuSteel'),
-'Practical guides of ReuSteel in French, Arabic and English (buying reused steel, used steel buildings, ordering bars to cut less, selling offcuts): written in the administration, shown at /guides/ with a table of contents and links to the tools of the site. Methods and how the site works only: no market price, no statistics. Requires SM Core.': ("Guides pratiques de ReuSteel en français, arabe et anglais (acheter de l'acier de réemploi, bâtiments métalliques d'occasion, commander ses barres pour réduire les chutes, vendre ses chutes) : écrits dans l'administration, affichés dans /guides/ avec un sommaire et des liens vers les outils du site. Méthodes et fonctionnement du site seulement : aucun prix du marché, aucune statistique. Nécessite SM Core.", 'أدلة ReuSteel العملية بالفرنسية والعربية والإنجليزية (شراء فولاذ إعادة الاستعمال، المباني الفولاذية المستعملة، طلب القضبان لتقليل البقايا، بيع البقايا): تُكتب في الإدارة وتُعرض في ‎/guides/‎ مع فهرس وروابط إلى أدوات الموقع. مناهج وطريقة عمل الموقع فقط: لا أسعار سوق ولا إحصائيات. يتطلب SM Core.'),
+'Practical guides of ReuSteel in French, Arabic and English (buying reused steel, used steel buildings, ordering bars to cut less, selling offcuts): written in the administration, shown at /guides/ with a table of contents and links to the tools of the site. Frequently asked questions on how the site works, shown at /faq/ and at the bottom of the pages they concern. Methods and how the site works only: no market price, no statistics. Requires SM Core.': ("Guides pratiques de ReuSteel en français, arabe et anglais (acheter de l'acier de réemploi, bâtiments métalliques d'occasion, commander ses barres pour réduire les chutes, vendre ses chutes) : écrits dans l'administration, affichés dans /guides/ avec un sommaire et des liens vers les outils du site. Questions fréquentes sur le fonctionnement du site, affichées dans /faq/ et en bas des pages qu'elles concernent. Méthodes et fonctionnement du site seulement : aucun prix du marché, aucune statistique. Nécessite SM Core.", 'أدلة ReuSteel العملية بالفرنسية والعربية والإنجليزية (شراء فولاذ إعادة الاستعمال، المباني الفولاذية المستعملة، طلب القضبان لتقليل البقايا، بيع البقايا): تُكتب في الإدارة وتُعرض في ‎/guides/‎ مع فهرس وروابط إلى أدوات الموقع. أسئلة شائعة عن طريقة عمل الموقع، تُعرض في ‎/faq/‎ وأسفل الصفحات المعنية. مناهج وطريقة عمل الموقع فقط: لا أسعار سوق ولا إحصائيات. يتطلب SM Core.'),
 'SM Guides needs the SM Core plugin. Activate it first.': ("SM Guides a besoin de l'extension SM Core. Activez-la d'abord.", 'تحتاج SM Guides إلى إضافة SM Core. فعّلها أولًا.'),
 'Title of the guide in French': ('Titre du guide en français', 'عنوان الدليل بالفرنسية'),
 'Steel reuse': ("Réemploi de l'acier", 'إعادة استعمال الفولاذ'),
@@ -36,3 +36,22 @@ T = {
 'No guide.': ('Aucun guide.', 'لا يوجد دليل.'),
 }
 P = {}
+T.update({  # 0.2.0: frequently asked questions.
+'Frequently asked questions': ('Questions fréquentes', 'الأسئلة الشائعة'),
+'Question': ('Question', 'سؤال'),
+'Add a question': ('Ajouter une question', 'إضافة سؤال'),
+'Edit the question': ('Modifier la question', 'تعديل السؤال'),
+'Search the questions': ('Chercher dans les questions', 'البحث في الأسئلة'),
+'No question.': ('Aucune question.', 'لا توجد أسئلة.'),
+'Question in French': ('Question en français', 'السؤال بالفرنسية'),
+'Question and answer': ('Question et réponse', 'السؤال والإجابة'),
+'Theme and pages': ('Thème et pages', 'الموضوع والصفحات'),
+'Question (%s)': ('Question (%s)', 'السؤال (%s)'),
+'Answer (%s)': ('Réponse (%s)', 'الإجابة (%s)'),
+'Short answers, on how the site works only: no market price, no statistics. **bold** · *italic* · - item of a list · [text](https://…) for a link · [text](guide:name-of-the-guide) for a guide · [text](page:contact) for a page of the site (reuse, buildings, engineers, rfq, catalogue, weight, cutting, contact, mission-request, engineer-apply…). A question is shown in a language only when its question and its answer are written in that language; otherwise the French text is shown there.': ("Réponses courtes, sur le fonctionnement du site seulement : aucun prix du marché, aucune statistique. **gras** · *italique* · - élément d'une liste · [texte](https://…) pour un lien · [texte](guide:nom-du-guide) pour un guide · [texte](page:contact) pour une page du site (reuse, buildings, engineers, rfq, catalogue, weight, cutting, contact, mission-request, engineer-apply…). Une question n'est affichée dans une langue que si sa question et sa réponse sont écrites dans cette langue ; sinon le texte français y est affiché.", 'إجابات قصيرة عن طريقة عمل الموقع فقط: لا أسعار سوق ولا إحصائيات. **عريض** · *مائل* · - عنصر قائمة · [نص](https://…) لرابط · [نص](guide:اسم-الدليل) لدليل · [نص](page:contact) لصفحة من الموقع (reuse، buildings، engineers، rfq، catalogue، weight، cutting، contact، mission-request، engineer-apply…). لا يُعرض السؤال بلغة إلا إذا كُتب سؤاله وإجابته بتلك اللغة؛ وإلا يُعرض النص الفرنسي.'),
+'See the question on the site': ('Voir la question sur le site', 'عرض السؤال على الموقع'),
+'Theme': ('Thème', 'الموضوع'),
+'Also shown at the bottom of these pages': ('Affichée aussi en bas de ces pages', 'تُعرض أيضًا أسفل هذه الصفحات'),
+'At most %d questions per page, in the order of the questions (Attributes → Order).': ('%d questions au plus par page, dans l\'ordre des questions (Attributs → Ordre).', '%d أسئلة على الأكثر في كل صفحة، حسب ترتيب الأسئلة (السمات ← الترتيب).'),
+'Pages': ('Pages', 'الصفحات'),
+})

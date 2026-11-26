@@ -29,8 +29,10 @@ final class Plugin {
 		add_action( 'sm_language_switched', array( __CLASS__, 'reload_textdomain' ), 10, 2 );
 		Install\Installer::maybe_upgrade();
 		Pages::init();
+		Faq::init();
 		if ( is_admin() ) {
 			Admin\Editor::init();
+			Admin\FaqEditor::init();
 		}
 	}
 

@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Guides 0.1.0\n"
+"Project-Id-Version: SM Guides 0.2.0\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,22 +25,26 @@ msgid ""
 "Practical guides of ReuSteel in French, Arabic and English (buying reused "
 "steel, used steel buildings, ordering bars to cut less, selling offcuts): "
 "written in the administration, shown at /guides/ with a table of contents "
-"and links to the tools of the site. Methods and how the site works only: no "
-"market price, no statistics. Requires SM Core."
+"and links to the tools of the site. Frequently asked questions on how the "
+"site works, shown at /faq/ and at the bottom of the pages they concern. "
+"Methods and how the site works only: no market price, no statistics. "
+"Requires SM Core."
 msgstr ""
 "Guides pratiques de ReuSteel en français, arabe et anglais (acheter de "
 "l'acier de réemploi, bâtiments métalliques d'occasion, commander ses barres "
 "pour réduire les chutes, vendre ses chutes) : écrits dans l'administration, "
 "affichés dans /guides/ avec un sommaire et des liens vers les outils du "
-"site. Méthodes et fonctionnement du site seulement : aucun prix du marché, "
-"aucune statistique. Nécessite SM Core."
+"site. Questions fréquentes sur le fonctionnement du site, affichées dans "
+"/faq/ et en bas des pages qu'elles concernent. Méthodes et fonctionnement du"
+" site seulement : aucun prix du marché, aucune statistique. Nécessite SM "
+"Core."
 
 #. Author of the plugin
 #: sm-guides.php
 msgid "ReuSteel"
 msgstr "ReuSteel"
 
-#: sm-guides.php:48
+#: sm-guides.php:50
 msgid "SM Guides needs the SM Core plugin. Activate it first."
 msgstr "SM Guides a besoin de l'extension SM Core. Activez-la d'abord."
 
@@ -48,7 +52,7 @@ msgstr "SM Guides a besoin de l'extension SM Core. Activez-la d'abord."
 msgid "Title of the guide in French"
 msgstr "Titre du guide en français"
 
-#: src/Admin/Editor.php:30
+#: src/Admin/Editor.php:30 src/Admin/FaqEditor.php:29
 msgid "Steel reuse"
 msgstr "Réemploi de l'acier"
 
@@ -56,7 +60,7 @@ msgstr "Réemploi de l'acier"
 msgid "Steel products"
 msgstr "Produits sidérurgiques"
 
-#: src/Admin/Editor.php:32
+#: src/Admin/Editor.php:32 src/Admin/FaqEditor.php:30
 msgid "Steel buildings"
 msgstr "Bâtiments métalliques"
 
@@ -72,7 +76,7 @@ msgstr "Catalogue des profilés"
 msgid "Cutting optimiser"
 msgstr "Optimiseur de découpe"
 
-#: src/Admin/Editor.php:36
+#: src/Admin/Editor.php:36 src/Admin/FaqEditor.php:31
 msgid "Engineering"
 msgstr "Ingénierie"
 
@@ -80,7 +84,7 @@ msgstr "Ingénierie"
 msgid "Fabrication and erection services"
 msgstr "Services de fabrication et de montage"
 
-#: src/Admin/Editor.php:38
+#: src/Admin/Editor.php:38 src/Admin/FaqEditor.php:32
 msgid "Requests for quotes"
 msgstr "Demandes de devis"
 
@@ -139,7 +143,7 @@ msgstr ""
 "Affichées à côté du guide ; la première cochée est le bouton principal. Le "
 "guide est aussi proposé sur ces pages."
 
-#: src/Admin/Editor.php:102
+#: src/Admin/Editor.php:102 src/Admin/FaqEditor.php:110
 msgid "Languages"
 msgstr "Langues"
 
@@ -147,9 +151,99 @@ msgstr "Langues"
 msgid "Sections"
 msgstr "Sections"
 
-#: src/Admin/Editor.php:104
+#: src/Admin/Editor.php:104 src/Admin/FaqEditor.php:112
 msgid "Order"
 msgstr "Ordre"
+
+#: src/Admin/FaqEditor.php:24
+msgid "Question in French"
+msgstr "Question en français"
+
+#: src/Admin/FaqEditor.php:43
+msgid "Question and answer"
+msgstr "Question et réponse"
+
+#: src/Admin/FaqEditor.php:44
+msgid "Theme and pages"
+msgstr "Thème et pages"
+
+#. translators: %s: language.
+#: src/Admin/FaqEditor.php:57
+msgid "Question (%s)"
+msgstr "Question (%s)"
+
+#. translators: %s: language.
+#: src/Admin/FaqEditor.php:61
+msgid "Answer (%s)"
+msgstr "Réponse (%s)"
+
+#: src/Admin/FaqEditor.php:65
+msgid ""
+"Short answers, on how the site works only: no market price, no statistics. "
+"**bold** · *italic* · - item of a list · [text](https://…) for a link · "
+"[text](guide:name-of-the-guide) for a guide · [text](page:contact) for a "
+"page of the site (reuse, buildings, engineers, rfq, catalogue, weight, "
+"cutting, contact, mission-request, engineer-apply…). A question is shown in "
+"a language only when its question and its answer are written in that "
+"language; otherwise the French text is shown there."
+msgstr ""
+"Réponses courtes, sur le fonctionnement du site seulement : aucun prix du "
+"marché, aucune statistique. **gras** · *italique* · - élément d'une liste · "
+"[texte](https://…) pour un lien · [texte](guide:nom-du-guide) pour un guide "
+"· [texte](page:contact) pour une page du site (reuse, buildings, engineers, "
+"rfq, catalogue, weight, cutting, contact, mission-request, engineer-apply…)."
+" Une question n'est affichée dans une langue que si sa question et sa "
+"réponse sont écrites dans cette langue ; sinon le texte français y est "
+"affiché."
+
+#: src/Admin/FaqEditor.php:67
+msgid "See the question on the site"
+msgstr "Voir la question sur le site"
+
+#: src/Admin/FaqEditor.php:73 src/Admin/FaqEditor.php:109
+msgid "Theme"
+msgstr "Thème"
+
+#: src/Admin/FaqEditor.php:78
+msgid "Also shown at the bottom of these pages"
+msgstr "Affichée aussi en bas de ces pages"
+
+#. translators: %d: number of questions.
+#: src/Admin/FaqEditor.php:83
+msgid ""
+"At most %d questions per page, in the order of the questions (Attributes → "
+"Order)."
+msgstr ""
+"%d questions au plus par page, dans l'ordre des questions (Attributs → "
+"Ordre)."
+
+#: src/Admin/FaqEditor.php:111
+msgid "Pages"
+msgstr "Pages"
+
+#: src/Faq.php:54 src/Faq.php:56 src/Faq.php:59
+msgid "Frequently asked questions"
+msgstr "Questions fréquentes"
+
+#: src/Faq.php:55
+msgid "Question"
+msgstr "Question"
+
+#: src/Faq.php:57
+msgid "Add a question"
+msgstr "Ajouter une question"
+
+#: src/Faq.php:58
+msgid "Edit the question"
+msgstr "Modifier la question"
+
+#: src/Faq.php:60
+msgid "Search the questions"
+msgstr "Chercher dans les questions"
+
+#: src/Faq.php:61
+msgid "No question."
+msgstr "Aucune question."
 
 #: src/Guides.php:31 src/Guides.php:35
 msgid "Guides"

@@ -567,3 +567,11 @@ Validé sur la maquette 0.37.
 - Chaque guide relu et validé par le client en français, puis traduit en arabe et en anglais. Aucun prix du marché, aucune statistique ; l'exemple chiffré du guide 6 vient du vrai calcul de l'optimiseur (6 pièces de 3,90 m : 6 barres de 6 m ou 2 barres de 12 m).
 - Correction : tout compte peut publier une annonce de réemploi ou de bâtiment, sauf les ingénieurs partenaires (matrice des droits de SM Core).
 - Maquette validée : `/guides/` et `/guides/{nom}/`, sommaire, outils liés, liste de vérification, autres guides. Plugin séparé `sm-guides` (le thème n'affiche que) ; texte en Markdown simple dans l'administration, 3 langues ; liens depuis les outils et le pied de page.
+
+## Référencement phase 3, étape 4 — questions fréquentes (2026-11-26)
+
+- Principe et liste validés : 23 questions en 6 thèmes (Compte, Publier une annonce, Acheter et demander un devis, Ingénierie, Outils, Langues et confiance), sur le fonctionnement du site seulement ; chaque réponse vérifiée dans le code. Aucun prix du marché, aucune statistique, aucune mention du paiement en ligne.
+- Textes validés par le client en français, puis traductions arabe et anglaise validées (termes alignés sur ceux du site : « كن مهندسا شريكا », « طلب دراسة هندسية », « يحتاج فحصا أو معالجة »).
+- Maquette et proposition technique validées : une seule adresse `/faq/` (pas de page par question), questions repliées sans script ; extension de `sm-guides` (0.2.0) plutôt qu'un nouveau plugin ; bloc de 3 questions + « Toutes les questions → » en bas des pages Réemploi, Bâtiments, Ingénierie et Demandes de devis (pas la FAQ entière : contenu en double) ; lien dans le pied de page.
+- Données « FAQPage » ajoutées (utiles aux moteurs et aux assistants d'IA ; Google ne montre plus ces résultats enrichis que pour les sites officiels et de santé).
+- En arabe, les unités et désignations en lettres latines sont isolées (`<bdi>`) dans les questions et réponses.

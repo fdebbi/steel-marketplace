@@ -1,5 +1,12 @@
 # Changelog — sm-marketplace
 
+## 0.62.0 — 2026-11-26 (avec sm-guides 0.2.0, sm-seo 0.5.0)
+
+- Questions fréquentes (maquette validée le 2026-11-26) : page `/faq/` (thèmes en liens vers leur partie, questions qui s'ouvrent d'un clic ou au clavier, sans script ; encadré « Vous ne trouvez pas votre réponse ? » avec « Contacter l'équipe » ; liste des guides ; sur téléphone, les encadrés passent sous les questions). Page « Questions fréquentes » créée par l'installation des pages (`templates/faq.php`).
+- Bloc « Questions fréquentes sur … » (3 questions et « Toutes les questions → ») en bas des pages Réemploi, Bâtiments, Ingénierie et Demandes de devis (`sm_faq_block()`).
+- Lien « Questions fréquentes » dans le pied de page (Plateforme).
+- Styles `assets/css/42-faq.css` ; 16 nouvelles chaînes traduites (FR, AR).
+
 ## 0.61.0 — 2026-11-26 (avec sm-guides 0.1.0, sm-seo 0.4.0)
 
 - Guides (maquette validée le 2026-11-26) : page `/guides/` (une carte par guide : thème, titre, texte court, nombre de sections, outils liés) et page d'un guide (résumé, date, autres langues, sommaire à droite et replié sur téléphone, outils liés, bouton principal, liste de vérification, autres guides). Page « Guides » créée par l'installation des pages (`templates/guides.php`).

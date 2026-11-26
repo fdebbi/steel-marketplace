@@ -128,6 +128,7 @@ final class Robots {
 			'weight'    => array( 'Steel weight calculator', 'Weight of beams, tubes, plates and bars from the standard catalogue.' ),
 			'cutting'   => array( 'Cutting optimiser', 'Plan the cutting of steel bars to reduce the offcuts.' ),
 			'guides'    => array( 'Guides', 'Practical guides: buying reused steel, used steel buildings, ordering bars to cut less, selling offcuts. Methods only, no market price.' ),
+			'faq'       => array( 'Frequently asked questions', 'How the platform works: accounts, listings, requests for quotation, engineering studies, tools, languages, privacy of contact details.' ),
 			'companies' => array( 'Companies directory', 'Companies that sell steel, by activity and by wilaya.' ),
 			'rfq'       => array( 'Requests for quotes', 'Requests published by buyers of steel.' ),
 			'pricing'   => array( 'Plans and prices', 'Plans for the sellers.' ),

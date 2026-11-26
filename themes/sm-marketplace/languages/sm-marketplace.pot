@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.60.1\n"
+"Project-Id-Version: SM Marketplace 0.62.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-26T13:56:53+00:00\n"
+"POT-Creation-Date: 2026-11-26T20:45:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -202,6 +202,13 @@ msgid "Guides"
 msgstr ""
 
 #: footer.php:46
+#: inc/template-tags.php:910
+#: templates/faq.php:46
+#: templates/faq.php:47
+msgid "Frequently asked questions"
+msgstr ""
+
+#: footer.php:47
 #: template-parts/components/ai-gate.php:24
 #: template-parts/components/buy-box.php:233
 #: template-parts/components/enquiry-form.php:46
@@ -215,7 +222,7 @@ msgstr ""
 msgid "Create an account"
 msgstr ""
 
-#: footer.php:47
+#: footer.php:48
 #: header.php:31
 #: templates/company-profile.php:230
 #: templates/company-profile.php:245
@@ -225,20 +232,20 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: footer.php:53
+#: footer.php:54
 msgid "Advertised prices are set by sellers and are not official market prices."
 msgstr ""
 
-#: footer.php:58
+#: footer.php:59
 msgid "Quick navigation"
 msgstr ""
 
-#: footer.php:59
+#: footer.php:60
 #: inc/template-tags.php:455
 msgid "Home"
 msgstr ""
 
-#: footer.php:60
+#: footer.php:61
 #: header.php:54
 #: template-parts/components/stock-warehouse.php:132
 #: template-parts/directory.php:53
@@ -249,18 +256,18 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: footer.php:63
+#: footer.php:64
 #: template-parts/header-actions.php:36
 #: templates/dashboard.php:74
 msgid "My missions"
 msgstr ""
 
-#: footer.php:64
+#: footer.php:65
 #: templates/dashboard.php:75
 msgid "Invoicing"
 msgstr ""
 
-#: footer.php:66
+#: footer.php:67
 #: template-parts/components/product-form.php:238
 #: template-parts/components/stock-warehouse.php:67
 #: template-parts/dashboard/publish.php:211
@@ -269,11 +276,11 @@ msgstr ""
 msgid "Publish"
 msgstr ""
 
-#: footer.php:67
+#: footer.php:68
 msgid "Enquiries"
 msgstr ""
 
-#: footer.php:69
+#: footer.php:70
 #: templates/dashboard.php:87
 #: templates/dashboard.php:166
 #: templates/engineer-apply.php:307
@@ -597,21 +604,21 @@ msgstr ""
 msgid "Building"
 msgstr ""
 
-#: inc/demo/installer.php:111
 #: inc/demo/installer.php:112
-#: inc/demo/installer.php:126
+#: inc/demo/installer.php:113
+#: inc/demo/installer.php:127
 msgid "SM Pages"
 msgstr ""
 
-#: inc/demo/installer.php:123
+#: inc/demo/installer.php:124
 msgid "Missing pages were created."
 msgstr ""
 
-#: inc/demo/installer.php:127
+#: inc/demo/installer.php:128
 msgid "Pages used by the theme templates. Existing pages are never overwritten."
 msgstr ""
 
-#: inc/demo/installer.php:135
+#: inc/demo/installer.php:136
 msgid "Create missing pages"
 msgstr ""
 
@@ -1092,6 +1099,26 @@ msgid "Guide:"
 msgid_plural "Guides:"
 msgstr[0] ""
 msgstr[1] ""
+
+#: inc/template-tags.php:895
+msgid "Frequently asked questions about steel reuse"
+msgstr ""
+
+#: inc/template-tags.php:896
+msgid "Frequently asked questions about steel buildings"
+msgstr ""
+
+#: inc/template-tags.php:897
+msgid "Frequently asked questions about engineering"
+msgstr ""
+
+#: inc/template-tags.php:898
+msgid "Frequently asked questions about requests for quotation"
+msgstr ""
+
+#: inc/template-tags.php:912
+msgid "All the questions"
+msgstr ""
 
 #: index.php:21
 #: template-parts/components/stock-warehouse.php:145
@@ -9335,6 +9362,7 @@ msgid "Updated on %s"
 msgstr ""
 
 #: template-parts/guides/guide.php:40
+#: templates/faq.php:50
 msgid "Also in"
 msgstr ""
 
@@ -10494,6 +10522,47 @@ msgstr ""
 
 #: templates/engineer-apply.php:326
 msgid "Send my application again"
+msgstr ""
+
+#. Template Name of the theme
+msgid "SM — FAQ"
+msgstr ""
+
+#: templates/faq.php:23
+msgid "No question for the moment"
+msgstr ""
+
+#: templates/faq.php:24
+msgid "Write to the ReuSteel team: we answer by e-mail."
+msgstr ""
+
+#: templates/faq.php:25
+#: templates/faq.php:76
+msgid "Contact the team"
+msgstr ""
+
+#: templates/faq.php:48
+msgid "Short answers to the questions we are asked most: accounts, listings, quotes, engineering and tools. To go further, each answer leads to the right guide or page."
+msgstr ""
+
+#: templates/faq.php:52
+msgid "Themes"
+msgstr ""
+
+#: templates/faq.php:70
+msgid "Answers on how ReuSteel works. No market price and no statistics."
+msgstr ""
+
+#: templates/faq.php:74
+msgid "Can’t find your answer?"
+msgstr ""
+
+#: templates/faq.php:75
+msgid "Write to us: the ReuSteel team answers by e-mail."
+msgstr ""
+
+#: templates/faq.php:80
+msgid "Practical guides"
 msgstr ""
 
 #. Template Name of the theme

@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Guides 0.1.0\n"
+"Project-Id-Version: SM Guides 0.2.0\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,13 +25,16 @@ msgid ""
 "Practical guides of ReuSteel in French, Arabic and English (buying reused "
 "steel, used steel buildings, ordering bars to cut less, selling offcuts): "
 "written in the administration, shown at /guides/ with a table of contents "
-"and links to the tools of the site. Methods and how the site works only: no "
-"market price, no statistics. Requires SM Core."
+"and links to the tools of the site. Frequently asked questions on how the "
+"site works, shown at /faq/ and at the bottom of the pages they concern. "
+"Methods and how the site works only: no market price, no statistics. "
+"Requires SM Core."
 msgstr ""
 "أدلة ReuSteel العملية بالفرنسية والعربية والإنجليزية (شراء فولاذ إعادة "
 "الاستعمال، المباني الفولاذية المستعملة، طلب القضبان لتقليل البقايا، بيع "
 "البقايا): تُكتب في الإدارة وتُعرض في ‎/guides/‎ مع فهرس وروابط إلى أدوات "
-"الموقع. مناهج وطريقة عمل الموقع فقط: لا أسعار سوق ولا إحصائيات. يتطلب SM "
+"الموقع. أسئلة شائعة عن طريقة عمل الموقع، تُعرض في ‎/faq/‎ وأسفل الصفحات "
+"المعنية. مناهج وطريقة عمل الموقع فقط: لا أسعار سوق ولا إحصائيات. يتطلب SM "
 "Core."
 
 #. Author of the plugin
@@ -39,7 +42,7 @@ msgstr ""
 msgid "ReuSteel"
 msgstr "ReuSteel"
 
-#: sm-guides.php:48
+#: sm-guides.php:50
 msgid "SM Guides needs the SM Core plugin. Activate it first."
 msgstr "تحتاج SM Guides إلى إضافة SM Core. فعّلها أولًا."
 
@@ -47,7 +50,7 @@ msgstr "تحتاج SM Guides إلى إضافة SM Core. فعّلها أولًا.
 msgid "Title of the guide in French"
 msgstr "عنوان الدليل بالفرنسية"
 
-#: src/Admin/Editor.php:30
+#: src/Admin/Editor.php:30 src/Admin/FaqEditor.php:29
 msgid "Steel reuse"
 msgstr "إعادة استعمال الفولاذ"
 
@@ -55,7 +58,7 @@ msgstr "إعادة استعمال الفولاذ"
 msgid "Steel products"
 msgstr "المنتجات الفولاذية"
 
-#: src/Admin/Editor.php:32
+#: src/Admin/Editor.php:32 src/Admin/FaqEditor.php:30
 msgid "Steel buildings"
 msgstr "المباني الفولاذية"
 
@@ -71,7 +74,7 @@ msgstr "كتالوج المقاطع"
 msgid "Cutting optimiser"
 msgstr "مُحسِّن القص"
 
-#: src/Admin/Editor.php:36
+#: src/Admin/Editor.php:36 src/Admin/FaqEditor.php:31
 msgid "Engineering"
 msgstr "الهندسة"
 
@@ -79,7 +82,7 @@ msgstr "الهندسة"
 msgid "Fabrication and erection services"
 msgstr "خدمات التصنيع والتركيب"
 
-#: src/Admin/Editor.php:38
+#: src/Admin/Editor.php:38 src/Admin/FaqEditor.php:32
 msgid "Requests for quotes"
 msgstr "طلبات عروض الأسعار"
 
@@ -137,7 +140,7 @@ msgstr ""
 "تُعرض بجانب الدليل؛ أول صفحة محددة هي الزر الرئيسي. ويُقترح الدليل أيضًا في "
 "هذه الصفحات."
 
-#: src/Admin/Editor.php:102
+#: src/Admin/Editor.php:102 src/Admin/FaqEditor.php:110
 msgid "Languages"
 msgstr "اللغات"
 
@@ -145,9 +148,95 @@ msgstr "اللغات"
 msgid "Sections"
 msgstr "الأقسام"
 
-#: src/Admin/Editor.php:104
+#: src/Admin/Editor.php:104 src/Admin/FaqEditor.php:112
 msgid "Order"
 msgstr "الترتيب"
+
+#: src/Admin/FaqEditor.php:24
+msgid "Question in French"
+msgstr "السؤال بالفرنسية"
+
+#: src/Admin/FaqEditor.php:43
+msgid "Question and answer"
+msgstr "السؤال والإجابة"
+
+#: src/Admin/FaqEditor.php:44
+msgid "Theme and pages"
+msgstr "الموضوع والصفحات"
+
+#. translators: %s: language.
+#: src/Admin/FaqEditor.php:57
+msgid "Question (%s)"
+msgstr "السؤال (%s)"
+
+#. translators: %s: language.
+#: src/Admin/FaqEditor.php:61
+msgid "Answer (%s)"
+msgstr "الإجابة (%s)"
+
+#: src/Admin/FaqEditor.php:65
+msgid ""
+"Short answers, on how the site works only: no market price, no statistics. "
+"**bold** · *italic* · - item of a list · [text](https://…) for a link · "
+"[text](guide:name-of-the-guide) for a guide · [text](page:contact) for a "
+"page of the site (reuse, buildings, engineers, rfq, catalogue, weight, "
+"cutting, contact, mission-request, engineer-apply…). A question is shown in "
+"a language only when its question and its answer are written in that "
+"language; otherwise the French text is shown there."
+msgstr ""
+"إجابات قصيرة عن طريقة عمل الموقع فقط: لا أسعار سوق ولا إحصائيات. **عريض** · "
+"*مائل* · - عنصر قائمة · [نص](https://…) لرابط · [نص](guide:اسم-الدليل) لدليل"
+" · [نص](page:contact) لصفحة من الموقع (reuse، buildings، engineers، rfq، "
+"catalogue، weight، cutting، contact، mission-request، engineer-apply…). لا "
+"يُعرض السؤال بلغة إلا إذا كُتب سؤاله وإجابته بتلك اللغة؛ وإلا يُعرض النص "
+"الفرنسي."
+
+#: src/Admin/FaqEditor.php:67
+msgid "See the question on the site"
+msgstr "عرض السؤال على الموقع"
+
+#: src/Admin/FaqEditor.php:73 src/Admin/FaqEditor.php:109
+msgid "Theme"
+msgstr "الموضوع"
+
+#: src/Admin/FaqEditor.php:78
+msgid "Also shown at the bottom of these pages"
+msgstr "تُعرض أيضًا أسفل هذه الصفحات"
+
+#. translators: %d: number of questions.
+#: src/Admin/FaqEditor.php:83
+msgid ""
+"At most %d questions per page, in the order of the questions (Attributes → "
+"Order)."
+msgstr "%d أسئلة على الأكثر في كل صفحة، حسب ترتيب الأسئلة (السمات ← الترتيب)."
+
+#: src/Admin/FaqEditor.php:111
+msgid "Pages"
+msgstr "الصفحات"
+
+#: src/Faq.php:54 src/Faq.php:56 src/Faq.php:59
+msgid "Frequently asked questions"
+msgstr "الأسئلة الشائعة"
+
+#: src/Faq.php:55
+msgid "Question"
+msgstr "سؤال"
+
+#: src/Faq.php:57
+msgid "Add a question"
+msgstr "إضافة سؤال"
+
+#: src/Faq.php:58
+msgid "Edit the question"
+msgstr "تعديل السؤال"
+
+#: src/Faq.php:60
+msgid "Search the questions"
+msgstr "البحث في الأسئلة"
+
+#: src/Faq.php:61
+msgid "No question."
+msgstr "لا توجد أسئلة."
 
 #: src/Guides.php:31 src/Guides.php:35
 msgid "Guides"

@@ -43,6 +43,7 @@ defined( 'ABSPATH' ) || exit;
 			<ul>
 				<li><a href="<?php echo esc_url( sm_page_url( 'pricing' ) ); ?>"><?php esc_html_e( 'Plans', 'sm-marketplace' ); ?></a></li>
 				<li><a href="<?php echo esc_url( sm_page_url( 'guides' ) ); ?>"><?php esc_html_e( 'Guides', 'sm-marketplace' ); ?></a></li>
+				<li><a href="<?php echo esc_url( sm_page_url( 'faq' ) ); ?>"><?php esc_html_e( 'Frequently asked questions', 'sm-marketplace' ); ?></a></li>
 				<li><a href="<?php echo esc_url( sm_page_url( 'register' ) ); ?>"><?php esc_html_e( 'Create an account', 'sm-marketplace' ); ?></a></li>
 				<li><a href="<?php echo esc_url( sm_page_url( 'contact' ) ); ?>"><?php esc_html_e( 'Contact', 'sm-marketplace' ); ?></a></li>
 			</ul>

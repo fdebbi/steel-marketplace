@@ -1,0 +1,50 @@
+/* ==========================================================================
+   Frequently asked questions (0.62.0, sm-guides 0.2.0): the page /faq/ and the
+   block of questions at the bottom of the reuse, buildings, engineering and
+   requests for quotation pages. Classes sm-faq*. Questions: <details>, no script.
+   ========================================================================== */
+.sm-faq__themes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--sm-s4); }
+.sm-faq__themes a { padding: 6px 12px; border: 1px solid var(--sm-line); border-radius: 999px; background: var(--sm-surface); color: var(--sm-text); font-size: var(--sm-fs-sm); text-decoration: none; }
+.sm-faq__themes a:hover { border-color: var(--sm-line-strong); }
+.sm-faq__themes a:focus-visible { outline: none; box-shadow: var(--sm-focus); }
+
+.sm-faq { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sm-s7); align-items: start; }
+.sm-faq__main { min-width: 0; max-width: 76ch; }
+.sm-faq__group { margin-bottom: var(--sm-s7); scroll-margin-top: calc(var(--sm-header-h) + 24px); }
+.sm-faq__group h2 { font-family: var(--sm-font-display); font-size: var(--sm-fs-2xl); margin: 0 0 var(--sm-s3); }
+
+.sm-faq__q { border-bottom: 1px solid var(--sm-line); scroll-margin-top: calc(var(--sm-header-h) + 24px); }
+.sm-faq__group > h2 + .sm-faq__q, .sm-faqblock__head + .sm-faq__q { border-top: 1px solid var(--sm-line); }
+.sm-faq__q summary { list-style: none; cursor: pointer; display: flex; gap: 12px; align-items: flex-start; padding: 16px 2px; font-weight: 600; font-size: var(--sm-fs-lg); line-height: 1.35; }
+.sm-faq__q summary::-webkit-details-marker { display: none; }
+.sm-faq__q summary::after { content: "+"; margin-inline-start: auto; flex: none; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--sm-primary-soft); color: var(--sm-primary); font-weight: 700; }
+.sm-faq__q[open] summary::after { content: "\2212"; }
+.sm-faq__q summary:focus-visible { outline: none; box-shadow: var(--sm-focus); border-radius: var(--sm-radius-sm); }
+.sm-faq__a { padding: 0 2px 18px; line-height: var(--sm-lh); }
+.sm-faq__a p { margin: 0 0 10px; }
+.sm-faq__a ul, .sm-faq__a ol { margin: 0 0 10px; padding-inline-start: 1.3em; display: grid; gap: 4px; }
+.sm-faq__a > :last-child { margin-bottom: 0; }
+.sm-faq__a a { color: var(--sm-accent-ink); font-weight: 600; }
+.sm-faq__note { color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+
+.sm-faq__aside { position: sticky; top: calc(var(--sm-header-h) + 24px); display: grid; gap: var(--sm-s4); }
+.sm-faq__box { padding: var(--sm-s4); background: var(--sm-surface); border: 1px solid var(--sm-line); border-radius: var(--sm-radius); }
+.sm-faq__box h2 { margin: 0 0 8px; font-size: var(--sm-fs-lg); }
+.sm-faq__box p { margin: 0 0 12px; color: var(--sm-muted); font-size: var(--sm-fs-sm); }
+
+.sm-faqblock { margin-block: var(--sm-s7); padding: var(--sm-s6); background: var(--sm-surface); border: 1px solid var(--sm-line); border-radius: var(--sm-radius); }
+.sm-faqblock__head { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; margin-bottom: var(--sm-s3); }
+.sm-faqblock__head h2 { font-family: var(--sm-font-display); font-size: var(--sm-fs-xl); margin: 0; }
+.sm-faqblock__head a { display: inline-flex; align-items: center; gap: 4px; color: var(--sm-accent-ink); font-weight: 600; }
+.sm-faqblock__head a svg { width: 16px; height: 16px; }
+
+@media (max-width: 900px) {
+	.sm-faq { grid-template-columns: 1fr; gap: var(--sm-s5); }
+	.sm-faq__aside { position: static; }
+	.sm-faq__q summary { font-size: var(--sm-fs-md); }
+	.sm-faqblock { padding: var(--sm-s4); }
+}
+@media print {
+	.sm-faq__aside, .sm-faq__themes { display: none; }
+	.sm-faq__a { display: block; }
+}

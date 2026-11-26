@@ -861,3 +861,59 @@ function sm_guide_links( $key ) {
 	}
 	echo implode( '<span aria-hidden="true"> · </span>', $links ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above.
 }
+
+/** HTML allowed in the answers of the questions (0.62.0, sm-guides 0.2.0). */
+function sm_faq_kses( $html ) {
+	return wp_kses(
+		(string) $html,
+		array(
+			'p'      => array(),
+			'ul'     => array( 'class' => true ),
+			'ol'     => array(),
+			'li'     => array(),
+			'strong' => array(),
+			'em'     => array(),
+			'a'      => array( 'href' => true ),
+			'bdi'    => array(),
+			'br'     => array(),
+		)
+	);
+}
+
+/** A question and its answer, opened with a click (no script). $q: item of sm_theme_data( 'faq' ). */
+function sm_faq_question( array $q ) {
+	$attrs = ! empty( $q['fallback'] ) ? ' lang="fr" dir="ltr"' : '';
+	echo '<details class="sm-faq__q" id="' . esc_attr( $q['id'] ) . '"' . $attrs . '>'; // phpcs:ignore WordPress.Security.EscapeOutput -- fixed attributes.
+	echo '<summary><span>' . sm_faq_kses( $q['q_html'] ) . '</span></summary>'; // phpcs:ignore WordPress.Security.EscapeOutput -- filtered.
+	echo '<div class="sm-faq__a">' . sm_faq_kses( $q['answer'] ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput -- filtered.
+	echo '</details>';
+}
+
+/** Titles of the blocks of questions at the bottom of the pages (0.62.0). */
+function sm_faq_block_titles() {
+	return array(
+		'reuse'     => __( 'Frequently asked questions about steel reuse', 'sm-marketplace' ),
+		'buildings' => __( 'Frequently asked questions about steel buildings', 'sm-marketplace' ),
+		'engineers' => __( 'Frequently asked questions about engineering', 'sm-marketplace' ),
+		'rfq'       => __( 'Frequently asked questions about requests for quotation', 'sm-marketplace' ),
+	);
+}
+
+/** The questions linked to a page of the site, at its bottom (0.62.0). $key: sm_page_url key of the page. */
+function sm_faq_block( $key ) {
+	$d = sm_theme_data( 'faq', array( 'for' => $key ) );
+	if ( empty( $d['items'] ) || ! is_array( $d['items'] ) ) {
+		return;
+	}
+	$titles = sm_faq_block_titles();
+	echo '<section class="sm-faqblock" aria-labelledby="sm-faqblock-t">';
+	echo '<div class="sm-faqblock__head"><h2 id="sm-faqblock-t">' . esc_html( $titles[ $key ] ?? __( 'Frequently asked questions', 'sm-marketplace' ) ) . '</h2>';
+	if ( ! empty( $d['url'] ) ) {
+		echo '<a href="' . esc_url( $d['url'] ) . '">' . esc_html__( 'All the questions', 'sm-marketplace' ) . sm_get_icon( 'arrow-end' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput -- icon markup.
+	}
+	echo '</div>';
+	foreach ( $d['items'] as $q ) {
+		sm_faq_question( $q );
+	}
+	echo '</section>';
+}

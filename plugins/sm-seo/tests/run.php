@@ -121,6 +121,21 @@ if ( class_exists( '\\SM\\Guides\\Pages' ) ) { // 0.4.0
 	smseo_assert( false !== strpos( (string) Robots::llms(), '/guides/' ), 'llms.txt: the guides' );
 }
 
+if ( class_exists( '\\SM\\Guides\\Faq' ) && Text::page_id( 'faq' ) ) { // 0.5.0
+	echo "\nFrequently asked questions\n";
+	$m = Pages::faq( Pages::page( array( 'index' => true, 'schema' => array(), 'crumbs' => array() ), 'faq', array() ) );
+	$fq = array_values( array_filter( $m['schema'], static fn( $x ) => 'FAQPage' === ( $x['@type'] ?? '' ) ) );
+	smseo_assert( $m['index'] && $fq && 23 === count( $fq[0]['mainEntity'] ) && false !== strpos( $m['canonical'], '/faq/' ), 'FAQ: indexed, FAQPage with the 23 questions, canonical /faq/' );
+	smseo_assert( $fq && 'Question' === $fq[0]['mainEntity'][0]['@type'] && '' !== $fq[0]['mainEntity'][0]['acceptedAnswer']['text'] && false === strpos( wp_json_encode( $fq[0] ), '<' ), 'questions with their answer in plain text' );
+	smseo_assert( '' !== $m['title'] && '' !== $m['description'] && 1 === count( $m['crumbs'] ), 'title, description, breadcrumb' );
+	$ar = \SM\Core\I18n\Language::with_language( 'ar', static fn() => Pages::faq( Pages::page( array( 'index' => true, 'schema' => array(), 'crumbs' => array() ), 'faq', array() ) ) );
+	$fa = array_values( array_filter( $ar['schema'], static fn( $x ) => 'FAQPage' === ( $x['@type'] ?? '' ) ) );
+	smseo_assert( $fa && 'ar' === $fa[0]['inLanguage'] && 'لماذا الأسعار بـ DA/kg؟' === $fa[0]['mainEntity'][10]['name'], 'Arabic page: questions in Arabic, without <bdi>' );
+	$locs = array_column( $providers['smpages']->get_url_list( 1 ), 'loc' );
+	smseo_assert( count( array_filter( $locs, static fn( $l ) => (bool) preg_match( '#/faq/$#', $l ) ) ) === count( Text::langs() ), 'sitemap of the pages: /faq/ in each language' );
+	smseo_assert( false !== strpos( (string) Robots::llms(), '/faq/' ), 'llms.txt: the frequently asked questions' );
+}
+
 if ( null === $saved ) {
 	delete_option( Settings::OPTION );
 } else {

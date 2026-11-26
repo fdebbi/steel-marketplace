@@ -141,6 +141,9 @@ final class Context {
 				$m    = Pages::guides( $m, sanitize_title( (string) ( get_query_var( 'sm_guide' ) ? get_query_var( 'sm_guide' ) : ( $args['sm_guide'] ?? '' ) ) ) );
 				$args = array();
 				break;
+			case 'faq': // 0.5.0 (sm-guides 0.2.0).
+				$m = Pages::faq( Pages::page( $m, $key, array() ) );
+				break;
 			case 'rfq':
 				if ( get_query_var( 'sm_id' ) || ! empty( $args['id'] ) ) {
 					$m['index']     = false; // A request of a buyer: not for the search engines.

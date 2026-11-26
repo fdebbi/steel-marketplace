@@ -3012,3 +3012,22 @@ P.update({
 ('%d section', '%d sections'): (['%d section', '%d sections'], ['%d قسم', 'قسم واحد', 'قسمان', '%d أقسام', '%d قسمًا', '%d قسم']),
 ('Guide:', 'Guides:'): (['Guide :', 'Guides :'], ['الأدلة:', 'دليل:', 'دليلان:', 'أدلة:', 'أدلة:', 'أدلة:']),
 })
+
+T.update({  # 0.62.0: frequently asked questions (sm-guides 0.2.0).
+'SM — FAQ': ('SM — FAQ', 'SM — الأسئلة الشائعة'),
+'Frequently asked questions': ('Questions fréquentes', 'الأسئلة الشائعة'),
+'Short answers to the questions we are asked most: accounts, listings, quotes, engineering and tools. To go further, each answer leads to the right guide or page.': ("Les réponses courtes aux questions qu'on nous pose le plus : comptes, annonces, devis, ingénierie et outils. Pour aller plus loin, chaque réponse renvoie au bon guide ou à la bonne page.", 'إجابات قصيرة عن أكثر الأسئلة تكرارًا: الحسابات، الإعلانات، عروض الأسعار، الهندسة والأدوات. لمعرفة المزيد، تحيلك كل إجابة إلى الدليل أو الصفحة المناسبة.'),
+'Themes': ('Thèmes', 'المواضيع'),
+'Answers on how ReuSteel works. No market price and no statistics.': ('Réponses sur le fonctionnement de ReuSteel. Aucun prix du marché ni statistique.', 'إجابات عن طريقة عمل ReuSteel. لا أسعار سوق ولا إحصائيات.'),
+'Can’t find your answer?': ('Vous ne trouvez pas votre réponse ?', 'لم تجد إجابتك؟'),
+'Write to us: the ReuSteel team answers by e-mail.': ("Écrivez-nous : l'équipe ReuSteel vous répond par e-mail.", 'راسلنا: يرد عليك فريق ReuSteel بالبريد الإلكتروني.'),
+'Contact the team': ("Contacter l'équipe", 'اتصل بالفريق'),
+'Practical guides': ('Guides pratiques', 'أدلة عملية'),
+'No question for the moment': ('Aucune question pour le moment', 'لا توجد أسئلة حاليًا'),
+'Write to the ReuSteel team: we answer by e-mail.': ("Écrivez à l'équipe ReuSteel : nous répondons par e-mail.", 'راسل فريق ReuSteel: نرد عليك بالبريد الإلكتروني.'),
+'All the questions': ('Toutes les questions', 'كل الأسئلة'),
+'Frequently asked questions about steel reuse': ('Questions fréquentes sur le réemploi', 'أسئلة شائعة حول إعادة الاستعمال'),
+'Frequently asked questions about steel buildings': ('Questions fréquentes sur les bâtiments métalliques', 'أسئلة شائعة حول المباني الفولاذية'),
+'Frequently asked questions about engineering': ("Questions fréquentes sur l'ingénierie", 'أسئلة شائعة حول الهندسة'),
+'Frequently asked questions about requests for quotation': ('Questions fréquentes sur les demandes de devis', 'أسئلة شائعة حول طلبات عروض الأسعار'),
+})

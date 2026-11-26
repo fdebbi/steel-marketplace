@@ -29,6 +29,7 @@ final class Pages {
 			'weight'          => array( __( 'Steel weight calculator', 'sm-seo' ), __( 'Compute the weight of beams, tubes, plates and bars from the standard catalogue. Free, in French, Arabic and English.', 'sm-seo' ) ),
 			'ai'              => array( __( 'AI assistant for steel', 'sm-seo' ), __( 'The AI tools of ReuSteel for buying and selling steel.', 'sm-seo' ) ),
 			'cutting'         => array( __( 'Cutting optimiser for steel bars', 'sm-seo' ), __( 'Plan the cutting of your steel bars to reduce the offcuts.', 'sm-seo' ) ),
+			'faq'             => array( __( 'Frequently asked questions', 'sm-seo' ), __( 'Answers on how ReuSteel works: accounts, listings, requests for quotation, engineering studies, tools and languages. No market price.', 'sm-seo' ) ),
 			'engineer-apply'  => array( __( 'Become a partner engineer', 'sm-seo' ), __( 'Engineers and design offices: join the network of ReuSteel and carry out studies of steel structures.', 'sm-seo' ) ),
 		);
 		return $t[ $key ] ?? array( '', '' );
@@ -194,6 +195,40 @@ final class Pages {
 		}
 		if ( $list ) {
 			$m['schema'][] = array( '@type' => 'ItemList', 'name' => $title, 'numberOfItems' => (int) $d['count'], 'itemListElement' => $list );
+		}
+		return $m;
+	}
+
+	/**
+	 * Frequently asked questions (0.5.0, sm-guides 0.2.0): FAQPage with the questions and
+	 * answers shown on the page, in the language of the page. A question shown in
+	 * French at an address /ar/ or /en/ (not written in that language) is left out.
+	 */
+	public static function faq( array $m ) {
+		$d = Text::data( 'faq' );
+		if ( ! is_array( $d ) || empty( $d['groups'] ) ) {
+			$m['index'] = false;
+			return $m;
+		}
+		$list = array();
+		foreach ( $d['groups'] as $g ) {
+			foreach ( (array) $g['items'] as $q ) {
+				if ( empty( $q['fallback'] ) && '' !== (string) $q['text'] ) {
+					$list[] = array(
+						'@type'          => 'Question',
+						'name'           => (string) $q['question'],
+						'acceptedAnswer' => array( '@type' => 'Answer', 'text' => (string) $q['text'] ),
+					);
+				}
+			}
+		}
+		if ( $list ) {
+			$m['schema'][] = array(
+				'@type'      => 'FAQPage',
+				'inLanguage' => Text::lang(),
+				'url'        => $m['canonical'],
+				'mainEntity' => $list,
+			);
 		}
 		return $m;
 	}
