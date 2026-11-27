@@ -982,3 +982,13 @@ function sm_legal_notice() {
 		sm_legal_link( 'privacy', __( 'Privacy policy', 'sm-marketplace' ) )
 	) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above.
 }
+
+/**
+ * The page of a key exists and is published (0.64.0): the footer shows its link only
+ * then, instead of a link that would lead to the home page.
+ */
+function sm_theme_page_ready( $key ) {
+	$map = (array) get_option( 'sm_theme_pages', array() );
+	$id  = (int) ( $map[ $key ] ?? 0 );
+	return $id > 0 && 'publish' === get_post_status( $id );
+}

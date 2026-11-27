@@ -5,6 +5,7 @@
  * @package SM\Seo
  */
 
+use SM\Seo\Context;
 use SM\Seo\Pages;
 use SM\Seo\Robots;
 use SM\Seo\Schema;
@@ -135,6 +136,25 @@ if ( class_exists( '\\SM\\Guides\\Faq' ) && Text::page_id( 'faq' ) ) { // 0.5.0
 	smseo_assert( count( array_filter( $locs, static fn( $l ) => (bool) preg_match( '#/faq/$#', $l ) ) ) === count( Text::langs() ), 'sitemap of the pages: /faq/ in each language' );
 	smseo_assert( false !== strpos( (string) Robots::llms(), '/faq/' ), 'llms.txt: the frequently asked questions' );
 }
+
+echo "\nShare images (0.6.0)\n";
+$keep_seed = get_option( 'sm_seo_share_seed' );
+update_option( Settings::OPTION, array( 'default_image' => 'https://example.com/mine.jpg' ), false );
+delete_option( 'sm_seo_share_seed' );
+smseo_assert( Settings::seed_images() && 'https://example.com/mine.jpg' === Settings::get( 'default_image' ) && false !== strpos( Settings::get( 'default_image_ar' ), 'assets/share/reusteel-partage-ar.jpg' ) && false !== strpos( Settings::get( 'default_image_en' ), 'reusteel-partage-en.jpg' ), 'installation: an image already chosen is kept, the empty ones get the images of ReuSteel' );
+smseo_assert( false === Settings::seed_images(), 'written only once' );
+foreach ( array( 'fr', 'ar', 'en' ) as $l ) {
+	$f = SM_SEO_DIR . '/assets/share/reusteel-partage-' . $l . '.jpg';
+	$sz = is_readable( $f ) ? getimagesize( $f ) : array( 0, 0 );
+	smseo_assert( 1200 === $sz[0] && 630 === $sz[1] && filesize( $f ) < 300 * 1024, "image $l: 1200 × 630, under 300 KB (WhatsApp)" );
+}
+$img = static fn( $l ) => \SM\Core\I18n\Language::with_language( $l, static fn() => Context::default_image() );
+smseo_assert( 'https://example.com/mine.jpg' === $img( 'fr' ) && false !== strpos( $img( 'ar' ), '-ar.jpg' ) && false !== strpos( $img( 'en' ), '-en.jpg' ), 'page without a photo: the image of its language' );
+Settings::save( array( 'default_image' => 'https://example.com/fr.jpg', 'default_image_ar' => '', 'default_image_en' => '' ) );
+smseo_assert( 'https://example.com/fr.jpg' === $img( 'ar' ) && 'https://example.com/fr.jpg' === $img( 'en' ), 'no image for a language: the French image' );
+Settings::save( array() );
+smseo_assert( '' === Settings::get( 'default_image' ) && Context::default_image() === $img( 'ar' ), 'no image at all: the logo or the icon of the site' );
+false === $keep_seed ? delete_option( 'sm_seo_share_seed' ) : update_option( 'sm_seo_share_seed', $keep_seed, false );
 
 if ( null === $saved ) {
 	delete_option( Settings::OPTION );

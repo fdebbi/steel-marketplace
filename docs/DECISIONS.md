@@ -583,3 +583,9 @@ Validé sur la maquette 0.37.
 - Société pas encore créée : le site écrit « ReuSteel » et contact@reusteel.com ; les informations (RC, NIF, siège, délégué, récépissé ANPDP, autorisation de transfert…) se remplissent sans code dans *SM → Informations légales* (sm-core 0.10.0).
 - Points à voir avec un avocat algérien avant publication (je ne suis pas juriste) : hébergement hors d'Algérie et domaine .com (loi 18-05, article 8), autorisation ANPDP pour le transfert à l'étranger (hébergeur, IA), déclaration ANPDP et désignation du délégué.
 - Durées de conservation publiées et appliquées à la main pour commencer ; une tâche automatique (fermeture après 3 ans sans connexion, suppression à 30 jours) sera un travail séparé. Demande de nouvelle acceptation après un changement de version : plus tard.
+
+## Image de partage par langue et liens du pied de page (2026-11-27)
+
+- Une image de partage par langue (*SM → SEO*, choisie dans la médiathèque) pour les pages sans photo ; repli : image française puis logo ; annonces, entreprises et services gardent leur photo. Pas d'image par page (peu de gain).
+- Images validées (maquette v3) : logo officiel ReuSteel (« TRADE • REUSE • RECYCLE • BUILD », gardé tel quel aussi en arabe), fond noir, phrase de la page d'accueil dans chaque langue (« Nous donnons une nouvelle vie à l'acier… / …et transformons les ressources usagées en valeur et en opportunités durables. »), « une nouvelle vie » en vert du logo, 5 activités, reusteel.com ; arabe en miroir. JPEG < 300 Ko (WhatsApp).
+- Pied de page : un lien seulement si sa page est publiée ; une colonne vide disparaît. Le menu du haut n'est pas touché (risque de faire disparaître un menu entier). Rappel : vider le cache LiteSpeed après chaque mise à jour (cause du lien « Guides » vers l'accueil).

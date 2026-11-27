@@ -18,6 +18,20 @@ final class Admin {
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'menu' ), 40 );
 		add_action( 'admin_post_smseo_settings', array( __CLASS__, 'save' ) );
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'assets' ) );
+	}
+
+	/** Media library and the small script of the share images (0.6.0). */
+	public static function assets( $hook ) {
+		if ( false === strpos( (string) $hook, self::SLUG ) ) {
+			return;
+		}
+		wp_enqueue_media();
+		wp_add_inline_style( 'common', '.smseo-img{margin:0 0 14px}.smseo-img__row{display:flex;gap:12px;align-items:flex-start;margin-top:4px}.smseo-img__preview{flex:none;width:190px;height:100px;border:1px dashed #c3c4c7;border-radius:6px;background:#f6f7f7;display:grid;place-items:center;overflow:hidden}.smseo-img__preview img{width:100%;height:100%;object-fit:cover}' );
+		wp_add_inline_script(
+			'media-editor',
+			"document.addEventListener('click',function(e){var b=e.target.closest('[data-smseo-pick],[data-smseo-default]');if(!b)return;e.preventDefault();var id=b.getAttribute('data-smseo-pick')||b.getAttribute('data-smseo-default'),input=document.getElementById(id),prev=input.closest('.smseo-img').querySelector('.smseo-img__preview');function set(u){input.value=u;prev.innerHTML=u?'<img src=\"'+u.replace(/\"/g,'')+'\" alt=\"\">':'';}if(b.hasAttribute('data-smseo-default')){set(b.getAttribute('data-url'));return;}var f=wp.media({title:b.textContent,library:{type:'image'},multiple:false});f.on('select',function(){set(f.state().get('selection').first().toJSON().url);});f.open();});"
+		);
 	}
 
 	public static function menu() {
@@ -49,7 +63,24 @@ final class Admin {
 			printf( '<p><label><input type="radio" name="ai_bots" value="%s" %s> <strong>%s</strong></label><br><span class="description">%s</span></p>', esc_attr( $val ), checked( $s['ai_bots'], $val, false ), esc_html( $c[0] ), esc_html( $c[1] ) );
 		}
 		echo '<p class="description">' . esc_html__( 'Google and Bing search are not concerned: they always read the public pages. The account pages are closed to every bot.', 'sm-seo' ) . '</p></td></tr>';
-		printf( '<tr><th scope="row"><label for="smseo-img">%s</label></th><td><input type="url" class="regular-text" id="smseo-img" name="default_image" value="%s"><p class="description">%s</p></td></tr>', esc_html__( 'Default share image', 'sm-seo' ), esc_attr( $s['default_image'] ), esc_html__( 'Address of an image of 1200 × 630 pixels, shown when a page without a photo is shared. Empty: the logo or the icon of the site.', 'sm-seo' ) );
+		// 0.6.0: one share image per language, chosen in the media library.
+		$langs = array( 'fr' => __( 'French', 'sm-seo' ), 'ar' => __( 'Arabic', 'sm-seo' ), 'en' => __( 'English', 'sm-seo' ) );
+		echo '<tr><th scope="row">' . esc_html__( 'Share images', 'sm-seo' ) . '</th><td>';
+		foreach ( $langs as $lang => $label ) {
+			$k   = Settings::image_key( $lang );
+			$url = (string) $s[ $k ];
+			printf(
+				'<div class="smseo-img"><label for="smseo-%1$s"><strong>%2$s</strong></label><div class="smseo-img__row"><span class="smseo-img__preview">%3$s</span><span><input type="url" class="regular-text" id="smseo-%1$s" name="%1$s" value="%4$s"><br><button type="button" class="button" data-smseo-pick="smseo-%1$s">%5$s</button> <button type="button" class="button-link" data-smseo-default="smseo-%1$s" data-url="%6$s">%7$s</button></span></div></div>',
+				esc_attr( $k ),
+				esc_html( $label ),
+				'' !== $url ? '<img src="' . esc_url( $url ) . '" alt="">' : '',
+				esc_attr( $url ),
+				esc_html__( 'Choose an image', 'sm-seo' ),
+				esc_url( Settings::bundled_image( $lang ) ),
+				esc_html__( 'Image of ReuSteel', 'sm-seo' )
+			);
+		}
+		echo '<p class="description">' . esc_html__( 'Image of 1200 × 630 pixels (JPEG under 300 KB for WhatsApp), shown when a page without a photo is shared, in the language of the page. Empty: the French image, then the logo of the site. Listings, companies and services keep their own photo.', 'sm-seo' ) . '</p></td></tr>';
 		printf( '<tr><th scope="row"><label for="smseo-g">%s</label></th><td><input type="text" class="regular-text" id="smseo-g" name="google" value="%s"><p class="description">%s</p></td></tr>', esc_html__( 'Google Search Console', 'sm-seo' ), esc_attr( $s['google'] ), esc_html__( 'Verification code (method « HTML tag »): paste the code or the whole tag.', 'sm-seo' ) );
 		printf( '<tr><th scope="row"><label for="smseo-b">%s</label></th><td><input type="text" class="regular-text" id="smseo-b" name="bing" value="%s"><p class="description">%s</p></td></tr>', esc_html__( 'Bing Webmaster Tools', 'sm-seo' ), esc_attr( $s['bing'] ), esc_html__( 'Verification code (meta tag msvalidate.01): paste the code or the whole tag.', 'sm-seo' ) );
 		echo '</table>';

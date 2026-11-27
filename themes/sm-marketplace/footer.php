@@ -16,43 +16,51 @@ defined( 'ABSPATH' ) || exit;
 			<p><?php esc_html_e( 'Buy and sell steel by the kilogram, trade used structures and find fabricators and engineers across Algeria.', 'sm-marketplace' ); ?></p>
 			<?php sm_theme_language_switcher( 'footer' ); ?>
 		</div>
+		<?php
+		// 0.64.0: a link is shown only when its page exists and is published (never the home page instead);
+		// a column without any link is not shown.
+		$sm_cols = array(
+			__( 'Marketplaces', 'sm-marketplace' ) => array(
+				'products'  => __( 'Steel products', 'sm-marketplace' ),
+				'reuse'     => __( 'Steel reuse', 'sm-marketplace' ),
+				'buildings' => __( 'Steel buildings', 'sm-marketplace' ),
+				'rfq'       => __( 'Requests for quotation', 'sm-marketplace' ),
+			),
+			__( 'Services', 'sm-marketplace' )     => array(
+				'services'      => __( 'Fabrication & installation', 'sm-marketplace' ),
+				'engineers'     => __( 'Engineering', 'sm-marketplace' ),
+				'companies'     => __( 'Company directory', 'sm-marketplace' ),
+				'professionals' => __( 'Professionals directory', 'sm-marketplace' ),
+				'weight'        => __( 'Weight calculator', 'sm-marketplace' ),
+				'catalogue'     => __( 'Catalogue of sections', 'sm-marketplace' ),
+				'cutting'       => __( 'Cutting optimiser', 'sm-marketplace' ),
+				'price-index'   => __( 'Price index', 'sm-marketplace' ),
+			),
+			__( 'Platform', 'sm-marketplace' )     => array(
+				'pricing'  => __( 'Plans', 'sm-marketplace' ),
+				'guides'   => __( 'Guides', 'sm-marketplace' ),
+				'faq'      => __( 'Frequently asked questions', 'sm-marketplace' ),
+				'terms'    => __( 'General terms', 'sm-marketplace' ),
+				'privacy'  => __( 'Privacy', 'sm-marketplace' ),
+				'register' => __( 'Create an account', 'sm-marketplace' ),
+				'contact'  => __( 'Contact', 'sm-marketplace' ),
+			),
+		);
+		foreach ( $sm_cols as $sm_title => $sm_links ) :
+			$sm_links = array_filter( $sm_links, static fn( $sm_label, $sm_key ) => sm_theme_page_ready( $sm_key ), ARRAY_FILTER_USE_BOTH );
+			if ( ! $sm_links ) {
+				continue;
+			}
+			?>
 		<div>
-			<p class="sm-footer__title"><?php esc_html_e( 'Marketplaces', 'sm-marketplace' ); ?></p>
+			<p class="sm-footer__title"><?php echo esc_html( $sm_title ); ?></p>
 			<ul>
-				<li><a href="<?php echo esc_url( sm_page_url( 'products' ) ); ?>"><?php esc_html_e( 'Steel products', 'sm-marketplace' ); ?></a></li>
-				<li><a href="<?php echo esc_url( sm_page_url( 'reuse' ) ); ?>"><?php esc_html_e( 'Steel reuse', 'sm-marketplace' ); ?></a></li>
-				<li><a href="<?php echo esc_url( sm_page_url( 'buildings' ) ); ?>"><?php esc_html_e( 'Steel buildings', 'sm-marketplace' ); ?></a></li>
-				<li><a href="<?php echo esc_url( sm_page_url( 'rfq' ) ); ?>"><?php esc_html_e( 'Requests for quotation', 'sm-marketplace' ); ?></a></li>
-			</ul>
-		</div>
-		<div>
-			<p class="sm-footer__title"><?php esc_html_e( 'Services', 'sm-marketplace' ); ?></p>
-			<ul>
-				<li><a href="<?php echo esc_url( sm_page_url( 'services' ) ); ?>"><?php esc_html_e( 'Fabrication & installation', 'sm-marketplace' ); ?></a></li>
-				<li><a href="<?php echo esc_url( sm_page_url( 'engineers' ) ); ?>"><?php esc_html_e( 'Engineering', 'sm-marketplace' ); ?></a></li>
-				<li><a href="<?php echo esc_url( sm_page_url( 'companies' ) ); ?>"><?php esc_html_e( 'Company directory', 'sm-marketplace' ); ?></a></li>
-				<li><a href="<?php echo esc_url( sm_page_url( 'professionals' ) ); ?>"><?php esc_html_e( 'Professionals directory', 'sm-marketplace' ); ?></a></li>
-				<li><a href="<?php echo esc_url( sm_page_url( 'weight' ) ); ?>"><?php esc_html_e( 'Weight calculator', 'sm-marketplace' ); ?></a></li>
-				<li><a href="<?php echo esc_url( sm_page_url( 'catalogue' ) ); ?>"><?php esc_html_e( 'Catalogue of sections', 'sm-marketplace' ); ?></a></li>
-				<li><a href="<?php echo esc_url( sm_page_url( 'cutting' ) ); ?>"><?php esc_html_e( 'Cutting optimiser', 'sm-marketplace' ); ?></a></li>
-				<li><a href="<?php echo esc_url( sm_page_url( 'price-index' ) ); ?>"><?php esc_html_e( 'Price index', 'sm-marketplace' ); ?></a></li>
-			</ul>
-		</div>
-		<div>
-			<p class="sm-footer__title"><?php esc_html_e( 'Platform', 'sm-marketplace' ); ?></p>
-			<ul>
-				<li><a href="<?php echo esc_url( sm_page_url( 'pricing' ) ); ?>"><?php esc_html_e( 'Plans', 'sm-marketplace' ); ?></a></li>
-				<li><a href="<?php echo esc_url( sm_page_url( 'guides' ) ); ?>"><?php esc_html_e( 'Guides', 'sm-marketplace' ); ?></a></li>
-				<li><a href="<?php echo esc_url( sm_page_url( 'faq' ) ); ?>"><?php esc_html_e( 'Frequently asked questions', 'sm-marketplace' ); ?></a></li>
-				<?php foreach ( array( 'terms' => __( 'General terms', 'sm-marketplace' ), 'privacy' => __( 'Privacy', 'sm-marketplace' ) ) as $sm_lk => $sm_lt ) : // 0.63.0 ?>
-					<?php if ( '' !== sm_legal_url( $sm_lk ) ) : ?>
-						<li><a href="<?php echo esc_url( sm_legal_url( $sm_lk ) ); ?>"><?php echo esc_html( $sm_lt ); ?></a></li>
-					<?php endif; ?>
+				<?php foreach ( $sm_links as $sm_key => $sm_label ) : ?>
+					<li><a href="<?php echo esc_url( sm_page_url( $sm_key ) ); ?>"><?php echo esc_html( $sm_label ); ?></a></li>
 				<?php endforeach; ?>
-				<li><a href="<?php echo esc_url( sm_page_url( 'register' ) ); ?>"><?php esc_html_e( 'Create an account', 'sm-marketplace' ); ?></a></li>
-				<li><a href="<?php echo esc_url( sm_page_url( 'contact' ) ); ?>"><?php esc_html_e( 'Contact', 'sm-marketplace' ); ?></a></li>
 			</ul>
 		</div>
+		<?php endforeach; ?>
 	</div>
 	<div class="sm-footer__bottom">
 		<div class="sm-container">

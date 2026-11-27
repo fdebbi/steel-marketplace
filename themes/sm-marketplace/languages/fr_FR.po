@@ -55,29 +55,29 @@ msgstr ""
 "Achetez et vendez l’acier au kilo, échangez des structures d’occasion et "
 "trouvez fabricants et ingénieurs dans toute l’Algérie."
 
-#: footer.php:20 header.php:63 header.php:92
+#: footer.php:23 header.php:63 header.php:92
 msgid "Marketplaces"
 msgstr "Marchés"
 
-#: footer.php:22 inc/menus.php:16 inc/template-tags.php:310
+#: footer.php:24 inc/menus.php:16 inc/template-tags.php:310
 #: inc/template-tags.php:826 templates/front-page-template.php:72
 #: templates/marketplace-products.php:15
 msgid "Steel products"
 msgstr "Produits sidérurgiques"
 
-#: footer.php:23 inc/menus.php:24 inc/template-tags.php:311
+#: footer.php:25 inc/menus.php:24 inc/template-tags.php:311
 #: inc/template-tags.php:825 templates/front-page-template.php:73
 #: templates/marketplace-reuse.php:15
 msgid "Steel reuse"
 msgstr "Réemploi de l’acier"
 
-#: footer.php:24 inc/menus.php:32 inc/template-tags.php:312
+#: footer.php:26 inc/menus.php:32 inc/template-tags.php:312
 #: inc/template-tags.php:827 templates/front-page-template.php:74
 #: templates/marketplace-buildings.php:15
 msgid "Steel buildings"
 msgstr "Bâtiments métalliques"
 
-#: footer.php:25 inc/menus.php:47 inc/template-tags.php:818
+#: footer.php:27 inc/menus.php:47 inc/template-tags.php:818
 #: inc/template-tags.php:833 template-parts/components/rfq-single.php:45
 #: template-parts/dashboard/report.php:133 template-parts/dashboard/rfq.php:19
 #: templates/rfq-board.php:54 templates/rfq-board.php:57
@@ -90,7 +90,7 @@ msgstr "Demandes de devis"
 msgid "Services"
 msgstr "Services"
 
-#: footer.php:31 inc/menus.php:62 inc/template-tags.php:313
+#: footer.php:30 inc/menus.php:62 inc/template-tags.php:313
 #: inc/template-tags.php:817 inc/template-tags.php:832
 #: template-parts/components/card-service.php:23
 #: templates/front-page-template.php:75 templates/marketplace-services.php:17
@@ -98,7 +98,7 @@ msgstr "Services"
 msgid "Fabrication & installation"
 msgstr "Fabrication et montage"
 
-#: footer.php:32 header.php:78 header.php:108 inc/menus.php:63
+#: footer.php:31 header.php:78 header.php:108 inc/menus.php:63
 #: inc/template-tags.php:314 inc/template-tags.php:831
 #: template-parts/components/ai-photo-tools.php:95
 #: templates/front-page-template.php:76 templates/marketplace-engineers.php:35
@@ -106,67 +106,67 @@ msgstr "Fabrication et montage"
 msgid "Engineering"
 msgstr "Ingénierie"
 
-#: footer.php:33 header.php:109 inc/menus.php:64
+#: footer.php:32 header.php:109 inc/menus.php:64
 #: template-parts/directory.php:35 template-parts/directory.php:36
 #: templates/company-profile.php:26 templates/company-profile.php:85
 msgid "Company directory"
 msgstr "Annuaire des entreprises"
 
-#: footer.php:34 inc/menus.php:65 template-parts/directory.php:35
+#: footer.php:33 inc/menus.php:65 template-parts/directory.php:35
 #: template-parts/directory.php:36
 msgid "Professionals directory"
 msgstr "Annuaire des professionnels"
 
-#: footer.php:35 header.php:27 header.php:110 inc/template-tags.php:813
+#: footer.php:34 header.php:27 header.php:110 inc/template-tags.php:813
 #: inc/template-tags.php:828 templates/weight-calculator.php:37
 msgid "Weight calculator"
 msgstr "Calculateur de poids"
 
-#: footer.php:36 inc/template-tags.php:814 inc/template-tags.php:829
+#: footer.php:35 inc/template-tags.php:814 inc/template-tags.php:829
 #: template-parts/catalogue/family.php:27
 #: template-parts/catalogue/index.php:22
 #: template-parts/catalogue/section.php:51
 msgid "Catalogue of sections"
 msgstr "Catalogue des profilés"
 
-#: footer.php:37 header.php:28 header.php:111 inc/template-tags.php:815
+#: footer.php:36 header.php:28 header.php:111 inc/template-tags.php:815
 #: inc/template-tags.php:830 templates/cutting-optimizer.php:26
 #: templates/cutting-optimizer.php:27
 msgid "Cutting optimiser"
 msgstr "Optimiseur de découpe"
 
-#: footer.php:38 header.php:29 header.php:112 templates/price-index.php:17
+#: footer.php:37 header.php:29 header.php:112 templates/price-index.php:17
 msgid "Price index"
 msgstr "Indice des prix"
 
-#: footer.php:42 template-parts/dashboard/engineer-files.php:23
+#: footer.php:39 template-parts/dashboard/engineer-files.php:23
 msgid "Platform"
 msgstr "Plateforme"
 
-#: footer.php:44 header.php:30 template-parts/dashboard/plan.php:137
+#: footer.php:40 header.php:30 template-parts/dashboard/plan.php:137
 #: templates/pricing.php:34 templates/pricing.php:35
 msgid "Plans"
 msgstr "Abonnements"
 
-#: footer.php:45 template-parts/guides/guide.php:32
+#: footer.php:41 template-parts/guides/guide.php:32
 #: template-parts/guides/index.php:15
 msgid "Guides"
 msgstr "Guides"
 
-#: footer.php:46 inc/template-tags.php:912 templates/faq.php:46
+#: footer.php:42 inc/template-tags.php:912 templates/faq.php:46
 #: templates/faq.php:47
 msgid "Frequently asked questions"
 msgstr "Questions fréquentes"
 
-#: footer.php:47
+#: footer.php:43
 msgid "General terms"
 msgstr "Conditions générales"
 
-#: footer.php:47
+#: footer.php:44
 msgid "Privacy"
 msgstr "Confidentialité"
 
-#: footer.php:52 template-parts/components/ai-gate.php:24
+#: footer.php:45 template-parts/components/ai-gate.php:24
 #: template-parts/components/buy-box.php:233
 #: template-parts/components/enquiry-form.php:46
 #: template-parts/components/rfq-single.php:158
@@ -176,28 +176,28 @@ msgstr "Confidentialité"
 msgid "Create an account"
 msgstr "Créer un compte"
 
-#: footer.php:53 header.php:31 templates/company-profile.php:230
+#: footer.php:46 header.php:31 templates/company-profile.php:230
 #: templates/company-profile.php:245 templates/contact.php:23
 #: templates/contact.php:32 templates/single-listing.php:281
 msgid "Contact"
 msgstr "Contact"
 
-#: footer.php:59
+#: footer.php:67
 msgid ""
 "Advertised prices are set by sellers and are not official market prices."
 msgstr ""
 "Les prix affichés sont fixés par les vendeurs et ne sont pas des prix "
 "officiels du marché."
 
-#: footer.php:64
+#: footer.php:72
 msgid "Quick navigation"
 msgstr "Navigation rapide"
 
-#: footer.php:65 inc/template-tags.php:455
+#: footer.php:73 inc/template-tags.php:455
 msgid "Home"
 msgstr "Accueil"
 
-#: footer.php:66 header.php:54
+#: footer.php:74 header.php:54
 #: template-parts/components/stock-warehouse.php:132
 #: template-parts/directory.php:53 template-parts/header-actions.php:13
 #: templates/ai-assistant.php:23 templates/front-page-template.php:49
@@ -205,27 +205,27 @@ msgstr "Accueil"
 msgid "Search"
 msgstr "Rechercher"
 
-#: footer.php:69 template-parts/header-actions.php:36
+#: footer.php:77 template-parts/header-actions.php:36
 #: templates/dashboard.php:74
 msgid "My missions"
 msgstr "Mes missions"
 
-#: footer.php:70 templates/dashboard.php:75
+#: footer.php:78 templates/dashboard.php:75
 msgid "Invoicing"
 msgstr "Facturation"
 
-#: footer.php:72 template-parts/components/product-form.php:238
+#: footer.php:80 template-parts/components/product-form.php:238
 #: template-parts/components/stock-warehouse.php:67
 #: template-parts/dashboard/publish.php:211
 #: template-parts/header-actions.php:34 templates/styleguide.php:34
 msgid "Publish"
 msgstr "Publier"
 
-#: footer.php:73
+#: footer.php:81
 msgid "Enquiries"
 msgstr "Demandes"
 
-#: footer.php:75 templates/dashboard.php:87 templates/dashboard.php:166
+#: footer.php:83 templates/dashboard.php:87 templates/dashboard.php:166
 #: templates/engineer-apply.php:307
 msgid "Account"
 msgstr "Compte"

@@ -1,5 +1,11 @@
 # Changelog — sm-seo
 
+## 0.6.0 — 2026-11-27 (avec le thème 0.64.0)
+
+- **Image de partage par langue** : *SM → SEO* a trois images (français, arabe, anglais), choisies dans la médiathèque (« Choisir une image », aperçu, « Image de ReuSteel »). Une page sans photo partagée sur WhatsApp, Facebook ou LinkedIn montre l'image de sa langue ; sans image pour une langue : l'image française, puis le logo. Les annonces, entreprises et services gardent leur propre photo.
+- Les 3 images de ReuSteel (maquette validée le 2026-11-27 : logo officiel, phrase de la page d'accueil, 5 activités ; 1200 × 630, JPEG de moins de 100 Ko) sont livrées dans `assets/share/` et remplissent une seule fois les images vides ; une image déjà choisie n'est jamais remplacée.
+- Tests : `tests/run.php` (54), `tests/e2e-share.py` (17).
+
 ## 0.5.1 — 2026-11-27 (avec sm-core 0.10.0, thème 0.63.0)
 
 - Pages « Conditions générales d'utilisation » et « Politique de confidentialité » : titre et description dans les 3 langues (indexées, dans le plan du site des pages, hreflang).

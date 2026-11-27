@@ -159,3 +159,13 @@ T.update({  # 0.5.1: legal pages (sm-core 0.10.0).
 'Terms of use of ReuSteel: accounts, listings, requests for quotation, engineering, tools, plans, liability and Algerian law.': ("Conditions générales d'utilisation de ReuSteel : comptes, annonces, demandes de devis, ingénierie, outils, formules, responsabilité et droit algérien.", 'الشروط العامة لاستخدام ReuSteel: الحسابات، الإعلانات، طلبات عروض الأسعار، الهندسة، الأدوات، الصيغ، المسؤولية والقانون الجزائري.'),
 'How ReuSteel protects your personal data under Algerian law 18-07: data collected, who sees it, retention, security and your rights.': ('Comment ReuSteel protège vos données personnelles selon la loi algérienne 18-07 : données collectées, qui les voit, conservation, sécurité et vos droits.', 'كيف تحمي ReuSteel معطياتك الشخصية وفق القانون الجزائري 18-07: المعطيات المجمعة، من يراها، الحفظ، الأمان وحقوقك.'),
 })
+
+T.update({  # 0.6.0: share image per language.
+'Arabic': ('Arabe', 'العربية'),
+'Choose an image': ('Choisir une image', 'اختيار صورة'),
+'English': ('Anglais', 'الإنجليزية'),
+'French': ('Français', 'الفرنسية'),
+'Image of 1200 × 630 pixels (JPEG under 300 KB for WhatsApp), shown when a page without a photo is shared, in the language of the page. Empty: the French image, then the logo of the site. Listings, companies and services keep their own photo.': ("Image de 1200 × 630 pixels (JPEG de moins de 300 Ko pour WhatsApp), affichée quand on partage une page sans photo, dans la langue de la page. Vide : l'image française, puis le logo du site. Les annonces, entreprises et services gardent leur propre photo.", 'صورة بحجم 1200 × 630 بكسل (JPEG أقل من 300 كيلوبايت لواتساب)، تظهر عند مشاركة صفحة دون صورة، بلغة الصفحة. فارغة: الصورة الفرنسية، ثم شعار الموقع. تحتفظ الإعلانات والمؤسسات والخدمات بصورها.'),
+'Image of ReuSteel': ('Image de ReuSteel', 'صورة ReuSteel'),
+'Share images': ('Images de partage', 'صور المشاركة'),
+})

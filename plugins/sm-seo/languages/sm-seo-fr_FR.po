@@ -48,19 +48,19 @@ msgstr "ReuSteel"
 msgid "SM SEO needs the SM Core plugin. Activate it first."
 msgstr "SM SEO a besoin de l'extension SM Core. Activez-la d'abord."
 
-#: src/Admin/Admin.php:24
+#: src/Admin/Admin.php:38
 msgid "SEO"
 msgstr "SEO"
 
-#: src/Admin/Admin.php:29
+#: src/Admin/Admin.php:43
 msgid "Search engines and AI"
 msgstr "Moteurs de recherche et IA"
 
-#: src/Admin/Admin.php:32
+#: src/Admin/Admin.php:46
 msgid "Settings saved."
 msgstr "Réglages enregistrés."
 
-#: src/Admin/Admin.php:35
+#: src/Admin/Admin.php:49
 msgid ""
 "The search engines are asked not to index the site (Settings → Reading). "
 "Untick « Discourage search engines » when the site goes live."
@@ -69,7 +69,7 @@ msgstr ""
 "Lecture). Décochez « Demander aux moteurs de recherche de ne pas indexer ce "
 "site » à la mise en ligne."
 
-#: src/Admin/Admin.php:38
+#: src/Admin/Admin.php:52
 msgid ""
 "A robots.txt file exists at the root of the site: it replaces the one "
 "written by this plugin. Delete it to use the choice below."
@@ -77,15 +77,15 @@ msgstr ""
 "Un fichier robots.txt existe à la racine du site : il remplace celui écrit "
 "par cette extension. Supprimez-le pour utiliser le choix ci-dessous."
 
-#: src/Admin/Admin.php:42
+#: src/Admin/Admin.php:56
 msgid "AI bots"
 msgstr "Robots des IA"
 
-#: src/Admin/Admin.php:44
+#: src/Admin/Admin.php:58
 msgid "Allow the AI search engines (advised)"
 msgstr "Autoriser les moteurs de recherche IA (conseillé)"
 
-#: src/Admin/Admin.php:44
+#: src/Admin/Admin.php:58
 msgid ""
 "ChatGPT search, Perplexity, Claude… may read and quote the public pages. The"
 " bots that collect texts to train AI models are refused."
@@ -94,11 +94,11 @@ msgstr ""
 "publiques. Les robots qui collectent des textes pour entraîner les modèles "
 "d'IA sont refusés."
 
-#: src/Admin/Admin.php:45
+#: src/Admin/Admin.php:59
 msgid "Also allow the training of AI models"
 msgstr "Autoriser aussi l'entraînement des modèles d'IA"
 
-#: src/Admin/Admin.php:45
+#: src/Admin/Admin.php:59
 msgid ""
 "Every bot reads the public pages, including the collection of texts to train"
 " models."
@@ -106,15 +106,15 @@ msgstr ""
 "Tous les robots lisent les pages publiques, y compris la collecte de textes "
 "pour entraîner des modèles."
 
-#: src/Admin/Admin.php:46
+#: src/Admin/Admin.php:60
 msgid "Refuse every AI bot"
 msgstr "Refuser tous les robots des IA"
 
-#: src/Admin/Admin.php:46
+#: src/Admin/Admin.php:60
 msgid "The AI assistants will not be able to quote the site."
 msgstr "Les assistants IA ne pourront pas citer le site."
 
-#: src/Admin/Admin.php:51
+#: src/Admin/Admin.php:65
 msgid ""
 "Google and Bing search are not concerned: they always read the public pages."
 " The account pages are closed to every bot."
@@ -122,54 +122,78 @@ msgstr ""
 "La recherche Google et Bing n'est pas concernée : elles lisent toujours les "
 "pages publiques. Les pages du compte sont fermées à tous les robots."
 
-#: src/Admin/Admin.php:52
-msgid "Default share image"
-msgstr "Image de partage par défaut"
+#: src/Admin/Admin.php:67
+msgid "French"
+msgstr "Français"
 
-#: src/Admin/Admin.php:52
+#: src/Admin/Admin.php:67
+msgid "Arabic"
+msgstr "Arabe"
+
+#: src/Admin/Admin.php:67
+msgid "English"
+msgstr "Anglais"
+
+#: src/Admin/Admin.php:68
+msgid "Share images"
+msgstr "Images de partage"
+
+#: src/Admin/Admin.php:78
+msgid "Choose an image"
+msgstr "Choisir une image"
+
+#: src/Admin/Admin.php:80
+msgid "Image of ReuSteel"
+msgstr "Image de ReuSteel"
+
+#: src/Admin/Admin.php:83
 msgid ""
-"Address of an image of 1200 × 630 pixels, shown when a page without a photo "
-"is shared. Empty: the logo or the icon of the site."
+"Image of 1200 × 630 pixels (JPEG under 300 KB for WhatsApp), shown when a "
+"page without a photo is shared, in the language of the page. Empty: the "
+"French image, then the logo of the site. Listings, companies and services "
+"keep their own photo."
 msgstr ""
-"Adresse d'une image de 1200 × 630 pixels, affichée quand on partage une page"
-" sans photo. Vide : le logo ou l'icône du site."
+"Image de 1200 × 630 pixels (JPEG de moins de 300 Ko pour WhatsApp), affichée"
+" quand on partage une page sans photo, dans la langue de la page. Vide : "
+"l'image française, puis le logo du site. Les annonces, entreprises et "
+"services gardent leur propre photo."
 
-#: src/Admin/Admin.php:53
+#: src/Admin/Admin.php:84
 msgid "Google Search Console"
 msgstr "Google Search Console"
 
-#: src/Admin/Admin.php:53
+#: src/Admin/Admin.php:84
 msgid ""
 "Verification code (method « HTML tag »): paste the code or the whole tag."
 msgstr ""
 "Code de validation (méthode « Balise HTML ») : collez le code ou toute la "
 "balise."
 
-#: src/Admin/Admin.php:54
+#: src/Admin/Admin.php:85
 msgid "Bing Webmaster Tools"
 msgstr "Bing Webmaster Tools"
 
-#: src/Admin/Admin.php:54
+#: src/Admin/Admin.php:85
 msgid ""
 "Verification code (meta tag msvalidate.01): paste the code or the whole tag."
 msgstr ""
 "Code de validation (balise meta msvalidate.01) : collez le code ou toute la "
 "balise."
 
-#: src/Admin/Admin.php:57
+#: src/Admin/Admin.php:88
 msgid "Addresses to give to the search engines"
 msgstr "Adresses à donner aux moteurs de recherche"
 
-#: src/Admin/Admin.php:58
+#: src/Admin/Admin.php:89
 msgid "Sitemap (to submit in Search Console and Bing Webmaster Tools)"
 msgstr ""
 "Plan du site (à soumettre dans Search Console et Bing Webmaster Tools)"
 
-#: src/Admin/Admin.php:58
+#: src/Admin/Admin.php:89
 msgid "llms.txt (description of the site for the AI assistants)"
 msgstr "llms.txt (description du site pour les assistants IA)"
 
-#: src/Admin/Admin.php:67
+#: src/Admin/Admin.php:98
 msgid "You are not allowed to do this."
 msgstr "Vous n'êtes pas autorisé à faire cela."
 

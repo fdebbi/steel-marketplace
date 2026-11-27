@@ -1,5 +1,9 @@
 # Changelog — sm-marketplace
 
+## 0.64.0 — 2026-11-27 (avec sm-seo 0.6.0)
+
+- Pied de page : un lien n'apparaît que si sa page existe et est publiée (`sm_theme_page_ready()`), au lieu d'un lien qui mènerait à l'accueil ; une colonne sans lien n'est pas affichée. Liens construits à partir d'une seule liste (19 liens, 3 colonnes). Le menu du haut n'est pas concerné.
+
 ## 0.63.0 — 2026-11-27 (avec sm-core 0.10.0, sm-seo 0.5.1)
 
 - Pages **Conditions générales d'utilisation** (`/conditions-generales/`) et **Politique de confidentialité** (`/confidentialite/`), maquette validée le 2026-11-27 : version et date, autres langues, bouton pour passer d'un texte à l'autre, articles avec sommaire à droite (replié en haut sur téléphone), fiche de la société, encadré « Une question ? ». Pages créées par l'installation des pages (`templates/legal.php`).

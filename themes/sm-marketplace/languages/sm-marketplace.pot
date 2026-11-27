@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Marketplace 0.63.0\n"
+"Project-Id-Version: SM Marketplace 0.64.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/sm-marketplace\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-27T11:00:56+00:00\n"
+"POT-Creation-Date: 2026-11-27T12:36:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-marketplace\n"
@@ -51,13 +51,13 @@ msgstr ""
 msgid "Buy and sell steel by the kilogram, trade used structures and find fabricators and engineers across Algeria."
 msgstr ""
 
-#: footer.php:20
+#: footer.php:23
 #: header.php:63
 #: header.php:92
 msgid "Marketplaces"
 msgstr ""
 
-#: footer.php:22
+#: footer.php:24
 #: inc/menus.php:16
 #: inc/template-tags.php:310
 #: inc/template-tags.php:826
@@ -66,7 +66,7 @@ msgstr ""
 msgid "Steel products"
 msgstr ""
 
-#: footer.php:23
+#: footer.php:25
 #: inc/menus.php:24
 #: inc/template-tags.php:311
 #: inc/template-tags.php:825
@@ -75,7 +75,7 @@ msgstr ""
 msgid "Steel reuse"
 msgstr ""
 
-#: footer.php:24
+#: footer.php:26
 #: inc/menus.php:32
 #: inc/template-tags.php:312
 #: inc/template-tags.php:827
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Steel buildings"
 msgstr ""
 
-#: footer.php:25
+#: footer.php:27
 #: inc/menus.php:47
 #: inc/template-tags.php:818
 #: inc/template-tags.php:833
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Services"
 msgstr ""
 
-#: footer.php:31
+#: footer.php:30
 #: inc/menus.php:62
 #: inc/template-tags.php:313
 #: inc/template-tags.php:817
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Fabrication & installation"
 msgstr ""
 
-#: footer.php:32
+#: footer.php:31
 #: header.php:78
 #: header.php:108
 #: inc/menus.php:63
@@ -130,7 +130,7 @@ msgstr ""
 msgid "Engineering"
 msgstr ""
 
-#: footer.php:33
+#: footer.php:32
 #: header.php:109
 #: inc/menus.php:64
 #: template-parts/directory.php:35
@@ -140,14 +140,14 @@ msgstr ""
 msgid "Company directory"
 msgstr ""
 
-#: footer.php:34
+#: footer.php:33
 #: inc/menus.php:65
 #: template-parts/directory.php:35
 #: template-parts/directory.php:36
 msgid "Professionals directory"
 msgstr ""
 
-#: footer.php:35
+#: footer.php:34
 #: header.php:27
 #: header.php:110
 #: inc/template-tags.php:813
@@ -156,7 +156,7 @@ msgstr ""
 msgid "Weight calculator"
 msgstr ""
 
-#: footer.php:36
+#: footer.php:35
 #: inc/template-tags.php:814
 #: inc/template-tags.php:829
 #: template-parts/catalogue/family.php:27
@@ -165,7 +165,7 @@ msgstr ""
 msgid "Catalogue of sections"
 msgstr ""
 
-#: footer.php:37
+#: footer.php:36
 #: header.php:28
 #: header.php:111
 #: inc/template-tags.php:815
@@ -175,19 +175,19 @@ msgstr ""
 msgid "Cutting optimiser"
 msgstr ""
 
-#: footer.php:38
+#: footer.php:37
 #: header.php:29
 #: header.php:112
 #: templates/price-index.php:17
 msgid "Price index"
 msgstr ""
 
-#: footer.php:42
+#: footer.php:39
 #: template-parts/dashboard/engineer-files.php:23
 msgid "Platform"
 msgstr ""
 
-#: footer.php:44
+#: footer.php:40
 #: header.php:30
 #: template-parts/dashboard/plan.php:137
 #: templates/pricing.php:34
@@ -195,28 +195,28 @@ msgstr ""
 msgid "Plans"
 msgstr ""
 
-#: footer.php:45
+#: footer.php:41
 #: template-parts/guides/guide.php:32
 #: template-parts/guides/index.php:15
 msgid "Guides"
 msgstr ""
 
-#: footer.php:46
+#: footer.php:42
 #: inc/template-tags.php:912
 #: templates/faq.php:46
 #: templates/faq.php:47
 msgid "Frequently asked questions"
 msgstr ""
 
-#: footer.php:47
+#: footer.php:43
 msgid "General terms"
 msgstr ""
 
-#: footer.php:47
+#: footer.php:44
 msgid "Privacy"
 msgstr ""
 
-#: footer.php:52
+#: footer.php:45
 #: template-parts/components/ai-gate.php:24
 #: template-parts/components/buy-box.php:233
 #: template-parts/components/enquiry-form.php:46
@@ -230,7 +230,7 @@ msgstr ""
 msgid "Create an account"
 msgstr ""
 
-#: footer.php:53
+#: footer.php:46
 #: header.php:31
 #: templates/company-profile.php:230
 #: templates/company-profile.php:245
@@ -240,20 +240,20 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: footer.php:59
+#: footer.php:67
 msgid "Advertised prices are set by sellers and are not official market prices."
 msgstr ""
 
-#: footer.php:64
+#: footer.php:72
 msgid "Quick navigation"
 msgstr ""
 
-#: footer.php:65
+#: footer.php:73
 #: inc/template-tags.php:455
 msgid "Home"
 msgstr ""
 
-#: footer.php:66
+#: footer.php:74
 #: header.php:54
 #: template-parts/components/stock-warehouse.php:132
 #: template-parts/directory.php:53
@@ -264,18 +264,18 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: footer.php:69
+#: footer.php:77
 #: template-parts/header-actions.php:36
 #: templates/dashboard.php:74
 msgid "My missions"
 msgstr ""
 
-#: footer.php:70
+#: footer.php:78
 #: templates/dashboard.php:75
 msgid "Invoicing"
 msgstr ""
 
-#: footer.php:72
+#: footer.php:80
 #: template-parts/components/product-form.php:238
 #: template-parts/components/stock-warehouse.php:67
 #: template-parts/dashboard/publish.php:211
@@ -284,11 +284,11 @@ msgstr ""
 msgid "Publish"
 msgstr ""
 
-#: footer.php:73
+#: footer.php:81
 msgid "Enquiries"
 msgstr ""
 
-#: footer.php:75
+#: footer.php:83
 #: templates/dashboard.php:87
 #: templates/dashboard.php:166
 #: templates/engineer-apply.php:307

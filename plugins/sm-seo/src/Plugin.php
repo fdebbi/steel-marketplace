@@ -30,6 +30,7 @@ final class Plugin {
 		Head::init();
 		Sitemaps::init();
 		Robots::init();
+		add_action( 'admin_init', array( Settings::class, 'seed_images' ) ); // 0.6.0
 		if ( is_admin() ) {
 			Admin\Admin::init();
 		}

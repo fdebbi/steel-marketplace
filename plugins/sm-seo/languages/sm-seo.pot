@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM SEO 0.5.1\n"
+"Project-Id-Version: SM SEO 0.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-seo\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-27T10:59:50+00:00\n"
+"POT-Creation-Date: 2026-11-27T12:36:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-seo\n"
@@ -38,95 +38,115 @@ msgstr ""
 msgid "SM SEO needs the SM Core plugin. Activate it first."
 msgstr ""
 
-#: src/Admin/Admin.php:24
+#: src/Admin/Admin.php:38
 msgid "SEO"
 msgstr ""
 
-#: src/Admin/Admin.php:29
+#: src/Admin/Admin.php:43
 msgid "Search engines and AI"
 msgstr ""
 
-#: src/Admin/Admin.php:32
+#: src/Admin/Admin.php:46
 msgid "Settings saved."
 msgstr ""
 
-#: src/Admin/Admin.php:35
+#: src/Admin/Admin.php:49
 msgid "The search engines are asked not to index the site (Settings → Reading). Untick « Discourage search engines » when the site goes live."
 msgstr ""
 
-#: src/Admin/Admin.php:38
+#: src/Admin/Admin.php:52
 msgid "A robots.txt file exists at the root of the site: it replaces the one written by this plugin. Delete it to use the choice below."
 msgstr ""
 
-#: src/Admin/Admin.php:42
+#: src/Admin/Admin.php:56
 msgid "AI bots"
 msgstr ""
 
-#: src/Admin/Admin.php:44
+#: src/Admin/Admin.php:58
 msgid "Allow the AI search engines (advised)"
 msgstr ""
 
-#: src/Admin/Admin.php:44
+#: src/Admin/Admin.php:58
 msgid "ChatGPT search, Perplexity, Claude… may read and quote the public pages. The bots that collect texts to train AI models are refused."
 msgstr ""
 
-#: src/Admin/Admin.php:45
+#: src/Admin/Admin.php:59
 msgid "Also allow the training of AI models"
 msgstr ""
 
-#: src/Admin/Admin.php:45
+#: src/Admin/Admin.php:59
 msgid "Every bot reads the public pages, including the collection of texts to train models."
 msgstr ""
 
-#: src/Admin/Admin.php:46
+#: src/Admin/Admin.php:60
 msgid "Refuse every AI bot"
 msgstr ""
 
-#: src/Admin/Admin.php:46
+#: src/Admin/Admin.php:60
 msgid "The AI assistants will not be able to quote the site."
 msgstr ""
 
-#: src/Admin/Admin.php:51
+#: src/Admin/Admin.php:65
 msgid "Google and Bing search are not concerned: they always read the public pages. The account pages are closed to every bot."
 msgstr ""
 
-#: src/Admin/Admin.php:52
-msgid "Default share image"
-msgstr ""
-
-#: src/Admin/Admin.php:52
-msgid "Address of an image of 1200 × 630 pixels, shown when a page without a photo is shared. Empty: the logo or the icon of the site."
-msgstr ""
-
-#: src/Admin/Admin.php:53
-msgid "Google Search Console"
-msgstr ""
-
-#: src/Admin/Admin.php:53
-msgid "Verification code (method « HTML tag »): paste the code or the whole tag."
-msgstr ""
-
-#: src/Admin/Admin.php:54
-msgid "Bing Webmaster Tools"
-msgstr ""
-
-#: src/Admin/Admin.php:54
-msgid "Verification code (meta tag msvalidate.01): paste the code or the whole tag."
-msgstr ""
-
-#: src/Admin/Admin.php:57
-msgid "Addresses to give to the search engines"
-msgstr ""
-
-#: src/Admin/Admin.php:58
-msgid "Sitemap (to submit in Search Console and Bing Webmaster Tools)"
-msgstr ""
-
-#: src/Admin/Admin.php:58
-msgid "llms.txt (description of the site for the AI assistants)"
+#: src/Admin/Admin.php:67
+msgid "French"
 msgstr ""
 
 #: src/Admin/Admin.php:67
+msgid "Arabic"
+msgstr ""
+
+#: src/Admin/Admin.php:67
+msgid "English"
+msgstr ""
+
+#: src/Admin/Admin.php:68
+msgid "Share images"
+msgstr ""
+
+#: src/Admin/Admin.php:78
+msgid "Choose an image"
+msgstr ""
+
+#: src/Admin/Admin.php:80
+msgid "Image of ReuSteel"
+msgstr ""
+
+#: src/Admin/Admin.php:83
+msgid "Image of 1200 × 630 pixels (JPEG under 300 KB for WhatsApp), shown when a page without a photo is shared, in the language of the page. Empty: the French image, then the logo of the site. Listings, companies and services keep their own photo."
+msgstr ""
+
+#: src/Admin/Admin.php:84
+msgid "Google Search Console"
+msgstr ""
+
+#: src/Admin/Admin.php:84
+msgid "Verification code (method « HTML tag »): paste the code or the whole tag."
+msgstr ""
+
+#: src/Admin/Admin.php:85
+msgid "Bing Webmaster Tools"
+msgstr ""
+
+#: src/Admin/Admin.php:85
+msgid "Verification code (meta tag msvalidate.01): paste the code or the whole tag."
+msgstr ""
+
+#: src/Admin/Admin.php:88
+msgid "Addresses to give to the search engines"
+msgstr ""
+
+#: src/Admin/Admin.php:89
+msgid "Sitemap (to submit in Search Console and Bing Webmaster Tools)"
+msgstr ""
+
+#: src/Admin/Admin.php:89
+msgid "llms.txt (description of the site for the AI assistants)"
+msgstr ""
+
+#: src/Admin/Admin.php:98
 msgid "You are not allowed to do this."
 msgstr ""
 

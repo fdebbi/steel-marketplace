@@ -175,7 +175,12 @@ final class Context {
 	}
 
 	public static function default_image() {
-		$img = (string) Settings::get( 'default_image' );
+		// 0.6.0: the image of the language of the page, else the French one, else the logo.
+		$lang = function_exists( 'sm_current_language' ) ? sm_current_language() : 'fr';
+		$img  = (string) Settings::get( Settings::image_key( $lang ) );
+		if ( '' === $img ) {
+			$img = (string) Settings::get( 'default_image' );
+		}
 		if ( '' === $img ) {
 			$logo = (int) get_theme_mod( 'custom_logo' );
 			$img  = $logo ? Text::image( $logo, 'full' ) : (string) get_site_icon_url( 512 );
