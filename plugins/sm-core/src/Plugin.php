@@ -32,6 +32,7 @@ final class Plugin {
 		Listings\Index::init();
 		Security\Hardening::init(); // 0.9.0
 		Content\ImageFormat::init(); // 0.9.0
+		Legal\Legal::init(); // 0.10.0
 		Audit\AuditLog::init();
 		Mail\Activity::init();
 		Mail\Contact::init();
@@ -42,6 +43,7 @@ final class Plugin {
 			Admin\Admin::init();
 			Admin\Terms::init();
 			Admin\MailAdmin::init();
+			Admin\LegalAdmin::init(); // 0.10.0
 		}
 
 		/**

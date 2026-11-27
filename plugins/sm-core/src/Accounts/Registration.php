@@ -75,6 +75,7 @@ final class Registration {
 			return new \WP_Error( 'email', $user_id->get_error_message() );
 		}
 		update_user_meta( $user_id, 'sm_phone', $data['phone'] );
+		\SM\Core\Legal\Legal::record_acceptance( $user_id ); // 0.10.0: the box was ticked (validate()).
 		update_user_meta( $user_id, \SM\Core\I18n\Language::META, sm_current_language() );
 
 		$company_id = Companies::create(
@@ -178,7 +179,7 @@ final class Registration {
 		}
 
 		if ( ! Forms::post( 'terms' ) ) {
-			$errors['terms'] = __( 'Accept the terms of use to continue.', 'sm-core' );
+			$errors['terms'] = __( 'Tick the box to accept the terms and the privacy policy.', 'sm-core' );
 		}
 
 		return array(

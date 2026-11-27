@@ -152,3 +152,10 @@ T.update({  # 0.5.0: frequently asked questions (sm-guides 0.2.0).
 'Frequently asked questions': ('Questions fréquentes', 'الأسئلة الشائعة'),
 'Answers on how ReuSteel works: accounts, listings, requests for quotation, engineering studies, tools and languages. No market price.': ('Réponses sur le fonctionnement de ReuSteel : comptes, annonces, demandes de devis, études d\'ingénierie, outils et langues. Aucun prix du marché.', 'إجابات عن طريقة عمل ReuSteel: الحسابات، الإعلانات، طلبات عروض الأسعار، الدراسات الهندسية، الأدوات واللغات. لا أسعار سوق.'),
 })
+
+T.update({  # 0.5.1: legal pages (sm-core 0.10.0).
+'Terms of use': ("Conditions générales d'utilisation", 'الشروط العامة للاستخدام'),
+'Privacy policy': ('Politique de confidentialité', 'سياسة الخصوصية'),
+'Terms of use of ReuSteel: accounts, listings, requests for quotation, engineering, tools, plans, liability and Algerian law.': ("Conditions générales d'utilisation de ReuSteel : comptes, annonces, demandes de devis, ingénierie, outils, formules, responsabilité et droit algérien.", 'الشروط العامة لاستخدام ReuSteel: الحسابات، الإعلانات، طلبات عروض الأسعار، الهندسة، الأدوات، الصيغ، المسؤولية والقانون الجزائري.'),
+'How ReuSteel protects your personal data under Algerian law 18-07: data collected, who sees it, retention, security and your rights.': ('Comment ReuSteel protège vos données personnelles selon la loi algérienne 18-07 : données collectées, qui les voit, conservation, sécurité et vos droits.', 'كيف تحمي ReuSteel معطياتك الشخصية وفق القانون الجزائري 18-07: المعطيات المجمعة، من يراها، الحفظ، الأمان وحقوقك.'),
+})

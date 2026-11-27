@@ -292,7 +292,7 @@ $cfg   = array(
 						<li><?php esc_html_e( 'Your documents and studies stay confidential.', 'sm-marketplace' ); ?></li>
 					</ul>
 				</div>
-				<label class="wz__check"><input type="checkbox" name="terms" value="1" required <?php checked( (bool) sm_theme_old( 'terms' ) ); ?>><span><?php esc_html_e( 'I accept the terms of use and the rules of partner engineers.', 'sm-marketplace' ); ?></span></label>
+				<label class="wz__check"><input type="checkbox" name="terms" value="1" required <?php checked( (bool) sm_theme_old( 'terms' ) ); ?>><span><?php echo sm_legal_consent_text(); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in the function. ?> <?php esc_html_e( 'I also accept the rules of partner engineers above.', 'sm-marketplace' ); ?></span></label>
 				<?php sm_theme_error( 'terms' ); ?>
 			</section>
 

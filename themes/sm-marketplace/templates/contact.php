@@ -78,6 +78,7 @@ $sent = ! $old && (bool) array_filter( sm_theme_notice_list(), static fn( $n ) =
 				<div class="smp-actions">
 					<button class="sm-btn sm-btn--accent" type="submit"><?php sm_icon( 'mail' ); ?><?php esc_html_e( 'Send the message', 'sm-marketplace' ); ?></button>
 				</div>
+				<?php sm_legal_notice(); // 0.63.0 ?>
 			</form>
 		<?php endif; ?>
 	</div>

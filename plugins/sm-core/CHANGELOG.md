@@ -1,5 +1,14 @@
 # Changelog — sm-core
 
+## 0.10.0 — 2026-11-27 (avec le thème 0.63.0 et sm-seo 0.5.1)
+
+- **Conditions générales d'utilisation** (15 articles) et **Politique de confidentialité** (12 articles, loi 18-07 modifiée par la loi 25-11), textes validés le 2026-11-27 en français, arabe et anglais (`data/legal/`). Ils sont écrits une seule fois dans les pages « Conditions générales » et « Confidentialité » créées par le thème ; un texte modifié n'est jamais réécrit.
+- **SM → Informations légales** : société, forme juridique, RC, NIF, siège, ville du tribunal, responsable de la publication, e-mail de contact, délégué à la protection des données et son e-mail, n° de récépissé ANPDP, référence de l'autorisation de transfert, hébergeur, version et date des textes. Une case vide n'est pas affichée ; sans nom de société : « ReuSteel » ; sans e-mail : contact@reusteel.com. Élision « tribunaux d'Alger ».
+- **Texte des deux pages** modifiable dans l'éditeur de chaque page (Markdown, 3 langues, mots remplacés `{card}`, `{company}`, `{contact_email}`, `{court}`, `{dpo_line}`, `{dpo_email}`, `{anpdp}`, `{transfer}`, `{host}`, liens `[texte](page:clé)`) ; une langue vide affiche le texte français. En arabe, les mots latins et les numéros de loi sont isolés (`<bdi>`).
+- **Inscription** : la case obligatoire enregistre dans le compte la version acceptée et sa date (`sm_terms`), visibles dans la fiche de l'utilisateur ; les comptes plus anciens : « pas encore acceptées ». Nouveau message d'erreur : « Cochez la case pour accepter les conditions et la politique de confidentialité. »
+- `SM\Core\Content\Markdown` (même règles que SM Guides) ; donnée `legal` (`key` : terms, privacy).
+- Tests : `tests/run.php` (204), `tests/e2e-legal.py` (36).
+
 ## 0.9.0 — 2026-11-21 (avec sm-products 0.23.0, sm-services 0.4.0 et le thème 0.58.0)
 
 - **Adresses lisibles des annonces** : `/annonce/ipe-200-s275jr-msila-552/`. Le nom est fait **une fois**, à la première publication (colonne `slug` de l'index des annonces, base v7), et ne change plus ; le numéro à la fin trouve l'annonce. `/annonce/552/`, `?id=552` et un ancien nom redirigent en **301** vers l'adresse lisible, dans la langue de la page. Les annonces publiées avant reçoivent leur nom la première fois que leur adresse est demandée (filtre `sm_listing_slug_source`). Brouillon, en attente, au magasin : pas de nom, l'adresse reste `/annonce/{numéro}/`.

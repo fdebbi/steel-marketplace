@@ -519,8 +519,10 @@ function sm_date( $ymd ) {
 	$months = array(
 		'fr' => array( 'janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.' ),
 		'ar' => array( 'جانفي', 'فيفري', 'مارس', 'أفريل', 'ماي', 'جوان', 'جويلية', 'أوت', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر' ),
+		'en' => array( 'Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.' ), // 0.63.0
 	);
-	$lang = 'ar' === sm_theme_current_language() ? 'ar' : 'fr';
+	$lang = sm_theme_current_language();
+	$lang = isset( $months[ $lang ] ) ? $lang : 'fr';
 	return (int) $m[3] . "\u{00A0}" . $months[ $lang ][ (int) $m[2] - 1 ] . "\u{00A0}" . $m[1];
 }
 
@@ -916,4 +918,67 @@ function sm_faq_block( $key ) {
 		sm_faq_question( $q );
 	}
 	echo '</section>';
+}
+
+/** HTML allowed in the texts of the legal pages (0.63.0, sm-core 0.10.0). */
+function sm_legal_kses( $html ) {
+	return wp_kses(
+		(string) $html,
+		array(
+			'h2'         => array( 'id' => true ),
+			'h3'         => array(),
+			'p'          => array(),
+			'ul'         => array( 'class' => true ),
+			'ol'         => array(),
+			'li'         => array(),
+			'strong'     => array(),
+			'em'         => array(),
+			'a'          => array( 'href' => true ),
+			'bdi'        => array(),
+			'br'         => array(),
+			'blockquote' => array(),
+			'dl'         => array( 'class' => true ),
+			'dt'         => array(),
+			'dd'         => array(),
+			'div'        => array( 'class' => true ),
+			'table'      => array(),
+			'thead'      => array(),
+			'tbody'      => array(),
+			'tr'         => array(),
+			'th'         => array( 'scope' => true ),
+			'td'         => array(),
+		)
+	);
+}
+
+/** Address of a legal page ('terms' or 'privacy'), '' when it does not exist yet. */
+function sm_legal_url( $key ) {
+	$map = (array) get_option( 'sm_theme_pages', array() );
+	$id  = (int) ( $map[ $key ] ?? 0 );
+	return $id && 'publish' === get_post_status( $id ) ? (string) get_permalink( $id ) : '';
+}
+
+/** A link to a legal page, opened in a new tab (the text alone when the page does not exist). */
+function sm_legal_link( $key, $text ) {
+	$url = sm_legal_url( $key );
+	return '' === $url ? esc_html( $text ) : '<a href="' . esc_url( $url ) . '" target="_blank" rel="noopener">' . esc_html( $text ) . '</a>';
+}
+
+/** Text of the required checkbox of the sign-up forms (0.63.0). */
+function sm_legal_consent_text() {
+	return sprintf(
+		/* translators: 1: link "Terms of use", 2: link "Privacy policy". */
+		esc_html__( 'I have read and accept the %1$s and the %2$s, and I confirm that I am at least 18 years old.', 'sm-marketplace' ),
+		sm_legal_link( 'terms', __( 'Terms of use', 'sm-marketplace' ) ),
+		sm_legal_link( 'privacy', __( 'Privacy policy', 'sm-marketplace' ) )
+	);
+}
+
+/** Information line under a form that collects personal data (0.63.0). */
+function sm_legal_notice() {
+	echo '<p class="sm-help sm-legal__notice">' . sprintf(
+		/* translators: %s: link "Privacy policy". */
+		esc_html__( 'Your data is only used to handle your request. See the %s.', 'sm-marketplace' ),
+		sm_legal_link( 'privacy', __( 'Privacy policy', 'sm-marketplace' ) )
+	) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above.
 }

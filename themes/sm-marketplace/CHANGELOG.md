@@ -1,5 +1,14 @@
 # Changelog — sm-marketplace
 
+## 0.63.0 — 2026-11-27 (avec sm-core 0.10.0, sm-seo 0.5.1)
+
+- Pages **Conditions générales d'utilisation** (`/conditions-generales/`) et **Politique de confidentialité** (`/confidentialite/`), maquette validée le 2026-11-27 : version et date, autres langues, bouton pour passer d'un texte à l'autre, articles avec sommaire à droite (replié en haut sur téléphone), fiche de la société, encadré « Une question ? ». Pages créées par l'installation des pages (`templates/legal.php`).
+- **Inscription** et **Devenir ingénieur partenaire** : « J'ai lu et j'accepte les Conditions générales d'utilisation et la Politique de confidentialité, et je confirme avoir au moins 18 ans. » (liens dans un nouvel onglet, jamais cochée d'avance).
+- Ligne « Vos données servent seulement à traiter votre demande. Voir la Politique de confidentialité. » sous le formulaire de contact et la demande d'étude.
+- Pied de page (Plateforme) : *Conditions générales* · *Confidentialité*.
+- `sm_date()` : mois en anglais sur les pages /en/.
+- Styles `assets/css/43-legal.css` ; nouvelles chaînes traduites (FR, AR).
+
 ## 0.62.0 — 2026-11-26 (avec sm-guides 0.2.0, sm-seo 0.5.0)
 
 - Questions fréquentes (maquette validée le 2026-11-26) : page `/faq/` (thèmes en liens vers leur partie, questions qui s'ouvrent d'un clic ou au clavier, sans script ; encadré « Vous ne trouvez pas votre réponse ? » avec « Contacter l'équipe » ; liste des guides ; sur téléphone, les encadrés passent sous les questions). Page « Questions fréquentes » créée par l'installation des pages (`templates/faq.php`).

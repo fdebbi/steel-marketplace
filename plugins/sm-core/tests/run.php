@@ -607,6 +607,50 @@ $fmt::begin( 'files' );
 sm_assert( array() === $fmt::output_format( array() ), 'attached files: sent as they are' );
 $fmt::end();
 
+sm_section( 'Legal pages (0.10.0)' );
+use SM\Core\Legal\Legal;
+$saved_legal = get_option( Legal::OPTION, null );
+sm_assert( Legal::page_id( 'terms' ) && Legal::page_id( 'privacy' ), 'the two pages exist (theme)' );
+foreach ( array( 'terms', 'privacy' ) as $k ) {
+	$tx = Legal::texts( $k );
+	sm_assert( '' !== $tx['fr'] && '' !== $tx['ar'] && '' !== $tx['en'], "$k: texts written in French, Arabic and English" );
+}
+sm_assert( 15 === substr_count( Legal::default_text( 'terms', 'fr' ), "\n## " ) + 1 && 12 === substr_count( Legal::default_text( 'privacy', 'ar' ), "\n## " ) + 1, '15 articles of the terms, 12 of the policy' );
+delete_option( Legal::OPTION );
+$r = Legal::render( 'terms', 'fr' );
+sm_assert( 15 === count( $r['toc'] ) && 'Éditeur du site' === $r['toc'][0]['title'], 'table of contents: 15 articles, without « Article 1 — »' );
+sm_assert( false !== strpos( $r['html'], '<dd>ReuSteel</dd>' ) && false !== strpos( $r['html'], '<dd>contact@reusteel.com</dd>' ) && false === strpos( $r['html'], 'Registre du commerce' ), 'empty fields: ReuSteel and contact@reusteel.com, no empty line' );
+sm_assert( false === strpos( $r['html'], '{' ), 'no word left between braces' );
+sm_assert( false !== strpos( $r['html'], "tribunaux du lieu du siège de l'éditeur" ) || false !== strpos( $r['html'], 'tribunaux du lieu du siège de l&#039;éditeur' ), 'no city: courts of the registered office' );
+sm_assert( (bool) preg_match( '#<a href="[^"]+/confidentialite/">Politique de confidentialité</a>#u', $r['html'] ), 'link to the privacy policy' );
+Legal::save_info( array( 'company' => 'ReuSteel SARL', 'legal_form' => 'SARL', 'rc' => '16/00-1234567B26', 'court_city' => 'Alger', 'dpo' => 'Le gérant', 'dpo_email' => 'dpo@reusteel.com', 'anpdp' => 'R-123', 'transfer' => 'A-45', 'version' => '2', 'date' => '2026-12-01' ) );
+$r = Legal::render( 'terms', 'fr' );
+sm_assert( false !== strpos( $r['html'], '<dt>Forme juridique</dt><dd>SARL</dd>' ) && false !== strpos( $r['html'], '16/00-1234567B26' ) && false !== strpos( $r['html'], 'tribunaux d’Alger' ), 'filled fields: in the box and article 15' );
+$p = Legal::render( 'privacy', 'fr' );
+sm_assert( false !== strpos( $p['html'], 'Le gérant' ) && false !== strpos( $p['html'], 'dpo@reusteel.com' ) && false !== strpos( $p['html'], 'R-123' ) && false !== strpos( $p['html'], 'A-45' ), 'policy: officer, ANPDP receipt, transfer authorisation' );
+$a = Legal::render( 'privacy', 'ar' );
+sm_assert( 'ar' === $a['lang'] && false !== strpos( $a['html'], '<bdi>18-07</bdi>' ) && false !== strpos( $a['html'], '<bdi>dpo@reusteel.com</bdi>' ), 'Arabic: law numbers and addresses isolated (<bdi>)' );
+$e = Legal::render( 'terms', 'en' );
+sm_assert( 'en' === $e['lang'] && false !== strpos( $e['html'], 'courts of Alger' ), 'English text' );
+$d = \SM\Core\I18n\Language::with_language( 'ar', static fn() => Legal::data( null, array( 'key' => 'privacy' ) ) );
+sm_assert( 'سياسة الخصوصية' === $d['title'] && '2' === $d['version'] && 'terms' === $d['other']['key'] && '' !== $d['other']['url'], 'data: title in Arabic, version, the other page' );
+$pid = Legal::page_id( 'terms' );
+$keep = Legal::texts( 'terms' );
+Legal::save_texts( $pid, array( 'fr' => $keep['fr'], 'ar' => '', 'en' => $keep['en'] ) );
+$f = Legal::render( 'terms', 'ar' );
+sm_assert( $f['fallback'] && 'fr' === $f['lang'], 'Arabic text empty: French text shown, marked' );
+delete_option( Legal::SEED );
+sm_assert( 0 === Legal::seed() && '' === Legal::texts( 'terms' )['ar'], 'installation again: a text is never written over' );
+Legal::save_texts( $pid, $keep );
+$u = wp_insert_user( array( 'user_login' => 'legal-' . wp_generate_password( 6, false ), 'user_pass' => wp_generate_password(), 'user_email' => 'legal' . wp_rand() . '@example.test' ) );
+sm_assert( null === Legal::acceptance( $u ), 'old account: not accepted' );
+Legal::record_acceptance( $u );
+$acc = Legal::acceptance( $u );
+sm_assert( $acc && '2' === $acc['version'] && (bool) preg_match( '/^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d$/', $acc['at'] ), 'acceptance kept: version and date' );
+require_once ABSPATH . 'wp-admin/includes/user.php';
+wp_delete_user( $u );
+null === $saved_legal ? delete_option( Legal::OPTION ) : update_option( Legal::OPTION, $saved_legal, false );
+
 sm_test_cleanup();
 
 $t = $GLOBALS['sm_t'];

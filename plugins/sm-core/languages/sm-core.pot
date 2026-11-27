@@ -2,14 +2,14 @@
 # This file is distributed under the Proprietary.
 msgid ""
 msgstr ""
-"Project-Id-Version: SM Core 0.8.5\n"
+"Project-Id-Version: SM Core 0.10.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sm-core\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-18T18:30:03+00:00\n"
+"POT-Creation-Date: 2026-11-27T10:59:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sm-core\n"
@@ -167,23 +167,23 @@ msgid "Enter a valid phone number."
 msgstr ""
 
 #: src/Accounts/CompanyForms.php:41
-#: src/Accounts/Registration.php:157
+#: src/Accounts/Registration.php:158
 #: src/Rest/Api.php:196
 msgid "Choose your wilaya."
 msgstr ""
 
 #: src/Accounts/CompanyForms.php:45
-#: src/Accounts/Registration.php:169
+#: src/Accounts/Registration.php:170
 msgid "Enter a valid e-mail address."
 msgstr ""
 
 #: src/Accounts/CompanyForms.php:57
-#: src/Accounts/Registration.php:138
+#: src/Accounts/Registration.php:139
 msgid "Choose at least one type of company."
 msgstr ""
 
 #: src/Accounts/CompanyForms.php:57
-#: src/Accounts/Registration.php:138
+#: src/Accounts/Registration.php:139
 msgid "Choose at least one trade."
 msgstr ""
 
@@ -192,7 +192,7 @@ msgid "Company profile saved."
 msgstr ""
 
 #: src/Accounts/CompanyForms.php:118
-#: src/Accounts/Registration.php:152
+#: src/Accounts/Registration.php:153
 msgid "Enter your full name."
 msgstr ""
 
@@ -201,7 +201,7 @@ msgid "Your current password is not correct."
 msgstr ""
 
 #: src/Accounts/CompanyForms.php:133
-#: src/Accounts/Registration.php:177
+#: src/Accounts/Registration.php:178
 msgid "The password must have at least 10 characters."
 msgstr ""
 
@@ -273,24 +273,24 @@ msgstr ""
 msgid "Welcome! Your account is created."
 msgstr ""
 
-#: src/Accounts/Registration.php:148
+#: src/Accounts/Registration.php:149
 msgid "Enter the company name (2 to 120 characters)."
 msgstr ""
 
-#: src/Accounts/Registration.php:162
+#: src/Accounts/Registration.php:163
 msgid "Enter a valid Algerian mobile number (05, 06 or 07 followed by 8 digits)."
 msgstr ""
 
-#: src/Accounts/Registration.php:164
+#: src/Accounts/Registration.php:165
 msgid "This phone number is already used by another account."
 msgstr ""
 
-#: src/Accounts/Registration.php:171
+#: src/Accounts/Registration.php:172
 msgid "An account already exists with this e-mail. Sign in or reset your password."
 msgstr ""
 
-#: src/Accounts/Registration.php:181
-msgid "Accept the terms of use to continue."
+#: src/Accounts/Registration.php:182
+msgid "Tick the box to accept the terms and the privacy policy."
 msgstr ""
 
 #: src/Admin/Admin.php:44
@@ -331,6 +331,7 @@ msgid "Activity journal"
 msgstr ""
 
 #: src/Admin/Admin.php:65
+#: src/Admin/LegalAdmin.php:67
 #: src/Admin/MailAdmin.php:74
 #: src/Admin/Terms.php:233
 msgid "Saved."
@@ -642,6 +643,127 @@ msgstr ""
 #: src/Admin/Admin.php:370
 #: src/Admin/MailAdmin.php:191
 msgid "User"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:30
+#: src/Admin/LegalAdmin.php:65
+msgid "Legal information"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:36
+msgid "Publisher of the site"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:37
+msgid "Company name"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:38
+msgid "Legal form"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:39
+msgid "Trade register number"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:40
+msgid "NIF"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:41
+msgid "Address of the registered office"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:42
+msgid "City of the court"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:42
+msgid "city of the registered office"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:42
+msgid "Article 15 of the terms: “the courts of …”."
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:43
+msgid "Publication director"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:44
+msgid "Contact e-mail"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:46
+msgid "Data protection (law 18-07)"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:47
+msgid "Data protection officer"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:47
+msgid "name or position"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:48
+msgid "E-mail of the officer"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:49
+msgid "ANPDP receipt number"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:50
+msgid "Reference of the transfer authorisation"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:50
+msgid "Article 5 of the policy (data sent outside Algeria)."
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:51
+msgid "Host of the site"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:53
+msgid "Version of the texts"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:54
+msgid "Version"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:54
+msgid "Change it after an important change: the version accepted is kept in each account."
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:55
+msgid "In force from"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:69
+msgid "This information is shown in the Terms of use and the Privacy policy (French, Arabic, English). An empty field is not shown; without a company name the site writes “ReuSteel”, without an e-mail “contact@reusteel.com”."
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:95
+msgid "Texts of the pages (French, Arabic, English):"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:103
+msgid "Not allowed."
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:123
+msgid "Text of the page"
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:132
+msgid "Markdown: ## Article (a section of the table of contents), **bold**, *italic*, - item of a list, | a | b | for a table, [text](page:contact) for a page of the site. Words replaced from SM → Legal information: {card} {company} {contact_email} {court} {dpo_line} {dpo_email} {anpdp} {transfer} {host}. An empty language shows the French text."
+msgstr ""
+
+#: src/Admin/LegalAdmin.php:136
+msgid "Legal information (company, data protection, version)"
 msgstr ""
 
 #: src/Admin/MailAdmin.php:44
@@ -1246,17 +1368,17 @@ msgid "The image must be a JPG, PNG or WEBP file."
 msgstr ""
 
 #. translators: %d: maximum number of files.
-#: src/Content/Media.php:75
+#: src/Content/Media.php:76
 msgid "Only the first %d files were kept."
 msgstr ""
 
 #. translators: 1: file name, 2: size limit in MB.
-#: src/Content/Media.php:80
+#: src/Content/Media.php:81
 msgid "%1$s was not added: files must be smaller than %2$s MB."
 msgstr ""
 
 #. translators: %s: file name.
-#: src/Content/Media.php:86
+#: src/Content/Media.php:87
 msgid "%s was not added: this file type is not accepted."
 msgstr ""
 
@@ -1282,6 +1404,23 @@ msgstr ""
 
 #: src/Enquiries/Enquiries.php:158
 msgid "Enquiry not found."
+msgstr ""
+
+#: src/Legal/Legal.php:375
+msgid "Terms and privacy policy"
+msgstr ""
+
+#: src/Legal/Legal.php:375
+msgid "Accepted"
+msgstr ""
+
+#. translators: 1: version of the texts, 2: date and time.
+#: src/Legal/Legal.php:378
+msgid "Version %1$s, on %2$s"
+msgstr ""
+
+#: src/Legal/Legal.php:380
+msgid "Not accepted yet (account created before the checkbox)."
 msgstr ""
 
 #. translators: %s: platform name.

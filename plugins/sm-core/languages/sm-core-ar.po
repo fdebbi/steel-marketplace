@@ -163,20 +163,20 @@ msgstr "أدخل اسم المؤسسة أو المكتب (من 2 إلى 120 حر
 msgid "Enter a valid phone number."
 msgstr "أدخل رقم هاتف صحيحا."
 
-#: src/Accounts/CompanyForms.php:41 src/Accounts/Registration.php:157
+#: src/Accounts/CompanyForms.php:41 src/Accounts/Registration.php:158
 #: src/Rest/Api.php:196
 msgid "Choose your wilaya."
 msgstr "اختر ولايتك."
 
-#: src/Accounts/CompanyForms.php:45 src/Accounts/Registration.php:169
+#: src/Accounts/CompanyForms.php:45 src/Accounts/Registration.php:170
 msgid "Enter a valid e-mail address."
 msgstr "أدخل بريدا إلكترونيا صحيحا."
 
-#: src/Accounts/CompanyForms.php:57 src/Accounts/Registration.php:138
+#: src/Accounts/CompanyForms.php:57 src/Accounts/Registration.php:139
 msgid "Choose at least one type of company."
 msgstr "اختر نوع شركة واحدا على الأقل."
 
-#: src/Accounts/CompanyForms.php:57 src/Accounts/Registration.php:138
+#: src/Accounts/CompanyForms.php:57 src/Accounts/Registration.php:139
 msgid "Choose at least one trade."
 msgstr "اختر مهنة واحدة على الأقل."
 
@@ -184,7 +184,7 @@ msgstr "اختر مهنة واحدة على الأقل."
 msgid "Company profile saved."
 msgstr "تم حفظ ملف المؤسسة."
 
-#: src/Accounts/CompanyForms.php:118 src/Accounts/Registration.php:152
+#: src/Accounts/CompanyForms.php:118 src/Accounts/Registration.php:153
 msgid "Enter your full name."
 msgstr "أدخل اسمك الكامل."
 
@@ -192,7 +192,7 @@ msgstr "أدخل اسمك الكامل."
 msgid "Your current password is not correct."
 msgstr "كلمة المرور الحالية غير صحيحة."
 
-#: src/Accounts/CompanyForms.php:133 src/Accounts/Registration.php:177
+#: src/Accounts/CompanyForms.php:133 src/Accounts/Registration.php:178
 msgid "The password must have at least 10 characters."
 msgstr "يجب أن تتكون كلمة المرور من 10 أحرف على الأقل."
 
@@ -268,28 +268,28 @@ msgstr "تسجيلات كثيرة من هذا الاتصال. أعد المحا�
 msgid "Welcome! Your account is created."
 msgstr "مرحبا! تم إنشاء حسابك."
 
-#: src/Accounts/Registration.php:148
+#: src/Accounts/Registration.php:149
 msgid "Enter the company name (2 to 120 characters)."
 msgstr "أدخل اسم الشركة (من 2 إلى 120 حرفا)."
 
-#: src/Accounts/Registration.php:162
+#: src/Accounts/Registration.php:163
 msgid ""
 "Enter a valid Algerian mobile number (05, 06 or 07 followed by 8 digits)."
 msgstr "أدخل رقم هاتف نقال جزائري صحيحا (05 أو 06 أو 07 متبوعا بـ 8 أرقام)."
 
-#: src/Accounts/Registration.php:164
+#: src/Accounts/Registration.php:165
 msgid "This phone number is already used by another account."
 msgstr "هذا الرقم مستعمل في حساب آخر."
 
-#: src/Accounts/Registration.php:171
+#: src/Accounts/Registration.php:172
 msgid ""
 "An account already exists with this e-mail. Sign in or reset your password."
 msgstr ""
 "يوجد حساب بهذا البريد الإلكتروني. سجّل الدخول أو أعد تعيين كلمة المرور."
 
-#: src/Accounts/Registration.php:181
-msgid "Accept the terms of use to continue."
-msgstr "وافق على شروط الاستعمال للمتابعة."
+#: src/Accounts/Registration.php:182
+msgid "Tick the box to accept the terms and the privacy policy."
+msgstr "حدّد الخانة للموافقة على الشروط وسياسة الخصوصية."
 
 #: src/Admin/Admin.php:44
 msgid "Overview"
@@ -323,7 +323,8 @@ msgstr "الإعدادات"
 msgid "Activity journal"
 msgstr "سجل النشاط"
 
-#: src/Admin/Admin.php:65 src/Admin/MailAdmin.php:74 src/Admin/Terms.php:233
+#: src/Admin/Admin.php:65 src/Admin/LegalAdmin.php:67
+#: src/Admin/MailAdmin.php:74 src/Admin/Terms.php:233
 msgid "Saved."
 msgstr "تم الحفظ."
 
@@ -647,6 +648,144 @@ msgstr "النشاط"
 #: src/Admin/Admin.php:370 src/Admin/MailAdmin.php:191
 msgid "User"
 msgstr "المستخدم"
+
+#: src/Admin/LegalAdmin.php:30 src/Admin/LegalAdmin.php:65
+msgid "Legal information"
+msgstr "المعلومات القانونية"
+
+#: src/Admin/LegalAdmin.php:36
+msgid "Publisher of the site"
+msgstr "ناشر الموقع"
+
+#: src/Admin/LegalAdmin.php:37
+msgid "Company name"
+msgstr "اسم الشركة"
+
+#: src/Admin/LegalAdmin.php:38
+msgid "Legal form"
+msgstr "الشكل القانوني"
+
+#: src/Admin/LegalAdmin.php:39
+msgid "Trade register number"
+msgstr "رقم السجل التجاري"
+
+#: src/Admin/LegalAdmin.php:40
+msgid "NIF"
+msgstr "NIF"
+
+#: src/Admin/LegalAdmin.php:41
+msgid "Address of the registered office"
+msgstr "عنوان المقر"
+
+#: src/Admin/LegalAdmin.php:42
+msgid "City of the court"
+msgstr "مدينة المحكمة"
+
+#: src/Admin/LegalAdmin.php:42
+msgid "city of the registered office"
+msgstr "مدينة المقر"
+
+#: src/Admin/LegalAdmin.php:42
+msgid "Article 15 of the terms: “the courts of …”."
+msgstr "المادة 15 من الشروط: «محاكم …»."
+
+#: src/Admin/LegalAdmin.php:43
+msgid "Publication director"
+msgstr "مسؤول النشر"
+
+#: src/Admin/LegalAdmin.php:44
+msgid "Contact e-mail"
+msgstr "البريد الإلكتروني للاتصال"
+
+#: src/Admin/LegalAdmin.php:46
+msgid "Data protection (law 18-07)"
+msgstr "حماية المعطيات (القانون 18-07)"
+
+#: src/Admin/LegalAdmin.php:47
+msgid "Data protection officer"
+msgstr "مندوب حماية المعطيات"
+
+#: src/Admin/LegalAdmin.php:47
+msgid "name or position"
+msgstr "الاسم أو الوظيفة"
+
+#: src/Admin/LegalAdmin.php:48
+msgid "E-mail of the officer"
+msgstr "البريد الإلكتروني للمندوب"
+
+#: src/Admin/LegalAdmin.php:49
+msgid "ANPDP receipt number"
+msgstr "رقم وصل ANPDP"
+
+#: src/Admin/LegalAdmin.php:50
+msgid "Reference of the transfer authorisation"
+msgstr "مرجع ترخيص النقل"
+
+#: src/Admin/LegalAdmin.php:50
+msgid "Article 5 of the policy (data sent outside Algeria)."
+msgstr "المادة 5 من السياسة (المعطيات المرسلة خارج الجزائر)."
+
+#: src/Admin/LegalAdmin.php:51
+msgid "Host of the site"
+msgstr "مستضيف الموقع"
+
+#: src/Admin/LegalAdmin.php:53
+msgid "Version of the texts"
+msgstr "إصدار النصوص"
+
+#: src/Admin/LegalAdmin.php:54
+msgid "Version"
+msgstr "الإصدار"
+
+#: src/Admin/LegalAdmin.php:54
+msgid ""
+"Change it after an important change: the version accepted is kept in each "
+"account."
+msgstr ""
+"غيّره بعد أي تعديل مهم: يُحفظ الإصدار الذي تمت الموافقة عليه في كل حساب."
+
+#: src/Admin/LegalAdmin.php:55
+msgid "In force from"
+msgstr "ساري ابتداءً من"
+
+#: src/Admin/LegalAdmin.php:69
+msgid ""
+"This information is shown in the Terms of use and the Privacy policy "
+"(French, Arabic, English). An empty field is not shown; without a company "
+"name the site writes “ReuSteel”, without an e-mail “contact@reusteel.com”."
+msgstr ""
+"تظهر هذه المعلومات في الشروط العامة وسياسة الخصوصية (الفرنسية، العربية، "
+"الإنجليزية). لا تُعرض الخانة الفارغة؛ دون اسم شركة يكتب الموقع «ReuSteel»، "
+"ودون بريد إلكتروني «contact@reusteel.com»."
+
+#: src/Admin/LegalAdmin.php:95
+msgid "Texts of the pages (French, Arabic, English):"
+msgstr "نصوص الصفحات (الفرنسية، العربية، الإنجليزية):"
+
+#: src/Admin/LegalAdmin.php:103
+msgid "Not allowed."
+msgstr "غير مسموح."
+
+#: src/Admin/LegalAdmin.php:123
+msgid "Text of the page"
+msgstr "نص الصفحة"
+
+#: src/Admin/LegalAdmin.php:132
+msgid ""
+"Markdown: ## Article (a section of the table of contents), **bold**, "
+"*italic*, - item of a list, | a | b | for a table, [text](page:contact) for "
+"a page of the site. Words replaced from SM → Legal information: {card} "
+"{company} {contact_email} {court} {dpo_line} {dpo_email} {anpdp} {transfer} "
+"{host}. An empty language shows the French text."
+msgstr ""
+"Markdown: ## مادة (جزء من الفهرس)، **عريض**، *مائل*، - عنصر قائمة، | a | b |"
+" لجدول، [نص](page:contact) لصفحة من الموقع. كلمات تُستبدل من «المعلومات "
+"القانونية»: {card} {company} {contact_email} {court} {dpo_line} {dpo_email} "
+"{anpdp} {transfer} {host}. اللغة الفارغة تعرض النص الفرنسي."
+
+#: src/Admin/LegalAdmin.php:136
+msgid "Legal information (company, data protection, version)"
+msgstr "المعلومات القانونية (الشركة، حماية المعطيات، الإصدار)"
 
 #: src/Admin/MailAdmin.php:44 src/Admin/MailAdmin.php:100
 msgid "E-mails"
@@ -1313,17 +1452,17 @@ msgid "The image must be a JPG, PNG or WEBP file."
 msgstr "يجب أن تكون الصورة ملف JPG أو PNG أو WEBP."
 
 #. translators: %d: maximum number of files.
-#: src/Content/Media.php:75
+#: src/Content/Media.php:76
 msgid "Only the first %d files were kept."
 msgstr "احتُفظ بأول %d ملفات فقط."
 
 #. translators: 1: file name, 2: size limit in MB.
-#: src/Content/Media.php:80
+#: src/Content/Media.php:81
 msgid "%1$s was not added: files must be smaller than %2$s MB."
 msgstr "لم تتم إضافة %1$s: يجب أن يكون حجم الملفات أقل من %2$s MB."
 
 #. translators: %s: file name.
-#: src/Content/Media.php:86
+#: src/Content/Media.php:87
 msgid "%s was not added: this file type is not accepted."
 msgstr "لم تتم إضافة %s: نوع الملف غير مقبول."
 
@@ -1351,6 +1490,23 @@ msgstr "تم إرسال استفسارك. ستتواصل معك المؤسسة �
 #: src/Enquiries/Enquiries.php:158
 msgid "Enquiry not found."
 msgstr "الاستفسار غير موجود."
+
+#: src/Legal/Legal.php:375
+msgid "Terms and privacy policy"
+msgstr "الشروط وسياسة الخصوصية"
+
+#: src/Legal/Legal.php:375
+msgid "Accepted"
+msgstr "تمت الموافقة"
+
+#. translators: 1: version of the texts, 2: date and time.
+#: src/Legal/Legal.php:378
+msgid "Version %1$s, on %2$s"
+msgstr "الإصدار %1$s، بتاريخ %2$s"
+
+#: src/Legal/Legal.php:380
+msgid "Not accepted yet (account created before the checkbox)."
+msgstr "لم تتم الموافقة بعد (حساب أُنشئ قبل خانة الموافقة)."
 
 #. translators: %s: platform name.
 #: src/Mail/Activity.php:72

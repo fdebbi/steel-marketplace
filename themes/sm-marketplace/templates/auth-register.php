@@ -94,7 +94,7 @@ get_template_part(
 					<p class="sm-help" id="g-pass-help"><?php esc_html_e( 'At least 10 characters.', 'sm-marketplace' ); ?></p>
 					<?php sm_theme_error( 'password' ); ?>
 				</div>
-				<label class="sm-check"><input type="checkbox" name="terms" required><span><?php esc_html_e( 'I accept the terms of use and the listing rules.', 'sm-marketplace' ); ?></span></label>
+				<label class="sm-check sm-legal__consent"><input type="checkbox" name="terms" required><span><?php echo sm_legal_consent_text(); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in the function. ?></span></label>
 				<?php sm_theme_error( 'terms' ); ?>
 				<button class="sm-btn sm-btn--accent sm-btn--block sm-btn--lg" type="submit"><?php esc_html_e( 'Create my account', 'sm-marketplace' ); ?></button>
 				<p class="sm-help"><?php esc_html_e( 'You will receive a 6-digit code to verify your account. Sending your documents later unlocks the verified badge.', 'sm-marketplace' ); ?></p>

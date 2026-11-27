@@ -1,5 +1,9 @@
 # Changelog — sm-seo
 
+## 0.5.1 — 2026-11-27 (avec sm-core 0.10.0, thème 0.63.0)
+
+- Pages « Conditions générales d'utilisation » et « Politique de confidentialité » : titre et description dans les 3 langues (indexées, dans le plan du site des pages, hreflang).
+
 ## 0.5.0 — 2026-11-26 (avec sm-guides 0.2.0, thème 0.62.0)
 
 - Page `/faq/` : titre, description, adresse canonique, fil d'Ariane et données « FAQPage » avec les questions et réponses affichées, dans la langue de la page (texte simple, sans HTML) ; une question affichée en français à une adresse /ar/ ou /en/ n'y est pas reprise.

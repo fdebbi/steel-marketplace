@@ -467,4 +467,5 @@ $i18n = sm_study_sketch_i18n();
 		</section>
 		<button class="sm-btn sm-btn--accent sm-btn--lg" type="submit"><?php sm_icon( 'hard-hat' ); ?><?php esc_html_e( 'Send my request to the platform', 'sm-marketplace' ); ?></button>
 	</fieldset>
+	<?php sm_legal_notice(); // 0.63.0 ?>
 </form>

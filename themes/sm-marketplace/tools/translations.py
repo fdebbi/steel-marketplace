@@ -3031,3 +3031,21 @@ T.update({  # 0.62.0: frequently asked questions (sm-guides 0.2.0).
 'Frequently asked questions about engineering': ("Questions fréquentes sur l'ingénierie", 'أسئلة شائعة حول الهندسة'),
 'Frequently asked questions about requests for quotation': ('Questions fréquentes sur les demandes de devis', 'أسئلة شائعة حول طلبات عروض الأسعار'),
 })
+
+T.update({  # 0.63.0: legal pages (sm-core 0.10.0).
+'A question about your data?': ('Une question sur vos données ?', 'سؤال حول معطياتك؟'),
+'A question?': ('Une question ?', 'سؤال؟'),
+'Contents': ('Sommaire', 'المحتوى'),
+'I also accept the rules of partner engineers above.': ("J'accepte aussi les règles des ingénieurs partenaires ci-dessus.", 'وأوافق أيضًا على قواعد المهندسين الشركاء أعلاه.'),
+'I have read and accept the %1$s and the %2$s, and I confirm that I am at least 18 years old.': ("J'ai lu et j'accepte les %1$s et la %2$s, et je confirme avoir au moins 18 ans.", 'قرأت وأوافق على %1$s و%2$s، وأؤكد أن سني لا يقل عن 18 سنة.'),
+'Legal pages': ('Pages légales', 'الصفحات القانونية'),
+'Privacy': ('Confidentialité', 'الخصوصية'),
+'Privacy policy': ('Politique de confidentialité', 'سياسة الخصوصية'),
+'SM — Legal page': ('SM — Page légale', 'SM — صفحة قانونية'),
+'Terms of use': ("Conditions générales d'utilisation", 'الشروط العامة للاستخدام'),
+'This text is not written in your language yet: here is the French version.': ("Ce texte n'est pas encore écrit dans votre langue : voici la version française.", 'هذا النص غير مكتوب بلغتك بعد: إليك النسخة الفرنسية.'),
+'Version %s': ('Version %s', 'الإصدار %s'),
+'Your data is only used to handle your request. See the %s.': ('Vos données servent seulement à traiter votre demande. Voir la %s.', 'تُستعمل معطياتك فقط لمعالجة طلبك. انظر %s.'),
+'in force from %s': ('en vigueur le %s', 'ساري ابتداءً من %s'),
+})
+T['General terms'] = ('Conditions générales', 'الشروط العامة')

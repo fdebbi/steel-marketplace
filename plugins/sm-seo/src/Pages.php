@@ -29,6 +29,8 @@ final class Pages {
 			'weight'          => array( __( 'Steel weight calculator', 'sm-seo' ), __( 'Compute the weight of beams, tubes, plates and bars from the standard catalogue. Free, in French, Arabic and English.', 'sm-seo' ) ),
 			'ai'              => array( __( 'AI assistant for steel', 'sm-seo' ), __( 'The AI tools of ReuSteel for buying and selling steel.', 'sm-seo' ) ),
 			'cutting'         => array( __( 'Cutting optimiser for steel bars', 'sm-seo' ), __( 'Plan the cutting of your steel bars to reduce the offcuts.', 'sm-seo' ) ),
+			'terms'           => array( __( 'Terms of use', 'sm-seo' ), __( 'Terms of use of ReuSteel: accounts, listings, requests for quotation, engineering, tools, plans, liability and Algerian law.', 'sm-seo' ) ),
+			'privacy'         => array( __( 'Privacy policy', 'sm-seo' ), __( 'How ReuSteel protects your personal data under Algerian law 18-07: data collected, who sees it, retention, security and your rights.', 'sm-seo' ) ),
 			'faq'             => array( __( 'Frequently asked questions', 'sm-seo' ), __( 'Answers on how ReuSteel works: accounts, listings, requests for quotation, engineering studies, tools and languages. No market price.', 'sm-seo' ) ),
 			'engineer-apply'  => array( __( 'Become a partner engineer', 'sm-seo' ), __( 'Engineers and design offices: join the network of ReuSteel and carry out studies of steel structures.', 'sm-seo' ) ),
 		);

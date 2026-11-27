@@ -60,25 +60,25 @@ msgid "Marketplaces"
 msgstr "Marchés"
 
 #: footer.php:22 inc/menus.php:16 inc/template-tags.php:310
-#: inc/template-tags.php:824 templates/front-page-template.php:72
+#: inc/template-tags.php:826 templates/front-page-template.php:72
 #: templates/marketplace-products.php:15
 msgid "Steel products"
 msgstr "Produits sidérurgiques"
 
 #: footer.php:23 inc/menus.php:24 inc/template-tags.php:311
-#: inc/template-tags.php:823 templates/front-page-template.php:73
+#: inc/template-tags.php:825 templates/front-page-template.php:73
 #: templates/marketplace-reuse.php:15
 msgid "Steel reuse"
 msgstr "Réemploi de l’acier"
 
 #: footer.php:24 inc/menus.php:32 inc/template-tags.php:312
-#: inc/template-tags.php:825 templates/front-page-template.php:74
+#: inc/template-tags.php:827 templates/front-page-template.php:74
 #: templates/marketplace-buildings.php:15
 msgid "Steel buildings"
 msgstr "Bâtiments métalliques"
 
-#: footer.php:25 inc/menus.php:47 inc/template-tags.php:816
-#: inc/template-tags.php:831 template-parts/components/rfq-single.php:45
+#: footer.php:25 inc/menus.php:47 inc/template-tags.php:818
+#: inc/template-tags.php:833 template-parts/components/rfq-single.php:45
 #: template-parts/dashboard/report.php:133 template-parts/dashboard/rfq.php:19
 #: templates/rfq-board.php:54 templates/rfq-board.php:57
 msgid "Requests for quotation"
@@ -91,7 +91,7 @@ msgid "Services"
 msgstr "Services"
 
 #: footer.php:31 inc/menus.php:62 inc/template-tags.php:313
-#: inc/template-tags.php:815 inc/template-tags.php:830
+#: inc/template-tags.php:817 inc/template-tags.php:832
 #: template-parts/components/card-service.php:23
 #: templates/front-page-template.php:75 templates/marketplace-services.php:17
 #: templates/marketplace-services.php:20 templates/single-service.php:44
@@ -99,7 +99,7 @@ msgid "Fabrication & installation"
 msgstr "Fabrication et montage"
 
 #: footer.php:32 header.php:78 header.php:108 inc/menus.php:63
-#: inc/template-tags.php:314 inc/template-tags.php:829
+#: inc/template-tags.php:314 inc/template-tags.php:831
 #: template-parts/components/ai-photo-tools.php:95
 #: templates/front-page-template.php:76 templates/marketplace-engineers.php:35
 #: templates/mission-request.php:23
@@ -117,20 +117,20 @@ msgstr "Annuaire des entreprises"
 msgid "Professionals directory"
 msgstr "Annuaire des professionnels"
 
-#: footer.php:35 header.php:27 header.php:110 inc/template-tags.php:811
-#: inc/template-tags.php:826 templates/weight-calculator.php:37
+#: footer.php:35 header.php:27 header.php:110 inc/template-tags.php:813
+#: inc/template-tags.php:828 templates/weight-calculator.php:37
 msgid "Weight calculator"
 msgstr "Calculateur de poids"
 
-#: footer.php:36 inc/template-tags.php:812 inc/template-tags.php:827
+#: footer.php:36 inc/template-tags.php:814 inc/template-tags.php:829
 #: template-parts/catalogue/family.php:27
 #: template-parts/catalogue/index.php:22
 #: template-parts/catalogue/section.php:51
 msgid "Catalogue of sections"
 msgstr "Catalogue des profilés"
 
-#: footer.php:37 header.php:28 header.php:111 inc/template-tags.php:813
-#: inc/template-tags.php:828 templates/cutting-optimizer.php:26
+#: footer.php:37 header.php:28 header.php:111 inc/template-tags.php:815
+#: inc/template-tags.php:830 templates/cutting-optimizer.php:26
 #: templates/cutting-optimizer.php:27
 msgid "Cutting optimiser"
 msgstr "Optimiseur de découpe"
@@ -153,12 +153,20 @@ msgstr "Abonnements"
 msgid "Guides"
 msgstr "Guides"
 
-#: footer.php:46 inc/template-tags.php:910 templates/faq.php:46
+#: footer.php:46 inc/template-tags.php:912 templates/faq.php:46
 #: templates/faq.php:47
 msgid "Frequently asked questions"
 msgstr "Questions fréquentes"
 
-#: footer.php:47 template-parts/components/ai-gate.php:24
+#: footer.php:47
+msgid "General terms"
+msgstr "Conditions générales"
+
+#: footer.php:47
+msgid "Privacy"
+msgstr "Confidentialité"
+
+#: footer.php:52 template-parts/components/ai-gate.php:24
 #: template-parts/components/buy-box.php:233
 #: template-parts/components/enquiry-form.php:46
 #: template-parts/components/rfq-single.php:158
@@ -168,28 +176,28 @@ msgstr "Questions fréquentes"
 msgid "Create an account"
 msgstr "Créer un compte"
 
-#: footer.php:48 header.php:31 templates/company-profile.php:230
+#: footer.php:53 header.php:31 templates/company-profile.php:230
 #: templates/company-profile.php:245 templates/contact.php:23
 #: templates/contact.php:32 templates/single-listing.php:281
 msgid "Contact"
 msgstr "Contact"
 
-#: footer.php:54
+#: footer.php:59
 msgid ""
 "Advertised prices are set by sellers and are not official market prices."
 msgstr ""
 "Les prix affichés sont fixés par les vendeurs et ne sont pas des prix "
 "officiels du marché."
 
-#: footer.php:59
+#: footer.php:64
 msgid "Quick navigation"
 msgstr "Navigation rapide"
 
-#: footer.php:60 inc/template-tags.php:455
+#: footer.php:65 inc/template-tags.php:455
 msgid "Home"
 msgstr "Accueil"
 
-#: footer.php:61 header.php:54
+#: footer.php:66 header.php:54
 #: template-parts/components/stock-warehouse.php:132
 #: template-parts/directory.php:53 template-parts/header-actions.php:13
 #: templates/ai-assistant.php:23 templates/front-page-template.php:49
@@ -197,27 +205,27 @@ msgstr "Accueil"
 msgid "Search"
 msgstr "Rechercher"
 
-#: footer.php:64 template-parts/header-actions.php:36
+#: footer.php:69 template-parts/header-actions.php:36
 #: templates/dashboard.php:74
 msgid "My missions"
 msgstr "Mes missions"
 
-#: footer.php:65 templates/dashboard.php:75
+#: footer.php:70 templates/dashboard.php:75
 msgid "Invoicing"
 msgstr "Facturation"
 
-#: footer.php:67 template-parts/components/product-form.php:238
+#: footer.php:72 template-parts/components/product-form.php:238
 #: template-parts/components/stock-warehouse.php:67
 #: template-parts/dashboard/publish.php:211
 #: template-parts/header-actions.php:34 templates/styleguide.php:34
 msgid "Publish"
 msgstr "Publier"
 
-#: footer.php:68
+#: footer.php:73
 msgid "Enquiries"
 msgstr "Demandes"
 
-#: footer.php:70 templates/dashboard.php:87 templates/dashboard.php:166
+#: footer.php:75 templates/dashboard.php:87 templates/dashboard.php:166
 #: templates/engineer-apply.php:307
 msgid "Account"
 msgstr "Compte"
@@ -281,7 +289,7 @@ msgstr "Afficher"
 msgid "Hide"
 msgstr "Masquer"
 
-#: inc/assets.php:69 inc/template-tags.php:608
+#: inc/assets.php:69 inc/template-tags.php:610
 msgid "Saved"
 msgstr "Enregistrée"
 
@@ -318,7 +326,7 @@ msgstr "Sera remplacé à l’enregistrement"
 msgid "Undo"
 msgstr "Annuler"
 
-#: inc/assets.php:79 inc/template-tags.php:612 inc/template-tags.php:618
+#: inc/assets.php:79 inc/template-tags.php:614 inc/template-tags.php:620
 #: template-parts/components/my-products.php:139
 #: template-parts/components/portfolio-grid.php:30
 #: template-parts/components/rfq-single.php:138
@@ -539,23 +547,23 @@ msgstr "Hangars montés ou démontés"
 msgid "Building"
 msgstr "Bâtiment"
 
-#: inc/demo/installer.php:112 inc/demo/installer.php:113
-#: inc/demo/installer.php:127
+#: inc/demo/installer.php:114 inc/demo/installer.php:115
+#: inc/demo/installer.php:129
 msgid "SM Pages"
 msgstr "Pages SM"
 
-#: inc/demo/installer.php:124
+#: inc/demo/installer.php:126
 msgid "Missing pages were created."
 msgstr "Les pages manquantes ont été créées."
 
-#: inc/demo/installer.php:128
+#: inc/demo/installer.php:130
 msgid ""
 "Pages used by the theme templates. Existing pages are never overwritten."
 msgstr ""
 "Pages utilisées par les gabarits du thème. Les pages existantes ne sont "
 "jamais écrasées."
 
-#: inc/demo/installer.php:136
+#: inc/demo/installer.php:138
 msgid "Create missing pages"
 msgstr "Créer les pages manquantes"
 
@@ -631,7 +639,7 @@ msgid "AI"
 msgstr "IA"
 
 #: inc/template-tags.php:167 inc/template-tags.php:481
-#: inc/template-tags.php:541
+#: inc/template-tags.php:543
 #: template-parts/components/cutting-optimizer.php:390
 #: template-parts/components/product-tech.php:31
 #: template-parts/components/product-tech.php:568
@@ -860,7 +868,7 @@ msgstr "Envoyée"
 msgid "Shortlisted"
 msgstr "Présélectionnée"
 
-#: inc/template-tags.php:508 inc/template-tags.php:562
+#: inc/template-tags.php:508 inc/template-tags.php:564
 #: template-parts/components/visits-list.php:20
 msgid "Accepted"
 msgstr "Acceptée"
@@ -873,28 +881,28 @@ msgstr "Non retenue"
 msgid "Withdrawn"
 msgstr "Retirée"
 
-#: inc/template-tags.php:536
+#: inc/template-tags.php:538
 msgid "project"
 msgstr "projet"
 
-#: inc/template-tags.php:542
+#: inc/template-tags.php:544
 msgid "hour"
 msgstr "heure"
 
-#: inc/template-tags.php:543
+#: inc/template-tags.php:545
 msgid "day"
 msgstr "jour"
 
-#: inc/template-tags.php:551 template-parts/components/service-form.php:124
+#: inc/template-tags.php:553 template-parts/components/service-form.php:124
 msgid "On quotation"
 msgstr "Sur devis"
 
 #. translators: %s: price with unit.
-#: inc/template-tags.php:554
+#: inc/template-tags.php:556
 msgid "From %s"
 msgstr "À partir de %s"
 
-#: inc/template-tags.php:560
+#: inc/template-tags.php:562
 #: template-parts/components/cutting-optimizer.php:202
 #: template-parts/components/cutting-sources.php:17
 #: template-parts/components/stock-warehouse.php:23
@@ -904,131 +912,153 @@ msgstr "À partir de %s"
 msgid "New"
 msgstr "Nouvelle"
 
-#: inc/template-tags.php:561 templates/styleguide.php:48
+#: inc/template-tags.php:563 templates/styleguide.php:48
 msgid "Quote sent"
 msgstr "Devis envoyé"
 
-#: inc/template-tags.php:563
+#: inc/template-tags.php:565
 msgid "Quote declined"
 msgstr "Devis refusé"
 
-#: inc/template-tags.php:564
+#: inc/template-tags.php:566
 msgid "Declined by the provider"
 msgstr "Déclinée par le prestataire"
 
-#: inc/template-tags.php:565 template-parts/components/visits-list.php:22
+#: inc/template-tags.php:567 template-parts/components/visits-list.php:22
 msgid "Cancelled"
 msgstr "Annulée"
 
-#: inc/template-tags.php:610
+#: inc/template-tags.php:612
 msgid "Keep"
 msgstr "Garder"
 
-#: inc/template-tags.php:616 templates/engineer-apply.php:124
+#: inc/template-tags.php:618 templates/engineer-apply.php:124
 msgid "Replace"
 msgstr "Remplacer"
 
-#: inc/template-tags.php:636
+#: inc/template-tags.php:638
 msgid "Yes"
 msgstr "Oui"
 
-#: inc/template-tags.php:636
+#: inc/template-tags.php:638
 msgid "No"
 msgstr "Non"
 
-#: inc/template-tags.php:639
+#: inc/template-tags.php:641
 msgid "Unlimited"
 msgstr "Illimité"
 
 #. translators: %s: number of results.
-#: inc/template-tags.php:701 template-parts/components/filter-panel.php:208
+#: inc/template-tags.php:703 template-parts/components/filter-panel.php:208
 msgid "Show %s result"
 msgid_plural "Show %s results"
 msgstr[0] "Afficher %s résultat"
 msgstr[1] "Afficher %s résultats"
 
-#: inc/template-tags.php:776
+#: inc/template-tags.php:778
 msgid "Sign in to contact"
 msgstr "Connectez-vous pour contacter"
 
-#: inc/template-tags.php:808
+#: inc/template-tags.php:810
 msgid "Steel reuse listings"
 msgstr "Annonces de réemploi"
 
-#: inc/template-tags.php:809
+#: inc/template-tags.php:811
 msgid "Steel products listings"
 msgstr "Annonces de produits sidérurgiques"
 
-#: inc/template-tags.php:810
+#: inc/template-tags.php:812
 msgid "Steel buildings listings"
 msgstr "Annonces de bâtiments métalliques"
 
-#: inc/template-tags.php:814
+#: inc/template-tags.php:816
 msgid "Engineering: request an inspection"
 msgstr "Ingénierie : demander une inspection"
 
-#: inc/template-tags.php:838
+#: inc/template-tags.php:840
 msgid "See the reuse listings"
 msgstr "Voir les annonces de réemploi"
 
-#: inc/template-tags.php:839
+#: inc/template-tags.php:841
 msgid "See the steel products"
 msgstr "Voir les produits sidérurgiques"
 
-#: inc/template-tags.php:840 template-parts/components/visits-list.php:37
+#: inc/template-tags.php:842 template-parts/components/visits-list.php:37
 msgid "See the steel buildings"
 msgstr "Voir les bâtiments métalliques"
 
-#: inc/template-tags.php:841
+#: inc/template-tags.php:843
 msgid "Open the weight calculator"
 msgstr "Ouvrir le calculateur de poids"
 
-#: inc/template-tags.php:842
+#: inc/template-tags.php:844
 msgid "See the catalogue of sections"
 msgstr "Voir le catalogue des profilés"
 
-#: inc/template-tags.php:843
+#: inc/template-tags.php:845
 msgid "Open the cutting optimiser"
 msgstr "Ouvrir l'optimiseur de découpe"
 
-#: inc/template-tags.php:844
+#: inc/template-tags.php:846
 msgid "Request an engineering study"
 msgstr "Demander une étude"
 
-#: inc/template-tags.php:845
+#: inc/template-tags.php:847
 msgid "Find a service"
 msgstr "Trouver un service"
 
-#: inc/template-tags.php:846 template-parts/dashboard/offers.php:23
+#: inc/template-tags.php:848 template-parts/dashboard/offers.php:23
 #: templates/rfq-board.php:20
 msgid "See the requests for quotation"
 msgstr "Voir les demandes de devis"
 
-#: inc/template-tags.php:857
+#: inc/template-tags.php:859
 msgid "Guide:"
 msgid_plural "Guides:"
 msgstr[0] "Guide :"
 msgstr[1] "Guides :"
 
-#: inc/template-tags.php:895
+#: inc/template-tags.php:897
 msgid "Frequently asked questions about steel reuse"
 msgstr "Questions fréquentes sur le réemploi"
 
-#: inc/template-tags.php:896
+#: inc/template-tags.php:898
 msgid "Frequently asked questions about steel buildings"
 msgstr "Questions fréquentes sur les bâtiments métalliques"
 
-#: inc/template-tags.php:897
+#: inc/template-tags.php:899
 msgid "Frequently asked questions about engineering"
 msgstr "Questions fréquentes sur l'ingénierie"
 
-#: inc/template-tags.php:898
+#: inc/template-tags.php:900
 msgid "Frequently asked questions about requests for quotation"
 msgstr "Questions fréquentes sur les demandes de devis"
 
-#: inc/template-tags.php:912
+#: inc/template-tags.php:914
 msgid "All the questions"
 msgstr "Toutes les questions"
+
+#. translators: 1: link "Terms of use", 2: link "Privacy policy".
+#: inc/template-tags.php:971
+msgid ""
+"I have read and accept the %1$s and the %2$s, and I confirm that I am at "
+"least 18 years old."
+msgstr ""
+"J'ai lu et j'accepte les %1$s et la %2$s, et je confirme avoir au moins 18 "
+"ans."
+
+#: inc/template-tags.php:972
+msgid "Terms of use"
+msgstr "Conditions générales d'utilisation"
+
+#: inc/template-tags.php:973 inc/template-tags.php:982
+msgid "Privacy policy"
+msgstr "Politique de confidentialité"
+
+#. translators: %s: link "Privacy policy".
+#: inc/template-tags.php:981
+msgid "Your data is only used to handle your request. See the %s."
+msgstr "Vos données servent seulement à traiter votre demande. Voir la %s."
 
 #: index.php:21 template-parts/components/stock-warehouse.php:145
 msgid "Nothing here yet"
@@ -9998,6 +10028,7 @@ msgid "Updated on %s"
 msgstr "Mis à jour le %s"
 
 #: template-parts/guides/guide.php:40 templates/faq.php:50
+#: templates/legal.php:73
 msgid "Also in"
 msgstr "Aussi en"
 
@@ -10473,10 +10504,6 @@ msgstr "Nom commercial (facultatif)"
 msgid "At least 10 characters."
 msgstr "Au moins 10 caractères."
 
-#: templates/auth-register.php:97
-msgid "I accept the terms of use and the listing rules."
-msgstr "J’accepte les conditions d’utilisation et les règles de publication."
-
 #: templates/auth-register.php:99
 msgid "Create my account"
 msgstr "Créer mon compte"
@@ -10697,11 +10724,11 @@ msgstr "Partenariat"
 msgid "Report a listing"
 msgstr "Signaler une annonce"
 
-#: templates/contact.php:86
+#: templates/contact.php:87
 msgid "Other ways to reach us"
 msgstr "Nous joindre autrement"
 
-#: templates/contact.php:90
+#: templates/contact.php:91
 msgid ""
 "To contact a seller, a workshop or an engineer, use the button on their "
 "listing or page: your message goes directly to them."
@@ -11283,10 +11310,8 @@ msgid "Your documents and studies stay confidential."
 msgstr "Vos documents et études restent confidentiels."
 
 #: templates/engineer-apply.php:295
-msgid "I accept the terms of use and the rules of partner engineers."
-msgstr ""
-"J’accepte les conditions d’utilisation et les règles des ingénieurs "
-"partenaires."
+msgid "I also accept the rules of partner engineers above."
+msgstr "J'accepte aussi les règles des ingénieurs partenaires ci-dessus."
 
 #: templates/engineer-apply.php:301
 msgid "Check and confirm"
@@ -11332,7 +11357,7 @@ msgstr "Aucune question pour le moment"
 msgid "Write to the ReuSteel team: we answer by e-mail."
 msgstr "Écrivez à l'équipe ReuSteel : nous répondons par e-mail."
 
-#: templates/faq.php:25 templates/faq.php:76
+#: templates/faq.php:25 templates/faq.php:76 templates/legal.php:107
 msgid "Contact the team"
 msgstr "Contacter l'équipe"
 
@@ -11360,7 +11385,7 @@ msgstr ""
 msgid "Can’t find your answer?"
 msgstr "Vous ne trouvez pas votre réponse ?"
 
-#: templates/faq.php:75
+#: templates/faq.php:75 templates/legal.php:106
 msgid "Write to us: the ReuSteel team answers by e-mail."
 msgstr "Écrivez-nous : l'équipe ReuSteel vous répond par e-mail."
 
@@ -11708,6 +11733,43 @@ msgstr "Ce guide n'existe pas"
 #: templates/guides.php:29
 msgid "See the guides"
 msgstr "Voir les guides"
+
+#. Template Name of the theme
+msgid "SM — Legal page"
+msgstr "SM — Page légale"
+
+#. translators: %s: version number of the texts.
+#: templates/legal.php:65
+msgid "Version %s"
+msgstr "Version %s"
+
+#. translators: %s: date.
+#: templates/legal.php:68
+msgid "in force from %s"
+msgstr "en vigueur le %s"
+
+#: templates/legal.php:77
+msgid ""
+"This text is not written in your language yet: here is the French version."
+msgstr ""
+"Ce texte n'est pas encore écrit dans votre langue : voici la version "
+"française."
+
+#: templates/legal.php:79
+msgid "Legal pages"
+msgstr "Pages légales"
+
+#: templates/legal.php:94 templates/legal.php:100 templates/legal.php:101
+msgid "Contents"
+msgstr "Sommaire"
+
+#: templates/legal.php:105
+msgid "A question?"
+msgstr "Une question ?"
+
+#: templates/legal.php:105
+msgid "A question about your data?"
+msgstr "Une question sur vos données ?"
 
 #. Template Name of the theme
 msgid "SM — Steel buildings"

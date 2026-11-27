@@ -35,6 +35,8 @@ function sm_theme_page_definitions() {
 		'catalogue'   => array( 'catalogue', 'Catalogue des profilés', 'templates/catalogue.php' ), // 0.59.0
 		'guides'      => array( 'guides', 'Guides', 'templates/guides.php' ), // 0.61.0 (sm-guides)
 		'faq'         => array( 'faq', 'Questions fréquentes', 'templates/faq.php' ), // 0.62.0 (sm-guides 0.2.0)
+		'terms'       => array( 'conditions-generales', "Conditions générales d'utilisation", 'templates/legal.php' ), // 0.63.0 (sm-core 0.10.0)
+		'privacy'     => array( 'confidentialite', 'Politique de confidentialité', 'templates/legal.php' ), // 0.63.0
 		'ai'          => array( 'assistant-ia', 'Assistant IA', 'templates/ai-assistant.php' ),
 		'cutting'     => array( 'optimiseur-decoupe', 'Optimiseur de découpe', 'templates/cutting-optimizer.php' ),
 		'pricing'     => array( 'tarifs', 'Tarifs', 'templates/pricing.php' ),
